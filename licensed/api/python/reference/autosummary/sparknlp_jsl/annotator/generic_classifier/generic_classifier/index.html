@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -513,6 +513,7 @@ FeaturesAssembler` as input, classifies them and outputs CATEGORY annotations.</
 <li><p><strong>outputLogsPath</strong> – Path to folder where logs will be saved. If no path is specified, the logs won’t
 be stored in disk. The path can be a local file path,
 a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
+<li><p><strong>datasetInfo</strong> – Descriptive information about the dataset being used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -552,6 +553,11 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.batchSize">
 <span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -889,6 +895,17 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1093,6 +1110,7 @@ FeaturesAssembler` as input, classifies them and outputs CATEGORY annotations.</
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>multiClass</strong> – Return only the label with the highest confidence score or all labels</p></li>
 <li><p><strong>featureScaling</strong> – Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p></li>
+<li><p><strong>datasetInfo</strong> – Descriptive information about the dataset being used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1125,6 +1143,11 @@ FeaturesAssembler` as input, classifies them and outputs CATEGORY annotations.</
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1370,6 +1393,17 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1528,6 +1562,7 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.dropout"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.dropout</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.engine"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.engine</span></code></a></li>
@@ -1572,6 +1607,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.setDropout()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach.setEpochsNumber"><code class="docutils literal notranslate"><span class="pre">GenericClassifierApproach.setEpochsNumber()</span></code></a></li>
@@ -1593,6 +1629,7 @@ RecursivePipeline</p>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.classes"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.getter_attrs</span></code></a></li>
@@ -1626,6 +1663,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.setForceInputTypeValidation()</span></code></a></li>

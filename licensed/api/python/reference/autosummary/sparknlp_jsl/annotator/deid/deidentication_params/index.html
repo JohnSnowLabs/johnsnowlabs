@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -547,6 +547,26 @@ Select the following masking policy if you want to return the masked form in the
 - ‘same_length_chars’: Replace the name with the asterix with same length minus two plus brackets on both end.If the entity is less than 3 chars (like Jo, or 5), we can just use asterix without brackets.
 - ‘fixed_length_chars’: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisk.
 - Default: “”</p></li>
+<li><p><strong>obfuscateByAgeGroups</strong> – Whether to obfuscate ages based on age groups.
+When <cite>True</cite>, the age groups specified in the <code class="docutils literal notranslate"><span class="pre">ageGroups</span></code> parameter will be used to obfuscate ages.
+When <cite>False</cite>, the age ranges specified in the <code class="docutils literal notranslate"><span class="pre">ageRanges</span></code> parameter will be used to obfuscate ages.
+Default: False</p></li>
+<li><p><strong>ageGroups</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>int</em><em>]</em><em>]</em>) – A dictionary of age groups to obfuscate ages.
+For this parameter to be active, the <code class="docutils literal notranslate"><span class="pre">obfuscateByAgeGroups</span></code> parameter must be true.
+If the given <code class="docutils literal notranslate"><span class="pre">ageGroups</span></code> do not fully contain the ages, the ages continue to be obfuscated according to the <code class="docutils literal notranslate"><span class="pre">ageRanges</span></code> parameter.
+The dictionary should contain the age group name as the key and an list of two integers as the value.
+The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.
+Default age groups are as follows in the English language:
+&gt;&gt;&gt; { “baby”: [0, 1],
+…   “toddler”: [1, 4],
+…   “child”: [4, 13],
+…   “teenager”: [13, 20],
+…   “adult”: [20, 65],
+…   “senior”: [65, 100] }</p></li>
+<li><p><strong>keepYear</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -611,6 +631,11 @@ Select the following masking policy if you want to return the masked form in the
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepYear">
+<span class="sig-name descname"><span class="pre">keepYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.language">
 <span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.language" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -638,6 +663,11 @@ Select the following masking policy if you want to return the masked form in the
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.mode" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateByAgeGroups">
+<span class="sig-name descname"><span class="pre">obfuscateByAgeGroups</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateByAgeGroups" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -721,6 +751,36 @@ Select the following masking policy if you want to return the masked form in the
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getUseShiftDays">
 <span class="sig-name descname"><span class="pre">getUseShiftDays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getUseShiftDays" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the useShiftDays value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeGroups">
+<span class="sig-name descname"><span class="pre">setAgeGroups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeGroups" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a dictionary of age groups to obfuscate ages.
+For this parameter to be active, the <code class="docutils literal notranslate"><span class="pre">obfuscateByAgeGroups</span></code> parameter must be true.
+If the given <code class="docutils literal notranslate"><span class="pre">ageGroups</span></code> do not fully contain the ages, the ages continue to be obfuscated according to the <code class="docutils literal notranslate"><span class="pre">ageRanges</span></code> parameter.
+The dictionary should contain the age group name as the key and an list of two integers as the value.
+The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.
+Default age groups are as follows in the English language:</p>
+<section id="default-and-example-dictionary">
+<h4>Default and example dictionary<a class="headerlink" href="#default-and-example-dictionary" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span> <span class="s2">&quot;baby&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="s2">&quot;toddler&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="s2">&quot;child&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="s2">&quot;teenager&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="s2">&quot;adult&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="s2">&quot;senior&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span> <span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary of age groups to obfuscate ages.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, List[int]]</p>
+</dd>
+</dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -878,6 +938,20 @@ it can increase performance but might decrease accuracy. Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepYear">
+<span class="sig-name descname"><span class="pre">setKeepYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setLanguage">
 <span class="sig-name descname"><span class="pre">setLanguage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setLanguage" title="Permalink to this definition">#</a></dt>
 <dd><p>The language used to select the regex file and some faker entities.
@@ -955,6 +1029,19 @@ Select the following masking policy if you want to return mask form in the metad
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – Mode for Anonymizer [‘mask’|’obfuscate’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateByAgeGroups">
+<span class="sig-name descname"><span class="pre">setObfuscateByAgeGroups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateByAgeGroups" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate ages based on age groups.
+When <cite>True</cite>, the age groups specified in the <code class="docutils literal notranslate"><span class="pre">ageGroups</span></code> parameter will be used to obfuscate ages.
+When <cite>False</cite>, the age ranges specified in the <code class="docutils literal notranslate"><span class="pre">ageRanges</span></code> parameter will be used to obfuscate ages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to obfuscate ages based on age groups.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1181,12 +1268,14 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ignoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.ignoreRegex</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.isRandomDateDisplacement</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.language"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.mappingsColumn"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.mappingsColumn</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.maskingPolicy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.metadataMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.metadataMaskingPolicy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.minYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.minYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.mode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.mode</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateByAgeGroups"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateByAgeGroups</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateDate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateRefSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscationStrategyOnException</span></code></a></li>
@@ -1203,6 +1292,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getUseShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getUseShiftDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeGroups"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAgeGroups()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setBlackList()</span></code></a></li>
@@ -1215,12 +1305,14 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setIsRandomDateDisplacement()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMappingsColumn"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMappingsColumn()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMaskingPolicy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMetadataMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMetadataMaskingPolicy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMinYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMinYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMode()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateByAgeGroups"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateByAgeGroups()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscationStrategyOnException()</span></code></a></li>

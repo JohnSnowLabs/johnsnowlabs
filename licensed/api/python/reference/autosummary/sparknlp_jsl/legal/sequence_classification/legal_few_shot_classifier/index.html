@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -412,6 +412,11 @@ between 0 and 1.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.batchSize">
 <span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -754,6 +759,17 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -957,6 +973,11 @@ between 0 and 1.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1202,6 +1223,17 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1360,6 +1392,7 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.dropout"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.dropout</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.engine"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.engine</span></code></a></li>
@@ -1405,6 +1438,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.setDropout()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierApproach.setEpochsNumber"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierApproach.setEpochsNumber()</span></code></a></li>
@@ -1426,6 +1460,7 @@ RecursivePipeline</p>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.classes"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.getter_attrs</span></code></a></li>
@@ -1459,6 +1494,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier.LegalFewShotClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalFewShotClassifierModel.setForceInputTypeValidation()</span></code></a></li>

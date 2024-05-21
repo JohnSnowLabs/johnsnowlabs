@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -505,6 +505,11 @@ logistic function so that they vary between 0 and 1.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.datasetInfo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.doExceptionHandling">
 <span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.doExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -844,6 +849,17 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1048,6 +1064,11 @@ logistic function so that they vary between 0 and 1.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1293,6 +1314,17 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1451,6 +1483,7 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.dropout"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.dropout</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.engine"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.engine</span></code></a></li>
@@ -1496,6 +1529,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.setDropout()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach.setEpochsNumber"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierApproach.setEpochsNumber()</span></code></a></li>
@@ -1517,6 +1551,7 @@ RecursivePipeline</p>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.classes"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.getter_attrs</span></code></a></li>
@@ -1550,6 +1585,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">GenericSVMClassifierModel.setForceInputTypeValidation()</span></code></a></li>
