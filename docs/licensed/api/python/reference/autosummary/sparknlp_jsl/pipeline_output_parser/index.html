@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -360,12 +360,16 @@ document.write(`
 <span class="gp">... </span>        <span class="s1">&#39;assertion_column_name&#39;</span><span class="p">:</span> <span class="s2">&quot;assertion_chunk&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s1">&#39;resolver_column_name&#39;</span><span class="p">:</span> <span class="s2">&quot;icd10_code&quot;</span>
 <span class="gp">... </span>    <span class="p">}],</span>
-<span class="gp">... </span>    <span class="s1">&#39;relations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;relatations&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="s1">&#39;deidentification&#39;</span> <span class="p">:</span> <span class="p">[{</span>
-<span class="gp">... </span>        <span class="s2">&quot;original&quot;</span><span class="p">:</span> <span class="s2">&quot;sentence&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;obfuscated&quot;</span><span class="p">:</span> <span class="s2">&quot;obfuscated&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;masked&quot;</span><span class="p">:</span>   <span class="s2">&quot;masked&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;relations&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;summaries&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;deidentifications&quot;</span> <span class="p">:</span> <span class="p">[{</span>
+<span class="gp">... </span>        <span class="s2">&quot;original&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;obfuscated&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;masked&quot;</span><span class="p">:</span>   <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">}],</span>
+<span class="gp">... </span>   <span class="s2">&quot;classifications&quot;</span><span class="p">:[{</span>
+<span class="gp">... </span>       <span class="s2">&quot;classification_column_name&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;sentence_column_name&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">}]</span>
 <span class="gp">... </span><span class="p">}</span>
 </pre></div>
@@ -381,7 +385,7 @@ document.write(`
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict">
-<span class="sig-name descname"><span class="pre">check_column_mapping_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">check_column_mapping_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>This function is used to check if the column mapping dictionary is valid.
 It checks if the following keys are present in the dictionary: document_text, entities, relations, and summary.
 It also checks if the values of the entities, relations, and summary keys are also dictionaries, and if the keys ner_chunk_column_name, resolver_column_name, and assertion_column_name are present in these dictionaries.
@@ -421,6 +425,22 @@ It also checks if the values of the entities, relations, and summary keys are al
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_classification">
+<span class="sig-name descname"><span class="pre">get_classification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_classification" title="Permalink to this definition">#</a></dt>
+<dd><p>This function retrieves classification results from the pipeline output.</p>
+<p>Parameters:
+result (list): The output of the pipeline from fullAnnotate. This list contains annotations for each document.</p>
+<p>Returns:
+list: A list of dictionaries, where each dictionary represents a classification result.</p>
+<blockquote>
+<div><p>Each dictionary contains the following keys:
+- category (str): The category of the classification.
+- sentence (str): The sentence from which the classification was made.
+- sentence_id (int): The ID of the sentence.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification">
 <span class="sig-name descname"><span class="pre">get_deidentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification" title="Permalink to this definition">#</a></dt>
 <dd><p>Extract deidentification text from the pipeline output.</p>
@@ -441,6 +461,11 @@ It also checks if the values of the entities, relations, and summary keys are al
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents">
+<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_entities">
@@ -598,12 +623,21 @@ It also checks if the values of the entities, relations, and summary keys are al
 </dd>
 </dl>
 </li>
-<li><p>summary (list): A string containing the summary.</p></li>
+<li><p>summaries (list): A string containing the summary.</p></li>
 <li><dl class="simple">
-<dt>deidentification: (list) A list of dictionaries, where each dictionary represents a deidentification, containing the following keys:</dt><dd><ul>
+<dt>deidentifications: (list) A list of dictionaries, where each dictionary represents a deidentification, containing the following keys:</dt><dd><ul>
 <li><p>original (list): A list of original text.</p></li>
 <li><p>obfuscated (list): A list of deidentified text.</p></li>
 <li><p>masked (list):  A list of masked text.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>classifications (list):  A list of dictionaries, where each dictionary represents a classification result.</dt><dd><ul>
+<li><p>category (str): The category of the classification.</p></li>
+<li><p>sentence (str): The sentence from which the classification was made.</p></li>
+<li><p>sentence_id (int): The ID of the sentence.</p></li>
 </ul>
 </dd>
 </dl>
@@ -668,7 +702,9 @@ It also checks if the values of the entities, relations, and summary keys are al
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.check_column_mapping_dict()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_assertions"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_assertions()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_classification"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_classification()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_deidentification()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_documents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_entities"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_entities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_ners"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_ners()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_relations"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_relations()</span></code></a></li>

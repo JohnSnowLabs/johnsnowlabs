@@ -26,40 +26,40 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 
 
 ### Key Features
-1. **Document Upload and Session Initiation**
+1.**Document Upload and Session Initiation**
    - Users can upload one or several documents directly into the chat interface.
    - Upon uploading documents, a DocQA session is automatically initiated.
    - Each user is limited to one active DocQA session at any given time.
 
 ![Start_DocQA_Session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/17f402c1-e3ff-4533-b135-fcf47791444a)
 
-2. **Session Management and Visibility**
+2.**Session Management and Visibility**
    - The active DocQA session appears as "Document Q&A" in the Conversation History.
    - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
 
 <img width="2944" alt="Session_Visibility" src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719">
 
-3. **Document Management within Sessions**
+3.**Document Management within Sessions**
    - If a document is uploaded in a regular chat while a DocQA session is active, it will be automatically added to the existing session's Target Documents.
    - Uploading more than 10 documents triggers an error message, prompting the user to remove documents before adding new ones.
 
 ![Upload_to_existing_session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/3ad7581f-2c52-4232-a4a9-d2a00b28c37a)
 
-4. **Session Interaction**
+4.**Session Interaction**
    - Users can start a new chat by clicking the "New Chat" button, which opens an empty chat window.
    - Users can seamlessly transition to a new chat at any point to address queries beyond the scope of the DocQA Session.
    - Users can easily navigate back to an active DocQA session via the Conversation History.
 
 ![DocQA_Switch_to_Normal_Chat](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/c1acce8b-d8d9-4805-8246-c99ef72d3100)
 
-5. **Session Termination**
+5.**Session Termination**
    - Removing a DocQA session from the Chat History will end the session and delete the associated files.
    - Removing all the files from the DocQA Session's Target Documents will also end the session.
    - Once a DocQA chat session is ended, it transitions into a read-only mode, providing users with a comprehensive overview of the conversation. 
 
 ![Terminate_DocQA_Session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/1ba5e643-fda4-44f2-ae0a-3ba1d3a7fb70)
 
-6. **Query Handling and Document Interaction**
+6.**Query Handling and Document Interaction**
    - Questions asked within the DocQA session are answered using information from the target documents.
    - Responses include references to the document content. Clicking on a reference will display the document and highlight the relevant paragraph.
 
@@ -80,7 +80,7 @@ This feature is part of our ongoing commitment to enhance user interaction and i
 The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.
 
 ### Key Features
-1. **Tools Overview**
+1.**Tools Overview**
    - **Deidentification/Obfuscation of PHI**: Automatically detects and masks or obfuscates protected health information (PHI) from medical text to ensure privacy and compliance with data protection regulations. Users can specify to de-identify or obfuscate the medical text based on their requirements. 
    
    <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -97,9 +97,9 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 
    <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-2. **Customizable Accessibility**
+2.**Customizable Accessibility**
    - Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
-3. **Accessing Tools**
+3.**Accessing Tools**
    - NLP tools can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct tool activation.
    - Typing '@' at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
    - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance, when using `@medical_research` at the beginning of your question, the chatbot will directly engage the `MedResearch` tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
@@ -115,7 +115,7 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
    - Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.    
 ![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
 
-4. **Export results in CSV format**
+4.**Export results in CSV format**
    - All the Entity Extraction results computed using the NLP tools can be exported in CSV format. For each detected entity, the export also contains confidence information, ensuring transparency and reliability in data analysis.
 
 ![CSV_Download](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/18526211-0ebc-43bb-beba-2c2439d479b7)

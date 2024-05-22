@@ -318,6 +318,6 @@ You can also prettify the json using the following function with the result of t
 
 * Follow us on Medium: [Spark NLP](https://medium.com/spark-nlp) and [Veysel Kocaman](https://vkocaman.medium.com/)
 
-* Write to support@johnsnowlabs.com for any additional request you may have
+* Write to [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com) for any additional request you may have
 
 </div>

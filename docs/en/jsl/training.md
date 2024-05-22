@@ -99,7 +99,7 @@ preds = fitted_pipe.predict(train_df)
 Your dataset must be in the form of [Universal Dependencies](https://universaldependencies.org/).
 You must configure the dataset_path in the ```fit()``` method to point to the universal dependencies you wish to train on.       
 You can configure the delimiter via the ```label_seperator``` parameter      
-[POS training demo]](https://colab.research.google.com/drive/1CZqHQmrxkDf7y3rQHVjO-97tCnpUXu_3?usp=sharing)
+[POS training demo](https://colab.research.google.com/drive/1CZqHQmrxkDf7y3rQHVjO-97tCnpUXu_3?usp=sharing)
 
 ```python
 fitted_pipe = nlp.load('train.pos').fit(dataset_path=train_path, label_seperator='_')
