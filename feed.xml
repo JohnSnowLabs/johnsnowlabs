@@ -1,53 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-21T22:48:54+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_context_augmented_pipeline_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-22T08:36:25+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_context_augmented_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+&lt;p&gt;This pipeline can be used to extract PHI information such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONTACT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCTOR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HOSPITAL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEDICALRECORD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATIENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USERNAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ACCOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VIN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DLN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PLATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPADDR&lt;/code&gt; entities.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.2_1716195456115.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.2_1716195456115.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.2_1716195456115.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.2_1716195456115.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-result = deid_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-val result = deid_pipeline.fullAnnotate(text)
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-|    | chunk             |   begin |   end | entity        |
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | PATIENT       |
 |  1 | 2093-01-13        |      38 |    47 | DATE          |
@@ -59,102 +53,120 @@ val result = deid_pipeline.fullAnnotate(text)
 |  7 | 01/13/93          |     173 |   180 | DATE          |
 |  8 | 3454362           |     197 |   203 | IDNUM         |
 |  9 | 1HGBH41JXMN109286 |     212 |   228 | VIN           |
-| 10 | #333-44-6666      |     235 |   246 | SSN           |
+| 10 | &lt;span class=&quot;c&quot;&gt;#333-44-6666      |     235 |   246 | SSN           |&lt;/span&gt;
 | 11 | A334455B          |     270 |   277 | DLN           |
-| 12 | (302) 786-5227    |     286 |   299 | PHONE         |
+| 12 | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;302&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 786-5227    |     286 |   299 | PHONE         |
 | 13 | 0295 Keats Street |     302 |   318 | STREET        |
 | 14 | San Francisco     |     321 |   333 | CITY          |
 | 15 | smith@gmail.com   |     344 |   358 | EMAIL         |
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|ner_deid_context_augmented_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;ner_deid_context_augmented_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.3.2+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- MedicalNerModel
-- NerConverter
-- ChunkMergeModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, STREET, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 3454362 | 197 | 203 | IDNUM | | 9 | 1HGBH41JXMN109286 | 212 | 228 | VIN | | 10 | #333-44-6666 | 235 | 246 | SSN | | 11 | A334455B | 270 | 277 | DLN | | 12 | (302) 786-5227 | 286 | 299 | PHONE | | 13 | 0295 Keats Street | 302 | 318 | STREET | | 14 | San Francisco | 321 | 333 | CITY | | 15 | smith@gmail.com | 344 | 358 | EMAIL | Model Information Model Name: ner_deid_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter MedicalNerModel NerConverter ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_generic_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, EMAIL, STREET, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 3454362 | 197 | 203 | IDNUM | | 9 | 1HGBH41JXMN109286 | 212 | 228 | VIN | | 10 | #333-44-6666 | 235 | 246 | SSN | | 11 | A334455B | 270 | 277 | DLN | | 12 | (302) 786-5227 | 286 | 299 | PHONE | | 13 | 0295 Keats Street | 302 | 318 | STREET | | 14 | San Francisco | 321 | 333 | CITY | | 15 | smith@gmail.com | 344 | 358 | EMAIL | Model Information Model Name: ner_deid_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter MedicalNerModel NerConverter ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_generic_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+&lt;p&gt;This pipeline can be used to extract PHI information such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONTACT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEDICALRECORD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ACCOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VIN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DLN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PLATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPADDR&lt;/code&gt; entities.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.2_1716197449212.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.2_1716197449212.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.2_1716197449212.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.2_1716197449212.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_generic_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-result = deid_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_generic_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-val result = deid_pipeline.fullAnnotate(text)
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-|    | chunk             |   begin |   end | entity        |
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | NAME          |
 |  1 | 2093-01-13        |      38 |    47 | DATE          |
@@ -166,51 +178,75 @@ val result = deid_pipeline.fullAnnotate(text)
 |  7 | 01/13/93          |     173 |   180 | DATE          |
 |  8 | 764543            |     197 |   202 | ID            |
 |  9 | 1HGBH41JXMN109286 |     211 |   227 | VIN           |
-| 10 | #333-44-6666      |     234 |   245 | SSN           |
+| 10 | &lt;span class=&quot;c&quot;&gt;#333-44-6666      |     234 |   245 | SSN           |&lt;/span&gt;
 | 11 | A334455B          |     269 |   276 | DLN           |
-| 12 | (302) 786-5227    |     285 |   298 | PHONE         |
+| 12 | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;302&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 786-5227    |     285 |   298 | PHONE         |
 | 13 | 0295 Keats Street |     301 |   317 | LOCATION      |
 | 14 | San Francisco     |     320 |   332 | LOCATION      |
 | 15 | smith@gmail.com   |     343 |   357 | EMAIL         |
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|ner_deid_generic_context_augmented_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;ner_deid_generic_context_augmented_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.3.2+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="generic" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, IDNUM, MEDICALRECORD, ORGANIZATION, PHONE, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | NAME | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | NAME | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | LOCATION | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 764543 | 197 | 202 | ID | | 9 | 1HGBH41JXMN109286 | 211 | 227 | VIN | | 10 | #333-44-6666 | 234 | 245 | SSN | | 11 | A334455B | 269 | 276 | DLN | | 12 | (302) 786-5227 | 285 | 298 | PHONE | | 13 | 0295 Keats Street | 301 | 317 | LOCATION | | 14 | San Francisco | 320 | 332 | LOCATION | | 15 | smith@gmail.com | 343 | 357 | EMAIL | Model Information Model Name: ner_deid_generic_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Subentity- Context Augmented)</title><link href="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Subentity- Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="generic" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, IDNUM, MEDICALRECORD, ORGANIZATION, PHONE, EMAIL, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | NAME | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | NAME | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | LOCATION | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 764543 | 197 | 202 | ID | | 9 | 1HGBH41JXMN109286 | 211 | 227 | VIN | | 10 | #333-44-6666 | 234 | 245 | SSN | | 11 | A334455B | 269 | 276 | DLN | | 12 | (302) 786-5227 | 285 | 298 | PHONE | | 13 | 0295 Keats Street | 301 | 317 | LOCATION | | 14 | San Francisco | 320 | 332 | LOCATION | | 15 | smith@gmail.com | 343 | 357 | EMAIL | Model Information Model Name: ner_deid_generic_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Subentity- Context Augmented)</title><link href="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Subentity- Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">## Description
 
 This pipeline can be used to extract PHI information such as `AGE`, `BIOID`, `CITY`, `COUNTRY`, `DATE`, `DEVICE`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `IDNUM`, `LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
 
@@ -313,55 +349,49 @@ val result = deid_pipeline.fullAnnotate(text)
 - ContextualParserModel
 - RegexMatcherInternalModel
 - ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="subentity" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 1HGBH41JXMN109286 | 199 | 215 | VIN | | 9 | #333-44-6666 | 222 | 233 | SSN | | 10 | A334455B | 257 | 264 | DLN | | 11 | (302) 786-5227 | 273 | 286 | PHONE | | 12 | 0295 Keats Street | 289 | 305 | STREET | | 13 | San Francisco | 308 | 320 | CITY | | 14 | smith@gmail.com | 331 | 345 | EMAIL | Model Information Model Name: ner_deid_subentity_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_context_augmented_pipeline_en.html">## Description
+- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="subentity" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 1HGBH41JXMN109286 | 199 | 215 | VIN | | 9 | #333-44-6666 | 222 | 233 | SSN | | 10 | A334455B | 257 | 264 | DLN | | 11 | (302) 786-5227 | 273 | 286 | PHONE | | 12 | 0295 Keats Street | 289 | 305 | STREET | | 13 | San Francisco | 308 | 320 | CITY | | 14 | smith@gmail.com | 331 | 345 | EMAIL | Model Information Model Name: ner_deid_subentity_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_context_augmented_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+&lt;p&gt;This pipeline can be used to extract PHI information such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONTACT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCTOR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HOSPITAL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEDICALRECORD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATIENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USERNAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ACCOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VIN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DLN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PLATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPADDR&lt;/code&gt; entities.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.4_1716196187368.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.4_1716196187368.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.4_1716196187368.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.4_1716196187368.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-result = deid_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-val result = deid_pipeline.fullAnnotate(text)
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-|    | chunk             |   begin |   end | entity        |
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | PATIENT       |
 |  1 | 2093-01-13        |      38 |    47 | DATE          |
@@ -373,102 +403,120 @@ val result = deid_pipeline.fullAnnotate(text)
 |  7 | 01/13/93          |     173 |   180 | DATE          |
 |  8 | 3454362           |     197 |   203 | IDNUM         |
 |  9 | 1HGBH41JXMN109286 |     212 |   228 | VIN           |
-| 10 | #333-44-6666      |     235 |   246 | SSN           |
+| 10 | &lt;span class=&quot;c&quot;&gt;#333-44-6666      |     235 |   246 | SSN           |&lt;/span&gt;
 | 11 | A334455B          |     270 |   277 | DLN           |
-| 12 | (302) 786-5227    |     286 |   299 | PHONE         |
+| 12 | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;302&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 786-5227    |     286 |   299 | PHONE         |
 | 13 | 0295 Keats Street |     302 |   318 | STREET        |
 | 14 | San Francisco     |     321 |   333 | CITY          |
 | 15 | smith@gmail.com   |     344 |   358 | EMAIL         |
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|ner_deid_context_augmented_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;ner_deid_context_augmented_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.3.2+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- MedicalNerModel
-- NerConverter
-- ChunkMergeModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, STREET, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 3454362 | 197 | 203 | IDNUM | | 9 | 1HGBH41JXMN109286 | 212 | 228 | VIN | | 10 | #333-44-6666 | 235 | 246 | SSN | | 11 | A334455B | 270 | 277 | DLN | | 12 | (302) 786-5227 | 286 | 299 | PHONE | | 13 | 0295 Keats Street | 302 | 318 | STREET | | 14 | San Francisco | 321 | 333 | CITY | | 15 | smith@gmail.com | 344 | 358 | EMAIL | Model Information Model Name: ner_deid_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter MedicalNerModel NerConverter ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_generic_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, EMAIL, STREET, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 3454362 | 197 | 203 | IDNUM | | 9 | 1HGBH41JXMN109286 | 212 | 228 | VIN | | 10 | #333-44-6666 | 235 | 246 | SSN | | 11 | A334455B | 270 | 277 | DLN | | 12 | (302) 786-5227 | 286 | 299 | PHONE | | 13 | 0295 Keats Street | 302 | 318 | STREET | | 14 | San Francisco | 321 | 333 | CITY | | 15 | smith@gmail.com | 344 | 358 | EMAIL | Model Information Model Name: ner_deid_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter MedicalNerModel NerConverter ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_generic_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+&lt;p&gt;This pipeline can be used to extract PHI information such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONTACT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEDICALRECORD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ACCOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VIN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DLN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PLATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPADDR&lt;/code&gt; entities.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.4_1716198040370.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.4_1716198040370.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.4_1716198040370.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.4_1716198040370.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_generic_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-result = deid_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_generic_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-val result = deid_pipeline.fullAnnotate(text)
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-|    | chunk             |   begin |   end | entity        |
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | NAME          |
 |  1 | 2093-01-13        |      38 |    47 | DATE          |
@@ -480,51 +528,75 @@ val result = deid_pipeline.fullAnnotate(text)
 |  7 | 01/13/93          |     173 |   180 | DATE          |
 |  8 | 764543            |     197 |   202 | ID            |
 |  9 | 1HGBH41JXMN109286 |     211 |   227 | VIN           |
-| 10 | #333-44-6666      |     234 |   245 | SSN           |
+| 10 | &lt;span class=&quot;c&quot;&gt;#333-44-6666      |     234 |   245 | SSN           |&lt;/span&gt;
 | 11 | A334455B          |     269 |   276 | DLN           |
-| 12 | (302) 786-5227    |     285 |   298 | PHONE         |
+| 12 | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;302&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 786-5227    |     285 |   298 | PHONE         |
 | 13 | 0295 Keats Street |     301 |   317 | LOCATION      |
 | 14 | San Francisco     |     320 |   332 | LOCATION      |
 | 15 | smith@gmail.com   |     343 |   357 | EMAIL         |
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|ner_deid_generic_context_augmented_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;ner_deid_generic_context_augmented_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.3.2+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="generic" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, IDNUM, MEDICALRECORD, ORGANIZATION, PHONE, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | NAME | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | NAME | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | LOCATION | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 764543 | 197 | 202 | ID | | 9 | 1HGBH41JXMN109286 | 211 | 227 | VIN | | 10 | #333-44-6666 | 234 | 245 | SSN | | 11 | A334455B | 269 | 276 | DLN | | 12 | (302) 786-5227 | 285 | 298 | PHONE | | 13 | 0295 Keats Street | 301 | 317 | LOCATION | | 14 | San Francisco | 320 | 332 | LOCATION | | 15 | smith@gmail.com | 343 | 357 | EMAIL | Model Information Model Name: ner_deid_generic_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Subentity- Context Augmented)</title><link href="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Subentity- Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="generic" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, IDNUM, MEDICALRECORD, ORGANIZATION, PHONE, EMAIL, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | NAME | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | NAME | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | LOCATION | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 764543 | 197 | 202 | ID | | 9 | 1HGBH41JXMN109286 | 211 | 227 | VIN | | 10 | #333-44-6666 | 234 | 245 | SSN | | 11 | A334455B | 269 | 276 | DLN | | 12 | (302) 786-5227 | 285 | 298 | PHONE | | 13 | 0295 Keats Street | 301 | 317 | LOCATION | | 14 | San Francisco | 320 | 332 | LOCATION | | 15 | smith@gmail.com | 343 | 357 | EMAIL | Model Information Model Name: ner_deid_generic_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Subentity- Context Augmented)</title><link href="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Subentity- Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">## Description
 
 This pipeline can be used to extract PHI information such as `AGE`, `BIOID`, `CITY`, `COUNTRY`, `DATE`, `DEVICE`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `IDNUM`, `LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
 
@@ -627,55 +699,49 @@ val result = deid_pipeline.fullAnnotate(text)
 - ContextualParserModel
 - RegexMatcherInternalModel
 - ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="subentity" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 1HGBH41JXMN109286 | 199 | 215 | VIN | | 9 | #333-44-6666 | 222 | 233 | SSN | | 10 | A334455B | 257 | 264 | DLN | | 11 | (302) 786-5227 | 273 | 286 | PHONE | | 12 | 0295 Keats Street | 289 | 305 | STREET | | 13 | San Francisco | 308 | 320 | CITY | | 14 | smith@gmail.com | 331 | 345 | EMAIL | Model Information Model Name: ner_deid_subentity_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_context_augmented_pipeline_en.html">## Description
+- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="subentity" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_subentity_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 1HGBH41JXMN109286 | 199 | 215 | VIN | | 9 | #333-44-6666 | 222 | 233 | SSN | | 10 | A334455B | 257 | 264 | DLN | | 11 | (302) 786-5227 | 273 | 286 | PHONE | | 12 | 0295 Keats Street | 289 | 305 | STREET | | 13 | San Francisco | 308 | 320 | CITY | | 14 | smith@gmail.com | 331 | 345 | EMAIL | Model Information Model Name: ner_deid_subentity_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_context_augmented_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+&lt;p&gt;This pipeline can be used to extract PHI information such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONTACT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCTOR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HOSPITAL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEDICALRECORD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATIENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USERNAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ACCOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VIN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DLN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PLATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPADDR&lt;/code&gt; entities.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.0_1716194357476.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.0_1716194357476.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.0_1716194357476.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_context_augmented_pipeline_en_5.3.2_3.0_1716194357476.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-result = deid_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-val result = deid_pipeline.fullAnnotate(text)
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-|    | chunk             |   begin |   end | entity        |
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | PATIENT       |
 |  1 | 2093-01-13        |      38 |    47 | DATE          |
@@ -687,102 +753,120 @@ val result = deid_pipeline.fullAnnotate(text)
 |  7 | 01/13/93          |     173 |   180 | DATE          |
 |  8 | 3454362           |     197 |   203 | IDNUM         |
 |  9 | 1HGBH41JXMN109286 |     212 |   228 | VIN           |
-| 10 | #333-44-6666      |     235 |   246 | SSN           |
+| 10 | &lt;span class=&quot;c&quot;&gt;#333-44-6666      |     235 |   246 | SSN           |&lt;/span&gt;
 | 11 | A334455B          |     270 |   277 | DLN           |
-| 12 | (302) 786-5227    |     286 |   299 | PHONE         |
+| 12 | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;302&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 786-5227    |     286 |   299 | PHONE         |
 | 13 | 0295 Keats Street |     302 |   318 | STREET        |
 | 14 | San Francisco     |     321 |   333 | CITY          |
 | 15 | smith@gmail.com   |     344 |   358 | EMAIL         |
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|ner_deid_context_augmented_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;ner_deid_context_augmented_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.3.2+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- MedicalNerModel
-- NerConverter
-- ChunkMergeModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, STREET, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 3454362 | 197 | 203 | IDNUM | | 9 | 1HGBH41JXMN109286 | 212 | 228 | VIN | | 10 | #333-44-6666 | 235 | 246 | SSN | | 11 | A334455B | 270 | 277 | DLN | | 12 | (302) 786-5227 | 286 | 299 | PHONE | | 13 | 0295 Keats Street | 302 | 318 | STREET | | 14 | San Francisco | 321 | 333 | CITY | | 15 | smith@gmail.com | 344 | 358 | EMAIL | Model Information Model Name: ner_deid_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter MedicalNerModel NerConverter ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_generic_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, EMAIL, STREET, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 3454362, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | PATIENT | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | DOCTOR | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | HOSPITAL | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 3454362 | 197 | 203 | IDNUM | | 9 | 1HGBH41JXMN109286 | 212 | 228 | VIN | | 10 | #333-44-6666 | 235 | 246 | SSN | | 11 | A334455B | 270 | 277 | DLN | | 12 | (302) 786-5227 | 286 | 299 | PHONE | | 13 | 0295 Keats Street | 302 | 318 | STREET | | 14 | San Francisco | 321 | 333 | CITY | | 15 | smith@gmail.com | 344 | 358 | EMAIL | Model Information Model Name: ner_deid_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter MedicalNerModel NerConverter ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Generic - Context Augmented)</title><link href="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Generic - Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_generic_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+&lt;p&gt;This pipeline can be used to extract PHI information such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CONTACT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEDICALRECORD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ACCOUNT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VIN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DLN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PLATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPADDR&lt;/code&gt; entities.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.0_1716196945468.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.0_1716196945468.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.0_1716196945468.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_context_augmented_pipeline_en_5.3.2_3.0_1716196945468.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_generic_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-result = deid_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_deid_generic_context_augmented_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;&lt;/span&gt;
 
-val result = deid_pipeline.fullAnnotate(text)
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-|    | chunk             |   begin |   end | entity        |
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | NAME          |
 |  1 | 2093-01-13        |      38 |    47 | DATE          |
@@ -794,51 +878,75 @@ val result = deid_pipeline.fullAnnotate(text)
 |  7 | 01/13/93          |     173 |   180 | DATE          |
 |  8 | 764543            |     197 |   202 | ID            |
 |  9 | 1HGBH41JXMN109286 |     211 |   227 | VIN           |
-| 10 | #333-44-6666      |     234 |   245 | SSN           |
+| 10 | &lt;span class=&quot;c&quot;&gt;#333-44-6666      |     234 |   245 | SSN           |&lt;/span&gt;
 | 11 | A334455B          |     269 |   276 | DLN           |
-| 12 | (302) 786-5227    |     285 |   298 | PHONE         |
+| 12 | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;302&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 786-5227    |     285 |   298 | PHONE         |
 | 13 | 0295 Keats Street |     301 |   317 | LOCATION      |
 | 14 | San Francisco     |     320 |   332 | LOCATION      |
 | 15 | smith@gmail.com   |     343 |   357 | EMAIL         |
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|ner_deid_generic_context_augmented_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.2+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;ner_deid_generic_context_augmented_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.3.2+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="generic" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, IDNUM, MEDICALRECORD, ORGANIZATION, PHONE, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | NAME | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | NAME | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | LOCATION | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 764543 | 197 | 202 | ID | | 9 | 1HGBH41JXMN109286 | 211 | 227 | VIN | | 10 | #333-44-6666 | 234 | 245 | SSN | | 11 | A334455B | 269 | 276 | DLN | | 12 | (302) 786-5227 | 285 | 298 | PHONE | | 13 | 0295 Keats Street | 301 | 317 | LOCATION | | 14 | San Francisco | 320 | 332 | LOCATION | | 15 | smith@gmail.com | 343 | 357 | EMAIL | Model Information Model Name: ner_deid_generic_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Subentity- Context Augmented)</title><link href="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Subentity- Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="ner" /><category term="phi" /><category term="generic" /><summary type="html">Description This pipeline can be used to extract PHI information such as AGE, CONTACT, DATE, LOCATION, NAME, PROFESSION, IDNUM, MEDICALRECORD, ORGANIZATION, PHONE, EMAIL, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;ner_deid_generic_context_augmented_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435. Dr. John Green, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot; val result = deid_pipeline.fullAnnotate(text) Results | | chunk | begin | end | entity | |---:|:------------------|--------:|------:|:--------------| | 0 | Hendrickson, Ora | 7 | 22 | NAME | | 1 | 2093-01-13 | 38 | 47 | DATE | | 2 | 719435 | 54 | 59 | MEDICALRECORD | | 3 | John Green | 66 | 75 | NAME | | 4 | 203.120.223.13 | 81 | 94 | IPADDR | | 5 | 60 | 105 | 106 | AGE | | 6 | Day Hospital | 142 | 153 | LOCATION | | 7 | 01/13/93 | 173 | 180 | DATE | | 8 | 764543 | 197 | 202 | ID | | 9 | 1HGBH41JXMN109286 | 211 | 227 | VIN | | 10 | #333-44-6666 | 234 | 245 | SSN | | 11 | A334455B | 269 | 276 | DLN | | 12 | (302) 786-5227 | 285 | 298 | PHONE | | 13 | 0295 Keats Street | 301 | 317 | LOCATION | | 14 | San Francisco | 320 | 332 | LOCATION | | 15 | smith@gmail.com | 343 | 357 | EMAIL | Model Information Model Name: ner_deid_generic_context_augmented_pipeline Type: pipeline Compatibility: Healthcare NLP 5.3.2+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel ContextualParserModel RegexMatcherModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel</summary></entry><entry><title type="html">Detect PHI for Deidentification (Subentity- Context Augmented)</title><link href="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html" rel="alternate" type="text/html" title="Detect PHI for Deidentification (Subentity- Context Augmented)" /><published>2024-05-20T00:00:00+00:00</published><updated>2024-05-20T00:00:00+00:00</updated><id>/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en</id><content type="html" xml:base="/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">## Description
 
 This pipeline can be used to extract PHI information such as `AGE`, `BIOID`, `CITY`, `COUNTRY`, `DATE`, `DEVICE`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `IDNUM`, `LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
 
