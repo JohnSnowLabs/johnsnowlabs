@@ -33,20 +33,26 @@ This model is trained on a list of clinical and biomedical datasets curated in-h
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
-val document_assembler = new DocumentAssembler()
-    .setInputCol("text") 
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
     .setOutputCol("document")
     
-val mpnet_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_medical_assertion_i2b2", "en", "clinical/models")
-    .setInputCols(Array("document")) 
-    .setOutputCol("mpnet_embeddings") 
+mpnet_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_medical_assertion_i2b2", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("mpnet_embeddings")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, mpnet_embedding))
+pipeline = Pipeline().setStages([document_assembler, mpnet_embedding])
 
-val result = pipeline.fit(data).transform(data)
+text = [
+    ["I feel a bit drowsy after taking an insulin."],
+    ["Peter Parker is a nice lad and lives in New York"]
+]
 
+data = spark.createDataFrame(text).toDF("text")
+
+result = pipeline.fit(data).transform(data)
 ```
 ```scala
 
