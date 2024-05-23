@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Medical Assertion MPNet Embedding ( jsl )
+title: Medical Assertion MPNet Embedding ( oncology )
 author: John Snow Labs
 name: mpnet_embeddings_medical_assertion_oncology
 date: 2024-05-23
@@ -33,8 +33,8 @@ This model is trained on a list of clinical and biomedical datasets curated in-h
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -75,14 +75,12 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                                                                     assertion_embedding|
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -> 0}, [-0.030117756, -0.06916913, 0.01004766, 0.0070122266, -0.009609902, -0.07718129, -0.069940895, 0.1486813...|
 |[{sentence_embeddings, 0, 47, Peter Parker is a nice lad and lives in New York, {sentence -> 0}, [-0.010607893, -0.06711012, 0.0058346647, 0.010627323, -4.902818E-4, -0.07712458, -0.036254555, 0.12...|
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 ```
 
 {:.model-param}
