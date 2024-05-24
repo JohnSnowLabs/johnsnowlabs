@@ -687,6 +687,22 @@ p.code_snip_dots {
 	}
 }
 
+.bottom_blue {
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		width: 100vw;
+		height: 100%;
+		position: absolute;
+		left: -50%;
+		top: 0;
+		background: #0098da;
+		margin-left: 24vw;
+		z-index: -1;
+	}
+}
+
 .quick_easy {
 	position: relative;
 	&.landing_models {
@@ -3742,6 +3758,9 @@ code {
 	.has-aside .col-aside {
 		display: block;
 	}
+	.menu.three_a li {
+		margin-bottom: 15px;
+	}
 	.cat-wrapper {
 		max-width: 980px;
 		.cat-title-wrap {
@@ -4332,9 +4351,6 @@ code {
 			left: -15px;
 			width: calc(100% + 30px);
 		}
-	}
-	.menu.three_a li {
-		margin-bottom: 15px;
 	}
 	.root .ecosystem {
 		margin: 25px 0 0;
