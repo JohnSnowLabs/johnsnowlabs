@@ -2218,6 +2218,9 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
       <li>
         <p><code class="language-plaintext highlighter-rouge">DoExceptionHandling</code>: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.</p>
       </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">datasetInfo</code> <em>(Str)</em>: Descriptive information about the dataset being used.</p>
+      </li>
     </ul>
 
     <p>For pretrained models please see the
@@ -2679,6 +2682,9 @@ For pretrained models please use AssertionDLModel and see the
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">StartCol</code>: Set a column that contains the token number for the start of the target.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">datasetInfo</code> <em>(Str)</em>: Descriptive information about the dataset being used.</p>
       </li>
     </ul>
 
@@ -10644,6 +10650,25 @@ same_length_chars: Replace the obfuscated entity with a masking sequence compose
         <p><code class="language-plaintext highlighter-rouge">MetadataMaskingPolicy(str)</code>: (Param[String]) Options : ‘entity_labels’, ‘same_length_chars’, ‘fixed_length_chars’ 
 If set, metadata includes the masked form of the document.</p>
       </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">obfuscateByAgeGroups</code>: (BooleanParam) Whether to obfuscate ages based on age groups.
+When True, the age groups specified in the <code class="language-plaintext highlighter-rouge">ageGroups</code> parameter will be used to obfuscate ages.
+When False, the age ranges specified in the <code class="language-plaintext highlighter-rouge">ageRanges</code> parameter will be used to obfuscate ages.
+Default: False</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">ageGroups</code>:  A dictionary of age groups to obfuscate ages.
+For this parameter to be active, the <code class="language-plaintext highlighter-rouge">obfuscateByAgeGroups</code> parameter must be true.
+If the given <code class="language-plaintext highlighter-rouge">ageGroups</code> do not fully contain the ages, the ages continue to be obfuscated according to the <code class="language-plaintext highlighter-rouge">ageRanges</code> parameter.
+The dictionary should contain the age group name as the key and an list of two integers as the value.
+The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">keepYear</code>: (BooleanParam) Whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p>
+      </li>
     </ul>
 
     <p>To create a configured DeIdentificationModel, please see the example of DeIdentification.</p>
@@ -15732,7 +15757,12 @@ Requires the FeaturesAssembler to create the input.</p>
     <p>Parameter:</p>
 
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">multiClass</code> <em>(Boolean)</em>: Whether to return all clases or only the one with highest score (Default: False)</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">multiClass</code> <em>(Boolean)</em>: Whether to return all clases or only the one with highest score (Default: False)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">datasetInfo</code> <em>(Str)</em>: Descriptive information about the dataset being used.</p>
+      </li>
     </ul>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">FEATURE_VECTOR</code></p>
@@ -15905,6 +15935,9 @@ Please see the Parameters section for required training parameters.</p>
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">validationSplit</code>: (float) The proportion of training dataset to be used as validation set.The model will be validated against this dataset on each Epoch and will not be used for training. The value should be between 0.0 and 1.0.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">datasetInfo</code> <em>(Str)</em>: Descriptive information about the dataset being used.</p>
       </li>
     </ul>
 
@@ -21861,6 +21894,12 @@ He was seen by the endocrinology service and she was discharged on 40 units of i
       <li>
         <p><code class="language-plaintext highlighter-rouge">relationPairsCaseSensitive</code> <em>(Boolean)</em>: Determines whether relation pairs are case sensitive.</p>
       </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">directionSensitive</code> <em>(Boolean)</em>: Specify direction sensitivity in processing relation pairs Default is ‘False’.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">filterByTokenDistance</code> <em>(Int)</em>: Filtering criterion based on number of token between entities (Default: 0)</p>
+      </li>
     </ul>
 
     <p>For example, the <a href="https://nlp.johnsnowlabs.com/2021/03/31/ner_clinical_en.html">ner_clinical</a> NER model can identify <code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">TEST</code>, and <code class="language-plaintext highlighter-rouge">TREATMENT</code> entities. By using the <code class="language-plaintext highlighter-rouge">RENerChunksFilter</code>, one can filter only the relations between <code class="language-plaintext highlighter-rouge">PROBLEM</code> and <code class="language-plaintext highlighter-rouge">TREATMENT</code>  entities only, removing any relation between the other entities, to further analyze the  associations between clinical problems and treatments.</p>
@@ -23363,6 +23402,9 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
       <li>
         <p><code class="language-plaintext highlighter-rouge">DoExceptionHandling</code>: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.</p>
       </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">scopeWindow</code> (IntArrayParam) The scope window of feature generation for relations. Given scope window list must contain two integers.</p>
+      </li>
     </ul>
 
     <p>For pretrained models please see the
@@ -23673,6 +23715,9 @@ He was seen by the endocrinology service and she was discharged on 40 units of i
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">filterByTokenDistance</code> (Int) Filtering criterion based on number of token between entities</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">scopeWindow</code> (IntArrayParam) The scope window of feature generation for relations. Given scope window list must contain two integers.</p>
       </li>
     </ul>
 

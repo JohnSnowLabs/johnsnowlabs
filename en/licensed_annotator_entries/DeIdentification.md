@@ -102,6 +102,22 @@ same_length_chars: Replace the obfuscated entity with a masking sequence compose
 - `MetadataMaskingPolicy(str)`: (Param[String]) Options : 'entity_labels', 'same_length_chars', 'fixed_length_chars' 
 If set, metadata includes the masked form of the document.
 
+- `obfuscateByAgeGroups`: (BooleanParam) Whether to obfuscate ages based on age groups.
+When True, the age groups specified in the `ageGroups` parameter will be used to obfuscate ages.
+When False, the age ranges specified in the `ageRanges` parameter will be used to obfuscate ages.
+Default: False
+
+- `ageGroups`:  A dictionary of age groups to obfuscate ages.
+For this parameter to be active, the `obfuscateByAgeGroups` parameter must be true.
+If the given `ageGroups` do not fully contain the ages, the ages continue to be obfuscated according to the `ageRanges` parameter.
+The dictionary should contain the age group name as the key and an list of two integers as the value.
+The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.
+
+- `keepYear`: (BooleanParam) Whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.
+
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
 {%- endcapture -%}
