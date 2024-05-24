@@ -103,9 +103,10 @@ What sets this release apart is the elimination of complexities typically involv
 | [`explain_clinical_doc_sdoh`](https://nlp.johnsnowlabs.com/2024/05/01/explain_clinical_doc_sdoh_en.html) | This pipeline is designed to extract all clinical/medical entities, assertion status, and relation informations which may be considered as Social Determinants of Health (SDOH) entities from text. |
 | [`explain_clinical_doc_mental_health`](https://nlp.johnsnowlabs.com/2024/05/06/explain_clinical_doc_mental_health_en.html) | This pipeline is designed to extract all mental health-related entities, assertion status, and relation information from text. |
 | [`ner_medication_generic_pipeline`](https://nlp.johnsnowlabs.com/2024/04/25/ner_medication_generic_pipeline_en.html) | This pre-trained pipeline is designed to identify generic `DRUG` entities in clinical texts. It was built on top of the `ner_posology_greedy`, `ner_jsl_greedy`, `ner_drugs_large`, and `drug_matcher` models to detect the entities `DRUG`, `DOSAGE`, `ROUTE`, and `STRENGTH` chunking them into a larger entity as `DRUG` when they appear together. |
-| [`ner_deid_generic_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`,  `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
-| [`ner_deid_subentity_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION-OTHE`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
-| [`ner_deid_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
+| [`ner_deid_generic_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`,  `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `EMAIL`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
+| [`ner_deid_subentity_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION-OTHE`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `EMAIL`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
+| [`ner_deid_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `EMAIL`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
+
 
 *Example*:
 
@@ -841,6 +842,7 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 </div><div class="h3-box" markdown="1">
+
 
 
 ## Versions
