@@ -668,6 +668,68 @@ Estimated Minimum Costs:
 - DataBricks Base Pipeline: partition number: 1024, 10K cost:**$0.46**, 1M cost:**$45.76** 
 - DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:**$0.27**, 1M cost:**$27.13** 
 
+</div>
+
+<div class="h3-box" markdown="1">
+
+###  Performance Analysis of Deidentification Pipelines on Clinical Texts in a Cluster Environment
+
+- Deidentification Pipelines Benchmarks
+
+    This benchmark provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments.
+
+    - **Dataset:** 100000 Clinical Texts from MTSamples, approx. 508 tokens and 26.44 chunks per text.
+    - **Versions:[May-2024]**
+        - **spark-nlp Version:** v5.3.2
+        - **spark-nlp-jsl Version:** v5.3.2
+        - **Spark Version:** v3.4.0
+    - **Instance Type:**
+        - DataBricks Config: 
+            - 32 CPU Core, 128GiB RAM (8 workers) (2.7 $/hr)
+
+            |data_count |partition |Databricks |
+            |----------:|---------:|----------:|
+            |    100000 |      512 | 1h 42m 55s|
+    
+        - AWS EC2 instance Config:
+                - 32 CPU cores, 64GiB RAM (c6a.8xlarge $1.224/h)
+
+            |data_count |partition |   AWS   |
+            |----------:|---------:|--------:|
+            |    100000 |      512 |1h 9m 56s|
+
+
+- Deidentification Pipelines Speed Comparison
+
+    This benchmark presents a detailed comparison of various deidentification pipelines applied to a dataset of 10,000 custom clinical texts, aiming to anonymize sensitive information for research and analysis. The comparison evaluates the elapsed time and processing stages of different deidentification pipelines. Each pipeline is characterized by its unique combination of Named Entity Recognition (NER), deidentification methods, rule-based NER, clinical embeddings, and chunk merging processes.
+    
+    - **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
+    - **Versions:**
+        - **spark-nlp Version:** v5.3.1
+        - **spark-nlp-jsl Version:** v5.3.1
+        - **Spark Version:** v3.4.0
+    - **Instance Type:** 
+        -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
+
+
+|Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
+|:------------------------------------------------|-----------------:|:-----------------| 
+|[clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)| 67 min 44 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html)    | 68 min 31 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html)                        | 86 min 24 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_subentity](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html)                    | 99 min 41 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)                                        |117 min 44 seconds| 2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_nameAugmented](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html)  |134 min 27 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_glove](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html)                            |146 min 51 seconds| 2 NER, 4 Deidentification,  8 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_small](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html)    |147 min 06 seconds| 1 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
+|[clinical_deidentification_slim](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html)                              |154 min 37 seconds| 2 NER, 4 Deidentification, 15 Rule-based NER, 1 glove embedding,    3 chunk merger  |
+|[clinical_deidentification_multi_mode_output](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html)    |154 min 50 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_medium](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html)  |205 min 40 seconds| 2 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
+
+PS: The reasons pipelines with the same stages have different costs are due to the layers of the NER model and the hardcoded regexes in Deidentification.
+
+</div>
+
 <div class="h3-box" markdown="1">
 
 ## AWS EMR Cluster Benchmark
