@@ -34,6 +34,7 @@ This pipeline is the optimized version of the previous `clinical_deidentificatio
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
