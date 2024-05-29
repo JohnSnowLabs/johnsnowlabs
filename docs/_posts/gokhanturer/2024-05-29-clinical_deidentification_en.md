@@ -34,8 +34,8 @@ This pipeline is the optimized version of the previous `clinical_deidentificatio
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
@@ -52,11 +52,8 @@ print('
 '.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
 print('
 '.join([i.result for i in deid_result[0]['obfuscated']])))
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
@@ -73,8 +70,6 @@ println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkStr
 "))
 println(deid_result(0)("obfuscated").map(_("result").toString).mkString("
 "))
-
-
 ```
 </div>
 
@@ -98,7 +93,6 @@ He is a 73-year-old male was admitted to the LOMA LINDA UNIVERSITY MEDICAL CENTE
 Patient's VIN : 5KDTO67TIWP809983, SSN #382-50-5397, Driver's license no: Q734193X.
 Phone (902) 409-7353, 1555 Long Pond Road, Pomeroy,  Maryland 29924.
  E-MAIL: Halit@google.com.
-
 ```
 
 {:.model-param}
