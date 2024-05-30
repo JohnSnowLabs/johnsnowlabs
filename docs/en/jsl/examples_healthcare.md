@@ -205,6 +205,7 @@ df = nlp.load('en.med_ner.jsl.wip.clinical.greedy en.relation').predict(data)
 data = "He has a starvation ketosis but nothing found for significant for dry oral mucosa"
 assert_df = nlp.load('en.med_ner.clinical en.assert ').predict(data)
 ```
+
 | entities@clinical_results   | meta_entities@clinical_entity   |   meta_entities@clinical_confidence | assertion_results   |   meta_assertion_confidence |
 |:----------------------------|:--------------------------------|------------------------------------:|:--------------------|----------------------------:|
 | a starvation ketosis        | PROBLEM                         |                            0.932233 | present             |                      0.9938 |
