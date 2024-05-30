@@ -642,16 +642,49 @@ function wrapWordInSpan(data, wordToWrap) {
 
     <h3 id="aws-specific-parameters">AWS specific parameters</h3>
 
-    <p>| Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                |
-| ———————- | ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————– |
-| <code class="language-plaintext highlighter-rouge">boto_session</code>         | The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">this</a> for more information                                                                                                            |
-| <code class="language-plaintext highlighter-rouge">bootstrap_bucket</code>     | S3 bucket to store your EMR bootstrap scripts. If not provided, one is created.                                                                                                                                                                                                                                                                                            |
-| <code class="language-plaintext highlighter-rouge">s3_logs_path</code>         | S3 path to store logs.                                                                                                                                                                                                                                                                                                                                                     |
-| <code class="language-plaintext highlighter-rouge">service_role</code>         | Service role for your AWS EMR cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/cli/latest/reference/emr/create-default-roles.html">this</a> for more information                            |
-| <code class="language-plaintext highlighter-rouge">job_flow_role</code>        | The EC2 instance profile for each instances in EMR Cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-role-for-ec2.html">this</a> for more information |
-| <code class="language-plaintext highlighter-rouge">subnet_id</code>            | The subnet to launch the EMR cluster in. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-vpc-subnet.html">this</a> for more information                                                                                                                                                                                                                |
-| <code class="language-plaintext highlighter-rouge">ec2_key_name</code>         | The key pair name to ssh into your EMR cluster                                                                                                                                                                                                                                                                                                                             |
-| <code class="language-plaintext highlighter-rouge">auto_terminate_hours</code> | The idle hours to wait before the cluster teminated. Default: 1 hour                                                                                                                                                                                                                                                                                                       |</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">boto_session</code></td>
+          <td>The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">this</a> for more information</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bootstrap_bucket</code></td>
+          <td>S3 bucket to store your EMR bootstrap scripts. If not provided, one is created.</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">s3_logs_path</code></td>
+          <td>S3 path to store logs.</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">service_role</code></td>
+          <td>Service role for your AWS EMR cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/cli/latest/reference/emr/create-default-roles.html">this</a> for more information</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">job_flow_role</code></td>
+          <td>The EC2 instance profile for each instances in EMR Cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-role-for-ec2.html">this</a> for more information</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">subnet_id</code></td>
+          <td>The subnet to launch the EMR cluster in. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-vpc-subnet.html">this</a> for more information</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">ec2_key_name</code></td>
+          <td>The key pair name to ssh into your EMR cluster</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">auto_terminate_hours</code></td>
+          <td>The idle hours to wait before the cluster teminated. Default: 1 hour</td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
   <div class="h3-box">
 

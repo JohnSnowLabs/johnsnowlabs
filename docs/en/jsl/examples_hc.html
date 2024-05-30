@@ -1312,10 +1312,34 @@ See the <a href="https://nlp.johnsnowlabs.com/models?task=Relation+Extraction">M
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="s">"He has a starvation ketosis but nothing found for significant for dry oral mucosa"</span>
 <span class="n">assert_df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.med_ner.clinical en.assert '</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
-    <p>| entities@clinical_results   | meta_entities@clinical_entity   |   meta_entities@clinical_confidence | assertion_results   |   meta_assertion_confidence |
-|:—————————-|:——————————–|————————————:|:——————–|—————————-:|
-| a starvation ketosis        | PROBLEM                         |                            0.932233 | present             |                      0.9938 |
-| dry oral mucosa             | PROBLEM                         |                            0.797567 | present             |                      0.9997 |</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">entities@clinical_results</th>
+          <th style="text-align: left">meta_entities@clinical_entity</th>
+          <th style="text-align: right">meta_entities@clinical_confidence</th>
+          <th style="text-align: left">assertion_results</th>
+          <th style="text-align: right">meta_assertion_confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">a starvation ketosis</td>
+          <td style="text-align: left">PROBLEM</td>
+          <td style="text-align: right">0.932233</td>
+          <td style="text-align: left">present</td>
+          <td style="text-align: right">0.9938</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">dry oral mucosa</td>
+          <td style="text-align: left">PROBLEM</td>
+          <td style="text-align: right">0.797567</td>
+          <td style="text-align: left">present</td>
+          <td style="text-align: right">0.9997</td>
+        </tr>
+      </tbody>
+    </table>
 
     <p>See the <a href="https://nlp.johnsnowlabs.com/models?task=Assertion+Status">Models Hub for all avaiable Assertion Models</a></p>
 

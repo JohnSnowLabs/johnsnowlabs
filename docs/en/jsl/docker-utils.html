@@ -625,10 +625,16 @@ function wrapWordInSpan(data, wordToWrap) {
 It handles licenses and dependencies and comes with a simple fast-API server.
 This enables you to package any johnsnowlabs model into a docker image and serve it as a REST API.</p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="image-creation">Image creation</h2>
   <p>With <code class="language-plaintext highlighter-rouge">nlp.build_image</code> you can create a docker image with any johnsnowlabs model pre-packed and ready to serve.
 You just need to specify the <a href="todo">nlu reference to the model</a> and the <strong>name of the output image</strong>
 Additionally, you can set the <code class="language-plaintext highlighter-rouge">hardware_target</code> to <code class="language-plaintext highlighter-rouge">cpu</code>, <code class="language-plaintext highlighter-rouge">gpu</code>, <code class="language-plaintext highlighter-rouge">apple_silicon</code> or <code class="language-plaintext highlighter-rouge">aarch</code> to package with Jar’s optimized for specific hardware.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="create-spark-nlp-image">Create Spark-NLP Image</h3>
   <p>Create a spark-nlp bert image</p>
@@ -641,6 +647,9 @@ Additionally, you can set the <code class="language-plaintext highlighter-rouge"
 <span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'bert'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">'bert_gpu_img'</span><span class="p">,</span><span class="n">hardware_targert</span><span class="o">=</span><span class="s">'gpu'</span><span class="p">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="create-medical-nlp-image">Create Medical NLP Image</h3>
   <p>To create an image with a <strong>Medical NLP model</strong> you must provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.
 It will be stored in the container and used to pre-download licensed models &amp; dependencies during the build proces.</p>
@@ -649,12 +658,18 @@ It will be stored in the container and used to pre-download licensed models &amp
 </span><span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'en.med_ner.cancer_genetics.pipeline'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">'cancer_img'</span><span class="p">,</span> <span class="n">json_license_path</span><span class="o">=</span><span class="s">'path/to/my/license.json'</span><span class="p">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="create-licensed-visual-nlp-image">Create Licensed Visual NLP Image</h3>
   <p>To create an image with a <strong>Visual NLP model</strong> you must provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.
 It will be stored in the container and used to pre-download licensed models &amp; dependencies during the build proces.</p>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'pdf2text'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">"pdf2text_img"</span><span class="p">,</span><span class="n">visual</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h2 id="serve-model-image-as-container">Serve model image as container</h2>
   <p>With <code class="language-plaintext highlighter-rouge">nlp.serve_container</code> you can serve the image you created via <code class="language-plaintext highlighter-rouge">nlp.build_image</code> as a REST API.
@@ -672,9 +687,15 @@ All parameters of the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/predict_
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">serve_container</span><span class="p">(</span><span class="n">image_name</span><span class="o">=</span><span class="s">'pdf2text_img'</span><span class="p">,</span><span class="n">container_name</span><span class="o">=</span><span class="s">'pdf2text_container'</span><span class="p">,</span><span class="n">host_port</span><span class="o">=</span><span class="mi">8547</span><span class="p">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="get-predictions-from-endpoint">Get predictions from endpoint</h3>
   <p>The following examples demonstrate how you can get predictions in 
 real-time, batch and for files.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="single-string-prediction-endpoint">Single String Prediction Endpoint</h3>
   <p>We can hit <code class="language-plaintext highlighter-rouge">/predict</code> on the running server with <strong>one string</strong></p>
@@ -686,6 +707,9 @@ real-time, batch and for files.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="batch-prediction-endpoint">Batch Prediction Endpoint</h3>
   <p>We can hit <code class="language-plaintext highlighter-rouge">/predict_batch</code> on the running server with <strong>a list of strings</strong></p>
 
@@ -695,6 +719,9 @@ real-time, batch and for files.</p>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">"accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h3 id="parameterized-endpoint-prediction">Parameterized Endpoint Prediction</h3>
   <p>All parameters of the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api">.predict() function</a> are supported.</p>
@@ -731,6 +758,9 @@ real-time, batch and for files.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="file-prediction-for-visual-nlp">File Prediction for Visual NLP</h3>
 
   <p>We can send files to <code class="language-plaintext highlighter-rouge">/predict_file</code> to get visual models predictions for any file like PDF’s and images.
@@ -747,6 +777,7 @@ and then sent to server.</p>
 </code></pre></div>  </div>
 
 </div>
+<p>&lt;/div&gt;</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-05-26T00:00:00+00:00">May 26, 2020</time>
     </span><!-- start custom article footer snippet -->

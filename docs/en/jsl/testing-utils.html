@@ -623,188 +623,228 @@ function wrapWordInSpan(data, wordToWrap) {
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="utilities-for-testing-models--modelshub-code-snippets">Utilities for Testing Models &amp; Modelshub Code Snippets</h2>
 
 <div class="main-docs">
+  <div class="h3-box">
 
-  <p>You can use the John Snow Labs library to automatically test 10000+ models and 100+ Notebooks in 1 line of code within
+    <p>You can use the John Snow Labs library to automatically test 10000+ models and 100+ Notebooks in 1 line of code within
 a small machine like a <strong>single Google Colab Instance</strong> and generate very handy error reports of potentially broken Models, Notebooks or Models hub Markdown Snippets.</p>
 
-  <p>You can test the following things with the <code class="language-plaintext highlighter-rouge">test_markdown()</code> function :</p>
+    <p>You can test the following things with the <code class="language-plaintext highlighter-rouge">test_markdown()</code> function :</p>
 
-  <ul>
-    <li>A <code class="language-plaintext highlighter-rouge">local</code> Models Hub Markdown snippet via path.</li>
-    <li>a <code class="language-plaintext highlighter-rouge">remote</code> Models Hub Markdown snippet via URL.</li>
-    <li>a <code class="language-plaintext highlighter-rouge">local</code> folder of Models Hub Markdown files. Generates report</li>
-    <li>a <code class="language-plaintext highlighter-rouge">list</code>  of local paths or urls to .md files. Generates a report</li>
-  </ul>
+    <ul>
+      <li>A <code class="language-plaintext highlighter-rouge">local</code> Models Hub Markdown snippet via path.</li>
+      <li>a <code class="language-plaintext highlighter-rouge">remote</code> Models Hub Markdown snippet via URL.</li>
+      <li>a <code class="language-plaintext highlighter-rouge">local</code> folder of Models Hub Markdown files. Generates report</li>
+      <li>a <code class="language-plaintext highlighter-rouge">list</code>  of local paths or urls to .md files. Generates a report</li>
+    </ul>
 
-  <p>Test-Report Pandas Dataframe has the columns:</p>
+    <p>Test-Report Pandas Dataframe has the columns:</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Report Column</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">test_script</code></td>
-        <td>is the generated script for testing</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">stderr</code></td>
-        <td>Error logs of process ran. Print this to easily read</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">stdout</code></td>
-        <td>Standard Print logs of process ran. Print this to easily read</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">success</code></td>
-        <td>True if script ran successfully from top to bottom</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">notebook</code></td>
-        <td>The Source notebook for testing</td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Report Column</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">test_script</code></td>
+          <td>is the generated script for testing</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">stderr</code></td>
+          <td>Error logs of process ran. Print this to easily read</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">stdout</code></td>
+          <td>Standard Print logs of process ran. Print this to easily read</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">success</code></td>
+          <td>True if script ran successfully from top to bottom</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">notebook</code></td>
+          <td>The Source notebook for testing</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <h3 id="test-a-local-models-hub-markdown-snippet">Test a Local Models Hub Markdown Snippet</h3>
+  </div>
+  <div class="h3-box">
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.modelhub_markdown</span> <span class="kn">import</span> <span class="n">test_markdown</span>
+    <h3 id="test-a-local-models-hub-markdown-snippet">Test a Local Models Hub Markdown Snippet</h3>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.modelhub_markdown</span> <span class="kn">import</span> <span class="n">test_markdown</span>
 <span class="n">test_markdown</span><span class="p">(</span><span class="s">'path/to/my/file.md'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="test-a-remote-models-hub-markdown-snippet">Test a Remote Models Hub Markdown Snippet</h3>
+  </div>
+  <div class="h3-box">
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.modelhub_markdown</span> <span class="kn">import</span> <span class="n">test_markdown</span>
+    <h3 id="test-a-remote-models-hub-markdown-snippet">Test a Remote Models Hub Markdown Snippet</h3>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.modelhub_markdown</span> <span class="kn">import</span> <span class="n">test_markdown</span>
 <span class="n">test_markdown</span><span class="p">(</span><span class="s">'https://nlp.johnsnowlabs.com/2022/08/31/legpipe_deid_en.html'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="test-a-folder-with-models-hub-markdown-snippets">Test a Folder with Models Hub Markdown Snippets</h3>
-  <p>This will scan the folder for all files ending with <code class="language-plaintext highlighter-rouge">.md</code> , test them and generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.modelhub_markdown</span> <span class="kn">import</span> <span class="n">test_markdown</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="test-a-folder-with-models-hub-markdown-snippets">Test a Folder with Models Hub Markdown Snippets</h3>
+    <p>This will scan the folder for all files ending with <code class="language-plaintext highlighter-rouge">.md</code> , test them and generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.modelhub_markdown</span> <span class="kn">import</span> <span class="n">test_markdown</span>
 <span class="n">test_markdown</span><span class="p">(</span><span class="s">'my/markdown/folder'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="test-a-list-of-markdown-references">Test a List of Markdown References</h3>
-  <p>Can be mixed with Urls and paths, will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="test-a-list-of-markdown-references">Test a List of Markdown References</h3>
+    <p>Can be mixed with Urls and paths, will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">md_to_test</span> <span class="o">=</span> <span class="p">[</span><span class="s">'legpipe_deid_en.html'</span><span class="p">,</span>
   <span class="s">'path/to/local/markdown_snippet.md'</span><span class="p">,]</span>
 <span class="n">test_markdown</span><span class="p">(</span><span class="n">md_to_test</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
+  <div class="h3-box">
 
-<div class="main-docs">
+    <h2 id="utilities-for-testing-notebooks">Utilities for Testing Notebooks</h2>
 
-  <h2 id="utilities-for-testing-notebooks">Utilities for Testing Notebooks</h2>
-
-  <p>You can use the John Snow Labs library to automatically test 10000+ models and 100+ Notebooks in 1 line of code within
+    <p>You can use the John Snow Labs library to automatically test 10000+ models and 100+ Notebooks in 1 line of code within
 a small machine like a <strong>single Google Colab Instance</strong> and generate very handy error reports of potentially broken Models, Notebooks or Models hub Markdown Snippets.</p>
 
-  <p>You can test the following things with the <code class="language-plaintext highlighter-rouge">test_ipynb()</code> function :</p>
+    <p>You can test the following things with the <code class="language-plaintext highlighter-rouge">test_ipynb()</code> function :</p>
 
-  <ul>
-    <li>A <code class="language-plaintext highlighter-rouge">local</code> .ipynb file</li>
-    <li>a <code class="language-plaintext highlighter-rouge">remote</code> .ipynb URL, point to RAW githubuser content URL of the file when using git.</li>
-    <li>a <code class="language-plaintext highlighter-rouge">local</code> folder of ipynb files, generates report</li>
-    <li>a <code class="language-plaintext highlighter-rouge">list</code> of local paths or urls to .ipynb files. Generates a Report</li>
-    <li>The entire <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings">John Snow Labs Workshop Certification Folder</a> Generates a Report</li>
-    <li>A sub-folder of the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings">John Snow Labs Workshop Certification Folder</a> , i.e. only OCR or only Legal. Generates a Report</li>
-  </ul>
+    <ul>
+      <li>A <code class="language-plaintext highlighter-rouge">local</code> .ipynb file</li>
+      <li>a <code class="language-plaintext highlighter-rouge">remote</code> .ipynb URL, point to RAW githubuser content URL of the file when using git.</li>
+      <li>a <code class="language-plaintext highlighter-rouge">local</code> folder of ipynb files, generates report</li>
+      <li>a <code class="language-plaintext highlighter-rouge">list</code> of local paths or urls to .ipynb files. Generates a Report</li>
+      <li>The entire <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings">John Snow Labs Workshop Certification Folder</a> Generates a Report</li>
+      <li>A sub-folder of the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings">John Snow Labs Workshop Certification Folder</a> , i.e. only OCR or only Legal. Generates a Report</li>
+    </ul>
 
-  <p>The generated Test-Report Pandas Dataframe has the columns:</p>
+    <p>The generated Test-Report Pandas Dataframe has the columns:</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Report Column</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">test_script</code></td>
-        <td>is the generated script for testing. If you think the notebook should not crash, check the file, there could be a generation error.</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">stderr</code></td>
-        <td>Error logs of process ran. Print this to easily read</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">stdout</code></td>
-        <td>Standard Print logs of process ran. Print this to easily read</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">success</code></td>
-        <td>True if script ran successfully from top to bottom</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">notebook</code></td>
-        <td>The Source notebook for testing</td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Report Column</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">test_script</code></td>
+          <td>is the generated script for testing. If you think the notebook should not crash, check the file, there could be a generation error.</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">stderr</code></td>
+          <td>Error logs of process ran. Print this to easily read</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">stdout</code></td>
+          <td>Standard Print logs of process ran. Print this to easily read</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">success</code></td>
+          <td>True if script ran successfully from top to bottom</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">notebook</code></td>
+          <td>The Source notebook for testing</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <h3 id="test-a-local-notebook">Test a Local Notebook</h3>
+  </div>
+  <div class="h3-box">
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+    <h3 id="test-a-local-notebook">Test a Local Notebook</h3>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'path/to/local/notebook.ipynb'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="test-a-remote-notebook">Test a Remote Notebook</h3>
+  </div>
+  <div class="h3-box">
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+    <h3 id="test-a-remote-notebook">Test a Remote Notebook</h3>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/tutorials/Certification_Trainings/Healthcare/5.Spark_OCR.ipynb'</span><span class="p">,)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="test-a-folder-with-notebooks">Test a Folder with Notebooks</h3>
-  <p>This will scan the folder for all files ending with <code class="language-plaintext highlighter-rouge">.ipynb</code> , test them and generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="test-a-folder-with-notebooks">Test a Folder with Notebooks</h3>
+    <p>This will scan the folder for all files ending with <code class="language-plaintext highlighter-rouge">.ipynb</code> , test them and generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'my/notebook/folder'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="test-a-list-of-notebook-references">Test a List of Notebook References</h3>
-  <p>Can be mixed with Urls and paths, will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="test-a-list-of-notebook-references">Test a List of Notebook References</h3>
+    <p>Can be mixed with Urls and paths, will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">nb_to_test</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s">'https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/tutorials/Certification_Trainings/Healthcare/5.Spark_OCR.ipynb'</span><span class="p">,</span>
   <span class="s">'path/to/local/notebook.ipynb'</span><span class="p">,]</span>
 <span class="n">test_ipynb</span><span class="p">(</span><span class="n">nb_to_test</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="run-all-certification-notebooks">Run All Certification Notebooks</h3>
-  <p>Will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="run-all-certification-notebooks">Run All Certification Notebooks</h3>
+    <p>Will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_result</span> <span class="o">=</span> <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'WORKSHOP'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="run-finance-certification-notebooks-only">Run Finance Certification Notebooks only</h3>
-  <p>Will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="run-finance-certification-notebooks-only">Run Finance Certification Notebooks only</h3>
+    <p>Will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_result</span> <span class="o">=</span> <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'WORKSHOP-FIN'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="run-legal-notebooks-only">Run Legal notebooks only</h3>
-  <p>Will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="run-legal-notebooks-only">Run Legal notebooks only</h3>
+    <p>Will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_result</span> <span class="o">=</span> <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'WORKSHOP-LEG'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="run-medical-notebooks-only">Run Medical notebooks only</h3>
-  <p>Will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="run-medical-notebooks-only">Run Medical notebooks only</h3>
+    <p>Will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_result</span> <span class="o">=</span> <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'WORKSHOP-MED'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <h3 id="run-open-source-notebooks-only">Run Open Source notebooks only</h3>
-  <p>Will generate a report</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="run-open-source-notebooks-only">Run Open Source notebooks only</h3>
+    <p>Will generate a report</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs.utils.notebooks</span> <span class="kn">import</span> <span class="n">test_ipynb</span>
 <span class="n">test_result</span> <span class="o">=</span> <span class="n">test_ipynb</span><span class="p">(</span><span class="s">'WORKSHOP-OS'</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
+  </div>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-05-26T00:00:00+00:00">May 26, 2020</time>
