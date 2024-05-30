@@ -44,10 +44,10 @@ He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/1
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith@gmail.com."""
 
-result = deid_pipeline.fullAnnotate(text)
+deid_result = deid_pipeline.fullAnnotate(text)
 
 print('\n'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
-print('\n'.join([i.result for i in deid_result[0]['obfuscated']])))
+print('\n'.join([i.result for i in deid_result[0]['obfuscated']]))
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
@@ -60,7 +60,7 @@ He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/1
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith@gmail.com."""
 
-val result = deid_pipeline.fullAnnotate(text)
+val deid_result = deid_pipeline.fullAnnotate(text)
 
 println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkString("\n"))
 println(deid_result(0)("obfuscated").map(_("result").toString).mkString("\n"))
