@@ -4048,14 +4048,15 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 
 </div><div class="h3-box" markdown="1">
 
-#### Complete List of Open Source Models :
+#### Complete List of Open Source Models:
+
 | Language   | NLU Reference                                                                                                                                          | Spark NLP  Reference                                                                                                                                         | Task                |
 |:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|
 | en         | [en.classify.bert_sequence.imdb_large](https://nlp.johnsnowlabs.com/2021/11/01/bert_large_sequence_classifier_imdb_en.html)                            | [bert_large_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2021/11/01/bert_large_sequence_classifier_imdb_en.html)                                   | Text Classification |
 | en         | [en.classify.bert_sequence.imdb](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_imdb_en.html)                                   | [bert_base_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_imdb_en.html)                                     | Text Classification |
 | en         | [en.classify.bert_sequence.ag_news](https://nlp.johnsnowlabs.com/2021/11/02/bert_base_sequence_classifier_ag_news_en.html)                             | [bert_base_sequence_classifier_ag_news](https://nlp.johnsnowlabs.com/2021/11/02/bert_base_sequence_classifier_ag_news_en.html)                               | Text Classification |
 | en         | [en.classify.bert_sequence.dbpedia_14](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_dbpedia_14_en.html)                       | [bert_base_sequence_classifier_dbpedia_14](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_dbpedia_14_en.html)                         | Text Classification |
-| en         | [en.classify.bert_sequence.finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                  | [bert_sequence_classifier_finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                         | Text Classification |
+| en         | [en.classify.bert_sequence.finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                  | [bert_sequence_classifier_finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                                                           | Text Classification |
 | en         | [en.classify.bert_sequence.dehatebert_mono](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_dehatebert_mono_en.html)                  | [bert_sequence_classifier_dehatebert_mono](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_dehatebert_mono_en.html)                         | Text Classification |
 | tr         | [tr.classify.bert_sequence.sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_turkish_sentiment_tr.html)                      | [bert_sequence_classifier_turkish_sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_turkish_sentiment_tr.html)                     | Text Classification |
 | de         | [de.classify.bert_sequence.sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_sentiment_de.html)                              | [bert_sequence_classifier_sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_sentiment_de.html)                                     | Text Classification |
@@ -4068,7 +4069,7 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 | en         | [en.classify.distilbert_sequence.policy](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_policy_en.html)                        | [distilbert_sequence_classifier_policy](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_policy_en.html)                               | Text Classification |
 | en         | [en.classify.distilbert_sequence.industry](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_industry_en.html)                    | [distilbert_sequence_classifier_industry](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_industry_en.html)                           | Text Classification |
 | en         | [en.classify.distilbert_sequence.emotion](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_emotion_en.html)                      | [distilbert_sequence_classifier_emotion](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_emotion_en.html)                             | Text Classification |
-| en         | [en.classify.distilbert_sequence.banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                  | [distilbert_sequence_classifier_banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                         | Text Classification |
+| en         | [en.classify.distilbert_sequence.banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                  | [distilbert_sequence_classifier_banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                                                                 | Text Classification |
 | en         | [en.classify.distilbert_sequence.imdb](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_imdb_en.html)                       | [distilbert_base_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_imdb_en.html)                         | Text Classification |
 | en         | [en.classify.distilbert_sequence.amazon_polarity](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_amazon_polarity_en.html) | [distilbert_base_sequence_classifier_amazon_polarity](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_amazon_polarity_en.html)   | Text Classification |
 | en         | [en.classify.distilbert_sequence.ag_news](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_ag_news_en.html)                 | [distilbert_base_sequence_classifier_ag_news](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_ag_news_en.html)                   | Text Classification |
@@ -4432,6 +4433,7 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 <img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true">
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
+
 | Argument    | Type        |                                                            Default         |Description |
 |----------------------------|------------|-----------------------------------------------------------|---------------------------------------------------------|
 |`default_texts`|                    `List[str]`  |"Donald Trump likes to visit New York", "Angela Merkel likes to visit Berlin!", 'Peter hates visiting Paris')| List of strings to apply classifiers, embeddings, and manifolds to. |  
@@ -7974,7 +7976,7 @@ This new output level is used for relation extractors and will give you 1 row pe
 
 ## NLU Version 1.1.3
 
-#### Intent and Action Classification,  analyze Chinese News and the Crypto market, train a classifier that understands 100+ languages, translate between 200 + languages, answer questions, summarize text, and much more in NLU 1.1.3
+#### Intent and Action Classification, analyze Chinese News and the Crypto market, train a classifier that understands 100+ languages, translate between 200 + languages, answer questions, summarize text, and much more in NLU 1.1.3
 
 We are very excited to announce that the latest NLU release comes with a new pretrained Intent Classifier and NER Action Extractor for text related to
 music, restaurants, and movies trained on the SNIPS dataset. Make sure to check out the models hub and the easy 1-liners for more info!
@@ -7996,6 +7998,7 @@ Finally, there is a new NLU Webinar with 9 accompanying tutorial notebooks which
 - Part 6: Question answering, Summarization, Squad and more with [Google's T5](https://arxiv.org/abs/1910.10683)
     - T5 Question answering and 18 + other NLP tasks ([SQUAD](https://arxiv.org/abs/1606.05250) / [GLUE](https://arxiv.org/abs/1804.07461) / [SUPER GLUE](https://super.gluebenchmark.com/))
 
+</div><div class="h3-box" markdown="1">
 
 #### New Models
 
@@ -8008,12 +8011,16 @@ Finally, there is a new NLU Webinar with 9 accompanying tutorial notebooks which
 | Bengali  | [bn.embed.cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | [bengali_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | Word Embeddings Model (Alias)    |
 | Bengali  | [bn.embed.glove](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | [bengali_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) |  Word Embeddings Model (Alias)|
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.3 New English Models
 
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 | English | [en.classify.snips](https://nlp.johnsnowlabs.com/2021/02/15/nerdl_snips_100d_en.html) |[nerdl_snips_100d](https://nlp.johnsnowlabs.com/2021/02/15/nerdl_snips_100d_en.html)     | NerDLModel |
 | English | [en.ner.snips](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html) |[classifierdl_use_snips](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html)|ClassifierDLModel|
+
+</div><div class="h3-box" markdown="1">
 
 #### New NLU Webinar
 #### [State-of-the-art Natural Language Processing for 200+ Languages with 1 Line of code](https://events.johnsnowlabs.com/state-of-the-art-natural-language-processing-for-200-languages-with-1-line-of-code)
@@ -8028,8 +8035,9 @@ This webinar will show you how to leverage the multi-lingual capabilities of Spa
 
 You can watch the [video here,](https://events.johnsnowlabs.com/state-of-the-art-natural-language-processing-for-200-languages-with-1-line-of-code)
 
-#### NLU 1.1.3 New Notebooks and tutorials
+</div><div class="h3-box" markdown="1">
 
+#### NLU 1.1.3 New Notebooks and tutorials
 
 #### New Webinar Notebooks
 
@@ -8043,6 +8051,7 @@ You can watch the [video here,](https://events.johnsnowlabs.com/state-of-the-art
 8. [Solve any task in 1 line from SQUAD, GLUE and SUPER GLUE with T5](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/7_T5_SQUAD_GLUE_SUPER_GLUE_TASKS.ipynb)
 9. [Overview of models for various languages](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/8_Multi_lingual_ner_pos_stop_words_sentiment_pretrained.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 #### New easy NLU 1-liners in NLU 1.1.3
 
@@ -8059,6 +8068,8 @@ outputs :
 | -----------------------------------------------------------: | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [1.0, 1.0, 0.9997000098228455, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9990000128746033, 1.0, 1.0, 1.0, 0.9965000152587891, 0.9998999834060669, 0.9567000269889832, 1.0, 1.0, 1.0, 0.9980000257492065, 0.9991999864578247, 0.9988999962806702, 1.0, 1.0, 0.9998999834060669] | ['nona gray myrtle and alison', 'top-rated', 'brasserie', 'distant', 'wilson av', 'nov the 4th 2030', 'ouzeri'] | book a spot for nona gray myrtle and alison at a top-rated brasserie that is distant from wilson av on nov the 4th 2030 that serves ouzeri | ['party_size_description', 'sort', 'restaurant_type', 'spatial_relation', 'poi', 'timeRange', 'cuisine'] |
 
+</div><div class="h3-box" markdown="1">
+
 ####  [Named Entity Recognition (NER) Model in Bengali (bengaliner_cc_300d)](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html)
 
 
@@ -8072,6 +8083,8 @@ outputs :
 | ner_confidence                                                                                                                                                                                                                                                                                                                                                                                                                       | entities                                                                           | Entities_Classes   | document                                                                                                                         |
 |---------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|:--------------------------------------|
 | [0.9987999796867371, 0.9854000210762024, 0.8604000210762024, 0.6686999797821045, 0.5289999842643738, 0.7009999752044678, 0.7684999704360962, 0.9979000091552734, 0.9976000189781189, 0.9930999875068665, 0.9994000196456909, 0.9879000186920166, 0.7407000064849854, 0.9215999841690063, 0.7657999992370605, 0.39419999718666077, 0.9124000072479248, 0.9932000041007996, 0.9919999837875366, 0.995199978351593, 0.9991999864578247] | ['সালে', 'ইয়াজউদ্দিন আহম্মেদ', 'মুন্সিগঞ্জ উচ্চ বিদ্যালয়', 'সালে', 'মুন্সিগঞ্জ হরগঙ্গা কলেজ'] | ['TIME', 'PER', 'ORG', 'TIME', 'ORG'] | ১৯৪৮ সালে ইয়াজউদ্দিন আহম্মেদ মুন্সিগঞ্জ উচ্চ বিদ্যালয় থেকে মেট্রিক পাশ করেন এবং ১৯৫০ সালে মুন্সিগঞ্জ হরগঙ্গা কলেজ থেকে ইন্টারমেডিয়েট পাশ করেন |
+
+</div><div class="h3-box" markdown="1">
 
 #### [Identify intent in general text - SNIPS dataset](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html)
 
@@ -8087,6 +8100,7 @@ outputs :
 |----------|------|------------------|
 | I want to bring six of us to a bistro in town that serves hot chicken sandwich that is within the same area | BookRestaurant |                  1 |
 
+</div><div class="h3-box" markdown="1">
 
 #### [Word Embeddings for Bengali (bengali_cc_300d)](https://nlp.johnsnowlabs.com/2021/02/10/bengali_cc_300d_bn.html)
 
@@ -8101,15 +8115,20 @@ outputs :
 | -----------------------------------------------------------: | :----------------------------------------------------------- |
 | ১৯৪৮ সালে ইয়াজউদ্দিন আহম্মেদ মুন্সিগঞ্জ উচ্চ বিদ্যালয় থেকে মেট্রিক পাশ করেন এবং ১৯৫০ সালে মুন্সিগঞ্জ হরগঙ্গা কলেজ থেকে ইন্টারমেডিয়েট পাশ করেন | [-0.0828      0.0683      0.0215     ...  0.0679     -0.0484...] |
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.3 Enhancements
 - Added automatic conversion  to Sentence Embeddings of Word Embeddings when there is no Sentence Embedding Avaiable and a model needs the converted version to run.
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.3 Bug Fixes
 - Fixed a bug that caused `ur.sentiment` NLU pipeline to build incorrectly
 - Fixed a bug that caused `sentiment.imdb.glove` NLU pipeline to build incorrectly
 - Fixed a bug that caused `en.sentiment.glove.imdb` NLU pipeline to build incorrectly
 - Fixed a bug that caused Spark 2.3.X environments to crash.
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU Installation
 
@@ -8120,6 +8139,8 @@ outputs :
 # Install NLU from Anaconda/Conda
 conda install -os_components johnsnowlabs nlu
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 
@@ -8138,6 +8159,8 @@ We are very happy to announce NLU 1.1.2 has been released with the integration o
 and state-of-the-art transformer based OntoNotes models and pipelines from the [incredible Spark NLP 2.7.3 Release](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.7.3) in addition to a few bugfixes.  
 In addition to that, there is a [new NLU Webinar video](https://www.youtube.com/watch?t=2141&v=hJR9m3NYnwk&feature=youtu.be) showcasing in detail
 how to use NLU to analyze a crypto news dataset to extract keywords unsupervised and predict sentimential/emotional distributions of the dataset and much more!
+
+</div><div class="h3-box" markdown="1">
 
 #### [Python's NLU library: 1,000+ models, 200+ Languages, State of the Art Accuracy, 1 Line of code - NLU NYC/DC NLP Meetup Webinar](https://www.youtube.com/watch?t=2141&v=hJR9m3NYnwk&feature=youtu.be)
 Using just 1 line of Python code by leveraging the NLU library, which is powered by the award-winning Spark NLP.
@@ -8167,6 +8190,8 @@ We'll also cover some of the algorithms and models that are included. The code n
 |Bihari | [bh.lemma](https://nlp.johnsnowlabs.com/2021/01/18/lemma_bh.html) |[lemma](https://nlp.johnsnowlabs.com/2021/01/18/lemma_bh.html) | Lemma                    |
 |Amharic | [am.lemma](https://nlp.johnsnowlabs.com/2021/01/20/lemma_am.html) |[lemma](https://nlp.johnsnowlabs.com/2021/01/20/lemma_am.html) | Lemma                    |
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.2 New English Models and Pipelines
 
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
@@ -8190,7 +8215,7 @@ We'll also cover some of the algorithms and models that are included. The code n
 |English|[en.ner.onto.electra.base](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_base_en.html)|[onto_recognize_entities_electra_base](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_base_en.html)|Pipeline|
 |English|[en.ner.onto.large](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_large_en.html)|[onto_recognize_entities_electra_large](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_large_en.html)|Pipeline|
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Tutorials and Notebooks
 
@@ -8208,6 +8233,7 @@ We'll also cover some of the algorithms and models that are included. The code n
 - Fixed a bug that caused nlu.load('spell') to crash
 - Fixed a bug that caused Uralic/Estonian/ET language models not to be loaded properly
 
+</div><div class="h3-box" markdown="1">
 
 #### New  Easy NLU 1-liners in 1.1.2
 
@@ -8239,6 +8265,7 @@ output :
 | ['মার্কিন যুক্তরাষ্ট্রে'] | হয়        | ['LOC']               |           1      |
 | ['মার্কিন যুক্তরাষ্ট্রে'] | '         | ['LOC']               |           1      |
 
+</div><div class="h3-box" markdown="1">
 
 #### [Bengali Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/20/lemma_bn.html)
 
@@ -8254,6 +8281,7 @@ output :
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ['একদিন', 'প্রাতঃ', 'বৈদ্যনাথ', 'মার্বলমণ্ডিত', 'দালান', 'এক', 'স্থূলউদর', 'সন্ন্যাসী', 'দুইসের', 'মোহনভোগ', 'এবং', 'দেড়সের', 'দুগ্ধ', 'সেবা', 'নিযুক্ত', 'আছে', 'বৈদ্যনাথ', 'গা', 'একখান', 'চাদর', 'দেওয়া', 'জোড়কর', 'একান্ত', 'বিনীতভাব', 'ভূতল', 'বসা', 'ভক্তিভরা', 'পবিত্র', 'ভোজনব্যাপার', 'নিরীক্ষণ', 'করা', 'এমন', 'সময়', 'কোনোমত', 'দ্বারী', 'দৃষ্টি', 'এড়ানো', 'জীর্ণদেহ', 'বালক', 'সহিত', 'এক', 'অতি', 'শীর্ণকায়া', 'রমণী', 'গৃহ', 'প্রবেশ', 'বিশ্বাস', 'ক্ষীণস্বর', 'কহা', 'বাবু', 'দুই', 'খাওয়া', 'দাওয়া'] | একদিন প্রাতে বৈদ্যনাথের মার্বলমণ্ডিত দালানে একটি স্থূলোদর সন্ন্যাসী দুইসের মোহনভোগ এবং দেড়সের দুগ্ধ সেবায় নিযুক্ত আছে বৈদ্যনাথ গায়ে একখানি চাদর দিয়া জোড়করে একান্ত বিনীতভাবে ভূতলে বসিয়া ভক্তিভরে পবিত্র ভোজনব্যাপার নিরীক্ষণ করিতেছিলেন এমন সময় কোনোমতে দ্বারীদের দৃষ্টি এড়াইয়া জীর্ণদেহ বালক সহিত একটি অতি শীর্ণকায়া রমণী গৃহে প্রবেশ করিয়া ক্ষীণস্বরে কহিল বাবু দুটি খেতে দাও |
 
+</div><div class="h3-box" markdown="1">
 
 #### [Japanese Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/15/lemma_ja.html)
 
@@ -8269,6 +8297,8 @@ output :
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
 | ['これ', 'にる', '不快', '感', 'を', '示す', '住民', 'はる', 'いる', 'まする', 'たる', 'がる', ',', '現在', ',', '表立つ', 'てる', '反対', 'やる', '抗議', 'のる', '声', 'を', '挙げる', 'てる', 'いる', '住民', 'はる', 'いる', 'なぐ', 'よう', 'です', '。'] | これに不快感を示す住民はいましたが,現在,表立って反対や抗議の声を挙げている住民はいないようです。 |
 
+</div><div class="h3-box" markdown="1">
+
 #### [Amharic Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/20/lemma_am.html)
 
 
@@ -8283,6 +8313,8 @@ output  :
 |:-----------------------------------------------------|:---------------------------------|
 | ['_', 'መጽሐፍ', 'ኡ', 'ን', '_', 'አስያዝ', 'ኧ', 'ኣት', '።'] | መጽሐፉን መጽሐፍ ኡ ን አስያዛት አስያዝ ኧ ኣት ። |
 
+</div><div class="h3-box" markdown="1">
+
 #### [Bhojpuri Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/18/lemma_bh.html)
 
 
@@ -8296,6 +8328,8 @@ output :
 | lemma                                                                                                                                                                                                                               | document                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|
 | ['एह', 'आयोजन', 'में', 'विश्व', 'भोजपुरी', 'सम्मेलन', 'COMMA', 'पूर्वांचल', 'एकता', 'मंच', 'COMMA', 'वीर', 'कुँवर', 'सिंह', 'फाउन्डेशन', 'COMMA', 'पूर्वांचल', 'भोजपुरी', 'महासभा', 'COMMA', 'अउर', 'हर्फ', '-', 'मीडिया', 'को', 'सहभागिता', 'बा', '।'] | एह आयोजन में विश्व भोजपुरी सम्मेलन , पूर्वांचल एकता मंच , वीर कुँवर सिंह फाउन्डेशन , पूर्वांचल भोजपुरी महासभा , अउर हर्फ - मीडिया के सहभागिता बा । |
+
+</div><div class="h3-box" markdown="1">
 
 #### [Named Entity Recognition - BERT Tiny (OntoNotes)](https://nlp.johnsnowlabs.com/2020/12/05/onto_small_bert_L2_128_en.html)
 ```python
@@ -8624,6 +8658,7 @@ This release features 3 new tutorial notebooks for Open/Closed book question ans
 In Addition NLU 1.1.0 comes with  25+ pretrained models and pipelines in Amharic, Bengali, Bhojpuri, Japanese, and Korean languages from the [amazing Spark2.7.2 release](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.7.2)
 Finally NLU now supports running on Spark 2.3 clusters.
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.1 New Non-English Models
 
@@ -8643,7 +8678,7 @@ Finally NLU now supports running on Spark 2.3 clusters.
 |Bihari | [bh.pos](https://nlp.johnsnowlabs.com/2021/01/18/pos_ud_bhtb_bh.html) |[pos_ud_bhtb](https://nlp.johnsnowlabs.com/2021/01/18/pos_ud_bhtb_bh.html) | Part of Speech                    |
 |Amharic | [am.pos](https://nlp.johnsnowlabs.com/2021/01/20/pos_ud_att_am.html) |[pos_ud_att](https://nlp.johnsnowlabs.com/2021/01/20/pos_ud_att_am.html) | Part of Speech                    |
 
-
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.1 New English Models and Pipelines
 
@@ -8664,6 +8699,8 @@ Finally NLU now supports running on Spark 2.3 clusters.
 | English | [en.ner.aspect.airline](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html) |[nerdl_atis_840b_300d](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html)     | Aspect based NER (Alias) |
 | English | [en.ner.aspect.atis](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html) |[nerdl_atis_840b_300d](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html)     | Aspect based NER (Alias) |
 
+</div><div class="h3-box" markdown="1">
+
 #### New Easy NLU 1-liner Examples :
 
 #### Extract aspects and entities from airline questions (ATIS dataset)
@@ -8674,7 +8711,7 @@ nlu.load("en.ner.atis").predict("i want to fly from baltimore to dallas round tr
 output:  ["baltimore"," dallas", "round trip"]
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Intent Classification for Airline Traffic Information System queries (ATIS dataset)
 
@@ -8684,7 +8721,7 @@ nlu.load("en.classify.questions.atis").predict("what is the price of flight from
 output:  "atis_airfare"	
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Recognize Entities OntoNotes - ELECTRA Large
 
@@ -8940,7 +8977,7 @@ These new features are possible because of the integration of the [Google's T5 m
 
 NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the support of multi-lingual models to 192+ languages such as Chinese, Japanese, Korean, Arabic, Persian, Urdu, and Hebrew.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.0  New Features
 * **720+** new models you can find an overview of all NLU models [here](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) and further documentation in the [models hub](https://nlp.johnsnowlabs.com/models)
@@ -8950,6 +8987,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 * **NEW:** Introducing WordSegmenter model for word segmentation of languages without any rule-based tokenization such as Chinese, Japanese, or Korean
 * **NEW:** Introducing DocumentNormalizer component for cleaning content from HTML or XML documents, applying either data cleansing using an arbitrary number of custom regular expressions either data extraction following the different parameters
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.0  New Notebooks, Tutorials and Articles
 - [Translate between 192+ languages with marian](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/translation_demo.ipynb)
@@ -8960,6 +8998,8 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [Normalize documents](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/text_pre_processing_and_cleaning/document_normalizer_demo.ipynb)
 - [Aspect based sentiment NER sentiment for restaurants](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/named_entity_recognition_(NER)/aspect_based_ner_sentiment_restaurants.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.0 New Training Tutorials
 #### Binary Classifier training Jupyter tutorials
 - [2 class Finance News sentiment classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/binary_text_classification/NLU_training_sentiment_classifier_demo_apple_twitter.ipynb)
@@ -8968,6 +9008,8 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [2 class IMDB Movie sentiment classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/binary_text_classification/NLU_training_sentiment_classifier_demo_IMDB.ipynb)
 - [2 class twitter classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/binary_text_classification/NLU_training_sentiment_classifier_demo_twitter.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### Multi Class text Classifier training Jupyter tutorials
 - [5 class WineEnthusiast Wine review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_wine.ipynb)
 - [3 class Amazon Phone review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_amazon.ipynb)
@@ -8975,6 +9017,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [5 class Tripadvisor Hotel review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_hotel_reviews.ipynb)
 - [5 class Phone review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_hotel_reviews.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.0 New Medium Tutorials
 
@@ -8986,7 +9029,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [1 line to BioBERT Word Embeddings with NLU   with t-SNE plots](https://medium.com/spark-nlp/1-line-to-biobert-word-embeddings-with-nlu-in-python-7224ab52e131)
 
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Translation
 [Translation example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/translation_demo.ipynb)       
@@ -9016,7 +9059,7 @@ df
 |-----------|--------------|
 |Billy likes to go to the mall every sunday	| Billy geht gerne jeden Sonntag ins Einkaufszentrum|
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Overview of every task available with T5
 [The T5 model](https://arxiv.org/pdf/1910.10683.pdf) is trained on various datasets for 17 different tasks which fall into 8 categories.
@@ -9030,6 +9073,8 @@ df
 6. Coreference resolution
 7. Sentence Completion
 8. Word sense disambiguation
+
+</div><div class="h3-box" markdown="1">
 
 #### Every T5 Task with explanation:
 
@@ -9056,6 +9101,7 @@ df
 
 [refer to this notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb) to see how to use every T5 Task.
 
+</div><div class="h3-box" markdown="1">
 
 #### Question Answering
 [Question answering example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9094,7 +9140,7 @@ question: What does increased oxygen concentrations in the patient’s lungs dis
 context: Hyperbaric (high-pressure) medicine uses special oxygen chambers to increase the partial pressure of O 2 around the patient and, when needed, the medical staff. Carbon monoxide poisoning, gas gangrene, and decompression sickness (the ’bends’) are sometimes treated using these devices. Increased O 2 concentration in the lungs helps to displace carbon monoxide from the heme group of hemoglobin. Oxygen gas is poisonous to the anaerobic bacteria that cause gas gangrene, so increasing its partial pressure helps kill them. Decompression sickness occurs in divers who decompress too quickly after a dive, resulting in bubbles of inert gas, mostly nitrogen and helium, forming in their blood. Increasing the pressure of O 2 as soon as possible is part of the treatment.
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Text Summarization
 [Summarization example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9122,6 +9168,7 @@ pipe.predict(data)
 |------------------|-------|
 | manchester united face newcastle in the premier league on wednesday . louis van gaal's side currently sit two points clear of liverpool in fourth . the belgian duo took to the dance floor on monday night with some friends .            | the belgian duo took to the dance floor on monday night with some friends . manchester united face newcastle in the premier league on wednesday . red devils will be looking for just their second league away win in seven . louis van gaal’s side currently sit two points clear of liverpool in fourth . | 
 
+</div><div class="h3-box" markdown="1">
 
 #### Binary Sentence similarity/ Paraphrasing
 [Binary sentence similarity example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9148,6 +9195,7 @@ sentence2: 	I like to play football.
 #Predict on text data with T5
 t5.predict(data)
 ```
+
 | Sentence1 | Sentence2 | prediction|
 |------------|------------|----------|
 |We acted because we saw the existing evidence in a new light , through the prism of our experience on 11 September , " Rumsfeld said .| Rather , the US acted because the administration saw " existing evidence in a new light , through the prism of our experience on September 11 " . | equivalent | 
@@ -9218,6 +9266,8 @@ sentence1: What attributes would have made you highly desirable in ancient Rome?
 sentence2: How I GET OPPERTINUTY TO JOIN IT COMPANY AS A FRESHER?',
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Grammar Checking
 [Grammar checking with T5 example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
 Judges if a sentence is grammatically acceptable.    
@@ -9232,11 +9282,13 @@ data = ['Anna and Mike is going skiing and they is liked is','Anna and Mike like
 #Predict on text data with T5
 pipe.predict(data)
 ```
+
 |sentence  | prediction|
 |------------|------------|
 | Anna and Mike is going skiing and they is liked is | unacceptable |      
 | Anna and Mike like to dance | acceptable | 
 
+</div><div class="h3-box" markdown="1">
 
 #### Document Normalization
 [Document Normalizer example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/text_pre_processing_and_cleaning/document_normalizer_demo.ipynb)     
@@ -9248,9 +9300,13 @@ data = '<!DOCTYPE html> <html> <head> <title>Example</title> </head> <body> <p>T
 df = pipe.predict(data,output_level='document')
 df
 ```
+
 |text|normalized_text|
 |------|-------------|
 | `<!DOCTYPE html> <html> <head> <title>Example</title> </head> <body> <p>This is an example of a simple HTML page with one paragraph.</p> </body> </html>`       |Example This is an example of a simple HTML page with one paragraph.|
+
+
+</div><div class="h3-box" markdown="1">
 
 #### Word Segmenter
 [Word Segmenter Example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/multilingual/japanese_ner_pos_and_tokenization.ipynb)     
@@ -9285,6 +9341,7 @@ df
 |	ませ|
 |	ん|
 
+</div><div class="h3-box" markdown="1">
 
 #### Installation
 
@@ -9296,6 +9353,7 @@ df
 conda install -os_components johnsnowlabs nlu
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 - [NLU Website](https://nlp.johnsnowlabs.com/)
@@ -9312,11 +9370,15 @@ We are glad to announce NLU 1.0.6 has been released!
 NLU 1.0.6 comes with the Multi Label classifier, it can learn to map strings to multiple labels.
 The Multi Label Classifier is using Bidirectional GRU and CNNs inside TensorFlow and supports up to 100 classes.
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.0.6 New Features
 - Multi Label Classifier
     - The Multi Label Classifier learns a 1 to many mapping between text and labels. This means it can predict multiple labels at the same time for a given input string. This is very helpful for tasks similar to content tag prediction (HashTags/RedditTags/YoutubeTags/Toxic/E2e etc..)
     - Support up to 100 classes
     - Pre-trained Multi Label Classifiers are already avaiable as [Toxic](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#toxic-classifier) and [E2E](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#e2e-classifier) classifiers
+
+</div><div class="h3-box" markdown="1">
 
 ####  Multi Label Classifier
 - [ Train Multi Label Classifier on E2E dataset Demo](https://colab.research.google.com/drive/15ZqfNUqliRKP4UgaFcRg5KOSTkqrtDXy?usp=sharing)
@@ -9348,17 +9410,21 @@ fitted_pipe = nlu.load('embed_sentence.electra train.multi_classifier').fit(trai
 preds = fitted_pipe.predict(train_df)
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.6 Enhancements
 - Improved outputs for Toxic and E2E Classifier.
     - by default, all predicted classes and their confidences which are above the threshold will be returned inside of a list in the Pandas dataframe
     - by configuring meta=True, the confidences for all classes will be returned.
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU Version 1.0.6
 
 - [ Train Multi Label Classifier on E2E dataset](https://colab.research.google.com/drive/15ZqfNUqliRKP4UgaFcRg5KOSTkqrtDXy?usp=sharing)
 - [Train Multi Label  Classifier on Stack Overflow Question Tags dataset](https://drive.google.com/file/d/1Nmrncn-y559od3AKJglwfJ0VmZKjtMAF/view?usp=sharing)
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.6 Bug-fixes
 - Fixed a bug that caused ```en.ner.dl.bert``` to be inaccessible
@@ -9410,6 +9476,8 @@ fitted_pipe = nlu.load('embed_sentence.electra train.classifier').fit(train_df)
 preds = fitted_pipe.predict(train_df)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Part Of Speech Tagger Training
 [Part Of Speech Tagger Training demo](https://colab.research.google.com/drive/1CZqHQmrxkDf7y3rQHVjO-97tCnpUXu_3?usp=sharing)
 
@@ -9417,6 +9485,8 @@ preds = fitted_pipe.predict(train_df)
 fitted_pipe = nlu.load('train.pos').fit(train_df)
 preds = fitted_pipe.predict(train_df)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.5 Installation changes
 Starting from version 1.0.5 NLU will not automatically install pyspark for users anymore.      
@@ -9546,7 +9616,7 @@ Check it out here :  [https://nlp.johnsnowlabs.com/](https://nlp.johnsnowlabs.co
 - Added various testing classes
 - [New 6 embeddings at once notebook with t-SNE and Medium article](https://medium.com/spark-nlp/1-line-of-code-for-bert-albert-elmo-electra-xlnet-glove-part-of-speech-with-nlu-and-t-sne-9ebcd5379cd)
   <img src="https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png" >
-- Integration of Spark NLP 2.6.2 enhancements and bugfixes https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2
+- Integration of Spark NLP 2.6.2 enhancements and bugfixes [https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2)
 - Updated old T-SNE notebooks with more elegant and simpler generation of t-SNE embeddings
 
 </div><div class="h3-box" markdown="1">

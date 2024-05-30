@@ -1418,7 +1418,7 @@ sentence2: Rather , the US acted because the administration saw " existing evide
 ## Regressive Sentence similarity/ Paraphrasing
 
 Measures how similar two sentences are on a scale from 0 to 5 with 21 classes representing a regressive label.     
-This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on[STSB - Regressive semantic sentence similarity](https://www.aclweb.org/anthology/S17-2001/) .
+This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on [STSB - Regressive semantic sentence similarity](https://www.aclweb.org/anthology/S17-2001/).
 
 ```python
 t5 = nlp.load('en.t5.base')
