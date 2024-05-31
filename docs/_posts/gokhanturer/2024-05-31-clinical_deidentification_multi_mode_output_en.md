@@ -34,8 +34,8 @@ This pipeline simultaneously produces masked with entity labels, fixed-length ch
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_multi_mode_output", "en", "clinical/models")
@@ -47,11 +47,8 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, CA 94131, E-MAIL: smith@gmail.com."""
 
 result = deid_pipeline.annotate(text)
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_multi_mode_output", "en", "clinical/models")
@@ -63,34 +60,24 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, CA 94131, E-MAIL: smith@gmail.com."""
 
 val result = deid_pipeline.annotate(text)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
-print("
-Masked with entity labels")
+print("\nMasked with entity labels")
 print("-"*30)
-print("
-".join(result['masked']))
-print("
-Masked with chars")
+print("\n".join(result['masked']))
+print("\nMasked with chars")
 print("-"*30)
-print("
-".join(result['masked_with_chars']))
-print("
-Masked with fixed length chars")
+print("\n".join(result['masked_with_chars']))
+print("\nMasked with fixed length chars")
 print("-"*30)
-print("
-".join(result['masked_fixed_length_chars']))
-print("
-Obfuscated")
+print("\n".join(result['masked_fixed_length_chars']))
+print("\nObfuscated")
 print("-"*30)
-print("
-".join(result['obfuscated']))
+print("\n".join(result['obfuscated']))
 
 Masked with entity labels
 ------------------------------
@@ -123,7 +110,6 @@ Dr. Emilie Harden, IP 001.001.001.001.
 He is a 73-year-old male was admitted to the SOMERSET HOSPITAL for cystectomy on 03/10/93.
 Patient's VIN : 7JOIT25QDIY641583, SSN #094-07-6808, Driver's license no: U110315X.
 Phone (458) 592-9244, 100 Hospital Drive, NUNGATTA, Louisiana 62863, E-MAIL: Adelais@google.com.
-
 ```
 
 {:.model-param}
