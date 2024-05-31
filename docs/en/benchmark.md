@@ -518,13 +518,42 @@ deid_pipeline = Pipeline().setStages([
 
 ### Deidentification Pipelines Speed Comparison
 
-- **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
-- **Versions:**
-    - **spark-nlp Version:** v5.3.1
-    - **spark-nlp-jsl Version:** v5.3.1
-    - **Spark Version:** v3.4.0
-- **Instance Type:** 
-    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
+- Deidentification Pipelines Benchmarks
+
+    This benchmark provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments.
+
+    - **Dataset:** 100000 Clinical Texts from MTSamples, approx. 508 tokens and 26.44 chunks per text.
+    - **Versions:[May-2024]**
+        - **spark-nlp Version:** v5.3.2
+        - **spark-nlp-jsl Version:** v5.3.2
+        - **Spark Version:** v3.4.0
+    - **Instance Type:**
+        - DataBricks Config: 
+            - 32 CPU Core, 128GiB RAM (8 workers) (2.7 $/hr)
+
+            |data_count |partition |Databricks |
+            |----------:|---------:|----------:|
+            |    100000 |      512 | 1h 42m 55s|
+    
+        - AWS EC2 instance Config:
+                - 32 CPU cores, 64GiB RAM (c6a.8xlarge $1.224/h)
+
+            |data_count |partition |   AWS   |
+            |----------:|---------:|--------:|
+            |    100000 |      512 |1h 9m 56s|
+
+
+- Deidentification Pipelines Speed Comparison
+
+    This benchmark presents a detailed comparison of various deidentification pipelines applied to a dataset of 10,000 custom clinical texts, aiming to anonymize sensitive information for research and analysis. The comparison evaluates the elapsed time and processing stages of different deidentification pipelines. Each pipeline is characterized by its unique combination of Named Entity Recognition (NER), deidentification methods, rule-based NER, clinical embeddings, and chunk merging processes.
+    
+    - **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
+    - **Versions:**
+        - **spark-nlp Version:** v5.3.1
+        - **spark-nlp-jsl Version:** v5.3.1
+        - **Spark Version:** v3.4.0
+    - **Instance Type:** 
+        -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
 
 {:.table-model-big.db}
 |Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
