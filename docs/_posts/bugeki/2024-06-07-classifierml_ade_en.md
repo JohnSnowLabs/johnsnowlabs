@@ -8,7 +8,7 @@ tags: [text_classification, ade, en, clinical, licensed]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.3.3
-spark_version: 3.4
+spark_version: 3.2
 supported: true
 annotator: DocumentMLClassifierModel
 article_header:
@@ -33,8 +33,8 @@ The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reacti
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.3_3.4_1717747585027.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.3_3.4_1717747585027.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.3_3.2_1717752955007.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.3_3.2_1717752955007.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -42,7 +42,6 @@ The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reacti
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
