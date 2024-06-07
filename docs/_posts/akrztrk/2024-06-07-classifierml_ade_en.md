@@ -7,7 +7,7 @@ date: 2024-06-07
 tags: [text_classification, clinical, ade, en, licensed]
 task: Text Classification
 language: en
-edition: Healthcare NLP 5.3.3
+edition: Healthcare NLP 5.3.2
 spark_version: 3.2
 supported: true
 annotator: DocumentMLClassifierModel
@@ -20,11 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This model is trained with the DocumentMLClassifierApproach annotator and classifies a text/sentence into two categories:
 
-True : The sentence is talking about a possible ADE
+`True`: The sentence is talking about a possible ADE
 
-False : The sentence doesn’t have any information about an ADE.
+`False`: The sentence doesn’t have any information about an ADE.
 
-The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reaction Data. This is a dataset for classification of a sentence if it is ADE-related (True) or not (False).
+The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reaction Data. This is a dataset for the classification of a sentence if it is ADE-related (True) or not (False).
 
 ## Predicted Entities
 
@@ -33,8 +33,8 @@ The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reacti
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.3_3.2_1717753819693.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.3_3.2_1717753819693.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.2_3.2_1717753819693.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/classifierml_ade_en_5.3.2_3.2_1717753819693.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -103,7 +103,7 @@ val result = clf_Pipeline.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|classifierml_ade|
-|Compatibility:|Healthcare NLP 5.3.3+|
+|Compatibility:|Healthcare NLP 5.3.2+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[token]|
@@ -113,7 +113,7 @@ val result = clf_Pipeline.fit(data).transform(data)
 
 ## References
 
-The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reaction Data. This is a dataset for classification of a sentence if it is ADE-related (True) or not (False).
+The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reaction Data. This is a dataset for the classification of a sentence if it is ADE-related (True) or not (False).
 
 Reference: Gurulingappa et al., Benchmark Corpus to Support Information Extraction for Adverse Drug Effects, JBI, 2012. [https://www.sciencedirect.com/science/article/pii/S1532046412000615](https://www.sciencedirect.com/science/article/pii/S1532046412000615)
 
