@@ -42,6 +42,7 @@ The corpus used for model training is ADE-Corpus-V2 Dataset: Adverse Drug Reacti
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
