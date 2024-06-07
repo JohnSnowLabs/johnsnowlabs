@@ -22,7 +22,7 @@ This financial model is an xlg (Xlarge) version, which has been trained with mor
 
 ## Predicted Entities
 
-`INCOME`, `KPI_INCREASE`, `CF`, `CFO`
+`AMOUNT`, `ASSET`, `CF`, `CF_DECREASE`, `CF_INCREASE`, `COUNT`, `CURRENCY`, `DATE`, `EXPENSE`, `EXPENSE_DECREASE`, `EXPENSE_INCREASE`, `FCF`, `FISCAL_YEAR`, `KPI`, `KPI_DECREASE`, `KPI_INCREASE`, `LIABILITY`, `LIABILITY_DECREASE`, `LIABILITY_INCREASE`, `ORG`, `PERCENTAGE`, `PROFIT`, `PROFIT_DECLINE`, `PROFIT_INCREASE`, `TICKER`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
