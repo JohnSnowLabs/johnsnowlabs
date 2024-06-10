@@ -36,6 +36,7 @@ Extract radiology entities using the radiology NER model in the pipeline and ass
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
