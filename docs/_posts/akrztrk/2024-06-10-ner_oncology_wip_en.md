@@ -87,6 +87,7 @@ Definitions of Predicted Entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -221,7 +222,7 @@ In-house annotated oncology case reports.
 ## Benchmarking
 
 ```bash
-             label      tp     fp     fn   total  precision  recall   f1
+                label      tp     fp     fn   total  precision  recall   f1
     Histological_Type   200.0   60.0  143.0   343.0       0.77    0.58 0.66
             Direction   602.0  126.0  132.0   734.0       0.83    0.82 0.82
               Staging   160.0   17.0   56.0   216.0       0.90    0.74 0.81
