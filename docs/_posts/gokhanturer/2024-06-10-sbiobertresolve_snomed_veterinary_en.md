@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps veterinary-related entities and concepts to SNOMED codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings
+This model maps veterinary-related entities and concepts to SNOMED codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It is trained with the augmented version of the `sbiobertresolve_snomed_veterinary_wip` model dataset.
 
 ## Predicted Entities
 
@@ -116,7 +116,7 @@ val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
-    .setWhiteList("PROBLEM")
+    .setWhiteList(Array("PROBLEM"))
 
 val c2doc = new Chunk2Doc()
     .setInputCols("ner_chunk")
