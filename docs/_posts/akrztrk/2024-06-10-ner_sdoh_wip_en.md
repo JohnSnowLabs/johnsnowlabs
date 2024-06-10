@@ -36,6 +36,7 @@ This model extracts terminology related to Social Determinants of Health from va
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
