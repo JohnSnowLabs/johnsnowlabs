@@ -36,6 +36,7 @@ This model extracts health and behaviours problems related to Social Determinant
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -54,7 +55,7 @@ clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
     .setOutputCol("embeddings")
 
 ner_model = MedicalNerModel.pretrained("ner_sdoh_health_behaviours_problems_wip", "en", "clinical/models")\
-    .setInputCols(["sentence", "token","embeddings"])\
+    .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
