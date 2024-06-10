@@ -36,6 +36,7 @@ This model extracts substance usage information related to Social Determinants o
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -54,7 +55,7 @@ clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
     .setOutputCol("embeddings")
 
 ner_model = MedicalNerModel.pretrained("ner_sdoh_substance_usage_wip", "en", "clinical/models")\
-    .setInputCols(["sentence", "token","embeddings"])\
+    .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
@@ -96,7 +97,7 @@ val clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", 
     .setOutputCol("embeddings")
 
 val ner_model = MedicalNerModel.pretrained("ner_sdoh_substance_usage_wip", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token","embeddings"))
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()
