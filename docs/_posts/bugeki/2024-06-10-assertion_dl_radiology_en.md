@@ -7,8 +7,8 @@ date: 2024-06-10
 tags: [assertion, radiology, clinical, en, licensed]
 task: Assertion Status
 language: en
-edition: Healthcare NLP 5.3.2
-spark_version: 3.4
+edition: Healthcare NLP 5.3.3
+spark_version: 3.0
 supported: true
 annotator: AssertionDLModel
 article_header:
@@ -122,17 +122,29 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-|    | ner_chunk                     | assertion   |
-|---:|:------------------------------|:------------|
-|  0 | pneumothorax                  | Confirmed   |
-|  1 | complete collapse             | Confirmed   |
-|  2 | aerated                       | Confirmed   |
-|  3 | thickening                    | Confirmed   |
-|  4 | acute air space consolidation | Negative    |
-|  5 | within normal limits          | Confirmed   |
-|  6 | acute fracture                | Negative    |
-|  7 | malalignment                  | Negative    |
-|  8 | dislocation                   | Negative    |
+ |    |                ner_chunk | begin | end |       ner_label | assertion | assertion confidence |
+ |---:|:-------------------------|:------|:----|:----------------|:----------|:---------------------|
+ | 0  |               left-sided |    66 |  75 |       Direction | Confirmed |               0.9964 |
+ | 1  |             pneumothorax |    77 |  88 | ImagingFindings | Confirmed |               0.9963 |
+ | 2  |        complete collapse |   100 | 116 | ImagingFindings | Confirmed |               0.9977 |
+ | 3  |               left upper |   125 | 134 |       Direction | Confirmed |               0.9962 |
+ | 4  |                     lobe |   136 | 139 |        BodyPart | Confirmed |               0.9913 |
+ | 5  |                    lower |   146 | 150 |       Direction | Confirmed |               0.7678 |
+ | 6  |                     lobe |   152 | 155 |        BodyPart | Confirmed |               0.8673 |
+ | 7  |                  aerated |   165 | 171 | ImagingFindings | Confirmed |               0.5755 |
+ | 8  |                bilateral |   200 | 208 |       Direction | Confirmed |               0.9966 |
+ | 9  |             interstitial |   210 | 221 |        BodyPart | Confirmed |               0.9944 |
+ | 10 |               thickening |   223 | 232 | ImagingFindings | Confirmed |               0.9954 |
+ | 11 |  air space consolidation |   257 | 279 | ImagingFindings |  Negative |               0.9434 |
+ | 12 |                    heart |   286 | 290 |        BodyPart | Confirmed |               0.9941 |
+ | 13 |    pulmonary vascularity |   296 | 316 |        BodyPart | Confirmed |               0.9986 |
+ | 14 |     within normal limits |   322 | 341 | ImagingFindings | Confirmed |               0.9999 |
+ | 15 |               Left-sided |   344 | 353 |       Direction | Confirmed |               0.9782 |
+ | 16 |                     port |   355 | 358 |  Medical_Device | Confirmed |               0.9838 |
+ | 17 |          SVC/RA junction |   393 | 407 |        BodyPart | Confirmed |               0.9998 |
+ | 18 |           acute fracture |   426 | 439 | ImagingFindings |  Negative |               0.9995 |
+ | 19 |             malalignment |   442 | 453 | ImagingFindings |  Negative |               0.9964 |
+ | 20 |              dislocation |   459 | 469 | ImagingFindings |  Negative |               0.9864 |
 
 ```
 
@@ -157,13 +169,11 @@ Custom internal labeled radiology dataset.
 ## Benchmarking
 
 ```bash
-              precision    recall  f1-score   support
-
+       label  precision    recall  f1-score   support
    Confirmed       0.95      0.92      0.94      3511
     Negative       0.95      0.95      0.95       615
    Suspected       0.79      0.87      0.82      1106
-
-    accuracy                           0.91      5232
-   macro avg       0.90      0.91      0.90      5232
-weighted avg       0.92      0.91      0.92      5232
+    accuracy       -         -         0.91      5232
+   macro-avg       0.90      0.91      0.90      5232
+weighted-avg       0.92      0.91      0.92      5232
 ```
