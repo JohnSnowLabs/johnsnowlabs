@@ -36,6 +36,7 @@ This model extracts demographic information related to Social Determinants of He
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
