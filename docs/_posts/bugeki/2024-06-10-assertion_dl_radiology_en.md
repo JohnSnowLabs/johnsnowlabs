@@ -36,6 +36,7 @@ Extract radiology entities using the radiology NER model in the pipeline and ass
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -121,7 +122,7 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-|    |                ner_chunk | begin | end |       ner_label | assertion | assertion confidence |
+ |    |                ner_chunk | begin | end |       ner_label | assertion | assertion confidence |
  |---:|:-------------------------|:------|:----|:----------------|:----------|:---------------------|
  | 0  |               left-sided |    66 |  75 |       Direction | Confirmed |               0.9964 |
  | 1  |             pneumothorax |    77 |  88 | ImagingFindings | Confirmed |               0.9963 |
