@@ -64,7 +64,7 @@ ner_model_converter = NerConverterInternal()\
                    "Heart_Disease", "Hyperlipidemia", "Hypertension", "Injury_or_Poisoning", "Kidney_Disease", "Medical-Device", "Obesity", 
                    "Oncological", "Overweight", "Psychological_Condition", 
                    "Symptom", "VS_Finding", "ImagingFindings", "EKG_Findings", 
-                   "Vaccine_Name", "RelativeDate"])
+                   "Vaccine_Name"])
 
 chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
 
@@ -115,7 +115,7 @@ val ner_model_converter = new NerConverterInternal()
                    "Heart_Disease", "Hyperlipidemia", "Hypertension", "Injury_or_Poisoning", "Kidney_Disease", "Medical-Device", "Obesity", 
                    "Oncological", "Overweight", "Psychological_Condition", 
                    "Symptom", "VS_Finding", "ImagingFindings", "EKG_Findings", 
-                   "Vaccine_Name", "RelativeDate"))
+                   "Vaccine_Name"))
 
 val chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
 
@@ -144,11 +144,10 @@ val res = p_model.fit(data).transform(data)
 |    | ner_chunk                     | entity       | umls_code   | resolution                                 | all_k_results                                       | all_k_distances                              | all_k_cosine_distances                       | all_k_resolutions                                                                |
 |---:|:------------------------------|:-------------|:------------|:-------------------------------------------|:----------------------------------------------------|:---------------------------------------------|:---------------------------------------------|:---------------------------------------------------------------------------------|
 |  0 | influenza vaccine             | Vaccine_Name | C0260381    | influenza vaccination                      | C0260381:::C1260452:::C4302763:::C4473357:::C3476...| 6.5367:::6.8250:::7.2029:::7.5281:::7.7098...| 0.0708:::0.0776:::0.0854:::0.0947:::0.0969...| influenza vaccination:::vaccin for influenza:::influenza vaccination given:::d...|
-|  1 | one day after                 | RelativeDate | C0420328    | follow-up 1 day (finding)                  | C0420328:::C4534547:::C5441960:::C3843067:::C3842...| 7.2691:::8.1345:::8.6351:::9.3661:::9.6892...| 0.0814:::0.1016:::0.1151:::0.1348:::0.1451...| follow-up 1 day (finding):::initial day:::1/day:::within 1 day or less:::sudde...|
-|  2 | ankle pain                    | Symptom      | C4047548    | bilateral ankle joint pain                 | C4047548:::C4315239:::C2032293:::C2089776:::C0576...| 4.8134:::6.7158:::6.9567:::7.1444:::7.1515...| 0.0337:::0.0665:::0.0703:::0.0751:::0.0741...| bilateral ankle joint pain:::joint and leg pain:::bilateral calf pain:::ankle ...|
-|  3 | gestational diabetes mellitus | Diabetes     | C2183115    | diabetes mellitus during pregnancy         | C2183115:::C3161145:::C3532257:::C4303558:::C3840...| 5.2200:::6.3563:::6.9305:::7.1692:::7.2144...| 0.0401:::0.0596:::0.0717:::0.0750:::0.0773...| diabetes mellitus during pregnancy:::hx gestational diabetes:::gestational dia...|
-|  4 | type two diabetes mellitus    | Diabetes     | C4016960    | type 2 diabetes mellitus, association with | C4016960:::C4014362:::C4016735:::C3532488:::C0260...| 4.3761:::5.4035:::5.5192:::6.1712:::6.2650...| 0.0285:::0.0438:::0.0460:::0.0568:::0.0583...| type 2 diabetes mellitus, association with:::type 2 diabetes mellitus (t2d):::...|
-|  5 | T2DM                          | Diabetes     | C4014362    | type 2 diabetes mellitus (t2d)             | C4014362:::C1320657:::C4016960:::C4016735:::C0260...| 7.2798:::7.7099:::8.2517:::8.6288:::8.7378...| 0.0821:::0.0929:::0.1043:::0.1171:::0.1163...| type 2 diabetes mellitus (t2d):::type diabetes:::type 2 diabetes mellitus, ass...|
+|  1 | ankle pain                    | Symptom      | C4047548    | bilateral ankle joint pain                 | C4047548:::C4315239:::C2032293:::C2089776:::C0576...| 4.8134:::6.7158:::6.9567:::7.1444:::7.1515...| 0.0337:::0.0665:::0.0703:::0.0751:::0.0741...| bilateral ankle joint pain:::joint and leg pain:::bilateral calf pain:::ankle ...|
+|  2 | gestational diabetes mellitus | Diabetes     | C2183115    | diabetes mellitus during pregnancy         | C2183115:::C3161145:::C3532257:::C4303558:::C3840...| 5.2200:::6.3563:::6.9305:::7.1692:::7.2144...| 0.0401:::0.0596:::0.0717:::0.0750:::0.0773...| diabetes mellitus during pregnancy:::hx gestational diabetes:::gestational dia...|
+|  3 | type two diabetes mellitus    | Diabetes     | C4016960    | type 2 diabetes mellitus, association with | C4016960:::C4014362:::C4016735:::C3532488:::C0260...| 4.3761:::5.4035:::5.5192:::6.1712:::6.2650...| 0.0285:::0.0438:::0.0460:::0.0568:::0.0583...| type 2 diabetes mellitus, association with:::type 2 diabetes mellitus (t2d):::...|
+|  4 | T2DM                          | Diabetes     | C4014362    | type 2 diabetes mellitus (t2d)             | C4014362:::C1320657:::C4016960:::C4016735:::C0260...| 7.2798:::7.7099:::8.2517:::8.6288:::8.7378...| 0.0821:::0.0929:::0.1043:::0.1171:::0.1163...| type 2 diabetes mellitus (t2d):::type diabetes:::type 2 diabetes mellitus, ass...|
 ```
 
 {:.model-param}
