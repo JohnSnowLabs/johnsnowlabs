@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps drug and substances to UMLS CUI codes. It is trained on ´2024AA´ release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the ´Clinical Drug´, ´Pharmacologic Substance´, ´Antibiotic´, and ´Hazardous or Poisonous Substance´ categories using ´sbiobert_base_cased_mli´ embeddings.
+This model maps drug and substances to UMLS CUI codes. It is trained on ´2024AA´ release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the "Clinical Drug", "Pharmacologic Substance", "Antibiotic", and "Hazardous or Poisonous Substance" categories using ´sbiobert_base_cased_mli´ embeddings.
 
 ## Predicted Entities
 
@@ -100,7 +100,7 @@ val document_assembler = new DocumentAssembler()
 
 val sentence_detector = SentenceDetectorDLModel
       .pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-      .setInputCols(["document"])\
+      .setInputCols(Array("document"))\
       .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
@@ -119,7 +119,7 @@ val ner_model = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinica
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "posology_ner"))
       .setOutputCol("posology_ner_chunk")
-      .setWhiteList(["DRUG"])
+      .setWhiteList(Array("DRUG"))
 
 val chunk2doc = new Chunk2Doc()
       .setInputCols("posology_ner_chunk")
