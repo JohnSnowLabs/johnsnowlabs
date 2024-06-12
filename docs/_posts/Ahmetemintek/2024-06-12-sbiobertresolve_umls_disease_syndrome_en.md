@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities to UMLS CUI codes. The complete dataset has 127 different categories, and this model is trained on the ´Disease or Syndrome´ category using ´sbiobert_base_cased_mli´ embeddings.
+This model maps clinical entities to UMLS CUI codes. The complete dataset has 127 different categories, and this model is trained on the "Disease or Syndrome" category using ´sbiobert_base_cased_mli´ embeddings.
 
 ## Predicted Entities
 
@@ -99,11 +99,11 @@ val document_assembler = new DocumentAssembler()
 
 val  sentence_detector = SentenceDetectorDLModel
       .pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-      .setInputCols(["document"])
+      .setInputCols(Array("document"))
       .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-      .setInputCols("sentence")
+      .setInputCols(Array("sentence"))
       .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel
@@ -119,7 +119,7 @@ val ner_model = MedicalNerModel
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner_jsl"))
       .setOutputCol("ner_chunk")
-      .setWhiteList(["Disease_Syndrome_Disorder","Symptom"])
+      .setWhiteList(Array("Disease_Syndrome_Disorder","Symptom"))
 
 val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_chunk")
