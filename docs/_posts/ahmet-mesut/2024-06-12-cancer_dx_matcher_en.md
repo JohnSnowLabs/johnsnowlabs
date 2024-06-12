@@ -36,6 +36,7 @@ This model extracts cancer diagnoses in clinical notes using a rule-based TextMa
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -69,28 +70,28 @@ result = mathcer_pipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-	.setInputCol("text")
-	.setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-	.setInputCols(Array("document"))
-	.setOutputCol("sentence")
+    .setInputCols(Array("document"))
+    .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-	.setInputCols(Array("sentence"))
-	.setOutputCol("token")
+    .setInputCols(Array("sentence"))
+    .setOutputCol("token")
 
 val text_matcher = TextMatcherInternalModel.pretrained("cancer_dx_matcher","en","clinical/models")
-	.setInputCols(Array("sentence","token"))
-	.setOutputCol("cancer_dx")
-	.setMergeOverlapping(true)
+    .setInputCols(Array("sentence","token"))
+    .setOutputCol("cancer_dx")
+    .setMergeOverlapping(true)
 
 val mathcer_pipeline = new Pipeline()
-	.setStages(Array(
-		documentAssembler,
-		sentenceDetector,
-		tokenizer,
-		text_matcher))
+    .setStages(Array(
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    text_matcher))
 
 val data = Seq("""A 65-year-old woman had a history of debulking surgery, bilateral oophorectomy with omentectomy,
  total anterior hysterectomy with radical pelvic lymph nodes dissection due to ovarian carcinoma (mucinous-type carcinoma, stage Ic) 1 year ago.
