@@ -73,7 +73,7 @@ binary_to_image = BinaryToImage() \
 
 # Define transformer for detect signature
 signature_detector = ImageHandwrittenDetector \
-  .pretrained("image_signature_detector_gsa0628", "en", "public/ocr/models") \
+  .pretrained("image_handwritten_detector_gsa0628", "en", "public/ocr/models") \
   .setInputCol("image") \
   .setOutputCol("signature_regions")
 
@@ -108,7 +108,7 @@ val df = spark.read
 
 // Define transformer for detect signature
 val signature_detector = ImageHandwrittenDetector
-  .pretrained("image_signature_detector_gsa0628", "en", "public/ocr/models")
+  .pretrained("image_handwritten_detector_gsa0628", "en", "public/ocr/models")
   .setInputCol("image")
   .setOutputCol("signature_regions")
 
