@@ -112,7 +112,7 @@ val document_assembler = new DocumentAssembler()
 
 val sentence_detector = SentenceDetectorDLModel
       .pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-      .setInputCols(["document"])\
+      .setInputCols(Array("document"))\
       .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
@@ -132,11 +132,11 @@ val ner_model = MedicalNerModel
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner_jsl"))
       .setOutputCol("ner_chunk")
-      .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
+      .setWhiteList(Array("Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
                     "Oxygen_Therapy", "Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes","Injury_or_Poisoning",
                     "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
                     "Drug_BrandName","Hypertension","Imaging_Technique" 
-                  ])
+                  ))
 
 val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_chunk")
