@@ -36,6 +36,7 @@ This model extracts cancer diagnoses in clinical notes using a rule-based TextMa
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
