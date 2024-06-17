@@ -642,7 +642,7 @@ These medical NER models are trained to extract various <code class="language-pl
 <span class="n">df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'med_ner.jsl.wip.clinical en.resolve_chunk.cpt_clinical'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th style="text-align: left">entities@clinical_results</th>
@@ -817,7 +817,7 @@ That is where zero-shot models shows its usefulness by being able to achieve goo
 <span class="n">df</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th style="text-align: left">document</th>
@@ -890,7 +890,7 @@ These classes usually are international <code class="language-plaintext highligh
 <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'med_ner.jsl.wip.clinical resolve.icd10pcs'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th style="text-align: left">sentence_results</th>
@@ -946,7 +946,7 @@ See the <a href="https://nlp.johnsnowlabs.com/models?task=Relation+Extraction">M
 <span class="n">df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.med_ner.jsl.wip.clinical.greedy en.relation'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th style="text-align: left">document_results</th>
@@ -1313,7 +1313,7 @@ See the <a href="https://nlp.johnsnowlabs.com/models?task=Relation+Extraction">M
 <span class="n">assert_df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.med_ner.clinical en.assert '</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th style="text-align: left">entities@clinical_results</th>
@@ -1355,7 +1355,7 @@ See the <a href="https://nlp.johnsnowlabs.com/models?task=Relation+Extraction">M
 <span class="n">df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'de_identify'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th style="text-align: left">deidentified_results</th>
@@ -1398,7 +1398,7 @@ Defaults is <code class="language-plaintext highlighter-rouge">all</code>. <code
 <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'norm_drugs'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th style="text-align: left">drug_norm</th>
@@ -1441,7 +1441,7 @@ Defaults is <code class="language-plaintext highlighter-rouge">all</code>. <code
 <span class="n">df</span> <span class="o">=</span> <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.text_generator.biomedical_biogpt_base'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th style="text-align: left">text</th>
@@ -1500,7 +1500,7 @@ neutral,neutral'''</span>
 <span class="n">gender_NER_pipe</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample_text</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th style="text-align: left">context_match</th>
@@ -1549,7 +1549,7 @@ neutral,neutral'''</span>
     <h3 id="context-matcher-parameters">Context Matcher Parameters</h3>
     <p>You can define the following parameters in your rules.json file to define the entities to be matched</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Parameter</th>
