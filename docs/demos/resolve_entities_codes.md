@@ -201,7 +201,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ICD10CM_MS_DRG_MAPPER/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ICD10CM_MS_DRG_MAPPER.ipynb
         - title: Mapping RxNorm Codes with Corresponding Drug Brand Names, Actions and Treatments
           id: er_drug       
           image: 
