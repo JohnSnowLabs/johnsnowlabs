@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in `all_k_aux_labels` column.
+This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Additionally, this model returns concept classes of the drugs in `all_k_aux_labels` column in the metadata.
 
 ## Predicted Entities
 
@@ -115,7 +115,7 @@ val ner = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/mode
 val ner_converter = new NerConverter()
     .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_chunk")
-    .setWhiteList("DRUG")
+    .setWhiteList(Array("DRUG"))
 
 val chunk2doc = new Chunk2Doc()
     .setInputCols("ner_chunk")
