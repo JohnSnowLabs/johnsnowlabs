@@ -620,133 +620,140 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Configurations"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><style>
-bl {
-  font-weight: 400;
-}
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-es {
-  font-weight: 400;
-  font-style: italic;
-}
-</style>
+  <h2 id="simplified-workflow">Simplified workflow</h2>
 
-<h2 id="simplified-workflow">Simplified workflow</h2>
+  <h3 id="direct-submit">Direct Submit</h3>
 
-<h3 id="direct-submit">Direct Submit</h3>
-
-<p>Using the classical annotation workflow, when an annotator works on a task, a series of actions are necessary for creating a new annotation and submitting it as ground truth:</p>
-
-<ol>
-  <li>Create the completion</li>
-  <li>Save the completion</li>
-  <li>Submit the completion</li>
-  <li>Confirm submission</li>
-  <li>Load next task</li>
-</ol>
-
-<p>This process is adapted for more complex workflows and large tasks. For simple projects with smaller tasks, Generative AI Lab now offers a simplified workflow. Annotators can submit a completion with just one click.</p>
-
-<p>The Project Owner/Manager can activate this option from the <es>Settings</es> dialog (Customize Labels) in the <es>Configuration</es> step of the <es>Setup</es> page. Once enabled, annotators can see the submit button on the labeling page. A second option is available on the same dialog for Project Owner/Manager: <em>Serve next task after completion submission</em>. Once enabled, annotators can see the next task on the labeling page after submitting the completion for the current task.</p>
-
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/direct_submit-min.gif" style="width:100%;" /></p>
-
-<blockquote>
-  <p><strong>Note:</strong></p>
+  <p>Using the classical annotation workflow, when an annotator works on a task, a series of actions are necessary for creating a new annotation and submitting it as ground truth:</p>
 
   <ol>
-    <li>Annotator can <em>Save/Update</em> completion using <code class="language-plaintext highlighter-rouge">CTRL+Enter</code></li>
-    <li>Annotator can <em>Submit</em> completion using <code class="language-plaintext highlighter-rouge">ALT+Enter</code></li>
+    <li>Create the completion</li>
+    <li>Save the completion</li>
+    <li>Submit the completion</li>
+    <li>Confirm submission</li>
+    <li>Load next task</li>
   </ol>
-</blockquote>
 
-<p><br /></p>
+  <p>This process is adapted for more complex workflows and large tasks. For simple projects with smaller tasks, Generative AI Lab now offers a simplified workflow. Annotators can submit a completion with just one click.</p>
 
-<h3 id="accept-prediction">Accept Prediction</h3>
+  <p>The Project Owner/Manager can activate this option from the <es>Settings</es> dialog (Customize Labels) in the <es>Configuration</es> step of the <es>Setup</es> page. Once enabled, annotators can see the submit button on the labeling page. A second option is available on the same dialog for Project Owner/Manager: <em>Serve next task after completion submission</em>. Once enabled, annotators can see the next task on the labeling page after submitting the completion for the current task.</p>
 
-<p>When predictions are available for a task, Annotator can accept the predictions with just one click and navigate automatically to the next task. When users click on Accept Prediction, a new completion is created based on the prediction, then submitted as ground truth, and the next task in line (assigned to the current annotator/reviewer and with <es>Incomplete</es> or <es>In Progress</es> status) is automatically served.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/direct_submit-min.gif" style="width:100%;" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/accept_prediction-min.gif" style="width:100%;" /></p>
+  <blockquote>
+    <p><strong>Note:</strong></p>
 
-<blockquote>
-  <p><strong>NOTE:</strong> Press backspace key (on windows) or delete key (on mac) to delete the selected relation from the labeling editor or use the delete action icon on the Relations widget.</p>
-</blockquote>
+    <ol>
+      <li>Annotator can <em>Save/Update</em> completion using <code class="language-plaintext highlighter-rouge">CTRL+Enter</code></li>
+      <li>Annotator can <em>Submit</em> completion using <code class="language-plaintext highlighter-rouge">ALT+Enter</code></li>
+    </ol>
+  </blockquote>
 
-<h2 id="labeling-editor-settings">Labeling editor Settings</h2>
+</div>
+<div class="h3-box">
 
-<p>The labeling editor offers some configurable features. For example, you can modify the editor’s layout, show or hide predictions, annotations, or the confidence panel, show or hide various controls and information. It is also possible to keep a label selected after creating a region, display labels on bounding boxes, polygons and other regions while labeling, and show line numbers for text labeling.</p>
+  <h3 id="accept-prediction">Accept Prediction</h3>
 
-<h3 id="enable-labeling-hotkeys">Enable labeling hotkeys</h3>
+  <p>When predictions are available for a task, Annotator can accept the predictions with just one click and navigate automatically to the next task. When users click on Accept Prediction, a new completion is created based on the prediction, then submitted as ground truth, and the next task in line (assigned to the current annotator/reviewer and with <es>Incomplete</es> or <es>In Progress</es> status) is automatically served.</p>
 
-<p>This option enables/disable the hotkeys assigned to taxonomy labels to use the hotkeys during the annotation process.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/accept_prediction-min.gif" style="width:100%;" /></p>
 
-<p><br /></p>
+  <blockquote>
+    <p><strong>NOTE:</strong> Press backspace key (on windows) or delete key (on mac) to delete the selected relation from the labeling editor or use the delete action icon on the Relations widget.</p>
+  </blockquote>
 
-<h3 id="show-hotkey-tooltips">Show hotkey tooltips</h3>
+</div>
+<div class="h3-box">
 
-<p>This option shows/hides the hotkey and tooltip on the taxonomy label and the control buttons. <em>Enable labeling hotkeys</em> must be enabled for this option to work.</p>
+  <h2 id="labeling-editor-settings">Labeling editor Settings</h2>
 
-<p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/toggle_show_hotkey_tooltips.png" style="width:50%;" /></p>
+  <p>The labeling editor offers some configurable features. For example, you can modify the editor’s layout, show or hide predictions, annotations, or the confidence panel, show or hide various controls and information. It is also possible to keep a label selected after creating a region, display labels on bounding boxes, polygons and other regions while labeling, and show line numbers for text labeling.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/show_hotkey_tooltips.png" style="width:100%;" /></p>
+</div>
+<div class="h3-box">
 
-<p><br /></p>
+  <h3 id="enable-labeling-hotkeys">Enable labeling hotkeys</h3>
 
-<h3 id="show-labels-inside-the-regions">Show labels inside the regions</h3>
+  <p>This option enables/disable the hotkeys assigned to taxonomy labels to use the hotkeys during the annotation process.</p>
 
-<p>When you enable this option, the labels assigned to each annotated region are displayed on the respective region.</p>
+</div>
+<div class="h3-box">
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/show_labels_inside_regions.png" style="width:100%;" /></p>
+  <h3 id="show-hotkey-tooltips">Show hotkey tooltips</h3>
 
-<p><br /></p>
+  <p>This option shows/hides the hotkey and tooltip on the taxonomy label and the control buttons. <em>Enable labeling hotkeys</em> must be enabled for this option to work.</p>
 
-<h3 id="keep-label-selected-after-creating-a-region">Keep label selected after creating a region</h3>
+  <p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/toggle_show_hotkey_tooltips.png" style="width:50%;" /></p>
 
-<p>This option helps users quickly annotate sequences of the same label by keeping the label selected after the annotation of a region.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/show_hotkey_tooltips.png" style="width:100%;" /></p>
 
-<p>With the option unchecked:</p>
+</div>
+<div class="h3-box">
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_off-min.gif" style="width:100%;" /></p>
+  <h3 id="show-labels-inside-the-regions">Show labels inside the regions</h3>
 
-<p>With the option checked:</p>
+  <p>When you enable this option, the labels assigned to each annotated region are displayed on the respective region.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_on-min.gif" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/show_labels_inside_regions.png" style="width:100%;" /></p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="select-regions-after-creating">Select regions after creating</h3>
+  <h3 id="keep-label-selected-after-creating-a-region">Keep label selected after creating a region</h3>
 
-<p>This option keeps the annotated region selected after annotation. In this way, it will be easier for users to quickly change the assigned label for the last selected region if necessary.</p>
+  <p>This option helps users quickly annotate sequences of the same label by keeping the label selected after the annotation of a region.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/select_region_after_creating-min.gif" style="width:100%;" /></p>
+  <p>With the option unchecked:</p>
 
-<p><br /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_off-min.gif" style="width:100%;" /></p>
 
-<h3 id="show-line-numbers-for-text">Show line numbers for Text</h3>
+  <p>With the option checked:</p>
 
-<p>This option adds line numbers to the text content to annotate in the labeling editor.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_on-min.gif" style="width:100%;" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_line_number.png" style="width:100%;" /></p>
+</div>
+<div class="h3-box">
 
-<p><br /></p>
+  <h3 id="select-regions-after-creating">Select regions after creating</h3>
 
-<h3 id="label-all-occurrences-of-selected-text">Label all occurrences of selected text</h3>
+  <p>This option keeps the annotated region selected after annotation. In this way, it will be easier for users to quickly change the assigned label for the last selected region if necessary.</p>
 
-<p>When checked, this option allow users to annotate all occurences of a text in the current task in one step.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/select_region_after_creating-min.gif" style="width:100%;" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/label_all_occurence-min.gif" style="width:100%;" /></p>
+</div>
+<div class="h3-box">
 
-<h2 id="labeling-editor-customizations">Labeling editor Customizations</h2>
+  <h3 id="show-line-numbers-for-text">Show line numbers for Text</h3>
 
-<p>The Labeling editor is highly customizable. Project Owners and Managers can change the layout of their projects based on their needs.</p>
+  <p>This option adds line numbers to the text content to annotate in the labeling editor.</p>
 
-<h3 id="search-filter-for-a-large-number-of-labels">Search filter for a large number of labels</h3>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_line_number.png" style="width:100%;" /></p>
 
-<p>When a project has a large number of NER/Assertion labels in the taxonomy, the display of the taxonomy takes a lot of screen space, and it is difficult for annotators to navigate through all labels. To tackle this challenge, Generative AI Lab supports search for labels in NER projects (an autocomplete search option).</p>
+</div>
+<div class="h3-box">
 
-<p>To add the search bar for NER Labels or Choices, use the <code class="language-plaintext highlighter-rouge">Filter</code> tag as shown in the following XML configuration.</p>
+  <h3 id="label-all-occurrences-of-selected-text">Label all occurrences of selected text</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Filter /&gt;
+  <p>When checked, this option allow users to annotate all occurences of a text in the current task in one step.</p>
+
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/label_all_occurence-min.gif" style="width:100%;" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="labeling-editor-customizations">Labeling editor Customizations</h2>
+
+  <p>The Labeling editor is highly customizable. Project Owners and Managers can change the layout of their projects based on their needs.</p>
+
+  <h3 id="search-filter-for-a-large-number-of-labels">Search filter for a large number of labels</h3>
+
+  <p>When a project has a large number of NER/Assertion labels in the taxonomy, the display of the taxonomy takes a lot of screen space, and it is difficult for annotators to navigate through all labels. To tackle this challenge, Generative AI Lab supports search for labels in NER projects (an autocomplete search option).</p>
+
+  <p>To add the search bar for NER Labels or Choices, use the <code class="language-plaintext highlighter-rouge">Filter</code> tag as shown in the following XML configuration.</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Filter /&gt;
 
 &lt;View&gt;
 *** enclose labels tags here ***
@@ -755,59 +762,59 @@ es {
 &lt;View&gt;
 *** enclose text tags here ***
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p><strong>Parameters:</strong></p>
+  <p><strong>Parameters:</strong></p>
 
-<p>The following parameters/attributes can be used within the <code class="language-plaintext highlighter-rouge">Filter</code> tag.</p>
+  <p>The following parameters/attributes can be used within the <code class="language-plaintext highlighter-rouge">Filter</code> tag.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>placeholder</td>
-      <td>string</td>
-      <td>Quick Filter</td>
-      <td>Placeholder text for filter</td>
-    </tr>
-    <tr>
-      <td>minlength</td>
-      <td>number</td>
-      <td>3</td>
-      <td>Size of the filter</td>
-    </tr>
-    <tr>
-      <td>style</td>
-      <td>string</td>
-      <td> </td>
-      <td>CSS style of the string</td>
-    </tr>
-    <tr>
-      <td>hotkey</td>
-      <td>string</td>
-      <td> </td>
-      <td>Hotkey to use to focus on the filter text area</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>placeholder</td>
+        <td>string</td>
+        <td>Quick Filter</td>
+        <td>Placeholder text for filter</td>
+      </tr>
+      <tr>
+        <td>minlength</td>
+        <td>number</td>
+        <td>3</td>
+        <td>Size of the filter</td>
+      </tr>
+      <tr>
+        <td>style</td>
+        <td>string</td>
+        <td> </td>
+        <td>CSS style of the string</td>
+      </tr>
+      <tr>
+        <td>hotkey</td>
+        <td>string</td>
+        <td> </td>
+        <td>Hotkey to use to focus on the filter text area</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Usage Example:</strong></p>
+  <p><strong>Usage Example:</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Filter placeholder="Quick Filter"/&gt;
-</code></pre></div></div>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Filter placeholder="Quick Filter"/&gt;
+</code></pre></div>  </div>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/filter.png" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/filter.png" style="width:100%;" /></p>
 
-<p>For obtaining the above display on a NER project, the config should look as follows:</p>
+  <p>For obtaining the above display on a NER project, the config should look as follows:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
   &lt;Filter name="fl" toName="label" hotkey="shift+f" minlength="1" /&gt;
 
   &lt;Labels name="label" toName="text"&gt;
@@ -819,38 +826,39 @@ es {
 
   &lt;Text name="text" value="$text"/&gt;
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>Notice how users can search for the desired label using the filter bar:</p>
+  <p>Notice how users can search for the desired label using the filter bar:</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ner_label_search-min.gif" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ner_label_search-min.gif" style="width:100%;" /></p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="resizable-label-and-text-container">Resizable label and text container</h3>
+  <h3 id="resizable-label-and-text-container">Resizable label and text container</h3>
 
-<p>While annotating longer text documents annotators may need to scroll to the top of the document for selecting the label to use, and then scroll down to create a label. Also, if the text is large, annotators have to scroll to a certain section because the textbox size is fixed. In those cases, the annotation experience can be improved by creating a scrollable labeling area and textbox area.</p>
+  <p>While annotating longer text documents annotators may need to scroll to the top of the document for selecting the label to use, and then scroll down to create a label. Also, if the text is large, annotators have to scroll to a certain section because the textbox size is fixed. In those cases, the annotation experience can be improved by creating a scrollable labeling area and textbox area.</p>
 
-<p>To add the scroll bar, the <code class="language-plaintext highlighter-rouge">View</code> tag with a fixed height and <code class="language-plaintext highlighter-rouge">overflow-y:scroll</code> style property can be used as shown in the following XML config structure:</p>
+  <p>To add the scroll bar, the <code class="language-plaintext highlighter-rouge">View</code> tag with a fixed height and <code class="language-plaintext highlighter-rouge">overflow-y:scroll</code> style property can be used as shown in the following XML config structure:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View style="background:white; height: 100px; overflow-y:scroll; resize:vertical; position:sticky; top:0;"&gt;
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View style="background:white; height: 100px; overflow-y:scroll; resize:vertical; position:sticky; top:0;"&gt;
 *** enclose labels tags here ***
 &lt;/View&gt;
 
 &lt;View style="resize:vertical; margin-top:10px; max-height:400px; overflow-y:scroll;"&gt;
 **** enclose text tags here**
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>Once it has been added and saved to the Project Configuration, the scroll bar should be visible.</p>
+  <p>Once it has been added and saved to the Project Configuration, the scroll bar should be visible.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar.png" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar.png" style="width:100%;" /></p>
 
-<p><strong>Example</strong></p>
+  <p><strong>Example</strong></p>
 
-<p>Using the following Project Configuration</p>
+  <p>Using the following Project Configuration</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
   &lt;Filter name="fl" toName="label" hotkey="shift+f" minlength="1" /&gt;
   &lt;View style="background:white; height: 100px; overflow-y:scroll; resize:vertical; position:sticky; top:0;"&gt;
     &lt;Labels name="label" toName="text"&gt;
@@ -865,37 +873,51 @@ es {
     &lt;Text name="text" value="$text"&gt;&lt;/Text&gt;
   &lt;/View&gt;
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>we’ll obtain the output illustrated below:</p>
+  <p>we’ll obtain the output illustrated below:</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar-min.gif" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar-min.gif" style="width:100%;" /></p>
 
-<h2 id="comments-on-the-labeling-page">Comments on the Labeling Page</h2>
+</div>
+<div class="h3-box">
 
-<p>Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.</p>
+  <h2 id="comments-on-the-labeling-page">Comments on the Labeling Page</h2>
 
-<p><img src="/assets/images/annotation_lab/4.10.0/2-min.gif" alt="Comments" /></p>
+  <p>Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.</p>
 
-<h2 id="tags-from-the-labeling-screen">Tags from the Labeling Screen</h2>
+  <p><img src="/assets/images/annotation_lab/4.10.0/2-min.gif" alt="Comments" /></p>
 
-<p>From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select “Assign Tags”.</p>
+</div>
+<div class="h3-box">
 
-<p><img src="/assets/images/annotation_lab/4.10.0/3-min.gif" alt="tags" /></p>
+  <h2 id="tags-from-the-labeling-screen">Tags from the Labeling Screen</h2>
 
-<p>Once the users select the tag/tags, they will be displayed against the tasks on the tasks page.</p>
+  <p>From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select “Assign Tags”.</p>
 
-<h2 id="toggle-preview-window">Toggle Preview Window</h2>
+  <p><img src="/assets/images/annotation_lab/4.10.0/3-min.gif" alt="tags" /></p>
 
-<p>Label configuration editor and <es>Preview Window</es> covers 50/50 part of the screen. It can make editing larger XML configurations difficult. For a better editing experience, we can use the Toggle Preview Window button to have the editor use full screen width.</p>
+  <p>Once the users select the tag/tags, they will be displayed against the tasks on the tasks page.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_preview_window-min.gif" style="width:100%;" /></p>
+</div>
+<div class="h3-box">
 
-<h2 id="switch-role">Switch Role</h2>
+  <h2 id="toggle-preview-window">Toggle Preview Window</h2>
 
-<p>For users having multiple roles (<em>Annotator/Reviewer/Manager</em>) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting <em>Annotator</em> option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to <em>Reviewer</em> or <em>Manager</em> option. The selection persists even when the tab is closed or refreshed.</p>
+  <p>Label configuration editor and <es>Preview Window</es> covers 50/50 part of the screen. It can make editing larger XML configurations difficult. For a better editing experience, we can use the Toggle Preview Window button to have the editor use full screen width.</p>
 
-<p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/switch_role.png" style="width:40%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_preview_window-min.gif" style="width:100%;" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="switch-role">Switch Role</h2>
+
+  <p>For users having multiple roles (<em>Annotator/Reviewer/Manager</em>) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting <em>Annotator</em> option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to <em>Reviewer</em> or <em>Manager</em> option. The selection persists even when the tab is closed or refreshed.</p>
+
+  <p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/switch_role.png" style="width:40%;" /></p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-12-12T00:00:00+00:00">Dec 12, 2022</time>
     </span><!-- start custom article footer snippet -->

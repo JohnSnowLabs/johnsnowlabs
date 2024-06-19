@@ -709,7 +709,7 @@ If you have multiple licenses you can re-run an authorization method and use the
 between licenses you have access to.    <br />
 Licenses are locally numbered in order they have been provided, for more info see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#storage-of-license-data-and-license-search-behaviour">License Caching</a>.</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Auth Flow Method</th>
@@ -768,7 +768,7 @@ Licenses are locally numbered in order they have been provided, for more info se
 
     <p>Use these parameters to configure <strong>the preferred authorization flow</strong>.</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Parameter</th>
@@ -810,7 +810,7 @@ Licenses are locally numbered in order they have been provided, for more info se
 
     <p>Use these parameters to configure <strong>where</strong> to install the libraries.</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Parameter</th>
@@ -844,7 +844,7 @@ Licenses are locally numbered in order they have been provided, for more info se
 
     <p>Use the following parameters to configure <strong>what should</strong> be installed.</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Parameter</th>
@@ -899,7 +899,7 @@ Labs license,which will be installed to your Databricks cluster.      <br />
 A John Snow Labs Home directory is constructed in the distributed Databricks File System<code class="language-plaintext highlighter-rouge">/dbfs/johnsnowlabs</code> which has
 all Jars, Wheels and License Information to run all features in a Databricks cluster.</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Databricks Auth Flow Method</th>
@@ -929,7 +929,7 @@ See <a href="https://docs.databricks.com/dev-tools/api/latest/clusters.html#crea
     <p>You can use the <code class="language-plaintext highlighter-rouge">extra_pip_installs</code> parameter to installl a list of additional pypi libraries to the cluster. 
 Just set <code class="language-plaintext highlighter-rouge">nlp.install_to_databricks(extra_pip_installs=['langchain','farm-haystack==1.2.3'])</code> to install the libraries.</p>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th>Cluster creation Parameter</th>
@@ -1049,8 +1049,8 @@ have access to enterprise nlp.</li>
     <h3 id="via-auto-detection--browser-login">Via Auto Detection &amp; Browser Login</h3>
 
     <p>All <a href="">default search locations </a> are searched, if any credentials are found they will be used.
-If no credentials are auto-detected, a Browser Window will pop up, asking to authorize access to https://my.johnsnowlabs.com/
-In Google Colab, a clickable button will appear, which will make a window pop up where you can authorize access to https://my.johnsnowlabs.com/.</p>
+If no credentials are auto-detected, a Browser Window will pop up, asking to authorize access to <a href="https://my.johnsnowlabs.com/">https://my.johnsnowlabs.com/</a>
+In Google Colab, a clickable button will appear, which will make a window pop up where you can authorize access to <a href="https://my.johnsnowlabs.com/">https://my.johnsnowlabs.com/</a>.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">install</span><span class="p">()</span>
 </code></pre></div>    </div>
@@ -1215,7 +1215,7 @@ you must install the <code class="language-plaintext highlighter-rouge">johnsnow
 
     <h2 id="storage-of-license-data-and-license-search-behaviour">Storage of License Data and License Search behaviour</h2>
 
-    <p>The John Snow Labs library caches license data in <code class="language-plaintext highlighter-rouge">~/.johnsnowlabs/licenses</code> whenever a new one is provided .
+    <p>The John Snow Labs library caches license data in <code class="language-plaintext highlighter-rouge">~/.johnsnowlabs/licenses</code> whenever a new one is provided.
 After having provided license data once, you don’t need to specify it again since the cached licensed will be used.
 Use the <code class="language-plaintext highlighter-rouge">local_license_number</code> and <code class="language-plaintext highlighter-rouge">remote_license_number</code> parameters to switch between multiple licenses.<br />
 <strong>Note:</strong> Locally cached licenses are numbered in the order they have been provided, starting at 0.          <br />
@@ -1227,7 +1227,7 @@ Use the following functions to see all your avaiable licenses.</p>
 
     <h2 id="list-all-available-licenses">List all available licenses</h2>
 
-    <p>This shows you all licenses for your account in https://my.johnsnowlabs.com/.       <br />
+    <p>This shows you all licenses for your account in <a href="https://my.johnsnowlabs.com/">https://my.johnsnowlabs.com/</a>.       <br />
 Use this to decide which license number to install when installing via browser or access token.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">list_remote_licenses</span><span class="p">()</span>
@@ -1283,9 +1283,6 @@ You must run one of the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/instal
 to gian access to the latest enterprise libraries.</p>
 
     <h2 class="h2-select" id="next-steps--frequently-asked-questions">Next Steps &amp; Frequently Asked Questions</h2>
-
-  </div>
-  <div class="h3-box">
 
     <h2 id="how-to-setup-java-8">How to setup Java 8</h2>
 

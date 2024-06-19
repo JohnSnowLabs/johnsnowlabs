@@ -620,194 +620,205 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Manual Annotation"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><style>
-bl {
-  font-weight: 400;
-}
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-es {
-  font-weight: 400;
-  font-style: italic;
-}
-</style>
+  <p>The Generative AI Lab keeps a human expert as productive as possible. It minimizes the number of mouse clicks, keystrokes, and eye movements in the main workflow. The continuous improvement in the UI and the UX is from iterative feedback from the users.</p>
 
-<p>The Generative AI Lab keeps a human expert as productive as possible. It minimizes the number of mouse clicks, keystrokes, and eye movements in the main workflow. The continuous improvement in the UI and the UX is from iterative feedback from the users.</p>
+  <p>Generative AI Lab supports keyboard shortcuts for all types of annotations. It enables having one hand on the keyboard, one hand on the mouse, and both eyes on the screen at all times. One-click completion and automatic switching to the next task keep experts in the loop.</p>
 
-<p>Generative AI Lab supports keyboard shortcuts for all types of annotations. It enables having one hand on the keyboard, one hand on the mouse, and both eyes on the screen at all times. One-click completion and automatic switching to the next task keep experts in the loop.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/annotation_main.png" style="width:100%;" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/annotation_main.png" style="width:100%;" /></p>
+  <p>On the header of the Labeling area, you can find the list of labels defined for the project. In the center, it displays the content of the task. On the right, there are several widgets categorized into different groups.</p>
 
-<p>On the header of the Labeling area, you can find the list of labels defined for the project. In the center, it displays the content of the task. On the right, there are several widgets categorized into different groups.</p>
+  <ul>
+    <li>Annotations</li>
+    <li>Versions</li>
+    <li>Progress</li>
+  </ul>
 
-<ul>
-  <li>Annotations</li>
-  <li>Versions</li>
-  <li>Progress</li>
-</ul>
+</div>
+<div class="h3-box">
 
-<h2 id="labeling-widgets">Labeling Widgets</h2>
+  <h2 id="labeling-widgets">Labeling Widgets</h2>
 
-<h3 id="completions">Completions</h3>
+  <h3 id="completions">Completions</h3>
 
-<p>A completion is a list of annotations manually defined by a user for a given task. After completing annotation on a task (e.g., all entities highlighted in the text, or one or more classes is assigned to the task in the case of classification projects) user clicks on the <code class="language-plaintext highlighter-rouge">Save</code> button to save their progress or <code class="language-plaintext highlighter-rouge">Submit</code> button to submit the completion.</p>
+  <p>A completion is a list of annotations manually defined by a user for a given task. After completing annotation on a task (e.g., all entities highlighted in the text, or one or more classes is assigned to the task in the case of classification projects) user clicks on the <code class="language-plaintext highlighter-rouge">Save</code> button to save their progress or <code class="language-plaintext highlighter-rouge">Submit</code> button to submit the completion.</p>
 
-<p>A submitted completion is no longer editable, and the user cannot delete it. Creating a new copy of the submitted completion is the only option to edit it. An annotator can modify or delete their completions only if completions are not submitted yet.</p>
+  <p>A submitted completion is no longer editable, and the user cannot delete it. Creating a new copy of the submitted completion is the only option to edit it. An annotator can modify or delete their completions only if completions are not submitted yet.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/completion_submit.png" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/completion_submit.png" style="width:100%;" /></p>
 
-<p>Dedicated action icons are available on the completions widgets to allow users to quickly run actions like delete, copy, set ground-truth.</p>
+  <p>Dedicated action icons are available on the completions widgets to allow users to quickly run actions like delete, copy, set ground-truth.</p>
 
-<p><img class="image image__shadow" src="https://user-images.githubusercontent.com/45035063/204707502-acaba8b8-43d0-4354-8c14-4f66132131ad.png" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="https://user-images.githubusercontent.com/45035063/204707502-acaba8b8-43d0-4354-8c14-4f66132131ad.png" style="width:100%;" /></p>
 
-<p>It is an important to ensure a complete audit trail of all user actions. Generative AI Lab tracks the history and details of any deleted completions. It means it is possible to see the name of the completion creator, date of creation, and deletion.</p>
+  <p>It is an important to ensure a complete audit trail of all user actions. Generative AI Lab tracks the history and details of any deleted completions. It means it is possible to see the name of the completion creator, date of creation, and deletion.</p>
 
-<p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/completion_history.png" style="width:40%;" /></p>
+  <p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/completion_history.png" style="width:40%;" /></p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="predictions">Predictions</h3>
+  <h3 id="predictions">Predictions</h3>
 
-<p>A prediction is a list of annotations created automatically by <bl>Spark NLP</bl> pre-trained <a href="https://nlp.johnsnowlabs.com/docs/en/alab/models">models</a> or from the <a href="https://nlp.johnsnowlabs.com/docs/en/alab/rules">rules</a>. A project owner/manager can create predictions using the <code class="language-plaintext highlighter-rouge">Pre-Annotate</code> button from the <es>Tasks</es> page. Predictions are read-only, which means users can see the predictions but cannot modify those.</p>
+  <p>A prediction is a list of annotations created automatically by <bl>Spark NLP</bl> pre-trained <a href="https://nlp.johnsnowlabs.com/docs/en/alab/models">models</a> or from the <a href="https://nlp.johnsnowlabs.com/docs/en/alab/rules">rules</a>. A project owner/manager can create predictions using the <code class="language-plaintext highlighter-rouge">Pre-Annotate</code> button from the <es>Tasks</es> page. Predictions are read-only, which means users can see the predictions but cannot modify those.</p>
 
-<p>To reuse a prediction to bootstrap the annotation process, users can copy it to a new completion. This new completion bootstrapped from the prediction is editable.</p>
+  <p>To reuse a prediction to bootstrap the annotation process, users can copy it to a new completion. This new completion bootstrapped from the prediction is editable.</p>
 
-<p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/prediction.png" style="width:40%;" /></p>
+  <p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/prediction.png" style="width:40%;" /></p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="confidence">Confidence</h3>
+  <h3 id="confidence">Confidence</h3>
 
-<p>From version <bl>3.3.0</bl>, running pre-annotations on a text project provides one extra piece of information for the automatic annotations - the confidence score. This score shows the confidence the model has for each of the labeled chunks it predicts. It is calculated based on the benchmarking information of the model used to pre-annotate and the score of each prediction. The confidence score is available when working on <es>Named Entity Recognition</es>, <es>Relation Extraction</es>, <es>Assertion</es>, and <es>Classification</es> projects and is also generated when using <a href="https://nlp.johnsnowlabs.com/docs/en/alab/rules">Rules</a>.</p>
+  <p>From version <bl>3.3.0</bl>, running pre-annotations on a text project provides one extra piece of information for the automatic annotations - the confidence score. This score shows the confidence the model has for each of the labeled chunks it predicts. It is calculated based on the benchmarking information of the model used to pre-annotate and the score of each prediction. The confidence score is available when working on <es>Named Entity Recognition</es>, <es>Relation Extraction</es>, <es>Assertion</es>, and <es>Classification</es> projects and is also generated when using <a href="https://nlp.johnsnowlabs.com/docs/en/alab/rules">Rules</a>.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/confidence.png" style="width:100%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/confidence.png" style="width:100%;" /></p>
 
-<p>On the Labeling page, when selecting the <es>Prediction</es> widget, users can see all preannotation in the <es>Annotations</es> section with a score assigned to them. Using the confidence slider, users can filter out low confidence labels before starting to edit/correct the labels. Both <em>Accept Prediction</em> and <em>Add a new completion based on this prediction</em> operation apply to the filtered annotations from the confidence slider.</p>
+  <p>On the Labeling page, when selecting the <es>Prediction</es> widget, users can see all preannotation in the <es>Annotations</es> section with a score assigned to them. Using the confidence slider, users can filter out low confidence labels before starting to edit/correct the labels. Both <em>Accept Prediction</em> and <em>Add a new completion based on this prediction</em> operation apply to the filtered annotations from the confidence slider.</p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="annotations">Annotations</h3>
+  <h3 id="annotations">Annotations</h3>
 
-<p>The Annotations widget has two sections.</p>
+  <p>The Annotations widget has two sections.</p>
 
-<bl>Regions</bl>
-<ul>
-  <li>Gives a list overview of all annotated chunks. When you click on any annotation, it gets automatically highlighted in the labeling editor. We can edit or remove annotations from here.</li>
-</ul>
+  <bl>Regions</bl>
+  <ul>
+    <li>Gives a list overview of all annotated chunks. When you click on any annotation, it gets automatically highlighted in the labeling editor. We can edit or remove annotations from here.</li>
+  </ul>
 
-<bl>Relations</bl>
-<ul>
-  <li>Lists all the relations that have been created. When the user moves the mouse over any one relation, it is highlighted in the labeling editor.</li>
-</ul>
+  <bl>Relations</bl>
+  <ul>
+    <li>Lists all the relations that have been created. When the user moves the mouse over any one relation, it is highlighted in the labeling editor.</li>
+  </ul>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="progress">Progress</h3>
+  <h3 id="progress">Progress</h3>
 
-<p>Annotator/Reviewer can see their overall work progress from within the labeling page. The status is calculated for their assigned work.</p>
+  <p>Annotator/Reviewer can see their overall work progress from within the labeling page. The status is calculated for their assigned work.</p>
 
-<bl>For Annotator View:</bl>
+  <bl>For Annotator View:</bl>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/progress_annotator.png" style="width:40%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/progress_annotator.png" style="width:40%;" /></p>
 
-<bl>For Reviewer View:</bl>
+  <bl>For Reviewer View:</bl>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/progress_reviewer.png" style="width:40%;" /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/progress_reviewer.png" style="width:40%;" /></p>
 
-<h2 id="text-annotation">Text Annotation</h2>
+</div>
+<div class="h3-box">
 
-<h3 id="named-entity-recognition">Named Entity Recognition</h3>
+  <h2 id="text-annotation">Text Annotation</h2>
 
-<p>To extract information using NER labels, we first click on the label to select it or press the shortcut key assigned to it, and then, with the mouse, select the relevant part of the text. We can easily edit the incorrect labeling by clicking on the labeled text and then selecting the new label you want to assign to this text.</p>
+  <h3 id="named-entity-recognition">Named Entity Recognition</h3>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/add_label.png" style="width:100%;" /></p>
+  <p>To extract information using NER labels, we first click on the label to select it or press the shortcut key assigned to it, and then, with the mouse, select the relevant part of the text. We can easily edit the incorrect labeling by clicking on the labeled text and then selecting the new label you want to assign to this text.</p>
 
-<p>To delete the label from the text, we first click on the text on the labeling editor and then press backspace.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/add_label.png" style="width:100%;" /></p>
 
-<h4 id="trim-leading-and-ending-special-characters-in-annotated-chunks">Trim leading and ending special characters in annotated chunks</h4>
+  <p>To delete the label from the text, we first click on the text on the labeling editor and then press backspace.</p>
 
-<p>When annotating text, it is possible and probable that the annotation is not very precise and the chunks contain leading/trailing spaces and punctuation marks. By default all the leading/trailing spaces and punctuation marks are excluded from the annotated chunk. The labeling editor settings has a new configuration option that can be used to enable/disable this feature if necessary.</p>
+  <h4 id="trim-leading-and-ending-special-characters-in-annotated-chunks">Trim leading and ending special characters in annotated chunks</h4>
 
-<p><img src="/assets/images/annotation_lab/4.1.0/trimming_characters-min.gif" alt="trim_spaces_punctuations" /></p>
+  <p>When annotating text, it is possible and probable that the annotation is not very precise and the chunks contain leading/trailing spaces and punctuation marks. By default all the leading/trailing spaces and punctuation marks are excluded from the annotated chunk. The labeling editor settings has a new configuration option that can be used to enable/disable this feature if necessary.</p>
 
-<p><br /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/trimming_characters-min.gif" alt="trim_spaces_punctuations" /></p>
 
-<h3 id="assertion-labels">Assertion Labels</h3>
+</div>
+<div class="h3-box">
 
-<p>To add an assertion label to an extracted entity, select the assertion label and select the labeled entity (from NER) in the labeling editor. After this, the extracted entity will have two labels - one for NER and one for assertion. In the example below, the chunks <es>heart disease</es>, <es>kidney disease</es>, <es>stroke</es> etc., were extracted first using the NER label - <em>Symptom</em> (pink color) and then the assertion label - <em>Absent</em> (green color).</p>
+  <h3 id="assertion-labels">Assertion Labels</h3>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/assertion.png" style="width:100%;" /></p>
+  <p>To add an assertion label to an extracted entity, select the assertion label and select the labeled entity (from NER) in the labeling editor. After this, the extracted entity will have two labels - one for NER and one for assertion. In the example below, the chunks <es>heart disease</es>, <es>kidney disease</es>, <es>stroke</es> etc., were extracted first using the NER label - <em>Symptom</em> (pink color) and then the assertion label - <em>Absent</em> (green color).</p>
 
-<p><br /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/assertion.png" style="width:100%;" /></p>
 
-<h3 id="relation-extraction">Relation Extraction</h3>
+</div>
+<div class="h3-box">
 
-<p>Creating relations with the Generative AI Lab is very simple. First, click on any one labeled entity, then press the <es>r</es> key and click on the second labeled entity.</p>
+  <h3 id="relation-extraction">Relation Extraction</h3>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/rel_ann-min.gif" style="width:100%;" /></p>
+  <p>Creating relations with the Generative AI Lab is very simple. First, click on any one labeled entity, then press the <es>r</es> key and click on the second labeled entity.</p>
 
-<p>You can add a label to the relation, change its direction or delete it using the contextual menu displayed next to the relation arrow or from the relation box.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/rel_ann-min.gif" style="width:100%;" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/relations2.png" style="width:40%;" /></p>
+  <p>You can add a label to the relation, change its direction or delete it using the contextual menu displayed next to the relation arrow or from the relation box.</p>
 
-<p><br /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/relations2.png" style="width:40%;" /></p>
 
-<h4 id="cross-page-annotation">Cross page Annotation</h4>
+</div>
+<div class="h3-box">
 
-<p>From version <bl>2.8.0</bl>, Generative AI Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. Previously, relations were created between chunks located on the same page. But now, relations can be created among tokens located on different pages. The way to do this is to first <a href="/docs/en/alab/import#dynamic-task-pagination">change the pagination settings</a> to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.</p>
+  <h4 id="cross-page-annotation">Cross page Annotation</h4>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation-min.gif" style="width:100%;" /></p>
+  <p>From version <bl>2.8.0</bl>, Generative AI Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. Previously, relations were created between chunks located on the same page. But now, relations can be created among tokens located on different pages. The way to do this is to first <a href="/docs/en/alab/import#dynamic-task-pagination">change the pagination settings</a> to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.</p>
 
-<p><br /></p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation-min.gif" style="width:100%;" /></p>
 
-<h2 id="visual-ner-annotation">Visual NER Annotation</h2>
+</div>
+<div class="h3-box">
 
-<p>Annotating text included in image documents (e.g., scanned documents) is a common use case in many verticals but comes with several challenges. With the <es>Visual NER</es> labeling config, we aim to ease the work of annotators by allowing them to select text from an image and assign the corresponding label to it.</p>
+  <h2 id="visual-ner-annotation">Visual NER Annotation</h2>
 
-<p>This feature is powered by <bl>Visual NLP</bl> library; hence a valid <a href="/docs/en/ocr">Visual NLP</a> license is required to get access to it.</p>
+  <p>Annotating text included in image documents (e.g., scanned documents) is a common use case in many verticals but comes with several challenges. With the <es>Visual NER</es> labeling config, we aim to ease the work of annotators by allowing them to select text from an image and assign the corresponding label to it.</p>
 
-<p>Here is how we can use it:</p>
+  <p>This feature is powered by <bl>Visual NLP</bl> library; hence a valid <a href="/docs/en/ocr">Visual NLP</a> license is required to get access to it.</p>
 
-<ol>
-  <li>Upload a valid <bl>[Visual NLP](/docs/en/ocr)</bl> license. See how to do this <a href="/docs/en/alab/byol">here</a>.</li>
-  <li>Create a new project, specify a name for your project, add team members if necessary, and from the list of predefined templates (Default Project Configs) choose <code class="language-plaintext highlighter-rouge">Visual NER Labeling</code> under <strong>IMAGE</strong> content type.</li>
-  <li>Update the configuration if necessary. This might be useful if you want to use other labels than the default ones. Click the <code class="language-plaintext highlighter-rouge">Save Config</code> button. While saving the project, a confirmation dialog is displayed to ask if you want to deploy the OCR pipeline. Select <code class="language-plaintext highlighter-rouge">Yes</code> from the confirmation dialog.</li>
-  <li>Import the tasks you want to annotate (images or PDF documents).</li>
-  <li>Start annotating text on top of the image by clicking on the text tokens, or by drawing bounding boxes on top of chunks or image areas.</li>
-  <li>Export annotations in your preferred format.</li>
-</ol>
+  <p>Here is how we can use it:</p>
 
-<p>The entire process is illustrated below:</p>
+  <ol>
+    <li>Upload a valid <bl>[Visual NLP](/docs/en/ocr)</bl> license. See how to do this <a href="/docs/en/alab/byol">here</a>.</li>
+    <li>Create a new project, specify a name for your project, add team members if necessary, and from the list of predefined templates (Default Project Configs) choose <code class="language-plaintext highlighter-rouge">Visual NER Labeling</code> under <strong>IMAGE</strong> content type.</li>
+    <li>Update the configuration if necessary. This might be useful if you want to use other labels than the default ones. Click the <code class="language-plaintext highlighter-rouge">Save Config</code> button. While saving the project, a confirmation dialog is displayed to ask if you want to deploy the OCR pipeline. Select <code class="language-plaintext highlighter-rouge">Yes</code> from the confirmation dialog.</li>
+    <li>Import the tasks you want to annotate (images or PDF documents).</li>
+    <li>Start annotating text on top of the image by clicking on the text tokens, or by drawing bounding boxes on top of chunks or image areas.</li>
+    <li>Export annotations in your preferred format.</li>
+  </ol>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/visual_ner-min.gif" style="width:100%;" /></p>
+  <p>The entire process is illustrated below:</p>
 
-<h3 id="support-for-multi-page-pdf-documents">Support for multi-page PDF documents</h3>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/visual_ner-min.gif" style="width:100%;" /></p>
 
-<p>When a valid Visual NLP license is available, Generative AI Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.</p>
+</div>
+<div class="h3-box">
 
-<p>Users have two options for importing a new PDF file into the Visual NER project:</p>
+  <h3 id="support-for-multi-page-pdf-documents">Support for multi-page PDF documents</h3>
 
-<ol>
-  <li>Import PDF file from local storage.</li>
-  <li>Add a link to the PDF file in the file attribute.</li>
-</ol>
+  <p>When a valid Visual NLP license is available, Generative AI Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/import_pdf_from_link.png" style="width:100%;" /></p>
+  <p>Users have two options for importing a new PDF file into the Visual NER project:</p>
 
-<p>After import, the task becomes available on the <es>Tasks</es> Page. The title of the new task is the name of the imported file. On the labeling page, the PDF viewer has pagination support so that annotators can annotate on the PDF document one page at a time.</p>
+  <ol>
+    <li>Import PDF file from local storage.</li>
+    <li>Add a link to the PDF file in the file attribute.</li>
+  </ol>
 
-<p>Users can also jump to a specific page in multi-page task, instead of passing through all pages to reach a target section of a PDF document.</p>
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/import_pdf_from_link.png" style="width:100%;" /></p>
 
-<p><img class="image image__shadow" src="https://user-images.githubusercontent.com/26042994/203706994-ebb86f14-0a9c-4633-a4c9-8873ae613acb.gif" style="width:100%;" /></p>
+  <p>After import, the task becomes available on the <es>Tasks</es> Page. The title of the new task is the name of the imported file. On the labeling page, the PDF viewer has pagination support so that annotators can annotate on the PDF document one page at a time.</p>
 
-<p><br /></p>
+  <p>Users can also jump to a specific page in multi-page task, instead of passing through all pages to reach a target section of a PDF document.</p>
 
-<h3 id="support-for-multiple-ocr-servers">Support for multiple OCR servers</h3>
+  <p><img class="image image__shadow" src="https://user-images.githubusercontent.com/26042994/203706994-ebb86f14-0a9c-4633-a4c9-8873ae613acb.gif" style="width:100%;" /></p>
 
-<p>Just like for <a href="/docs/en/alab/preannotation">Preannotation</a> servers, Generative AI Lab supports deployment of multiple OCR servers. If a user has uploaded a <a href="/docs/en/ocr">Visual NLP</a> license, <es>OCR inference</es> is enabled.</p>
+</div>
+<div class="h3-box">
 
-<p>To work on a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users need to go to the <es>Import</es> page, click on the OCR Server button on the top-right corner and from the popup, choose one of the available OCR servers. If no suitable OCR server is present, you can create a new server by selecting the <code class="language-plaintext highlighter-rouge">Create Server</code> option and then clicking on the <code class="language-plaintext highlighter-rouge">Deploy</code> button.</p>
+  <h3 id="support-for-multiple-ocr-servers">Support for multiple OCR servers</h3>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ocr_server-min.gif" style="width:100%;" /></p>
+  <p>Just like for <a href="/docs/en/alab/preannotation">Preannotation</a> servers, Generative AI Lab supports deployment of multiple OCR servers. If a user has uploaded a <a href="/docs/en/ocr">Visual NLP</a> license, <es>OCR inference</es> is enabled.</p>
+
+  <p>To work on a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users need to go to the <es>Import</es> page, click on the OCR Server button on the top-right corner and from the popup, choose one of the available OCR servers. If no suitable OCR server is present, you can create a new server by selecting the <code class="language-plaintext highlighter-rouge">Create Server</code> option and then clicking on the <code class="language-plaintext highlighter-rouge">Deploy</code> button.</p>
+
+  <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ocr_server-min.gif" style="width:100%;" /></p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-12-13T00:00:00+00:00">Dec 13, 2022</time>
     </span><!-- start custom article footer snippet -->
