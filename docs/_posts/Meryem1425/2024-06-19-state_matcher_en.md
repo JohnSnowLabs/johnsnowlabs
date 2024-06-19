@@ -36,6 +36,7 @@ This model extracts states in clinical notes using rule-based RegexMatcherIntern
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
