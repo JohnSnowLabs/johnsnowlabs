@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Country Regex Matcher
+title: Country Text Matcher
 author: John Snow Labs
 name: country_matcher
 date: 2024-06-19
