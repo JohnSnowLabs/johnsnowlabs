@@ -4,7 +4,7 @@ title: Email Regex Matcher
 author: John Snow Labs
 name: email_matcher
 date: 2024-06-19
-tags: [en, clinical, licensed, regexmatcher]
+tags: [en, clinical, licensed, email, regexmatcher]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.3.3
