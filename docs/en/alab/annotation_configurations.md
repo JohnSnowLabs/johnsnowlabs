@@ -13,16 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-<style>
-bl {
-  font-weight: 400;
-}
-
-es {
-  font-weight: 400;
-  font-style: italic;
-}
-</style>
+<div class="h3-box" markdown="1">
 
 ## Simplified workflow
 
@@ -47,7 +38,7 @@ The Project Owner/Manager can activate this option from the <es>Settings</es> di
 > 1. Annotator can _Save/Update_ completion using `CTRL+Enter`
 > 2. Annotator can _Submit_ completion using `ALT+Enter`
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Accept Prediction
 
@@ -57,15 +48,19 @@ When predictions are available for a task, Annotator can accept the predictions 
 
 > **NOTE:** Press backspace key (on windows) or delete key (on mac) to delete the selected relation from the labeling editor or use the delete action icon on the Relations widget.
 
+</div><div class="h3-box" markdown="1">
+
 ## Labeling editor Settings
 
 The labeling editor offers some configurable features. For example, you can modify the editor's layout, show or hide predictions, annotations, or the confidence panel, show or hide various controls and information. It is also possible to keep a label selected after creating a region, display labels on bounding boxes, polygons and other regions while labeling, and show line numbers for text labeling.
+
+</div><div class="h3-box" markdown="1">
 
 ### Enable labeling hotkeys
 
 This option enables/disable the hotkeys assigned to taxonomy labels to use the hotkeys during the annotation process.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Show hotkey tooltips
 
@@ -75,7 +70,7 @@ This option shows/hides the hotkey and tooltip on the taxonomy label and the con
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/show_hotkey_tooltips.png" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Show labels inside the regions
 
@@ -83,7 +78,7 @@ When you enable this option, the labels assigned to each annotated region are di
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/show_labels_inside_regions.png" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Keep label selected after creating a region
 
@@ -97,7 +92,7 @@ With the option checked:
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_on-min.gif" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Select regions after creating
 
@@ -105,7 +100,7 @@ This option keeps the annotated region selected after annotation. In this way, i
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/select_region_after_creating-min.gif" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Show line numbers for Text
 
@@ -113,13 +108,15 @@ This option adds line numbers to the text content to annotate in the labeling ed
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_line_number.png" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Label all occurrences of selected text
 
 When checked, this option allow users to annotate all occurences of a text in the current task in one step.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/label_all_occurence-min.gif" style="width:100%;"/>
+
+</div><div class="h3-box" markdown="1">
 
 ## Labeling editor Customizations
 
@@ -147,6 +144,7 @@ To add the search bar for NER Labels or Choices, use the `Filter` tag as shown i
 
 The following parameters/attributes can be used within the `Filter` tag.
 
+{:.table-model-big}
 | Param       | Type   | Default      | Description                                    |
 | ----------- | ------ | ------------ | ---------------------------------------------- |
 | placeholder | string | Quick Filter | Placeholder text for filter                    |
@@ -183,7 +181,7 @@ Notice how users can search for the desired label using the filter bar:
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ner_label_search-min.gif" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Resizable label and text container
 
@@ -231,11 +229,15 @@ we'll obtain the output illustrated below:
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar-min.gif" style="width:100%;"/>
 
+</div><div class="h3-box" markdown="1">
+
 ## Comments on the Labeling Page
 
 Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
 
 ![Comments](/assets/images/annotation_lab/4.10.0/2-min.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ## Tags from the Labeling Screen
 
@@ -245,14 +247,20 @@ From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature
 
 Once the users select the tag/tags, they will be displayed against the tasks on the tasks page.
 
+</div><div class="h3-box" markdown="1">
+
 ## Toggle Preview Window
 
 Label configuration editor and <es>Preview Window</es> covers 50/50 part of the screen. It can make editing larger XML configurations difficult. For a better editing experience, we can use the Toggle Preview Window button to have the editor use full screen width.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_preview_window-min.gif" style="width:100%;"/>
 
+</div><div class="h3-box" markdown="1">
+
 ## Switch Role
 
 For users having multiple roles (_Annotator/Reviewer/Manager_) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting _Annotator_ option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to _Reviewer_ or _Manager_ option. The selection persists even when the tab is closed or refreshed.
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/switch_role.png" style="width:40%;"/>
+
+</div>
