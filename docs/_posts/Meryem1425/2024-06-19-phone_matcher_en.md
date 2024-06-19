@@ -4,7 +4,7 @@ title: Phone Regex Matcher
 author: John Snow Labs
 name: phone_matcher
 date: 2024-06-19
-tags: [en, licensed, phone, regexmatcher]
+tags: [en, licensed, clinical, phone, regexmatcher]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.3.3
