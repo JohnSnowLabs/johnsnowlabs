@@ -87,18 +87,17 @@ val result = ner_pipeline.annotate("""The patient is a 30-year-old female with a
 
 # relation
 
-+--------+--------------+----------+-------+--------------+---------+----------+
-|sentence|      relation|    chunk1|entity1|        chunk2|  entity2|confidence|
-+--------+--------------+----------+-------+--------------+---------+----------+
-|       1| DRUG-DURATION|   Bactrim|   DRUG|   for 14 days| DURATION|       1.0|
-|       2|   DOSAGE-DRUG|5000 units| DOSAGE|       Fragmin|     DRUG|       1.0|
-|       2|    DRUG-ROUTE|   Fragmin|   DRUG|subcutaneously|    ROUTE|       1.0|
-|       2|DRUG-FREQUENCY|   Fragmin|   DRUG|         daily|FREQUENCY|       1.0|
-|       2|   DRUG-DOSAGE|    Lantus|   DRUG|      40 units|   DOSAGE|       1.0|
-|       2|    DRUG-ROUTE|    Lantus|   DRUG|subcutaneously|    ROUTE|       1.0|
-|       2|DRUG-FREQUENCY|    Lantus|   DRUG|    at bedtime|FREQUENCY|       1.0|
-+--------+--------------+----------+-------+--------------+---------+----------+
-
++--------+--------------+---------+----------+-------+--------------+---------+----------+
+|sentence|      relation|direction|    chunk1|entity1|        chunk2|  entity2|confidence|
++--------+--------------+---------+----------+-------+--------------+---------+----------+
+|       1| DRUG-DURATION|     both|   Bactrim|   DRUG|   for 14 days| DURATION|       1.0|
+|       2|   DOSAGE-DRUG|     both|5000 units| DOSAGE|       Fragmin|     DRUG|       1.0|
+|       2|    DRUG-ROUTE|     both|   Fragmin|   DRUG|subcutaneously|    ROUTE|       1.0|
+|       2|DRUG-FREQUENCY|     both|   Fragmin|   DRUG|         daily|FREQUENCY|       1.0|
+|       2|   DRUG-DOSAGE|     both|    Lantus|   DRUG|      40 units|   DOSAGE|       1.0|
+|       2|    DRUG-ROUTE|     both|    Lantus|   DRUG|subcutaneously|    ROUTE|       1.0|
+|       2|DRUG-FREQUENCY|     both|    Lantus|   DRUG|    at bedtime|FREQUENCY|       1.0|
++--------+--------------+---------+----------+-------+--------------+---------+----------+
 
 ```
 
