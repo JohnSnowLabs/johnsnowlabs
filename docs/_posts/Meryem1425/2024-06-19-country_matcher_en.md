@@ -4,7 +4,7 @@ title: Country Text Matcher
 author: John Snow Labs
 name: country_matcher
 date: 2024-06-19
-tags: [en, licensed, country, textmatcher]
+tags: [en, licensed, clinical, country, textmatcher]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.3.3
