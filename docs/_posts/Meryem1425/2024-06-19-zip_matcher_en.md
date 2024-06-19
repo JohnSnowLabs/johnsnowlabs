@@ -36,6 +36,7 @@ This model extracts zip codes in clinical notes using rule-based RegexMatcherInt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
