@@ -36,6 +36,7 @@ This model extracts phone entities in clinical notes using rule-based RegexMatch
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
