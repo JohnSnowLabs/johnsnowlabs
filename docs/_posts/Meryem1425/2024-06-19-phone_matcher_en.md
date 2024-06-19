@@ -82,7 +82,7 @@ val tokenizer = new Tokenizer()
 	.setInputCols(Array("sentence"))
 	.setOutputCol("token")
 
-val regex_matcher = RegexMatcherInternalModel.pretrained("phone_matcher","en","clinical/models") \
+val regex_matcher = RegexMatcherInternalModel.pretrained("phone_matcher","en","clinical/models")
 	.setInputCols(Array("sentence"))
 	.setOutputCol("phone_entity")
 	.setMergeOverlapping(true)
