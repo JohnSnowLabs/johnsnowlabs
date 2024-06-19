@@ -10,7 +10,8 @@ show_nav: true
 sidebar:
     nav: jsl
 ---
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
+
 Build, run and serve any johnsnowlabs model with docker, using the `serve` utilities.  
 It handles licenses and dependencies and comes with a simple fast-API server.
 This enables you to package any johnsnowlabs model into a docker image and serve it as a REST API.

@@ -32,6 +32,7 @@ nlp.install_to_glue()
 
 ### AWS specific parameters
 
+{:.table-model-big.db}
 | Parameter            | Description                                                                                                                                                                                                                                                     |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `boto_session`       | The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer [this](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html) for more information |
@@ -41,6 +42,7 @@ nlp.install_to_glue()
 
 ### License Retrieval Parameters
 
+{:.table-model-big.db}
 | Parameter           | Description                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `browser_login`     | Enable or disable browser based login and pop up if no license is provided or automatically detected. Defaults to True.                                             |
