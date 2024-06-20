@@ -22,7 +22,7 @@ Legal Roberta Named Entity Recognition model in Spanish, able to recognize the f
 - LEY: Law
 - TRAT_INTL: International Treaty (Agreement)
 
-This model originally trained on scjn dataset, available [here](https://huggingface.co/datasets/scjnugacj/scjn_dataset_ner) and finetuned on scrapped documents (as, for example, [this one](https://www.wipo.int/export/sites/www/pct/es/texts/pdf/pct.pdf)), improving the coverage of the original version, published [here](https://huggingface.co/datasets/scjnugacj/scjn_dataset_ner).
+This model originally trained on scjn dataset, available [here](https://huggingface.co/datasets/scjnugacj/scjn_dataset_ner) and finetuned on internal documents, improving the coverage of the original version, published [here](https://huggingface.co/datasets/scjnugacj/scjn_dataset_ner).
 
 ## Predicted Entities
 
