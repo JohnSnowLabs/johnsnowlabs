@@ -271,7 +271,7 @@ In this context, **"Expected Results"** refer to the prediction output by the te
 
 Users have the option to simultaneously download both reports in CSV format by selecting the download button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.PNG)
+ ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
 
 For a detailed report, users can enter full-screen mode by clicking the full-screen button.
 
