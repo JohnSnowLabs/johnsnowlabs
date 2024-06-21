@@ -46,28 +46,28 @@ sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_hea
     .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
-.setInputCols("sentence")\
-.setOutputCol("token")
+    .setInputCols("sentence")\
+    .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel\
-.pretrained("embeddings_clinical", "en", "clinical/models")\
-.setInputCols(["sentence", "token"])\
-.setOutputCol("embeddings")
+    .pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
 posology_ner_model = MedicalNerModel\
-.pretrained("ner_posology_greedy", "en", "clinical/models")\
-.setInputCols(["sentence", "token", "embeddings"])\
-.setOutputCol("posology_ner")
+    .pretrained("ner_posology_greedy", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("posology_ner")
 
 posology_ner_converter = NerConverterInternal()\
-.setInputCols("sentence", "token", "posology_ner")\
-.setOutputCol("ner_chunk")
+    .setInputCols("sentence", "token", "posology_ner")\
+    .setOutputCol("ner_chunk")
 
 chunkerMapper = ChunkMapperModel\
-.pretrained("rxnorm_mapper", "en", "clinical/models")\
-.setInputCols(["ner_chunk"])\
-.setOutputCol("mappings")\
-.setRels(["rxnorm_code"])
+    .pretrained("rxnorm_mapper", "en", "clinical/models")\
+    .setInputCols(["ner_chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["rxnorm_code"])
 
 mapper_pipeline = Pipeline().setStages([
 document_assembler,
@@ -95,28 +95,28 @@ val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl
     .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-.setInputCols("sentence")
-.setOutputCol("token")
+    .setInputCols("sentence")
+    .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel
-.pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(Array("sentence", "token"))
-.setOutputCol("embeddings")
+    .pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("embeddings")
 
 val posology_ner_model = MedicalNerModel
-.pretrained("ner_posology_greedy", "en", "clinical/models")
-.setInputCols(Array("sentence", "token", "embeddings"))
-.setOutputCol("posology_ner")
+    .pretrained("ner_posology_greedy", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
+    .setOutputCol("posology_ner")
 
 val posology_ner_converter = new NerConverterInternal()
-.setInputCols("sentence", "token", "posology_ner")
-.setOutputCol("ner_chunk")
+    .setInputCols("sentence", "token", "posology_ner")
+    .setOutputCol("ner_chunk")
 
 val chunkerMapper = ChunkMapperModel
-.pretrained("rxnorm_mapper", "en", "clinical/models")
-.setInputCols(Array("ner_chunk"))
-.setOutputCol("mappings")
-.setRels(Array("rxnorm_code")) 
+    .pretrained("rxnorm_mapper", "en", "clinical/models")
+    .setInputCols(Array("ner_chunk"))
+    .setOutputCol("mappings")
+    .setRels(Array("rxnorm_code")) 
 
 val mapper_pipeline = new Pipeline().setStages(Array(
 document_assembler,
