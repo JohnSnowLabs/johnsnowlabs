@@ -7,7 +7,7 @@ date: 2024-06-19
 tags: [licensed, en, clinical, ner, medication, posology, assertion, relation_extraction, pipeline]
 task: [Pipeline Healthcare, Named Entity Recognition]
 language: en
-edition: Healthcare NLP 5.3.0
+edition: Healthcare NLP 5.3.3
 spark_version: 3.2
 supported: true
 annotator: PipelineModel
@@ -23,8 +23,8 @@ A pipeline for detecting posology entities with the `ner_posology_large` NER mod
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_medication_en_5.3.0_3.2_1718816258909.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_medication_en_5.3.0_3.2_1718816258909.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_medication_en_5.3.3_3.2_1718816258909.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_medication_en_5.3.3_3.2_1718816258909.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -32,6 +32,7 @@ A pipeline for detecting posology entities with the `ner_posology_large` NER mod
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -109,7 +110,7 @@ val result = ner_pipeline.annotate("""The patient is a 30-year-old female with a
 |---|---|
 |Model Name:|explain_clinical_doc_medication|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.0+|
+|Compatibility:|Healthcare NLP 5.3.3+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
