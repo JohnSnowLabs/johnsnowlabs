@@ -13,12 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-<style>
-es {
-    font-weight:400;
-    font-style: italic;
-}
-</style>
+<div class="h3-box" markdown="1">
 
 ## Entity Extraction and Pre-Annotation via GPT Prompting
 
@@ -29,6 +24,8 @@ The highlight of this release is the integration with an external service provid
 - **Efficient Entity Extraction**: As current LLMs, GPT family included, are not very good at entity recognition tasks, Generative AI Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with Generative AI Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.
 
 The following sections explain in detail how to define and use GPT prompts. 
+
+</div><div class="h3-box" markdown="1">
 
 ### Setting Up the Integration with Open AI service
 Integrating ChatGPT and Azure into the Generative AI Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
@@ -49,6 +46,7 @@ Azure:
 
 The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We've ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.
 
+</div><div class="h3-box" markdown="1">
 
 ### Prompt Definition and Testing
 Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT and Azure Prompts, Generative AI Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
@@ -63,6 +61,8 @@ This streamlined approach ensures that integrating and testing external prompts 
 
 ![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Consistent Workflow with LLM Prompts
 Even with the introduction of new features in Generative AI Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
 
@@ -75,3 +75,5 @@ With Generative AI Lab 5.3.0, you get the best of both worlds: exciting new feat
 ![Integration](/assets/images/annotation_lab/5.3.0/3.gif)
 
 > **Note:** Pre-annotation of tasks using LLM Prompts does not require the deployment of the pre-annotation server. The pop-up to deploy the pre-annotation server is only shown if the project configuration consists of both LLM prompts and spark NLP models.
+
+</div>

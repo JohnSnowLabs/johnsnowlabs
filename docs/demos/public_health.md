@@ -128,7 +128,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_MENTIONS/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MENTION.ipynb     
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MB4SC.ipynb     
         - title: Multilabel Text Classification For Respiratory Disease
           id: multilabel_text_classification_respiratory_disease           
           image: 

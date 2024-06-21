@@ -29,6 +29,7 @@ Additionally you can refer to the OCR tutorial Notebooks
 **Overview of OCR Text Extractors**        
 These models grab the text directly from your input file and returns it as a Pandas DataFrame
 
+{:.table-model-big}
 | NLU Spell            | Transformer Class                                                                       |
 |----------------------|-----------------------------------------------------------------------------------------|
 | nlp.load(`img2text`) | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#imagetotext) |
@@ -40,6 +41,7 @@ These models grab the text directly from your input file and returns it as a Pan
 These models grab all Table data from the files detected and return a `list of Pandas DataFrames`,
 containing Pandas DataFrame for every table detected
 
+{:.table-model-big}
 | NLU Spell             | Transformer Class                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------|
 | nlp.load(`pdf2table`) | [PdfToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotexttable) |              
@@ -78,6 +80,7 @@ nlu.load('img2text').predict('path/to/haiku.png')
 
 **Output of IMG OCR:**
 
+{:.table-model-big}
 | text                           |
 |:-------------------------------|
 | “The Old Pond” by Matsuo Basho |
@@ -96,6 +99,7 @@ nlu.load('pdf2text').predict('path/to/haiku.pdf')
 ```
 **Output of PDF OCR:**
 
+{:.table-model-big}
 | text                                |
 |:------------------------------------|
 | “Lighting One Candle” by Yosa Buson |
@@ -115,6 +119,7 @@ nlu.load('doc2text').predict('path/to/haiku.docx')
 
 **Output of DOCX OCR:**
 
+{:.table-model-big}
 | text                                        |
 |:--------------------------------------------|
 | “In a Station of the Metro” by Ezra Pound   |
@@ -133,6 +138,7 @@ nlu.load('pdf2table').predict('/path/to/sample.pdf')
 
 **Output of PDF Table OCR :**
 
+{:.table-model-big}
 |   mpg |   cyl |   disp |   hp |   drat |    wt |   qsec |   vs |   am |   gear |
 |------:|------:|-------:|-----:|-------:|------:|-------:|-----:|-----:|-------:|
 |  21   |     6 |  160   |  110 |   3.9  | 2.62  |  16.46 |    0 |    1 |      4 |
@@ -162,6 +168,7 @@ nlu.load('doc2table').predict('/path/to/sample.docx')
 
 **Output of DOCX Table OCR :**
 
+{:.table-model-big}
 | Screen Reader   |   Responses | Share   |
 |:----------------|------------:|:--------|
 | JAWS            |         853 | 49%     |
@@ -182,7 +189,7 @@ nlu.load('ppt2table').predict('/path/to/sample.docx')
 
 **Output of PPT Table OCR :**
 
-
+{:.table-model-big}
 |   Sepal.Length |   Sepal.Width |   Petal.Length |   Petal.Width | Species   |
 |---------------:|--------------:|---------------:|--------------:|:----------|
 |            5.1 |           3.5 |            1.4 |           0.2 | setosa    |
@@ -194,6 +201,7 @@ nlu.load('ppt2table').predict('/path/to/sample.docx')
 
 and 
 
+{:.table-model-big}
 |   Sepal.Length |   Sepal.Width |   Petal.Length |   Petal.Width | Species   |
 |---------------:|--------------:|---------------:|--------------:|:----------|
 |            6.7 |           3.3 |            5.7 |           2.5 | virginica |
@@ -215,6 +223,7 @@ nlu.load('img2text ner').predict('path/to/presidents.png')
 ```
 **Output of image OCR and NER NLP :**
 
+{:.table-model-big}
 | entities_ner                                 | entities_ner_class   |   entities_ner_confidence |
 |:---------------------------------------------|:---------------------|--------------------------:|
 | Four                                         | CARDINAL             |                  0.9986   |
