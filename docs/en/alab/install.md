@@ -198,12 +198,32 @@ Now, to access the Generative AI Lab, you go to the CloudFront URL and log in wi
 
 ## Azure Marketplace
 
-Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview) and follow the instructions on the video below to subscribe and deploy.
+Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview) and follow these steps. Generative AI Lab offers a one-click deployment within your security perimeter using Azure Kubernetes Service (AKS), a fully managed Kubernetes solution that simplifies the deployment, management, and scaling of containerized applications.
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='e6aB3z5tB0k' -%}<div class="video-descr">Deploy Generative AI Lab via Azure Marketplace</div></div></div>
+1. Click on the "Get It Now" link.
 
-</div><div class="h3-box" markdown="1">
+	![azure](/assets/images/annotation_lab/aws/getitnow.png)
 
+2. Select your subscription and the region where you want to deploy the cluster, then click "Next."
+
+	![azure](/assets/images/annotation_lab/aws/resourceGroup.png)
+
+3. Choose the appropriate VM size and enable auto-scaling if you want nodes to be added automatically when needed. Then click "Next."
+
+	![azure](/assets/images/annotation_lab/aws/clustersize.png)
+
+4. Provide the password (this will be used to access the Generative AI Lab UI with the admin user), then click "Next."
+
+	![azure](/assets/images/annotation_lab/aws/pass.png)
+
+5. Review the configuration and then click "Create."
+
+	![azure](/assets/images/annotation_lab/aws/create.png)
+	
+6. Visit the login page at http://External_IP for a guided experience. For your initial login, use the following credentials: Username: admin, Password: the password set in step 4.
+
+**Note:** You can find the External_IP under Kubernetes resources by navigating to Services and ingresses and locating the addon-http-application-routing-nginx-ingress service name.
+ 
 ## EKS deployment
 
 1. Create NodeGroup for a given cluster

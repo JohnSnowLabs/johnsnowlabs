@@ -271,11 +271,11 @@ In this context, **"Expected Results"** refer to the prediction output by the te
 
 Users have the option to simultaneously download both reports in CSV format by selecting the download button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.gif)
+ ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
 
 For a detailed report, users can enter full-screen mode by clicking the full-screen button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.png)
+ ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
 
 Furthermore, users can delete test results from the **"Test Results History"** by selecting the three dots followed by the **"Delete"** button.
 

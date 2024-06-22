@@ -26,7 +26,6 @@ Lastly, users can "batch" clear predicted and manually annotated labels, providi
 
 Here are the highlights of this release:
 
-
 ## Test Suite Management
 A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.
 
@@ -34,7 +33,6 @@ A Test Suite represents a collection of tests designed to evaluate your trained 
 The new **"Test Suites HUB"** option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the **"Test Suite"** page, where all existing Test Suites he/she has access to are listed.
 
  ![GenaiImage](/assets/images/annotation_lab/6.2.0/1.png)
-
 
 ### Create, Update, and Delete Test Suites
 Managing a Test Suite is easy: a Test Suite can be created using the **"Test"** page under a parent project and can be fully managed in the **"Test Suite"** page within the **"Test Suites HUB"** option where users can create, update, and delete test suites.
@@ -269,11 +267,11 @@ In this context, **"Expected Results"** refer to the prediction output by the te
 
 Users have the option to simultaneously download both reports in CSV format by selecting the download button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.gif)
+ ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
 
 For a detailed report, users can enter full-screen mode by clicking the full-screen button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.png)
+ ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
 
 Furthermore, users can delete test results from the **"Test Results History"** by selecting the three dots followed by the **"Delete"** button.
 
@@ -440,6 +438,8 @@ When manually annotating a large number of tokens on the labeling page, the appl
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
