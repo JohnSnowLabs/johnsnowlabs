@@ -39,7 +39,8 @@ from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient was given doxepin 10 MG, coumadn 5 mg""")
+result = ner_pipeline.annotate("""The patient was prescribed Albuterol inhaler when needed. She was seen by the endocrinology service, prescribed Avandia 4 mg at nights,
+Coumadin 5 mg with meals, Metformin 100 mg two times a day, and a daily dose of Lisinopril 10 mg.""")
 
 ```
 ```scala
