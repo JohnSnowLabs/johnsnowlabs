@@ -60,12 +60,10 @@ regex_pipeline = Pipeline().setStages([
     tokenizer,
     regex_matcher])
 
-data = spark.createDataFrame([["""Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital in Los Angeles for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York City, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Tokyo, Paris, and Sydney in the past year."""]]).toDF("text")
+data = spark.createDataFrame([["""Record date :2093-01-13,  David Hale, M.D. IP 203.120.223.13.
+ID: 1231511863, The driver's license no:A334455B and e-mail: hale@gmail.com .
+PCP : Oliveira, 25 years-old, Jake 5 year old, Record date : 2079-11-09.
+Cocke County Baptist Hospital , 0295 Keats Street, 12345, TX 55555-4444. Phone: (818) 342-7353 Fax No.: (818) 342-7354, SSN# 332255677, The other is ssN: 333-44-6666."""]]).toDF("text")
 
 result = regex_pipeline.fit(data).transform(data)
 ```
@@ -93,12 +91,10 @@ val regex_pipeline = new Pipeline().setStages(Array(
 		tokenizer,
 		regex_matcher))
 
-val data = Seq("""Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital in Los Angeles for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York City, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Tokyo, Paris, and Sydney in the past year.""").toDF("text")
+val data = Seq("""Record date :2093-01-13,  David Hale, M.D. IP 203.120.223.13.
+ID: 1231511863, The driver's license no:A334455B and e-mail: hale@gmail.com .
+PCP : Oliveira, 25 years-old, Jake 5 year old, Record date : 2079-11-09.
+Cocke County Baptist Hospital , 0295 Keats Street, 12345, TX 55555-4444. Phone: (818) 342-7353 Fax No.: (818) 342-7354, SSN# 332255677, The other is ssN: 333-44-6666.""").toDF("text")
 
 val result = regex_pipeline.fit(data).transform(data)
 ```
@@ -110,7 +106,8 @@ val result = regex_pipeline.fit(data).transform(data)
 +--------------+-----+---+-----+
 |         chunk|begin|end|label|
 +--------------+-----+---+-----+
-|(212) 555-7890|  298|311|PHONE|
+|(818) 342-7353|  293|306|PHONE|
+|(818) 342-7354|  317|330|PHONE|
 +--------------+-----+---+-----+
 ```
 
