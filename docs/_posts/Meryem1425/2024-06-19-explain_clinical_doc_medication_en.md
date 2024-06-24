@@ -39,7 +39,8 @@ from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("explain_clinical_doc_medication", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.""")
+result = ner_pipeline.annotate("""The patient is a 30-year-old female with diabetes mellitus type 2. She received a course of Bactrim for 14 days for UTI. 
+She was prescribed 5000 units of Fragmin subcutaneously daily. She was also prescribed 40 units of Lantus subcutaneously at night.""")
 
 ```
 ```scala
@@ -48,7 +49,8 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("explain_clinical_doc_medication", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.""")
+val result = ner_pipeline.annotate("""The patient is a 30-year-old female with diabetes mellitus type 2. She received a course of Bactrim for 14 days for UTI. 
+She was prescribed 5000 units of Fragmin subcutaneously daily. She was also prescribed 40 units of Lantus subcutaneously at night.""")
 
 ```
 </div>
@@ -62,17 +64,16 @@ val result = ner_pipeline.annotate("""The patient is a 30-year-old female with a
 +--------------+-----+---+---------+
 |     ner_chunk|begin|end|ner_label|
 +--------------+-----+---+---------+
-|       insulin|   44| 50|     DRUG|
-|       Bactrim|  105|111|     DRUG|
-|   for 14 days|  113|123| DURATION|
-|    5000 units|  153|162|   DOSAGE|
-|       Fragmin|  167|173|     DRUG|
-|subcutaneously|  176|189|    ROUTE|
-|         daily|  191|195|FREQUENCY|
-|        Lantus|  213|218|     DRUG|
-|      40 units|  220|227|   DOSAGE|
-|subcutaneously|  229|242|    ROUTE|
-|    at bedtime|  244|253|FREQUENCY|
+|       Bactrim|   92| 98|     DRUG|
+|   for 14 days|  100|110| DURATION|
+|    5000 units|  141|150|   DOSAGE|
+|       Fragmin|  155|161|     DRUG|
+|subcutaneously|  163|176|    ROUTE|
+|         daily|  178|182|FREQUENCY|
+|      40 units|  209|216|   DOSAGE|
+|        Lantus|  221|226|     DRUG|
+|subcutaneously|  228|241|    ROUTE|
+|      at night|  243|250|FREQUENCY|
 +--------------+-----+---+---------+
 
 # assertion
@@ -80,10 +81,9 @@ val result = ner_pipeline.annotate("""The patient is a 30-year-old female with a
 +-------+-----+---+--------+---------+-----------+
 | chunks|begin|end|entities|assertion|confidence)|
 +-------+-----+---+--------+---------+-----------+
-|insulin|   44| 50|    DRUG|  Present|      0.999|
-|Bactrim|  105|111|    DRUG|     Past|     0.9324|
-|Fragmin|  167|173|    DRUG|  Present|       0.74|
-| Lantus|  213|218|    DRUG|     Past|     0.5094|
+|Bactrim|   92| 98|    DRUG|     Past|     0.9324|
+|Fragmin|  155|161|    DRUG|  Present|     0.7456|
+| Lantus|  190|195|    DRUG|  Present|     0.4984|
 +-------+-----+---+--------+---------+-----------+
 
 # relation
@@ -95,11 +95,10 @@ val result = ner_pipeline.annotate("""The patient is a 30-year-old female with a
 |       2|   DOSAGE-DRUG|     both|5000 units| DOSAGE|       Fragmin|     DRUG|       1.0|
 |       2|    DRUG-ROUTE|     both|   Fragmin|   DRUG|subcutaneously|    ROUTE|       1.0|
 |       2|DRUG-FREQUENCY|     both|   Fragmin|   DRUG|         daily|FREQUENCY|       1.0|
-|       2|   DRUG-DOSAGE|     both|    Lantus|   DRUG|      40 units|   DOSAGE|       1.0|
-|       2|    DRUG-ROUTE|     both|    Lantus|   DRUG|subcutaneously|    ROUTE|       1.0|
-|       2|DRUG-FREQUENCY|     both|    Lantus|   DRUG|    at bedtime|FREQUENCY|       1.0|
+|       3|   DOSAGE-DRUG|     both|  40 units| DOSAGE|        Lantus|     DRUG|       1.0|
+|       3|    DRUG-ROUTE|     both|    Lantus|   DRUG|subcutaneously|    ROUTE|       1.0|
+|       3|DRUG-FREQUENCY|     both|    Lantus|   DRUG|      at night|FREQUENCY|       1.0|
 +--------+--------------+---------+----------+-------+--------------+---------+----------+
-
 
 ```
 
