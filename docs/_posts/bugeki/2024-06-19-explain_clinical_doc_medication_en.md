@@ -87,6 +87,7 @@ She was prescribed 5000 units of Fragmin subcutaneously daily. She was also pres
 +-------+-----+---+--------+---------+-----------+
 
 # relation
+
 +--------+--------------+---------+----------+-------+--------------+---------+----------+
 |sentence|      relation|direction|    chunk1|entity1|        chunk2|  entity2|confidence|
 +--------+--------------+---------+----------+-------+--------------+---------+----------+
