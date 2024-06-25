@@ -257,6 +257,8 @@ sparknlp-healthcare:
         url: /docs/en/ocr_object_detection
       - title: Structures and helpers
         url: /docs/en/ocr_structures
+      - title: Speed benchmarks
+        url: /docs/en/ocr_benchmark
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
   - title: Finance NLP
