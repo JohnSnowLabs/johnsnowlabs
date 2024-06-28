@@ -21,7 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This is a Legal NER model which is trained using custom legal embeddings and is aimed to extract 19 entities from subpoenas. This is called a small version because it has been trained on more generic labels. The larger versions of this model will be available on models hub.
 
 ## Predicted Entities
-
+`COURT`, `APPOINTMENT_DATE`, `DEADLINE_DATE`, `DOCUMENT_DATE_FROM`, `ADDRESS`, `APPOINTMENT_HOUR`, `DOCUMENT_DATE_TO`, `DOCUMENT_PERSON`, `DOCUMENT_DATE_YEAR`, `STATE`, `MATTER_VS`, `CASE`, `COUNTY`, `DOCUMENT_TOPIC`, `MATTER`, `SUBPOENA_DATE`, `SIGNER`, `RECEIVE`, `DOCUMENT_TYPE`
 
 
 {:.btn-box}
