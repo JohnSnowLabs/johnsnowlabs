@@ -246,7 +246,6 @@ class JslSecrets(WritableBaseModel):
                     JSL_FINANCE_LICENSE=fin_license,
                 )
                 print('👌 License info detected in arguments')
-                return secrets
             elif access_token:
                 secrets = JslSecrets.from_access_token(
                     access_token, remote_license_number
