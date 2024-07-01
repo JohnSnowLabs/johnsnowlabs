@@ -32,9 +32,9 @@ Here are the labels of the ALCOHOL_SMOKING model with their descriptions:
 
 - `GUT_Issues`:  Refers to digestive distress from smoking and drinking, including nausea, heartburn, ulcers, and liver diseases like cirrhosis and fatty liver.
 
-- `Other_Health_Issues`:  All other signs or symptoms that cannot be classified under specific categories. They may relate to skin, urinary system, reproductive system and any other system/organ of the body. 
+- `Other_Health_Issues`:  All other signs or symptoms cannot be classified under specific categories. They may relate to skin, urinary system, reproductive system and any other system/organ of the body. 
 
-- `Psychoneurologic_Issue`: Encompass a range of disorders affecting both the nervous and mental health systems, exacerbated or caused by alcohol or tobacco use, including conditions such as stroke, Alzheimer's disease, peripheral neuropathy, increased risk of dementia, alcohol use disorder, nicotine addiction, depression, and anxiety.Encompass a range of disorders affecting both the nervous and mental health systems, exacerbated or caused by alcohol or tobacco use, including conditions such as stroke, Alzheimer's disease, peripheral neuropathy, increased risk of dementia, alcohol use disorder, nicotine addiction, depression, and anxiety.  
+- `Psychoneurologic_Issue`: Encompass a range of disorders affecting both the nervous and mental health systems, exacerbated or caused by alcohol or tobacco use, including conditions such as stroke, Alzheimer's disease, peripheral neuropathy, increased risk of dementia, alcohol use disorder, nicotine addiction, depression, and anxiety. Encompass a range of disorders affecting both the nervous and mental health systems, exacerbated or caused by alcohol or tobacco use, including conditions such as stroke, Alzheimer's disease, peripheral neuropathy, increased risk of dementia, alcohol use disorder, nicotine addiction, depression, and anxiety.  
 
 - `Smoking_Status`:  Refers to the categorization of individuals based on their current and past smoking behavior.  
 
@@ -64,6 +64,7 @@ Here are the labels of the ALCOHOL_SMOKING model with their descriptions:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
