@@ -79,20 +79,20 @@ result = pipeline.fit(df).transform(df)
 result.select("text", "prediction.result").show(truncate=100)
 ```
 ```scala
-val document_assembler = new DocumentAssembler()\
-    .setInputCol("text")\
+val document_assembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
         
-val sent_emb = MPNetEmbeddings.pretrained("mpnet_embedding_all_mpnet_base_v2_by_sentence_transformers", 'en')\
-    .setInputCols(["document"])\
-    .setOutputCol("sentence_embeddings")\
+val sent_emb = MPNetEmbeddings.pretrained("mpnet_embedding_all_mpnet_base_v2_by_sentence_transformers", "en")
+    .setInputCols(["document"])
+    .setOutputCol("sentence_embeddings")
 
-val features_asm = new FeaturesAssembler()\
-    .setInputCols(["sentence_embeddings"])\
+val features_asm = new FeaturesAssembler()
+    .setInputCols(["sentence_embeddings"])
     .setOutputCol("features")
 
-val generic_classifier = GenericClassifierModel.pretrained("genericclassifier_alcohol_mpnet_wip", 'en', 'clinical/models')\
-    .setInputCols(["features"])\
+val generic_classifier = GenericClassifierModel.pretrained("genericclassifier_alcohol_mpnet_wip", "en", "clinical/models")
+    .setInputCols(["features"])
     .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(
