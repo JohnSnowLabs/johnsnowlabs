@@ -198,7 +198,7 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 ## Benchmarking
 
 ```bash
-                        precision    recall  f1-score   support
+                 label  precision    recall  f1-score   support
           Alcohol_Type       1.00      1.00      1.00        16
  Cardiovascular_Issues       0.94      0.94      0.94        93
    Cessation_Treatment       0.91      0.93      0.92        57
