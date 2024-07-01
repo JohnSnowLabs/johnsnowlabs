@@ -85,15 +85,15 @@ val document_assembler = new DocumentAssembler()
     .setOutputCol("document")
         
 val sent_emb = MPNetEmbeddings.pretrained("mpnet_embedding_all_mpnet_base_v2_by_sentence_transformers", "en")
-    .setInputCols(["document"])
+    .setInputCols("document")
     .setOutputCol("sentence_embeddings")
 
 val features_asm = new FeaturesAssembler()
-    .setInputCols(["sentence_embeddings"])
+    .setInputCols("sentence_embeddings")
     .setOutputCol("features")
 
 val generic_classifier = GenericClassifierModel.pretrained("genericclassifier_smoking_mpnet_wip", "en", "clinical/models")
-    .setInputCols(["features"])
+    .setInputCols("features")
     .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(
@@ -146,8 +146,7 @@ val result = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-                precision    recall  f1-score   support
-
+         label  precision    recall  f1-score   support
 Current_Smoker       0.91      1.00      0.95        10
         Others       1.00      0.98      0.99        45
       accuracy          -         -      0.98        55
