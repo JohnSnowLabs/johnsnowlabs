@@ -41,6 +41,7 @@ This model, trained on various datasets, provides accurate label assignments and
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
