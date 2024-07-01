@@ -84,15 +84,15 @@ val document_assembler = new DocumentAssembler()
     .setOutputCol("document")
         
 val sent_emb = MPNetEmbeddings.pretrained("mpnet_embedding_all_mpnet_base_v2_by_sentence_transformers", "en")
-    .setInputCols(["document"])
+    .setInputCols("document")
     .setOutputCol("sentence_embeddings")
 
 val features_asm = new FeaturesAssembler()
-    .setInputCols(["sentence_embeddings"])
+    .setInputCols("sentence_embeddings")
     .setOutputCol("features")
 
 val generic_classifier = GenericClassifierModel.pretrained("genericclassifier_alcohol_mpnet_wip", "en", "clinical/models")
-    .setInputCols(["features"])
+    .setInputCols("features")
     .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(
@@ -141,7 +141,7 @@ val result = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-                 precision    recall  f1-score   support
+          label  precision    recall  f1-score   support
 Current_Drinker       0.92      1.00      0.96        44
          Others       1.00      0.64      0.78        11
        accuracy          -         -      0.93        55
