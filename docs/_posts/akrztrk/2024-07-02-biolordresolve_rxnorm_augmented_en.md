@@ -32,24 +32,45 @@ This model maps clinical entities and concepts (like drugs/ingredients) to RxNor
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+ner = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "word_embeddings"])\
+    .setOutputCol("ner")\
 
-ner = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")    .setInputCols(["sentence", "token", "word_embeddings"])    .setOutputCol("ner")
-ner_converter = NerConverterInternal()    .setInputCols(["sentence", "token", "ner"])    .setOutputCol("ner_chunk")    .setWhiteList(["DRUG"])
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["DRUG"])
 
-c2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("embeddings")
+biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("embeddings")
 
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\     .setInputCols(["embeddings"])     .setOutputCol("rxnorm_code")    .setDistanceFunction("EUCLIDEAN")
+rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\ \
+    .setInputCols(["embeddings"]) \
+    .setOutputCol("rxnorm_code")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sentenceDetectorDL,
@@ -61,13 +82,12 @@ resolver_pipeline = Pipeline(stages = [document_assembler,
                                        biolord_embedding,
                                        rxnorm_resolver])
 
-data = spark.createDataFrame([["""The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 2.5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily."""]]).toDF("text")
+text= "The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 2.5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily"
+data = spark.createDataFrame([[text]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -97,7 +117,9 @@ val chunk2doc = new Chunk2Doc()
     .setInputCols("ner_chunk")
     .setOutputCol("ner_chunk_doc")
 
-val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("embeddings")
+val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("embeddings")
 
 val rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")
     .setInputCols("embeddings")
@@ -115,10 +137,9 @@ val pipeline = new Pipeline().setStages(Array(
                                biolord_embedding,
                                rxnorm_resolver))
 
-val data = Seq([["""The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 2.5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily."""]]).toDF("text")
+val data = Seq("The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 2.5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily").toDS().toDF("text")
 
-val result = resolver_pipeline.fit(data).transform(data)
-
+val result = pipeline.fit(data).transform(data)
 ```
 </div>
 
