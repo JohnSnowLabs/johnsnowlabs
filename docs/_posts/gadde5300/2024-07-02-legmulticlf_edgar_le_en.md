@@ -39,7 +39,7 @@ This is a Multilabel Document Classification model, which can be used to identif
 
 ## Predicted Entities
 
-`terminations`
+`terminations`, `assigns`, `notices`, `amendments`, `waivers`, `survival`, `successors`, `governing laws`, `severability`, `expenses`, `assignments`, `warranties`, `representations`, `entire agreements`, `counterparts`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
