@@ -67,7 +67,7 @@ biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c"
     .setInputCols(["ner_chunk_doc"])\
     .setOutputCol("embeddings")
 
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\ \
+rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\
     .setInputCols(["embeddings"]) \
     .setOutputCol("rxnorm_code")\
     .setDistanceFunction("EUCLIDEAN")
@@ -118,7 +118,7 @@ val chunk2doc = new Chunk2Doc()
     .setOutputCol("ner_chunk_doc")
 
 val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")\
-    .setInputCols(["ner_chunk_doc"])\
+    .setInputCols(Array("ner_chunk_doc"))\
     .setOutputCol("embeddings")
 
 val rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")
