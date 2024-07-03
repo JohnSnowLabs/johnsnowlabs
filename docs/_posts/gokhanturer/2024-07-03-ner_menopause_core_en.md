@@ -20,26 +20,25 @@ use_language_switcher: "Python-Scala-Java"
 
 Menopause Core model is designed to detect and label core entities related to menopause and associated conditions within text data. Menopause-related terms and conditions are crucial factors that influence individuals’ health outcomes, especially among women undergoing the menopausal transition. The model has been trained using advanced machine learning techniques on a diverse range of text sources. It can accurately recognize and classify a wide range of menopause-related entities. The model’s accuracy and precision have been carefully validated against expert-labeled data to ensure reliable and consistent results. Here are the labels of the Menopause Core model with their description:
 
-`Perimenopause` : The transition period before menopause, which can last from a few months to several years. “Perimenopausal symptoms include hot flashes and irregular menstrual cycles.”
-`Menopause` : The permanent end of menstrual cycles for at least 12 consecutive months. “She has been experiencing menopausal symptoms such as hot flashes and night sweats.”
-`Gynecological_Symptom` : Symptoms related to the female reproductive system. “Heavy menstrual bleeding and pelvic pain are common gynecological symptoms.”
-`Gynecological_Disease` : Diseases affecting the female reproductive system. “Conditions like fibroids and polycystic ovary syndrome are considered gynecological diseases.”
-`Other_Symptom` : Symptoms not specifically categorized under other defined labels. “General symptoms such as fatigue and headaches.”
-`Irregular_Menstruation` : Variations in the menstrual cycle. “Irregular menstrual cycles can be a sign of perimenopause.”
-`G_P` : Information about the patient's gynecological history, including gravida (number of pregnancies) and para (number of births). “The patient's G2P1 status indicates two pregnancies and one live birth.”
-`Hypertension` : Persistently elevated blood pressure. “She has a history of hypertension and takes medication to manage it.”
-`Osteoporosis` : A condition characterized by weak and brittle bones. “Osteoporosis increases the risk of fractures in postmenopausal women.”
-`Oncological` : Conditions related to cancer. “Breast cancer is a common oncological concern for menopausal women.”
-`Fracture` : Breaks in bones due to mechanical forces. “Osteoporosis can lead to an increased risk of fractures.”
-`Hormone_Replacement_Therapy` (HRT) : Hormone therapy to relieve menopausal symptoms. “Hormone replacement therapy can help manage hot flashes and other menopausal symptoms.”
-`Osteoporosis_Therapy` : Treatments aimed at improving bone density and strength. “Medications like bisphosphonates are used in osteoporosis therapy.”
-`Antidepressants` : Medications used to treat depression and related conditions. “SSRIs are commonly prescribed antidepressants for menopausal women experiencing depression.”
-`Procedure` : Medical procedures related to menopausal care. “Hysterectomy is a procedure that may be performed for certain gynecological conditions.”
-`Hormone_Testing` : Tests to measure hormone levels in the body. “Hormone testing can help diagnose menopausal status.”
-`Vaginal_Swab` : A diagnostic test involving a swab from the vaginal area. “Vaginal swabs are used to detect infections or other conditions.”
-`Age` : The age of the patient. “Menopausal symptoms commonly begin around the age of 50.”
-`Test_Result` : Results from various medical tests. “The test results indicated low bone density, suggestive of osteoporosis.”
-
+`Perimenopause` : The transition period before menopause, which can last from a few months to several years. 
+`Menopause` : The permanent end of menstrual cycles for at least 12 consecutive months. 
+`Gynecological_Symptom` : Symptoms related to the female reproductive system. 
+`Gynecological_Disease` : Diseases affecting the female reproductive system. 
+`Other_Symptom` : Symptoms not specifically categorized under other defined labels. 
+`Irregular_Menstruation` : Variations in the menstrual cycle.
+`G_P` : Information about the patient's gynecological history, including gravida (number of pregnancies) and para (number of births). 
+`Hypertension` : Persistently elevated blood pressure. 
+`Osteoporosis` : A condition characterized by weak and brittle bones. 
+`Oncological` : Conditions related to cancer. 
+`Fracture` : Breaks in bones due to mechanical forces. 
+`Hormone_Replacement_Therapy` (HRT) : Hormone therapy to relieve menopausal symptoms. 
+`Osteoporosis_Therapy` : Treatments aimed at improving bone density and strength.
+`Antidepressants` : Medications used to treat depression and related conditions.
+`Procedure` : Medical procedures related to menopausal care. 
+`Hormone_Testing` : Tests to measure hormone levels in the body. 
+`Vaginal_Swab` : A diagnostic test involving a swab from the vaginal area. 
+`Age` : The age of the patient.
+`Test_Result` : Results from various medical tests. 
 ## Predicted Entities
 
 `Perimenopause`, `Menopause`, `Gynecological_Symptom`, `Gynecological_Disease`, `Other_Symptom`, `Irregular_Menstruation`, `G_P`, `Hypertension`, `Osteoporosis`, `Oncological`, `Fracture`, `Hormone_Replacement_Therapy`, `Osteporosis_Therapy`, `Antidepressants`, `Procedure`, `Hormone_Testing`, `Vaginal_Swab`, `Age`, `Test_Result`
@@ -56,6 +55,7 @@ Menopause Core model is designed to detect and label core entities related to me
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
