@@ -35,9 +35,6 @@ sidebar:
 + New and updated demos
 + 30 new clinical models and pipelines added & updated in total
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Introducing `biogpt_chat_jsl`, The First Ever Closed-Book Medical Question Answering LLM Based On `BioGPT`
@@ -75,6 +72,7 @@ We have a new `MedicalSummarizer` annotator that uses a generative deep learning
 
 Also we are releasing 5 new medical summarizer models.
 
+{:.table-model-big.db}
 | name                                       | description                              |
 |--------------------------------------------|------------------------------------------|
 | [`summarizer_clinical_jsl`](https://nlp.johnsnowlabs.com/2023/03/25/summarizer_clinical_jsl_en.html) | This model is a modified version of Flan-T5 (LLM) based summarization model that is finetuned with clinical notes, encounters, critical care notes, discharge notes, reports, curated  by John Snow Labs. This model is further optimized by augmenting the training methodology, and dataset. It can generate summaries from clinical notes up to 512 tokens given the input text (max 1024 tokens).|
@@ -90,6 +88,7 @@ Our clinical summarizer models with only 250M parameters perform 30-35% better t
 
 🔎 Benchmark on MtSamples Summarization Dataset
 
+{:.table-model-big}
 | model_name | model_size | Rouge | Bleu | bertscore_precision | bertscore_recall: | bertscore_f1 |
 |--|--|--|--|--|--|--|
 philschmid/flan-t5-base-samsum | 250M | 0.1919 | 0.1124 | 0.8409 | 0.8964 | 0.8678 |
@@ -101,6 +100,7 @@ transformersbook/pegasus-samsum | 500M | 0.1924 | 0.0965 | 0.8920 | 0.8149 | 0.8
 
 🔎 Benchmark on MIMIC Summarization Dataset
 
+{:.table-model-big}
 | model_name | model_size | Rouge | Bleu | bertscore_precision | bertscore_recall: | bertscore_f1 |
 |--|--|--|--|--|--|--|
 philschmid/flan-t5-base-samsum | 250M | 0.1910 | 0.1037 | 0.8708 | 0.9056 | 0.8879 |
@@ -166,6 +166,7 @@ You can check the [Medical Summarization Notebook](https://colab.research.google
 
 We are releasing 4 new medical text generator models with a new `MedicalTextGenerator` annotator that uses the basic BioGPT model to perform various tasks related to medical text abstraction. With this annotator, a user can provide a prompt and context and instruct the system to perform a specific task, such as explaining why a patient may have a particular disease or paraphrasing the context more directly. In addition, this annotator can create a clinical note for a cancer patient using the given keywords or write medical texts based on introductory sentences. The BioGPT model is trained on large volumes of medical data allowing it to identify and extract the most relevant information from the text provided.
 
+{:.table-model-big.db}
 | name                                       | description                              |
 |--------------------------------------------|------------------------------------------|
 | [`text_generator_biomedical_biogpt_base`](https://nlp.johnsnowlabs.com/2023/04/03/text_generator_biomedical_biogpt_base_en.html)| This model is a BioGPT (LLM) based text generation model that is finetuned with biomedical datasets (Pubmed abstracts) by John Snow Labs.  Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 1024 tokens given an input text (max 1024 tokens). |
@@ -219,6 +220,7 @@ sample_text = "Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 mon
 
 *Results*:
 
+{:.table-model-big}
 | chunk        | ner_label              |
 |--------------|------------------------|
 | 20 year old  | Age                    |
@@ -245,6 +247,7 @@ sample_text = "Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 mon
 
 Announcing new classification models that can be used for SDOH tasks.
 
+{:.table-model-big.db}
 | name                                       | description                              | labels              |  
 |--------------------------------------------|------------------------------------------|---------------------|
 | [`genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/04/10/genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli_en.html)           | This Generic Classifier model is intended for detecting whether the patient has housing insecurity. If the clinical note includes patient housing problems, the model identifies it. If there is no housing issue or it is not mentioned in the text, it is regarded as "no housing insecurity". The model is trained by using GenericClassifierApproach annotator. | `Housing_Insecurity`: The patient has housing problems.<br>`No_Housing_Insecurity`: The patient has no housing problems or it is not mentioned in the clinical notes.|
@@ -264,6 +267,7 @@ sample_text = ["James is a 28-year-old man who has been struggling with schizoph
 
 *Results*:
 
+{:.table-model-big}
 |                                                                 text|               result|
 |---------------------------------------------------------------------|---------------------|
 |James is a 28-year-old man who has been struggling with schizophrenia for the past five years. He...|    [Mental_Disorder]|
@@ -276,7 +280,7 @@ sample_text = ["James is a 28-year-old man who has been struggling with schizoph
 
 We are releasing two new clinical embeddings models, which were trained using the word2vec algorithm on clinical and biomedical datasets. The models are expected to be more effective in generalizing recent content, and the dataset curation cut-off date was March 2023. The models come in two sizes: the `large` model is around 2 GB, while the `medium` model is around 1 GB, and both have 200 dimensions. Benchmark tests indicate that the new embeddings models can replace the previous clinical embeddings while training other models (e.g. NER, assertion, RE etc.).
 
-
+{:.table-model-big.db}
 | name                                       | description                              |
 |--------------------------------------------|------------------------------------------|
 | [`embeddings_clinical_medium`](https://nlp.johnsnowlabs.com/2023/04/07/embeddings_clinical_medium_en.html)           | This model is trained on a list of clinical and biomedical datasets curated in-house. The size of the model is around 1 GB and has 200 dimensions. |
@@ -317,6 +321,7 @@ sample_text = """The patient was admitted on Monday. She has a right-sided pleur
 
 *Results* :
 
+{:.table-model-big.db}
 result                                                                                                                                                                                                           |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |The patient was admitted on Monday. She has a right-sided pleural effusion for thoracentesis.                                                |
@@ -326,9 +331,6 @@ result                                                                          
 |A repeat echocardiogram was checked. She was started on prophylaxis for DVT. Her CT scan from March 2006 prior to her pericardectomy.        |
 |She was started on prophylaxis for DVT. Her CT scan from March 2006 prior to her pericardectomy. It already shows bilateral plural effusions.|
 |Her CT scan from March 2006 prior to her pericardectomy. It already shows bilateral plural effusions.                            |            
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -348,6 +350,7 @@ obfuscation = DeIdentification()\
 
 *Results*:
 
+{:.table-model-big}
 | sentence                                      | obfuscated                                     |
 |:----------------------------------------------|:-----------------------------------------------|
 | William Walker is a 62 y.o. patient admitted  | Jamire Allen is a 64 y.o. patient admitted     |
@@ -356,9 +359,6 @@ obfuscation = DeIdentification()\
 | Jessica Smith was discharged on 10/02/2022    | Leocadia Quin was discharged on 04/04/2022     |
 | Evelyn White was seen by physician            | Tritia Santiago was seen by physician          |
 | Riley John was started on prophylaxis         | Nayel Dodrill was started on prophylaxis       |
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -379,6 +379,7 @@ obfuscation = DeIdentification()\
 
 *Results*:
 
+{:.table-model-big}
 | dates     | obfuscated   |
 |:-------------|:-------------|
 | 08/02/2018   | 18/02/2018   |
@@ -397,8 +398,6 @@ obfuscation = DeIdentification()\
 
 
 </div><div class="h3-box" markdown="1">
-
-
 
 #### Setting Entity Pairs For Each Relation Labels Feature In `RelationExtractionModel` to reduce false positives
 
@@ -421,17 +420,12 @@ re_model = RelationExtractionModel.pretrained("re_test_result_date", "en", "clin
     .setPredictionThreshold(0)
 ```
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Core Improvements and Bug Fixes
 
 
 - We set format consistency for formatted entity obfuscation of `PHONE`, `FAX`, `ID`, `IDNUM`, `BIOID`, `MEDICALRECORD`, `ZIP`, `VIN`, `SSN`, `DLN`, `LICENSE` and `PLATE` entities as default to make it easy-to-use.
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -440,17 +434,12 @@ re_model = RelationExtractionModel.pretrained("re_test_result_date", "en", "clin
 - New [Medical Summarization Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb) for summarization of clinical context can be used with new `MedicalSummarizer` annotator.
 - New [Medical Text Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Medical_Text_Generation.ipynb) for test generation of clinical context can be used with new `MedicalTextGenerator` annotator.
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### New and Updated Demos
 
 + [Medical Summarization](https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/) demo
 + [Medical Text Generation](https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_GENERATION/) demo
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -491,7 +480,6 @@ re_model = RelationExtractionModel.pretrained("re_test_result_date", "en", "clin
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

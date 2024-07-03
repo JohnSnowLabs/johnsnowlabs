@@ -153,6 +153,7 @@ res = fitted_pipe.predict(dataset)
 fitted_pipe.predict(["Peter told me to buy Tesla ", 'I have money to loose, is TSLA a good option?'])
 ```
 
+{:.table-model-big}
 | entity_resolution_confidence   | entity_resolution_code   | entity_resolution   | document                                      |
 |:-------------------------------|:-------------------------|:--------------------|:----------------------------------------------|
 | '1.0000'                     | '23]                   | 'TESLA'           | Peter told me to buy Tesla                    |
@@ -219,6 +220,7 @@ gender_NER_pipe['context_matcher'].setDictionary('gender.csv', options={"delimit
 gender_NER_pipe.predict(sample_text)
 ```
 
+{:.table-model-big}
 | context_match | context_match_confidence |
 | :------------ | -----------------------: |
 | female        |                     0.13 |
@@ -235,6 +237,7 @@ gender_NER_pipe.predict(sample_text)
 ### Context Matcher Parameters
 You can define the following parameters in your rules.json file to define the entities to be matched
 
+{:.table-model-big}
 | Parameter             | Type                    | Description                                                  |
 | --------------------- | ----------------------- | ------------------------------------------------------------ |
 | entity                | `str   `                | The name of this rule                                        |

@@ -498,7 +498,7 @@ deid_pipeline = Pipeline().setStages([
 
 **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
 |----------:|-------------:|-------------:|-------------:|
 | 1024      | 1 min 3 sec  | 1 min 55 sec | 5 min 45 sec |
@@ -511,10 +511,7 @@ deid_pipeline = Pipeline().setStages([
 | 8         | 1 min 21 sec | 2 min 33 sec | 5 min 3 sec  |
 | 4         | 2 min 26 sec | 4 min 53 sec | 6 min 3 sec  |
 
-</div>
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Deidentification Pipelines Speed Comparison
 
@@ -531,13 +528,14 @@ deid_pipeline = Pipeline().setStages([
         - DataBricks Config: 
             - 32 CPU Core, 128GiB RAM (8 workers) (2.7 $/hr)
 
+            {:.table-model-big}
             |data_count |partition |Databricks |
             |----------:|---------:|----------:|
             |    100000 |      512 | 1h 42m 55s|
     
         - AWS EC2 instance Config:
                 - 32 CPU cores, 64GiB RAM (c6a.8xlarge $1.224/h)
-
+            {:.table-model-big}
             |data_count |partition |   AWS   |
             |----------:|---------:|--------:|
             |    100000 |      512 |1h 9m 56s|
@@ -742,7 +740,7 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 
 ***Results Table***
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | NER Timing     |NER and Resolver Timing| 
 |----------:|:---------------|:----------------------| 
 |4          |  24.7 seconds  |1 minutes 8.5  seconds|

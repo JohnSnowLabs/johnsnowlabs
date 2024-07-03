@@ -27,7 +27,7 @@ sidebar:
 + 3 new clinical models and pipelines added & updated in total
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### 3 New Hhunk Mapper Models to Mapping Drugs and Diseases from the KEGG Database as well as Mapping Abbreviations to Their Categories
@@ -114,7 +114,7 @@ text = ["""Gravid with estimated fetal weight of 6-6/12 pounds.
 | HIV     | medical_condition | Human immunodeficiency virus           |
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ####  New Utility & Helper Relation Extraction Modules to Handle Preprocess
 
@@ -145,7 +145,7 @@ data = REDatasetHelper(data).create_annotation_column(
 ```
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ####  New Utility & Helper OCR Modules to Handle Annotations
 
@@ -192,10 +192,7 @@ ocr_entity_processor(spark=spark,file_path=path, ner_pipeline = nlp_modelchunk_c
 ![image](https://user-images.githubusercontent.com/64752006/205343389-9563a9ce-f971-4865-b94f-4b0cc92e2bcc.png)
 
 
-
-
-
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New Utility & Helper NER Log Parser
@@ -276,7 +273,7 @@ get_charts('./ner_logs/'+log_files[0])
 
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Adding Flexibility Chunk Merger Prioritization
 
@@ -362,10 +359,7 @@ chunk_merger = ChunkMergeApproach()\
 
 You can check [NER Chunk Merger](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/7.Clinical_NER_Chunk_Merger.ipynb) notebook for more examples.
 
-
-
-
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Core improvements and bug fixes
 
@@ -376,7 +370,7 @@ You can check [NER Chunk Merger](https://github.com/JohnSnowLabs/spark-nlp-works
 - Added overall confidence score to MedicalNerModel when setIncludeAllConfidenceScore is True
 - Fixed in InternalResourceDownloader showAvailableAnnotators
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New and Updated Notebooks
@@ -392,7 +386,7 @@ You can check [NER Chunk Merger](https://github.com/JohnSnowLabs/spark-nlp-works
 + Updated [ALab Module SparkNLP JSL](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb) notebook with new updates.
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 3 New Clinical Models and Pipelines Added & Updated in Total
 

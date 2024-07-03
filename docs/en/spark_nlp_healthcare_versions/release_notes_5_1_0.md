@@ -52,6 +52,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 5 new Clinical NER models provide valuable tools for processing and analyzing multi-language clinical texts. They assist in automating the extraction of important clinical information, facilitating research, medical documentation, and other applications within the multi-language healthcare domain.
 
+{:.table-model-big}
 | Model Name   Lang | Predicted Entities     | Language |
 |--------------------|------------------------|---|
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/08/30/ner_clinical_es.html)   | `PROBLEM` `TEST` `TREATMENT` | es |
@@ -74,6 +75,7 @@ sample_text = """Hasta sıcak ve soğuk yiyecekler yerken diş hassasiyetinden �
 
 *Result*:
 
+{:.table-model-big}
 |chunk                                  |begin|end|ner_label|
 |---------------------------------------|-----|---|---------|
 |soğuk yiyecekler yerken diş hassasiyeti|18   |56 |PROBLEM  |
@@ -114,6 +116,7 @@ MEDICATIONS
 
 *Result*:
 
+{:.table-model-big}
 |sentence_id|chunk           |begin|end|ner_label|
 |-----------|----------------|-----|---|---------|
 |1          |11.04.1962      |32   |41 |DOB      |
@@ -125,14 +128,13 @@ MEDICATIONS
 please check: [Model Card](https://nlp.johnsnowlabs.com/2023/08/22/date_of_birth_parser_en.html) and [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) for more information
 
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### 3 New Text Classification Models for Classifying Complaints and Positive Emotions in Clinical Texts
 
 Introducing three novel text classification models tailored for healthcare contexts, specifically designed to differentiate between expressions of `Complaint` – characterized by negative or critical language reflecting dissatisfaction with healthcare experiences – and `No_Complaint` – denoting positive or neutral sentiments without any critical elements. These models offer enhanced insights into patient feedback and emotions within the healthcare domain.
 
+{:.table-model-big}
 | Model Name  | Predicted Entities     | Annotator
 |--------------------|------------------------|---|
 | [few_shot_classifier_patient_complaint_sbiobert_cased_mli](https://nlp.johnsnowlabs.com/2023/08/30/few_shot_classifier_patient_complaint_sbiobert_cased_mli_en.html)   | `Complaint` `No_Complaint` | FewShotClassifierModel |
@@ -157,16 +159,13 @@ sample_text = [
 
 *Result*:
 
+{:.table-model-big}
 |                text|        result|
 |--------------------|--------------|
 |The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, ...| No_Complaint |
 |My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad co...|    Complaint |
 
-
-
 </div><div class="h3-box" markdown="1">
-
-
 
 #### 6 New Augmented NER Models by Leveraging the Capabilities of the LangTest Library to Significantly Boost Their Robustness
 
@@ -174,6 +173,7 @@ Newly introduced augmented NER models namely [ner_events_clinical_langtest](http
 
 - These models are strengthened against various perturbations (lowercase, uppercase, titlecase, punctuation removal, etc.), and the previous and new robustness scores are presented below
   
+{:.table-model-big}
 | model names          | original robustness  | new robustness |
 |---------------------------------------------|--------|-------|
 | ner_oncology_anatomy_granular_langtest      | 0.79   | 0.89  |
@@ -196,6 +196,7 @@ text = "The patient presented to the emergency room last evening"
 
 *Result*:
 
+{:.table-model-big}
 |chunk             |ner_label    |
 |------------------|-------------|
 |presented         |EVIDENTIAL   |
@@ -227,6 +228,7 @@ text = "I experienced fatigue, aggression, and sadness after taking Lipitor but 
 
 *Result*:
 
+{:.table-model-big}
 | index | chunk1     | entity1 | chunk2   | entity2 | relation | zscore | minmax |
 |-------|------------|---------|----------|---------|----------|--------|--------|
 | 0     | fatigue    | ADE     | Lipitor  | DRUG    | 0        | 0.9964 | 0.9983 |
@@ -255,6 +257,7 @@ A 28-year-old female with a history of gestational diabetes mellitus diagnosed e
 
 *setMultiClass(False) Result*:
 
+{:.table-model-big}
 | chunk1                        | entity1 | chunk2 | entity2 | relation | confidence |
 |-------------------------------|---------|--------|---------|----------|------------|
 | gestational diabetes mellitus | PROBLEM | BMI    | TEST    | TeRP     | 1.0        |
@@ -262,6 +265,7 @@ A 28-year-old female with a history of gestational diabetes mellitus diagnosed e
 
 *setMultiClass(True) Result*:
 
+{:.table-model-big}
 | chunk1                        | entity1 | chunk2 | entity2 | relation | confidence |
 |-------------------------------|---------|--------|---------|----------|------------|
 | gestational diabetes mellitus | PROBLEM | BMI    | TEST    | TeRP     | TeRP_confidence: 1.0 <br> TrCP_confidence: 0.0, <br>   TeCP_confidence: 2.36E-35 <br> TrAP_confidence: 8.85E-32 <br> TrWP_confidence: 1.16E-34 <br> TrNAP_confidence: 0.0 <br>   TrIP_confidence: 0.0 <br> PIP_confidence: 1.87E-28 <br> O_confidence: 9.56E-13 <br>      |
@@ -289,6 +293,7 @@ John K Sullavan is 25 years old patient has heavy back pain started from last we
 
 *Results*:
 
+{:.table-model-big}
 |sentence|masked|deidentified|
 |--------|------|------------|
 |Patient Name: SULLAVAN, John K, MRN: 123456|Patient Name: \<PATIENT\> MRN: \<MEDICALRECORD\>|Patient Name: Viviann Spare MRN: 376947|
@@ -372,6 +377,7 @@ We've modified the method names in the `ocr_nlp_processor` module and introduced
 
 `ocr_nlp_processor` Methods:
 
+{:.table-model-big}
 |Previous|Now|
 |-|-|
 |black_band|colored_box|
@@ -415,8 +421,6 @@ ocr_entity_processor(spark=spark,
 - New [PATIENT COMPLAINT CLASSIFICATION Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_PATIENT_COMPLAINT/)
 - Updated [Age Group Classification Demo](https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_AGE/) 
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
@@ -444,16 +448,11 @@ ocr_entity_processor(spark=spark,
 + `ner_clinical_pipeline` -> `pt`
 + `ner_clinical_pipeline` -> `tr`
     
-
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
 
 ## Versions
 

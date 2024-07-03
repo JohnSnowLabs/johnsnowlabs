@@ -44,10 +44,9 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 </div><div class="h3-box" markdown="1">
 
-
-
 #### 13 New Augmented NER Models by Leveraging the Capabilities of the LangTest Library to Boost Their Robustness Significantly
 
+{:.table-model-big.db}
 | Model Name               |   Predicted Entities        |
 |--------------------------|-----------------------------|
 | [`ner_biomarker_langtest`](https://nlp.johnsnowlabs.com/2023/10/10/ner_biomarker_langtest_en.html)             |  `Oncogenes`, `Tumor_Finding`, `ResponseToTreatment`, `Biomarker`, `HormonalTherapy`, `Staging`, `Drug`, `CancerDx`, `Radiotherapy`, `CancerSurgery`, `TargetedTherapy`, `CancerModifier`, `Biomarker_Measurement`, `Metastasis`, `Chemotherapy`, `Test`, `Dosage`, `Test_Result`, `Immunotherapy`...|
@@ -67,6 +66,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 - The table below shows the robustness of overall test results for 13 different models.
 
+{:.table-model-big}
 | model names        | original robustness  |  new robustness  |
 |-------------------------------------------|---------|--------|
 | ner_biomarker_langtest                    | 45.49%  | 78.84% |
@@ -83,15 +83,13 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 | ner_oncology_langtest                     | 52.13%  | 79.73% |
 | ner_deid_generic_augmented_allUpperCased_langtest  | 94.73%  | 97.60% |
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### 3 New Clinical NER Models for Extracting Clinical Entities in the Arabic, Finnish, and Bulgarian Languages
 
 3 new Clinical NER models provide valuable tools for processing and analyzing multi-language clinical texts. They assist in automating the extraction of important clinical information, facilitating research, medical documentation, and other applications within the multi-language healthcare domain.
 
-
+{:.table-model-big}
 | Model Name         | Predicted Entities           | Language |
 |--------------------|------------------------------|----------|
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/06/ner_clinical_ar.html)   | `PROBLEM` `TEST` `TREATMENT` | ar |
@@ -114,6 +112,7 @@ sample_text = """تاريخ الزيارة: 25 سبتمبر 2023 - المريض�
 
 *Result*:
 
+{:.table-model-big}
 |chunk                                               |ner_label|
 |----------------------------------------------------|-------------------|
 |مشكل ارتفاع في مستويات في الدم                 |PROBLEM  |
@@ -133,7 +132,7 @@ sample_text = """تاريخ الزيارة: 25 سبتمبر 2023 - المريض�
 
 The PHS-BERT Respiratory Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Asthma, Chronic Obstructive Pulmonary Disease (COPD), Emphysema, and Chronic bronchitis
 
-
+{:.table-model-big.db}
 |Model|Description|Predicted Labels|
 |-|-|-|
 |[`multiclassifierdl_respiratory_disease`](https://nlp.johnsnowlabs.com/2023/10/03/multiclassifierdl_respiratory_disease_en.html) |This model identifies and categorizes textual mentions of four prominent respiratory diseases: Asthma, Chronic Obstructive Pulmonary Disease (COPD), Emphysema, and Chronic bronchitis.| `Astham`, `COPD`, `Emphysema`, `Chronic bronchitis`, `Other/Unknown`, `No` |
@@ -172,16 +171,13 @@ Please see the  [Respiratory Disease](https://demo.johnsnowlabs.com/healthcare/C
 [Mental Disorder](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/) demos
 
 
-
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### 3 New `ChunkMapper` Models to Map UMLS Codes to Their MeSH, SNOMED, and ICD-10-CM Codes.
 
 We have introduced 3 new `ChunkMapper` models to map UMLS codes to their MeSH, SNOMED, and ICD-10-CM codes.
 
+{:.table-model-big}
 | Model Name          | Relations    | Description                        |
 |---------------------|--------------|------------------------------------|
 | [umls_mesh_mapper](https://nlp.johnsnowlabs.com/2023/10/17/umls_mesh_mapper_en.html)    | mesh_code    | Maps UMLS codes to MeSH codes      |
@@ -232,6 +228,7 @@ for pain control. He also became short of breath with climbing a flight of stair
 
 *Result*:
 
+{:.table-model-big}
 | chunks          | entities   | assertion                    |
 |:----------------|:-----------|:-----------------------------|
 | severe fever    | PROBLEM    | available                    |
@@ -243,8 +240,6 @@ for pain control. He also became short of breath with climbing a flight of stair
 | short of breath | PROBLEM    | Optional                     |
 
 Please see [Clinical Assertion Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb) for more information 
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -280,6 +275,7 @@ dates = [
 
 *Result*:
 
+{:.table-model-big}
 | text                             |   age_chunk | obfuscation                      |
 |:---------------------------------|------------:|:---------------------------------|
 | 1 year old baby                  |           1 | 1 year old baby                  |
@@ -291,8 +287,6 @@ dates = [
 
 
 Please see [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) for more information 
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -356,7 +350,6 @@ RiskAdjustmentUtil.diff_between_HCCs("rxhcc", "08", 2023, ["RXHCC77", "RXHCC262"
 
 OUTPUT :{'added_list': ['RXHCC1', 'RXHCC78', 'RXHCC261'], 'deleted_list': ['RXHCC77']}
 ```
-
 
 Please see [Calculate Medicare Risk Adjustment Score Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) for more information 
 
@@ -427,14 +420,9 @@ Please see [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/s
 - [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) with new `setAgeRangesByHipaa` examples
 - [Calculate Medicare Risk Adjustment Score Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) with new Risk-Adjustment feature examples
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
-
-
 
 + `ner_clinical` -> `ar`
 + `ner_clinical` -> `bg`
@@ -459,16 +447,11 @@ Please see [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/s
 + `umls_snomed_mapper`
 + `umls_icd10cm_mapper`
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

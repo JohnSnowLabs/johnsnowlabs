@@ -92,7 +92,7 @@ NerConverterInternal()\
 | Shanghai China             | LOCATION |   234 | 248 |
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Adding Relation Direction to  `RelationExtraction` Models to Make the Relations Direction-aware.
 
@@ -132,7 +132,7 @@ re_approach_with_dir = RelationExtractionApproach()\
     .setRelationDirectionCol("rel_dir")
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Using Proper Regional date Formats in  `DeIdentification` Module
 
@@ -145,7 +145,7 @@ de_identification = DeIdentification() \
     .setRegion('us') # 'eu' for Europe
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Being Able to Play With Different Date Formats in `DateNormalizer` Output
 
@@ -181,7 +181,7 @@ sample_text = ['She was last seen in the clinic on Jan 30, 2018, by Dr. Y.',
 +----------------------------------------------------------+------------+------------------+------------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New `Replacer` Annotator To Replace Chunks With Their Normalized Versions (`DateNormalizer`) In Documents
 
@@ -214,7 +214,7 @@ sample_text = ['She was last seen in the clinic on Jan 30, 2018, by Dr. Y.',
 |We reviewed the pathology obtained on 13.04.1999.         |1999/04/13     |We reviewed the pathology obtained on 1999/04/13.       |
 +----------------------------------------------------------+---------------+--------------------------------------------------------+
 ```
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New `ModelTracer` Helper Class to Generate and Add Model UID and Timestamps of the Stages in a Pipeline
 
@@ -248,7 +248,7 @@ result.show(truncate=False)
 +----+--------+-----+---+----------------------------------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Added Entity Source and Labels to the `AssertionFilterer` Metadata
 
@@ -280,7 +280,7 @@ text = "Patient has a headache for the last 2 weeks, no alopecia noted."
 +---------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New Chunk Mapper and Sentence Entity Resolver Models And A Pipeline for CVX  
 
@@ -366,7 +366,7 @@ result = resolver_pipeline.fullAnnotate(text)
 +-----------------+---------+--------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Updated Clinical NER Models With New Labels
 
@@ -396,13 +396,13 @@ sample_text= """The patient is a 21-day-old Caucasian male here for 2 days, ther
 |influenza vaccine |     100 |   116 | Vaccine_Name   |
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New Certification Training Notebooks for the `johnsnowlabs` Library
 
 Now we have 46 new [Healtcare Certification Training notebooks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare) for the users who want to use the new `johnsnowlabs` library.
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
 
@@ -423,7 +423,7 @@ Now we have 46 new [Healtcare Certification Training notebooks](https://github.c
 + Updated 6 Databricks [Public notebooks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/products/databricks/public) and 14 Databricks [Healthcare notebooks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/products/databricks/healthcare) with the latest updates in the libraries and 4 new Databricks notebooks created.
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 6 New Clinical Models and Pipelines Added & Updated in Total
 
