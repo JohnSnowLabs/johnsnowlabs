@@ -32,6 +32,7 @@ Assign assertion status to clinical entities extracted by NER based on their con
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -84,7 +85,11 @@ assertion_pipeline = Pipeline(stages=[
     few_shot_assertion_classifier
 ])
 
-data = spark.createDataFrame(text).toDF("text")
+sample_text= [
+"""The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases."""
+]
+
+data = spark.createDataFrame([sample_text]).toDF("text")
 
 result = assertion_pipeline.fit(data).transform(data)
 
@@ -149,13 +154,15 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                                                                                                                                              embeddings|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -> 0}, [0.013063217, 0.021155916, 0.047363397, 0.0150518585, -0.013764424, -0.05267421, -0.011824028, -0.011092...|
-|[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -> 0}, [0.03685236, 0.05191949, 0.025875507, 0.04316585, 0.011442473, -0.04750773, -0.03281609, 0.012618238...|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
+|    | chunks            |   begin |   end | entities         | assertion   |   confidence |
+|---:|:------------------|--------:|------:|:-----------------|:------------|-------------:|
+|  0 | colorectal cancer |      33 |    49 | Cancer_Dx        | Possible    |     0.581282 |
+|  1 | Her               |      52 |    54 | Gender           | Present     |     0.9563   |
+|  2 | cancers           |      93 |    99 | Cancer_Dx        | Family      |     0.234656 |
+|  3 | biopsy            |     120 |   125 | Pathology_Test   | Past        |     0.957321 |
+|  4 | positive          |     131 |   138 | Pathology_Result | Present     |     0.956439 |
+|  5 | CT scan           |     143 |   149 | Imaging_Test     | Past        |     0.95717  |
+|  6 | metastases        |     175 |   184 | Metastasis       | Possible    |     0.549866 |
 ```
 
 {:.model-param}
