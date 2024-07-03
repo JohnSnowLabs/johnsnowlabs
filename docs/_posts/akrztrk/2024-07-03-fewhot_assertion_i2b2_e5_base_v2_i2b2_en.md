@@ -61,7 +61,7 @@ ner_converter = NerConverterInternal()\
     #.setWhiteList(["PROBLEM"])
 
 few_shot_assertion_converter = FewShotAssertionSentenceConverter()\
-    .setInputCols(["sentence", "ner_chunk"])\
+    .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("assertion_sentence")
 
 e5_embeddings = E5Embeddings\
@@ -121,7 +121,7 @@ val ner_converter = new NerConverterInternal()
     //.setWhiteList("PROBLEM")
 
 val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
-    .setInputCols(Array("sentence", "ner_chunk"))
+    .setInputCols(Array("sentence","token","ner_chunk"))
     .setOutputCol("assertion_sentence")
 
 val e5_embeddings = E5Embeddings
