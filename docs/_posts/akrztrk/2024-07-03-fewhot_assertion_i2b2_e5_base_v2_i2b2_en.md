@@ -5,7 +5,7 @@ author: John Snow Labs
 name: fewhot_assertion_i2b2_e5_base_v2_i2b2
 date: 2024-07-03
 tags: [en, licensed, clinical, e5, medical, assertion, i2b2, fewshot, onnx]
-task: Embeddings
+task: Assertion Status
 language: en
 edition: Healthcare NLP 5.3.3
 spark_version: 3.0
