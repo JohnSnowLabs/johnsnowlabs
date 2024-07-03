@@ -127,7 +127,7 @@ val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl
 val tokenizer = new RegexTokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
-    .setPattern('\\s+|(?=[-.:;*+,\(\)\/$&%\\[\\]])|(?<=[-.:;*+,\(\)\/$&%\\[\\]])')
+    .setPattern("\\s+|(?=[-.:;*+,\(\)\/$&%\\[\\]])|(?<=[-.:;*+,\(\)\/$&%\\[\\]])")
 
 val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
