@@ -184,6 +184,9 @@ val result = pipeline.fit(data).transform(data)
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[re_ner_chunk, sentence]|
+|Output Labels:|[relation_extraction]|
+|Language:|en|
+|Size:|405.4 MB|
 
 ## References
 
@@ -197,6 +200,4 @@ In-house annotated oncology case reports.
 is_date_of    0.82       0.78 0.80    298.0
  macro-avg    0.79       0.79 0.79      -
 ```
-|Output Labels:|[relation_extraction]|
-|Language:|en|
-|Size:|405.4 MB|
+
