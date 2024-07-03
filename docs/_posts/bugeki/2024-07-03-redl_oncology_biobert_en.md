@@ -39,49 +39,58 @@ This relation extraction model identifies relations between dates and other clin
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-document_assembler = DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-.setInputCols(["document"])
-.setOutputCol("sentence")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()
-.setInputCols(["sentence"])
-.setOutputCol("token")
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")                
 
-ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
-.setInputCols(["sentence", "token", "embeddings"])
-.setOutputCol("ner")
+ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
-ner_converter = NerConverterInternal()
-.setInputCols(["sentence", "token", "ner"])
-.setOutputCol("ner_chunk")
+ner_converter = NerConverterInternal() \
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")
+          
+pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("pos_tags")
 
-pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("pos_tags")
+dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en") \
+    .setInputCols(["sentence", "pos_tags", "token"]) \
+    .setOutputCol("dependencies")
 
-dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en")
-.setInputCols(["sentence", "pos_tags", "token"])
-.setOutputCol("dependencies")
+re_ner_chunk_filter = RENerChunksFilter()\
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunk")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(["Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"])
 
-re_ner_chunk_filter = RENerChunksFilter()
-.setInputCols(["ner_chunk", "dependencies"])
-.setOutputCol("re_ner_chunk")
-.setMaxSyntacticDistance(10)
-.setRelationPairs(["Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"])
-
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_biobert_wip", "en", "clinical/models")
-.setInputCols(["re_ner_chunk", "sentence"])
-.setOutputCol("relation_extraction")
-
-pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, pos_tagger, dependency_parser, re_ner_chunk_filter, re_model])
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_biobert_wip", "en", "clinical/models")\
+    .setInputCols(["re_ner_chunk", "sentence"])\
+    .setOutputCol("relation_extraction")
+     
+pipeline = Pipeline(stages=[document_assembler,
+                            sentence_detector,
+                            tokenizer,
+                            word_embeddings,
+                            ner,
+                            ner_converter,
+                            pos_tagger,
+                            dependency_parser,
+                            re_ner_chunk_filter,
+                            re_model])
 
 data = spark.createDataFrame([["A mastectomy was performed two months ago, and a 3 cm mass was extracted."]]).toDF("text")
 
