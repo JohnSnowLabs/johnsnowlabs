@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 Assign assertion status to clinical entities extracted by NER based on their context in the text. Also this model is trained on a list of clinical and biomedical datasets curated in-house
 
+## Predicted Entities
+
+`Present`, `Absent`,  `Past`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
