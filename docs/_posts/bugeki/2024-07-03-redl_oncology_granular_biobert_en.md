@@ -221,7 +221,7 @@ val result = pipeline.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|redl_oncology_granular_biobert|
-|Compatibility:|Healthcare NLP 5.3.3+|
+|Compatibility:|Healthcare NLP 5.4.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[re_ner_chunk, sentence]|
