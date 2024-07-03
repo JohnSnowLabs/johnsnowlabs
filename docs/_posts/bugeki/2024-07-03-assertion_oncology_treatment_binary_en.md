@@ -63,7 +63,7 @@ ner_converter = NerConverter() \
     .setOutputCol("ner_chunk")\    
     .setWhiteList(["Cancer_Surgery", "Chemotherapy"])
     
-assertion = AssertionDLModel.pretrained("assertion_oncology_treatment_binary_wip", "en", "clinical/models") \
+assertion = AssertionDLModel.pretrained("assertion_oncology_treatment_binary", "en", "clinical/models") \
     .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
     .setOutputCol("assertion")
         
@@ -105,7 +105,7 @@ val ner_converter = new NerConverter()
     .setOutputCol("ner_chunk")
     .setWhiteList(Array("Cancer_Surgery", "Chemotherapy"))
 
-val clinical_assertion = AssertionDLModel.pretrained("assertion_oncology_treatment_binary_wip","en","clinical/models")
+val clinical_assertion = AssertionDLModel.pretrained("assertion_oncology_treatment_binary","en","clinical/models")
     .setInputCols(Array("sentence","ner_chunk","embeddings"))
     .setOutputCol("assertion")
         
