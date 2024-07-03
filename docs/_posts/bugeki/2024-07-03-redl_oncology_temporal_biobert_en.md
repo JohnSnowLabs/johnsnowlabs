@@ -79,7 +79,7 @@ re_ner_chunk_filter = RENerChunksFilter()\
     .setMaxSyntacticDistance(10)\
     .setRelationPairs(["Cancer_Dx-Date", "Date-Cancer_Dx", "Relative_Date-Cancer_Dx", "Cancer_Dx-Relative_Date", "Cancer_Surgery-Date", "Date-Cancer_Surgery", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"])
 
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_temporal_biobert_wip", "en", "clinical/models")\
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_temporal_biobert", "en", "clinical/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relation_extraction")
         
@@ -139,7 +139,7 @@ val re_ner_chunk_filter = new RENerChunksFilter()
      .setMaxSyntacticDistance(10)
      .setRelationPairs(Array("Cancer_Dx-Date", "Date-Cancer_Dx", "Relative_Date-Cancer_Dx", "Cancer_Dx-Relative_Date", "Cancer_Surgery-Date", "Date-Cancer_Surgery", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"))
 
-val re_model = RelationExtractionDLModel.pretrained("redl_oncology_temporal_biobert_wip", "en", "clinical/models")
+val re_model = RelationExtractionDLModel.pretrained("redl_oncology_temporal_biobert", "en", "clinical/models")
       .setPredictionThreshold(0.5f)
       .setInputCols(Array("re_ner_chunk", "sentence"))
       .setOutputCol("relation_extraction")
