@@ -58,6 +58,7 @@ sample_text = "Calulate the total number of patients who had icd9 code 5771"
 
 *Results:*
 
+{:.table-model-big}
 |SQL Query|
 |-|
 |SELECT COUNT ( DISTINCT DEMOGRAPHIC."SUBJECT_ID" ) FROM DEMOGRAPHIC INNER JOIN PROCEDURES on DEMOGRAPHIC.HADM_ID = PROCEDURES.HADM_ID WHERE PROCEDURES."ICD9_CODE" = "5771"|
@@ -77,6 +78,7 @@ ONNX integration empowers our Seq2Seq models to perform their tasks more efficie
 
 We're excited to introduce the ONNX-powered versions of `summarizer_clinical_laymen`, `clinical_notes_qa_base` and `clinical_notes_qa_large` models, representing a significant advancement in efficiency and versatility.
 
+{:.table-model-big}
 |Model|Description|
 |-|-|
 |[`summarizer_clinical_laymen_onnx`](https://nlp.johnsnowlabs.com/2023/08/16/summarizer_clinical_laymen_onnx_en.html)|The ONNX version of `summarizer_clinical_laymen` model that is finetuned with custom dataset by John Snow Labs to avoid using clinical jargon on the summaries.|
@@ -99,6 +101,7 @@ question = "What is the primary issue reported by patient?"
 
 *Results*:
 
+{:.table-model-big}
 |answer|
 |-|
 |The primary issue reported by the patient is hypertension.|
@@ -125,6 +128,7 @@ Realizou-se um exame clínico e radiográfico para avaliar possíveis cáries ou
 
 *Results*:
 
+{:.table-model-big}
 |chunk                     |begin|end|ner_label|
 |--------------------------|-----|---|---------|
 |sensibilidade dentária    |21   |42 |PROBLEM  |
@@ -141,6 +145,7 @@ Realizou-se um exame clínico e radiográfico para avaliar possíveis cáries ou
 
 We are excited to announce 3 new assertion status detection models that can classify assertions for the detected entities in VoP notes with the `Hypothetical_Or_Absent`, `Present_Or_Past`, and `SomeoneElse` labels. 
 
+{:.table-model-big}
 |Model|Description|
 |-|-|
 |[`assertion_vop_clinical`](https://nlp.johnsnowlabs.com/2023/08/17/assertion_vop_clinical_en.html)|This model is trained with `embeddings_clinical` embeddings and predicts the assertion status of the detected chunks.|
@@ -160,6 +165,7 @@ sample_text = "I was feeling anxiety honestly. Can it bring on tremors? It was r
 
 *Results*:
 
+{:.table-model-big}
 |chunk   |begin|end|ner_label             |sent_id|assertion             |confidence|
 |--------|-----|---|----------------------|-------|----------------------|----------|
 |anxiety |14   |20 |PsychologicalCondition|0      |Present_Or_Past       |0.98    |
@@ -188,6 +194,7 @@ sample_text = "Smith works as a cleaning assistant and does not have access to h
 
 *Results*:
 
+{:.table-model-big}
 |chunk             |begin|end|ner_label         |assertion   |
 |------------------|-----|---|------------------|------------|
 |cleaning assistant|17   |34 |Employment        |Present     |
@@ -203,6 +210,7 @@ sample_text = "Smith works as a cleaning assistant and does not have access to h
 
 Introducing two new **transportation insecurity classifier models for SDOH** that offer precise label assignments and confidence scores. With a strong ability to thoroughly analyze text, these models categorize content into `No_Transportation_Insecurity_Or_Unknown` and `Transportation_Insecurity`, providing valuable insights into transportation-related insecurity.
 
+{:.table-model-big}
 |Model|Description|
 |-|-|
 |[`genericclassifier_sdoh_transportation_insecurity_e5_large`](https://nlp.johnsnowlabs.com/2023/08/13/genericclassifier_sdoh_transportation_insecurity_e5_large_en.html)|This model is trained with E5 large embeddings within a generic classifier framework.|
@@ -220,6 +228,7 @@ sample_text_list = ["Patient B is a 40-year-old female who was diagnosed with br
 
 *Results*:
 
+{:.table-model-big}
 |Text|Transportation Insecurity Class|
 |-|-|
 |Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatm...|              Transportation_Insecurity|
@@ -236,6 +245,7 @@ Now we have three new Age Group Text Classifier models that are designed to anal
 - **Child**: A young human who is not yet an adult. Typically refers to someone below the legal age of adulthood, which is often below 18 years old.
 - **Unknown**: Represents situations where determining the age group from the given text is not possible.
 
+{:.table-model-big}
 |Model|Description|
 |-|-|
 |[`bert_sequence_classifier_age_group`](https://nlp.johnsnowlabs.com/2023/08/16/bert_sequence_classifier_age_group_en.html)|This model is a BioBERT-based Age Group Text Classifier and it is trained for analyzing the age group of a person mentioned in health documents.|
@@ -256,6 +266,7 @@ sample_text_list = [["A patient presented with complaints of chest pain and shor
 
 *Results*:
 
+{:.table-model-big}
 |Text|Age Group|
 |-|-|
 |A patient presented with complaints of chest pain and shortness of breath. The medical history revealed the patient had a smoking habit for over 30...|  Adult|
@@ -282,6 +293,7 @@ sample_codes = ["L08.1", "U07.1", "C10.0", "J351"]
 
 *Results*:
 
+{:.table-model-big}
 |ICD10CM Code|MS-DRG                         |
 |------------|-------------------------------|
 |L08.1       |Erythrasma                     |
@@ -318,6 +330,7 @@ VDRL: Nonreactive""")
      
 *Results*:
 
+{:.table-model-big}
 |chunk|entity|category_mappings|                     definition_mappings|
 |-|-|-|-|
 |  CBC|  ABBR|          general|complete blood count|
@@ -339,9 +352,6 @@ VDRL: Nonreactive""")
 - [Text to SQL Generation](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) Notebook for automatically converting natural language questions into corresponding SQL queries
 - Updated [NORMALIZED SECTION HEADER MAPPER](https://demo.johnsnowlabs.com/healthcare/NORMALIZED_SECTION_HEADER_MAPPER/) Demo with `ner_section_header_diagnosis` model
 - Updated [ENTITY RESOLVER LOINC](https://demo.johnsnowlabs.com/healthcare/ER_LOINC/) Demo with `sbiobertresolve_loinc_numeric` and `sbiobertresolve_loinc_augmented` models
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -368,15 +378,11 @@ VDRL: Nonreactive""")
 + `assertion_vop_clinical_large`
 + `few_shot_classifier_age_group_sbiobert_cased_mli`
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
 
 ## Versions
 

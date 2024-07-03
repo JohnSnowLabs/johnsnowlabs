@@ -53,7 +53,7 @@ reApproach_finetune = RelationExtractionApproach()\
 ```
 You can check [Resume RelationExtractionApproach Training Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.4.Resume_RelationExtractionApproach_Training.ipynb) for more examples.
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### Added Romanian Support in Deidentification Annotator For Data Obfuscation
@@ -81,7 +81,7 @@ text = """Nume si Prenume : BUREAN MARIA, Varsta: 77 ,Spitalul Pentru Ochi de De
 |Nume si Prenume : BUREAN MARIA, Varsta: 77 ,Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui| Nume si Prenume : <\PATIENT>, Varsta: <\AGE> ,<\HOSPITAL>, <\STREET> <\CITY> | Nume si Prenume : **********, Varsta: ** ,**************************, ****************** **** |Nume si Prenume : ****, Varsta: **** , ****, **** **** | Nume si Prenume : Claudia Crumble, Varsta: 18 ,LOS ANGELES AMBULATORY CARE CENTER, 706 north parrish avenue Piscataway|
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New SDOH (Social Determinants of Health) NER Model
@@ -132,7 +132,7 @@ text = """ Mother states that he does smoke, there is a family hx of alcohol on 
 +-------------+-------------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### Improved Oncology NER Models And 4 New Pretrained Pipelines
@@ -206,7 +206,7 @@ text = "The patient underwent a left mastectomy for a left breast cancer two mon
 | positive      | Biomarker_Result | PR             | Biomarker     | is_related_to |
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New Chunk Mapper Models to Map Entities (phrases) to Their Corresponding ICD-10-CM Codes As Well As Clinical Abbreviations to Their Definitions
@@ -243,7 +243,7 @@ text = """A 35-year-old male with a history of primary leiomyosarcoma of neck, g
 +------------------------------+-------+------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 
@@ -305,14 +305,14 @@ text = "A 28-year-old female with a history of gestational diabetes mellitus dia
 ```
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New Utility & Helper Modules Documentation Page
 
 We have a new [utility & helper modules documentation page](https://nlp.johnsnowlabs.com/docs/en/utility_helper_modules) that you can find the documentations of Spark NLP for Healthcare modules with examples.
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New and Updated Notebooks
@@ -325,7 +325,7 @@ We have a new [utility & helper modules documentation page](https://nlp.johnsnow
 
 + Updated [Adverse Drug Event ADE NER and Classifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb) notebook with the new models and improvement.
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### 22 New Clinical Models and Pipelines Added & Updated in Total

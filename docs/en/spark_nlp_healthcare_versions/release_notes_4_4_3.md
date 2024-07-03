@@ -55,6 +55,7 @@ We're thrilled to present our newly-integrated Arabic deidentification Named Ent
 
 Designed explicitly for deidentification tasks in Arabic language, these models and pipelines leverage our proprietary dataset curation and specialized augmentation methods. This expansion broadens the linguistic scope of our toolset, underscoring our commitment to providing comprehensive solutions for global healthcare NLP needs.
 
+{:.table-model-big.db}
 | NER model                                  | pipeline | description                              |            predicted entities             |
 |--------------------------------------------|----------|------------------------------------------|-------------------------------------------|
 | [`ner_deid_subentity`](https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_subentity_ar.html) | [`ner_deid_subentity_pipeline`](https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_subentity_pipeline_ar.html) | This model/pipeline can detect protected health information (PHI) entities with 17 different labels.| `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
@@ -84,6 +85,7 @@ mohamedmell@gmail.com.'''
 
 *Result*:
 
+{:.table-model-big}
 |chunk                       |ner_label |
 |---------------------------:|:---------|
 |محمد                        |DOCTOR    |
@@ -124,13 +126,11 @@ This is a clinical note about a 34-year-old woman who is interested in having we
 
 </div><div class="h3-box" markdown="1">
 
-
-
 #### New Medical Summarizer Pretrained Pipelines That Can Be Used In One Line
 
 We are excited to announce the launch of seven new medical summarizer pretrained pipelines. These novel pipelines have been specifically developed to enable streamlined execution in a succinct one-liner format, eliminating the need to construct verbose pipelines.
 
-
+{:.table-model-big.db}
 | model name                                 | description                              |
 |--------------------------------------------|------------------------------------------|
 | [`summarizer_biomedical_pubmed_pipeline`](https://nlp.johnsnowlabs.com/2023/05/31/summarizer_biomedical_pubmed_pipeline_en.html)           | Finetuned with biomedical datasets (Pubmed abstracts) by John Snow Labs  |
@@ -199,6 +199,7 @@ New and updated ICD-10-CM sentence entity resolver and chunk mapper models provi
 
 Here are the updated ICD-10-CM sentence entity resolver and chunk mapper models.
 
+{:.table-model-big.db}
 | model name                                 |  type        | description                              |
 |--------------------------------------------|--------------|------------------------------------------|
 | [`icd10cm_mapper`](https://nlp.johnsnowlabs.com/2023/05/30/icd10cm_mapper_en.html)                       | chunk mapper | Maps medical entities with their corresponding ICD-10-CM codes.  |
@@ -227,8 +228,7 @@ sample_icd_codes= ["D66", "S22.00", "Z3A.10"]
 
 *Result*:
 
-
-
+{:.table-model-big}
 | icd10cm_code | billable | hcc_score |
 |--------------|----------|-----------|
 | D66          | 1        | 46        |
@@ -249,6 +249,7 @@ sample_text = "The patient has a gestational diabetes mellitus history and subse
 
 *Result*:
 
+{:.table-model-big}
 | ner_chunk                             | icd10cm_code | resolution                                                                    | billable_status | hcc_status | hcc_score |
 |---------------------------------------|--------------|-------------------------------------------------------------------------------|-----------------|------------|-----------|
 | gestational diabetes mellitus         | O24.4        | gestational diabetes mellitus [gestational diabetes mellitus]                 | 0               | 0          | 0         |
@@ -257,12 +258,7 @@ sample_text = "The patient has a gestational diabetes mellitus history and subse
 | poor appetite                         | R63.0        | poor appetite [anorexia]                                                      | 1               | 0          | 0         |
 | vomiting                              | R11.1        | vomiting [vomiting]                                                           | 0               | 0          | 0         |
 
-
-
-
-
 </div><div class="h3-box" markdown="1">
-
 
 #### A New Voice Of Patient (VOP) Medical Classifier Model Focusing On The Side Effect Classification Of Treatments And Procedures In Patients' Own Words
 
@@ -281,6 +277,7 @@ sequenceClassifier = MedicalBertForSequenceClassification\
 
 *Result*:
 
+{:.table-model-big}
 |text                                                          |result |
 |--------------------------------------------------------------|-------|
 |I felt kind of dizzy after taking that medication for a month.| True  |
@@ -288,9 +285,6 @@ sequenceClassifier = MedicalBertForSequenceClassification\
 
 
 </div><div class="h3-box" markdown="1">
-
-
-
 
 #### Enhanced Social Determinants Of Health (SDOH) Classifier Models For Detecting Patients' Situation According To Certain Conditions (Under Treatment Or Not, Suffering From Housing Insecurity)
 
@@ -313,6 +307,7 @@ text_list = ["Patient is a 50-year-old male who was diagnosed with hepatitis C. 
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                                text  |                               result |
 |------------------------------------------------------------------------------------------------------|--------------------------------------|
 | Patient is a 50-year-old male who was diagnosed with hepatitis C. He has received a treatment pla... |                      Under_Treatment |
@@ -336,18 +331,13 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                               text   |                                 result |
 |------------------------------------------------------------------------------------------------------|----------------------------------------|
 | Patient is a 50-year-old male who no has stable housing. He recently underwent a hip replacement ... |                     Housing_Insecurity |
 | Patient is a 25-year-old female who has her private housing. She presented with symptoms of a uri... | No_Housing_Insecurity_Or_Not_Mentioned |
 
-
-
-
-
-
 </div><div class="h3-box" markdown="1">
-
 
 #### Introducing The Innovative `Nertemplaterender` Annotator To Generate Customized Prompts For Zero Shot Models
 
@@ -383,7 +373,7 @@ data = spark.createDataFrame([
 
 *Result*:
 
-
+{:.table-model-big}
 |                                                                    result|template|
 |--------------------------------------------------------------------------|--------|
 |                                                When John Smith admitted ?|       1|
@@ -418,6 +408,7 @@ He had chest pain with a fever since yesterday."""
 
 *Result*:
 
+{:.table-model-big}
 |        token|ner_label|confidence|sentence_token_index|sentence|
 |-------------|---------|----------|--------------------|--------|
 |           He|        O|    0.9999|                   0|       0|
@@ -505,8 +496,6 @@ He had chest pain with a fever since yesterday."""
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
-
 
 </div><div class="h3-box" markdown="1">
 

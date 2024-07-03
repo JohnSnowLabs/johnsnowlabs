@@ -58,6 +58,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 The latest lineup of 7 cutting-edge resolver models are designed to enhance clinical entity mapping and coding accuracy. These models leverage advanced natural language processing to seamlessly map medical entities and concepts to standardized codes, facilitating streamlined data analysis and healthcare decision-making. Each model specializes in precise code assignment within specific medical domains, from drug ingredients to veterinary-related entities. Dive into our resolver models and empower your applications with state-of-the-art clinical entity resolution.
 
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`sbiobertresolve_umls_general_concepts`](https://nlp.johnsnowlabs.com/2024/05/06/biolordresolve_umls_general_concepts_en.html) | This model maps clinical entities and concepts to the following 4 UMLS CUI code categories |
@@ -82,6 +83,7 @@ text = "John Doe, a 49-year-old male with CMT2P, AIDS-causing virus infection, a
 
 *Result*:
 
+{:.table-model-big}
 |chunk|sbiobert icd10cm code|sbiobert icd10cm resolution|biolord icd10cm code|biolord icd10cm resolution|
 |-|-|-|-|-|
 |CMT2P|G12.1|sma2 [other inherited spinal muscular atrophy]|G60.0|cmt2p - charcot-marie-tooth disease type 2p [hereditary motor and sensory neuropathy]|
@@ -98,6 +100,7 @@ We introduce a suite of advanced, hybrid pretrained pipelines, specifically desi
 
 What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
 
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`explain_clinical_doc_sdoh`](https://nlp.johnsnowlabs.com/2024/05/01/explain_clinical_doc_sdoh_en.html) | This pipeline is designed to extract all clinical/medical entities, assertion status, and relation informations which may be considered as Social Determinants of Health (SDOH) entities from text. |
@@ -122,6 +125,7 @@ He reported a history of childhood trauma related to violence and abuse in his h
 
 *NER and Assertion Result*:
 
+{:.table-model-big}
 | chunks          |begin |end | entities         | assertion|
 |:----------------|-----:|---:|:-----------------|:---------|
 | anxiety         |   46 | 52 | Mental_Health    | Present  |
@@ -135,6 +139,7 @@ He reported a history of childhood trauma related to violence and abuse in his h
 
 *Relation Extraction Result*:
 
+{:.table-model-big}
 | relation type                     | entity1           | chunk1           | entity2           | chunk2          | confidence|
 |:----------------------------------|:------------------|:-----------------|:------------------|:----------------|:----------|
 | Mental_Health-Quality_Of_Life     | Mental_Health     | anxiety          | Quality_Of_Life   | quality of life |      0.98 |
@@ -154,6 +159,7 @@ Please check the [Task Based Clinical Pretrained Pipelines](https://colab.resear
 
 Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between MedDRA and SNOMED codes, offering a comprehensive solution for interoperability within medical systems.
 
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 |[`meddra_llt_snomed_mapper`](https://nlp.johnsnowlabs.com/2024/05/14/meddra_llt_snomed_mapper_en.html)  | This pretrained model maps MedDRA LLT (Lowest Level Term) codes to corresponding SNOMED codes. |
@@ -172,6 +178,7 @@ text = ["Chronic renal insufficiency", "Gastritis", "Transient ischemic attack"]
 
 *Result*:
 
+{:.table-model-big}
 |                      chunk|meddra_code|                                     snomed_code|
 |---------------------------|-----------|------------------------------------------------|
 |Chronic renal insufficiency|   10050441|723190009:Chronic renal insufficiency (disorder)|
@@ -199,6 +206,7 @@ sample_texts = [["""Smith is 55 years old, living in New York, a divorced Mexcia
 
 *Result*:
 
+{:.table-model-big}
 |chunk                  |begin|end|label              |
 |-----------------------|-----|---|-------------------|
 |New York               |33   |40 |Geographic_Entity  |
@@ -415,6 +423,7 @@ Mark Smith, aged 55, and his daughter (7) Mary were involved in an accident duri
 
 *Result*:
 
+{:.table-model-big}
 |sentence|deidentified|
 |--------|------------|
 |Name: Joseph Brown, Age: 17, Phone: (9) 7765-5632.                                                 |Name: Burnadette Carrion, Age: teenager, Phone: (6) 9846-1747.                                     |
@@ -446,6 +455,7 @@ obfuscation = DeIdentification()\
 
 *.setKeepYear(False) Result*:
 
+{:.table-model-big}
 |sentence                                                 |deidentified                                             |
 |---------------------------------------------------------|---------------------------------------------------------|
 |Hendrickson, Ora, Record date: 2023-01-01, Age: 25 .     |Delle Ferdinand, Record date: 2023-02-10, Age: 35 .      |
@@ -453,6 +463,7 @@ obfuscation = DeIdentification()\
 
 *.setKeepYear(True) Result*:
 
+{:.table-model-big}
 |sentence                                                 |deidentified                                             |
 |---------------------------------------------------------|---------------------------------------------------------|
 |Hendrickson, Ora, Record date: 2023-01-01, Age: 25 .     |Lenord Radon, Record date: 2023-02-07, Age: 31 .         |
@@ -504,6 +515,7 @@ The β-hydroxybutyrate level was found to be elevated at 5.29 mmol/L - the origi
 
 *directionSensitive Result*:
 
+{:.table-model-big.db}
 |sentence |entity1_begin|entity1_end| chunk1                      | entity1   |entity2_begin |entity2_end | chunk2                        | entity2| relation|confidence |
 |--------:|-------------|-----------|:----------------------------|:----------|-------------:|-----------:|:------------------------------|:-------|:--------|----------:|
 |       0 |           43|         53| amoxicillin                 | TREATMENT |           59 |         87 | a respiratory tract infection | PROBLEM| Treatment_Administered_Problem |  0.998835 |
@@ -555,6 +567,7 @@ The β-hydroxybutyrate level was found to be elevated at 5.29 mmol/L - the origi
 
 *filterByTokenDistance Result*:
 
+{:.table-model-big.db}
 |sentence|entity1_begin |entity1_end | chunk1                      | entity1   |entity2_begin |entity2_end | chunk2                        | entity2| relation|confidence|
 |-------:|-------------:|-----------:|:----------------------------|:----------|-------------:|-----------:|:------------------------------|:-------|:--------|------:|
 |       0|           43 |         53 | amoxicillin                 | TREATMENT |           59 |         87 | a respiratory tract infection | PROBLEM| Treatment_Administered_Problem    |  0.99 |
@@ -609,6 +622,7 @@ text = """ Name: John Smith, Record date: 2093-01-13, MR #719435, John's doctor 
 
 *Result*:
 
+{:.table-model-big}
 | chunk           |   begin |   end | entity   | ner_source    |
 |:----------------|--------:|------:|:---------|:--------------|
 | 2093-01-13      |      32 |    41 | DATE     | regex_matches |
@@ -729,6 +743,7 @@ df = alab.get_conll_data_from_visualner(
         - DataBricks Config: 
             - 32 CPU Core, 128GiB RAM (8 worker) (2.7 $/hr)
 
+            {:.table-model-big}
             |data_count |partition |Databricks |
             |----------:|---------:|----------:|
             |    100000 |      512 | 1h 42m 55s|
@@ -736,6 +751,7 @@ df = alab.get_conll_data_from_visualner(
         - AWS EC2 instance Config:
                 - 8 CPU cores, 58GiB RAM (r6a.2xlarge $0.4536/h)
 
+            {:.table-model-big}
             |data_count |partition |   AWS   |
             |----------:|---------:|--------:|
             |    100000 |      512 | 3h 3m 40|
@@ -753,7 +769,7 @@ df = alab.get_conll_data_from_visualner(
     - **Instance Type:** 
         -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
 
-
+{:.table-model-big}
 |Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
 |:------------------------------------------------|-----------------:|:-----------------| 
 |[clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)| 67 min 44 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |

@@ -43,12 +43,11 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 </div><div class="h3-box" markdown="1">
 
-
-
 #### 3 New Augmented NER Models by Leveraging the Capabilities of the LangTest Library to Boost Their Robustness Significantly
 
 Newly introduced 3 augmented NER models that are powered by the innovative `LangTest` library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
 
+{:.table-model-big}
 | Model Name               |   Predicted Entities        |
 |--------------------------|-----------------------------|
 | [`ner_human_phenotype_gene_clinical_langtest`](https://nlp.johnsnowlabs.com/2023/11/04/ner_human_phenotype_gene_clinical_langtest_en.html)  | `GENE`, `HP` |
@@ -57,6 +56,7 @@ Newly introduced 3 augmented NER models that are powered by the innovative `Lang
 
 - The table below shows the robustness of overall test results for these models.
 
+{:.table-model-big}
 | model names        | original robustness  |  new robustness  |
 |-------------------------------------------|---------|--------|
 | ner_human_phenotype_gene_clinical_langtest| 48.79%  | 82.60% |
@@ -71,7 +71,7 @@ Newly introduced 3 augmented NER models that are powered by the innovative `Lang
 
 We have a new clinical NER model specifically designed for the Hebrew language. This model excels at identifying clinical entities, enabling the automation of critical clinical data extraction. It proves invaluable for various healthcare-related tasks, such as research, medical record documentation, and other applications within the Hebrew-speaking healthcare sector.
 
-
+{:.table-model-big}
 | Model Name                                                                   | Predicted Entities           | Language |
 |------------------------------------------------------------------------------|------------------------------|----------|
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/23/ner_clinical_he.html) | `PROBLEM` `TEST` `TREATMENT` |  he      |
@@ -105,6 +105,7 @@ sample_texts=[
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                          text      | result    |
 |----------------------------------------------------------------------------------------------------|-----------|
 |Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for...| Frail     |
@@ -151,6 +152,7 @@ MEDICATIONS:
 
 *Result*:
 
+{:.table-model-big}
 |sentence_id|chunk             |begin|end|ner_label|
 |-----------|------------------|-----|---|---------|
 |3          |10.25.23          |64   |71 |DOD      |
@@ -159,9 +161,6 @@ MEDICATIONS:
 
 
 Please check [Model Card](https://nlp.johnsnowlabs.com/2023/11/05/date_of_death_parser_en.html) and [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) for more information.
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -214,8 +213,6 @@ In this release, a new configuration parameter has been introduced in Spark NLP 
 
 The alternative Number Generation Algorithms are `NativePRNG`, `NativePRNGBlocking`, `NativePRNGNonBlocking`, `PKCS11`, `SHA1PRNG`, and `Windows-PRNG`, for more information please see [this documentation](https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#SecureRandom).
 
-
-
 *Example*:
 
 ```python
@@ -225,9 +222,6 @@ params = {"spark.jsl.settings.seed.numberGenerationAlgorithm": "SHA1PRNG"}
 
 spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 ```
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -239,8 +233,6 @@ spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 - License validation process has been fastened now
 - Fixed the issues in ALAB Module; `get_conll_data` "missing sentence detector" failure and `get_assertion_data` method for getting more annotations from annotated JSON file
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
@@ -250,8 +242,6 @@ spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 - Updated [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) with the example of `date_of_death_parser` model
 - Updated [Clinical Relation Extraction Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb) with Filtering Entity Types examples
 - Updated [Spark OCR Utility Module Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/5.3.Spark_OCR_Utility_Module.ipynb#scrollTo=6Eh0uX-ZZLVj) with `text_type` param introduced and examples
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -265,16 +255,11 @@ spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 + `ner_human_phenotype_gene_clinical_langtest`
 + `ner_risk_factors_langtest`
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 
