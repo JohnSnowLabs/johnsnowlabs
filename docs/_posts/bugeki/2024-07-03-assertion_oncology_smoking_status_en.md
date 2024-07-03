@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model detects the assertion status of the Smoking_Status entity. It classifies extractions as Present, Past or Absent.
+This model detects the assertion status of the Smoking_Status entity. It classifies extractions as `Absent`, `Past` or `Present`.
 
 ## Predicted Entities
 
@@ -38,7 +38,10 @@ This model detects the assertion status of the Smoking_Status entity. It classif
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-document_assembler = DocumentAssembler()\ .setInputCol("text")\ .setOutputCol("document")
+document_assembler = DocumentAssembler()
+.setInputCol("text")
+.setOutputCol("document")
+
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
 .setInputCols(["document"])
 .setOutputCol("sentence")
