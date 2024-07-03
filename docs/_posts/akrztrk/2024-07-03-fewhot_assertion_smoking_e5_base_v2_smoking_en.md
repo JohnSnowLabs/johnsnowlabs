@@ -62,7 +62,7 @@ ner_converter = NerConverterInternal()\
     .setWhiteList(["smoking"])
 
 few_shot_assertion_converter = FewShotAssertionSentenceConverter()\
-    .setInputCols(["sentence", "ner_chunk"])\
+    .setInputCols(["sentence","token","ner_chunk"])\
     .setOutputCol("assertion_sentence")
 
 e5_embeddings = E5Embeddings.pretrained("e5_base_v2_embeddings_medical_assertion_smoking", "en", "clinical/models")\
@@ -119,7 +119,7 @@ val ner_converter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
 
 val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
-    .setInputCols(Array("sentence", "ner_chunk"))
+    .setInputCols(Array("sentence","token","ner_chunk"))
     .setOutputCol("assertion_sentence")
 
 val e5_embeddings = E5Embeddings.pretrained("e5_base_v2_embeddings_medical_assertion_smoking", "en", "clinical/models")
