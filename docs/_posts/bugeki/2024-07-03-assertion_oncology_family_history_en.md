@@ -5,7 +5,7 @@ author: John Snow Labs
 name: assertion_oncology_family_history
 date: 2024-07-03
 tags: [licensed, clinical, oncology, en, assertion, family_history]
-task: Relation Extraction
+task: Assertion Status
 language: en
 edition: Healthcare NLP 5.4.0
 spark_version: 3.0
