@@ -36,8 +36,12 @@ Each relevant relation pair in the pipeline should include one test entity (such
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-document_assembler = DocumentAssembler()\ .setInputCol("text")\ .setOutputCol("document")
+document_assembler = DocumentAssembler()
+.setInputCol("text")
+.setOutputCol("document")
+
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
 .setInputCols(["document"])
 .setOutputCol("sentence")
