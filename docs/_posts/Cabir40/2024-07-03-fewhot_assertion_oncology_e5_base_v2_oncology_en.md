@@ -58,10 +58,10 @@ ner_oncology = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models
 
 ner_oncology_converter = NerConverterInternal()\
     .setInputCols(["sentence","token","ner_oncology"])\
-    .setOutputCol("ner_oncology_chunk")
+    .setOutputCol("ner_chunk")
 
 few_shot_assertion_converter = FewShotAssertionSentenceConverter()\
-    .setInputCols(["sentence", "ner_oncology_chunk"])\
+    .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("assertion_sentence")
 
 e5_embeddings = E5Embeddings.pretrained("e5_base_v2_embeddings_medical_assertion_oncology", "en", "clinical/models")\
@@ -121,7 +121,7 @@ val ner_oncology_converter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
 
 val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
-    .setInputCols(Array("sentence", "ner_chunk"))
+    .setInputCols(Array("sentence", "token", "ner_chunk"))
     .setOutputCol("assertion_sentence")
 
 val e5_embeddings = E5Embeddings.pretrained("e5_base_v2_embeddings_medical_assertion_oncology", "en", "clinical/models")
@@ -154,15 +154,14 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-|    | chunks            |   begin |   end | entities         | assertion   |   confidence |
-|---:|:------------------|--------:|------:|:-----------------|:------------|-------------:|
-|  0 | colorectal cancer |      33 |    49 | Cancer_Dx        | Possible    |     0.581282 |
-|  1 | Her               |      52 |    54 | Gender           | Present     |     0.9563   |
-|  2 | cancers           |      93 |    99 | Cancer_Dx        | Family      |     0.234656 |
-|  3 | biopsy            |     120 |   125 | Pathology_Test   | Past        |     0.957321 |
-|  4 | positive          |     131 |   138 | Pathology_Result | Present     |     0.956439 |
-|  5 | CT scan           |     143 |   149 | Imaging_Test     | Past        |     0.95717  |
-|  6 | metastases        |     175 |   184 | Metastasis       | Possible    |     0.549866 |
+| chunks            |   begin |   end | entities         | assertion   |   confidence |
+|:------------------|--------:|------:|:-----------------|:------------|-------------:|
+| colorectal cancer |      33 |    49 | Cancer_Dx        | Possible    |     0.581282 |
+| Her               |      52 |    54 | Gender           | Present     |     0.9563   |
+| cancers           |      93 |    99 | Cancer_Dx        | Family      |     0.234656 |
+| biopsy            |     120 |   125 | Pathology_Test   | Past        |     0.957321 |
+| CT scan           |     143 |   149 | Imaging_Test     | Past        |     0.95717  |
+| metastases        |     175 |   184 | Metastasis       | Possible    |     0.549866 |
 ```
 
 {:.model-param}
