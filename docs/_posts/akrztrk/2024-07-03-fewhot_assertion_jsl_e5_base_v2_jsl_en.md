@@ -121,7 +121,7 @@ val clinical_ner = MedicalNerModel.pretrained("ner_jsl","en","clinical/models")
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_jsl_chunk")
-    .setBlackList(["RelativeDate", "Gender"])
+    .setBlackList(Array("RelativeDate", "Gender"))
 
 val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
     .setInputCols(Array("sentence","token", "ner_jsl_chunk"))
