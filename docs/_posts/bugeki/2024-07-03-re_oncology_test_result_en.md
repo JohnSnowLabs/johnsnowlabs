@@ -70,7 +70,7 @@ dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en") 
     .setInputCols(["sentence", "pos_tags", "token"]) \
     .setOutputCol("dependencies")
 
-re_model = RelationExtractionModel.pretrained("re_oncology_test_result_wip", "en", "clinical/models") \
+re_model = RelationExtractionModel.pretrained("re_oncology_test_result", "en", "clinical/models") \
     .setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"]) \
     .setOutputCol("relation_extraction") \
     .setRelationPairs(["Biomarker-Biomarker_Result", "Biomarker_Result-Biomarker", "Oncogene-Biomarker_Result", "Biomarker_Result-Oncogene", "Pathology_Test-Pathology_Result", "Pathology_Result-Pathology_Test"]) \
@@ -107,7 +107,7 @@ val word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "e
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")                
     
-val ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
+val ner = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
     
