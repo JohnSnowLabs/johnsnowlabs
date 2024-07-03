@@ -70,7 +70,7 @@ dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en") 
     .setInputCols(["sentence", "pos_tags", "token"]) \
     .setOutputCol("dependencies")
 
-re_model = RelationExtractionModel.pretrained("re_oncology_temporal_wip", "en", "clinical/models") \
+re_model = RelationExtractionModel.pretrained("re_oncology_temporal", "en", "clinical/models") \
     .setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"]) \
     .setOutputCol("relation_extraction") \
     .setRelationPairs(["Cancer_Dx-Date", "Date-Cancer_Dx", "Relative_Date-Cancer_Dx", "Cancer_Dx-Relative_Date", "Cancer_Surgery-Date", "Date-Cancer_Surgery", "Cancer_Surger-Relative_Date", "Relative_Date-Cancer_Surgery"]) \
@@ -123,7 +123,7 @@ val dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "e
     .setInputCols(Array("sentence", "pos_tags", "token"))
     .setOutputCol("dependencies")
     
-val re_model = RelationExtractionModel.pretrained("re_oncology_temporal_wip", "en", "clinical/models")
+val re_model = RelationExtractionModel.pretrained("re_oncology_temporal", "en", "clinical/models")
     .setInputCols(Array("embeddings", "pos_tags", "ner_chunk", "dependencies"))
     .setOutputCol("relation_extraction")
     .setRelationPairs(Array("Cancer_Dx-Date", "Date-Cancer_Dx", "Relative_Date-Cancer_Dx", "Cancer_Dx-Relative_Date", "Cancer_Surgery-Date", "Date-Cancer_Surgery", "Cancer_Surger-Relative_Date", "Relative_Date-Cancer_Surgery"))
