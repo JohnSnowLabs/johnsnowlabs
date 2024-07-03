@@ -36,6 +36,7 @@ This model detects if a demographic entity refers to the patient or to someone e
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
