@@ -55,7 +55,7 @@ word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", 
     .setInputCols(["sentence", "token"]) \
     .setOutputCol("embeddings")                
 
-ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
+ner = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
@@ -77,7 +77,7 @@ re_ner_chunk_filter = RENerChunksFilter()\
     .setMaxSyntacticDistance(10)\
     .setRelationPairs(["Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"])
 
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_biobert_wip", "en", "clinical/models")\
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_biobert", "en", "clinical/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relation_extraction")
      
@@ -113,7 +113,7 @@ val word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "e
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")                
     
-val ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
+val ner = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
     
@@ -135,7 +135,7 @@ val re_ner_chunk_filter = new RENerChunksFilter()
      .setMaxSyntacticDistance(10)
      .setRelationPairs(Array("Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"))
 
-val re_model = RelationExtractionDLModel.pretrained("redl_oncology_biobert_wip", "en", "clinical/models")
+val re_model = RelationExtractionDLModel.pretrained("redl_oncology_biobert", "en", "clinical/models")
       .setPredictionThreshold(0.5f)
       .setInputCols(Array("re_ner_chunk", "sentence"))
       .setOutputCol("relation_extraction")
