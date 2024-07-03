@@ -37,47 +37,60 @@ Use relation pairs to include only the combinations of entities that are relevan
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-document_assembler = DocumentAssembler()\ .setInputCol("text")\ .setOutputCol("document")
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-.setInputCols(["document"])
-.setOutputCol("sentence")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-tokenizer = Tokenizer()
-.setInputCols(["sentence"])
-.setOutputCol("token")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("embeddings")
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
-ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
-.setInputCols(["sentence", "token", "embeddings"])
-.setOutputCol("ner")
+word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")                
 
-ner_converter = NerConverterInternal()
-.setInputCols(["sentence", "token", "ner"])
-.setOutputCol("ner_chunk")
+ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
-pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("pos_tags")
+ner_converter = NerConverterInternal() \
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")
+          
+pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("pos_tags")
 
-dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en")
-.setInputCols(["sentence", "pos_tags", "token"])
-.setOutputCol("dependencies")
+dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en") \
+    .setInputCols(["sentence", "pos_tags", "token"]) \
+    .setOutputCol("dependencies")
 
-re_ner_chunk_filter = RENerChunksFilter()
-.setInputCols(["ner_chunk", "dependencies"])
-.setOutputCol("re_ner_chunk")
-.setMaxSyntacticDistance(10)
-.setRelationPairs(["Biomarker-Biomarker_Result", "Biomarker_Result-Biomarker", "Oncogene-Biomarker_Result", "Biomarker_Result-Oncogene"])
+re_ner_chunk_filter = RENerChunksFilter()\
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunk")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(["Biomarker-Biomarker_Result", "Biomarker_Result-Biomarker", "Oncogene-Biomarker_Result", "Biomarker_Result-Oncogene"])
 
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_biomarker_result_biobert_wip", "en", "clinical/models")
-.setInputCols(["re_ner_chunk", "sentence"])
-.setOutputCol("relation_extraction")
-
-pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, pos_tagger, dependency_parser, re_ner_chunk_filter, re_model])
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_biomarker_result_biobert", "en", "clinical/models")\
+    .setInputCols(["re_ner_chunk", "sentence"])\
+    .setOutputCol("relation_extraction")
+        
+pipeline = Pipeline(stages=[document_assembler,
+                            sentence_detector,
+                            tokenizer,
+                            word_embeddings,
+                            ner,
+                            ner_converter,
+                            pos_tagger,
+                            dependency_parser,
+                            re_ner_chunk_filter,
+                            re_model])
 
 data = spark.createDataFrame([["Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."]]).toDF("text")
 
@@ -123,7 +136,7 @@ val re_ner_chunk_filter = new RENerChunksFilter()
     .setMaxSyntacticDistance(10)
     .setRelationPairs(Array("Biomarker-Biomarker_Result", "Biomarker_Result-Biomarker", "Oncogene-Biomarker_Result", "Biomarker_Result-Oncogene"))
 
-val re_model = RelationExtractionDLModel.pretrained("redl_oncology_biomarker_result_biobert_wip", "en", "clinical/models")
+val re_model = RelationExtractionDLModel.pretrained("redl_oncology_biomarker_result_biobert", "en", "clinical/models")
     .setInputCols(Array("re_ner_chunk", "sentence"))
     .setOutputCol("relation_extraction")
 
