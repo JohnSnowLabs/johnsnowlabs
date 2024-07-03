@@ -4,7 +4,7 @@ title: Medical Assertion MPNet Embedding ( base )
 author: John Snow Labs
 name: e5_base_v2_embeddings_medical_assertion_base
 date: 2024-07-03
-tags: [embeddings, en, licensed, clinical, mpnet, onnx]
+tags: [embeddings, en, licensed, clinical, e5, onnx, medical, assertion, base]
 task: Embeddings
 language: en
 edition: Healthcare NLP 5.3.3
