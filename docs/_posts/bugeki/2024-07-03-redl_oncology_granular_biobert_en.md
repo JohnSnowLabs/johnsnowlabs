@@ -96,7 +96,7 @@ re_ner_chunk_filter = RENerChunksFilter()\
                        'Tumor_Finding-Tumor_Size'
                        ])
 
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip", "en", "clinical/models")\
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert", "en", "clinical/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relation_extraction")
 
