@@ -174,7 +174,7 @@ val re_ner_chunk_filter = new RENerChunksFilter()
      "Site-Lung-Metastasis",
      "Tumor_Finding-Tumor_Size" ))
 
-val re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip","en","clinical/models")
+val re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert","en","clinical/models")
 	.setInputCols(Array("re_ner_chunk","sentence"))
 	.setOutputCol("relation_extraction")
 
