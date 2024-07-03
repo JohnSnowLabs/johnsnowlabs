@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This model extracts cities in clinical notes using rule-based TextMatcherInternal annotator.
 
-Note: Please use this model with caution when extracting city names from documents, as it may lead to overlapping with other entities due to its specific focus on city names. It's important to note that overlapping with person names is quite common, given the inherent nature of city names. Therefore, careful interpretation and validation of the extracted entities may be necessary to ensure accuracy.
+Note: It is important to note that due to the nature of city names, it is quite common for them to be confused with personal names. Therefore, careful interpretation and verification of extracted entities may be required to ensure accuracy.
 
 ## Predicted Entities
 
