@@ -36,8 +36,12 @@ Use realation pairs to include only the combinations of entities that are releva
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-document_assembler = DocumentAssembler()\ .setInputCol("text")\ .setOutputCol("document")
+document_assembler = DocumentAssembler()
+.setInputCol("text")
+.setOutputCol("document")
+
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
 .setInputCols(["document"])
 .setOutputCol("sentence")
@@ -102,7 +106,6 @@ val ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models"
 val ner_converter = new NerConverter()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
-
 
 val pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
