@@ -184,3 +184,20 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[assertion]|
 |Language:|en|
 |Size:|32.1 KB|
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+      Absent       0.97      0.96      0.97       707
+      Family       0.92      0.91      0.92       283
+Hypothetical       0.88      0.83      0.85       386
+        Past       0.91      0.90      0.91       717
+     Planned       0.75      0.91      0.82       159
+    Possible       0.77      0.93      0.84       289
+     Present       0.94      0.89      0.92      1058
+ SomeoneElse       0.84      0.87      0.85       148
+    accuracy          -         -      0.90      3747
+   macro-avg       0.87      0.90      0.88      3747
+weighted-avg       0.91      0.90      0.91      3747
+```
