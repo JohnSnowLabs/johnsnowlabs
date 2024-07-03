@@ -38,45 +38,53 @@ This relation extraction model links Biomarker and Oncogene extractions to their
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-document_assembler = DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-.setInputCols(["document"])
-.setOutputCol("sentence")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()
-.setInputCols(["sentence"])
-.setOutputCol("token")
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")                
 
-ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
-.setInputCols(["sentence", "token", "embeddings"])
-.setOutputCol("ner")
+ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
-ner_converter = NerConverter()
-.setInputCols(["sentence", "token", "ner"])
-.setOutputCol("ner_chunk")
+ner_converter = NerConverter() \
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")
+        
+pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("pos_tags")
 
-pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("pos_tags")
+dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en") \
+    .setInputCols(["sentence", "pos_tags", "token"]) \
+    .setOutputCol("dependencies")
 
-dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en")
-.setInputCols(["sentence", "pos_tags", "token"])
-.setOutputCol("dependencies")
-
-re_model = RelationExtractionModel.pretrained("re_oncology_biomarker_result_wip", "en", "clinical/models")
-.setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"])
-.setOutputCol("relation_extraction")
-.setRelationPairs(['Biomarker-Biomarker_Result', 'Biomarker_Result-Biomarker', 'Oncogene-Biomarker_Result', 'Biomarker_Result-Oncogene'])
-.setMaxSyntacticDistance(10)
-
-pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, pos_tagger, dependency_parser, re_model])
+re_model = RelationExtractionModel.pretrained("re_oncology_biomarker_result_wip", "en", "clinical/models") \
+    .setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"]) \
+    .setOutputCol("relation_extraction") \
+    .setRelationPairs(['Biomarker-Biomarker_Result', 'Biomarker_Result-Biomarker', 'Oncogene-Biomarker_Result', 'Biomarker_Result-Oncogene']) \
+    .setMaxSyntacticDistance(10)
+        
+pipeline = Pipeline(stages=[document_assembler,
+                            sentence_detector,
+                            tokenizer,
+                            word_embeddings,
+                            ner,
+                            ner_converter,
+                            pos_tagger,
+                            dependency_parser,
+                            re_model])
 
 data = spark.createDataFrame([["Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."]]).toDF("text")
 
