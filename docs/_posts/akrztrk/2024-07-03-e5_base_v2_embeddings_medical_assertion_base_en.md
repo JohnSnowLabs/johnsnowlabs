@@ -64,7 +64,7 @@ val e5_embeddings = E5Embeddings.pretrained("e5_base_v2_embeddings_medical_asser
     .setInputCols(Array("document"))
     .setOutputCol("e5_embeddings")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, mpnet_embedding))
+val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings))
 
 val result = pipeline.fit(data).transform(data)
 
