@@ -113,7 +113,14 @@ try:
             LightDeIdentification,
             WindowedSentenceModel,
             MultiChunk2Doc,
-            FewShotAssertionClassifierModel
+            FewShotAssertionClassifierModel,
+            FewShotAssertionClassifierApproach,
+            FewShotAssertionSentenceConverter,
+            VectorDBApproach,
+            VectorDBModel,
+            VectorDBPostProcessor,
+            ContextSplitAssembler,
+            ContextualAssertion,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer
