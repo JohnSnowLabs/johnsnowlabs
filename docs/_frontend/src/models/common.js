@@ -13,6 +13,7 @@ export const toSearchString = (params) => {
 
         case 'tags':
         case 'predicted_entities':
+        case 'marketplace':
           params[k].forEach((v) => {
             acc.append(k, v);
           });
