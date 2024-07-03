@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is trained on a list of clinical and biomedical datasets curated in-house
+This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
