@@ -123,7 +123,7 @@ val dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "e
     .setInputCols(Array("sentence", "pos_tags", "token"))
     .setOutputCol("dependencies")
     
-val re_model = RelationExtractionModel.pretrained("re_oncology_location_wip", "en", "clinical/models")
+val re_model = RelationExtractionModel.pretrained("re_oncology_location", "en", "clinical/models")
     .setInputCols(Array("embeddings", "pos_tags", "ner_chunk", "dependencies"))
     .setOutputCol("relation_extraction")
     .setRelationPairs(Array("Tumor_Finding-Site_Breast", "Site_Breast-Tumor_Finding","Tumor_Finding-Anatomical_Site", "Anatomical_Site-Tumor_Finding"))
