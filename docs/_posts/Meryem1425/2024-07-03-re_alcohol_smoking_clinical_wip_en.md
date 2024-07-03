@@ -49,7 +49,7 @@ sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_hea
 tokenizer = RegexTokenizer() \
     .setInputCols(["sentence"]) \
     .setOutputCol("token") \
-    .setPattern("\\s+|(?=[-.:;*+,\(\)\/$&%\\[\\]])|(?<=[-.:;*+,\(\)\/$&%\\[\\]])")
+    .setPattern('\\s+|(?=[-.:;*+,\(\)\/$&%\\[\\]])|(?<=[-.:;*+,\(\)\/$&%\\[\\]])')
 
 embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
@@ -127,7 +127,7 @@ val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl
 val tokenizer = new RegexTokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
-    .setPattern("\\s+|(?=[-.:;*+,\(\)\/$&%\\[\\]])|(?<=[-.:;*+,\(\)\/$&%\\[\\]])")
+    .setPattern('\\s+|(?=[-.:;*+,\(\)\/$&%\\[\\]])|(?<=[-.:;*+,\(\)\/$&%\\[\\]])')
 
 val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
@@ -230,7 +230,7 @@ val annotations = lmodel.fullAnnotate(text)
            O       0.95      0.96      0.96       309
 is_caused_by       0.81      0.67      0.73        33
  is_used_for       0.82      0.87      0.85        47
-    accuracy                           0.93       389
+    accuracy         -         -       0.93       389
    macro-avg       0.86      0.83      0.85       389
 weighted-avg       0.92      0.93      0.92       389
 ```
