@@ -4,7 +4,7 @@ title: Few-Shot Assertion Model ( i2b2 )
 author: John Snow Labs
 name: fewhot_assertion_i2b2_e5_base_v2_i2b2
 date: 2024-07-03
-tags: [embeddings, en, licensed, clinical, e5, medical, assertion, i2b2, fewshot, onnx]
+tags: [en, licensed, clinical, e5, medical, assertion, i2b2, fewshot, onnx]
 task: Embeddings
 language: en
 edition: Healthcare NLP 5.3.3
