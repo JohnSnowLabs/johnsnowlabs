@@ -7,7 +7,7 @@ date: 2024-07-03
 tags: [licensed, en, clinical, oncology, relation_extraction, temporal, test, biomarker, anatomy, tensorflow]
 task: Relation Extraction
 language: en
-edition: Healthcare NLP 5.3.3
+edition: Healthcare NLP 5.4.0
 spark_version: 3.0
 supported: true
 engine: tensorflow
@@ -21,11 +21,15 @@ use_language_switcher: "Python-Scala-Java"
 
 Using this relation extraction model, four relation types can be identified: `is_date_of` (between date entities and other clinical entities), `is_size_of` (between `Tumor_Finding` and `Tumor_Size`), `is_location_of` (between anatomical entities and other entities) and `is_finding_of` (between test entities and their results).
 
+## Predicted Entities
+
+`is_date_of`, `is_size_of`, `is_location_of`, `is_finding_of`, `O`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/redl_oncology_granular_biobert_en_5.3.3_3.0_1720038256440.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/redl_oncology_granular_biobert_en_5.3.3_3.0_1720038256440.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/redl_oncology_granular_biobert_en_5.4.0_3.0_1720038256440.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/redl_oncology_granular_biobert_en_5.4.0_3.0_1720038256440.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -33,25 +37,46 @@ Using this relation extraction model, four relation types can be identified: `is
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()     .setInputCols(["sentence"])     .setOutputCol("token")
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])     .setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
-ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")     .setInputCols(["sentence", "token", "embeddings"])     .setOutputCol("ner")
+ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
-ner_converter = NerConverter()     .setInputCols(["sentence", "token", "ner"])     .setOutputCol("ner_chunk")
+ner_converter = NerConverter() \
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")
 
-pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")     .setInputCols(["sentence", "token"])     .setOutputCol("pos_tags")
+pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("pos_tags")
 
-dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en")     .setInputCols(["sentence", "pos_tags", "token"])     .setOutputCol("dependencies")
+dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en") \
+    .setInputCols(["sentence", "pos_tags", "token"]) \
+    .setOutputCol("dependencies")
 
-re_ner_chunk_filter = RENerChunksFilter()    .setInputCols(["ner_chunk", "dependencies"])    .setOutputCol("re_ner_chunk")    .setMaxSyntacticDistance(10)    .setRelationPairs(['Date-Cancer_Dx',
+re_ner_chunk_filter = RENerChunksFilter()\
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunk")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(['Date-Cancer_Dx',
                        'Tumor_Finding-Site_Breast',
                        'Tumor_Finding-Site_Bone',
                        'Tumor_Finding-Site_Liver',
@@ -71,7 +96,9 @@ re_ner_chunk_filter = RENerChunksFilter()    .setInputCols(["ner_chunk", "depend
                        'Tumor_Finding-Tumor_Size'
                        ])
 
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip", "en", "clinical/models")    .setInputCols(["re_ner_chunk", "sentence"])    .setOutputCol("relation_extraction")
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip", "en", "clinical/models")\
+    .setInputCols(["re_ner_chunk", "sentence"])\
+    .setOutputCol("relation_extraction")
 
 pipeline = Pipeline(stages=[document_assembler,
                             sentence_detector,
@@ -87,7 +114,6 @@ pipeline = Pipeline(stages=[document_assembler,
 data = spark.createDataFrame([["The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes."]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
-
 ```
 ```scala
 
@@ -202,3 +228,19 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[relation_extraction]|
 |Language:|en|
 |Size:|405.4 MB|
+
+## References
+
+In-house annotated oncology case reports.
+
+## Benchmarking
+
+```bash
+         label  recall  precision   f1  
+             O    0.83       0.91 0.87   
+    is_date_of    0.82       0.80 0.81    
+ is_finding_of    0.92       0.85 0.88   
+is_location_of    0.95       0.85 0.90    
+    is_size_of    0.91       0.80 0.85    
+     macro-avg    0.89       0.84 0.86
+```
