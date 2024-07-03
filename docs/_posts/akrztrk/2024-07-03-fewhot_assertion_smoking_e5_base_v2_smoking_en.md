@@ -172,3 +172,16 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[assertion]|
 |Language:|en|
 |Size:|15.2 KB|
+
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+      Absent       0.95      1.00      0.97        19
+        Past       0.94      0.89      0.91        18
+     Present       0.92      0.92      0.92        13
+    accuracy          -         -      0.94        50
+   macro-avg       0.94      0.94      0.94        50
+weighted-avg       0.94      0.94      0.94        50
+```
