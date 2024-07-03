@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This relation extraction model identifies relations between dates and other clinical entities, between tumor mentions and their size, between anatomical entities and other clinical entities, and between tests and their results. In contrast to re_oncology_granular, all these relation types are labeled as is_related_to. The different types of relations can be identified considering the pairs of entities that are linked.
+This relation extraction model identifies relations between dates and other clinical entities, between tumor mentions and their size, between anatomical entities and other clinical entities, and between tests and their results. In contrast to `re_oncology_granular`, all these relation types are labeled as `is_related_to`. The different types of relations can be identified considering the pairs of entities that are linked.
 
 ## Predicted Entities
 
@@ -37,8 +37,12 @@ This relation extraction model identifies relations between dates and other clin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-document_assembler = DocumentAssembler()\ .setInputCol("text")\ .setOutputCol("document")
+document_assembler = DocumentAssembler()
+.setInputCol("text")
+.setOutputCol("document")
+
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
 .setInputCols(["document"])
 .setOutputCol("sentence")
