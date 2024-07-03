@@ -121,7 +121,7 @@ val ner_smoking = MedicalNerModel.pretrained("ner_sdoh","en","clinical/models")
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence","token","ner_smoking"))
     .setOutputCol("ner_chunk")
-    .setWhiteList(["smoking"])
+    .setWhiteList(Array("smoking"))
 
 val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
     .setInputCols(Array("sentence","token","ner_chunk"))
