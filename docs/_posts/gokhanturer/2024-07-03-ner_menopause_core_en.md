@@ -7,7 +7,7 @@ date: 2024-07-03
 tags: [licensed, en, clinical, ner, menopause, core]
 task: Named Entity Recognition
 language: en
-edition: Healthcare NLP 5.3.2
+edition: Healthcare NLP 5.3.3
 spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
@@ -46,8 +46,8 @@ Menopause Core model is designed to detect and label core entities related to me
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_menopause_core_en_5.3.2_3.0_1720018938030.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_menopause_core_en_5.3.2_3.0_1720018938030.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_menopause_core_en_5.3.3_3.0_1720018938030.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_menopause_core_en_5.3.3_3.0_1720018938030.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -184,7 +184,7 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 {:.table-model}
 |---|---|
 |Model Name:|ner_menopause_core|
-|Compatibility:|Healthcare NLP 5.3.2+|
+|Compatibility:|Healthcare NLP 5.3.3+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence, token, embeddings]|
