@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Assertion Status from General Symptoms Entities
+title: Detect Overdose and Withdrawal (assertion) status from Smoking-Alcohol related symptoms
 author: John Snow Labs
 name: assertion_alcohol_smoking_general_symptoms_wip
 date: 2024-07-03
