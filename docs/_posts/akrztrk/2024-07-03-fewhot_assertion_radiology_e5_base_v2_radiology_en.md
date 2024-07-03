@@ -36,6 +36,7 @@ Assign assertion status to clinical entities extracted by NER based on their con
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -175,3 +176,15 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[assertion]|
 |Language:|en|
 |Size:|15.2 KB|
+
+## Benchmarking
+
+```bash
+      label   precision    recall  f1-score   support
+   Confirmed       0.97      0.93      0.95      2323
+    Negative       0.94      0.97      0.96       403
+   Suspected       0.82      0.91      0.86       779
+    accuracy          -         -      0.93      3505
+   macro-avg       0.91      0.94      0.92      3505
+weighted-avg       0.93      0.93      0.93      3505
+```
