@@ -63,7 +63,7 @@ ner_converter = NerConverter() \
     .setOutputCol("ner_chunk")\
     .setWhiteList(["Smoking_Status"])
     
-assertion = AssertionDLModel.pretrained("assertion_oncology_smoking_status_wip", "en", "clinical/models") \
+assertion = AssertionDLModel.pretrained("assertion_oncology_smoking_status", "en", "clinical/models") \
     .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
     .setOutputCol("assertion")
         
