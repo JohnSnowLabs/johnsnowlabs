@@ -38,36 +38,42 @@ This model detects the assertion status of the Smoking_Status entity. It classif
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-document_assembler = DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-.setInputCols(["document"])
-.setOutputCol("sentence")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()
-.setInputCols(["sentence"])
-.setOutputCol("token")
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")                
 
-ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
-.setInputCols(["sentence", "token", "embeddings"])
-.setOutputCol("ner")
+ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
-ner_converter = NerConverter()
-.setInputCols(["sentence", "token", "ner"])
-.setOutputCol("ner_chunk")
-.setWhiteList(["Smoking_Status"])
-
-assertion = AssertionDLModel.pretrained("assertion_oncology_smoking_status_wip", "en", "clinical/models")
-.setInputCols(["sentence", "ner_chunk", "embeddings"])
-.setOutputCol("assertion")
-
-pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, assertion])
+ner_converter = NerConverter() \
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["Smoking_Status"])
+    
+assertion = AssertionDLModel.pretrained("assertion_oncology_smoking_status_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
+    .setOutputCol("assertion")
+        
+pipeline = Pipeline(stages=[document_assembler,
+                            sentence_detector,
+                            tokenizer,
+                            word_embeddings,
+                            ner,
+                            ner_converter,
+                            assertion])
 
 data = spark.createDataFrame([["The patient quit smoking three years ago."]]).toDF("text")
 
