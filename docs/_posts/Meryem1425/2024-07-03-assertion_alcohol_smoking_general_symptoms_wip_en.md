@@ -36,6 +36,7 @@ This model detects the assertion status of general symptoms entity related to al
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
