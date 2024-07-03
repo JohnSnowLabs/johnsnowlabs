@@ -3388,7 +3388,7 @@ Recognize speech in Audio files with <a href="https://arxiv.org/abs/2106.07447">
 <span class="n">answers</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th style="text-align: left">sentence</th>
@@ -3461,6 +3461,7 @@ and NLU will return a pandas DF with one row per image detected</p>
     <p><img src="/assets/images/nlu/visual/vit_example.png" alt="vit" /></p>
 
     <h2 id="image-classification-convnext">Image Classification (ConvNext)</h2>
+
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/convnext_image_classification_overview.ipynb">Image Classification Tutorial Notebook</a>      <br />
 Image Classifier Based on <a href="https://arxiv.org/abs/2201.03545">ConvNext</a>
 Lets download a folder of images and predict on it</p>
@@ -3478,6 +3479,7 @@ and NLU will return a pandas DF with one row per image detected</p>
     <p><img src="/assets/images/nlu/visual/convnext_example.png" alt="convnext" /></p>
 
     <h2 id="image-classification-swin">Image Classification (SWIN)</h2>
+
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb">Image Classification Tutorial Notebook</a>      <br />
 Image Classifier Based on <a href="https://arxiv.org/abs/2103.14030">SWIN</a>
 Lets download a folder of images and predict on it</p>
@@ -3495,8 +3497,11 @@ and NLU will return a pandas DF with one row per image detected</p>
     <p><img src="/assets/images/nlu/visual/swin_example.png" alt="swin" /></p>
 
     <h2 id="t5">T5</h2>
+
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb">Example of every T5 task</a></p>
+
     <h3 id="overview-of-every-task-available-with-t5">Overview of every task available with T5</h3>
+
     <p><a href="https://arxiv.org/pdf/1910.10683.pdf">The T5 model</a> is trained on various datasets for 17 different tasks which fall into 8 categories.</p>
 
     <ol>
@@ -3696,6 +3701,7 @@ t5.predict(data)
   <div class="h3-box">
 
     <h3 id="how-to-configure-t5-task-for-mrpc-and-pre-process-text">How to configure T5 task for MRPC and pre-process text</h3>
+
     <p><code class="language-plaintext highlighter-rouge">.setTask('mrpc sentence1:)</code> and prefix second sentence with <code class="language-plaintext highlighter-rouge">sentence2:</code></p>
 
     <h3 id="example-pre-processed-input-for-t5-mrpc---binary-paraphrasing-sentence-similarity">Example pre-processed input for T5 MRPC - Binary Paraphrasing/ sentence similarity</h3>

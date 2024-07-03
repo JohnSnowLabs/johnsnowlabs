@@ -636,7 +636,7 @@ and can see with your own eyes how context is encoded by transformer models like
 Besides that, you can also compare the results of the 200+ NER models John Snow Labs provides and see how peformances
 changes with varrying ebeddings, like Contextual, Static and Domain Specific Embeddings.</p>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif" alt="Streamlit visualization Examples" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
@@ -674,18 +674,26 @@ go <a href="https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py">st
     <h2 id="examples">Examples</h2>
 
     <p>Just try out any of these.
-You can use the first example to generate python-code snippets which you can
-recycle as building blocks in your streamlit apps!</p>
+You can use the first example to generate python-code snippets which you can recycle as building blocks in your streamlit apps!x</p>
+
+  </div>
+  <div class="h3-box">
 
     <h3 id="example--01dashboard">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py"><code class="language-plaintext highlighter-rouge">01_dashboard</code></a></h3>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py
 </code></pre></div>    </div>
 
+  </div>
+  <div class="h3-box">
+
     <h3 id="example--02ner">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py"><code class="language-plaintext highlighter-rouge">02_NER</code></a></h3>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py
 </code></pre></div>    </div>
+
+  </div>
+  <div class="h3-box">
 
     <h3 id="example--03textsimilaritymatrix">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/03_text_similarity_matrix.py"><code class="language-plaintext highlighter-rouge">03_text_similarity_matrix</code></a></h3>
 
@@ -700,25 +708,40 @@ recycle as building blocks in your streamlit apps!</p>
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/04_dependency_tree.py
 </code></pre></div>    </div>
 
+  </div>
+  <div class="h3-box">
+
     <h3 id="example--05classifiers">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/05_classifiers.py"><code class="language-plaintext highlighter-rouge">05_classifiers</code></a></h3>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/05_classifiers.py
 </code></pre></div>    </div>
+
+  </div>
+  <div class="h3-box">
 
     <h3 id="example--06tokenfeatures">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/06_token_features.py"><code class="language-plaintext highlighter-rouge">06_token_features</code></a></h3>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/06_token_features.py
 </code></pre></div>    </div>
 
+  </div>
+  <div class="h3-box">
+
     <h3 id="example--07tokenembeddingdimensionreduction">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/07_token_embedding_manifolds.py"><code class="language-plaintext highlighter-rouge">07_token_embedding_dimension_reduction</code></a></h3>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/07_token_embedding_manifolds.py
 </code></pre></div>    </div>
 
+  </div>
+  <div class="h3-box">
+
     <h3 id="example--08tokenembeddingdimensionreduction">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/08_sentence_embedding_manifolds.py=="><code class="language-plaintext highlighter-rouge">08_token_embedding_dimension_reduction</code></a></h3>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/08_sentence_embedding_manifolds.py
 </code></pre></div>    </div>
+
+  </div>
+  <div class="h3-box">
 
     <h3 id="example--09entityembeddingdimensionreduction">Example:  <a href="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/09_entity_embedding_manifolds.py"><code class="language-plaintext highlighter-rouge">09_entity_embedding_dimension_reduction</code></a></h3>
 
@@ -743,24 +766,65 @@ components. <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples"><cod
 
     <h3 id="overview-of-nlp--streamlit-buildingblocks">Overview of NLP + Streamlit buildingblocks</h3>
 
-    <p>| Method                                                                         | Description                                                                                                                                                                                                                                                             |
-|——————————————————————————–|————————————————————————————————————————————————————————————————————————————————————————-|
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').predict(data)</code></a>                                | Load any of the <a href="https://nlp.johnsnowlabs.com/models">1000+ models</a> by providing the model name any predict on most Pythontic <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types">data strucutres like Pandas, strings, arrays of strings and more</a> |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit(data)</code></a>                          | Display full NLP exploration dashboard, that showcases every feature avaiable with dropdown selectors for 1000+ models                                                                                                                                                  |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_similarity([string1, string2])</code></a> | Display similarity matrix and scalar similarity for every word embedding loaded and 2 strings.                                                                                                                                                                          |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_ner(data)</code></a>                      | Visualize predicted NER tags from Named Entity Recognizer model                                                                                                                                                                                                         |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_dep_tree(data)</code></a>                 | Visualize Dependency Tree together with Part of Speech labels                                                                                                                                                                                                           |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_classes(data)</code></a>                  | Display all extracted class features and confidences for every classifier loaded in pipeline                                                                                                                                                                            |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_token(data)</code></a>                    | Display all detected token features and informations in Streamlit                                                                                                                                                                                                       |
-| <a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz(data, write_to_streamlit=True)</code></a>           | Display the raw visualization without any UI elements. See <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples">viz docs for more info</a>. By default all aplicable nlp model references will be shown.                                                                    |
-| <a href="#test"><code class="language-plaintext highlighter-rouge">nlp.enable_streamlit_caching()</code></a>                                      | Enable caching the <code class="language-plaintext highlighter-rouge">nlp.load()</code> call. Once enabled, the <code class="language-plaintext highlighter-rouge">nlp.load()</code> method will automatically cached. **                                                                                                                                                             <br />
-This is
-recommended** to run first and for large peformance gans                                                                                               |</p>
+    <table class="table-model-big db">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').predict(data)</code></a></td>
+          <td>Load any of the <a href="https://nlp.johnsnowlabs.com/models">1000+ models</a> by providing the model name any predict on most Pythontic <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types">data strucutres like Pandas, strings, arrays of strings and more</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit(data)</code></a></td>
+          <td>Display full NLP exploration dashboard, that showcases every feature avaiable with dropdown selectors for 1000+ models</td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_similarity([string1, string2])</code></a></td>
+          <td>Display similarity matrix and scalar similarity for every word embedding loaded and 2 strings.</td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_ner(data)</code></a></td>
+          <td>Visualize predicted NER tags from Named Entity Recognizer model</td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_dep_tree(data)</code></a></td>
+          <td>Visualize Dependency Tree together with Part of Speech labels</td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_classes(data)</code></a></td>
+          <td>Display all extracted class features and confidences for every classifier loaded in pipeline</td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz_streamlit_token(data)</code></a></td>
+          <td>Display all detected token features and informations in Streamlit</td>
+        </tr>
+        <tr>
+          <td><a href="https://todo.com/"><code class="language-plaintext highlighter-rouge">nlp.load('&lt;Model&gt;').viz(data, write_to_streamlit=True)</code></a></td>
+          <td>Display the raw visualization without any UI elements. See <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples">viz docs for more info</a>. By default all aplicable nlp model references will be shown.</td>
+        </tr>
+        <tr>
+          <td><a href="#test"><code class="language-plaintext highlighter-rouge">nlp.enable_streamlit_caching()</code></a></td>
+          <td>Enable caching the <code class="language-plaintext highlighter-rouge">nlp.load()</code> call. Once enabled, the <code class="language-plaintext highlighter-rouge">nlp.load()</code> method will automatically cached. **</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>This is recommended** to run first and for large peformance gans</td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
   <div class="h3-box">
 
-    <h2 class="h2-select" id="detailed-visualizer-information-and-api-docs">Detailed visualizer information and API docs</h2>
+    <h2 id="detailed-visualizer-information-and-api-docs">Detailed visualizer information and API docs</h2>
 
     <h3 id="function-pipevizstreamlit"><kbd>function</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit</code></h3>
 
@@ -786,14 +850,14 @@ snippets <code class="language-plaintext highlighter-rouge">to recreate individu
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'ner'</span><span class="p">).</span><span class="n">viz_streamlit</span><span class="p">([</span><span class="s">'I love NLP and Streamlit!'</span><span class="p">,</span> <span class="s">'I hate buggy software'</span><span class="p">])</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/ui.gif" alt="NLP Streamlit UI Overview" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/ui.gif" alt="NLP Streamlit UI Overview" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlit"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -915,14 +979,14 @@ Aplicable with <a href="https://nlp.johnsnowlabs.com/models?task=Text+Classifica
      <span class="s">'I am afraid of Snakes'</span><span class="p">,</span> <span class="s">'Unicorns have been sighted on Mars!'</span><span class="p">,</span> <span class="s">'Where is the next bus stop?'</span><span class="p">])</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/class.gif" alt="text_class1" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/class.gif" alt="text_class1" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitclasses"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_classes</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1027,7 +1091,7 @@ You can filter which NER tags to highlight via the dropdown in the main window.<
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'ner'</span><span class="p">).</span><span class="n">viz_streamlit_ner</span><span class="p">(</span><span class="s">'Donald Trump from America and Angela Merkel from Germany dont share many views'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/NER.gif" alt="NER visualization" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/NER.gif" alt="NER visualization" title="lit_shadow" /></p>
 
     <p>Example for coloring</p>
 
@@ -1036,14 +1100,14 @@ You can filter which NER tags to highlight via the dropdown in the main window.<
                                   <span class="n">colors</span><span class="o">=</span><span class="p">{</span><span class="s">'PERSON'</span><span class="p">:</span> <span class="s">'#6e992e'</span><span class="p">,</span> <span class="s">'GPE'</span><span class="p">:</span> <span class="s">'#000000'</span><span class="p">})</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/NER_colored.png" alt="NER coloring" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/NER_colored.png" alt="NER coloring" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitner"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_ner</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1159,14 +1223,14 @@ with <a href="https://nlp.johnsnowlabs.com/models?task=Part+of+Speech+Tagging">a
     <span class="s">'POS tags define a grammatical label for each token and the Dependency Tree classifies Relations between the tokens'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/DEP.png" alt="Dependency Tree" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/DEP.png" alt="Dependency Tree" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitdeptree"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_dep_tree</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1263,14 +1327,14 @@ dropdown.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'stemm pos spell'</span><span class="p">).</span><span class="n">viz_streamlit_token</span><span class="p">(</span><span class="s">'I liek pentut buttr and jelly !'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif" alt="text_class1" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif" alt="text_class1" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlittoken"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_token</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1390,14 +1454,14 @@ Applicable with <a href="https://nlp.johnsnowlabs.com/models?task=Embeddings">an
     <span class="p">[</span><span class="s">'I love love loooove NLP! &lt;3'</span><span class="p">,</span> <span class="s">'I also love love looove  Streamlit! &lt;3'</span><span class="p">])</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/SIM.gif" alt="text_class1" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/SIM.gif" alt="text_class1" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitsimilarity"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_similarity</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1527,7 +1591,7 @@ Applicable with <a href="https://nlp.johnsnowlabs.com/models?task=Embeddings">an
   </div>
   <div class="h3-box">
 
-    <h2 class="h2-select" id="embedding-visualization-via-manifold-and-matrix-decomposition-algorithms">Embedding visualization via Manifold and Matrix Decomposition algorithms</h2>
+    <h2 id="embedding-visualization-via-manifold-and-matrix-decomposition-algorithms">Embedding visualization via Manifold and Matrix Decomposition algorithms</h2>
 
     <h3 id="function-pipevizstreamlitwordembedmanifold"><kbd>function</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_word_embed_manifold</code></h3>
 
@@ -1552,14 +1616,14 @@ or <a href="https://nlp.johnsnowlabs.com/models?task=Text+Classification">Docume
                                                                  <span class="n">default_algos_to_apply</span><span class="o">=</span><span class="p">[</span><span class="s">'TSNE'</span><span class="p">],</span> <span class="n">MAX_DISPLAY_NUM</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true" alt="Embedding visualization via Manifold and Matrix Decomposition algorithms" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitwordembedmanifold"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_word_embed_manifold</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1709,9 +1773,9 @@ or <a href="https://nlp.johnsnowlabs.com/models?task=Text+Classification">Docume
   </div>
   <div class="h3-box">
 
-    <h3 id="larger-example-showcasing-more-dimension-reduction-techniques-on-a-larger-corpus-">Larger Example showcasing more dimension reduction techniques on a larger corpus :</h3>
+    <h3 id="larger-example-showcasing-more-dimension-reduction-techniques-on-a-larger-corpus">Larger Example showcasing more dimension reduction techniques on a larger corpus:</h3>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true" alt="Embedding visualization via Manifold and Matrix Decomposition algorithms" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
@@ -1738,14 +1802,14 @@ in an interactive <code class="language-plaintext highlighter-rouge">Plotly</cod
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'embed_sentence.bert'</span><span class="p">).</span><span class="n">viz_streamlit_sentence_embed_manifold</span><span class="p">([</span><span class="s">'text1'</span><span class="p">,</span> <span class="s">'text2tdo'</span><span class="p">])</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true" alt="Larger Example showcasing more dimension reduction techniques on a larger corpus" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitsentenceembedmanifold"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_sentence_embed_manifold</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
@@ -1910,14 +1974,14 @@ with <a href="https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition"
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'ner'</span><span class="p">).</span><span class="n">viz_streamlit_sentence_embed_manifold</span><span class="p">([</span><span class="s">'Hello From John Snow Labs'</span><span class="p">,</span> <span class="s">'Peter loves to visit New York'</span><span class="p">])</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true" alt="Larger Example showcasing more dimension reduction techniques on a larger corpus" title="lit_shadow" /></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="function-parameters-pipevizstreamlitsentenceembedmanifold-1"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_sentence_embed_manifold</code></h3>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
           <th>Argument</th>
