@@ -77,7 +77,8 @@ pipeline = Pipeline(stages=[
     assertion
     ])
 
-sample_texts = ["""The initial technician's record indicated decreased oxygen saturation (55%) by pulse oximetry, tachycardia (heart rate 110 bpm), and hypotension (blood pressure 90/72 mmHg).He was admitted to the intensive care unit with a preliminary diagnosis of acute respiratory failure due to acute alcohol intoxication."""]
+sample_texts = ["""The initial technician's record indicated decreased oxygen saturation (55%) by pulse oximetry, tachycardia (heart rate 110 bpm), and hypotension (blood pressure 90/72 mmHg).He was admitted to the intensive care unit with a preliminary diagnosis of acute respiratory failure due to acute alcohol intoxication.
+                    Short Hospital Course: Patient admitted for treatment of EtOH withdrawal following an attack."""]
 
 data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
 
@@ -123,7 +124,8 @@ val pipeline = new Pipeline().setStages(Array(
     assertion
 ))
 
-val sample_texts = Seq("""The initial technician's record indicated decreased oxygen saturation (55%) by pulse oximetry, tachycardia (heart rate 110 bpm), and hypotension (blood pressure 90/72 mmHg).He was admitted to the intensive care unit with a preliminary diagnosis of acute respiratory failure due to acute alcohol intoxication.""").toDF("text")
+val sample_texts = Seq("""The initial technician's record indicated decreased oxygen saturation (55%) by pulse oximetry, tachycardia (heart rate 110 bpm), and hypotension (blood pressure 90/72 mmHg).He was admitted to the intensive care unit with a preliminary diagnosis of acute respiratory failure due to acute alcohol intoxication.
+                    Short Hospital Course: Patient admitted for treatment of EtOH withdrawal following an attack.""").toDF("text")
 
 
 val result = pipeline.fit(sample_texts).transform(sample_texts)
@@ -133,14 +135,15 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 ## Results
 
 ```bash
-+---------------------------+-----+---+---------------------+----------------+----------+
-|chunk                      |begin|end|ner_label            |assertion       |confidence|
-+---------------------------+-----+---+---------------------+----------------+----------+
-|decreased oxygen saturation|42   |68 |Respiratory_Issues   |Overdose_Symptom|0.9947    |
-|tachycardia                |95   |105|Cardiovascular_Issues|Overdose_Symptom|0.9941    |
-|hypotension                |133  |143|Cardiovascular_Issues|Overdose_Symptom|0.9956    |
-|respiratory failure        |254  |272|Respiratory_Issues   |Overdose_Symptom|0.9999    |
-+---------------------------+-----+---+---------------------+----------------+----------+
++---------------------------+-----+---+---------------------+------------------+----------+
+|chunk                      |begin|end|ner_label            |assertion         |confidence|
++---------------------------+-----+---+---------------------+------------------+----------+
+|decreased oxygen saturation|42   |68 |Respiratory_Issues   |Overdose_Symptom  |0.9947    |
+|tachycardia                |95   |105|Cardiovascular_Issues|Overdose_Symptom  |0.9941    |
+|hypotension                |133  |143|Cardiovascular_Issues|Overdose_Symptom  |0.9956    |
+|respiratory failure        |254  |272|Respiratory_Issues   |Overdose_Symptom  |0.9999    |
+|EtOH                       |386  |389|Drinking_Status      |Withdrawal_Symptom|0.9471    |
++---------------------------+-----+---+---------------------+------------------+----------+
 ```
 
 {:.model-param}
