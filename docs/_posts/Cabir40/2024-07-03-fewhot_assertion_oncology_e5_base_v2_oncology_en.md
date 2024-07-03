@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Assign assertion status to clinical entities extracted by NER based on their context in the text. Also this model is trained on a list of clinical and biomedical datasets curated in-house
+Assign assertion status to clinical entities extracted by NER based on their context in the text. Also, this model is trained on a list of clinical and biomedical datasets curated in-house
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -38,7 +38,7 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
@@ -47,13 +47,13 @@ tokenizer = Tokenizer()\
     .setOutputCol("token")\
     .setSplitChars(["-", "\/"])
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
-    .setInputCols(["sentence","token"])\
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
 # ner_oncology
-ner_oncology = MedicalNerModel.pretrained("ner_oncology","en","clinical/models")\
-    .setInputCols(["sentence","token","embeddings"])\
+ner_oncology = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner_oncology")
 
 ner_oncology_converter = NerConverterInternal()\
@@ -99,22 +99,21 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")
     .setInputCols(Array("document"))
     .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
     .setInputCols(Array("sentence"))
     .setOutputCol("token")
-    .setSplitChars(Array("-", "\/"))
 
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
-    .setInputCols(Array("sentence","token"))
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
 # ner_oncology
-val ner_oncology = MedicalNerModel.pretrained("ner_oncology","en","clinical/models")
-    .setInputCols(Array("sentence","token","embeddings"))
+val ner_oncology = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner_oncology")
 
 val ner_oncology_converter = new NerConverterInternal()
@@ -145,6 +144,8 @@ val pipeline = new Pipeline().setStages(Array(
     e5_embeddings,
     few_shot_assertion_classifier))
 
+val data = Seq("The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases.").toDF("text")
+
 val result = pipeline.fit(data).transform(data)
 
 ```
@@ -153,7 +154,6 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 |    | chunks            |   begin |   end | entities         | assertion   |   confidence |
 |---:|:------------------|--------:|------:|:-----------------|:------------|-------------:|
 |  0 | colorectal cancer |      33 |    49 | Cancer_Dx        | Possible    |     0.581282 |
@@ -178,3 +178,19 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[assertion]|
 |Language:|en|
 |Size:|25.4 KB|
+
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+      Absent       0.86      0.86      0.86       343
+      Family       1.00      0.86      0.92        35
+Hypothetical       0.72      0.71      0.71       216
+        Past       0.90      0.95      0.93      2024
+    Possible       0.76      0.79      0.77        80
+     Present       0.93      0.87      0.90      1842
+    accuracy        -         -        0.90      4540
+   macro-avg       0.86      0.84      0.85      4540
+weighted-avg       0.90      0.90      0.90      4540
+```
