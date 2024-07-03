@@ -79,7 +79,7 @@ re_ner_chunk_filter = RENerChunksFilter()\
     .setMaxSyntacticDistance(10)\
     .setRelationPairs(["Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding"])
 
-re_model = RelationExtractionDLModel.pretrained("redl_oncology_size_biobert_wip", "en", "clinical/models")\
+re_model = RelationExtractionDLModel.pretrained("redl_oncology_size_biobert", "en", "clinical/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relation_extraction")
         
@@ -139,7 +139,7 @@ val re_ner_chunk_filter = new RENerChunksFilter()
      .setMaxSyntacticDistance(10)
      .setRelationPairs(Array("Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding"))
 
-val re_model = RelationExtractionDLModel.pretrained("redl_oncology_size_biobert_wip", "en", "clinical/models")
+val re_model = RelationExtractionDLModel.pretrained("redl_oncology_size_biobert", "en", "clinical/models")
       .setPredictionThreshold(0.5f)
       .setInputCols(Array("re_ner_chunk", "sentence"))
       .setOutputCol("relation_extraction")
