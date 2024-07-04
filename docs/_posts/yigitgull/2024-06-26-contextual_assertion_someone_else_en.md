@@ -158,18 +158,18 @@ result.show(truncate=False)
 ## Results
 
 ```bash
-+------------+-----+---+-------------------+---------+
-|result      |begin|end|ner_chunk          |ner_label|
-+------------+-----+---+-------------------+---------+
-|someone_else|32   |39 |diabetes           |PROBLEM  |
-|someone_else|42   |54 |Mother's side      |PROBLEM  |
-|someone_else|73   |84 |hypertension       |PROBLEM  |
-|someone_else|125  |137|heart disease      |PROBLEM  |
-|someone_else|179  |184|asthma             |PROBLEM  |
-|someone_else|219  |224|cancer             |PROBLEM  |
-|someone_else|270  |284|substance abuse    |PROBLEM  |
-|someone_else|321  |339|autoimmune diseases|PROBLEM  |
-+------------+-----+---+-------------------+---------+
++-------------------+-----+---+---------+------------+
+|ner_chunk          |begin|end|ner_label|result      |
++-------------------+-----+---+---------+------------+
+|diabetes           |32   |39 |PROBLEM  |someone_else|
+|Mother's side      |42   |54 |PROBLEM  |someone_else|
+|hypertension       |73   |84 |PROBLEM  |someone_else|
+|heart disease      |125  |137|PROBLEM  |someone_else|
+|asthma             |179  |184|PROBLEM  |someone_else|
+|cancer             |219  |224|PROBLEM  |someone_else|
+|substance abuse    |270  |284|PROBLEM  |someone_else|
+|autoimmune diseases|321  |339|PROBLEM  |someone_else|
++-------------------+-----+---+---------+------------+
 ```
 
 {:.model-param}

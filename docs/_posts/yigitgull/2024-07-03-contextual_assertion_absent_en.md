@@ -22,7 +22,7 @@ This model identifies contextual cues within text data to detect absent assertio
 
 ## Predicted Entities
 
-
+`absent`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
