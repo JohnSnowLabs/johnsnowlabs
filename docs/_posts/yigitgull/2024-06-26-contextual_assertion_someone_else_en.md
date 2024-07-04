@@ -92,10 +92,8 @@ pipeline = Pipeline(stages=[
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
 model = pipeline.fit(empty_data)
-text = """Patient has a family history of diabetes. Mother's side has a history of hypertension.
-                Father diagnosed with heart disease last year. Sister and brother both have asthma.
-                Grandfather had cancer in his late 70s. No known family history of substance abuse.
-                Family history of autoimmune diseases is also noted."""
+text = """Patient has a family history of diabetes. Father diagnosed with heart failure last year. Sister and brother both have asthma.
+          Grandfather had cancer in his late 70s. No known family history of substance abuse. Family history of autoimmune diseases is also noted."""
 
 data = spark.createDataFrame([[text]]).toDF('text')
 
@@ -162,14 +160,13 @@ result.show(truncate=False)
 |ner_chunk          |begin|end|ner_label|result      |
 +-------------------+-----+---+---------+------------+
 |diabetes           |32   |39 |PROBLEM  |someone_else|
-|Mother's side      |42   |54 |PROBLEM  |someone_else|
-|hypertension       |73   |84 |PROBLEM  |someone_else|
-|heart disease      |125  |137|PROBLEM  |someone_else|
-|asthma             |179  |184|PROBLEM  |someone_else|
-|cancer             |219  |224|PROBLEM  |someone_else|
-|substance abuse    |270  |284|PROBLEM  |someone_else|
-|autoimmune diseases|321  |339|PROBLEM  |someone_else|
+|heart failure      |64   |76 |PROBLEM  |someone_else|
+|asthma             |118  |123|PROBLEM  |someone_else|
+|cancer             |152  |157|PROBLEM  |someone_else|
+|substance abuse    |203  |217|PROBLEM  |someone_else|
+|autoimmune diseases|238  |256|PROBLEM  |someone_else|
 +-------------------+-----+---+---------+------------+
+
 ```
 
 {:.model-param}
