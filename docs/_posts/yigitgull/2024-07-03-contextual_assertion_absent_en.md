@@ -176,16 +176,16 @@ result.show(truncate=False)
 ## Results
 
 ```bash
-+--------------+-----+---+---------+----------------------+
-|ner_chunk     |begin|end|ner_label|assertionAbsent_result|
-+--------------+-----+---+---------+----------------------+
-|any difficulty|59   |72 |PROBLEM  |absent                |
-|hypertension  |149  |160|PROBLEM  |absent                |
-|nausea        |178  |183|PROBLEM  |absent                |
-|zofran        |199  |204|TREATMENT|absent                |
-|pain          |309  |312|PROBLEM  |absent                |
-|tylenol       |318  |324|TREATMENT|absent                |
-+--------------+-----+---+---------+----------------------+
++--------------+-----+---+---------+-----------+
+|ner_chunk     |begin|end|ner_label|result     |
++--------------+-----+---+---------+-----------+
+|any difficulty|59   |72 |PROBLEM  |absent     |
+|hypertension  |149  |160|PROBLEM  |absent     |
+|nausea        |178  |183|PROBLEM  |absent     |
+|zofran        |199  |204|TREATMENT|absent     |
+|pain          |309  |312|PROBLEM  |absent     |
+|tylenol       |318  |324|TREATMENT|absent     |
++--------------+-----+---+---------+-----------+
 ```
 
 {:.model-param}
