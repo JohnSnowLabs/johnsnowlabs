@@ -32,7 +32,7 @@ sidebar:
 + Updated notebooks
 + List of recently updated or added models (**50+ new medical models and pipelines**)
 
-
+</div><div class="h3-box" markdown="1">
 
 #### 8 New Chunk Mapper Models and 9 New Pretrained Chunk Mapper Pipelines to Convert One Medical Terminology to Another (Snomed to ICD10, RxNorm to UMLS etc.)
 
@@ -40,6 +40,7 @@ We are releasing **8 new `ChunkMapperModel` models and 9 new pretrained pipeline
 
 + Mapper Models:
 
+{:.table-model-big}
 | Mapper Name           	| Source    	| Target    	|
 |-----------------------	|-----------	|-----------	|
 | [snomed_icd10cm_mapper](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html) 	| SNOMED CT 	| ICD-10-CM 	|
@@ -90,6 +91,7 @@ result = light_pipeline.fullAnnotate("Radiating chest pain")
 
 + Pretrained Pipelines:
 
+{:.table-model-big}
 | Pipeline Name          	| Source    	| Target    	|
 |------------------------	|-----------	|-----------	|
 | [icd10cm_snomed_mapping](https://nlp.johnsnowlabs.com/2022/06/27/icd10cm_snomed_mapping_en_3_0.html) 	| ICD-10-CM 	| SNOMED CT 	|
@@ -121,6 +123,7 @@ result= pipeline.annotate("1161611 315677")
  'umls_code': ['C3215948', 'C0984912']}
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### 2 New Medical NER Models (`ner_clinical_trials_abstracts` and `ner_pathogene`) and Pretrained NER Pipelines
 
@@ -257,6 +260,7 @@ result = pipeline.fullAnnotate("""Immunohistochemical staining was positive for 
 
 Here is the list of model names and their embeddings used while training:
 
+{:.table-model-big}
 | Language | Annotator                         | Embeddings                                  | Model Name                                        |
 | -------- | --------------------------------- | ------------------------------------------- | ------------------------------------------------- |
 | es       | MedicalBertForTokenClassification |                                             | [bert\_token\_classifier\_ner\_living\_species](https://nlp.johnsnowlabs.com/2022/06/27/bert_token_classifier_ner_living_species_es_3_0.html) |
@@ -362,6 +366,7 @@ sample_text = "Aorta ascendenta inlocuita cu proteza de Dacron de la nivelul anu
 +-------------------+--------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ####  Deidentification Support for Romanian Language (`ner_deid_subentity`, `ner_deid_subentity_bert` and a Pretrained Deidentification Pipeline)
 
@@ -511,6 +516,8 @@ sample_text = "No place in my city has shelter space for us, and I won't put my 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### `ResolverMerger` Annotator to Merge the Results of `ChunkMapperModel` and `SentenceEntityResolverModel` Annotators
 
 `ResolverMerger` annotator allows to merge the results of `ChunkMapperModel` and `SentenceEntityResolverModel` annotators. You can detect your results that fail by `ChunkMapperModel` with `ChunkMapperFilterer` and then merge your resolver and mapper results with `ResolverMerger`.
@@ -551,6 +558,8 @@ resolverMerger = ResolverMerger()\
 +--------------------------------+-----------------------+---------------+-------------+-------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Shortest Context Match and Token Index Features in `ContextualParserApproach`
 
 We have new functionalities in `ContextualParserApproach` to make it more performant.
@@ -585,6 +594,7 @@ sample_text = "Peter Parker is a nice guy and lives in Chicago."
 +-------+---------+----------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Prettified relational categories in `ZeroShotRelationExtractionModel` annotator
 
@@ -626,16 +636,19 @@ ner_pipeline = Pipeline()([
     ])
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Spark NLP for Healthcare Library Installation with Poetry Documentation (dependency management and packaging tool).
 
 We have a new documentation page for showing Spark NLP for Healthcare installation with Poetry. You can find it [here](https://nlp.johnsnowlabs.com/docs/en/licensed_install#install-with-poetry).
 
+</div><div class="h3-box" markdown="1">
 
 #### Bug fixes
 + `ContextualParserApproach`: Fixed the bug using a dictionary and document rule scope in JSON config file.
 + `RENerChunksFilter`: Preparing a pretrained pipeline with `RENerChunksFilter` annotator issue is fixed.
 
+</div><div class="h3-box" markdown="1">
 
 #### Updated Notebooks
 
@@ -644,7 +657,7 @@ We have a new documentation page for showing Spark NLP for Healthcare installati
 + [Chunk Mapping Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb): Added new models into the model list and an example of mapper pretrained pipelines.
 + [Healthcare Code Mapping Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.1.Healthcare_Code_Mapping.ipynb): Added all mapper pretrained pipeline examples.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated and Added Models
 

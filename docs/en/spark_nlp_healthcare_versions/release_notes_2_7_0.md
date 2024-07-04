@@ -19,6 +19,8 @@ We are glad to announce that Spark NLP for Healthcare 2.7 has been released !
 
 In this release, we introduce the following features:
 
+</div><div class="h3-box" markdown="1">
+
 #### 1. Text2SQL
 
 Text2SQL Annotator that translates natural language text into SQL queries against a predefined database schema, which is one of the
@@ -43,6 +45,7 @@ LIMIT 1
 
 Response:  
 
+{:.table-model-big}
 |    | Name           |
 |---:|:---------------|
 |  0 | Carla Espinosa |
@@ -65,6 +68,7 @@ GROUP BY T1.Name
 
 Response:   
 
+{:.table-model-big}
 |    | Name             |   count(*) |
 |---:|:-----------------|-----------:|
 |  0 | Christopher Turk |          1 |
@@ -78,6 +82,7 @@ dataset) and new pretrained models will be released soon.
 Check out the
 Colab notebook to  see more examples and run on your data.
 
+</div><div class="h3-box" markdown="1">
 
 #### 2. SentenceEntityResolvers
 
@@ -100,6 +105,7 @@ text = 'He has a starvation ketosis but nothing significant for dry oral mucosa'
 df = get_icd10_codes (light_pipeline_icd10, 'icd10cm_code', text)
 ```
 
+{:.table-model-big}
 |    | chunks               |   begin |   end | code |
 |---:|:---------------------|--------:|------:|:-------|
 |  0 | a starvation ketosis |       7 |    26 | E71121 |                                                                                                                                                   
@@ -111,6 +117,7 @@ Check out the Colab notebook to  see more examples and run on your data.
 You can also train your own entity resolver using any medical terminology like MedRa and UMLS. Check this notebook to
 learn more about training from scratch.
 
+</div><div class="h3-box" markdown="1">
 
 #### 3. ChunkMerge Annotator
 
@@ -118,13 +125,14 @@ In order to use multiple NER models in the same pipeline, Spark NLP Healthcare h
 model by overlapping. Now it has a new parameter to avoid merging overlapping entities (setMergeOverlapping)
 to return all the entities regardless of char indices. It will be quite useful to analyze what every NER module returns on the same text.
 
+</div><div class="h3-box" markdown="1">
 
 #### 4. Starting SparkSession
-
 
 We now support starting SparkSession with a different version of the open source jar and not only the one it was built
 against by `sparknlp_jsl.start(secret, public="x.x.x")` for extreme cases.
 
+</div><div class="h3-box" markdown="1">
 
 #### 5. Biomedical NERs
 
@@ -152,6 +160,7 @@ We are also releasing the biobert versions of the several clinical NER models st
 
 Metrics (micro averages excluding O’s):
 
+{:.table-model-big}
 |    | model_name                        |   clinical_glove_micro |   biobert_micro |
 |---:|:----------------------------------|-----------------------:|----------------:|
 |  0 | ner_chemprot_clinical             |               0.816 |      0.803 |
@@ -176,6 +185,8 @@ In addition to these, we release two new German NER models:
 
 `ner_healthcare_slim` ('TIME_INFORMATION', 'MEDICAL_CONDITION',  'BODY_PART',  'TREATMENT', 'PERSON', 'BODY_PART')  
 `ner_traffic` (extract entities regarding traffic accidents e.g. date, trigger, location etc.)  
+
+</div><div class="h3-box" markdown="1">
 
 #### 6. PICO Classifier
 

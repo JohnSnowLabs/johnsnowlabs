@@ -16,11 +16,15 @@ sidebar:
 ## 3.2.2
 We are glad to announce that Spark NLP Healthcare 3.2.2 has been released!.
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + New NER Model For Detecting Drugs, Posology, and Administration Cycles
 + New Sentence Entity Resolver Models
 + New Router Annotator To Use Multiple Resolvers Optimally In the Same Pipeline
 + Re-Augmented Deidentification NER Model
+
+</div><div class="h3-box" markdown="1">
 
 #### New NER Model For Detecting Drugs, Posology, and Administration Cycles
 
@@ -56,6 +60,8 @@ results = model.transform(spark.createDataFrame([["Y-90 Humanized Anti-Tac: 10 m
 |  7 | intravenously            |     234 |   246 | Route    |
 |  8 | Days 1-3                 |     251 |   258 | Cycleday |
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New Sentence Entity Resolver Models
 
@@ -130,6 +136,8 @@ result = snomed_lp.fullAnnotate("schizophrenia")
 |---:|:--------------|:---------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:-----------------------------------------------------|
 |  0 | schizophrenia | 58214004 | [schizophrenia, chronic schizophrenia, borderline schizophrenia, schizophrenia, catatonic, subchronic schizophrenia, ...]| [58214004, 83746006, 274952002, 191542003, 191529003, 16990005, ...] | 0.0000, 0.0774, 0.0838, 0.0927, 0.0970, 0.0970, ...] |
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New Router Annotator To Use Multiple Resolvers Optimally In the Same Pipeline
 
@@ -222,6 +230,7 @@ pipeline = Pipeline(stages=[
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Re-Augmented Deidentification NER Model
 

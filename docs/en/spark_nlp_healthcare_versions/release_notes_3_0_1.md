@@ -17,12 +17,16 @@ sidebar:
 
 We are very excited to announce that **Spark NLP for Healthcare 3.0.1** has been released!
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights:
 
 * Fixed problem in Assertion Status internal tokenization (reported in Spark-NLP #2470).
 * Fixes in the internal implementation of DeIdentificationModel/Obfuscator.
 * Being able to disable the use of regexes in the Deidentification process
 * Other minor bug fixes & general improvements.
+
+</div><div class="h3-box" markdown="1">
 
 #### DeIdentificationModel Annotator
 
@@ -127,12 +131,17 @@ You can now choose to completely disable the use of regexes in the deidentificat
 ```scala
 DeIdentificationModel.setIgnoreRegex(true)
 ```
+
+</div><div class="h3-box" markdown="1">
+
 ##### Python
 ```python
 DeIdentificationModel().setIgnoreRegex(True)
 ```
 
 The default value for this param is `False` meaning that regexes will be used by default.
+
+</div><div class="h3-box" markdown="1">
 
 ##### New supported entities for Deidentification & Obfuscation:
 

@@ -11,10 +11,12 @@ sidebar:
     nav: sparknlp-healthcare
 ---
 
-<div class="prev_ver h3-box" markdown="1">
+<div class="h3-box" markdown="1">
 
 ## 3.2.1
 We are glad to announce that Spark NLP Healthcare 3.2.1 has been released!.
+
+</div><div class="h3-box" markdown="1">
 
 #### Highlights
 
@@ -23,6 +25,8 @@ We are glad to announce that Spark NLP Healthcare 3.2.1 has been released!.
 + HCC module added support for versions v22 and v23.
 + Updated Notebooks for resolvers and graph builders.
 + New TF Graph Builder.
+
+</div><div class="h3-box" markdown="1">
 
 #### New BERT-Based NER Models
 
@@ -218,6 +222,7 @@ res = p_model.transform(spark.createDataFrame([[text]]).toDF("text")).collect()
 res[0]['label']
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### HCC module added support for versions v22 and v23
 
@@ -337,11 +342,13 @@ df.show(truncate=False)
 +----------+------------------------------+---+------+-----------+----+--------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated Notebooks for resolvers and graph builders
 
 + We have updated the resolver notebooks on spark-nlp-workshop repo with new `BertSentenceChunkEmbeddings` annotator. This annotator lets users aggregate sentence embeddings and ner chunk embeddings to get more specific and accurate resolution codes. It works by averaging context and chunk embeddings to get contextual information. Input to this annotator is the context (sentence) and ner chunks, while the output is embedding for each chunk that can be fed to the resolver model. The `setChunkWeight` parameter can be used to control the influence of surrounding context. Example below shows the comparison of old vs new approach.
 
-
+{:.table-model-big.db}
 |text|ner_chunk|entity|icd10_code|all_codes|resolutions|icd10_code_SCE|all_codes_SCE|resolutions_SCE|
 |-|-|-|-|-|-|-|-|-|
 |Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.|a respiratory tract infection|PROBLEM|J988|[J988, J069, A499, J22, J209,...]|[respiratory tract infection, upper respiratory tract infection, bacterial respiratory infection, acute respiratory infection, bronchial infection,...]|Z870|[Z870, Z8709, J470, J988, A499,...|[history of acute lower respiratory tract infection (situation), history of acute lower respiratory tract infection, bronchiectasis with acute lower respiratory infection, rti - respiratory tract infection, bacterial respiratory infection,...|
@@ -359,6 +366,7 @@ You can also check for more examples of this annotator: [24.1.Improved_Entity_Re
 
 **To see more, please check: [Spark NLP Healthcare Workshop Repo](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare)**
 
+</div><div class="h3-box" markdown="1">
 
 #### New TF Graph Builder
 
