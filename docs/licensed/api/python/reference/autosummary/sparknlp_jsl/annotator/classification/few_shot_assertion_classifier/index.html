@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>sparknlp_jsl.annotator.classification.few_shot_assertion_classifier &#8212; Spark NLP  documentation</title>
   
@@ -19,36 +18,34 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../../static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../../static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
-    <script src="../../../../../../static/jquery.js"></script>
-    <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../../../static/doctools.js"></script>
-    <script src="../../../../../../static/sphinx_highlight.js"></script>
-    <script src="../../../../../../static/toggleprompt.js"></script>
-    <script src="../../../../../../static/clipboard.min.js"></script>
-    <script src="../../../../../../static/copybutton.js"></script>
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../static/copybutton.js?v=6dbb43f8"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/classification/few_shot_assertion_classifier/index';</script>
-    <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
+    <link rel="icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -61,6 +58,15 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -101,9 +107,11 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../../../index.html">
@@ -111,25 +119,26 @@
   
   
   
+  
     
     
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
     
   </div>
   
-  
   <div class="col-lg-9 navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
-        <div class="navbar-item"><nav class="navbar-nav">
+        <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -161,23 +170,27 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -188,18 +201,21 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
       <span class="fa-solid fa-outdent"></span>
     </label>
   
@@ -219,7 +235,8 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item"><nav class="navbar-nav">
+          <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -251,12 +268,13 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -266,7 +284,8 @@ document.write(`
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
@@ -275,6 +294,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -362,34 +383,40 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rag/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rag/context_split_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag.context_split_assembler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rag/vectordb_post_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag.vectordb_post_processor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../re/relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../re/relation_extraction_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../re/relation_ner_chunk_filter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_ner_chunk_filter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../re/zero_shot_relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.zero_shot_relation_extraction</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../regex/regex_matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex.regex_matcher</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../resolution/resolver_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.resolver_merger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../resolution/sentence_entity_resolver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.sentence_entity_resolver</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resolution/vector_db/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.vector_db</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
@@ -438,15 +465,15 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_assertion_classifier</span></code></li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
   </ul>
 </nav>
 </div>
@@ -471,36 +498,570 @@ document.write(`
 <h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel" title="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach" title="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach</span></code></a></p></td>
+<td><p>Trains a model to classify assertions based on general purpose few shot assertion embeddings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel" title="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel</span></code></a></p></td>
 <td><p>FewShotAssertionClassifierModel does assertion classification using can run large (LLMS based)</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FewShotAssertionClassifierApproach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.classification.FewShotAssertionClassifierApproach'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach" title="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach</span></code></a></p>
+<p>Trains a model to classify assertions based on general purpose few shot assertion embeddings.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.datasetInfo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.doExceptionHandling">
+<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.doExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.dropout">
+<span class="sig-name descname"><span class="pre">dropout</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.dropout" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.engine" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.epochsN">
+<span class="sig-name descname"><span class="pre">epochsN</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.epochsN" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.featureScaling">
+<span class="sig-name descname"><span class="pre">featureScaling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.featureScaling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fixImbalance">
+<span class="sig-name descname"><span class="pre">fixImbalance</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fixImbalance" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.labelColumn">
+<span class="sig-name descname"><span class="pre">labelColumn</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.labelColumn" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.learningRate">
+<span class="sig-name descname"><span class="pre">learningRate</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.learningRate" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.modelFile">
+<span class="sig-name descname"><span class="pre">modelFile</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.modelFile" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.multiClass">
+<span class="sig-name descname"><span class="pre">multiClass</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.multiClass" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'FewShotAssertionClassifierApproach'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputLogsPath">
+<span class="sig-name descname"><span class="pre">outputLogsPath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputLogsPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.validationSplit">
+<span class="sig-name descname"><span class="pre">validationSplit</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.validationSplit" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params. If a list/tuple of
+param maps is given, this calls fit on each param map and returns a list of
+models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fitted model(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fitMultiple">
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>paramMaps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code>) – A Sequence of param maps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A thread safe iterable which contains one model for each param map. Each
+call to <cite>next(modelIterator)</cite> will return <cite>(index, model)</cite> where model was fit
+using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequential.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Size for each batch in the optimization process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – Size for each batch in the optimization process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDoExceptionHandling">
+<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd><p>If True, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message.
+Processing continues with the next one. This comes with a performance penalty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, exceptions are handled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDropout">
+<span class="sig-name descname"><span class="pre">setDropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDropout" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets drouptup</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dropout</strong> (<em>float</em>) – Dropout at the output of each layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setEpochsNumber">
+<span class="sig-name descname"><span class="pre">setEpochsNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setEpochsNumber" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of epochs for the optimization process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>epochs</strong> (<em>int</em>) – Number of epochs for the optimization process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setFeatureScaling">
+<span class="sig-name descname"><span class="pre">setFeatureScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_scaling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setFeatureScaling" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>feature_scaling</strong> (<em>str</em>) – Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setFixImbalance">
+<span class="sig-name descname"><span class="pre">setFixImbalance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fix_imbalance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setFixImbalance" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets A flag indicating whenther to balance the trainig set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fix_imbalance</strong> (<em>bool</em>) – A flag indicating whenther to balance the trainig set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLabelCol">
+<span class="sig-name descname"><span class="pre">setLabelCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLabelCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets  Size for each batch in the optimization process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label_column</strong> (<em>str</em>) – Column with the value result we are trying to predict.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLearningRate">
+<span class="sig-name descname"><span class="pre">setLearningRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLearningRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets learning rate for the optimization process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>learning_rate</strong> (<em>float</em>) – Learning rate for the optimization process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setModelFile">
+<span class="sig-name descname"><span class="pre">setModelFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setModelFile" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets file name to load the mode from”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – File name to load the mode from”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setMultiClass">
+<span class="sig-name descname"><span class="pre">setMultiClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setMultiClass" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the model in multi class prediction mode (Default: false)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to return only the label with the highest confidence score or all labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setOutputLogsPath">
+<span class="sig-name descname"><span class="pre">setOutputLogsPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_logs_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setOutputLogsPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets path to folder where logs will be saved. If no path is specified, no logs are generated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_logs_path</strong> (<em>str</em>) – Path to folder where logs will be saved. If no path is specified, no logs are generated</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setValidationSplit">
+<span class="sig-name descname"><span class="pre">setValidationSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">validation_split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setValidationSplit" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets validaiton split - how much data to use for validation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>validation_split</strong> (<em>float</em>) – Validaiton split - how much data to use for validation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FewShotAssertionClassifierModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../large_few_shot_classifier/index.html#sparknlp_jsl.annotator.classification.large_few_shot_classifier.LargeFewShotClassifierModel" title="sparknlp_jsl.annotator.classification.large_few_shot_classifier.LargeFewShotClassifierModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.large_few_shot_classifier.LargeFewShotClassifierModel</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FewShotAssertionClassifierModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.classification.FewShotAssertionClassifierModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel" title="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.common.HasStorageRef</span></code></p>
 <blockquote>
 <div><p>FewShotAssertionClassifierModel does assertion classification using can run large (LLMS based)
 few shot classifiers based on the SetFit approach.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
-<th class="head"><p>Output Annotation type</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code>, <code class="docutils literal notranslate"><span class="pre">CHUNK</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ASSERTION</span></code></p></td>
-</tr>
-</tbody>
-</table>
 <dl class="simple">
 <dt>batchSize</dt><dd><p>Batch size</p>
-</dd>
-<dt>caseSensitive</dt><dd><p>Whether the classifier is senstivive to text casing</p>
-</dd>
-<dt>maxSentenceLength</dt><dd><p>The maximum length of the input text</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -550,23 +1111,28 @@ few shot classifiers based on the SetFit approach.</p>
 </tbody>
 </table>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.batchSize">
-<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.batchSize" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.classes">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.classes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.caseSensitive">
-<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.datasetInfo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.doExceptionHandling">
+<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.doExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.featureScaling">
+<span class="sig-name descname"><span class="pre">featureScaling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.featureScaling" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getter_attrs" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.hasDifferentiableHead">
-<span class="sig-name descname"><span class="pre">hasDifferentiableHead</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.hasDifferentiableHead" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -585,23 +1151,13 @@ few shot classifiers based on the SetFit approach.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.maxSentenceLength">
-<span class="sig-name descname"><span class="pre">maxSentenceLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.maxSentenceLength" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.max_length_limit">
-<span class="sig-name descname"><span class="pre">max_length_limit</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">512</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.max_length_limit" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.modelArchitecture">
-<span class="sig-name descname"><span class="pre">modelArchitecture</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.modelArchitecture" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.multiClass">
+<span class="sig-name descname"><span class="pre">multiClass</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.multiClass" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">FewShotAssertionClassifierModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'FewShotAssertionClassifierModel'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -622,6 +1178,11 @@ few shot classifiers based on the SetFit approach.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.skipLPInputColsValidation">
 <span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.storageRef">
+<span class="sig-name descname"><span class="pre">storageRef</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.storageRef" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -687,40 +1248,6 @@ user-supplied values &lt; extra.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getBatchSize">
-<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getBatchSize" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets current batch size.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Current batch size</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getCaseSensitive">
-<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getCaseSensitive" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getClasses">
-<span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getClasses" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns labels used to train this model</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getInputCols">
 <span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets current column names of input annotations.</p>
@@ -731,20 +1258,6 @@ user-supplied values &lt; extra.</p>
 <span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets whether Annotator should be evaluated lazily in a
 RecursivePipeline.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getMaxSentenceLength">
-<span class="sig-name descname"><span class="pre">getMaxSentenceLength</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getMaxSentenceLength" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets max sentence of the model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Max sentence length to process</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -773,6 +1286,20 @@ default value. Raises an error if neither is set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getStorageRef">
+<span class="sig-name descname"><span class="pre">getStorageRef</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique reference name for identification</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -816,14 +1343,13 @@ a default value.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.loadSavedModel">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_architecture</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_differentiable_head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_differentiable_head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Loads a locally saved model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>folder</strong> (<em>str</em>) – Folder of the saved model</p></li>
 <li><p><strong>spark_session</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><em>pyspark.sql.SparkSession</em></a>) – The current SparkSession</p></li>
-<li><p><strong>model_architecture</strong> (<em>str</em>) – The model architecture of the underlying sentence embeddings model, e.g. MPNet or Bert</p></li>
 <li><p><strong>has_differentiable_head</strong> (<em>bool</em>) – A flag indicating whether the classifier is differentiable</p></li>
 </ul>
 </dd>
@@ -877,23 +1403,36 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setBatchSize">
-<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setBatchSize" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets batch size.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setCaseSensitive">
-<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setCaseSensitive" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setDoExceptionHandling">
+<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd><p>If True, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message.
+Processing continues with the next one. This comes with a performance penalty.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, exceptions are handled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setFeatureScaling">
+<span class="sig-name descname"><span class="pre">setFeatureScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_scaling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setFeatureScaling" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>feature_scaling</strong> (<em>str</em>) – Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -928,14 +1467,12 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setMaxSentenceLength">
-<span class="sig-name descname"><span class="pre">setMaxSentenceLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setMaxSentenceLength" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets max sentence length to process.</p>
-<p>Note that a maximum limit exists depending on the model. If you are working with long single
-sequences, consider splitting up the input first with another annotator e.g. SentenceDetector.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setMultiClass">
+<span class="sig-name descname"><span class="pre">setMultiClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setMultiClass" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the model in multi class prediction mode (Default: false)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Max sentence length to process</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to return only the label with the highest confidence score or all labels</p>
 </dd>
 </dl>
 </dd></dl>
@@ -966,6 +1503,17 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setParams">
 <span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setParams" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setStorageRef">
+<span class="sig-name descname"><span class="pre">setStorageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Unique reference name for identification</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.transform">
@@ -1007,16 +1555,12 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
               
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1026,6 +1570,7 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
+
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
@@ -1033,37 +1578,102 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.datasetInfo</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.dropout"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.dropout</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.engine"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.engine</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.epochsN"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.epochsN</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.featureScaling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.featureScaling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fixImbalance"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.fixImbalance</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.labelColumn"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.labelColumn</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.learningRate"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.learningRate</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.modelFile"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.modelFile</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.multiClass"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.multiClass</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.name"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.outputLogsPath"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.outputLogsPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.validationSplit"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.validationSplit</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.clear"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.copy"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.explainParams"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fit"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.fit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.fitMultiple"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.fitMultiple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getEngine"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getInputCols"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getParam"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.getParamValue"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.hasDefault"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.hasParam"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.isDefined"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.isSet"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.load"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.read"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setDatasetInfo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setDropout()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setEpochsNumber"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setEpochsNumber()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setFeatureScaling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setFixImbalance"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setFixImbalance()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLabelCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setLabelCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setLearningRate"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setLearningRate()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setModelFile"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setModelFile()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setMultiClass"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setMultiClass()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setOutputLogsPath"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setOutputLogsPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.setValidationSplit"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.setValidationSplit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierApproach.write"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierApproach.write()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.batchSize"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.batchSize</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.caseSensitive"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.classes"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.datasetInfo</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getter_attrs</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.hasDifferentiableHead"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.hasDifferentiableHead</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.inputCols"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.lazyAnnotator</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.maxSentenceLength"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.maxSentenceLength</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.max_length_limit"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.max_length_limit</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.modelArchitecture"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.modelArchitecture</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.multiClass"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.multiClass</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.name"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.outputCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.outputCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.storageRef"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.storageRef</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.clear"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.copy"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.explainParam"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.explainParams"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.extractParamMap()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getBatchSize"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getBatchSize()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getCaseSensitive()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getClasses"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getClasses()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getLazyAnnotator()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getMaxSentenceLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getOrDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getParam"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.getStorageRef"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.getStorageRef()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.hasDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.hasParam"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.hasParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.inputColsValidation()</span></code></a></li>
@@ -1075,15 +1685,17 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.set()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setBatchSize"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setBatchSize()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setDatasetInfo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setLazyAnnotator()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setMultiClass"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setMultiClass()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setParams"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.setStorageRef"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.setStorageRef()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.transform"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_assertion_classifier.FewShotAssertionClassifierModel.write"><code class="docutils literal notranslate"><span class="pre">FewShotAssertionClassifierModel.write()</span></code></a></li>
 </ul>
@@ -1108,8 +1720,8 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1117,6 +1729,7 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
     <div class="footer-items__start">
       
         <div class="footer-item">
+
   <p class="copyright">
     
       © Copyright 2022, John Snow Labs.
@@ -1126,8 +1739,9 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
 </div>
       
         <div class="footer-item">
+
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     <br/>
   </p>
 </div>
@@ -1135,10 +1749,12 @@ sequences, consider splitting up the input first with another annotator e.g. Sen
     </div>
   
   
+  
     <div class="footer-items__end">
       
-        <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
 </p></div>
       
     </div>
