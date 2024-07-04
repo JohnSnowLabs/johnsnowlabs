@@ -76,6 +76,7 @@ text = """Nume si Prenume : BUREAN MARIA, Varsta: 77 ,Spitalul Pentru Ochi de De
 
 *Result:*
 
+{:.table-model-big}
 |Sentence|Masked with entity|Masked with Chars|Masked with Fixed Chars|Obfuscated|
 |-|-|-|-|-|
 |Nume si Prenume : BUREAN MARIA, Varsta: 77 ,Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui| Nume si Prenume : <\PATIENT>, Varsta: <\AGE> ,<\HOSPITAL>, <\STREET> <\CITY> | Nume si Prenume : **********, Varsta: ** ,**************************, ****************** **** |Nume si Prenume : ****, Varsta: **** , ****, **** **** | Nume si Prenume : Claudia Crumble, Varsta: 18 ,LOS ANGELES AMBULATORY CARE CENTER, 706 north parrish avenue Piscataway|
@@ -139,6 +140,7 @@ text = """ Mother states that he does smoke, there is a family hx of alcohol on 
 
 We are releasing the improved version of Oncological NER models (_wip) and 4 new pretrained oncological pipelines which are able to detect assertion status and relations between the extracted oncological entities.
 
+{:.table-model-big.db}
 |NER model name (`MedicalNerModel`)| description|predicted entities|
 |-|-|-|
 | [ner_oncology_anatomy_general](https://nlp.johnsnowlabs.com/2022/10/25/ner_oncology_anatomy_general_en.html)  | Extracting anatomical entities.  |  `Anatomical_Site`, `Direction` |
@@ -154,7 +156,7 @@ We are releasing the improved version of Oncological NER models (_wip) and 4 new
 | [ner_oncology_test](https://nlp.johnsnowlabs.com/2022/10/25/ner_oncology_test_en.html)  | Extracting mentions of oncology-related tests.  | `Oncogene`, `Biomarker`, `Biomarker_Result`, `Imaging_Test`, `Pathology_Test`  |
 | [ner_oncology_tnm](https://nlp.johnsnowlabs.com/2022/10/25/ner_oncology_tnm_en.html)   |  Extracting mentions related to TNM staging. |  `Lymph_Node`, `Staging`, `Lymph_Node_Modifier`, `Tumor_Description`, `Tumor`, `Metastasis`, `Cancer_Dx` |
 
-
+{:.table-model-big.db}
 |Oncological Pipeline (`PretrainedPipeline`)| Description|
 |-|-|
 | [oncology_general_pipeline](https://nlp.johnsnowlabs.com/2022/11/03/oncology_general_pipeline_en.html)  | Includes Named-Entity Recognition, Assertion Status and Relation Extraction models to extract information from oncology texts. This pipeline extracts diagnoses, treatments, tests, anatomical references and demographic entities. |  

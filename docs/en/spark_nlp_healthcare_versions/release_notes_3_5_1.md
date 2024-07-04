@@ -32,6 +32,8 @@ We are glad to announce that 3.5.1 version of Spark NLP for Healthcare has been 
 
 - **List of recently updated or added models**
 
+</div><div class="h3-box" markdown="1">
+
 #### Portuguese Deidentification Models
 
 This is the 6th supported language for deidentification (English, German, Spanish, Italian, French and Portuguese). This version includes two Portuguese deidentification models to mask or obfuscate Protected Health Information in the Portuguese language. The models are the following:
@@ -167,6 +169,8 @@ Results:
 
 Check Spark NLP Portuguese capabilities in [4.7.Clinical_Deidentification_in_Portuguese.ipynb notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.7.Clinical_Deidentification_in_Portuguese.ipynb) we have prepared for you.
 
+</div><div class="h3-box" markdown="1">
+
 #### New RxNorm Sentence Entity Resolver Model (`sbiobertresolve_rxnorm_action_treatment`)
 
 We are releasing `sbiobertresolve_rxnorm_action_treatment` model that maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. This resolver model maps and extracts pharmaceutical actions (e.g analgesic, hypoglycemic) as well as treatments (e.g backache, diabetes) along with the RxNorm code resolved. Actions and treatments of the drugs are returned in `all_k_aux_labels` column.
@@ -210,6 +214,8 @@ Results* :
 |  1 | coumadin 5 mg |        855333 | ['Anticoagulant']                       | ['Cerebrovascular Accident']       |
 |  2 | avandia 4 mg  |        261242 | ['Drugs Used In Diabets','Hypoglycemic']| ['Diabetes Mellitus', ...]         |                                                                                              |
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New RCT Classification Models and Pretrained Pipelines
 
@@ -275,6 +281,8 @@ result = pipeline.annotate(text)
 >> class: True
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 ##### Add `getClasses()` attribute to `MedicalBertForTokenClassifier` and `MedicalBertForSequenceClassification`
 Now you can use `getClasses()` method for checking the entity labels of  `MedicalBertForTokenClassifier` and `MedicalBertForSequenceClassification` like `MedicalNerModel`.
@@ -295,6 +303,8 @@ Now you can use `getClasses()` method for checking the entity labels of  `Medica
 
 ##### Download the AnnotatorModels from the healthcare library using the Healthcare version instead of the open source version
 
+</div><div class="h3-box" markdown="1">
+
 Now we download the private models using the Healthcare version instead of the open source version (the pretrained models were used to be dependent on open source Spark NLP version before).
 
 ##### New functionality to download and extract clinical models from S3 via direct link.
@@ -307,15 +317,21 @@ Now, you can download clinical models from S3 via direct link directly by `downl
   ResourceDownloader.downloadModelDirectly("clinical/models/assertion_dl_en_2.0.2_2.4_1556655581078.zip", "clinical/models")  
   ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Core improvements:
 
 ##### Fix `MedicalNerModel` confidence scores when `setIncludeAllConfidenceScores` is `True`
 
 A mismatch problem between the tag with the highest confidence score and the predicted tag in `MedicalNerModel` is resolved.
 
+</div><div class="h3-box" markdown="1">
+
 ##### Graph_builder `relation_extraction` model file name extension problem with `auto` param
 
 A naming problem which occurs while generating a graph for Relation Extraction via graph builder was resolved. Now, the TF graph is generated with the correct extension (`.pb`).
+
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated or Added Models
 

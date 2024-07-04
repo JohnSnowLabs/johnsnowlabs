@@ -310,6 +310,7 @@ For more details, please check the [model card](https://nlp.johnsnowlabs.com/202
 
 We have five new sentence entity resolver pipelines that are meticulously designed to enhance your solutions by efficiently identifying entities and their resolutions within the clinical note. You can easily integrate this advanced capability using just a single line of code.
 
+{:.table-model-big}
 |Pipeline|Description|
 |-|-|
 |[`abbreviation_pipeline`](https://nlp.johnsnowlabs.com/2023/08/16/abbreviation_pipeline_en.html)|Detects abbreviations and acronyms of medical regulatory activities as well as map them with their definitions and categories.|
