@@ -683,11 +683,15 @@ Estimated Minimum Costs:
 
 ## RxNorm Benchmark: Healthcare NLP & GPT-4 & Amazon
 
-**Motivation:** Accurately mapping medications to RxNorm codes is crucial for several reasons like safer patient care, improved billing and reimbursement, enhanced research, etc. In this benchmark, you can find the performance comparisons of these three tool.
+### Motivation
 
-**Ground Truh**: To ensure a fair comparison of these tools, we enlisted the assistance of human annotators. Medical annotation experts from John Snow Labs utilized the [Generative AI Lab](https://nlp.johnsnowlabs.com/docs/en/alab/quickstart) to annotate 79 clinical in-house documents.
+Accurately mapping medications to RxNorm codes is crucial for several reasons like safer patient care, improved billing and reimbursement, enhanced research, etc. In this benchmark, you can find the performance comparisons of these three tool.
 
-**Tools:**
+### Ground Truh
+
+To ensure a fair comparison of these tools, we enlisted the assistance of human annotators. Medical annotation experts from John Snow Labs utilized the [Generative AI Lab](https://nlp.johnsnowlabs.com/docs/en/alab/quickstart) to annotate 79 clinical in-house documents.
+
+### Benchmark Tools
 
 - **Healthcare NLP:** Two distinct RxNorm models within the library was used.
   - [sbiobertresolve_rxnorm_augmented](https://nlp.johnsnowlabs.com/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html): Trained with `sbiobert_base_cased_mli` embeddings.
@@ -697,13 +701,13 @@ Estimated Minimum Costs:
 
 - **Amazon:** *Amazon Comprehend Medical* service  
 
-**Evaluation Notes:**
+### Evaluation Notes
 - Healthcare NLP returns up to 25 closest results, and Amazon Medical Comprehend returns up to five results, both sorted starting from the closest one. In contrast, the GPT-4 Turbo model returns only one result, *so its scores reflected similarly in both charts*.
 - Two approaches were adopted for evaluating these tools, given that the model outputs may not precisely match the annotations:
   - **Top-3:** Compare the annotations to see if they appear in the first three results.
   - **Top-5:** Compare the annotations to see if they appear in the first five results.
 
-**Accuracy Results:**
+### Accuracy Results
 
 - Top-3 Results:
 
@@ -713,7 +717,7 @@ Estimated Minimum Costs:
 
 ![top_5](/assets/images/345525777-44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7.png)
 
-**Price Analysis Of The Tools**
+### Price Analysis Of The Tools
 
 Since we don't have such a small dataset in real world, we calculated the price of these tools according to 1M clinical notes. 
 
@@ -721,7 +725,7 @@ Since we don't have such a small dataset in real world, we calculated the price 
 - *Amazon Comprehend Medical Pricing:* According to the price calculator, obtaining RxNorm predictions for **1M documents, with an average of 9,700 characters per document, costs $24,250**.
 - *Healthcare NLP Pricing:* When using John Snow Labs-Healthcare NLP Prepaid product on an *EC2-32 CPU (c6a.8xlarge at $1,2 per hour) machine*, obtaining the RxNorm codes for medications (*excluding the NER stage*) from approximately 80 documents takes around 2 minutes. Based on this, processing **1M documents** and extracting RxNorm codes would take about 25,000 minutes (416 hours, or 18 days), **costing $500 for infrastructure** and **$4,000 for the license** (considering a 1-month license price of $7,000). Thus, **the total cost for Healthcare NLP is approximately $4,500**.
 
-**Conclusion**
+### Conclusion
 
 Based on the evaluation results:
 - The `sbiobertresolve_rxnorm_augmented` model of Spark NLP for Healthcare consistently provides **the most accurate** results in each top_k comparison.
