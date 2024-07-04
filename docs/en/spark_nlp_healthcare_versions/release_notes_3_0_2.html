@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are very excited to announce that <strong>Spark NLP for Healthcare 3.0.2</strong> has been released! This release includes bug fixes and some compatibility improvements.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
 
   <ul>
@@ -634,12 +637,22 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Bug fixes in <code class="language-plaintext highlighter-rouge">DrugNormalizer</code>.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
   <p>Provide confidence scores for all available tags in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code>,</p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="medicalnermodel-before-302">MedicalNerModel before 3.0.2</h5>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[named_entity, 0, 9, B-PROBLEM, [word -&gt; Pneumonia, confidence -&gt; 0.9998], []]
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h5 id="now-in-spark-nlp-for-healthcare-302">Now in Spark NLP for Healthcare 3.0.2</h5>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[named_entity, 0, 9, B-PROBLEM, [B-PROBLEM -&gt; 0.9998, I-TREATMENT -&gt; 0.0, I-PROBLEM -&gt; 0.0, I-TEST -&gt; 0.0, B-TREATMENT -&gt; 1.0E-4, word -&gt; Pneumonia, B-TEST -&gt; 0.0], []]
 </code></pre></div>  </div>
@@ -970,6 +983,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1147,8 +1162,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

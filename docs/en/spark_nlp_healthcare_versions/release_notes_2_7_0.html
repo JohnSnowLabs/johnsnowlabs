@@ -628,6 +628,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>In this release, we introduce the following features:</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="text2sql">1. Text2SQL</h4>
 
   <p>Text2SQL Annotator that translates natural language text into SQL queries against a predefined database schema, which is one of the
@@ -651,7 +654,7 @@ SQL query from the model:</p>
 
   <p>Response:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -683,7 +686,7 @@ SQL query from the model:</p>
 
   <p>Response:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -716,6 +719,9 @@ dataset) and new pretrained models will be released soon.</p>
   <p>Check out the
 Colab notebook to  see more examples and run on your data.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="sentenceentityresolvers">2. SentenceEntityResolvers</h4>
 
   <p>In addition to ChunkEntityResolvers, we now release our first BioBert-based entity resolvers using the SentenceEntityResolver
@@ -736,7 +742,7 @@ RXNORM (branded and clinical drugs): <code class="language-plaintext highlighter
 <span class="n">df</span> <span class="o">=</span> <span class="n">get_icd10_codes</span> <span class="p">(</span><span class="n">light_pipeline_icd10</span><span class="p">,</span> <span class="s">'icd10cm_code'</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -769,16 +775,25 @@ RXNORM (branded and clinical drugs): <code class="language-plaintext highlighter
   <p>You can also train your own entity resolver using any medical terminology like MedRa and UMLS. Check this notebook to
 learn more about training from scratch.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="chunkmerge-annotator">3. ChunkMerge Annotator</h4>
 
   <p>In order to use multiple NER models in the same pipeline, Spark NLP Healthcare has ChunkMerge Annotator that is used to return entities from each NER
 model by overlapping. Now it has a new parameter to avoid merging overlapping entities (setMergeOverlapping)
 to return all the entities regardless of char indices. It will be quite useful to analyze what every NER module returns on the same text.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="starting-sparksession">4. Starting SparkSession</h4>
 
   <p>We now support starting SparkSession with a different version of the open source jar and not only the one it was built
 against by <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start(secret, public="x.x.x")</code> for extreme cases.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="biomedical-ners">5. Biomedical NERs</h4>
 
@@ -805,7 +820,7 @@ against by <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start
 
   <p>Metrics (micro averages excluding O’s):</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -918,6 +933,9 @@ against by <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start
 
   <p><code class="language-plaintext highlighter-rouge">ner_healthcare_slim</code> (‘TIME_INFORMATION’, ‘MEDICAL_CONDITION’,  ‘BODY_PART’,  ‘TREATMENT’, ‘PERSON’, ‘BODY_PART’)<br />
 <code class="language-plaintext highlighter-rouge">ner_traffic</code> (extract entities regarding traffic accidents e.g. date, trigger, location etc.)</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="pico-classifier">6. PICO Classifier</h4>
 
@@ -1262,6 +1280,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1439,8 +1459,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

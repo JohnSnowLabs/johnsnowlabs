@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are very excited to announce that <strong>Spark NLP for Healthcare 3.0.1</strong> has been released!</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights:</h4>
 
   <ul>
@@ -634,6 +637,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Being able to disable the use of regexes in the Deidentification process</li>
     <li>Other minor bug fixes &amp; general improvements.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="deidentificationmodel-annotator">DeIdentificationModel Annotator</h4>
 
@@ -728,11 +734,18 @@ Return obfuscated documents in a repeatable manner based on the same seed.</p>
 
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">DeIdentificationModel</span><span class="o">.</span><span class="py">setIgnoreRegex</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h5 id="python-3">Python</h5>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DeIdentificationModel</span><span class="p">().</span><span class="n">setIgnoreRegex</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div>  </div>
 
   <p>The default value for this param is <code class="language-plaintext highlighter-rouge">False</code> meaning that regexes will be used by default.</p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="new-supported-entities-for-deidentification--obfuscation">New supported entities for Deidentification &amp; Obfuscation:</h5>
 
@@ -1076,6 +1089,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1253,8 +1268,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

@@ -687,7 +687,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p><em>Result:</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Sentence</th>
@@ -766,7 +766,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are releasing the improved version of Oncological NER models (_wip) and 4 new pretrained oncological pipelines which are able to detect assertion status and relations between the extracted oncological entities.</p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>NER model name (<code class="language-plaintext highlighter-rouge">MedicalNerModel</code>)</th>
@@ -838,7 +838,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>Oncological Pipeline (<code class="language-plaintext highlighter-rouge">PretrainedPipeline</code>)</th>
@@ -1391,6 +1391,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1568,8 +1570,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

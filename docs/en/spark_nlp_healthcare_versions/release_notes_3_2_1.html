@@ -620,10 +620,13 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP for Healthcare Release Notes 3.2.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="prev_ver h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
   <h2 id="section">3.2.1</h2>
   <p>We are glad to announce that Spark NLP Healthcare 3.2.1 has been released!.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="highlights">Highlights</h4>
 
@@ -634,6 +637,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Updated Notebooks for resolvers and graph builders.</li>
     <li>New TF Graph Builder.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-bert-based-ner-models">New BERT-Based NER Models</h4>
 
@@ -829,6 +835,9 @@ res = p_model.transform(spark.createDataFrame([[text]]).toDF("text")).collect()
 res[0]['label']
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="hcc-module-added-support-for-versions-v22-and-v23">HCC module added support for versions v22 and v23</h4>
 
   <p>Now we can use the version 22 and the version 23 for the new HCC module to calculate CMS-HCC Risk Adjustment score.</p>
@@ -942,13 +951,16 @@ medicaid: If the patient is in Medicaid or not.
 <span class="o">+----------+------------------------------+---+------+-----------+----+--------+</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-notebooks-for-resolvers-and-graph-builders">Updated Notebooks for resolvers and graph builders</h4>
 
   <ul>
     <li>We have updated the resolver notebooks on spark-nlp-workshop repo with new <code class="language-plaintext highlighter-rouge">BertSentenceChunkEmbeddings</code> annotator. This annotator lets users aggregate sentence embeddings and ner chunk embeddings to get more specific and accurate resolution codes. It works by averaging context and chunk embeddings to get contextual information. Input to this annotator is the context (sentence) and ner chunks, while the output is embedding for each chunk that can be fed to the resolver model. The <code class="language-plaintext highlighter-rouge">setChunkWeight</code> parameter can be used to control the influence of surrounding context. Example below shows the comparison of old vs new approach.</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>text</th>
@@ -997,6 +1009,9 @@ medicaid: If the patient is in Medicaid or not.
   </blockquote>
 
   <p><strong>To see more, please check: <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare">Spark NLP Healthcare Workshop Repo</a></strong></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-tf-graph-builder">New TF Graph Builder</h4>
 
@@ -1330,6 +1345,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1507,8 +1524,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

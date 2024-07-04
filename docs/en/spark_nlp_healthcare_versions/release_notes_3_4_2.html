@@ -640,6 +640,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>List of recently updated or added models</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-rct-classifier-ner-models-and-pipeline-deidentification">New RCT Classifier, NER Models and Pipeline (Deidentification)</h4>
 
   <p>We are releasing a new <code class="language-plaintext highlighter-rouge">bert_sequence_classifier_rct_biobert</code> model, four new Spanish deidentification NER models (<code class="language-plaintext highlighter-rouge">ner_deid_generic_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_generic_roberta_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_roberta_augmented</code>) and a pipeline (<code class="language-plaintext highlighter-rouge">clinical_deidentification_augmented</code>).</p>
@@ -706,6 +709,9 @@ España                   COUNTRY             LOCATION
 Clinica San Carlos       HOSPITAL            LOCATION
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="setting-the-scope-window-target-area-dynamically-in-assertion-status-detection-models">Setting the Scope Window (Target Area) Dynamically in Assertion Status Detection Models</h4>
 
   <p>This parameter allows you to train the Assertion Status Models to focus on specific context windows when resolving the status of a NER chunk. The window is in format <code class="language-plaintext highlighter-rouge">[X,Y]</code> being <code class="language-plaintext highlighter-rouge">X</code> the number of tokens to consider on the left of the chunk, and <code class="language-plaintext highlighter-rouge">Y</code> the max number of tokens to consider on the right. Let’s take a look at what different windows mean:</p>
@@ -729,6 +735,9 @@ Clinica San Carlos       HOSPITAL            LOCATION
           <span class="p">.</span><span class="n">setScopeWindow</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>     <span class="c1"># NEW! Scope Window!
 </span></code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="reading-json-files-exported-from-alab-from-hdfs-with-annotationjsonreader">Reading JSON Files (Exported from ALAB) From HDFS with <code class="language-plaintext highlighter-rouge">AnnotationJsonReader</code></h4>
 
   <p>Now we can read the dataframe from a HDFS that we read the files from in our cluster.</p>
@@ -740,12 +749,18 @@ Clinica San Carlos       HOSPITAL            LOCATION
 <span class="n">df</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">readDataset</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="allow-users-write-tensorflow-graphs-to-hdfs">Allow Users Write Tensorflow Graphs to HDFS</h4>
 
   <p>Now we can save custom Tensorflow graphs to the HDFS that mainly being used in a cluster environment.</p>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tf_graph</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="s">"ner_dl"</span><span class="p">,</span> <span class="n">build_params</span><span class="o">=</span><span class="p">{</span><span class="s">"embeddings_dim"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s">"nchars"</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s">"ntags"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">"is_medical"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">model_location</span><span class="o">=</span><span class="s">"hdfs:///user/livy"</span><span class="p">,</span> <span class="n">model_filename</span><span class="o">=</span><span class="s">"auto"</span><span class="p">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="serving-spark-nlp-on-apis">Serving Spark NLP on APIs</h4>
 
@@ -769,19 +784,31 @@ Clinica San Carlos       HOSPITAL            LOCATION
     <li><code class="language-plaintext highlighter-rouge">Databricks</code> and <code class="language-plaintext highlighter-rouge">MLFlow</code>: Using MLFlow Serve or Databricks Jobs APIs to serve for inference Spark NLP pipelines from within Databricks. Best approach if you look for scalability within Databricks.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-documentation-on-installing-spark-nlp-for-healthcare-in-aws-emr-jupyter-livy-yarn-hadoop">Updated Documentation on Installing Spark NLP For Healthcare in AWS EMR (Jupyter, Livy, Yarn, Hadoop)</h4>
 
   <p>Ready-to-go Spark NLP for Healthcare environment in AWS EMR. Full instructions are <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/emr">here</a>.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-series-of-notebooks-to-reproduce-the-academic-papers-published-by-our-colleagues">New Series of Notebooks to Reproduce the Academic Papers Published by Our Colleagues</h4>
 
   <p>You can find all these notebooks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/academic">here</a></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="pyspark-tutorial-notebooks-to-let-non-spark-users-to-get-started-with-apache-spark-ecosystem-in-python">PySpark Tutorial Notebooks to Let Non-Spark Users to Get Started with Apache Spark Ecosystem in Python</h4>
 
   <p>John Snow Labs has created a series of 8 notebooks to go over PySpark from zero to hero. Notebooks cover PySpark essentials, DataFrame creation, querying, importing data from different formats, functions / udfs, Spark MLLib examples (regression, classification, clustering) and Spark NLP best practises (usage of parquet, repartition, coalesce, custom annotators, etc).</p>
 
   <p>You can find all these notebooks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/PySpark">here</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new--updated-notebooks">New &amp; Updated Notebooks</h4>
 
@@ -795,6 +822,9 @@ Clinica San Carlos       HOSPITAL            LOCATION
     <li><code class="language-plaintext highlighter-rouge">Serving_SparkNLP_with_FastAPI_and_LP.ipynb</code>: Serving SparkNLP for production purposes using FastAPI, RestAPI and LightPipelines. Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/RestAPI/Serving_SparkNLP_with_FastAPI_and_LP.ipynb">here</a></li>
     <li><code class="language-plaintext highlighter-rouge">Series of PySpark tutorial notebooks</code>: Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/PySpark">here</a></li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="list-of-recently-updated-or-added-models">List of Recently Updated or Added Models</h4>
 
@@ -1136,6 +1166,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1313,8 +1345,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

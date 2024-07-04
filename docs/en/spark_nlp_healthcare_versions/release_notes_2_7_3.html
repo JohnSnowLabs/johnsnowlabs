@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are glad to announce that Spark NLP for Healthcare 2.7.3 has been released!</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights:</h4>
 
   <ul>
@@ -647,6 +650,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Matching the version with Spark NLP open-source v2.7.3.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="improvements-in-de-identification-module">1. Improvements in De-Identification Module:</h4>
 
   <p>Integration of <code class="language-plaintext highlighter-rouge">faker</code> library to automatically generate random data like names, dates, addresses etc so users dont have to specify dummy data (custom obfuscation files can still be used). It also improves the obfuscation results due to a bigger pool of random values.</p>
@@ -663,6 +669,9 @@ function wrapWordInSpan(data, wordToWrap) {
 </code></pre></div>  </div>
 
   <p>For more details: Check out this <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">notebook </a></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="structured-de-identification-module">2. Structured De-Identification Module:</h4>
 
@@ -683,7 +692,7 @@ obfuscator_df.select("NAME","AGE").show(truncate=False)
 
   <p>Input Data:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Name</th>
@@ -716,7 +725,7 @@ obfuscator_df.select("NAME","AGE").show(truncate=False)
 
   <p>Deidentified:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Name</th>
@@ -749,6 +758,9 @@ obfuscator_df.select("NAME","AGE").show(truncate=False)
 
   <p>For more details: Check out this <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">notebook</a>.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="introducing-sota-relation-extraction-model-using-biobert">3. Introducing SOTA relation extraction model using BioBert</h4>
 
   <p>A brand-new end-to-end trained BERT model, resulting in massive improvements. Another new annotator (<code class="language-plaintext highlighter-rouge">ReChunkFilter</code>) is also developed for this new model to allow syntactic features work well with BioBert to extract relations.</p>
@@ -768,11 +780,14 @@ re_model = RelationExtractionDLModel()\
     .setOutputCol("relations")
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h5 id="benchmarks">Benchmarks:</h5>
 
   <p><strong>on benchmark datasets</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>model</th>
@@ -817,7 +832,7 @@ re_model = RelationExtractionDLModel()\
 
   <p><strong>on in-house annotations</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>model</th>
@@ -850,6 +865,9 @@ re_model = RelationExtractionDLModel()\
   </table>
 
   <p>For more details: Check out the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.1.Clinical_Relation_Extraction_BodyParts_Models.ipynb">notebook</a> or <a href="https://nlp.johnsnowlabs.com/models?tag=relation_extraction">modelshub</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="drug-normalizer">4. Drug Normalizer:</h4>
 
@@ -888,11 +906,14 @@ re_model = RelationExtractionDLModel()\
 
   <p>For more details: Check out this <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/23.Drug_Normalizer.ipynb">notebook</a></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="assertion-models-to-support-confidence-in-output">5. Assertion models to support confidence in output:</h4>
 
   <p>Just like NER output, assertion models now also provides <em>confidence scores</em> for each prediction.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -931,6 +952,9 @@ re_model = RelationExtractionDLModel()\
 
   <p><code class="language-plaintext highlighter-rouge">.setClasses()</code> method is deprecated in <code class="language-plaintext highlighter-rouge">AssertionDLApproach</code>  and users do not need to specify number of classes while training, as it will be inferred from the dataset.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-relation-extraction-models">6. New Relation Extraction Models:</h4>
 
   <p>We are also releasing new relation extraction models to link the clinical entities to body parts and dates. These models are trained using binary relation extraction approach for better accuracy.</p>
@@ -941,7 +965,7 @@ re_model = RelationExtractionDLModel()\
 
   <p><strong>Text:</strong> <em>“MRI demonstrated infarction in the upper brain stem , left cerebellum and right basil ganglia”</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>relations</th>
@@ -1034,7 +1058,7 @@ re_model = RelationExtractionDLModel()\
 
   <p><strong>Text:</strong> <em>“No neurologic deficits other than some numbness in his left hand.”</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>relation</th>
@@ -1071,7 +1095,7 @@ re_model = RelationExtractionDLModel()\
 
   <p><strong>Text:</strong> <em>“TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.”</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>relation</th>
@@ -1100,7 +1124,7 @@ re_model = RelationExtractionDLModel()\
 
   <p><strong>Text:</strong> <em>“This 73 y/o patient had CT on 1/12/95, with progressive memory and cognitive decline since 8/11/94.”</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>relations</th>
@@ -1145,6 +1169,9 @@ re_model = RelationExtractionDLModel()\
 
   <p><strong>New matching scheme for entity resolvers - improved accuracy:</strong> Adding the option to use <code class="language-plaintext highlighter-rouge">cosine similarity</code> to resolve entities and find closest matches, resulting in better, more semantically correct results.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-resolver-models-using-jsl-sbert">7. New Resolver Models using <code class="language-plaintext highlighter-rouge">JSL SBERT</code>:</h4>
 
   <ul>
@@ -1172,7 +1199,7 @@ re_model = RelationExtractionDLModel()\
   <p><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code>
 <strong>Input Text:</strong> <em>“bladder cancer”</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>idx</th>
@@ -1204,7 +1231,7 @@ re_model = RelationExtractionDLModel()\
   <p><code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_augmented</code><br />
 <strong>Input Text:</strong> <em>“ct abdomen without contrast”</em></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right">idx</th>
@@ -1253,6 +1280,9 @@ re_model = RelationExtractionDLModel()\
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-pretrained-clinical-ner-models">8. New Pretrained Clinical NER Models</h4>
 
   <ul>
@@ -1260,7 +1290,7 @@ re_model = RelationExtractionDLModel()\
 <strong>Input Text:</strong> <em>“Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.”</em></li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>idx</th>
@@ -1673,6 +1703,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1850,8 +1882,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

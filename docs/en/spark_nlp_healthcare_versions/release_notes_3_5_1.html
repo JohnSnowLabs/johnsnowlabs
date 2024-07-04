@@ -654,6 +654,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>List of recently updated or added models</strong></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="portuguese-deidentification-models">Portuguese Deidentification Models</h4>
 
   <p>This is the 6th supported language for deidentification (English, German, Spanish, Italian, French and Portuguese). This version includes two Portuguese deidentification models to mask or obfuscate Protected Health Information in the Portuguese language. The models are the following:</p>
@@ -788,6 +791,9 @@ result = deid_pipeline.annotate(text)
 
   <p>Check Spark NLP Portuguese capabilities in <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.7.Clinical_Deidentification_in_Portuguese.ipynb">4.7.Clinical_Deidentification_in_Portuguese.ipynb notebook</a> we have prepared for you.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-rxnorm-sentence-entity-resolver-model-sbiobertresolverxnormactiontreatment">New RxNorm Sentence Entity Resolver Model (<code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_action_treatment</code>)</h4>
 
   <p>We are releasing <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_action_treatment</code> model that maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. This resolver model maps and extracts pharmaceutical actions (e.g analgesic, hypoglycemic) as well as treatments (e.g backache, diabetes) along with the RxNorm code resolved. Actions and treatments of the drugs are returned in <code class="language-plaintext highlighter-rouge">all_k_aux_labels</code> column.</p>
@@ -829,6 +835,9 @@ result = deid_pipeline.annotate(text)
 |  1 | coumadin 5 mg |        855333 | ['Anticoagulant']                       | ['Cerebrovascular Accident']       |
 |  2 | avandia 4 mg  |        261242 | ['Drugs Used In Diabets','Hypoglycemic']| ['Diabetes Mellitus', ...]         |                                                                                              |
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-rct-classification-models-and-pretrained-pipelines">New RCT Classification Models and Pretrained Pipelines</h4>
 
@@ -896,6 +905,9 @@ result = pipeline.annotate(text)
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt; class: True
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
   <h5 id="add-getclasses-attribute-to-medicalbertfortokenclassifier-and-medicalbertforsequenceclassification">Add <code class="language-plaintext highlighter-rouge">getClasses()</code> attribute to <code class="language-plaintext highlighter-rouge">MedicalBertForTokenClassifier</code> and <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code></h5>
   <p>Now you can use <code class="language-plaintext highlighter-rouge">getClasses()</code> method for checking the entity labels of  <code class="language-plaintext highlighter-rouge">MedicalBertForTokenClassifier</code> and <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> like <code class="language-plaintext highlighter-rouge">MedicalNerModel</code>.</p>
@@ -914,6 +926,9 @@ result = pipeline.annotate(text)
 
   <h5 id="download-the-annotatormodels-from-the-healthcare-library-using-the-healthcare-version-instead-of-the-open-source-version">Download the AnnotatorModels from the healthcare library using the Healthcare version instead of the open source version</h5>
 
+</div>
+<div class="h3-box">
+
   <p>Now we download the private models using the Healthcare version instead of the open source version (the pretrained models were used to be dependent on open source Spark NLP version before).</p>
 
   <h5 id="new-functionality-to-download-and-extract-clinical-models-from-s3-via-direct-link">New functionality to download and extract clinical models from S3 via direct link.</h5>
@@ -925,15 +940,24 @@ result = pipeline.annotate(text)
 </span>  <span class="n">ResourceDownloader</span><span class="p">.</span><span class="n">downloadModelDirectly</span><span class="p">(</span><span class="s">"clinical/models/assertion_dl_en_2.0.2_2.4_1556655581078.zip"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>  
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="core-improvements">Core improvements:</h4>
 
   <h5 id="fix-medicalnermodel-confidence-scores-when-setincludeallconfidencescores-is-true">Fix <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> confidence scores when <code class="language-plaintext highlighter-rouge">setIncludeAllConfidenceScores</code> is <code class="language-plaintext highlighter-rouge">True</code></h5>
 
   <p>A mismatch problem between the tag with the highest confidence score and the predicted tag in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> is resolved.</p>
 
+</div>
+<div class="h3-box">
+
   <h5 id="graphbuilder-relationextraction-model-file-name-extension-problem-with-auto-param">Graph_builder <code class="language-plaintext highlighter-rouge">relation_extraction</code> model file name extension problem with <code class="language-plaintext highlighter-rouge">auto</code> param</h5>
 
   <p>A naming problem which occurs while generating a graph for Relation Extraction via graph builder was resolved. Now, the TF graph is generated with the correct extension (<code class="language-plaintext highlighter-rouge">.pb</code>).</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="list-of-recently-updated-or-added-models">List of Recently Updated or Added Models</h4>
 
@@ -1277,6 +1301,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1454,8 +1480,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

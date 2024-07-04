@@ -893,7 +893,7 @@ Shanghai, China """</span>
     <li>We are releasing 2 new chunk mapper models to map entities to their corresponding CVX codes, vaccine names and CPT codes. There are 3 types of vaccine names mapped; <code class="language-plaintext highlighter-rouge">short_name</code>, <code class="language-plaintext highlighter-rouge">full_name</code> and <code class="language-plaintext highlighter-rouge">trade_name</code></li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>model name</th>
@@ -1392,6 +1392,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1569,8 +1571,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

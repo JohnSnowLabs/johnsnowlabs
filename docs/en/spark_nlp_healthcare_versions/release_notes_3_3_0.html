@@ -625,6 +625,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="section">3.3.0</h2>
   <p>We are glad to announce that Spark NLP Healthcare 3.3.0 has been released!.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>NER Finder Pretrained Pipelines to Run Run 48 different Clinical NER and 21 Different Biobert Models At Once Over the Input Text</li>
@@ -639,6 +642,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New Notebooks (Including How to Use SparkNLP with Neo4J)</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="ner-finder-pretrained-pipelines-to-run-run-48-different-clinical-ner-and-21-different-biobert-models-at-once-over-the-input-text">NER Finder Pretrained Pipelines to Run Run 48 different Clinical NER and 21 Different Biobert Models At Once Over the Input Text</h4>
 
   <p>We are releasing two new NER Pretrained Pipelines that can be used to explore all the available pretrained NER models at once. You can check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.2.Pretrained_NER_Profiling_Pipelines.ipynb">NER Profiling Notebook</a> to see how to use these pretrained pipelines.</p>
@@ -647,7 +653,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><code class="language-plaintext highlighter-rouge">ner_profiling_clinical</code> : When you run this pipeline over your text, you will end up with the predictions coming out of each of the 48 pretrained clinical NER models trained with <code class="language-plaintext highlighter-rouge">embeddings_clinical</code>.</li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Clinical NER Model List</th>
@@ -805,7 +811,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><code class="language-plaintext highlighter-rouge">ner_profiling_biobert</code> : When you run this pipeline over your text, you will end up with the predictions coming out of each of the 21 pretrained clinical NER models trained with <code class="language-plaintext highlighter-rouge">biobert_pubmed_base_cased</code>.</li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>BioBert NER Model List</th>
@@ -946,7 +952,7 @@ res <span class="o">=</span> hcpcs_pipelineModel.transform<span class="o">(</spa
 
   <p><em>Results</em> :</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>ner_chunk</th>
@@ -1034,7 +1040,7 @@ res <span class="o">=</span> rxnorm_ndc_pipelineModel.transform<span class="o">(
 
   <p><em>Results</em> :</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunk</th>
@@ -1057,9 +1063,15 @@ res <span class="o">=</span> rxnorm_ndc_pipelineModel.transform<span class="o">(
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-umls-entity-resolvers-dropping-invalid-codes">Updated UMLS Entity Resolvers (Dropping Invalid Codes)</h4>
 
   <p>UMLS model <code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code> and <code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code> were updated by dropping the invalid codes using the <a href="https://www.nlm.nih.gov/pubs/techbull/mj21/mj21_umls_2021aa_release.html">latest UMLS release</a> done May 2021.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-clinical-ner-models-trained-by-bertfortokenclassification-approach">5 New Clinical NER Models (Trained By BertForTokenClassification Approach)</h4>
 
@@ -1262,6 +1274,9 @@ result <span class="o">=</span> p_model.transform<span class="o">(</span>spark.c
 +-----------------------+---------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="radiology-ner-model-trained-on-chexpert-dataset">Radiology NER Model Trained On cheXpert Dataset</h4>
 
   <ul>
@@ -1295,12 +1310,21 @@ results <span class="o">=</span> model.transform<span class="o">(</span>spark.cr
 |  7 | left base                | ANAT    |
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-speed-benchmarks-on-databricks">New Speed Benchmarks on Databricks</h4>
 
   <p>We prepared a speed benchmark table by running a NER pipeline on various number of cluster configurations (worker number, driver node, specs etc) and also writing the results to parquet or delta formats. You can find all the details of these tries in here : <a href="https://nlp.johnsnowlabs.com/docs/en/benchmark">Speed Benchmark Table</a></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="nerconverterinternal-fixes">NerConverterInternal Fixes</h4>
   <p>Now NerConverterInternal can deal with tags that have some dash (<code class="language-plaintext highlighter-rouge">-</code>) charachter like B-GENE-N and B-GENE-Y.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="simplified-setup-and-recommended-use-of-start-function">Simplified Setup and Recommended Use of start() Function</h4>
   <p>Starting with this release, we are shipping AWS credentials inside Spark NLP Healthcare’s license. This removes the requirement of setting the <code class="language-plaintext highlighter-rouge">AWS_ACCESS_KEY_ID</code> and <code class="language-plaintext highlighter-rouge">AWS_SECRET_ACCESS_KEY</code> environment variables.
@@ -1316,9 +1340,15 @@ To use this feature, you just need to make sure that you always call the start()
 
   <p>If for some reason you don’t want to use this mechanism, the keys will continue to be shipped separately, and the environment variables will continue to work as they did in the past.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="ner-evaluation-metrics-fix">Ner Evaluation Metrics Fix</h4>
 
   <p>Bug fixed in the <code class="language-plaintext highlighter-rouge">NerDLMetrics</code> package. Previously, the <code class="language-plaintext highlighter-rouge">full_chunk</code> option was using greedy approach to merge chunks for a strict evaluation, which has been fixed to merge chunks using IOB scheme to get accurate entities boundaries and metrics. Also, the <code class="language-plaintext highlighter-rouge">tag</code> option has been fixed to get metrics that align with the default NER logs.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New Notebooks</h4>
 
@@ -1656,6 +1686,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1833,8 +1865,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

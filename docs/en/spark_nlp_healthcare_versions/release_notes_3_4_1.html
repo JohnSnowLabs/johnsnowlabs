@@ -651,6 +651,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>List of recently updated or added models</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="brand-new-spanish-deidentification-ner-models">Brand New Spanish Deidentification NER Models</h4>
 
   <p>We trained two new NER models to find PHI data (protected health information) that may need to be deidentified in <strong>Spanish</strong>. <code class="language-plaintext highlighter-rouge">ner_deid_generic</code> and <code class="language-plaintext highlighter-rouge">ner_deid_subentity</code> models are trained with in-house annotations. Both also are available for using Roberta Spanish Clinical Embeddings and sciwiki 300d.</p>
@@ -696,6 +699,9 @@ result <span class="o">=</span> model.transform<span class="o">(</span>spark.cre
 | Clínica San Carlos | LOCATION               | HOSPITAL                 |
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="brand-new-spanish-deidentification-pretrained-pipeline">Brand New Spanish Deidentification Pretrained Pipeline</h4>
 
   <p>We developed a clinical deidentification pretrained pipeline that can be used to deidentify PHI information from <strong>Spanish</strong> medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">E-MAIL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">SEX</code> and <code class="language-plaintext highlighter-rouge">IPADDR</code>.</p>
@@ -731,11 +737,14 @@ Obfuscated
 Datos del paciente. Nombre:  Sr. Lerma <span class="nb">.</span> Apellidos: Aristides Gonzalez Gelabert. NHC: BBBBBBBBQR648597. NASS: 041010000011 RZRM020101906017 04.
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-clinical-ner-model-to-detect-supplements">New Clinical NER Model to Detect Supplements</h4>
 
   <p>We are releasing <code class="language-plaintext highlighter-rouge">ner_supplement_clinical</code> model that can extract benefits of using drugs for certain conditions. It can label detected entities as <code class="language-plaintext highlighter-rouge">CONDITION</code> and <code class="language-plaintext highlighter-rouge">BENEFIT</code>. Also this model is trained on the dataset that is released by Spacy in their HealthSea product. Here is the benchmark comparison of both versions:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Entity</th>
@@ -780,6 +789,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 +------------------------+---------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-rxnorm-sentence-entity-resolver-model">New RxNorm Sentence Entity Resolver Model</h4>
 
   <p><code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented_re</code> : This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes without specifying the relations between the entities (relations are calculated on the fly inside the annotator) using sbiobert_base_cased_mli Sentence Bert Embeddings (EntityChunkEmbeddings).</p>
@@ -794,6 +806,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
       <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 <span class="p">...</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-entitychunkembeddings-annotator">New <code class="language-plaintext highlighter-rouge">EntityChunkEmbeddings</code> Annotator</h4>
 
@@ -857,13 +872,22 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 +-----+----------------+--------------------------+--------------------------------------------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-medicalbertforsequenceclassification-annotator">New <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> Annotator</h4>
 
   <p>We developed a new annotator called <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code>. It can load BERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</p>
 
   <h4 id="new-medicaldistilbertforsequenceclassification-annotator">New <code class="language-plaintext highlighter-rouge">MedicalDistilBertForSequenceClassification</code> Annotator</h4>
 
+</div>
+<div class="h3-box">
+
   <p>We developed a new annotator called <code class="language-plaintext highlighter-rouge">MedicalDistilBertForSequenceClassification</code>. It can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-medicaldistilbertforsequenceclassification-and-medicalbertforsequenceclassification-models">New <code class="language-plaintext highlighter-rouge">MedicalDistilBertForSequenceClassification</code> and <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> Models</h4>
 
@@ -930,6 +954,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 +----------------------------------------------------------------+-----+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="redesign-of-the-contextualparserapproach-annotator">Redesign of the <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> Annotator</h4>
 
   <ul>
@@ -941,6 +968,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
   </ul>
 
   <p>For more explanation and examples, please check this <a href="https://medium.com/spark-nlp/contextual-parser-increased-flexibility-extracting-entities-in-spark-nlp-123ed58672f0">Contextual Parser medium article</a> and <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb">Contextual Parser Notebook</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="getclasses-method-in-relationextractionmodel-and-relationextractiondlmodel-annotators"><code class="language-plaintext highlighter-rouge">getClasses</code> Method in <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> and <code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code> Annotators</h4>
 
@@ -958,6 +988,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
   <p><em>Output</em> :</p>
   <pre><code class="language-output">['OVERLAP', 'BEFORE', 'AFTER']
 </code></pre>
+
+</div>
+<div class="h3-box">
 
   <h4 id="label-customization-feature-for-relationextractionmodel-and-relationextractiondl-models">Label Customization Feature for <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> and <code class="language-plaintext highlighter-rouge">RelationExtractionDL</code> Models</h4>
 
@@ -996,6 +1029,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 +-----------+-------+-------------+-------+-------+----------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="usebestmodel-parameter-in-medicalnerapproach-annotator"><code class="language-plaintext highlighter-rouge">useBestModel</code> Parameter in <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> Annotator</h4>
 
   <p>Introducing <code class="language-plaintext highlighter-rouge">useBestModel</code> param in MedicalNerApproach annotator. This param preserves and restores the model that has achieved the best performance at the end of the training. The priority is metrics from testDataset (micro F1), metrics from validationSplit (micro F1), and if none is set it will keep track of loss during the training.</p>
@@ -1009,6 +1045,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
     <span class="p">...</span>
     <span class="p">.</span><span class="n">setUseBestModel</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="early-stopping-feature-in-medicalnerapproach-annotator">Early Stopping Feature in <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> Annotator</h4>
 
@@ -1036,6 +1075,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
     <span class="p">.</span><span class="n">setEarlyStoppingPatience</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="multi-language-support-for-faker-and-regex-lists-of-deidentification-annotator">Multi-Language Support for Faker and Regex Lists of <code class="language-plaintext highlighter-rouge">Deidentification</code> Annotator</h4>
 
   <p>We have a new <code class="language-plaintext highlighter-rouge">.setLanguage()</code> parameter in order to use internal Faker and Regex list for multi-language texts. When you are working with German and Spanish texts for a Deidentification, you can set this parameter to <code class="language-plaintext highlighter-rouge">de</code> for German and <code class="language-plaintext highlighter-rouge">es</code> for Spanish. Default value of this parameter is <code class="language-plaintext highlighter-rouge">en</code>.</p>
@@ -1050,6 +1092,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
       <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span>\
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="spark-320-compatibility-for-the-entire-library">Spark 3.2.0 Compatibility for the Entire Library</h4>
 
   <p>Now we can use the <a href="https://spark.apache.org/docs/3.2.0/">Spark 3.2.0</a> version for Spark NLP for Healthcare by setting <code class="language-plaintext highlighter-rouge">spark32=True</code> in <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start()</code> function.</p>
@@ -1061,6 +1106,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 
 spark <span class="o">=</span> sparknlp_jsl.start<span class="o">(</span>SECRET, <span class="nv">spark32</span><span class="o">=</span>True<span class="o">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="saving-visualization-feature-in-spark-nlp-display-library">Saving Visualization Feature in <code class="language-plaintext highlighter-rouge">spark-nlp-display</code> Library</h4>
 
@@ -1075,17 +1123,26 @@ visualiser <span class="o">=</span> NerVisualizer<span class="o">()</span>
 visualiser.display<span class="o">(</span>light_result[0], <span class="nv">label_col</span><span class="o">=</span><span class="s1">'ner_chunk'</span>, <span class="nv">document_col</span><span class="o">=</span><span class="s1">'document'</span>, <span class="nv">save_path</span><span class="o">=</span><span class="s2">"display_result.html"</span><span class="o">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="deploying-a-custom-spark-nlp-image-for-opensource-healthcare-and-spark-ocr-to-an-enterprise-version-of-kubernetes-openshift">Deploying a Custom Spark NLP Image (for opensource, healthcare, and Spark OCR) to an Enterprise Version of Kubernetes: OpenShift</h4>
 
   <p>Spark NLP for opensource, healthcare, and SPARK OCR is now available for Openshift - enterprise version of Kubernetes. For deployment, please refer to:</p>
 
-  <p>Github Link: https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/openshift</p>
+  <p>Github Link: <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/openshift">https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/openshift</a></p>
 
-  <p>Youtube: https://www.youtube.com/watch?v=FBes-6ylFrM&amp;ab_channel=JohnSnowLabs</p>
+  <p>Youtube: <a href="https://www.youtube.com/watch?v=FBes-6ylFrM&amp;ab_channel=JohnSnowLabs">https://www.youtube.com/watch?v=FBes-6ylFrM&amp;ab_channel=JohnSnowLabs</a></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-speed-benchmarks-table-on-databricks">New Speed Benchmarks Table on Databricks</h4>
 
   <p>We prepared a speed benchmark table by running a clinical BERT For Token Classification model pipeline on various number of repartitioning and writing the results to parquet or delta formats. You can find the details here : <a href="https://nlp.johnsnowlabs.com/docs/en/benchmark#clinical-bert-for-token-classification-benchmark-experiment">Clinical Bert For Token Classification Benchmark Experiment</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new--updated-notebooks">New &amp; Updated Notebooks</h4>
 
@@ -1097,6 +1154,9 @@ visualiser.display<span class="o">(</span>light_result[0], <span class="nv">labe
   </ul>
 
   <p><strong>To see more, please check : <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare">Spark NLP Healthcare Workshop Repo</a></strong></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="list-of-recently-updated-or-added-models">List of Recently Updated or Added Models</h4>
 
@@ -1445,6 +1505,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1622,8 +1684,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

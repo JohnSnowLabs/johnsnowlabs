@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We are glad to announce that Spark NLP for Healthcare 3.1.3 has been released!.
 This release comes with new features, new models, bug fixes, and examples.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>New Relation Extraction model and a Pretrained pipeline for extracting and linking ADEs</li>
@@ -634,6 +637,9 @@ This release comes with new features, new models, bug fixes, and examples.</p>
     <li>BugFix: getAnchorDateMonth method in DateNormalizer.</li>
     <li>BugFix: character map in MedicalNerModel fine-tuning.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h5 id="new-relation-extraction-model-and-a-pretrained-pipeline-for-extracting-and-linking-ades">New Relation Extraction model and a Pretrained pipeline for extracting and linking ADEs</h5>
 
@@ -688,6 +694,10 @@ Relations:
 | 3  | cramps                        | ADE        | voltaren    | DRUG    |        1 |
 
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h5 id="new-entity-resolver-model-for-snomed-codes">New Entity Resolver model for SNOMED codes</h5>
 
   <p>We are releasing a new SentenceEntityResolver model for SNOMED codes. This model also includes AUX SNOMED concepts and can find codes for Morph Abnormality, Procedure, Substance, Physical Object, and Body Structure entities. In the metadata, the <code class="language-plaintext highlighter-rouge">all_k_aux_labels</code> can be divided to get further information: <code class="language-plaintext highlighter-rouge">ground truth</code>, <code class="language-plaintext highlighter-rouge">concept</code>, and <code class="language-plaintext highlighter-rouge">aux</code> . In the example shared below the ground truth is <code class="language-plaintext highlighter-rouge">Atherosclerosis</code>, concept is <code class="language-plaintext highlighter-rouge">Observation</code>, and aux is <code class="language-plaintext highlighter-rouge">Morph Abnormality</code>.</p>
@@ -716,6 +726,9 @@ Relations:
 |---:|:----------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|
 |  0 | atherosclerosis | 38716007 | <span class="o">[</span>atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis artery, coronary atherosclerosis, coronary atherosclerosis, coronary atherosclerosis, coronary atherosclerosis, coronary atherosclerosis, arteriosclerosis, carotid atherosclerosis, cardiovascular arteriosclerosis, aortic atherosclerosis, aortic atherosclerosis, atherosclerotic ischemic disease] | <span class="o">[</span>38716007, 155382007, 155414001, 195251000, 266318005, 194848007, 441574008, 443502000, 41702007, 266231003, 155316000, 194841001, 28960008, 300920004, 39468009, 155415000, 195252007, 129573006] | <span class="s1">'Atherosclerosis'</span>, <span class="s1">'Observation'</span>, <span class="s1">'Morph Abnormality'</span> | <span class="o">[</span>0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0280, 0.0451, 0.0451, 0.0451, 0.0451, 0.0451, 0.0462, 0.0477, 0.0466, 0.0490, 0.0490, 0.0485 |
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h5 id="chunkconverter-annotator">ChunkConverter Annotator</h5>
 
@@ -1061,6 +1074,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1238,8 +1253,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

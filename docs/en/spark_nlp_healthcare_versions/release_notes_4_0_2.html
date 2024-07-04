@@ -650,7 +650,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>We are releasing 11 new <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> models to classify text from social media data for English and Spanish languages.</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>model name</th>
@@ -742,7 +742,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>We are releasing 5 new public health classification models.</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>model name</th>
@@ -905,7 +905,7 @@ The other patient is given Lescol 40 MG and Lidoderm 0.05 MG/MG, triazolam 0.125
 
   <p>We are releasing 5 new <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> models to map clinical entities with their corresponding UMLS CUI codes.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Mapper Name</th>
@@ -978,7 +978,7 @@ The other patient is given Lescol 40 MG and Lidoderm 0.05 MG/MG, triazolam 0.125
 
   <p>We now have 5 new resolver <code class="language-plaintext highlighter-rouge">PretrainedPipeline</code> to convert clinical entities to their UMLS CUI codes. You just need to feed your text and it will return the corresponding UMLS codes.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Pipeline Name</th>
@@ -1575,6 +1575,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1752,8 +1754,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

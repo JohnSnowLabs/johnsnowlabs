@@ -625,6 +625,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="section">3.1.1</h2>
   <p>We are glad to announce that Spark NLP for Healthcare 3.1.1 has been released!</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>MedicalNerModel new parameter <code class="language-plaintext highlighter-rouge">includeAllConfidenceScores</code>.</li>
@@ -634,11 +637,20 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Getting Started with Spark NLP for Healthcare Notebook in Databricks</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="medicalner-new-parameter-includeallconfidencescores">MedicalNer new parameter <code class="language-plaintext highlighter-rouge">includeAllConfidenceScores</code></h4>
   <p>You can now customize whether you will require confidence score for every token(both entities and non-entities) at the output of the MedicalNerModel, or just for the tokens recognized as entities.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="medicalnermodel-new-parameter-inferencebatchsize">MedicalNerModel new parameter <code class="language-plaintext highlighter-rouge">inferenceBatchSize</code></h4>
   <p>You can now control the batch size used during inference as a separate parameter from the one you used during training of the model. This can be useful in the situation in which the hardware on which you run inference has different capacity. For example, when you have lower available memory during inference, you can reduce the batch size.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-resolver-models">New Resolver Models</h4>
   <p>We trained three new sentence entity resolver models.</p>
@@ -717,8 +729,14 @@ results = model.transform(spark.createDataFrame([["The patient is a very pleasan
 +--------------------+-----+---+-----------+-------------+-------------------------+-------------------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-resolver-models">Updated Resolver Models</h4>
   <p>We updated <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> and <code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_procedures_augmented</code> resolver models to reflect the latest changes in the official terminologies.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="getting-started-with-spark-nlp-for-healthcare-notebook-in-databricks">Getting Started with Spark NLP for Healthcare Notebook in Databricks</h4>
   <p>We prepared a new notebook for those who want to get started with Spark NLP for Healthcare in Databricks : <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare_case_studies/Get_Started_Spark_NLP_for_Healthcare.ipynb">Getting Started with Spark NLP for Healthcare Notebook</a></p>
@@ -1049,6 +1067,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1226,8 +1246,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

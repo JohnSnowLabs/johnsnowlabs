@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We are glad to announce that Spark NLP for Healthcare 3.1.2 has been released!.
 This release comes with new features, new models, bug fixes, and examples.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>Support for Fine-tuning of Ner models.</li>
@@ -637,6 +640,9 @@ This release comes with new features, new models, bug fixes, and examples.</p>
     <li>Java Workshop Examples.</li>
     <li>Deprecated Compatibility class in Python.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h5 id="support-for-fine-tuning-of-ner-models">Support for Fine Tuning of Ner models</h5>
 
@@ -664,11 +670,17 @@ This release comes with new features, new models, bug fixes, and examples.</p>
 
   <p>In this case, the new tags <code class="language-plaintext highlighter-rouge">B-VIP</code> and <code class="language-plaintext highlighter-rouge">I-VIP</code> will replace the already trained tags ‘B-PER’ and ‘I-PER’. Unmapped old tags will remain in use and unmapped new tags will be allocated to new outpout nodes, if any.</p>
 
-  <p>Jupyter Notebook: [Finetuning Medical NER Model Notebook] (https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.5.Resume_MedicalNer_Model_Training.ipynb)</p>
+  <p>Jupyter Notebook: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.5.Resume_MedicalNer_Model_Training.ipynb">Finetuning Medical NER Model Notebook</a></p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="more-builtin-graphs-for-medicalnerapproach">More builtin graphs for MedicalNerApproach</h5>
 
   <p>Seventy new TensorFlow graphs have been added to the library of available graphs which are used to train MedicalNer models. The graph with the optimal set of parameters is automatically chosen by MedicalNerApproach.</p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="datenormalizer">DateNormalizer</h5>
 
@@ -717,6 +729,9 @@ Both the input and output formats for the annotator are <code class="language-pl
 |next week   |2021/06/19|
 +-----------+----------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h5 id="new-relation-extraction-models-for-ade">New Relation Extraction Models for ADE</h5>
 
@@ -768,12 +783,18 @@ Avg.                0.928     0.936     0.932
 Weighted Avg.       0.934     0.934     0.933
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h5 id="bug-fixes">Bug Fixes</h5>
   <ul>
     <li>RelationExtractionDLModel had an issue(BufferOverflowException) on versions 3.1.0 and 3.1.1, which is fixed with this release.</li>
     <li>Some pretrained RelationExtractionDLModels got outdated after release 3.0.3, new updated models were created, tested and made available to be used with versions 3.0.3, and later.</li>
     <li>Some SentenceEntityResolverModels which did not work with Spark 2.4/2.3 were fixed.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h5 id="support-for-user-defined-custom-transformer">Support for user-defined Custom Transformer.</h5>
   <p>Utility classes to define custom transformers in python are included in this release. This allows users to define functions in Python to manipulate Spark-NLP annotations. This new Transformers can be added to pipelines like any of the other models you’re already familiar with.
@@ -787,10 +808,16 @@ Example how to use the custom transformer.</p>
         <span class="n">outputDf</span> <span class="o">=</span> <span class="n">custom_transformer</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">outdf</span><span class="p">).</span><span class="n">select</span><span class="p">(</span><span class="s">"custom"</span><span class="p">).</span><span class="n">toPandas</span><span class="p">()</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h5 id="java-workshop-examples">Java Workshop Examples</h5>
 
   <p>Add Java examples in the workshop repository.
-https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/java/healthcare</p>
+<a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/java/healthcare">https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/java/healthcare</a></p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="deprecated-compatibility-class-in-python">Deprecated Compatibility class in Python</h5>
 
@@ -1135,6 +1162,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1312,8 +1341,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

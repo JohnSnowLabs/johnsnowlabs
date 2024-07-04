@@ -643,6 +643,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>List of recently updated or added models</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-rxnormmapper-model">New <code class="language-plaintext highlighter-rouge">rxnorm_mapper</code> Model</h4>
 
   <p>We are releasing <code class="language-plaintext highlighter-rouge">rxnorm_mapper</code> model that maps clinical entities and concepts to corresponding rxnorm codes.</p>
@@ -670,6 +673,9 @@ function wrapWordInSpan(data, wordToWrap) {
  |Septi-Soothe 0.5 Topical Spray|1000046        |
  +------------------------------+---------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-chunkmapperfilterer-annotator-to-filter-chunkmappermodel-results">New <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> Annotator to Filter <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> Results</h4>
   <p><code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> annotator allows filtering of the chunks that were passed through the <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>.
@@ -706,6 +712,9 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
 |  115|123|    DRUG|   metformin|
 +-----+---+--------+------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-features">New Features:</h4>
 
@@ -748,6 +757,9 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
 |metformin     |106  |114|Drug_Ingredient|Drug          |
 +--------------+-----+---+---------------+--------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h5 id="case-sensitivity-in-chunkmapperapproach-and-chunkmappermodel-through-setlowercase-parameter">Case Sensitivity in <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> Through <code class="language-plaintext highlighter-rouge">setLowerCase()</code> Parameter</h5>
 
@@ -794,6 +806,9 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
 +------------------------+-----------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h5 id="return-multiple-relations-at-a-time-in-chunkmapper-models-via-setrels-parameter">Return Multiple Relations At a Time In ChunkMapper Models Via <code class="language-plaintext highlighter-rouge">setRels()</code> Parameter</h5>
   <p>Multiple relations for the same chunk can be set with the <code class="language-plaintext highlighter-rouge">setRels()</code> parameter in both <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>.</p>
 
@@ -819,6 +834,9 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
 |   22| 35|Warfarina Lusa|Heart Disease|treatment|
 +-----+---+--------------+-------------+---------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h5 id="filter-the-multi-token-chunks-separated-with-whitespace-in-chunkmapperapproach-and-chunkmappermodel-by-setallowmultitokenchunk-parameter">Filter the Multi-Token Chunks Separated With Whitespace in <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> by <code class="language-plaintext highlighter-rouge">setAllowMultiTokenChunk()</code> Parameter</h5>
 
@@ -857,11 +875,17 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
 +-----+---+--------------+-------------+---------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-license-validation-policies-in-license-validator">New License Validation Policies in License Validator</h4>
 
   <p>A new version of the License Validator has been included in Spark NLP for Healthcare. This License Validator checks the compatibility between the type of your license and the environment you are using, allowing the license to be used only for the environment it was requested (single-node, cluster, databricks, etc) and the number of concurrent sessions (floating or not-floating). You can check which type of license you have in <a href="https://my.johnsnowlabs.com/">my.johnsnowlabs.com</a> -&gt; My Subscriptions.</p>
 
   <p>If your license stopped working, please contact <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a> so that it can be checked the difference between the environment your license was requested for and the one it’s currently being used.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="bug-fixes">Bug Fixes</h4>
 
@@ -873,6 +897,9 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
     <li><strong><code class="language-plaintext highlighter-rouge">AnnotationToolJsonReader</code></strong> : Fixed an issue where relation labels were not being extracted from the Annotation Lab json file export.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-notebooks">Updated Notebooks</h4>
 
   <ul>
@@ -881,6 +908,9 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
     <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Chunk Mapping Notebook</a> <br />
  New case sensitivity, selecting multiple relations, filtering multi-token chunks and <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> features were added.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="list-of-recently-updated-models">List of Recently Updated Models</h4>
 
@@ -1217,6 +1247,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1394,8 +1426,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

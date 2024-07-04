@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are glad to announce that Spark NLP for Healthcare 2.7.6 has been released!</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights:</h4>
 
   <ul>
@@ -655,6 +658,9 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="radiology-assertion-status-model">1. Radiology Assertion Status Model</h4>
 
   <p>We trained a new assertion model to assign <code class="language-plaintext highlighter-rouge">Confirmed</code>, <code class="language-plaintext highlighter-rouge">Suspected</code>, <code class="language-plaintext highlighter-rouge">Negative</code> assertion scopes to imaging findings or any clinical tests. It will try to assign these statuses to any named entity you would feed to the assertion annotater in the same pipeline.</p>
@@ -666,7 +672,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p><code class="language-plaintext highlighter-rouge">text = Blunting of the left costophrenic angle on the lateral view posteriorly suggests a small left pleural effusion. No right-sided pleural effusion or pneumothorax is definitively seen. There are mildly displaced fractures of the left lateral 8th and likely 9th ribs.</code></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right">sentences</th>
@@ -725,6 +731,9 @@ function wrapWordInSpan(data, wordToWrap) {
  &gt;&gt; ["displaced fractures", "effusion"]
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="obfuscating-with-the-same-fake-name-across-the-same-note">2. <strong>Obfuscating</strong> with the same fake name across the same note:</h4>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> obfuscation = DeIdentification()\
@@ -741,7 +750,7 @@ text =''' Provider: David Hale, M.D.
           David told  Jessica that she will need to visit the clinic next month.'''
 </code></pre></div>  </div>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -768,11 +777,14 @@ text =''' Provider: David Hale, M.D.
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="library-version-compatibility-table-">3. Library Version Compatibility Table :</h4>
 
   <p>We are releasing the version compatibility table to help users get to see which Spark NLP licensed version is built against which core (open source) version. We are going to release a detailed one after running some tests across the jars from each library.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Healthcare</th>
@@ -871,6 +883,9 @@ text =''' Provider: David Hale, M.D.
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="pretrained-models-version-control-">4. Pretrained Models Version Control :</h4>
 
   <p>Due to active release cycle, we are adding &amp; training new pretrained models at each release and it might be tricky to maintain the backward compatibility or keep up with the latest models, especially for the users using our models locally in air-gapped networks.</p>
@@ -913,6 +928,9 @@ text =''' Provider: David Hale, M.D.
 
   [{'clinical_ner_assertion': {'current_version': '2.4.0', 'latest_version': '2.6.4'}}, {'jsl_ner_wip_clinical': {'current_version': '2.6.5', 'latest_version': '2.6.1'}}, {'jsl_ner_wip_greedy_clinical': {'current_version': '2.6.5', 'latest_version': '2.6.5'}}, {'jsl_ner_wip_modifier_clinical': {'current_version': '2.6.4', 'latest_version': '2.6.4'}}, {'jsl_rd_ner_wip_greedy_clinical': {'current_version': '2.6.1','latest_version': '2.6.2'}}]
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="updated-pretrained-models">5. Updated Pretrained Models:</h4>
 
@@ -1249,6 +1267,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1426,8 +1446,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

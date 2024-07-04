@@ -625,6 +625,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="section">3.3.2</h2>
   <p>We are glad to announce that Spark NLP Healthcare 3.3.2 has been released!.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
 
   <ul>
@@ -641,6 +644,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New ChunkSentenceSplitter Annotator</li>
     <li>Updated Spark NLP For Healthcare Notebooks and New Notebooks</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-clinical-ner-models-including-a-new-spanish-one">New Clinical NER Models (including a new Spanish one)</h4>
 
@@ -780,6 +786,9 @@ results <span class="o">=</span> chemd_model.transform<span class="o">(</span>sp
 +----------------------------------+------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-bert-based-clinical-ner-models">New BERT-Based Clinical NER Models</h4>
 
   <p>We have two new BERT-Based token classifier NER models.</p>
@@ -886,6 +895,9 @@ weighted avg       0.89      0.80      0.85     19392
 +-------------------------------------------+---------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-clinical-ner-model">Updated Clinical NER Model</h4>
 
   <p>We have updated <code class="language-plaintext highlighter-rouge">ner_jsl_enriched</code> model by enriching the training data using clinical trials data to make it more robust. This model is capable of predicting up to <code class="language-plaintext highlighter-rouge">87</code> different entities and is based on <code class="language-plaintext highlighter-rouge">ner_jsl</code> model. Here are the entities this model can detect;</p>
@@ -960,11 +972,17 @@ results <span class="o">=</span> model.transform<span class="o">(</span>spark.cr
 <span class="o">&gt;&gt;</span> <span class="o">{</span><span class="s1">'B-Disease'</span>: 2536, <span class="s1">'O'</span>: 31659, <span class="s1">'I-Disease'</span>: 2960<span class="o">}</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-rxnorm-sentence-entity-resolver-model">New RxNorm Sentence Entity Resolver Model</h4>
 
   <ul>
     <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented</code> : This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in all_k_aux_labels column.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-spanish-snomed-sentence-entity-resolver-model">New Spanish SNOMED Sentence Entity Resolver Model</h4>
 
@@ -1058,6 +1076,9 @@ res <span class="o">=</span> p_model.transform<span class="o">(</span>spark.crea
 +----+-------------------------------+-------------+--------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-clinical-question-vs-statement-bertforsequenceclassification-model">New Clinical Question vs Statement BertForSequenceClassification model</h4>
 
   <ul>
@@ -1121,6 +1142,9 @@ res <span class="o">=</span> p_model.transform<span class="o">(</span>spark.crea
 weighted avg       0.98      0.98      0.98       972
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-sentence-entity-resolver-fine-tune-features-overwriting-and-drop-code">New Sentence Entity Resolver Fine-Tune Features (Overwriting and Drop Code)</h4>
 
   <ul>
@@ -1134,13 +1158,22 @@ weighted avg       0.98      0.98      0.98       972
 
   <p>For more examples, please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/13.1.Finetuning_Sentence_Entity_Resolver_Model.ipynb">Fine-Tuning Sentence Entity Resolver Notebook</a></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-icd10cm-entity-resolver-models">Updated ICD10CM Entity Resolver Models</h4>
 
   <p>We have updated <code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented</code> model with <a href="https://www.cdc.gov/nchs/icd/icd10cm.htm">ICD10CM 2022 Dataset</a> and <code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code> model by dropping invalid codes.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-ner-profiling-pretrained-pipelines">Updated NER Profiling Pretrained Pipelines</h4>
 
   <p>We have updated <code class="language-plaintext highlighter-rouge">ner_profiling_clinical</code> and <code class="language-plaintext highlighter-rouge">ner_profiling_biobert</code> pretrained pipelines by adding new clinical NER models and NER model outputs to the previous versions. In this way, you can see all the NER labels of tokens. For examples, please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.2.Pretrained_NER_Profiling_Pipelines.ipynb">NER Profiling Pretrained Pipeline Notebook</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-chunksentencesplitter-annotator">New ChunkSentenceSplitter Annotator</h4>
 
@@ -1217,6 +1250,9 @@ PROCEDURE:  Right VATS pleurodesis and pleural biopsy."""</span><span class="p">
 |         Right VATS pleurodesis and pleural biopsy|Header|              PROCEDURE:|
 +--------------------------------------------------+------+------------------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="updated-spark-nlp-for-healthcare-notebooks">Updated Spark NLP For Healthcare Notebooks</h4>
 
@@ -1553,6 +1589,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1730,8 +1768,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

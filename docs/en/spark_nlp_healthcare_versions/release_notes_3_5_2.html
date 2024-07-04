@@ -642,6 +642,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>List of recently updated or added models</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="tfgraphbuilder-annotator-to-create-graphs-for-training-ner-assertion-relation-extraction-and-generic-classifier-models"><code class="language-plaintext highlighter-rouge">TFGraphBuilder</code> annotator to create graphs for Training NER, Assertion, Relation Extraction, and Generic Classifier Models</h4>
 
   <p>We have a new annotator used to create graphs in the model training pipeline. <code class="language-plaintext highlighter-rouge">TFGraphBuilder</code> inspects the data and creates the proper graph if a suitable version of TensorFlow (&lt;= 2.7 ) is available. The graph is stored in the defined folder and loaded by the approach.</p>
@@ -673,6 +676,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>For more examples, please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/17.Graph_builder_for_DL_models.ipynb">TFGraph Builder Notebook</a>.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="default-tf-graphs-added-for-assertiondlapproach-to-let-users-train-models-without-custom-graphs">Default TF graphs added for <code class="language-plaintext highlighter-rouge">AssertionDLApproach</code> to let users train models without custom graphs</h4>
 
   <p>We added default TF graphs for the <code class="language-plaintext highlighter-rouge">AssertionDLApproach</code> to let users train assertion models without specifying any custom TF graph.</p>
@@ -682,6 +688,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Feature Sizes: 100, 200, 768</li>
     <li>Number of Classes: 2, 4, 8</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-functionalities-in-contextualparserapproach">New Functionalities in <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code></h4>
 
@@ -720,6 +729,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOptionalContextRules</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="printing-the-list-of-clinical-pretrained-models-and-pipelines-with-one-liner">Printing the List of Clinical Pretrained Models and Pipelines with One-Liner</h4>
 
@@ -785,6 +797,9 @@ function wrapWordInSpan(data, wordToWrap) {
 +--------------------------------------------------------+------+---------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-nerbiomedicalbc2gm-ner-model">New <code class="language-plaintext highlighter-rouge">ner_biomedical_bc2gm</code> NER Model</h4>
 
   <p>This model has been trained to extract genes/proteins from a medical text.</p>
@@ -813,6 +828,9 @@ function wrapWordInSpan(data, wordToWrap) {
 |cytokeratin|GENE_PROTEIN|
 +-----------+------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-clinical-chunkmapper-models">New Clinical <code class="language-plaintext highlighter-rouge">ChunkMapper</code> Models</h4>
 
@@ -912,6 +930,9 @@ function wrapWordInSpan(data, wordToWrap) {
 +------------------------------+------------+------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="bug-fixes">Bug Fixes</h4>
 
   <p>We fixed some issues in <code class="language-plaintext highlighter-rouge">DrugNormalizer</code>, <code class="language-plaintext highlighter-rouge">DateNormalizer</code> and <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> annotators.</p>
@@ -928,6 +949,9 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-and-updated-notebooks">New and Updated Notebooks</h4>
   <ul>
     <li>We prepared <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/1hr_workshop/SparkNLP_for_Healthcare_3h_Notebook.ipynb">Spark NLP for Healthcare 3hr Notebook</a> to cover mostly used components of Spark NLP in ODSC East 2022-3 hours hands-on workshop on ‘Modular Approach to Solve Problems at Scale in Healthcare NLP’. You can also find its Databricks version <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare_tutorials/SparkNLP_for_Healthcare_3h_Notebook.ipynb">here</a>.</li>
@@ -936,6 +960,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>We have a new <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/databricks/python/healthcare_tutorials">Databricks healthcare tutorials folder</a> in which you can find all Spark NLP for Healthcare Databricks tutorial notebooks.</li>
     <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/17.Graph_builder_for_DL_models.ipynb">Updated Graph Builder Notebook</a> by adding the examples of new <code class="language-plaintext highlighter-rouge">TFGraphBuilder</code> annotator.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="list-of-recently-updated-or-added-models">List of Recently Updated or Added Models</h4>
 
@@ -1278,6 +1305,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1455,8 +1484,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

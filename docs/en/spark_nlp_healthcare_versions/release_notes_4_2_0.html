@@ -657,7 +657,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We have 12 new oncological NER and their BERT-based token classification models.</p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>NER model name (MedicalNerModel)</th>
@@ -744,7 +744,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p><strong>F1 Scores:</strong></p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>label</th>
@@ -933,7 +933,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We have 8 new oncological assertion status detection models.</p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>model name</th>
@@ -1013,7 +1013,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <h5 id="new-oncological-relation-extraction-models">New Oncological Relation Extraction Models</h5>
   <p>We are releasing 7 new <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> and 7 new <code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code> models to extract relations between various oncological concepts.</p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>model name</th>
@@ -1097,7 +1097,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p><strong>F1 Scores and Samples:</strong></p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>label</th>
@@ -1303,7 +1303,7 @@ We prescribed sleeping pills for her current insomnia"""</span>
 
   <p>We are releasing 4 new chunk mapper models that can map entities to their corresponding ICD-9, ICD-10-CM and RxNorm codes.</p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>model name</th>
@@ -1959,6 +1959,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -2136,8 +2138,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

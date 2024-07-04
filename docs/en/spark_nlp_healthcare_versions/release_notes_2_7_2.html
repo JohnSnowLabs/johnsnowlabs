@@ -672,15 +672,21 @@ function wrapWordInSpan(data, wordToWrap) {
 </code></pre></div>  </div>
   <p>State-of-the-art accuracy is achieved using new healthcare-tuned BERT Sentence Embeddings (s-Bert). The following sections include more details, metrics, and examples.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="named-entity-recognizers-for-medications">Named Entity Recognizers for Medications</h4>
 
   <ul>
     <li>A new medication NER (<code class="language-plaintext highlighter-rouge">ner_drugs_greedy</code>) that joins the drug entities with neighboring entities such as  <code class="language-plaintext highlighter-rouge">dosage</code>, <code class="language-plaintext highlighter-rouge">route</code>, <code class="language-plaintext highlighter-rouge">form</code> and <code class="language-plaintext highlighter-rouge">strength</code>; and returns a single entity <code class="language-plaintext highlighter-rouge">drug</code>.  This greedy NER model would be highly useful if you want to extract a drug with its context and then use it to get a RxNorm code (drugs may get different RxNorm codes based on the dosage and strength information).</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h6 id="metrics">Metrics</h6>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>label</th>
@@ -724,7 +730,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>a. <strong>ner_drugs_greedy</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th> </th>
@@ -768,7 +774,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>b. <strong>ner_posology_greedy</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -847,7 +853,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>c. <strong>ner_drugs</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -884,7 +890,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>d.<strong>ner_posology</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -1019,7 +1025,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>e. <strong>ner_drugs_large</strong></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -1068,6 +1074,9 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="patient-gender-classification">Patient Gender Classification</h4>
 
   <p>This model detects the gender of the patient in the clinical document. It can classify the documents into <code class="language-plaintext highlighter-rouge">Female</code>, <code class="language-plaintext highlighter-rouge">Male</code> and <code class="language-plaintext highlighter-rouge">Unknown</code>.</p>
@@ -1085,9 +1094,12 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>The models are trained on more than four thousands clinical documents (radiology reports, pathology reports, clinical visits etc.), annotated internally.</p>
 
+</div>
+<div class="h3-box">
+
   <h6 id="metrics-classifierdlgendersbert">Metrics <code class="language-plaintext highlighter-rouge">(Classifierdl_gender_sbert)</code></h6>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th> </th>
@@ -1182,6 +1194,10 @@ family history: shows a family history of breast cancer.</em>’’</p>
    <span class="p">])</span>
 
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h4 id="new-icd10cm-and-rxcui-resolvers-powered-by-s-bert-embeddings">New ICD10CM and RxCUI resolvers powered by s-Bert embeddings</h4>
 
   <p>The advent of s-Bert sentence embeddings changed the landscape of Clinical Entity Resolvers completely in Spark NLP. Since s-Bert is already tuned on <a href="https://physionet.org/content/mednli/">MedNLI</a> (medical natural language inference) dataset, it is now capable of populating the chunk embeddings in a more precise way than before.</p>
@@ -1207,7 +1223,7 @@ accuracy:</p>
 
   <p>Text = “<em>This is an 82 year old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret's Center for Women &amp; Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU .</em> “</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -1306,7 +1322,7 @@ accuracy:</p>
 
   <p>Text= “<em>He was seen by the endocrinology service and she was discharged on 50 mg of eltrombopag oral at night, 5 mg amlodipine with meals, and metformin 1000 mg two times a day .</em> “</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -1346,6 +1362,9 @@ accuracy:</p>
   </table>
 
   <p>Using this new resolver and some other resources like Snomed Resolver, RxTerm, MESHPA and ATC dictionary, you can link the drugs to the pharmacological actions (PA), ingredients and the disease treated with that.</p>
+
+</div>
+<div class="h3-box">
 
   <h6 id="code-sample">Code sample:</h6>
 
@@ -1692,6 +1711,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1869,8 +1890,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

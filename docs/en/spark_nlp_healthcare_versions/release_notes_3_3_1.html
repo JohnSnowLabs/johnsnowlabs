@@ -625,6 +625,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="section">3.3.1</h2>
   <p>We are glad to announce that Spark NLP Healthcare 3.3.1 has been released!.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>New ChunkKeyPhraseExtraction Annotator</li>
@@ -637,6 +640,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New Python API Documentation</li>
     <li>Updated Spark NLP For Healthcare Notebooks and New Notebooks</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-chunkkeyphraseextraction-annotator">New ChunkKeyPhraseExtraction Annotator</h4>
 
@@ -673,6 +679,9 @@ ngram_ner_results <span class="o">=</span>  ngram_ner_pipeline.transform<span cl
 |28-year-old female        |ngrams|0.31692529374916967|0.10043002919664669|0       |
 +--------------------------+------+-------------------+-------------------+--------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-bert-based-ner-models">New BERT-Based NER Models</h4>
 
@@ -759,6 +768,9 @@ result <span class="o">=</span> p_model.transform<span class="o">(</span>spark.c
 +-------------------------------+---------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-umls-sentence-entity-resolver-models">New UMLS Sentence Entity Resolver Models</h4>
 
   <p>We are releasing two new UMLS Sentence Entity Resolver models trained on 2021AB UMLS dataset and map clinical entities to UMLS CUI codes.</p>
@@ -825,9 +837,15 @@ results <span class="o">=</span> model.fit<span class="o">(</span>data<span clas
 
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-rxnorm-entity-resolver-model-dropping-invalid-codes">Updated RxNorm Entity Resolver Model (Dropping Invalid Codes)</h4>
 
   <p><code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm</code> model was updated by dropping invalid codes using 02 August 2021 RxNorm dataset.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-showversion-method-in-compatibility-class">New showVersion() Method in Compatibility Class</h4>
 
@@ -846,6 +864,9 @@ results <span class="o">=</span> model.fit<span class="o">(</span>data<span clas
 | sentence_detector_dl_healthcare |  en  | 3.2.0   |
 +---------------------------------+------+---------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-docker-images-for-spark-nlp-for-healthcare-and-spark-ocr">New Docker Images for Spark NLP for Healthcare and Spark OCR</h4>
 
@@ -872,6 +893,9 @@ results <span class="o">=</span> model.fit<span class="o">(</span>data<span clas
     <li>Instructions: <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/jupyter/docker_image_ocr">Spark NLP for Healthcare &amp; OCR Docker Image</a></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-and-updated-deidentification-parameters">New and Updated Deidentification() Parameters</h4>
 
   <p><em>New Parameter</em> :</p>
@@ -885,9 +909,15 @@ results <span class="o">=</span> model.fit<span class="o">(</span>data<span clas
     <li><code class="language-plaintext highlighter-rouge">.setObfuscateRefSource()</code> : It was set <code class="language-plaintext highlighter-rouge">faker</code> as default.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-python-api-documentation">New Python API Documentation</h4>
 
   <p>We have new Spark NLP for Healthcare <a href="https://nlp.johnsnowlabs.com/licensed/api/python/">Python API Documentation</a> . This page contains information how to use the library with Python examples.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="updated-spark-nlp-for-healthcare-notebooks-and-new-notebooks">Updated Spark NLP For Healthcare Notebooks and New Notebooks</h4>
 
@@ -1231,6 +1261,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1408,8 +1440,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

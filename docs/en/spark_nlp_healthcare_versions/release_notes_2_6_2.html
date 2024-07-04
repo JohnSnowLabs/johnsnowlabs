@@ -628,6 +628,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We are very happy to announce that version 2.6.2 of Spark NLP Enterprise is ready to be installed and used.
 We are making available Named Entity Recognition, Sentence Classification and Entity Resolution models to analyze Adverse Drug Events in natural language text from clinical domains.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="models">Models</h4>
 
   <h5 id="ners">NERs</h5>
@@ -644,6 +647,9 @@ We are making available Named Entity Recognition, Sentence Classification and En
 
   <p>We are also releasing our first clinical pretrained classifier for ADE classification tasks. This new ADE classifier is trained on various ADE datasets, including the mentions in tweets to represent the daily life conversations as well. So it works well on the texts coming from academic context, social media and clinical notes. It’s trained with <code class="language-plaintext highlighter-rouge">Clinical Biobert</code> embeddings, which is the most powerful contextual language model in the clinical domain out there.</p>
 
+</div>
+<div class="h3-box">
+
   <h5 id="classifiers">Classifiers</h5>
   <p>ADE classifier will have two versions in the library, trained with different Bert embeddings:</p>
 
@@ -651,6 +657,9 @@ We are making available Named Entity Recognition, Sentence Classification and En
 <code class="language-plaintext highlighter-rouge">classifierdl_adee_clinicalbert</code> (768d ClinicalBert embeddings)</p>
 
   <p>More information and examples <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb">here</a></p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="pipeline">Pipeline</h5>
   <p>By combining ADE NER and Classifier, we are releasing a new pretrained clinical pipeline for ADE tasks to save you from building pipelines from scratch. Pretrained pipelines are already fitted using certain annotators and transformers according to various use cases and you can use them as easy as follows:</p>
@@ -662,6 +671,9 @@ We are making available Named Entity Recognition, Sentence Classification and En
 
   <p>More information and examples <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb">here</a></p>
 
+</div>
+<div class="h3-box">
+
   <h5 id="entity-resolver">Entity Resolver</h5>
   <p>We are releasing the first Entity Resolver for <code class="language-plaintext highlighter-rouge">Athena</code> (Automated Terminology Harmonization, Extraction and Normalization for Analytics, <a href="https://athena.ohdsi.org/">https://athena.ohdsi.org/</a>) to extract concept ids via standardized medical vocabularies. For now, it only supports <code class="language-plaintext highlighter-rouge">conditions</code> section and can be used to map the clinical conditions with the corresponding standard terminology and then get the concept ids to store them in various database schemas.
 It is named as <code class="language-plaintext highlighter-rouge">chunkresolve_athena_conditions_healthcare</code>.</p>
@@ -672,6 +684,9 @@ It is named as <code class="language-plaintext highlighter-rouge">chunkresolve_a
 <code class="language-plaintext highlighter-rouge">assertion_dl_healthcare</code>
 <code class="language-plaintext highlighter-rouge">ner_posology_healthcare</code>
 <code class="language-plaintext highlighter-rouge">ner_events_healthcare</code></p>
+
+</div>
+<div class="h3-box">
 
   <h5 id="graph-builder">Graph Builder</h5>
   <p>Spark NLP Licensed version has several DL based annotators (modules) such as NerDL, AssertionDL, RelationExtraction and GenericClassifier, and they are all based on Tensorflow (tf) with custom graphs. In order to make the creating and customizing the tf graphs for these models easier for our licensed users, we added a graph builder to the Python side of the library. Now you can customize your graphs and use them in the respected models while training a new DL model.</p>
@@ -1008,6 +1023,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1185,8 +1202,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

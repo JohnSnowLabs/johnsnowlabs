@@ -626,9 +626,15 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are very excited to announce that <strong>Spark NLP for Healthcare 3.0.0</strong> has been released! This has been one of the biggest releases we have ever done and we are so proud to share this with our customers.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights:</h4>
 
   <p>Spark NLP for Healthcare 3.0.0 extends the support for Apache Spark 3.0.x and 3.1.x major releases on Scala 2.12 with both Hadoop 2.7. and 3.2. We now support all 4 major Apache Spark and PySpark releases of 2.3.x, 2.4.x, 3.0.x, and 3.1.x helping the customers to migrate from earlier Apache Spark versions to newer releases without being worried about Spark NLP support.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="highlights-1">Highlights:</h4>
   <ul>
@@ -661,9 +667,15 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Starting Spark NLP for Healthcare 3.0.0 the default packages  for CPU and GPU will be based on Apache Spark 3.x and Scala 2.12.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h5 id="deprecated">Deprecated</h5>
 
   <p>Text2SQL annotator is deprecated and will not be maintained going forward. We are working on a better and faster version of Text2SQL at the moment and will announce soon.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="medicalnermodel-annotator">1. MedicalNerModel Annotator</h4>
 
@@ -678,11 +690,17 @@ function wrapWordInSpan(data, wordToWrap) {
 .setOutputCol("ner")
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="speed-improvements">2. Speed Improvements</h4>
 
   <p>A new batch annotation technique implemented in Spark NLP 3.0.0 for <code class="language-plaintext highlighter-rouge">NerDLModel</code>,<code class="language-plaintext highlighter-rouge">BertEmbeddings</code>, and <code class="language-plaintext highlighter-rouge">BertSentenceEmbeddings</code> annotators will be reflected in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> and it improves prediction/inferencing performance radically. From now on the <code class="language-plaintext highlighter-rouge">batchSize</code> for these annotators means the number of rows that can be fed into the models for prediction instead of sentences per row. You can control the throughput when you are on accelerated hardware such as GPU to fully utilise it. Here are the overall speed comparison:</p>
 
   <p>Now, NER inference and Entity Resolution are <strong>two times faster</strong> on CPU and three times faster on GPU.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="jsl-clinical-ner-model">3. JSL Clinical NER Model</h4>
 
@@ -695,9 +713,15 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><code class="language-plaintext highlighter-rouge">jsl_rd_ner_wip_greedy_clinical</code></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h5 id="entities">Entities:</h5>
 
   <p><code class="language-plaintext highlighter-rouge">Kidney_Disease</code>, <code class="language-plaintext highlighter-rouge">HDL</code>, <code class="language-plaintext highlighter-rouge">Diet</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Imaging_Technique</code>, <code class="language-plaintext highlighter-rouge">Triglycerides</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Weight</code>, <code class="language-plaintext highlighter-rouge">Social_History_Header</code>, <code class="language-plaintext highlighter-rouge">ImagingTest</code>, <code class="language-plaintext highlighter-rouge">Labour_Delivery</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Overweight</code>, <code class="language-plaintext highlighter-rouge">Units</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Score</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">ImagingFindings</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">OtherFindings</code>, <code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>, <code class="language-plaintext highlighter-rouge">Date</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code>, <code class="language-plaintext highlighter-rouge">VS_Finding</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Heart_Disease</code>, <code class="language-plaintext highlighter-rouge">Medical_Device</code>, <code class="language-plaintext highlighter-rouge">Total_Cholesterol</code>, <code class="language-plaintext highlighter-rouge">ManualFix</code>, <code class="language-plaintext highlighter-rouge">Time</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Pulse</code>, <code class="language-plaintext highlighter-rouge">Admission_Discharge</code>, <code class="language-plaintext highlighter-rouge">RelativeDate</code>, <code class="language-plaintext highlighter-rouge">O2_Saturation</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">RelativeTime</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">Fetus_NewBorn</code>, <code class="language-plaintext highlighter-rouge">Birth_Entity</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Respiration</code>, <code class="language-plaintext highlighter-rouge">Medical_History_Header</code>, <code class="language-plaintext highlighter-rouge">Oxygen_Therapy</code>, <code class="language-plaintext highlighter-rouge">Section_Header</code>, <code class="language-plaintext highlighter-rouge">LDL</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Vital_Signs_Header</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Clinical_Dept</code>, <code class="language-plaintext highlighter-rouge">Measurements</code>, <code class="language-plaintext highlighter-rouge">Height</code>, <code class="language-plaintext highlighter-rouge">Family_History_Header</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Strength</code>, <code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Relationship_Status</code>, <code class="language-plaintext highlighter-rouge">Blood_Pressure</code>, <code class="language-plaintext highlighter-rouge">Drug</code>, <code class="language-plaintext highlighter-rouge">Temperature</code>, <code class="language-plaintext highlighter-rouge">EKG_Findings</code>, <code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">BodyPart</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Dosage</code></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="jsl-clinical-assertion-model">4. JSL Clinical Assertion Model</h4>
 
@@ -707,13 +731,22 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><code class="language-plaintext highlighter-rouge">jsl_assertion_wip</code></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h5 id="assertion-labels-">Assertion Labels :</h5>
 
   <p><code class="language-plaintext highlighter-rouge">Present</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Someoneelse</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Hypotetical</code></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="library-version-compatibility-table-">5. Library Version Compatibility Table :</h4>
 
   <p>Spark NLP for Healthcare 3.0.0 is compatible with Spark NLP 3.0.1</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="pretrained-models-version-control-beta">6. Pretrained Models Version Control (Beta):</h4>
 
@@ -727,6 +760,9 @@ compatibility = CompatibilityBeta(spark)
 
 print(compatibility.findVersion("ner_deid"))
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="updated-pretrained-models">7. Updated Pretrained Models:</h4>
 
@@ -1060,6 +1096,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1237,8 +1275,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

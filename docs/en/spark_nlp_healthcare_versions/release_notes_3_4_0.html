@@ -627,6 +627,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We are glad to announce that Spark NLP Healthcare 3.4.0 has been released!
 This is a massive release: new features, new models, academic papers, and more!</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
 
   <ul>
@@ -650,6 +653,9 @@ This is a massive release: new features, new models, academic papers, and more!<
     <li>New Peer-Reviewed Conference Paper on Adverse Drug Events Extraction</li>
     <li>New and Updated Notebooks</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-german-deidentification-ner-models">New German Deidentification NER Models</h4>
 
@@ -701,6 +707,10 @@ result <span class="o">=</span> model.transform<span class="o">(</span>spark.cre
 |76                       |AGE                   |AGE                      |
 +-------------------------+----------------------+-------------------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h4 id="new-german-deidentification-pretrained-pipeline">New German Deidentification Pretrained Pipeline</h4>
 
   <p>We developed a clinical deidentification pretrained pipeline that can be used to deidentify PHI information from <strong>German</strong> medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">PLATE</code> entities.</p>
@@ -774,6 +784,9 @@ Lizenznummer: <span class="o">[</span><span class="k">*********</span><span clas
 Adresse : <span class="o">[</span><span class="k">*****************</span><span class="o">]</span> <span class="o">[</span><span class="k">***</span><span class="o">]</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-clinical-ner-models">New Clinical NER Models</h4>
 
   <p>We have two new clinical NER models.</p>
@@ -828,6 +841,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 |  1 | beta 2-adrenoceptor  | GENE              |
 
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-annotationmerger-annotator">New AnnotationMerger Annotator</h4>
 
@@ -923,9 +939,15 @@ results <span class="o">=</span> ann_merger_model.transform<span class="o">(</sp
 | 29 | back of the hands               | Present          |
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-medicalbertfortokenclassifier-annotator">New MedicalBertForTokenClassifier Annotator</h4>
 
   <p>We developed a new annotator called MedicalBertForTokenClassifier that can load BERT-Based clinical token classifier models head on top (a linear layer on top of the hidden-states output) e.g. for Named-Entity-Recognition (NER) tasks.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-bert-based-clinical-ner-models">New BERT-Based Clinical NER Models</h4>
 
@@ -983,6 +1005,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 | 15 | without topotecan | Trial_Group   |
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-clinical-relation-extraction-models">New Clinical Relation Extraction Models</h4>
 
   <p>We have two new clinical Relation Extraction models for detecting interactions between drugs and proteins. These models work hand-in-hand with the new <code class="language-plaintext highlighter-rouge">ner_drugprot_clinical</code> NER model and detect following relations between entities: <code class="language-plaintext highlighter-rouge">INHIBITOR</code>, <code class="language-plaintext highlighter-rouge">DIRECT-REGULATOR</code>, <code class="language-plaintext highlighter-rouge">SUBSTRATE</code>, <code class="language-plaintext highlighter-rouge">ACTIVATOR</code>, <code class="language-plaintext highlighter-rouge">INDIRECT-UPREGULATOR</code>, <code class="language-plaintext highlighter-rouge">INDIRECT-DOWNREGULATOR</code>, <code class="language-plaintext highlighter-rouge">ANTAGONIST</code>, <code class="language-plaintext highlighter-rouge">PRODUCT-OF</code>, <code class="language-plaintext highlighter-rouge">PART-OF</code>, <code class="language-plaintext highlighter-rouge">AGONIST</code>.</p>
@@ -1033,6 +1058,9 @@ result <span class="o">=</span> re_model.transform<span class="o">(</span>spark.
 |ACTIVATOR|CHEMICAL|         1563|       1578|     sn-1,2-glycerol|   GENE|         1511|       1517|              Atp8a1|  0.979057|
 +---------+--------+-------------+-----------+--------------------+-------+-------------+-----------+--------------------+----------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-loinc-snomed-umls-and-clinical-abbreviation-entity-resolver-models">New LOINC, SNOMED, UMLS and Clinical Abbreviation Entity Resolver Models</h4>
 
@@ -1186,6 +1214,9 @@ results <span class="o">=</span> model.transform<span class="o">(</span>spark.cr
 
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-icd10-to-icd9-code-mapping-pretrained-pipeline">New ICD10 to ICD9 Code Mapping Pretrained Pipeline</h4>
 
   <p>We are releasing new <code class="language-plaintext highlighter-rouge">icd10_icd9_mapping</code> pretrained pipeline. This pretrained pipeline maps ICD10 codes to ICD9 codes without using any text data. You’ll just feed a comma or white space-delimited ICD10 codes and it will return the corresponding ICD9 codes as a list.</p>
@@ -1218,6 +1249,9 @@ Code Descriptions:
 
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-clinical-sentence-embedding-models">New Clinical Sentence Embedding Models</h4>
 
   <p>We have two new clinical Sentence Embedding models.</p>
@@ -1248,6 +1282,9 @@ sentence_embeddings <span class="o">=</span> BertSentenceEmbeddings.pretrained<s
 ...
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="printingvalidation-and-testlogs-in-medicalnerapproach-and-assertiondlapproach">Printing Validation and Test Logs in MedicalNerApproach and AssertionDLApproach</h4>
 
   <p>Now we can check validation loss and test loss for each epoch in the logs created during trainings of MedicalNerApproach and AssertionDLApproach.</p>
@@ -1276,9 +1313,15 @@ Macro-average	 prec: 0.8461814, rec: 0.86577356, f1: 0.85586536
 Micro-average	 prec: 0.8463048, rec: 0.86439544, f1: 0.8552544
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="filter-only-the-regex-entities-feature-in-deidentification-annotator">Filter Only the Regex Entities Feature in Deidentification Annotator</h4>
 
   <p>The <code class="language-plaintext highlighter-rouge">setBlackList()</code> method will be able to filter just the detected Regex Entities. Before this change we filtered the chunks and the regex entities.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="add-setmaskingpolicy-parameter-in-deidentification-annotator">Add <code class="language-plaintext highlighter-rouge">.setMaskingPolicy</code> Parameter in Deidentification Annotator</h4>
 
@@ -1318,6 +1361,9 @@ Obfuscated
 DATE 07-04-1981, Dr Vivian Irving,  The driver'</span>s license K272344712994.
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="add-cachefolder-parameter-in-updatemodelsupdatecachemodels">Add <code class="language-plaintext highlighter-rouge">.cache_folder</code> Parameter in <code class="language-plaintext highlighter-rouge">UpdateModels.updateCacheModels()</code></h4>
 
   <p>This parameter lets user to define custom local paths for the folder on which pretrained models are saved (rather than using default cached_pretrained folder).</p>
@@ -1332,6 +1378,9 @@ DATE 07-04-1981, Dr Vivian Irving,  The driver'</span>s license K272344712994.
 
   <p>The cache folder used by default is the folder loaded in the spark configuration ` spark.jsl.settings.pretrained.cache_folder<code class="language-plaintext highlighter-rouge">.The default value for that property is </code>~/cache_pretrained`</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="s3-access-credentials-no-longer-shipped-along-licenses">S3 Access Credentials No Longer Shipped Along Licenses</h4>
 
   <p>S3 access credentials are no longer being shipped with licenses. Going forward, we’ll use temporal S3 access credentials which will be periodically refreshed. All this will happen automatically and will be transparent to the user.
@@ -1341,6 +1390,9 @@ Still, for those users who would need to perform manual tasks involving access t
 get_credentials<span class="o">(</span>spark<span class="o">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="enhanced-security-for-the-library-and-log4shell-update">Enhanced Security for the Library and log4shell Update</h4>
 
   <p>On top of periodical security checks on the library code, 3rd party dependencies were analyzed, and some dependencies reported as containing vulnerabilities were replaced by more secure options.
@@ -1348,11 +1400,14 @@ Also, the library was analyzed in the context of the recently discovered threat(
 It’s worth noting that the version of log4j dependency that will be in the classpath when running Spark NLP for Healthcare is 1.x, which would make the system vulnerable to CVE-2021-4104, instead of CVE-2021-45105. CVE-2021-4104 is related to the JMSAppender.
 Spark NLP for Healthcare does not provide any log4j configuration, so it’s up to the user to follow the recommendation of avoiding the use of the JMSAppender.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-peer-reviewed-conference-paper-on-clinical-relation-extraction">New Peer-Reviewed Conference Paper on Clinical Relation Extraction</h4>
 
   <p>We publish a new peer-reviewed conference paper titled <a href="https://arxiv.org/pdf/2112.13259.pdf">Deeper Clinical Document Understanding Using Relation Extraction</a> explaining the applications of Relation Extraction in a text mining framework comprising of Named Entity Recognition (NER) and Relation Extraction (RE) models. The paper is accepted to SDU (Scientific Document Understanding) workshop at AAAI-2022 conference and claims new SOTA scores on 5 out of 7 Biomedical &amp; Clinical Relation Extraction (RE) tasks.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Dataset</th>
@@ -1410,11 +1465,14 @@ Spark NLP for Healthcare does not provide any log4j configuration, so it’s up 
   <p><em>Macro-averaged F1 scores of both RE models on public datasets. FCNN refers to the Speed-Optimized FCNN architecture, while BioBERT refers to the AccuracyOptimized BioBERT architecture. The SOTA metrics are obtained from (Guan et al. 2020), (Ningthoujam et al. 2019), (Asada, Miwa, and Sasaki 2020), (Phan et al. 2021), (Sousa
 and Couto 2020), (Crone 2020), and (Yang et al. 2021) respectively.</em></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-peer-reviewed-conference-paper-on-adverse-drug-events-extraction">New Peer-Reviewed Conference Paper on Adverse Drug Events Extraction</h4>
 
   <p>We publish a new peer-reviewed conference paper titled <a href="https://arxiv.org/pdf/2201.01405.pdf">Mining Adverse Drug Reactions from Unstructured Mediums at Scale</a> proposing an end-to-end Adverse Drug Event mining solution using Classification, NER, and Relation Extraction Models. The paper is accepted to W3PHIAI (INTERNATIONAL WORKSHOP ON HEALTH INTELLIGENCE) workshop at AAAI-2022 conference, and claims new SOTA scores on 1 benchmark dataset for Classification, 3 benchmark datasets for NER, and 1 benchmark dataset for Relation Extraction.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Task</th>
@@ -1464,6 +1522,9 @@ and Couto 2020), (Crone 2020), and (Yang et al. 2021) respectively.</em></p>
   </table>
 
   <p><em>All F1 scores are Macro-averaged</em></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-and-updated-notebooks">New and Updated Notebooks</h4>
 
@@ -1815,6 +1876,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1992,8 +2055,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

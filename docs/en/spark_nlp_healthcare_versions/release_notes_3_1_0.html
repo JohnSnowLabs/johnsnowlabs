@@ -624,6 +624,10 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="section">3.1.0</h2>
   <p>We are glad to announce that Spark NLP for Healthcare 3.1.0 has been released!</p>
+
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>Improved load time &amp; memory consumption for SentenceResolver models.</li>
@@ -644,9 +648,15 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New notebooks.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="sentence-resolver-models-load-time-improvement">Sentence Resolver Models load time improvement</h4>
   <p>Sentence resolver models now have faster load times, with a speedup of about 6X when compared to previous versions.
 Also, the load process now is more  memory friendly meaning that the maximum memory required during load time is smaller, reducing the chances of OOM exceptions, and thus relaxing hardware requirements.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-jsl-sbert-models">New JSL SBert Models</h4>
   <p>We trained new sBert models in TF2 and fined tuned on MedNLI, NLI and UMLS datasets with various parameters to cover common NLP tasks in medical domain. You can find the details in the following table.</p>
@@ -662,9 +672,12 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     <li><code class="language-plaintext highlighter-rouge">sbert_jsl_tiny_umls_uncased</code></li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="jsl-sbert-model-speed-benchmark">JSL SBert Model Speed Benchmark</h4>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>JSL SBert Model</th>
@@ -734,6 +747,9 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-icd10cm-resolver-models">New ICD10CM resolver models:</h4>
   <p>These models map clinical entities and concepts to ICD10 CM codes using sentence bert embeddings. They also return the official resolution text within the brackets inside the metadata. Both models are augmented with synonyms, and previous augmentations are flexed according to cosine distances to unnormalized terms (ground truths).</p>
 
@@ -741,20 +757,20 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_billable_hcc</code>: Trained with classic sbiobert mli. (<code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code>)</li>
   </ul>
 
-  <p>Models Hub Page : https://nlp.johnsnowlabs.com/2021/05/25/sbiobertresolve_icd10cm_slim_billable_hcc_en.html</p>
+  <p>Models Hub Page : <a href="https://nlp.johnsnowlabs.com/2021/05/25/sbiobertresolve_icd10cm_slim_billable_hcc_en.html">https://nlp.johnsnowlabs.com/2021/05/25/sbiobertresolve_icd10cm_slim_billable_hcc_en.html</a></p>
 
   <ul>
     <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_slim_billable_hcc_med</code>: Trained with new jsl sbert(<code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code>)</li>
   </ul>
 
-  <p>Models Hub Page : https://nlp.johnsnowlabs.com/2021/05/25/sbertresolve_icd10cm_slim_billable_hcc_med_en.html</p>
+  <p>Models Hub Page : <a href="https://nlp.johnsnowlabs.com/2021/05/25/sbertresolve_icd10cm_slim_billable_hcc_med_en.html">https://nlp.johnsnowlabs.com/2021/05/25/sbertresolve_icd10cm_slim_billable_hcc_med_en.html</a></p>
 
   <p><em>Example</em>: ‘bladder cancer’</p>
   <ul>
     <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code></li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -781,7 +797,7 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     <li>` sbiobertresolve_icd10cm_slim_billable_hcc`</li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -808,7 +824,7 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_slim_billable_hcc_med</code></li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -831,6 +847,9 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-deidentification-ner-models">New Deidentification NER Models</h4>
 
   <p>We trained four new NER models to find PHI data (protected health information) that may need to be deidentified. <code class="language-plaintext highlighter-rouge">ner_deid_generic_augmented</code> and <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code> models are trained with a combination of 2014 i2b2 Deid dataset and in-house annotations as well as some augmented version of them. Compared to the same test set coming from 2014 i2b2 Deid dataset, we achieved a better accuracy and generalisation on some entity labels as summarised in the following tables. We also trained the same models with <code class="language-plaintext highlighter-rouge">glove_100d</code> embeddings to get more memory friendly versions.</p>
@@ -839,9 +858,9 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_augmented</code>  : Detects PHI 7 entities (<code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">ID</code>).</li>
   </ul>
 
-  <p>Models Hub Page : https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html</p>
+  <p>Models Hub Page : <a href="https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html">https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html</a></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>entity</th>
@@ -877,9 +896,9 @@ Also, the load process now is more  memory friendly meaning that the maximum mem
     <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code>: Detects PHI 23 entities (<code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">SREET</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">AGE</code>)</li>
   </ul>
 
-  <p>Models Hub Page : https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html</p>
+  <p>Models Hub Page : <a href="https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html">https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html</a></p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>entity</th>
@@ -980,6 +999,9 @@ results <span class="o">=</span> model.transform<span class="o">(</span>spark.cr
 +-----------------------------+-------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-column-returned-in-deidentificationmodel">New column returned in DeidentificationModel</h4>
 
   <p>DeidentificationModel now can return a new column to save the mappings between the mask/obfuscated entities and original entities.
@@ -1002,6 +1024,9 @@ The new column will produce annotations with the following structure,</p>
 )
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-reidentification-feature">New Reidentification feature</h4>
 
   <p>With the new ReidetificationModel, the user can go back to the original sentences using the mappings columns and the deidentification sentences.</p>
@@ -1021,6 +1046,9 @@ The new column will produce annotations with the following structure,</p>
      <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">mappings</span><span class="err">"</span>,<span class="err">"</span><span class="kt">deid_chunks</span><span class="err">"</span><span class="o">])</span>
      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"original"</span><span class="o">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-deidentification-pretrained-pipelines">New Deidentification Pretrained Pipelines</h4>
   <p>We developed a <code class="language-plaintext highlighter-rouge">clinical_deidentification</code> pretrained pipeline that can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>,  <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">IPADDR</code> entities.</p>
@@ -1083,6 +1111,9 @@ deid_pipeline.annotate<span class="o">(</span><span class="s2">"Record date : 20
    '</span>1HGBH41JXMN109286<span class="s1">']}
 </span></code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="chunk-filtering-based-on-confidence">Chunk filtering based on confidence</h4>
 
   <p>We added a new annotator ChunkFiltererApproach that allows to load a csv with both entities and confidence thresholds.
@@ -1137,6 +1168,9 @@ PROBLEM,0.9
 </code></pre></div>  </div>
   <p>As you can see, only the treatment entities with confidence score of more than 0.7, and the problem entities with confidence score of more than 0.9 have been kept in the output.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="extended-regex-dictionary-fuctionallity-in-deidentification">Extended regex dictionary fuctionallity in Deidentification</h4>
 
   <p>The RegexPatternsDictionary can now use a regex that spawns the 2 previous token and the 2 next tokens.
@@ -1146,6 +1180,9 @@ That feature is implemented using regex groups.</p>
 
   <p>Given the sentence <code class="language-plaintext highlighter-rouge">The patient with ssn 123123123</code> we can use the following regex to capture the entitty <code class="language-plaintext highlighter-rouge">ssn (\d{9})</code>
 Given the sentence <code class="language-plaintext highlighter-rouge">The patient has 12 years</code> we can use the following regex to capture the entitty <code class="language-plaintext highlighter-rouge">(\d{2}) years</code></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="enhanced-relationextractiondl-model-to-create-and-identify-relations-between-entities-across-the-entire-document">Enhanced RelationExtractionDL Model to create and identify relations between entities across the entire document</h4>
 
@@ -1164,10 +1201,16 @@ Given the sentence <code class="language-plaintext highlighter-rouge">The patien
 
   <p>Given a document containing multiple sentences: <code class="language-plaintext highlighter-rouge">John somkes cigrettes. He also consumes alcohol.</code>, now we can generate relation pairs across sentences and relate <code class="language-plaintext highlighter-rouge">alcohol</code> with <code class="language-plaintext highlighter-rouge">John</code> .</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="set-ner-graph-explicitely-in-medicalnerapproach">Set NER graph explicitely in MedicalNerApproach</h4>
   <p>Now MedicalNerApproach can receives the path to the graph directly. When a graph location is provided through this method, previous graph search behavior is disabled.</p>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MedicalNerApproach.setGraphFile(graphFilePath)
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="medicalnerapproach-can-now-accept-a-user-defined-name-for-log-file">MedicalNerApproach can now accept a user-defined name for log file.</h4>
   <p>Now MedicalNerApproach can accept a user-defined name for the log file. If not such a name is provided, the conventional naming will take place.</p>
@@ -1175,15 +1218,24 @@ Given the sentence <code class="language-plaintext highlighter-rouge">The patien
 </code></pre></div>  </div>
   <p>This will result in <code class="language-plaintext highlighter-rouge">oncology_ner_20210605_141701.log</code> filename being used, in which the <code class="language-plaintext highlighter-rouge">20210605_141701</code> is a timestamp.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-notebooks">New Notebooks</h4>
 
   <ul>
-    <li>A <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.4.Biomedical_NER_SparkNLP_paper_reproduce.ipynb">new notebook</a>  to reproduce our peer-reviewed NER paper (https://arxiv.org/abs/2011.06315)</li>
+    <li>A <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.4.Biomedical_NER_SparkNLP_paper_reproduce.ipynb">new notebook</a>  to reproduce our peer-reviewed NER paper (<a href="https://arxiv.org/abs/2011.06315">https://arxiv.org/abs/2011.06315</a>)</li>
     <li>New databricks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/databricks/python/healthcare_case_studies">case study notebooks</a>. In these notebooks, we showed the examples of how to work with oncology notes dataset and OCR on databricks for both DBr and community edition versions.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="updated-resolver-models">Updated Resolver Models</h4>
   <p>We updated <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> and <code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_procedures_augmented</code> resolver models to reflect the latest changes in the official terminologies.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="getting-started-with-spark-nlp-for-healthcare-notebook-in-databricks">Getting Started with Spark NLP for Healthcare Notebook in Databricks</h4>
   <p>We prepared a new notebook for those who want to get started with Spark NLP for Healthcare in Databricks : <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare_case_studies/Get_Started_Spark_NLP_for_Healthcare.ipynb">Getting Started with Spark NLP for Healthcare Notebook</a></p>
@@ -1514,6 +1566,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1691,8 +1745,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

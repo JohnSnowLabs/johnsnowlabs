@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Speed Bencmarks</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Bencmarks</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -610,14 +610,14 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Speed Bencmarks</li>
+    <li>Bencmarks</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Speed Bencmarks</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Bencmarks</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
             href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/benchmark.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Speed Bencmarks"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Bencmarks"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
@@ -1426,10 +1426,9 @@ function wrapWordInSpan(data, wordToWrap) {
   </ul>
 
 </div>
-
-<h4 id="bert-for-token-classification-benchmark-table">Bert For Token Classification Benchmark Table</h4>
-
 <div class="h3-box">
+
+  <h4 id="bert-for-token-classification-benchmark-table">Bert For Token Classification Benchmark Table</h4>
 
   <table class="table-model-big table3">
     <thead>
@@ -1478,7 +1477,6 @@ function wrapWordInSpan(data, wordToWrap) {
 </table>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="ner-speed-benchmarks-across-various-spark-nlp-and-pyspark-versions">NER speed benchmarks across various Spark NLP and PySpark versions</h3>
@@ -1581,7 +1579,6 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
   <p>Results show that the different versions can have some variance in the execution time, but the difference is not too relevant.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="chunkmapper-and-sentence-entity-resolver-benchmark-experiment">ChunkMapper and Sentence Entity Resolver Benchmark Experiment</h3>
@@ -1665,6 +1662,9 @@ We choosed 3 different configurations for AWS EC2 machines that have same core w
       <p><strong>NER models were kept as same in all pipelines:</strong> Pretrained <code class="language-plaintext highlighter-rouge">ner_posology_greedy</code> NER model was used in each pipeline.</p>
     </li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="benchmark-tables">Benchmark Tables</h4>
 
@@ -1927,7 +1927,6 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   </table>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="onnx-and-base-embeddings-in-resolver">ONNX and Base Embeddings in Resolver</h3>
@@ -2335,7 +2334,6 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   <p>PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="deidentification-pipelines-cost-benchmarks">Deidentification Pipelines Cost Benchmarks</h3>
@@ -2449,7 +2447,6 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <span class="n">finisher</span><span class="p">])</span>
 </code></pre></div>  </div>
 </div>
-
 <div class="h3-box">
 
   <table class="table-model-big db">
@@ -2550,31 +2547,160 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <li>DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:<strong>$0.27</strong>, 1M cost:<strong>$27.13</strong></li>
   </ul>
 
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h2 id="aws-emr-cluster-benchmark">AWS EMR Cluster Benchmark</h2>
+  <h2 id="rxnorm-benchmark-healthcare-nlp--gpt-4--amazon">RxNorm Benchmark: Healthcare NLP &amp; GPT-4 &amp; Amazon</h2>
 
-    <ul>
-      <li><strong>Dataset:</strong> 340 Custom Clinical Texts, approx. 235 tokens per text</li>
-      <li><strong>Versions:</strong>
-        <ul>
-          <li><strong>EMR Version:</strong> ERM.6.15.0</li>
-          <li><strong>spark-nlp Version:</strong> v5.2.2</li>
-          <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
-          <li><strong>Spark Version :</strong> v3.4.1</li>
-        </ul>
-      </li>
-      <li><strong>Instance Type:</strong>
-        <ul>
-          <li><strong>Primary</strong>: m4.4xlarge, 16 vCore, 64 GiB memory</li>
-          <li><strong>Worker :</strong>  m4.4xlarge, 16 vCore, 64 GiB memory</li>
-        </ul>
-      </li>
-    </ul>
+  <h3 id="motivation">Motivation</h3>
 
-    <p><strong>Spark NLP Pipeline:</strong></p>
+  <p>Accurately mapping medications to RxNorm codes is crucial for several reasons like safer patient care, improved billing and reimbursement, enhanced research, etc. In this benchmark, you can find these tools’ performance and cost comparisons.</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+  <h3 id="ground-truth">Ground Truth</h3>
+
+  <p>To ensure a fair comparison of these tools, we enlisted the assistance of human annotators. Medical annotation experts from John Snow Labs utilized the <a href="https://nlp.johnsnowlabs.com/docs/en/alab/quickstart">Generative AI Lab</a> to annotate 79 clinical in-house documents.</p>
+
+  <h3 id="benchmark-tools">Benchmark Tools</h3>
+
+  <ul>
+    <li><strong>Healthcare NLP:</strong> Two distinct RxNorm models within the library was used.
+      <ul>
+        <li><a href="https://nlp.johnsnowlabs.com/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html">sbiobertresolve_rxnorm_augmented</a>: Trained with <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> embeddings.</li>
+        <li><a href="https://nlp.johnsnowlabs.com/2024/05/06/biolordresolve_rxnorm_augmented_en.html">biolordresolve_rxnorm_augmented</a>: Trained with <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> embeddings.</li>
+      </ul>
+    </li>
+    <li>
+      <p><strong>GPT-4:</strong> <em>GPT-4 Turbo</em> and <em>GPT-4o</em> models.</p>
+    </li>
+    <li><strong>Amazon:</strong> <em>Amazon Comprehend Medical</em> service</li>
+  </ul>
+
+  <h3 id="evaluation-notes">Evaluation Notes</h3>
+
+  <ul>
+    <li>Healthcare NLP returns up to 25 closest results, and Amazon Medical Comprehend returns up to five results, both sorted starting from the closest one. In contrast, the GPT-4 Turbo return only one result, <em>so its scores reflected similarly in both charts</em>.</li>
+    <li>Since the performance of GPT-4 and GPT-4 Turbo is almost identical according to the <a href="https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3">official announcement</a>, we used the GPT-4 Turbo model for the accuracy calculation.</li>
+    <li>Two approaches were adopted for evaluating these tools, given that the model outputs may not precisely match the annotations:
+      <ul>
+        <li><strong>Top-3:</strong> Compare the annotations to see if they appear in the first three results.</li>
+        <li><strong>Top-5:</strong> Compare the annotations to see if they appear in the first five results.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="accuracy-results">Accuracy Results</h3>
+
+  <ul>
+    <li>Top-3 Results:</li>
+  </ul>
+
+  <p><img src="/assets/images/345525698-550d89b5-1c4c-4d40-a5ea-1f9ec86387da.png" alt="top_3" /></p>
+
+  <ul>
+    <li>Top-5 Results:</li>
+  </ul>
+
+  <p><img src="/assets/images/345525777-44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7.png" alt="top_5" /></p>
+
+  <h3 id="price-analysis-of-thetools">Price Analysis Of The Tools</h3>
+
+  <p>Since we don’t have such a small dataset in real world, we calculated the price of these tools according to 1M clinical notes. </p>
+
+  <ul>
+    <li>
+      <p><em>Open AI Pricing:</em> We created a prompt to achieve better results, which costs $3.476 on GPT-4 Turbo and $1.738 GPT-4o model for the 79 documents. This means that for processing <strong>1 million notes, the estimated cost would be $44,000 for the GPT-4 Turbo model</strong> and <strong>$22,000 for the GPT-4o model</strong>.</p>
+    </li>
+    <li>
+      <p><em>Amazon Comprehend Medical Pricing:</em> According to the price calculator, obtaining RxNorm predictions for <strong>1M documents, with an average of 9,700 characters per document, costs $24,250</strong>.</p>
+    </li>
+    <li>
+      <p><em>Healthcare NLP Pricing:</em> When using John Snow Labs-Healthcare NLP Prepaid product on an <em>EC2-32 CPU (c6a.8xlarge at $1,2 per hour) machine</em>, obtaining the RxNorm codes for medications (<em>excluding the NER stage</em>) from approximately 80 documents takes around 2 minutes. Based on this, processing <strong>1M documents</strong> and extracting RxNorm codes would take about 25,000 minutes (416 hours, or 18 days), <strong>costing $500 for infrastructure</strong> and <strong>$4,000 for the license</strong> (considering a 1-month license price of $7,000). Thus, <strong>the total cost for Healthcare NLP is approximately $4,500</strong>.</p>
+    </li>
+  </ul>
+
+  <h3 id="conclusion">Conclusion</h3>
+
+  <p>Based on the evaluation results:</p>
+  <ul>
+    <li>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented</code> model of Spark NLP for Healthcare consistently provides <strong>the most accurate</strong> results in each top_k comparison.</li>
+    <li>The <code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented</code> model of Spark NLP for Healthcare <strong>outperforms</strong> Amazon Comprehend Medical and GPT-4 Turbo models in mapping terms to their RxNorm codes.</li>
+    <li>The GPT-4 Turbo model could only return one result, reflected similarly in both charts and has proven to be <strong>the least accurate</strong>.</li>
+  </ul>
+
+  <p>If you want to process <strong>1M documents</strong> and extract RxNorm codes for medication entities (<em>excluding the NER stage</em>), the total cost:</p>
+  <ul>
+    <li>With Healthcare NLP is about <strong>$4,500, including the infrastructure costs</strong>.</li>
+    <li><strong>$24,250</strong> with Amazon Comprehend Medical</li>
+    <li><strong>$44,000</strong> with the GPT-4 Turbo model and <strong>$22,000</strong> with the GPT-4o model.</li>
+  </ul>
+
+  <p>Therefore, <strong>Healthcare NLP is almost 5 times cheaper than its closest alternative</strong>, not to mention the accuracy differences (<strong>Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 Turbo 8.9%</strong>).</p>
+
+  <p><strong>Accuracy &amp; Cost Table</strong></p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Top-3 Accuracy</th>
+        <th>Top-5 Accuracy</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Healthcare NLP</td>
+        <td>82.7%</td>
+        <td>84.6%</td>
+        <td>$4,500</td>
+      </tr>
+      <tr>
+        <td>Amazon Comprehend Medical</td>
+        <td>55.8%</td>
+        <td>56.2%</td>
+        <td>$24,250</td>
+      </tr>
+      <tr>
+        <td>GPT-4 Turbo</td>
+        <td>8.9%</td>
+        <td>8.9%</td>
+        <td>$44,000</td>
+      </tr>
+      <tr>
+        <td>GPT-4o</td>
+        <td>8.9%</td>
+        <td>8.9%</td>
+        <td>$22,000</td>
+      </tr>  
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="aws-emr-cluster-benchmark">AWS EMR Cluster Benchmark</h2>
+
+  <ul>
+    <li><strong>Dataset:</strong> 340 Custom Clinical Texts, approx. 235 tokens per text</li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>EMR Version:</strong> ERM.6.15.0</li>
+        <li><strong>spark-nlp Version:</strong> v5.2.2</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
+        <li><strong>Spark Version :</strong> v3.4.1</li>
+      </ul>
+    </li>
+    <li><strong>Instance Type:</strong>
+      <ul>
+        <li><strong>Primary</strong>: m4.4xlarge, 16 vCore, 64 GiB memory</li>
+        <li><strong>Worker :</strong>  m4.4xlarge, 16 vCore, 64 GiB memory</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Spark NLP Pipeline:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">document_assembler</span><span class="p">,</span>
         <span class="n">sentence_detector</span><span class="p">,</span>
         <span class="n">tokenizer</span><span class="p">,</span>
@@ -2592,74 +2718,75 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <span class="n">chunk2doc</span><span class="p">,</span>
         <span class="n">sbert_embeddings</span><span class="p">,</span>
         <span class="n">snomed_resolver</span><span class="p">])</span> 
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>NOTES:</strong></p>
+  <p><strong>NOTES:</strong></p>
 
-    <p><code class="language-plaintext highlighter-rouge">ner_jsl</code> model is used as ner model.The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results in <code class="language-plaintext highlighter-rouge">parquet</code> format.</p>
+  <p><code class="language-plaintext highlighter-rouge">ner_jsl</code> model is used as ner model.The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results in <code class="language-plaintext highlighter-rouge">parquet</code> format.</p>
 
-    <p>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> model is used as the resolver model. The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results (snomed_code and snomed_code_definition) in <code class="language-plaintext highlighter-rouge">parquet</code> format and 722 entities saved.</p>
+  <p>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> model is used as the resolver model. The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results (snomed_code and snomed_code_definition) in <code class="language-plaintext highlighter-rouge">parquet</code> format and 722 entities saved.</p>
 
-    <p><strong><em>Results Table</em></strong></p>
+  <p><strong><em>Results Table</em></strong></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: right">Partition</th>
-          <th style="text-align: left">NER Timing</th>
-          <th style="text-align: left">NER and Resolver Timing</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: right">4</td>
-          <td style="text-align: left">24.7 seconds</td>
-          <td style="text-align: left">1 minutes 8.5  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">8</td>
-          <td style="text-align: left">23.6 seconds</td>
-          <td style="text-align: left">1 minutes 7.4  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">16</td>
-          <td style="text-align: left">22.6 seconds</td>
-          <td style="text-align: left">1 minutes 6.9  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">32</td>
-          <td style="text-align: left">23.2 seconds</td>
-          <td style="text-align: left">1 minutes 5.7  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">64</td>
-          <td style="text-align: left">22.8 seconds</td>
-          <td style="text-align: left">1 minutes 6.7  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">128</td>
-          <td style="text-align: left">23.7 seconds</td>
-          <td style="text-align: left">1 minutes 7.4  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">256</td>
-          <td style="text-align: left">23.9 seconds</td>
-          <td style="text-align: left">1 minutes 6.1  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">512</td>
-          <td style="text-align: left">23.8 seconds</td>
-          <td style="text-align: left">1 minutes 8.4  seconds</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">1024</td>
-          <td style="text-align: left">25.9 seconds</td>
-          <td style="text-align: left">1 minutes 10.2 seconds</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: right">Partition</th>
+        <th style="text-align: left">NER Timing</th>
+        <th style="text-align: left">NER and Resolver Timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">4</td>
+        <td style="text-align: left">24.7 seconds</td>
+        <td style="text-align: left">1 minutes 8.5  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">8</td>
+        <td style="text-align: left">23.6 seconds</td>
+        <td style="text-align: left">1 minutes 7.4  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">16</td>
+        <td style="text-align: left">22.6 seconds</td>
+        <td style="text-align: left">1 minutes 6.9  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">32</td>
+        <td style="text-align: left">23.2 seconds</td>
+        <td style="text-align: left">1 minutes 5.7  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">64</td>
+        <td style="text-align: left">22.8 seconds</td>
+        <td style="text-align: left">1 minutes 6.7  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">128</td>
+        <td style="text-align: left">23.7 seconds</td>
+        <td style="text-align: left">1 minutes 7.4  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">256</td>
+        <td style="text-align: left">23.9 seconds</td>
+        <td style="text-align: left">1 minutes 6.1  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">512</td>
+        <td style="text-align: left">23.8 seconds</td>
+        <td style="text-align: left">1 minutes 8.4  seconds</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">1024</td>
+        <td style="text-align: left">25.9 seconds</td>
+        <td style="text-align: left">1 minutes 10.2 seconds</td>
+      </tr>
+    </tbody>
+  </table>
 
-  </div>
+</div>
+<div class="h3-box">
 
   <h2 id="cpu-ner-benchmarks">CPU NER Benchmarks</h2>
 
@@ -2831,7 +2958,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <h4 id="training-times-depending-on-batch-in-minutes">Training times depending on batch (in minutes)</h4>
 
-  <p><img src="/assets/images/CPUvsGPUbenchmarkpic6.png" alt="" /></p>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic6.png" alt="Training times depending on batch" /></p>
 
   <table class="table-model-big">
     <thead>
@@ -3419,6 +3546,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -3596,8 +3725,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

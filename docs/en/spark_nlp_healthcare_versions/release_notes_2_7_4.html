@@ -626,6 +626,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>We are glad to announce that Spark NLP for Healthcare 2.7.4 has been released!</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights:</h4>
 
   <ul>
@@ -636,6 +639,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New <strong>De-Identification NER</strong> model, augmented with synthetic datasets to detect uppercased name entities.</li>
     <li>Bug fixes &amp; general improvements.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="nerchunker">1. NerChunker:</h4>
 
@@ -657,6 +663,9 @@ text = 'She has cystic cyst on her kidney.'
 &gt;&gt; ner tags: [(cystic, B-IMAGINGFINDINGS), (cyst,I-IMAGINGFINDINGS), (kidney, B-BODYPART)
 &gt;&gt; ner_chunk: ['cystic cyst on her kidney']
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="chunkfilterer">2. ChunkFilterer:</h4>
 
@@ -683,6 +692,9 @@ text = 'Patient with severe fever, sore throat, stomach pain, and a headache.'
 &gt;&gt; ner_chunk: ['severe fever','sore throat','stomach pain','headache']
 &gt;&gt; chunk_filtered: ['severe fever','sore throat']
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="assertionfilterer">3. AssertionFilterer:</h4>
 
@@ -1032,6 +1044,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1209,8 +1223,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

@@ -643,6 +643,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>List of recently updated or added models (<strong>50+ new medical models and pipelines</strong>)</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-chunk-mapper-models-and-9-new-pretrained-chunk-mapper-pipelines-to-convert-one-medical-terminology-to-another-snomed-to-icd10-rxnorm-to-umls-etc">8 New Chunk Mapper Models and 9 New Pretrained Chunk Mapper Pipelines to Convert One Medical Terminology to Another (Snomed to ICD10, RxNorm to UMLS etc.)</h4>
 
   <p>We are releasing <strong>8 new <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> models and 9 new pretrained pipelines</strong> for mapping clinical codes with their corresponding.</p>
@@ -651,7 +654,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Mapper Models:</li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Mapper Name</th>
@@ -741,7 +744,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Pretrained Pipelines:</li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Pipeline Name</th>
@@ -813,6 +816,9 @@ function wrapWordInSpan(data, wordToWrap) {
  <span class="s1">'rxnorm_code'</span>: <span class="o">[</span><span class="s1">'1161611'</span>, <span class="s1">'315677'</span><span class="o">]</span>,
  <span class="s1">'umls_code'</span>: <span class="o">[</span><span class="s1">'C3215948'</span>, <span class="s1">'C0984912'</span><span class="o">]}</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-medical-ner-models-nerclinicaltrialsabstracts-and-nerpathogene-and-pretrained-ner-pipelines">2 New Medical NER Models (<code class="language-plaintext highlighter-rouge">ner_clinical_trials_abstracts</code> and <code class="language-plaintext highlighter-rouge">ner_pathogene</code>) and Pretrained NER Pipelines</h4>
 
@@ -954,7 +960,7 @@ result <span class="o">=</span> pipeline.fullAnnotate<span class="o">(</span><sp
 
   <p>Here is the list of model names and their embeddings used while training:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Language</th>
@@ -1168,6 +1174,9 @@ results <span class="o">=</span> ner_model.transform<span class="o">(</span>spar
 +-------------------+--------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="deidentification-support-for-romanian-language-nerdeidsubentity-nerdeidsubentitybert-and-a-pretrained-deidentification-pipeline">Deidentification Support for Romanian Language (<code class="language-plaintext highlighter-rouge">ner_deid_subentity</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_bert</code> and a Pretrained Deidentification Pipeline)</h4>
 
   <p>We trained two new NER models to find PHI data (protected health information) that may need to be deidentified in <strong>Romanian</strong>. <code class="language-plaintext highlighter-rouge">ner_deid_subentity</code> and <code class="language-plaintext highlighter-rouge">ner_deid_subentity_bert</code> models are trained with in-house annotations and can detect 17 different entities (<code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>).</p>
@@ -1315,6 +1324,9 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia, Data setului de analize: 01-04-2
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+
 </span></code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="resolvermerger-annotator-to-merge-the-results-of-chunkmappermodel-and-sentenceentityresolvermodel-annotators"><code class="language-plaintext highlighter-rouge">ResolverMerger</code> Annotator to Merge the Results of <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> and <code class="language-plaintext highlighter-rouge">SentenceEntityResolverModel</code> Annotators</h4>
 
   <p><code class="language-plaintext highlighter-rouge">ResolverMerger</code> annotator allows to merge the results of <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> and <code class="language-plaintext highlighter-rouge">SentenceEntityResolverModel</code> annotators. You can detect your results that fail by <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> with <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> and then merge your resolver and mapper results with <code class="language-plaintext highlighter-rouge">ResolverMerger</code>.</p>
@@ -1353,6 +1365,9 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia, Data setului de analize: 01-04-2
 +--------------------------------+-----------------------+---------------+-------------+-------------------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-shortest-context-match-and-token-index-features-in-contextualparserapproach">New Shortest Context Match and Token Index Features in <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code></h4>
 
   <p>We have new functionalities in <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> to make it more performant.</p>
@@ -1388,6 +1403,9 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia, Data setului de analize: 01-04-2
 |Chicago|City     |9         |
 +-------+---------+----------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="prettified-relational-categories-in-zeroshotrelationextractionmodel-annotator">Prettified relational categories in <code class="language-plaintext highlighter-rouge">ZeroShotRelationExtractionModel</code> annotator</h4>
 
@@ -1427,15 +1445,24 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia, Data setului de analize: 01-04-2
     <span class="p">])</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="spark-nlp-for-healthcare-library-installation-with-poetry-documentation-dependency-management-and-packaging-tool">Spark NLP for Healthcare Library Installation with Poetry Documentation (dependency management and packaging tool).</h4>
 
   <p>We have a new documentation page for showing Spark NLP for Healthcare installation with Poetry. You can find it <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_install#install-with-poetry">here</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="bug-fixes">Bug fixes</h4>
   <ul>
     <li><code class="language-plaintext highlighter-rouge">ContextualParserApproach</code>: Fixed the bug using a dictionary and document rule scope in JSON config file.</li>
     <li><code class="language-plaintext highlighter-rouge">RENerChunksFilter</code>: Preparing a pretrained pipeline with <code class="language-plaintext highlighter-rouge">RENerChunksFilter</code> annotator issue is fixed.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="updated-notebooks">Updated Notebooks</h4>
 
@@ -1445,6 +1472,9 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia, Data setului de analize: 01-04-2
     <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Chunk Mapping Notebook</a>: Added new models into the model list and an example of mapper pretrained pipelines.</li>
     <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.1.Healthcare_Code_Mapping.ipynb">Healthcare Code Mapping Notebook</a>: Added all mapper pretrained pipeline examples.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="list-of-recently-updated-and-added-models">List of Recently Updated and Added Models</h4>
 
@@ -1835,6 +1865,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -2012,8 +2044,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

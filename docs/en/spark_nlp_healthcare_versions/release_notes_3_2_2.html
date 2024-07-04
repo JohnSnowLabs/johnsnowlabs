@@ -625,6 +625,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="section">3.2.2</h2>
   <p>We are glad to announce that Spark NLP Healthcare 3.2.2 has been released!.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="highlights">Highlights</h4>
   <ul>
     <li>New NER Model For Detecting Drugs, Posology, and Administration Cycles</li>
@@ -632,6 +635,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New Router Annotator To Use Multiple Resolvers Optimally In the Same Pipeline</li>
     <li>Re-Augmented Deidentification NER Model</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-ner-model-for-detecting-drugs-posology-and-administration-cycles">New NER Model For Detecting Drugs, Posology, and Administration Cycles</h4>
 
@@ -665,6 +671,9 @@ results <span class="o">=</span> model.transform<span class="o">(</span>spark.cr
 |  7 | intravenously            |     234 |   246 | Route    |
 |  8 | Days 1-3                 |     251 |   258 | Cycleday |
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-sentence-entity-resolver-models">New Sentence Entity Resolver Models</h4>
 
@@ -739,6 +748,9 @@ result <span class="o">=</span> snomed_lp.fullAnnotate<span class="o">(</span><s
 |---:|:--------------|:---------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:-----------------------------------------------------|
 |  0 | schizophrenia | 58214004 | <span class="o">[</span>schizophrenia, chronic schizophrenia, borderline schizophrenia, schizophrenia, catatonic, subchronic schizophrenia, ...]| <span class="o">[</span>58214004, 83746006, 274952002, 191542003, 191529003, 16990005, ...] | 0.0000, 0.0774, 0.0838, 0.0927, 0.0970, 0.0970, ...] |
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-router-annotator-to-use-multiple-resolvers-optimally-in-the-same-pipeline">New Router Annotator To Use Multiple Resolvers Optimally In the Same Pipeline</h4>
 
@@ -829,6 +841,9 @@ pipeline <span class="o">=</span> Pipeline<span class="o">(</span><span class="n
 <span class="o">])</span>
 
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="re-augmented-deidentification-ner-model">Re-Augmented Deidentification NER Model</h4>
 
@@ -1195,6 +1210,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1372,8 +1389,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

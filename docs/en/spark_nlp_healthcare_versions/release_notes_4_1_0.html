@@ -691,7 +691,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>We are releasing 4 new <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> and 3 new <code class="language-plaintext highlighter-rouge">MedicalBertForTokenClassifier</code> NER models in Spanish.</li>
   </ul>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>model name</th>
@@ -778,7 +778,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>We are releasing 8 new <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> models to classify text from social media data in English and German related to public health topics (depression, covid sentiment, health mentions)</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>model name</th>
@@ -1326,6 +1326,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1503,8 +1505,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

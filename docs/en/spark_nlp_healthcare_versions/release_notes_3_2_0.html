@@ -620,10 +620,13 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP for Healthcare Release Notes 3.2.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="prev_ver h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
   <h2 id="section">3.2.0</h2>
   <p>We are glad to announce that Spark NLP Healthcare 3.2.0 has been released!.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="highlights">Highlights</h4>
 
@@ -636,6 +639,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New CMS-HCC risk-adjustment score calculation module</li>
     <li>New Embedding generation module for entity resolution</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h5 id="new-sentence-boundary-detection-model-for-healthcare-text">New Sentence Boundary Detection Model for Healthcare text</h5>
 
@@ -680,6 +686,9 @@ result <span class="o">=</span> sd_model.fullAnnotate<span class="o">(</span>tex
 
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h5 id="new-assertion-status-models">New Assertion Status Models</h5>
 
   <p>We are releasing two new Assertion Status Models based on the BiLSTM architecture. Apart from what we released in other assertion models, an in-house annotations on a curated dataset (6K clinical notes) is used to augment the base assertion dataset (2010 i2b2/VA).</p>
@@ -695,7 +704,7 @@ result <span class="o">=</span> sd_model.fullAnnotate<span class="o">(</span>tex
 
   <p><em>assertion_dl vs assertion_jsl</em>:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -792,6 +801,9 @@ result <span class="o">=</span> model.transform<span class="o">(</span>spark.cre
 +-------------------+-----+---+-------------------------+-------+---------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-sentence-entity-resolver-model">New Sentence Entity Resolver Model</h4>
 
   <p>We are releasing <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_disposition</code> model that maps medication entities (like drugs/ingredients) to RxNorm codes and their dispositions using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. In the result, look for the aux_label parameter in the metadata to get dispositions that were divided by <code class="language-plaintext highlighter-rouge">|</code>.</p>
@@ -831,6 +843,9 @@ result <span class="o">=</span> rxnorm_lp.fullAnnotate<span class="o">(</span><s
 |---:|:--------------------------------------|:--------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|:--------------------------------------------------------------------------------------------|:----------------------------------------------|
 |  0 |belimumab 80 mg/ml injectable solution | 1092440 | [belimumab 80 mg/ml injectable solution, belimumab 80 mg/ml injectable solution [benlysta], ifosfamide 80 mg/ml injectable solution, belimumab 80 mg/ml [benlysta], belimumab 80 mg/ml, ...]| [1092440, 1092444, 107034, 1092442, 1092438, ...] | [Immunomodulator, Immunomodulator, Alkylating agent, Immunomodulator, Immunomodulator, ...] | [0.0000, 0.0145, 0.0479, 0.0619, 0.0636, ...] |
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="finetuning-sentence-entity-resolvers-with-your-data">Finetuning Sentence Entity Resolvers with Your Data</h4>
 
@@ -882,7 +897,7 @@ light_model.fullAnnotate("sepsis")
 
   <p><em>Main Model Results</em>:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -911,7 +926,7 @@ light_model.fullAnnotate("sepsis")
 
   <p><em>Re-Trained Model Results</em>:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -938,6 +953,9 @@ light_model.fullAnnotate("sepsis")
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-clinical-ner-models">New Clinical NER Models</h4>
 
   <ul>
@@ -950,7 +968,7 @@ light_model.fullAnnotate("sepsis")
 
   <p><em>ner_jsl vs ner_jsl_slim</em>:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>chunks</th>
@@ -1164,6 +1182,9 @@ results <span class="o">=</span> model.transform<span class="o">(</span>spark.cr
 | 39 | bowel                                          | Internal_organ_or_component  |
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-cms-hcc-risk-adjustment-score-calculation-module">New CMS-HCC risk-adjustment score calculation module</h4>
 
   <p>We are releasing a new module to calculate medical risk adjusment score by using the Centers for Medicare &amp; Medicaid Service (CMS) risk adjustment model. The main input to this model are ICD codes of the diseases. After getting ICD codes of diseases by Spark NLP Healthcare ICD resolvers, risk score can be calculated by this module in spark environment.
@@ -1267,6 +1288,9 @@ RECORD 0------------------------------------------------------------------------
 </code></pre></div>  </div>
 
   <p>Here is a sample notebook : <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculating Medicare Risk Adjustment Score</a></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-embedding-generation-module-for-entity-resolution">New Embedding generation module for entity resolution</h4>
 
@@ -1639,6 +1663,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1816,8 +1842,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

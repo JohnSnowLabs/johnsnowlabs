@@ -628,6 +628,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>In this release, we introduce the following features:</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="sentence-biobert-and-bluebert-transformers-that-are-fine-tuned-on-mednli-dataset">1. Sentence BioBert and Bluebert Transformers that are fine tuned on <a href="https://physionet.org/content/mednli/">MedNLI</a> dataset.</h4>
 
   <p>Sentence Transformers offers a framework that provides an easy method to compute dense vector representations for sentences and paragraphs (also known as sentence embeddings). The models are based on BioBert and BlueBert, and are tuned specifically to meaningful sentence embeddings such that sentences with similar meanings are close in vector space. These are the first PyTorch based models we managed to port into Spark NLP.</p>
@@ -643,6 +646,9 @@ function wrapWordInSpan(data, wordToWrap) {
      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="sentenceentityresolvers-powered-by-s-bert-embeddings">2. SentenceEntityResolvers powered by s-Bert embeddings.</h4>
 
@@ -679,7 +685,7 @@ sbiobertresolve_cpt</p>
 
   <p>Output:</p>
 
-  <table>
+  <table class="table-model-big">
     <tbody>
       <tr>
         <td> </td>
@@ -717,6 +723,9 @@ sbiobertresolve_cpt</p>
   </table>
 
   <p>See the <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb#scrollTo=VtDWAlnDList">notebook</a> for details.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="we-are-releasing-the-following-pretrained-clinical-ner-models">3. We are releasing the following pretrained clinical NER models:</h4>
 
@@ -1062,6 +1071,8 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
+        center: true,
+        loop: true,
         dots:false,
         responsive:{
             0:{
@@ -1239,8 +1250,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       
