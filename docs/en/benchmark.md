@@ -707,11 +707,11 @@ Estimated Minimum Costs:
 
 - Top-3 Results:
 
-![top_3](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/550d89b5-1c4c-4d40-a5ea-1f9ec86387da)
+![top_3](/assets/images/345525698-550d89b5-1c4c-4d40-a5ea-1f9ec86387da.png)
 
 - Top-5 Results:
 
-![top_5](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7)
+![top_5](/assets/images/345525777-44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7.png)
 
 **Price Analysis Of The Tools**
 
