@@ -37,7 +37,7 @@ It should be run on sentences of the NDA clauses, and will retrieve a series of 
 
 ## Predicted Entities
 
-
+`APPLIC_LAW`, `ASSIGNMENT`, `DEF_OF_CONF_INFO`, `DISPUTE_RESOL`, `EXCEPTIONS`, `NAMES_OF_PARTIES`, `NON_COMP`, `NON_SOLIC`, `PREAMBLE`, `REMEDIES`, `REQ_DISCL`, `RETURN_OF_CONF_INFO`, `TERMINATION`, `USE_OF_CONF_INFO`, `OTHER`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
