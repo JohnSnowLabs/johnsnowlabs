@@ -376,6 +376,13 @@ Jekyll::Hooks.register :posts, :post_render do |post|
     uniq_key: key,
     origin: post.data["origin"],
   }
+  unless post.data["deploy"].nil?
+    model[:marketplace] = {
+      databricks: post.data["deploy"]["databricks_link"],
+      sagemaker: post.data["deploy"]["sagemaker_link"],
+      snowflake: post.data["deploy"]["snowflake_link"]
+    }
+  end
 
   uniq = "#{post.data['name']}_#{post.data['language']}"
   uniq_to_models_mapping[uniq] = [] unless uniq_to_models_mapping.has_key? uniq
@@ -511,6 +518,13 @@ unless ENV['ELASTICSEARCH_URL'].to_s.empty?
             },
             "origin": {
               "type": "keyword"
+            },
+            "marketplace": {
+              "properties": {
+                "databricks": "keyword",
+                "snowflake": "keyword",
+                "sagemaker": "keyword"
+              }
             }
         }
       }
