@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Spark NLP for Healthcare Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2024-03-18
+modify_date: 2024-05-21
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,34 +13,40 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.3.2
+## 5.3.3
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with a brand new Few-Shot Assertion Classifier Model, a few new annotators, the first BioLord based entity resolver, Pipeline Output Parser module, 4 new clinical pretrained models, and pipelines**. 
+We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with a brand new PipelineTracer module to return structured jsons from pretrained pipelines, brand new hyperparameters to customize relation extraction models and Deidentification process, and 22 new clinical pretrained models and pipelines**. 
 
-+ Introducing new Few-Shot Assertion Classifier Model for higher accuracy with less data
-+ Introducing a new lightweight deidentification annotator `LightDeidentification` that avoids token input, verbose regex patterns, and unnecessary parameters.
-+ BioLord based sentence entity resolver model for RxNorm terminologies
-+ Explore the new annotator `MultiChunkToDoc` that merges chunks into documents to concat named entities into one piece.
-+ Improved version of Social Determinants of Health (SDoH) named entity recognition model.
-+ New Profiling Pipeline for De-identification to run multiple deidentification models at once in a single line.
-+ `directionSensitive` and `filterByTokenDistance` parameters added to the `RelationExtraction` annotator to allow further customization and reduce FPs.
-+ Efficiency analysis and cost evaluation of deidentification pipelines on cloud platforms.
-+ Output parser to prettify Pretrained Pipeline outputs into structured JSONs/dictionaries.
++ Introducing 7 new Sentence Entity Resolver Models for entity mapping to medical terminologies, using SOTA `BioLord` sentence embeddings
++ Clinical document analysis with one-liner pretrained pipelines for specific clinical tasks and concepts
++ Introducing 2 new Chunk Mapper models designed for medical code mapping between `SNOMED` and `MedDRA` terminologies
++ Improved version of Social Determinants of Health (SDoH) named entity recognition model with reduced set of core entities
++ Automating pipeline tracing and analysis with `PipelineTracer`  to help return structured jsons from pretrained pipelines via the `OuputParser` module
++ Configuring age-based obfuscation with the `setAgeGroups` parameter
++ Enhancing date obfuscation control with the `setKeepYear` parameter in the `Deidentification` annotator to allow `year` info intact
++ Broadening relation extraction with extended scope windows, `directionSensitive` and `filterByTokenDistance` parameters to allow further customization and reduce FPs
++ Enhancing rule-based annotators with the `ner_source` field for improved chunk tracking and prioritization
++ Introduction of a new parameter `dataSetInfo` to store dataset details for `AssertionDL` and `GenericClassifier` for traceability
++ Converting visual NER annotations to CoNLL format for training text-based NER models with visual annotations
++ Performance analysis of deidentification pipelines on clinical texts in a cluster environment
++ New blogposts on relation extraction, MedDRA response to treatment, and pretrained pipelines.
 + Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
-    - Fixed issue with `WindowedSentenceModel` not being imported correctly from the `sparknlp_jsl.annotator` module
-    - Addressed inconsistent obfuscation behavior in the deidentification annotator on DataProc, where different fake names were produced despite using the same seed value across runs
-    - Solved compatibility issue between MPNetEmbeddings and SentenceEntityResolverModel in Spark NLP for Healthcare, where the resolver fails due to missing token metadata from MPNetEmbeddings.
+    - Added training params to trainable annotators within the metadata of the trained models
+    - Updated Risk Adjustment module with V28Y24
+    - Resolved index issue in `AssertionChunkConverter` annotator and `AnnotationLab.get_assertion_data` modules
+    - Resolved saving issue in `Flattener` annotator
 + Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
-    - New [MEDDRA Resolver Demo](https://demo.johnsnowlabs.com/healthcare/ER_MEDDRA/)
-    - New [Oncological Response to Treatment - Text Classification Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT/)
-    - Updated [TEXT2SQL Demo](https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/)
-    - Updated [Mapper Demo](https://demo.johnsnowlabs.com/healthcare/ER_CODE_MAPPING/)
-    - New [Few-Shot Assertion Classifier Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb)
-    - New [LightDeidentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.6.Light_Deidentification.ipynb)
-    - New [MedDRA Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.3.MedDRA_Models.ipynb)
-    - [Clinical Relation Extraction Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb)
+    - New [PipelineTracer and PipelineOutputParser Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.4.PipelineTracer_and_PipelineOutputParser.ipynb)
+    - Updated [Task Based Clinical Pretrained Pipelines Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb)
+    - Updated [Pretrained Clinical Pipelines Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb)
+    - Updated [ADE Demo](https://demo.johnsnowlabs.com/healthcare/ADE/)
+    - Updated [NER_POSOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/NER_POSOLOGY/)
+    - Updated [NER_RADIOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/NER_RADIOLOGY/)
+    - Updated [VOP Demo](https://demo.johnsnowlabs.com/healthcare/VOP/)
+    - Updated [SDOH Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/)
+    - Updated [ONCOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/)
 + The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
 These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
@@ -48,216 +54,145 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 </div><div class="h3-box" markdown="1">
 
 
-#### Introducing new Few-Shot Assertion Classifier Model for Higher Accuracy with Less Data
+####  Introducing 7 New Sentence Entity Resolver Models for Entity Mapping to Medical Terminologies, Using SOTA `BioLord` Sentence Embeddings
 
-The Few-Shot Assertion Classifier Model is an advanced annotator designed to get higher accuracy with fewer data samples inspired by the SetFit framework. Few-Shot Assertion models consist of a sentence embedding component paired with a classifier (or head). While current support is focused on MPNet-based Few-Shot Assertion models, future updates will extend compatibility to include other popular models like Bert, DistillBert, and Roberta.
+The latest lineup of 7 cutting-edge resolver models are designed to enhance clinical entity mapping and coding accuracy. These models leverage advanced natural language processing to seamlessly map medical entities and concepts to standardized codes, facilitating streamlined data analysis and healthcare decision-making. Each model specializes in precise code assignment within specific medical domains, from drug ingredients to veterinary-related entities. Dive into our resolver models and empower your applications with state-of-the-art clinical entity resolution.
 
-This classifier model supports various classifier types, including sklearn's LogisticRegression and custom PyTorch models, providing flexibility for different model setups. Users are required to specify the classifier type during model export to SparkNLP.
-
-**As you can see from the following chart, the few-shot assertion classifier can reach comparable performance metrics using only 50% of the training dataset.**
-
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/e1c2feb1-9b0e-4ab7-bdd1-eeafea298381)
-
-
-*Example*:
-
-```python
-
-few_shot_assertion_classifier = FewShotAssertionClassifierModel().pretrained("assertion_fewshotclassifier", "en", "clinical/models")\
-    .setInputCols(["sentence", "ner_chunk"])\
-    .setOutputCol("assertion_fewshot")
-
-texts = [
-    ["Includes hypertension and chronic obstructive pulmonary disease."],
-    ["Her former vascular no arteriovenous malformations are identified; there is no evidence of recurrence of her former vascular malformation."],
-    ["He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast."],
-    ["Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas."],
-    ["Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration."]
-]
-```
-
-*Result*:
-
-|chunk                                |begin|end|entity                   |assertion|confidence|
-|-------------------------------------|-----|---|-------------------------|---------|----------|
-|hypertension                         |9    |20 |Hypertension             |present  |1.0       |
-|chronic obstructive pulmonary disease|26   |62 |Disease_Syndrome_Disorder|present  |1.0       |
-|arteriovenous malformations          |23   |49 |Disease_Syndrome_Disorder|absent   |1.0       |
-|vascular malformation                |116  |136|Disease_Syndrome_Disorder|absent   |0.99      |
-|distress                             |39   |46 |Symptom                  |absent   |1.0       |
-|jugular venous pressure distention   |23   |56 |Symptom                  |absent   |1.0       |
-|adenopathy                           |71   |80 |Symptom                  |absent   |1.0       |
-|tender                               |13   |18 |Symptom                  |absent   |0.99      |
-|fullness                             |39   |46 |Symptom                  |present  |0.68      |
-
-
-Please check the [assertion_fewshotclassifier](https://nlp.johnsnowlabs.com/2024/04/15/assertion_fewshotclassifier_en.html) model and [Few-Shot Assertion Classifier Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb) for more information
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Introducing a new Lightweight Deidentification Annotator `LightDeidentification` that Avoids Token Input, Verbose Regex Patterns, and Unnecessary Parameters
-
-Light DeIdentification is a light version of DeIdentification. It replaces sensitive information in a text with obfuscated or masked fakers. It is designed to work with healthcare data, and it can be used to de-identify patient names, dates, and other sensitive information. It can also be used to obfuscate or mask any other type of sensitive information, such as doctor names, hospital names, and other types of sensitive information.
-
-Additionally, it supports millions of embedded fakers and If desired, custom external fakers can be set with the `setCustomFakers` function. It also supports multiple languages such as English, Spanish, French, German, and Arabic. It supports multi-mode de-identification with the `setSelectiveObfuscationModes` function at the same time.
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`sbiobertresolve_umls_general_concepts`](https://nlp.johnsnowlabs.com/2024/05/06/biolordresolve_umls_general_concepts_en.html) | This model maps clinical entities and concepts to the following 4 UMLS CUI code categories |
+| [`biolordresolve_umls_general_concepts`](https://nlp.johnsnowlabs.com/2024/05/06/biolordresolve_umls_general_concepts_en.html) | This model maps clinical entities and concepts to the following 4 UMLS CUI code categories |
+| [`biolordresolve_icd10cm_augmented_billable_hcc`](https://nlp.johnsnowlabs.com/2024/05/06/biolordresolve_icd10cm_augmented_billable_hcc_en.html) | This model maps extracted medical entities to ICD-10-CM codes |
+| [`biolordresolve_avg_rxnorm_augmented`](https://nlp.johnsnowlabs.com/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html) | This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes |
+| [`biolordresolve_snomed_findings_aux_concepts`](https://nlp.johnsnowlabs.com/2024/05/07/biolordresolve_snomed_findings_aux_concepts_en.html) | This model maps clinical entities and concepts to SNOMED codes |
+| [`biolordresolve_cpt_procedures_measurements_augmented`](https://nlp.johnsnowlabs.com/2024/05/08/biolordresolve_cpt_procedures_measurements_augmented_en.html) | This model maps medical entities to CPT codes |
+| [`sbiobertresolve_snomed_veterinary_wip`](https://nlp.johnsnowlabs.com/2024/05/06/sbiobertresolve_snomed_veterinary_wip_en.html) | TThis model maps veterinary-related entities and concepts to SNOMED codes |
 
 
 *Example*:
 
 ```python
-light_deidentification = LightDeIdentification() \
-    .setInputCols(["ner_chunk", "sentence"]) \
-    .setOutputCol("obfuscated") \
-    .setMode("obfuscate") \
-    .setObfuscateDate(True) \
-    .setDateFormats(["MM/dd/yyyy"]) \
-    .setDays(5) \
-    .setObfuscateRefSource('custom') \
-    .setAgeRanges([1, 4, 12, 20, 40, 60, 80])\
-    .setCustomFakers({"Doctor": ["John", "Mark"],
-                      "Patient": ["John", "Mark"],
-                      "Hospital": ["Medical Center"],
-                      "Street" : ["Main Road"],
-                      "MEDICALRECORD": ["XYZ", "ABC"],
-                      }) \
-    .setLanguage("en") \
-    .setSeed(10) \
-    .setDateEntities(["DATE"]) \
-
-light_deidentification2 = LightDeIdentification() \
-    .setInputCols(["ner_chunk", "sentence"]) \
-    .setOutputCol("masked") \
-    .setMode("mask") \
-    .setMaskingPolicy("masked") \
-    .setObfuscateDate(True) \
-    .setDateFormats(["yyyy"]) \
-    .setUnnormalizedDateMode("skip") \
-    .setAgeRanges([1, 4, 12, 20, 40, 60, 80])\
-    .setSelectiveObfuscationModes({"OBFUSCATE": ["DATE", "STREET", "DOCTOR", "Patient"],
-                                    "mask_same_length_chars": ["MEDICALRECORD"],
-                                    "mask_entity_labels": ["HOSPITAL"],
-                                    }) \
-
-text ='''
-Record date : 2093-01-13 ,M.D David Hale.
-Name: Hendrickson, Ora MR # 7194334 Date: 01/13/93.
-Patient: Oliveira, 25 years-old.
-Cocke County Baptist Hospital, 0295 Keats Street
-'''
-```
-
-*Result*:
-
-|Original Sentence                                  |Deidentified	                          |Masked                                         |
-|---------------------------------------------------|-----------------------------------------|-----------------------------------------------|
-|Record date : 2093-01-13 ,M.D David Hale.          |Record date : 28-01-1979 ,M.D John.      |Record date : 2093-01-13 ,M.D \<DOCTOR>.     |
-|Name: Hendrickson, Ora MR # 7194334 Date: 01/13/93.|Name: Mark MR # 1610960 Date: 19-08-1941.|Name: \<PATIENT> MR # [*****] Date: 01/13/93.|
-|Patient: Oliveira, 25 years-old.                   |Patient: Mark, <AGE> years-old.          |Patient: \<PATIENT>, \<AGE> years-old.        |
-|Cocke County Baptist Hospital, 0295 Keats Street   |Medical Center, Main Road                |<HOSPITAL>, 9500 Euclid Avenue              |
-
-Please check [LightDeidentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.6.Light_Deidentification.ipynb) for more details.
-
-
-</div><div class="h3-box" markdown="1">
-
-#### BioLord based Sentence Entity Resolver Model for RxNorm Terminologies
-
-This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using [BioLord sentence embeddings](https://arxiv.org/abs/2311.16075)  (`mpnet_embeddings_biolord_2023_c`). It is trained on the augmented version of the dataset used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column. Predicted Entities: `RxNorm Codes` and `Concept Classes`
-
-*Example*:
-
-```python
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\
-    .setInputCols(["embeddings"]) \
-    .setOutputCol("rxnorm_code")\
+icd10cm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_icd10cm_augmented_billable_hcc", "en", "clinical/models") \
+    .setInputCols(["sentence_embeddings"])\
+    .setOutputCol("icd10_code")\
     .setDistanceFunction("EUCLIDEAN")
 
-
-text= "The patient was prescribed Albuterol inhaler, two puffs every 4 hours as needed for asthma. She was seen by the endocrinology service and was discharged on avandia 4 mg at night , Coumadin 5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily"
+text = "John Doe, a 49-year-old male with CMT2P, AIDS-causing virus infection, and PKD2, presents for a follow-up visit to manage his chronic conditions."
 ```
+
 *Result*:
 
-|ner_chunk|rxnorm_sbert code|rxnorm_sbert resolution|rxnorm_sbert code|rxnorm_sbert resolution|
+{:.table-model-big}
+|chunk|sbiobert icd10cm code|sbiobert icd10cm resolution|biolord icd10cm code|biolord icd10cm resolution|
 |-|-|-|-|-|
-|aspirin 10 meq/ 5 ml oral sol|979446|alupent 10 mg per 5 ml oral solution [metaproterenol sulfate 2 mg/ml oral solution [alupent]]|685589|aspirin 1.5 mg/ml oral solution [aspirin 1.5 mg/ml oral solution]|
-|coumadin 50 mg oral tablet|212233|zoloft 25 mg oral tablet [sertraline 25 mg oral tablet [zoloft]]|855314|warfarin sodium 2.5 mg oral tablet [coumadin]|
-|Fluorometholone 5 mg/ 2 ml|328715|fluorometholone 2.5 mg/ml [fluorometholone 2.5 mg/ml]|328715|fluorometholone 2.5 mg/ml [fluorometholone 2.5 mg/ml]|
-|metformin 1000 mg|316255|metformin 1000 mg [metformin 1000 mg]|316255|metformin 1000 mg [metformin 1000 mg]|
-
-Please check the [model card](https://nlp.johnsnowlabs.com/2024/04/18/biolordresolve_rxnorm_augmented_en.html)
+|CMT2P|G12.1|sma2 [other inherited spinal muscular atrophy]|G60.0|cmt2p - charcot-marie-tooth disease type 2p [hereditary motor and sensory neuropathy]|
+|AIDS-causing virus infection|B34.9|disease caused by virus [viral infection, unspecified]|B20|hiv - human immunodeficiency virus infection [human immunodeficiency virus [hiv] disease]|
+|PKD2|C77.9|pn2 category [secondary and unspecified malignant neoplasm of lymph node, unspecified]|Q61.2|pkd2 - polycystic kidney disease 2 [polycystic kidney, adult type]|
 
 
 
 </div><div class="h3-box" markdown="1">
 
+####  Clinical Document Analysis with One-Liner Pretrained Pipelines for Specific Clinical Tasks and Concepts
 
-#### Explore the New annotator `MultiChunkToDoc` That Merges Chunks into Documents to Concat Named Entities into one Piece
- 
-Introducing the capabilities of the new annotator, which combines chunks into a document output type, sets separators via setSeparator(","), filters entities label, and structures annotations with details such as start and end points, results, and metadata; the workflow integrates steps from NER to Resolver through a series of transformations including Chunks, MultiChunksToDoc, and Embeddings.
+We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.
+
+What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
+
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`explain_clinical_doc_sdoh`](https://nlp.johnsnowlabs.com/2024/05/01/explain_clinical_doc_sdoh_en.html) | This pipeline is designed to extract all clinical/medical entities, assertion status, and relation informations which may be considered as Social Determinants of Health (SDOH) entities from text. |
+| [`explain_clinical_doc_mental_health`](https://nlp.johnsnowlabs.com/2024/05/06/explain_clinical_doc_mental_health_en.html) | This pipeline is designed to extract all mental health-related entities, assertion status, and relation information from text. |
+| [`ner_medication_generic_pipeline`](https://nlp.johnsnowlabs.com/2024/04/25/ner_medication_generic_pipeline_en.html) | This pre-trained pipeline is designed to identify generic `DRUG` entities in clinical texts. It was built on top of the `ner_posology_greedy`, `ner_jsl_greedy`, `ner_drugs_large`, and `drug_matcher` models to detect the entities `DRUG`, `DOSAGE`, `ROUTE`, and `STRENGTH` chunking them into a larger entity as `DRUG` when they appear together. |
+| [`ner_deid_generic_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`,  `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `EMAIL`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
+| [`ner_deid_subentity_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION-OTHE`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `EMAIL`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
+| [`ner_deid_context_augmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `EMAIL`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities. |
 
 
 *Example*:
 
 ```python
-clinical_ner = MedicalNerModel.pretrained("ner_clinical_large", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner_clinical")
+from sparknlp.pretrained import PretrainedPipeline
 
-multi_chunk2doc = MultiChunk2Doc() \
-    .setInputCols(["ner_chunk"]) \
-    .setOutputCol("multi_chunk_doc") \
-    .setCaseSensitive(False) \
-    .setPrefix("< ") \
-    .setSeparator(", ") \
-    .setSuffix(" >")\
-    .setWhiteList(["Problem"])
+pipeline_sdoh = PretrainedPipeline("explain_clinical_doc_sdoh", "en", "clinical/models")
 
-text = """She was on metformin, glipizide, and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG. She had been on dapagliflozin for six months at the time of presentation.
-Physical examination on presentation was significant for dry oral mucosa; significantly, her abdominal examination was benign with no tenderness, guarding, or rigidity."""
+text = """The patient reported experiencing symptoms of anxiety and depression, which have been affecting his quality of life. 
+He reported a history of childhood trauma related to violence and abuse in his household, which has contributed to his smoking, alcohol use and current mental health struggles."""
 
 ```
 
-*Ner Chunk Result*:
+*NER and Assertion Result*:
 
-|                ner_chunk|begin|end|ner_label|
-|-------------------------|-----|---|---------|
-|                metformin|   11| 19|TREATMENT|
-|                glipizide|   22| 30|TREATMENT|
-|            dapagliflozin|   37| 49|TREATMENT|
-|                     T2DM|   55| 58|  PROBLEM|
-|             atorvastatin|   64| 75|TREATMENT|
-|              gemfibrozil|   81| 91|TREATMENT|
-|                      HTG|   97| 99|  PROBLEM|
-|            dapagliflozin|  118|130|TREATMENT|
-|     Physical examination|  176|195|     TEST|
-|          dry oral mucosa|  233|247|  PROBLEM|
-|her abdominal examination|  266|290|     TEST|
-|               tenderness|  311|320|  PROBLEM|
-|                 guarding|  323|330|  PROBLEM|
-|                 rigidity|  336|343|  PROBLEM|
+{:.table-model-big}
+| chunks          |begin |end | entities         | assertion|
+|:----------------|-----:|---:|:-----------------|:---------|
+| anxiety         |   46 | 52 | Mental_Health    | Present  |
+| depression      |   58 | 67 | Mental_Health    | Present  |
+| childhood trauma|  143 |158 | Childhood_Event  | Past     |
+| violence        |  171 |178 | Violence_Or_Abuse| Past     |
+| abuse           |  184 |188 | Violence_Or_Abuse| Past     |
+| smoking         |  237 |243 | Smoking          | Present  |
+| alcohol         |  246 |252 | Alcohol          | Present  |
 
 
-*Multi Chunk Result*:
+*Relation Extraction Result*:
 
-|multi_chunk_doc      |
-|----------------------|
-|[{document, 0, 81, < T2DM, HTG, dry oral mucosa, tenderness, guarding, rigidity > {document -> 0, chunk_count -> 6}, []}]|
+{:.table-model-big}
+| relation type                     | entity1           | chunk1           | entity2           | chunk2          | confidence|
+|:----------------------------------|:------------------|:-----------------|:------------------|:----------------|:----------|
+| Mental_Health-Quality_Of_Life     | Mental_Health     | anxiety          | Quality_Of_Life   | quality of life |      0.98 |
+| Mental_Health-Quality_Of_Life     | Mental_Health     | depression       | Quality_Of_Life   | quality of life |      0.95 |
+| Childhood_Event-Violence_Or_Abuse | Childhood_Event   | childhood trauma | Violence_Or_Abuse | violence        |      0.96 |
+| Childhood_Event-Violence_Or_Abuse | Childhood_Event   | childhood trauma | Violence_Or_Abuse | abuse           |      0.97 |
+| Childhood_Event-Alcohol           | Childhood_Event   | childhood trauma | Alcohol           | alcohol         |      1.00 |
+| Violence_Or_Abuse-Alcohol         | Violence_Or_Abuse | violence         | Alcohol           | alcohol         |      0.99 |
+| Violence_Or_Abuse-Alcohol         | Violence_Or_Abuse | abuse            | Alcohol           | alcohol         |      0.93 |
 
-In the above result, you will see that only the problem entities are combined into a single document.
 
+Please check the [Task Based Clinical Pretrained Pipelines](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb) model for more information
 
-Please check the [MultiChunk2Doc](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#multichunk2doc) for more information
+</div><div class="h3-box" markdown="1">
+    
+#### Introducing 2 new Chunk Mapper models designed for medical code mapping between `SNOMED` and `MedDRA` terminologies.
 
+Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between MedDRA and SNOMED codes, offering a comprehensive solution for interoperability within medical systems.
+
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+|[`meddra_llt_snomed_mapper`](https://nlp.johnsnowlabs.com/2024/05/14/meddra_llt_snomed_mapper_en.html)  | This pretrained model maps MedDRA LLT (Lowest Level Term) codes to corresponding SNOMED codes. |
+|[`snomed_meddra_llt_mapper`](https://nlp.johnsnowlabs.com/2024/05/14/snomed_meddra_llt_mapper_en.html)  | This pretrained model maps SNOMED codes to corresponding MedDRA LLT (Lowest Level Term) codes. |
+
+*Example*:
+
+```python
+chunkMapper = ChunkMapperModel.load('meddra_llt_snomed_mapper')\
+    .setInputCols(["meddra_llt_code2chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["snomed_code"])
+
+text = ["Chronic renal insufficiency", "Gastritis", "Transient ischemic attack"]
+```
+
+*Result*:
+
+{:.table-model-big}
+|                      chunk|meddra_code|                                     snomed_code|
+|---------------------------|-----------|------------------------------------------------|
+|Chronic renal insufficiency|   10050441|723190009:Chronic renal insufficiency (disorder)|
+|                  Gastritis|   10017853|                    4556007:Gastritis (disorder)|
+|  Transient ischemic attack|   10072760|  266257000:Transient ischemic attack (disorder)|
 
 
 </div><div class="h3-box" markdown="1">
 
 
-####  Improved from Version of Social Determinants of Health (SDoH) Named Entity Recognition Model
+####  Improved Version of Social Determinants of Health (SDoH) Named Entity Recognition Model with Reduced Set of Core Entities
+
 
 We are introducing our new Social Determinants of Health (SDoH) Named Entity Recognition model that has been specifically designed to identify and extract entities related to various social determinants of health. This new model is an improvement over our previous version, aimed at better understanding and tracking the impacts of social factors on health.
-
 
 *Example*:
 
@@ -271,6 +206,7 @@ sample_texts = [["""Smith is 55 years old, living in New York, a divorced Mexcia
 
 *Result*:
 
+{:.table-model-big}
 |chunk                  |begin|end|label              |
 |-----------------------|-----|---|-------------------|
 |New York               |33   |40 |Geographic_Entity  |
@@ -292,339 +228,627 @@ sample_texts = [["""Smith is 55 years old, living in New York, a divorced Mexcia
 |a day                  |777  |781|Substance_Frequency|
 |DUI                    |792  |794|Legal_Issues       |
 
-Please check the [model card](https://nlp.johnsnowlabs.com/2024/04/08/ner_sdoh_core_en.html)
+Please check the [model card](https://nlp.johnsnowlabs.com/2024/04/08/ner_sdoh_core_en.html) and [SDOH Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/)
 
 
+####  Automating Pipeline Tracing and Analysis with `PipelineTracer` to Help Return Structured JSONs from Pretrained Pipelines Via the `PipelineOuputParser` module
+
+`PipelineTracer` is a versatile class designed to trace and analyze the stages of a pipeline, offering in-depth insights into entities, assertions, deidentification, classification, and relationships. It also facilitates the creation of parser dictionaries for building a `PipelineOutputParser`. Key functions include printing the pipeline schema, creating parser dictionaries, and retrieving possible assertions, relations, and entities. Also, provide direct access to parser dictionaries and available pipeline schemas
+
+Please check the [PipelineTracer and PipelineOutputParser](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.4.PipelineTracer_and_PipelineOutputParser.ipynb) notebook for more information
+
+
+*PipelineTracer Example*:
+
+```python
+from sparknlp.pretrained import PretrainedPipeline
+from sparknlp_jsl.pipeline_tracer import PipelineTracer
+
+oncology_pipeline = PretrainedPipeline("explain_clinical_doc_oncology", "en", "clinical/models")
+
+pipeline_tracer = PipelineTracer(oncology_pipeline)
+
+column_maps = pipeline_tracer.createParserDictionary()
+column_maps.update({"document_identifier": "explain_clinical_doc_oncology"})
+print(column_maps)
+```
+
+*column_maps Result*:
+
+```python
+{
+    'document_identifier': 'explain_clinical_doc_oncology',
+    'document_text': 'document',
+    'entities': [
+        {
+            'ner_chunk_column_name': 'merged_chunk',
+            'assertion_column_name': '',
+            'resolver_column_name': ''
+        },
+        {
+            'ner_chunk_column_name': 'merged_chunk_for_assertion',
+            'assertion_column_name': 'assertion',
+            'resolver_column_name': ''
+        }
+    ],
+    'relations': ['all_relations'],
+    'summaries': [],
+    'deidentifications': [],
+    'classifications': []
+ }
+```
+
+*PipelineOutputParser Example*:
+
+```python
+text = """The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response"""
+
+results = oncology_pipeline.fullAnnotate()
+
+from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
+
+pipeline_parser = PipelineOutputParser(column_maps)
+result = pipeline_parser.run(results)
+```
+
+*PipelineOutputParser Result*:
+
+```python
+{
+    'result': [
+        {
+            'document_identifier': 'explain_clinical_doc_oncology',
+            'document_text': ['The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, ....'],
+            'entities': [
+                [{'chunk_id': '0',
+                'begin': 24,
+                'end': 42,
+                'chunk': 'computed tomography',
+                'label': 'Imaging_Test',
+                'assertion': None,
+                'term_code': None},
+                {'chunk_id': '1',
+                'begin': 45,
+                'end': 46,
+                'chunk': 'CT',
+                'label': 'Imaging_Test',
+                'assertion': None,
+                'term_code': None},
+                ...
+                ],
+                [{'chunk_id': '0',
+                'begin': 24,
+                'end': 42,
+                'chunk': 'computed tomography',
+                'label': 'Imaging_Test',
+                'assertion': 'Past',
+                'term_code': None},
+                {'chunk_id': '1',
+                'begin': 45,
+                'end': 46,
+                'chunk': 'CT',
+                'label': 'Imaging_Test',
+                'assertion': 'Past',
+                'term_code': None}]
+            ],
+            'relations': [
+                [{'relation': 'is_location_of',
+                'entity1': 'Site_Other_Body_Part',
+                'entity1_begin': '104',
+                'entity1_end': '110',
+                'chunk1': 'ovarian',
+                'entity2': 'Tumor_Finding',
+                'entity2_begin': '112',
+                'entity2_end': '115',
+                'chunk2': 'mass',
+                'confidence': '0.922661'},
+                {'relation': 'is_finding_of',
+                'entity1': 'Pathology_Test',
+                'entity1_begin': '120',
+                'entity1_end': '128',
+                'chunk1': 'Pap smear',
+                'entity2': 'Cancer_Dx',
+                'entity2_begin': '213',
+                'entity2_end': '226',
+                'chunk2': 'adenocarcinoma',
+                'confidence': '0.52542114'},
+                ...]
+            ],
+            'summaries': [],
+            'deidentifications': [],
+            'classifications': []
+        }
+    ]
+}
+```
+
+*getParserDictDirectly Example*:
+
+```python
+from sparknlp_jsl.pipeline_tracer import PipelineTracer
+
+columns_directly = PipelineTracer.getParserDictDirectly("clinical_deidentification", "en", "clinical/models")
+
+print(columns_directly)
+```
+
+*getParserDictDirectly Result*:
+
+```python
+{
+    'document_identifier': 'clinical_deidentification',
+    'document_text': 'sentence',
+    'entities': [{
+        'ner_chunk_column_name': 'ner_chunk',
+        'assertion_column_name': '',
+        'resolver_column_name': ''}],
+    'relations': [],
+    'summaries': [],
+    'deidentifications': [{
+        'original': 'sentence',
+        'obfuscated': 'obfuscated',
+        'masked': ''}],
+    'classifications': []}
+
+```
 
 </div><div class="h3-box" markdown="1">
 
-#### New Profiling Pipeline for De-identification to Run Multiple Deidentification Models at Once in a Single Line
+####  Configuring Age-based Obfuscation with the `setAgeGroups` Parameter
 
-We are excited to introduce our new profiling pipeline that focuses on De-identification domains. We can use pretrained NER profiling pipelines to explore all the available pretrained NER models simultaneously. This profiling pipeline offers powerful tools for extracting meaningful information from medical text data in the respective domains. It assists in uncovering patterns, trends, and insights that are crucial for research, analysis, and decision-making in healthcare and related fields. Here’s a brief overview of the pipeline and the included NER model:
+This method, setAgeGroups, is used in conjunction with the `obfuscateByAgeGroups` parameter to specify age ranges for obfuscation. If the specified `ageGroups` dictionary does not cover all ages, the obfuscation defaults to the `ageRanges` parameter. Each entry in the dictionary includes an age group name paired with a range of two integers: the lower and upper bounds of the age group. By default, the method includes a standard dictionary of age groups in English, but users can customize this dictionary to suit specific age classifications and obfuscation requirements. This method takes a value parameter containing a dictionary mapping age group names to corresponding age ranges for obfuscation.
 
-**Pipeline Name**      |  **included NER Models**
------------------------|--------------------
-[ner_profiling_deidentification](https://nlp.johnsnowlabs.com/2024/03/28/ner_profiling_deidentification_en.html) |  `ner_deid_augmented`, `ner_deid_enriched`, `ner_deid_generic_augmented`, `ner_deid_name_multilingual_clinical`, `ner_deid_sd`, `ner_deid_subentity_augmented`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_synthetic`, `ner_jsl`, `ner_jsl_enriched`
 
 *Example*:
 
 ```python
-from sparknlp.pretrained import PretrainedPipeline
+obfuscation = DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_subentity_chunk"]) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscateByAgeGroups(True)\
+    .setAgeGroups({"baby": [0, 1],
+                   "toddler": [1, 4],
+                   "child": [4, 13],
+                   "teenager": [13, 20],
+                   "adult": [20, 65],
+                   "senior": [65, 100] })
 
-ner_profiling_pipeline = PretrainedPipeline("ner_profiling_deidentification", 'en', 'clinical/models')
-
-result = ner_profiling_pipeline.annotate("""Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 .""")
+text ='''
+Name: Joseph Brown, Age: 17, Phone: (9) 7765-5632.
+This 17 yrs old male, presented with chest heaviness that started during a pick-up basketball game. 
+Mark Smith, aged 55, and his daughter (7) Mary were involved in an accident during their travel.
+'''
 ```
 
 *Result*:
 
-```bash
-******************** ner_deid_name_multilingual_clinical Model Results ******************** 
-
-('David Hale', 'NAME') ('Hendrickson Ora', 'NAME') ('Oliveira', 'NAME')
-
-******************** ner_deid_subentity_augmented_i2b2 Model Results ******************** 
-
-('2093-01-13', 'DATE') ('David Hale', 'DOCTOR') ('Hendrickson Ora', 'PATIENT') ('7194334', 'MEDICALRECORD') ('01/13/93', 'DATE') ('Oliveira', 'PATIENT') ('25', 'AGE') ('2079-11-09', 'DATE') ('Cocke County Baptist Hospital', 'HOSPITAL') ('0295 Keats Street', 'STREET') ('55-555-5555', 'PHONE')
-
-******************** ner_deid_large Model Results ******************** 
-
-('2093-01-13', 'DATE') ('David Hale', 'NAME') ('Hendrickson Ora', 'NAME') ('7194334', 'ID') ('01/13/93', 'DATE') ('Oliveira', 'NAME') ('25', 'AGE') ('2079-11-09', 'DATE') ('Cocke County Baptist Hospital', 'LOCATION') ('0295 Keats Street', 'LOCATION') ('55-555-5555', 'CONTACT')
-
-******************** ner_jsl_enriched Model Results ******************** 
-
-('01/13/93', 'Date') ('25 years-old', 'Age') ('2079-11-09', 'Date')
-
-******************** ner_deid_sd_large Model Results ******************** 
-
-('2093-01-13', 'DATE') ('David Hale', 'NAME') ('Hendrickson Ora', 'NAME') ('7194334', 'ID') ('01/13/93', 'DATE') ('Oliveira', 'NAME') ('2079-11-09', 'DATE') ('Cocke County Baptist Hospital', 'LOCATION') ('0295 Keats Street', 'LOCATION') ('55-555-5555', 'CONTACT')
-
-............
-```
-
+{:.table-model-big}
+|sentence|deidentified|
+|--------|------------|
+|Name: Joseph Brown, Age: 17, Phone: (9) 7765-5632.                                                 |Name: Burnadette Carrion, Age: teenager, Phone: (6) 9846-1747.                                     |
+|This 17 yrs old male, presented with chest heaviness that started during a pick-up basketball game.|This teenager male, presented with chest heaviness that started during a pick-up basketball game. |
+|Mark Smith, aged 55, and his daughter (7) Mary were involved in an accident during their travel.   |Cleve Dale, adult, and his daughter (child) Mary were involved in an accident during their travel.|
 
 
 </div><div class="h3-box" markdown="1">
 
-#### `directionSensitive` and `filterByTokenDistance` Parameters Added to the `RelationExtraction` Annotator to Allow Further Customization and Reduce FPs
 
-The features `directionSensitive` and `filterByTokenDistance` have been implemented. The `directionSensitive` setting determines how entity relations are considered. If set to true, only relations in the form of ENTITY1-ENTITY2 are considered. If set to false, both ENTITY1-ENTITY2 and ENTITY2-ENTITY1 relations are considered. The `filterByTokenDistance` setting is a criterion for filtering based on the number of tokens between entities. The model only identifies relations where the entities are separated by fewer than the specified number of tokens.
+#### Enhancing Date Obfuscation Control with the `setKeepYear` Parameter in `Deidentification` Annotator to Allow `year` Info Intact
+
+The `setKeepYear` parameter to improve date obfuscation controls. This feature allows users to decide whether to retain the year in date entities while obfuscating the month and day. The default setting is False.
+
+- `True`, the year remains unchanged, ensuring consistency in data that relies on year-specific information.
+- `False`, the entire date, including the year, will be modified. 
+
+*Example*:
+
+```python
+obfuscation = DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_subentity_chunk"]) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscateDate(True)\
+    .setObfuscateRefSource("faker") \
+    .setKeepYear(True)
+```
+
+*.setKeepYear(False) Result*:
+
+{:.table-model-big}
+|sentence                                                 |deidentified                                             |
+|---------------------------------------------------------|---------------------------------------------------------|
+|Hendrickson, Ora, Record date: 2023-01-01, Age: 25 .     |Delle Ferdinand, Record date: 2023-02-10, Age: 35 .      |
+|He was admitted to hospital for cystectomy on 12/31/2022.|He was admitted to hospital for cystectomy on 02/09/2023.|
+
+*.setKeepYear(True) Result*:
+
+{:.table-model-big}
+|sentence                                                 |deidentified                                             |
+|---------------------------------------------------------|---------------------------------------------------------|
+|Hendrickson, Ora, Record date: 2023-01-01, Age: 25 .     |Lenord Radon, Record date: 2023-02-07, Age: 31 .         |
+|He was admitted to hospital for cystectomy on 12/31/2022.|He was admitted to hospital for cystectomy on 02/06/2022.|
+
+As you can see, `2022` has not been changed.
+
+
+####  Broadening Relation Extraction with Extended Scope-Windows, `directionSensitive` and `filterByTokenDistance` Parameters to Allow Further Customization and Reduce FPs
+
+-  In RelationRxtraction, scopeWindow expands beyond the immediate tokens of target chunks. By applying a `scopeWindow [X, Y]`, additional `X` tokens to the left and `Y` tokens to the right become crucial for feature generation, enriching contextual information essential for precise embeddings-based feature extraction.
+
+*Example*:
+
+```python
+re_model = RelationExtractionModel.pretrained("re_oncology_wip", "en", "clinical/models") \
+    .setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"]) \
+    .setOutputCol("re_oncology_results") \
+    .setScopeWindow([5,5])
+```
+
+- The features `directionSensitive` and `filterByTokenDistance` have been implemented. The `directionSensitive` setting determines how entity relations are considered. If set to true, only relations in the form of ENTITY1-ENTITY2 are considered. If set to false, both ENTITY1-ENTITY2 and ENTITY2-ENTITY1 relations are considered. The `filterByTokenDistance` setting is a criterion for filtering based on the number of tokens between entities. The model only identifies relations where the entities are separated by fewer than the specified number of tokens.
 
 *directionSensitive Example*:
 
 ```python
-clinical_re_Model = RelationExtractionModel()\
-    .pretrained("re_clinical", "en", 'clinical/models')\
-    .setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"])\
-    .setOutputCol("relations")\
-    .setRelationPairs(["problem-test", #"test-problem",
-                       "treatment-problem",#"treatment-problem",
+re_ner_chunk_filter = RENerChunksFilter() \
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunk")\
+    .setMaxSyntacticDistance(10)\
+    .setDirectionSensitive(True)\
+    .setRelationPairs(["test-problem", #"problem-test"
+                       "treatment-problem", #"problem-treatment"
                        ])\
-    .setMaxSyntacticDistance(4)\
-    .setDirectionSensitive(True)
 
-text ="""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ),
-one prior episode of HTG-induced pancreatitis three years prior to presentation,  associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 ,
-presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting . Two weeks prior to presentation , she was treated with a five-day course of amoxicillin for a respiratory tract infection .
-She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG . She had been on dapagliflozin for six months at the time of presentation.
-Physical examination on presentation was significant for dry oral mucosa ; significantly , her abdominal examination was benign with no tenderness , guarding , or rigidity .
-Pertinent laboratory findings on admission were : serum glucose 111 mg/dl , bicarbonate 18 mmol/l , anion gap 20 , creatinine 0.4 mg/dL , triglycerides 508 mg/dL , total cholesterol 122 mg/dL , glycated hemoglobin ( HbA1c ) 10% , and venous pH 7.27 .
-Serum lipase was normal at 43 U/L . Serum acetone levels could not be assessed as blood samples kept hemolyzing due to significant lipemia .
-The patient was initially admitted for starvation ketosis , as she reported poor oral intake for three days prior to admission .
-However , serum chemistry obtained six hours after presentation revealed her glucose was 186 mg/dL , the anion gap was still elevated at 21 , serum bicarbonate was 16 mmol/L , triglyceride level peaked at 2050 mg/dL , and lipase was 52 U/L .
-The β-hydroxybutyrate level was obtained and found to be elevated at 5.29 mmol/L - the original sample was centrifuged and the chylomicron layer removed prior to analysis due to interference from turbidity caused by lipemia again .
-The patient was treated with an insulin drip for euDKA and HTG with a reduction in the anion gap to 13 and triglycerides to 1400 mg/dL , within 24 hours .
-Her euDKA was thought to be precipitated by her respiratory tract infection in the setting of SGLT2 inhibitor use .
-The patient was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , and metformin 1000 mg two times a day .
-It was determined that all SGLT2 inhibitors should be discontinued indefinitely .
-She had close follow-up with endocrinology post discharge .
-"""
+redl_model = RelationExtractionDLModel.pretrained("redl_clinical_biobert", "en", "clinical/models")\
+    .setInputCols(["re_ner_chunk", "sentence"])\
+    .setOutputCol("relations")\
+    .setPredictionThreshold(0.5)\
+    .setRelationPairsCaseSensitive(False)\
+
+
+text = ''' She was treated with a five-day course of amoxicillin for a respiratory tract infection.
+She was on metformin, glipizide, and dapagliflozin for T2DM and additionally atorvastatin and gemfibrozil for HTG.
+However, serum chemistry obtained six hours after presentation revealed the anion gap was still elevated at 21, serum bicarbonate was 16 mmol/L, and lipase was 52 U/L.
+The β-hydroxybutyrate level was found to be elevated at 5.29 mmol/L - the original sample was centrifuged and the chylomicron layer was removed before analysis due to interference from turbidity caused by lipemia again.
+'''
 ```
 
 *directionSensitive Result*:
 
-|index|sentence|entity1\_begin|entity1\_end|chunk1|entity1|entity2\_begin|entity2\_end|chunk2|entity2|relation|confidence|
-|---|---|---|---|---|---|---|---|---|---|---|---|
-|2|1|511|521|amoxicillin|TREATMENT|527|555|a respiratory tract infection|PROBLEM|TrAP|0\.9999393|
-|3|2|570|578|metformin|TREATMENT|616|619|T2DM|PROBLEM|TrAP|0\.99999905|
-|4|2|582|590|glipizide|TREATMENT|616|619|T2DM|PROBLEM|TrAP|0\.9999999|
-|5|2|598|610|dapagliflozin|TREATMENT|616|619|T2DM|PROBLEM|TrAP|0\.99999976|
-|6|2|598|610|dapagliflozin|TREATMENT|658|660|HTG|PROBLEM|TrAP|0\.9998598|
-|7|2|625|636|atorvastatin|TREATMENT|658|660|HTG|PROBLEM|TrAP|0\.99999547|
-|8|2|642|652|gemfibrozil|TREATMENT|658|660|HTG|PROBLEM|TrAP|1\.0|
-|10|10|1552|1565|still elevated|PROBLEM|1655|1660|lipase|TEST|TeRP|0\.99998677|
-|11|10|1552|1565|still elevated|PROBLEM|1669|1671|U/L|TEST|TeRP|0\.9999951|
-|12|12|1936|1950|an insulin drip|TREATMENT|1956|1960|euDKA|PROBLEM|TrAP|0\.9996302|
-|13|12|1936|1950|an insulin drip|TREATMENT|1966|1968|HTG|PROBLEM|TrAP|0\.9839804|
-|14|12|1956|1960|euDKA|PROBLEM|1990|2002|the anion gap|TEST|PIP|0\.9738799|
-|16|12|1966|1968|HTG|PROBLEM|1990|2002|the anion gap|TEST|TeRP|0\.9764806|
-|17|12|1966|1968|HTG|PROBLEM|2014|2026|triglycerides|TEST|TeRP|0\.9998374|
+{:.table-model-big.db}
+|sentence |entity1_begin|entity1_end| chunk1                      | entity1   |entity2_begin |entity2_end | chunk2                        | entity2| relation|confidence |
+|--------:|-------------|-----------|:----------------------------|:----------|-------------:|-----------:|:------------------------------|:-------|:--------|----------:|
+|       0 |           43|         53| amoxicillin                 | TREATMENT |           59 |         87 | a respiratory tract infection | PROBLEM| Treatment_Administered_Problem |  0.998835 |
+|       1 |          101|        109| metformin                   | TREATMENT |          145 |        148 | T2DM                          | PROBLEM| Treatment_Administered_Problem |  0.995263 |
+|       1 |          101|        109| metformin                   | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem |  0.749655 |
+|       1 |          112|        120| glipizide                   | TREATMENT |          145 |        148 | T2DM                          | PROBLEM| Treatment_Administered_Problem |  0.993901 |
+|       1 |          112|        120| glipizide                   | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem |  0.839519 |
+|       1 |          127|        139| dapagliflozin               | TREATMENT |          145 |        148 | T2DM                          | PROBLEM| Treatment_Administered_Problem |  0.99619  |
+|       1 |          127|        139| dapagliflozin               | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem |  0.984917 |
+|       1 |          167|        178| atorvastatin                | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem |  0.935767 |
+|       1 |          184|        194| gemfibrozil                 | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem |  0.983878 |
+|       2 |          214|        228| serum chemistry             | TEST      |          295 |        308 | still elevated                | PROBLEM| Test_Revealed_Problem      |  0.997158 |
+|       2 |          277|        289| the anion gap               | TEST      |          295 |        308 | still elevated                | PROBLEM| Test_Revealed_Problem      |  0.989831 |
+|       3 |          373|        399| The β-hydroxybutyrate level | TEST      |          417 |        424 | elevated                      | PROBLEM| Test_Revealed_Problem      |  0.996874 |
+|       3 |          373|        399| The β-hydroxybutyrate level | TEST      |          540 |        551 | interference                  | PROBLEM| Test_Revealed_Problem      |  0.964988 |
+|       3 |          373|        399| The β-hydroxybutyrate level | TEST      |          558 |        566 | turbidity                     | PROBLEM| Test_Revealed_Problem      |  0.972585 |
+|       3 |          373|        399| The β-hydroxybutyrate level | TEST      |          578 |        584 | lipemia                       | PROBLEM| Test_Revealed_Problem      |  0.976935 |
+|       3 |          524|        531| analysis                    | TEST      |          558 |        566 | turbidity                     | PROBLEM| Test_Performed_Problem     |  0.537359 |
+|       3 |          524|        531| analysis                    | TEST      |          578 |        584 | lipemia                       | PROBLEM| Test_Performed_Problem     |  0.850083 |
 
 
 
 *filterByTokenDistance Example*:
 
 ```python
-clinical_re_Model = RelationExtractionModel()\
-    .pretrained("re_clinical", "en", 'clinical/models')\
-    .setInputCols(["embeddings", "pos_tags", "ner_chunk", "dependencies"])\
-    .setOutputCol("relations")\
-    .setRelationPairs(["problem-test", #"test-problem",
-                       "problem-treatment",#"treatment-problem",
+re_ner_chunk_filter = RENerChunksFilter() \
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunk")\
+    .setMaxSyntacticDistance(10)\
+    .setDirectionSensitive(True)\
+    .setRelationPairs(["test-problem", #"problem-test"
+                       "treatment-problem", #"problem-treatment"
                        ])\
-    .setFilterByTokenDistance(2)\
-    .setDirectionSensitive(False)
+    .setFilterByTokenDistance(4)
 
-text ="""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ),
-one prior episode of HTG-induced pancreatitis three years prior to presentation,  associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 ,
-presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting . Two weeks prior to presentation , she was treated with a five-day course of amoxicillin for a respiratory tract infection .
-She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG . She had been on dapagliflozin for six months at the time of presentation.
-Physical examination on presentation was significant for dry oral mucosa ; significantly , her abdominal examination was benign with no tenderness , guarding , or rigidity .
-Pertinent laboratory findings on admission were : serum glucose 111 mg/dl , bicarbonate 18 mmol/l , anion gap 20 , creatinine 0.4 mg/dL , triglycerides 508 mg/dL , total cholesterol 122 mg/dL , glycated hemoglobin ( HbA1c ) 10% , and venous pH 7.27 .
-Serum lipase was normal at 43 U/L . Serum acetone levels could not be assessed as blood samples kept hemolyzing due to significant lipemia .
-The patient was initially admitted for starvation ketosis , as she reported poor oral intake for three days prior to admission .
-However , serum chemistry obtained six hours after presentation revealed her glucose was 186 mg/dL , the anion gap was still elevated at 21 , serum bicarbonate was 16 mmol/L , triglyceride level peaked at 2050 mg/dL , and lipase was 52 U/L .
-The β-hydroxybutyrate level was obtained and found to be elevated at 5.29 mmol/L - the original sample was centrifuged and the chylomicron layer removed prior to analysis due to interference from turbidity caused by lipemia again .
-The patient was treated with an insulin drip for euDKA and HTG with a reduction in the anion gap to 13 and triglycerides to 1400 mg/dL , within 24 hours .
-Her euDKA was thought to be precipitated by her respiratory tract infection in the setting of SGLT2 inhibitor use .
-The patient was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , and metformin 1000 mg two times a day .
-It was determined that all SGLT2 inhibitors should be discontinued indefinitely .
-She had close follow-up with endocrinology post discharge .
-"""
+redl_model = RelationExtractionDLModel.pretrained("redl_clinical_biobert", "en", "clinical/models")\
+    .setInputCols(["re_ner_chunk", "sentence"])\
+    .setOutputCol("relations")\
+    .setPredictionThreshold(0.5)\
+    .setRelationPairsCaseSensitive(False)\
+
+text = ''' She was treated with a five-day course of amoxicillin for a respiratory tract infection.
+She was on metformin, glipizide, and dapagliflozin for T2DM and additionally atorvastatin and gemfibrozil for HTG.
+However, serum chemistry obtained six hours after presentation revealed the anion gap was still elevated at 21, serum bicarbonate was 16 mmol/L, and lipase was 52 U/L.
+The β-hydroxybutyrate level was found to be elevated at 5.29 mmol/L - the original sample was centrifuged and the chylomicron layer was removed before analysis due to interference from turbidity caused by lipemia again.
+'''
+
 ```
 
 *filterByTokenDistance Result*:
 
-|index|sentence|entity1\_begin|entity1\_end|chunk1|entity1|entity2\_begin|entity2\_end|chunk2|entity2|relation|confidence|
-|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|1|511|521|amoxicillin|TREATMENT|527|555|a respiratory tract infection|PROBLEM|TrAP|0\.9999393|
-|2|2|598|610|dapagliflozin|TREATMENT|616|619|T2DM|PROBLEM|TrAP|0\.99999976|
-|4|2|642|652|gemfibrozil|TREATMENT|658|660|HTG|PROBLEM|TrAP|1\.0|
-|5|8|1245|1257|blood samples|TEST|1264|1273|hemolyzing|PROBLEM|TrWP|0\.8292767|
-|6|10|1534|1546|the anion gap|TEST|1552|1565|still elevated|PROBLEM|TeRP|1\.0|
-|7|11|1837|1844|analysis|TEST|1853|1879|interference from turbidity|PROBLEM|TeRP|0\.9999999|
-|8|12|1936|1950|an insulin drip|TREATMENT|1956|1960|euDKA|PROBLEM|TrAP|0\.9996302|
+{:.table-model-big.db}
+|sentence|entity1_begin |entity1_end | chunk1                      | entity1   |entity2_begin |entity2_end | chunk2                        | entity2| relation|confidence|
+|-------:|-------------:|-----------:|:----------------------------|:----------|-------------:|-----------:|:------------------------------|:-------|:--------|------:|
+|       0|           43 |         53 | amoxicillin                 | TREATMENT |           59 |         87 | a respiratory tract infection | PROBLEM| Treatment_Administered_Problem    |  0.99 |
+|       1|          101 |        109 | metformin                   | TREATMENT |          145 |        148 | T2DM                          | PROBLEM| Treatment_Administered_Problem    |  0.99 |
+|       1|          112 |        120 | glipizide                   | TREATMENT |          145 |        148 | T2DM                          | PROBLEM| Treatment_Administered_Problem    |  0.99 |
+|       1|          127 |        139 | dapagliflozin               | TREATMENT |          145 |        148 | T2DM                          | PROBLEM| Treatment_Administered_Problem    |  0.99 |
+|       1|          167 |        178 | atorvastatin                | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem    |  0.94 |
+|       1|          184 |        194 | gemfibrozil                 | TREATMENT |          200 |        202 | HTG                           | PROBLEM| Treatment_Administered_Problem    |  0.98 |
+|       2|          277 |        289 | the anion gap               | TEST      |          295 |        308 | still elevated                | PROBLEM| Test_Revealed_Problem    |  0.98 |
+|       3|          373 |        399 | The β-hydroxybutyrate level | TEST      |          417 |        424 | elevated                      | PROBLEM| Test_Revealed_Problem    |  0.99 |
+|       3|          524 |        531 | analysis                    | TEST      |          558 |        566 | turbidity                     | PROBLEM| Test_Performed_Problem   |  0.54 |
+|       3|          524 |        531 | analysis                    | TEST      |          578 |        584 | lipemia                       | PROBLEM| Test_Performed_Problem   |  0.85 |
 
-Please check [Clinical Relation Extraction Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb) for more details.
+
+please see the blogpost [Next-Level Relation Extraction in Healthcare NLP: Introducing New Directional and Contextual Features](https://medium.com/john-snow-labs/next-level-relation-extraction-in-healthcare-nlp-introducing-new-directional-and-contextual-cc54eb68a699)
+
 
 </div><div class="h3-box" markdown="1">
 
-#### Efficiency Analysis and Cost Evaluation of Deidentification Pipelines on Cloud Platforms
+#### Enhancing Rule-Based Annotators with the `ner_source` Field for Improved Chunk Tracking and Prioritization
 
-These results show speed benchmarks and cost evaluations for deidentification pipelines deployed across diverse cloud platforms, including AWS EMR and EC2. Additionally, forthcoming results from DataBricks promise to further enrich the analysis, offering deeper insights into de-identification pipeline performance. 
+Enhancing rule-based annotators such as `ContextualParser`, `TextMatcherInternal`, `RegexMatcherInternal`, and `EntityRulerInternal` with `ner_source` field for improved chunk tracking and prioritization
 
-
-| Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
-|-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
-| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec**       |
-| 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    | 10 min 16 sec | 6 min 11 sec       |
-| 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    | 10 min 22 sec | 6 min 14 sec       |
-| 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    | 10 min 21 sec | 5 min 53 sec       |
-| 64        | 6 min 24 sec       | 3 min 8 sec            | 18 min 59 sec              | 9 min 9 sec                     | 12 min 42 sec | 6 min 50 sec       |
-| 32        | 7 min 15 sec       | 3 min 43 sec           | 18 min 47.2 sec            | 9 min 18 sec                    | 12 min 55 sec | 7 min 40 sec       |
-| 16        | 11 min 6 sec       | 4 min 57 sec           | 12 min 47.5 sec            | 6 min 14 sec                    | 15 min 59 sec | 9 min 18 sec       |
-| 8         | 19 min 13 se       | 8 min 8 sec            | 16 min 52 sec              | 8 min 48 sec                    | 22 min 40 sec | 13 min 26 sec      |
-
-Estimated Minimum Costs:
-- EMR Base Pipeline: partition number: 256, 10K cost:**$1.04**, 1M cost:**$104.41** 
-- EMR Optimized Pipeline: partition number: 256, 10K cost:**$0.54**, 1M cost:**$54.04** 
-- EC2 Instance  Base Pipeline: partition number: 512, 10K cost:**$0.36**, 1M cost:**$35.70** 
-- EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
-- DataBricks Base Pipeline: partition number: 1024, 10K cost:**$0.46**, 1M cost:**$45.76** 
-- DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:**$0.27**, 1M cost:**$27.13** 
-
-
-Please check the [benchmark](https://nlp.johnsnowlabs.com/docs/en/benchmark#deidentification--pipelines-cost-benchmarks-march-2024)
-
-</div><div class="h3-box" markdown="1">
-
-#### Output Parser to Prettify Pretrained Pipeline Outputs into Structured JSONs/dictionaries
-
-The output parser module seamlessly integrates with existing systems to return clear, easy-to-read & process prettified results in dictionary format from pretrained pipelines. It is designed to enhance API integration, and user understanding and streamline data analysis workflows.
+We have enhanced rule-based annotators, including `ContextualParser`, `TextMatcherInternal`, `RegexMatcherInternal`, and `EntityRulerInternal`, by adding the `ner_source` field. This improvement allows for better chunk tracking and prioritization, enabling clients to trace the origin of chunks effectively. Additionally, with the `ner_source` field, `NerConverterInternal` and `ChunkMergerApproach` can now prioritize chunks using the `.setChunkPrecedence("ner_source")` method, leading to more accurate and efficient entity recognition and handling.
 
 *Example*:
 
 ```python
+regex_matcher_internal = RegexMatcherInternal()\
+    .setInputCols('document')\
+    .setStrategy("MATCH_ALL")\
+    .setOutputCol("regex_matches")\
+    .setExternalRules(path='./rules/regex_rules.txt', delimiter='~')
 
-from sparknlp.pretrained import PretrainedPipeline
+entityExtractor = TextMatcherInternal()\
+    .setInputCols(["document", "token"])\
+    .setEntities("matcher_drug.csv")\
+    .setOutputCol("matched_text")\
+    .setCaseSensitive(False)\
+    .setDelimiter("#")\
+    .setMergeOverlapping(False)
 
-oncology_pipeline = PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
+entityRuler = EntityRulerInternalApproach()\
+    .setInputCols(["document", "token"])\
+    .setOutputCol("entities")\
+    .setPatternsResource("entities.json")\
+    .setCaseSensitive(False)\
 
-text = ["""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."""]
-
-results = oncology_pipeline.fullAnnotate(text)
-
-
-column_maps = {
-    "document_identifier": "XYZ-123",
-    "document_text": "document",
-    "entities": [
-        {
-            "ner_chunk_column_name": "assertion_chunk",
-            "assertion_column_name": "assertion_oncology_wip",
-            "resolver_column_name": None
-        },
-        {
-            "ner_chunk_column_name": "merged_chunk",
-            "assertion_column_name": None,
-            "resolver_column_name": None
-        }
-    ],
-    "relations": ["re_oncology_wip", "re_oncology_granular_wip"],
-    "summary": None, 
-    "deidentification": [
-        {
-            "original": None,
-            "obfuscated": None,
-            "masked": None,
-        }
-    ]
-}
-
-from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
-pipeline_parser = PipelineOutputParser(column_maps)
-pipeline_parser.__dict__
-
-parsed_result = pipeline_parser.run(results)
+text = """ Name: John Smith, Record date: 2093-01-13, MR #719435, John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis."""
 
 ```
 
 *Result*:
 
-```python
+{:.table-model-big}
+| chunk           |   begin |   end | entity   | ner_source    |
+|:----------------|--------:|------:|:---------|:--------------|
+| 2093-01-13      |      32 |    41 | DATE     | regex_matches |
+| aspirin         |      81 |    87 | Drug     | matched_text  |
+| heart condition |      97 |   111 | Disease  | entities      |
+| paracetamol     |     125 |   135 | Drug     | matched_text  |
+| fever           |     145 |   149 | Symptom  | entities      |
+| headache        |     155 |   162 | Symptom  | entities      |
+| amoxicillin     |     165 |   175 | Drug     | matched_text  |
+| tonsilitis      |     185 |   194 | Disease  | entities      |
 
-{'result': [{'document_identifier': 'XXXX',
-   'document_text': 'Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.',
-   'entities': [
-    [{'chunk_id': '0',
-      'begin': 0,
-      'end': 19,
-      'chunk': 'Immunohistochemistry',
-      'label': 'Pathology_Test',
-      'assertion': 'Past',
-      'term_code': None},
-      {'chunk_id': '1',
-      'begin': 38,
-      'end': 67,
-      'chunk': 'thyroid transcription factor-1',
-      'label': 'Biomarker',
-      'assertion': 'Present',
-      'term_code': None},
-      ...],
-    [{'chunk_id': '0',
-      'begin': 0,
-      'end': 19,
-      'chunk': 'Immunohistochemistry',
-      'label': 'Pathology_Test',
-      'assertion': None,
-      'term_code': None},
-     {'chunk_id': '1',
-      'begin': 25,
-      'end': 32,
-      'chunk': 'negative',
-      'label': 'Biomarker_Result',
-      'assertion': None,
-      'term_code': None},
-      ...]
-    ],
-   'relations': [
-    [{'relation': 'O',
-      'entity1': 'Pathology_Test',
-      'entity1_begin': '0',
-      'entity1_end': '19',
-      'chunk1': 'Immunohistochemistry',
-      'entity2': 'Biomarker_Result',
-      'entity2_begin': '25',
-      'entity2_end': '32',
-      'chunk2': 'negative',
-      'confidence': '0.97084755'},
-      ...],
-    [...
-     {'relation': 'is_finding_of',
-      'entity1': 'Biomarker_Result',
-      'entity1_begin': '25',
-      'entity1_end': '32',
-      'chunk1': 'negative',
-      'entity2': 'Biomarker',
-      'entity2_begin': '38',
-      'entity2_end': '67',
-      'chunk2': 'thyroid transcription factor-1',
-      'confidence': '0.9239829'},
-      ...]
-    ],
-   'summary': [],
-   'deidentification': [{'original': [], 'obfuscated': [], 'masked': []}]}]}
 
-```
 
 </div><div class="h3-box" markdown="1">
 
+#### Introduction of a new parameter `dataSetInfo` to store dataset details for `AssertionDL` and `GenericClassifier` for Traceability
+
+The parameters from the `Approach` class, utilized during model training, have been added into the `Model` class. These values are now directly stored within the model itself. Additionally, a new parameter named "dataSetInfo"(details regarding the dataset) has been added for `AssertionDL` and `GenericClassifier`.
+
+*Example*:
+
+```python
+scope_window = [10,10]
+
+assertionStatus = AssertionDLApproach()\
+    .setLabelCol("label")\
+    .setInputCols("document", "chunk", "embeddings")\
+    .setOutputCol("assertion")\
+    .setBatchSize(64)\
+    .setDropout(0.1)\
+    .setLearningRate(0.001)\
+    .setEpochs(5)\
+    .setValidationSplit(0.2)\
+    .setMaxSentLen(250)\
+    ...
+    .setDatasetInfo("i2b2_assertion_sample_short_dataset")
+
+# save trained model and load 
+clinical_assertion = AssertionDLModel.load("./assertion_custom_model") \
+    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
+    .setOutputCol("assertion")
+
+!cat ./assertion_custom_model/metadata/part-00000
+```
+
+
+*Result*:
+
+```python
+{
+    "paramMap": {
+        "startCol": "start",
+        "inputCols": ["document","chunk","embeddings"],
+        "learningRate": 0.0010000000474974513,
+        "outputLogsPath": "training_logs/",
+        "storageRef": "clinical",
+        "maxSentLen": 250,
+        "scopeWindow": [10,10],
+        "endCol": "end",
+        "label": "label",
+        "enableOutputLogs": true,
+        "batchSize": 64,
+        "includeConfidence": true,
+        "graphFile": "./tf_graphs/assertion_graph.pb",
+        "epochs": 5,
+        "dropout": 0.10000000149011612,
+        "graphFolder": "./tf_graphs",
+        "outputCol": "assertion",
+        "validationSplit": 0.20000000298023224,
+        "datasetInfo": "i2b2_assertion_sample_short_dataset"
+    }
+}
+```
+
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Converting Visual NER Annotations to CoNLL Format for Training Text-Based NER Models with Visual Annotations
+
+This module converts Visual NER annotations into the CoNLL format using the JohnSnowLabs NLP Lab. By processing an NLP Lab-exported JSON file containing Visual NER results, it generates a CoNLL file that is suitable for training Named Entity Recognition (NER) models.
+
+
+*Example*:
+
+```python
+# Import the module
+from sparknlp_jsl.alab import AnnotationLab
+alab = AnnotationLab()
+
+# Download sample Visual NER result JSON file
+!wget -q https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/tutorials/Annotation_Lab/data/alab_visualner_result.json 
+
+# Convert Visual NER annotations to CoNLL format
+df = alab.get_conll_data_from_visualner(
+    input_json_path = "alab_visualner_result.json",
+    output_name = "visual_ner.conll",
+    save_dir  = "exported_conll"
+)
+```
+
+
+</div><div class="h3-box" markdown="1">
+
+####  Performance Analysis of Deidentification Pipelines on Clinical Texts in a Cluster Environment
+
+
+- Deidentification Pipelines Benchmarks
+
+    This benchmark provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments.
+
+    - **Dataset:** 100000 Clinical Texts from MTSamples, approx. 508 tokens and 26.44 chunks per text.
+    - **Versions:[May-2024]**
+        - **spark-nlp Version:** v5.3.2
+        - **spark-nlp-jsl Version:** v5.3.2
+        - **Spark Version:** v3.4.0
+    - **Instance Type:**
+        - DataBricks Config: 
+            - 32 CPU Core, 128GiB RAM (8 worker) (2.7 $/hr)
+
+            {:.table-model-big}
+            |data_count |partition |Databricks |
+            |----------:|---------:|----------:|
+            |    100000 |      512 | 1h 42m 55s|
+    
+        - AWS EC2 instance Config:
+                - 8 CPU cores, 58GiB RAM (r6a.2xlarge $0.4536/h)
+
+            {:.table-model-big}
+            |data_count |partition |   AWS   |
+            |----------:|---------:|--------:|
+            |    100000 |      512 | 3h 3m 40|
+
+
+- Deidentification Pipelines Speed Comparison
+
+    This benchmark presents a detailed comparison of various deidentification pipelines applied to a dataset of 10,000 custom clinical texts, aiming to anonymize sensitive information for research and analysis. The comparison evaluates the elapsed time and processing stages of different deidentification pipelines. Each pipeline is characterized by its unique combination of Named Entity Recognition (NER), deidentification methods, rule-based NER, clinical embeddings, and chunk merging processes.
+    
+    - **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
+    - **Versions:**
+        - **spark-nlp Version:** v5.3.1
+        - **spark-nlp-jsl Version:** v5.3.1
+        - **Spark Version:** v3.4.0
+    - **Instance Type:** 
+        -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
+
+{:.table-model-big}
+|Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
+|:------------------------------------------------|-----------------:|:-----------------| 
+|[clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)| 67 min 44 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html)    | 68 min 31 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html)                        | 86 min 24 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_subentity](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html)                    | 99 min 41 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)                                        |117 min 44 seconds| 2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_nameAugmented](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html)  |134 min 27 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_glove](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html)                            |146 min 51 seconds| 2 NER, 4 Deidentification,  8 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_small](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html)    |147 min 06 seconds| 1 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
+|[clinical_deidentification_slim](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html)                              |154 min 37 seconds| 2 NER, 4 Deidentification, 15 Rule-based NER, 1 glove embedding,    3 chunk merger  |
+|[clinical_deidentification_multi_mode_output](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html)    |154 min 50 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_medium](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html)  |205 min 40 seconds| 2 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
+
+PS: The reasons pipelines with the same stages have different costs are due to the layers of the NER model and the hardcoded regexes in Deidentification.
+
+Please check [Deidentification Benchmarks](https://nlp.johnsnowlabs.com/docs/en/benchmark#deidentification-benchmarks) for more detail
+
+</div><div class="h3-box" markdown="1">
+
+
+#### New Blogposts on Relation Extraction, MedDRA, Response to Treatment, and Pretrained Pipelines.
+
+- [Next-Level Relation Extraction in Healthcare NLP: Introducing New Directional and Contextual Features](https://medium.com/john-snow-labs/next-level-relation-extraction-in-healthcare-nlp-introducing-new-directional-and-contextual-cc54eb68a699)
+- [Clinical Document Analysis with One-Liner Pretrained Pipelines in Healthcare NLP](https://medium.com/john-snow-labs/clinical-document-analysis-with-one-liner-pretrained-pipelines-in-healthcare-nlp-4d468150bd53)
+- [Mapping Medical Terms to MedDRA Ontology Using Healthcare NLP](https://medium.com/john-snow-labs/mapping-medical-terms-to-meddra-ontology-using-healthcare-nlp-f75ea44bdaff)
+- [Response to Cancer Treatment](https://medium.com/john-snow-labs/response-to-cancer-treatment-d7d3b6f40aa3)
+
+
 #### Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, and Reliability of Spark NLP for Healthcare
 
-- Fixed issue with WindowedSentenceModel not being imported correctly from sparknlp_jsl.annotator module
-- Addressed inconsistent obfuscation behavior in the deidentification annotator on DataProc, where different fake names were produced despite using the same seed value across runs
+- Added training params to trainable annotators within the metadata of the trained models
+- Updated Risk Adjustment module with V28Y24
+- Resolved index issue in `AssertionChunkConverter` annotator and `AnnotationLab.get_assertion_data` modules
+- Resolved saving issue in `Flattener` annotator
 
 </div><div class="h3-box" markdown="1">
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
-- New [MEDDRA Resolver Demo](https://demo.johnsnowlabs.com/healthcare/ER_MEDDRA/)
-- New [Oncological Response to Treatment - Text Classification Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT/)
-- Updated [TEXT2SQL Demo](https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/)
-- Updated [Mapper Demo](https://demo.johnsnowlabs.com/healthcare/ER_CODE_MAPPING/)
-- New [Few-Shot Assertion Classifier Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb)
-- New [LightDeidentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.6.Light_Deidentification.ipynb)
-- New [MedDRA Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.3.MedDRA_Models.ipynb)
-- [Clinical Relation Extraction Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb)
+- New [PipelineTracer and PipelineOutputParser Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.4.PipelineTracer_and_PipelineOutputParser.ipynb)
+- Updated [Task Based Clinical Pretrained Pipelines Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb)
+- Updated [Pretrained Clinical Pipelines Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb)
+- Updated [ADE Demo](https://demo.johnsnowlabs.com/healthcare/ADE/)
+- Updated [NER_POSOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/NER_POSOLOGY/)
+- Updated [NER_RADIOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/NER_RADIOLOGY/)
+- Updated [VOP Demo](https://demo.johnsnowlabs.com/healthcare/VOP/)
+- Updated [SDOH Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/)
+- Updated [ONCOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/)
 
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-+ `ner_sdoh_core`
-+ `ner_profiling_deidentification`
-+ `assertion_fewshotclassifier`
-+ `biolordresolve_rxnorm_augmented`
+
++ `meddra_llt_snomed_mapper`            
++ `snomed_meddra_llt_mapper`             
++ `explain_clinical_doc_sdoh`
++ `explain_clinical_doc_oncology`
++ `explain_clinical_doc_granular`            
++ `explain_clinical_doc_mental_health`   
++ `ner_medication_generic_pipeline`      
++ `ner_deid_context_augmented_pipeline`  
++ `ner_deid_generic_context_augmented_pipeline` 
++ `ner_deid_subentity_context_augmented_pipeline` 
++ `biolordresolve_rxnorm_augmented`      
++ `biolordresolve_umls_general_concepts`  
++ `biolordresolve_icd10cm_augmented_billable_hcc` 
++ `sbiobertresolve_snomed_veterinary_wip` 
++ `sbiobertresolve_umls_general_concepts` 
++ `biolordresolve_avg_rxnorm_augmented` 
++ `biolordresolve_snomed_findings_aux_concepts` 
++ `biolordresolve_cpt_procedures_measurements_augmented` 
++ `sbiobertresolve_umls_disease_syndrome` 
++ `sbiobertresolve_umls_findings`
++ `sbiobertresolve_umls_major_concepts` 
++ `sbiobertresolve_umls_clinical_drugs` 
++ `sbiobertresolve_umls_drug_substance` 
++ `sbiobertresolve_icd9` 
 
 
 </div><div class="h3-box" markdown="1">

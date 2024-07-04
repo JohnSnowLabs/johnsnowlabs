@@ -50,7 +50,7 @@ We are pleased to introduce support for RxHCC risk score calculation in two new 
 
 Input Data Frame:
 
-
+{:.table-model-big}
 |      filename|Age|                              icd10_code|                  Extracted_Entities_vs_ICD_Codes|Gender|   eligibility|orec|    esrd|
 |--------------|---|----------------------------------------|-------------------------------------------------|------|--------------|----|--------|
 |patient_01.txt| 66|C49.9, J18.9, C49.9, D61.81, I26, M06.9 | {leiomyosarcoma, C49.9}, {pneumonia, J18.9}, ...|     F|  CE_NoLowAged|   1|   false|
@@ -71,6 +71,7 @@ df = df.withColumn("risk_score", df.rxhcc_profile.getItem("risk_score"))\
 
 *Results (V08-Y23)*:
 
+{:.table-model-big}
 |      filename|Age|                             icd10_code|                  Extracted_Entities_vs_ICD_Codes|Gender|   eligibility|orec|    esrd|                                     rxhcc_profile|risk_score|                       parameters|                     details|
 |--------------|---|---------------------------------------|-------------------------------------------------|------|--------------|----|--------|--------------------------------------------------|----------|---------------------------------|----------------------------|
 |patient_01.txt| 66|C49.9, J18.9, C49.9, D61.81, I26, M06.9| {leiomyosarcoma, C49.9}, {pneumonia, J18.9}, ...|     F|  CE_NoLowAged|   1|   false|{0.575, null, {"elig":"CE_NoLowAged","age":66, ...|     0.575|{"elig":"CE_NoLowAged","age": ...|{"Rx_CE_NoLowAged_F65_69"...|
@@ -112,6 +113,7 @@ Patient has a documented allergy to Penicillin.
 
 *Result*:
 
+{:.table-model-big}
 chunks                      | entities                    | confidence
 ----------------------------|-----------------------------|----------
 Medical History             | MEDICAL_HISTORY_HEADER      | 0.81
@@ -125,17 +127,13 @@ Bronchitis                  | RESPIRATORY_DISEASE         | 0.84
 Medications                 | MEDICATIONS_HEADER          | 0.99
 Allergies                   | ALLERGIES_HEADER            | 0.99
 
-
-
 Please check: [ner_section_header_diagnosis](https://nlp.johnsnowlabs.com/2023/07/26/ner_section_header_diagnosis_en.html) model card for more information.
-
 
 </div><div class="h3-box" markdown="1">
 
 #### Augmented NER Models Leveraging LangTest Library Capabilities
 
 Newly introduced augmented NER models, namely [`ner_posology_langtest`](https://nlp.johnsnowlabs.com/2023/07/28/ner_posology_langtest_en.html), [`ner_jsl_langtest`](https://nlp.johnsnowlabs.com/2023/07/31/ner_jsl_langtest_en.html), [`ner_ade_clinical_langtest`](https://nlp.johnsnowlabs.com/2023/07/31/ner_ade_clinical_langtest_en.html), and [`ner_sdoh_langtest`](https://nlp.johnsnowlabs.com/2023/07/31/ner_sdoh_langtest_en.html), are powered by the innovative [`LangTest`](https://langtest.org/) library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
-
 
 *Example*:
 
@@ -152,6 +150,7 @@ text = """Smith is 55 years old, living in New York, a divorced Mexcian American
 
 *Result*:
 
+{:.table-model-big}
 |               chunk|begin|end|          ner_label|
 |--------------------|-----|---|-------------------|
 |        55 years old|    9| 20|                Age|
@@ -192,6 +191,7 @@ sample_text = "The patient is a 22-year-old female with a history of obesity. Sh
 
 *Results:*
 
+{:.table-model-big.db}
 |                     chunk|entity|loinc_code|                     all_codes|                                                                        resolutions|
 |--------------------------|------|----------|------------------------------|-----------------------------------------------------------------------------------|
 |                       BMI|  Test|   39156-5| 39156-5, 89270-3, 100847-3...| [BMI [Body mass index], BMI Est [Body mass index], BldA [Gas & ammonia panel], ...|
@@ -232,6 +232,7 @@ Physical examination on presentation was significant for dry oral mucosa ; signi
 
 *Result*:
 
+{:.table-model-big}
 |idx|chunks         |entities  |assertion   |confidence|
 |---|---------------|----------|------------|----|
 | 0 | metformin     |TREATMENT |Present     |0.54|
@@ -270,6 +271,7 @@ text = """Patient has a headache for the last 2 weeks, needs to get a head CT, a
 
 *Without Filtering Results*:
 
+{:.table-model-big}
 |   | chunks     | entities| assertion    |confidence|
 |--:|:-----------|:--------|:-------------|---------:|
 | 0 | a headache | PROBLEM | Present      |    1    |
@@ -281,6 +283,7 @@ text = """Patient has a headache for the last 2 weeks, needs to get a head CT, a
 
 *Filtered Results*:
 
+{:.table-model-big}
 |   | chunks     | entities| assertion   | confidence|
 |--:|:-----------|:--------|:------------|---------:|
 | 0 | a headache | PROBLEM | Present     |     0.97 |
@@ -356,6 +359,7 @@ sample_text = 'The patient was prescribed 1 capsule of Advil for 5 days. He was 
 
 *Detected chunks*:
 
+{:.table-model-big}
 | chunks           | begin | end | entities  | confidence |
 |:-----------------|------:|----:|:----------|-----------:|
 | 1                |    27 |  27 | DOSAGE    |   0.99|
@@ -368,6 +372,7 @@ sample_text = 'The patient was prescribed 1 capsule of Advil for 5 days. He was 
 
 *Filtered by confidence scores*:
 
+{:.table-model-big}
 | chunks  | begin | end | entities|confidence |
 |:--------|------:|----:|:--------|----------:|
 | 1       |    27 |  27 | DOSAGE  |    0.99 |
@@ -398,6 +403,7 @@ there is a problem at right chest.'''
 
 *Result*:
 
+{:.table-model-big}
 |idx|sentence|chunk1|entity1|chunk2         |entity2|relation|confidence|
 |---|---|-------|-----------|---------------|------------------------------|---|---|
 | 0 | 0 | upper | Direction | brain stem    | Internal_organ_or_component  | 1 |1.0 |
@@ -405,8 +411,6 @@ there is a problem at right chest.'''
 | 2 | 0 | right | Direction | basil ganglia | Internal_organ_or_component  | 1 |1.0 |
 | 3 | 1 | left  | Direction | hand          | External_body_part_or_region | 1 |1.0 |
 | 4 | 2 | right | Direction | chest         | External_body_part_or_region | 1 |1.0 |
-
-
 
 
 </div><div class="h3-box" markdown="1">
@@ -440,15 +444,11 @@ there is a problem at right chest.'''
 + `sbiobertresolve_loinc_numeric`
 + `sbiobertresolve_loinc_augmented`
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
 
 ## Versions
 

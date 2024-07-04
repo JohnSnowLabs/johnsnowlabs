@@ -77,17 +77,13 @@ question = "What is the average age of male patients with 'Diabetes'?"
 
 please check: [Model Card](https://nlp.johnsnowlabs.com/2023/09/14/text2sql_with_schema_single_table_augmented_en.html) and [Text2SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) for more information
 
-
-
 </div><div class="h3-box" markdown="1">
-
-
 
 #### 5 New Clinical NER Models for Extracting Clinical Entities in the Japanese, Vietnamese, Norwegian, Danish, and Swedish Languages
 
 5 new Clinical NER models provide valuable tools for processing and analyzing multi-language clinical texts. They assist in automating the extraction of important clinical information, facilitating research, medical documentation, and other applications within the multi-language healthcare domain.
 
-
+{:.table-model-big}
 | Model Name         | Predicted Entities           | Language |
 |--------------------|------------------------------|----------|
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/09/20/ner_clinical_da.html)   | `PROBLEM` `TEST` `TREATMENT` | da |
@@ -110,6 +106,7 @@ sample_text = """Patienten hade inga ytterligare klagomål och den 10 mars 2012 
 
 *Result*:
 
+{:.table-model-big}
 |chunk                |begin|end|ner_label|
 |---------------------|-----|---|---------|
 |ytterligare klagomål |20   |39 |PROBLEM  |
@@ -124,8 +121,6 @@ sample_text = """Patienten hade inga ytterligare klagomål och den 10 mars 2012 
 
 please check [Multi Language Clinical NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/)
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### 4 New Arabic De-Identification NER Models 
@@ -134,14 +129,13 @@ We're thrilled to present our newly integrated Arabic deidentification Named Ent
 
 Designed explicitly for deidentification tasks in the Arabic language, these models leverage our proprietary dataset curation and specialized augmentation methods. This expansion broadens the linguistic scope of our toolset, underscoring our commitment to providing comprehensive solutions for global healthcare NLP needs.
 
+{:.table-model-big}
 | NER model                                                                 |            predicted entities             |
 |---------------------------------------------------------------------------|-------------------------------------------|
 | [`ner_deid_subentity_arabert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_subentity_arabert_en.html) | `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
 | [`ner_deid_generic_arabert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_generic_arabert_en.html)     | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
 | [`ner_deid_subentity_camelbert`](https://nlp.johnsnowlabs.com/2023/09/22/ner_deid_subentity_camelbert_en.html) | `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
 | [`ner_deid_generic_camelbert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_generic_camelbert_en.html)     | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
-
-
 
 
 *Example*:
@@ -164,7 +158,7 @@ abcd@gmail.com.
 
 *Result*:
 
-
+{:.table-model-big}
 |chunk                          |ner_label|
 |-------------------------------:|:---------|
 |الدكتور محمد المريض           |DOCTOR   |
@@ -208,6 +202,7 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 | text                                                                           |                              result|
 |--------------------------------------------------------------------------------|------------------------------------|
 |Patient B is a 40-year-old female who was diagnosed with breast cancer. She h...| No_Financial_Insecurity_Or_Unknown |
@@ -244,6 +239,7 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |           text| result|
 |---------------|-------|
 |I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel...|  True |
@@ -259,7 +255,7 @@ Please check [VOP SIDE EFFECT CLASSIFICATION demo](https://demo.johnsnowlabs.com
 
 Newly introduced augmented NER models are powered by the innovative LangTest library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
 
-
+{:.table-model-big}
 | Model Name               |   Predicted Entities        |
 |--------------------------|-----------------------------|
 | [`ner_vop_anatomy_langtest`](https://nlp.johnsnowlabs.com/2023/09/21/ner_vop_anatomy_langtest_en.html)             |  `BodyPart`, `Laterality` |
@@ -283,6 +279,7 @@ Newly introduced augmented NER models are powered by the innovative LangTest lib
 
 - The table below shows the robustness of overall test results for 15 different models.
   
+{:.table-model-big}
 | model names        | original robustness  |  new robustness  |
 |-------------------------------------------|---------|--------|
 | ner_clinical_langtest                     | 71.72%  | 84.75% |
@@ -304,15 +301,13 @@ Newly introduced augmented NER models are powered by the innovative LangTest lib
 | ner_oncology_biomarker_langtest           | 93.79%  | 95.28% |
 | ner_eu_clinical_condition_langtest        | 86.08%  | 91.68% |
 
-
-
 </div><div class="h3-box" markdown="1">
-
 
 ####  10 New NER-based Pretrained Pipelines, Designed to Streamline Solutions with a Single Line of Code
 
 We have 10 new named entity recognition pipelines that are meticulously designed to enhance your solutions by efficiently identifying entities and their resolutions within the clinical note. You can easily integrate this advanced capability using just a single line of code.
 
+{:.table-model-big}
 | Model Name         | Predicted Entities      |
 |--------------------|---------------------------|
 | [ner_posology_langtest_pipeline](https://nlp.johnsnowlabs.com/2023/09/08/ner_posology_langtest_pipeline_en.html)   | `DOSAGE, DRUG, DURATION, FORM, FREQUENCY, ROUTE, STRENGTH` | 
@@ -326,8 +321,6 @@ We have 10 new named entity recognition pipelines that are meticulously designed
 | [ner_oncology_response_to_treatment_langtest_pipeline](https://nlp.johnsnowlabs.com/2023/09/09/ner_oncology_response_to_treatment_langtest_pipeline_en.html)   | `Line_Of_Therapy`, `Response_To_Treatment`, `Size_Trend` |
 | [ner_sdoh_langtest_pipeline](https://nlp.johnsnowlabs.com/2023/09/09/ner_sdoh_langtest_pipeline_en.html)   | `Alcohol`, `Disability`, `Food_Insecurity`, `Housing`, `Income`, `Insurance_Status`, `Mental_Health`, `Obesity`,  `Smoking`, `Social_Support`, `Substance_Use`, `Violence_Or_Abuse` ... |
 
-
-
 *Example*:
 
 ```python
@@ -340,6 +333,7 @@ text = """The patient presented a mass in her left breast, and a possible metast
 
 *Result*:
 
+{:.table-model-big}
 | chunks   |   begin |   end | entities    |
 |:---------|--------:|------:|:------------|
 | left     |      36 |    39 | Direction   |
@@ -349,8 +343,6 @@ text = """The patient presented a mass in her left breast, and a possible metast
 
 
 </div><div class="h3-box" markdown="1">
-
-
 
 #### Leveraging the Power of SparkNLP with AWS Glue and EMR with Practical Examples and Support
 
@@ -366,9 +358,6 @@ Explore the seamless integration of SparkNLP with AWS Glue and EMR notebooks in 
 
 - ContextualParser Metadata Update: Renaming `confidenceValue` to `confidence`
 - Updated English Profession Faker Name List 
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -435,10 +424,7 @@ Explore the seamless integration of SparkNLP with AWS Glue and EMR notebooks in 
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

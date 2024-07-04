@@ -498,7 +498,7 @@ deid_pipeline = Pipeline().setStages([
 
 **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
 |----------:|-------------:|-------------:|-------------:|
 | 1024      | 1 min 3 sec  | 1 min 55 sec | 5 min 45 sec |
@@ -511,20 +511,47 @@ deid_pipeline = Pipeline().setStages([
 | 8         | 1 min 21 sec | 2 min 33 sec | 5 min 3 sec  |
 | 4         | 2 min 26 sec | 4 min 53 sec | 6 min 3 sec  |
 
-</div>
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Deidentification Pipelines Speed Comparison
 
-- **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
-- **Versions:**
-    - **spark-nlp Version:** v5.3.1
-    - **spark-nlp-jsl Version:** v5.3.1
-    - **Spark Version:** v3.4.0
-- **Instance Type:** 
-    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
+- Deidentification Pipelines Benchmarks
+
+    This benchmark provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments.
+
+    - **Dataset:** 100000 Clinical Texts from MTSamples, approx. 508 tokens and 26.44 chunks per text.
+    - **Versions:[May-2024]**
+        - **spark-nlp Version:** v5.3.2
+        - **spark-nlp-jsl Version:** v5.3.2
+        - **Spark Version:** v3.4.0
+    - **Instance Type:**
+        - DataBricks Config: 
+            - 32 CPU Core, 128GiB RAM (8 workers) (2.7 $/hr)
+
+            {:.table-model-big}
+            |data_count |partition |Databricks |
+            |----------:|---------:|----------:|
+            |    100000 |      512 | 1h 42m 55s|
+    
+        - AWS EC2 instance Config:
+                - 32 CPU cores, 64GiB RAM (c6a.8xlarge $1.224/h)
+            {:.table-model-big}
+            |data_count |partition |   AWS   |
+            |----------:|---------:|--------:|
+            |    100000 |      512 |1h 9m 56s|
+
+
+- Deidentification Pipelines Speed Comparison
+
+    This benchmark presents a detailed comparison of various deidentification pipelines applied to a dataset of 10,000 custom clinical texts, aiming to anonymize sensitive information for research and analysis. The comparison evaluates the elapsed time and processing stages of different deidentification pipelines. Each pipeline is characterized by its unique combination of Named Entity Recognition (NER), deidentification methods, rule-based NER, clinical embeddings, and chunk merging processes.
+    
+    - **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
+    - **Versions:**
+        - **spark-nlp Version:** v5.3.1
+        - **spark-nlp-jsl Version:** v5.3.1
+        - **Spark Version:** v3.4.0
+    - **Instance Type:** 
+        -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
 
 {:.table-model-big.db}
 |Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
@@ -713,7 +740,7 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 
 ***Results Table***
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | NER Timing     |NER and Resolver Timing| 
 |----------:|:---------------|:----------------------| 
 |4          |  24.7 seconds  |1 minutes 8.5  seconds|

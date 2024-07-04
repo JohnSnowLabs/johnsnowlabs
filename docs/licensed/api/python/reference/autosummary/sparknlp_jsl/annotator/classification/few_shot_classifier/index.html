@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -504,6 +504,11 @@ between 0 and 1.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.datasetInfo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.doExceptionHandling">
 <span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.doExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -843,6 +848,17 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1046,6 +1062,11 @@ between 0 and 1.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1291,6 +1312,17 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1449,6 +1481,7 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.dropout"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.dropout</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.engine"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.engine</span></code></a></li>
@@ -1494,6 +1527,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.setDropout()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierApproach.setEpochsNumber"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierApproach.setEpochsNumber()</span></code></a></li>
@@ -1515,6 +1549,7 @@ RecursivePipeline</p>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.classes"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.getter_attrs</span></code></a></li>
@@ -1548,6 +1583,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.few_shot_classifier.FewShotClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierModel.setForceInputTypeValidation()</span></code></a></li>

@@ -68,7 +68,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_DEID_DE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Deidentification_in_German.ipynb  
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb 
         - title: Deidentify German Medical texts
           id: deidentify_german_medical_texts   
           image: 
@@ -80,7 +80,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT_DE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Deidentification_in_German.ipynb 
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb
         - title: Classify Public Health Mentions in German
           id: classify_public_health_mentions_de          
           image: 

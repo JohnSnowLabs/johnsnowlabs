@@ -103,14 +103,10 @@ def is_running_in_emr():
     return False
 
 
-def is_running_in_databricks():
-    """Check if the currently running Python Process is running in Databricks or not
-    If any Environment Variable name contains 'DATABRICKS' this will return True, otherwise False
+def is_running_in_databricks_runtime():
+    """ Check if the currently running Python Process is running in Databricks runtime or not
     """
-    for k in os.environ.keys():
-        if "DATABRICKS" in k:
-            return True
-    return False
+    return "DATABRICKS_RUNTIME_VERSION" in os.environ
 
 
 def env_required_license():
