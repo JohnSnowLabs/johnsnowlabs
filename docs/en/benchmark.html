@@ -2570,7 +2570,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
       </ul>
     </li>
     <li>
-      <p><strong>GPT-4:</strong> <em>GPT-4 Turbo</em> and <em>GPT-4o</em> models.</p>
+      <p><strong>GPT-4:</strong> <em>GPT-4 (Turbo)</em> and <em>GPT-4o</em> models.</p>
     </li>
     <li><strong>Amazon:</strong> <em>Amazon Comprehend Medical</em> service</li>
   </ul>
@@ -2579,7 +2579,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <ul>
     <li>Healthcare NLP returns up to 25 closest results, and Amazon Medical Comprehend returns up to five results, both sorted starting from the closest one. In contrast, the GPT-4 returns only one result, <em>so its scores are reflected similarly in both charts</em>.</li>
-    <li>Since the performance of GPT-4 Turbo and GPT-4o is almost identical according to the <a href="https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3">official announcement</a>, and we used both versions for the accuracy calculation. Additionally, the GPT-4 returns <strong>only one result</strong>, which means you will see the same results in both evaluation approaches.</li>
+    <li>Since the performance of GPT-4 and GPT-4o is almost identical according to the <a href="https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3">official announcement</a>, and we used both versions for the accuracy calculation. Additionally, the GPT-4 returns <strong>only one result</strong>, which means you will see the same results in both evaluation approaches.</li>
     <li>Two approaches were adopted for evaluating these tools, given that the model outputs may not precisely match the annotations:
       <ul>
         <li><strong>Top-3:</strong> Compare the annotations to see if they appear in the first three results.</li>
@@ -2608,7 +2608,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <ul>
     <li>
-      <p><em>Open AI Pricing:</em> We created a prompt to achieve better results, which costs $3.476 on GPT-4 and $1.738 GPT-4o model for the 79 documents. This means that for processing <strong>1 million notes, the estimated cost would be $44,000 for the GPT-4 Turbo model</strong> and <strong>$22,000 for the GPT-4o model</strong>.</p>
+      <p><em>Open AI Pricing:</em> We created a prompt to achieve better results, which costs $3.476 on GPT-4 and $1.738 GPT-4o model for the 79 documents. This means that for processing <strong>1 million notes, the estimated cost would be $44,000 for the GPT-4</strong> and <strong>$22,000 for the GPT-4o</strong>.</p>
     </li>
     <li>
       <p><em>Amazon Comprehend Medical Pricing:</em> According to the price calculator, obtaining RxNorm predictions for <strong>1M documents, with an average of 9,700 characters per document, costs $24,250</strong>.</p>
@@ -2631,7 +2631,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   <ul>
     <li>With Healthcare NLP is about <strong>$4,500, including the infrastructure costs</strong>.</li>
     <li><strong>$24,250</strong> with Amazon Comprehend Medical</li>
-    <li><strong>$44,000</strong> with the GPT-4 Turbo and <strong>$22,000</strong> with the GPT-4o.</li>
+    <li><strong>$44,000</strong> with the GPT-4 and <strong>$22,000</strong> with the GPT-4o.</li>
   </ul>
 
   <p>Therefore, <strong>Healthcare NLP is almost 5 times cheaper than its closest alternative</strong>, not to mention the accuracy differences (<strong>Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 8.9%</strong>).</p>
@@ -2661,7 +2661,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>$24,250</td>
       </tr>
       <tr>
-        <td>GPT-4 Turbo</td>
+        <td>GPT-4 (Turbo)</td>
         <td>8.9%</td>
         <td>8.9%</td>
         <td>$44,000</td>
