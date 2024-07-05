@@ -703,8 +703,8 @@ To ensure a fair comparison of these tools, we enlisted the assistance of human 
 
 ### Evaluation Notes
 
-- Healthcare NLP returns up to 25 closest results, and Amazon Medical Comprehend returns up to five results, both sorted starting from the closest one. In contrast, the GPT-4 Turbo return only one result, *so its scores reflected similarly in both charts*.
-- Since the performance of GPT-4 and GPT-4 Turbo is almost identical according to the [official announcement](https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3), we used the GPT-4 Turbo model for the accuracy calculation.
+- Healthcare NLP returns up to 25 closest results, and Amazon Medical Comprehend returns up to five results, both sorted starting from the closest one. In contrast, the GPT-4 returns only one result, *so its scores are reflected similarly in both charts*.
+- Since the performance of GPT-4 Turbo and GPT-4o is almost identical according to the [official announcement](https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3), and we used both versions for the accuracy calculation. Additionally, the GPT-4 returns **only one result**, which means you will see the same results in both evaluation approaches.
 - Two approaches were adopted for evaluating these tools, given that the model outputs may not precisely match the annotations:
   - **Top-3:** Compare the annotations to see if they appear in the first three results.
   - **Top-5:** Compare the annotations to see if they appear in the first five results.
@@ -723,7 +723,7 @@ To ensure a fair comparison of these tools, we enlisted the assistance of human 
 
 Since we don't have such a small dataset in real world, we calculated the price of these tools according to 1M clinical notes. 
 
-- *Open AI Pricing:* We created a prompt to achieve better results, which costs $3.476 on GPT-4 Turbo and $1.738 GPT-4o model for the 79 documents. This means that for processing **1 million notes, the estimated cost would be $44,000 for the GPT-4 Turbo model** and **$22,000 for the GPT-4o model**.
+- *Open AI Pricing:* We created a prompt to achieve better results, which costs $3.476 on GPT-4 and $1.738 GPT-4o model for the 79 documents. This means that for processing **1 million notes, the estimated cost would be $44,000 for the GPT-4 Turbo model** and **$22,000 for the GPT-4o model**.
 
 - *Amazon Comprehend Medical Pricing:* According to the price calculator, obtaining RxNorm predictions for **1M documents, with an average of 9,700 characters per document, costs $24,250**.
 
@@ -733,15 +733,15 @@ Since we don't have such a small dataset in real world, we calculated the price 
 
 Based on the evaluation results:
 - The `sbiobertresolve_rxnorm_augmented` model of Spark NLP for Healthcare consistently provides **the most accurate** results in each top_k comparison.
-- The `biolordresolve_rxnorm_augmented` model of Spark NLP for Healthcare **outperforms** Amazon Comprehend Medical and GPT-4 Turbo models in mapping terms to their RxNorm codes.
-- The GPT-4 Turbo model could only return one result, reflected similarly in both charts and has proven to be **the least accurate**.
+- The `biolordresolve_rxnorm_augmented` model of Spark NLP for Healthcare **outperforms** Amazon Comprehend Medical and GPT-4 models in mapping terms to their RxNorm codes.
+- The GPT-4 model could **only return one result**, reflected similarly in both charts and has proven to be **the least accurate**.
 
 If you want to process **1M documents** and extract RxNorm codes for medication entities (*excluding the NER stage*), the total cost:
 - With Healthcare NLP is about **$4,500, including the infrastructure costs**.
 - **$24,250** with Amazon Comprehend Medical
-- **$44,000** with the GPT-4 Turbo model and **$22,000** with the GPT-4o model.
+- **$44,000** with the GPT-4 Turbo and **$22,000** with the GPT-4o.
 
-Therefore, **Healthcare NLP is almost 5 times cheaper than its closest alternative**, not to mention the accuracy differences (**Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 Turbo 8.9%**).
+Therefore, **Healthcare NLP is almost 5 times cheaper than its closest alternative**, not to mention the accuracy differences (**Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 8.9%**).
 
 **Accuracy & Cost Table**
 
