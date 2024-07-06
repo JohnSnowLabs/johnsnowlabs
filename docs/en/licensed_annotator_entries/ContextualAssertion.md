@@ -27,7 +27,7 @@ Parametres:
 - `includeChunkToScope`: Whether to include chunk to scope when matching values
 
 
-See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb) for more examples of usage.
+See [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb) for more examples of usage.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -229,11 +229,15 @@ val result = pipeline.fit(dataSet).transform(dataSet)
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[ContextualAssertion](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ContextualAssertion.html)
+[ContextualAssertion](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/context/ContextualAssertion.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[ContextualAssertion](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/contextualAssertion/index.html)
+[ContextualAssertion](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/contextual_assertion/index.html#sparknlp_jsl.annotator.assertion.contextual_assertion)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[ContextualAssertion](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
