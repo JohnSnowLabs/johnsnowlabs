@@ -15,12 +15,16 @@ sidebar:
 
 ## 4.2.4
 
-We are glad to announce that Spark OCR 4.2.4⚡has been released!! 
+We are glad to announce that Spark OCR 4.2.4⚡has been released!
 This release includes new optimized ImageToTextV2 models, more support on annotators in LightPipelines, a new PdfToHocr annotator, enhancements, and more!
+
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 * New annotators supported in LightPipelines: PdfToText and most Image transformations. Check sample notebook for details.
 * Handling of PDFs with broken headers: some PDFs may contain incorrect header information causing the pipelines to fail to process them, now PDF processing annotators support handling these documents.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Annotators
 * New ImageToTextV2 Transformers based OCR annotator, 
@@ -41,6 +45,7 @@ ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr")
 
 * New PdfToHocr: this new annotator allows to produce HOCR output from digital PDFs. This is not only useful for integrating into existing annotators that already consume HOCR, but for new pipelines that will be released in the future. Stay tuned for new releases.  
 
+</div><div class="h3-box" markdown="1">
 
 #### New Models
 ocr_base_printed_v2
@@ -48,6 +53,7 @@ ocr_base_handwritten_v2
 ocr_base_printed_v2_opt (quantized version)
 ocr_base_handwritten_v2_opt (quantized version)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 * New supported transformers in LightPipelines in action,

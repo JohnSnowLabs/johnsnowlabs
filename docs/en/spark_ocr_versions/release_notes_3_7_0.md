@@ -19,16 +19,16 @@ Release date: 30-08-2021
 
 #### Overview
 
-Improve table recognition and render OCR results to the PDF with original image
+Improve table recognition and render OCR results to the PDF with original image.
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
-* Added [ImageToTextPdf](/docs/en/ocr_pipeline_components#imagetotextpdf) transformer for storing recognized text to the searchable
-PDF with original image
-* Added [PdfAssembler](/docs/en/ocr_pipeline_components#pdfassembler) for assembling multipage PDF document from single page PDF
-documents
+* Added [ImageToTextPdf](/docs/en/ocr_pipeline_components#imagetotextpdf) transformer for storing recognized text to the searchable PDF with original image
+* Added [PdfAssembler](/docs/en/ocr_pipeline_components#pdfassembler) for assembling multipage PDF document from single page PDF documents
 
+</div><div class="h3-box" markdown="1">
 
 #### Enhancements
 
@@ -41,6 +41,7 @@ documents
 * Added [display_pdf_file](/docs/en/ocr_structures#displaypdffile) function for displaying pdf in embedded pdf viewer
 * Updated license validator
 
+</div><div class="h3-box" markdown="1">
 
 #### New and updated notebooks
 

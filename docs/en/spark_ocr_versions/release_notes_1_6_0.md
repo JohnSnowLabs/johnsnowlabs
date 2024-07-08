@@ -21,6 +21,7 @@ Release date: 05-09-2020
 
 Support parsing data from tables for selectable PDFs.
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 

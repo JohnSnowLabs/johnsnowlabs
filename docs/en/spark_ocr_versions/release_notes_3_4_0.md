@@ -23,10 +23,13 @@ Signature Detection in image-based documents.
 
 More details please read in [Signature Detection in Spark OCR](https://medium.com/spark-nlp/signature-detection-in-spark-ocr-32f9e6f91e3c)
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * [ImageSignatureDetector](/docs/en/ocr_object_detection#imagehandwrittendetector) is a DL model for detecting signature on the image.
 
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

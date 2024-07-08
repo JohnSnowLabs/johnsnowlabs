@@ -19,6 +19,8 @@ Release date: 30-05-2023
 
 We are glad to announce that Visual NLP 😎 4.4.2 has been released. This is a small release with mostly bug fixes and minor improvements.
 
+</div><div class="h3-box" markdown="1">
+
 #### Fixes
 * ImageTextDetectorV2 initialization bug happening in some cluster environments is now fixed.
 * PdfToText and PdfToHocr now return document dimensions using the same data type(integer).
@@ -29,9 +31,9 @@ New Features
 + Bounding boxes spawning multiple lines are now supported in PositionFinder!
 
 original:
-![image](/assets/images/ocr/position_finder_1.png)
+![4.4.2](/assets/images/ocr/position_finder_1.png)
 masked:
-![image](/assets/images/ocr/position_finder_2.png)
+![4.4.2](/assets/images/ocr/position_finder_2.png)
 
 Here for "Lockheed Martin" PositionFinder will return two bounding boxes. Remember that you can still link the two bounding boxes to the original entity by using the 'chunk index'.
 

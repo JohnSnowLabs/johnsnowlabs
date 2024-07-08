@@ -367,6 +367,7 @@ Show single image with metadata in Jupyter notebook.
 
 {:.table-model-big}
 | Param name | Type | Default | Description |
+|------------|------|---------|-------------|
 | width | string | "600" | width of image |
 | show_meta | boolean | true | enable/disable displaying metadata of image |
 

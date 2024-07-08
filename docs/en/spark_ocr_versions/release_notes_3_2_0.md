@@ -23,22 +23,27 @@ Multi-modal visual document understanding, built on the LayoutLM architecture.
 It achieves new state-of-the-art accuracy in several downstream tasks,
 including form understanding and receipt understanding.
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
 * [VisualDocumentNER](/docs/en/ocr_pipeline_components#visualdocumentner) is a DL model for NER problem using text and layout data.
   Currently available pre-trained model on the SROIE dataset.
 
+</div><div class="h3-box" markdown="1">
 
 #### Enhancements
 
 * Added support `SPARK_OCR_LICENSE` env key for read license.
 * Update dependencies and sync Spark versions with Spark NLP.
 
+</div><div class="h3-box" markdown="1">
 
 #### Bugfixes
 
 * Fixed an issue that some ImageReaderSpi plugins are unavailable in the fat jar.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 
