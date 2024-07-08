@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-
+{:.table-model-big}
 | Spark NLP for Healthcare	| Spark NLP (Public) |
 |---------------------------|--------------------|
 | 5.3.3                     | 5.3.2              |
@@ -95,7 +95,7 @@ sidebar:
 | 2.3.4   			        | 2.3.4              |
 
 
-
+{:.table-model-big}
 | Spark NLP for Healthcare	| Spark OCR          |
 |---------------------------|--------------------|
 | 4.3.0                     | 4.3.1              |

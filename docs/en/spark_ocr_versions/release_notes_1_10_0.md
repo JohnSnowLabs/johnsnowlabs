@@ -21,6 +21,8 @@ Release date: 20-01-2021
 
 Support Microsoft Docx documents.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Added [DocToText](/docs/en/ocr_pipeline_components#doctotext) transformer for extract text
@@ -29,6 +31,8 @@ from DOCX documents.
 table data from DOCX documents.
 * Added [DocToPdf](/docs/en/ocr_pipeline_components#doctopdf) transformer for convert DOCX
  documents to PDF format.
+
+</div><div class="h3-box" markdown="1">
 
 #### Bugfixes
 

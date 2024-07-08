@@ -22,6 +22,8 @@ Release date: 13-06-2022
 We are glad to announce that Spark OCR 3.14.0 has been released!.
 This release focuses around Visual Document Classification models, native Image Preprocessing on the JVM, and bug fixes.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * VisualDocumentClassifierv2:
@@ -33,6 +35,7 @@ This release focuses around Visual Document Classification models, native Image 
 * ImageTransformer:
   * New transformer that provides different image transformations on the JVM. Supported transforms are Scaling, Adaptive Thresholding, Median Blur, Dilation, Erosion, and Object Removal.
 
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

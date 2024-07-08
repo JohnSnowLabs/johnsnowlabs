@@ -79,6 +79,7 @@ Output:
 
 {:.table-model-big}
 |    | chunks                      |   begin |   end |      code | resolutions
+|----|-----------------------------|---------|-------|-----------|------------|
 |  2 | COPD  				 |     113 |   116 |  13645005 | copd - chronic obstructive pulmonary disease
 |  8 | PTCA                        |     324 |   327 | 373108000 | post percutaneous transluminal coronary angioplasty (finding)
 | 16 | close monitoring            |     519 |   534 | 417014005 | on examination - vigilance

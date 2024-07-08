@@ -21,12 +21,16 @@ Release date: 20-10-2021
 
 Improve visualization and support Spark NLP. 
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Added [HocrTokenizer](/docs/en/ocr_pipeline_components#hocrtokenizer)
 * Added [HocrDocumentAssembler](/docs/en/ocr_pipeline_components#hocrdocumentassembler)
 * Added [ImageDrawAnnotations](/docs/en/ocr_pipeline_components#imagedrawannotations)
 * Added support Arabic language in ImageToText and ImageToHocr
+
+</div><div class="h3-box" markdown="1">
 
 #### Enhancements
 
@@ -35,6 +39,8 @@ Improve visualization and support Spark NLP.
 * Changed default value for ignoreResolution param in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext)
 * Updated license-validator. Added support floating license and set AWS keys from license.
 * Added 'whiteList' param to the [VisualDocumentNER](/docs/en/ocr_pipeline_components#visualdocumentner)
+
+</div><div class="h3-box" markdown="1">
 
 #### New and updated notebooks
 

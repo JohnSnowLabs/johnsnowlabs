@@ -21,6 +21,8 @@ Release date: 11-12-2020
 
 Extension of  FoundationOne report parser and support HOCR output format.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Added [ImageToHocr](/docs/en/ocr_pipeline_components#imagetohocr) transformer for recognize text from image and store it to HOCR format.

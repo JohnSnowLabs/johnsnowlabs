@@ -32,7 +32,7 @@ ImageTextDetector \
 .setScoreThreshold(0.5)
 ```
 
-![image](/assets/images/ocr/image_text_detector_dit.png)
+![5.0.1](/assets/images/ocr/image_text_detector_dit.png)
 
 It is currently the best performing model at the FUNSD dataset, achieving an accuracy of 94% vs Craft detector which achieved 78.7%, and is recommended for De-identification and Text Extraction pipelines.
 

@@ -22,21 +22,29 @@ Release date: 25-02-2021
 Support German, French, Spanish and Russian languages.
 Improving [PositionsFinder](/docs/en/ocr_pipeline_components#positionsfinder) and ImageToText for better support de-identification.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Loading model data from S3 in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext).
 * Added support German, French, Spanish, Russian languages in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext).
 * Added different OCR model types: Base, Best, Fast in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext).
 
+</div><div class="h3-box" markdown="1">
+
 #### Enhancements
 
 * Added spaces symbols to the output positions in the [ImageToText](/docs/en/ocr_pipeline_components#imagetotext) transformer.
 * Eliminate python-levensthein from dependencies for simplify installation.
 
+</div><div class="h3-box" markdown="1">
+
 #### Bugfixes
 
 * Fixed issue with extracting coordinates in  in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext).
 * Fixed loading model data on cluster in yarn mode.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

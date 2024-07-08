@@ -33,7 +33,7 @@ sidebar:
 
 #### Benchmark Table
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Instance      | memory | cores | input\_data\_pages| partition     | second per page | timing  |
 | ------------- | ------ | ----- | ----------------- | ------------- | --------------- | ------- |
 | m5n.4xlarge   | 64 GB  | 16    | 1000              | 10            | 0.24            | 4 mins  |
