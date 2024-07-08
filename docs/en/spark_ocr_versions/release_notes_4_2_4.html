@@ -624,14 +624,20 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="section">4.2.4</h2>
 
-  <p>We are glad to announce that Spark OCR 4.2.4⚡has been released!! 
+  <p>We are glad to announce that Spark OCR 4.2.4⚡has been released!
 This release includes new optimized ImageToTextV2 models, more support on annotators in LightPipelines, a new PdfToHocr annotator, enhancements, and more!</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-features">New Features</h4>
   <ul>
     <li>New annotators supported in LightPipelines: PdfToText and most Image transformations. Check sample notebook for details.</li>
     <li>Handling of PDFs with broken headers: some PDFs may contain incorrect header information causing the pipelines to fail to process them, now PDF processing annotators support handling these documents.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-annotators">New Annotators</h4>
   <ul>
@@ -658,11 +664,17 @@ This release includes new optimized ImageToTextV2 models, more support on annota
     <li>New PdfToHocr: this new annotator allows to produce HOCR output from digital PDFs. This is not only useful for integrating into existing annotators that already consume HOCR, but for new pipelines that will be released in the future. Stay tuned for new releases.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-models">New Models</h4>
   <p>ocr_base_printed_v2
 ocr_base_handwritten_v2
 ocr_base_printed_v2_opt (quantized version)
 ocr_base_handwritten_v2_opt (quantized version)</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New Notebooks</h4>
   <ul>
@@ -684,6 +696,17 @@ ocr_base_handwritten_v2_opt (quantized version)</p>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -972,8 +995,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

@@ -630,6 +630,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Support Microsoft Docx documents.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
@@ -640,6 +643,9 @@ table data from DOCX documents.</li>
     <li>Added <a href="/docs/en/ocr_pipeline_components#doctopdf">DocToPdf</a> transformer for convert DOCX
  documents to PDF format.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="bugfixes">Bugfixes</h4>
 
@@ -653,6 +659,17 @@ table data from DOCX documents.</li>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -941,8 +958,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

@@ -629,7 +629,10 @@ function wrapWordInSpan(data, wordToWrap) {
   <h4 id="overview">Overview</h4>
 
   <p>We are glad to announce that Spark OCR 4.0.2 has been released!
-This release comes with new features, fixes and more!.</p>
+This release comes with new features, fixes and more!</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-features">New Features</h4>
 
@@ -639,12 +642,18 @@ This release comes with new features, fixes and more!.</p>
     <li>Added new ‘PdfToForm’ annotator, capable of extracting forms from digital PDFs. This is different from previously introduced VisualDocumentNER annotator in that this new annotator works only on digital documents, as opposite to the scanned forms handled by VisualDocumentNER. PdfToForm is complementary to VisualDocumentNER.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="improvements">Improvements</h4>
 
   <ul>
     <li>Support for multi-frame dicom has been added.</li>
     <li>Added the missing load()​ method in ImageToTextV2.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New Notebooks</h4>
 
@@ -660,6 +669,17 @@ This release comes with new features, fixes and more!.</p>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -948,8 +968,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

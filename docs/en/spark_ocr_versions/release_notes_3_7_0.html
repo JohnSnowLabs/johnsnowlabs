@@ -628,16 +628,20 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="overview">Overview</h4>
 
-  <p>Improve table recognition and render OCR results to the PDF with original image</p>
+  <p>Improve table recognition and render OCR results to the PDF with original image.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-features">New Features</h4>
 
   <ul>
-    <li>Added <a href="/docs/en/ocr_pipeline_components#imagetotextpdf">ImageToTextPdf</a> transformer for storing recognized text to the searchable
-PDF with original image</li>
-    <li>Added <a href="/docs/en/ocr_pipeline_components#pdfassembler">PdfAssembler</a> for assembling multipage PDF document from single page PDF
-documents</li>
+    <li>Added <a href="/docs/en/ocr_pipeline_components#imagetotextpdf">ImageToTextPdf</a> transformer for storing recognized text to the searchable PDF with original image</li>
+    <li>Added <a href="/docs/en/ocr_pipeline_components#pdfassembler">PdfAssembler</a> for assembling multipage PDF document from single page PDF documents</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="enhancements">Enhancements</h4>
 
@@ -651,6 +655,9 @@ documents</li>
     <li>Added <a href="/docs/en/ocr_structures#displaypdffile">display_pdf_file</a> function for displaying pdf in embedded pdf viewer</li>
     <li>Updated license validator</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-and-updated-notebooks">New and updated notebooks</h4>
 
@@ -668,6 +675,17 @@ documents</li>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -956,8 +974,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

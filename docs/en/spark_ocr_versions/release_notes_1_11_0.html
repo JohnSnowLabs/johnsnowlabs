@@ -631,6 +631,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>Support German, French, Spanish and Russian languages.
 Improving <a href="/docs/en/ocr_pipeline_components#positionsfinder">PositionsFinder</a> and ImageToText for better support de-identification.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
@@ -639,6 +642,9 @@ Improving <a href="/docs/en/ocr_pipeline_components#positionsfinder">PositionsFi
     <li>Added different OCR model types: Base, Best, Fast in <a href="/docs/en/ocr_pipeline_components#imagetotext">ImageToText</a>.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="enhancements">Enhancements</h4>
 
   <ul>
@@ -646,12 +652,18 @@ Improving <a href="/docs/en/ocr_pipeline_components#positionsfinder">PositionsFi
     <li>Eliminate python-levensthein from dependencies for simplify installation.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="bugfixes">Bugfixes</h4>
 
   <ul>
     <li>Fixed issue with extracting coordinates in  in <a href="/docs/en/ocr_pipeline_components#imagetotext">ImageToText</a>.</li>
     <li>Fixed loading model data on cluster in yarn mode.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New notebooks</h4>
 
@@ -666,6 +678,17 @@ Improving <a href="/docs/en/ocr_pipeline_components#positionsfinder">PositionsFi
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -954,8 +977,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

@@ -630,6 +630,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We’re glad to announce that Spark OCR 3.12.0 has been released!
 This release comes with new models for Handwritten Text Recognition, Spark 3.2 support, bug fixes, and notebook examples.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
@@ -675,17 +678,26 @@ spark.conf.set("spark.sql.optimizer.nestedSchemaPruning.enabled", False)
     <li>Improved documentation on the website.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-models">New Models</h4>
 
   <p>ocr_small_printed: Text recognition small model for printed text based on ImageToTextV2
 ocr_small_handwritten: Text recognition small model for handwritten text based on ImageToTextV2
 ocr_base_handwritten: Text recognition base model for handwritten text based on ImageToTextV2</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="bug-fixes">Bug Fixes</h4>
 
   <ul>
     <li>display_table() function failing to display tables coming from digital PDFs.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New notebooks</h4>
 
@@ -699,6 +711,17 @@ ocr_base_handwritten: Text recognition base model for handwritten text based on 
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -987,8 +1010,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

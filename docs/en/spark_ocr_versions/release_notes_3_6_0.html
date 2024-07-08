@@ -640,6 +640,9 @@ function wrapWordInSpan(data, wordToWrap) {
  with keeping original ratio.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="enhancements">Enhancements</h4>
 
   <ul>
@@ -649,11 +652,17 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New license validator</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="bugfixes">Bugfixes</h4>
 
   <ul>
     <li>Fixed display BGR images in display functions</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-and-updated-notebooks">New and updated notebooks</h4>
 
@@ -669,6 +678,17 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -957,8 +977,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

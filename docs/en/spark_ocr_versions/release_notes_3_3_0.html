@@ -636,6 +636,9 @@ The model was pre-trained on the <strong>COCO dataset</strong> and fine-tuned on
 
   <p>More details please read in <a href="https://medium.com/spark-nlp/table-detection-extraction-in-spark-ocr-50765c6cedc9">Table Detection &amp; Extraction in Spark OCR</a></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
@@ -643,6 +646,9 @@ The model was pre-trained on the <strong>COCO dataset</strong> and fine-tuned on
     <li><a href="/docs/en/ocr_table_recognition#imagetablecelldetector">ImageTableCellDetector</a> is a transformer for detect regions of cells in the table image.</li>
     <li><a href="/docs/en/ocr_table_recognition#imagecellstotexttable">ImageCellsToTextTable</a> is a transformer for extract text from the detected cells.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New notebooks</h4>
 
@@ -658,6 +664,17 @@ The model was pre-trained on the <strong>COCO dataset</strong> and fine-tuned on
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -946,8 +963,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

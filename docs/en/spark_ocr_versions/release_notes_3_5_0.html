@@ -632,6 +632,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>More details please read in <a href="https://medium.com/spark-nlp/extract-tabular-data-from-pdf-in-spark-ocr-b02136bc0fcb">Extract Tabular Data from PDF in Spark OCR</a></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
@@ -640,12 +643,18 @@ borderless tables and combined tables.</li>
     <li>Added <strong>Wolf</strong> and <strong>Singh</strong> adaptive binarization methods to the <a href="../ocr_pipeline_components#imageadaptivethresholding">ImageAdaptiveThresholding</a>.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="enhancements">Enhancements</h4>
 
   <ul>
     <li>Added possibility to use different type of images as input for <a href="/docs/en/ocr_table_recognition#imagetabledetector">ImageTableDetector</a>.</li>
     <li>Added <a href="/docs/en/ocr_structures#displaypdf">display_pdf</a> and <a href="/docs/en/ocr_structures#displayimageshorizontal">display_images_horizontal</a> util functions.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New notebooks</h4>
 
@@ -661,6 +670,17 @@ borderless tables and combined tables.</li>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -949,8 +969,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

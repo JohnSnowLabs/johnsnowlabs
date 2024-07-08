@@ -630,11 +630,17 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Added preserving of original file formatting</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="enhancements">Enhancements</h4>
 
   <ul>
     <li>Added keepLayout param to the <a href="/docs/en/ocr_pipeline_components#imagetotext">ImageToText</a></li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-and-updated-notebooks">New and updated notebooks</h4>
 
@@ -648,6 +654,17 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -936,8 +953,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

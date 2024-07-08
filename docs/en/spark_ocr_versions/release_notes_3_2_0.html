@@ -632,12 +632,18 @@ function wrapWordInSpan(data, wordToWrap) {
 It achieves new state-of-the-art accuracy in several downstream tasks,
 including form understanding and receipt understanding.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
     <li><a href="/docs/en/ocr_pipeline_components#visualdocumentner">VisualDocumentNER</a> is a DL model for NER problem using text and layout data.
 Currently available pre-trained model on the SROIE dataset.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="enhancements">Enhancements</h4>
 
@@ -646,11 +652,17 @@ Currently available pre-trained model on the SROIE dataset.</li>
     <li>Update dependencies and sync Spark versions with Spark NLP.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="bugfixes">Bugfixes</h4>
 
   <ul>
     <li>Fixed an issue that some ImageReaderSpi plugins are unavailable in the fat jar.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New notebooks</h4>
 
@@ -664,6 +676,17 @@ Currently available pre-trained model on the SROIE dataset.</li>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -952,8 +975,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

@@ -632,6 +632,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>More details please read in <a href="https://medium.com/spark-nlp/gpu-image-pre-processing-in-spark-ocr-3-1-0-6fc27560a9bb">GPU image preprocessing in Spark OCR</a></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-features">New Features</h4>
 
   <ul>
@@ -639,17 +642,26 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Added <a href="/docs/en/ocr_structures#displayimages">display_images</a> util function for displaying images from Spark DataFrame in Jupyter notebooks.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="enhancements">Enhancements</h4>
 
   <ul>
     <li>Improve <a href="/docs/en/ocr_structures#displayimage">display_image</a> util function.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="bug-fixes">Bug fixes</h4>
 
   <ul>
     <li>Fixed issue with extra dependencies in <a href="/docs/en/ocr_install#using-start-function">start</a> function</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-notebooks">New notebooks</h4>
 
@@ -663,6 +675,17 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -951,8 +974,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{

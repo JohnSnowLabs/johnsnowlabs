@@ -629,7 +629,10 @@ function wrapWordInSpan(data, wordToWrap) {
   <h4 id="overview">Overview</h4>
 
   <p>We are glad to announce that Spark OCR 4.1.0 has been released!
-This release comes with new features, enhancements, fixes and more!.</p>
+This release comes with new features, enhancements, fixes and more!</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-features">New Features</h4>
   <ul>
@@ -662,11 +665,17 @@ This release comes with new features, enhancements, fixes and more!.</p>
     <li>New image pre-processing annotators: ImageHomogenizeLight, ImageRemoveBackground, ImageEnhanceContrast, ImageRemoveGlare. For examples on how to use them, and their amazing results check this notebook: <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImagePreprocessing.ipynb">SparkOcrImagePreprocessing.ipynb</a>.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="improvements">Improvements</h4>
   <ul>
     <li>VisualDocumentClassifierV2 training has been improved for more efficient memory utilization.</li>
     <li>Library dependencies have been updated to remove security vulnerabilities.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="bug-fixes">Bug Fixes</h4>
   <ul>
@@ -680,6 +689,17 @@ This release comes with new features, enhancements, fixes and more!.</p>
   <h2 id="versions">Versions</h2>
 
 </div>
+<ul class="pagination">
+  <li>
+      <a href="#">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="#">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
     <li><a href="release_notes_5_3_0">5.3.0</a></li>
@@ -968,8 +988,6 @@ $(document).ready(function () {
       $('.pagination_big').owlCarousel({
         margin:10,
         nav:true,
-        center: true,
-        loop: true,
         dots:false,
         responsive:{
             0:{
