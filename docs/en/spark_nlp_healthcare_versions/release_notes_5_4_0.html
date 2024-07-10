@@ -626,7 +626,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 82 new and updated clinical pretrained models, and pipelines</strong>.</p>
+  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 81 new and updated clinical pretrained models, and pipelines</strong>.</p>
 
   <ul>
     <li>Introducing a brand new <code class="language-plaintext highlighter-rouge">LLMLoader</code> annotator to load and run large language models in gguf format. We also announce <strong>9 LLMs at various sizes and quantizations</strong> (3x small size medical summarizer and QA model, 3x medium size general model, and 3x small size zero shot entity extractor)</li>
@@ -694,6 +694,8 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to <span class="nb">help </span>individuals <span class="nb">who </span>are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain <span class="k">in </span>patients <span class="nb">who </span>have developed tolerance to other opioids.
 </code></pre></div>  </div>
 
+  <p>Please check the <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.LLMLoader.ipynb">LLMLoader</a> Notebook for more information</p>
+
 </div>
 <div class="h3-box">
 
@@ -749,7 +751,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <p><img src="https://github.com/JohnSnowLabs/spark-nlp-internal/assets/64752006/9d2e4d5d-b727-45c4-82b5-1b453e373653" alt="image" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/AssertionDL_vs_FewShotAssertion.png" alt="image" /></p>
 
   <table>
     <thead>
@@ -2733,11 +2735,11 @@ The patient has a manic disorder, is presently psychotic and shows impulsive beh
 
   <p><strong>Top-3 Results:</strong></p>
 
-  <p><img src="https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/550d89b5-1c4c-4d40-a5ea-1f9ec86387da" alt="top_3" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_3.png" alt="top_3" /></p>
 
   <p><strong>Top-5 Results:</strong></p>
 
-  <p><img src="https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7" alt="top_5" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_5.png" alt="top_5" /></p>
 
   <p><strong>Conclusion:</strong></p>
 
@@ -2951,7 +2953,6 @@ and <a href="https://medium.com/john-snow-labs/state-of-the-art-rxnorm-code-mapp
     <li><code class="language-plaintext highlighter-rouge">JSL_MedSNer_ZS_q16_v1</code></li>
     <li><code class="language-plaintext highlighter-rouge">JSL_MedSNer_ZS_q8_v1</code></li>
     <li><code class="language-plaintext highlighter-rouge">JSL_MedSNer_ZS_q4_v1</code></li>
-    <li><code class="language-plaintext highlighter-rouge">llama3_160_gguf</code></li>
   </ul>
 
 </div>
