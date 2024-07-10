@@ -70,6 +70,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="FeaturesAssembler" summary="Collects features from different columns."%}
 {% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
 {% include templates/licensed_table_entry.md  name="FewShotAssertionClassifierModel" summary="assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach."%}
+{% include templates/licensed_table_entry.md  name="FewShotAssertionSentenceClassifier" summary="It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel."%}
 {% include templates/licensed_table_entry.md  name="Flattener" summary="`Flattener` annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation."%}
 {% include templates/licensed_table_entry.md  name="GenericClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="GenericLogRegClassifier" summary="Is a derivative of GenericClassifier which implements a multinomial logistic regression."%}
@@ -77,6 +78,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="InternalDocumentSplitter" summary="This annotator splits large documents into small documents."%}
 {% include templates/licensed_table_entry.md  name="IOBTagger" summary="Merges token tags and NER labels from chunks in the specified format."%}
 {% include templates/licensed_table_entry.md  name="LightDeIdentification" summary="Light version of DeIdentification."%}
+{% include templates/licensed_table_entry.md  name="LLMLoader" summary="LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs' licensed LLMs at various sizes that are finetuned on medical context for certain tasks."%}
 {% include templates/licensed_table_entry.md  name="MultiChunk2Doc" summary="Merges a given chunks to create a document."%}
 {% include templates/licensed_table_entry.md  name="NameChunkObfuscator" summary="This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="NerChunker" summary="Extracts phrases that fits into a known pattern using the NER tags."%}
