@@ -12,16 +12,12 @@ Converts and assembles `VECTOR_SIMILARITY_RANKINGS` type annotations into `DOCUM
 The input annotations are expected to be of type `VECTOR_SIMILARITY_RANKINGS` and the output annotation type is `DOCUMENT`.
 It concatenates the results of the input annotations into a single result, separated by a join string.
 When `explodeSplits` is set to True, the splits are exploded into separate annotations.
-`joinString` parameter is used to add the delimiter between results of annotations when combining them into a single result.
+The `joinString` parameter is used to add the delimiter between the results of annotations when combining them into a single result.
 
 Parameters:
 
-- `joinString` *(str)*:  This parameter specifies the string that will be inserted between results of annotations when combining them into a single result.
-  It acts as a delimiter, ensuring that the elements are properly separated and organized in the final result of annotation.
-  Default: " ".
-
-- `explodeSplits` *(Bool)*: Whether to explode the splits into separate annotations or not.
-  Default: False.
+- `joinString` *(str)*:  This parameter specifies the string that will be inserted between results of annotations when combining them into a single result. It acts as a delimiter, ensuring that the elements are properly separated and organized in the final result of annotation.  Default: `" "`.
+- `explodeSplits` *(Bool)*: Whether to explode the splits into separate annotations or not. Default: `False`.
 
 
 {%- endcapture -%}
@@ -38,9 +34,11 @@ DOCUMENT
 
 from johnsnowlabs import nlp, medical
 
-
-
-## Result
+context_split_assembler = ( medical.ContextSplitAssembler()
+  .setInputCols("vector_db")
+  .setOutputCol("document")
+  .setJoinString("\n")
+  .setExplodeSplits(False))
 
 
 
