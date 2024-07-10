@@ -14,9 +14,7 @@ few shot classifiers based on the SetFit approach.
 Parameters:
 
 - `batchSize` *(Int)*: Batch size
-
 - `caseSensitive` *(Bool)*: Whether the classifier is sensitive to text casing
-
 - `maxSentenceLength` *(Int)*: The maximum length of the input text
 
 
@@ -34,46 +32,46 @@ ASSERTION
 
 from johnsnowlabs import nlp, medical
 
-document_assembler = DocumentAssembler()\
+document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
-tokenizer = Tokenizer()\
+tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")\
     .setSplitChars(["-", "\/"])
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
     .setInputCols(["sentence","token"])\
     .setOutputCol("embeddings")
 
 # ner_oncology
-ner_oncology = MedicalNerModel.pretrained("ner_oncology","en","clinical/models")\
+ner_oncology = medical.NerModel.pretrained("ner_oncology","en","clinical/models")\
     .setInputCols(["sentence","token","embeddings"])\
     .setOutputCol("ner_oncology")
 
-ner_oncology_converter = NerConverterInternal()\
+ner_oncology_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence","token","ner_oncology"])\
     .setOutputCol("ner_chunk")
 
-few_shot_assertion_converter = FewShotAssertionSentenceConverter()\
+few_shot_assertion_converter = medical.FewShotAssertionSentenceConverter()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("assertion_sentence")
 
-e5_embeddings = E5Embeddings.pretrained("e5_base_v2_embeddings_medical_assertion_oncology", "en", "clinical/models")\
+e5_embeddings = nlp.E5Embeddings.pretrained("e5_base_v2_embeddings_medical_assertion_oncology", "en", "clinical/models")\
     .setInputCols(["assertion_sentence"])\
     .setOutputCol("assertion_embedding")
 
-few_shot_assertion_classifier = FewShotAssertionClassifierModel()\
+few_shot_assertion_classifier = medical.FewShotAssertionClassifierModel()\
     .pretrained("fewhot_assertion_oncology_e5_base_v2_oncology", "en", "clinical/models")\
     .setInputCols(["assertion_embedding"])\
     .setOutputCol("assertion_fewshot")
 
-assertion_pipeline = Pipeline(
+assertion_pipeline = nlp.Pipeline(
     stages=[
         document_assembler,
         sentence_detector,

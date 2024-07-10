@@ -37,9 +37,7 @@ Parameters:
 - `nProbs` :  Amount top tokens probabilities to output if greater than 0.
 - `minKeep` :  Amount of tokens the samplers should return at least (0 = disabled)
 - `grammar` :  BNF-like grammar to constrain generations (see samples in grammars/ dir)
-- `penaltyPrompt` :  Override which part of the prompt is penalized for repetition.
-  E.g. if original prompt is "Alice: Hello!" and penaltyPrompt is "Hello!", only the latter will be penalized if
-  repeated. See <a href="https://github.com/ggerganov/llama.cpp/pull/3727">pull request 3727</a> for more details.
+- `penaltyPrompt` :  Override which part of the prompt is penalized for repetition. E.g. if original prompt is "Alice: Hello!" and penaltyPrompt is "Hello!", only the latter will be penalized if repeated. See <a href="https://github.com/ggerganov/llama.cpp/pull/3727">pull request 3727</a> for more details.
 - `penaltyPromptTokens` :  PenaltyPromptTokens
 - `ignoreEos` :  Whether to ignore end of stream token and continue generating (implies --logit-bias 2-inf)
 - `stopStrings` :  Strings upon seeing which token generation is stopped

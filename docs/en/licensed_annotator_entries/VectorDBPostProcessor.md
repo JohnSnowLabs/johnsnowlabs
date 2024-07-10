@@ -12,23 +12,10 @@ VectorDBPostProcessor is used to filter and sort the annotations from the :class
 Parametres:
 
 - `filterBy`:The filterBy parameter is used to select and prioritize filter options.
-- `sortBy`:The sortBy parameter is used to select sorting option.
-Options: `ascending`, `descending`, `lost_in_the_middle`, `diversity`.
-`ascending`: Sort by ascending order of distance.
-`descending`: Sort by descending order of distance.
-`lost_in_the_middle`: Sort by lost in the middle ranker. Let's say we have 5 annotations with distances [1, 2, 3, 4, 5]. The lost in the middle ranker will sort them as [1, 3, 5, 4, 2].
-`diversity`:  Sort by diversity ranker. The annotations are sorted by distance and the first annotation select, and then the next annotation is selected by the maximum average distance from the selected annotations. Default: `ascending`
-- `caseSensitive`: Whether the criteria of the string operators are case sensitive or not.
-For example, if set to False, the operator "equals" will match "John" with "john".
-Default: False
-- `diversityThreshold`: The diversityThreshold parameter is used to set the threshold for the diversityByThreshold filter.
-  The diversityByThreshold filter selects the annotations by the distance between the sorted annotations.
-  diversityThreshold must be greater than 0.
-  Default: 0.01
-- `maxTopKAfterFiltering`:  Whether to allow zero annotation after filtering.
-  If set to True, the output may contain zero annotation if all annotations are filtered out.
-  If set to False, The output is tried to contain at least one annotation.
-  Default: False
+- `sortBy`:The sortBy parameter is used to select sorting option. Options: `ascending`, `descending`, `lost_in_the_middle`, `diversity`.`ascending`: Sort by ascending order of distance.`descending`: Sort by descending order of distance.`lost_in_the_middle`: Sort by lost in the middle ranker. Let's say we have 5 annotations with distances [1, 2, 3, 4, 5]. The lost in the middle ranker will sort them as [1, 3, 5, 4, 2].`diversity`:  Sort by diversity ranker. The annotations are sorted by distance and the first annotation select, and then the next annotation is selected by the maximum average distance from the selected annotations. Default: `ascending`
+- `caseSensitive`: Whether the criteria of the string operators are case sensitive or not. For example, if set to False, the operator "equals" will match "John" with "john". Default: False
+- `diversityThreshold`: The diversityThreshold parameter is used to set the threshold for the diversityByThreshold filter. The diversityByThreshold filter selects the annotations by the distance between the sorted annotations. diversityThreshold must be greater than 0. Default: 0.01
+- `maxTopKAfterFiltering`:  Whether to allow zero annotation after filtering. If set to True, the output may contain zero annotation if all annotations are filtered out. If set to False, The output is tried to contain at least one annotation. Default: False
 - `metadataCriteria`: The metadataCriteria parameter is used to filter the annotations by metadata fields.
 
 
