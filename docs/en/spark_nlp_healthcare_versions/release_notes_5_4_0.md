@@ -17,7 +17,7 @@ sidebar:
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 82 new and updated clinical pretrained models, and pipelines**.
+We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 81 new and updated clinical pretrained models, and pipelines**.
  
 + Introducing a brand new `LLMLoader` annotator to load and run large language models in gguf format. We also announce **9 LLMs at various sizes and quantizations** (3x small size medical summarizer and QA model, 3x medium size general model, and 3x small size zero shot entity extractor)
 + Introducing a brand new `FewshotAssertionClassifier` annotator to train assertion detection models using a few samples with better accuracy 
@@ -79,7 +79,7 @@ llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to help individuals who are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain in patients who have developed tolerance to other opioids.
 ```
 
-
+Please check the [LLMLoader](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.LLMLoader.ipynb) Notebook for more information
 
 </div><div class="h3-box" markdown="1">
 
@@ -102,7 +102,8 @@ The following table demonstrates the enhanced results achieved using the FewShot
 | smoking       | 0.67         | 0.96              |
 | sdoh          | 0.76         | 0.85              |
 
-![image](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/64752006/9d2e4d5d-b727-45c4-82b5-1b453e373653)
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/AssertionDL_vs_FewShotAssertion.png)
+
 
 
 |FewShot Assertion Model Name| Predicted Classed |
@@ -818,11 +819,11 @@ Here are the accuracy results:
   
 **Top-3 Results:**
 
-![top_3](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/550d89b5-1c4c-4d40-a5ea-1f9ec86387da)
+![top_3](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_3.png)
 
 **Top-5 Results:**
 
-![top_5](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7)
+![top_5](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_5.png)
 
 **Conclusion:**
 
@@ -1024,8 +1025,6 @@ Please check the [Spark_NLP_Udemy_MOOC](https://github.com/JohnSnowLabs/spark-nl
 + `JSL_MedSNer_ZS_q16_v1`
 + `JSL_MedSNer_ZS_q8_v1`
 + `JSL_MedSNer_ZS_q4_v1`
-+ `llama3_160_gguf`
-
 
 
 </div><div class="h3-box" markdown="1">
