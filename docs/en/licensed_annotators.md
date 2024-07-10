@@ -55,6 +55,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="ChunkMerge" summary="Merges entities coming from different CHUNK annotations."%}
 {% include templates/licensed_table_entry.md  name="ChunkSentenceSplitter" summary="Annotator can split the documents into chunks according to separators given as `CHUNK` columns. It is useful when you need to perform different models or analysis in different sections of your document"%}
 {% include templates/licensed_table_entry.md  name="ContextualParser" summary="Extracts entity from a document based on user defined rules."%}
+{% include templates/licensed_table_entry.md  name="ContextSplitAssembler" summary="Converts and assembles `VECTOR_SIMILARITY_RANKINGS` type annotations into `DOCUMENT` type."%}
 {% include templates/licensed_table_entry.md  name="DateNormalizer" summary="This annotator transforms date mentions to a common standard format: YYYY/MM/DD. It is useful when using data from different sources, some times from different countries that has different formats to represent dates."%}
 {% include templates/licensed_table_entry.md  name="DeIdentification" summary="Deidentifies Input Annotations of types DOCUMENT, TOKEN and CHUNK, by either masking or obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="DistilBertForSequenceClassification" summary="Can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks."%}
@@ -101,6 +102,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="TextGenerator" summary="Uses the basic BioGPT model to perform various tasks related to medical text abstraction."%}
 {% include templates/licensed_table_entry.md  name="TextMatcherInternal" summary="This annotator match exact phrases provided in a file against a Document."%}
 {% include templates/licensed_table_entry.md  name="TFGraphBuilder" summary="Creates Tensorflow graphs."%}
+{% include templates/licensed_table_entry.md  name="VectorDBPostProcessor" summary="VectorDBPostProcessor is used to filter and sort the annotations from the :class:`sparknlp_jsl.annotator.resolution.VectorDBModel`."%}
 {% include templates/licensed_table_entry.md  name="WindowedSentenceModel" summary="This annotator that helps you to merge the previous and following sentences of a given piece of text, so that you add the context surrounding them."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotNerModel" summary="This is a zero-shot named entity recognition using `RoBertaForQuestionAnswering`. It identifies entities across diverse data without domain-specific fine-tuning."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotRelationExtractionModel" summary="This annotator implements zero-shot binary relations extraction by utilizing `BERT` transformer models trained on the NLI (Natural Language Inference) task."%}
