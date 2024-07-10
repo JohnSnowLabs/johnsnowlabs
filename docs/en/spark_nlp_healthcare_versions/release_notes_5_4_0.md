@@ -17,7 +17,7 @@ sidebar:
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 82 new and updated clinical pretrained models, and pipelines**.
+We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 81 new and updated clinical pretrained models, and pipelines**.
  
 + Introducing a brand new `LLMLoader` annotator to load and run large language models in gguf format. We also announce **9 LLMs at various sizes and quantizations** (3x small size medical summarizer and QA model, 3x medium size general model, and 3x small size zero shot entity extractor)
 + Introducing a brand new `FewshotAssertionClassifier` annotator to train assertion detection models using a few samples with better accuracy 
@@ -79,7 +79,7 @@ llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to help individuals who are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain in patients who have developed tolerance to other opioids.
 ```
 
-
+Please check the [LLMLoader](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.LLMLoader.ipynb) Notebook for more information
 
 </div><div class="h3-box" markdown="1">
 
