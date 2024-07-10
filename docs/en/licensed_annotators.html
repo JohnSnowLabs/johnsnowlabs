@@ -18850,13 +18850,13 @@ flexible and extensible framework for interacting with language models in a Pyth
 
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">llmLoader</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LLMLoader</span><span class="o">()</span>
   <span class="o">.</span><span class="py">setSparkSession</span><span class="o">(</span><span class="n">spark</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"llama3_160_gguf"</span><span class="o">,</span> <span class="n">remoteLoc</span><span class="o">=</span><span class="s">"clinical/models"</span><span class="o">,</span> <span class="n">lang</span> <span class="k">=</span> <span class="s">"en"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"JSL_MedS_q16_v1"</span><span class="o">,</span> <span class="n">remoteLoc</span><span class="o">=</span><span class="s">"clinical/models"</span><span class="o">,</span> <span class="n">lang</span> <span class="k">=</span> <span class="s">"en"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setTemperature</span><span class="o">(</span><span class="mf">0.0f</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setNPredict</span><span class="o">(</span><span class="mi">20</span><span class="o">)</span>
 
 
 
-<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"Tell me five words about Microsoft."</span>
+<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"What is the indication for the drug Methadone?"</span>
 
 <span class="k">val</span> <span class="nv">output</span> <span class="k">=</span> <span class="nv">llmLoader</span><span class="o">.</span><span class="py">setUseChatTemplate</span><span class="o">(</span><span class="kc">false</span><span class="o">).</span><span class="py">setStopStrings</span><span class="o">(</span><span class="nv">Array</span><span class="o">.</span><span class="py">empty</span><span class="o">[</span><span class="kt">String</span><span class="o">]).</span><span class="py">generate</span><span class="o">(</span><span class="n">prompt</span><span class="o">)</span>
 
@@ -18864,7 +18864,7 @@ flexible and extensible framework for interacting with language models in a Pyth
 
 <span class="o">#</span><span class="k">#</span> <span class="nc">Result</span>
 
-<span class="mf">1.</span> <span class="nc">Microsoft</span><span class="k">:</span> <span class="kt">Microsoft</span> <span class="kt">is</span> <span class="kt">a</span> <span class="kt">global</span> <span class="kt">technology</span> <span class="kt">company</span> <span class="kt">that</span> <span class="kt">develops</span><span class="o">,</span> <span class="n">manufactures</span><span class="o">,</span> <span class="n">and</span> <span class="n">sells</span>
+<span class="ss">'Methadone</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">treat</span> <span class="n">opioid</span> <span class="n">addiction</span><span class="o">.</span> <span class="nc">It</span> <span class="n">is</span> <span class="n">a</span> <span class="n">long</span><span class="o">-</span><span class="n">acting</span> <span class="n">opioid</span> <span class="n">agonist</span> <span class="n">that</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">help</span> <span class="n">individuals</span> <span class="n">who</span> <span class="n">are</span> <span class="n">addicted</span> <span class="n">to</span> <span class="n">short</span><span class="o">-</span><span class="n">acting</span> <span class="n">opioids</span> <span class="n">such</span> <span class="n">as</span> <span class="n">heroin</span> <span class="n">or</span> <span class="n">other</span> <span class="n">illicit</span> <span class="n">opioids</span><span class="o">.</span> <span class="nc">It</span> <span class="n">is</span> <span class="n">also</span> <span class="n">used</span> <span class="n">to</span> <span class="n">treat</span> <span class="n">chronic</span> <span class="n">pain</span> <span class="n">in</span> <span class="n">patients</span> <span class="n">who</span> <span class="n">have</span> <span class="n">developed</span> <span class="n">tolerance</span> <span class="n">to</span> <span class="n">other</span> <span class="n">opioids</span><span class="o">.'</span>
 </code></pre></div>          </div>
 
         </div>

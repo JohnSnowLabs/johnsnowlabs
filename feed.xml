@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-07-10T15:42:52+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-07-10T15:56:35+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
 </subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Medical Assertion E5 Embedding ( SDOH )</title><link href="/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html" rel="alternate" type="text/html" title="Medical Assertion E5 Embedding ( SDOH )" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en</id><content type="html" xml:base="/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html">## Description
 
 This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).
@@ -269,120 +269,99 @@ Someone_Else       0.89      0.75      0.81       240
     accuracy          -         -      0.85      1726
    macro-avg       0.83      0.81      0.81      1726
 weighted-avg       0.85      0.85      0.85      1726
-```</content><author><name>John Snow Labs</name></author><category term="assertion" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="sdoh" /><category term="fewshot" /><summary type="html">Description Assign assertion status to clinical entities extracted by NER based on their context in the text. Also this model is trained on a list of clinical and biomedical datasets curated in-house Predicted Entities Absent, Past, Present, Someone_Else, Hypothetical, Possible Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;)\ .setSplitChars([&quot;-&quot;, &quot;\/&quot;]) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) # ner_sdoh clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;])\ .setOutputCol(&quot;ner_sdoh_chunk&quot;)\ .setBlackList(['Age','Gender','Language','HEALTHCARE_INSTITUTION']) few_shot_assertion_converter = FewShotAssertionSentenceConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;])\ .setOutputCol(&quot;assertion_sentence&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_sentence&quot;])\ .setOutputCol(&quot;assertion_embedding&quot;) few_shot_assertion_classifier = FewShotAssertionClassifierModel()\ .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_embedding&quot;])\ .setOutputCol(&quot;assertion&quot;) assertion_pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier ]) data = spark.createDataFrame([[&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now. She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week. Her partner is an alcoholic and a drug abuser for the last 5 years. She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = assertion_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) .setSplitChars(Array(&quot;-&quot;, &quot;\/&quot;)) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) // ner_sdoh val clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;)) .setOutputCol(&quot;ner_sdoh_chunk&quot;) .setBlackList(Array('Age','Gender','Language','HEALTHCARE_INSTITUTION')) val few_shot_assertion_converter = new FewShotAssertionSentenceConverter() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;)) .setOutputCol(&quot;assertion_sentence&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_sentence&quot;)) .setOutputCol(&quot;assertion_embedding&quot;) val few_shot_assertion_classifier = FewShotAssertionClassifierModel() .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_embedding&quot;)) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier)) val data = Seq(Array(&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now. She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week. Her partner is an alcoholic and a drug abuser for the last 5 years. She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;)).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results | | chunks | begin | end | entities | assertion | confidence | |---:|:-------------------|--------:|------:|:-------------------|:-------------|-------------:| | 0 | cleaning assistant | 17 | 34 | Employment | present | 0.956549 | | 1 | health insurance | 64 | 79 | Insurance_Status | Absent | 0.930705 | | 2 | apartment | 156 | 164 | Housing | present | 0.953653 | | 3 | EtOH abuse | 196 | 205 | Alcohol | Past | 0.855614 | | 4 | Rehab Programs | 265 | 278 | Access_To_Care | Hypothetical | 0.871034 | | 5 | DUI | 289 | 291 | Legal_Issues | Past | 0.853602 | | 6 | alcoholic | 363 | 371 | Alcohol | Someone_Else | 0.895126 | | 7 | drug abuser | 379 | 389 | Substance_Use | Someone_Else | 0.89584 | | 8 | last 5 years | 399 | 410 | Substance_Duration | present | 0.95608 | | 9 | socially isolated | 440 | 456 | Social_Exclusion | present | 0.956841 | | 10 | strong support | 472 | 485 | Social_Support | Absent | 0.93079 | Model Information Model Name: fewhot_assertion_sdoh_e5_base_v2_sdoh Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [assertion_embedding] Output Labels: [assertion] Language: en Size: 25.4 KB Benchmarking label precision recall f1-score support Absent 0.93 0.95 0.94 385 Hypothetical 0.83 0.82 0.83 211 Past 0.71 0.71 0.71 156 Possible 0.75 0.72 0.74 64 Someone_Else 0.89 0.75 0.81 240 present 0.85 0.89 0.87 670 accuracy - - 0.85 1726 macro-avg 0.83 0.81 0.81 1726 weighted-avg 0.85 0.85 0.85 1726</summary></entry><entry><title type="html">Legal Clauses Multilabel Classifier</title><link href="/2024/07/04/legmulticlf_edgar_le_en.html" rel="alternate" type="text/html" title="Legal Clauses Multilabel Classifier" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/legmulticlf_edgar_le_en</id><content type="html" xml:base="/2024/07/04/legmulticlf_edgar_le_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+```</content><author><name>John Snow Labs</name></author><category term="assertion" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="sdoh" /><category term="fewshot" /><summary type="html">Description Assign assertion status to clinical entities extracted by NER based on their context in the text. Also this model is trained on a list of clinical and biomedical datasets curated in-house Predicted Entities Absent, Past, Present, Someone_Else, Hypothetical, Possible Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;)\ .setSplitChars([&quot;-&quot;, &quot;\/&quot;]) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) # ner_sdoh clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;])\ .setOutputCol(&quot;ner_sdoh_chunk&quot;)\ .setBlackList(['Age','Gender','Language','HEALTHCARE_INSTITUTION']) few_shot_assertion_converter = FewShotAssertionSentenceConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;])\ .setOutputCol(&quot;assertion_sentence&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_sentence&quot;])\ .setOutputCol(&quot;assertion_embedding&quot;) few_shot_assertion_classifier = FewShotAssertionClassifierModel()\ .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_embedding&quot;])\ .setOutputCol(&quot;assertion&quot;) assertion_pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier ]) data = spark.createDataFrame([[&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now. She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week. Her partner is an alcoholic and a drug abuser for the last 5 years. She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = assertion_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) .setSplitChars(Array(&quot;-&quot;, &quot;\/&quot;)) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) // ner_sdoh val clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;)) .setOutputCol(&quot;ner_sdoh_chunk&quot;) .setBlackList(Array('Age','Gender','Language','HEALTHCARE_INSTITUTION')) val few_shot_assertion_converter = new FewShotAssertionSentenceConverter() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;)) .setOutputCol(&quot;assertion_sentence&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_sentence&quot;)) .setOutputCol(&quot;assertion_embedding&quot;) val few_shot_assertion_classifier = FewShotAssertionClassifierModel() .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_embedding&quot;)) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier)) val data = Seq(Array(&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now. She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week. Her partner is an alcoholic and a drug abuser for the last 5 years. She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;)).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results | | chunks | begin | end | entities | assertion | confidence | |---:|:-------------------|--------:|------:|:-------------------|:-------------|-------------:| | 0 | cleaning assistant | 17 | 34 | Employment | present | 0.956549 | | 1 | health insurance | 64 | 79 | Insurance_Status | Absent | 0.930705 | | 2 | apartment | 156 | 164 | Housing | present | 0.953653 | | 3 | EtOH abuse | 196 | 205 | Alcohol | Past | 0.855614 | | 4 | Rehab Programs | 265 | 278 | Access_To_Care | Hypothetical | 0.871034 | | 5 | DUI | 289 | 291 | Legal_Issues | Past | 0.853602 | | 6 | alcoholic | 363 | 371 | Alcohol | Someone_Else | 0.895126 | | 7 | drug abuser | 379 | 389 | Substance_Use | Someone_Else | 0.89584 | | 8 | last 5 years | 399 | 410 | Substance_Duration | present | 0.95608 | | 9 | socially isolated | 440 | 456 | Social_Exclusion | present | 0.956841 | | 10 | strong support | 472 | 485 | Social_Support | Absent | 0.93079 | Model Information Model Name: fewhot_assertion_sdoh_e5_base_v2_sdoh Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [assertion_embedding] Output Labels: [assertion] Language: en Size: 25.4 KB Benchmarking label precision recall f1-score support Absent 0.93 0.95 0.94 385 Hypothetical 0.83 0.82 0.83 211 Past 0.71 0.71 0.71 156 Possible 0.75 0.72 0.74 64 Someone_Else 0.89 0.75 0.81 240 present 0.85 0.89 0.87 670 accuracy - - 0.85 1726 macro-avg 0.83 0.81 0.81 1726 weighted-avg 0.85 0.85 0.85 1726</summary></entry><entry><title type="html">Legal Clauses Multilabel Classifier</title><link href="/2024/07/04/legmulticlf_edgar_le_en.html" rel="alternate" type="text/html" title="Legal Clauses Multilabel Classifier" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/legmulticlf_edgar_le_en</id><content type="html" xml:base="/2024/07/04/legmulticlf_edgar_le_en.html">## Description
 
-&lt;p&gt;This is a Multilabel Document Classification model, which can be used to identify up to 15 classes in texts. The classes are the following:&lt;/p&gt;
+This is a Multilabel Document Classification model, which can be used to identify up to 15 classes in texts. The classes are the following:
 
-&lt;ul&gt;
-  &lt;li&gt;terminations&lt;/li&gt;
-  &lt;li&gt;assigns&lt;/li&gt;
-  &lt;li&gt;notices&lt;/li&gt;
-  &lt;li&gt;amendments&lt;/li&gt;
-  &lt;li&gt;waivers&lt;/li&gt;
-  &lt;li&gt;survival&lt;/li&gt;
-  &lt;li&gt;successors&lt;/li&gt;
-  &lt;li&gt;governing laws&lt;/li&gt;
-  &lt;li&gt;severability&lt;/li&gt;
-  &lt;li&gt;expenses&lt;/li&gt;
-  &lt;li&gt;assignments&lt;/li&gt;
-  &lt;li&gt;warranties&lt;/li&gt;
-  &lt;li&gt;representations&lt;/li&gt;
-  &lt;li&gt;entire agreements&lt;/li&gt;
-  &lt;li&gt;counterparts&lt;/li&gt;
-&lt;/ul&gt;
+- terminations
+- assigns
+- notices
+- amendments
+- waivers
+- survival
+- successors
+- governing laws
+- severability
+- expenses
+- assignments
+- warranties
+- representations
+- entire agreements
+- counterparts
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terminations&lt;/code&gt;&lt;/p&gt;
+`terminations`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_edgar_le_en_1.0.0_3.0_1720072778562.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_edgar_le_en_1.0.0_3.0_1720072778562.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_edgar_le_en_1.0.0_3.0_1720072778562.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_edgar_le_en_1.0.0_3.0_1720072778562.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E5Embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legembedding_e5_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;multiClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legmulticlf_edgar_le&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;ledgar_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-            &lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;multiClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document = nlp.DocumentAssembler()\
+  .setInputCol(&quot;text&quot;)\
+  .setOutputCol(&quot;document&quot;)
+
+embeddings = nlp.E5Embeddings.pretrained(&quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)\
+  .setInputCols([&quot;document&quot;])\
+  .setOutputCol(&quot;sentence_embeddings&quot;)
 
 
-&lt;span class=&quot;n&quot;&gt;light_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LightPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ledgar_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+multiClassifier = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_edgar_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) \
+  .setInputCols([&quot;document&quot;, &quot;sentence_embeddings&quot;]) \
+  .setOutputCol(&quot;class&quot;)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;light_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;(a) No failure or delay by the Administrative Agent or any Lender in exercising any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any such right or power, or any abandonment or discontinuance of steps to enforce such a right or power, preclude any other or further exercise thereof or the exercise of any other right or power. The rights and remedies of the Administrative Agent and the Lenders hereunder are cumulative and are not exclusive of any rights or remedies that they would otherwise have. No waiver of any provision of this Agreement or consent to any departure by the Borrower therefrom shall in any event be effective unless the same shall be permitted by paragraph (b) of this Section, and then such waiver or consent shall be effective only in the specific instance and for the purpose for which given. Without limiting the generality of the foregoing, the making of a Loan shall not be construed as a waiver of any Default, regardless of whether the Administrative Agent or any Lender may have had notice or knowledge of such Default at the time.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ledgar_pipeline = nlp.Pipeline(
+    stages=[document, 
+            embeddings,
+            multiClassifier])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+light_pipeline = LightPipeline(ledgar_pipeline.fit(spark.createDataFrame([['']]).toDF(&quot;text&quot;)))
+
+result = light_pipeline.annotate(&quot;&quot;&quot;(a) No failure or delay by the Administrative Agent or any Lender in exercising any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any such right or power, or any abandonment or discontinuance of steps to enforce such a right or power, preclude any other or further exercise thereof or the exercise of any other right or power. The rights and remedies of the Administrative Agent and the Lenders hereunder are cumulative and are not exclusive of any rights or remedies that they would otherwise have. No waiver of any provision of this Agreement or consent to any departure by the Borrower therefrom shall in any event be effective unless the same shall be permitted by paragraph (b) of this Section, and then such waiver or consent shall be effective only in the specific instance and for the purpose for which given. Without limiting the generality of the foregoing, the making of a Loan shall not be construed as a waiver of any Default, regardless of whether the Administrative Agent or any Lender may have had notice or knowledge of such Default at the time.&quot;&quot;&quot;)
+
+result[&quot;class&quot;]
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'waivers'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'amendments'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```bash
+['waivers', 'amendments']
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legmulticlf_edgar_le&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence_embeddings]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;14.0 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legmulticlf_edgar_le|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|14.0 MB|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;Ledgar dataset, available at https://metatext.io/datasets/ledgar, with in-house data&lt;/p&gt;
+Ledgar dataset, available at https://metatext.io/datasets/ledgar, with in-house data
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Classification report: 
+```bash
+Classification report: 
                precision    recall  f1-score   support
 
            0       0.89      0.89      0.89      1066
@@ -405,132 +384,111 @@ weighted-avg       0.85      0.85      0.85      1726
    macro avg       0.93      0.89      0.91     10485
 weighted avg       0.94      0.92      0.93     10485
  samples avg       0.93      0.94      0.93     10485
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="clauses" /><category term="edgar" /><category term="ledgar" /><category term="en" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a Multilabel Document Classification model, which can be used to identify up to 15 classes in texts. The classes are the following: terminations assigns notices amendments waivers survival successors governing laws severability expenses assignments warranties representations entire agreements counterparts Predicted Entities terminations Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) embeddings = nlp.E5Embeddings.pretrained(&quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence_embeddings&quot;) multiClassifier = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_edgar_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;sentence_embeddings&quot;]) \ .setOutputCol(&quot;class&quot;) ledgar_pipeline = nlp.Pipeline( stages=[document, embeddings, multiClassifier]) light_pipeline = LightPipeline(ledgar_pipeline.fit(spark.createDataFrame([['']]).toDF(&quot;text&quot;))) result = light_pipeline.annotate(&quot;&quot;&quot;(a) No failure or delay by the Administrative Agent or any Lender in exercising any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any such right or power, or any abandonment or discontinuance of steps to enforce such a right or power, preclude any other or further exercise thereof or the exercise of any other right or power. The rights and remedies of the Administrative Agent and the Lenders hereunder are cumulative and are not exclusive of any rights or remedies that they would otherwise have. No waiver of any provision of this Agreement or consent to any departure by the Borrower therefrom shall in any event be effective unless the same shall be permitted by paragraph (b) of this Section, and then such waiver or consent shall be effective only in the specific instance and for the purpose for which given. Without limiting the generality of the foregoing, the making of a Loan shall not be construed as a waiver of any Default, regardless of whether the Administrative Agent or any Lender may have had notice or knowledge of such Default at the time.&quot;&quot;&quot;) result[&quot;class&quot;] Results ['waivers', 'amendments'] Model Information Model Name: legmulticlf_edgar_le Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References Ledgar dataset, available at https://metatext.io/datasets/ledgar, with in-house data Benchmarking Classification report: precision recall f1-score support 0 0.89 0.89 0.89 1066 1 0.83 0.65 0.73 333 2 0.80 0.81 0.80 537 3 0.99 0.99 0.99 918 4 0.98 0.98 0.98 1049 5 0.99 0.97 0.98 339 6 1.00 0.99 0.99 1274 7 0.98 0.98 0.98 926 8 0.91 0.92 0.91 437 9 0.98 0.97 0.98 922 10 0.89 0.88 0.88 674 11 0.95 0.96 0.95 566 12 0.92 0.79 0.85 354 13 0.89 0.87 0.88 725 14 0.88 0.78 0.83 365 micro avg 0.94 0.92 0.93 10485 macro avg 0.93 0.89 0.91 10485 weighted avg 0.94 0.92 0.93 10485 samples avg 0.93 0.94 0.93 10485</summary></entry><entry><title type="html">Multilabel Classification of NDA Clauses (paragraph, medium)</title><link href="/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en.html" rel="alternate" type="text/html" title="Multilabel Classification of NDA Clauses (paragraph, medium)" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en</id><content type="html" xml:base="/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+```</content><author><name>John Snow Labs</name></author><category term="clauses" /><category term="edgar" /><category term="ledgar" /><category term="en" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a Multilabel Document Classification model, which can be used to identify up to 15 classes in texts. The classes are the following: terminations assigns notices amendments waivers survival successors governing laws severability expenses assignments warranties representations entire agreements counterparts Predicted Entities terminations Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) embeddings = nlp.E5Embeddings.pretrained(&quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence_embeddings&quot;) multiClassifier = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_edgar_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;sentence_embeddings&quot;]) \ .setOutputCol(&quot;class&quot;) ledgar_pipeline = nlp.Pipeline( stages=[document, embeddings, multiClassifier]) light_pipeline = LightPipeline(ledgar_pipeline.fit(spark.createDataFrame([['']]).toDF(&quot;text&quot;))) result = light_pipeline.annotate(&quot;&quot;&quot;(a) No failure or delay by the Administrative Agent or any Lender in exercising any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any such right or power, or any abandonment or discontinuance of steps to enforce such a right or power, preclude any other or further exercise thereof or the exercise of any other right or power. The rights and remedies of the Administrative Agent and the Lenders hereunder are cumulative and are not exclusive of any rights or remedies that they would otherwise have. No waiver of any provision of this Agreement or consent to any departure by the Borrower therefrom shall in any event be effective unless the same shall be permitted by paragraph (b) of this Section, and then such waiver or consent shall be effective only in the specific instance and for the purpose for which given. Without limiting the generality of the foregoing, the making of a Loan shall not be construed as a waiver of any Default, regardless of whether the Administrative Agent or any Lender may have had notice or knowledge of such Default at the time.&quot;&quot;&quot;) result[&quot;class&quot;] Results ['waivers', 'amendments'] Model Information Model Name: legmulticlf_edgar_le Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References Ledgar dataset, available at https://metatext.io/datasets/ledgar, with in-house data Benchmarking Classification report: precision recall f1-score support 0 0.89 0.89 0.89 1066 1 0.83 0.65 0.73 333 2 0.80 0.81 0.80 537 3 0.99 0.99 0.99 918 4 0.98 0.98 0.98 1049 5 0.99 0.97 0.98 339 6 1.00 0.99 0.99 1274 7 0.98 0.98 0.98 926 8 0.91 0.92 0.91 437 9 0.98 0.97 0.98 922 10 0.89 0.88 0.88 674 11 0.95 0.96 0.95 566 12 0.92 0.79 0.85 354 13 0.89 0.87 0.88 725 14 0.88 0.78 0.83 365 micro avg 0.94 0.92 0.93 10485 macro avg 0.93 0.89 0.91 10485 weighted avg 0.94 0.92 0.93 10485 samples avg 0.93 0.94 0.93 10485</summary></entry><entry><title type="html">Multilabel Classification of NDA Clauses (paragraph, medium)</title><link href="/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en.html" rel="alternate" type="text/html" title="Multilabel Classification of NDA Clauses (paragraph, medium)" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en</id><content type="html" xml:base="/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en.html">## Description
 
-&lt;p&gt;This models is a version of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;legmulticlf_mnda_sections_other&lt;/code&gt; (sentence, medium) but expecting a bigger-than-sentence context, ideally between 2 and 4-5 sentences, or a small paragraph, to provide with more context.&lt;/p&gt;
+This models is a version of `legmulticlf_mnda_sections_other` (sentence, medium) but expecting a bigger-than-sentence context, ideally between 2 and 4-5 sentences, or a small paragraph, to provide with more context.
 
-&lt;p&gt;It should be run on sentences of the NDA clauses, and will retrieve a series of 1..N labels for each of them. The possible clause types detected my this model in NDA / MNDA aggrements are:&lt;/p&gt;
+It should be run on sentences of the NDA clauses, and will retrieve a series of 1..N labels for each of them. The possible clause types detected my this model in NDA / MNDA aggrements are:
 
-&lt;ol&gt;
-  &lt;li&gt;Parties to the Agreement - Names of the Parties Clause&lt;/li&gt;
-  &lt;li&gt;Identification of What Information Is Confidential - Definition of Confidential Information Clause&lt;/li&gt;
-  &lt;li&gt;Use of Confidential Information: Permitted Use Clause and Obligations of the Recipient&lt;/li&gt;
-  &lt;li&gt;Time Frame of the Agreement - Termination Clause&lt;/li&gt;
-  &lt;li&gt;Return of Confidential Information Clause&lt;/li&gt;
-  &lt;li&gt;Remedies for Breaches of Agreement - Remedies Clause&lt;/li&gt;
-  &lt;li&gt;Non-Solicitation Clause&lt;/li&gt;
-  &lt;li&gt;Dispute Resolution Clause&lt;/li&gt;
-  &lt;li&gt;Exceptions Clause&lt;/li&gt;
-  &lt;li&gt;Non-competition clause&lt;/li&gt;
-  &lt;li&gt;Other: Nothing of the above (synonym to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt;)-&lt;/li&gt;
-&lt;/ol&gt;
+1. Parties to the Agreement - Names of the Parties Clause  
+2. Identification of What Information Is Confidential - Definition of Confidential Information Clause
+3. Use of Confidential Information: Permitted Use Clause and Obligations of the Recipient
+4. Time Frame of the Agreement - Termination Clause  
+5. Return of Confidential Information Clause 
+6. Remedies for Breaches of Agreement - Remedies Clause 
+7. Non-Solicitation Clause
+8. Dispute Resolution Clause  
+9. Exceptions Clause  
+10. Non-competition clause
+11. Other: Nothing of the above (synonym to `[]`)-
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;APPLIC_LAW&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ASSIGNMENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEF_OF_CONF_INFO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DISPUTE_RESOL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EXCEPTIONS&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAMES_OF_PARTIES&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NON_COMP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NON_SOLIC&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PREAMBLE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REMEDIES&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REQ_DISCL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RETURN_OF_CONF_INFO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TERMINATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USE_OF_CONF_INFO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OTHER&lt;/code&gt;&lt;/p&gt;
+`APPLIC_LAW`, `ASSIGNMENT`, `DEF_OF_CONF_INFO`, `DISPUTE_RESOL`, `EXCEPTIONS`, `NAMES_OF_PARTIES`, `NON_COMP`, `NON_SOLIC`, `PREAMBLE`, `REMEDIES`, `REQ_DISCL`, `RETURN_OF_CONF_INFO`, `TERMINATION`, `USE_OF_CONF_INFO`, `OTHER`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_mnda_sections_paragraph_other_le_en_1.0.0_3.0_1720071478051.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_mnda_sections_paragraph_other_le_en_1.0.0_3.0_1720071478051.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_mnda_sections_paragraph_other_le_en_1.0.0_3.0_1720071478051.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_mnda_sections_paragraph_other_le_en_1.0.0_3.0_1720071478051.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCleanupMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;shrink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E5Embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;legembedding_e5_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;paragraph_classifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MultiClassifierDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legmulticlf_mnda_sections_paragraph_other_le&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence_embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;n&quot;&gt;sentence_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-            &lt;span class=&quot;n&quot;&gt;embeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;paragraph_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+## How to use
 
 
 
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document = nlp.DocumentAssembler()\
+  .setInputCol(&quot;text&quot;)\
+  .setOutputCol(&quot;document&quot;)\
+  .setCleanupMode(&quot;shrink&quot;)
 
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'Destruction of Confidential Information. &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\xa0&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Promptly (and in any event within five days) after the earlier of&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+embeddings = (
+    nlp.E5Embeddings.pretrained(
+        &quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)
+    .setInputCols([&quot;document&quot;])
+    .setOutputCol(&quot;sentence_embeddings&quot;)
+)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sentence_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+paragraph_classifier = (
+    nlp.MultiClassifierDLModel.load(&quot;legmulticlf_mnda_sections_paragraph_other_le&quot;, &quot;en&quot;, &quot;legal/models&quot;)
+    .setInputCols([&quot;sentence_embeddings&quot;])
+    .setOutputCol(&quot;class&quot;)
+)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;class.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+sentence_pipeline = nlp.Pipeline(
+    stages=[document, 
+            embeddings,
+            paragraph_classifier])
+
+
+
+
+df = spark.createDataFrame([[&quot;'Destruction of Confidential Information. \xa0 Promptly (and in any event within five days) after the earlier of&quot;]]).toDF(&quot;text&quot;)
+
+model = sentence_pipeline.fit(df)
+
+result = model.transform(df)
+
+result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------------------------------------------------------------------------------------------------------+---------------------+
+```bash
++-------------------------------------------------------------------------------------------------------------+---------------------+
 |text                                                                                                         |result               |
 +-------------------------------------------------------------------------------------------------------------+---------------------+
-|&lt;span class=&quot;s1&quot;&gt;'Destruction of Confidential Information.   Promptly (and in any event within five days) after the earlier of|[RETURN_OF_CONF_INFO]|
+|'Destruction of Confidential Information.   Promptly (and in any event within five days) after the earlier of|[RETURN_OF_CONF_INFO]|
 +-------------------------------------------------------------------------------------------------------------+---------------------+
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legmulticlf_mnda_sections_paragraph_other_le&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence_embeddings]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[class]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;14.0 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legmulticlf_mnda_sections_paragraph_other_le|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[class]|
+|Language:|en|
+|Size:|14.0 MB|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;In-house MNDA&lt;/p&gt;
+In-house MNDA
 
-&lt;h2 id=&quot;benchmarking&quot;&gt;Benchmarking&lt;/h2&gt;
+## Benchmarking
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|               | precision | recall | f1-score | support |
+```bash
+|               | precision | recall | f1-score | support |
 |---------------|-----------|--------|----------|---------|
 | APPLIC_LAW    | 0.91      | 0.91   | 0.91     | 58      |
 | ASSIGNMENT    | 0.96      | 0.87   | 0.91     | 52      |
@@ -547,12 +505,12 @@ weighted avg       0.94      0.92      0.93     10485
 | TERMINATION   | 0.98      | 0.86   | 0.92     | 96      |
 | USE_OF_CONF_INFO | 0.85   | 0.85   | 0.85     | 47      |
 | OTHER         | 0.86      | 0.77   | 0.81     | 87      |
-| &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;micro avg&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.90&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;  | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.84&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.87&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;1224&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;|
-| &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;macro avg&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.90&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;  | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.84&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.87&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;1224&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;|
-| &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;weighted avg&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.90&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.84&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.87&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;1224&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;|
-| &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;samples avg&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.85&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.85&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;0.85&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;1224&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;|
+| **micro avg** | **0.90**  | **0.84** | **0.87** | **1224**|
+| **macro avg** | **0.90**  | **0.84** | **0.87** | **1224**|
+| **weighted avg** | **0.90** | **0.84** | **0.87** | **1224**|
+| **samples avg** | **0.85** | **0.85** | **0.85** | **1224**|
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="mnda" /><category term="tensorflow" /><summary type="html">Description This models is a version of legmulticlf_mnda_sections_other (sentence, medium) but expecting a bigger-than-sentence context, ideally between 2 and 4-5 sentences, or a small paragraph, to provide with more context. It should be run on sentences of the NDA clauses, and will retrieve a series of 1..N labels for each of them. The possible clause types detected my this model in NDA / MNDA aggrements are: Parties to the Agreement - Names of the Parties Clause Identification of What Information Is Confidential - Definition of Confidential Information Clause Use of Confidential Information: Permitted Use Clause and Obligations of the Recipient Time Frame of the Agreement - Termination Clause Return of Confidential Information Clause Remedies for Breaches of Agreement - Remedies Clause Non-Solicitation Clause Dispute Resolution Clause Exceptions Clause Non-competition clause Other: Nothing of the above (synonym to [])- Predicted Entities APPLIC_LAW, ASSIGNMENT, DEF_OF_CONF_INFO, DISPUTE_RESOL, EXCEPTIONS, NAMES_OF_PARTIES, NON_COMP, NON_SOLIC, PREAMBLE, REMEDIES, REQ_DISCL, RETURN_OF_CONF_INFO, TERMINATION, USE_OF_CONF_INFO, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ .setCleanupMode(&quot;shrink&quot;) embeddings = ( nlp.E5Embeddings.pretrained( &quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;) .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;sentence_embeddings&quot;) ) paragraph_classifier = ( nlp.MultiClassifierDLModel.load(&quot;legmulticlf_mnda_sections_paragraph_other_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) .setInputCols([&quot;sentence_embeddings&quot;]) .setOutputCol(&quot;class&quot;) ) sentence_pipeline = nlp.Pipeline( stages=[document, embeddings, paragraph_classifier]) df = spark.createDataFrame([[&quot;'Destruction of Confidential Information. \xa0 Promptly (and in any event within five days) after the earlier of&quot;]]).toDF(&quot;text&quot;) model = sentence_pipeline.fit(df) result = model.transform(df) result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +-------------------------------------------------------------------------------------------------------------+---------------------+ |text |result | +-------------------------------------------------------------------------------------------------------------+---------------------+ |'Destruction of Confidential Information. Promptly (and in any event within five days) after the earlier of|[RETURN_OF_CONF_INFO]| +-------------------------------------------------------------------------------------------------------------+---------------------+ Model Information Model Name: legmulticlf_mnda_sections_paragraph_other_le Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References In-house MNDA Benchmarking | | precision | recall | f1-score | support | |---------------|-----------|--------|----------|---------| | APPLIC_LAW | 0.91 | 0.91 | 0.91 | 58 | | ASSIGNMENT | 0.96 | 0.87 | 0.91 | 52 | | DEF_OF_CONF_INFO | 0.91 | 0.83 | 0.87 | 89 | | DISPUTE_RESOL | 0.90 | 0.72 | 0.80 | 64 | | EXCEPTIONS | 0.97 | 0.92 | 0.95 | 144 | | NAMES_OF_PARTIES | 0.95 | 0.85 | 0.89 | 84 | | NON_COMP | 0.80 | 0.80 | 0.80 | 25 | | NON_SOLIC | 0.92 | 0.80 | 0.86 | 60 | | PREAMBLE | 0.79 | 0.82 | 0.80 | 186 | | REMEDIES | 0.91 | 0.79 | 0.85 | 76 | | REQ_DISCL | 0.88 | 0.86 | 0.87 | 73 | | RETURN_OF_CONF_INFO | 0.91 | 0.89 | 0.90 | 83 | | TERMINATION | 0.98 | 0.86 | 0.92 | 96 | | USE_OF_CONF_INFO | 0.85 | 0.85 | 0.85 | 47 | | OTHER | 0.86 | 0.77 | 0.81 | 87 | | **micro avg** | **0.90** | **0.84** | **0.87** | **1224**| | **macro avg** | **0.90** | **0.84** | **0.87** | **1224**| | **weighted avg** | **0.90** | **0.84** | **0.87** | **1224**| | **samples avg** | **0.85** | **0.85** | **0.85** | **1224**|</summary></entry><entry><title type="html">Detect Past Assertion Status with Contextual Assertion</title><link href="/2024/07/04/contextual_assertion_past_en.html" rel="alternate" type="text/html" title="Detect Past Assertion Status with Contextual Assertion" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/contextual_assertion_past_en</id><content type="html" xml:base="/2024/07/04/contextual_assertion_past_en.html">## Description
+```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="mnda" /><category term="tensorflow" /><summary type="html">Description This models is a version of legmulticlf_mnda_sections_other (sentence, medium) but expecting a bigger-than-sentence context, ideally between 2 and 4-5 sentences, or a small paragraph, to provide with more context. It should be run on sentences of the NDA clauses, and will retrieve a series of 1..N labels for each of them. The possible clause types detected my this model in NDA / MNDA aggrements are: Parties to the Agreement - Names of the Parties Clause Identification of What Information Is Confidential - Definition of Confidential Information Clause Use of Confidential Information: Permitted Use Clause and Obligations of the Recipient Time Frame of the Agreement - Termination Clause Return of Confidential Information Clause Remedies for Breaches of Agreement - Remedies Clause Non-Solicitation Clause Dispute Resolution Clause Exceptions Clause Non-competition clause Other: Nothing of the above (synonym to [])- Predicted Entities APPLIC_LAW, ASSIGNMENT, DEF_OF_CONF_INFO, DISPUTE_RESOL, EXCEPTIONS, NAMES_OF_PARTIES, NON_COMP, NON_SOLIC, PREAMBLE, REMEDIES, REQ_DISCL, RETURN_OF_CONF_INFO, TERMINATION, USE_OF_CONF_INFO, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ .setCleanupMode(&quot;shrink&quot;) embeddings = ( nlp.E5Embeddings.pretrained( &quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;) .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;sentence_embeddings&quot;) ) paragraph_classifier = ( nlp.MultiClassifierDLModel.load(&quot;legmulticlf_mnda_sections_paragraph_other_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) .setInputCols([&quot;sentence_embeddings&quot;]) .setOutputCol(&quot;class&quot;) ) sentence_pipeline = nlp.Pipeline( stages=[document, embeddings, paragraph_classifier]) df = spark.createDataFrame([[&quot;'Destruction of Confidential Information. \xa0 Promptly (and in any event within five days) after the earlier of&quot;]]).toDF(&quot;text&quot;) model = sentence_pipeline.fit(df) result = model.transform(df) result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +-------------------------------------------------------------------------------------------------------------+---------------------+ |text |result | +-------------------------------------------------------------------------------------------------------------+---------------------+ |'Destruction of Confidential Information. Promptly (and in any event within five days) after the earlier of|[RETURN_OF_CONF_INFO]| +-------------------------------------------------------------------------------------------------------------+---------------------+ Model Information Model Name: legmulticlf_mnda_sections_paragraph_other_le Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References In-house MNDA Benchmarking | | precision | recall | f1-score | support | |---------------|-----------|--------|----------|---------| | APPLIC_LAW | 0.91 | 0.91 | 0.91 | 58 | | ASSIGNMENT | 0.96 | 0.87 | 0.91 | 52 | | DEF_OF_CONF_INFO | 0.91 | 0.83 | 0.87 | 89 | | DISPUTE_RESOL | 0.90 | 0.72 | 0.80 | 64 | | EXCEPTIONS | 0.97 | 0.92 | 0.95 | 144 | | NAMES_OF_PARTIES | 0.95 | 0.85 | 0.89 | 84 | | NON_COMP | 0.80 | 0.80 | 0.80 | 25 | | NON_SOLIC | 0.92 | 0.80 | 0.86 | 60 | | PREAMBLE | 0.79 | 0.82 | 0.80 | 186 | | REMEDIES | 0.91 | 0.79 | 0.85 | 76 | | REQ_DISCL | 0.88 | 0.86 | 0.87 | 73 | | RETURN_OF_CONF_INFO | 0.91 | 0.89 | 0.90 | 83 | | TERMINATION | 0.98 | 0.86 | 0.92 | 96 | | USE_OF_CONF_INFO | 0.85 | 0.85 | 0.85 | 47 | | OTHER | 0.86 | 0.77 | 0.81 | 87 | | **micro avg** | **0.90** | **0.84** | **0.87** | **1224**| | **macro avg** | **0.90** | **0.84** | **0.87** | **1224**| | **weighted avg** | **0.90** | **0.84** | **0.87** | **1224**| | **samples avg** | **0.85** | **0.85** | **0.85** | **1224**|</summary></entry><entry><title type="html">Detect Past Assertion Status with Contextual Assertion</title><link href="/2024/07/04/contextual_assertion_past_en.html" rel="alternate" type="text/html" title="Detect Past Assertion Status with Contextual Assertion" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/contextual_assertion_past_en</id><content type="html" xml:base="/2024/07/04/contextual_assertion_past_en.html">## Description
 
 This model identifies contextual cues within text data to detect past assertions. It annotates text chunks with assertions using configurable rules, prefix and suffix patterns, and exception patterns.
 
