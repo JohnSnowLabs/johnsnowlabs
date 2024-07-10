@@ -68,13 +68,13 @@ llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 
 val llmLoader = new LLMLoader()
   .setSparkSession(spark)
-  .pretrained("llama3_160_gguf", remoteLoc="clinical/models", lang = "en")
+  .pretrained("JSL_MedS_q16_v1", remoteLoc="clinical/models", lang = "en")
   .setTemperature(0.0f)
   .setNPredict(20)
 
 
 
-val prompt = "Tell me five words about Microsoft."
+val prompt = "What is the indication for the drug Methadone?"
 
 val output = llmLoader.setUseChatTemplate(false).setStopStrings(Array.empty[String]).generate(prompt)
 
@@ -82,7 +82,7 @@ println(output)
 
 ## Result
 
-1. Microsoft: Microsoft is a global technology company that develops, manufactures, and sells
+'Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to help individuals who are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain in patients who have developed tolerance to other opioids.'
 
 
 {%- endcapture -%}
