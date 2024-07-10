@@ -91,8 +91,6 @@ try:
             FewShotAssertionClassifierModel,
             FewShotAssertionClassifierApproach,
             FewShotAssertionSentenceConverter,
-            VectorDBApproach,
-            VectorDBModel,
             VectorDBPostProcessor,
             ContextSplitAssembler,
             ContextualAssertion,
@@ -103,6 +101,7 @@ try:
         from sparknlp_jsl.training_log_parser import ner_log_parser
         from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
         from sparknlp_jsl.updateModels import UpdateModels
+        from sparknlp_jsl.llm import LLMLoader
 
         from sparknlp_jsl.base import FeaturesAssembler
 

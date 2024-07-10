@@ -114,8 +114,6 @@ try:
             FewShotAssertionClassifierModel,
             FewShotAssertionClassifierApproach,
             FewShotAssertionSentenceConverter,
-            VectorDBApproach,
-            VectorDBModel,
             VectorDBPostProcessor,
             ContextSplitAssembler,
             ContextualAssertion,
