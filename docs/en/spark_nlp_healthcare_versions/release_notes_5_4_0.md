@@ -1024,7 +1024,6 @@ Please check the [Spark_NLP_Udemy_MOOC](https://github.com/JohnSnowLabs/spark-nl
 + `JSL_MedSNer_ZS_q16_v1`
 + `JSL_MedSNer_ZS_q8_v1`
 + `JSL_MedSNer_ZS_q4_v1`
-+ `llama3_160_gguf`
 
 
 
