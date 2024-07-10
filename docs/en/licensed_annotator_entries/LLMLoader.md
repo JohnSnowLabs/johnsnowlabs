@@ -51,17 +51,18 @@ Parameters:
 
 {%- capture model_python_medical -%}
 
+
 from sparknlp_jsl.llm import LLMLoader
 
-llm_loader_pretrained = LLMLoader(spark).pretrained("llama3_160_gguf", remote_loc="clinical/models")
+llm_loader_pretrained = LLMLoader(spark).pretrained("JSL_MedS_q16_v1", "en", "clinical/models")
 
-llm_loader_pretrained.generate("Hey, which is the capital of France?")
+llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 
 
 
 ## Result
 
-'The capital of France is Paris.'
+'Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to help individuals who are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain in patients who have developed tolerance to other opioids.'
 
 {%- endcapture -%}
 
