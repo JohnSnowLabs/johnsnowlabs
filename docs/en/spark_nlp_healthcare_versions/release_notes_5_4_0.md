@@ -102,7 +102,8 @@ The following table demonstrates the enhanced results achieved using the FewShot
 | smoking       | 0.67         | 0.96              |
 | sdoh          | 0.76         | 0.85              |
 
-![image](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/64752006/9d2e4d5d-b727-45c4-82b5-1b453e373653)
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/AssertionDL_vs_FewShotAssertion.png)
+
 
 
 |FewShot Assertion Model Name| Predicted Classed |
@@ -818,11 +819,11 @@ Here are the accuracy results:
   
 **Top-3 Results:**
 
-![top_3](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/550d89b5-1c4c-4d40-a5ea-1f9ec86387da)
+![top_3](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_3.png)
 
 **Top-5 Results:**
 
-![top_5](https://github.com/JohnSnowLabs/spark-nlp-internal/assets/76607915/44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7)
+![top_5](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_5.png)
 
 **Conclusion:**
 
@@ -1024,8 +1025,6 @@ Please check the [Spark_NLP_Udemy_MOOC](https://github.com/JohnSnowLabs/spark-nl
 + `JSL_MedSNer_ZS_q16_v1`
 + `JSL_MedSNer_ZS_q8_v1`
 + `JSL_MedSNer_ZS_q4_v1`
-+ `llama3_160_gguf`
-
 
 
 </div><div class="h3-box" markdown="1">
