@@ -729,6 +729,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>Annotator can split the documents into chunks according to separators given as <code class="language-plaintext highlighter-rouge">CHUNK</code> columns. It is useful when you need to perform different models or analysis in different sections of your document</td>
     </tr>
     <tr>
+      <td><a href="#contextualassertion">ContextualAssertion</a></td>
+      <td>This model identifies  contextual cues within text data, such as negation, uncertainty etc.It annotates text chunks with assertions based on configurable rules, prefix and suffix patterns, and exception patterns.</td>
+    </tr>
+    <tr>
       <td><a href="#contextualparser">ContextualParser</a></td>
       <td>Extracts entity from a document based on user defined rules.</td>
     </tr>
@@ -9765,6 +9769,273 @@ The <code class="language-plaintext highlighter-rouge">joinString</code> paramet
         <div class="tab-mfl-content">
 
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="contextualassertion">ContextualAssertion</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>An annotator model for contextual assertion analysis. This model identifies  contextual cues within text data, such as negation, uncertainty etc. It is used
+clinical assertion detection. It annotates text chunks with assertions based on configurable rules, prefix and suffix patterns, and exception patterns.</p>
+
+    <p>Parametres:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">inputCols</code>: Input annotations.</li>
+      <li><code class="language-plaintext highlighter-rouge">caseSensitive</code>: Whether to use case sensitive when matching values, by default <code class="language-plaintext highlighter-rouge">False</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">prefixAndSuffixMatch</code>: Whether to match both prefix and suffix to annotate the hit, by default <code class="language-plaintext highlighter-rouge">False</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">prefixKeywords</code>: Prefix keywords to match.</li>
+      <li><code class="language-plaintext highlighter-rouge">suffixKeywords</code>: Suffix keywords to match</li>
+      <li><code class="language-plaintext highlighter-rouge">exceptionKeywords</code>: Exception keywords not to match.</li>
+      <li><code class="language-plaintext highlighter-rouge">prefixRegexPatterns</code>: Prefix regex patterns to match</li>
+      <li><code class="language-plaintext highlighter-rouge">suffixRegexPatterns</code>: Suffix regex pattern to match</li>
+      <li><code class="language-plaintext highlighter-rouge">exceptionRegexPatterns</code>: Exception regex pattern not to match</li>
+      <li><code class="language-plaintext highlighter-rouge">scopeWindow</code>: The scope window of the assertion expression</li>
+      <li><code class="language-plaintext highlighter-rouge">assertion</code>: Assertion to match</li>
+      <li><code class="language-plaintext highlighter-rouge">scopeWindowDelimiter</code>: Delimiters used to limit the scope window.</li>
+      <li><code class="language-plaintext highlighter-rouge">includeChunkToScope</code>: Whether to include chunk to scope when matching values</li>
+    </ul>
+
+    <p>See <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN, CHUNK</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/contextual_assertion/index.html#sparknlp_jsl.annotator.assertion.contextual_assertion">ContextualAssertion</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/context/ContextualAssertion.html">ContextualAssertion</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span> \
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">MedicalNerModel</span> \
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">contextual_assertion</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ContextualAssertion</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPrefixKeywords</span><span class="p">([</span><span class="s">"no"</span><span class="p">,</span> <span class="s">"not"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setSuffixKeywords</span><span class="p">([</span><span class="s">"unlikely"</span><span class="p">,</span><span class="s">"negative"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setPrefixRegexPatterns</span><span class="p">([</span><span class="s">"</span><span class="se">\\</span><span class="s">b(no|without|denies|never|none|free of|not include)</span><span class="se">\\</span><span class="s">b"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setSuffixRegexPatterns</span><span class="p">([</span><span class="s">"</span><span class="se">\\</span><span class="s">b(free of|negative for|absence of|not|rule out)</span><span class="se">\\</span><span class="s">b"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setExceptionKeywords</span><span class="p">([</span><span class="s">"without"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setExceptionRegexPatterns</span><span class="p">([</span><span class="s">"</span><span class="se">\\</span><span class="s">b(not clearly)</span><span class="se">\\</span><span class="s">b"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">addPrefixKeywords</span><span class="p">([</span><span class="s">"negative for"</span><span class="p">,</span><span class="s">"negative"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">addSuffixKeywords</span><span class="p">([</span><span class="s">"absent"</span><span class="p">,</span><span class="s">"neither"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPrefixAndSuffixMatch</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setAssertion</span><span class="p">(</span><span class="s">"absent"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setScopeWindow</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setIncludeChunkToScope</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setScopeWindowDelimiters</span><span class="p">([</span><span class="s">","</span><span class="p">])</span>
+
+<span class="n">flattener</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Flattener</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setExplodeSelectedFields</span><span class="p">({</span><span class="s">"assertion"</span><span class="p">:[</span><span class="s">"metadata.ner_chunk as ner_chunk"</span><span class="p">,</span>
+                                            <span class="s">"begin as begin"</span><span class="p">,</span>
+                                            <span class="s">"end as end"</span><span class="p">,</span>
+                                            <span class="s">"metadata.ner_label as ner_label"</span><span class="p">,</span>
+                                            <span class="s">"result as result"</span><span class="p">]})</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">clinical_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">contextual_assertion</span><span class="p">,</span>
+    <span class="n">flattener</span><span class="p">])</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Patient resting in bed. Patient given azithromycin without any difficulty. Patient has audible wheezing, states chest tightness.
+No evidence of hypertension. Patient denies nausea at this time. zofran declined. Patient is also having intermittent sweating
+associated with pneumonia. Patient refused pain but tylenol still given. Neither substance abuse nor alcohol use however cocaine
+once used in the last year. Alcoholism unlikely. Patient has headache and fever. Patient is not diabetic. Not clearly of diarrhea.
+Lab reports confirm lymphocytopenia. Cardaic rhythm is Sinus bradycardia. Patient also has a history of cardiac injury.
+No kidney injury reported. No abnormal rashes or ulcers. Patient might not have liver disease. Confirmed absence of hemoptysis.
+Although patient has severe pneumonia and fever, test reports are negative for COVID-19 infection. COVID-19 viral infection absent.
+"""</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># result
+</span><span class="o">+------------------+-----+---+---------+------+</span>
+<span class="o">|</span><span class="n">ner_chunk</span>         <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">result</span><span class="o">|</span>
+<span class="o">+------------------+-----+---+---------+------+</span>
+<span class="o">|</span><span class="n">nausea</span>            <span class="o">|</span><span class="mi">173</span>  <span class="o">|</span><span class="mi">178</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">Alcoholism</span>        <span class="o">|</span><span class="mi">413</span>  <span class="o">|</span><span class="mi">422</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">diabetic</span>          <span class="o">|</span><span class="mi">481</span>  <span class="o">|</span><span class="mi">488</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">kidney</span> <span class="n">injury</span>     <span class="o">|</span><span class="mi">639</span>  <span class="o">|</span><span class="mi">651</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">abnormal</span> <span class="n">rashes</span>   <span class="o">|</span><span class="mi">666</span>  <span class="o">|</span><span class="mi">680</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">liver</span> <span class="n">disease</span>     <span class="o">|</span><span class="mi">716</span>  <span class="o">|</span><span class="mi">728</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">COVID</span><span class="o">-</span><span class="mi">19</span> <span class="n">infection</span><span class="o">|</span><span class="mi">843</span>  <span class="o">|</span><span class="mi">860</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">viral</span> <span class="n">infection</span>   <span class="o">|</span><span class="mi">872</span>  <span class="o">|</span><span class="mi">886</span><span class="o">|</span><span class="n">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">+------------------+-----+---+---------+------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"tokens"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embedder</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="s">"tokens"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerTagger</span> <span class="k">=</span> <span class="nc">MedicalNerModel</span> <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="s">"tokens"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"nerTags"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="s">"tokens"</span><span class="o">,</span> <span class="s">"nerTags"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"nerChunks"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">contextualAssertion</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ContextualAssertion</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="s">"tokens"</span><span class="o">,</span><span class="s">"nerChunks"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setScopeWindow</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">2</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setPrefixRegexPatterns</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"\\b(no|without|denies|never|none|free of|negative for|not include)\\b"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setSuffixRegexPatterns</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"\\b(free of|negative for|absence of|absence|not|neither|rule out)\\b"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setPrefixKeywords</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"not"</span><span class="o">,</span><span class="s">"never"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setSuffixKeywords</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"no"</span><span class="o">,</span><span class="s">"never"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setIncludeChunkToScope</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">addPrefixKeywords</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"negative for"</span><span class="o">,</span><span class="s">"no evidence of"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">addSuffixKeywords</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"declined"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setAssertion</span><span class="o">(</span><span class="s">"absent"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setScopeWindowDelimiter</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">","</span><span class="o">))</span>
+
+
+
+<span class="k">val</span> <span class="nv">flattener</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Flattener</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"assertion"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setExplodeSelectedFields</span><span class="o">(</span><span class="nc">Map</span><span class="o">(</span><span class="s">"assertion"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span> <span class="s">"metadata.ner_chunk as ner_chunk "</span><span class="o">,</span><span class="s">"begin as begin"</span><span class="o">,</span><span class="s">"end as end"</span><span class="o">,</span><span class="s">" "</span><span class="nv">metadata</span><span class="o">.</span><span class="py">ner_label</span> <span class="n">as</span> <span class="n">ner_label</span><span class="s">","</span><span class="n">result</span> <span class="n">as</span> <span class="n">result</span><span class="s">",
+) ) )
+
+val pipeline = new Pipeline()
+  .setStages(Array(documentAssembler,
+                  sentenceDetector,
+                  tokenizer,
+                  embedder,
+                  nerTagger,
+                  nerConverter,
+                  contextualAssertion,
+                  flattener
+                  ))
+
+val text = "</span><span class="nc">Patient</span> <span class="n">resting</span> <span class="n">in</span> <span class="n">bed</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">given</span> <span class="n">azithromycin</span> <span class="n">without</span> <span class="n">any</span> <span class="n">difficulty</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">has</span> <span class="n">audible</span> <span class="n">wheezing</span><span class="o">,</span> <span class="n">states</span> <span class="n">chest</span> <span class="n">tightness</span><span class="o">.</span><span class="s">" +
+"</span> <span class="nc">No</span> <span class="n">evidence</span> <span class="n">of</span> <span class="n">hypertension</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">denies</span> <span class="n">nausea</span> <span class="n">at</span> <span class="k">this</span> <span class="n">time</span><span class="o">.</span> <span class="n">zofran</span> <span class="n">declined</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">is</span> <span class="n">also</span> <span class="n">having</span> <span class="n">intermittent</span> <span class="n">sweating</span> <span class="s">" +
+"</span><span class="n">associated</span> <span class="k">with</span> <span class="n">pneumonia</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">refused</span> <span class="n">pain</span> <span class="n">but</span> <span class="n">tylenol</span> <span class="n">still</span> <span class="n">given</span><span class="o">.</span> <span class="nc">Neither</span> <span class="n">substance</span> <span class="n">abuse</span> <span class="n">nor</span> <span class="n">alcohol</span> <span class="n">use</span> <span class="n">however</span> <span class="n">cocaine</span> <span class="s">" +
+"</span><span class="n">once</span> <span class="n">used</span> <span class="n">in</span> <span class="n">the</span> <span class="n">last</span> <span class="n">year</span><span class="o">.</span> <span class="nc">Alcoholism</span> <span class="n">unlikely</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">has</span> <span class="n">headache</span> <span class="n">and</span> <span class="n">fever</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">is</span> <span class="n">not</span> <span class="n">diabetic</span><span class="o">.</span> <span class="nc">Not</span> <span class="n">clearly</span> <span class="n">of</span> <span class="n">diarrhea</span><span class="o">.</span> <span class="s">" +
+"</span><span class="nc">Lab</span> <span class="n">reports</span> <span class="n">confirm</span> <span class="n">lymphocytopenia</span><span class="o">.</span> <span class="nc">Cardaic</span> <span class="n">rhythm</span> <span class="n">is</span> <span class="nc">Sinus</span> <span class="n">bradycardia</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">also</span> <span class="n">has</span> <span class="n">a</span> <span class="n">history</span> <span class="n">of</span> <span class="n">cardiac</span> <span class="n">injury</span><span class="o">.</span><span class="s">" +
+"</span> <span class="nc">No</span> <span class="n">kidney</span> <span class="n">injury</span> <span class="n">reported</span><span class="o">.</span> <span class="nc">No</span> <span class="n">abnormal</span> <span class="n">rashes</span> <span class="n">or</span> <span class="n">ulcers</span><span class="o">.</span> <span class="nc">Patient</span> <span class="n">might</span> <span class="n">not</span> <span class="n">have</span> <span class="n">liver</span> <span class="n">disease</span><span class="o">.</span> <span class="nc">Confirmed</span> <span class="n">absence</span> <span class="n">of</span> <span class="n">hemoptysis</span><span class="o">.</span><span class="s">" +
+"</span> <span class="nc">Although</span> <span class="n">patient</span> <span class="n">has</span> <span class="n">severe</span> <span class="n">pneumonia</span> <span class="n">and</span> <span class="n">fever</span><span class="o">,</span> <span class="n">test</span> <span class="n">reports</span> <span class="n">are</span> <span class="n">negative</span> <span class="k">for</span> <span class="nc">COVID</span><span class="o">-</span><span class="mi">19</span> <span class="n">infection</span><span class="o">.</span> <span class="nc">COVID</span><span class="o">-</span><span class="mi">19</span> <span class="n">viral</span> <span class="n">infection</span> <span class="n">absent</span><span class="o">.</span><span class="s">"
+
+val dataSet = Seq(text).toDS.toDF("</span><span class="n">text</span><span class="err">"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">dataSet</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">dataSet</span><span class="o">)</span>
+
+<span class="k">#</span> <span class="n">result</span>
+<span class="o">+------------------+-----+---+---------+------+</span>
+<span class="o">|</span><span class="n">ner_chunk</span>         <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span><span class="o">|</span><span class="n">result</span><span class="o">|</span>
+<span class="o">+------------------+-----+---+---------+------+</span>
+<span class="o">|</span><span class="n">nausea</span>            <span class="o">|</span><span class="mi">173</span>  <span class="o">|</span><span class="mi">178</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="nc">Alcoholism</span>        <span class="o">|</span><span class="mi">413</span>  <span class="o">|</span><span class="mi">422</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">diabetic</span>          <span class="o">|</span><span class="mi">481</span>  <span class="o">|</span><span class="mi">488</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">kidney</span> <span class="n">injury</span>     <span class="o">|</span><span class="mi">639</span>  <span class="o">|</span><span class="mi">651</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">abnormal</span> <span class="n">rashes</span>   <span class="o">|</span><span class="mi">666</span>  <span class="o">|</span><span class="mi">680</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">liver</span> <span class="n">disease</span>     <span class="o">|</span><span class="mi">716</span>  <span class="o">|</span><span class="mi">728</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="nc">COVID</span><span class="o">-</span><span class="mi">19</span> <span class="n">infection</span><span class="o">|</span><span class="mi">843</span>  <span class="o">|</span><span class="mi">860</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">|</span><span class="n">viral</span> <span class="n">infection</span>   <span class="o">|</span><span class="mi">872</span>  <span class="o">|</span><span class="mi">886</span><span class="o">|</span><span class="nc">PROBLEM</span>  <span class="o">|</span><span class="n">absent</span><span class="o">|</span>
+<span class="o">+------------------+-----+---+---------+------+</span>
 </code></pre></div>          </div>
 
         </div>
