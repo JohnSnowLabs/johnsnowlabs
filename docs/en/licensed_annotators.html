@@ -733,6 +733,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>Extracts entity from a document based on user defined rules.</td>
     </tr>
     <tr>
+      <td><a href="#contextsplitassembler">ContextSplitAssembler</a></td>
+      <td>Converts and assembles <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code> type annotations into <code class="language-plaintext highlighter-rouge">DOCUMENT</code> type.</td>
+    </tr>
+    <tr>
       <td><a href="#datenormalizer">DateNormalizer</a></td>
       <td>This annotator transforms date mentions to a common standard format: YYYY/MM/DD. It is useful when using data from different sources, some times from different countries that has different formats to represent dates.</td>
     </tr>
@@ -793,6 +797,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach.</td>
     </tr>
     <tr>
+      <td><a href="#fewshotassertionsentenceclassifier">FewShotAssertionSentenceClassifier</a></td>
+      <td>It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel.</td>
+    </tr>
+    <tr>
       <td><a href="#flattener">Flattener</a></td>
       <td><code class="language-plaintext highlighter-rouge">Flattener</code> annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation.</td>
     </tr>
@@ -819,6 +827,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
     <tr>
       <td><a href="#lightdeidentification">LightDeIdentification</a></td>
       <td>Light version of DeIdentification.</td>
+    </tr>
+    <tr>
+      <td><a href="#llmloader">LLMLoader</a></td>
+      <td>LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs’ licensed LLMs at various sizes that are finetuned on medical context for certain tasks.</td>
     </tr>
     <tr>
       <td><a href="#multichunk2doc">MultiChunk2Doc</a></td>
@@ -907,6 +919,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
     <tr>
       <td><a href="#tfgraphbuilder">TFGraphBuilder</a></td>
       <td>Creates Tensorflow graphs.</td>
+    </tr>
+    <tr>
+      <td><a href="#vectordbpostprocessor">VectorDBPostProcessor</a></td>
+      <td>VectorDBPostProcessor is used to filter and sort the annotations from the :class:<code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.resolution.VectorDBModel</code>.</td>
     </tr>
     <tr>
       <td><a href="#windowedsentencemodel">WindowedSentenceModel</a></td>
@@ -9678,6 +9694,93 @@ a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms
 
 <div class="tabs-model-aproach">
 
+  <h2 id="contextsplitassembler">ContextSplitAssembler</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>Converts and assembles <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code> type annotations into <code class="language-plaintext highlighter-rouge">DOCUMENT</code> type.
+The input annotations are expected to be of type <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code> and the output annotation type is <code class="language-plaintext highlighter-rouge">DOCUMENT</code>.
+It concatenates the results of the input annotations into a single result, separated by a join string.
+When <code class="language-plaintext highlighter-rouge">explodeSplits</code> is set to True, the splits are exploded into separate annotations.
+The <code class="language-plaintext highlighter-rouge">joinString</code> parameter is used to add the delimiter between the results of annotations when combining them into a single result.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">joinString</code> <em>(str)</em>:  This parameter specifies the string that will be inserted between results of annotations when combining them into a single result. It acts as a delimiter, ensuring that the elements are properly separated and organized in the final result of annotation.  Default: <code class="language-plaintext highlighter-rouge">" "</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">explodeSplits</code> <em>(Bool)</em>: Whether to explode the splits into separate annotations or not. Default: <code class="language-plaintext highlighter-rouge">False</code>.</li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/rag/context_split_assembler/index.html">ContextSplitAssembler</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/rag/ContextSplitAssembler.html">ContextSplitAssembler</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">context_split_assembler</span> <span class="o">=</span> <span class="p">(</span> <span class="n">medical</span><span class="p">.</span><span class="n">ContextSplitAssembler</span><span class="p">()</span>
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"vector_db"</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">setJoinString</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">setExplodeSplits</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
   <h2 id="contextualparser">ContextualParser</h2>
 
   <div class="annotator_type tac mont">Approach</div>
@@ -15047,7 +15150,7 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
 
   <h2 id="fewshotassertionclassifiermodel">FewShotAssertionClassifierModel</h2>
 
-  <div class="annotator_type tac mont">Model</div>
+  <div class="tabs-model-aproach-head tac"><button class="tab-li-model-aproach">Model</button><button class="tab-li-model-aproach tabheader_active">Approach</button></div>
 
   <!--Model-->
   <div class="h3-box tabs-python-scala-box">
@@ -15058,15 +15161,9 @@ few shot classifiers based on the SetFit approach.</p>
     <p>Parameters:</p>
 
     <ul>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">batchSize</code> <em>(Int)</em>: Batch size</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">caseSensitive</code> <em>(Bool)</em>: Whether the classifier is sensitive to text casing</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">maxSentenceLength</code> <em>(Int)</em>: The maximum length of the input text</p>
-      </li>
+      <li><code class="language-plaintext highlighter-rouge">batchSize</code> <em>(Int)</em>: Batch size</li>
+      <li><code class="language-plaintext highlighter-rouge">caseSensitive</code> <em>(Bool)</em>: Whether the classifier is sensitive to text casing</li>
+      <li><code class="language-plaintext highlighter-rouge">maxSentenceLength</code> <em>(Int)</em>: The maximum length of the input text</li>
     </ul>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
@@ -15078,6 +15175,7 @@ few shot classifiers based on the SetFit approach.</p>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/few_shot_assertion_classifier/index.html">FewShotAssertionClassifierModel</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/FewShotAssertionClassifierModel.html">FewShotAssertionClassifierModel</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb">FewShotAssertionClassifierModel</a></td>
         </tr>
       </tbody>
     </table>
@@ -15100,61 +15198,78 @@ few shot classifiers based on the SetFit approach.</p>
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
- <span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
- <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSplitChars</span><span class="p">([</span><span class="s">"-"</span><span class="p">,</span> <span class="s">"\/"</span><span class="p">])</span>
 
- <span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
- <span class="n">ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+<span class="c1"># ner_oncology
+</span><span class="n">ner_oncology</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_oncology"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_oncology"</span><span class="p">)</span>
 
- <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">(</span><span class="s">"Disease_Syndrome_Disorder"</span><span class="p">,</span> <span class="s">"Hypertension"</span><span class="p">)</span>\
+<span class="n">ner_oncology_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner_oncology"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
- <span class="n">few_shot_assertion_classifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FewShotAssertionClassifierModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">()</span>\
-     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
-     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
+<span class="n">few_shot_assertion_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FewShotAssertionSentenceConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_sentence"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
-    <span class="p">[[</span><span class="s">"Includes hypertension and chronic obstructive pulmonary disease."</span><span class="p">]]</span>
-     <span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">e5_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">E5Embeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"e5_base_v2_embeddings_medical_assertion_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"assertion_sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_embedding"</span><span class="p">)</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setStages</span><span class="p">([</span>
-                <span class="n">document_assembler</span><span class="p">,</span>
-                <span class="n">sentence_detector</span><span class="p">,</span>
-                <span class="n">tokenizer</span><span class="p">,</span> 
-                <span class="n">embeddings</span><span class="p">,</span>
-                <span class="n">ner</span><span class="p">,</span>
-                <span class="n">ner_converter</span><span class="p">,</span>
-                <span class="n">few_shot_assertion_classifier</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+<span class="n">few_shot_assertion_classifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FewShotAssertionClassifierModel</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"fewhot_assertion_oncology_e5_base_v2_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"assertion_embedding"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_fewshot"</span><span class="p">)</span>
 
-<span class="n">results</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"assertion.result"</span><span class="p">,</span> <span class="s">"assertion.metadata.chunk"</span><span class="p">,</span> <span class="s">"assertion.metadata.confidence"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
+<span class="n">assertion_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">ner_oncology</span><span class="p">,</span>
+        <span class="n">ner_oncology_converter</span><span class="p">,</span>
+        <span class="n">few_shot_assertion_converter</span><span class="p">,</span>
+        <span class="n">e5_embeddings</span><span class="p">,</span>
+        <span class="n">few_shot_assertion_classifier</span>
+    <span class="p">])</span>
+
+<span class="n">sample_text</span><span class="o">=</span> <span class="p">[</span>
+    <span class="s">"""The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases."""</span>
+    <span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="n">sample_text</span><span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">assertion_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1">## Result
 </span>
-<span class="o">+--------+----------------------------+-----------+</span>
-<span class="o">|</span>  <span class="n">result</span><span class="o">|</span>                       <span class="n">chunk</span><span class="o">|</span> <span class="n">confidence</span><span class="o">|</span>
-<span class="o">+--------+----------------------------+-----------+</span>
-<span class="o">|</span> <span class="n">present</span><span class="o">|</span>                <span class="n">hypertension</span><span class="o">|</span>        <span class="mf">1.0</span><span class="o">|</span>
-<span class="o">|</span>  <span class="n">absent</span><span class="o">|</span> <span class="n">arteriovenous</span> <span class="n">malformations</span><span class="o">|</span>        <span class="mf">1.0</span><span class="o">|</span>
-<span class="o">+--------+----------------------------+-----------+</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">ner_chunk</span>        <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span>       <span class="o">|</span><span class="n">assertion</span><span class="o">|</span><span class="n">confidence</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">colorectal</span> <span class="n">cancer</span><span class="o">|</span><span class="mi">33</span>   <span class="o">|</span><span class="mi">49</span> <span class="o">|</span><span class="n">Cancer_Dx</span>       <span class="o">|</span><span class="n">Possible</span> <span class="o">|</span><span class="mf">0.5812815</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">Her</span>              <span class="o">|</span><span class="mi">52</span>   <span class="o">|</span><span class="mi">54</span> <span class="o">|</span><span class="n">Gender</span>          <span class="o">|</span><span class="n">Present</span>  <span class="o">|</span><span class="mf">0.9562998</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">cancers</span>          <span class="o">|</span><span class="mi">93</span>   <span class="o">|</span><span class="mi">99</span> <span class="o">|</span><span class="n">Cancer_Dx</span>       <span class="o">|</span><span class="n">Family</span>   <span class="o">|</span><span class="mf">0.23465642</span><span class="o">|</span>
+<span class="o">|</span><span class="n">biopsy</span>           <span class="o">|</span><span class="mi">120</span>  <span class="o">|</span><span class="mi">125</span><span class="o">|</span><span class="n">Pathology_Test</span>  <span class="o">|</span><span class="n">Past</span>     <span class="o">|</span><span class="mf">0.95732147</span><span class="o">|</span>
+<span class="o">|</span><span class="n">positive</span>         <span class="o">|</span><span class="mi">131</span>  <span class="o">|</span><span class="mi">138</span><span class="o">|</span><span class="n">Pathology_Result</span><span class="o">|</span><span class="n">Present</span>  <span class="o">|</span><span class="mf">0.9564386</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">CT</span> <span class="n">scan</span>          <span class="o">|</span><span class="mi">143</span>  <span class="o">|</span><span class="mi">149</span><span class="o">|</span><span class="n">Imaging_Test</span>    <span class="o">|</span><span class="n">Past</span>     <span class="o">|</span><span class="mf">0.9571699</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">metastases</span>       <span class="o">|</span><span class="mi">175</span>  <span class="o">|</span><span class="mi">184</span><span class="o">|</span><span class="n">Metastasis</span>      <span class="o">|</span><span class="n">Possible</span> <span class="o">|</span><span class="mf">0.54986554</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -15176,63 +15291,499 @@ few shot classifiers based on the SetFit approach.</p>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nc">SentenceDetectorDLModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setSplitChars</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"-"</span><span class="o">,</span> <span class="s">"/"</span><span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
+<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
     <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nc">MedicalNerModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">sentence</span><span class="err">"</span>, <span class="err">"</span><span class="kt">token</span><span class="err">"</span>, <span class="err">"</span><span class="kt">embeddings</span><span class="err">"</span><span class="o">])</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">nerOncology</span> <span class="k">=</span> <span class="nc">MedicalNerModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_oncology"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="nc">NerConverter</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="s">"Disease_Syndrome_Disorder"</span><span class="o">,</span> <span class="s">"Hypertension"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">nerOncologyConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner_oncology"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">fewShotAssertionClassifier</span> <span class="k">=</span> <span class="nc">LargeFewShotClassifierModel</span>
-    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"clinical_assertion"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">fewShotAssertionConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FewShotAssertionSentenceConverter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">e5Embeddings</span> <span class="k">=</span> <span class="n">E5Embeddings</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"e5_base_v2_embeddings_medical_assertion_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"assertion_sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_embedding"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">fewShotAssertionClassifier</span> <span class="k">=</span> <span class="nc">FewShotAssertionClassifierModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"fewhot_assertion_oncology_e5_base_v2_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"assertion_embedding"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_fewshot"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
         <span class="n">documentAssembler</span><span class="o">,</span>
-        <span class="n">sentenceDetector</span><span class="o">,</span> 
+        <span class="n">sentenceDetector</span><span class="o">,</span>
         <span class="n">tokenizer</span><span class="o">,</span>
-        <span class="n">embeddings</span><span class="o">,</span>
-        <span class="n">ner</span><span class="o">,</span> 
-        <span class="n">nerConverter</span><span class="o">,</span>
-        <span class="n">fewShotAssertionClassifier</span><span class="o">))</span>
+        <span class="n">wordEmbeddings</span><span class="o">,</span>
+        <span class="n">nerOncology</span><span class="o">,</span>
+        <span class="n">nerOncologyConverter</span><span class="o">,</span>
+        <span class="n">fewShotAssertionConverter</span><span class="o">,</span>
+        <span class="n">e5Embeddings</span><span class="o">,</span>
+        <span class="n">fewShotAssertionClassifier</span>
+    <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="nc">Seq</span><span class="o">().</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
-<span class="k">val</span> <span class="nv">results</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">"Includes hypertension and chronic obstructive pulmonary disease."</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">sampleText</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"The patient is suspected to have colorectal cancer. Her family history is positive for other cancers.
+The result of the biopsy was positive. A CT scan was ordered to rule out metastases."</span><span class="o">)</span>
 
-<span class="nv">results</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"explode(assertion) as assertion"</span><span class="o">)</span>
-       <span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"assertion.result"</span><span class="o">,</span> <span class="s">"assertion.metadata.chunk"</span><span class="o">,</span> <span class="s">"assertion.metadata.confidence"</span><span class="o">)</span>
-       <span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">createDataFrame</span><span class="o">(</span><span class="n">sampleText</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">result</span><span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 
 <span class="c1">// Result       </span>
 
-<span class="o">+-------+-------------------------------------+----------+</span>
-<span class="o">|</span><span class="n">result</span> <span class="o">|</span><span class="n">chunk</span>                                <span class="o">|</span><span class="n">confidence</span><span class="o">|</span>
-<span class="o">+-------+-------------------------------------+----------+</span>
-<span class="o">|</span><span class="n">present</span><span class="o">|</span><span class="n">hypertension</span>                         <span class="o">|</span><span class="mf">1.0</span>       <span class="o">|</span>
-<span class="o">|</span><span class="n">present</span><span class="o">|</span><span class="n">chronic</span> <span class="n">obstructive</span> <span class="n">pulmonary</span> <span class="n">disease</span><span class="o">|</span><span class="mf">1.0</span>       <span class="o">|</span>
-<span class="o">|</span><span class="n">absent</span> <span class="o">|</span><span class="n">arteriovenous</span> <span class="n">malformations</span>          <span class="o">|</span><span class="mf">1.0</span>       <span class="o">|</span>
-<span class="o">|</span><span class="n">absent</span> <span class="o">|</span><span class="n">vascular</span> <span class="n">malformation</span>                <span class="o">|</span><span class="mf">0.9999997</span> <span class="o">|</span>
-<span class="o">+-------+-------------------------------------+----------+</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">ner_chunk</span>        <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span>       <span class="o">|</span><span class="n">assertion</span><span class="o">|</span><span class="n">confidence</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">colorectal</span> <span class="n">cancer</span><span class="o">|</span><span class="mi">33</span>   <span class="o">|</span><span class="mi">49</span> <span class="o">|</span><span class="nc">Cancer_Dx</span>       <span class="o">|</span><span class="nc">Possible</span> <span class="o">|</span><span class="mf">0.5812815</span> <span class="o">|</span>
+<span class="o">|</span><span class="nc">Her</span>              <span class="o">|</span><span class="mi">52</span>   <span class="o">|</span><span class="mi">54</span> <span class="o">|</span><span class="nc">Gender</span>          <span class="o">|</span><span class="nc">Present</span>  <span class="o">|</span><span class="mf">0.9562998</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">cancers</span>          <span class="o">|</span><span class="mi">93</span>   <span class="o">|</span><span class="mi">99</span> <span class="o">|</span><span class="nc">Cancer_Dx</span>       <span class="o">|</span><span class="nc">Family</span>   <span class="o">|</span><span class="mf">0.23465642</span><span class="o">|</span>
+<span class="o">|</span><span class="n">biopsy</span>           <span class="o">|</span><span class="mi">120</span>  <span class="o">|</span><span class="mi">125</span><span class="o">|</span><span class="nc">Pathology_Test</span>  <span class="o">|</span><span class="nc">Past</span>     <span class="o">|</span><span class="mf">0.95732147</span><span class="o">|</span>
+<span class="o">|</span><span class="n">positive</span>         <span class="o">|</span><span class="mi">131</span>  <span class="o">|</span><span class="mi">138</span><span class="o">|</span><span class="nc">Pathology_Result</span><span class="o">|</span><span class="nc">Present</span>  <span class="o">|</span><span class="mf">0.9564386</span> <span class="o">|</span>
+<span class="o">|</span><span class="nc">CT</span> <span class="n">scan</span>          <span class="o">|</span><span class="mi">143</span>  <span class="o">|</span><span class="mi">149</span><span class="o">|</span><span class="nc">Imaging_Test</span>    <span class="o">|</span><span class="nc">Past</span>     <span class="o">|</span><span class="mf">0.9571699</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">metastases</span>       <span class="o">|</span><span class="mi">175</span>  <span class="o">|</span><span class="mi">184</span><span class="o">|</span><span class="nc">Metastasis</span>      <span class="o">|</span><span class="nc">Possible</span> <span class="o">|</span><span class="mf">0.54986554</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+  <!--Aproach-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>Trains a TensorFlow model for few shot assertion classifier.</p>
+
+    <p>To train a custom few shot assertion classifier model, you need to first create a Tensorflow graph using either the <code class="language-plaintext highlighter-rouge">TfGraphBuilder</code> annotator or the <code class="language-plaintext highlighter-rouge">tf_graph</code> module. Then, set the path to the Tensorflow graph using the method <code class="language-plaintext highlighter-rouge">.setModelFile("path/to/tensorflow_graph.pb")</code>.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">batchSize</code>: (int) Batch size</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">dropout</code>: (float) Dropout coefficient</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">epochsN</code>: (int) Maximum number of epochs to train</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">featureScaling</code>: (str) Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">fixImbalance</code>: (boolean) Fix the imbalance in the training set by replicating examples of under represented categories</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">labelColumn</code>: (str) Column with label per each document</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">learningRate</code>: (float) Learning Rate</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">modelFile</code>: (str) Location of file of the model used for classification</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">multiClass</code>: (boolean) If multiClass is set, the model will return all the labels with corresponding scores. By default, multiClass is false.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">outputLogsPath</code>: (str) Folder path to save training logs. If no path is specified, the logs won’t be stored in disk. The path can be a local file path, a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">validationSplit</code>: (float) The proportion of training dataset to be used as validation set.The model will be validated against this dataset on each Epoch and will not be used for training. The value should be between 0.0 and 1.0.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">datasetInfo</code> <em>(Str)</em>: Descriptive information about the dataset being used.</p>
+      </li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">SENTENCE_EMBEDDINGS</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/few_shot_assertion_classifier/index.html">FewShotAssertionClassifierApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/FewShotAssertionClassifierApproach.html">FewShotAssertionClassifierApproach</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb">FewShotAssertionClassifierNotebook</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">TFGraphBuilder</span>
+
+<span class="n">graph_folder</span> <span class="o">=</span> <span class="s">"./tf_graphs"</span>
+<span class="n">graph_name</span> <span class="o">=</span> <span class="s">"assertion_graph.pb"</span>
+
+<span class="n">assertion_graph_builder</span> <span class="o">=</span> <span class="n">TFGraphBuilder</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setModelName</span><span class="p">(</span><span class="s">"fewshot_assertion"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"assertion_embedding"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"label"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGraphFolder</span><span class="p">(</span><span class="n">graph_folder</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGraphFile</span><span class="p">(</span><span class="n">graph_name</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setHiddenUnitsNumber</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fewshot_assertion_approach</span> <span class="o">=</span> <span class="n">FewShotAssertionClassifierApproach</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"assertion_embedding"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLabelCol</span><span class="p">(</span><span class="s">"label"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLearningRate</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEpochsNumber</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setValidationSplit</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setModelFile</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">graph_folder</span><span class="si">}</span><span class="s">/</span><span class="si">{</span><span class="n">graph_name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">clinical_assertion_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">assertion_graph_builder</span><span class="p">,</span>
+        <span class="n">fewshot_assertion_approach</span>
+    <span class="p">])</span>
+
+<span class="n">assertion_model</span> <span class="o">=</span> <span class="n">clinical_assertion_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">assertion_train_data</span><span class="p">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="c1">// Defining pipeline stages to extract entities first</span>
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">MultiDocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">"span"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"span_document"</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">chunker</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"span_document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"span_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">assertionConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FewShotAssertionSentenceConverter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"span_chunk"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceEmbeddings</span> <span class="k">=</span> <span class="nc">MPNetEmbeddings</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"assertion_sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_embedding"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">fewShotAssertionApproach</span> <span class="k">=</span> <span class="nc">FewShotAssertionClassifierApproach</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"assertion_embedding"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"prediction"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setLabelColumn</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setEpochsNumber</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setMultiClass</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setlearningRate</span><span class="o">(</span><span class="mf">0.01f</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span>
+  <span class="nc">Array</span><span class="o">(</span>
+    <span class="n">documentAssembler</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">chunker</span><span class="o">,</span>
+    <span class="n">assertionConverter</span><span class="o">,</span>
+    <span class="n">sentenceEmbeddings</span><span class="o">,</span>
+    <span class="n">fewShotAssertionApproach</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainData</span><span class="o">)</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala-->
+
+</details>
+
+  </div>
+  <!--END Aproach-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="fewshotassertionsentenceconverter">FewShotAssertionSentenceConverter</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">scopeWindow</code> :  The scope window of the assertion expression</li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">TOKEN</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">TOKEN</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/fewshot_assertion_sentence_converter/index.html">FewShotAssertionSentenceConverter</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/FewShotAssertionSentenceConverter.html">FewShotAssertionSentenceConverter</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSplitChars</span><span class="p">([</span><span class="s">"-"</span><span class="p">,</span> <span class="s">"\/"</span><span class="p">])</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="c1"># ner_oncology
+</span><span class="n">ner_oncology</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_oncology"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_oncology"</span><span class="p">)</span>
+
+<span class="n">ner_oncology_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"ner_oncology"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">few_shot_assertion_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FewShotAssertionSentenceConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_sentence"</span><span class="p">)</span>
+
+<span class="n">e5_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">E5Embeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"e5_base_v2_embeddings_medical_assertion_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"assertion_sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_embedding"</span><span class="p">)</span>
+
+<span class="n">few_shot_assertion_classifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FewShotAssertionClassifierModel</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"fewhot_assertion_oncology_e5_base_v2_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"assertion_embedding"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_fewshot"</span><span class="p">)</span>
+
+<span class="n">assertion_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">ner_oncology</span><span class="p">,</span>
+        <span class="n">ner_oncology_converter</span><span class="p">,</span>
+        <span class="n">few_shot_assertion_converter</span><span class="p">,</span>
+        <span class="n">e5_embeddings</span><span class="p">,</span>
+        <span class="n">few_shot_assertion_classifier</span>
+    <span class="p">])</span>
+
+<span class="n">sample_text</span><span class="o">=</span> <span class="p">[</span>
+<span class="s">"""The patient is suspected to have colorectal cancer. Her family history is positive for other cancers.
+The result of the biopsy was positive. A CT scan was ordered to rule out metastases."""</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="n">sample_text</span><span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">assertion_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">arrays_zip</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">assertion_fewshot</span><span class="p">.</span><span class="n">metadata</span><span class="p">,</span>
+                        <span class="n">result</span><span class="p">.</span><span class="n">assertion_fewshot</span><span class="p">.</span><span class="n">begin</span><span class="p">,</span>
+                        <span class="n">result</span><span class="p">.</span><span class="n">assertion_fewshot</span><span class="p">.</span><span class="n">end</span><span class="p">,</span>
+                        <span class="n">result</span><span class="p">.</span><span class="n">assertion_fewshot</span><span class="p">.</span><span class="n">result</span><span class="p">,)).</span><span class="n">alias</span><span class="p">(</span><span class="s">"cols"</span><span class="p">))</span> \
+                        <span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['0']['ner_chunk']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">),</span>
+                        <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['1']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"begin"</span><span class="p">),</span>
+                        <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['2']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"end"</span><span class="p">),</span>
+                        <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['0']['ner_label']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"ner_label"</span><span class="p">),</span>
+                        <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['3']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">),</span>
+                        <span class="n">F</span><span class="p">.</span><span class="n">expr</span><span class="p">(</span><span class="s">"cols['0']['confidence']"</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"confidence"</span><span class="p">)</span> <span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+
+<span class="c1">## Result
+</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">ner_chunk</span>        <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span>       <span class="o">|</span><span class="n">assertion</span><span class="o">|</span><span class="n">confidence</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">colorectal</span> <span class="n">cancer</span><span class="o">|</span><span class="mi">33</span>   <span class="o">|</span><span class="mi">49</span> <span class="o">|</span><span class="n">Cancer_Dx</span>       <span class="o">|</span><span class="n">Possible</span> <span class="o">|</span><span class="mf">0.5812815</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">Her</span>              <span class="o">|</span><span class="mi">52</span>   <span class="o">|</span><span class="mi">54</span> <span class="o">|</span><span class="n">Gender</span>          <span class="o">|</span><span class="n">Present</span>  <span class="o">|</span><span class="mf">0.9562998</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">cancers</span>          <span class="o">|</span><span class="mi">93</span>   <span class="o">|</span><span class="mi">99</span> <span class="o">|</span><span class="n">Cancer_Dx</span>       <span class="o">|</span><span class="n">Family</span>   <span class="o">|</span><span class="mf">0.23465642</span><span class="o">|</span>
+<span class="o">|</span><span class="n">biopsy</span>           <span class="o">|</span><span class="mi">120</span>  <span class="o">|</span><span class="mi">125</span><span class="o">|</span><span class="n">Pathology_Test</span>  <span class="o">|</span><span class="n">Past</span>     <span class="o">|</span><span class="mf">0.95732147</span><span class="o">|</span>
+<span class="o">|</span><span class="n">positive</span>         <span class="o">|</span><span class="mi">131</span>  <span class="o">|</span><span class="mi">138</span><span class="o">|</span><span class="n">Pathology_Result</span><span class="o">|</span><span class="n">Present</span>  <span class="o">|</span><span class="mf">0.9564386</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">CT</span> <span class="n">scan</span>          <span class="o">|</span><span class="mi">143</span>  <span class="o">|</span><span class="mi">149</span><span class="o">|</span><span class="n">Imaging_Test</span>    <span class="o">|</span><span class="n">Past</span>     <span class="o">|</span><span class="mf">0.9571699</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">metastases</span>       <span class="o">|</span><span class="mi">175</span>  <span class="o">|</span><span class="mi">184</span><span class="o">|</span><span class="n">Metastasis</span>      <span class="o">|</span><span class="n">Possible</span> <span class="o">|</span><span class="mf">0.54986554</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nc">SentenceDetectorDLModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setSplitChars</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"-"</span><span class="o">,</span> <span class="s">"/"</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerOncology</span> <span class="k">=</span> <span class="nc">MedicalNerModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_oncology"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerOncologyConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner_oncology"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">fewShotAssertionConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FewShotAssertionSentenceConverter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">e5Embeddings</span> <span class="k">=</span> <span class="n">E5Embeddings</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"e5_base_v2_embeddings_medical_assertion_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"assertion_sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_embedding"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">fewShotAssertionClassifier</span> <span class="k">=</span> <span class="nc">FewShotAssertionClassifierModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"fewhot_assertion_oncology_e5_base_v2_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"assertion_embedding"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"assertion_fewshot"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="n">documentAssembler</span><span class="o">,</span>
+        <span class="n">sentenceDetector</span><span class="o">,</span>
+        <span class="n">tokenizer</span><span class="o">,</span>
+        <span class="n">wordEmbeddings</span><span class="o">,</span>
+        <span class="n">nerOncology</span><span class="o">,</span>
+        <span class="n">nerOncologyConverter</span><span class="o">,</span>
+        <span class="n">fewShotAssertionConverter</span><span class="o">,</span>
+        <span class="n">e5Embeddings</span><span class="o">,</span>
+        <span class="n">fewShotAssertionClassifier</span>
+    <span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">sampleText</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. 
+The result of the biopsy was positive. A CT scan was ordered to rule out metastases."</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">createDataFrame</span><span class="o">(</span><span class="n">sampleText</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">result</span><span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+
+<span class="o">#</span><span class="k">#</span> <span class="nc">Result</span>
+
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">ner_chunk</span>        <span class="o">|</span><span class="n">begin</span><span class="o">|</span><span class="n">end</span><span class="o">|</span><span class="n">ner_label</span>       <span class="o">|</span><span class="n">assertion</span><span class="o">|</span><span class="n">confidence</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
+<span class="o">|</span><span class="n">colorectal</span> <span class="n">cancer</span><span class="o">|</span><span class="mi">33</span>   <span class="o">|</span><span class="mi">49</span> <span class="o">|</span><span class="nc">Cancer_Dx</span>       <span class="o">|</span><span class="nc">Possible</span> <span class="o">|</span><span class="mf">0.5812815</span> <span class="o">|</span>
+<span class="o">|</span><span class="nc">Her</span>              <span class="o">|</span><span class="mi">52</span>   <span class="o">|</span><span class="mi">54</span> <span class="o">|</span><span class="nc">Gender</span>          <span class="o">|</span><span class="nc">Present</span>  <span class="o">|</span><span class="mf">0.9562998</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">cancers</span>          <span class="o">|</span><span class="mi">93</span>   <span class="o">|</span><span class="mi">99</span> <span class="o">|</span><span class="nc">Cancer_Dx</span>       <span class="o">|</span><span class="nc">Family</span>   <span class="o">|</span><span class="mf">0.23465642</span><span class="o">|</span>
+<span class="o">|</span><span class="n">biopsy</span>           <span class="o">|</span><span class="mi">120</span>  <span class="o">|</span><span class="mi">125</span><span class="o">|</span><span class="nc">Pathology_Test</span>  <span class="o">|</span><span class="nc">Past</span>     <span class="o">|</span><span class="mf">0.95732147</span><span class="o">|</span>
+<span class="o">|</span><span class="n">positive</span>         <span class="o">|</span><span class="mi">131</span>  <span class="o">|</span><span class="mi">138</span><span class="o">|</span><span class="nc">Pathology_Result</span><span class="o">|</span><span class="nc">Present</span>  <span class="o">|</span><span class="mf">0.9564386</span> <span class="o">|</span>
+<span class="o">|</span><span class="nc">CT</span> <span class="n">scan</span>          <span class="o">|</span><span class="mi">143</span>  <span class="o">|</span><span class="mi">149</span><span class="o">|</span><span class="nc">Imaging_Test</span>    <span class="o">|</span><span class="nc">Past</span>     <span class="o">|</span><span class="mf">0.9571699</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">metastases</span>       <span class="o">|</span><span class="mi">175</span>  <span class="o">|</span><span class="mi">184</span><span class="o">|</span><span class="nc">Metastasis</span>      <span class="o">|</span><span class="nc">Possible</span> <span class="o">|</span><span class="mf">0.54986554</span><span class="o">|</span>
+<span class="o">+-----------------+-----+---+----------------+---------+----------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -17909,6 +18460,140 @@ patternsAreRegex. Whether to interpret the split patterns as regular expressions
 <span class="o">|[{</span><span class="kt">document</span>, <span class="err">424</span>, <span class="err">520</span>, <span class="kt">He</span> <span class="kt">denies</span> <span class="kt">any</span> <span class="kt">prior</span> <span class="kt">similar</span> <span class="kt">or</span> <span class="kt">lesser</span> <span class="kt">symptoms.</span> <span class="kt">His</span> <span class="kt">last</span> <span class="kt">normal</span> <span class="kt">bowel</span> <span class="kt">movement</span> <span class="kt">was</span> <span class="kt">yesterday.</span> <span class="kt">He</span>, <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span>, <span class="kt">document</span> <span class="kt">-&gt;</span> <span class="err">5</span><span class="o">}</span>, <span class="o">[]}]</span>   <span class="o">|</span>
 <span class="o">|[{</span><span class="kt">document</span>, <span class="err">518</span>, <span class="err">568</span>, <span class="kt">He</span> <span class="kt">denies</span> <span class="kt">any</span> <span class="kt">outright</span> <span class="kt">chills</span> <span class="kt">or</span> <span class="kt">blood</span> <span class="kt">per</span> <span class="kt">rectum.</span>, <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span>, <span class="kt">document</span> <span class="kt">-&gt;</span> <span class="err">6</span><span class="o">}</span>, <span class="o">[]}]</span>                                                 <span class="o">|</span>
 <span class="o">+---------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="llmloader">LLMLoader</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs’ licensed LLMs at
+various sizes that are finetuned on medical context for certain tasks. It provides various methods for setting parameters, loading models,
+generating text, and retrieving metadata. The LLMLoader includes methods for setting various parameters such as input prefix, suffix,
+cache prompt, number of tokens to predict, sampling techniques, temperature, penalties, and more. Overall, the LLMLoader provides a
+flexible and extensible framework for interacting with language models in a Python and Scala environment using PySpark and Java.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">inputPrefix</code> :  Prefix for infilling (default: empty)</li>
+      <li><code class="language-plaintext highlighter-rouge">inputSuffix</code> :  Suffix for infilling (default: empty)</li>
+      <li><code class="language-plaintext highlighter-rouge">cachePrompt</code> :  Whether to remember the prompt to avoid reprocessing it</li>
+      <li><code class="language-plaintext highlighter-rouge">nPredict</code>    :  Number of tokens to predict (default: -1, -1 = infinity, -2 = until context filled)</li>
+      <li><code class="language-plaintext highlighter-rouge">topK</code> :  Top-k sampling (default: 40, 0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">topP</code> :  Top-p sampling (default: 0.9, 1.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">minP</code> :  Min-p sampling (default: 0.1, 0.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">tfsZ</code> :  Tail free sampling, parameter z (default: 1.0, 1.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">typicalP</code> :  Locally typical sampling, parameter p (default: 1.0, 1.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">temperature</code> :  The temperature (default: 0.8)</li>
+      <li><code class="language-plaintext highlighter-rouge">dynatempRange</code> :   Dynamic temperature range (default: 0.0, 0.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">dynatempExponent</code> :  Dynamic temperature exponent (default: 1.0)</li>
+      <li><code class="language-plaintext highlighter-rouge">repeatLastN</code> :  Last n tokens to consider for penalties (default: 64, 0 = disabled, -1 = ctx_size)</li>
+      <li><code class="language-plaintext highlighter-rouge">repeatPenalty</code> :  Penalty of repeated sequences of tokens (default: 1.0, 1.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">frequencyPenalty</code> :  Repetition alpha frequency penalty (default: 0.0, 0.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">presencePenalty</code> :  Repetition alpha presence penalty (default: 0.0, 0.0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">mirostatTau</code> :  MiroStat target entropy, parameter tau (default: 5.0)</li>
+      <li><code class="language-plaintext highlighter-rouge">mirostatEta</code> :  MiroStat learning rate, parameter eta (default: 0.1)</li>
+      <li><code class="language-plaintext highlighter-rouge">penalizeNl</code> :  Whether to penalize newline tokens</li>
+      <li><code class="language-plaintext highlighter-rouge">nKeep</code> :  Number of tokens to keep from the initial prompt (default: 0, -1 = all)</li>
+      <li><code class="language-plaintext highlighter-rouge">seed</code> :  RNG seed (default: -1, use random seed for &lt; 0)</li>
+      <li><code class="language-plaintext highlighter-rouge">nProbs</code> :  Amount top tokens probabilities to output if greater than 0.</li>
+      <li><code class="language-plaintext highlighter-rouge">minKeep</code> :  Amount of tokens the samplers should return at least (0 = disabled)</li>
+      <li><code class="language-plaintext highlighter-rouge">grammar</code> :  BNF-like grammar to constrain generations (see samples in grammars/ dir)</li>
+      <li><code class="language-plaintext highlighter-rouge">penaltyPrompt</code> :  Override which part of the prompt is penalized for repetition. E.g. if original prompt is “Alice: Hello!” and penaltyPrompt is “Hello!”, only the latter will be penalized if repeated. See <a href="https://github.com/ggerganov/llama.cpp/pull/3727">pull request 3727</a> for more details.</li>
+      <li><code class="language-plaintext highlighter-rouge">penaltyPromptTokens</code> :  PenaltyPromptTokens</li>
+      <li><code class="language-plaintext highlighter-rouge">ignoreEos</code> :  Whether to ignore end of stream token and continue generating (implies –logit-bias 2-inf)</li>
+      <li><code class="language-plaintext highlighter-rouge">stopStrings</code> :  Strings upon seeing which token generation is stopped</li>
+      <li><code class="language-plaintext highlighter-rouge">useChatTemplate</code> :  Whether or not generate should apply a chat template (default: false)</li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/llm/llm_loader/index.html">LLMLoader</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/ml/gguf/rag/LLMLoader.html">LLMLoader</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.llm</span> <span class="kn">import</span> <span class="n">LLMLoader</span>
+
+<span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"JSL_MedS_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="s">"What is the indication for the drug Methadone?"</span><span class="p">)</span>
+
+
+
+<span class="c1">## Result
+</span>
+<span class="s">'Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to help individuals who are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain in patients who have developed tolerance to other opioids.'</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">llmLoader</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LLMLoader</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setSparkSession</span><span class="o">(</span><span class="n">spark</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"llama3_160_gguf"</span><span class="o">,</span> <span class="n">remoteLoc</span><span class="o">=</span><span class="s">"clinical/models"</span><span class="o">,</span> <span class="n">lang</span> <span class="k">=</span> <span class="s">"en"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setTemperature</span><span class="o">(</span><span class="mf">0.0f</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setNPredict</span><span class="o">(</span><span class="mi">20</span><span class="o">)</span>
+
+
+
+<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"Tell me five words about Microsoft."</span>
+
+<span class="k">val</span> <span class="nv">output</span> <span class="k">=</span> <span class="nv">llmLoader</span><span class="o">.</span><span class="py">setUseChatTemplate</span><span class="o">(</span><span class="kc">false</span><span class="o">).</span><span class="py">setStopStrings</span><span class="o">(</span><span class="nv">Array</span><span class="o">.</span><span class="py">empty</span><span class="o">[</span><span class="kt">String</span><span class="o">]).</span><span class="py">generate</span><span class="o">(</span><span class="n">prompt</span><span class="o">)</span>
+
+<span class="nf">println</span><span class="o">(</span><span class="n">output</span><span class="o">)</span>
+
+<span class="o">#</span><span class="k">#</span> <span class="nc">Result</span>
+
+<span class="mf">1.</span> <span class="nc">Microsoft</span><span class="k">:</span> <span class="kt">Microsoft</span> <span class="kt">is</span> <span class="kt">a</span> <span class="kt">global</span> <span class="kt">technology</span> <span class="kt">company</span> <span class="kt">that</span> <span class="kt">develops</span><span class="o">,</span> <span class="n">manufactures</span><span class="o">,</span> <span class="n">and</span> <span class="n">sells</span>
 </code></pre></div>          </div>
 
         </div>
@@ -27209,6 +27894,89 @@ lansoprazole#Drug
 <span class="o">|</span>    <span class="n">ibuprofen</span><span class="o">|</span>  <span class="mi">134</span><span class="o">|</span><span class="mi">142</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
 <span class="o">|</span> <span class="n">lansoprazole</span><span class="o">|</span>  <span class="mi">170</span><span class="o">|</span><span class="mi">181</span><span class="o">|</span> <span class="nc">Drug</span><span class="o">|</span>
 <span class="o">+-------------+-----+---+-----+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="vectordbpostprocessor">VectorDBPostProcessor</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>VectorDBPostProcessor is used to filter and sort the annotations from the :class:<code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.resolution.VectorDBModel</code>.</p>
+
+    <p>Parametres:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">filterBy</code>:The filterBy parameter is used to select and prioritize filter options.</li>
+      <li><code class="language-plaintext highlighter-rouge">sortBy</code>:The sortBy parameter is used to select sorting option. Options: <code class="language-plaintext highlighter-rouge">ascending</code>, <code class="language-plaintext highlighter-rouge">descending</code>, <code class="language-plaintext highlighter-rouge">lost_in_the_middle</code>, <code class="language-plaintext highlighter-rouge">diversity</code>.<code class="language-plaintext highlighter-rouge">ascending</code>: Sort by ascending order of distance.<code class="language-plaintext highlighter-rouge">descending</code>: Sort by descending order of distance.<code class="language-plaintext highlighter-rouge">lost_in_the_middle</code>: Sort by lost in the middle ranker. Let’s say we have 5 annotations with distances [1, 2, 3, 4, 5]. The lost in the middle ranker will sort them as [1, 3, 5, 4, 2].<code class="language-plaintext highlighter-rouge">diversity</code>:  Sort by diversity ranker. The annotations are sorted by distance and the first annotation select, and then the next annotation is selected by the maximum average distance from the selected annotations. Default: <code class="language-plaintext highlighter-rouge">ascending</code></li>
+      <li><code class="language-plaintext highlighter-rouge">caseSensitive</code>: Whether the criteria of the string operators are case sensitive or not. For example, if set to False, the operator “equals” will match “John” with “john”. Default: False</li>
+      <li><code class="language-plaintext highlighter-rouge">diversityThreshold</code>: The diversityThreshold parameter is used to set the threshold for the diversityByThreshold filter. The diversityByThreshold filter selects the annotations by the distance between the sorted annotations. diversityThreshold must be greater than 0. Default: 0.01</li>
+      <li><code class="language-plaintext highlighter-rouge">maxTopKAfterFiltering</code>:  Whether to allow zero annotation after filtering. If set to True, the output may contain zero annotation if all annotations are filtered out. If set to False, The output is tried to contain at least one annotation. Default: False</li>
+      <li><code class="language-plaintext highlighter-rouge">metadataCriteria</code>: The metadataCriteria parameter is used to filter the annotations by metadata fields.</li>
+    </ul>
+
+    <p>See <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/rag/vectordb_post_processor/index.html">VectorDBPostProcessor</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/rag/VectorDBPostProcessor.html">VectorDBPostProcessor</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># result
+</span></code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">#</span> <span class="n">result</span>
 </code></pre></div>          </div>
 
         </div>
