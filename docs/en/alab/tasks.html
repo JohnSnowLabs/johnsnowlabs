@@ -620,151 +620,178 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Tasks"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The <strong>Tasks</strong> screen shows a list of all documents that have been imported into the current project.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>Under each task you can see meta data about the task: the time of import, the user who imported the task and the annotators and reviewers assigned to the task.</p>
+  <p>The <strong>Tasks</strong> screen shows a list of all documents that have been imported into the current project.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/tasks.png" style="width:100%;" /></p>
+  <p>Under each task you can see meta data about the task: the time of import, the user who imported the task and the annotators and reviewers assigned to the task.</p>
 
-<h2 id="task-assignment">Task Assignment</h2>
+  <p><img src="/assets/images/annotation_lab/4.2.0/tasks.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>Project Owners/Managers can assign tasks to annotator(s) and reviewer(s) in order to better plan/distribute project work. Annotators and Reviewers can only view tasks that are assigned to them which means there is no chance of accidental work overlap.</p>
+</div>
+<div class="h3-box">
 
-<p>For assigning a task to an annotator, from the task page select one or more tasks and from the <code class="language-plaintext highlighter-rouge">Assign</code> dropdown choose an annotator.</p>
+  <h2 id="task-assignment">Task Assignment</h2>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_assignment.gif" style="width:100%;" /></p>
+  <p>Project Owners/Managers can assign tasks to annotator(s) and reviewer(s) in order to better plan/distribute project work. Annotators and Reviewers can only view tasks that are assigned to them which means there is no chance of accidental work overlap.</p>
 
-<p>You can only assign a task to annotators that have already been added to the project team. For adding an annotator to the project team, select your project and navigate to the <code class="language-plaintext highlighter-rouge">Setup &gt; Team</code> menu item. On the <code class="language-plaintext highlighter-rouge">Add Team Member</code> page, search for the user you want to add, select the role you want to assign to him/her and click on <code class="language-plaintext highlighter-rouge">Add To Team</code> button.</p>
+  <p>For assigning a task to an annotator, from the task page select one or more tasks and from the <code class="language-plaintext highlighter-rouge">Assign</code> dropdown choose an annotator.</p>
 
-<p>Project Owners can also be explicitly assigned as annotators and/or reviewers for tasks. It is useful when working in a small team and when the Project Owners are also involved in the annotation process. A new option <code class="language-plaintext highlighter-rouge">Only Assigned</code> checkbox is now available on the labeling page that allows Project Owners to filter the tasks explicitly assigned to them when clicking the <code class="language-plaintext highlighter-rouge">Next</code> button.</p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_assignment.gif" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p><img class="image image__shadow" src="https://user-images.githubusercontent.com/17021686/204805373-4e5a5a7b-a520-4e9f-ad08-452bec165ef8.gif" style="width:100%;" /></p>
+  <p>You can only assign a task to annotators that have already been added to the project team. For adding an annotator to the project team, select your project and navigate to the <code class="language-plaintext highlighter-rouge">Setup &gt; Team</code> menu item. On the <code class="language-plaintext highlighter-rouge">Add Team Member</code> page, search for the user you want to add, select the role you want to assign to him/her and click on <code class="language-plaintext highlighter-rouge">Add To Team</code> button.</p>
 
-<blockquote>
-  <p><strong>NOTE:</strong> When upgrading from an older version of the Generative AI Lab, the annotators will no longer have access to the tasks they worked on unless they are assigned to those explicitely by the admin user who created the project. Once they are assigned, they can resume work and no information is lost.</p>
-</blockquote>
+  <p>Project Owners can also be explicitly assigned as annotators and/or reviewers for tasks. It is useful when working in a small team and when the Project Owners are also involved in the annotation process. A new option <code class="language-plaintext highlighter-rouge">Only Assigned</code> checkbox is now available on the labeling page that allows Project Owners to filter the tasks explicitly assigned to them when clicking the <code class="language-plaintext highlighter-rouge">Next</code> button.</p>
 
-<h2 id="task-status">Task Status</h2>
+  <p><img src="https://user-images.githubusercontent.com/17021686/204805373-4e5a5a7b-a520-4e9f-ad08-452bec165ef8.gif" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>At high level, each task can have one of the following statuses:</p>
+  <blockquote>
+    <p><strong>NOTE:</strong> When upgrading from an older version of the Generative AI Lab, the annotators will no longer have access to the tasks they worked on unless they are assigned to those explicitely by the admin user who created the project. Once they are assigned, they can resume work and no information is lost.</p>
+  </blockquote>
 
-<ul>
-  <li><strong>Incomplete</strong>, when none of the assigned annotators has started working on the task.</li>
-  <li><strong>In Progress</strong>, when at least one of the assigned annotators has submitted at least one completion for this task.</li>
-  <li><strong>Submitted</strong>, when all annotators which were assigned to the task have submitted a completion which is set as ground truth (starred).</li>
-  <li><strong>Reviewed</strong>, in the case there is a reviewer assigned to the task, and the reviewer has reviewed and accepted the submited completion.</li>
-  <li><strong>To Correct</strong>, in the case the assigned reviewer has rejected the completion created by the Annotator.</li>
-</ul>
+</div>
+<div class="h3-box">
 
-<p>The status of a task varies according to the type of account the logged in user has (his/her visibility over the project) and according to the tasks that have been assigned to him/her.</p>
+  <h2 id="task-status">Task Status</h2>
 
-<h3 id="for-project-owner-manager-and-reviewer">For Project Owner, Manager and Reviewer</h3>
+  <p>At high level, each task can have one of the following statuses:</p>
 
-<p>On the Analytics page and Tasks page, the Project Owner/Manager/Reviewer will see the general overview of the projects which will take into consideration the task level statuses as follows:</p>
+  <ul>
+    <li><strong>Incomplete</strong>, when none of the assigned annotators has started working on the task.</li>
+    <li><strong>In Progress</strong>, when at least one of the assigned annotators has submitted at least one completion for this task.</li>
+    <li><strong>Submitted</strong>, when all annotators which were assigned to the task have submitted a completion which is set as ground truth (starred).</li>
+    <li><strong>Reviewed</strong>, in the case there is a reviewer assigned to the task, and the reviewer has reviewed and accepted the submited completion.</li>
+    <li><strong>To Correct</strong>, in the case the assigned reviewer has rejected the completion created by the Annotator.</li>
+  </ul>
 
-<ul>
-  <li><strong>Incomplete</strong> - Assigned annotators have not started working on this task</li>
-  <li><strong>In Progress</strong> - At least one annotator still has not starred (marked as ground truth) one submitted completion</li>
-  <li><strong>Submitted</strong> - All annotators that are assigned to the task have starred (marked as ground truth) one submitted completion</li>
-  <li><strong>Reviewed</strong> - Reviewer has approved all starred submitted completions for the task</li>
-</ul>
+  <p>The status of a task varies according to the type of account the logged in user has (his/her visibility over the project) and according to the tasks that have been assigned to him/her.</p>
 
-<h3 id="for-annotators">For Annotators</h3>
+</div>
+<div class="h3-box">
 
-<p>On the Annotator’s Task page, the task status will be shown with regards to the context of the logged-in Annotator’s work. As such, if the same task is assigned to two annotators then:</p>
+  <h3 id="for-project-owner-manager-and-reviewer">For Project Owner, Manager and Reviewer</h3>
 
-<ul>
-  <li>if annotator1 is still working and not submitted the task, then he/she will see task status as <em>In-progress</em></li>
-</ul>
+  <p>On the Analytics page and Tasks page, the Project Owner/Manager/Reviewer will see the general overview of the projects which will take into consideration the task level statuses as follows:</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_in_progress.png" style="width:100%;" /></p>
+  <ul>
+    <li><strong>Incomplete</strong> - Assigned annotators have not started working on this task</li>
+    <li><strong>In Progress</strong> - At least one annotator still has not starred (marked as ground truth) one submitted completion</li>
+    <li><strong>Submitted</strong> - All annotators that are assigned to the task have starred (marked as ground truth) one submitted completion</li>
+    <li><strong>Reviewed</strong> - Reviewer has approved all starred submitted completions for the task</li>
+  </ul>
 
-<ul>
-  <li>if annotator2 submits the task from his/her side then he/she will see task status as <em>Submitted</em></li>
-</ul>
+</div>
+<div class="h3-box">
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_submitted.png" style="width:100%;" /></p>
+  <h3 id="for-annotators">For Annotators</h3>
 
-<p>The following statuses are available on the Annotator’s view.</p>
+  <p>On the Annotator’s Task page, the task status will be shown with regards to the context of the logged-in Annotator’s work. As such, if the same task is assigned to two annotators then:</p>
 
-<ul>
-  <li><strong>Incomplete</strong> – Current logged-in annotator has not started working on this task.</li>
-  <li><strong>In Progress</strong> - At least one saved/submitted completions exist, but there is no starred submitted completion.</li>
-  <li><strong>Submitted</strong> - Annotator has at least one starred submitted completion.</li>
-  <li><strong>Reviewed</strong> - Reviewer has approved the starred submitted completion for the task.</li>
-  <li><strong>To Correct</strong> - Reviewer has rejected the submitted work. In this case, the star is removed from the reviewed completion. The annotator should start working on the task and resubmit.</li>
-</ul>
+  <ul>
+    <li>if annotator1 is still working and not submitted the task, then he/she will see task status as <em>In-progress</em></li>
+  </ul>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_reject_completion.gif" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_in_progress.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<blockquote>
-  <p><strong>Note:</strong> The status of a task is maintained/available only for the annotators assigned to the task.</p>
-</blockquote>
+  <ul>
+    <li>if annotator2 submits the task from his/her side then he/she will see task status as <em>Submitted</em></li>
+  </ul>
 
-<p>When multiple Annotators are assigned to a task, the reviewer will see the task as submitted when all annotators submit and star their completions. Otherwise, if one of the assigned Annotators has not submitted or has not starred one completion, then the Reviewer will see the task as <em>In Progress</em>.</p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_submitted.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<h2 id="task-filters">Task Filters</h2>
+  <p>The following statuses are available on the Annotator’s view.</p>
 
-<p>As normally annotation projects involve a large number of tasks, the Task page includes filtering and sorting options which will help the user identify the tasks he/she needs faster.
+  <ul>
+    <li><strong>Incomplete</strong> – Current logged-in annotator has not started working on this task.</li>
+    <li><strong>In Progress</strong> - At least one saved/submitted completions exist, but there is no starred submitted completion.</li>
+    <li><strong>Submitted</strong> - Annotator has at least one starred submitted completion.</li>
+    <li><strong>Reviewed</strong> - Reviewer has approved the starred submitted completion for the task.</li>
+    <li><strong>To Correct</strong> - Reviewer has rejected the submitted work. In this case, the star is removed from the reviewed completion. The annotator should start working on the task and resubmit.</li>
+  </ul>
+
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_reject_completion.gif" alt="Task Assignment" title="lit_shadow" /></p>
+
+  <blockquote>
+    <p><strong>Note:</strong> The status of a task is maintained/available only for the annotators assigned to the task.</p>
+  </blockquote>
+
+  <p>When multiple Annotators are assigned to a task, the reviewer will see the task as submitted when all annotators submit and star their completions. Otherwise, if one of the assigned Annotators has not submitted or has not starred one completion, then the Reviewer will see the task as <em>In Progress</em>.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="task-filters">Task Filters</h2>
+
+  <p>As normally annotation projects involve a large number of tasks, the Task page includes filtering and sorting options which will help the user identify the tasks he/she needs faster.
 Tasks can be sorted by time of import ascending or descending.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_sort.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_sort.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>Tasks can be filtered by the assigned tags, by the user who imported the task and by the status.</p>
+  <p>Tasks can be filtered by the assigned tags, by the user who imported the task and by the status.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_tag.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_tag.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>There is also a search functionality which will identify the tasks having a given string on their name.</p>
+  <p>There is also a search functionality which will identify the tasks having a given string on their name.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>The number of tasks visible on the screeen is customizable by selecting the predefined values from the Tasks per page drop-down.</p>
+  <p>The number of tasks visible on the screeen is customizable by selecting the predefined values from the Tasks per page drop-down.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_filters.gif" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_filters.gif" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>From version 4.10 onwards, filtering tasks has been updated to allow users to select multiple tags from the Tags dropdown. This allows users to filter tasks based on multiple tags. Additionally, the same improved filter behaviour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.</p>
+  <p>From version 4.10 onwards, filtering tasks has been updated to allow users to select multiple tags from the Tags dropdown. This allows users to filter tasks based on multiple tags. Additionally, the same improved filter behaviour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.</p>
 
-<p><img src="/assets/images/annotation_lab/4.10.0/7.gif" alt="filter" /></p>
+  <p><img src="/assets/images/annotation_lab/4.10.0/7.gif" alt="filter" /></p>
 
-<h2 id="task-search-by-text-label-and-choice">Task Search by Text, Label and Choice</h2>
+</div>
+<div class="h3-box">
 
-<p>Generative AI Lab offers advanced search features that help users identify the tasks they need based on the text or based on the annotations defined so far. Currently supported search queries are:</p>
+  <h2 id="task-search-by-text-label-and-choice">Task Search by Text, Label and Choice</h2>
 
-<ul>
-  <li>text: patient -&gt; returns all tasks which contain the string “patient”;</li>
-  <li>label: ABC -&gt; returns all tasks that have at least one completion containing a chunk with label ABC;</li>
-  <li>label: ABC=DEF -&gt; returns all tasks that have at least one completion containing the text DEF labeled as ABC;</li>
-  <li>choice: Sport -&gt; returns all tasks that have at least one completion which classified the task as Sport;</li>
-  <li>choice: Sport,Politics -&gt; returns all tasks that have at least one completion containing multiple choices Sport and Politics.</li>
-</ul>
+  <p>Generative AI Lab offers advanced search features that help users identify the tasks they need based on the text or based on the annotations defined so far. Currently supported search queries are:</p>
 
-<p>Search functionality is case insensitive, thus the following queries <code class="language-plaintext highlighter-rouge">label: ABC=DEF</code> , <code class="language-plaintext highlighter-rouge">label: Abc=Def</code> or <code class="language-plaintext highlighter-rouge">label: abc=def</code> are considered equivalent.</p>
+  <ul>
+    <li>text: patient -&gt; returns all tasks which contain the string “patient”;</li>
+    <li>label: ABC -&gt; returns all tasks that have at least one completion containing a chunk with label ABC;</li>
+    <li>label: ABC=DEF -&gt; returns all tasks that have at least one completion containing the text DEF labeled as ABC;</li>
+    <li>choice: Sport -&gt; returns all tasks that have at least one completion which classified the task as Sport;</li>
+    <li>choice: Sport,Politics -&gt; returns all tasks that have at least one completion containing multiple choices Sport and Politics.</li>
+  </ul>
 
-<p><strong>Example:</strong></p>
+  <p>Search functionality is case insensitive, thus the following queries <code class="language-plaintext highlighter-rouge">label: ABC=DEF</code> , <code class="language-plaintext highlighter-rouge">label: Abc=Def</code> or <code class="language-plaintext highlighter-rouge">label: abc=def</code> are considered equivalent.</p>
 
-<p>Consider a project with 3 tasks which are annotated as below:</p>
+  <p><strong>Example:</strong></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search_task1.png" style="width:100%;" />
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search_task2.png" style="width:100%;" />
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search_task3.png" style="width:100%;" /></p>
+  <p>Consider a project with 3 tasks which are annotated as below:</p>
 
-<p>Search-query “label:LOC” will list as results Task 1 and Task 3.</p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search_task1.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search_loc.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search_task2.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>Search-query “label:WORK_OF_ART” will list as result Task 1 and Task 2.</p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search_task3.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search_work_of_art.png" style="width:100%;" /></p>
+  <p>Search-query “label:LOC” will list as results Task 1 and Task 3.</p>
 
-<p>Search-query “label:PERSON=Leonardo” will list as result Task 1.</p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search_loc.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_search_person_leonardo.png" style="width:100%;" /></p>
+  <p>Search-query “label:WORK_OF_ART” will list as result Task 1 and Task 2.</p>
 
-<h2 id="comments">Comments</h2>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search_work_of_art.png" alt="Task Assignment" title="lit_shadow" /></p>
 
-<p>Comments can be added to each task by any team member. This is done by clicking the <code class="language-plaintext highlighter-rouge">View comments</code> link present on the rightmost side of each Task in the Tasks List page. It is important to notice that these comments are visible to everyone who can view the particular task.</p>
+  <p>Search-query “label:PERSON=Leonardo” will list as result Task 1.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_comment.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_search_person_leonardo.png" alt="Task Assignment" title="lit_shadow" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="comments">Comments</h2>
+
+  <p>Comments can be added to each task by any team member. This is done by clicking the <code class="language-plaintext highlighter-rouge">View comments</code> link present on the rightmost side of each Task in the Tasks List page. It is important to notice that these comments are visible to everyone who can view the particular task.</p>
+
+  <p><img src="/assets/images/annotation_lab/4.1.0/task_comment.png" alt="Task Assignment" title="lit_shadow" /></p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2023-06-09T00:00:00+00:00">Jun 09, 2023</time>
     </span><!-- start custom article footer snippet -->

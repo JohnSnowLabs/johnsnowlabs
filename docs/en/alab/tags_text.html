@@ -620,55 +620,68 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Text"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The <code class="language-plaintext highlighter-rouge">Text</code> tag shows text that can be labeled. The text template is divided into the following segments:</p>
-<ul>
-  <li>Information extraction: Includes NER and extracting relations among entities.</li>
-  <li>Classification: Includes text classification and multi-class classification.</li>
-  <li>Text summarization.</li>
-</ul>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<h3 id="information-extraction">Information Extraction</h3>
+  <p>The <code class="language-plaintext highlighter-rouge">Text</code> tag shows text that can be labeled. The text template is divided into the following segments:</p>
+  <ul>
+    <li>Information extraction: Includes NER and extracting relations among entities.</li>
+    <li>Classification: Includes text classification and multi-class classification.</li>
+    <li>Text summarization.</li>
+  </ul>
 
-<p>For simple NER related tasks, the configuration just needs the <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">Labels</code> tags. The <code class="language-plaintext highlighter-rouge">Labels</code> tag provides a set of labels for labeling regions in your tasks. Use the <code class="language-plaintext highlighter-rouge">Labels</code> tag to create a set of labels that can be assigned to identified region and specify the values of labels to assign to regions. For example, you have the following JSON to label, as shown below.</p>
+</div>
+<div class="h3-box">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <h3 id="information-extraction">Information Extraction</h3>
+
+  <p>For simple NER related tasks, the configuration just needs the <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">Labels</code> tags. The <code class="language-plaintext highlighter-rouge">Labels</code> tag provides a set of labels for labeling regions in your tasks. Use the <code class="language-plaintext highlighter-rouge">Labels</code> tag to create a set of labels that can be assigned to identified region and specify the values of labels to assign to regions. For example, you have the following JSON to label, as shown below.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
     <span class="s2">"text"</span>: <span class="s2">"The patient is a pleasant 17-year-old gentleman who was playing basketball today in gym. Two hours prior to presentation, he started to fall and someone stepped on his ankle and kind of twisted his right ankle and he cannot bear weight on it now. It hurts to move or bear weight. No other injuries noted. He does not think he has had injuries to his ankle in the past. He was given adderall and accutane."</span>,
     <span class="s2">"title"</span>: <span class="s2">"MyTestTitle"</span>
 <span class="o">}</span>
-</code></pre></div></div>
-<p>The configuration in this case looks as shown below.</p>
+</code></pre></div>  </div>
+  <p>The configuration in this case looks as shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/NER_labels.png" alt="NER-labels" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/NER_labels.png" alt="NER-labels" /></p>
 
-<p>The <strong>model</strong> parameter in the <code class="language-plaintext highlighter-rouge">Label</code> tag must be specified whenever a pre-trained model is used in the project for pre-annotation purposes. It is automatically defined when a model is chosen from <strong>Reuse Resources</strong>.</p>
+  <p>The <strong>model</strong> parameter in the <code class="language-plaintext highlighter-rouge">Label</code> tag must be specified whenever a pre-trained model is used in the project for pre-annotation purposes. It is automatically defined when a model is chosen from <strong>Reuse Resources</strong>.</p>
 
-<p>For the case of relation extraction, the configuration additionally needs a <code class="language-plaintext highlighter-rouge">Relations</code> tag apart from <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">Labels</code>. For the same input, the configuration would look as shown below.</p>
+  <p>For the case of relation extraction, the configuration additionally needs a <code class="language-plaintext highlighter-rouge">Relations</code> tag apart from <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">Labels</code>. For the same input, the configuration would look as shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/relation_extraction.png" alt="Relations-extraction" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/relation_extraction.png" alt="Relations-extraction" /></p>
 
-<h3 id="classification">Classification</h3>
+</div>
+<div class="h3-box">
 
-<p>For a classification task, the configuration needs the <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">Choices</code> tags. For instance, you have the input JSON as shown below. The <code class="language-plaintext highlighter-rouge">Choices</code> tag is used to create a group of choices (a set of <code class="language-plaintext highlighter-rouge">Choice</code> tags), with radio buttons or checkboxes. It can be used for single or multi-class classification.</p>
+  <h3 id="classification">Classification</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <p>For a classification task, the configuration needs the <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">Choices</code> tags. For instance, you have the input JSON as shown below. The <code class="language-plaintext highlighter-rouge">Choices</code> tag is used to create a group of choices (a set of <code class="language-plaintext highlighter-rouge">Choice</code> tags), with radio buttons or checkboxes. It can be used for single or multi-class classification.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
     <span class="s2">"text"</span>: <span class="s2">"The patient is a pleasant 17-year-old gentleman who was playing basketball today in gym. Two hours prior to presentation, he started to fall and someone stepped on his ankle and kind of twisted his right ankle and he cannot bear weight on it now. It hurts to move or bear weight. No other injuries noted. He does not think he has had injuries to his ankle in the past. He was given adderall and accutane."</span>,
     <span class="s2">"title"</span>: <span class="s2">"MyTestTitle"</span>
 <span class="o">}</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>For simple single-class classification, the configuration is shown below.</p>
+  <p>For simple single-class classification, the configuration is shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/classification.png" alt="Classification" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/classification.png" alt="Classification" /></p>
 
-<p>In the case of multi-class classification, the configuration would look as shown below.</p>
+  <p>In the case of multi-class classification, the configuration would look as shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/multi-class-classification.png" alt="multi-class" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/multi-class-classification.png" alt="multi-class" /></p>
 
-<h3 id="text-summarization">Text summarization</h3>
+</div>
+<div class="h3-box">
 
-<p>For a simple text summarization, the configuration just needs the <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">TextArea</code> tags. The <code class="language-plaintext highlighter-rouge">TextArea</code> tag is used to display a text area for the user input. It is mainly used for transcription, paraphrasing, or captioning task.</p>
+  <h3 id="text-summarization">Text summarization</h3>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/text_summarization.png" alt="Text-summarization" /></p>
+  <p>For a simple text summarization, the configuration just needs the <code class="language-plaintext highlighter-rouge">Text</code> and <code class="language-plaintext highlighter-rouge">TextArea</code> tags. The <code class="language-plaintext highlighter-rouge">TextArea</code> tag is used to display a text area for the user input. It is mainly used for transcription, paraphrasing, or captioning task.</p>
+
+  <p><img src="/assets/images/annotation_lab/xml-tags/text_summarization.png" alt="Text-summarization" /></p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2023-06-20T00:00:00+00:00">Jun 20, 2023</time>
     </span><!-- start custom article footer snippet -->

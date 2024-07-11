@@ -620,30 +620,40 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Overview"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Generative AI Lab enables the utilization of XML-like tags to configure the labeling interface. Generative AI Lab contains three distinct tag types for labeling management:</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Object tags</code> serve for data types, presenting labeled elements within a task, which can be labeled as video, audio, HTML, images, PDF, and text.</li>
-  <li><code class="language-plaintext highlighter-rouge">Control tags</code> facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside Generative AI Lab.</li>
-  <li><code class="language-plaintext highlighter-rouge">Visual tags</code> allow for changes to the visual elements of the labelling interface, giving control over the presentation of particular labeling choices or the presence of a header.</li>
-</ul>
+  <p>Generative AI Lab enables the utilization of XML-like tags to configure the labeling interface. Generative AI Lab contains three distinct tag types for labeling management:</p>
 
-<h2 id="custom-labeling-configuration">Custom Labeling Configuration</h2>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">Object tags</code> serve for data types, presenting labeled elements within a task, which can be labeled as video, audio, HTML, images, PDF, and text.</li>
+    <li><code class="language-plaintext highlighter-rouge">Control tags</code> facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside Generative AI Lab.</li>
+    <li><code class="language-plaintext highlighter-rouge">Visual tags</code> allow for changes to the visual elements of the labelling interface, giving control over the presentation of particular labeling choices or the presence of a header.</li>
+  </ul>
 
-<p>A name parameter is required for each <code class="language-plaintext highlighter-rouge">Control</code> and <code class="language-plaintext highlighter-rouge">Object tag</code>. Every <code class="language-plaintext highlighter-rouge">Control tag</code> also needs a toName parameter that matches the name parameter of the object tag in the configuration. Suppose you wish to assign labels to text for a Named Entity Recognition task. In that case, you could use the following labeling configuration:</p>
+</div>
+<div class="h3-box">
 
-<p><img src="/assets/images/annotation_lab/xml-tags/NER_labels.png" alt="NER-xml-tag" /></p>
+  <h2 id="custom-labeling-configuration">Custom Labeling Configuration</h2>
 
-<p>In this case, text is annotated using the <code class="language-plaintext highlighter-rouge">Label tags</code> in combination with the <code class="language-plaintext highlighter-rouge">Text tag</code>. Multiple control and <code class="language-plaintext highlighter-rouge">Object tags</code> may be used in the same configuration by creating linkages between them using names.</p>
+  <p>A name parameter is required for each <code class="language-plaintext highlighter-rouge">Control</code> and <code class="language-plaintext highlighter-rouge">Object tag</code>. Every <code class="language-plaintext highlighter-rouge">Control tag</code> also needs a toName parameter that matches the name parameter of the object tag in the configuration. Suppose you wish to assign labels to text for a Named Entity Recognition task. In that case, you could use the following labeling configuration:</p>
 
-<h3 id="variables">Variables</h3>
+  <p><img src="/assets/images/annotation_lab/xml-tags/NER_labels.png" alt="NER-xml-tag" /></p>
 
-<p>All <code class="language-plaintext highlighter-rouge">Object tags</code>, as well as some <code class="language-plaintext highlighter-rouge">Control</code> and <code class="language-plaintext highlighter-rouge">Visual tags</code>, support variables within their arguments. Using variables enables for the creation of a labeling configuration, while also allowing for the control of given information on the labeling interface based on data in a given task.
+  <p>In this case, text is annotated using the <code class="language-plaintext highlighter-rouge">Label tags</code> in combination with the <code class="language-plaintext highlighter-rouge">Text tag</code>. Multiple control and <code class="language-plaintext highlighter-rouge">Object tags</code> may be used in the same configuration by creating linkages between them using names.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="variables">Variables</h3>
+
+  <p>All <code class="language-plaintext highlighter-rouge">Object tags</code>, as well as some <code class="language-plaintext highlighter-rouge">Control</code> and <code class="language-plaintext highlighter-rouge">Visual tags</code>, support variables within their arguments. Using variables enables for the creation of a labeling configuration, while also allowing for the control of given information on the labeling interface based on data in a given task.
 To use a variable, define it with the value parameter of a tag and specify it using the $ sign and the name of the field that you want to reference. For example, if you have a sample task which contains some partial JSON, then the configuration should look something like this:</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/header_variables.png" alt="Headers-tag" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/header_variables.png" alt="Headers-tag" /></p>
 
-<p>When you look on the preview window, you can see the header set on top of the labels/choices.</p>
+  <p>When you look on the preview window, you can see the header set on top of the labels/choices.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2023-06-20T00:00:00+00:00">Jun 20, 2023</time>
     </span><!-- start custom article footer snippet -->

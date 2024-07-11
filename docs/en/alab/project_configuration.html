@@ -620,50 +620,59 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Project Configuration"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Generative AI Lab currently supports multiple predefined project configurations. The most popular ones are <code class="language-plaintext highlighter-rouge">Text Classification</code>, <code class="language-plaintext highlighter-rouge">Named Entity Recognition</code> (NER) and <code class="language-plaintext highlighter-rouge">Visual NER</code>. Create a setup from scratch or customize a predefined one according to your needs.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.</p>
+  <p>Generative AI Lab currently supports multiple predefined project configurations. The most popular ones are <code class="language-plaintext highlighter-rouge">Text Classification</code>, <code class="language-plaintext highlighter-rouge">Named Entity Recognition</code> (NER) and <code class="language-plaintext highlighter-rouge">Visual NER</code>. Create a setup from scratch or customize a predefined one according to your needs.</p>
 
-<p>After you finish editing the labels you want to define for your project click the “Save” button.</p>
+  <p>For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.</p>
 
-<h3 id="project-templates">Project templates</h3>
+  <p>After you finish editing the labels you want to define for your project click the “Save” button.</p>
 
-<p>We currently support multiple predefined project configurations. The most popular ones are <strong>Text Classification</strong>, <strong>Named Entity Recognition</strong> and <strong>Visual NER</strong>.</p>
+</div>
+<div class="h3-box">
 
-<p><strong>Content Type</strong></p>
+  <h3 id="project-templates">Project templates</h3>
 
-<p>The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: <code class="language-plaintext highlighter-rouge">Video</code>, <code class="language-plaintext highlighter-rouge">Audio</code>, <code class="language-plaintext highlighter-rouge">HTML</code>, <code class="language-plaintext highlighter-rouge">Image</code>, <code class="language-plaintext highlighter-rouge">PDF</code> and <code class="language-plaintext highlighter-rouge">Text</code>. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.</p>
+  <p>We currently support multiple predefined project configurations. The most popular ones are <strong>Text Classification</strong>, <strong>Named Entity Recognition</strong> and <strong>Visual NER</strong>.</p>
 
-<p><img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.10.0/add_video_type.png" style="width:100%" /></p>
+  <p><strong>Content Type</strong></p>
 
-<p>For customizing a predefined configuration, choose a <code class="language-plaintext highlighter-rouge">Content Type</code> and then a template from the list. Then navigate to the <code class="language-plaintext highlighter-rouge">Customize Labels</code> tab and manually edit/update the configuration to contain the labels you need.</p>
+  <p>The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: <code class="language-plaintext highlighter-rouge">Video</code>, <code class="language-plaintext highlighter-rouge">Audio</code>, <code class="language-plaintext highlighter-rouge">HTML</code>, <code class="language-plaintext highlighter-rouge">Image</code>, <code class="language-plaintext highlighter-rouge">PDF</code> and <code class="language-plaintext highlighter-rouge">Text</code>. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.</p>
 
-<p>Users can add custom labels and choices in the project configuration from the Visual tab for both text and Visual NER projects.</p>
+  <p><img src="/assets/images/annotation_lab/4.10.0/add_video_type.png" alt="Generative AI Lab" title="lit_shadow" /></p>
 
-<p><img class="image image--xl image__shadow" src="https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif" style="width:100%;" /></p>
+  <p>For customizing a predefined configuration, choose a <code class="language-plaintext highlighter-rouge">Content Type</code> and then a template from the list. Then navigate to the <code class="language-plaintext highlighter-rouge">Customize Labels</code> tab and manually edit/update the configuration to contain the labels you need.</p>
 
-<p>After you finish editing the labels click the “Save” button.</p>
+  <p>Users can add custom labels and choices in the project configuration from the Visual tab for both text and Visual NER projects.</p>
 
-<h3 id="named-entity-recognition">Named Entity Recognition</h3>
+  <p><img src="https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif" alt="Generative AI Lab" title="lit_shadow" /></p>
 
-<p>Named Entity Recognition (NER) refers to the identification and classification of entities mentioned in unstructured text into pre-defined categories such as person names, organizations, locations, medical codes, time expressions, quantities, monetary values, percentages, etc.</p>
+  <p>After you finish editing the labels click the “Save” button.</p>
 
-<p>The <strong>Generative AI Lab</strong> offers support for two types of labels:</p>
+</div>
+<div class="h3-box">
 
-<ul>
-  <li>Simple labels for NER or assertion models;</li>
-  <li>Binary relations for relation extraction models.</li>
-</ul>
+  <h3 id="named-entity-recognition">Named Entity Recognition</h3>
 
-<p><img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.2.0/NER_Template.png" style="width:100%;" /></p>
+  <p>Named Entity Recognition (NER) refers to the identification and classification of entities mentioned in unstructured text into pre-defined categories such as person names, organizations, locations, medical codes, time expressions, quantities, monetary values, percentages, etc.</p>
 
-<p><br /></p>
+  <p>The <strong>Generative AI Lab</strong> offers support for two types of labels:</p>
 
-<h3 id="assertion-labels">Assertion Labels</h3>
-<p>The syntax for defining an Assertion Status label is the same as for the NER labels, with an additional attribute - <strong>assertion</strong> which should be set to true (see example below). This convention is defined by Generative AI Lab users which we exploited for identifying the labels to include in the training and prediction of Assertion Models.
+  <ul>
+    <li>Simple labels for NER or assertion models;</li>
+    <li>Binary relations for relation extraction models.</li>
+  </ul>
+
+  <p><img src="/assets/images/annotation_lab/4.2.0/NER_Template.png" alt="Generative AI Lab" title="lit_shadow" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="assertion-labels">Assertion Labels</h3>
+  <p>The syntax for defining an Assertion Status label is the same as for the NER labels, with an additional attribute - <strong>assertion</strong> which should be set to true (see example below). This convention is defined by Generative AI Lab users which we exploited for identifying the labels to include in the training and prediction of Assertion Models.
 A simple Labeling Config with Assertion Status defined should look like the following:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
 &lt;Labels <span class="nv">name</span><span class="o">=</span><span class="s2">"ner"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
 	&lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"Medicine"</span> <span class="nv">background</span><span class="o">=</span><span class="s2">"orange"</span> <span class="nv">hotkey</span><span class="o">=</span><span class="s2">"_"</span>/&gt;
 	&lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"Condition"</span> <span class="nv">background</span><span class="o">=</span><span class="s2">"orange"</span> <span class="nv">hotkey</span><span class="o">=</span><span class="s2">"_"</span>/&gt;
@@ -675,66 +684,67 @@ A simple Labeling Config with Assertion Status defined should look like the foll
 	&lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt;
 &lt;/View&gt;
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<blockquote>
-  <p><strong>NOTE:</strong> Notice assertion=”true” in <strong>Absent</strong> and <strong>Past</strong> labels, which marks each of those labels as Assertion Status Labels.</p>
-</blockquote>
+  <blockquote>
+    <p><strong>NOTE:</strong> Notice assertion=”true” in <strong>Absent</strong> and <strong>Past</strong> labels, which marks each of those labels as Assertion Status Labels.</p>
+  </blockquote>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="classification">Classification</h3>
+  <h3 id="classification">Classification</h3>
 
-<p>The choices tag is used as part of the classification projects to create a group of choices. It can be used for a single or multiple-class classification. According to the parameters used along with the choices tag, annotators can select single or multiple choices.</p>
+  <p>The choices tag is used as part of the classification projects to create a group of choices. It can be used for a single or multiple-class classification. According to the parameters used along with the choices tag, annotators can select single or multiple choices.</p>
 
-<p><strong>Parameters</strong></p>
+  <p><strong>Parameters</strong></p>
 
-<p>The Choices tag supports the following parameters/attributes:</p>
+  <p>The Choices tag supports the following parameters/attributes:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>required</td>
-      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
-      <td><code class="language-plaintext highlighter-rouge">false</code></td>
-      <td>Verify if a choice is selected</td>
-    </tr>
-    <tr>
-      <td>requiredMessage</td>
-      <td><code class="language-plaintext highlighter-rouge">string</code></td>
-      <td> </td>
-      <td>Show a message if the required validation fails</td>
-    </tr>
-    <tr>
-      <td>choice</td>
-      <td><code class="language-plaintext highlighter-rouge">single</code> | <code class="language-plaintext highlighter-rouge">multiple</code></td>
-      <td><code class="language-plaintext highlighter-rouge">single</code></td>
-      <td>Allow user to select single or multiple answer</td>
-    </tr>
-    <tr>
-      <td>showInline</td>
-      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
-      <td><code class="language-plaintext highlighter-rouge">false</code></td>
-      <td>Show choices in a single visual line</td>
-    </tr>
-    <tr>
-      <td>perRegion</td>
-      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
-      <td> </td>
-      <td>Use this attribute to select an option for a specific region rather than the entire task</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>required</td>
+        <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+        <td><code class="language-plaintext highlighter-rouge">false</code></td>
+        <td>Verify if a choice is selected</td>
+      </tr>
+      <tr>
+        <td>requiredMessage</td>
+        <td><code class="language-plaintext highlighter-rouge">string</code></td>
+        <td> </td>
+        <td>Show a message if the required validation fails</td>
+      </tr>
+      <tr>
+        <td>choice</td>
+        <td><code class="language-plaintext highlighter-rouge">single</code> | <code class="language-plaintext highlighter-rouge">multiple</code></td>
+        <td><code class="language-plaintext highlighter-rouge">single</code></td>
+        <td>Allow user to select single or multiple answer</td>
+      </tr>
+      <tr>
+        <td>showInline</td>
+        <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+        <td><code class="language-plaintext highlighter-rouge">false</code></td>
+        <td>Show choices in a single visual line</td>
+      </tr>
+      <tr>
+        <td>perRegion</td>
+        <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+        <td> </td>
+        <td>Use this attribute to select an option for a specific region rather than the entire task</td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;<span class="o">!</span><span class="nt">--text</span> classification labeling config--&gt;
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;<span class="o">!</span><span class="nt">--text</span> classification labeling config--&gt;
 &lt;View&gt;
   &lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt;
   &lt;Choices <span class="nv">name</span><span class="o">=</span><span class="s2">"surprise"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">choice</span><span class="o">=</span><span class="s2">"single"</span> <span class="nv">required</span><span class="o">=</span><span class="s1">'true'</span> <span class="nv">requiredMessage</span><span class="o">=</span><span class="s1">'Please select choice'</span><span class="o">&gt;</span>
@@ -744,44 +754,46 @@ A simple Labeling Config with Assertion Status defined should look like the foll
     &lt;Choice <span class="nv">value</span><span class="o">=</span><span class="s2">"joy"</span>/&gt;
   &lt;/Choices&gt;
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p><img src="https://user-images.githubusercontent.com/45035063/196096241-c155f4cb-df5c-4b1c-a19b-0a5e349a756e.gif" alt="choices-example" /></p>
+  <p><img src="https://user-images.githubusercontent.com/45035063/196096241-c155f4cb-df5c-4b1c-a19b-0a5e349a756e.gif" alt="choices-example" /></p>
 
-<p>When using the <code class="language-plaintext highlighter-rouge">perRegion</code> attribute, choices can be defined for each chunk annotation as shown below:</p>
+  <p>When using the <code class="language-plaintext highlighter-rouge">perRegion</code> attribute, choices can be defined for each chunk annotation as shown below:</p>
 
-<p><img src="https://user-images.githubusercontent.com/45035063/197151637-fa9034b1-0d09-4658-b1bb-7c47e68f435c.gif" alt="perRegion" /></p>
+  <p><img src="https://user-images.githubusercontent.com/45035063/197151637-fa9034b1-0d09-4658-b1bb-7c47e68f435c.gif" alt="perRegion" /></p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="relation-extraction">Relation Extraction</h3>
+  <h3 id="relation-extraction">Relation Extraction</h3>
 
-<p>Generative AI Lab also offers support for relation extraction. Relations are introduced by simply specifying their label in the project configuration.</p>
+  <p>Generative AI Lab also offers support for relation extraction. Relations are introduced by simply specifying their label in the project configuration.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Relations&gt;
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Relations&gt;
     &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"CancerSize"</span> /&gt;
     &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"CancerLocation"</span>/&gt;
     &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"MetastasisLocation"</span>/&gt;
   &lt;/Relations&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="constraints-for-relation-labeling">Constraints for relation labeling</h3>
+  <h3 id="constraints-for-relation-labeling">Constraints for relation labeling</h3>
 
-<p>While annotating projects with Relations between Entities, defining constraints (the direction, the domain, the co-domain) of relations is important. Generative AI Lab offers a way to define such constraints by editing the Project Configuration. The Project Owner or Project Managers can specify which Relation needs to be bound to which Labels and in which direction. This will hide some Relations in Labeling Page for NER Labels which will simplify the annotation process and will avoid the creation of any incorrect relations in the scope of the project.
+  <p>While annotating projects with Relations between Entities, defining constraints (the direction, the domain, the co-domain) of relations is important. Generative AI Lab offers a way to define such constraints by editing the Project Configuration. The Project Owner or Project Managers can specify which Relation needs to be bound to which Labels and in which direction. This will hide some Relations in Labeling Page for NER Labels which will simplify the annotation process and will avoid the creation of any incorrect relations in the scope of the project.
 To define such constraint, add allowed attribute to the <Relation> tag:</Relation></p>
 
-<ul>
-  <li>L1&gt;L2 means Relation can be created in the direction from Label L1 to Label L2, but not the other way around</li>
-  <li>L1&lt;&gt;L2 means Relation can be created in either direction between Label L1 to Label L2</li>
-</ul>
+  <ul>
+    <li>L1&gt;L2 means Relation can be created in the direction from Label L1 to Label L2, but not the other way around</li>
+    <li>L1&lt;&gt;L2 means Relation can be created in either direction between Label L1 to Label L2</li>
+  </ul>
 
-<p>If the allowed attribute is not present in the tag, there is no such restriction.</p>
+  <p>If the allowed attribute is not present in the tag, there is no such restriction.</p>
 
-<p>Below you can find a sample Project Configuration with constraints for Relation Labels:</p>
+  <p>Below you can find a sample Project Configuration with constraints for Relation Labels:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
 &lt;Header <span class="nv">value</span><span class="o">=</span><span class="s2">"Sample Project Configuration for Relations Annotation"</span>/&gt;
 &lt;Relations&gt;
     &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Was In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&gt;LOC"</span>/&gt;
@@ -797,7 +809,9 @@ To define such constraint, add allowed attribute to the <Relation> tag:</Relatio
 &lt;/Labels&gt;
 &lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt;
 &lt;/View&gt;
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-11-02T00:00:00+00:00">Nov 02, 2022</time>
     </span><!-- start custom article footer snippet -->

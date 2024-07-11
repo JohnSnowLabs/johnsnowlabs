@@ -620,29 +620,39 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Image"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The <code class="language-plaintext highlighter-rouge">Image</code> tag shows an image on the page. Use it for all image annotation tasks to display an image on the labeling interface. The <strong>name</strong> and <strong>value</strong> parameters in the <code class="language-plaintext highlighter-rouge">Image</code> tag are mandatory.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>Suppose you have an image sample in a JSON file as shown.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <p>The <code class="language-plaintext highlighter-rouge">Image</code> tag shows an image on the page. Use it for all image annotation tasks to display an image on the labeling interface. The <strong>name</strong> and <strong>value</strong> parameters in the <code class="language-plaintext highlighter-rouge">Image</code> tag are mandatory.</p>
+
+  <p>Suppose you have an image sample in a JSON file as shown.</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
     <span class="s2">"image"</span>: <span class="s2">"/static/samples/sample.jpg"</span>,
     <span class="s2">"title"</span>: <span class="s2">"MyTestTitle"</span>
 <span class="o">}</span>
-</code></pre></div></div>
-<p>There are many templates within image annotation to choose from. Visual NER and Image classification are the most used among all.</p>
+</code></pre></div>  </div>
+  <p>There are many templates within image annotation to choose from. Visual NER and Image classification are the most used among all.</p>
 
-<h3 id="image-classification">Image Classification</h3>
+</div>
+<div class="h3-box">
 
-<p>This task mainly uses the <code class="language-plaintext highlighter-rouge">Image</code> and <code class="language-plaintext highlighter-rouge">Choices</code> tags. You can optionally provide headers to the choices using the <code class="language-plaintext highlighter-rouge">Headers</code> tag.</p>
+  <h3 id="image-classification">Image Classification</h3>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/image_classification.png" alt="Image-classification" /></p>
+  <p>This task mainly uses the <code class="language-plaintext highlighter-rouge">Image</code> and <code class="language-plaintext highlighter-rouge">Choices</code> tags. You can optionally provide headers to the choices using the <code class="language-plaintext highlighter-rouge">Headers</code> tag.</p>
 
-<h3 id="visual-ner-labeling">Visual NER Labeling</h3>
+  <p><img src="/assets/images/annotation_lab/xml-tags/image_classification.png" alt="Image-classification" /></p>
 
-<p>To label entities in an image, you need to create rectangular labels spanning across the entity to be labeled. To enable this, you have to use <code class="language-plaintext highlighter-rouge">RectangleLabels</code> tag that creates labeled rectangles.They are used to apply labels to bounding box semantic segmentation tasks. The <strong>name</strong> and <strong>toName</strong> parameters are mandatory.</p>
+</div>
+<div class="h3-box">
 
-<p><img src="/assets/images/annotation_lab/xml-tags/visual_ner.png" alt="Visual-NER" /></p>
+  <h3 id="visual-ner-labeling">Visual NER Labeling</h3>
 
-<p>The <strong>zoom</strong> and <strong>zoomControl</strong> parameters in the <code class="language-plaintext highlighter-rouge">Image</code> tag enable you too zoom in or out the image.</p>
+  <p>To label entities in an image, you need to create rectangular labels spanning across the entity to be labeled. To enable this, you have to use <code class="language-plaintext highlighter-rouge">RectangleLabels</code> tag that creates labeled rectangles.They are used to apply labels to bounding box semantic segmentation tasks. The <strong>name</strong> and <strong>toName</strong> parameters are mandatory.</p>
+
+  <p><img src="/assets/images/annotation_lab/xml-tags/visual_ner.png" alt="Visual-NER" /></p>
+
+  <p>The <strong>zoom</strong> and <strong>zoomControl</strong> parameters in the <code class="language-plaintext highlighter-rouge">Image</code> tag enable you too zoom in or out the image.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2023-06-21T00:00:00+00:00">Jun 21, 2023</time>
     </span><!-- start custom article footer snippet -->

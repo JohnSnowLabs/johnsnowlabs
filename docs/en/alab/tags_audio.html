@@ -620,38 +620,51 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Audio"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The audio template is split into three parts: audio classification, emotion segmentation, and transcription. To play the audio, you need an <code class="language-plaintext highlighter-rouge">Audio</code> tag which requires a <strong>name</strong> and a <strong>value</strong> parameter.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<h3 id="audio-classification">Audio Classification</h3>
+  <p>The audio template is split into three parts: audio classification, emotion segmentation, and transcription. To play the audio, you need an <code class="language-plaintext highlighter-rouge">Audio</code> tag which requires a <strong>name</strong> and a <strong>value</strong> parameter.</p>
 
-<p>Suppose you have a sample JSON which contains some audio that you wish to classify (This input is set as default when you click on the template in Generative AI Lab):</p>
+</div>
+<div class="h3-box">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <h3 id="audio-classification">Audio Classification</h3>
+
+  <p>Suppose you have a sample JSON which contains some audio that you wish to classify (This input is set as default when you click on the template in Generative AI Lab):</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
     <span class="s2">"audio"</span>: <span class="s2">"/static/samples/game.wav"</span>,
     <span class="s2">"title"</span>: <span class="s2">"MyTestTitle"</span>
 <span class="o">}</span>
-</code></pre></div></div>
-<p>The configuration for classification task can look as shown below.</p>
+</code></pre></div>  </div>
+  <p>The configuration for classification task can look as shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/audio_classification.png" alt="Audio-classification" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/audio_classification.png" alt="Audio-classification" /></p>
 
-<p>The preview should look as shown below.</p>
+  <p>The preview should look as shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/audio_preview_1.png" alt="Audio-preview-classification" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/audio_preview_1.png" alt="Audio-preview-classification" /></p>
 
-<h3 id="emotion-segmentation">Emotion Segmentation</h3>
+</div>
+<div class="h3-box">
 
-<p>This is a labeling task, and requires the <code class="language-plaintext highlighter-rouge">Label</code> tags to assign variables. The configuration is very straightforward, as shown below.</p>
+  <h3 id="emotion-segmentation">Emotion Segmentation</h3>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/emotion_segment.png" alt="Emotion-segment" /></p>
+  <p>This is a labeling task, and requires the <code class="language-plaintext highlighter-rouge">Label</code> tags to assign variables. The configuration is very straightforward, as shown below.</p>
 
-<h3 id="audio-transcription">Audio Transcription</h3>
+  <p><img src="/assets/images/annotation_lab/xml-tags/emotion_segment.png" alt="Emotion-segment" /></p>
 
-<p>The transcription task is further divided into two parts - either by transcription per region or transcripting whole audio. If you are transcripting per region then it will become both labeling and transcription task. For this case the configuration would look as shown below.</p>
+</div>
+<div class="h3-box">
 
-<p><img src="/assets/images/annotation_lab/xml-tags/audio_transcription.png" alt="Audio-transcription" /></p>
+  <h3 id="audio-transcription">Audio Transcription</h3>
 
-<p>As shown in the image above, audio transcription requires a <code class="language-plaintext highlighter-rouge">TextArea</code> tag to enable a text box. The parameters <strong>name</strong> and <strong>toName</strong> are mandatory. For transcription of whole audio, the <code class="language-plaintext highlighter-rouge">Label</code> tags from the above image will disappear.</p>
+  <p>The transcription task is further divided into two parts - either by transcription per region or transcripting whole audio. If you are transcripting per region then it will become both labeling and transcription task. For this case the configuration would look as shown below.</p>
+
+  <p><img src="/assets/images/annotation_lab/xml-tags/audio_transcription.png" alt="Audio-transcription" /></p>
+
+  <p>As shown in the image above, audio transcription requires a <code class="language-plaintext highlighter-rouge">TextArea</code> tag to enable a text box. The parameters <strong>name</strong> and <strong>toName</strong> are mandatory. For transcription of whole audio, the <code class="language-plaintext highlighter-rouge">Label</code> tags from the above image will disappear.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2023-06-20T00:00:00+00:00">Jun 20, 2023</time>
     </span><!-- start custom article footer snippet -->

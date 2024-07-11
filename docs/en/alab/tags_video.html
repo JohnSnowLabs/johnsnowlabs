@@ -620,36 +620,43 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Video"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The video template is split into two parts: video classification and video timeline segmentation. To play a video, you need a <code class="language-plaintext highlighter-rouge">HyperText</code> tag which requires the <strong>name</strong> parameter and <strong>value</strong> parameter.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<h3 id="video-classification">Video Classification</h3>
+  <p>The video template is split into two parts: video classification and video timeline segmentation. To play a video, you need a <code class="language-plaintext highlighter-rouge">HyperText</code> tag which requires the <strong>name</strong> parameter and <strong>value</strong> parameter.</p>
 
-<p>Since it is a classification type, the configuration should use <code class="language-plaintext highlighter-rouge">Choice</code> tags to assign variables. For example, say that you have a sample task and you wish to classify that video as awesome or groove, inscribed in a JSON like this:</p>
+  <h3 id="video-classification">Video Classification</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <p>Since it is a classification type, the configuration should use <code class="language-plaintext highlighter-rouge">Choice</code> tags to assign variables. For example, say that you have a sample task and you wish to classify that video as awesome or groove, inscribed in a JSON like this:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
     <span class="s2">"title"</span>: <span class="s2">"MyTestTitle"</span>,
     <span class="s2">"video"</span>: <span class="s2">"&lt;video src='/static/samples/opossum_snow.mp4' width=100% controls&gt;"</span>
 <span class="o">}</span>
-</code></pre></div></div>
-<p>The simplest configuration in this case will look as shown below.</p>
+</code></pre></div>  </div>
+  <p>The simplest configuration in this case will look as shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/vid_classification.png" alt="video_classification" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/vid_classification.png" alt="video_classification" /></p>
 
-<h3 id="video-timeline-segmentation">Video Timeline Segmentation</h3>
+</div>
+<div class="h3-box">
 
-<p>This is a labeling task, and thus requires the use of <code class="language-plaintext highlighter-rouge">Label</code> tags to assign variables. For example, you have a sample task with a video and it’s corresponding audio, and you wish to label segments. The sample JSON looks like this:</p>
+  <h3 id="video-timeline-segmentation">Video Timeline Segmentation</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <p>This is a labeling task, and thus requires the use of <code class="language-plaintext highlighter-rouge">Label</code> tags to assign variables. For example, you have a sample task with a video and it’s corresponding audio, and you wish to label segments. The sample JSON looks like this:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
     <span class="s2">"title"</span>: <span class="s2">"MyTestTitle"</span>,
     <span class="s2">"video"</span>: <span class="s2">"&lt;video src='/static/samples/opossum_snow.mp4' width=100% controls&gt;"</span>,
     <span class="s2">"videoSource"</span>: <span class="s2">"/static/samples/game.wav"</span>
 <span class="o">}</span>
-</code></pre></div></div>
-<p>The configuration in this case is shown below.</p>
+</code></pre></div>  </div>
+  <p>The configuration in this case is shown below.</p>
 
-<p><img src="/assets/images/annotation_lab/xml-tags/vid_timeline_segment.png" alt="video_timeline_segmentation" /></p>
+  <p><img src="/assets/images/annotation_lab/xml-tags/vid_timeline_segment.png" alt="video_timeline_segmentation" /></p>
 
-<p>The <code class="language-plaintext highlighter-rouge">background</code> parameter refers to the color of the label. From above, you could see that the labels will work on the audio encryption since the name parameter in the <code class="language-plaintext highlighter-rouge">AudioPlus</code> tag is the same as the toName parameter in the <code class="language-plaintext highlighter-rouge">Labels</code> tag.</p>
+  <p>The <code class="language-plaintext highlighter-rouge">background</code> parameter refers to the color of the label. From above, you could see that the labels will work on the audio encryption since the name parameter in the <code class="language-plaintext highlighter-rouge">AudioPlus</code> tag is the same as the toName parameter in the <code class="language-plaintext highlighter-rouge">Labels</code> tag.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2023-06-20T00:00:00+00:00">Jun 20, 2023</time>
     </span><!-- start custom article footer snippet -->
