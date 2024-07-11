@@ -13,11 +13,15 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 Generative AI Lab enables the utilization of XML-like tags to configure the labeling interface. Generative AI Lab contains three distinct tag types for labeling management:
 
 - `Object tags` serve for data types, presenting labeled elements within a task, which can be labeled as video, audio, HTML, images, PDF, and text.
 - `Control tags` facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside Generative AI Lab.
 - `Visual tags` allow for changes to the visual elements of the labelling interface, giving control over the presentation of particular labeling choices or the presence of a header.
+
+</div><div class="h3-box" markdown="1">
 
 ## Custom Labeling Configuration
 
@@ -27,6 +31,8 @@ A name parameter is required for each `Control` and `Object tag`. Every `Control
 
 In this case, text is annotated using the `Label tags` in combination with the `Text tag`. Multiple control and `Object tags` may be used in the same configuration by creating linkages between them using names.
 
+</div><div class="h3-box" markdown="1">
+
 ### Variables
 
 All `Object tags`, as well as some `Control` and `Visual tags`, support variables within their arguments. Using variables enables for the creation of a labeling configuration, while also allowing for the control of given information on the labeling interface based on data in a given task.
@@ -35,3 +41,5 @@ To use a variable, define it with the value parameter of a tag and specify it us
 ![Headers-tag](/assets/images/annotation_lab/xml-tags/header_variables.png)
 
 When you look on the preview window, you can see the header set on top of the labels/choices. 
+
+</div>

@@ -13,6 +13,8 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 The `Image` tag shows an image on the page. Use it for all image annotation tasks to display an image on the labeling interface. The **name** and **value** parameters in the `Image` tag are mandatory.
 
 Suppose you have an image sample in a JSON file as shown.
@@ -24,11 +26,15 @@ Suppose you have an image sample in a JSON file as shown.
 ```
 There are many templates within image annotation to choose from. Visual NER and Image classification are the most used among all.
 
+</div><div class="h3-box" markdown="1">
+
 ### Image Classification
 
 This task mainly uses the `Image` and `Choices` tags. You can optionally provide headers to the choices using the `Headers` tag.
 
 ![Image-classification](/assets/images/annotation_lab/xml-tags/image_classification.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### Visual NER Labeling
 
@@ -37,3 +43,5 @@ To label entities in an image, you need to create rectangular labels spanning ac
 ![Visual-NER](/assets/images/annotation_lab/xml-tags/visual_ner.png)
 
 The **zoom** and **zoomControl** parameters in the `Image` tag enable you too zoom in or out the image.
+
+</div>

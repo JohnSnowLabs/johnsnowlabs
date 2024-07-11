@@ -13,6 +13,8 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 The video template is split into two parts: video classification and video timeline segmentation. To play a video, you need a `HyperText` tag which requires the **name** parameter and **value** parameter. 
 
 ### Video Classification
@@ -28,6 +30,8 @@ Since it is a classification type, the configuration should use `Choice` tags to
 The simplest configuration in this case will look as shown below.
 
 ![video_classification](/assets/images/annotation_lab/xml-tags/vid_classification.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### Video Timeline Segmentation
 
@@ -45,3 +49,5 @@ The configuration in this case is shown below.
 ![video_timeline_segmentation](/assets/images/annotation_lab/xml-tags/vid_timeline_segment.png)
 
 The `background` parameter refers to the color of the label. From above, you could see that the labels will work on the audio encryption since the name parameter in the `AudioPlus` tag is the same as the toName parameter in the `Labels` tag.
+
+</div>
