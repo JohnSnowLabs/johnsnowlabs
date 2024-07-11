@@ -13,26 +13,19 @@ sidebar:
   nav: annotation-lab
 ---
 
-<style>
-es {
-    font-weight:400;
-    font-style: italic;
-}
-</style>
-
 Generative AI Lab offers support for prompt engineering. On the `Prompts` page, from the resources `HUB`, users can easily discover and explore the existing prompts or create new prompts for identifying entities or relations. Currently, Generative AI Lab supports prompts for Healthcare, Finance, and Legal domains applied using pre-trained question-answering language models published on the NLP Models Hub and available to download in one click. The main advantage behind the use of prompts in entity or relation recognition is the ease of definition. Non-technical domain experts can easily create prompts, test and edit them on the `Playground` on custom text snippets and, when ready, deploy them for pre-annotation as part of larger NLP projects. Together with rules, prompts are very handy in situations where no pre-trained models exist, for the target entities and domains. With rules and prompts the annotators never start their projects from scratch but can capitalize on the power of zero-shot models and rules to help them pre-annotate the simple entities and relations and speed up the annotation process. As such, the Generative AI Lab ensures fewer manual annotations are required from any given task.
 
 ## Creating NER Prompts
 
 NER prompts, can be used to identify entities in natural language text documents. Those can be created based on healthcare, finance, and legal zero-shot models selectable from the "Domain" dropdown. For one prompt, the user adds one or more questions for which the answer represents the target entity to annotate.
 
-   ![entity_prompt](https://user-images.githubusercontent.com/26042994/211890279-2ea02cd5-36fa-4b56-86fd-38b0c20ba880.gif)
+![entity_prompt](https://user-images.githubusercontent.com/26042994/211890279-2ea02cd5-36fa-4b56-86fd-38b0c20ba880.gif)
 
 ## Creating Relation Prompts
 
 Prompts can also be used to identify relations between entities for healthcare, finance, and legal domains. The domain-specific zero-shot model to use for detecting relation can be selected from the "Domain" dropdown. The relation prompts are defined by a pair of entities related by a predicate. The entities can be selected from the available dropdowns listing all entities available in the current Generative AI Lab (included in available NER models, prompts or rules) for the specified domain. 
    
-   ![relation_prompt](https://user-images.githubusercontent.com/26042994/211890317-362f193c-b80b-4caa-b242-69df6fa8a257.gif)
+![relation_prompt](https://user-images.githubusercontent.com/26042994/211890317-362f193c-b80b-4caa-b242-69df6fa8a257.gif)
 
 ## Mix and Match models, rules, and prompts
 

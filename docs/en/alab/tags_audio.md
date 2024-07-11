@@ -13,7 +13,11 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 The audio template is split into three parts: audio classification, emotion segmentation, and transcription. To play the audio, you need an `Audio` tag which requires a **name** and a **value** parameter.
+
+</div><div class="h3-box" markdown="1">
 
 ### Audio Classification
 
@@ -33,11 +37,15 @@ The preview should look as shown below.
 
 ![Audio-preview-classification](/assets/images/annotation_lab/xml-tags/audio_preview_1.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Emotion Segmentation
 
 This is a labeling task, and requires the `Label` tags to assign variables. The configuration is very straightforward, as shown below.
 
 ![Emotion-segment](/assets/images/annotation_lab/xml-tags/emotion_segment.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### Audio Transcription
 
@@ -46,3 +54,5 @@ The transcription task is further divided into two parts - either by transcripti
 ![Audio-transcription](/assets/images/annotation_lab/xml-tags/audio_transcription.png)
 
 As shown in the image above, audio transcription requires a `TextArea` tag to enable a text box. The parameters **name** and **toName** are mandatory. For transcription of whole audio, the `Label` tags from the above image will disappear.
+
+</div>
