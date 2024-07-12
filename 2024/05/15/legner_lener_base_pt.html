@@ -553,7 +553,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">tokenClassifier</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">BertForTokenClassification</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"legner_lener_base"</span><span class="p">,</span><span class="s">"pt"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
+<span class="n">tokenClassifier</span> <span class="o">=</span> <span class="n">legal</span><span class="p">.</span><span class="n">BertForTokenClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"legner_lener_base"</span><span class="p">,</span><span class="s">"pt"</span><span class="p">,</span> <span class="s">"legal/models"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"label"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
