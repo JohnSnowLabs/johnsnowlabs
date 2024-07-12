@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../../static/doctools.js"></script>
     <script src="../../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/legal/token_classification/ner/zero_shot_ner/index';</script>
     <link rel="shortcut icon" href="../../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -297,6 +300,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_classifier_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_classifier_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../sequence_generation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_generation</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -385,8 +389,9 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ZeroShotNerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.token_classification.ner.ZeroShotNerModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/zero_shot_ner.html#ZeroShotNerModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Zero shot named entity recognition based on RoBertaForQuestionAnswering.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ZeroShotNerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.token_classification.ner.ZeroShotNerModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ZeroShotNerModel</span></code></p>
+<p>Zero shot named entity recognition based on RoBertaForQuestionAnswering.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -399,41 +404,57 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>entityDefinitions</strong></dt><dd><p>A dictionary with definitions of named entities. The keys of dictionary are the entity labels and the
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entityDefinitions</strong> – <p>A dictionary with definitions of named entities. The keys of dictionary are the entity labels and the
 values are lists of questions. For example:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>{</dt><dd><p>“CITY”: [“Which city?”, “Which town?”],
-“NAME”: [“What is her name?”, “What is his name?”]}</p>
-</dd>
-</dl>
-</div></blockquote>
-</dd>
-<dt><strong>predictionThreshold</strong></dt><dd><p>Minimal confidence score to encode an entity (Default: 0.01f)</p>
-</dd>
-<dt><strong>ignoreEntities</strong></dt><dd><p>A list of entity labels which are discarded from the output.</p>
-</dd>
-</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>       <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s2">&quot;CITY&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Which city?&quot;</span><span class="p">,</span> <span class="s2">&quot;Which town?&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="s2">&quot;NAME&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;What is her name?&quot;</span><span class="p">,</span> <span class="s2">&quot;What is his name?&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="p">}</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>predictionThreshold</strong> – Minimal confidence score to encode an entity (Default: 0.01f)</p></li>
+<li><p><strong>ignoreEntities</strong> – A list of entity labels which are discarded from the output.</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">annotators</span><span class="o">.</span><span class="n">Tokenizer</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">zero_shot_ner</span> <span class="o">=</span> <span class="n">ZeroShotNerModel</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/models/sparknlp/zero_shot_ner&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setEntityDefinitions</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">annotators</span><span class="o">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">annotators</span><span class="o">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zero_shot_ner</span> <span class="o">=</span> <span class="n">ZeroShotNerModel</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/models/sparknlp/zero_shot_ner&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setEntityDefinitions</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="p">{</span>
 <span class="gp">... </span>            <span class="s2">&quot;NAME&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;What is his name?&quot;</span><span class="p">,</span> <span class="s2">&quot;What is my name?&quot;</span><span class="p">,</span> <span class="s2">&quot;What is her name?&quot;</span><span class="p">],</span>
 <span class="gp">... </span>            <span class="s2">&quot;CITY&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Which city?&quot;</span><span class="p">,</span> <span class="s2">&quot;Which is the city?&quot;</span><span class="p">]</span>
-<span class="gp">... </span>        <span class="p">})</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;zero_shot_ner&quot;</span><span class="p">)</span>    <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">})</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;zero_shot_ner&quot;</span><span class="p">)</span>\
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="p">[[</span><span class="s2">&quot;My name is Clara, I live in New York and Hellen lives in Paris.&quot;</span><span class="p">]]</span>
 <span class="gp">... </span>    <span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Pipeline</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setStages</span><span class="p">([</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentence_detector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">zero_shot_ner</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;explode(zero_shot_ner) AS entity&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Pipeline</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setStages</span><span class="p">([</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentence_detector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">zero_shot_ner</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;explode(zero_shot_ner) AS entity&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="s2">&quot;document.result&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;entity.result&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;entity.metadata.word&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;entity.metadata.confidence&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;entity.metadata.question&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="s2">&quot;entity.metadata.question&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">    +-----------------------------------------------------------------+------+------+----------+------------------+</span>
 <span class="go">    |result                                                           |result|word  |confidence|question          |</span>
 <span class="go">    +-----------------------------------------------------------------+------+------+----------+------------------+</span>
@@ -446,36 +467,511 @@ values are lists of questions. For example:</p>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.coalesceSentences">
+<span class="sig-name descname"><span class="pre">coalesceSentences</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.coalesceSentences" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.engine" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.ignoreEntities">
+<span class="sig-name descname"><span class="pre">ignoreEntities</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.ignoreEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.maxSentenceLength">
+<span class="sig-name descname"><span class="pre">maxSentenceLength</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.maxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.max_length_limit">
+<span class="sig-name descname"><span class="pre">max_length_limit</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">512</span></em><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.max_length_limit" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">ZeroShotNerModel</span></em><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/zero_shot_ner.html#ZeroShotNerModel.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">ZeroShotNerModel</span></em><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.predictionThreshold">
+<span class="sig-name descname"><span class="pre">predictionThreshold</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.predictionThreshold" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zero_shot_ner_roberta'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/zero_shot_ner.html#ZeroShotNerModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.pretrained" title="Permalink to this definition">#</a></dt>
-<dd><p>Download a pre-trained ZeroShotNerModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
-remote_loc (str): Remote location of the pre-trained model. If None, use the
-open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
 </dd>
-<dt>Returns:</dt><dd><p>ZeroShotNerModel: A pre-trained ZeroShotNerModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.load">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/zero_shot_ner.html#ZeroShotNerModel.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.load" title="Permalink to this definition">#</a></dt>
-<dd><p>Load a pre-trained ZeroShotNerModel from a local path.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>path (str): Path to the pre-trained model.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
 </dd>
-<dt>Returns:</dt><dd><p>ZeroShotNerModel: A pre-trained ZeroShotNerModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getClasses">
+<span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getClasses" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the list of entities which are recognized.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getMaxSentenceLength">
+<span class="sig-name descname"><span class="pre">getMaxSentenceLength</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getMaxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets max sentence of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Max sentence length to process</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.load">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a pre-trained ZeroShotNerModel from a local path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the pre-trained model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pre-trained ZeroShotNerModel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel" title="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel">ZeroShotNerModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.loadSavedModel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads a locally saved model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – Folder of the saved model</p></li>
+<li><p><strong>spark_session</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><em>pyspark.sql.SparkSession</em></a>) – The current SparkSession</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The restored model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>RoBertaForQuestionAnswering</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legner_roberta_zeroshot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.pretrained" title="Permalink to this definition">#</a></dt>
+<dd><p>Download a pre-trained ZeroShotNerModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “legner_roberta_zeroshot”</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model, by default “en”</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the
+open-source location. Other values are “clinical/models”,
+“finance/models”, or “legal/models”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pre-trained ZeroShotNerModel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel" title="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel">ZeroShotNerModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setEntityDefinitions">
+<span class="sig-name descname"><span class="pre">setEntityDefinitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">definitions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setEntityDefinitions" title="Permalink to this definition">#</a></dt>
+<dd><p>Set entity definitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>definitions</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setMaxSentenceLength">
+<span class="sig-name descname"><span class="pre">setMaxSentenceLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setMaxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets max sentence length to process.</p>
+<p>Note that a maximum limit exists depending on the model. If you are working with long single
+sequences, consider splitting up the input first with another annotator e.g. SentenceDetector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Max sentence length to process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setPredictionThreshold">
+<span class="sig-name descname"><span class="pre">setPredictionThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setPredictionThreshold" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the minimal confidence score to encode an entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<em>float</em>) – minimal confidence score to encode an entity (default is 0.1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -516,9 +1012,63 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.batchSize"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.coalesceSentences"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.coalesceSentences</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.engine"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.engine</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.ignoreEntities"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.ignoreEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputCols"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.maxSentenceLength"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.maxSentenceLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.max_length_limit"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.max_length_limit</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.name"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.name</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.pretrained"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.outputCol"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.predictionThreshold"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.predictionThreshold</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.clear"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.copy"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.explainParam"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.explainParams"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getBatchSize"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getClasses"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getEngine"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getParam"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.hasParam"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.isDefined"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.isSet"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.isSet()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.load"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.loadSavedModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.pretrained"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.read"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.save"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.set"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setBatchSize"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setEntityDefinitions"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setEntityDefinitions()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setParams"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.setPredictionThreshold"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.setPredictionThreshold()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.transform"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.zero_shot_ner.ZeroShotNerModel.write"><code class="docutils literal notranslate"><span class="pre">ZeroShotNerModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -527,14 +1077,6 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/legal/token_classification/ner/zero_shot_ner/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

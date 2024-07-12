@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/text_to_documents_columns/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -326,17 +329,27 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TextToDocumentsColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/text_to_documents_columns.html#TextToDocumentsColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TextToDocumentsColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns" title="Permalink to this definition">#</a></dt>
 <dd><p>Converts a DataFrame with columns of string texts into a DataFrame with columns of Document annotations.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>spark (SparkSession): The current SparkSession.
-columns (List[str]): The name of the column to convert.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – The current SparkSession.</p></li>
+<li><p><strong>columns</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – The name of the column to convert.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumns">
-<span class="sig-name descname"><span class="pre">toDocumentsColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/text_to_documents_columns.html#TextToDocumentsColumns.toDocumentsColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumns" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toDocumentsColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumns" title="Permalink to this definition">#</a></dt>
 <dd><p>Converts a DataFrame with columns of string texts into a DataFrame with columns of Document annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumnsWithId">
+<span class="sig-name descname"><span class="pre">toDocumentsColumnsWithId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumnsWithId" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts a DataFrame with columns of string texts
+into a DataFrame with columns of Document annotations having id in the metadata.</p>
 </dd></dl>
 
 </dd></dl>
@@ -378,6 +391,7 @@ columns (List[str]): The name of the column to convert.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumns"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.toDocumentsColumns()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumnsWithId"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.toDocumentsColumnsWithId()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -386,14 +400,6 @@ columns (List[str]): The name of the column to convert.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../_sources/reference/autosummary/sparknlp_jsl/text_to_documents_columns/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

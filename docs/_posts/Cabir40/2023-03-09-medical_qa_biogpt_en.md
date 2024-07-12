@@ -39,6 +39,7 @@ It can generate two types of answers, short and long. Types of questions are sup
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 document_assembler = MultiDocumentAssembler()\

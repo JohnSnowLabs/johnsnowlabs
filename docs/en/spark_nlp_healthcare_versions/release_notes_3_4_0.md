@@ -18,6 +18,8 @@ sidebar:
 We are glad to announce that Spark NLP Healthcare 3.4.0 has been released!
 This is a massive release: new features, new models, academic papers, and more!
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 
 + New German Deidentification NER Models
@@ -39,6 +41,8 @@ This is a massive release: new features, new models, academic papers, and more!
 + New Peer-Reviewed Conference Paper on Clinical Relation Extraction
 + New Peer-Reviewed Conference Paper on Adverse Drug Events Extraction
 + New and Updated Notebooks
+
+</div><div class="h3-box" markdown="1">
 
 #### New German Deidentification NER Models
 
@@ -87,6 +91,9 @@ result = model.transform(spark.createDataFrame([[text]], ["text"]))
 |76                       |AGE                   |AGE                      |
 +-------------------------+----------------------+-------------------------+
 ```
+
+</div><div class="h3-box" markdown="1">
+
 #### New German Deidentification Pretrained Pipeline
 
 We developed a clinical deidentification pretrained pipeline that can be used to deidentify PHI information from **German** medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE`, `CONTACT`, `ID`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `DLN`, `PLATE` entities.
@@ -162,6 +169,8 @@ Lizenznummer: [*********]
 Adresse : [*****************] [***]
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Clinical NER Models
 
 We have two new clinical NER models.
@@ -216,6 +225,8 @@ results = ner_model.transform(spark.createDataFrame([["Anabolic effects of clenb
 |  1 | beta 2-adrenoceptor  | GENE              |
 
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New AnnotationMerger Annotator
 
@@ -315,10 +326,13 @@ results = ann_merger_model.transform(spark.createDataFrame([["The patient was pr
 | 29 | back of the hands               | Present          |
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New MedicalBertForTokenClassifier Annotator
 
 We developed a new annotator called MedicalBertForTokenClassifier that can load BERT-Based clinical token classifier models head on top (a linear layer on top of the hidden-states output) e.g. for Named-Entity-Recognition (NER) tasks.
 
+</div><div class="h3-box" markdown="1">
 
 #### New BERT-Based Clinical NER Models
 
@@ -376,6 +390,8 @@ results = ner_model.transform(spark.createDataFrame([["In June 2003, the median 
 | 15 | without topotecan | Trial_Group   |
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Clinical Relation Extraction Models
 
 We have two new clinical Relation Extraction models for detecting interactions between drugs and proteins. These models work hand-in-hand with the new `ner_drugprot_clinical` NER model and detect following relations between entities: `INHIBITOR`, `DIRECT-REGULATOR`, `SUBSTRATE`, `ACTIVATOR`, `INDIRECT-UPREGULATOR`, `INDIRECT-DOWNREGULATOR`, `ANTAGONIST`, `PRODUCT-OF`, `PART-OF`, `AGONIST`.
@@ -423,6 +439,8 @@ result = re_model.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 |ACTIVATOR|CHEMICAL|         1563|       1578|     sn-1,2-glycerol|   GENE|         1511|       1517|              Atp8a1|  0.979057|
 +---------+--------+-------------+-----------+--------------------+-------+-------------+-----------+--------------------+----------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New LOINC, SNOMED, UMLS and Clinical Abbreviation Entity Resolver Models
 
@@ -576,6 +594,8 @@ results = model.transform(spark.createDataFrame([[sample_text]]).toDF('text'))
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New ICD10 to ICD9 Code Mapping Pretrained Pipeline
 
 We are releasing new `icd10_icd9_mapping` pretrained pipeline. This pretrained pipeline maps ICD10 codes to ICD9 codes without using any text data. You’ll just feed a comma or white space-delimited ICD10 codes and it will return the corresponding ICD9 codes as a list.
@@ -610,6 +630,8 @@ Code Descriptions:
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Clinical Sentence Embedding Models
 
 We have two new clinical Sentence Embedding models.
@@ -637,6 +659,8 @@ sentence_embeddings = BertSentenceEmbeddings.pretrained("sbert_jsl_medium_rxnorm
   .setOutputCol("sbert_embeddings")
 ...
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Printing Validation and Test Logs in MedicalNerApproach and AssertionDLApproach
 
@@ -668,9 +692,13 @@ Macro-average	 prec: 0.8461814, rec: 0.86577356, f1: 0.85586536
 Micro-average	 prec: 0.8463048, rec: 0.86439544, f1: 0.8552544
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Filter Only the Regex Entities Feature in Deidentification Annotator
 
 The `setBlackList()` method will be able to filter just the detected Regex Entities. Before this change we filtered the chunks and the regex entities.
+
+</div><div class="h3-box" markdown="1">
 
 #### Add `.setMaskingPolicy` Parameter in Deidentification Annotator
 
@@ -708,6 +736,8 @@ Obfuscated
 DATE 07-04-1981, Dr Vivian Irving,  The driver's license K272344712994.
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Add `.cache_folder` Parameter in `UpdateModels.updateCacheModels()`
 
 This parameter lets user to define custom local paths for the folder on which pretrained models are saved (rather than using default cached_pretrained folder).
@@ -724,6 +754,7 @@ UpdateModels.updateModels("12/01/2021","file:/home/jsl/cache_pretrained_2")
 
 The cache folder used by default is the folder loaded in the spark configuration ` spark.jsl.settings.pretrained.cache_folder`.The default value for that property is `~/cache_pretrained`
 
+</div><div class="h3-box" markdown="1">
 
 #### S3 Access Credentials No Longer Shipped Along Licenses
 
@@ -735,6 +766,8 @@ from sparknlp_jsl import get_credentials
 get_credentials(spark)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Enhanced Security for the Library and log4shell Update
 
 On top of periodical security checks on the library code, 3rd party dependencies were analyzed, and some dependencies reported as containing vulnerabilities were replaced by more secure options.
@@ -742,11 +775,13 @@ Also, the library was analyzed in the context of the recently discovered threat(
 It's worth noting that the version of log4j dependency that will be in the classpath when running Spark NLP for Healthcare is 1.x, which would make the system vulnerable to CVE-2021-4104, instead of CVE-2021-45105. CVE-2021-4104 is related to the JMSAppender.
 Spark NLP for Healthcare does not provide any log4j configuration, so it's up to the user to follow the recommendation of avoiding the use of the JMSAppender.
 
+</div><div class="h3-box" markdown="1">
 
 #### New Peer-Reviewed Conference Paper on Clinical Relation Extraction
 
 We publish a new peer-reviewed conference paper titled [Deeper Clinical Document Understanding Using Relation Extraction](https://arxiv.org/pdf/2112.13259.pdf) explaining the applications of Relation Extraction in a text mining framework comprising of Named Entity Recognition (NER) and Relation Extraction (RE) models. The paper is accepted to SDU (Scientific Document Understanding) workshop at AAAI-2022 conference and claims new SOTA scores on 5 out of 7 Biomedical & Clinical Relation Extraction (RE) tasks.
 
+{:.table-model-big}
 |Dataset|FCNN|BioBERT|Curr-SOTA|
 |-|-|-|-|
 |i2b2-Temporal|68.7|**73.6**|72.41|
@@ -760,11 +795,13 @@ We publish a new peer-reviewed conference paper titled [Deeper Clinical Document
 *Macro-averaged F1 scores of both RE models on public datasets. FCNN refers to the Speed-Optimized FCNN architecture, while BioBERT refers to the AccuracyOptimized BioBERT architecture. The SOTA metrics are obtained from (Guan et al. 2020), (Ningthoujam et al. 2019), (Asada, Miwa, and Sasaki 2020), (Phan et al. 2021), (Sousa
 and Couto 2020), (Crone 2020), and (Yang et al. 2021) respectively.*
 
+</div><div class="h3-box" markdown="1">
 
 #### New Peer-Reviewed Conference Paper on Adverse Drug Events Extraction
 
 We publish a new peer-reviewed conference paper titled [Mining Adverse Drug Reactions from Unstructured Mediums at Scale](https://arxiv.org/pdf/2201.01405.pdf) proposing an end-to-end Adverse Drug Event mining solution using Classification, NER, and Relation Extraction Models. The paper is accepted to W3PHIAI (INTERNATIONAL WORKSHOP ON HEALTH INTELLIGENCE) workshop at AAAI-2022 conference, and claims new SOTA scores on 1 benchmark dataset for Classification, 3 benchmark datasets for NER, and 1 benchmark dataset for Relation Extraction.
 
+{:.table-model-big}
 |Task | Dataset | Spark NLP | Curr-SOTA |
 |-|-|-|-|
 |Classification|ADE|85.96|**87.0**|
@@ -775,6 +812,8 @@ We publish a new peer-reviewed conference paper titled [Mining Adverse Drug Reac
 |Relation Extraction|ADE|**90.0**|83.7|
 
 *All F1 scores are Macro-averaged*
+
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
 

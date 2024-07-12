@@ -32,8 +32,7 @@ light_pipeline = LightPipeline(pos_pipeline.fit(spark.createDataFrame([[""]]).to
 result = light_pipeline.fullAnnotate("""He was given boluses of MS04 with some effect, he has since been placed on a PCA - he take 80mg of oxycontin at home, his PCA dose is ~ 2 the morphine dose of the oxycontin, he has also received ativan for anxiety.""")
 ```
 
-</div>
-<div class="tabs-mfl-box python-johnsnowlabs" markdown="1">
+</div><div class="tabs-mfl-box python-johnsnowlabs" markdown="1">
 
 ```python
 ...
@@ -46,8 +45,7 @@ light_pipeline = LightPipeline(pos_pipeline.fit(spark.createDataFrame([[""]]).to
 result = light_pipeline.fullAnnotate("""He was given boluses of MS04 with some effect, he has since been placed on a PCA - he take 80mg of oxycontin at home, his PCA dose is ~ 2 the morphine dose of the oxycontin, he has also received ativan for anxiety.""")
 ```
 
-</div>
-</div>
+</div></div>
 
 {:.tabs-python-scala-box}
 ```scala
@@ -66,7 +64,7 @@ import nlu
 nlu.load("en.pos.clinical").predict("""He was given boluses of MS04 with some effect, he has since been placed on a PCA - he take 80mg of oxycontin at home, his PCA dose is ~ 2 the morphine dose of the oxycontin, he has also received ativan for anxiety.""")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ### Getting started
 
@@ -108,3 +106,5 @@ Note: If you are going to use any pretrained licensed NER model, you don't need 
 - Demographics - support Age, Gender, Height, Weight, Race, Ethnicity, Marital Status, Vital Signs
 - Sensitive Data- support Patient Name, Address, Phone, Email, Dates, Providers, Identifiers
 -->
+
+</div></div>

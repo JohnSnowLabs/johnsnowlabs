@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/imports/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -269,13 +272,16 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../alab_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.alab_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conll_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.conll_parse</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deidentification_module/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_module</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deidentification_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_utils</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.imports</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java_helper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.java_helper</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licensed_annotator_type/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.licensed_annotator_type</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../log_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.log_parse</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ner_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ner_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_nlp_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_nlp_processor</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../risk_adjustment_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.risk_adjustment_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../run_transpiled_code/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.run_transpiled_code</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training_log_parser_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.training_log_parser_utils</span></code></a></li>
 </ul>
 </div>
@@ -340,21 +346,32 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.imports.is_module_importable" title="sparknlp_jsl.utils.imports.is_module_importable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_module_importable</span></code></a>(→ bool)</p></td>
-<td><p>Return True if Lib can be imported, False if not when raise_exception is False,</p></td>
+<td><p>Tests whether a given module can be imported in the current environment.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.imports.is_module_importable">
-<span class="sig-name descname"><span class="pre">is_module_importable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lib</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pip_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'function'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/imports.html#is_module_importable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.imports.is_module_importable" title="Permalink to this definition">#</a></dt>
-<dd><p>Return True if Lib can be imported, False if not when raise_exception is False,
-otherwise raises Exception when not importable.
-:param lib: import name of module to test
-:param raise_exception: Should raise exception or not
-:param pip_name: If raise exception this is required. Part of the error message for install instruction
-:param message_type: Either ‘function’ or ‘module’ which will change the style of error message
-:return: True if importable, False if not when raise_exception is False,
+<span class="sig-name descname"><span class="pre">is_module_importable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lib</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pip_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'function'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.utils.imports.is_module_importable" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether a given module can be imported in the current environment.</p>
+<p>Return True if Lib can be imported, False if not when raise_exception is False,
 otherwise raises Exception when not importable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lib</strong> (<em>str</em>) – import name of module to test</p></li>
+<li><p><strong>raise_exception</strong> (<em>bool</em>) – Whether to raise exception when module cannot be imported or not.</p></li>
+<li><p><strong>pip_name</strong> (<em>bool</em>) – If raise exception this is required. Part of the error message for install instruction.</p></li>
+<li><p><strong>message_type</strong> (<em>str</em>) – Either ‘function’ or ‘module’ which will change the style of error message.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if importable, False if not when raise_exception is False, otherwise raises Exception when not importable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -399,14 +416,6 @@ otherwise raises Exception when not importable.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/utils/imports/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

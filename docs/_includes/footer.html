@@ -4,9 +4,9 @@
 
     {%- assign _site_author = site.author -%}
     {%- if _site_author.type == 'organization' -%}
-      {%- assign _site_author_itemtype = 'http://schema.org/Organization' -%}
+      {%- assign _site_author_itemtype = 'https://schema.org/Organization' -%}
     {%- else -%}
-      {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
+      {%- assign _site_author_itemtype = 'https://schema.org/Person' -%}
     {%- endif -%}
 
     <div itemscope itemtype="{{ _site_author_itemtype }}">
@@ -26,7 +26,7 @@
         {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
         {%- assign _locale_copyright_dates = __return -%}
         © <span id="year"></span> John Snow Labs Inc.
-        <a href="http://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a href="http://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
+        <a target="_blank" href="https://www.johnsnowlabs.com/terms-of-service">Terms of Service</a> | <a target="_blank" href="https://www.johnsnowlabs.com/privacy-policy/">Privacy Policy</a>
       </div>
     </div>
   </div>

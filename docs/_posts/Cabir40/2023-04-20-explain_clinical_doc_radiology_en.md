@@ -32,6 +32,7 @@ A pipeline for detecting posology entities with the `ner_radiology` NER model, a
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -63,7 +64,6 @@ nlu.load("en.explain_doc.clinical_radiology.pipeline").predict("""Bilateral brea
 ## Results
 
 ```bash
-
 +----+------------------------------------------+---------------------------+
 |    | chunks                                   | entities                  |
 |---:|:-----------------------------------------|:--------------------------|
@@ -99,7 +99,6 @@ nlu.load("en.explain_doc.clinical_radiology.pipeline").predict("""Bilateral brea
 |       1 | ImagingTest     | ultrasound            | ImagingFindings           | ovoid mass |
 |       0 | ImagingFindings | benign fibrous tissue | Disease_Syndrome_Disorder | lipoma     |
 +---------+-----------------+-----------------------+---------------------------+------------+
-
 ```
 
 {:.model-param}

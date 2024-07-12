@@ -21,7 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 
-Contextual Spell Checker is a sequence-to-sequence model that detects and corrects spelling errors in your medical input text. It’s based on Levenshtein Automation for generating candidate corrections and a Neural Language Model for ranking corrections. This model has been trained in a dataset containing data from different sources; MTSamples, i2b2 clinical notes, and several specific medical corpora. You can download the model that comes fully pretrained and ready to use. However, you can still customize it further without the need for re-training a new model from scratch. This can be accomplished by providing custom definitions for the word classes the model has been trained on, namely Dates, Numbers, Ages, Units, and Medications.
+Contextual Spell Checker is a sequence-to-sequence model that detects and corrects spelling errors in your medical input text. It’s based on Levenshtein Automation for generating candidate corrections and a Neural Language Model for ranking corrections. This model has been trained in a dataset containing data from different sources; MTSamples, augmented version of i2b2 clinical notes, and several specific medical corpora. You can download the model that comes fully pretrained and ready to use. However, you can still customize it further without the need for re-training a new model from scratch. This can be accomplished by providing custom definitions for the word classes the model has been trained on, namely Dates, Numbers, Ages, Units, and Medications.
 
 
 ## Predicted Entities
@@ -161,7 +161,7 @@ light_pipeline = LightPipeline(pipeline.fit(spark.createDataFrame([[""")
 ## References
 
 
-MTSamples, i2b2 clinical notes, and several specific medical corpora.
+MTSamples, augmented version of i2b2 clinical notes, and several specific medical corpora.
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTIyMzcyNTA2NCwtMTA3MjQzODIyNl19
 -->

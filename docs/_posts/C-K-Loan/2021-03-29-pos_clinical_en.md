@@ -53,6 +53,7 @@ A [Part of Speech](https://en.wikipedia.org/wiki/Part_of_speech) classifier pred
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler =  new DocumentAssembler().setInputCol("text").setOutputCol("document")
 tokenizer          =  new Tokenizer().setInputCols("document").setOutputCol("token")
@@ -86,7 +87,6 @@ nlu.load('pos.clinical').predict("POS assigns each token in a sentence a grammat
 +------------------------------------------+
 |[NN, NNS, PND, NN, II, DD, NN, DD, JJ, NN]|
 +------------------------------------------+
-
 ```
 
 {:.model-param}

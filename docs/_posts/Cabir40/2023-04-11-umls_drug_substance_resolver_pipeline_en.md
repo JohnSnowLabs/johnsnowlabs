@@ -32,6 +32,7 @@ This pretrained pipeline maps entities (Drug Substances) with their correspondin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -47,8 +48,11 @@ val pipeline = PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en",
 val result = pipeline.annotate("The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml")
 ```
 
-{:.nlu-block}
-```python
+</div>
+
+## Results
+
+```bash
 +-----------------------------+---------+---------+
 |chunk                        |ner_label|umls_code|
 +-----------------------------+---------+---------+
@@ -57,7 +61,7 @@ val result = pipeline.annotate("The patient was given  metformin, lenvatinib and
 |Magnesium hydroxide 100mg/1ml|DRUG     |C1134402 |
 +-----------------------------+---------+---------+
 ```
-</div>
+
 
 {:.model-param}
 ## Model Information

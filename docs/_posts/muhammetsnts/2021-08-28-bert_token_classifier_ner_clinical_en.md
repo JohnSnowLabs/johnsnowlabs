@@ -166,7 +166,8 @@ A 28-year-old female with a history of gestational diabetes mellitus diagnosed e
 ## Data Source
 
 
-Trained on augmented 2010 i2b2 challenge data with ‘embeddings_clinical’. https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
+Trained on augmented version of 2010 i2b2 challenge dataset with ``embeddings_clinical``. 
+https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 
 ## Benchmarking

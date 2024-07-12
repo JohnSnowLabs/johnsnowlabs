@@ -36,6 +36,7 @@ This pipeline can be used as Lightpipeline (with `annotate/fullAnnotate`). You c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

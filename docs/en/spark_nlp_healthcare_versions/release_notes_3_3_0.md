@@ -16,6 +16,8 @@ sidebar:
 ## 3.3.0
 We are glad to announce that Spark NLP Healthcare 3.3.0 has been released!.
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + NER Finder Pretrained Pipelines to Run Run 48 different Clinical NER and 21 Different Biobert Models At Once Over the Input Text
 + 3 New Sentence Entity Resolver Models (3-char ICD10CM, RxNorm_NDC, HCPCS)
@@ -28,12 +30,15 @@ We are glad to announce that Spark NLP Healthcare 3.3.0 has been released!.
 + NER Evaluation Metrics Fix
 + New Notebooks (Including How to Use SparkNLP with Neo4J)
 
+</div><div class="h3-box" markdown="1">
+
 #### NER Finder Pretrained Pipelines to Run Run 48 different Clinical NER and 21 Different Biobert Models At Once Over the Input Text
 
 We are releasing two new NER Pretrained Pipelines that can be used to explore all the available pretrained NER models at once. You can check [NER Profiling Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.2.Pretrained_NER_Profiling_Pipelines.ipynb) to see how to use these pretrained pipelines.
 
 - `ner_profiling_clinical` : When you run this pipeline over your text, you will end up with the predictions coming out of each of the 48 pretrained clinical NER models trained with `embeddings_clinical`.
 
+{:.table-model-big}
 |Clinical NER Model List|
 |-|
 |ner_ade_clinical|
@@ -88,6 +93,7 @@ We are releasing two new NER Pretrained Pipelines that can be used to explore al
 
 - `ner_profiling_biobert` : When you run this pipeline over your text, you will end up with the predictions coming out of each of the 21 pretrained clinical NER models trained with `biobert_pubmed_base_cased`.
 
+{:.table-model-big}
 |BioBert NER Model List|
 |-|
 |ner_cellular_biobert|
@@ -181,6 +187,7 @@ res = hcpcs_pipelineModel.transform(spark.createDataFrame([["Breast prosthesis, 
 
 *Results* :
 
+{:.table-model-big}
 |ner_chunk|hcpcs_code|all_codes|all_resolutions|domain|
 |-|-|-|-|-|
 | Breast prosthesis, mastectomy bra, with integrated breast prosthesis form, unilateral, any size, any type  | L8001  |[L8001, L8002, L8000, L8033, L8032, ...]   |'Breast prosthesis, mastectomy bra, with integrated breast prosthesis form, unilateral, any size, any type', 'Breast prosthesis, mastectomy bra, with integrated breast prosthesis form, bilateral, any size, any type', 'Breast prosthesis, mastectomy bra, without integrated breast prosthesis form, any size, any type', 'Nipple prosthesis, custom fabricated, reusable, any material, any type, each', ...  | Device, Device, Device, Device, Device, ...  |
@@ -252,14 +259,18 @@ res = rxnorm_ndc_pipelineModel.transform(spark.createDataFrame([["activated char
 
 *Results* :
 
+{:.table-model-big}
 |chunk|rxnorm_code|all_codes|resolutions|all_k_aux_labels|all_distances|
 |-|-|-|-|-|-|
 |activated charcoal 30000 mg powder for oral suspension|1440919|1440919, 808917, 1088194, 1191772, 808921,...|activated charcoal 30000 MG Powder for Oral Suspension, Activated Charcoal 30000 MG Powder for Oral Suspension, wheat dextrin 3000 MG Powder for Oral Solution [Benefiber], cellulose 3000 MG Oral Powder [Unifiber], fosfomycin 3000 MG Powder for Oral Solution [Monurol] ...|69784030828, 00395052791, 08679001362\|86790016280\|00067004490, 46017004408\|68220004416, 00456430001,...|0.0000, 0.0000, 0.1128, 0.1148, 0.1201,...|
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated UMLS Entity Resolvers (Dropping Invalid Codes)
 
-UMLS model `sbiobertresolve_umls_findings` and `sbiobertresolve_umls_major_concepts` were updated by dropping the invalid codes using the [latest UMLS release](
-https://www.nlm.nih.gov/pubs/techbull/mj21/mj21_umls_2021aa_release.html) done May 2021.  
+UMLS model `sbiobertresolve_umls_findings` and `sbiobertresolve_umls_major_concepts` were updated by dropping the invalid codes using the [latest UMLS release](https://www.nlm.nih.gov/pubs/techbull/mj21/mj21_umls_2021aa_release.html) done May 2021.  
+
+</div><div class="h3-box" markdown="1">
 
 #### 5 New Clinical NER Models (Trained By BertForTokenClassification Approach)
 
@@ -463,6 +474,8 @@ result = p_model.transform(spark.createDataFrame(pd.DataFrame({'text': [test_sen
 +-----------------------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Radiology NER Model Trained On cheXpert Dataset
 
 + Ner NER model `ner_chexpert` trained on Radiology Chest reports to extract anatomical sites and observation entities. The model achieves 92.8% and 77.4% micro and macro f1 scores on the cheXpert dataset.
@@ -496,13 +509,18 @@ results = model.transform(spark.createDataFrame([[EXAMPLE_TEXT]]).toDF("text"))
 |  7 | left base                | ANAT    |
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Speed Benchmarks on Databricks
 
 We prepared a speed benchmark table by running a NER pipeline on various number of cluster configurations (worker number, driver node, specs etc) and also writing the results to parquet or delta formats. You can find all the details of these tries in here : [Speed Benchmark Table](https://nlp.johnsnowlabs.com/docs/en/benchmark)
 
+</div><div class="h3-box" markdown="1">
+
 #### NerConverterInternal Fixes
 Now NerConverterInternal can deal with tags that have some dash (`-`) charachter like B-GENE-N and B-GENE-Y.
 
+</div><div class="h3-box" markdown="1">
 
 #### Simplified Setup and Recommended Use of start() Function
 Starting with this release, we are shipping AWS credentials inside Spark NLP Healthcare's license. This removes the requirement of setting the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables.
@@ -520,9 +538,13 @@ val spark = start()
 
 If for some reason you don't want to use this mechanism, the keys will continue to be shipped separately, and the environment variables will continue to work as they did in the past.
 
+</div><div class="h3-box" markdown="1">
+
 #### Ner Evaluation Metrics Fix
 
 Bug fixed in the `NerDLMetrics` package. Previously, the `full_chunk` option was using greedy approach to merge chunks for a strict evaluation, which has been fixed to merge chunks using IOB scheme to get accurate entities boundaries and metrics. Also, the `tag` option has been fixed to get metrics that align with the default NER logs.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 

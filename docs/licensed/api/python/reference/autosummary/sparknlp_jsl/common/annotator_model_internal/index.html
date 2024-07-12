@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/common/annotator_model_internal/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -334,35 +337,299 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal" title="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnotatorModelInternal</span></code></a></p></td>
-<td><p>Base class for :py:class:<a href="#id1"><span class="problematic" id="id2">`</span></a>Model`s that wrap Java/Scala</p></td>
+<td><p>Base class for Model classes.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnnotatorModelInternal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/common/annotator_model_internal.html#AnnotatorModelInternal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal" title="Permalink to this definition">#</a></dt>
-<dd><p>Base class for :py:class:<a href="#id3"><span class="problematic" id="id4">`</span></a>Model`s that wrap Java/Scala
-implementations. Subclasses should inherit this class before
-param mix-ins, because this sets the UID from the Java model.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnnotatorModelInternal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.common.AnnotatorModel</span></code>, <a class="reference internal" href="../annotator_properties_internal/index.html#sparknlp_jsl.common.annotator_properties_internal.AnnotatorPropertiesInternal" title="sparknlp_jsl.common.annotator_properties_internal.AnnotatorPropertiesInternal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.annotator_properties_internal.AnnotatorPropertiesInternal</span></code></a></p>
+<p>Base class for Model classes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[True]</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/common/annotator_model_internal.html#AnnotatorModelInternal.inputAnnotatorTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[True]</span></em><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[True]</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/common/annotator_model_internal.html#AnnotatorModelInternal.outputAnnotatorType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[True]</span></em><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputCol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.skipLPInputColsValidation">
-<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/common/annotator_model_internal.html#AnnotatorModelInternal.skipLPInputColsValidation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParams">
-<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/common/annotator_model_internal.html#AnnotatorModelInternal.setParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParams" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -402,10 +669,42 @@ param mix-ins, because this sets the UID from the Java model.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getter_attrs"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputCols"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.outputCol"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.outputCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.clear"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.copy"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.explainParam"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.explainParams"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.extractParamMap"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getInputCols"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getOrDefault"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getOutputCol"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getParam"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.getParamValue"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.hasDefault"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.hasParam"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.isDefined"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.isSet"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.load"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.read"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.save"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.set"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setInputCols"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setOutputCol"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParamValue"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.setParams"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.transform"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.common.annotator_model_internal.AnnotatorModelInternal.write"><code class="docutils literal notranslate"><span class="pre">AnnotatorModelInternal.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -414,14 +713,6 @@ param mix-ins, because this sets the UID from the Java model.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/common/annotator_model_internal/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

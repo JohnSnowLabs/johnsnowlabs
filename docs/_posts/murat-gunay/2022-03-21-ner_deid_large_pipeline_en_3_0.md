@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_large_pipeline
 date: 2022-03-21
 tags: [licensed, ner, clinical, deidentification, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification, Pipeline Healthcare]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.4.1

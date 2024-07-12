@@ -33,7 +33,7 @@ Spark NLP 4.3.2 is built with TensorFlow 2.7.1 and the following NVIDIA® softwa
 - cuDNN SDK 8.1.0
 
 It is recommended to have basic knowledge of the framework and a working environment before using Spark NLP.
-Please refer to Spark [documentation](http://spark.apache.org/docs/latest/index.html) to get started with Spark.
+Please refer to Spark [documentation](https://spark.apache.org/docs/latest/index.html) to get started with Spark.
 
 </div><div class="right-box" markdown="1">
 
@@ -94,7 +94,4 @@ If you need more detailed information about how to install Spark NLP you can che
 Detailed information about Spark NLP concepts, annotators and more may
 be found [HERE](annotators)
 
-</div>
-
-
-</div>
+</div></div>

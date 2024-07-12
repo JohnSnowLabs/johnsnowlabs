@@ -139,7 +139,7 @@ nlu.load("en.med_ner.events_clinical").predict("""The patient presented to the e
 
 ## Data Source
 
-Trained on i2b2 events data with *clinical_embeddings*.
+Trained on augmented version of i2b2 dataset with ``clinical_embeddings``.
 
 ## Benchmarking
 

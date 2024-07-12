@@ -154,7 +154,7 @@ nlu.load("en.classify.token_bert.ner_anatomy").predict("""This is an 11-year-old
 ## Data Source
 
 
-Trained on the Anatomical Entity Mention (AnEM) corpus with 'embeddings_clinical'. http://www.nactem.ac.uk/anatomy/
+Trained on the Anatomical Entity Mention (AnEM) corpus with 'embeddings_clinical'. [https://www.nactem.ac.uk/anatomy/](https://www.nactem.ac.uk/anatomy/)
 
 
 ## Benchmarking

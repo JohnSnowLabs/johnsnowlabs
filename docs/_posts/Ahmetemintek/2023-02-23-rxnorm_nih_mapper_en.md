@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps entities with their corresponding RxNorm codes according to the National Institute of Health (NIH) database. It returns Rxnorm codes with their NIH Rxnorm Term Types within a parenthesis.
 
+
 ## Predicted Entities
 
 `rxnorm_code`
@@ -37,6 +38,7 @@ This pretrained model maps entities with their corresponding RxNorm codes accord
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
 .setInputCol('text')\

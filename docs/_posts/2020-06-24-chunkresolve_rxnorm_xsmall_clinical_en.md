@@ -103,4 +103,4 @@ val result = pipeline.fit(data).transform(data)
 {:.h2_title}
 ## Data Source
 Trained on December 2019 RxNorm Subset
-http://www.snomed.org/
+[https://www.snomed.org/](https://www.snomed.org/)

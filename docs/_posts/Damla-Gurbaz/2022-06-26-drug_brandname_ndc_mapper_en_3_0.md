@@ -33,8 +33,6 @@ This pretrained model maps drug brand names to corresponding National Drug Codes
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 

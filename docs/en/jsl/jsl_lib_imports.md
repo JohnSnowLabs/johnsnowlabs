@@ -42,12 +42,12 @@ The following Functions, Classes and Modules will available in the global namesp
 ## The **jsl** Module
 
 `jsl` module with the following methods
-- `jsl.install()` for installing John Snow Labs libraries and managing your licenses, [more info here](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
-- `jsl.load()` for predicting with any the 10k+ pretrained models in 1 line of code or training new ones, using the [nlu.load() method](https://nlp.johnsnowlabs.com/) under the hood
-- `jsl.start()` for starting a Spark Session with access to features, [more info here](https://nlp.johnsnowlabs.com/docs/en/jsl/start-a-sparksession)
-- `jsl.viz()` for visualizing predictions with any of the 10k+ pretrained models using [nlu.viz()](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples) under the hood
-- `jsl.viz_streamlit()` and other `jsl.viz_streamlit_xyz for using any of the 10k+ pretrained models in 0 lines of code with an [interactive Streamlit GUI and re-usable and stackable Streamlit Components](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
-- `jsl.to_pretty_df()` for predicting on raw strings getting a nicely structures Pandas DF from a Spark Pipeline using [nlu.to_pretty_df()](https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp) under the hood
+- `nlp.install()` for installing John Snow Labs libraries and managing your licenses, [more info here](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
+- `nlp.load()` for predicting with any the 10k+ pretrained models in 1 line of code or training new ones, using the [nlu.load() method](https://nlp.johnsnowlabs.com/) under the hood
+- `nlp.start()` for starting a Spark Session with access to features, [more info here](https://nlp.johnsnowlabs.com/docs/en/jsl/start-a-sparksession)
+- `nlp.viz()` for visualizing predictions with any of the 10k+ pretrained models using [nlu.viz()](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples) under the hood
+- `nlp.viz_streamlit()` and other `nlp.viz_streamlit_xyz for using any of the 10k+ pretrained models in 0 lines of code with an [interactive Streamlit GUI and re-usable and stackable Streamlit Components](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+- `nlp.to_pretty_df()` for predicting on raw strings getting a nicely structures Pandas DF from a Spark Pipeline using [nlu.to_pretty_df()](https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp) under the hood
 
 </div><div class="h3-box" markdown="1">
 
@@ -76,7 +76,6 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **medical** Module
 
-
 `medical` module with annotator classes and methods from [Spark NLP for Medicine](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `medical.RelationExtractionDL`  and `medical.profile()`
 - [Medical Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `medical.DeIdentification`
 - [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `medical.AnnotationToolJsonReader`
@@ -101,7 +100,6 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **finance** Module
 
-
 `finance` module with annotator classes and methods from [Spark NLP for Finance](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `finance.RelationExtractionDL`  and `finance.profile()`
 - [Finance Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `finance.DeIdentification`
 - [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `finance.AnnotationToolJsonReader`
@@ -109,5 +107,5 @@ The following Functions, Classes and Modules will available in the global namesp
 - **NOTE:** Any class which has `Finance` in its name is available, but the `Finance` prefix has been omitted. I.e. `finance.NerModel` maps to `sparknlp_jsl.annotator.FinanceNerModel`
   - This is achieved via `from sparknlp_jsl.annotator import FinanceNerModel as NerModel` under the hood.
 - To see all the imports see [the source](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/finance.py)
-- 
+
 </div></div>

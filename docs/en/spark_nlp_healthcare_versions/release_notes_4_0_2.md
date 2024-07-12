@@ -38,12 +38,13 @@ sidebar:
 
 + We are releasing 11 new `MedicalBertForSequenceClassification` models to classify text from social media data for English and Spanish languages.
 
+{:.table-model-big.db}
 | model name                                                                                                                                                                    | description                                                                             | predicted entities                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------|
 |[bert_sequence_classifier_ade_augmented](https://nlp.johnsnowlabs.com/2022/07/27/bert_sequence_classifier_ade_augmented_en_3_0.html)                                           | this model classify tweets reporting ADEs (Adverse Drug Events).                        | `ADE` `noADE`                                              |
 |[bert_sequence_classifier_health_mandates_stance_tweet](https://nlp.johnsnowlabs.com/2022/08/08/bert_sequence_classifier_health_mandates_stance_tweet_en_3_0.html)             | this model classifies stance in tweets about health mandates.                             | `FAVOR` `AGAINST` `NONE`                                   |
 |[bert_sequence_classifier_health_mandates_premise_tweet](https://nlp.johnsnowlabs.com/2022/08/08/bert_sequence_classifier_health_mandates_premise_tweet_en_3_0.html)           | this model classifies premise in tweets about health mandates.                            | `has_premse` `has_no_premse`                               |
-|[bert_sequence_classifier_treatement_changes_sentiment_tweet](https://nlp.johnsnowlabs.com/2022/07/28/bert_sequence_classifier_treatement_changes_sentiment_tweet_en_3_0.html) | this model classifies treatment changes reviews in tweets as `negative` and `positive`.  | `positive` `negative`                                      |
+|[bert_sequence_classifier_treatement_changes_sentiment_tweet](#) | this model classifies treatment changes reviews in tweets as `negative` and `positive`.  | `positive` `negative`                                      |
 |[bert_sequence_classifier_drug_reviews_webmd](https://nlp.johnsnowlabs.com/2022/07/28/bert_sequence_classifier_drug_reviews_webmd_en_3_0.html)                                 | this model classifies drug reviews from WebMD as `negative` and `positive`.               | `positive` `negative`                                      |
 |[bert_sequence_classifier_self_reported_age_tweet](https://nlp.johnsnowlabs.com/2022/07/26/bert_sequence_classifier_self_reported_age_tweet_en_3_0.html)                       | this model classifies if there is a self-reported age in social media data.                   | `self_report_age` `no_report`                              |
 |[bert_sequence_classifier_self_reported_symptoms_tweet](https://nlp.johnsnowlabs.com/2022/07/28/bert_sequence_classifier_self_reported_symptoms_tweet_es_3_0.html)             | this model classifies self-reported COVID-19 symptoms in Spanish language tweets.         | `Lit-News_mentions` `Self_reports non_personal_reports`    |
@@ -78,6 +79,7 @@ sample_text = ["Is it bad for a 19 year old it's been getting worser.",
 
 + We are releasing 5 new public health classification models.
 
+{:.table-model-big.db}
 | model name                                                                                                                                | description                                                                             | predicted entities             |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------------|
 |[bert_sequence_classifier_health_mentions](https://nlp.johnsnowlabs.com/2022/07/25/bert_sequence_classifier_health_mentions_en_3_0.html)    | This model can classify public health mentions in social media text | `figurative_mention` `other_mention` `health_mention`|
@@ -219,6 +221,7 @@ example_text = """El diagnóstico fueron varios. Principal: Neumonía en el pulm
 
 We are releasing 5 new `ChunkMapperModel` models to map clinical entities with their corresponding UMLS CUI codes.
 
+{:.table-model-big}
 | Mapper Name                                                                                                      | Source                  | Target   |
 |--------------------------------------------------------------------------------------------------------------------|-------------------------|----------|
 | [umls_clinical_drugs_mapper](https://nlp.johnsnowlabs.com/2022/07/06/umls_clinical_drugs_mapper_en_3_0.html)       | Drugs                   | UMLS CUI |
@@ -265,6 +268,7 @@ example_text = """The patient was given  metformin, lenvatinib and lavender 700 
 
 We now have 5 new resolver `PretrainedPipeline` to convert clinical entities to their UMLS CUI codes. You just need to feed your text and it will return the corresponding UMLS codes.
 
+{:.table-model-big}
 | Pipeline Name                                                                                                                            | Entity                  | Target   |
 |------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------|
 | [umls_drug_resolver_pipeline](https://nlp.johnsnowlabs.com/2022/07/26/umls_drug_resolver_pipeline_en_3_0.html)                           | Drugs                   | UMLS CUI |

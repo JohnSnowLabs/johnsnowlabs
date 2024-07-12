@@ -20,8 +20,10 @@ Release date: 28-02-2022
 
 #### Overview
 
-We are glad to announce that Spark OCR 3.11.0 has been released!.
+We are glad to announce that Spark OCR 3.11.0 has been released!
 This release comes with new models, new features, bug fixes, and notebook examples.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
@@ -32,10 +34,14 @@ This release comes with new models, new features, bug fixes, and notebook exampl
 * Added [FormRelationExtractor](/docs/en/ocr_visual_document_understanding#formrelationextractor) for detecting relations between key and value entities in forms.
 * Added the capability of fine tuning VisualDocumentNerV2 models for key-value pairs extraction.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Models
 
 * ImageTextDetectorV2: this extends the ImageTextDetectorV1 character level text detection model with a refiner net architecture.
 * ImageTextRecognizerV2: Text recognition for printed text based on the Deep Learning Transformer Architecture.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

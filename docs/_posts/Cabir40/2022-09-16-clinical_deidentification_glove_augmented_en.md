@@ -35,6 +35,7 @@ It's different to `clinical_deidentification_glove` in the way it manages PHONE 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

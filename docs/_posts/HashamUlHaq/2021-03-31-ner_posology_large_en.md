@@ -155,7 +155,7 @@ only showing top 20 rows
 
 ## Data Source
 
-Trained on the 2018 i2b2 dataset and FDA Drug datasets with 'embeddings_clinical'.
+Trained on augmented version of 2018 i2b2 dataset and FDA Drug datasets with ``embeddings_clinical``.
 https://open.fda.gov/
 
 ## Benchmarking

@@ -155,7 +155,7 @@ nlu.load("en.classify.token_bert.ner_drugs").predict("""The human KCNJ9 (Kir 3.3
 ## Data Source
 
 
-Trained on i2b2_med7 + FDA. https://www.i2b2.org/NLP/Medication
+Trained on augmented version of i2b2_med7 + FDA. https://www.i2b2.org/NLP/Medication
 
 
 ## Benchmarking

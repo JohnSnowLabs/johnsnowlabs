@@ -32,6 +32,7 @@ A pipeline with `ner_clinical`, `assertion_dl`, `re_clinical` and `ner_posology`
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -63,7 +64,6 @@ nlu.load("en.explain_doc.carp").predict("""A 28-year-old female with a history o
 ## Results
 
 ```bash
-
 |   | chunks                        | ner_clinical | assertion | posology_chunk   | ner_posology | relations |
 |---|-------------------------------|--------------|-----------|------------------|--------------|-----------|
 | 0 | gestational diabetes mellitus | PROBLEM      | present   | metformin        | Drug         | TrAP      |
@@ -73,7 +73,6 @@ nlu.load("en.explain_doc.carp").predict("""A 28-year-old female with a history o
 | 4 | poor appetite                 | PROBLEM      | present   | insulin glargine | Drug         | TrCP      |
 | 5 | vomiting                      | PROBLEM      | present   | at night         | Frequency    | TrAP      |
 | 6 | insulin glargine              | TREATMENT    | present   | 12 units         | Dosage       | TrAP      |
-
 ```
 
 {:.model-param}

@@ -37,6 +37,7 @@ This pretrained model maps ICD10CM codes to corresponding UMLS codes under the U
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

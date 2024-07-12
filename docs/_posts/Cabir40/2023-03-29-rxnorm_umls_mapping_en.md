@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of `rxnorm_umls_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -59,11 +60,9 @@ nlu.load("en.rxnorm.umls.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-
 |    | rxnorm_code      | umls_code           |
 |---:|:-----------------|:--------------------|
 |  0 | 1161611 | 315677 | C3215948 | C0984912 |
-
 ```
 
 {:.model-param}

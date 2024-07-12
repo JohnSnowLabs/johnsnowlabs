@@ -16,7 +16,7 @@ article_header:
     {%- assign _url = __return -%}
     {%- if _section.theme == 'light' -%}
     <section class="hero section-row hero--center hero--light" id="hero-{{ forloop.index }}" {%- elsif _section.theme == 'dark' -%}
-      <section class="hero  section-row hero--center hero--dark" id="hero-{{ forloop.index }}" {%- else -%} <section
+      <section class="hero section-row hero--center hero--dark{% if _section.bottom %} bottom_blue{% endif %}" id="hero-{{ forloop.index }}" {%- else -%} <section
       class="hero section-row hero--center" id="hero-{{ forloop.index }}" {%- endif -%} {%- if _section.background_color -%}
       style="background-image: url({{ _url }}); background-color: {{ _section.background_color }};">
       {%- else -%}
@@ -63,7 +63,7 @@ article_header:
             <div class="grid--container">
               <div class="grid">
                 <div class="cell cell--12 cell--lg-12">
-                  <h2 class="h2_title">{{ _section.title }}</h2>
+                  <h2 class="h2_title grey">{{ _section.title }}</h2>
                 </div>
               </div>
               {%- if _section.children -%}              
@@ -382,11 +382,11 @@ article_header:
             {%- if _section.actions -%}
               <ul class="menu {{ _section.classmenu }}">
                 {%- for _action in _section.actions -%}
-                {%- include snippets/get-nav-url.html path=_action.url -%}
-                {%- assign _url = __return -%}
-                {%- assign _type = _action.type | default: 'outline-info' -%}
-                <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action.text }}</a>
-                </li>
+                  {%- include snippets/get-nav-url.html path=_action.url -%}
+                  {%- assign _url = __return -%}
+                  {%- assign _type = _action.type | default: 'outline-info' -%}
+                  <li><a class="button button--{{ _type }} button--pill button--lg" href="{{ _url }}">{{ _action.text }}</a>
+                  </li>
                 {%- endfor -%}
               </ul>
               {%- endif -%}

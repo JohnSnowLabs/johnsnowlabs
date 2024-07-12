@@ -33,6 +33,7 @@ A pipeline for detecting radiology entities with the `ner_radiology` NER model, 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

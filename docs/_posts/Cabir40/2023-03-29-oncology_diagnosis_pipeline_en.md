@@ -32,6 +32,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status, Relation Extr
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -66,7 +67,6 @@ According to her last CT, she has no lung metastases.""")
 ## Results
 
 ```bash
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk      | ner_label         |
@@ -163,7 +163,6 @@ According to her last CT, she has no lung metastases.""")
 | carcinoma  | Cancer_Dx         | 8010/3 | carcinoma         |
 | lung       | Site_Lung         | C34.9  | lung              |
 | metastases | Metastasis        | 8000/6 | tumor, metastatic |
-
 ```
 
 {:.model-param}

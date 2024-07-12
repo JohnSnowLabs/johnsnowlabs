@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../static/doctools.js"></script>
     <script src="../static/sphinx_highlight.js"></script>
     <script src="../static/toggleprompt.js"></script>
+    <script src="../static/clipboard.min.js"></script>
+    <script src="../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/index';</script>
     <link rel="shortcut icon" href="../static/fav.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -84,8 +87,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -324,8 +327,13 @@ document.write(`
 - Assertion Status Detection
 - De-identification
 - Relation Extraction
-- Spell checking &amp; correction</p>
-<p>The library offers access to several clinical and biomedical transformers: JSL-BERT-Clinical, BioBERT, ClinicalBERT, GloVe-Med, GloVe-ICD-O. It also includes over 50 pre-trained healthcare models, that can recognize the following entities (and many more):
+- Spell checking &amp; correction
+- Entity Resolver
+- Rule Based Contextual Parser
+- Text Generator
+- Summarizer
+- Risk Adjustment Module</p>
+<p>The library offers access to several clinical and biomedical transformers: JSL-BERT-Clinical, BioBERT, ClinicalBERT, GloVe-Med, GloVe-ICD-O. It also includes over 2000+ pre-trained healthcare models, that can recognize the following entities (and many more):
 - Clinical - support Signs, Symptoms, Treatments, Procedures, Tests, Labs, Sections
 - Drugs - support Name, Dosage, Strength, Route, Duration, Frequency
 - Risk Factors- support Smoking, Obesity, Diabetes, Hypertension, Substance Abuse
@@ -335,22 +343,18 @@ document.write(`
 <p>For more information visit our [models](<a class="reference external" href="https://nlp.johnsnowlabs.com/models/">https://nlp.johnsnowlabs.com/models/</a>) site.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
-<p>Spark NLP is built on top of Apache Spark <cite>3.x</cite>. For using Spark NLP you need:</p>
+<p>Spark NLP is built on top of Apache Spark <cite>3.x.x</cite>. For using Spark NLP you need:</p>
 <ul class="simple">
-<li><p>Java 8</p></li>
-<li><p>Apache Spark <code class="docutils literal notranslate"><span class="pre">3.1.x</span></code> (or <code class="docutils literal notranslate"><span class="pre">3.0.x</span></code>, or <code class="docutils literal notranslate"><span class="pre">2.4.x</span></code>, or <code class="docutils literal notranslate"><span class="pre">2.3.x</span></code>)</p></li>
-<li><p>Python <code class="docutils literal notranslate"><span class="pre">3.8.x</span></code> if you are using PySpark <code class="docutils literal notranslate"><span class="pre">3.x</span></code></p>
-<ul>
-<li><p>Python <code class="docutils literal notranslate"><span class="pre">3.6.x</span></code> and <code class="docutils literal notranslate"><span class="pre">3.7.x</span></code> if you are using PySpark <code class="docutils literal notranslate"><span class="pre">2.3.x</span></code> or <code class="docutils literal notranslate"><span class="pre">2.4.x</span></code></p></li>
-</ul>
-</li>
+<li><p>Java 8 or Java 11</p></li>
+<li><p>Apache Spark <code class="docutils literal notranslate"><span class="pre">3.x.x</span></code></p></li>
+<li><p>Python <code class="docutils literal notranslate"><span class="pre">3.7.x</span></code>, <code class="docutils literal notranslate"><span class="pre">3.8.x</span></code>, <code class="docutils literal notranslate"><span class="pre">3.9.x</span></code>, and <code class="docutils literal notranslate"><span class="pre">3.10.x</span></code></p></li>
 </ul>
 <p>It is recommended to have basic knowledge of the framework and a working environment before using Spark NLP.
 Please refer to <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Spark documentation</a> to get started with Spark.</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>First, let’s make sure the installed java version is Java 8 (Oracle or OpenJDK):</p>
+<p>First, let’s make sure the installed java version is Java 8 or 11 (Oracle or OpenJDK):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java<span class="w"> </span>-version
 <span class="c1"># openjdk version &quot;1.8.0_292&quot;</span>
 </pre></div>
@@ -366,7 +370,7 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
 <h2>Starting a Spark NLP Session from Python<a class="headerlink" href="#starting-a-spark-nlp-session-from-python" title="Permalink to this heading">#</a></h2>
 <p>You can start the spark session with this simple piece of code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
-<span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{secret.code}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{secret.code}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or use the SparkSession module for more flexibility:</p>
@@ -377,7 +381,9 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
     <span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.memory&quot;</span><span class="p">,</span><span class="s2">&quot;16&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.maxResultSize&quot;</span><span class="p">,</span> <span class="s2">&quot;2G&quot;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars.packages&quot;</span><span class="p">,</span> <span class="s2">&quot;com.johnsnowlabs.nlp:spark-nlp_2.11:$</span><span class="si">{version_public}</span><span class="s2">&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryoserializer.buffer.max&quot;</span><span class="p">,</span> <span class="s2">&quot;2000M&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars.packages&quot;</span><span class="p">,</span> <span class="s2">&quot;com.johnsnowlabs.nlp:spark-nlp_2.12:$</span><span class="si">{version_public}</span><span class="s2">&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars&quot;</span><span class="p">,</span> <span class="s2">&quot;https://pypi.johnsnowlabs.com/$</span><span class="si">{secret.code}</span><span class="s2">/spark-nlp-jsl-$</span><span class="si">{version}</span><span class="s2">.jar&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 </pre></div>
@@ -437,14 +443,6 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-a-spark-nlp-session-from-python">Starting a Spark NLP Session from Python</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../_sources/getting_started/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

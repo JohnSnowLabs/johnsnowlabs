@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/eval/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -319,113 +322,335 @@ document.write(`
 <h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NorvigSpellEvaluation" title="sparknlp_jsl.eval.NorvigSpellEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NorvigSpellEvaluation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NerCrfEvaluation" title="sparknlp_jsl.eval.NerCrfEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerCrfEvaluation</span></code></a></p></td>
+<td><p>Wrapper class for a Java companion object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NerDLEvaluation" title="sparknlp_jsl.eval.NerDLEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerDLEvaluation</span></code></a></p></td>
+<td><p>Wrapper class for a Java companion object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NerDLMetrics" title="sparknlp_jsl.eval.NerDLMetrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerDLMetrics</span></code></a></p></td>
+<td><p>Wrapper class for a Java companion object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NorvigSpellEvaluation" title="sparknlp_jsl.eval.NorvigSpellEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NorvigSpellEvaluation</span></code></a></p></td>
+<td><p>Wrapper class for a Java companion object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.POSEvaluation" title="sparknlp_jsl.eval.POSEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POSEvaluation</span></code></a></p></td>
 <td><p>Wrapper class for a Java companion object</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.SymSpellEvaluation" title="sparknlp_jsl.eval.SymSpellEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SymSpellEvaluation</span></code></a></p></td>
 <td><p>Wrapper class for a Java companion object</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NerDLEvaluation" title="sparknlp_jsl.eval.NerDLEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerDLEvaluation</span></code></a></p></td>
-<td><p>Wrapper class for a Java companion object</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NerDLMetrics" title="sparknlp_jsl.eval.NerDLMetrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerDLMetrics</span></code></a></p></td>
-<td><p>Wrapper class for a Java companion object</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.NerCrfEvaluation" title="sparknlp_jsl.eval.NerCrfEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerCrfEvaluation</span></code></a></p></td>
-<td><p>Wrapper class for a Java companion object</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.eval.POSEvaluation" title="sparknlp_jsl.eval.POSEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">POSEvaluation</span></code></a></p></td>
-<td><p>Wrapper class for a Java companion object</p></td>
-</tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NorvigSpellEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NorvigSpellEvaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper class for a Java companion object</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerCrfEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Wrapper class for a Java companion object</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyAnnotator">
-<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NorvigSpellEvaluation.computeAccuracyAnnotator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.apply" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyModel">
-<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NorvigSpellEvaluation.computeAccuracyModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyAnnotator">
+<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyModel">
+<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SymSpellEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#SymSpellEvaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper class for a Java companion object</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyAnnotator">
-<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#SymSpellEvaluation.computeAccuracyAnnotator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_array_integer" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyModel">
-<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#SymSpellEvaluation.computeAccuracyModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.spark_version" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerDLEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerDLEvaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper class for a Java companion object</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerDLEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Wrapper class for a Java companion object</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyModel">
-<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerDLEvaluation.computeAccuracyModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.apply" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyAnnotator">
-<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerDLEvaluation.computeAccuracyAnnotator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyModel">
+<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLEvaluation.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLEvaluation.spark_version" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerDLMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full_chunk'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerDLMetrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper class for a Java companion object</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerDLMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full_chunk'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Wrapper class for a Java companion object</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.computeMetricsFromDF">
-<span class="sig-name descname"><span class="pre">computeMetricsFromDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ner'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_o</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerDLMetrics.computeMetricsFromDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.computeMetricsFromDF" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">computeMetricsFromDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ner'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_o</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.computeMetricsFromDF" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerDLMetrics.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NerDLMetrics.spark_version" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerCrfEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerCrfEvaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper class for a Java companion object</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NorvigSpellEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Wrapper class for a Java companion object</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyModel">
-<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerCrfEvaluation.computeAccuracyModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.apply" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyAnnotator">
-<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#NerCrfEvaluation.computeAccuracyAnnotator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyAnnotator">
+<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyModel">
+<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.NorvigSpellEvaluation.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.spark_version" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">POSEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#POSEvaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper class for a Java companion object</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">POSEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Wrapper class for a Java companion object</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.computeAccuracyModel">
-<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#POSEvaluation.computeAccuracyModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.apply" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.computeAccuracyAnnotator">
-<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/eval.html#POSEvaluation.computeAccuracyAnnotator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.computeAccuracyModel">
+<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.POSEvaluation.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.POSEvaluation.spark_version" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SymSpellEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Wrapper class for a Java companion object</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyAnnotator">
+<span class="sig-name descname"><span class="pre">computeAccuracyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyModel">
+<span class="sig-name descname"><span class="pre">computeAccuracyModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spell</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.eval.SymSpellEvaluation.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.eval.SymSpellEvaluation.spark_version" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -465,33 +690,75 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.computeAccuracyAnnotator()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.computeAccuracyModel()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.computeAccuracyAnnotator()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.apply"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.computeAccuracyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.getDataFrame"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_array"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.new_java_obj"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.spark_version"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.spark_version()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.apply"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.apply()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.computeAccuracyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.getDataFrame"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_array"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.new_java_obj"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLEvaluation.spark_version"><code class="docutils literal notranslate"><span class="pre">NerDLEvaluation.spark_version()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.apply"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.apply()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.computeMetricsFromDF"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.computeMetricsFromDF()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.getDataFrame"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_array"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.new_java_obj"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerDLMetrics.spark_version"><code class="docutils literal notranslate"><span class="pre">NerDLMetrics.spark_version()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.computeAccuracyModel()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NerCrfEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">NerCrfEvaluation.computeAccuracyAnnotator()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.apply"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.computeAccuracyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.getDataFrame"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.new_java_obj"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.NorvigSpellEvaluation.spark_version"><code class="docutils literal notranslate"><span class="pre">NorvigSpellEvaluation.spark_version()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation"><code class="docutils literal notranslate"><span class="pre">POSEvaluation</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.apply"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.apply()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.computeAccuracyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.getDataFrame"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.new_java_array"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.new_java_obj"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.POSEvaluation.spark_version"><code class="docutils literal notranslate"><span class="pre">POSEvaluation.spark_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.apply"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyAnnotator"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.computeAccuracyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.computeAccuracyModel"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.computeAccuracyModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.getDataFrame"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_array"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.new_java_obj"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.eval.SymSpellEvaluation.spark_version"><code class="docutils literal notranslate"><span class="pre">SymSpellEvaluation.spark_version()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -500,14 +767,6 @@ document.write(`
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../_sources/reference/autosummary/sparknlp_jsl/eval/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

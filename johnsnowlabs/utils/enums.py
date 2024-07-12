@@ -22,7 +22,7 @@ class DatabricksClusterStates(BaseEnum):
 class JvmHardwareTarget(BaseEnum):
     gpu = "gpu"
     cpu = "cpu"
-    m1 = "m1"
+    m1 = "apple_silicon"
     aarch = "aarch"
 
     @classmethod

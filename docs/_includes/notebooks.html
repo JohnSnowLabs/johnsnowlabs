@@ -1,0 +1,41 @@
+{%- for _section in page.notebooks -%}
+<div class="notebook-section">
+    <div class="grid--container">
+        <h2 class="h2_title cat_h2 tac grey">Notebooks</h2>
+        <div class="grid grid--p-3">
+            {%- if _section.source -%}
+                {%- assign _size = _section.source | size  -%}
+                {%- for child in _section.source -%}
+                        <div class="cell cell--12 cell--md-4 cell--lg-4 cell--sm-12">
+                            <div class="filter_item shadow">
+                                {%- if child.image and child.image.src -%}            
+
+                                    {%- include snippets/get-nav-url.html path=child.image.src -%}                
+                                    {%- assign _item_image_src = __return -%}
+                                    {%- include snippets/get-nav-url.html path=child.logo_image.src -%}  
+                                    {%- assign _logo_image = __return -%}
+                                    <div class="filter_item_top">
+                                        <div class="filter_item_title mont">{{ child.title }}{%- if _logo_image -%} <figure><img src="{{ _logo_image }}" alt=""></figure> {%- endif -%}</div>
+                                        <figure class="filter-img"><img src="{{ _item_image_src }}" alt=""></figure>
+                                    </div>
+                                {%- endif -%}
+                                {%- if child.actions -%}
+                                    {%- for _action in child.actions -%}
+                                        {%- include snippets/get-nav-url.html path=_action.url -%}
+                                        {%- assign _url = __return -%}
+                                        {%- assign _type = _action.type | default: 'outline-info' -%}
+                                        <div class="filter_item_bottom tac">
+                                            <p>
+                                                <a target="_blank" rel="noopener" href="{{ _url }}" class="btn1 trans small">{{ _action.text }}</a>
+                                            </p>
+                                        </div>
+                                    {%- endfor-%}
+                                {%- endif -%}
+                            </div>
+                        </div>                
+                {%- endfor-%}
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+{%- endfor-%}

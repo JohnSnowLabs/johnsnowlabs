@@ -33,17 +33,18 @@ This pretrained pipeline maps entities (Clinical Findings) with their correspond
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
-pipeline= PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
-pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
+pipeline = PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
+result = pipeline.fullAnnotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity.")
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline= PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
-val pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
+val pipeline = PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
+val result = pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
 ```
 
 

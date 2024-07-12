@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [nerdl_tumour_demo](https://nlp.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

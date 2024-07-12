@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_glove
 date: 2021-06-06
 tags: [ner, deid, licensed, en, glove, clinical]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.0.4

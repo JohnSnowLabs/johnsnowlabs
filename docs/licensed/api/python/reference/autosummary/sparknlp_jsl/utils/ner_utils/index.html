@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/ner_utils/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -269,13 +272,16 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../alab_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.alab_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conll_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.conll_parse</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deidentification_module/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_module</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deidentification_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../imports/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.imports</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java_helper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.java_helper</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licensed_annotator_type/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.licensed_annotator_type</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../log_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.log_parse</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ner_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_nlp_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_nlp_processor</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../risk_adjustment_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.risk_adjustment_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../run_transpiled_code/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.run_transpiled_code</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training_log_parser_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.training_log_parser_utils</span></code></a></li>
 </ul>
 </div>
@@ -339,57 +345,32 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ner_utils.get_charts" title="sparknlp_jsl.utils.ner_utils.get_charts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_charts</span></code></a>(log_file[, threshold])</p></td>
-<td><p>Plots the figures of metrics ( precision, recall, f1) vs epochs</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ner_utils.loss_plot" title="sparknlp_jsl.utils.ner_utils.loss_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loss_plot</span></code></a>(log_path)</p></td>
-<td><p>Plots the figure of loss vs epochs</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ner_utils.evaluate" title="sparknlp_jsl.utils.ner_utils.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a>(true_seqs, pred_seqs[, verbose])</p></td>
-<td><p>if verbose, returns overall performance, as well as performance per chunk type;</p></td>
+<td><p>Evaluate performance of a sequence tagger.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ner_utils.evaluate_conll_file" title="sparknlp_jsl.utils.ner_utils.evaluate_conll_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_conll_file</span></code></a>(fileIterator)</p></td>
-<td><p>prints overall performance, as well as performance per chunk type</p></td>
+<td><p>Prints overall performance, as well as performance per chunk type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ner_utils.get_charts" title="sparknlp_jsl.utils.ner_utils.get_charts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_charts</span></code></a>(log_file[, threshold])</p></td>
+<td><p>Plots the figures of metrics ( precision, recall, f1) vs epochs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ner_utils.loss_plot" title="sparknlp_jsl.utils.ner_utils.loss_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loss_plot</span></code></a>(log_path)</p></td>
+<td><p>Plots the figure of loss vs epochs.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.get_charts">
-<span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#get_charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.get_charts" title="Permalink to this definition">#</a></dt>
-<dd><blockquote>
-<div><p>Plots the figures of metrics ( precision, recall, f1) vs epochs</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_file</strong> – path to the log file</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.loss_plot">
-<span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#loss_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.loss_plot" title="Permalink to this definition">#</a></dt>
-<dd><blockquote>
-<div><p>Plots the figure of loss vs epochs</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_path</strong> – path to the log file</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate" title="Permalink to this definition">#</a></dt>
-<dd><p>if verbose, returns overall performance, as well as performance per chunk type;
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluate performance of a sequence tagger.</p>
+<p>If verbose, returns overall performance, as well as performance per chunk type;
 otherwise, simply returns overall precision, recall, f1 scores</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>true_seqs</strong> – a list of true tags</p></li>
-<li><p><strong>pred_seqs</strong> – a list of predicted tags</p></li>
-<li><p><strong>verbose</strong> – boolean</p></li>
+<li><p><strong>true_seqs</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – a list of true tags</p></li>
+<li><p><strong>pred_seqs</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – a list of predicted tags</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – whether to print overall performance, as well as performance per chunk type (default is True).</p></li>
 </ul>
 </dd>
 </dl>
@@ -397,8 +378,33 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.evaluate_conll_file">
-<span class="sig-name descname"><span class="pre">evaluate_conll_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIterator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#evaluate_conll_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate_conll_file" title="Permalink to this definition">#</a></dt>
-<dd><p>prints overall performance, as well as performance per chunk type</p>
+<span class="sig-name descname"><span class="pre">evaluate_conll_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIterator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate_conll_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Prints overall performance, as well as performance per chunk type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.get_charts">
+<span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.get_charts" title="Permalink to this definition">#</a></dt>
+<dd><p>Plots the figures of metrics ( precision, recall, f1) vs epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_file</strong> (<em>str</em>) – path to the log file</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – threshold, default 0.0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.loss_plot">
+<span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.loss_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plots the figure of loss vs epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_path</strong> (<em>str</em>) – path to the log file</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -436,24 +442,16 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ner_utils.get_charts"><code class="docutils literal notranslate"><span class="pre">get_charts()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ner_utils.loss_plot"><code class="docutils literal notranslate"><span class="pre">loss_plot()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ner_utils.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ner_utils.evaluate_conll_file"><code class="docutils literal notranslate"><span class="pre">evaluate_conll_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ner_utils.get_charts"><code class="docutils literal notranslate"><span class="pre">get_charts()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ner_utils.loss_plot"><code class="docutils literal notranslate"><span class="pre">loss_plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/utils/ner_utils/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

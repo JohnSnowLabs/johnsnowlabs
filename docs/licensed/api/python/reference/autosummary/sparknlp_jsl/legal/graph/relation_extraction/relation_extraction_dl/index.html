@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../../static/doctools.js"></script>
     <script src="../../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/legal/graph/relation_extraction/relation_extraction_dl/index';</script>
     <link rel="shortcut icon" href="../../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -297,6 +300,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_classifier_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_classifier_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/legal_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../sequence_generation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_generation</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -385,8 +389,9 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RelationExtractionDLModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.graph.relation_extraction.RelationExtractionDLModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/graph/relation_extraction/relation_extraction_dl.html#RelationExtractionDLModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Extracts and classifies instances of relations between named entities.
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RelationExtractionDLModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.graph.relation_extraction.RelationExtractionDLModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.RelationExtractionDLModel</span></code></p>
+<p>Extracts and classifies instances of relations between named entities.
 In contrast with RelationExtractionModel, RelationExtractionDLModel is based on BERT.
 For pretrained models please see the</p>
 <table class="table">
@@ -403,12 +408,10 @@ For pretrained models please see the</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>predictionThreshold</strong></dt><dd><p>Minimal activation of the target unit to encode a new relation instance</p>
-</dd>
-<dt><strong>batchSize</strong></dt><dd><p>Number of relations to process at once</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictionThreshold</strong> – Minimal activation of the target unit to encode a new relation instance</p></li>
+<li><p><strong>batchSize</strong> – Number of relations to process at once</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -517,37 +520,458 @@ For pretrained models please see the</p>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.classes">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.customLabels">
+<span class="sig-name descname"><span class="pre">customLabels</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.customLabels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.doExceptionHandling">
+<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.doExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">RelationExtractionDLModel</span></em><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/graph/relation_extraction/relation_extraction_dl.html#RelationExtractionDLModel.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">RelationExtractionDLModel</span></em><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.predictionThreshold">
+<span class="sig-name descname"><span class="pre">predictionThreshold</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.predictionThreshold" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.relationPairsCaseSensitive">
+<span class="sig-name descname"><span class="pre">relationPairsCaseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.relationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.loadSavedModel">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/graph/relation_extraction/relation_extraction_dl.html#RelationExtractionDLModel.loadSavedModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Load a pre-trained RelationExtractionDLModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>folder (str): Folder containing the pre-trained model.
-spark_session (SparkSession): SparkSession.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
 </dd>
-<dt>Returns:</dt><dd><p>RelationExtractionDLModel: The pre-trained RelationExtractionDLModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getClasses">
+<span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getClasses" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns labels used during training.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getRelationTypePerPair">
+<span class="sig-name descname"><span class="pre">getRelationTypePerPair</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getRelationTypePerPair" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the list of entity pairs allowed for a given relation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.loadSavedModel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a pre-trained RelationExtractionDLModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – Folder containing the pre-trained model.</p></li>
+<li><p><strong>spark_session</strong> (<em>SparkSession</em>) – SparkSession.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The pre-trained RelationExtractionDLModel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel" title="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel">RelationExtractionDLModel</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/graph/relation_extraction/relation_extraction_dl.html#RelationExtractionDLModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legre_contract_doc_parties'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained RelationExtractionDLModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
-remote_loc (str): Remote location of the pre-trained model. If None, use the
-open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
-</dd>
-<dt>Returns:</dt><dd><p>RelationExtractionDLModel: A pre-trained RelationExtractionDLModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “legre_contract_doc_parties”</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model, by default “en”</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the</p></li>
+<li><p><strong>&quot;clinical/models&quot;</strong> (<em>open-source location. Other values are</em>) – </p></li>
+</ul>
 </dd>
 </dl>
+<p>:param :
+:param “finance/models”:
+:param or “legal/models”.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pre-trained RelationExtractionDLModel.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel" title="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel">RelationExtractionDLModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of relations to process at once</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Number of relations to process at once</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets case sensitivity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – True if case sensitive, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setCustomLabels">
+<span class="sig-name descname"><span class="pre">setCustomLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setCustomLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets custom relation labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>labels</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Dictionary which maps old to new labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setDoExceptionHandling">
+<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd><p>If True, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message.
+Processing continues with the next one. This comes with a performance penalty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, exceptions are handled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold">
+<span class="sig-name descname"><span class="pre">setPredictionThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimal activation of the target unit to encode a new relation instance. Default is 0.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<em>float</em>) – Minimal activation of the target unit to encode a new relation instance. Default is 0.5.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setRelationPairsCaseSensitive">
+<span class="sig-name descname"><span class="pre">setRelationPairsCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setRelationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the case sensitivity of relation pairs
+:param value: whether relation pairs are case sensitive
+:type value: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setRelationTypePerPair">
+<span class="sig-name descname"><span class="pre">setRelationTypePerPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relationTypePairs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setRelationTypePerPair" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the list of entity pairs allowed for a given relation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>relationTypePairs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -588,9 +1012,60 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.batchSize"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.classes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.customLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.customLabels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputCols"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.name"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.outputCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.predictionThreshold"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.predictionThreshold</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.relationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.relationPairsCaseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.clear"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.copy"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.explainParam"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.explainParams"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getClasses"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getParam"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.getRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.hasParam"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.isDefined"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.isSet"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.load"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.loadSavedModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.pretrained"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.read"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.save"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.set"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setBatchSize"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setCustomLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setParams"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setPredictionThreshold()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setRelationPairsCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.transform"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.write"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -599,14 +1074,6 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/legal/graph/relation_extraction/relation_extraction_dl/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

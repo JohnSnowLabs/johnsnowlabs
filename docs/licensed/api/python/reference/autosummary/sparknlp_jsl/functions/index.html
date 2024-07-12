@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/functions/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -320,13 +323,61 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profile" title="sparknlp_jsl.functions.profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model, default version: 24, year: 2019.</p></td>
+<td><p>CMS-HCC model, default version: 28, combined.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV24Y17" title="sparknlp_jsl.functions.profileV24Y17"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV24Y17</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 24, year 2017.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileESRDV21Y19" title="sparknlp_jsl.functions.profileESRDV21Y19"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileESRDV21Y19</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>CMS-HCC ESRD model version 21, year: 2019.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV24Y18" title="sparknlp_jsl.functions.profileV24Y18"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV24Y18</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 24, year 2018.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y20" title="sparknlp_jsl.functions.profileRxHCCV05Y20"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y20</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2020.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y21" title="sparknlp_jsl.functions.profileRxHCCV05Y21"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y21</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2021.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y22" title="sparknlp_jsl.functions.profileRxHCCV05Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y22</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2022.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y23" title="sparknlp_jsl.functions.profileRxHCCV05Y23"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y23</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2023.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV08Y22" title="sparknlp_jsl.functions.profileRxHCCV08Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV08Y22</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 08, year 2022.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV08Y23" title="sparknlp_jsl.functions.profileRxHCCV08Y23"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV08Y23</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 08, year 2023.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22" title="sparknlp_jsl.functions.profileV22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, combined.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y17" title="sparknlp_jsl.functions.profileV22Y17"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y17</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, year 2017.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y18" title="sparknlp_jsl.functions.profileV22Y18"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y18</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, year 2018.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y19" title="sparknlp_jsl.functions.profileV22Y19"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y19</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, year 2019.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y20" title="sparknlp_jsl.functions.profileV22Y20"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y20</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, year 2020.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y21" title="sparknlp_jsl.functions.profileV22Y21"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y21</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, year 2021.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y22" title="sparknlp_jsl.functions.profileV22Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y22</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 22, year 2022.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV23" title="sparknlp_jsl.functions.profileV23"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV23</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 23, combined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV23Y18" title="sparknlp_jsl.functions.profileV23Y18"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV23Y18</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 23, year 2018.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV23Y19" title="sparknlp_jsl.functions.profileV23Y19"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV23Y19</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 23, year 2019.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV24" title="sparknlp_jsl.functions.profileV24"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV24</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 24, combined.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV24Y19" title="sparknlp_jsl.functions.profileV24Y19"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV24Y19</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
 <td><p>CMS-HCC model version 24, year 2019.</p></td>
@@ -340,138 +391,1119 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV24Y22" title="sparknlp_jsl.functions.profileV24Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV24Y22</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
 <td><p>CMS-HCC model version 24, year 2022.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV23Y18" title="sparknlp_jsl.functions.profileV23Y18"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV23Y18</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 23, year 2018.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV28" title="sparknlp_jsl.functions.profileV28"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV28</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 28, Combined.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV23Y19" title="sparknlp_jsl.functions.profileV23Y19"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV23Y19</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 23, year 2019.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV23" title="sparknlp_jsl.functions.profileV23"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV23</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 23, combined.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y17" title="sparknlp_jsl.functions.profileV22Y17"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y17</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, year 2017.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y18" title="sparknlp_jsl.functions.profileV22Y18"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y18</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, year 2018.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y19" title="sparknlp_jsl.functions.profileV22Y19"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y19</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, year 2019.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y20" title="sparknlp_jsl.functions.profileV22Y20"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y20</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, year 2020.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y21" title="sparknlp_jsl.functions.profileV22Y21"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y21</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, year 2021.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22Y22" title="sparknlp_jsl.functions.profileV22Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22Y22</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, year 2022.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22" title="sparknlp_jsl.functions.profileV22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
-<td><p>CMS-HCC model version 22, combined.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV28Y24" title="sparknlp_jsl.functions.profileV28Y24"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV28Y24</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
+<td><p>CMS-HCC model version 28, year 2024.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.functions.profile">
-<span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profile" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model, default version: 24, year: 2019.</p>
+<span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profile" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model, default version: 28, combined.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – <p>The eligibility segment of the patient.
+Allowed values are as follows:</p>
+<ul>
+<li><p>”CFA”: Community Full Benefit Dual Aged</p></li>
+<li><p>”CFD”: Community Full Benefit Dual Disabled</p></li>
+<li><p>”CNA”: Community NonDual Aged</p></li>
+<li><p>”CND”: Community NonDual Disabled</p></li>
+<li><p>”CPA”: Community Partial Benefit Dual Aged</p></li>
+<li><p>”CPD”: Community Partial Benefit Dual Disabled</p></li>
+<li><p>”INS”: Long Term Institutional</p></li>
+<li><p>”NE”: New Enrollee</p></li>
+<li><p>”SNPNE”: SNP NE</p></li>
+</ul>
+</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y17">
-<span class="sig-name descname"><span class="pre">profileV24Y17</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV24Y17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y17" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 24, year 2017.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileESRDV21Y19">
+<span class="sig-name descname"><span class="pre">profileESRDV21Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DI'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileESRDV21Y19" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC ESRD model version 21, year: 2019.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+“DI”, “GC”, “GI”, “DNE”, “GNE”</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y18">
-<span class="sig-name descname"><span class="pre">profileV24Y18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV24Y18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y18" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 24, year 2018.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y20">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y20</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y20" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2020.</p>
+<p>Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+<section id="input-parameters">
+<h4>INPUT PARAMETERS<a class="headerlink" href="#input-parameters" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><dl>
+<dt>code_array<span class="classifier">list of str</span></dt><dd><p>A list of ICD10 codes for the measurement year.</p>
+</dd>
+<dt>age<span class="classifier">int</span></dt><dd><p>The age of the patient.</p>
+</dd>
+<dt>sex<span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The sex of the patient.</dt><dd><ul class="simple">
+<li><p>“M” : Male</p></li>
+<li><p>“F” : Female</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>elig<span class="classifier">str</span></dt><dd><p>The eligibility segment of the patient. The risk score can vary when different “elig” are used.
+There are five risk adjustable continuing models and three new enrollee models.
+- “CE_NoLowAged”: Community, Non-Low Income, Aged, Continuing Enrollee
+- “CE_NoLowNoAged”: Community, Non-Low Income, Non-Aged, Continuing Enrollee
+- “CE_LowAged”: Community, Low Income, Aged, Continuing Enrollee
+- “CE_LowNoAged”: Community, Low Income, Non-Aged, Continuing Enrollee
+- “CE_LTI”: Institutional Continuing Enrollee
+- “NE_NoLo”: Community, Non-Low Income, New Enrollee
+- “NE_Lo”: Community, Low Income, New Enrollee
+- “NE_LTI”: Institutional New Enrollee</p>
+<p>The term “Non-Aged” is used for those younger than 65 because this group includes beneficiaries eligible
+for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</p>
+</dd>
+<dt>orec: str</dt><dd><dl class="simple">
+<dt>Original reason for entitlement code.</dt><dd><ul class="simple">
+<li><p>“0”: Old age and survivor’s insurance</p></li>
+<li><p>“1”: Disability insurance benefits (DISABILITY)</p></li>
+<li><p>“2”: End-stage renal disease (ESRD)</p></li>
+<li><p>“3”: Both DISABILITY and ESRD</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>esrd: bool</dt><dd><dl class="simple">
+<dt>End-stage renal disease indicator with the following values for the payment year:</dt><dd><ul class="simple">
+<li><p>False: no ESRD</p></li>
+<li><p>True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary
+will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="output-parameters">
+<h4>OUTPUT PARAMETERS<a class="headerlink" href="#output-parameters" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>“risk_score” : The risk score of the patient according to the given INPUT parameters.</p></li>
+<li><p>“risk_score_age” : The risk score related to the patient’s age.</p></li>
+<li><p>“risk_score_adj” : The patient’s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“risk_score_age_adj” : The risk score related to the patient’s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“details”: The dictionary of coefficients and risk scores.</p></li>
+<li><p>“rxhcc_lst” : The list of RxHCC’s before interaction.</p></li>
+<li><p>“rxhcc_map” : The dictionary of RxHCC mapping before applying hierarchy.</p></li>
+<li><p>“model” : The model of the CMS-RxHCC.</p></li>
+<li><p>“parameters” : The information of the parameters.</p></li>
+</ul>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y19">
-<span class="sig-name descname"><span class="pre">profileV24Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV24Y19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y19" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 24, year 2019.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y21">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y21" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2021.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+<section id="id1">
+<h4>INPUT PARAMETERS<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><dl>
+<dt>code_array<span class="classifier">list of str</span></dt><dd><p>A list of ICD10 codes for the measurement year.</p>
+</dd>
+<dt>age<span class="classifier">int</span></dt><dd><p>The age of the patient.</p>
+</dd>
+<dt>sex<span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The sex of the patient.</dt><dd><ul class="simple">
+<li><p>“M” : Male</p></li>
+<li><p>“F” : Female</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>elig<span class="classifier">str</span></dt><dd><p>The eligibility segment of the patient. The risk score can vary when different “elig” are used.
+There are five risk adjustable continuing models and three new enrollee models.</p>
+<ul class="simple">
+<li><p>“CE_NoLowAged”: Community, Non-Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_NoLowNoAged”: Community, Non-Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowAged”: Community, Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowNoAged”: Community, Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LTI”: Institutional Continuing Enrollee</p></li>
+<li><p>“NE_NoLo”: Community, Non-Low Income, New Enrollee</p></li>
+<li><p>“NE_Lo”: Community, Low Income, New Enrollee</p></li>
+<li><p>“NE_LTI”: Institutional New Enrollee</p></li>
+</ul>
+<p>The term “Non-Aged” is used for those younger than 65 because this group includes beneficiaries eligible
+for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</p>
+</dd>
+<dt>orec: str</dt><dd><dl class="simple">
+<dt>Original reason for entitlement code.</dt><dd><ul class="simple">
+<li><p>“0”: Old age and survivor’s insurance</p></li>
+<li><p>“1”: Disability insurance benefits (DISABILITY)</p></li>
+<li><p>“2”: End-stage renal disease (ESRD)</p></li>
+<li><p>“3”: Both DISABILITY and ESRD</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>esrd: bool</dt><dd><dl class="simple">
+<dt>End-stage renal disease indicator with the following values for the payment year:</dt><dd><ul class="simple">
+<li><p>False: no ESRD</p></li>
+<li><p>True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary
+will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id2">
+<h4>OUTPUT PARAMETERS<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>“risk_score” : The risk score of the patient according to the given INPUT parameters.</p></li>
+<li><p>“risk_score_age” : The risk score related to the patient’s age.</p></li>
+<li><p>“risk_score_adj” : The patient’s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“risk_score_age_adj” : The risk score related to the patient’s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“details”: The dictionary of coefficients and risk scores.</p></li>
+<li><p>“rxhcc_lst” : The list of RxHCC’s before interaction.</p></li>
+<li><p>“rxhcc_map” : The dictionary of RxHCC mapping before applying hierarchy.</p></li>
+<li><p>“model” : The model of the CMS-RxHCC.</p></li>
+<li><p>“parameters” : The information of the parameters.</p></li>
+</ul>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y20">
-<span class="sig-name descname"><span class="pre">profileV24Y20</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV24Y20"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y20" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 24, year 2020.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y22">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y22" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2022.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+<section id="id3">
+<h4>INPUT PARAMETERS<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><dl>
+<dt>code_array<span class="classifier">list of str</span></dt><dd><p>A list of ICD10 codes for the measurement year.</p>
+</dd>
+<dt>age<span class="classifier">int</span></dt><dd><p>The age of the patient.</p>
+</dd>
+<dt>sex<span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The sex of the patient.</dt><dd><ul class="simple">
+<li><p>“M” : Male</p></li>
+<li><p>“F” : Female</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>elig<span class="classifier">str</span></dt><dd><p>The eligibility segment of the patient. The risk score can vary when different “elig” are used.
+There are five risk adjustable continuing models and three new enrollee models.</p>
+<ul class="simple">
+<li><p>“CE_NoLowAged”: Community, Non-Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_NoLowNoAged”: Community, Non-Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowAged”: Community, Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowNoAged”: Community, Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LTI”: Institutional Continuing Enrollee</p></li>
+<li><p>“NE_NoLo”: Community, Non-Low Income, New Enrollee</p></li>
+<li><p>“NE_Lo”: Community, Low Income, New Enrollee</p></li>
+<li><p>“NE_LTI”: Institutional New Enrollee</p></li>
+</ul>
+<p>The term “Non-Aged” is used for those younger than 65 because this group includes beneficiaries eligible
+for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</p>
+</dd>
+<dt>orec: str</dt><dd><dl class="simple">
+<dt>Original reason for entitlement code.</dt><dd><ul class="simple">
+<li><p>“0”: Old age and survivor’s insurance</p></li>
+<li><p>“1”: Disability insurance benefits (DISABILITY)</p></li>
+<li><p>“2”: End-stage renal disease (ESRD)</p></li>
+<li><p>“3”: Both DISABILITY and ESRD</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>esrd: bool</dt><dd><dl class="simple">
+<dt>End-stage renal disease indicator with the following values for the payment year:</dt><dd><ul class="simple">
+<li><p>False: no ESRD</p></li>
+<li><p>True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary
+will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id4">
+<h4>OUTPUT PARAMETERS<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>“risk_score” : The risk score of the patient according to the given INPUT parameters.</p></li>
+<li><p>“risk_score_age” : The risk score related to the patient’s age.</p></li>
+<li><p>“risk_score_adj” : The patient’s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“risk_score_age_adj” : The risk score related to the patient’s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“details”: The dictionary of coefficients and risk scores.</p></li>
+<li><p>“rxhcc_lst” : The list of RxHCC’s before interaction.</p></li>
+<li><p>“rxhcc_map” : The dictionary of RxHCC mapping before applying hierarchy.</p></li>
+<li><p>“model” : The model of the CMS-RxHCC.</p></li>
+<li><p>“parameters” : The information of the parameters.</p></li>
+</ul>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y21">
-<span class="sig-name descname"><span class="pre">profileV24Y21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV24Y21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y21" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 24, year 2021.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y23">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y23</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y23" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2023.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+<section id="id5">
+<h4>INPUT PARAMETERS<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><dl>
+<dt>code_array<span class="classifier">list of str</span></dt><dd><p>A list of ICD10 codes for the measurement year.</p>
+</dd>
+<dt>age<span class="classifier">int</span></dt><dd><p>The age of the patient.</p>
+</dd>
+<dt>sex<span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The sex of the patient.</dt><dd><ul class="simple">
+<li><p>“M” : Male</p></li>
+<li><p>“F” : Female</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>elig<span class="classifier">str</span></dt><dd><p>The eligibility segment of the patient. The risk score can vary when different “elig” are used.
+There are five risk adjustable continuing models and three new enrollee models.</p>
+<ul class="simple">
+<li><p>“CE_NoLowAged”: Community, Non-Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_NoLowNoAged”: Community, Non-Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowAged”: Community, Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowNoAged”: Community, Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LTI”: Institutional Continuing Enrollee</p></li>
+<li><p>“NE_NoLo”: Community, Non-Low Income, New Enrollee</p></li>
+<li><p>“NE_Lo”: Community, Low Income, New Enrollee</p></li>
+<li><p>“NE_LTI”: Institutional New Enrollee</p></li>
+</ul>
+<p>The term “Non-Aged” is used for those younger than 65 because this group includes beneficiaries eligible
+for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</p>
+</dd>
+<dt>orec: str</dt><dd><dl class="simple">
+<dt>Original reason for entitlement code.</dt><dd><ul class="simple">
+<li><p>“0”: Old age and survivor’s insurance</p></li>
+<li><p>“1”: Disability insurance benefits (DISABILITY)</p></li>
+<li><p>“2”: End-stage renal disease (ESRD)</p></li>
+<li><p>“3”: Both DISABILITY and ESRD</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>esrd: bool</dt><dd><dl class="simple">
+<dt>End-stage renal disease indicator with the following values for the payment year:</dt><dd><ul class="simple">
+<li><p>False: no ESRD</p></li>
+<li><p>True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary
+will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id6">
+<h4>OUTPUT PARAMETERS<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>“risk_score” : The risk score of the patient according to the given INPUT parameters.</p></li>
+<li><p>“risk_score_age” : The risk score related to the patient’s age.</p></li>
+<li><p>“risk_score_adj” : The patient’s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“risk_score_age_adj” : The risk score related to the patient’s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“details”: The dictionary of coefficients and risk scores.</p></li>
+<li><p>“rxhcc_lst” : The list of RxHCC’s before interaction.</p></li>
+<li><p>“rxhcc_map” : The dictionary of RxHCC mapping before applying hierarchy.</p></li>
+<li><p>“model” : The model of the CMS-RxHCC.</p></li>
+<li><p>“parameters” : The information of the parameters.</p></li>
+</ul>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y22">
-<span class="sig-name descname"><span class="pre">profileV24Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV24Y22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y22" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 24, year 2022.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV08Y22">
+<span class="sig-name descname"><span class="pre">profileRxHCCV08Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV08Y22" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 08, year 2022.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+<section id="id7">
+<h4>INPUT PARAMETERS<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><dl>
+<dt>code_array<span class="classifier">list of str</span></dt><dd><p>A list of ICD10 codes for the measurement year.</p>
+</dd>
+<dt>age<span class="classifier">int</span></dt><dd><p>The age of the patient.</p>
+</dd>
+<dt>sex<span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The sex of the patient.</dt><dd><ul class="simple">
+<li><p>“M” : Male</p></li>
+<li><p>“F” : Female</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>elig<span class="classifier">str</span></dt><dd><p>The eligibility segment of the patient. The risk score can vary when different “elig” are used.
+There are five risk adjustable continuing models and three new enrollee models.</p>
+<ul class="simple">
+<li><p>“CE_NoLowAged”: Community, Non-Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_NoLowNoAged”: Community, Non-Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowAged”: Community, Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowNoAged”: Community, Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LTI”: Institutional Continuing Enrollee</p></li>
+<li><p>“NE_NoLo”: Community, Non-Low Income, New Enrollee</p></li>
+<li><p>“NE_Lo”: Community, Low Income, New Enrollee</p></li>
+<li><p>“NE_LTI”: Institutional New Enrollee</p></li>
+</ul>
+<p>The term “Non-Aged” is used for those younger than 65 because this group includes beneficiaries eligible
+for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</p>
+</dd>
+<dt>orec: str</dt><dd><dl class="simple">
+<dt>Original reason for entitlement code.</dt><dd><ul class="simple">
+<li><p>“0”: Old age and survivor’s insurance</p></li>
+<li><p>“1”: Disability insurance benefits (DISABILITY)</p></li>
+<li><p>“2”: End-stage renal disease (ESRD)</p></li>
+<li><p>“3”: Both DISABILITY and ESRD</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>esrd: bool</dt><dd><dl class="simple">
+<dt>End-stage renal disease indicator with the following values for the payment year:</dt><dd><ul class="simple">
+<li><p>False: no ESRD</p></li>
+<li><p>True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary
+will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id8">
+<h4>OUTPUT PARAMETERS<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>“risk_score” : The risk score of the patient according to the given INPUT parameters.</p></li>
+<li><p>“risk_score_age” : The risk score related to the patient’s age.</p></li>
+<li><p>“risk_score_adj” : The patient’s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“risk_score_age_adj” : The risk score related to the patient’s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“details”: The dictionary of coefficients and risk scores.</p></li>
+<li><p>“rxhcc_lst” : The list of RxHCC’s before interaction.</p></li>
+<li><p>“rxhcc_map” : The dictionary of RxHCC mapping before applying hierarchy.</p></li>
+<li><p>“model” : The model of the CMS-RxHCC.</p></li>
+<li><p>“parameters” : The information of the parameters.</p></li>
+</ul>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV23Y18">
-<span class="sig-name descname"><span class="pre">profileV23Y18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV23Y18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV23Y18" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 23, year 2018.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV23Y19">
-<span class="sig-name descname"><span class="pre">profileV23Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV23Y19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV23Y19" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 23, year 2019.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV23">
-<span class="sig-name descname"><span class="pre">profileV23</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV23" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 23, combined.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y17">
-<span class="sig-name descname"><span class="pre">profileV22Y17</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22Y17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y17" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 22, year 2017.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y18">
-<span class="sig-name descname"><span class="pre">profileV22Y18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22Y18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y18" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 22, year 2018.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y19">
-<span class="sig-name descname"><span class="pre">profileV22Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22Y19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y19" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 22, year 2019.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y20">
-<span class="sig-name descname"><span class="pre">profileV22Y20</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22Y20"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y20" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 22, year 2020.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y21">
-<span class="sig-name descname"><span class="pre">profileV22Y21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22Y21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y21" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 22, year 2021.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y22">
-<span class="sig-name descname"><span class="pre">profileV22Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22Y22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y22" title="Permalink to this definition">#</a></dt>
-<dd><p>CMS-HCC model version 22, year 2022.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV08Y23">
+<span class="sig-name descname"><span class="pre">profileRxHCCV08Y23</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV08Y23" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 08, year 2023.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+<section id="id9">
+<h4>INPUT PARAMETERS<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><dl>
+<dt>code_array<span class="classifier">list of str</span></dt><dd><p>A list of ICD10 codes for the measurement year.</p>
+</dd>
+<dt>age<span class="classifier">int</span></dt><dd><p>The age of the patient.</p>
+</dd>
+<dt>sex<span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The sex of the patient.</dt><dd><ul class="simple">
+<li><p>“M” : Male</p></li>
+<li><p>“F” : Female</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>elig<span class="classifier">str</span></dt><dd><p>The eligibility segment of the patient. The risk score can vary when different “elig” are used.
+There are five risk adjustable continuing models and three new enrollee models.</p>
+<ul class="simple">
+<li><p>“CE_NoLowAged”: Community, Non-Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_NoLowNoAged”: Community, Non-Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowAged”: Community, Low Income, Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LowNoAged”: Community, Low Income, Non-Aged, Continuing Enrollee</p></li>
+<li><p>“CE_LTI”: Institutional Continuing Enrollee</p></li>
+<li><p>“NE_NoLo”: Community, Non-Low Income, New Enrollee</p></li>
+<li><p>“NE_Lo”: Community, Low Income, New Enrollee</p></li>
+<li><p>“NE_LTI”: Institutional New Enrollee</p></li>
+</ul>
+<p>The term “Non-Aged” is used for those younger than 65 because this group includes beneficiaries eligible
+for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</p>
+</dd>
+<dt>orec: str</dt><dd><dl class="simple">
+<dt>Original reason for entitlement code.</dt><dd><ul class="simple">
+<li><p>“0”: Old age and survivor’s insurance</p></li>
+<li><p>“1”: Disability insurance benefits (DISABILITY)</p></li>
+<li><p>“2”: End-stage renal disease (ESRD)</p></li>
+<li><p>“3”: Both DISABILITY and ESRD</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>esrd: bool</dt><dd><dl class="simple">
+<dt>End-stage renal disease indicator with the following values for the payment year:</dt><dd><ul class="simple">
+<li><p>False: no ESRD</p></li>
+<li><p>True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary
+will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id10">
+<h4>OUTPUT PARAMETERS<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>“risk_score” : The risk score of the patient according to the given INPUT parameters.</p></li>
+<li><p>“risk_score_age” : The risk score related to the patient’s age.</p></li>
+<li><p>“risk_score_adj” : The patient’s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“risk_score_age_adj” : The risk score related to the patient’s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</p></li>
+<li><p>“details”: The dictionary of coefficients and risk scores.</p></li>
+<li><p>“rxhcc_lst” : The list of RxHCC’s before interaction.</p></li>
+<li><p>“rxhcc_map” : The dictionary of RxHCC mapping before applying hierarchy.</p></li>
+<li><p>“model” : The model of the CMS-RxHCC.</p></li>
+<li><p>“parameters” : The information of the parameters.</p></li>
+</ul>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22">
-<span class="sig-name descname"><span class="pre">profileV22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileV22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileV22" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">profileV22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22" title="Permalink to this definition">#</a></dt>
 <dd><p>CMS-HCC model version 22, combined.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y17">
+<span class="sig-name descname"><span class="pre">profileV22Y17</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y17" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 22, year 2017.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y18">
+<span class="sig-name descname"><span class="pre">profileV22Y18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y18" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 22, year 2018.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y19">
+<span class="sig-name descname"><span class="pre">profileV22Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y19" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 22, year 2019.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y20">
+<span class="sig-name descname"><span class="pre">profileV22Y20</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y20" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 22, year 2020.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y21">
+<span class="sig-name descname"><span class="pre">profileV22Y21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y21" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 22, year 2021.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV22Y22">
+<span class="sig-name descname"><span class="pre">profileV22Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV22Y22" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 22, year 2022.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV23">
+<span class="sig-name descname"><span class="pre">profileV23</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV23" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 23, combined.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV23Y18">
+<span class="sig-name descname"><span class="pre">profileV23Y18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV23Y18" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 23, year 2018.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV23Y19">
+<span class="sig-name descname"><span class="pre">profileV23Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV23Y19" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 23, year 2019.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24">
+<span class="sig-name descname"><span class="pre">profileV24</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV24" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 24, combined.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y19">
+<span class="sig-name descname"><span class="pre">profileV24Y19</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y19" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 24, year 2019.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y20">
+<span class="sig-name descname"><span class="pre">profileV24Y20</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y20" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 24, year 2020.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y21">
+<span class="sig-name descname"><span class="pre">profileV24Y21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y21" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 24, year 2021.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV24Y22">
+<span class="sig-name descname"><span class="pre">profileV24Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV24Y22" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 24, year 2022.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV28">
+<span class="sig-name descname"><span class="pre">profileV28</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV28" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 28, Combined.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileV28Y24">
+<span class="sig-name descname"><span class="pre">profileV28Y24</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medicaid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.functions.profileV28Y24" title="Permalink to this definition">#</a></dt>
+<dd><p>CMS-HCC model version 28, year 2024.</p>
+<p>Returns the HCC risk profile of a given patient information.
+When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_array</strong> (<em>list</em><em> of </em><em>str</em>) – A list of ICD10 codes for the measurement year.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the patient.</p></li>
+<li><p><strong>sex</strong> (<em>str</em>) – The sex of the patient; {“M”, “F”}</p></li>
+<li><p><strong>elig</strong> (<em>str</em>) – The eligibility segment of the patient.
+Allowed values are as follows:
+- “CFA”: Community Full Benefit Dual Aged
+- “CFD”: Community Full Benefit Dual Disabled
+- “CNA”: Community NonDual Aged
+- “CND”: Community NonDual Disabled
+- “CPA”: Community Partial Benefit Dual Aged
+- “CPD”: Community Partial Benefit Dual Disabled
+- “INS”: Long Term Institutional
+- “NE”: New Enrollee
+- “SNPNE”: SNP NE</p></li>
+<li><p><strong>orec</strong> (<em>str</em>) – Original reason for entitlement code.
+- “0”: Old age and survivor’s insurance
+- “1”: Disability insurance benefits
+- “2”: End-stage renal disease
+- “3”: Both DIB and ESRD</p></li>
+<li><p><strong>medicaid</strong> (<em>bool</em>) – If the patient is in Medicaid or not.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -510,36 +1542,36 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profile"><code class="docutils literal notranslate"><span class="pre">profile()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y17"><code class="docutils literal notranslate"><span class="pre">profileV24Y17()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y18"><code class="docutils literal notranslate"><span class="pre">profileV24Y18()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y19"><code class="docutils literal notranslate"><span class="pre">profileV24Y19()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y20"><code class="docutils literal notranslate"><span class="pre">profileV24Y20()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y21"><code class="docutils literal notranslate"><span class="pre">profileV24Y21()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y22"><code class="docutils literal notranslate"><span class="pre">profileV24Y22()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV23Y18"><code class="docutils literal notranslate"><span class="pre">profileV23Y18()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV23Y19"><code class="docutils literal notranslate"><span class="pre">profileV23Y19()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV23"><code class="docutils literal notranslate"><span class="pre">profileV23()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileESRDV21Y19"><code class="docutils literal notranslate"><span class="pre">profileESRDV21Y19()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y20"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y20()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y21"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y21()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y22"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y23"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y23()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV08Y22"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV08Y22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV08Y23"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV08Y23()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22"><code class="docutils literal notranslate"><span class="pre">profileV22()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y17"><code class="docutils literal notranslate"><span class="pre">profileV22Y17()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y18"><code class="docutils literal notranslate"><span class="pre">profileV22Y18()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y19"><code class="docutils literal notranslate"><span class="pre">profileV22Y19()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y20"><code class="docutils literal notranslate"><span class="pre">profileV22Y20()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y21"><code class="docutils literal notranslate"><span class="pre">profileV22Y21()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y22"><code class="docutils literal notranslate"><span class="pre">profileV22Y22()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22"><code class="docutils literal notranslate"><span class="pre">profileV22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV23"><code class="docutils literal notranslate"><span class="pre">profileV23()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV23Y18"><code class="docutils literal notranslate"><span class="pre">profileV23Y18()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV23Y19"><code class="docutils literal notranslate"><span class="pre">profileV23Y19()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24"><code class="docutils literal notranslate"><span class="pre">profileV24()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y19"><code class="docutils literal notranslate"><span class="pre">profileV24Y19()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y20"><code class="docutils literal notranslate"><span class="pre">profileV24Y20()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y21"><code class="docutils literal notranslate"><span class="pre">profileV24Y21()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV24Y22"><code class="docutils literal notranslate"><span class="pre">profileV24Y22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV28"><code class="docutils literal notranslate"><span class="pre">profileV28()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV28Y24"><code class="docutils literal notranslate"><span class="pre">profileV28Y24()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../_sources/reference/autosummary/sparknlp_jsl/functions/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

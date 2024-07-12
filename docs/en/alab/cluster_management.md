@@ -2,11 +2,11 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Cluster Management
 permalink: /docs/en/alab/cluster_management
 key: docs-training
-modify_date: "2022-10-13"
+modify_date: "2022-10-14"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,7 +15,7 @@ sidebar:
 
 ### Management of Preannotation and Training Servers
 
-Annotation Lab gives users the ability to view the list of all active servers. Any user can access the _Clusters_ page by navigating to `Settings > Clusters`. This page provides the following details.
+Generative AI Lab gives users the ability to view the list of all active servers. Any user can access the _Clusters_ page by navigating to `Settings > Clusters`. This page provides the following details.
 
 - A summary of the status/limitations of the current infrastructure to run Spark NLP for Healthcare training jobs and/or pre-annotation servers.
 - Ability to delete a server and free up resources when required, so that another training job and/or pre-annotation server can be started.

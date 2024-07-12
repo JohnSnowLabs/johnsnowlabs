@@ -35,14 +35,14 @@ For advanced installation options, please check `johnsnowlabs` [webpage](https:/
 
 </div><div class="h3-box" markdown="1">
 
-### 1. Installing johnsnowlabs
+#### 1. Installing johnsnowlabs
 The first step you need to carry out is installing johnsnowlabs library. This is as easy as doing:
 
 ```!pip install johnsnowlabs```
 
 </div><div class="h3-box" markdown="1">
 
-### 2. Installing Enterprise NLP (Finance, Legal, Clinical)
+#### 2. Installing Enterprise NLP (Finance, Legal, Helathcare)
 
 Import `johnsnowlabs` and use our one-liner `nlp.install()` to install all the dependencies, downloading the jars (yes, Spark NLP runs on top of the Java Virtual Machine!), preparing the cluster environment variables, licenses, etc!
 
@@ -82,7 +82,7 @@ nlp.install()
 
 </div><div class="h3-box" markdown="1">
 
-### 3. Starting an Enterprise NLP cluster
+#### 3. Starting an Enterprise NLP cluster
 Another one-liner can be used to start your Enterprise Spark NLP cluster:
 
 ```
@@ -92,7 +92,7 @@ It will take into account the previous steps and your license and return a Spark
 
 </div><div class="h3-box" markdown="1">
 
-### 4. Ready to go!
+#### 4. Ready to go!
 And you are done! Simple, isn't it?
 Find hundreds of notebooks using johnsnowlabs library here:
 
@@ -110,7 +110,7 @@ Find hundreds of notebooks using johnsnowlabs library here:
 
 </div><div class="h3-box" markdown="1">
 
-### Connection via Databricks Partner connect
+#### Connection via Databricks Partner connect
 
 Databricks has an integration of Spark NLP libraries via Partner Connect. If you are [eligible](https://docs.databricks.com/integrations/partner-connect/index.html?#requirements-1), you can [connect](https://docs.databricks.com/integrations/partner-connect/index.html?#quickstart-connect-to-a-partner-solution-using-partner-connect) your Databricks workspace to John Snow Labs. The Partner Connect wizard  will redirect you to John Snow Labs portal. After you fill-in/validate your information a 30-day trial license will be automatically generated for you. A new Databricks cluster will also be created, and all necessary resources to run the library on your account will be installed on your new cluster. Furthermore, a set of ready to use notebooks will be copied to your workspace, so you can start experimenting on your data right away. The trial license file will also be deployed to your environment and made available to your cluster.  
 
@@ -120,7 +120,7 @@ The trial period is 30 days. You can use the trial period only once. After the t
 
 </div><div class="h3-box" markdown="1">
 
-### Automatic deployment of John Snow Labs NLP libraries from [www.johnsnowlabs.com/databricks](https://www.johnsnowlabs.com/databricks/)
+#### Automatic deployment of John Snow Labs NLP libraries from [www.johnsnowlabs.com/databricks](https://www.johnsnowlabs.com/databricks/)
 
 Alternatively, you can automatically deploy John Snow Labs libraries on Databricks by filling in the form available [here](https://www.johnsnowlabs.com/databricks/). This will allow you to start a 30-day free trial with no limit on the amount of processed data. You just need to provide a Databricks Access Token that is used by our deployment script to connect to your Databricks instance and install John Snow Labs NLP libraries on a cluster of your choice.
 
@@ -128,7 +128,7 @@ Alternatively, you can automatically deploy John Snow Labs libraries on Databric
 
 </div><div class="h3-box" markdown="1">
 
-### Automatic deployment via [my.JohnSnowLabs.com](https://my.JohnSnowLabs.com)
+#### Automatic deployment via [my.JohnSnowLabs.com](https://my.JohnSnowLabs.com)
 
 Login to your account on my.JohnSnowLabs.com, navigate to 'My Subscriptions' page, and identify your license for Databricks. Click on the three dots as illustrated in the image below, then select the `Install On Cluster` option.
 
@@ -140,7 +140,7 @@ On the install form, provide an access token for this account and then select th
 
 </div><div class="h3-box" markdown="1">
 
-### Automatic deployment or upgrade from the Databricks workspace
+#### Automatic deployment or upgrade from the Databricks workspace
 
 If you have already deployed the libraries in the past, you have a script `Workspace -> Shared -> John Snow Labs -> Install JohnSnowLabs NLP`. If you attach it to any cluster and run it, it will reinstall the libraries on the respective cluster. 
 
@@ -148,7 +148,7 @@ If you have already deployed the libraries in the past, you have a script `Works
 
 </div><div class="h3-box" markdown="1">
 
-### Manual deployment of Enterprise Spark NLP
+#### Manual deployment of Enterprise Spark NLP
 Automatic deployment is the preferred option.
 
 1. Create a cluster with one of the [supported runtimes](/docs/en/install#databricks-support) if you don't have one already.
@@ -208,7 +208,7 @@ In order to fully take advantage of Spark NLP on Windows (8 or 10), you need to 
 
 </div><div class="h3-box" markdown="1">
 
-### How to correctly install Spark NLP on Windows
+#### How to correctly install Spark NLP on Windows
 
 Follow the below steps to set up Spark NLP with Spark 3.1.2:
 
@@ -238,7 +238,7 @@ Follow the below steps to set up Spark NLP with Spark 3.1.2:
 
 </div><div class="h3-box" markdown="1">
 
-### Requisites for PySpark
+#### Requisites for PySpark
 
 We recommend using `conda` to manage your python environment on Windows.
 
@@ -260,61 +260,76 @@ running
 
 Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp numpy* and use Jupyter/python console, or in the same conda env you can go to spark bin for *pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.4.4*.
 
-<img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### Windows Server
 
-1. Install JAVA 18  - [https://adoptium.net/temurin/releases/?version=18](https://adoptium.net/temurin/releases/?version=18)  
-Install JAVA 8  - [https://adoptium.net/temurin/releases/?version=8](https://adoptium.net/temurin/releases/?version=8) 
+1. Download and Install JAVA 8 
 
-    i) Once installed , we can check java is installed or not using following command  Open Cmd and type java --version 
+    i) Download and Install JAVA 8 from  [https://adoptium.net/temurin/releases/?version=8](https://adoptium.net/temurin/releases/?version=8) 
 
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/56176cf8-0184-4147-9923-bb00452bcf20)
+    ii) Once installed , We can check if java is installed by opening cmd and type `java -version` command
 
-2. Install Hadoop tools  
+    ![image-20230517-140723](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/c262961e-4923-449a-b1b1-46d233c3b94d)
 
-    i) Download the pre-compiled Hadoop binaries winutils.exe, hadoop.dll from winutils/hadoop-3.2.0/bin at master · cdarlint/winutils 
 
-    ii) Copy files into a folder called C:\\hadoop\\bin 
-
-3. Install Microsoft Visual C++ 2010
+2. Install Microsoft Visual C++ 2010
 
     i)  Install Microsoft Visual C++ 2010 from [Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package MFC Security Update](https://www.microsoft.com/en-us/download/details.aspx?id=26999) 
+
+
+
+3. Download the pre-compiled Hadoop binaries `winutils.exe`, `hadoop.dll`
+
+    i) Download the pre-compiled Hadoop binaries winutils.exe, hadoop.dll from [winutils/hadoop-3.2.0/bin at master · cdarlint/winutils](https://github.com/cdarlint/winutils/tree/master/hadoop-3.2.0/bin)
+
+    ii) Copy files into a folder called `C:\hadoop\bin `
+
+
+
+4. Configure Hadoop ENV variables  
+
+    - `Windows Explorer` → `This PC` -> Right Click select `properties`  -> Click on  `Advanced` system settings -> Click on `Environment Variables` Under system variables 
     
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/18b15859-2f44-4efa-b588-9e8128d4e11c)
+    ![image-20230517-141616](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/d0c53899-5d49-4fdf-a3d4-1023e5250faa)
 
-4. Configure Hadoop and Spark ENV variables  
-
-    Windows Explorer → This PC  -> Right Click select properties  -> Click on  Advanced system settings -> Click on Environment Variables  Under system variables ->  Click on new 
-
-
-    Add HADOOP_HOME as below  
-    VARIABLE Name: HADOOP_HOME VARIABLE Value: C:\\hadoop
-
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/1d6b6ccf-7d6d-4d44-ac3c-b9aee77d862d)
-
-    Select the Path (from variable) -> Click on edit → Click on New → add  %HADOOP_HOME%\bin
-
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/a30486b5-0994-4dcb-9e6a-484d97e4de61)
     
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/5a0aa693-40b8-4fbf-8487-06ab11fa5eab)
+    
+    - Add HADOOP_HOME as below  
+    
+    Under system variables -> Click on `new`
+
+    VARIABLE Name: `HADOOP_HOME` 
+
+    VARIABLE Value: `C:\hadoop`
 
 
-5. Configure Conda env  
+    ![image-20230517-141745](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/062d9918-46d7-4ba1-8736-0cc33da13f9d)
+
+
+    - Select the `Path` (from variable) -> Click on `edit` → Click on `New` → add  `%HADOOP_HOME%\bin`
+
+    ![image-20230517-141922](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/eca7f39c-e4c6-43fe-8a43-fa8c3a8af7b9)
+
+    ![image-20230517-141957](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/48426b70-a82f-4628-82a4-aff1bb5408b4)
+
+
+
+5. Dowload and Install Conda and set Conda ENV variables  
 
    i)   Download Miniconda for python 3.8 from [https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe)
 
    ii)  Install miniconda exe file.  
    
-   iii) Under system variables -> Select the Path (from variable) -> Click on edit -> (ADD the miniconda install location)/bin (Same steps as above)
+   iii) `Under system variables` ->  `Select the Path (from variable)` -> `Click on edit` -> `(ADD the miniconda install location)/bin` (Same steps as above)
    
     ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/14fa36ea-d53b-476f-9ad8-1d0d442650d2)
 
@@ -327,7 +342,7 @@ conda --version
 java -version
 conda create -n sparknlp python=3.8 -y
 conda activate sparknlp
-pip install spark-nlp==4.4.1 pyspark==3.1.2
+pip install spark-nlp==5.1.2 pyspark==3.2.1
 pip install jupyter
 conda env config vars set PYSPARK_PYTHON=python
 conda activate sparknlp
@@ -338,8 +353,79 @@ conda activate sparknlp
 jupyter notebook
 ```
 
+</div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on Ubuntu 
+## Apple Silicon Support
+
+**Installation for Apple Silicon (M1, M2, M3)**: Starting from version 4.0.0, Spark NLP has experimental support for apple silicon.
+
+Make sure the following prerequisites are set:
+
+1. **Installing SDKMAN**, you can also follow the official documentation at [https://sdkman.io/install](https://sdkman.io/install)
+    - `$ curl -s "https://get.sdkman.io" | bash`
+    - `source "$HOME/.sdkman/bin/sdkman-init.sh"`
+    - `sdk list java`  
+    list available java libraries:
+
+    ![image](https://github.com/JohnSnowLabs/spark-nlp-workshop/assets/64752006/9d05bd11-14c5-454e-bbab-fea4e91da905)
+
+
+2. **Installing Java**
+    - `sdk install java 8.0.402-amzn` 
+    - `whereis java`
+    - `java -version`
+
+3. **Installing MiniConda**, you can also follow the official documentation at https://docs.anaconda.com/free/miniconda/#quick-command-line-install  
+    - `mkdir -p ~/miniconda3`
+    - `curl https://repo.anaconda.com/miniconda/Miniconda3-py39_23.11.0-2-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh` PS: you can change python version to 3.10 or 3.11
+    - `bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3`
+    - `~/miniconda3/bin/conda init bash`
+    - `~/miniconda3/bin/conda init zsh`
+    - `source miniconda3/bin/activate`
+
+4. Installing `jupyter environments` or you can install it via `VSCode`
+
+    ```bash
+    # use base environment
+    conda --version
+    java -version
+    conda activate
+    pip install pyspark==3.4.0
+    pip install jupyter
+    conda env config vars set PYSPARK_PYTHON=python
+    conda activate 
+    conda env config vars set PYSPARK_DRIVER_PYTHON=jupyter
+    conda activate 
+    conda env config vars set PYSPARK_DRIVER_python_OPTS=notebook
+    conda activate 
+    jupyter notebook
+    ```
+
+    ```bash
+    # or create new sparknlp environment
+    conda --version
+    java -version
+    conda create -n sparknlp python=3.9 -y
+    conda activate sparknlp
+    pip install pyspark==3.4.0
+    pip install jupyter
+    conda env config vars set PYSPARK_PYTHON=python
+    conda activate sparknlp
+    conda env config vars set PYSPARK_DRIVER_PYTHON=jupyter
+    conda activate sparknlp
+    conda env config vars set PYSPARK_DRIVER_python_OPTS=notebook
+    conda activate sparknlp
+    jupyter notebook
+    ```
+
+5. **Installing Spark NLP Healthcare** 
+
+    please see the [Spark NLP Healthcare Installation Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/apple-silicon/installation.ipynb)
+
+
+</div><div class="h3-box" markdown="1">
+
+## Non-johnsnowlabs Helathcare NLP on Ubuntu 
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 For installing John Snow Labs NLP libraries on an Ubuntu machine/VM please run the following command:
@@ -377,48 +463,75 @@ The install script downloads a couple of example notebooks that you can use to s
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP via Docker
+## Non-johnsnowlabs Helathcare NLP via Docker
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 A docker image that contains all the required libraries for installing and running Enterprise Spark NLP libraries is also available. However, it does not contain the library itself, as it is licensed, and requires installation credentials.
 
-Make sure you have a valid license for Enterprise Spark NLP libraries (in case you do not have one, you can ask for a trial [here](https://www.johnsnowlabs.com/install/) ), and follow the instructions below:
+Make sure you have a valid license for Enterprise Spark NLP libraries (in case you do not have one, you can ask for a trial [here](https://www.johnsnowlabs.com/install/)), and follow the instructions below:
 
 </div><div class="h3-box" markdown="1">
 
-### Instructions
+#### Docker Image for running Spark NLP for Healthcare inside Jupyter Notebook
+
+The Image contains all the required libraries for installing and running Spark NLP for Healthcare. However, it does not contain the library itself, as it is licensed, and requires installation credentials. 
+
+- Please download the necessary files from the [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter) or just get them with commandline as the following:
+
+```bash
+curl -o Dockerfile https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/Dockerfile
+curl -o entrypoint.sh https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/entrypoint.sh
+curl -o requirements.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/requirements.txt
+```
+
+- Download your license key in json format from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/) and put the same folder
+- Make sure you have valid license for Spark NLP for Healthcare,  and run the following command:
+
+```bash 
+docker run -v /home/jsl_keys.json:/notebooks/sparknlp_keys.json -p 8888:8888 -d johnsnowlabs/sparknlp:sparknlp_for_healthcare_jupyter
+```
+- Please replace values inside `tags`. For instance, replace `/home/jsl_keys.json` with the correct license json absolute path.
+- Make sure docker is installed on your system.
+- Run `docker ps` to validate the container is running.
+- If your container is not running, look at docker logs to identify issue.
+- If the default port `8888` is already occupied by another process, please change the mapping. Only change values inside the `tags`.
+
+</div><div class="h3-box" markdown="1">
+
+#### Alternative Docker Image Instractions
 
 - Run the following commands to download the `docker-compose.yml` and the `sparknlp_keys.txt` files on your local machine:
 ```bash
-curl -o docker-compose.yaml https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/blob/513a4d682f11abc33b2e26ef8a9d72ad52a7b4f0/jupyter/docker_image_nlp_hc/docker-compose.yaml
+curl -o docker-compose.yaml https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_image/docker-compose.yaml
 curl -o sparknlp_keys.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_image_nlp_hc/sparknlp_keys.txt
 ```
 
 - Download your license key in json format from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/) 
-- Populate License keys in `sparknlp_keys.txt` file.
+- Update License keys in `sparknlp_keys.txt` file.
 - Run the following command to run the container in detached mode:
 
 ```bash
  docker-compose up -d
  ``` 
-- By default, the jupyter notebook runs on port `8888` - you can access it by typing `localhost:8888` in your browser.
+- By default, the jupyter notebook runs on port `8888` - you can access it by typing `localhost:8888` in your browser
+- Create a new jupyter [notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_image/example_notebook.ipynb) and start coding
 
 </div><div class="h3-box" markdown="1">
 
-### Troubleshooting
+#### Troubleshooting
 
 - Make sure docker is installed on your system.
 - If you face any error while importing the lib inside jupyter, make sure all the credentials are correct in the key files and restart the service again.
 - If the default port `8888` is already occupied by another process, please change the mapping.
-- You can change/adjust volume and port mapping in the `docker-compose.yml` file.
+- You can change/adjust volume and port mapping in the `docker-compose.yaml` file.
 - You don't have a license key? Ask for a trial license [here](https://www.johnsnowlabs.com/install/).
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on python
+## Non-johnsnowlabs Helathcare NLP on python
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
-You can install the Clinical NLP by using:
+You can install the Helathcare NLP by using:
 
 ```bash
 pip install -q spark-nlp-jsl==${version} --extra-index-url https://pypi.johnsnowlabs.com/${secret.code} --upgrade
@@ -432,7 +545,7 @@ You can ask for a free trial for Enterprise Spark NLP libraries [here](https://w
 
 </div><div class="h3-box" markdown="1">
 
-### Setup AWS-CLI Credentials for licensed pretrained models
+#### Setup AWS-CLI Credentials for licensed pretrained models
 
 You need to first set up your AWS credentials to be able to access the private repository for John Snow Labs Pretrained Models.
 You can do this setup via Amazon AWS Command Line Interface (AWSCLI).
@@ -449,7 +562,7 @@ Please substitute the `ACCESS_KEY` and `SECRET_KEY` with the credentials availab
 
 </div><div class="h3-box" markdown="1">
 
-### Start Spark NLP Session from python
+#### Start Spark NLP Session from python
 
 The following will initialize the spark session in case you have run the Jupyter Notebook directly. If you have started the notebook using
 pyspark this cell is just ignored.
@@ -491,32 +604,32 @@ If you want to download the source files (jar and whl files) locally, you can fo
 
 </div><div class="h3-box" markdown="1">
 
-### Cheatsheet
+#### Cheatsheet
 
 ```bash
 # Install Spark NLP from PyPI
-pip install spark-nlp==3.2.3
+pip install spark-nlp==${public_version}
 
 #install Spark NLP helathcare
 
 pip install spark-nlp-jsl==${version} --extra-index-url https://pypi.johnsnowlabs.com/${secret.code} --upgrade
 
 # Load Spark NLP with Spark Shell
-spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3 --jars spark-nlp-jsl-${version}.jar
+spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --jars spark-nlp-jsl-${version}.jar
 
 # Load Spark NLP with PySpark
-pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3  --jars spark-nlp-jsl-${version}.jar
+pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --jars spark-nlp-jsl-${version}.jar
 
 # Load Spark NLP with Spark Submit
-spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3 --jars spark-nlp-jsl-${version}.jar
+spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --jars spark-nlp-jsl-${version}.jar
 ```
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP for Scala
+## Non-johnsnowlabs Helathcare NLP for Scala
 > These instructions use non-johnsnowlabs installation syntax, since `johnsnowlabs` is a Python library. 
 
-### Use Spark NLP in Spark shell
+#### Use Spark NLP in Spark shell
 
 1.Download the fat jar for Enterprise Spark NLP
 
@@ -540,7 +653,7 @@ spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public-version} --j
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP in Sbt project
+## Non-johnsnowlabs Helathcare NLP in Sbt project
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 1.Download the fat jar for Enterprise Spark NLP.
@@ -572,7 +685,7 @@ unmanagedJars in Compile += file("lib/sparknlp-jsl.jar")
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on Colab
+## Non-johnsnowlabs Helathcare NLP on Colab
 
 This is the way to run Clinical NLP in Google Colab if you don't use `johnsnowlabs` library.
 
@@ -582,7 +695,7 @@ The first thing that you need is to create the json file with the credentials an
 
 ```json
 {
-  "PUBLIC_VERSION": "3.2.3",
+  "PUBLIC_VERSION": "{public-version}",
   "JSL_VERSION": "{version}",
   "SECRET": "{version}-{secret.code}",
   "SPARK_NLP_LICENSE": "xxxxx",
@@ -631,7 +744,7 @@ os.environ.update(license_keys)
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on GCP Dataproc
+## Non-johnsnowlabs Helathcare NLP on GCP Dataproc
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 - You can follow the steps here for [installation via IU](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/dataproc)
@@ -721,7 +834,7 @@ Or you can set `.master('yarn')`.
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on AWS SageMaker
+## Non-johnsnowlabs Helathcare NLP on AWS SageMaker
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 1. Access AWS Sagemaker in AWS.
@@ -762,7 +875,7 @@ spark = sparknlp_jsl.start(license_keys['SECRET'])
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP with Poetry
+## Non-johnsnowlabs Helathcare NLP with Poetry
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 This is a sample `project.toml` file which you can use with `poetry install` to setup spark NLP + the Healthcare python library `spark-nlp-jsl`
@@ -783,7 +896,7 @@ authors = ["person <person@gmail.com>"]
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-spark-nlp = "3.4.4"
+spark-nlp = "5.1.2"
 spark-nlp-jsl = { url = "https://pypi.johnsnowlabs.com/SECRET/spark-nlp-jsl/spark_nlp_jsl-tar.gz_OR_.whl" }
 
 [build-system]
@@ -793,7 +906,7 @@ build-backend = "poetry.core.masonry.api"
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on AWS EMR
+## Non-johnsnowlabs Helathcare NLP on AWS EMR
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR, using the AWS console.
@@ -801,50 +914,109 @@ In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR
 </div><div class="h3-box" markdown="1">
 
 ### Steps
-1. You must go to the blue button "Create Cluster" on the UI. By doing that you will get directed to the "Create Cluster - Quick Options" page. Don't use the quick options, click on "Go to advanced options" instead.
-2. Now in Advanced Options, on Step 1, "Software and Steps", please pick the following selection in the checkboxes,
-![software config](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/software_configs.png?raw=true)
-Also in the "Edit Software Settings" page, enter the following,
+
+1. Go to AWS services, and select EMR
+
+2. Press Create Cluster and start:
+  - Name your cluster
+  - select EMR version
+  - select required applications
+
+
+![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image.png "lit_shadow")
+
+ - Specify EC2  instances for the cluster, as primary/master node  and cores/workers
+ - Specify the storage/ EBS volume
+ 
+ ![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image-1.png "lit_shadow")
+
+ - Choose Cluster scaling and provisioning 
+ - Choose Networking / VPC
+ 
+ ![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image-2.png "lit_shadow")
+
+- Choose Security Groups/Firewall for primary/master node and cores/workers/slaves
+
+![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image-3.png "lit_shadow")
+
+- If you have add steps , that will be executed after cluster is provisioned
+- Specify the S3 location for logs
+- Under **Tags** section, please add a `KEY: VALUE` pair with `for-use-with-amazon-emr-managed-policies` `true`
+
+**Important**
+- Specify the Bootstrap Action
+
+[jsl_emr_bootstrap.sh](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/jsl_emr_bootstrap.sh "lit_shadow")
+
+Put this sample shell script in a S3 location and specify it in the form:
+You will have spark-nlp and spark-nlp-jsl and spark-ocr installed by bootstrap action, this file is executed during the cluster provisioning. Version of Libraries and other credentials provided by Johnsnowlabs will be in this file.
+
+![add bootstrap action](/assets/images/emr/image-5.png "lit_shadow")
+
+
+**Important** 
+- Specify the Configuration for spark:
+Here is a sample configuration, you can copy/paste into  Software settings tab or load from S3.
+You can change spark configuration according to your needs.
 
 ```
-[{
-  "Classification": "spark-env",
-  "Configurations": [{
-    "Classification": "export",
+[
+  {
+    "Classification": "spark-env",
+    "Configurations": [
+      {
+        "Classification": "export",
+        "Properties": {
+          "JSL_EMR": "1",
+          "PYSPARK_PYTHON": "/usr/bin/python3",
+          "SPARK_NLP_LICENSE": "XYXYXYXYXY"
+        }
+      }
+    ],
+    "Properties": {}
+  },
+  {
+    "Classification": "yarn-env",
+    "Configurations": [
+      {
+        "Classification": "export",
+        "Properties": {
+          "JSL_EMR": "1",
+          "SPARK_NLP_LICENSE": "XYXYXYXYXY"
+        }
+      }
+    ],
+    "Properties": {}
+  },
+  {
+    "Classification": "spark-defaults",
     "Properties": {
-      "PYSPARK_python": "/usr/bin/python3",
-      "AWS_ACCESS_KEY_ID": "XYXYXYXYXYXYXYXYXYXY",
-      "AWS_SECRET_ACCESS_KEY": "XYXYXYXYXYXYXYXYXYXY", 
-      "SPARK_NLP_LICENSE": "XYXYXYXYXYXYXYXYXYXYXYXYXYXY"
-    }
-  }]
-},
-{
-  "Classification": "spark-defaults",
-    "Properties": {
-      "spark.yarn.stagingDir": "hdfs:///tmp",
-      "spark.yarn.preserve.staging.files": "true",
-      "spark.kryoserializer.buffer.max": "2000M",
-      "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
       "spark.driver.maxResultSize": "0",
-      "spark.driver.memory": "32G"
+      "spark.driver.memory": "64G",
+      "spark.dynamicAllocation.enabled": "true",
+      "spark.executor.memory": "64G",
+      "spark.executorEnv.SPARK_NLP_LICENSE": "XYXYXYXYXY",
+      "spark.jsl.settings.aws.credentials.access_key_id": "XYXYXYXYXY",
+      "spark.jsl.settings.aws.credentials.secret_access_key": "XYXYXYXYXY",
+      "spark.jsl.settings.aws.region": "us-east-1",
+      "spark.jsl.settings.pretrained.credentials.access_key_id": "XYXYXYXYXY",
+      "spark.jsl.settings.pretrained.credentials.secret_access_key": "XYXYXYXYXY",
+      "spark.kryoserializer.buffer.max": "2000M",
+      "spark.rpc.message.maxSize": "1024",
+      "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+      "spark.yarn.appMasterEnv.SPARK_NLP_LICENSE": "XYXYXYXYXY",
+      "spark.yarn.preserve.staging.files": "true",
+      "spark.yarn.stagingDir": "hdfs:///tmp"
     }
-}]
+  }
+]
 ```
-Make sure that you replace all the secret information(marked here as XYXYXYXYXY) by the appropriate values that you received with your license.<br/>
-3. In "Step 2" choose the hardware and networking configuration you prefer, or just pick the defaults. Move to next step by clocking the "Next" blue button.<br/>
-4. Now you are in "Step 3", in which you assign a name to your cluster, and you can change the location of the cluster logs. If the location of the logs is OK for you, take note of the path so you can debug potential problems by using the logs.<br/>
-5. Still on "Step 3", go to the bottom of the page, and expand the "Bootstrap Actions" tab. We're gonna add an action to execute during bootstrap of the cluster. Select "Custom Action", then press on "Configure and add".<br/>
-You need to provide a path to a script on S3. The path needs to be public. Keep this in mind, no secret information can be contained there.<br/>
-The script we'll used for this setup is [emr_bootstrap.sh](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/emr_bootstrap.sh) .
-<br/>
-This script will install Spark-NLP 3.1.0, and Spark-NLP Healthcare 3.1.1. You'll have to edit the script if you need different versions.<br/>
-After you entered the route to S3 in which you place the `emr_bootstrap.sh` file, and before clicking "add" in the dialog box, you must pass an additional parameter containing the SECRET value you received with your license. Just paste the secret on the "Optional arguments" field in that dialog box.<br/>
-6. There's not much additional setup you need to perform. So just start a notebook server, connect it to the cluster you just created(be patient, it takes a while), and test with the [NLP_EMR_Setup.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/NLP_EMR_Setup.ipynb) test notebook.<br/>
+
+- There's not much additional setup you need to perform. So just start a notebook server, connect it to the cluster you just created(be patient, it takes a while), and test with the [jsl_test_notebook_for_emr.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/NLP_EMR_Setup.ipynb) test notebook.<br/>
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on Amazon Linux 2
+## Non-johnsnowlabs Helathcare NLP on Amazon Linux 2
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 ```bash
@@ -871,7 +1043,7 @@ You can pick the index number (I am using java-8 as default - index 2):
 
 </div><div class="h3-box" markdown="1">
 
-<img class="image image--xl" src="/assets/images/installation/amazon-linux.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Non-johnsnowlabs Helathcare NLP on Amazon Linux 2](/assets/images/installation/amazon-linux.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -915,6 +1087,287 @@ os.environ.update(license_keys)
 
 </div><div class="h3-box" markdown="1">
 
+## Deploying Spark NLP Healthcare on Kubernetes
+
+This guide will walk you through the deployment of a Spark NLP Healthcare application on a Kubernetes cluster using kind.
+
+</div><div class="h3-box" markdown="1">
+
+### Prerequisites
+Installing Necessary Tools:
+
+1. **Docker**: 
+   * Install from Docker Desktop([https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)).
+   * Ensure Kubernetes is enabled in Docker Desktop settings. 
+2. **kubectl**: 
+   * Install using the instructions from Kubernetes official documentation([https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/tasks/tools/)).
+3. **kind**: 
+   * Install using the instructions from Kubernetes official documentation([https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/tasks/tools/)).
+4. **Docker Hub Account**: 
+   * If you don't have one, create your account at Docker Hub([https://hub.docker.com/signup](https://hub.docker.com/signup)).
+5. Install JohnSnow Labs **licence key file** to the project directory([https://my.johnsnowlabs.com/subscriptions](https://my.johnsnowlabs.com/subscriptions)).
+
+</div><div class="h3-box" markdown="1">
+
+### Project Structure:
+```
+.
+├── Dockerfile
+├── main.py
+├── README.md
+├── requirements.txt
+├── spark-nlp-healthcare-deployment.yaml
+└── spark_nlp_for_healthcare_spark_ocr_8204.json (licence key filename)
+```
+
+</div><div class="h3-box" markdown="1">
+
+### Application Details
+The main application script, `main.py`, is as follows:
+```
+from johnsnowlabs import nlp, medical
+import pandas as pd
+from pyspark.sql import DataFrame
+import pyspark.sql.functions as F
+import pyspark.sql.types as T
+import pyspark.sql as SQL
+from pyspark import keyword_only
+from pyspark.ml import PipelineModel
+import os
+
+class NLPProcessor:
+    def __init__(self):
+        """Initialize and set up NLP tools."""
+        # Install all licensed Python Wheels and pre-download Jars the Spark Session JVM
+        nlp.install()
+        
+        # Automatically load license data and start a session with all jars user has access to
+        self.spark = nlp.start()
+        
+        # Set up the NLP pipeline
+        self.model = self.setup_pipeline()
+
+    def setup_pipeline(self):
+        """Set up the NLP pipeline using John Snow Labs library."""
+
+        # Annotator that transforms a text column from dataframe into an Annotation ready for NLP
+        documentAssembler = nlp.DocumentAssembler()\
+            .setInputCol("text")\
+            .setOutputCol("document")
+
+        # Sentence detector specific to healthcare data
+        sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+            .setInputCols(["document"])\
+            .setOutputCol("sentence")
+
+        # Tokenizer splits words in a relevant format for NLP
+        tokenizer = nlp.Tokenizer()\
+            .setInputCols(["sentence"])\
+            .setOutputCol("token")
+
+        # Clinical word embeddings trained on PubMED dataset
+        word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+            .setInputCols(["sentence", "token"])\
+            .setOutputCol("embeddings")
+
+        # NER model trained on i2b2 (sampled from MIMIC) dataset
+        jsl_ner = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models")\
+            .setInputCols(["sentence", "token", "embeddings"])\
+            .setOutputCol("jsl_ner")
+
+        # Converter to transform NER results
+        jsl_ner_converter = nlp.NerConverter()\
+            .setInputCols(["sentence", "token", "jsl_ner"])\
+            .setOutputCol("jsl_ner_chunk")
+
+        # Combine all the stages of the pipeline
+        nlpPipeline = nlp.Pipeline(stages=[
+            documentAssembler,
+            sentenceDetector,
+            tokenizer,
+            word_embeddings,
+            jsl_ner,
+            jsl_ner_converter
+        ])
+
+        # Fit an empty dataframe to initialize the pipeline
+        return nlpPipeline.fit(self.spark.createDataFrame([[""]]).toDF("text"))
+
+    def annotate_text(self, text):
+        """Annotate the provided text using the NLP pipeline."""
+        light_model = nlp.LightPipeline(self.model)
+        return light_model.annotate(text)
+
+def main():
+    """Main function to run the NLP annotation."""
+    processor = NLPProcessor()
+    
+    sample_text = '''A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM )'''
+    
+    result = processor.annotate_text(sample_text)
+    
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
+```
+
+</div><div class="h3-box" markdown="1">
+
+### Step-by-step Guide
+##### 1. Containerizing the Spark NLP Healthcare Application
+
+Dockerfile:
+
+```
+# Use Ubuntu 20.04 as the base image
+FROM ubuntu:20.04
+
+# Update and install necessary packages
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk python3-pip curl
+
+# Set JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+
+# Copy the base requirements and main application into the image
+COPY requirements.txt /app/requirements.txt
+COPY <licence_filename> /app/<licence_filename>
+WORKDIR /app
+
+# Install Python packages
+RUN pip3 install -r requirements.txt
+
+# Copy the main application
+COPY main.py /app/main.py
+
+CMD ["python3", "main.py"]
+```
+
+Note: Before building the Docker image, replace <licence_filename> in the Dockerfile with your actual Spark NLP Healthcare license key file name and set <JSL_VERSION> to the appropriate version number (e.g., 5.0.1).
+You can find the <JSL_VERSION> value in your licence key json file.
+
+Logging in to Docker Hub:
+Run the command:`docker login -u <your-docker-hub-username> -p <your-docker-hub-password>`
+This will authenticate you with Docker Hub, allowing you to push and pull private images.
+
+Build the Docker image with the specific tag:
+`docker build -t <your-docker-hub-username>/spark-nlp-healthcare:<JSL_VERSION> .` 
+
+</div><div class="h3-box" markdown="1">
+
+##### 2. Pushing Docker Image to Docker Hub
+
+Tag the image with your Docker Hub username:
+`docker tag spark-nlp-healthcare:<JSL_VERSION> <your-docker-hub-username>/spark-nlp-healthcare:<JSL_VERSION>`
+
+Push the image to Docker Hub:
+
+`docker push <your-docker-hub-username>/spark-nlp-healthcare:<JSL_VERSION>`
+
+</div><div class="h3-box" markdown="1">
+
+##### 3. Setting Up the Kubernetes Cluster with kind
+Before deploying the application, you'll need to set up a local Kubernetes cluster using kind. Run the following command:
+`kind create cluster`
+
+</div><div class="h3-box" markdown="1">
+
+##### 4. Setting up Secrets in Kubernetes
+
+Make sure your Spark NLP Healthcare license key file (e.g., <licence_filename>) is present in the project directory.
+
+Replace <licence_filename> with your actual license key file name in the below command:
+
+`kubectl create secret generic spark-nlp-healthcare-secret --from-file=license=<licence_filename>`
+
+</div><div class="h3-box" markdown="1">
+
+##### 5. Deploying the Spark NLP Healthcare Application
+Before proceeding, ensure that you replace the placeholders <your-docker-hub-username> and <JSL_VERSION> in the spark-nlp-healthcare-deployment.yaml with your Docker Hub username and the appropriate Spark NLP version respectively.
+Use the following content for spark-nlp-healthcare-deployment.yaml:
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-nlp-healthcare-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-nlp-healthcare
+  template:
+    metadata:
+      labels:
+        app: spark-nlp-healthcare
+    spec:
+      containers:
+      - name: spark-nlp-healthcare
+        image: <your-docker-hub-username>/spark-nlp-healthcare:<JSL_VERSION>
+        ports:
+        - containerPort: 8888
+        env:
+        - name: SPARK_NLP_LICENSE
+          valueFrom:
+            secretKeyRef:
+              name: spark-nlp-healthcare-secret
+              key: license
+```
+
+Apply the deployment:
+`kubectl apply -f spark-nlp-healthcare-deployment.yaml`
+
+To verify, run commands below:
+
+```
+kubectl get deployments
+kubectl get pods
+```
+The output will look like as following;
+```
+kubectl get deployments
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+spark-nlp-healthcare-deployment   0/1     1            0           2m42s
+
+kubectl get pods
+NAME                                               READY   STATUS              RESTARTS   AGE
+spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   0/1     ContainerCreating   0          2m50s
+```
+Wait until the output becomes as following;
+```
+kubectl get deployments                                              
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+spark-nlp-healthcare-deployment   1/1     1            1           8m46s
+
+kubectl get pods                                                     
+NAME                                               READY   STATUS    RESTARTS   AGE
+spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          8m54s
+```
+Now the pod is ready and running.
+
+</div><div class="h3-box" markdown="1">
+
+##### 6. Validating the Deployment
+
+To get the name of the pod:
+
+`kubectl get pods -l app=spark-nlp-healthcare -o jsonpath="{.items[0].metadata.name}"`
+
+You can verify if the application is running properly within the Kubernetes cluster by executing a shell within the pod:
+
+`kubectl exec -it <kubernetes_pod_name> -- /bin/bash`
+
+This command will open a bash shell and the program can be run with `python3 main.py` command. It will output the following;
+
+```
+[OK!]
+{'document': ['A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM )'], 'jsl_ner_chunk': ['28-year-old', 'female', 'gestational diabetes mellitus', 'eight years prior', 'type two diabetes mellitus', 'T2DM'], 'jsl_ner': ['O', 'B-Age', 'B-Gender', 'O', 'O', 'O', 'O', 'B-Diabetes', 'I-Diabetes', 'I-Diabetes', 'O', 'B-RelativeDate', 'I-RelativeDate', 'I-RelativeDate', 'O', 'O', 'O', 'O', 'B-Diabetes', 'I-Diabetes', 'I-Diabetes', 'I-Diabetes', 'O', 'B-Diabetes', 'O'], 'token': ['A', '28-year-old', 'female', 'with', 'a', 'history', 'of', 'gestational', 'diabetes', 'mellitus', 'diagnosed', 'eight', 'years', 'prior', 'to', 'presentation', 'and', 'subsequent', 'type', 'two', 'diabetes', 'mellitus', '(', 'T2DM', ')'], 'embeddings': ['A', '28-year-old', 'female', 'with', 'a', 'history', 'of', 'gestational', 'diabetes', 'mellitus', 'diagnosed', 'eight', 'years', 'prior', 'to', 'presentation', 'and', 'subsequent', 'type', 'two', 'diabetes', 'mellitus', '(', 'T2DM', ')'], 'sentence': ['A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM )']}
+```
+
+
+If you have any questions or face any issues during the deployment process, please feel free to reach out to me at burhan@johnsnowlabs.com. I'm here to help!
+
+</div><div class="h3-box" markdown="1">
 ## Fancy trying? 
 
 You can ask for a free trial for Enterprise Spark NLP [here](https://www.johnsnowlabs.com/install/). This will automatically create a new account for you on [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/). Login in to your new account and from `My Subscriptions` section, you can download your license key as a json file.
@@ -925,5 +1378,157 @@ The license json file contains:
 - AWS credentials that you need to access the s3 bucket where the healthcare models and pipelines are published.  
 
 If you have asked for a trial license, but you cannot access your account on [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/) and you did not receive the license information via email, please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.
+
+</div><div class="h3-box" markdown="1">
+
+## Azure Synapse Analytics Support
+
+**Step 1: Sign in to Azure portal**
+- Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+
+**Step 2: Create a new Resource Group**
+- On the left-hand menu, click on "Resource groups".
+- In the new window, click "Create".
+- Provide a unique name for the Resource Group and select the Region where you want to create it.
+- Click "Review + Create" and then "Create".
+
+**Step 3: Create a Storage Account**
+- On the left-hand menu, click on "Create a resource".
+- In the "New" window, search for "Storage Account".
+- In the search results, select "Storage Account" and then click "Create".
+- In the new window, select the Resource Group you just created, provide a unique name for your Storage Account, and select the Region.
+- Select the Performance, Account kind, Replication, and Access tier according to your requirements.
+- Click "Review + Create" and then "Create".
+
+**Step 4: Create a Synapse workspace**
+- On the left-hand menu, click on "Create a resource".
+- In the "New" window, search for "Azure Synapse Analytics".
+- In the search results, select "Azure Synapse Analytics" and then click "Create".
+- In the new window, select the Resource Group you just created, provide a unique name for your Synapse Workspace, select the Region, and provide the Storage Account you created earlier.
+- You also need to create a new file system in your storage account for Synapse workspace, provide a unique name for it.
+- Fill the Security & networking details as per your requirements.
+- Click "Review + Create" and then "Create".
+
+**Step 5: Configuring the Synapse Studio**
+- Once your workspace is created, open the Azure Synapse Studio.
+- Navigate to the "Manage" section within Azure Synapse Studio.
+- Under the "Workspace settings" section, find and select "Workspace Packages".
+- Click "Upload" to upload the necessary JAR and wheel files.
+  
+![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857 "lit_shadow")
+
+- For running licensed models, navigate to the "Apache Spark configurations" under the "Manage" section.
+- Click on "New" to add a new configuration.
+- For licensed Healthcare models, Add the following properties:
+  - `spark.hadoop.fs.s3a.access.key` : <AWS_ACCESS_KEY_ID> 
+  - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
+  - `spark.yarn.appMasterEnv.SPARK_NLP_LICENSE` : <SPARK_NLP_LICENSE>
+
+![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c "lit_shadow")
+
+  
+After adding these properties, the Apache Spark configuration is ready.
+- Navigate to "Apache Spark pools" under the "Analytics pools" section.
+- Click on "New" to create a new Spark pool. Configure the pool settings as required, selecting a "Medium" Node size under "Performance Settings". Under "Additional settings", allow "session level packages". Add the Apache Spark configuration created above (this is needed for licensed models only). Review your settings, then click "Create".
+- Navigate to the "Develop" section in Azure Synapse Studio.
+- Create a new notebook or import an existing one. Attach the notebook to the Apache Spark pool created above.
+
+Now, all the necessary licenses and JARs are ready to be used. You can proceed to run your notebook.
+
+For running OCR models, upload the following JAR and wheel files to the Workspace packages.
+![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2 "lit_shadow")
+
+- For licensed OCR models, Add the following properties:
+  - `spark.hadoop.fs.s3a.access.key` : <AWS_ACCESS_KEY_ID> 
+  - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
+  - `spark.yarn.appMasterEnv.SPARK_OCR_LICENSE` : <SPARK_OCR_LICENSE>
+  - `spark.driver.extraJavaOptions` : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender
+  - `spark.executor.extraJavaOptions` : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender
+  - `spark.sql.legacy.allowUntypedScalaUDF` : True
+
+ ![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d "lit_shadow")
+
+ Now, you can proceed to run your OCR models and notebooks.
+
+
+</div><div class="h3-box" markdown="1">
+
+## Azure AI Studio instructions
+
+Go to [https://ai.azure.com/](https://ai.azure.com/)
+
+To create a project in Azure AI Studio, adhere to the following structured approach:
+
+1. Navigate to the Build Tab
+- Access the Azure AI Studio webpage and locate the Build tab positioned at the top of the interface.
+
+2. Initiate New Project Creation
+- Click on the **+ New project** button to start the process of creating a new project.
+
+3. Specify Project Name
+- Enter a name for your project that reflects its purpose or content.
+
+4. Select an Azure AI Hub Resource
+- Choose an existing Azure AI hub resource from the dropdown list to associate with your project. If you do not possess an existing resource, select the option to create a new one.
+
+5. Permissions for New Azure AI Hub Resource
+- If opting to create a new Azure AI hub resource, ensure you have either Owner or Contributor permissions on the chosen resource group.
+
+6. Collaboration and Resource Sharing
+- For collaborative projects, it is beneficial to share an Azure AI hub resource with your team. This promotes shared configurations and centralized resource management.
+
+7. Naming the New Azure AI Hub Resource
+- Assign a name to the new Azure AI hub resource if you're creating one.
+
+8. Select Azure Subscription
+- From the dropdown list, pick your Azure subscription to manage billing and access.
+
+9. Resource Group Decision
+- Decide whether to create a new Resource group or use an existing one for your project. Creating a new group can facilitate easier management of the project's resources.
+
+10. Location Selection
+- Choose the Location for your Azure AI hub resource, which inherently decides your project's geographical location. The choice of location is crucial as the availability of Azure AI services may differ across regions.
+
+11. Review AI Services Provider
+- On the Review and finish page, scrutinize the AI Services provider details to ensure access to Azure AI services like Azure OpenAI is correctly configured.
+
+12. Finalize Project Creation
+- After reviewing all the details for accuracy, click on **Create a project** to complete the setup process.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_1.png)
+
+13 Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_2.png)
+
+14 Such a window will Appear. Go to Add compute.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_3.png)
+
+15 Choose the compute type and enable auto-shutdown as well.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_10.png)
+
+![Azure AI Studio instructions](/assets/images/azure/azure_8.png)
+
+![Azure AI Studio instructions](/assets/images/azure/azure_9.png)
+
+16 Then go to the Notebooks Section.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_4.png)
+
+In NB section, you can create your own NB or load existing NBs.
+
+17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_5.png)
+
+18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
+
+![Azure AI Studio instructions](/assets/images/azure/azure_6.png)
+
+19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
+
+![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
 </div>

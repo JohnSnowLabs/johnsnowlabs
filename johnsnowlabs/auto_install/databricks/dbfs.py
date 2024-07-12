@@ -28,6 +28,7 @@ def dbfs_rm(
     dbfs_path: str,
     recursive: bool = False,
 ):
+    print("🧹 Cleaning up old JSL home in ", dbfs_path)
     return db.dbfs.delete(dbfs_path, recursive=recursive)
 
 
@@ -67,7 +68,6 @@ def get_db_path(local_info: Union[JvmInstallInfo, PyInstallInfo, str]):
         # Gotta add the suffix or databricks will not pickup the correct version
         return f'{settings.dbfs_py_dir}/{local_info.file_name.split(".")[0]}-py2.py3-none-any.whl'
     elif isinstance(local_info, str):
-
         if ".py" in local_info:
             return f"{settings.db_py_jobs_dir}/{path_tail(local_info)}"
         elif ".jar" in local_info:

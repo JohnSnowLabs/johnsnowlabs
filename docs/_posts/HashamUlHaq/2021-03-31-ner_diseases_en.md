@@ -148,7 +148,7 @@ nlu.load("en.med_ner.diseases").predict("""Detection of various other intracellu
 
 ## Data Source
 
-Trained on i2b2 with ``embeddings_clinical``.
+Trained with augmented version of i2b2 dataset with ``embeddings_clinical``.
 https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 ## Benchmarking

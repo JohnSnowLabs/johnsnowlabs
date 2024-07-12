@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of `icdo_snomed_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -59,11 +60,9 @@ nlu.load("en.map_entity.icdo_to_snomed.pipe").predict("""Put your text here.""")
 ## Results
 
 ```bash
-
 |    | icdo_code                | snomed_code                    |
 |---:|:-------------------------|:-------------------------------|
 |  0 | 8120/1 | 8170/3 | 8380/3 | 45083001 | 25370001 | 30289006 |
-
 ```
 
 {:.model-param}

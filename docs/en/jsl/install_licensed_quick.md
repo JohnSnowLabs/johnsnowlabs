@@ -22,7 +22,7 @@ pip install johnsnowlabs
 2. run in a `Python Shell`
 ```python
 from johnsnowlabs import *
-jsl.install()
+nlp.install()
 ```
 This will display a **Browser Window Pop Up**  or show a **Clickable Button with Pop Up**.        
 Click on the **Authorize** button to allow the library to connect to your account on my.JohnSnowLabs.com and access you licenses.          
@@ -38,9 +38,5 @@ After clicking **Authorize**:
 ![install_logs_colab.png](/assets/images/jsl_lib/install/install_logs_colab.png)
 
 To quickly test your installation, run in a `Python shell`
-```python
-
-```
-
 
 for alternative installation options see [Custom Installation](/docs/en/jsl/install_advanced)

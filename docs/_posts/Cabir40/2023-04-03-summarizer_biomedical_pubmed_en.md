@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a modified version of Flan-T5 (LLM) based summarization model that is finetuned with biomedical datasets (Pubmed abstracts) by John Snow Labs.  It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
+This model is a modified version of LLM based summarization model that is finetuned with biomedical datasets (Pubmed abstracts) by John Snow Labs.  It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/BIOMEDICAL_TEXT_SUMMARIZATION/){:.button.button-orange}
@@ -84,7 +84,6 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 ['The results of this review suggest that aggressive ovarian cancer surgery is associated with a significant reduction in the risk of recurrence and a reduction in the number of radical versus conservative surgical resections. However, the results of this review are based on only one small trial. Further research is needed to determine the role of aggressive ovarian cancer surgery in women with stage IIIC ovarian cancer.']
 ```
 

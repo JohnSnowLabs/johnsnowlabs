@@ -8,7 +8,7 @@ key: docs-ocr-structures
 modify_date: "2020-04-08"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -367,6 +367,7 @@ Show single image with metadata in Jupyter notebook.
 
 {:.table-model-big}
 | Param name | Type | Default | Description |
+|------------|------|---------|-------------|
 | width | string | "600" | width of image |
 | show_meta | boolean | true | enable/disable displaying metadata of image |
 

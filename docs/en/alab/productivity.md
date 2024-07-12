@@ -2,11 +2,11 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
-modify_date: "2022-12-11"
+modify_date: "2022-12-13"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -36,7 +36,7 @@ A refresh button is present on the top-right corner of the Analytics page. The A
 
 ### Task Analytics
 
-To access Task Analytics, navigate on the first tab of the <es>Analytics</es> Dashboard, called <bl>Tasks</bl>. The following blog post explains how to [Improve Annotation Quality using Task Analytics in the Annotation Lab](https://www.johnsnowlabs.com/improving-annotation-quality-using-analytics-in-the-annotation-lab/).
+To access Task Analytics, navigate on the first tab of the <es>Analytics</es> Dashboard, called <bl>Tasks</bl>. The following blog post explains how to [Improve Annotation Quality using Task Analytics in the Generative AI Lab](https://www.johnsnowlabs.com/improving-annotation-quality-using-analytics-in-the-annotation-lab/).
 
 Below are the charts included in the Tasks section.
 
@@ -88,7 +88,7 @@ Below are the charts included in the Tasks section.
 
 ### Team Productivity
 
-To access Team Productivity charts, navigate on the second tab of the <es>Analytics</es> Dashboard, called <bl>Team Productivity</bl>. The following blog post explains how to [Keep Track of Your Team Productivity in the Annotation Lab](https://www.johnsnowlabs.com/keep-track-of-your-team-productivity-in-the-annotation-lab/).
+To access Team Productivity charts, navigate on the second tab of the <es>Analytics</es> Dashboard, called <bl>Team Productivity</bl>. The following blog post explains how to [Keep Track of Your Team Productivity in the Generative AI Lab](https://www.johnsnowlabs.com/keep-track-of-your-team-productivity-in-the-annotation-lab/).
 
 Below are the charts included in the Team Productivity section.
 
@@ -130,7 +130,7 @@ To access IAA charts, navigate on the third tab of the <es>Analytics</es> Dashbo
 
 > **Note:** Only the <es>Submitted</es> and <es>starred (Ground Truth)</es> completions are used to render these charts.
 
-The following blog post explains how your team can [Reach Consensus Faster by Using IAA Charts in the Annotation Lab](https://www.johnsnowlabs.com/reach-consensus-faster-by-using-iaa-charts-in-the-annotation-lab/).
+The following blog post explains how your team can [Reach Consensus Faster by Using IAA Charts in the Generative AI Lab](https://www.johnsnowlabs.com/reach-consensus-faster-by-using-iaa-charts-in-the-annotation-lab/).
 
 Below are the charts included in the Inter-Annotator Agreement section.
 

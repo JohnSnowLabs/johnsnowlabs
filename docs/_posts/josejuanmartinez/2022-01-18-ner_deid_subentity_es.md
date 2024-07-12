@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity
 date: 2022-01-18
 tags: [deid, es, licensed]
-task: De-identification
+task: [De-identification, Named Entity Recognition]
 language: es
 edition: Healthcare NLP 3.3.4
 spark_version: 3.0

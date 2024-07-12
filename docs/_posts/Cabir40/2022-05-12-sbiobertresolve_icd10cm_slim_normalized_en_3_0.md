@@ -220,6 +220,3 @@ nlu.load("en.resolve.icd10cm.slim_normalized").predict("""A 28-year-old female w
 |Language:|en|
 |Size:|846.3 MB|
 |Case sensitive:|false|
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIzMjU0MjAzLC0xNjMwNjI1OTcxXX0=
--->

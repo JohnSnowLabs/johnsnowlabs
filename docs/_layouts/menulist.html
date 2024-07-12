@@ -203,9 +203,9 @@ layout: base
               <div class="col-main cell cell--auto">
                 {%- include main/top/custom.html -%}
                 {%- if _page_type == 'article' -%}
-                  <article itemscope itemtype="http://schema.org/Article">
+                  <article itemscope itemtype="https://schema.org/Article">
                 {%- elsif _page_type == 'webpage' -%}
-                  <article itemscope itemtype="http://schema.org/WebPage">
+                  <article itemscope itemtype="https://schema.org/WebPage">
                 {%- else -%}
                   <article>
                 {%- endif -%}
@@ -221,7 +221,7 @@ layout: base
                     <div class="js-article-content">
                       {%- if _demomenu != false -%}
                         <div class="full_menu"> 
-                          {%- include demomenu.html -%}
+                          {%- include demos/demomenu.html -%}
                         </div>
                       {%- endif -%}
                       {{ content }}

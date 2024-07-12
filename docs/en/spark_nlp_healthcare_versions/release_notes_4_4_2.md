@@ -160,10 +160,6 @@ Treatment recommendations: Treatment for breast cancer depends on several factor
 
 </div><div class="h3-box" markdown="1">
 
-
-
-
-
 #### Text Summarization Method Utilizing A Map-Reduce Approach For Section-Wise Summarization.
 
 We are pleased to announce the augmentation of our `MedicalSummarizer` annotator with the integration of advanced parameters. This enhancement broadens the scope of your medical summarization activities, granting you increased flexibility and helping to navigate the constraints of token limitations.
@@ -172,10 +168,10 @@ These newly introduced parameters notably amplify the functionality of the annot
 
 We are introducing the following parameters:
 
-`setRefineSummary`: Activate this for a more refined summarization, albeit at a slightly increased computational cost.
-`setRefineSummaryTargetLength`: Set your desired summary length in tokens (separated by whitespace). This feature is only operative when setRefineSummary is activated.
-`setRefineChunkSize`: Define the size of refined chunks according to your preference. This size should match the LLM context window size in tokens. This feature is only operative when `setRefineSummary` is enabled.
-`setRefineMaxAttempts`: Set the maximum number of attempts for re-summarizing chunks that exceed the `setRefineSummaryTargetLength` before discontinuation. This feature is only operative when setRefineSummary is enabled.
+- `setRefineSummary`: Activate this for a more refined summarization, albeit at a slightly increased computational cost.
+- `setRefineSummaryTargetLength`: Set your desired summary length in tokens (separated by whitespace). This feature is only operative when setRefineSummary is activated.
+- `setRefineChunkSize`: Define the size of refined chunks according to your preference. This size should match the LLM context window size in tokens. This feature is only operative when `setRefineSummary` is enabled.
+- `setRefineMaxAttempts`: Set the maximum number of attempts for re-summarizing chunks that exceed the `setRefineSummaryTargetLength` before discontinuation. This feature is only operative when setRefineSummary is enabled.
 
 These advancements in the MedicalSummarizer annotator underline our unwavering commitment to delivering cutting-edge tools that enable healthcare professionals and researchers to conduct more efficient and precise medical text analysis.
 
@@ -211,11 +207,6 @@ DISPOSITION: Crutches and splint were administered here. I gave him a prescripti
 
 </div><div class="h3-box" markdown="1">
 
-
-
-
-
-
 #### New Chunk Mapper Model To Map ICD10CM Codes With Corresponding Causes and Claim Analysis Codes According To CDC Guidelines.
 
 This model is designed to map ICD-10-CM codes and deliver corresponding causes and generate claim analysis codes for each respective ICD-10-CM code, adhering to the guidelines provided by the Centers for Disease Control and Prevention (CDC).
@@ -237,6 +228,7 @@ text = ["D69.51", "G43.83", "A18.03"]
 
 *Result*:
 
+{:.table-model-big}
 |icd10cm_code|cause                               |icd10cm_claim_analysis_code|
 |------------|------------------------------------|---------------------------|
 |D69.51      |Unintentional injuries              |D69.51                     |
@@ -248,11 +240,6 @@ text = ["D69.51", "G43.83", "A18.03"]
 
 
 </div><div class="h3-box" markdown="1">
-
-
-
-
-
 
 #### The PHI Obfuscation (De-Identification Module) Now Offers The Ability To Customize The Casings Of Fake Entities For Each Entity Type.
 
@@ -301,6 +288,7 @@ Davis was transfused with 2 units of autologous blood postoperatively.
 
 *Result*:
 
+{:.table-model-big.db}
 |    | sentence                                                                                    | mask                                                                          | deidentified                                                                                    |
 |---:|:--------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
 |  0 | Record date: 08-24-2007.                                                                    | Record date: \<DATE>.                                                         | Record date: 09-01-2007.                                                                        |
@@ -343,6 +331,7 @@ data = [
 
 *Result*:
 
+{:.table-model-big}
 |    | sentence                                      | deid_entity_label                            | obfuscated                                          |
 |---:|:----------------------------------------------|:---------------------------------------------|:----------------------------------------------------|
 |  0 | William Walker is a 62 y.o. patient admitted  | \<PATIENT> is a \<AGE> y.o. patient admitted | Emillio Epps is a 77 y.o. patient admitted          |
@@ -360,12 +349,13 @@ data = [
 
 We are excited to announce 4 new classification models.
 
+{:.table-model-big}
 | model name                          | annotator                       | predicted entities |
 |-------------------------------------|---------------------------------|-----------------|
-| [`classifierml_ade`]()              | DocumentMLClassifierApproach    | `True`, `False` |
-| [`classifier_logreg_ade`]()         | DocumentLogRegClassifierModel   | `True`, `False` |
-| [`generic_svm_classifier_ade`]()    | GenericSVMClassifierModel       | `True`, `False` |
-| [`generic_logreg_classifier_ade`]() | GenericLogRegClassifierModel    | `True`, `False` |
+| [`classifierml_ade`](https://nlp.johnsnowlabs.com/2023/05/16/classifierml_ade_en.html)              | DocumentMLClassifierApproach    | `True`, `False` |
+| [`classifier_logreg_ade`](https://nlp.johnsnowlabs.com/2023/05/16/classifier_logreg_ade_en.html)         | DocumentLogRegClassifierModel   | `True`, `False` |
+| [`generic_svm_classifier_ade`](https://nlp.johnsnowlabs.com/2023/05/09/generic_svm_classifier_ade_en.html)    | GenericSVMClassifierModel       | `True`, `False` |
+| [`generic_logreg_classifier_ade`](https://nlp.johnsnowlabs.com/2023/05/09/generic_logreg_classifier_ade_en.html) | GenericLogRegClassifierModel    | `True`, `False` |
 
 
 *Example*:
@@ -381,22 +371,17 @@ logreg = DocumentLogRegClassifierModel.pretrained("classifier_logreg_ade", "en",
 
 *Result*:
 
+{:.table-model-big}
 |text                                                                                    |result |
 |----------------------------------------------------------------------------------------|-------|
 |I feel great after taking tylenol                                                       |[False]|
 |Detection of activated eosinophils in nasal polyps of an aspirin-induced asthma patient.|[True] |
 
-
-
 </div><div class="h3-box" markdown="1">
-
-
-
 
 #### We Now Offer New Clinical NER Models Specifically Designed For Extracting Clinical Terms In The German Language.
 
 We are excited to announce the German `ner_clinical` models, that can detect `Problem`, `Test` and `Treatment` entities.
-
 
 *Example*:
 
@@ -413,6 +398,7 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
 
 *Result*:
 
+{:.table-model-big}
 |chunk                 |ner_label|
 |----------------------|---------|
 |Schmerzen             |PROBLEM  |
@@ -435,16 +421,10 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
 
 </div><div class="h3-box" markdown="1">
 
-
-
-
-
 #### Core Functionalities Have Been Fine-Tuned With Numerous Improvements and Bug Fixes
 
 - Updated default models and documentation for `pretrained()` functions in most annotators.
 - Use custom signatures when saving a `MedicalBertForSequenceClassification` model
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -477,8 +457,6 @@ ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bil
 + `ner_abbreviation_emb_clinical_medium`
 + `icd10cm_cause_claim_mapper`
 + `spellcheck_drug_norvig`
-
-
 
 </div><div class="h3-box" markdown="1">
 

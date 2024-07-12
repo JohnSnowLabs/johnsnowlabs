@@ -20,7 +20,7 @@ data:
         - subtitle: Analyze Clinical Notes - Live Demos & Notebooks
           activemenu: analyze_clinical_notes
       source: yes
-      source:           
+      source: 
         - title: Normalize Section Headers of the Visit Summary 
           id: normalize_section_headers_visit_summary 
           image: 
@@ -30,6 +30,18 @@ data:
           - text: Live Demo
             type: normal
             url: https://demo.johnsnowlabs.com/healthcare/NORMALIZED_SECTION_HEADER_MAPPER/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NORMALIZED_SECTION_HEADER_MAPPER.ipynb
+        - title: Medical Document Section Headers
+          id: medical_document_section_headers    
+          image: 
+              src: /assets/images/Medical_Document_Section_Headers.svg
+          excerpt: Classifies the text assuming that the section header can be part of the text.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/SECTION_HEADER/
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NORMALIZED_SECTION_HEADER_MAPPER.ipynb
@@ -153,5 +165,17 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_TEXT_SUMMARIZATION.ipynb       
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_TEXT_SUMMARIZATION.ipynb 
+        - title: SQL Query generation
+          id: sql_query_generation_1 
+          image: 
+              src: /assets/images/SQL_Query_generation_1.svg
+          excerpt: This demo can generate SQL queries from natural questions. It is based on a small-size LLM.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb      
 ---

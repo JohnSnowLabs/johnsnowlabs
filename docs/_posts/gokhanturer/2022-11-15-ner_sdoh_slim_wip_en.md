@@ -26,8 +26,8 @@ This model extracts terminology related to `Social Determinants of Health ` from
 `Housing`, `Smoking`, `Substance_Frequency`, `Childhood_Development`, `Age`, `Other_Disease`, `Employment`, `Marital_Status`, `Diet`, `Disability`, `Mental_Health`, `Alcohol`, `Substance_Quantity`, `Family_Member`, `Race_Ethnicity`, `Gender`, `Geographic_Entity`, `Sexual_Orientation`, `Substance_Use`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_slim_wip_en_4.2.1_3.0_1668524622964.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_slim_wip_en_4.2.1_3.0_1668524622964.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

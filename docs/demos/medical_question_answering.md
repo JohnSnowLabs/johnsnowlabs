@@ -33,6 +33,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb
+        - title: Answering Medical Questions
+          id: answering_medical_questions
+          image: 
+              src: /assets/images/Answering_Medical_Questions.svg
+          excerpt: This demo shows how our QA models can give correct answers to medical questions.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_QA_CLINICAL_NOTES/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb
         - title: Medical Question Answering
           id: medical_question_answering
           image: 

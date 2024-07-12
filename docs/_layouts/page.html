@@ -93,7 +93,7 @@ layout: base
         <div class="page__content {% if _demomenu != false %} demopage_content{% endif %}">
 
           {%- if _demomenu != false -%}
-            {%- include demomenu.html -%}
+            {%- include demos/demomenu.html -%}
           {%- endif -%}
             
         {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
@@ -207,9 +207,9 @@ layout: base
               <div class="col-main cell cell--auto">
                 {%- include main/top/custom.html -%}
                 {%- if _page_type == 'article' -%}
-                  <article itemscope itemtype="http://schema.org/Article">
+                  <article itemscope itemtype="https://schema.org/Article">
                 {%- elsif _page_type == 'webpage' -%}
-                  <article itemscope itemtype="http://schema.org/WebPage">
+                  <article itemscope itemtype="https://schema.org/WebPage">
                 {%- else -%}
                   <article>
                 {%- endif -%}

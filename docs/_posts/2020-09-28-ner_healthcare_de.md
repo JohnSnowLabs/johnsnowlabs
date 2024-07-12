@@ -116,7 +116,7 @@ nlu.load("de.med_ner.healthcare").predict("""Das Kleinzellige Bronchialkarzinom 
 
 {:.h2_title}
 ## Data Source
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with *w2v_cc_300d*.
+Trained with augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with ``w2v_cc_300d``.
 
 {:.h2_title}
 ## Benchmarking

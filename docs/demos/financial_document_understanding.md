@@ -105,4 +105,16 @@ data:
           - text: Colab
             type: blue_btn
             url:
+        - title: Analyze 10K Filings with Visual NER
+          id: analyze_10_filings_visual_ner 
+          image: 
+              src: /assets/images/Analyze_10K_Filings_with_Visual_NER.svg
+          excerpt: This demo showcases the power of Visual NER in analyzing financial documents, specifically 10K filings.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/VISUALNER_10KFILINGS/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

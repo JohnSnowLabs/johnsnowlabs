@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps entities with their corresponding RxNorm codes
+This pretrained model maps entities with their corresponding RxNorm codes.
 
 ## Predicted Entities
 
@@ -37,6 +37,7 @@ This pretrained model maps entities with their corresponding RxNorm codes
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
 .setInputCol('text')\

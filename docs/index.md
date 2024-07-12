@@ -2,8 +2,7 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: Spark NLP is Unified access to 15,000+ free models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
-seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
+excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 40,000 models for Healthcare, Legal, Finance, and Visual  NLP.
 seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
 header: true
@@ -58,7 +57,7 @@ data:
         - text: <span>Free</span>Spark NLP
         - text: <span>Free</span>NLP Display
         - text: <span>Free</span>NLP Test
-        - text: <span>Free</span>NLP Lab
+        - text: Generative AI Lab
         - text: Healthcare NLP
         - text: Finance NLP
         - text: Legal NLP
@@ -66,7 +65,7 @@ data:
       tab-body:
         - text: Spark NLP
           description: Open-Source text processing library for Python, Java, and Scala. It provides production-grade, scalable, and trainable versions of the latest research in natural language processing.
-          img: /assets/images/home/spark_ecosys.png
+          img: /assets/images/home/23_05_2023.jpg
 
         - text: NLP Display
           description: Open-Source Python library for visualizing the annotations generated with Spark NLP. 
@@ -76,9 +75,9 @@ data:
           description: Deliver safe and effective models with an open-source library by generating & running over 50 test types on the most popular NLP libraries & tasks.
           img: /assets/images/home/nlp_test.jpg
 
-        - text: NLP Lab
+        - text: Generative AI Lab
           link: https://www.johnsnowlabs.com/nlp-lab/
-          description: Free End-to-End No Code NLP Platform for teams that want to collaborately annotate documents and train models.
+          description: The Most Widely Used Human-in-the-loop Tool by Enterprise AI Teams
           img: /assets/images/home/nlp_lab.png
 
         - text: Healthcare NLP
@@ -190,7 +189,7 @@ data:
         - title:
           image:
             src: https://cdn-static.findly.com/wp-content/uploads/sites/803/2019/03/Highmarkhealth.jpg
-            url: http://www.highmarkhealth.org/
+            url: https://www.highmarkhealth.org/
         - title:
           image:
             src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/1280px-Oracle_logo.svg.png
@@ -275,7 +274,7 @@ data:
 
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/fr/thumb/8/8e/Centre_national_de_la_recherche_scientifique.svg/2048px-Centre_national_de_la_recherche_scientifique.svg.png
+            src: https://iscpif.fr/wp-content/uploads/2023/11/Logo-CNRS-ISCPIF.png
             url: https://iscpif.fr/
             style: "padding: 30px;"
         - title:
@@ -296,7 +295,7 @@ data:
             url: https://www.iisc.ac.in/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Columbia_University_shield.svg/1184px-Columbia_University_shield.svg.png
+            src: https://miro.medium.com/v2/resize:fit:1024/0*3qIWoFnZgVUtsXB-.png
             url: https://www.columbia.edu/
             style: "padding: 25px;"
         - title:
@@ -311,7 +310,7 @@ data:
             style: "padding: 29px;"
         - title:
           image:
-            src: https://u-paris.fr/wp-content/uploads/2019/03/Universite_Paris_logo_horizontal.jpg
+            src: https://u-paris.fr/wp-content/uploads/2022/03/Universite_Paris-Cite-logo.jpeg
             url: https://u-paris.fr/en/
         - title:
           image:
@@ -335,6 +334,9 @@ data:
         - text: '<i class="fab fa-slack-hash"></i> Slack'
           type: trans
           url: https://join.slack.com/t/spark-nlp/shared_invite/zt-198dipu77-L3UWNe_AJ8xqDk0ivmih5Q
+        - text: Generative AI in Healthcare
+          type: trans
+          url: https://www.johnsnowlabs.com/generative-ai-in-healthcare/
       background_color: "#0098DA"
 
 

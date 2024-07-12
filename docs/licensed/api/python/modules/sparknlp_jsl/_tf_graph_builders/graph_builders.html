@@ -627,6 +627,7 @@ document.write(`
                 <span class="n">model_location</span><span class="o">=</span><span class="n">model_location</span><span class="p">,</span> <span class="n">model_filename</span><span class="o">=</span><span class="n">model_filename</span></div></div>
             <span class="p">)</span>
 
+
 <div class="viewcode-block" id="LogRegClassifierTFGraphBuilder"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder">[docs]</a><span class="k">class</span> <span class="nc">LogRegClassifierTFGraphBuilder</span><span class="p">(</span><span class="n">GenericClassifierTFGraphBuilder</span><span class="p">):</span>
 <div class="viewcode-block" id="LogRegClassifierTFGraphBuilder.get_model_build_params"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_model_build_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -658,6 +659,7 @@ document.write(`
             <span class="s2">&quot;output_dim&quot;</span><span class="p">:</span> <span class="s2">&quot;Output dimension.&quot;</span></div></div>
         <span class="p">}</span>
 
+
 <div class="viewcode-block" id="SVMClassifierTFGraphBuilder"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder">[docs]</a><span class="k">class</span> <span class="nc">SVMClassifierTFGraphBuilder</span><span class="p">(</span><span class="n">GenericClassifierTFGraphBuilder</span><span class="p">):</span>
 <div class="viewcode-block" id="SVMClassifierTFGraphBuilder.get_model_build_params"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_model_build_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -688,6 +690,11 @@ document.write(`
             <span class="s2">&quot;input_dim&quot;</span><span class="p">:</span> <span class="s2">&quot;Input dimension.&quot;</span><span class="p">,</span>
             <span class="s2">&quot;output_dim&quot;</span><span class="p">:</span> <span class="s2">&quot;Output dimension.&quot;</span></div></div>
         <span class="p">}</span>
+
+
+<div class="viewcode-block" id="FewShotClassifierTFGraphBuilder"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#sparknlp_jsl._tf_graph_builders.graph_builders.FewShotClassifierTFGraphBuilder">[docs]</a><span class="k">class</span> <span class="nc">FewShotClassifierTFGraphBuilder</span><span class="p">(</span><span class="n">LogRegClassifierTFGraphBuilder</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
 
 <div class="viewcode-block" id="AssertionTFGraphBuilder"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder">[docs]</a><span class="k">class</span> <span class="nc">AssertionTFGraphBuilder</span><span class="p">(</span><span class="n">TFGraphBuilder</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1031,6 +1038,7 @@ document.write(`
         <span class="s2">&quot;relation_extraction&quot;</span><span class="p">:</span> <span class="n">RelationExtractionTFGraphBuilder</span><span class="p">,</span>
         <span class="s2">&quot;logreg_classifier&quot;</span><span class="p">:</span> <span class="n">LogRegClassifierTFGraphBuilder</span><span class="p">,</span>
         <span class="s2">&quot;svm_classifier&quot;</span><span class="p">:</span> <span class="n">SVMClassifierTFGraphBuilder</span><span class="p">,</span>
+        <span class="s2">&quot;fewshot_classifier&quot;</span><span class="p">:</span> <span class="n">FewShotClassifierTFGraphBuilder</span><span class="p">,</span>
     <span class="p">}</span>
 
     <span class="nd">@staticmethod</span>

@@ -39,6 +39,7 @@ Types of questions are supported: `"short"` (producing yes/no/maybe) answers and
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\
@@ -114,7 +115,6 @@ val result = pipeline.fit(data).transform(data)
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 |[the results of the two experiments suggest that the visual indexeing theory does not fully explain the effects that spatial attention has on memory.]|
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 ```
 
 {:.model-param}

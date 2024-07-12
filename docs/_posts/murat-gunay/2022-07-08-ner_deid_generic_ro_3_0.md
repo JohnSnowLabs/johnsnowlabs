@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic
 date: 2022-07-08
 tags: [deidentification, word2vec, phi, generic, ner, ro, licensed]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ro
 edition: Healthcare NLP 3.5.0
 spark_version: 3.0

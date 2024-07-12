@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_roberta_augmented
 date: 2022-02-15
 tags: [deid, es, licensed]
-task: De-identification
+task: [De-identification, Named Entity Recognition]
 language: es
 edition: Healthcare NLP 3.3.4
 spark_version: 2.4

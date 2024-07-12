@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 IMPORTANT: Don't run this model on the whole financial report. Instead:
-- Split by paragraphs. You can use [notebook 1](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings_JSL) in Finance or Legal as inspiration;
+- Split by paragraphs. You can use [notebook 1](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings) in Finance or Legal as inspiration;
 - Use the `finclf_work_experience_item` Text Classifier to select only these paragraphs; 
 
 This model allows you to analyzed present and past job positions of people, extracting relations between PERSON, ORG, ROLE and DATE. This model requires an NER with the mentioned entities, as `finner_org_per_role` and can also be combined with `finassertiondl_past_roles` to detect if the entities are mentioned to have happened in the PAST or not (although you can also infer that from the relations as `had_role_until`).
@@ -32,7 +32,7 @@ This model is a `sm` model without meaningful directions in the relations (the m
 `has_role`, `had_role_until`, `has_role_from`, `works_for`, `has_role_in_company`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/finance/FINRE_WORK_EXPERIENCE){:.button.button-orange}
+[Live Demo](https://nlp.johnsnowlabs.com/demos){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finre_work_experience_en_1.0.0_3.0_1664360618647.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finre_work_experience_en_1.0.0_3.0_1664360618647.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

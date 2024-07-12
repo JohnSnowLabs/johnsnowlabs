@@ -10,7 +10,7 @@ language: en
 nav_key: models
 edition: Visual NLP 4.0.0
 spark_version: 3.2
-supported: true
+deprecated: true
 annotator: VisualDocumentNERv21
 article_header:
   type: cover
@@ -26,9 +26,10 @@ This is a Form Recognition / Key Value extraction model, trained on the summary 
 `KEY`, `VALUE`, `HEADER`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_DOCUMENT_KEYVALUES_NER/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Live Demo](https://demo.johnsnowlabs.com/finance/VISUALNER_10KFILINGS/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/finance-nlp/90.2.Financial_Visual_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/visualner_keyvalue_10kfilings_en_4.0.0_3.2_1663781115795.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/visualner_keyvalue_10kfilings_en_4.0.0_3.2_1663781115795.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/visualner_keyvalue_10kfilings_en_4.0.0_3.2_1663781115795.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 

@@ -154,7 +154,7 @@ nlu.load("en.med_ner.cellular").predict("""Detection of various other intracellu
 ## Data Source
 
 Trained on the JNLPBA corpus containing more than 2.404 publication abstracts with ``'embeddings_clinical'``.
-http://www.geniaproject.org/
+[https://www.geniaproject.org/](https://www.geniaproject.org/)
 
 ## Benchmarking
 

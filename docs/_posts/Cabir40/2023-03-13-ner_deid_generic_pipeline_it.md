@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_pipeline
 date: 2023-03-13
 tags: [deid, it, licensed]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: it
 edition: Healthcare NLP 4.3.0
 spark_version: 3.2
@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [ner_deid_generic](https://nlp.j
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

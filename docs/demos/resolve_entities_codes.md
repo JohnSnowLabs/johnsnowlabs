@@ -32,7 +32,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_SNOMED
           - text: Colab
             type: blue_btn
-            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_SNOMED.ipynb        
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_SNOMED.ipynb
         - title: Map clinical terminology to ICD-10-CM taxonomy
           id: icd10-cm_coding
           image: 
@@ -56,7 +56,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_RXNORM/
           - text: Colab
             type: blue_btn
-            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_RXNORM.ipynb              
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_RXNORM.ipynb    
+        - title: MEDDRA
+          id: meddra
+          image: 
+              src: /assets/images/MEDDRA.svg
+          excerpt: This demo returns MedDRA codes corresponding to clinical terms.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ER_MEDDRA/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_MEDDRA.ipynb
         - title: Map healthcare codes between taxonomies
           id: logical-observation-identifiers-names-and-codes
           image: 
@@ -80,7 +92,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_LOINC/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_LOINC.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_LOINC.ipynb
         - title: Resolve Clinical Health Information using the HPO taxonomy
           id: resolve_clinical_health_information_using_hpo_taxonomy 
           image: 
@@ -178,4 +190,40 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_CPT.ipynb
+        - title: Mapping ICD-10-CM Codes with Corresponding Medicare Severity-Diagnosis Related Group
+          id: mapping_codes_medicare_severity_diagnosis_related_group       
+          image: 
+              src: /assets/images/ICD-10-CMMS-DRG.svg
+          excerpt: This pretrained model maps ICD-10-CM codes with their corresponding Medicare Severity-Diagnosis Related Group (MS-DRG).
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ICD10CM_MS_DRG_MAPPER/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ICD10CM_MS_DRG_MAPPER.ipynb
+        - title: Mapping RxNorm Codes with Corresponding Drug Brand Names, Actions and Treatments
+          id: er_drug       
+          image: 
+              src: /assets/images/ER_DRUG.svg
+          excerpt: Mapping RxNorm and RxNorm Extension Codes with Corresponding Drug Brand Names, Actions and Treatments.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ER_DRUG/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.0.Chunk_Mapping.ipynb
+        - title: Extraction of SNOMED Terms
+          id: extraction_snomed_terms       
+          image: 
+              src: /assets/images/Extraction_of_SNOMED_Terms.svg
+          excerpt: This NER model is designed to identify SNOMED terms within clinical documents, utilizing the embeddings_clinical embeddings model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_SNOMED_TERM/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_SNOMED_TERM.ipynb
 ---

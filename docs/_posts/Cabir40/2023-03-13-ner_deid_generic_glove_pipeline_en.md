@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_glove_pipeline
 date: 2023-03-13
 tags: [deid, clinical, glove, licensed, ner, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 edition: Healthcare NLP 4.3.0
 spark_version: 3.2
@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [ner_deid_generic_glove](https:/
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

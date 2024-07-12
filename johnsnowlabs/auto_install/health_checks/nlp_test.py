@@ -2,7 +2,6 @@ from johnsnowlabs import *
 
 
 def run_test():
-    spark = nlp.start()
     doc = nlp.DocumentAssembler().setInputCol("text").setOutputCol("doc")
 
     tok = nlp.Tokenizer().setInputCols("doc").setOutputCol("tok")
@@ -26,5 +25,9 @@ def run_test():
     text = "Peter Parker is a nice guy and lives in New York"
     spark_df = spark.createDataFrame([[text]]).toDF("text")
 
-    p = Pipeline(stages=[doc, tok, embeddings, ner, ner_converter])
+    p = nlp.Pipeline(stages=[doc, tok, embeddings, ner, ner_converter])
     p.fit(spark_df).transform(spark_df).show()
+
+
+if __name__ == "__main__":
+    run_test()

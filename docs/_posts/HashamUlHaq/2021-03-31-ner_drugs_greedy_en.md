@@ -138,7 +138,7 @@ nlu.load("en.med_ner.drugsgreedy").predict("""DOSAGE AND ADMINISTRATION The init
 
 ## Data Source
 
-Trained on augmented i2b2_med7 + FDA dataset with ``embeddings_clinical``, [https://www.i2b2.org/NLP/Medication](https://www.i2b2.org/NLP/Medication).
+Trained on augmented version of i2b2_med7 + FDA dataset with ``embeddings_clinical``, [https://www.i2b2.org/NLP/Medication](https://www.i2b2.org/NLP/Medication).
 
 ## Benchmarking
 

@@ -177,7 +177,7 @@ nlu.load("en.assert").predict("""The human KCNJ9 (Kir 3.3, GIRK3) is a member of
 
 ## Data Source
 
-Trained on i2b2 assertion data
+Trained with augmented version of i2b2 dataset.
 
 ## Benchmarking
 

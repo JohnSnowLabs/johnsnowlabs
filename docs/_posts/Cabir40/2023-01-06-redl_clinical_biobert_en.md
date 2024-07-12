@@ -37,6 +37,7 @@ Extract relations like `TrIP` : a certain treatment has improved a medical probl
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documenter = DocumentAssembler()\
 .setInputCol("text")\

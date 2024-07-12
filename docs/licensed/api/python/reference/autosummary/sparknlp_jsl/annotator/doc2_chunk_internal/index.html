@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -287,8 +291,11 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/document_log_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_log_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/few_shot_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_assertion_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/generic_log_reg_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_log_reg_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/generic_svm_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_svm_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/large_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.large_few_shot_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/medical_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/medical_bert_for_token_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_token_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/medical_distilbert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_distilbert_for_sequence_classification</span></code></a></li>
@@ -300,7 +307,9 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deid/doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deid/light_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.light_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deid/name_obfuscator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.name_obfuscator</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deid/reIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.reIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deid/replacer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.replacer</span></code></a></li>
@@ -314,66 +323,92 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../er/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.er</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../er/entity_ruler_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.er.entity_ruler_internal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../generic_classifier/generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier.generic_classifier</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matcher/text_matcher_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_internal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../merge/chunk_merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge.chunk_merge</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ner/iob_tagger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.iob_tagger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../normalizer/date_normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer.date_normalizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../normalizer/drug_normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer.drug_normalizer</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../re/relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../re/relation_extraction_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../re/relation_ner_chunk_filter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_ner_chunk_filter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../re/zero_shot_relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.zero_shot_relation_extraction</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regex/regex_matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex.regex_matcher</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../resolution/resolver_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.resolver_merger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../resolution/sentence_entity_resolver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.sentence_entity_resolver</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_chunk2_doc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_chunk2_doc</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -444,8 +479,9 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Doc2ChunkInternal</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal" title="Permalink to this definition">#</a></dt>
-<dd><p>Converts <code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code> type annotations into <code class="docutils literal notranslate"><span class="pre">CHUNK</span></code> type with the
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Doc2ChunkInternal</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.AnnotatorTransformer</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorProperties</span></code></p>
+<p>Converts <code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code> type annotations into <code class="docutils literal notranslate"><span class="pre">CHUNK</span></code> type with the
 contents of a <code class="docutils literal notranslate"><span class="pre">chunkCol</span></code>.</p>
 <p>Chunk text must be contained within input <code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code>. May be either
 <code class="docutils literal notranslate"><span class="pre">StringType</span></code> or <code class="docutils literal notranslate"><span class="pre">ArrayType[StringType]</span></code> (using setIsArray). Useful for
@@ -466,30 +502,17 @@ annotators that require a CHUNK type input.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>chunkCol</strong></dt><dd><p>Column that contains the string. Must be part of DOCUMENT</p>
-</dd>
-<dt><strong>startCol</strong></dt><dd><p>Column that has a reference of where the chunk begins</p>
-</dd>
-<dt><strong>startColByTokenIndex</strong></dt><dd><p>Whether start column is prepended by whitespace tokens</p>
-</dd>
-<dt><strong>isArray</strong></dt><dd><p>Whether the chunkCol is an array of strings, by default False</p>
-</dd>
-<dt><strong>failOnMissing</strong></dt><dd><p>Whether to fail the job if a chunk is not found within document.
-Return empty otherwise</p>
-</dd>
-<dt><strong>lowerCase</strong></dt><dd><p>Whether to lower case for matching case</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunkCol</strong> – Column that contains the string. Must be part of DOCUMENT</p></li>
+<li><p><strong>startCol</strong> – Column that has a reference of where the chunk begins</p></li>
+<li><p><strong>startColByTokenIndex</strong> – Whether start column is prepended by whitespace tokens</p></li>
+<li><p><strong>isArray</strong> – Whether the chunkCol is an array of strings, by default False</p></li>
+<li><p><strong>failOnMissing</strong> – Whether to fail the job if a chunk is not found within document.
+Return empty otherwise</p></li>
+<li><p><strong>lowerCase</strong> – Whether to lower case for matching case</p></li>
+</ul>
 </dd>
 </dl>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Chunk2Doc</span></code></dt><dd><p>for converting <cite>CHUNK</cite> annotations to <cite>DOCUMENT</cite></p>
-</dd>
-</dl>
-</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
@@ -517,143 +540,397 @@ Return empty otherwise</p>
 <span class="go">+-----------------------------------------------------------------+---------------------+</span>
 </pre></div>
 </div>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.inputAnnotatorTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Chunk2Doc</span></code></dt><dd><p>for converting <cite>CHUNK</cite> annotations to <cite>DOCUMENT</cite></p>
+</dd>
+</dl>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.chunkCol">
-<span class="sig-name descname"><span class="pre">chunkCol</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.chunkCol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.chunkCol" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol">
-<span class="sig-name descname"><span class="pre">startCol</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.startCol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startColByTokenIndex">
-<span class="sig-name descname"><span class="pre">startColByTokenIndex</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.startColByTokenIndex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startColByTokenIndex" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isArray">
-<span class="sig-name descname"><span class="pre">isArray</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.isArray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isArray" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunkCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.chunkCol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.failOnMissing">
-<span class="sig-name descname"><span class="pre">failOnMissing</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.failOnMissing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.failOnMissing" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">failOnMissing</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.failOnMissing" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isArray">
+<span class="sig-name descname"><span class="pre">isArray</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isArray" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lazyAnnotator" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lowerCase">
-<span class="sig-name descname"><span class="pre">lowerCase</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.lowerCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lowerCase" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">lowerCase</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lowerCase" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">Doc2Chunk</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">Doc2Chunk</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol">
+<span class="sig-name descname"><span class="pre">startCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startColByTokenIndex">
+<span class="sig-name descname"><span class="pre">startColByTokenIndex</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startColByTokenIndex" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams">
-<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets params for this Doc2ChunkInternal.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>Doc2ChunkInternal</dt><dd><p>Doc2ChunkInternal with params set</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setChunkCol">
-<span class="sig-name descname"><span class="pre">setChunkCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setChunkCol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setChunkCol" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setChunkCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setChunkCol" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column that contains the string. Must be part of DOCUMENT.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>Name of the Chunk Column</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setIsArray">
-<span class="sig-name descname"><span class="pre">setIsArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setIsArray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setIsArray" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether the chunkCol is an array of strings.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether the chunkCol is an array of strings</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartCol">
-<span class="sig-name descname"><span class="pre">setStartCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setStartCol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartCol" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets column that has a reference of where chunk begins.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>Name of the reference column</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartColByTokenIndex">
-<span class="sig-name descname"><span class="pre">setStartColByTokenIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setStartColByTokenIndex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartColByTokenIndex" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether start column is prepended by whitespace tokens.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>whether start column is prepended by whitespace tokens</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of the Chunk Column</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setFailOnMissing">
-<span class="sig-name descname"><span class="pre">setFailOnMissing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setFailOnMissing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setFailOnMissing" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setFailOnMissing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setFailOnMissing" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to fail the job if a chunk is not found within document.
 Return empty otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether to fail job on missing chunks</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to fail job on missing chunks</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setIsArray">
+<span class="sig-name descname"><span class="pre">setIsArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setIsArray" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether the chunkCol is an array of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether the chunkCol is an array of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLowerCase">
-<span class="sig-name descname"><span class="pre">setLowerCase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/doc2_chunk_internal.html#Doc2ChunkInternal.setLowerCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLowerCase" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setLowerCase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLowerCase" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to lower case for matching case.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Name of the Id Column</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Name of the Id Column</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets params for this Doc2ChunkInternal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Doc2ChunkInternal with params set</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal" title="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal">Doc2ChunkInternal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartCol">
+<span class="sig-name descname"><span class="pre">setStartCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column that has a reference of where chunk begins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of the reference column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartColByTokenIndex">
+<span class="sig-name descname"><span class="pre">setStartColByTokenIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartColByTokenIndex" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether start column is prepended by whitespace tokens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – whether start column is prepended by whitespace tokens</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -694,21 +971,53 @@ Return empty otherwise.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.chunkCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.chunkCol</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.startCol</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startColByTokenIndex"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.startColByTokenIndex</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isArray"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.isArray</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.failOnMissing"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.failOnMissing</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getter_attrs"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputCols"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isArray"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.isArray</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.lowerCase"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.lowerCase</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.name"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.name</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.outputCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.startCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startColByTokenIndex"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.startColByTokenIndex</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.clear"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.copy"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.explainParam"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.explainParams"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.extractParamMap"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getInputCols"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getOrDefault"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getOutputCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getParam"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.getParamValue"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.hasDefault"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.hasParam"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isDefined"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.isSet"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.load"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.read"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.save"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.set"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setChunkCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setChunkCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setFailOnMissing"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setFailOnMissing()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setInputCols"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setIsArray"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setIsArray()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLowerCase"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setLowerCase()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setOutputCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParamValue"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartCol"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setStartCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setStartColByTokenIndex"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setStartColByTokenIndex()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setFailOnMissing"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setFailOnMissing()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setLowerCase"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.setLowerCase()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.transform"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.write"><code class="docutils literal notranslate"><span class="pre">Doc2ChunkInternal.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -717,14 +1026,6 @@ Return empty otherwise.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

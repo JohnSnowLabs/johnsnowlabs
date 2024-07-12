@@ -305,7 +305,7 @@ Run the following code in Google Colab notebook and start using spark-nlp right 
 
 ```sh
 # This is only to setup PySpark and Spark NLP on Colab
-!wget http://setup.johnsnowlabs.com/colab.sh -O - | bash
+!wget https://setup.johnsnowlabs.com/colab.sh -O - | bash
 ```
 
 This script comes with the two options to define `pyspark` and `spark-nlp` versions via options:
@@ -314,7 +314,7 @@ This script comes with the two options to define `pyspark` and `spark-nlp` versi
 # -p is for pyspark
 # -s is for spark-nlp
 # by default they are set to the latest
-!wget http://setup.johnsnowlabs.com/colab.sh -O - | bash /dev/stdin -p 3.2.3 -s 4.3.2
+!wget https://setup.johnsnowlabs.com/colab.sh -O - | bash /dev/stdin -p 3.2.3 -s 4.3.2
 ```
 
 [Spark NLP quick start on Google Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/jupyter/quick_start_google_colab.ipynb) is a live demo on Google Colab that performs named entity recognitions and sentiment analysis by using Spark NLP pretrained pipelines.
@@ -326,7 +326,7 @@ Run the following code in Kaggle Kernel and start using spark-nlp right away.
 
 ```sh
 # Let's setup Kaggle for Spark NLP and PySpark
-!wget http://setup.johnsnowlabs.com/kaggle.sh -O - | bash
+!wget https://setup.johnsnowlabs.com/kaggle.sh -O - | bash
 ```
 
 [Spark NLP quick start on Kaggle Kernel](https://www.kaggle.com/mozzie/spark-nlp-named-entity-recognition) is a live demo on Kaggle Kernel that performs named entity recognitions by using Spark NLP pretrained pipeline.

@@ -358,7 +358,7 @@ document.write(`
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.nlp_test.robustness.utils.calculate_proportion">
-<span class="sig-name descname"><span class="pre">calculate_proportion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f1_score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/nlp_test/robustness/utils.html#calculate_proportion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.nlp_test.robustness.utils.calculate_proportion" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">calculate_proportion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f1_score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl.nlp_test.robustness.utils.calculate_proportion" title="Permalink to this definition">#</a></dt>
 <dd><p>This function calculates the proportion value for robustness based on F1 score.
 It assumes that noise_prob assigned during testing is set to the default value of 0.5.
 :param f1_score: f1_score of robustness testing results.
@@ -367,7 +367,7 @@ It assumes that noise_prob assigned during testing is set to the default value o
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.nlp_test.robustness.utils.suggest_perturbations">
-<span class="sig-name descname"><span class="pre">suggest_perturbations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/nlp_test/robustness/utils.html#suggest_perturbations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.nlp_test.robustness.utils.suggest_perturbations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">suggest_perturbations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#sparknlp_jsl.nlp_test.robustness.utils.suggest_perturbations" title="Permalink to this definition">#</a></dt>
 <dd><p>This function calculates proportion value for each entity and each test types for robustness fixing.
 Calculation based on robustness test results and output format should be dictionary.
 :param test_results: Test result’s metric dictionary obtained from robustness test.
@@ -376,7 +376,7 @@ Calculation based on robustness test results and output format should be diction
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.nlp_test.robustness.utils.get_augmentation_proportions">
-<span class="sig-name descname"><span class="pre">get_augmentation_proportions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suggestions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/nlp_test/robustness/utils.html#get_augmentation_proportions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.nlp_test.robustness.utils.get_augmentation_proportions" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_augmentation_proportions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suggestions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#sparknlp_jsl.nlp_test.robustness.utils.get_augmentation_proportions" title="Permalink to this definition">#</a></dt>
 <dd><p>This function returns the augmentation proportions for each test.
 :param suggestions: Dictionary of suggestions containing test name, entity and proportion.
 :param key: The dictionary key to pull from the suggestions dictionary.</p>
@@ -426,14 +426,6 @@ Calculation based on robustness test results and output format should be diction
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/nlp_test/robustness/utils/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

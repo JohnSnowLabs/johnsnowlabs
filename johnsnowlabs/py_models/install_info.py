@@ -1,5 +1,5 @@
 import os
-from typing import Optional, Dict, Union
+from typing import Dict, Optional, Union
 
 from johnsnowlabs import settings
 from johnsnowlabs.abstract_base.pydantic_model import WritableBaseModel
@@ -7,7 +7,7 @@ from johnsnowlabs.abstract_base.pydantic_model import WritableBaseModel
 # from johnsnowlabs.abstract_base.software_product import AbstractSoftwareProduct
 from johnsnowlabs.py_models.jsl_secrets import JslSecrets
 from johnsnowlabs.py_models.lib_version import LibVersion
-from johnsnowlabs.utils.enums import ProductName, JvmHardwareTarget, PyInstallTypes
+from johnsnowlabs.utils.enums import JvmHardwareTarget, ProductName, PyInstallTypes
 
 
 class InstallFileInfoBase(WritableBaseModel):
@@ -85,7 +85,7 @@ class InstallFolder(WritableBaseModel):
         for file_name, install_info in self.infos.items():
             if install_info.product == product:
                 if hardware_target:
-                    if install_info.install_type == hardware_target:
+                    if install_info.install_type == JvmHardwareTarget(hardware_target):
                         return install_info
                 else:
                     return install_info
@@ -104,14 +104,18 @@ class InstallFolder(WritableBaseModel):
 
 
 class InstallSuite(WritableBaseModel):
-    info: RootInfo
+    info: Optional[RootInfo] = None
     secrets: Optional[JslSecrets] = None
     # Py4J Libs
-    nlp: LocalPy4JLib
+    nlp: Optional[LocalPy4JLib] = None
     ocr: Optional[LocalPy4JLib] = None
     hc: Optional[LocalPy4JLib] = None
     # Pure Python Libs
     pure_py_jsl: Optional[LocalPyLib] = None
+
+    @staticmethod
+    def empty():
+        return InstallSuite()
 
     def get_missing_products(self, nlp, visual, spark_nlp):
         missing = []

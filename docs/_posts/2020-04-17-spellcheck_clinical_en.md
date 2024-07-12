@@ -71,4 +71,4 @@ nlu.load("en.spell.clinical").predict("""Put your text here.""")
 
 {:.h2_title}
 ## Data Source
-Trained with PubMed and i2b2 datasets.
+Trained with augmented version of i2b2 and PubMed datasets.

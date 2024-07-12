@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/normalizer/date_normalizer/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -287,8 +291,11 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/document_log_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_log_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/few_shot_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_assertion_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/generic_log_reg_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_log_reg_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/generic_svm_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_svm_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/large_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.large_few_shot_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/medical_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/medical_bert_for_token_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_token_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/medical_distilbert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_distilbert_for_sequence_classification</span></code></a></li>
@@ -300,7 +307,9 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/light_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.light_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/name_obfuscator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.name_obfuscator</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/reIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.reIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/replacer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.replacer</span></code></a></li>
@@ -314,66 +323,92 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../er/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.er</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../er/entity_ruler_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.er.entity_ruler_internal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../generic_classifier/generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier.generic_classifier</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_internal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../merge/chunk_merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge.chunk_merge</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/iob_tagger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.iob_tagger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer.date_normalizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drug_normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer.drug_normalizer</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../re/relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../re/relation_extraction_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../re/relation_ner_chunk_filter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_ner_chunk_filter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../re/zero_shot_relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.zero_shot_relation_extraction</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../regex/regex_matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex.regex_matcher</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../resolution/resolver_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.resolver_merger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../resolution/sentence_entity_resolver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.sentence_entity_resolver</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multi_chunk2_doc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_chunk2_doc</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -443,9 +478,10 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DateNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.normalizer.DateNormalizer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer" title="Permalink to this definition">#</a></dt>
-<dd><p>Try to normalize dates in chunks annotations.
-The expected format for the date will be YYYY/MM/DD.
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DateNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.normalizer.DateNormalizer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
+<p>Try to normalize dates in chunks annotations.</p>
+<p>The expected format for the date will be YYYY/MM/DD.
 If the date is normalized then field normalized in metadata will be true else will be false.</p>
 <table class="table">
 <thead>
@@ -461,17 +497,14 @@ If the date is normalized then field normalized in metadata will be true else wi
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>anchorDateYear</strong></dt><dd><p>Add an anchor year for the relative dates such as a day after tomorrow.
-If not set it will use the current year. Example: 2021</p>
-</dd>
-<dt><strong>anchorDateMonth</strong></dt><dd><p>Add an anchor month for the relative dates such as a day after tomorrow.
-If not set it will use the current month. Example: 1 which means January</p>
-</dd>
-<dt><strong>anchorDateDay</strong></dt><dd><p>Add an anchor day of the day for the relative dates such as a day after
-tomorrow. If not set it will use the current day. Example: 11</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>anchorDateYear</strong> – Add an anchor year for the relative dates such as a day after tomorrow.
+If not set it will use the current year. Example: 2021</p></li>
+<li><p><strong>anchorDateMonth</strong> – Add an anchor month for the relative dates such as a day after tomorrow.
+If not set it will use the current month. Example: 1 which means January</p></li>
+<li><p><strong>anchorDateDay</strong> – Add an anchor day of the day for the relative dates such as a day after
+tomorrow. If not set it will use the current day. Example: 11</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -526,227 +559,445 @@ tomorrow. If not set it will use the current day. Example: 11</p>
 <span class="gp">... </span>    <span class="s2">&quot;original_date&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="s2">&quot;date.metadata[0].normalized as metadata&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="go">    +---------------+-------------+--------+</span>
+<span class="go">    |normalized_date|original_date|metadata|</span>
+<span class="go">    +---------------+-------------+--------+</span>
+<span class="go">    |   [2018/08/02]|   08/02/2018|    true|</span>
+<span class="go">    |   [2018/11/DD]|      11/2018|    true|</span>
+<span class="go">    |   [2018/11/01]|   11/01/2018|    true|</span>
+<span class="go">    |   [2021/03/12]|    12Mar2021|    true|</span>
+<span class="go">    |   [2018/01/30]| Jan 30, 2018|    true|</span>
+<span class="go">    |   [1999/04/13]|   13.04.1999|    true|</span>
+<span class="go">    |   [2020/04/03]|  3April 2020|    true|</span>
+<span class="go">    |   [2000/03/20]|  next monday|    true|</span>
+<span class="go">    |   [2000/03/15]|        today|    true|</span>
+<span class="go">    |   [2000/03/22]|    next week|    true|</span>
+<span class="go">    +---------------+-------------+--------+</span>
 </pre></div>
 </div>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p>normalized_date</p></td>
-<td><p>original_date</p></td>
-<td><p>metadata</p></td>
-</tr>
-<tr class="row-even"><td><p>[2018/08/02]
-[2018/11/DD]
-[2018/11/01]
-[2021/03/12]
-[2018/01/30]
-[1999/04/13]
-[2020/04/03]
-[2000/03/20]
-[2000/03/15]
-[2000/03/22]</p></td>
-<td><blockquote>
-<div><dl class="simple">
-<dt>08/02/2018</dt><dd><p>11/2018</p>
-</dd>
-<dt>11/01/2018</dt><dd><p>12Mar2021</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl>
-<dt>Jan 30, 2018</dt><dd><blockquote>
-<div><p>13.04.1999</p>
-</div></blockquote>
-<p>3April 2020
-next monday</p>
-<blockquote>
-<div><blockquote>
-<div><p>today</p>
-</div></blockquote>
-<p>next week</p>
-</div></blockquote>
-</dd>
-</dl>
-</td>
-<td><p>true
-true
-true
-true
-true
-true
-true
-true
-true
-true</p></td>
-</tr>
-</tbody>
-</table>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.inputAnnotatorTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.outputAnnotatorType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DateNormalizer</span></em><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.name" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateYear">
-<span class="sig-name descname"><span class="pre">anchorDateYear</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.anchorDateYear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateYear" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateDay">
+<span class="sig-name descname"><span class="pre">anchorDateDay</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateDay" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateMonth">
-<span class="sig-name descname"><span class="pre">anchorDateMonth</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.anchorDateMonth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateMonth" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">anchorDateMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateMonth" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateDay">
-<span class="sig-name descname"><span class="pre">anchorDateDay</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.anchorDateDay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateDay" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputDateFormat">
-<span class="sig-name descname"><span class="pre">outputDateFormat</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.outputDateFormat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputDateFormat" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateYear">
+<span class="sig-name descname"><span class="pre">anchorDateYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateYear" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementDay">
-<span class="sig-name descname"><span class="pre">defaultReplacementDay</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.defaultReplacementDay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementDay" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">defaultReplacementDay</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementDay" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementMonth">
-<span class="sig-name descname"><span class="pre">defaultReplacementMonth</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.defaultReplacementMonth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementMonth" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">defaultReplacementMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementMonth" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementYear">
-<span class="sig-name descname"><span class="pre">defaultReplacementYear</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.defaultReplacementYear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementYear" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">defaultReplacementYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DateNormalizer</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputDateFormat">
+<span class="sig-name descname"><span class="pre">outputDateFormat</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputDateFormat" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateYear">
-<span class="sig-name descname"><span class="pre">setAnchorDateYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setAnchorDateYear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateYear" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets an anchor year for the relative dates such as a day after
-tomorrow. If not set it will use the current year.</p>
-<p>Example: 2021</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>The anchor year for relative dates</p>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateDay">
+<span class="sig-name descname"><span class="pre">setAnchorDateDay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateDay" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets an anchor day of the day for the relative dates such as a day after tomorrow.</p>
+<p>If not set it will use the current day.</p>
+<p>Example: 11</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – The anchor day for relative dates</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateMonth">
-<span class="sig-name descname"><span class="pre">setAnchorDateMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setAnchorDateMonth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateMonth" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets an anchor month for the relative dates such as a day after
-tomorrow. If not set it will use the current month.</p>
+<span class="sig-name descname"><span class="pre">setAnchorDateMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateMonth" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets an anchor month for the relative dates such as a day after tomorrow.</p>
+<p>If not set it will use the current month.</p>
 <p>Example: 1 which means January</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>The anchor month for relative dates</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – The anchor month for relative dates</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateDay">
-<span class="sig-name descname"><span class="pre">setAnchorDateDay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setAnchorDateDay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateDay" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets an anchor day of the day for the relative dates such as a day
-after tomorrow. If not set it will use the current day.</p>
-<p>Example: 11</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateYear">
+<span class="sig-name descname"><span class="pre">setAnchorDateYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets an anchor year for the relative dates such as a day after tomorrow.</p>
+<p>If not set it will use the current year.</p>
+<p>Example: 2021</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>The anchor day for relative dates</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputDateformat">
-<span class="sig-name descname"><span class="pre">setOutputDateformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setOutputDateformat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputDateformat" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets an anchor day of the day for the relative dates such as a day
-after tomorrow. If not set it will use the current day.</p>
-<p>Example: 11</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>The anchor day for relative dates</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – The anchor year for relative dates</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementDay">
-<span class="sig-name descname"><span class="pre">setDefaultReplacementDay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setDefaultReplacementDay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementDay" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines which value to use for creating the Day Value
-when original Date-Entity has no Day Information. Defaults to 15.</p>
+<span class="sig-name descname"><span class="pre">setDefaultReplacementDay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementDay" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines which value to use for creating the Day Value when original Date-Entity has no Day Information.</p>
+<p>Defaults to 15.</p>
 <p>Example: “11”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>The default value to use when creating a value for Day
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – The default value to use when creating a value for Day
 while normalizing and the original date has no day data</p>
-</dd>
-</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementMonth">
-<span class="sig-name descname"><span class="pre">setDefaultReplacementMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setDefaultReplacementMonth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementMonth" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines which value to use for creating the Month Value when original Date-Entity has no Month Information.
-Defaults to 06.</p>
+<span class="sig-name descname"><span class="pre">setDefaultReplacementMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementMonth" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines which value to use for creating the Month Value when original Date-Entity has no Month Information.</p>
+<p>Defaults to 06.</p>
 <p>Example: “11”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><dl class="simple">
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – <dl class="simple">
 <dt>The default value to use when creating a value for</dt><dd><p>Month while normalizing and the original date has no Month data</p>
 </dd>
 </dl>
-</dd>
-</dl>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementYear">
-<span class="sig-name descname"><span class="pre">setDefaultReplacementYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/normalizer/date_normalizer.html#DateNormalizer.setDefaultReplacementYear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementYear" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines which value to use for creating the Year Value when original Date-Entity has no Year Information.
-Defaults to 2020.</p>
+<span class="sig-name descname"><span class="pre">setDefaultReplacementYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines which value to use for creating the Year Value when original Date-Entity has no Year Information.</p>
+<p>Defaults to 2020.</p>
 <p>Example: “2023”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><dl class="simple">
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – <dl class="simple">
 <dt>The default value to use when creating a value for</dt><dd><p>Year while normalizing and the original date has no Year data</p>
 </dd>
 </dl>
+</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputDateformat">
+<span class="sig-name descname"><span class="pre">setOutputDateformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputDateformat" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets an anchor day of the day for the relative dates such as a day after tomorrow.</p>
+<p>If not set it will use the current day.</p>
+<p>Example: 11</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – The anchor day for relative dates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -787,23 +1038,57 @@ Defaults to 2020.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer"><code class="docutils literal notranslate"><span class="pre">DateNormalizer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.inputAnnotatorTypes</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.outputAnnotatorType</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.name"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.name</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateYear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.anchorDateYear</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateMonth"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.anchorDateMonth</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateDay"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.anchorDateDay</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputDateFormat"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.outputDateFormat</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateMonth"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.anchorDateMonth</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.anchorDateYear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.anchorDateYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementDay"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.defaultReplacementDay</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementMonth"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.defaultReplacementMonth</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.defaultReplacementYear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.defaultReplacementYear</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateYear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setAnchorDateYear()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateMonth"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setAnchorDateMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputCols"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.name"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputCol"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.outputDateFormat"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.outputDateFormat</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.clear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.copy"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.explainParam"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.explainParams"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getInputCols"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getOutputCol"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getParam"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.getParamValue"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.hasDefault"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.hasParam"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.isDefined"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.isSet"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.load"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.read"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.save"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.set"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateDay"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setAnchorDateDay()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputDateformat"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setOutputDateformat()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateMonth"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setAnchorDateMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setAnchorDateYear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setAnchorDateYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementDay"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setDefaultReplacementDay()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementMonth"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setDefaultReplacementMonth()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setDefaultReplacementYear"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setDefaultReplacementYear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setInputCols"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputCol"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setOutputDateformat"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setOutputDateformat()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setParamValue"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.setParams"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.transform"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer.write"><code class="docutils literal notranslate"><span class="pre">DateNormalizer.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -812,14 +1097,6 @@ Defaults to 2020.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/normalizer/date_normalizer/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

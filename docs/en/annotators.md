@@ -64,6 +64,7 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="EntityRuler" summary="Fits an Annotator to match exact strings or regex patterns provided in a file against a Document and assigns them an named entity."%}
 {% include templates/anno_table_entry.md path="" name="EmbeddingsFinisher" summary="Extracts embeddings from Annotations into a more easily usable form."%}
 {% include templates/anno_table_entry.md path="" name="Finisher" summary="Converts annotation results into a format that easier to use. It is useful to extract the results from Spark NLP Pipelines."%}
+{% include templates/anno_table_entry.md path="" name="GenericRE" summary="Instantiated RelationExtractionModel for extracting relationships between any entities."%}
 {% include templates/anno_table_entry.md path="" name="GraphExtraction" summary="Extracts a dependency graph between entities."%}
 {% include templates/anno_table_entry.md path="" name="GraphFinisher" summary="Helper class to convert the knowledge graph from GraphExtraction into a generic format, such as RDF."%}
 {% include templates/anno_table_entry.md path="" name="ImageAssembler" summary="Prepares images read by Spark into a format that is processable by Spark NLP."%}

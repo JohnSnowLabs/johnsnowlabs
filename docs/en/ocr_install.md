@@ -8,7 +8,7 @@ key: docs-ocr-install
 modify_date: "2020-04-08"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -17,7 +17,7 @@ sidebar:
 Spark OCR is built on top of **Apache Spark**. 
 Currently, it supports 3.0.*, 2.4.* and 2.3.* versions of Spark.
 
-It is recommended to have basic knowledge of the framework and a working environment before using Spark OCR. Refer to Spark [documentation](http://spark.apache.org/docs/2.4.4/index.html) to get started with Spark.
+It is recommended to have basic knowledge of the framework and a working environment before using Spark OCR. Refer to Spark [documentation](https://spark.apache.org/docs/2.4.4/index.html) to get started with Spark.
 
 
 Spark OCR requires:
@@ -35,8 +35,6 @@ If you don't have a valid subscription yet and you want to test out the Spark OC
 {:.btn-block}
 [Try Free](https://www.johnsnowlabs.com/spark-nlp-try-free/){:.button.button--primary.button--rounded.button--lg}
 
-
-
 </div><div class="h3-box" markdown="1">
 
 ## Spark OCR from Scala
@@ -47,9 +45,9 @@ You can start a spark REPL with Scala by running in your terminal a spark-shell 
 spark-shell --jars ####
 ```
 
-The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at info@johnsnowlabs.com.
+The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at [info@johnsnowlabs.com](mailto:info@johnsnowlabs.com).
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ### Start Spark OCR Session
 
@@ -57,7 +55,7 @@ The following code will initialize the spark session in case you have run the ju
 
 Initializing the spark session takes some seconds (usually less than 1 minute) as the jar from the server needs to be loaded.
 
-The #### in .config("spark.jars", "####") is a secret code, if you have not received it please contact us at info@johnsnowlabs.com.
+The #### in .config("spark.jars", "####") is a secret code, if you have not received it please contact us at [info@johnsnowlabs.com](mailto:info@johnsnowlabs.com).
 
 
 ```scala
@@ -73,7 +71,7 @@ val spark = SparkSession
     .getOrCreate()
 ```
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Spark OCR from Python
 
@@ -85,7 +83,7 @@ Install python package using pip:
 pip install spark-ocr==1.8.0.spark24 --extra-index-url #### --ignore-installed
 ```
 
-The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at info@johnsnowlabs.com.
+The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at [info@johnsnowlabs.com](mailto:info@johnsnowlabs.com).
 
 </div><div class="h3-box" markdown="1">
 
@@ -137,7 +135,7 @@ from sparkocr import start
 spark = start(secret=secret, nlp_version="2.4.4")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## Databricks
 
@@ -155,3 +153,4 @@ Example notebooks:
  - [Spark OCR Databricks python notebooks](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/databricks/python) 
  - [Spark OCR Databricks Scala notebooks](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/databricks/scala)
  
+</div>

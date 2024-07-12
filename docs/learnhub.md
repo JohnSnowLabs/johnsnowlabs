@@ -3,10 +3,10 @@ layout: page
 page:
     aside: false      
 mode: immersivebg
-pagetitle: John Snow Labs NLP - The Learning Hub
+pagetitle: NLP & LLM Learning Hub - John Snow Labs
 title: The NLP Learning Hub
-excerpt: Enhance your knowledge of NLP by accessing various learning materials prepared by domain experts. Learn about the technology, technology in action, and industry trends in the field of Natural Language Processing.
-seotitle: John Snow Labs NLP - The Learning Hub
+excerpt: Enhance your AI, NLP, and LLM knowledge with materials prepared by domain experts on topics including Healthcare AI, Responsible AI, No-Code AI, Large Language Models, and Multimodal AI.
+seotitle: NLP & LLM Learning Hub - John Snow Labs
 permalink: /learn
 show_subtitle: false
 key: videos
@@ -24,7 +24,7 @@ modify_date: "2019-05-16"
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/spark-nlp-blog/">Spark NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/healthcare-nlp-blog/">Healthcare NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/visual-nlp-blog/">Spark OCR</a></li>
-                    <li><a target="_blank" href="https://www.johnsnowlabs.com/annotation-lab-blog/">NLP Lab</a></li>
+                    <li><a target="_blank" href="https://www.johnsnowlabs.com/annotation-lab-blog/">Generative AI Lab</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/auto-nlp-blog/">Auto NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/multimodal-ai-blog/">Multimodal AI</a></li>
                 </ul>
@@ -57,3 +57,8 @@ modify_date: "2019-05-16"
         </div>
     </div>
 </div>
+<div class="dn">
+  <!-- HTML elements for search -->
+  <input type="text" id="search-input" placeholder="Search...">
+  <ul id="results-container" class="shadow results-container"></ul>
+</div> 

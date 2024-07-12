@@ -8,13 +8,10 @@ try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.functions import *
         from sparknlp_jsl.training import *
-        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
-            WindowedSentenceModel,
-        )
+        from sparknlp_jsl.legal.token_classification.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.base import FeaturesAssembler
-
         from sparknlp_jsl.legal import (
             LegalDocumentHashCoder as DocumentHashCoder,
             LegalNerQuestionGenerator as NerQuestionGenerator,
@@ -37,14 +34,17 @@ try:
             ChunkMapperApproach,
             SentenceEntityResolverApproach,
             AssertionDLApproach,
-            ZeroShotNerModel,
             LegalQuestionAnswering as QuestionAnswering,
             LegalTextGenerator as TextGenerator,
             LegalSummarizer as Summarizer,
+            LegalFewShotClassifierModel as FewShotClassifierModel,
+            LegalFewShotClassifierApproach as FewShotClassifierApproach,
         )
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import (
+            NerConverterInternal,
+            NerConverterInternal as NerConverter,
             GenericSVMClassifierApproach,
             GenericSVMClassifierModel,
             GenericLogRegClassifierApproach,
@@ -65,7 +65,6 @@ try:
             TFGraphBuilder,
             ChunkConverter,
             ChunkFilterer,
-            NerConverterInternal,
             NerChunker,
             AssertionFilterer,
             AnnotationMerger,
@@ -86,12 +85,33 @@ try:
             ContextualParserApproach,
             GenericClassifierApproach,
             Router,
-            NerQuestionGenerator,
             AssertionChunkConverter,
             NameChunkObfuscatorApproach,
             NameChunkObfuscator,
             # Resolution2Chunk,
             ResolverMerger,
+            NerTemplateRenderModel,
+            AverageEmbeddings,
+            Doc2ChunkInternal,
+            Chunk2Token,
+            ExtractiveSummarization,
+            ChunkFiltererApproach,
+            InternalDocumentSplitter as DocumentSplitter,
+            Text2SQL,
+            IOBTagger,
+            DocumentFiltererByClassifier,
+            Flattener,
+            EntityRulerInternalApproach as EntityRulerApproach,
+            EntityRulerInternalModel as EntityRulerModel,
+            TextMatcherInternal as TextMatcher,
+            TextMatcherInternalModel as TextMatcherModel,
+            RegexMatcherInternal as RegexMatcher,
+            RegexMatcherInternalModel as RegexMatcherModel,
+            AssertionMerger,
+            LightDeIdentification,
+            WindowedSentenceModel,
+            MultiChunk2Doc,
+            FewShotAssertionClassifierModel
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 

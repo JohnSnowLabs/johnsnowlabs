@@ -32,7 +32,7 @@ nlp.load('img2text').predict('path/to/haiku.png')
 ```
 
 
-`jsl.load()` defines **6 visual components types** usable in 1-liners
+`nlp.load()` defines **6 visual components types** usable in 1-liners
 
 </div><div class="h3-box" markdown="1">
 {:.table-model-big}

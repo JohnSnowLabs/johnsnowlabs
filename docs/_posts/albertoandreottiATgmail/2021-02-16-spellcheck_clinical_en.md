@@ -197,4 +197,4 @@ empty_ds = spark.createDataFrame([[""")
 
 ## Data Source
 
-MTSamples, i2b2 clinical notes, and PubMed.
+MTSamples, augmented version of i2b2 clinical notes, and PubMed.

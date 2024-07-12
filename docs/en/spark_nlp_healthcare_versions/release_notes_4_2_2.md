@@ -53,7 +53,7 @@ reApproach_finetune = RelationExtractionApproach()\
 ```
 You can check [Resume RelationExtractionApproach Training Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.4.Resume_RelationExtractionApproach_Training.ipynb) for more examples.
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### Added Romanian Support in Deidentification Annotator For Data Obfuscation
@@ -76,12 +76,13 @@ text = """Nume si Prenume : BUREAN MARIA, Varsta: 77 ,Spitalul Pentru Ochi de De
 
 *Result:*
 
+{:.table-model-big}
 |Sentence|Masked with entity|Masked with Chars|Masked with Fixed Chars|Obfuscated|
 |-|-|-|-|-|
 |Nume si Prenume : BUREAN MARIA, Varsta: 77 ,Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui| Nume si Prenume : <\PATIENT>, Varsta: <\AGE> ,<\HOSPITAL>, <\STREET> <\CITY> | Nume si Prenume : **********, Varsta: ** ,**************************, ****************** **** |Nume si Prenume : ****, Varsta: **** , ****, **** **** | Nume si Prenume : Claudia Crumble, Varsta: 18 ,LOS ANGELES AMBULATORY CARE CENTER, 706 north parrish avenue Piscataway|
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New SDOH (Social Determinants of Health) NER Model
@@ -132,13 +133,14 @@ text = """ Mother states that he does smoke, there is a family hx of alcohol on 
 +-------------+-------------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### Improved Oncology NER Models And 4 New Pretrained Pipelines
 
 We are releasing the improved version of Oncological NER models (_wip) and 4 new pretrained oncological pipelines which are able to detect assertion status and relations between the extracted oncological entities.
 
+{:.table-model-big.db}
 |NER model name (`MedicalNerModel`)| description|predicted entities|
 |-|-|-|
 | [ner_oncology_anatomy_general](https://nlp.johnsnowlabs.com/2022/10/25/ner_oncology_anatomy_general_en.html)  | Extracting anatomical entities.  |  `Anatomical_Site`, `Direction` |
@@ -154,7 +156,7 @@ We are releasing the improved version of Oncological NER models (_wip) and 4 new
 | [ner_oncology_test](https://nlp.johnsnowlabs.com/2022/10/25/ner_oncology_test_en.html)  | Extracting mentions of oncology-related tests.  | `Oncogene`, `Biomarker`, `Biomarker_Result`, `Imaging_Test`, `Pathology_Test`  |
 | [ner_oncology_tnm](https://nlp.johnsnowlabs.com/2022/10/25/ner_oncology_tnm_en.html)   |  Extracting mentions related to TNM staging. |  `Lymph_Node`, `Staging`, `Lymph_Node_Modifier`, `Tumor_Description`, `Tumor`, `Metastasis`, `Cancer_Dx` |
 
-
+{:.table-model-big.db}
 |Oncological Pipeline (`PretrainedPipeline`)| Description|
 |-|-|
 | [oncology_general_pipeline](https://nlp.johnsnowlabs.com/2022/11/03/oncology_general_pipeline_en.html)  | Includes Named-Entity Recognition, Assertion Status and Relation Extraction models to extract information from oncology texts. This pipeline extracts diagnoses, treatments, tests, anatomical references and demographic entities. |  
@@ -206,7 +208,7 @@ text = "The patient underwent a left mastectomy for a left breast cancer two mon
 | positive      | Biomarker_Result | PR             | Biomarker     | is_related_to |
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New Chunk Mapper Models to Map Entities (phrases) to Their Corresponding ICD-10-CM Codes As Well As Clinical Abbreviations to Their Definitions
@@ -243,7 +245,7 @@ text = """A 35-year-old male with a history of primary leiomyosarcoma of neck, g
 +------------------------------+-------+------------+
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 
@@ -305,14 +307,14 @@ text = "A 28-year-old female with a history of gestational diabetes mellitus dia
 ```
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### New Utility & Helper Modules Documentation Page
 
 We have a new [utility & helper modules documentation page](https://nlp.johnsnowlabs.com/docs/en/utility_helper_modules) that you can find the documentations of Spark NLP for Healthcare modules with examples.
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New and Updated Notebooks
@@ -325,7 +327,7 @@ We have a new [utility & helper modules documentation page](https://nlp.johnsnow
 
 + Updated [Adverse Drug Event ADE NER and Classifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb) notebook with the new models and improvement.
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### 22 New Clinical Models and Pipelines Added & Updated in Total

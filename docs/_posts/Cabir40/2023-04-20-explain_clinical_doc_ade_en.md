@@ -32,6 +32,7 @@ A pipeline for Adverse Drug Events (ADE) with `ner_ade_biobert`, `assertion_dl_b
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -63,7 +64,6 @@ nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 15 ye
 ## Results
 
 ```bash
-
 Class: True
 
 NER_Assertion:
@@ -81,7 +81,6 @@ Relations:
 | 1  | cramps                        | ADE        | Lipitor     | DRUG    |        0 |
 | 2  | severe fatigue                | ADE        | voltaren    | DRUG    |        0 |
 | 3  | cramps                        | ADE        | voltaren    | DRUG    |        1 |
-
 ```
 
 {:.model-param}

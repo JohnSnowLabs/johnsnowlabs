@@ -144,7 +144,7 @@ nlu.load("en.med_ner.anatomy").predict("""This is an 11-year-old female who come
 ## Data Source
 
 Trained on the Anatomical Entity Mention (AnEM) corpus with ``'embeddings_clinical'``.
-http://www.nactem.ac.uk/anatomy/
+[https://www.nactem.ac.uk/anatomy/](https://www.nactem.ac.uk/anatomy/)
 
 ## Benchmarking
 

@@ -318,22 +318,21 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.annotator.chunker.chunker_filterer</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.filtering_params</span> <span class="kn">import</span> <span class="n">FilteringParams</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 
 
-<div class="viewcode-block" id="ChunkFiltererApproach"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach">[docs]</a><span class="k">class</span> <span class="nc">ChunkFiltererApproach</span><span class="p">(</span><span class="n">AnnotatorApproachInternal</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trains a ChunkFiltererApproachModel annotator.</span>
-
-<span class="sd">    Filters can be set via a white list of terms or a regular expression.</span>
-
-<span class="sd">    White list criteria is enabled by default.</span>
-
-<span class="sd">    To use regex, `criteria` has to be set to `regex`.</span>
-
+<div class="viewcode-block" id="ChunkFiltererApproach"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach">[docs]</a><span class="k">class</span> <span class="nc">ChunkFiltererApproach</span><span class="p">(</span><span class="n">AnnotatorApproachInternal</span><span class="p">,</span> <span class="n">FilteringParams</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trains a ``ChunkFilterer`` annotator.</span>
+<span class="sd">    ChunkFiltererApproach can filter chunks coming from CHUNK annotations.</span>
+<span class="sd">    Filters can be set via white list and black list or a regular expression.</span>
+<span class="sd">    White list criteria is enabled by default. To use regex, `criteria` has to be set to `regex`.</span>
+<span class="sd">    Additionally, It can filter chunks according to the confidence of the chunk in the metadata.</span>
+<span class="sd">    </span>
 <span class="sd">    ==============================  ======================</span>
 <span class="sd">    Input Annotation types          Output Annotation type</span>
 <span class="sd">    ==============================  ======================</span>
-<span class="sd">    ``DOCUMENT, CHUNK, ASSERTION``  ``CHUNK``</span>
+<span class="sd">        ``DOCUMENT, CHUNK``             ``CHUNK``</span>
 <span class="sd">    ==============================  ======================</span>
 
 <span class="sd">    Parameters</span>
@@ -342,6 +341,9 @@ document.write(`
 <span class="sd">        If defined, list of entities to process. The rest will be ignored.</span>
 <span class="sd">    blackList: list</span>
 <span class="sd">        If defined, list of entities to ignore. The rest will be processed.</span>
+<span class="sd">    caseSensitive: bool</span>
+<span class="sd">        Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.</span>
+<span class="sd">        If the filterValue is &#39;entity&#39;, &#39;caseSensitive&#39; is always False.</span>
 <span class="sd">    regex: str</span>
 <span class="sd">       If defined, list of regex to process the chunks (Default: []).</span>
 <span class="sd">    criteria: str</span>
@@ -351,7 +353,7 @@ document.write(`
 <span class="sd">    filterValue: str</span>
 <span class="sd">        If equal to &quot;entity&quot;, use the ner label to filter. If set to &quot;result&quot;,</span>
 <span class="sd">        use the `result` attribute of the annotation to filter.</span>
-<span class="sd">    entitiesConfidence: str</span>
+<span class="sd">    entitiesConfidenceResource: str</span>
 <span class="sd">        Path to a CSV file containing the entity pairs to remove chunks based on</span>
 <span class="sd">        the confidance level. The CSV file should have two columns: entity and</span>
 <span class="sd">        confidenceThreshold. The entity column should contain the entity name</span>
@@ -402,84 +404,13 @@ document.write(`
 
 <div class="viewcode-block" id="ChunkFiltererApproach.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ChunksFilterApproach&quot;</span></div>
 
-<div class="viewcode-block" id="ChunkFiltererApproach.whiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.whiteList">[docs]</a>    <span class="n">whiteList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;whiteList&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.blackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.blackList">[docs]</a>    <span class="n">blackList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;blackList&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;If defined, list of entities to ignore. The rest will be processed.&quot;</span><span class="p">,</span>
-                      <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.regex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.regex">[docs]</a>    <span class="n">regex</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;regex&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.filterValue"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.filterValue">[docs]</a>    <span class="n">filterValue</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;filterValue&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;possibles values result|entity.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.criteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.criteria">[docs]</a>    <span class="n">criteria</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;criteria&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;Select mode&quot;</span><span class="p">,</span>
-                     <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="ChunkFiltererApproach.entitiesConfidenceResource"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResource">[docs]</a>    <span class="n">entitiesConfidenceResource</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
                                        <span class="s2">&quot;entitiesConfidenceResource&quot;</span><span class="p">,</span>
-                                       <span class="s2">&quot;Path to csv with  entity pairs to remove based on the confidance level&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;Path to csv with  entity pairs to remove based on the confidence level&quot;</span><span class="p">,</span>
                                        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ChunkFiltererApproach.setWhiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setWhiteList">[docs]</a>    <span class="k">def</span> <span class="nf">setWhiteList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets list of entities to process. The rest will be ignored.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : list</span>
-<span class="sd">           If defined, list of entities to process. The rest will be ignored.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">whiteList</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.setBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">setBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;If defined, list of entities to ignore. The rest will be processed.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        entities : list</span>
-<span class="sd">           If defined, list of entities to ignore. The rest will be processed.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">blackList</span><span class="o">=</span><span class="n">entities</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.setRegex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setRegex">[docs]</a>    <span class="k">def</span> <span class="nf">setRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the list of regex to process.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : list</span>
-<span class="sd">           List of dash-separated pairs of named entities</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFiltererApproach.setCriteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setCriteria">[docs]</a>    <span class="k">def</span> <span class="nf">setCriteria</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criteria</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the creteria parameter.</span>
-
-<span class="sd">        Possibles values are &quot;isIn&quot; or &quot;regex&quot;.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        criteria : str</span>
-<span class="sd">           List of dash-separated pairs of named entities</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">criteria</span><span class="o">=</span><span class="n">criteria</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="ChunkFiltererApproach.setFilterEntity"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setFilterEntity">[docs]</a>    <span class="k">def</span> <span class="nf">setFilterEntity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_by</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the filterEntity parameter.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the filterValue parameter.</span>
 
 <span class="sd">        If equal to &quot;entity&quot;, use the ner label to filter. If set to &quot;result&quot;,</span>
 <span class="sd">        use the `result` attribute of the annotation to filter.</span>
@@ -497,7 +428,7 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        path : str</span>
-<span class="sd">              Path to csv with  entity pairs to remove based on the confidance level</span>
+<span class="sd">              Path to csv with  entity pairs to remove based on the confidence level</span>
 <span class="sd">        read_as : str</span>
 <span class="sd">                Read file as &#39;TEXT&#39;, &#39;SPARK&#39;, or &#39;BINARY&#39;.</span>
 <span class="sd">        options : dict</span>
@@ -520,19 +451,16 @@ document.write(`
         <span class="k">return</span> <span class="n">ChunkFilterer</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ChunkFilterer"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer">[docs]</a><span class="k">class</span> <span class="nc">ChunkFilterer</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters entities coming from CHUNK annotations.</span>
-
-<span class="sd">    Filters can be set via a white list of terms or a regular expression.</span>
-
-<span class="sd">    White list criteria is enabled by default.</span>
-
-<span class="sd">    To use regex, `criteria` has to be set to `regex`.</span>
-
+<div class="viewcode-block" id="ChunkFilterer"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer">[docs]</a><span class="k">class</span> <span class="nc">ChunkFilterer</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">FilteringParams</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ChunkFilterer can filter chunks coming from CHUNK annotations.</span>
+<span class="sd">    Filters can be set via white list and black list or a regular expression.</span>
+<span class="sd">    White list criteria is enabled by default. To use regex, `criteria` has to be set to `regex`.</span>
+<span class="sd">    Additionally, It can filter chunks according to the confidence of the chunk in the metadata.</span>
+<span class="sd">    </span>
 <span class="sd">    ==============================  ======================</span>
 <span class="sd">    Input Annotation types          Output Annotation type</span>
 <span class="sd">    ==============================  ======================</span>
-<span class="sd">    ``DOCUMENT, CHUNK, ASSERTION``  ``CHUNK``</span>
+<span class="sd">       ``DOCUMENT, CHUNK``                ``CHUNK``</span>
 <span class="sd">    ==============================  ======================</span>
 
 <span class="sd">    Parameters</span>
@@ -541,16 +469,22 @@ document.write(`
 <span class="sd">        If defined, list of entities to process. The rest will be ignored.</span>
 <span class="sd">    blackList: list</span>
 <span class="sd">        If defined, list of entities to ignore. The rest will be processed.</span>
+<span class="sd">    caseSensitive: bool</span>
+<span class="sd">        Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.</span>
+<span class="sd">        If the filterValue is &#39;entity&#39;, &#39;caseSensitive&#39; is always False.</span>
 <span class="sd">    regex: list</span>
 <span class="sd">       If defined, list of regex to process the chunks (Default: []).</span>
 <span class="sd">    criteria: str</span>
 <span class="sd">           Tag representing what is the criteria to filter the chunks. Possibles values are:</span>
 <span class="sd">           - isIn: Filter by the chunk</span>
-<span class="sd">           - regex: Filter using a regex</span>
-<span class="sd">    entitiesConfidence: str</span>
-<span class="sd">        Path to csv with  pairs (entity,confidenceThreshold).</span>
-<span class="sd">        Filter the chunks with  entities which have confidence lower than the</span>
-<span class="sd">        confidence threshold.</span>
+<span class="sd">           - regex: Filter by using a regex</span>
+<span class="sd">    entitiesConfidence: dict[str, float]</span>
+<span class="sd">        Pairs (entity,confidenceThreshold) to filter the chunks with  entities</span>
+<span class="sd">        which have confidence lower than the confidence threshold.</span>
+<span class="sd">    filterValue: str</span>
+<span class="sd">        Possible values are &#39;result&#39; and &#39;entity&#39;.</span>
+<span class="sd">        If the value is &#39;result&#39;, It filters according to the result of the Annotation.</span>
+<span class="sd">        If the value is &#39;entity&#39;, It filters according to the entity field in the metadata of the Annotation.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -619,79 +553,8 @@ document.write(`
 
 <div class="viewcode-block" id="ChunkFilterer.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ChunkFilterer&quot;</span></div>
 
-<div class="viewcode-block" id="ChunkFilterer.whiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.whiteList">[docs]</a>    <span class="n">whiteList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;whiteList&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="ChunkFilterer.blackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.blackList">[docs]</a>    <span class="n">blackList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;blackList&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;If defined, list of entities to ignore. The rest will be processed.&quot;</span><span class="p">,</span>
-                      <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFilterer.regex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.regex">[docs]</a>    <span class="n">regex</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;regex&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="ChunkFilterer.filterValue"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.filterValue">[docs]</a>    <span class="n">filterValue</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;filterValue&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;possibles values result|entity.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="ChunkFilterer.criteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.criteria">[docs]</a>    <span class="n">criteria</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;criteria&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;Select mode&quot;</span><span class="p">,</span>
-                     <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFilterer.setWhiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setWhiteList">[docs]</a>    <span class="k">def</span> <span class="nf">setWhiteList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets list of entities to process. The rest will be ignored.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : list</span>
-<span class="sd">           If defined, list of entities to process. The rest will be ignored.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">whiteList</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFilterer.setBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">setBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the black list of entities to ignore.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        entities : list</span>
-<span class="sd">           If defined, list of entities to ignore. The rest will be processed.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">blackList</span><span class="o">=</span><span class="n">entities</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFilterer.setRegex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setRegex">[docs]</a>    <span class="k">def</span> <span class="nf">setRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the list of regex to process.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : list</span>
-<span class="sd">           List of dash-separated pairs of named entities</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ChunkFilterer.setCriteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setCriteria">[docs]</a>    <span class="k">def</span> <span class="nf">setCriteria</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criteria</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the creteria parameter.</span>
-
-<span class="sd">        Possibles values are &quot;isIn&quot; or &quot;regex&quot;.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        criteria : str</span>
-<span class="sd">           List of dash-separated pairs of named entities</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">criteria</span><span class="o">=</span><span class="n">criteria</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="ChunkFilterer.setFilterEntity"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setFilterEntity">[docs]</a>    <span class="k">def</span> <span class="nf">setFilterEntity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_by</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the filterEntity parameter.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the filterValue parameter.</span>
 
 <span class="sd">        If equal to &quot;entity&quot;, use the ner label to filter. If set to &quot;result&quot;,</span>
 <span class="sd">        use the `result` attribute of the annotation to filter.</span>
@@ -702,6 +565,23 @@ document.write(`
 <span class="sd">           possibles values result|entity.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">filterValue</span><span class="o">=</span><span class="n">filter_by</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChunkFilterer.entitiesConfidence"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.entitiesConfidence">[docs]</a>    <span class="n">entitiesConfidence</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+                               <span class="s2">&quot;entitiesConfidence&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;Pairs (entity,confidenceThreshold) to filter the chunks with  entities which have confidence lower than the confidence threshold.&quot;</span><span class="p">,</span>
+                               <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChunkFilterer.setEntitiesConfidence"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setEntitiesConfidence">[docs]</a>    <span class="k">def</span> <span class="nf">setEntitiesConfidence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities_confidence</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the entitiesConfidence parameter.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        entities_confidence : dict[str, float]</span>
+<span class="sd">            Pairs (entity,confidenceThreshold) to filter the chunks with  entities</span>
+<span class="sd">            which have confidence lower than the confidence threshold.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setEntitiesConfidence&quot;</span><span class="p">,</span> <span class="n">entities_confidence</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.chunker.ChunkFilterer&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ChunkFilterer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>

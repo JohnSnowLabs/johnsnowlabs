@@ -120,7 +120,7 @@ The output is a dataframe with a sentence per row and a ``"ner"`` column contain
 {:.h2_title}
 ## Data Source
 Trained on the JNLPBA corpus containing more than 2.404 publication abstracts with ``'embeddings_clinical'``.
-http://www.geniaproject.org/
+[https://www.geniaproject.org/](https://www.geniaproject.org/)
 
 {:.h2_title}
 ## Benchmarking

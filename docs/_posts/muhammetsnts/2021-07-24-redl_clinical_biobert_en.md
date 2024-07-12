@@ -231,7 +231,7 @@ She had close follow-up with endocrinology post discharge .
 ## Data Source
 
 
-Trained on 2010 i2b2 relation challenge.
+Trained on augmented version of 2010 i2b2 relation dataset.
 
 
 ## Benchmarking

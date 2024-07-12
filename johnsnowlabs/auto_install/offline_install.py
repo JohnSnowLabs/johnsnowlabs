@@ -1,4 +1,8 @@
+
+import requests
 from typing import List, Tuple
+
+from johnsnowlabs import settings
 
 from johnsnowlabs.auto_install.lib_resolvers import (
     OcrLibResolver,
@@ -11,10 +15,10 @@ from johnsnowlabs.utils.enums import PyInstallTypes, ProductLogo, JvmHardwareTar
 
 
 def get_printable_dependency_urls(
-    secrets: JslSecrets,
-    jvm_install_type: JvmHardwareTarget = JvmHardwareTarget.cpu,
-    py_install_type: PyInstallTypes = PyInstallTypes.wheel,
-    spark_version=None,
+        secrets: JslSecrets,
+        jvm_install_type: JvmHardwareTarget = JvmHardwareTarget.cpu,
+        py_install_type: PyInstallTypes = PyInstallTypes.wheel,
+        spark_version=None,
 ) -> Tuple[List[str], List[str]]:
     """
     Get URL for every dependency to which the found_secrets have access to with respect to CURRENT pyspark install.
@@ -95,14 +99,14 @@ def get_printable_dependency_urls(
 
 
 def get_py4j_dependency_urls(
-    secrets: JslSecrets,
-    jvm_install_type: JvmHardwareTarget = JvmHardwareTarget.cpu,
-    py_install_type: PyInstallTypes = PyInstallTypes.wheel,
-    spark_version=None,
-    get_all_jvm_hardware_targets: bool = False,
-    visual=False,
-    nlp=True,
-    spark_nlp=True,
+        secrets: JslSecrets,
+        jvm_install_type: JvmHardwareTarget = JvmHardwareTarget.cpu,
+        py_install_type: PyInstallTypes = PyInstallTypes.wheel,
+        spark_version=None,
+        get_all_jvm_hardware_targets: bool = False,
+        visual=False,
+        nlp=True,
+        spark_nlp=True,
 ) -> Tuple[List[UrlDependency], List[UrlDependency]]:
     """
     Get URL for every dependency to which the found_secrets have access to with respect to CURRENT pyspark install.
@@ -142,17 +146,9 @@ def get_py4j_dependency_urls(
             )
 
         if py_install_type == PyInstallTypes.wheel:
-            py_dependencies.append(
-                NlpLibResolver.get_py_urls(
-                    install_type=py_install_type, spark_version_to_match=spark_version
-                )
-            )
-        else:
-            py_dependencies.append(
-                NlpLibResolver.get_py_urls(
-                    install_type=py_install_type, spark_version_to_match=spark_version
-                )
-            )
+            url = NlpLibResolver.get_py_urls(install_type=py_install_type, spark_version_to_match=spark_version)
+            url.url = get_wheel_and_pypi('spark-nlp', settings.raw_version_nlp)[0]
+            py_dependencies.append(url)
 
     if secrets and secrets.HC_SECRET and nlp:
         java_dependencies.append(
@@ -161,14 +157,6 @@ def get_py4j_dependency_urls(
             )
         )
         if py_install_type == PyInstallTypes.wheel:
-            py_dependencies.append(
-                HcLibResolver.get_py_urls(
-                    secret=secrets.HC_SECRET,
-                    install_type=py_install_type,
-                    spark_version_to_match=spark_version,
-                )
-            )
-        else:
             py_dependencies.append(
                 HcLibResolver.get_py_urls(
                     secret=secrets.HC_SECRET,
@@ -191,13 +179,33 @@ def get_py4j_dependency_urls(
                     spark_version_to_match=spark_version,
                 )
             )
-        else:
-            py_dependencies.append(
-                OcrLibResolver.get_py_urls(
-                    secret=secrets.OCR_SECRET,
-                    install_type=py_install_type,
-                    spark_version_to_match=spark_version,
-                )
-            )
 
     return java_dependencies, py_dependencies
+
+def get_wheel_and_pypi(pypi_name, version):
+    # Construct the API URL
+    api_url = f"https://pypi.org/pypi/{pypi_name}/{version}/json"
+
+    try:
+        # Send a GET request to the PyPI API
+        response = requests.get(api_url)
+        response.raise_for_status()  # Raise an exception for any HTTP errors
+
+        # Parse the JSON response
+        data = response.json()
+
+        wheel_url = None
+        tarball_url = None
+
+        # Extract the download URLs for wheels and tarballs
+        for release in data["urls"]:
+            if release["packagetype"] == "bdist_wheel":
+                wheel_url = release["url"]
+            elif release["packagetype"] == "sdist":
+                tarball_url = release["url"]
+
+        return wheel_url, tarball_url
+
+    except requests.exceptions.RequestException as e:
+        print(f"Could not find Pypi Wheel/Tar for {pypi_name}=={version}: {e}")
+        return None, None

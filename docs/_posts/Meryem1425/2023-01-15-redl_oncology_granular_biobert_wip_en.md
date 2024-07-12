@@ -37,6 +37,7 @@ Use relation pairs to include only the combinations of entities that are relevan
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -52,16 +53,16 @@ tokenizer = Tokenizer() \
 
 word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"]) \
-    .setOutputCol("embeddings")                
+    .setOutputCol("embeddings")
 
 ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
-ner_converter = NerConverterInternal() \
+ner_converter = NerConverter() \
     .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk")
-          
+
 pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
     .setInputCols(["sentence", "token"]) \
     .setOutputCol("pos_tags")
@@ -74,12 +75,30 @@ re_ner_chunk_filter = RENerChunksFilter()\
     .setInputCols(["ner_chunk", "dependencies"])\
     .setOutputCol("re_ner_chunk")\
     .setMaxSyntacticDistance(10)\
-    .setRelationPairs(["Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"])
+    .setRelationPairs(['Date-Cancer_Dx',
+                       'Tumor_Finding-Site_Breast',
+                       'Tumor_Finding-Site_Bone',
+                       'Tumor_Finding-Site_Liver',
+                       'Tumor_Finding-Site_Lung',
+                       'Tumor_Finding-Site_Lymph_Node',
+                       'Tumor_Finding-Site_Other_Body_Part',
+                       'Tumor_Fiding-Relative_Date',
+                       'Tumor_Finding-Tumor_Size',
+                       'Biomarker-Biomarker_Result',
+                       'Pathology_Test-Cancer_Dx',
+                       'Biomarker_Result-Biomarker',
+                       'Imaging_Test-Tumor_Finding',
+                       'Pathology_Test-Relative_Date',
+                       'Pathology_Test-Pathology_Result',
+                       'Relative_Date-Metastasis',
+                       'Site-Lung-Metastasis',
+                       'Tumor_Finding-Tumor_Size'
+                       ])
 
 re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip", "en", "clinical/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relation_extraction")
-        
+
 pipeline = Pipeline(stages=[document_assembler,
                             sentence_detector,
                             tokenizer,
@@ -91,67 +110,86 @@ pipeline = Pipeline(stages=[document_assembler,
                             re_ner_chunk_filter,
                             re_model])
 
-data = spark.createDataFrame([["A mastectomy was performed two months ago, and a 3 cm mass was extracted."]]).toDF("text")
+data = spark.createDataFrame([["The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes."]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
-    .setInputCol("text")
-    .setOutputCol("document")
-    
+	.setInputCol("text")
+	.setOutputCol("document")
+	
 val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-    .setInputCols(Array("document"))
-    .setOutputCol("sentence")
-    
+	.setInputCols(Array("document"))
+	.setOutputCol("sentence")
+	
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("sentence"))
-    .setOutputCol("token")
-    
-val word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("embeddings")                
-    
-val ner = MedicalNerModel.pretrained("ner_oncology_wip", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token", "embeddings"))
-    .setOutputCol("ner")
-    
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array("sentence", "token", "ner"))
-    .setOutputCol("ner_chunk")
-
-val pos_tagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("pos_tags")
-    
-val dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en")
-    .setInputCols(Array("sentence", "pos_tags", "token"))
-    .setOutputCol("dependencies")
-
+	.setInputCols(Array("sentence"))
+	.setOutputCol("token")
+	
+val word_embeddings = WordEmbeddingsModel
+	.pretrained("embeddings_clinical","en","clinical/models")
+	.setInputCols(Array("sentence","token"))
+	.setOutputCol("embeddings")
+	
+val ner = MedicalNerModel.pretrained("ner_oncology_wip","en","clinical/models")
+	.setInputCols(Array("sentence","token","embeddings"))
+	.setOutputCol("ner")
+	
+val ner_converter = new NerConverter()
+	.setInputCols(Array("sentence","token","ner"))
+	.setOutputCol("ner_chunk")
+	
+val pos_tagger = PerceptronModel.pretrained("pos_clinical","en","clinical/models")
+	.setInputCols(Array("sentence","token"))
+	.setOutputCol("pos_tags")
+	
+val dependency_parser = DependencyParserModel.pretrained("dependency_conllu","en")
+	.setInputCols(Array("sentence","pos_tags","token"))
+	.setOutputCol("dependencies")
+	
 val re_ner_chunk_filter = new RENerChunksFilter()
-     .setInputCols(Array("ner_chunk", "dependencies"))
-     .setOutputCol("re_ner_chunk")
-     .setMaxSyntacticDistance(10)
-     .setRelationPairs(Array("Tumor_Finding-Tumor_Size", "Tumor_Size-Tumor_Finding", "Cancer_Surgery-Relative_Date", "Relative_Date-Cancer_Surgery"))
-
-val re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip", "en", "clinical/models")
-      .setPredictionThreshold(0.5f)
-      .setInputCols(Array("re_ner_chunk", "sentence"))
-      .setOutputCol("relation_extraction")
-
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            word_embeddings,
-                            ner,
-                            ner_converter,
-                            pos_tagger,
-                            dependency_parser,
-                            re_ner_chunk_filter,
-                            re_model))
-
-val data = Seq("A mastectomy was performed two months ago.").toDS.toDF("text")
-
+	.setInputCols(Array("ner_chunk","dependencies"))
+	.setOutputCol("re_ner_chunk")
+	.setMaxSyntacticDistance(10)
+	.setRelationPairs(Array(
+     "Date-Cancer_Dx",
+     "Tumor_Finding-Site_Breast", 
+     "Tumor_Finding-Site_Bone",
+     "Tumor_Finding-Site_Liver",
+     "Tumor_Finding-Site_Lung",
+     "Tumor_Finding-Site_Lymph_Node",
+     "Tumor_Finding-Site_Other_Body_Part",
+     "Tumor_Fiding-Relative_Date", 
+     "Tumor_Finding-Tumor_Size",
+     "Biomarker-Biomarker_Result",
+     "Pathology_Test-Cancer_Dx", 
+     "Biomarker_Result-Biomarker",
+     "Imaging_Test-Tumor_Finding",
+     "Pathology_Test-Relative_Date", 
+     "Pathology_Test-Pathology_Result",
+     "Relative_Date-Metastasis", 
+     "Site-Lung-Metastasis", 
+     "Tumor_Finding-Tumor_Size" ))
+	
+val re_model = RelationExtractionDLModel.pretrained("redl_oncology_granular_biobert_wip","en","clinical/models")
+	.setInputCols(Array("re_ner_chunk","sentence"))
+	.setOutputCol("relation_extraction")
+	
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    word_embeddings,
+    ner, 
+    ner_converter, 
+    pos_tagger, 
+    dependency_parser, 
+    re_ner_chunk_filter, 
+    re_model))
+	
+val data = Seq("The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes.").toDF("text")
+	
 val result = pipeline.fit(data).transform(data)
 ```
 
@@ -159,7 +197,7 @@ val result = pipeline.fit(data).transform(data)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.relation.oncology_granular_biobert_wip").predict("""A mastectomy was performed two months ago, and a 3 cm mass was extracted.""")
+nlu.load("en.relation.oncology_granular_biobert_wip").predict("""The Patient underwent a computed tomography scan, which showed a complex ovarian mass, 2 cm insize . A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes.""")
 ```
 
 </div>
@@ -167,12 +205,17 @@ nlu.load("en.relation.oncology_granular_biobert_wip").predict("""A mastectomy wa
 ## Results
 
 ```bash
-+----------+--------------+-------------+-----------+----------+-------------+-------------+-----------+--------------+----------+
-|  relation|       entity1|entity1_begin|entity1_end|    chunk1|      entity2|entity2_begin|entity2_end|        chunk2|confidence|
-+----------+--------------+-------------+-----------+----------+-------------+-------------+-----------+--------------+----------+
-|is_date_of|Cancer_Surgery|            2|         11|mastectomy|Relative_Date|           27|         40|two months ago| 0.9652523|
-|is_size_of|    Tumor_Size|           49|         52|      3 cm|Tumor_Finding|           54|         57|          mass|0.81723577|
-+----------+--------------+-------------+-----------+----------+-------------+-------------+-----------+--------------+----------+
+|   |       relation |              entity1 | entity1_begin | entity1_end |                   chunk1 |              entity2 | entity2_begin | entity2_end |                   chunk2 | confidence |
+|--:|---------------:|---------------------:|--------------:|------------:|-------------------------:|---------------------:|--------------:|------------:|-------------------------:|-----------:|
+| 0 |  is_finding_of |         Imaging_Test |            24 |          47 | computed tomography scan |        Tumor_Finding |            81 |          84 |                     mass |   0.672964 |
+| 1 | is_location_of | Site_Other_Body_Part |            73 |          79 |                  ovarian |        Tumor_Finding |            81 |          84 |                     mass |   0.976508 |
+| 2 |     is_size_of |        Tumor_Finding |            81 |          84 |                     mass |           Tumor_Size |            87 |          90 |                     2 cm |   0.952546 |
+| 3 |     is_date_of |       Pathology_Test |           103 |         111 |                Pap smear |        Relative_Date |           123 |         137 |          one month later |   0.927102 |
+| 4 |  is_finding_of |       Pathology_Test |           103 |         111 |                Pap smear |     Pathology_Result |           156 |         179 | atypical glandular cells |   0.860861 |
+| 5 |  is_finding_of |       Pathology_Test |           103 |         111 |                Pap smear |            Cancer_Dx |           196 |         209 |           adenocarcinoma |   0.545740 |
+| 6 | is_location_of |        Tumor_Finding |           260 |         264 |                    tumor | Site_Other_Body_Part |           281 |         295 |          fallopian tubes |   0.875905 |
+| 7 | is_location_of |        Tumor_Finding |           260 |         264 |                    tumor | Site_Other_Body_Part |           298 |         305 |                 appendix |   0.774170 |
+| 8 | is_location_of |        Tumor_Finding |           260 |         264 |                    tumor | Site_Other_Body_Part |           308 |         314 |                  omentum |   0.906041 |
 ```
 
 {:.model-param}

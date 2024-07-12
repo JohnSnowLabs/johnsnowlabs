@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_document_ml_classifier/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -297,6 +300,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../finance_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../finance_classifier_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_classifier_dl</span></code></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../finance_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../sequence_generation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -388,8 +392,9 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceDocumentMLClassifierApproach</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/finance/sequence_classification/finance_document_ml_classifier.html#FinanceDocumentMLClassifierApproach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach" title="Permalink to this definition">#</a></dt>
-<dd><p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceDocumentMLClassifierApproach</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.DocumentMLClassifierApproach</span></code></p>
+<p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
 text and their label. The result is a trained GenericClassifierModel.</p>
 <table class="table">
 <thead>
@@ -405,78 +410,555 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>labelCol</strong></dt><dd><p>Column with the value result we are trying to predict.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labelCol</strong> – Column with the value result we are trying to predict.</p></li>
+<li><p><strong>maxIter</strong> – maximum number of iterations.</p></li>
+<li><p><strong>tol</strong> – convergence tolerance after each iteration.</p></li>
+<li><p><strong>fitIntercept</strong> – whether to fit an intercept term, default is true.</p></li>
+<li><p><strong>labels</strong> – array to output the label in the original form.</p></li>
+<li><p><strong>vectorizationModelPath</strong> – specify the vectorization model if it has been already trained.</p></li>
+<li><p><strong>classificationModelPath</strong> – specify the classification model if it has been already trained.</p></li>
+<li><p><strong>classificationModelClass</strong> – specify the SparkML classification class; possible values are: logreg, svm.</p></li>
+<li><p><strong>maxTokenNgram</strong> – the max number of tokens for Ngrams</p></li>
+<li><p><strong>minTokenNgram</strong> – the min number of tokens for Ngrams</p></li>
+</ul>
 </dd>
-<dt><strong>maxIter</strong></dt><dd><p>maximum number of iterations.</p>
-</dd>
-<dt><strong>tol</strong></dt><dd><p>convergence tolerance after each iteration.</p>
-</dd>
-<dt><strong>fitIntercept</strong></dt><dd><p>whether to fit an intercept term, default is true.</p>
-</dd>
-<dt><strong>labels</strong></dt><dd><p>array to output the label in the original form.</p>
-</dd>
-<dt><strong>vectorizationModelPath</strong></dt><dd><p>specify the vectorization model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModelPath</strong></dt><dd><p>specify the classification model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModelClass</strong></dt><dd><p>specify the SparkML classification class; possible values are: logreg, svm.</p>
-</dd>
-<dt><strong>maxTokenNgram</strong></dt><dd><p>the max number of tokens for Ngrams</p>
-</dd>
-<dt><strong>minTokenNgram</strong></dt><dd><p>the min number of tokens for Ngrams</p>
-</dd>
-<dt><strong>Examples</strong></dt><dd></dd>
-<dt><strong>——–</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.common import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.training import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp_jsl</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from pyspark.ml import Pipeline</strong></dt><dd></dd>
-<dt><strong>An example pipeline could then be defined like this</strong></dt><dd></dd>
-<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>&gt;&gt;&gt; tokenizer = Tokenizer() **</dt><dd></dd>
-<dt><a href="#id3"><span class="problematic" id="id4">**</span></a>…    .setInputCols(“document”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“token”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><a href="#id5"><span class="problematic" id="id6">**</span></a>&gt;&gt;&gt; normalizer = Normalizer() **</dt><dd></dd>
-<dt><a href="#id7"><span class="problematic" id="id8">**</span></a>…    .setInputCols(“token”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“normalized”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><a href="#id9"><span class="problematic" id="id10">**</span></a>&gt;&gt;&gt; stopwords_cleaner = StopWordsCleaner()**</dt><dd></dd>
-<dt><a href="#id11"><span class="problematic" id="id12">**</span></a>…    .setInputCols(“normalized”)**</dt><dd></dd>
-<dt><a href="#id13"><span class="problematic" id="id14">**</span></a>…    .setOutputCol(“cleanTokens”)**</dt><dd></dd>
-<dt><strong>…    .setCaseSensitive(False)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><strong>…stemmer = Stemmer()     …    .setInputCols(“cleanTokens”)     …    .setOutputCol(“stem”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><a href="#id15"><span class="problematic" id="id16">**</span></a>&gt;&gt;&gt; gen_clf = DocumentMLClassifierApproach() **</dt><dd></dd>
-<dt><a href="#id17"><span class="problematic" id="id18">**</span></a>…    .setLabelColumn(“category”) **</dt><dd></dd>
-<dt><a href="#id19"><span class="problematic" id="id20">**</span></a>…    .setInputCols(“stem”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“prediction”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; pipeline = Pipeline().setStages([</strong></dt><dd></dd>
-<dt><strong>…    document_assembler,</strong></dt><dd></dd>
-<dt><strong>…    tokenizer,</strong></dt><dd></dd>
-<dt><strong>…    normalizer,</strong></dt><dd></dd>
-<dt><strong>…    stopwords_cleaner,</strong></dt><dd></dd>
-<dt><strong>…    stemmer,</strong></dt><dd></dd>
-<dt><strong>…    gen_clf</strong></dt><dd></dd>
-<dt><strong>…])</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; clf_model = pipeline.fit(data)</strong></dt><dd></dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+</pre></div>
+</div>
+<p>An example pipeline could then be defined like this</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;normalized&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stopwords_cleaner</span> <span class="o">=</span> <span class="n">StopWordsCleaner</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;normalized&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;cleanTokens&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">...stemmer = Stemmer()     ...    .setInputCols(&quot;cleanTokens&quot;)     ...    .setOutputCol(&quot;stem&quot;)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gen_clf</span> <span class="o">=</span> <span class="n">DocumentMLClassifierApproach</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;stem&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">setStages</span><span class="p">([</span>
+<span class="gp">... </span>   <span class="n">document_assembler</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">tokenizer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">normalizer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">stopwords_cleaner</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">stemmer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">gen_clf</span>
+<span class="go">...])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.classificationModelClass">
+<span class="sig-name descname"><span class="pre">classificationModelClass</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.classificationModelClass" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.classificationModelPath">
+<span class="sig-name descname"><span class="pre">classificationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.classificationModelPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fitIntercept">
+<span class="sig-name descname"><span class="pre">fitIntercept</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fitIntercept" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.labelCol">
+<span class="sig-name descname"><span class="pre">labelCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.labelCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.maxIter">
+<span class="sig-name descname"><span class="pre">maxIter</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.maxIter" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.maxTokenNgram">
+<span class="sig-name descname"><span class="pre">maxTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.maxTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.mergeChunks">
+<span class="sig-name descname"><span class="pre">mergeChunks</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.mergeChunks" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.minTokenNgram">
+<span class="sig-name descname"><span class="pre">minTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.minTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.tol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.vectorizationModelPath">
+<span class="sig-name descname"><span class="pre">vectorizationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.vectorizationModelPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params. If a list/tuple of
+param maps is given, this calls fit on each param map and returns a list of
+models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fitted model(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fitMultiple">
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>paramMaps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code>) – A Sequence of param maps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A thread safe iterable which contains one model for each param map. Each
+call to <cite>next(modelIterator)</cite> will return <cite>(index, model)</cite> where model was fit
+using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequential.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setClassificationModelClass">
+<span class="sig-name descname"><span class="pre">setClassificationModelClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setClassificationModelClass" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a the classification model class from SparkML to use; possible values are: logreg, svm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – specify the SparkML classification class; possible values are: logreg, svm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setClassificationModelPath">
+<span class="sig-name descname"><span class="pre">setClassificationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setClassificationModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Path to the classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setFitIntercept">
+<span class="sig-name descname"><span class="pre">setFitIntercept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setFitIntercept" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to fit an intercept term, default is true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Whether to fit an intercept term, default is true.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLabelCol">
+<span class="sig-name descname"><span class="pre">setLabelCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLabelCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column with the value result we are trying to predict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Column with the value result we are trying to predict.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLabels">
+<span class="sig-name descname"><span class="pre">setLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets array to output the label in the original form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>list</em>) – array to output the label in the original form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMaxIter">
+<span class="sig-name descname"><span class="pre">setMaxIter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMaxIter" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of iterations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Maximum number of iterations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMaxTokenNgram">
+<span class="sig-name descname"><span class="pre">setMaxTokenNgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMaxTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of tokens for Ngrams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Maximum number of tokens for Ngrams.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMergeChunks">
+<span class="sig-name descname"><span class="pre">setMergeChunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMergeChunks" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to merge all chunks in a document or not (Default: false)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>merge</strong> (<em>list</em>) – whether to merge all chunks in a document or not (Default: false)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMinTokenNgram">
+<span class="sig-name descname"><span class="pre">setMinTokenNgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMinTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum number of tokens for Ngrams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Minimum number of tokens for Ngrams.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setTol">
+<span class="sig-name descname"><span class="pre">setTol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setTol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets  convergence tolerance after each iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dist</strong> (<em>float</em>) – Convergence tolerance after each iteration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setVectorizationModelPath">
+<span class="sig-name descname"><span class="pre">setVectorizationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setVectorizationModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Path to the classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceDocumentMLClassifierModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.sequence_classification.FinanceClassifierDLModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/finance/sequence_classification/finance_document_ml_classifier.html#FinanceDocumentMLClassifierModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Classifies documents with a Logarithmic Regression algorithm.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceDocumentMLClassifierModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.sequence_classification.FinanceClassifierDLModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.DocumentMLClassifierModel</span></code></p>
+<p>Classifies documents with a Logarithmic Regression algorithm.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -491,37 +973,403 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mergeChunks</strong></dt><dd><p>Whether to merge all chunks in a document or not (Default: false)</p>
-</dd>
-<dt><strong>labels</strong></dt><dd><p>Array to output the label in the original form.</p>
-</dd>
-<dt><strong>vectorizationModel</strong></dt><dd><p>Vectorization model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModel</strong></dt><dd><p>Classification model if it has been already trained.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mergeChunks</strong> – Whether to merge all chunks in a document or not (Default: false)</p></li>
+<li><p><strong>labels</strong> – Array to output the label in the original form.</p></li>
+<li><p><strong>vectorizationModel</strong> – Vectorization model if it has been already trained.</p></li>
+<li><p><strong>classificationModel</strong> – Classification model if it has been already trained.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.classificationModel">
+<span class="sig-name descname"><span class="pre">classificationModel</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.classificationModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.maxTokenNgram">
+<span class="sig-name descname"><span class="pre">maxTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.maxTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.mergeChunks">
+<span class="sig-name descname"><span class="pre">mergeChunks</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.mergeChunks" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.minTokenNgram">
+<span class="sig-name descname"><span class="pre">minTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.minTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">FinanceDocumentMLClassifierModel</span></em><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/finance/sequence_classification/finance_document_ml_classifier.html#FinanceDocumentMLClassifierModel.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">FinanceDocumentMLClassifierModel</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.vectorizationModel">
+<span class="sig-name descname"><span class="pre">vectorizationModel</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.vectorizationModel" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/finance/sequence_classification/finance_document_ml_classifier.html#FinanceDocumentMLClassifierModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.pretrained" title="Permalink to this definition">#</a></dt>
-<dd><p>Download a pre-trained FinanceDocumentMLClassifierModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
-remote_loc (str): Remote location of the pre-trained model. If None, use the
-open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
 </dd>
-<dt>Returns:</dt><dd><p>FinanceDocumentMLClassifierModel: A pre-trained FinanceDocumentMLClassifierModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.pretrained" title="Permalink to this definition">#</a></dt>
+<dd><p>Download a pre-trained FinanceDocumentMLClassifierModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model.</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model.</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the</p></li>
+<li><p><strong>&quot;clinical/models&quot;</strong> (<em>open-source location. Other values are</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>:param :
+:param “finance/models”:
+:param or “legal/models”.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pre-trained FinanceDocumentMLClassifierModel.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel" title="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel">FinanceDocumentMLClassifierModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setClassificationModel">
+<span class="sig-name descname"><span class="pre">setClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setClassificationModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.PipelineModel</span></code></a>) – Classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setLabels">
+<span class="sig-name descname"><span class="pre">setLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets array to output the label in the original form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>list</em>) – array to output the label in the original form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setMergeChunks">
+<span class="sig-name descname"><span class="pre">setMergeChunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setMergeChunks" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to merge all chunks in a document or not (Default: false)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>merge</strong> (<em>list</em>) – whether to merge all chunks in a document or not (Default: false)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setVectorizationModel">
+<span class="sig-name descname"><span class="pre">setVectorizationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setVectorizationModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.PipelineModel</span></code></a>) – Classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -561,10 +1409,116 @@ open-source location. Other values are “clinical/models”,
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.classificationModelClass"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.classificationModelClass</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.classificationModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.classificationModelPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fitIntercept"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.fitIntercept</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.labelCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.labelCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.labels"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.maxIter"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.maxIter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.maxTokenNgram"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.maxTokenNgram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.mergeChunks"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.mergeChunks</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.minTokenNgram"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.minTokenNgram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.tol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.tol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.vectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.vectorizationModelPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.clear"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.copy"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.explainParams"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fit"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.fit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.fitMultiple"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.fitMultiple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getParam"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.getParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.hasDefault"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.hasParam"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.isDefined"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.isSet"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.load"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.read"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setClassificationModelClass"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setClassificationModelClass()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setClassificationModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setClassificationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setFitIntercept"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setFitIntercept()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLabelCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setLabelCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLabels"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMaxIter"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setMaxIter()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMaxTokenNgram"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setMaxTokenNgram()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMergeChunks"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setMergeChunks()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setMinTokenNgram"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setMinTokenNgram()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setTol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setTol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.setVectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.setVectorizationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierApproach.write"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierApproach.write()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.classificationModel"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.classificationModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.labels"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.maxTokenNgram"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.maxTokenNgram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.mergeChunks"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.mergeChunks</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.minTokenNgram"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.minTokenNgram</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.name"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.vectorizationModel"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.vectorizationModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.clear"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.copy"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.explainParam"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.explainParams"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getParam"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.hasParam"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.isDefined"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.isSet"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.load"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.pretrained"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setClassificationModel"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setClassificationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setLabels"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setMergeChunks"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setMergeChunks()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setParams"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.setVectorizationModel"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.setVectorizationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.transform"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier.FinanceDocumentMLClassifierModel.write"><code class="docutils literal notranslate"><span class="pre">FinanceDocumentMLClassifierModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -573,14 +1527,6 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_document_ml_classifier/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

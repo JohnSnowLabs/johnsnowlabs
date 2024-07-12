@@ -9,7 +9,7 @@ modify_date: "2020-04-08"
 use_language_switcher: "Python-Scala-Java"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 ## ImageHandwrittenDetector
@@ -52,7 +52,7 @@ Detector support following labels:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -172,7 +172,7 @@ It's based on CRAFT network architecture.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -305,7 +305,7 @@ Currently, it's available only on Python side.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 

@@ -21,6 +21,8 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps RxNorm and RxNorm Extension codes with their corresponding drug brand names. It returns 2 types of brand names for the corresponding RxNorm or RxNorm Extension code.
 
+
+
 ## Predicted Entities
 
 `rxnorm_brandname`, `rxnorm_extension_brandname`
@@ -37,6 +39,7 @@ This pretrained model maps RxNorm and RxNorm Extension codes with their correspo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
@@ -49,7 +52,7 @@ sbert_embedder = BertSentenceEmbeddings\
     
 rxnorm_resolver = SentenceEntityResolverModel\
       .pretrained("sbiobertresolve_rxnorm_augmented", "en", "clinical/models")\
-      .setInputCols(["chunk", "sbert_embeddings"])\
+      .setInputCols(["sbert_embeddings"])\
       .setOutputCol("rxnorm_code")\
       .setDistanceFunction("EUCLIDEAN")
 

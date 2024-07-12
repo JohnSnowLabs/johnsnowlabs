@@ -9,7 +9,7 @@ task: OCR Object Detection
 language: xx
 edition: Visual NLP 4.0.0
 spark_version: 3.2
-supported: true
+deprecated: true
 annotator: VisualDocumentNERv21
 article_header:
   type: cover

@@ -313,7 +313,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.utils.ocr_nlp_processor</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.ocr_utils</span> <span class="kn">import</span> <span class="n">__ocr_pipeline</span><span class="p">,</span> <span class="n">__colored_box</span><span class="p">,</span> <span class="n">__highlighted_box</span><span class="p">,</span> <span class="n">__black_box</span>
+<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.ocr_utils</span> <span class="kn">import</span> <span class="n">__ocr_pipeline</span><span class="p">,</span> <span class="n">__colored_box</span><span class="p">,</span> <span class="n">__highlighted_box</span><span class="p">,</span> <span class="n">__bounding_box</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">IO</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
@@ -336,8 +336,8 @@ document.write(`
 
 <div class="viewcode-block" id="ocr_entity_processor"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/ocr_nlp_processor/index.html#sparknlp_jsl.utils.ocr_nlp_processor.ocr_entity_processor">[docs]</a><span class="k">def</span> <span class="nf">ocr_entity_processor</span><span class="p">(</span><span class="n">spark</span><span class="p">:</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ner_pipeline</span><span class="p">:</span> <span class="n">PipelineModel</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bounding_box&quot;</span><span class="p">,</span>
                          <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;save_folder&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                         <span class="n">label_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">color_chart_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;color_chart.png&quot;</span><span class="p">,</span>
-                         <span class="n">chunk_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">,</span>
+                         <span class="n">label_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">box_color</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> 
+                         <span class="n">color_chart_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;color_chart.png&quot;</span><span class="p">,</span> <span class="n">chunk_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">,</span>
                          <span class="n">black_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">display_result</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
                          <span class="n">resolution</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
                          <span class="n">confidenceThreshold</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> 
@@ -360,8 +360,8 @@ document.write(`
 <span class="sd">        :param black_list: List of NER labels that will be painted over in &#39;highlight&#39; and &#39;bounding_box&#39; styles</span>
 <span class="sd">        :type black_list: list</span>
 
-<span class="sd">        :param style:  PDF file process style that has 3 options; &#39;black_band&#39;: Black bands over the chunks detected</span>
-<span class="sd">        by NER pipeline. &#39;bounding_box&#39;: Colorful bounding boxes around the chunks detected by NER pipeline. Each</span>
+<span class="sd">        :param style:  PDF file process style that has 3 options; &#39;colored_box&#39;: Draws bands with a single color over the chunks detected</span>
+<span class="sd">        by NER pipeline (default is black). &#39;bounding_box&#39;: Colorful bounding boxes around the chunks detected by NER pipeline. Each</span>
 <span class="sd">        color represents a different NER label. &#39;highlight&#39;: Colorful highlights over the chunks detected by NER</span>
 <span class="sd">        pipeline. Each color represents a different NER label. :type style: str</span>
 
@@ -373,6 +373,9 @@ document.write(`
 
 <span class="sd">        :param label_color: Color of NER labels if &#39;label=True&#39; , defaults to &quot;red&quot;</span>
 <span class="sd">        :type label_color: str</span>
+
+<span class="sd">        :param box_color: RGB code for colored box if &#39;style=colored_box&#39;, defaults to &quot;black&quot;</span>
+<span class="sd">        :type box_color: tuple</span>
 
 <span class="sd">        :param color_chart_path: File name of color chart in PNG format that shows the colors of NER labels in the</span>
 <span class="sd">        processed file, defaults to &quot;color_chart.png&quot; :type color_chart_path: str</span>
@@ -396,7 +399,7 @@ document.write(`
             <span class="k">if</span> <span class="n">label</span> <span class="ow">and</span> <span class="n">label_color</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label_color</span><span class="si">}</span><span class="s2"> is not a valid color. Please pick one:</span><span class="si">{</span><span class="n">colors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">__colored_box</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">chunk_col</span><span class="p">,</span> <span class="n">black_list</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">label_color</span><span class="p">,</span>
+                <span class="n">__bounding_box</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">chunk_col</span><span class="p">,</span> <span class="n">black_list</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">label_color</span><span class="p">,</span>
                               <span class="n">color_chart_path</span><span class="p">,</span> <span class="n">display_result</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;highlight&quot;</span><span class="p">:</span>
@@ -407,11 +410,11 @@ document.write(`
                                   <span class="n">label_color</span><span class="p">,</span>
                                   <span class="n">color_chart_path</span><span class="p">,</span> <span class="n">display_result</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;black_band&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;colored_box&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">label</span> <span class="ow">and</span> <span class="n">label_color</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label_color</span><span class="si">}</span><span class="s2"> is not a valid color. Please pick one:</span><span class="si">{</span><span class="n">colors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">__black_box</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">chunk_col</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">label_color</span><span class="p">,</span> <span class="n">display_result</span><span class="p">)</span>
+                <span class="n">__colored_box</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">chunk_col</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">box_color</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">label_color</span><span class="p">,</span> <span class="n">display_result</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">style</span><span class="p">,</span>

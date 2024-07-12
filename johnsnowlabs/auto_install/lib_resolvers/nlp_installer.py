@@ -33,7 +33,7 @@ class NlpLibResolver(Py4JJslLibDependencyResolverABC, metaclass=ABCMeta):
                 dependency_version=lib_version,
             ),
             JvmHardwareTarget.m1: UrlDependency(
-                url="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/jars/spark-nlp-m1-assembly-{lib_version}.jar",
+                url="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/jars/spark-nlp-silicon-assembly-{lib_version}.jar",
                 dependency_type=JvmHardwareTarget.m1,
                 spark_version=SparkVersion.spark3xx,
                 product_name=product_name,

@@ -34,7 +34,7 @@ nlp.load('sentiment').predict('How does this witchcraft work?')
 
 </div><div class="h3-box" markdown="1">
 
-`jsl.load()` defines **18 components types** usable in 1-liners, some can be prefixed with `.train` for [training models](/docs/en/jsl/training)
+`nlp.load()` defines **18 components types** usable in 1-liners, some can be prefixed with `.train` for [training models](/docs/en/jsl/training)
 
 
 Any of the actions for the component types can be passed as a string to nlp.load() and will return you the default model
@@ -45,6 +45,7 @@ See [the Models Hub](https://nlp.johnsnowlabs.com/models),  [the Components Name
 and [The load function](https://nlp.johnsnowlabs.com/docs/en/jsl/load_api) for more infos.
 
 </div><div class="h3-box" markdown="1">
+
 {:.table-model-big}
 | Component type                | nlp.load() base   |
 |-------------------------------|-------------------------------|
@@ -67,6 +68,8 @@ and [The load function](https://nlp.johnsnowlabs.com/docs/en/jsl/load_api) for m
 | Cleaner                       | `nlp.load('clean')`             |
 | N-Grams                       | `nlp.load('ngram')`             |
 | Tokenizers                    | `nlp.load('tokenize')`          |
+
+</div><div class="h3-box" markdown="1">
 
 ## Annotator & PretrainedPipeline based pipelines
 You can create [Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/concepts) using all the classes 
@@ -97,6 +100,7 @@ OUTPUT:
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Custom Pipes
 Alternatively you can compose [Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) into a pipeline which offers the highest degree of customization 
@@ -111,8 +115,6 @@ pipe = nlp.Pipeline(stages=
 spark_df = spark.createDataFrame([['Hello NLP World']]).toDF("text")
 pipe.fit(spark_df).transform(spark_df).show()
 ```
-
-
 
 [//]: # (</div><div class="h3-box" markdown="1">)
 

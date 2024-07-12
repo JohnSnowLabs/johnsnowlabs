@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of `icd10_icd9_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -59,11 +60,9 @@ nlu.load("en.icd10_icd9.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-
 |    | icd10_code          | icd9_code          |
 |---:|:--------------------|:-------------------|
 |  0 | Z833 | A0100 | A000 | V180 | 0020 | 0010 |
-
 ```
 
 {:.model-param}

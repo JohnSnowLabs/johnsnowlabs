@@ -444,7 +444,7 @@ nlp.load('lang').predict(['NLU is an open-source text processing library for adv
 ## E2E Classifier
 [E2E Classifier example](https://colab.research.google.com/drive/1OSkiXGEpKlm9HWDoVb42uLNQQgb7nqNZ?usp=sharing)
 
-This is a multi class classifier trained on the E2E [dataset for Natural language generation](http://www.macs.hw.ac.uk/InteractionLab/E2E/#)
+This is a multi class classifier trained on the E2E [dataset for Natural language generation](https://www.macs.hw.ac.uk/InteractionLab/E2E/#)
 
 ```python
 nlp.load('e2e').predict('E2E is a dataset for training generative models')
@@ -1178,9 +1178,6 @@ asr_df
 
 </div><div class="h3-box" markdown="1">
 
-
-
-
 ## Table Question Answering (TAPAS)
 [TAPS Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
 
@@ -1224,6 +1221,7 @@ answers = nlu.load('en.answer_question.tapas.wtq.large_finetuned').predict(tapas
 answers
 ```
 
+{:.table-model-big.db}
 | sentence                         | tapas_qa_UNIQUE_aggregation   | tapas_qa_UNIQUE_answer   | tapas_qa_UNIQUE_cell_positions   |   tapas_qa_UNIQUE_cell_scores | tapas_qa_UNIQUE_origin_question   |
 |:---------------------------------|:------------------------------|:-------------------------|:---------------------------------|------------------------------:|:----------------------------------|
 | Who earns less than 200,000,000? | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns less than 200,000,000?  |
@@ -1253,8 +1251,28 @@ nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 
 ![vit](/assets/images/nlu/visual/vit_example.png)
 
+## Image Classification (ConvNext)
+
+[Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/convnext_image_classification_overview.ipynb)        
+Image Classifier Based on [ConvNext](https://arxiv.org/abs/2201.03545)
+Lets download a folder of images and predict on it
+```python 
+!wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/images/images.zip
+import shutil
+shutil.unpack_archive("images.zip", "images", "zip")
+! ls /content/images/images/
+```
+
+Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected
+```python
+nlu.load('en.classify_image.convnext.tiny').predict('/content/images/images')
+```
+
+![convnext](/assets/images/nlu/visual/convnext_example.png)
 
 ## Image Classification (SWIN)
+
 [Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)        
 Image Classifier Based on [SWIN](https://arxiv.org/abs/2103.14030)
 Lets download a folder of images and predict on it
@@ -1274,8 +1292,11 @@ nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
 ![swin](/assets/images/nlu/visual/swin_example.png)
 
 ## T5
+
 [Example of every T5 task](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
+
 ### Overview of every task available with T5
+
 [The T5 model](https://arxiv.org/pdf/1910.10683.pdf) is trained on various datasets for 17 different tasks which fall into 8 categories.
 
 1. Text summarization
@@ -1290,7 +1311,6 @@ nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
 </div><div class="h3-box" markdown="1">
 
 ### Every T5 Task with explanation:
-
 
 {:.table-model-big.mb0}
 |Task Name | Explanation |
@@ -1341,7 +1361,6 @@ The belgian duo took to the dance floor on monday night with some friends . manc
 pipe.predict(data)
 ```
 
-
 {:.table-model-big.mb0}
 | Predicted summary| Text |
 |------------------|-------|
@@ -1375,7 +1394,6 @@ sentence2: 	I like to play football.
 t5.predict(data)
 ```
 
-
 {:.table-model-big.mb0}
 | Sentence1 | Sentence2 | prediction|
 |------------|------------|----------|
@@ -1385,6 +1403,7 @@ t5.predict(data)
 </div><div class="h3-box" markdown="1">
 
 ### How to configure T5 task for MRPC and pre-process text
+
 `.setTask('mrpc sentence1:)` and prefix second sentence with `sentence2:`
 
 ### Example pre-processed input for T5 MRPC - Binary Paraphrasing/ sentence similarity
@@ -1400,7 +1419,7 @@ sentence2: Rather , the US acted because the administration saw " existing evide
 ## Regressive Sentence similarity/ Paraphrasing
 
 Measures how similar two sentences are on a scale from 0 to 5 with 21 classes representing a regressive label.     
-This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on[STSB - Regressive semantic sentence similarity](https://www.aclweb.org/anthology/S17-2001/) .
+This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on [STSB - Regressive semantic sentence similarity](https://www.aclweb.org/anthology/S17-2001/).
 
 ```python
 t5 = nlp.load('en.t5.base')
@@ -1477,6 +1496,30 @@ pipe.predict(data)
 |------------|------------|
 | Anna and Mike is going skiing and they is liked is | unacceptable |      
 | Anna and Mike like to dance | acceptable |
+
+</div><div class="h3-box" markdown="1">
+
+## Bart Transformer
+[Bart Transformer tutorial](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/bart_transformer.ipynb)
+
+Bart is based on transformer architecture and is designed to handle a wide range of natural language processing tasks such as text generation, summarization, and machine translation.
+Based on [BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension Transformer](https://aclanthology.org/2020.acl-main.703.pdf)
+
+```python
+model = nlu.load('en.seq2seq.distilbart_cnn_12_6')
+# Set the task on T5
+model['bart_transformer'].setTask("summarize: ")
+model['bart_transformer'].setMaxOutputLength(200)
+# define Data
+data = '''LONDON, England (Reuters) -- Harry Potter star Daniel Radcliffe gains access to a reported £20 million ($41.1 million) fortune as he turns 18 on Monday, but he insists the money won't cast a spell on him. Daniel Radcliffe as Harry Potter in "Harry Potter and the Order of the Phoenix" To the disappointment of gossip columnists around the world, the young actor says he has no plans to fritter his cash away on fast cars, drink and celebrity parties. "I don't plan to be one of those people who, as soon as they turn 18, suddenly buy themselves a massive sports car collection or something similar," he told an Australian interviewer earlier this month. "I don't think I'll be particularly extravagant. "The things I like buying are things that cost about 10 pounds -- books and CDs and DVDs." At 18, Radcliffe will be able to gamble in a casino, buy a drink in a pub or see the horror film "Hostel: Part II," currently six places below his number one movie on the UK box office chart. Details of how he'll mark his landmark birthday are under wraps. His agent and publicist had no comment on his plans. "I'll definitely have some sort of party," he said in an interview. "Hopefully none of you will be reading about it." Radcliffe's earnings from the first five Potter films have been held in a trust fund which he has not been able to touch. Despite his growing fame and riches, the actor says he is keeping his feet firmly on the ground. "People are always looking to say 'kid star goes off the rails,'" he told reporters last month. "But I try very hard not to go that way because it would be too easy for them." His latest outing as the boy wizard in "Harry Potter and the Order of the Phoenix" is breaking records on both sides of the Atlantic and he will reprise the role in the last two films. Watch I-Reporter give her review of Potter's latest » . There is life beyond Potter, however. The Londoner has filmed a TV movie called "My Boy Jack," about author Rudyard Kipling and his son, due for release later this year. He will also appear in "December Boys," an Australian film about four boys who escape an orphanage. Earlier this year, he made his stage debut playing a tortured teenager in Peter Shaffer's "Equus." Meanwhile, he is braced for even closer media scrutiny now that he's legally an adult: "I just think I'm going to be more sort of fair game," he told Reuters. E-mail to a friend . Copyright 2007 Reuters. All rights reserved.This material may not be published, broadcast, rewritten, or redistributed.'''
+#Predict on text data with T5
+df = model.predict(data)
+```
+
+{:.table-model-big.mb0}
+| text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | generated                                                                                                                                                                                           |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| LONDON, England (Reuters) -- Harry Potter star Daniel Radcliffe gains access to a reported £20 million ($41.1 million) fortune as he turns 18 on Monday, but he insists the money won't cast a spell on him. Daniel Radcliffe as Harry Potter in "Harry Potter and the Order of the Phoenix" To the disappointment of gossip columnists around the world, the young actor says he has no plans to fritter his cash away on fast cars, drink and celebrity parties. "I don't plan to be one of those people who, as soon as they turn 18, suddenly buy themselves a massive sports car collection or something similar," he told an Australian interviewer earlier this month. "I don't think I'll be particularly extravagant. "The things I like buying are things that cost about 10 pounds -- books and CDs and DVDs." At 18, Radcliffe will be able to gamble in a casino, buy a drink in a pub or see the horror film "Hostel: Part II," currently six places below his number one movie on the UK box office chart. Details of how he'll mark his landmark birthday are under wraps. His agent and publicist had no comment on his plans. "I'll definitely have some sort of party," he said in an interview. "Hopefully none of you will be reading about it." Radcliffe's earnings from the first five Potter films have been held in a trust fund which he has not been able to touch. Despite his growing fame and riches, the actor says he is keeping his feet firmly on the ground. "People are always looking to say 'kid star goes off the rails,'" he told reporters last month. "But I try very hard not to go that way because it would be too easy for them." His latest outing as the boy wizard in "Harry Potter and the Order of the Phoenix" is breaking records on both sides of the Atlantic and he will reprise the role in the last two films. Watch I-Reporter give her review of Potter's latest » . There is life beyond Potter, however. The Londoner has filmed a TV movie called "My Boy Jack," about author Rudyard Kipling and his son, due for release later this year. He will also appear in "December Boys," an Australian film about four boys who escape an orphanage. Earlier this year, he made his stage debut playing a tortured teenager in Peter Shaffer's "Equus." Meanwhile, he is braced for even closer media scrutiny now that he's legally an adult: "I just think I'm going to be more sort of fair game," he told Reuters. E-mail to a friend . Copyright 2007 Reuters. All rights reserved.This material may not be published, broadcast, rewritten, or redistributed. | Daniel Radcliffe gains access to a reported � 20 million $ 41 . 1 million fortune . Harry Potter star Daniel Radcliffe turns 18 on Monday . Radcliffe insists the money won't cast a spell on him . |
 
 </div><div class="h3-box" markdown="1">
 

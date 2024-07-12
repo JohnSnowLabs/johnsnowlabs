@@ -109,7 +109,6 @@ val result = pipeline.fit(data).transform(data)
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |[the present study investigated whether directing spatial attention to one location in a visual array would enhance memory for the array features. participants memorized two]|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 ```
 
 {:.model-param}

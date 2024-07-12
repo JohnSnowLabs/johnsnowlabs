@@ -27,7 +27,7 @@ Run the following code in Google Colab notebook and start using spark-nlp right 
 
 ```sh
 # This is only to setup PySpark and Spark NLP on Colab
-!wget http://setup.johnsnowlabs.com/colab.sh -O - | bash
+!wget https://setup.johnsnowlabs.com/colab.sh -O - | bash
 ```
 
 This script comes with the two options to define `pyspark` and `spark-nlp` versions via options:
@@ -47,7 +47,7 @@ Run the following code in Kaggle Kernel and start using spark-nlp right away.
 
 ```sh
 # Let's setup Kaggle for Spark NLP and PySpark
-!wget http://setup.johnsnowlabs.com/kaggle.sh -O - | bash
+!wget https://setup.johnsnowlabs.com/kaggle.sh -O - | bash
 ```
 
 ## Notebooks

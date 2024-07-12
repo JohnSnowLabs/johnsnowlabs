@@ -144,8 +144,9 @@ The output is a dataframe with a sentence per row and a ``"ner"`` column contain
 
 {:.h2_title}
 ## Data Source
-Trained on i2b2_med7 + FDA with 'embeddings_clinical'.
+Trained on augmented version of i2b2_med7 + FDA with 'embeddings_clinical'.
 https://www.i2b2.org/NLP/Medication
+
 
 {:.h2_title}
 ## Benchmarking

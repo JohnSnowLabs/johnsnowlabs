@@ -75,10 +75,10 @@ Then the instance will appear on your EC2 Instances list.
 
 <img class="image image--xl" src="/assets/images/nlp_server/EC2_s5.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
 
-The NLP Server can now be accessed via a web browser at http://PUBLIC_EC2_IP .
+The NLP Server can now be accessed via a web browser at [https://PUBLIC_EC2_IP](https://PUBLIC_EC2_IP).
 <img class="image image--xl" src="/assets/images/nlp_server/EC2_s6.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
 
-API documentation is also available at http://PUBLIC_EC2_IP/docs
+API documentation is also available at [https://PUBLIC_EC2_IP/docs](https://PUBLIC_EC2_IP/docs).
 <img class="image image--xl" src="/assets/images/nlp_server/EC2_s7.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
 
 ## Deploy using Azure Marketplace

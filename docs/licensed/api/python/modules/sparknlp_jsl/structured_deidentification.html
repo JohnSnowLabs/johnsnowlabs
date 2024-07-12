@@ -327,19 +327,19 @@ document.write(`
 <span class="sd">    ----------</span>
 <span class="sd">    columns : dict</span>
 <span class="sd">          Is a map that allows to select the name of the column with the entity.</span>
-<span class="sd">                                   The key of the the map is the column in the dataframe and the value of the map is the entity for that column.</span>
+<span class="sd">                                   The key of the map is the column in the dataframe and the value of the map is the entity for that column.</span>
 <span class="sd"> </span>
 <span class="sd">                                   The default entities are:</span>
-<span class="sd">                                   &quot;location&quot; A general location.&quot;</span>
+<span class="sd">                                   &quot;location&quot; A general location.</span>
 <span class="sd">                                   &quot;location-other&quot; A location that is not country, street,hospital,city or state</span>
 <span class="sd">                                   &quot;street&quot; A street</span>
 <span class="sd">                                   &quot;hospital&quot; The name of a hospital.</span>
 <span class="sd">                                   &quot;city&quot; A city</span>
-<span class="sd">                                   &quot;state&quot;A state</span>
+<span class="sd">                                   &quot;state&quot; A state</span>
 <span class="sd">                                   &quot;zip&quot; The zip code</span>
 <span class="sd">                                   &quot;country&quot; A country</span>
 <span class="sd">                                   &quot;contact&quot; The contact of one person</span>
-<span class="sd">                                   &quot;username&quot;A username</span>
+<span class="sd">                                   &quot;username&quot; A username</span>
 <span class="sd">                                   &quot;phone&quot; A number phone.</span>
 <span class="sd">                                   &quot;fax&quot; The number fax</span>
 <span class="sd">                                   &quot;url&quot; A url for internet</span>
@@ -348,14 +348,22 @@ document.write(`
 <span class="sd">                                   &quot;name&quot; The name opf one person</span>
 <span class="sd">                                   &quot;doctor&quot; The name of a doctor</span>
 <span class="sd">                                   &quot;patient&quot; The name of the patient</span>
-<span class="sd">                                   &quot;id&quot; A general Id number</span>
+<span class="sd">                                   &quot;id&quot; A general ID number</span>
 <span class="sd">                                   &quot;bioid&quot; Is a system to screen for protein interactions as they occur in living cells</span>
 <span class="sd">                                   &quot;age&quot; The age of something or someone</span>
 <span class="sd">                                   &quot;organization&quot; Name of one organization o company</span>
 <span class="sd">                                   &quot;healthplan&quot; The id that identify the healthplan</span>
 <span class="sd">                                   &quot;medicalrecord&quot; The identification of a medical record</span>
-<span class="sd">                                   &quot;device&quot;The id that identified a device</span>
-<span class="sd">                                   &quot;date&quot; A general date&quot;</span>
+<span class="sd">                                   &quot;device&quot; The id that identified a device</span>
+<span class="sd">                                   &quot;date&quot; A general date</span>
+<span class="sd">                                   &quot;ssn&quot; A Social Security Number</span>
+<span class="sd">                                   &quot;ip&quot; A Internet Protocol</span>
+<span class="sd">                                   &quot;passport&quot; A random passport</span>
+<span class="sd">                                   &quot;dln&quot; A Driver&#39;s License Number</span>
+<span class="sd">                                   &quot;npi&quot; A National Provider Identifier</span>
+<span class="sd">                                   &quot;c_card&quot; A credit card number</span>
+<span class="sd">                                   &quot;iban&quot; A International Bank Account Number</span>
+<span class="sd">                                   &quot;dea&quot; A Drug Enforcement Administration</span>
 <span class="sd">    columnsSeed : int</span>
 <span class="sd">       Allow to add a seed to the column that you want to obfuscate.The seed used to randomly select the entities used</span>
 <span class="sd">       during obfuscation mode.</span>
@@ -369,6 +377,10 @@ document.write(`
 <span class="sd">        Use a random displacement days in dates entities.If true use random displacement days in dates entities,if false use the days.</span>
 <span class="sd">    dateFormats : List[str]</span>
 <span class="sd">        List of date formats.example [&quot;dd-MM-yyyy&quot;, &quot;dd/MM/yyyy&quot;, &quot;d/M/yyyy&quot;, &quot;dd-MM-yyyy&quot;, &quot;d-M-yyyy&quot;]</span>
+<span class="sd">    language</span>
+<span class="sd">        The language used to select faker entities.</span>
+<span class="sd">        The values are the following:</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian). Default:&#39;en&#39;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">:</span> <span class="n">SparkSession</span><span class="p">,</span>
@@ -378,7 +390,8 @@ document.write(`
                  <span class="n">obfuscateRefSource</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span><span class="p">,</span>
                  <span class="n">days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
                  <span class="n">useRandomDateDisplacement</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                 <span class="n">dateFormats</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+                 <span class="n">dateFormats</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">language</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">columnsSeed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">columnsSeed</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -397,7 +410,8 @@ document.write(`
             <span class="n">obfuscateRefSource</span><span class="p">,</span>
             <span class="n">days</span><span class="p">,</span>
             <span class="n">useRandomDateDisplacement</span><span class="p">,</span>
-            <span class="n">dateFormats</span><span class="p">)</span>
+            <span class="n">dateFormats</span><span class="p">,</span>
+            <span class="n">language</span><span class="p">)</span>
 
 <div class="viewcode-block" id="StructuredDeidentification.obfuscateColumns"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/structured_deidentification/index.html#sparknlp_jsl.structured_deidentification.StructuredDeidentification.obfuscateColumns">[docs]</a>    <span class="k">def</span> <span class="nf">obfuscateColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Obfuscate the columns of a dataframe.</span>

@@ -201,4 +201,16 @@ data:
           - text: Colab
             type: blue_btn
             url:
+        - title: Extract Financial Entities from Suspicious Activity Reports
+          id: extract_financial_entities_suspicious_activity_reports   
+          image: 
+              src: /assets/images/Extract_financial_entities_from.svg
+          excerpt: This demo shows how we can extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINNER_SAR/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

@@ -316,6 +316,7 @@ document.write(`
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Helper class that allow us to update pretrained models located in the cache folder</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">import</span> <span class="nn">sparknlp_jsl.internal</span> <span class="k">as</span> <span class="nn">_internal</span>
 
@@ -339,19 +340,31 @@ document.write(`
         <span class="n">_internal</span><span class="o">.</span><span class="n">_UpdateCacheModels</span><span class="p">(</span><span class="n">cache_folder</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="UpdateModels.updateModels"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/updateModels/index.html#sparknlp_jsl.updateModels.UpdateModels.updateModels">[docs]</a>    <span class="k">def</span> <span class="nf">updateModels</span><span class="p">(</span><span class="n">date_cutoff</span><span class="p">,</span> <span class="n">cache_folder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads all new pretrained models since the date_cutoff.</span>
-
+<div class="viewcode-block" id="UpdateModels.updateModels"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/updateModels/index.html#sparknlp_jsl.updateModels.UpdateModels.updateModels">[docs]</a>    <span class="k">def</span> <span class="nf">updateModels</span><span class="p">(</span><span class="n">model_names</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads all given models by filtering parameters.</span>
+<span class="sd">        If no cache_folder is specified, it will download the models in the default folder.</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        date_cutoff:str</span>
-<span class="sd">            Date since</span>
-<span class="sd">                It is the date from which the new models will be downloaded.</span>
+<span class="sd">        model_names: List[str]</span>
+<span class="sd">            names of the models to download</span>
+<span class="sd">        remote_loc: str</span>
+<span class="sd">            The remote location of the models in the s3, by default &quot;clinical/models&quot;.</span>
+<span class="sd">        language: str</span>
+<span class="sd">            the language of the models, by default &quot;en&quot;</span>
+<span class="sd">        start_date: str</span>
+<span class="sd">            The start date to filter the models.</span>
+<span class="sd">            The start date should be in a string format that can be parsed into a valid date. Format: yyyy-MM-dd</span>
+<span class="sd">            Default: None. if the value is None, it does not filter.</span>
+<span class="sd">        end_date: str</span>
+<span class="sd">            The end date to filter the models.</span>
+<span class="sd">            The end date should be in a string format that can be parsed into a valid date. Format: yyyy-MM-dd</span>
+<span class="sd">            Default: None. if the value is None, it does not filter.</span>
 <span class="sd">        cache_folder : str</span>
-<span class="sd">            Path where the models will be downloaded. i.e (&quot;hdfs:..&quot;,&quot;file:...&quot;)</span>
+<span class="sd">            Path where the models will be downloaded. i.e (&quot;hdfs:..&quot;,&quot;file:...&quot;). Default: None</span>
+<span class="sd">            If no cache_folder is specified, it will download the models in the default folder.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># TODO: Is the second parameter really needed? Pylint complains about it.</span>
-        <span class="n">_internal</span><span class="o">.</span><span class="n">_UpdateModels</span><span class="p">(</span><span class="n">date_cutoff</span><span class="p">,</span> <span class="n">cache_folder</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span></div></div>
+        <span class="n">_internal</span><span class="o">.</span><span class="n">_UpdateModels</span><span class="p">(</span><span class="n">model_names</span><span class="p">,</span> <span class="n">language</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">cache_folder</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span></div></div>
+
 </pre></div>
 
                 </article>

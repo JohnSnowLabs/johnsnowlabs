@@ -220,7 +220,8 @@ def get_install_suite_from_jsl_home(
     log: bool = True,
 ) -> InstallSuite:
     """Read all info files from JSL home if exists. If not exists, sets up JSL home"""
-
+    if not jsl_home_exist() and not create_jsl_home_if_missing:
+        return InstallSuite.empty()
     license_data: JslSecrets = JslSecrets.build_or_try_find_secrets(
         browser_login=browser_login,
         force_browser=force_browser,

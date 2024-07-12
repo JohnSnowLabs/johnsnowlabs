@@ -23,18 +23,22 @@ Improve table detection and table recognition.
 
 More details please read in [Extract Tabular Data from PDF in Spark OCR](https://medium.com/spark-nlp/extract-tabular-data-from-pdf-in-spark-ocr-b02136bc0fcb)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
 * Added new method to [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector) which support 
 borderless tables and combined tables.
-* Added __Wolf__ and __Singh__ adaptive binarization methods to the [ImageAdaptiveThresholding](ocr_pipeline_components#imageadaptivethresholding).
+* Added __Wolf__ and __Singh__ adaptive binarization methods to the [ImageAdaptiveThresholding](../ocr_pipeline_components#imageadaptivethresholding).
 
+</div><div class="h3-box" markdown="1">
 
 #### Enhancements
 
 * Added possibility to use different type of images as input for [ImageTableDetector](/docs/en/ocr_table_recognition#imagetabledetector).
 * Added [display_pdf](/docs/en/ocr_structures#displaypdf) and [display_images_horizontal](/docs/en/ocr_structures#displayimageshorizontal) util functions.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

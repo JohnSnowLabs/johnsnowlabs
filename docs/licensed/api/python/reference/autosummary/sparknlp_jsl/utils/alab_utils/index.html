@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/alab_utils/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -269,13 +272,16 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.alab_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conll_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.conll_parse</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deidentification_module/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_module</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deidentification_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../imports/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.imports</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java_helper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.java_helper</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licensed_annotator_type/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.licensed_annotator_type</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../log_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.log_parse</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ner_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ner_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_nlp_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_nlp_processor</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../risk_adjustment_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.risk_adjustment_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../run_transpiled_code/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.run_transpiled_code</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training_log_parser_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.training_log_parser_utils</span></code></a></li>
 </ul>
 </div>
@@ -343,47 +349,60 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_doc_assembler" title="sparknlp_jsl.utils.alab_utils.get_doc_assembler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_doc_assembler</span></code></a>(→ sparknlp.base.DocumentAssembler)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_sent_detector" title="sparknlp_jsl.utils.alab_utils.get_sent_detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sent_detector</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_empty_df" title="sparknlp_jsl.utils.alab_utils.get_empty_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_empty_df</span></code></a>(→ pyspark.sql.DataFrame)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_regular_tokenizer" title="sparknlp_jsl.utils.alab_utils.get_regular_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_regular_tokenizer</span></code></a>(→ sparknlp.annotator.Tokenizer)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_ner_df" title="sparknlp_jsl.utils.alab_utils.get_ner_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ner_df</span></code></a>(input_json_path[, ground_truth, ...])</p></td>
+<td><p>Generates dataframe for all annotated entities from an Annotation Lab JSON export</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders" title="sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ner_sentence_borders</span></code></a>(spark, input_json_path[, ...])</p></td>
+<td><p>Get sentence borders for each task</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline" title="sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nlp_pos_pipeline</span></code></a>(spark, regex_pattern)</p></td>
+<td><p>Generates a LightPipeline with a document assembler, sentence detector, regular tokenizer and POS-tagger</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline" title="sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nlp_token_pipeline</span></code></a>(spark, regex_pattern)</p></td>
+<td><p>Generates a LightPipeline with a document assembler, sentence detector and regular tokenizer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_pos" title="sparknlp_jsl.utils.alab_utils.get_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pos</span></code></a>(→ sparknlp.annotator.PerceptronModel)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_regex_tokenizer" title="sparknlp_jsl.utils.alab_utils.get_regex_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_regex_tokenizer</span></code></a>(→ sparknlp.annotator.RegexTokenizer)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_pos" title="sparknlp_jsl.utils.alab_utils.get_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pos</span></code></a>(→ sparknlp.annotator.PerceptronModel)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_regular_tokenizer" title="sparknlp_jsl.utils.alab_utils.get_regular_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_regular_tokenizer</span></code></a>(→ sparknlp.annotator.Tokenizer)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_empty_df" title="sparknlp_jsl.utils.alab_utils.get_empty_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_empty_df</span></code></a>(→ pyspark.sql.DataFrame)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline" title="sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nlp_token_pipeline</span></code></a>(spark, regex_pattern)</p></td>
-<td><p>Generates a LightPipeline with a document assembler, sentence detector and regular tokenizer</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sentence_pipeline</span></code></a>(spark)</p></td>
-<td><p>Generates a LightPipeline with a document assembler and sentence detector</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_rel_df" title="sparknlp_jsl.utils.alab_utils.get_rel_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rel_df</span></code></a>(input_json_path[, ground_truth])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_rel_df" title="sparknlp_jsl.utils.alab_utils.get_rel_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rel_df</span></code></a>(input_json_path[, ground_truth])</p></td>
 <td><p>Generate dataframe for all annotated relations from an Annotation Lab JSON export</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_ner_df" title="sparknlp_jsl.utils.alab_utils.get_ner_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ner_df</span></code></a>(input_json_path[, ground_truth, ...])</p></td>
-<td><p>Generates dataframe for all annotated entities from an Annotation Lab JSON export</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_sent_detector" title="sparknlp_jsl.utils.alab_utils.get_sent_detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sent_detector</span></code></a>(...)</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders" title="sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ner_sentence_borders</span></code></a>(spark, input_json_path[, ...])</p></td>
-<td><p>Get sentence borders for each task</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline" title="sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nlp_pos_pipeline</span></code></a>(spark, regex_pattern)</p></td>
-<td><p>Generates a LightPipeline with a document assembler, sentence detector, regular tokenizer and POS-tagger</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sentence_pipeline</span></code></a>(spark[, doc_wise_annot])</p></td>
+<td><p>Generates a LightPipeline with a document assembler and sentence detector</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_single_task_conll" title="sparknlp_jsl.utils.alab_utils.get_single_task_conll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_single_task_conll</span></code></a>(output, pos_pipeline, token_pipeline)</p></td>
 <td><p>Generates CoNLL-style outputs from a single task in an Annotation Lab JSON export</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_token_df" title="sparknlp_jsl.utils.alab_utils.get_token_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_token_df</span></code></a>(text)</p></td>
-<td><p>Args:</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param text<span class="colon">:</span></dt>
+<dd class="field-odd"><p>input text</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.read_conll" title="sparknlp_jsl.utils.alab_utils.read_conll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_conll</span></code></a>(spark, filepath)</p></td>
-<td><p>Args:</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param spark<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Spark session with spark-nlp-jsl jar</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.strip_json_entities" title="sparknlp_jsl.utils.alab_utils.strip_json_entities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_json_entities</span></code></a>(exported_json)</p></td>
+<td><p>iterate through entities and strip out the text</p></td>
 </tr>
 </tbody>
 </table>
@@ -392,156 +411,51 @@ document.write(`
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.nlp_token_pipeline" title="sparknlp_jsl.utils.alab_utils.nlp_token_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlp_token_pipeline</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.document_assembler" title="sparknlp_jsl.utils.alab_utils.document_assembler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_assembler</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline" title="sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlp_pos_pipeline</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.empty_df" title="sparknlp_jsl.utils.alab_utils.empty_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empty_df</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.token_pipeline_initialized" title="sparknlp_jsl.utils.alab_utils.token_pipeline_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">token_pipeline_initialized</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline" title="sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlp_pos_pipeline</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.nlp_token_pipeline" title="sparknlp_jsl.utils.alab_utils.nlp_token_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlp_token_pipeline</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.pos" title="sparknlp_jsl.utils.alab_utils.pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pos</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized" title="sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pos_pipeline_initialized</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.document_assembler" title="sparknlp_jsl.utils.alab_utils.document_assembler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_assembler</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.regex_tokenizer" title="sparknlp_jsl.utils.alab_utils.regex_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regex_tokenizer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.sentence_detector" title="sparknlp_jsl.utils.alab_utils.sentence_detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sentence_detector</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.regular_tokenizer" title="sparknlp_jsl.utils.alab_utils.regular_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regular_tokenizer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.regular_tokenizer" title="sparknlp_jsl.utils.alab_utils.regular_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regular_tokenizer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.sentence_detector" title="sparknlp_jsl.utils.alab_utils.sentence_detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sentence_detector</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.regex_tokenizer" title="sparknlp_jsl.utils.alab_utils.regex_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regex_tokenizer</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.empty_df" title="sparknlp_jsl.utils.alab_utils.empty_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empty_df</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.pos" title="sparknlp_jsl.utils.alab_utils.pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pos</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.token_pipeline_initialized" title="sparknlp_jsl.utils.alab_utils.token_pipeline_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">token_pipeline_initialized</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.nlp_token_pipeline">
-<span class="sig-name descname"><span class="pre">nlp_token_pipeline</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.base.LightPipeline</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#nlp_token_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.nlp_token_pipeline" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline">
-<span class="sig-name descname"><span class="pre">nlp_pos_pipeline</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.base.LightPipeline</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#nlp_pos_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.token_pipeline_initialized">
-<span class="sig-name descname"><span class="pre">token_pipeline_initialized</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#token_pipeline_initialized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.token_pipeline_initialized" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized">
-<span class="sig-name descname"><span class="pre">pos_pipeline_initialized</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#pos_pipeline_initialized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.document_assembler">
-<span class="sig-name descname"><span class="pre">document_assembler</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.base.DocumentAssembler</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#document_assembler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.document_assembler" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.sentence_detector">
-<span class="sig-name descname"><span class="pre">sentence_detector</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.SentenceDetectorDLModel</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#sentence_detector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.sentence_detector" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.regular_tokenizer">
-<span class="sig-name descname"><span class="pre">regular_tokenizer</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.Tokenizer</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#regular_tokenizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.regular_tokenizer" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.regex_tokenizer">
-<span class="sig-name descname"><span class="pre">regex_tokenizer</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.RegexTokenizer</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#regex_tokenizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.regex_tokenizer" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.empty_df">
-<span class="sig-name descname"><span class="pre">empty_df</span></span><em class="property"><span class="w"> </span><span class="pre">:pyspark.sql.DataFrame</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#empty_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.empty_df" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.pos">
-<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.PerceptronModel</span></em><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.pos" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_doc_assembler">
-<span class="sig-name descname"><span class="pre">get_doc_assembler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.base.DocumentAssembler</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_doc_assembler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_doc_assembler" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_sent_detector">
-<span class="sig-name descname"><span class="pre">get_sent_detector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.SentenceDetectorDLModel</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_sent_detector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_sent_detector" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_regular_tokenizer">
-<span class="sig-name descname"><span class="pre">get_regular_tokenizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.Tokenizer</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_regular_tokenizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_regular_tokenizer" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_regex_tokenizer">
-<span class="sig-name descname"><span class="pre">get_regex_tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.RegexTokenizer</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_regex_tokenizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_regex_tokenizer" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_pos">
-<span class="sig-name descname"><span class="pre">get_pos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.PerceptronModel</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_pos" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_doc_assembler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.base.DocumentAssembler</span></span></span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_doc_assembler" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_empty_df">
-<span class="sig-name descname"><span class="pre">get_empty_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_empty_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_empty_df" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_empty_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_empty_df" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline">
-<span class="sig-name descname"><span class="pre">get_nlp_token_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_nlp_token_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline" title="Permalink to this definition">#</a></dt>
-<dd><p>Generates a LightPipeline with a document assembler, sentence detector and regular tokenizer
-:param spark: Spark session with spark-nlp-jsl jar
-:type spark: SparkSession
-:param regex_pattern: set a pattern to use regex tokenizer, defaults to regular tokenizer if pattern not defined
-:type regex_pattern: str
-:return: LightPipeline with a document assembler, sentence detector and a regular or regex tokenizer depending on regex_pattern
-:rtype: LightPipeline</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline">
-<span class="sig-name descname"><span class="pre">get_sentence_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_sentence_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="Permalink to this definition">#</a></dt>
-<dd><p>Generates a LightPipeline with a document assembler and sentence detector
-:param spark: Spark session with spark-nlp-jsl jar
-:type spark: SparkSession
-:return: LightPipeline with a document assembler and sentence detector
-:rtype: LightPipeline</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_rel_df">
-<span class="sig-name descname"><span class="pre">get_rel_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_rel_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_rel_df" title="Permalink to this definition">#</a></dt>
-<dd><p>Generate dataframe for all annotated relations from an Annotation Lab JSON export
-:param input_json_path: path to Annotation Lab JSON export
-:type input_json_path: str
-:param ground_truth: set to True to select ground truth completions, False to select latest completions,
-defaults to False
-:type ground_truth: bool
-:return: dataframe with all annotated relations
-:rtype: pd.DataFrame</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_ner_df">
-<span class="sig-name descname"><span class="pre">get_ner_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_ner_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_ner_df" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_ner_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_ner_df" title="Permalink to this definition">#</a></dt>
 <dd><p>Generates dataframe for all annotated entities from an Annotation Lab JSON export
 :param input_json_path: path to Annotation Lab JSON export
 :type input_json_path: str
@@ -556,12 +470,14 @@ defaults to False
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders">
-<span class="sig-name descname"><span class="pre">get_ner_sentence_borders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_ner_sentence_borders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_ner_sentence_borders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders" title="Permalink to this definition">#</a></dt>
 <dd><p>Get sentence borders for each task
 :param spark: Spark session with spark-nlp-jsl jar
 :type spark: SparkSession
 :param input_json_path: path to Annotation Lab JSON export
 :type input_json_path: str
+:param doc_wise_annot: returns the dataframe with document wise annotations
+:type doc_wise_annot: bool
 :param ground_truth: set to True to select ground truth completions, False to select latest completions,
 defaults to False
 :type ground_truth: bool
@@ -573,7 +489,7 @@ defaults to False
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline">
-<span class="sig-name descname"><span class="pre">get_nlp_pos_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_nlp_pos_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_nlp_pos_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline" title="Permalink to this definition">#</a></dt>
 <dd><p>Generates a LightPipeline with a document assembler, sentence detector, regular tokenizer and POS-tagger
 :param spark: Spark session with spark-nlp-jsl jar
 :type spark: SparkSession
@@ -584,8 +500,65 @@ defaults to False
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline">
+<span class="sig-name descname"><span class="pre">get_nlp_token_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a LightPipeline with a document assembler, sentence detector and regular tokenizer
+:param spark: Spark session with spark-nlp-jsl jar
+:type spark: SparkSession
+:param regex_pattern: set a pattern to use regex tokenizer, defaults to regular tokenizer if pattern not defined
+:type regex_pattern: str
+:return: LightPipeline with a document assembler, sentence detector and a regular or regex tokenizer depending on regex_pattern
+:rtype: LightPipeline</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_pos">
+<span class="sig-name descname"><span class="pre">get_pos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.PerceptronModel</span></span></span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_pos" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_regex_tokenizer">
+<span class="sig-name descname"><span class="pre">get_regex_tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.RegexTokenizer</span></span></span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_regex_tokenizer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_regular_tokenizer">
+<span class="sig-name descname"><span class="pre">get_regular_tokenizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.Tokenizer</span></span></span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_regular_tokenizer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_rel_df">
+<span class="sig-name descname"><span class="pre">get_rel_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_rel_df" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate dataframe for all annotated relations from an Annotation Lab JSON export
+:param input_json_path: path to Annotation Lab JSON export
+:type input_json_path: str
+:param ground_truth: set to True to select ground truth completions, False to select latest completions,
+defaults to False
+:type ground_truth: bool
+:return: dataframe with all annotated relations
+:rtype: pd.DataFrame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_sent_detector">
+<span class="sig-name descname"><span class="pre">get_sent_detector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.annotator.SentenceDetectorDLModel</span></span></span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_sent_detector" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline">
+<span class="sig-name descname"><span class="pre">get_sentence_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a LightPipeline with a document assembler and sentence detector
+:param spark: Spark session with spark-nlp-jsl jar
+:type spark: SparkSession
+:param doc_wise_annot: drops sentence detector if True
+:type doc_wise_annot: bool
+:return: LightPipeline with a document assembler and sentence detector
+:rtype: LightPipeline</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_single_task_conll">
-<span class="sig-name descname"><span class="pre">get_single_task_conll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_single_task_conll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_single_task_conll" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_single_task_conll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_single_task_conll" title="Permalink to this definition">#</a></dt>
 <dd><p>Generates CoNLL-style outputs from a single task in an Annotation Lab JSON export
 :param output: enumerated items from an Annotation Lab JSON export
 :type output: dict
@@ -609,26 +582,106 @@ defaults to None
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_token_df">
-<span class="sig-name descname"><span class="pre">get_token_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_token_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_token_df" title="Permalink to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>Args:</dt><dd><p>text (str): input text</p>
+<span class="sig-name descname"><span class="pre">get_token_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_token_df" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – input text</p>
 </dd>
-<dt>Returns:</dt><dd><p>_type_: Pandas DataFrame with columns (‘token’, ‘begin’, ‘end’)</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pandas DataFrame with columns (‘token’, ‘begin’, ‘end’)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.read_conll">
-<span class="sig-name descname"><span class="pre">read_conll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#read_conll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.read_conll" title="Permalink to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>Args:</dt><dd><p>spark: Spark session with spark-nlp-jsl jar
-filepath: path to the conll file</p>
+<span class="sig-name descname"><span class="pre">read_conll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.read_conll" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> – Spark session with spark-nlp-jsl jar</p></li>
+<li><p><strong>filepath</strong> – path to the conll file</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>_type_: Spark DataFrame</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Spark DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.strip_json_entities">
+<span class="sig-name descname"><span class="pre">strip_json_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exported_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.strip_json_entities" title="Permalink to this definition">#</a></dt>
+<dd><p>iterate through entities and strip out the text
+and update start and end positions in the json file from annotation lab</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>exported_json</strong> (<em>dict</em>) – exported json from annotation lab</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated json</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>exported_json (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.document_assembler">
+<span class="sig-name descname"><span class="pre">document_assembler</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.base.DocumentAssembler</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.document_assembler" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.empty_df">
+<span class="sig-name descname"><span class="pre">empty_df</span></span><em class="property"><span class="w"> </span><span class="pre">:pyspark.sql.DataFrame</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.empty_df" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline">
+<span class="sig-name descname"><span class="pre">nlp_pos_pipeline</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.base.LightPipeline</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.nlp_token_pipeline">
+<span class="sig-name descname"><span class="pre">nlp_token_pipeline</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.base.LightPipeline</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.nlp_token_pipeline" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.PerceptronModel</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.pos" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized">
+<span class="sig-name descname"><span class="pre">pos_pipeline_initialized</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.regex_tokenizer">
+<span class="sig-name descname"><span class="pre">regex_tokenizer</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.RegexTokenizer</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.regex_tokenizer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.regular_tokenizer">
+<span class="sig-name descname"><span class="pre">regular_tokenizer</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.Tokenizer</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.regular_tokenizer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.sentence_detector">
+<span class="sig-name descname"><span class="pre">sentence_detector</span></span><em class="property"><span class="w"> </span><span class="pre">:sparknlp.annotator.SentenceDetectorDLModel</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.sentence_detector" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.token_pipeline_initialized">
+<span class="sig-name descname"><span class="pre">token_pipeline_initialized</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.token_pipeline_initialized" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -666,45 +719,38 @@ filepath: path to the conll file</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.nlp_token_pipeline"><code class="docutils literal notranslate"><span class="pre">nlp_token_pipeline</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline"><code class="docutils literal notranslate"><span class="pre">nlp_pos_pipeline</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.token_pipeline_initialized"><code class="docutils literal notranslate"><span class="pre">token_pipeline_initialized</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized"><code class="docutils literal notranslate"><span class="pre">pos_pipeline_initialized</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.document_assembler"><code class="docutils literal notranslate"><span class="pre">document_assembler</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.sentence_detector"><code class="docutils literal notranslate"><span class="pre">sentence_detector</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.regular_tokenizer"><code class="docutils literal notranslate"><span class="pre">regular_tokenizer</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.regex_tokenizer"><code class="docutils literal notranslate"><span class="pre">regex_tokenizer</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.empty_df"><code class="docutils literal notranslate"><span class="pre">empty_df</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.pos"><code class="docutils literal notranslate"><span class="pre">pos</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_doc_assembler"><code class="docutils literal notranslate"><span class="pre">get_doc_assembler()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_sent_detector"><code class="docutils literal notranslate"><span class="pre">get_sent_detector()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_regular_tokenizer"><code class="docutils literal notranslate"><span class="pre">get_regular_tokenizer()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_regex_tokenizer"><code class="docutils literal notranslate"><span class="pre">get_regex_tokenizer()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_pos"><code class="docutils literal notranslate"><span class="pre">get_pos()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_empty_df"><code class="docutils literal notranslate"><span class="pre">get_empty_df()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline"><code class="docutils literal notranslate"><span class="pre">get_nlp_token_pipeline()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline"><code class="docutils literal notranslate"><span class="pre">get_sentence_pipeline()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_rel_df"><code class="docutils literal notranslate"><span class="pre">get_rel_df()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_ner_df"><code class="docutils literal notranslate"><span class="pre">get_ner_df()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders"><code class="docutils literal notranslate"><span class="pre">get_ner_sentence_borders()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline"><code class="docutils literal notranslate"><span class="pre">get_nlp_pos_pipeline()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline"><code class="docutils literal notranslate"><span class="pre">get_nlp_token_pipeline()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_pos"><code class="docutils literal notranslate"><span class="pre">get_pos()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_regex_tokenizer"><code class="docutils literal notranslate"><span class="pre">get_regex_tokenizer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_regular_tokenizer"><code class="docutils literal notranslate"><span class="pre">get_regular_tokenizer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_rel_df"><code class="docutils literal notranslate"><span class="pre">get_rel_df()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_sent_detector"><code class="docutils literal notranslate"><span class="pre">get_sent_detector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline"><code class="docutils literal notranslate"><span class="pre">get_sentence_pipeline()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_single_task_conll"><code class="docutils literal notranslate"><span class="pre">get_single_task_conll()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_token_df"><code class="docutils literal notranslate"><span class="pre">get_token_df()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.read_conll"><code class="docutils literal notranslate"><span class="pre">read_conll()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.strip_json_entities"><code class="docutils literal notranslate"><span class="pre">strip_json_entities()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.document_assembler"><code class="docutils literal notranslate"><span class="pre">document_assembler</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.empty_df"><code class="docutils literal notranslate"><span class="pre">empty_df</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.nlp_pos_pipeline"><code class="docutils literal notranslate"><span class="pre">nlp_pos_pipeline</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.nlp_token_pipeline"><code class="docutils literal notranslate"><span class="pre">nlp_token_pipeline</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.pos"><code class="docutils literal notranslate"><span class="pre">pos</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.pos_pipeline_initialized"><code class="docutils literal notranslate"><span class="pre">pos_pipeline_initialized</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.regex_tokenizer"><code class="docutils literal notranslate"><span class="pre">regex_tokenizer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.regular_tokenizer"><code class="docutils literal notranslate"><span class="pre">regular_tokenizer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.sentence_detector"><code class="docutils literal notranslate"><span class="pre">sentence_detector</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.token_pipeline_initialized"><code class="docutils literal notranslate"><span class="pre">token_pipeline_initialized</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/utils/alab_utils/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

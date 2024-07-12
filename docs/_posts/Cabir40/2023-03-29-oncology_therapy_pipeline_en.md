@@ -32,6 +32,7 @@ This pipeline includes Named-Entity Recognition and Assertion Status models to e
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -63,7 +64,6 @@ nlu.load("en.oncology_therpay.pipeline").predict("""The patient underwent a mast
 ## Results
 
 ```bash
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk            | ner_label      |
@@ -120,7 +120,6 @@ nlu.load("en.oncology_therpay.pipeline").predict("""The patient underwent a mast
 | mastectomy       | Cancer_Surgery | Present_Or_Past |
 | adriamycin       | Chemotherapy   | Present_Or_Past |
 | cyclophosphamide | Chemotherapy   | Present_Or_Past |
-
 ```
 
 {:.model-param}

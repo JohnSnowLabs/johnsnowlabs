@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/util/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -320,19 +323,19 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.util.get_mt_samples" title="sparknlp_jsl.util.get_mt_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mt_samples</span></code></a>([medical_speciality, path, n])</p></td>
-<td><p>Download Transcribed Medical Transcription Sample Reports and Examples from</p></td>
+<td><p>Download Transcribed Medical Transcription Sample Reports and Examples from 'www.mtsamples.com'.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.util.get_mt_samples">
-<span class="sig-name descname"><span class="pre">get_mt_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">medical_speciality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/util.html#get_mt_samples"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.util.get_mt_samples" title="Permalink to this definition">#</a></dt>
-<dd><p>Download Transcribed Medical Transcription Sample Reports and Examples from
-‘www.mtsamples.com’.</p>
-<p>## Parameters</p>
-<dl class="simple">
-<dt>Medical_Speciality: str</dt><dd><p>One of the following specialities:
-‘Allergy_Immunology’
+<span class="sig-name descname"><span class="pre">get_mt_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">medical_speciality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.util.get_mt_samples" title="Permalink to this definition">#</a></dt>
+<dd><p>Download Transcribed Medical Transcription Sample Reports and Examples from ‘www.mtsamples.com’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Medical_Speciality</strong> (<em>str</em>) – <dl class="simple">
+<dt>One of the following specialities:</dt><dd><p>’Allergy_Immunology’
 ‘Autopsy’
 ‘Bariatrics’
 ‘Cardiovascular_Pulmonary’
@@ -373,13 +376,17 @@ document.write(`
 ‘Surgery’
 ‘Urology’</p>
 </dd>
-<dt>path = str</dt><dd><p>Path to save samples.</p>
-</dd>
-<dt>n = int</dt><dd><p>Number of samples to be scrapped.</p>
+</dl>
+</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Path to save samples.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of samples to be scrapped.</p></li>
+</ul>
 </dd>
 </dl>
-<p>Example:
-get_mt_samples(‘Hematology_Oncology’, path = “./samples”, n = 3)</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_mt_samples</span><span class="p">(</span><span class="s1">&#39;Hematology_Oncology&#39;</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;./samples&quot;</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -424,14 +431,6 @@ get_mt_samples(‘Hematology_Oncology’, path = “./samples”, n = 3)</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../_sources/reference/autosummary/sparknlp_jsl/util/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

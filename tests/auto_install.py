@@ -1,11 +1,12 @@
-import unittest
 import os
+import sys
+import unittest
+
+import tests.utilsz.secrets as sct
+from johnsnowlabs import *
+from johnsnowlabs.auto_install.databricks.install_utils import *
 from johnsnowlabs.auto_install.jsl_home import get_install_suite_from_jsl_home
 from johnsnowlabs.utils.print_messages import log_outdated_lib
-from johnsnowlabs import *
-import sys
-import tests.utils.secrets as sct
-from johnsnowlabs.auto_install.databricks.install_utils import *
 from johnsnowlabs.utils.venv_utils import VenvWrapper
 
 
@@ -13,44 +14,19 @@ class AutoInstallTestCase(unittest.TestCase):
     venv_creation_dir = "/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/venv/tmp_test_venv"
     zip_dir = "/home/ckl/Documents/freelance/jsl/johnsnowlabs/tmp/offline"
 
-    def test_quick_bad(self):
-        nlp.settings.enforce_versions = False
-        nlp.install(enterprise_nlp_secret=sct.enterprise_nlp_sct)
-
-    def test_install_to_databricks_creating_new_cluster(self):
-        cluster_id = nlp.install(
-            json_license_path=sct.db_lic,
-            databricks_host=sct.ckl_host,
-            databricks_token=sct.ckl_token,
-        )
-
-    def test_install_to_databricks_existing_cluster(self):
-        # TODO WIP
-        cluster_id = "1006-022913-lb94q2m0"
-        nlp.install(
-            json_license_path=sct.db_lic,
-            databricks_host=sct.ckl_host,
-            databricks_cluster_id=cluster_id,
-        )
-        db = get_db_client_for_token(sct.ckl_host, sct.ckl_token)
-        # install_py_lib_via_pip(db, cluster_id, 'nlu')
 
     def test_install_to_current_env_browser_pop_up(self):
-        nlp.install(force_browser=True, remote_license_number=2, 0)
-        import sparknlp
-        import sparknlp_jsl
-        import sparkocr
-        import nlu
-        import sparknlp_display
+        nlp.install(force_browser=False, visual=True, remote_license_number=2)
+
+
+    def test_install_pr_secret(self):
+        settings.enforce_versions = False
+        nlp.install(enterprise_nlp_secret=secrets.pr_secret)
 
     def test_install_to_current_env(self):
         settings.enforce_versions = False
         nlp.install(json_license_path=sct.old_lic, refresh_install=True)
         # import sparknlp
-        import sparknlp_jsl
-        import sparkocr
-        import nlu
-        import sparknlp_display
 
     def test_install_to_different_python_env(self):
         # Install to env which is not the one we are currently running
@@ -93,14 +69,12 @@ class AutoInstallTestCase(unittest.TestCase):
         os.system(f"rm -r {self.venv_creation_dir} ")
 
     def test_list_license_status(self):
-        nlp.check_health(check_licenses=True)
+        nlp.check_health()
+        nlp.check_health(check_install=True)
         nlp.list_remote_licenses()
         nlp.list_local_licenses()
 
-    def test_oudated_message(self):
-        from johnsnowlabs.auto_install.softwares import Software
 
-        log_outdated_lib(Software.spark_ocr, "79")
 
     def test_offline_install_print(self):
         nlp.install(offline=True)
@@ -115,39 +89,23 @@ class AutoInstallTestCase(unittest.TestCase):
         )
 
     def test_browser_install(self):
-        nlp.install(force_browser=True, local_license_number=2)
-        # nlp.install(local_license_number=2, force_browser=True)
+        nlp.install(force_browser=True, visual=True, local_license_number=2)
 
     def test_upgrade_licensed_lib_via_secret_only(self):
-        new_secret = ""
-        nlp.install(ocr_secret=new_secret)
+        new_secret = secrets.random_secret
+        from johnsnowlabs import settings
+
+        settings.enforce_versions = False
+        nlp.install(enterprise_nlp_secret=new_secret)
 
     def test_json_license_install(self):
-        nlp.install(json_license_path=sct.latest_lic)
-        import sparknlp
-        import sparknlp_jsl
-        import sparknlp
-        import sparknlp_jsl
+        nlp.install(json_license_path=sct.latest_lic,visual=True)
 
-        # import sparkocr
-        import nlu
-        import sparknlp_display
-
-        # nlp.install(json_license_path=old_lic)
 
     def test_json_license_install_outdated(self):
         nlp.settings.enforce_versions = False
         nlp.install(json_license_path=sct.old_lic)
-        import sparknlp
-        import sparknlp_jsl
-        import sparknlp
-        import sparknlp_jsl
 
-        # import sparkocr
-        import nlu
-        import sparknlp_display
-
-        # nlp.install(json_license_path=old_lic)
 
     def test_create_and_install_cluster(self):
         install_suite = get_install_suite_from_jsl_home()
@@ -158,11 +116,19 @@ class AutoInstallTestCase(unittest.TestCase):
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall spark-nlp-display -y')
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall nlu -y')
 
-        os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
-        os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
-        os.system(f"{sys.executable} -m pip uninstall spark-ocr -y")
+        # os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
+        # os.system(f"{sys.executable} -m pip uninstall spark-ocr -y")
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall jsl_tmp -y')
         os.system(f"{sys.executable} -m pip uninstall spark-nlp-internal -y")
+
+    def test_install_to_emr(self):
+        # Make sure correct aws credentials are configured
+        nlp.install_to_emr(
+            "us-east-1",
+            bootstrap_bucket="ksh-emr-bucket",
+            subnet_id="subnet-28754965",
+            s3_logs_path="s3://ksh-emr-bucket/logs",
+        )
 
     @classmethod
     def tearDownClass(cls):

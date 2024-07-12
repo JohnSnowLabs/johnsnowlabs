@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/legal/token_classification/ner/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -297,6 +300,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/legal_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/legal_classifier_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_classifier_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/legal_document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/legal_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_classification.legal_few_shot_classifier</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../sequence_generation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.sequence_generation</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -416,14 +420,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/legal/token_classification/ner/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

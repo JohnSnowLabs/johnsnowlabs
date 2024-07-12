@@ -32,7 +32,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ADE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb         
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb  
+        - title: OPIOID
+          id: opioid
+          image: 
+              src: /assets/images/OPIOID.svg
+          excerpt: This demo includes details about different kinds of pretrained models to detect and label opioid related entities within text data.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/OPIOID/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/OPIOID.ipynb
         - title: Detect drugs and prescriptions
           id: detect_drugs_and_prescriptions
           image: 
@@ -116,5 +128,17 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_ADE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb    
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb   
+        - title: Detect Opioid Related Entities
+          id: detect_opioid_related_entities   
+          image: 
+              src: /assets/images/Detect_ADE_related_texts.svg
+          excerpt: This model is designed to detect and label opioid related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep learning techniques on a diverse range of text sources and can accurately recognize and classify a wide range of opioid-related entities.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_OPIOID/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_OPIOID.ipynb
 ---

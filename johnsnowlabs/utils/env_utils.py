@@ -1,10 +1,10 @@
 import ast
 import importlib
+import inspect
 import os
 import site
 import subprocess
 from typing import List
-
 
 logged_imports = []
 
@@ -96,13 +96,17 @@ def try_import_in_venv(lib, py_path):
         return False
 
 
-def is_running_in_databricks():
-    """Check if the currently running Python Process is running in Databricks or not
-    If any Environment Variable name contains 'DATABRICKS' this will return True, otherwise False"""
-    for k in os.environ.keys():
-        if "DATABRICKS" in k:
-            return True
+def is_running_in_emr():
+    """We populate EMR with environment variable"""
+    if "JSL_EMR" in os.environ.keys():
+        return bool(os.environ["JSL_EMR"])
     return False
+
+
+def is_running_in_databricks_runtime():
+    """ Check if the currently running Python Process is running in Databricks runtime or not
+    """
+    return "DATABRICKS_RUNTIME_VERSION" in os.environ
 
 
 def env_required_license():
@@ -121,8 +125,24 @@ def env_required_license():
 
 def set_py4j_logger_to_error_on_databricks():
     # Only call this when in Databricks
-    import logging
-    from pyspark.sql import SparkSession
+    try:
+        if "SKIP_py4j_DISABLE" in os.environ and os.environ["SKIP_py4j_DISABLE"] == "1":
+            return
+        import logging
 
-    logger = SparkSession.builder.getOrCreate()._jvm.org.apache.log4j
-    logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
+        from pyspark.sql import SparkSession
+
+        logger = SparkSession.builder.getOrCreate()._jvm.org.apache.log4j
+        logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
+    except:
+        pass
+
+
+def get_folder_of_func(func):
+    # Get the file path where the function is defined
+    func_file = inspect.getfile(func)
+
+    # Get the directory name from the file path
+    func_dir = os.path.dirname(func_file)
+
+    return func_dir

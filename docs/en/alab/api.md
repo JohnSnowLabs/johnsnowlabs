@@ -2,18 +2,18 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: API Integration
 permalink: /docs/en/alab/api
 key: docs-training
-modify_date: "2022-10-13"
+modify_date: "2022-10-14"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
   nav: annotation-lab
 ---
 
-All features provided by the Annotation Lab via UI are also accessible via API. The complete API documentation is available on the SWAGGER page of the Annotation Lab. It is available under Settings > API Integration.
+All features provided by the Generative AI Lab via UI are also accessible via API. The complete API documentation is available on the SWAGGER page of the Generative AI Lab. It is available under Settings > API Integration.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/swagger.png" style="width:100%;"/>
 
@@ -27,7 +27,7 @@ Concrete query examples are provided for each available endpoint.
 
 Get `CLIENT_ID` and `CLIENT_SECRET` by following the steps illustrated in the video.
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='5dIh8xwW0UY' -%}<div class="video-descr">Annotation Lab: Collect the Client Secret </div></div></div>
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='5dIh8xwW0UY' -%}<div class="video-descr">Generative AI Lab: Collect the Client Secret </div></div></div>
 
 ### Call API endpoint
 
@@ -37,7 +37,7 @@ For creating a new project via API you can use the following python script.
 import requests
 import json
 
-# URL to Annotation Lab
+# URL to Generative AI Lab
 API_URL = "https://123.45.67.89"
 # Add user credentials
 USERNAME = "user"

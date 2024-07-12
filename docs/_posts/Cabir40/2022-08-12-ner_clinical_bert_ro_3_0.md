@@ -37,6 +37,7 @@ Extract clinical entities from Romanian clinical texts. This model is trained us
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

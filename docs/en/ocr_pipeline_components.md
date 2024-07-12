@@ -9,7 +9,7 @@ modify_date: "2020-04-08"
 use_language_switcher: "Python-Scala-Java"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -66,7 +66,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -160,7 +160,7 @@ Number of partitions should be equal to number of cores/executors.
 | binarizationParams | Array[String] | null | Array of Binarization params in key=value format. |
 | splitNumBatch | int | 0 | Number of partitions or size of partitions, related to the splitting strategy. |
 | partitionNumAfterSplit | int| 0 | Number of Spark RDD partitions after splitting pdf document (0 value - without repartition).|
-| splittingStategy | [SplittingStrategy](ocr_structures#splittingstrategy)| SplittingStrategy.FIXED_SIZE_OF_PARTITION | Splitting strategy. |
+| splittingStategy | [SplittingStrategy](ocr_structures#splittingstrategy)| `SplittingStrategy.FIXED_SIZE_OF_PARTITION `|Controls how a single document is split into a number of partitions each containing a number of pages from the original document. This is useful to process documents with high page count. It can be one of {FIXED_SIZE_OF_PARTITION, FIXED_NUMBER_OF_PARTITIONS}, when `FIXED_SIZE_OF_PARTITION` is used, `splitNumBatch` represents the size of each partition, and when `FIXED_NUMBER_OF_PARTITIONS` is used, `splitNumBatch` represents the number of partitions. |
 
 </div><div class="h3-box" markdown="1">
 
@@ -175,7 +175,7 @@ Number of partitions should be equal to number of cores/executors.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -251,7 +251,7 @@ Read images and store them as single page PDF documents.
 
 </div><div class="h3-box" markdown="1">
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -343,7 +343,7 @@ Read PDF document, run OCR and render results to PDF document.
 
 </div><div class="h3-box" markdown="1">
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -472,7 +472,7 @@ muliplepage PDF document.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -600,7 +600,7 @@ println(tmpFile)
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -745,7 +745,7 @@ println(tmpFile)
 
 Results:
 
-![Result with regions](/assets/images/ocr/with_regions.png)
+![Result with regions](/assets/images/ocr/with_regions.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -788,7 +788,7 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -893,7 +893,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -959,7 +959,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1029,7 +1029,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1099,7 +1099,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1169,7 +1169,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1239,7 +1239,7 @@ data.select("pdf").show()
 
 **Scala example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1307,7 +1307,7 @@ data.select("image", "pagenum", "meta").show()
 
 **Scala example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1356,6 +1356,89 @@ data.select("dicom").show()
 
 </div></div><div class="h3-box" markdown="1">
 
+### DicomDrawRegions
+
+`DicomDrawRegions` draw regions to Dicom Image.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content | Binary dicom object |
+| inputRegionsCol | string | regions | Detected Array[Coordinates] from PositionFinder |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| scaleFactor | float | 1.0 | Scaling factor for regions. |
+| rotated | boolean | False | Enable/Disable support for rotated rectangles |
+| keepInput | boolean | False | Keep the original input column |
+| compression | string | RLELossless | Compression type |
+| forceCompress | boolean | False | True - Force compress image. False - compress only if original image was compressed | 
+| aggCols | Array[string] | ['path'] | Sets the columns to be included in aggregation. These columns are preserved in the output DataFrame after transformations |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | image | Modified Dicom file data |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import *
+
+dicomPath = "path to dicom files"
+
+# Read dicom file as binary file
+df = spark.read.format("binaryFile").load(dicomPath)
+
+dicomToImage = DicomToImage() \
+  .setInputCol("content") \
+  .setOutputCol("image") \
+  .setMetadataCol("meta")
+
+position_finder = PositionFinder() \
+  # Usually chunks are created using the deidentification_nlp_pipeline
+  .setInputCols("ner_chunk") \
+  .setOutputCol("coordinates") \
+  .setPageMatrixCol("positions") \
+  .setPadding(0)
+
+draw_regions = DicomDrawRegions() \
+  .setInputCol("content") \
+  .setInputRegionsCol("coordinates") \
+  .setOutputCol("dicom") \
+  .setKeepInput(True) \
+  .setScaleFactor(1/3.0) \
+  .setAggCols(["path", "content"])
+
+data = dicomToImage.transform(df)
+
+data.select("content", "dicom").show()
+```
+
+```scala
+// Note: DicomDrawRegions class is not available in the Scala API
+// This class is used in the Python API for DICOM image manipulation and transformation.
+```
+
+</div></div><div class="h3-box" markdown="1">
+
 ## Image pre-processing
 
 Next section describes the transformers for image pre-processing: scaling, binarization, skew correction, etc.
@@ -1387,7 +1470,7 @@ Next section describes the transformers for image pre-processing: scaling, binar
 
 **Scala example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1480,7 +1563,7 @@ one of the methods with params:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1578,7 +1661,7 @@ data.storeImage("transformed_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1678,7 +1761,7 @@ Supported Methods:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1789,7 +1872,7 @@ Supported methods:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1882,7 +1965,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1962,7 +2045,7 @@ data.storeImage("scaled_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2046,7 +2129,7 @@ data.storeImage("scaled_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2149,7 +2232,7 @@ data.storeImage("corrected_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2296,7 +2379,7 @@ It supports removing:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2378,7 +2461,7 @@ It supports following operation:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2473,7 +2556,7 @@ for r in result.select("image", "corrected_image").collect():
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2572,7 +2655,7 @@ data.storeImage("cropped_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2666,7 +2749,7 @@ data.show()
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2782,7 +2865,7 @@ data.show()
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2896,6 +2979,11 @@ val result =  modelPipeline.transform(df)
 | lineWidth | Int | 4 | Line width for draw rectangles |
 | fontSize | Int | 12 | Font size for render labels and score |
 | rotated | boolean | False | Support rotated regions |
+| rectColor | Color | Color.black | Color outline for bounding box |
+| filledRect | boolean | False | Enable/Disable filling rectangle |
+| sourceImageHeightCol | Int | height_dimension | Original annotation reference height |
+| sourceImageWidthCol | Int | width_dimension | Original annotation reference width | 
+| scaleBoundingBoxes | Boolean | True | sourceImage height & width are required for scaling. Necessary to ensure accurate regions despite image transformations.|
 
 </div><div class="h3-box" markdown="1">
 
@@ -2908,20 +2996,19 @@ val result =  modelPipeline.transform(df)
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
 ```python
 from pyspark.ml import PipelineModel
 from sparkocr.transformers import *
+from sparkocr.enums import *
 
 imagePath = "path to image"
 
 # Read image file as binary file
-df = spark.read 
-    .format("binaryFile")
-    .load(imagePath)
+df = spark.read.format("binaryFile").load(imagePath)
 
 binary_to_image = BinaryToImage() \
     .setInputCol("content") \
@@ -2935,6 +3022,7 @@ layout_analyzer = ImageLayoutAnalyzer() \
 draw = ImageDrawRegions() \
   .setInputCol("image") \
   .setRegionCol("regions") \
+  .setRectColor(Color.red) \
   .setOutputCol("image_with_regions")
 
 # Define pipeline
@@ -2950,17 +3038,16 @@ data.show()
 
 ```scala
 import org.apache.spark.ml.Pipeline
+import java.awt.Color
 
 import com.johnsnowlabs.ocr.transformers.{ImageSplitRegions, ImageLayoutAnalyzer}
 import com.johnsnowlabs.ocr.OcrContext.implicits._
 
+
 val imagePath = "path to image"
 
 // Read image file as binary file
-val df = spark.read
-  .format("binaryFile")
-  .load(imagePath)
-  .asImage("image")
+val df = spark.read.format("binaryFile").load(imagePath).asImage("image")
 
 // Define transformer for detect regions
 val layoutAnalyzer = new ImageLayoutAnalyzer()
@@ -2970,6 +3057,7 @@ val layoutAnalyzer = new ImageLayoutAnalyzer()
 val draw = new ImageDrawRegions()
   .setInputCol("image")
   .setRegionCol("regions")
+  .setRectColor(Color.RED)
   .setOutputCol("image_with_regions")
 
 // Define pipeline
@@ -3041,7 +3129,7 @@ to _outputCol_ and positions with font size to 'positionsCol' column.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3156,7 +3244,7 @@ others. One could almost say they feed on and grow on ideas.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3265,7 +3353,7 @@ the PDF as an invisible text layout with an original image.
 | --- | --- | --- | --- |
 | outputCol | string | pdf | Recognized text rendered to PDF |
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3360,7 +3448,7 @@ to _outputCol_ column in HOCR format.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3537,7 +3625,7 @@ to _outputCol_ and positions with font size to 'positionsCol' column.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3677,7 +3765,7 @@ Next section describes the extra transformers
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3820,7 +3908,7 @@ results.show()
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3968,7 +4056,7 @@ Output format is json.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -4103,7 +4191,7 @@ Output:
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -4217,7 +4305,7 @@ HocrTokenizer puts to metadata coordinates and ocr confidence.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 

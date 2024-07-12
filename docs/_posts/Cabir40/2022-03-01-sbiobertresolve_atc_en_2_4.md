@@ -37,6 +37,7 @@ This model maps drugs entities to ATC (Anatomic Therapeutic Chemical) codes usin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol("text")\

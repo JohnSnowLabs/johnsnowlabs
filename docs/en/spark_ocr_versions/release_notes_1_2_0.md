@@ -22,12 +22,16 @@ Release date: 08-04-2020
 
 Improved support Databricks and processing selectable pdfs.
 
+</div><div class="h3-box" markdown="1">
+
 #### Enhancements
 
 * Adapted Spark OCR for run on Databricks.
 * Added rewriting positions in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext) when run together with PdfToText.
 * Added 'positionsCol' param to [ImageToText](/docs/en/ocr_pipeline_components#imagetotext).
 * Improved support Spark NLP. Changed [start](/docs/en/ocr_install#using-start-function) function.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 

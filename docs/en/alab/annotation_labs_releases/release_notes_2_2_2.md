@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Annotation Lab | John Snow Labs
-title: Annotation Lab Release Notes 2.2.20
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 2.2.20
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_2_2_2
 key: docs-licensed-release-notes
 modify_date: 2021-07-14

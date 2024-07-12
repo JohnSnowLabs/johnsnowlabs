@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../../static/doctools.js"></script>
     <script src="../../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/finance/graph/relation_extraction/zero_shot_relation_extraction/index';</script>
     <link rel="shortcut icon" href="../../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
@@ -82,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -297,6 +300,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/finance_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/finance_classifier_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_classifier_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/finance_document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sequence_classification/finance_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../sequence_generation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -379,22 +383,21 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel" title="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel</span></code></a></p></td>
-<td><p>ZeroShotRelationExtractionModel implements zero shot binary relations extraction by utilizing BERT transformer</p></td>
+<td><p>Extract relations between named entities using a zero-shot approach.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ZeroShotRelationExtractionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.graph.relation_extraction.ZeroShotRelationExtractionModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/graph/relation_extraction/zero_shot_relation_extraction.html#ZeroShotRelationExtractionModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel" title="Permalink to this definition">#</a></dt>
-<dd><blockquote>
-<div><p>ZeroShotRelationExtractionModel implements zero shot binary relations extraction by utilizing BERT transformer
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ZeroShotRelationExtractionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.graph.relation_extraction.ZeroShotRelationExtractionModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../annotator/re/zero_shot_relation_extraction/index.html#sparknlp_jsl.annotator.re.zero_shot_relation_extraction.ZeroShotRelationExtractionModel" title="sparknlp_jsl.annotator.re.zero_shot_relation_extraction.ZeroShotRelationExtractionModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.zero_shot_relation_extraction.ZeroShotRelationExtractionModel</span></code></a></p>
+<p>Extract relations between named entities using a zero-shot approach.</p>
+<p>ZeroShotRelationExtractionModel implements zero shot binary relations extraction by utilizing BERT transformer
 models trained on the NLI (Natural Language Inference) task. The model inputs consists of documents/sentences and
 paired NER chunks, usually obtained by RENerChunksFilter. The definitions of relations which are extracted is given
 by a dictionary structures, specifying a set of statements regarding the relationship of named entities. These
-statements are automatically appended to each document in the dataset and the NLI model is used to determine</p>
-<blockquote>
-<div><p>whether a particular relationship between entities.</p>
-</div></blockquote>
+statements are automatically appended to each document in the dataset and the NLI model is used to determine
+whether a particular relationship between entities.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -407,85 +410,616 @@ statements are automatically appended to each document in the dataset and the NL
 </tr>
 </tbody>
 </table>
-</div></blockquote>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>relationalCategories</strong></dt><dd><p>A dictionary with definitions of relational categories. The keys of dictionary are the relation labels and the
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>relationalCategories</strong> – <p>A dictionary with definitions of relational categories. The keys of dictionary are the relation labels and the
 values are lists of hypothesis templates. For example:</p>
-<blockquote>
-<div><dl>
-<dt>{“CURE”: [</dt><dd><blockquote>
-<div><p>“{TREATMENT, DRUG} cures {PROBLEM}.”
-],</p>
-</div></blockquote>
-<dl class="simple">
-<dt>“IMPROVE”: [</dt><dd><p>“{TREATMENT} improves {PROBLEM}.”,
-“{TREATMENT} cures {PROBLEM}.”
-]}</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>     <span class="p">{</span><span class="s2">&quot;CURE&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="s2">&quot;{TREATMENT, DRUG} cures </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="s2">&quot;IMPROVE&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="s2">&quot;</span><span class="si">{TREATMENT}</span><span class="s2"> improves </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="s2">&quot;</span><span class="si">{TREATMENT}</span><span class="s2"> cures </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="p">]}</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>predictionThreshold</strong> – Minimal confidence score to encode a relation (Default: 0.5f)</p></li>
+<li><p><strong>multiLabel</strong> – Whether or not a pair of entities can be categorized by multiple relations (Default: False)</p></li>
+</ul>
 </dd>
 </dl>
-</dd>
-</dl>
-</div></blockquote>
-</dd>
-<dt><strong>predictionThreshold</strong></dt><dd><p>Minimal confidence score to encode a relation (Default: 0.5f)</p>
-</dd>
-<dt><strong>multiLabel</strong></dt><dd><p>Whether or not a pair of entities can be categorized by multiple relations (Default: False)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p>result</p></td>
-<td><p>confidence</p></td>
-</tr>
-<tr class="row-even"><td><p>REVEAL
-IMPROVE
-IMPROVE</p></td>
-<td><p>0.9760039
-0.98819494
-0.9929625</p></td>
-</tr>
-</tbody>
-</table>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">annotators</span><span class="o">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentencer</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">annotators</span><span class="o">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words_embedder</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">annotators</span><span class="o">.</span><span class="n">WordEmbeddingsModel</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pos_tagger</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">annotators</span><span class="o">.</span><span class="n">PerceptronModel</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;pos_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;pos_tags&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_tagger</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_tags&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">annotators</span><span class="o">.</span><span class="n">NerConverter</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_tags&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dependency_parser</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">annotators</span><span class="o">.</span><span class="n">DependencyParserModel</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;dependency_conllu&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;pos_tags&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;dependencies&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re_ner_chunk_filter</span> <span class="o">=</span> <span class="n">RENerChunksFilter</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setRelationPairs</span><span class="p">([</span><span class="s2">&quot;problem-test&quot;</span><span class="p">,</span><span class="s2">&quot;problem-treatment&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setMaxSyntacticDistance</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setDocLevelRelations</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">,</span> <span class="s2">&quot;dependencies&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;re_ner_chunks&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re_model</span> <span class="o">=</span> <span class="n">ZeroShotRelationExtractionModel</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/tmp/spark_sbert_zero_shot&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setRelationalCategories</span><span class="p">({</span>
+<span class="gp">... </span>        <span class="s2">&quot;CURE&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{TREATMENT}</span><span class="s2"> cures </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;IMPROVE&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{TREATMENT}</span><span class="s2"> improves </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{TREATMENT}</span><span class="s2"> cures </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;REVEAL&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{TEST}</span><span class="s2"> reveals </span><span class="si">{PROBLEM}</span><span class="s2">.&quot;</span><span class="p">]})</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setMultiLabel</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;re_ner_chunks&quot;</span><span class="p">,</span> <span class="s2">&quot;sentences&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;relations&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[[</span><span class="s2">&quot;Paracetamol can alleviate headache or sickness. An MRI test can be used to find cancer.&quot;</span><span class="p">]]</span>
+<span class="gp">... </span>    <span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">sparknlp</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setStages</span><span class="p">([</span><span class="n">documenter</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">sentencer</span><span class="p">,</span> <span class="n">words_embedder</span><span class="p">,</span> <span class="n">pos_tagger</span><span class="p">,</span> <span class="n">ner_tagger</span><span class="p">,</span> <span class="n">ner_converter</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">dependency_parser</span><span class="p">,</span> <span class="n">re_ner_chunk_filter</span><span class="p">,</span> <span class="n">re_model</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;explode(relations) as relation&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;relation.result&quot;</span><span class="p">,</span> <span class="s2">&quot;relation.metadata.confidence&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">+-------+----------+</span>
+<span class="go">|result |confidence|</span>
+<span class="go">+-------+----------+</span>
+<span class="go">|REVEAL |0.9760039 |</span>
+<span class="go">|IMPROVE|0.98819494|</span>
+<span class="go">|IMPROVE|0.9929625 |</span>
+<span class="go">+-------+----------+</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.coalesceSentences">
+<span class="sig-name descname"><span class="pre">coalesceSentences</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.coalesceSentences" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.engine" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.maxSentenceLength">
+<span class="sig-name descname"><span class="pre">maxSentenceLength</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.maxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.multiLabel">
+<span class="sig-name descname"><span class="pre">multiLabel</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.multiLabel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">MedicalBertForSequenceClassification</span></em><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.negativeRelationships">
+<span class="sig-name descname"><span class="pre">negativeRelationships</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.negativeRelationships" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.predictionThreshold">
+<span class="sig-name descname"><span class="pre">predictionThreshold</span></span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.predictionThreshold" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/graph/relation_extraction/zero_shot_relation_extraction.html#ZeroShotRelationExtractionModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.pretrained" title="Permalink to this definition">#</a></dt>
-<dd><p>Download a pre-trained ZeroShotRelationExtractionModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
-remote_loc (str): Remote location of the pre-trained model. If None, use the
-open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
 </dd>
-<dt>Returns:</dt><dd><p>ZeroShotRelationExtractionModel: A pre-trained ZeroShotRelationExtractionModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getClasses">
+<span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getClasses" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the list of entities which are recognized</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModel">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/graph/relation_extraction/zero_shot_relation_extraction.html#ZeroShotRelationExtractionModel.loadSavedModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Loads a locally saved model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>folder</strong><span class="classifier">str</span></dt><dd><p>Folder of the saved model</p>
-</dd>
-<dt><strong>spark_session</strong><span class="classifier">pyspark.sql.SparkSession</span></dt><dd><p>The current SparkSession</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – Folder of the saved model</p></li>
+<li><p><strong>spark_session</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><em>pyspark.sql.SparkSession</em></a>) – The current SparkSession</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>ZeroShotRelationExtractionModel</dt><dd><p>The restored model</p>
+<dd class="field-even"><p>The restored model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel" title="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel">ZeroShotRelationExtractionModel</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModelOpenSource">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModelOpenSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bertForTokenClassifierPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tfModelPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModelOpenSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads a locally saved model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bertForTokenClassifierPath</strong> (<em>str</em>) – Folder of the bertForTokenClassifier</p></li>
+<li><p><strong>tfModelPath</strong> (<em>str</em>) – Folder taht contains the tf model</p></li>
+<li><p><strong>spark_session</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><em>pyspark.sql.SparkSession</em></a>) – The current SparkSession</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The restored model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../../annotator/classification/medical_bert_for_sequence_classification/index.html#sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification.MedicalBertForSequenceClassification" title="sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification.MedicalBertForSequenceClassification">MedicalBertForSequenceClassification</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finre_zero_shot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.pretrained" title="Permalink to this definition">#</a></dt>
+<dd><p>Download a pre-trained ZeroShotRelationExtractionModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “finre_zero_shot”</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model, by default “en”</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the
+open-source location. Other values are “clinical/models”,
+“finance/models”, or “legal/models”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pre-trained ZeroShotRelationExtractionModel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel" title="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel">ZeroShotRelationExtractionModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setCoalesceSentences">
+<span class="sig-name descname"><span class="pre">setCoalesceSentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setCoalesceSentences" title="Permalink to this definition">#</a></dt>
+<dd><p>Instead of 1 class per sentence (if inputCols is ‘’’sentence’’’) output 1 class per document by averaging probabilities in all sentences.
+Due to max sequence length limit in almost all transformer models such as BERT (512 tokens), this parameter helps feeding all the sentences
+into the model and averaging all the probabilities for the entire document instead of probabilities per sentence. (Default: False)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If the output of all sentences will be averaged to one output</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setMaxSentenceLength">
+<span class="sig-name descname"><span class="pre">setMaxSentenceLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setMaxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets max sentence length to process, by default 128.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Max sentence length to process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setNegativeRelationships">
+<span class="sig-name descname"><span class="pre">setNegativeRelationships</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setNegativeRelationships" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the list of relational categories which serve as negative examples and are not included in the output
+annotations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>relations</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setRelationalCategories">
+<span class="sig-name descname"><span class="pre">setRelationalCategories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setRelationalCategories" title="Permalink to this definition">#</a></dt>
+<dd><p>Set definitions of relational categories</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>categories</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -526,8 +1060,66 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.pretrained"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.batchSize"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.coalesceSentences"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.coalesceSentences</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.engine"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.engine</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputCols"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.maxSentenceLength"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.maxSentenceLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.multiLabel"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.multiLabel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.name"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.negativeRelationships"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.negativeRelationships</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.outputCol"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.predictionThreshold"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.predictionThreshold</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.clear"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.copy"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.explainParam"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.explainParams"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getBatchSize"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getClasses"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getEngine"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getParam"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.hasParam"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.isDefined"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.isSet"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.load"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.loadSavedModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.loadSavedModelOpenSource"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.loadSavedModelOpenSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.pretrained"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.read"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.save"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.set"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setBatchSize"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setCoalesceSentences"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setCoalesceSentences()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setNegativeRelationships"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setNegativeRelationships()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setParams"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.setRelationalCategories"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.setRelationalCategories()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.transform"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction.ZeroShotRelationExtractionModel.write"><code class="docutils literal notranslate"><span class="pre">ZeroShotRelationExtractionModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -536,14 +1128,6 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/finance/graph/relation_extraction/zero_shot_relation_extraction/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

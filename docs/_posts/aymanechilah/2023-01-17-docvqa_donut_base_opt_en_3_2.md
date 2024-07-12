@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Document understanding transformer (Donut) model pretrained for Document Visual Question Answering (DocVQA) task in the dataset is from Document Visual Question Answering [competition](https://rrc.cvc.uab.es/?ch=17) and consists of 50K questions defined on more than 12K documents. This model was optimized with ONNX.
+Document understanding transformer (Donut) model pretrained for Document Visual Question Answering (DocVQA) task in the dataset is from Document Visual Question Answering [competition](https://rrc.cvc.uab.es/?ch=17) and consists of 50K questions defined on more than 12K documents. This model was optimized.
 Donut is a new method of document understanding that utilizes an OCR-free end-to-end Transformer model. Donut does not require off-the-shelf OCR engines/APIs, yet it shows state-of-the-art performances on various visual document understanding tasks, such as visual document classification or information extraction (a.k.a. document parsing). Paper link [OCR-free Document Understanding Transformer](https://arxiv.org/abs/2111.15664) developed by Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han and Seunghyun Park.
 DocVQA seeks to inspire a “purpose-driven” point of view in Document Analysis and Recognition research, where the document content is extracted and used to respond to high-level tasks defined by the human consumers of this information.
 
@@ -27,7 +27,8 @@ DocVQA seeks to inspire a “purpose-driven” point of view in Document Analysi
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_QUESTION_ANSWERING/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrVisualQuestionAnswering_opt.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/docvqa_donut_base_opt_en_4.3.0_3.0_1673269990047.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/docvqa_donut_base_opt_en_4.3.0_3.0_1673269990047.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/docvqa_donut_base_opt_en_4.3.0_3.0_1673269990047.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use

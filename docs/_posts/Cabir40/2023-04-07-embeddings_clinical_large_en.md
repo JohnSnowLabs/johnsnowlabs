@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is trained on a list of clinical and biomedical datasets curated in-house, using the word2vec algorithm. The dataset curation cut-off date is March 2023 and the model is expected to have a better generalization on recent content. The size of the model is around 2 GB and has 200 dimensions. Our benchmark tests indicate that our legacy clinical embeddings (embeddings _clinical) can be replaced with this one.
+This model is trained on a list of clinical and biomedical datasets curated in-house, using the word2vec algorithm. The dataset curation cut-off date is March 2023 and the model is expected to have a better generalization on recent content. The size of the model is around 2 GB and has 200 dimensions. Our benchmark tests indicate that our legacy clinical embeddings (embeddings_clinical) can be replaced with this one while training a new model (existing/previous models will still need to use the legacy embeddings that they're trained with).
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

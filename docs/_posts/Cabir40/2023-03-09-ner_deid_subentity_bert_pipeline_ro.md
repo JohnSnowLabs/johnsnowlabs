@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_bert_pipeline
 date: 2023-03-09
 tags: [deidentification, bert, phi, ner, ro, licensed]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ro
 edition: Healthcare NLP 4.3.0
 spark_version: 3.2
@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity_bert](https:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

@@ -112,7 +112,7 @@ The output is a dataframe with a sentence per row and a ``"ner"`` column contain
 {:.h2_title}
 ## Data Source
 Trained on the Anatomical Entity Mention (AnEM) corpus with ``'embeddings_clinical'``.
-http://www.nactem.ac.uk/anatomy/
+[https://www.nactem.ac.uk/anatomy/](https://www.nactem.ac.uk/anatomy/)
 
 {:.h2_title}
 ## Benchmarking

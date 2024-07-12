@@ -115,4 +115,4 @@ val result = pipeline.fit(Seq.empty[String]).transform(data)
 {:.h2_title}
 ## Data Source
 Trained on SNOMED CT Findings
-http://www.snomed.org/
+[https://www.snomed.org/](https://www.snomed.org/)

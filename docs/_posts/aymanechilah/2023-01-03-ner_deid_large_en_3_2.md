@@ -28,7 +28,8 @@ It protects specific health information that could identify living or deceased i
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/DEID_IMAGE/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/3.1.SparkOcrImageDeIdentification.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_large_en_3.0.0_3.0_1617209688468.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_large_en_3.0.0_3.0_1617209688468.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_large_en_3.0.0_3.0_1617209688468.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -251,7 +252,7 @@ output_image=output_image
 
 ## Data Source
 
-Trained on augmented 2010 i2b2 challenge data with 'embeddings_clinical'.
+Trained on augmented version of 2010 i2b2 challenge dataset with 'embeddings_clinical'.
 [https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/)
 
 ## Benchmarking

@@ -5,7 +5,7 @@ author: John Snow Labs
 name: german_deid_pipeline_spark24
 date: 2022-03-03
 tags: [licensed, de, deidentification, pipeline, clinical]
-task: Pipeline Public
+task: [De-identification, Pipeline Public]
 language: de
 edition: Healthcare NLP 3.4.1
 spark_version: 2.4

@@ -68,5 +68,65 @@ data:
             url: https://demo.johnsnowlabs.com/ocr/BRAND_EXTRACTION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/BRAND_EXTRACTION.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/BRAND_EXTRACTION.ipynb
+        - title: Visual NER Key-Values v2
+          id: visual_ner_key_values_v2 
+          image: 
+              src: /assets/images/Visual_NER_Key-Values_v2.svg
+          excerpt: This demo extract the main document key points using our pre-trained Spark OCR model. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VISUAL_DOCUMENT_KEYVALUES_NER_LILT/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentNer-FormParsing.ipynb
+        - title: Visual Question Answering
+          id: visual_question_asnswering
+          image: 
+              src: /assets/images/Visual_Question_Answering.svg
+          excerpt: This demo allows Inferring the answer from a given image and a text-based question by using our pre-trained Spark OCR models.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrVisualQuestionAnswering.ipynb
+        - title: Chart to Text
+          id: chart_text
+          image: 
+              src: /assets/images/Chart_to_Text.svg
+          excerpt: Obtain a description of the charts in the image input document by using our Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/CHART_TO_TEXT/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrChartToTextTable.ipynb
+        - title: Chart to Text powered by LLM
+          id: chart_text_powered_llm
+          image: 
+              src: /assets/images/Chart_to_Text_powered_by_LLM.svg
+          excerpt: Obtain a deeper interpretation of the charts in the image input document by using our Spark OCR model powered by LLM. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/CHART_TO_TEXT_LLM/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrChartToTextLLM.ipynb
+        - title: Infographic Visual Question Answering
+          id: infographic_visual_question_answering
+          image: 
+              src: /assets/images/Infographic_Visual_Question_Answering.svg
+          excerpt: Infer the answer from a given infographic related image and a text-based question by using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/INFOGRAPHIC_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/208cebd1353c5b194baadbcea6e32c292eb46a08/jupyter/Cards/SparkOCRInfographicsVisualQuestionAnswering.ipynb
 ---

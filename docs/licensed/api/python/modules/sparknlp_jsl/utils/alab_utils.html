@@ -358,10 +358,11 @@ document.write(`
 <span class="p">])</span>
 
 
-<div class="viewcode-block" id="get_doc_assembler"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_doc_assembler">[docs]</a><span class="k">def</span> <span class="nf">get_doc_assembler</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">DocumentAssembler</span><span class="p">:</span>
+<div class="viewcode-block" id="get_doc_assembler"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_doc_assembler">[docs]</a><span class="k">def</span> <span class="nf">get_doc_assembler</span><span class="p">(</span><span class="n">doc_wise_annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DocumentAssembler</span><span class="p">:</span>
     <span class="k">global</span> <span class="n">document_assembler</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">document_assembler</span><span class="p">:</span>
-        <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span><span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+        <span class="n">output_col</span> <span class="o">=</span> <span class="s2">&quot;sentence&quot;</span> <span class="k">if</span> <span class="n">doc_wise_annot</span> <span class="k">else</span> <span class="s2">&quot;document&quot;</span>
+        <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span><span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="n">output_col</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">document_assembler</span></div>
 
 
@@ -452,24 +453,24 @@ document.write(`
         <span class="k">return</span> <span class="n">nlp_token_pipeline</span></div>
 
 
-<div class="viewcode-block" id="get_sentence_pipeline"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline">[docs]</a><span class="k">def</span> <span class="nf">get_sentence_pipeline</span><span class="p">(</span><span class="n">spark</span><span class="p">):</span>
+<div class="viewcode-block" id="get_sentence_pipeline"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline">[docs]</a><span class="k">def</span> <span class="nf">get_sentence_pipeline</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">doc_wise_annot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates a LightPipeline with a document assembler and sentence detector</span>
 <span class="sd">        :param spark: Spark session with spark-nlp-jsl jar</span>
 <span class="sd">        :type spark: SparkSession</span>
+<span class="sd">        :param doc_wise_annot: drops sentence detector if True</span>
+<span class="sd">        :type doc_wise_annot: bool</span>
 <span class="sd">        :return: LightPipeline with a document assembler and sentence detector</span>
 <span class="sd">        :rtype: LightPipeline</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
-        <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">get_doc_assembler</span><span class="p">(),</span>
-            <span class="n">get_sent_detector</span><span class="p">()]</span>
-    <span class="p">)</span>
+    
+    <span class="n">_stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_doc_assembler</span><span class="p">(</span><span class="n">doc_wise_annot</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">doc_wise_annot</span><span class="p">:</span>
+        <span class="n">_stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_sent_detector</span><span class="p">())</span>
+    
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">_stages</span><span class="p">)</span>
 
     <span class="n">empty_data</span> <span class="o">=</span> <span class="n">get_empty_df</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
-
     <span class="n">pipeline_fit</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">pipeline_fit</span></div>
 
 
@@ -587,12 +588,14 @@ document.write(`
     <span class="k">return</span> <span class="n">ner_df</span></div>
 
 
-<div class="viewcode-block" id="get_ner_sentence_borders"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders">[docs]</a><span class="k">def</span> <span class="nf">get_ner_sentence_borders</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">input_json_path</span><span class="p">,</span> <span class="n">ground_truth</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">assertion_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="get_ner_sentence_borders"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders">[docs]</a><span class="k">def</span> <span class="nf">get_ner_sentence_borders</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">input_json_path</span><span class="p">,</span> <span class="n">doc_wise_annot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ground_truth</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">assertion_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get sentence borders for each task</span>
 <span class="sd">    :param spark: Spark session with spark-nlp-jsl jar</span>
 <span class="sd">    :type spark: SparkSession</span>
 <span class="sd">    :param input_json_path: path to Annotation Lab JSON export</span>
 <span class="sd">    :type input_json_path: str</span>
+<span class="sd">    :param doc_wise_annot: returns the dataframe with document wise annotations</span>
+<span class="sd">    :type doc_wise_annot: bool</span>
 <span class="sd">    :param ground_truth: set to True to select ground truth completions, False to select latest completions,</span>
 <span class="sd">    defaults to False</span>
 <span class="sd">    :type ground_truth: bool</span>
@@ -618,7 +621,7 @@ document.write(`
 
     <span class="n">task_sent_spark_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">task_sent_df</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">c_schema</span><span class="p">)</span>
 
-    <span class="n">df</span> <span class="o">=</span> <span class="n">get_sentence_pipeline</span><span class="p">(</span><span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">task_sent_spark_df</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">get_sentence_pipeline</span><span class="p">(</span><span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span> <span class="n">doc_wise_annot</span><span class="o">=</span><span class="n">doc_wise_annot</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">task_sent_spark_df</span><span class="p">)</span>
 
     <span class="n">sentence_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;task_id&quot;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
         <span class="n">F</span><span class="o">.</span><span class="n">arrays_zip</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sentence</span><span class="o">.</span><span class="n">begin</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">sentence</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">sentence</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">sentence</span><span class="o">.</span><span class="n">metadata</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;cols&quot;</span><span class="p">))</span> \
@@ -684,6 +687,7 @@ document.write(`
     <span class="n">ner_borders_df</span><span class="p">[</span><span class="s1">&#39;sentence_end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner_borders_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">end_row</span><span class="p">:</span> <span class="n">end_row</span><span class="p">[</span><span class="s1">&#39;sentence_begin&#39;</span><span class="p">]</span> <span class="o">+</span>
                                                                           <span class="nb">len</span><span class="p">(</span><span class="n">end_row</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ner_borders_df</span></div>
+
 
 
 <div class="viewcode-block" id="get_nlp_pos_pipeline"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/utils/alab_utils/index.html#sparknlp_jsl.utils.alab_utils.get_nlp_pos_pipeline">[docs]</a><span class="k">def</span> <span class="nf">get_nlp_pos_pipeline</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">regex_pattern</span><span class="p">):</span>

@@ -2,18 +2,22 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Analytics Permission
 permalink: /docs/en/alab/analytics_permission
 key: docs-training
-modify_date: "2022-10-14"
+modify_date: "2022-10-15"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 By default, dashboards in the Analytics page is disabled for a project. Users can request the _admin_ to enable the Analytics page. The request is then listed on the Analytics Request page under the Settings menu. This page is only accessible to the _admin_ user. After the _admin_ user approves the request, the user can access the various dashboards in the Analytics page.
+
+</div><div class="h3-box" markdown="1">
 
 ## Analytics Requests
 
@@ -32,3 +36,5 @@ All the requests granted by the _admin_ user is listed under this tab. The table
 All the requests denied or revoked by the _admin_ user is listed under this tab. The table shows information about the denied/revoked requests, like the name of the project for which the analytics request was made, the user who initiated the request, the user who denied/revoked the request, the date when the request was denied/revoked, the latest date when the analytics were updated.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ar_revoked.png" style="width:100%;"/>
+
+</div>

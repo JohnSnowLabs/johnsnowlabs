@@ -73,6 +73,7 @@ def start(
     visual: bool = False,
     hardware_target: str = JvmHardwareTarget.cpu.value,
     model_cache_folder: str = None,
+    create_jsl_home_if_missing: bool = True,
 ) -> "pyspark.sql.SparkSession":
     from pyspark.sql import SparkSession
 
@@ -93,6 +94,8 @@ def start(
 
     # Get all Local Jar Paths, downloads them if missing
     suite = get_install_suite_from_jsl_home(
+        visual=visual,
+        create_jsl_home_if_missing=create_jsl_home_if_missing,
         only_jars=True,
         jvm_hardware_target=hardware_target,
         force_browser=browser_login,
@@ -111,6 +114,14 @@ def start(
         leg_license=leg_license,
         store_in_jsl_home=store_in_jsl_home,
     )
+
+    try:
+        # We use this to resolve some obscure import bugs during .check_installed for some envs
+        Software.spark_nlp.check_installed(None) if spark_nlp else None
+        Software.spark_ocr.check_installed(None) if suite.hc else None
+        Software.spark_hc.check_installed(None) if suite.ocr else None
+    except:
+        pass
 
     # Collect all local Jar Paths we have access to for the SparkSession
     jars = []

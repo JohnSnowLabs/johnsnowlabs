@@ -115,7 +115,7 @@ We are thrilled to introduce eight innovative Voice of Patient (VOP) Named Entit
 
 By leveraging the capabilities of these VOP NER models, healthcare providers can better understand patients' perspectives, bridging the communication gap and fostering more effective patient-centered care.
 
-
+{:.table-model-big.db}
 | model name                                 | description                              |            predicted entities             |
 |--------------------------------------------|------------------------------------------|-------------------------------------------|
 | [`ner_vop_anatomy_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_anatomy_wip_en.html)                 | Detecting anatomical terms expressed in patients' own words. | `Laterality`, `BodyPart` |
@@ -139,14 +139,12 @@ sample_text = """I"ve been experiencing joint pain and fatigue lately, so I went
 
 *Results*:
 
+{:.table-model-big}
 | chunk                | ner_label   |
 |:---------------------|:------------|
 | pain                 | Symptom     |
 | fatigue              | Symptom     |
 | rheumatoid arthritis | Disease     |
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -172,6 +170,7 @@ text= ["Q5106", "J9211", "J7508"]
 
  *Result:*
 
+{:.table-model-big}
 | hcpcs_chunk | mappings                              | relation   |
 |-------------|---------------------------------------|------------|
 | Q5106       | 59353-0003-10                         | ndc_code   |
@@ -198,6 +197,7 @@ text= ["16714-0892-01", "00990-6138-03", "43598-0650-11"]
 
  *Result:*
 
+{:.table-model-big}
 | ndc_chunk     | mappings                     | relation          |
 |---------------|------------------------------|-------------------|
 | 16714-0892-01 | J0878                        | hcpcs_code        |
@@ -217,7 +217,7 @@ We are excited to announce the release of three new Social Determinants of Healt
 
 By leveraging these innovative SDOH classification models, stakeholders can gain valuable insights into the insurance landscape and its impact on health disparities, ultimately informing more targeted interventions and policies to improve patient care and well-being.
 
-
+{:.table-model-big}
 | model name                                 | description                              |            predicted entities             |
 |--------------------------------------------|------------------------------------------|-------------------------------------------|
 | [`genericclassifier_sdoh_insurance_status_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/04/27/genericclassifier_sdoh_insurance_status_sbiobert_cased_mli_en.html) | Detecting whether the patient has insurance or not | `Insured`, `Uninsured`, `Unknown` |
@@ -247,6 +247,7 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                             text|    result|
 |-------------------------------------------------------------------------------------------------|----------|
 |                                                                    The patient has VA insurance.| Military |
@@ -266,7 +267,7 @@ We are proud to announce the latest updates to our `ner_profiling_clinical` and 
 
 These enhancements to our pre-trained pipelines showcase our commitment to providing healthcare professionals and researchers with state-of-the-art tools, enabling more efficient and accurate analysis of clinical text to support data-driven decision-making and improved patient care outcomes.
 
-You can check [ner_profiling_clinical](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_clinical_en.html) and [ner_profiling_biobert](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_biobert_en.html) Models Hub pages for more details and the NER model lists that these pipelines include.
+You can check [ner_profiling_clinical](https://nlp.johnsnowlabs.com/2023/04/28/ner_profiling_clinical_en.html) and [ner_profiling_biobert](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_biobert_en.html) Models Hub pages for more details and the NER model lists that these pipelines include.
 
 
 </div><div class="h3-box" markdown="1">
@@ -296,6 +297,7 @@ sample_text = "Paracetamol can alleviate headache or sickness. An MRI test can b
 
 *Without Setting setNegativeRelationships*:
 
+{:.table-model-big}
 |relation|     chunk1|  entity1|  chunk2|entity2|                    hypothesis|confidence|
 |--------|-----------|---------|--------|-------|------------------------------|----------|
 |  REVEAL|An MRI test|     TEST|  cancer|PROBLEM|   An MRI test reveals cancer.| 0.9760039|
@@ -305,6 +307,7 @@ sample_text = "Paracetamol can alleviate headache or sickness. An MRI test can b
 
 *After Setting setNegativeRelationships*:
 
+{:.table-model-big}
 |relation|     chunk1|entity1|chunk2|entity2|                 hypothesis|confidence|
 |--------|-----------|-------|------|-------|---------------------------|----------|
 |  REVEAL|An MRI test|   TEST|cancer|PROBLEM|An MRI test reveals cancer.| 0.9760039|
@@ -337,6 +340,7 @@ John Davies Hendrickson Lorand has biggest name'''
 
 As can be seen in the table below, `DOCTOR` and `PATIENT` chunks are consistently replaced with the same obfuscation chunks.
 
+{:.table-model-big}
 |                     ner_chunk|  label|                   replacement|
 |------------------------------|-------|------------------------------|
 |       John Davies Hendrickson|PATIENT|       Aesculapius Amalasuntha|
@@ -348,7 +352,7 @@ As can be seen in the table below, `DOCTOR` and `PATIENT` chunks are consistentl
 |                       Olivera| DOCTOR|                       Killian|
 |John Davies Hendrickson Lorand|PATIENT|Deipnosophistae Hermaphroditus|
 
-
+{:.table-model-big}
 |    | Sentence                                                         | Obfuscated                                                       |
 |---:|:-----------------------------------------------------------------|:-----------------------------------------------------------------|
 |  0 | John Davies Hendrickson is a 62 y.o. patient admitted.           | Aesculapius Amalasuntha is a 62 y.o. patient admitted.           |
@@ -481,9 +485,6 @@ For more detail please check [Clinical Deidentification Utility Module](https://
 + `genericclassifier_sdoh_insurance_status_sbiobert_cased_mli`
 + `genericclassifier_sdoh_insurance_coverage_sbiobert_cased_mli`
 + `genericclassifier_sdoh_insurance_type_sbiobert_cased_mli`
-
-
-
 
 </div><div class="h3-box" markdown="1">
 

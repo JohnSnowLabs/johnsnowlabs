@@ -26,7 +26,7 @@ This model maps extracted clinical NER entities to LOINC codes using `sbiobert_b
 
 
 {:.btn-box}
-[Live Demo](https://nlp.johnsnowlabs.com/demo){:.button.button-orange}
+[Live Demo](https://nlp.johnsnowlabs.com/demos){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_loinc_augmented_en_3.3.2_2.4_1642533239691.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_loinc_augmented_en_3.3.2_2.4_1642533239691.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
