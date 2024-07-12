@@ -23,7 +23,7 @@ This model is a Binary Classifier (True, False) for the `termination` clause typ
 
 This version was trained with Universal Sentence Encoder. There is another version using Universal Sentence Encoding, called `legclf_cuad_termination_clause`
 
-If you have big legal documents, and you want to look for clauses, we recommend you to split the documents using any of the techniques available in our Spark NLP for Legal Workshop Tokenization & Splitting Tutorial (link [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Legal/1.Tokenization_Splitting.ipynb)), namely:
+If you have big legal documents, and you want to look for clauses, we recommend you to split the documents using any of the techniques available in our Spark NLP for Legal Workshop Tokenization & Splitting Tutorial (link [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/01.Page_Splitting.ipynb)), namely:
 - Paragraph splitting (by multiline);
 - Splitting by headers / subheaders;
 - etc.
