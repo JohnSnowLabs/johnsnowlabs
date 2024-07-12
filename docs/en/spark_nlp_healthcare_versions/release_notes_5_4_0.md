@@ -93,6 +93,7 @@ This comprehensive approach significantly enhances the extraction, analysis, and
 
 The following table demonstrates the enhanced results achieved using the FewShot Assertion model compared to the traditional AssertionDL model across various datasets. The FewShot Assertion model showcases significant improvements in accuracy scores, particularly in complex medical domains.
 
+{:.table-model-big}
 | Dataset Name  | AssertionDL  | FewShot Assertion |
 |---------------|--------------|-------------------|
 | radiology     | 0.91         | 0.93              |
@@ -102,10 +103,10 @@ The following table demonstrates the enhanced results achieved using the FewShot
 | smoking       | 0.67         | 0.96              |
 | sdoh          | 0.76         | 0.85              |
 
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/AssertionDL_vs_FewShotAssertion.png)
+![Annotator to Train Assertion Detection Models](/assets/images/AssertionDL_vs_FewShotAssertion.png)
 
 
-
+{:.table-model-big}
 |FewShot Assertion Model Name| Predicted Classed |
 |----------------------------|-------------------|
 |[fewhot_assertion_jsl_e5_base_v2_jsl](https://nlp.johnsnowlabs.com/2024/07/03/fewhot_assertion_jsl_e5_base_v2_jsl_en.html) | `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypothetical`, `SomeoneElse`  |
@@ -136,6 +137,7 @@ sample_text= """The patient is suspected to have colorectal cancer. Her family h
 
 *Result*:
 
+{:.table-model-big}
 |    | chunks            |   begin |   end | entities         | assertion   |   confidence |
 |---:|:------------------|--------:|------:|:-----------------|:------------|-------------:|
 |  0 | colorectal cancer |      33 |    49 | Cancer_Dx        | Possible    |     0.581282 |
@@ -148,8 +150,6 @@ sample_text= """The patient is suspected to have colorectal cancer. Her family h
 
 Please check the [FewShot Assertion Classifier](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb) Notebook for more information
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Introducing a Rule-Based `ContextualAssertion` Annotator to Detect Assertion Status Using Patterns and Rules without any Training or Annotation
@@ -158,6 +158,7 @@ Introducing Contextual Assertion which identifies contextual cues within text da
 
 - Dataset: 253 Clinical Texts from in-house dataset
  
+{:.table-model-big}
 |Assertion Label|Contextual Assertion|AssertionDL|
 |---------------|:------------------:|:---------:|
 |Absent         |   0.88             |  0.78  |
@@ -166,6 +167,7 @@ Introducing Contextual Assertion which identifies contextual cues within text da
 
 - Dataset: Used in-house jsl_augmented dataset
 
+{:.table-model-big}
 |Assertion Label|Contextual Assertion|AssertionDL|
 |---------------|:------------------:|:---------:|
 |Absent         |0.82|0.90|
@@ -178,7 +180,7 @@ Introducing Contextual Assertion which identifies contextual cues within text da
 
 Contextual Assertion, a powerful component within Spark NLP, extends beyond mere negation detection. Its ability to identify and classify a diverse range of contextual cues, including uncertainty, temporality, and sentiment, empowers healthcare professionals to extract deeper meaning from complex medical records.
 
-
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`contextual_assertion_someone_else`](https://nlp.johnsnowlabs.com/2024/06/26/contextual_assertion_someone_else_en.html) |  Identifies contextual cues within text data to detect `someone else` assertions |
@@ -212,6 +214,7 @@ No evidence of hypertension. Patient denies nausea at this time. zofran declined
 
 *Result*:
 
+{:.table-model-big}
 | ner_chunk      | begin | end  | ner_label | Assertion |
 |----------------|-------|------|-----------|--------|
 | any difficulty | 59    | 72   | PROBLEM   | absent |
@@ -258,8 +261,6 @@ post_processor = VectorDBPostProcessor() \
 
 Please check the [VectorDB and PostProcessor for RAG Generative AI](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/45.VectorDB_and_PostProcessor_for_RAG_Generative_AI.ipynb) Notebook for more information
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Introducing `ContextSplitAssembler` Annotator to Assemble the Document Post-processed Splits as a Context into an LLM Stage in a RAG Application
@@ -284,8 +285,6 @@ context_split_assembler = ( ContextSplitAssembler()
 
 Please check the [VectorDB and PostProcessor for RAG Generative AI](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/45.VectorDB_and_PostProcessor_for_RAG_Generative_AI.ipynb) Notebook for more information
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### SNOMED Entity Resolver Model for `Veterinary` Domains
@@ -304,6 +303,7 @@ text = "The veterinary team is closely monitoring the patient for signs of lymph
 
 *Result*:
 
+{:.table-model-big}
 |                              ner_chunk| entity|    snomed_code|                                         description|
 |---------------------------------------|-------|---------------|----------------------------------------------------|
 |                 lymphoblastic lymphoma|PROBLEM|312281000009102|                              lymphoblastic lymphoma|
@@ -334,6 +334,7 @@ text = "Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago.
 
 *Result*:
 
+{:.table-model-big}
 |chunk               |begin|end |ner_label             |
 |--------------------|-----|----|----------------------|
 |20 year old         |15   |25  |Age                   |
@@ -363,14 +364,13 @@ text = "Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago.
 
 Please check the [model card](https://nlp.johnsnowlabs.com/2024/06/07/ner_vop_v2_en.html) for more information
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### New Rule-Based Entity Matcher Models to Customise De-IDentification Pipelines
 
 We introduce a suite of text and regex matchers, specifically designed to enhance the deidentification and clinical document understanding process with rule-based methods. 
 
+{:.table-model-big}
 | Model Name                               |      Description            |
 |------------------------------------------|-----------------------------|
 | [`cancer_diagnosis_matcher`](https://nlp.johnsnowlabs.com/2024/06/17/cancer_diagnosis_matcher_en.html) | This model extracts cancer diagnoses in clinical notes using a rule-based `TextMatcherInternal` annotator. |
@@ -394,6 +394,7 @@ example_text = """A 65-year-old woman had a history of debulking surgery, bilate
 
 *Result*:
 
+{:.table-model-big}
 |                  chunk|begin| end|    label|
 |-----------------------|-----|----|---------|
 |      ovarian carcinoma|  176| 192|Cancer_dx|
@@ -412,6 +413,7 @@ A suite of models designed for the identification and analysis of alcohol and sm
 
 - NER Model
 
+{:.table-model-big}
 |Model Name         | Predicted Entities | Description      |
 |-------------------|--------------------|------------------|
 | [ner_alcohol_smoking](https://nlp.johnsnowlabs.com/2024/07/01/ner_alcohol_smoking_en.html) | `Drinking_Status`, `Alcohol_Type`, `Smoking_Status`, `Smoking_Type`, `Substance_Duration`, `Substance_Frequency`, `Substance_Quantity`, `Cardiovascular_Issues`, `Respiratory_Issues`, `GUT_Issues`, `Neurologic_Issues`, `Psychiatric_Issues`, `Other_Health_Issues`, `Drinking_Environment`, `Cessation_Treatment`, `Withdrawal_Treatment` | Detects alcohol and smoking related entities within text data |
@@ -437,6 +439,7 @@ He was placed on CIWA protocol w/ lorazepam for management. Scheduled for cognit
 
 *Result*:
 
+{:.table-model-big}
 |chunk                       |begin|end|ner_label             |
 |----------------------------|-----|---|----------------------|
 |anxiety                     |78   |84 |Psychoneurologic_Issue|
@@ -459,6 +462,7 @@ He was placed on CIWA protocol w/ lorazepam for management. Scheduled for cognit
 
 - Assertion Models
 
+{:.table-model-big}
 |Model Name         | Assertion Status | Description      |
 |-------------------|-------------------|------------------|
 | [assertion_alcohol_smoking_wip](https://nlp.johnsnowlabs.com/2024/07/03/assertion_alcohol_smoking_wip_en.html) | `Absent`, `Hypothetical_Possible`, `Past_History`, `Present_Planned` | This model detects the assertion status of entities related to alcohol-smoking. |
@@ -477,6 +481,7 @@ sample_texts = ["""Per the patient, the last drink was on ___, prior to admissio
 
 *Result*:
 
+{:.table-model-big}
 |chunk       |begin|end|ner_label             |assertion      |confidence|
 |------------|-----|---|----------------------|---------------|----------|
 |drink       |26   |30 |Drinking_Status       |Past_History   |0.8507    |
@@ -502,6 +507,7 @@ sample_texts = ["""Per the patient, the last drink was on ___, prior to admissio
 
 - Relation Extraction Model
 
+{:.table-model-big}
 |Model Name         | Predicted Entities | Description      |
 |-------------------|--------------------|------------------|
 | [re_alcohol_smoking_clinical_wip](https://nlp.johnsnowlabs.com/2024/07/03/re_alcohol_smoking_clinical_wip_en.html) | `is_caused_by`, `is_used_for` | It recognizes relations between treatment cessation and withdrawal with drinking and smoking status, as well as relations between various health issues (Neurologic, Psychiatric, Cardiovascular, Respiratory, GUT, and Other Health Issues) and drinking and smoking status. |
@@ -526,6 +532,7 @@ text = ["""Pulmonary Function Tests: Demonstrates airflow limitation consistent 
 
 *Result*:
 
+{:.table-model-big.db}
 |    |   sentence |   entity1_begin |   entity1_end | chunk1   | entity1            |   entity2_begin |   entity2_end | chunk2                    | entity2             | relation     |   confidence |
 |---:|-----------:|----------------:|--------------:|:---------|:-------------------|----------------:|--------------:|:--------------------------|:--------------------|:-------------|-------------:|
 |  0 |          2 |             154 |           157 | COPD     | Respiratory_Issues |             172 |           178 | smoking                   | Smoking_Status      | is_caused_by |     0.999902 |
@@ -536,6 +543,7 @@ text = ["""Pulmonary Function Tests: Demonstrates airflow limitation consistent 
 
 - Classification Models
 
+{:.table-model-big}
 |Model Name         | Assertion Status | Description      |
 |-------------------|-------------------|------------------|
 | [genericclassifier_alcohol_mpnet_wip](https://nlp.johnsnowlabs.com/2024/07/01/genericclassifier_alcohol_mpnet_wip_en.html) | `Current_Drinker`, `Others` | The primary goal of the model is to categorize texts into two main label categories: 'Current_Drinker' and 'Others.' (past or non-smoker) |
@@ -557,6 +565,7 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                                text|           result|
 |----------------------------------------------------------------------------------------------------|-----------------|
 |The patient, with a history of COPD and alcohol dependence, was initially admitted due to a COPD ...|Current_Drinker|
@@ -573,6 +582,7 @@ A set of sophisticated models aimed at extracting and analyzing menopause-relate
 
 - NER Model
 
+{:.table-model-big}
 |Model Name         | Predicted Entities | Description      |
 |-------------------|--------------------|------------------|
 | [ner_menopause_core](https://nlp.johnsnowlabs.com/2024/07/03/ner_menopause_core_en.html) | `Perimenopause`, `Menopause`, `Gynecological_Symptom`, `Gynecological_Disease`, `Other_Symptom`, `Irregular_Menstruation`, `G_P`, `Hypertension`, `Osteoporosis`, `Oncological`, `Fracture`, `Hormone_Replacement_Therapy`, `Osteporosis_Therapy`, `Antidepressants`, `Procedure`, `Hormone_Testing`, `Vaginal_Swab`, `Age`, `Test_Result` | Detects menopause related entities within text data |
@@ -594,6 +604,7 @@ Current medications include estradiol for hormone replacement therapy, alendrona
 
 *Result*:
 
+{:.table-model-big}
 |chunk                       |begin|end |ner_label                  |
 |----------------------------|-----|----|---------------------------|
 |irregular menstruation      |76   |97  |Irregular_Menstruation     |
@@ -624,6 +635,7 @@ Current medications include estradiol for hormone replacement therapy, alendrona
 
 - Assertion Models
 
+{:.table-model-big}
 |Model Name         | Assertion Status | Description      |
 |-------------------|-------------------|------------------|
 | [assertion_menopause_wip](https://nlp.johnsnowlabs.com/2024/07/03/assertion_menopause_wip_en.html) | `Present`, `Absent`, `Possible`, `Past`, `Hypothetical`, `Planned`, `Family`, `Menarche_Age`, `Menopause_Age` | This model detects the assertion status of menopause-related entities. |
@@ -640,6 +652,7 @@ sample_texts = ["""A 50-year-old woman, G2P1, presents with symptoms of perimeno
 
 *Result*:
 
+{:.table-model-big}
 |chunk                      |begin|end|ner_label                  |assertion   |confidence|
 |---------------------------|-----|---|---------------------------|------------|----------|
 |G2P1                       |21   |24 |G_P                        |Present     |0.9999    |
@@ -665,7 +678,7 @@ sample_texts = ["""A 50-year-old woman, G2P1, presents with symptoms of perimeno
 
 We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.
 
-
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`ner_deid_context_nameAugmented_pipeline`](https://nlp.johnsnowlabs.com/2024/05/21/ner_deid_context_nameAugmented_pipeline_en.html) | In this pipeline, there are `ner_deid_generic_augmented`, `ner_deid_subentity_augmented`, `ner_deid_name_multilingual_clinical` NER models and several ContextualParser, RegexMatcher, and TextMatcher models were used |
@@ -724,6 +737,7 @@ We are releasing the formal version of the "work-in-progress (WIP)" assertion st
 
 Here is the reference table:
 
+{:.table-model-big}
 |WIP Version|Formal Version|Task|
 |-----------|--------------|----|
 |assertion_oncology_demographic_binary_wip|[assertion_oncology_demographic_binary](https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_demographic_binary_en.html)|Assertion Status Detection|
@@ -756,6 +770,7 @@ Here is the reference table:
 
 Discover our new fine-tuned transformer-based sentence embedding models, meticulously trained on a curated list of clinical and biomedical datasets. These models are specifically optimized for Few-Shot Assertion tasks but are versatile enough to be utilized for other applications, such as Classification and Retrieval-Augmented Generation (RAG). Our collection offers precise and reliable embeddings tailored for various medical domains, significantly enhancing the extraction, analysis, and processing of assertion-related data in healthcare texts.
 
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`mpnet_embeddings_medical_assertion_i2b2`](https://nlp.johnsnowlabs.com/2024/05/23/mpnet_embeddings_medical_assertion_i2b2_en.html) | Fine-tuned on the i2b2 dataset using the MPNet architecture.|
@@ -786,13 +801,11 @@ text = [
 
 *Result*:
 
+{:.table-model-big}
 |  embeddings    |
 |---------------------|
 |[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -> 0}, [-0.09830807, 0.0137982415, -0.051585164, -0.0023749713, -0.017916167, 0.017543513, 0.025593378, 0.05106...|
 |[{sentence_embeddings, 0, 47, Peter Parker is a nice lad and lives in New York, {sentence -> 0}, [-0.10453681, 0.010062916, -0.024983741, 0.009945293, -0.01242009, 0.018787898, 0.039723188, 0.04624...|
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -819,11 +832,11 @@ Here are the accuracy results:
   
 **Top-3 Results:**
 
-![top_3](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_3.png)
+![top_3](/assets/images/345525698-550d89b5-1c4c-4d40-a5ea-1f9ec86387da.png)
 
 **Top-5 Results:**
 
-![top_5](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/releases/5_4_0/top_5.png)
+![top_5](/assets/images/345525777-44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7.png)
 
 **Conclusion:**
 
@@ -839,7 +852,7 @@ If you want to process **1M documents** and extract RxNorm codes for medication 
 
 Therefore, **Healthcare NLP is almost 5 times cheaper than its closest alternative**, not to mention the accuracy differences (**Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 8.9%**).
 
-<table>
+<table class="table-model-big">
     <caption>Accuracy & Cost Table</caption>
     <thead>
       <tr>
@@ -882,6 +895,8 @@ Therefore, **Healthcare NLP is almost 5 times cheaper than its closest alternati
 If you want to see more details, please check [Benchmarks Page](https://nlp.johnsnowlabs.com/docs/en/benchmark#rxnorm-benchmark-healthcare-nlp--gpt-4--amazon)
 and [State-of-the-art RxNorm Code Mapping with NLP: Comparative Analysis between the tools by John Snow Labs, Amazon, and GPT-4](https://medium.com/john-snow-labs/state-of-the-art-rxnorm-code-mapping-with-nlp-comparative-analysis-between-the-tools-by-john-snow-794b353dc38e) blog post. 
 
+</div><div class="h3-box" markdown="1">
+
 #### New Blogposts on Using NLP in Opioid Research and Healthcare: Harnessing NLP, Knowledge Graphs, and Regex Techniques for Critical Insights
 
 Explore the latest developments in healthcare NLP and Knowledge Graphs through our new blog posts, where we take a deep dive into the innovative technologies and methodologies transforming the medical field. These posts offer insights into how the latest tools are being used to analyze large amounts of unstructured data, identify critical medical assets, and extract meaningful patterns and correlations. Learn how these advances are not only improving our understanding of complex health issues but also contributing to more effective prevention, diagnosis, and treatment strategies.
@@ -903,8 +918,6 @@ To better understand the Medication and Resolutions Concept, the following noteb
 - New [Clinical Medication Use Case](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/43.Clinical_Medication_Use_Case.ipynb) notebook: This notebook is designed to extract and analyze medication information from a clinical dataset. Its purpose is to identify commonly used medications, gather details on dosage, frequency, strength, and route, determine current and past usage, understand pharmacological actions, identify treatment purposes, retrieve relevant codes (RxNorm, NDC, UMLS, SNOMED), and find associated adverse events.
 - New [Resolving Medical Terms to Terminology Codes Directly](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.4.Resolving_Medical_Terms_to_Terminology_Codes_Directly.ipynb) notebook: In this notebook, you will find how to optimize the process to get SentenceEntityResolverModel model outputs.
 - New [Analyse Veterinary Documents with Healthcare NLP](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/44.Analyse_Veterinary_Documents_with_Healthcare_NLP.ipynb) notebook: In this notebook, we use Spark NLP for Healthcare to process veterinary documents. We focus on Named Entity Recognition (NER) to identify entities, Assertion Status to confirm their condition, Relation Extraction to understand their relationships, and Entity Resolution to standardize terms. This helps us efficiently extract and analyze critical information from unstructured veterinary texts.
-
-
 
 
 </div><div class="h3-box" markdown="1">
