@@ -69,10 +69,7 @@ py_info_file = os.path.join(py_dir, "info.json")
 creds_info_file = os.path.join(license_dir, "info.json")
 
 # databricks paths
-
 dbfs_home_dir = "dbfs:/johnsnowlabs"
-dbfs_license_path = f"{dbfs_home_dir}/license.json"
-dbfs_info_path = f"{dbfs_home_dir}/info.json"
 dbfs_java_dir = f"{dbfs_home_dir}/java_installs"
 dbfs_py_dir = f"{dbfs_home_dir}/py_installs"
 db_py_jobs_dir = f"{dbfs_home_dir}/py_jobs"
