@@ -1,6 +1,6 @@
 ---
 layout: model
-title: JSL_MedS ( LLM )
+title: JSL_MedS (LLM - q8)
 author: John Snow Labs
 name: jsl_meds_q8_v1
 date: 2024-07-03
