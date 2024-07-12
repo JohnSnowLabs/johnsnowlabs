@@ -62,6 +62,21 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 `LLMLoader` is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs' licensed LLMs at various sizes that are finetuned on medical context for certain tasks. It provides various methods for setting parameters, loading models, generating text, and retrieving metadata. The `LLMLoader` includes methods for setting various parameters such as input prefix, suffix, cache prompt, number of tokens to predict, sampling techniques, temperature, penalties, and more. Overall, the `LLMLoader`  provides a flexible and extensible framework for interacting with language models in a Python and Scala environment using PySpark and Java.
 
+{:.table-model-big}
+| Model Name              | Description |
+|-------------------------|-------------|
+|[JSL_MedS_q16_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_meds_q16_v1_en.html)      | Summarization and Q&A  |
+|[JSL_MedS_q8_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_meds_q8_v1_en.html)       | Summarization and Q&A |
+|[JSL_MedS_q4_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_meds_q4_v1_en.html)       | Summarization and Q&A  |
+|[JSL_MedM_q16_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q16_v1_en.html)      |  Summarization, Q&A, RAG, and Chat |
+|[JSL_MedM_q8_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q8_v1_en.html)       | Summarization, Q&A, RAG, and Chat |
+|[JSL_MedM_q4_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q4_v1_en.html)       | Summarization, Q&A, RAG, and Chat |
+|[JSL_MedSNer_ZS_q16_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_en.html)| Extract and link medical named entities |
+|[JSL_MedSNer_ZS_q8_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_en.html) | Extract and link medical named entities |
+|[JSL_MedSNer_ZS_q4_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_en.html) | Extract and link medical named entities |
+
+**We recommend using 8b quantised versions of the models as the qualitative performance difference between q16 and q8 versions is very negligible.**
+
 *Example*:
 
 ```python
@@ -146,7 +161,7 @@ sample_text= """The patient is suspected to have colorectal cancer. Her family h
 |  2 | biopsy            |     120 |   125 | Pathology_Test   | Past        |     0.957321 |
 |  3 | positive          |     131 |   138 | Pathology_Result | Present     |     0.956439 |
 |  4 | CT scan           |     143 |   149 | Imaging_Test     | Past        |     0.95717  |
-|  5 | metastases        |     175 |   184 | Metastasis       | Possible    |     0.549866 ||
+|  5 | metastases        |     175 |   184 | Metastasis       | Possible    |     0.549866 |
 
 
 Please check the [FewShot Assertion Classifier](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb) Notebook for more information
