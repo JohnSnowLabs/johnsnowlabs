@@ -679,6 +679,55 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p><code class="language-plaintext highlighter-rouge">LLMLoader</code> is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs’ licensed LLMs at various sizes that are finetuned on medical context for certain tasks. It provides various methods for setting parameters, loading models, generating text, and retrieving metadata. The <code class="language-plaintext highlighter-rouge">LLMLoader</code> includes methods for setting various parameters such as input prefix, suffix, cache prompt, number of tokens to predict, sampling techniques, temperature, penalties, and more. Overall, the <code class="language-plaintext highlighter-rouge">LLMLoader</code>  provides a flexible and extensible framework for interacting with language models in a Python and Scala environment using PySpark and Java.</p>
 
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_meds_q16_v1_en.html">JSL_MedS_q16_v1</a></td>
+        <td>Summarization and Q&amp;A</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_meds_q8_v1_en.html">JSL_MedS_q8_v1</a></td>
+        <td>Summarization and Q&amp;A</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_meds_q4_v1_en.html">JSL_MedS_q4_v1</a></td>
+        <td>Summarization and Q&amp;A</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q16_v1_en.html">JSL_MedM_q16_v1</a></td>
+        <td>Summarization, Q&amp;A, RAG, and Chat</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q8_v1_en.html">JSL_MedM_q8_v1</a></td>
+        <td>Summarization, Q&amp;A, RAG, and Chat</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q4_v1_en.html">JSL_MedM_q4_v1</a></td>
+        <td>Summarization, Q&amp;A, RAG, and Chat</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_en.html">JSL_MedSNer_ZS_q16_v1</a></td>
+        <td>Extract and link medical named entities</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_en.html">JSL_MedSNer_ZS_q8_v1</a></td>
+        <td>Extract and link medical named entities</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_en.html">JSL_MedSNer_ZS_q4_v1</a></td>
+        <td>Extract and link medical named entities</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>We recommend using 8b quantized versions of the models as the qualitative performance difference between q16 and q8 versions is very negligible.</strong></p>
+
   <p><em>Example</em>:</p>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
@@ -818,7 +867,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <th style="text-align: left">entities</th>
         <th style="text-align: left">assertion</th>
         <th style="text-align: right">confidence</th>
-        <th> </th>
       </tr>
     </thead>
     <tbody>
@@ -830,7 +878,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Cancer_Dx</td>
         <td style="text-align: left">Possible</td>
         <td style="text-align: right">0.581282</td>
-        <td> </td>
       </tr>
       <tr>
         <td style="text-align: right">1</td>
@@ -840,7 +887,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Cancer_Dx</td>
         <td style="text-align: left">Family</td>
         <td style="text-align: right">0.234656</td>
-        <td> </td>
       </tr>
       <tr>
         <td style="text-align: right">2</td>
@@ -850,7 +896,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Pathology_Test</td>
         <td style="text-align: left">Past</td>
         <td style="text-align: right">0.957321</td>
-        <td> </td>
       </tr>
       <tr>
         <td style="text-align: right">3</td>
@@ -860,7 +905,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Pathology_Result</td>
         <td style="text-align: left">Present</td>
         <td style="text-align: right">0.956439</td>
-        <td> </td>
       </tr>
       <tr>
         <td style="text-align: right">4</td>
@@ -870,7 +914,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Imaging_Test</td>
         <td style="text-align: left">Past</td>
         <td style="text-align: right">0.95717</td>
-        <td> </td>
       </tr>
       <tr>
         <td style="text-align: right">5</td>
@@ -880,7 +923,6 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Metastasis</td>
         <td style="text-align: left">Possible</td>
         <td style="text-align: right">0.549866</td>
-        <td> </td>
       </tr>
     </tbody>
   </table>

@@ -1,958 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-07-12T16:09:56+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Medical Assertion E5 Embedding ( SDOH )</title><link href="/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html" rel="alternate" type="text/html" title="Medical Assertion E5 Embedding ( SDOH )" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en</id><content type="html" xml:base="/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html">## Description
-
-This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_sdoh_en_5.3.3_3.0_1720084681662.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_sdoh_en_5.3.3_3.0_1720084681662.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;e5_embeddings&quot;)
-
-pipeline = Pipeline().setStages([document_assembler, e5_embeddings])
-
-text = [
-    [&quot;I feel a bit drowsy after taking an insulin.&quot;],
-    [&quot;Peter Parker is a nice guy and lives in New York&quot;]
-]
-
-data = spark.createDataFrame(text).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;e5_embeddings&quot;)
-
-val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings))
-
-val result = pipeline.fit(data).transform(data)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                                                                                                                                              embeddings|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -&gt; 0}, [0.016282124, 0.03343147, 0.06332478, -0.018355524, 0.07614877, -0.05762618, -0.027328357, 8.692102E-4, ...|
-|[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -&gt; 0}, [0.119976304, 0.04998236, 0.038619783, 0.04968784, -0.01774702, -0.009462719, 0.012399124, 0.0409855...|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|e5_base_v2_embeddings_medical_assertion_sdoh|
-|Compatibility:|Healthcare NLP 5.3.3+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[document]|
-|Output Labels:|[embeddings]|
-|Language:|en|
-|Size:|393.0 MB|
-|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="embeddings" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="sdoh" /><category term="onnx" /><summary type="html">Description This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG). Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;e5_embeddings&quot;) pipeline = Pipeline().setStages([document_assembler, e5_embeddings]) text = [ [&quot;I feel a bit drowsy after taking an insulin.&quot;], [&quot;Peter Parker is a nice guy and lives in New York&quot;] ] data = spark.createDataFrame(text).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;e5_embeddings&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings)) val result = pipeline.fit(data).transform(data) Results +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ | embeddings| +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -&amp;gt; 0}, [0.016282124, 0.03343147, 0.06332478, -0.018355524, 0.07614877, -0.05762618, -0.027328357, 8.692102E-4, ...| |[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -&amp;gt; 0}, [0.119976304, 0.04998236, 0.038619783, 0.04968784, -0.01774702, -0.009462719, 0.012399124, 0.0409855...| +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: e5_base_v2_embeddings_medical_assertion_sdoh Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [embeddings] Language: en Size: 393.0 MB Case sensitive: false</summary></entry><entry><title type="html">Few-Shot Assertion Model ( SDOH )</title><link href="/2024/07/04/fewhot_assertion_sdoh_e5_base_v2_sdoh_en.html" rel="alternate" type="text/html" title="Few-Shot Assertion Model ( SDOH )" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/fewhot_assertion_sdoh_e5_base_v2_sdoh_en</id><content type="html" xml:base="/2024/07/04/fewhot_assertion_sdoh_e5_base_v2_sdoh_en.html">## Description
-
-Assign assertion status to clinical entities extracted by NER based on their context in the text. Also this model is trained on a list of clinical and biomedical datasets curated in-house
-
-## Predicted Entities
-
-`Absent`, `Past`, `Present`, `Someone_Else`, `Hypothetical`, `Possible`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_sdoh_e5_base_v2_sdoh_en_5.3.3_3.0_1720084864692.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_sdoh_e5_base_v2_sdoh_en_5.3.3_3.0_1720084864692.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)\
-    .setSplitChars([&quot;-&quot;, &quot;\/&quot;])
-
-word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-# ner_sdoh
-clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;])\
-    .setOutputCol(&quot;ner_sdoh_chunk&quot;)\
-    .setBlackList(['Age','Gender','Language','HEALTHCARE_INSTITUTION']) 
-
-few_shot_assertion_converter = FewShotAssertionSentenceConverter()\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;])\
-    .setOutputCol(&quot;assertion_sentence&quot;)
-
-e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;assertion_sentence&quot;])\
-    .setOutputCol(&quot;assertion_embedding&quot;)
-
-few_shot_assertion_classifier = FewShotAssertionClassifierModel()\
-    .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;assertion_embedding&quot;])\
-    .setOutputCol(&quot;assertion&quot;)
-
-assertion_pipeline = Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    few_shot_assertion_converter,
-    e5_embeddings,
-    few_shot_assertion_classifier
-])
-
-data = spark.createDataFrame([[&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave.
-But she has generally housing problems. She lives in a apartment now.  She has long history of EtOH abuse, beginning in her teens.
-She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week.
-Her partner is an alcoholic and a drug abuser for the last 5 years.
-She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;]]).toDF(&quot;text&quot;)
-
-result = assertion_pipeline.fit(data).transform(data)
-
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(Array(&quot;sentence&quot;))
-    .setOutputCol(&quot;token&quot;)
-    .setSplitChars(Array(&quot;-&quot;, &quot;\/&quot;))
-
-val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-// ner_sdoh
-val clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;))
-    .setOutputCol(&quot;ner&quot;)
-
-val ner_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;))
-    .setOutputCol(&quot;ner_sdoh_chunk&quot;)
-    .setBlackList(Array('Age','Gender','Language','HEALTHCARE_INSTITUTION')) 
-
-val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
-    .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;))
-    .setOutputCol(&quot;assertion_sentence&quot;)
-
-val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;assertion_sentence&quot;))
-    .setOutputCol(&quot;assertion_embedding&quot;)
-
-val few_shot_assertion_classifier = FewShotAssertionClassifierModel()
-    .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;assertion_embedding&quot;))
-    .setOutputCol(&quot;assertion&quot;)
-
-val pipeline = new Pipeline().setStages(Array(
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    few_shot_assertion_converter,
-    e5_embeddings,
-    few_shot_assertion_classifier))
-
-val data = Seq(Array(&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave.
-But she has generally housing problems. She lives in a apartment now.  She has long history of EtOH abuse, beginning in her teens.
-She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week.
-Her partner is an alcoholic and a drug abuser for the last 5 years.
-She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;)).toDF(&quot;text&quot;)
-val result = pipeline.fit(data).transform(data)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-|    | chunks             |   begin |   end | entities           | assertion    |   confidence |
-|---:|:-------------------|--------:|------:|:-------------------|:-------------|-------------:|
-|  0 | cleaning assistant |      17 |    34 | Employment         | present      |     0.956549 |
-|  1 | health insurance   |      64 |    79 | Insurance_Status   | Absent       |     0.930705 |
-|  2 | apartment          |     156 |   164 | Housing            | present      |     0.953653 |
-|  3 | EtOH abuse         |     196 |   205 | Alcohol            | Past         |     0.855614 |
-|  4 | Rehab Programs     |     265 |   278 | Access_To_Care     | Hypothetical |     0.871034 |
-|  5 | DUI                |     289 |   291 | Legal_Issues       | Past         |     0.853602 |
-|  6 | alcoholic          |     363 |   371 | Alcohol            | Someone_Else |     0.895126 |
-|  7 | drug abuser        |     379 |   389 | Substance_Use      | Someone_Else |     0.89584  |
-|  8 | last 5 years       |     399 |   410 | Substance_Duration | present      |     0.95608  |
-|  9 | socially isolated  |     440 |   456 | Social_Exclusion   | present      |     0.956841 |
-| 10 | strong support     |     472 |   485 | Social_Support     | Absent       |     0.93079  |
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|fewhot_assertion_sdoh_e5_base_v2_sdoh|
-|Compatibility:|Healthcare NLP 5.3.3+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[assertion_embedding]|
-|Output Labels:|[assertion]|
-|Language:|en|
-|Size:|25.4 KB|
-
-## Benchmarking
-
-```bash
-       label  precision    recall  f1-score   support
-      Absent       0.93      0.95      0.94       385
-Hypothetical       0.83      0.82      0.83       211
-        Past       0.71      0.71      0.71       156
-    Possible       0.75      0.72      0.74        64
-Someone_Else       0.89      0.75      0.81       240
-     present       0.85      0.89      0.87       670
-    accuracy          -         -      0.85      1726
-   macro-avg       0.83      0.81      0.81      1726
-weighted-avg       0.85      0.85      0.85      1726
-```</content><author><name>John Snow Labs</name></author><category term="assertion" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="sdoh" /><category term="fewshot" /><summary type="html">Description Assign assertion status to clinical entities extracted by NER based on their context in the text. Also this model is trained on a list of clinical and biomedical datasets curated in-house Predicted Entities Absent, Past, Present, Someone_Else, Hypothetical, Possible Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;)\ .setSplitChars([&quot;-&quot;, &quot;\/&quot;]) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) # ner_sdoh clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;])\ .setOutputCol(&quot;ner_sdoh_chunk&quot;)\ .setBlackList(['Age','Gender','Language','HEALTHCARE_INSTITUTION']) few_shot_assertion_converter = FewShotAssertionSentenceConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;])\ .setOutputCol(&quot;assertion_sentence&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_sentence&quot;])\ .setOutputCol(&quot;assertion_embedding&quot;) few_shot_assertion_classifier = FewShotAssertionClassifierModel()\ .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_embedding&quot;])\ .setOutputCol(&quot;assertion&quot;) assertion_pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier ]) data = spark.createDataFrame([[&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now. She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week. Her partner is an alcoholic and a drug abuser for the last 5 years. She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = assertion_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) .setSplitChars(Array(&quot;-&quot;, &quot;\/&quot;)) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) // ner_sdoh val clinical_ner = MedicalNerModel.pretrained(&quot;ner_sdoh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;)) .setOutputCol(&quot;ner_sdoh_chunk&quot;) .setBlackList(Array('Age','Gender','Language','HEALTHCARE_INSTITUTION')) val few_shot_assertion_converter = new FewShotAssertionSentenceConverter() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;, &quot;ner_sdoh_chunk&quot;)) .setOutputCol(&quot;assertion_sentence&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_sentence&quot;)) .setOutputCol(&quot;assertion_embedding&quot;) val few_shot_assertion_classifier = FewShotAssertionClassifierModel() .pretrained(&quot;fewhot_assertion_sdoh_e5_base_v2_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_embedding&quot;)) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier)) val data = Seq(Array(&quot;&quot;&quot;Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now. She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs. She had DUI back in April and was due to be in court this week. Her partner is an alcoholic and a drug abuser for the last 5 years. She also mentioned feeling socially isolated and lack of a strong support system.&quot;&quot;&quot;)).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results | | chunks | begin | end | entities | assertion | confidence | |---:|:-------------------|--------:|------:|:-------------------|:-------------|-------------:| | 0 | cleaning assistant | 17 | 34 | Employment | present | 0.956549 | | 1 | health insurance | 64 | 79 | Insurance_Status | Absent | 0.930705 | | 2 | apartment | 156 | 164 | Housing | present | 0.953653 | | 3 | EtOH abuse | 196 | 205 | Alcohol | Past | 0.855614 | | 4 | Rehab Programs | 265 | 278 | Access_To_Care | Hypothetical | 0.871034 | | 5 | DUI | 289 | 291 | Legal_Issues | Past | 0.853602 | | 6 | alcoholic | 363 | 371 | Alcohol | Someone_Else | 0.895126 | | 7 | drug abuser | 379 | 389 | Substance_Use | Someone_Else | 0.89584 | | 8 | last 5 years | 399 | 410 | Substance_Duration | present | 0.95608 | | 9 | socially isolated | 440 | 456 | Social_Exclusion | present | 0.956841 | | 10 | strong support | 472 | 485 | Social_Support | Absent | 0.93079 | Model Information Model Name: fewhot_assertion_sdoh_e5_base_v2_sdoh Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [assertion_embedding] Output Labels: [assertion] Language: en Size: 25.4 KB Benchmarking label precision recall f1-score support Absent 0.93 0.95 0.94 385 Hypothetical 0.83 0.82 0.83 211 Past 0.71 0.71 0.71 156 Possible 0.75 0.72 0.74 64 Someone_Else 0.89 0.75 0.81 240 present 0.85 0.89 0.87 670 accuracy - - 0.85 1726 macro-avg 0.83 0.81 0.81 1726 weighted-avg 0.85 0.85 0.85 1726</summary></entry><entry><title type="html">Legal Clauses Multilabel Classifier</title><link href="/2024/07/04/legmulticlf_edgar_le_en.html" rel="alternate" type="text/html" title="Legal Clauses Multilabel Classifier" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/legmulticlf_edgar_le_en</id><content type="html" xml:base="/2024/07/04/legmulticlf_edgar_le_en.html">## Description
-
-This is a Multilabel Document Classification model, which can be used to identify up to 15 classes in texts. The classes are the following:
-
-- terminations
-- assigns
-- notices
-- amendments
-- waivers
-- survival
-- successors
-- governing laws
-- severability
-- expenses
-- assignments
-- warranties
-- representations
-- entire agreements
-- counterparts
-
-## Predicted Entities
-
-`terminations`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_edgar_le_en_1.0.0_3.0_1720072778562.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_edgar_le_en_1.0.0_3.0_1720072778562.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document = nlp.DocumentAssembler()\
-  .setInputCol(&quot;text&quot;)\
-  .setOutputCol(&quot;document&quot;)
-
-embeddings = nlp.E5Embeddings.pretrained(&quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)\
-  .setInputCols([&quot;document&quot;])\
-  .setOutputCol(&quot;sentence_embeddings&quot;)
-
-
-multiClassifier = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_edgar_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) \
-  .setInputCols([&quot;document&quot;, &quot;sentence_embeddings&quot;]) \
-  .setOutputCol(&quot;class&quot;)
-
-ledgar_pipeline = nlp.Pipeline(
-    stages=[document, 
-            embeddings,
-            multiClassifier])
-
-
-light_pipeline = LightPipeline(ledgar_pipeline.fit(spark.createDataFrame([['']]).toDF(&quot;text&quot;)))
-
-result = light_pipeline.annotate(&quot;&quot;&quot;(a) No failure or delay by the Administrative Agent or any Lender in exercising any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any such right or power, or any abandonment or discontinuance of steps to enforce such a right or power, preclude any other or further exercise thereof or the exercise of any other right or power. The rights and remedies of the Administrative Agent and the Lenders hereunder are cumulative and are not exclusive of any rights or remedies that they would otherwise have. No waiver of any provision of this Agreement or consent to any departure by the Borrower therefrom shall in any event be effective unless the same shall be permitted by paragraph (b) of this Section, and then such waiver or consent shall be effective only in the specific instance and for the purpose for which given. Without limiting the generality of the foregoing, the making of a Loan shall not be construed as a waiver of any Default, regardless of whether the Administrative Agent or any Lender may have had notice or knowledge of such Default at the time.&quot;&quot;&quot;)
-
-result[&quot;class&quot;]
-```
-
-&lt;/div&gt;
-
-## Results
-
-```bash
-['waivers', 'amendments']
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|legmulticlf_edgar_le|
-|Compatibility:|Legal NLP 1.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence_embeddings]|
-|Output Labels:|[class]|
-|Language:|en|
-|Size:|14.0 MB|
-
-## References
-
-Ledgar dataset, available at https://metatext.io/datasets/ledgar, with in-house data
-
-## Benchmarking
-
-```bash
-Classification report: 
-               precision    recall  f1-score   support
-
-           0       0.89      0.89      0.89      1066
-           1       0.83      0.65      0.73       333
-           2       0.80      0.81      0.80       537
-           3       0.99      0.99      0.99       918
-           4       0.98      0.98      0.98      1049
-           5       0.99      0.97      0.98       339
-           6       1.00      0.99      0.99      1274
-           7       0.98      0.98      0.98       926
-           8       0.91      0.92      0.91       437
-           9       0.98      0.97      0.98       922
-          10       0.89      0.88      0.88       674
-          11       0.95      0.96      0.95       566
-          12       0.92      0.79      0.85       354
-          13       0.89      0.87      0.88       725
-          14       0.88      0.78      0.83       365
-
-   micro avg       0.94      0.92      0.93     10485
-   macro avg       0.93      0.89      0.91     10485
-weighted avg       0.94      0.92      0.93     10485
- samples avg       0.93      0.94      0.93     10485
-```</content><author><name>John Snow Labs</name></author><category term="clauses" /><category term="edgar" /><category term="ledgar" /><category term="en" /><category term="licensed" /><category term="tensorflow" /><summary type="html">Description This is a Multilabel Document Classification model, which can be used to identify up to 15 classes in texts. The classes are the following: terminations assigns notices amendments waivers survival successors governing laws severability expenses assignments warranties representations entire agreements counterparts Predicted Entities terminations Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) embeddings = nlp.E5Embeddings.pretrained(&quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence_embeddings&quot;) multiClassifier = nlp.MultiClassifierDLModel.pretrained(&quot;legmulticlf_edgar_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;sentence_embeddings&quot;]) \ .setOutputCol(&quot;class&quot;) ledgar_pipeline = nlp.Pipeline( stages=[document, embeddings, multiClassifier]) light_pipeline = LightPipeline(ledgar_pipeline.fit(spark.createDataFrame([['']]).toDF(&quot;text&quot;))) result = light_pipeline.annotate(&quot;&quot;&quot;(a) No failure or delay by the Administrative Agent or any Lender in exercising any right or power hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any such right or power, or any abandonment or discontinuance of steps to enforce such a right or power, preclude any other or further exercise thereof or the exercise of any other right or power. The rights and remedies of the Administrative Agent and the Lenders hereunder are cumulative and are not exclusive of any rights or remedies that they would otherwise have. No waiver of any provision of this Agreement or consent to any departure by the Borrower therefrom shall in any event be effective unless the same shall be permitted by paragraph (b) of this Section, and then such waiver or consent shall be effective only in the specific instance and for the purpose for which given. Without limiting the generality of the foregoing, the making of a Loan shall not be construed as a waiver of any Default, regardless of whether the Administrative Agent or any Lender may have had notice or knowledge of such Default at the time.&quot;&quot;&quot;) result[&quot;class&quot;] Results ['waivers', 'amendments'] Model Information Model Name: legmulticlf_edgar_le Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References Ledgar dataset, available at https://metatext.io/datasets/ledgar, with in-house data Benchmarking Classification report: precision recall f1-score support 0 0.89 0.89 0.89 1066 1 0.83 0.65 0.73 333 2 0.80 0.81 0.80 537 3 0.99 0.99 0.99 918 4 0.98 0.98 0.98 1049 5 0.99 0.97 0.98 339 6 1.00 0.99 0.99 1274 7 0.98 0.98 0.98 926 8 0.91 0.92 0.91 437 9 0.98 0.97 0.98 922 10 0.89 0.88 0.88 674 11 0.95 0.96 0.95 566 12 0.92 0.79 0.85 354 13 0.89 0.87 0.88 725 14 0.88 0.78 0.83 365 micro avg 0.94 0.92 0.93 10485 macro avg 0.93 0.89 0.91 10485 weighted avg 0.94 0.92 0.93 10485 samples avg 0.93 0.94 0.93 10485</summary></entry><entry><title type="html">Multilabel Classification of NDA Clauses (paragraph, medium)</title><link href="/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en.html" rel="alternate" type="text/html" title="Multilabel Classification of NDA Clauses (paragraph, medium)" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en</id><content type="html" xml:base="/2024/07/04/legmulticlf_mnda_sections_paragraph_other_le_en.html">## Description
-
-This models is a version of `legmulticlf_mnda_sections_other` (sentence, medium) but expecting a bigger-than-sentence context, ideally between 2 and 4-5 sentences, or a small paragraph, to provide with more context.
-
-It should be run on sentences of the NDA clauses, and will retrieve a series of 1..N labels for each of them. The possible clause types detected my this model in NDA / MNDA aggrements are:
-
-1. Parties to the Agreement - Names of the Parties Clause  
-2. Identification of What Information Is Confidential - Definition of Confidential Information Clause
-3. Use of Confidential Information: Permitted Use Clause and Obligations of the Recipient
-4. Time Frame of the Agreement - Termination Clause  
-5. Return of Confidential Information Clause 
-6. Remedies for Breaches of Agreement - Remedies Clause 
-7. Non-Solicitation Clause
-8. Dispute Resolution Clause  
-9. Exceptions Clause  
-10. Non-competition clause
-11. Other: Nothing of the above (synonym to `[]`)-
-
-## Predicted Entities
-
-`APPLIC_LAW`, `ASSIGNMENT`, `DEF_OF_CONF_INFO`, `DISPUTE_RESOL`, `EXCEPTIONS`, `NAMES_OF_PARTIES`, `NON_COMP`, `NON_SOLIC`, `PREAMBLE`, `REMEDIES`, `REQ_DISCL`, `RETURN_OF_CONF_INFO`, `TERMINATION`, `USE_OF_CONF_INFO`, `OTHER`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_mnda_sections_paragraph_other_le_en_1.0.0_3.0_1720071478051.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_mnda_sections_paragraph_other_le_en_1.0.0_3.0_1720071478051.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document = nlp.DocumentAssembler()\
-  .setInputCol(&quot;text&quot;)\
-  .setOutputCol(&quot;document&quot;)\
-  .setCleanupMode(&quot;shrink&quot;)
-
-embeddings = (
-    nlp.E5Embeddings.pretrained(
-        &quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;)
-    .setInputCols([&quot;document&quot;])
-    .setOutputCol(&quot;sentence_embeddings&quot;)
-)
-
-paragraph_classifier = (
-    nlp.MultiClassifierDLModel.load(&quot;legmulticlf_mnda_sections_paragraph_other_le&quot;, &quot;en&quot;, &quot;legal/models&quot;)
-    .setInputCols([&quot;sentence_embeddings&quot;])
-    .setOutputCol(&quot;class&quot;)
-)
-
-
-sentence_pipeline = nlp.Pipeline(
-    stages=[document, 
-            embeddings,
-            paragraph_classifier])
-
-
-
-
-df = spark.createDataFrame([[&quot;'Destruction of Confidential Information. \xa0 Promptly (and in any event within five days) after the earlier of&quot;]]).toDF(&quot;text&quot;)
-
-model = sentence_pipeline.fit(df)
-
-result = model.transform(df)
-
-result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False)
-```
-
-&lt;/div&gt;
-
-## Results
-
-```bash
-+-------------------------------------------------------------------------------------------------------------+---------------------+
-|text                                                                                                         |result               |
-+-------------------------------------------------------------------------------------------------------------+---------------------+
-|'Destruction of Confidential Information.   Promptly (and in any event within five days) after the earlier of|[RETURN_OF_CONF_INFO]|
-+-------------------------------------------------------------------------------------------------------------+---------------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|legmulticlf_mnda_sections_paragraph_other_le|
-|Compatibility:|Legal NLP 1.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence_embeddings]|
-|Output Labels:|[class]|
-|Language:|en|
-|Size:|14.0 MB|
-
-## References
-
-In-house MNDA
-
-## Benchmarking
-
-```bash
-|               | precision | recall | f1-score | support |
-|---------------|-----------|--------|----------|---------|
-| APPLIC_LAW    | 0.91      | 0.91   | 0.91     | 58      |
-| ASSIGNMENT    | 0.96      | 0.87   | 0.91     | 52      |
-| DEF_OF_CONF_INFO | 0.91   | 0.83   | 0.87     | 89      |
-| DISPUTE_RESOL | 0.90      | 0.72   | 0.80     | 64      |
-| EXCEPTIONS    | 0.97      | 0.92   | 0.95     | 144     |
-| NAMES_OF_PARTIES | 0.95  | 0.85   | 0.89     | 84      |
-| NON_COMP      | 0.80      | 0.80   | 0.80     | 25      |
-| NON_SOLIC     | 0.92      | 0.80   | 0.86     | 60      |
-| PREAMBLE      | 0.79      | 0.82   | 0.80     | 186     |
-| REMEDIES      | 0.91      | 0.79   | 0.85     | 76      |
-| REQ_DISCL     | 0.88      | 0.86   | 0.87     | 73      |
-| RETURN_OF_CONF_INFO | 0.91 | 0.89   | 0.90     | 83      |
-| TERMINATION   | 0.98      | 0.86   | 0.92     | 96      |
-| USE_OF_CONF_INFO | 0.85   | 0.85   | 0.85     | 47      |
-| OTHER         | 0.86      | 0.77   | 0.81     | 87      |
-| **micro avg** | **0.90**  | **0.84** | **0.87** | **1224**|
-| **macro avg** | **0.90**  | **0.84** | **0.87** | **1224**|
-| **weighted avg** | **0.90** | **0.84** | **0.87** | **1224**|
-| **samples avg** | **0.85** | **0.85** | **0.85** | **1224**|
-
-```</content><author><name>John Snow Labs</name></author><category term="en" /><category term="legal" /><category term="licensed" /><category term="mnda" /><category term="tensorflow" /><summary type="html">Description This models is a version of legmulticlf_mnda_sections_other (sentence, medium) but expecting a bigger-than-sentence context, ideally between 2 and 4-5 sentences, or a small paragraph, to provide with more context. It should be run on sentences of the NDA clauses, and will retrieve a series of 1..N labels for each of them. The possible clause types detected my this model in NDA / MNDA aggrements are: Parties to the Agreement - Names of the Parties Clause Identification of What Information Is Confidential - Definition of Confidential Information Clause Use of Confidential Information: Permitted Use Clause and Obligations of the Recipient Time Frame of the Agreement - Termination Clause Return of Confidential Information Clause Remedies for Breaches of Agreement - Remedies Clause Non-Solicitation Clause Dispute Resolution Clause Exceptions Clause Non-competition clause Other: Nothing of the above (synonym to [])- Predicted Entities APPLIC_LAW, ASSIGNMENT, DEF_OF_CONF_INFO, DISPUTE_RESOL, EXCEPTIONS, NAMES_OF_PARTIES, NON_COMP, NON_SOLIC, PREAMBLE, REMEDIES, REQ_DISCL, RETURN_OF_CONF_INFO, TERMINATION, USE_OF_CONF_INFO, OTHER Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;)\ .setCleanupMode(&quot;shrink&quot;) embeddings = ( nlp.E5Embeddings.pretrained( &quot;legembedding_e5_base&quot;, &quot;en&quot;, &quot;legal/models&quot;) .setInputCols([&quot;document&quot;]) .setOutputCol(&quot;sentence_embeddings&quot;) ) paragraph_classifier = ( nlp.MultiClassifierDLModel.load(&quot;legmulticlf_mnda_sections_paragraph_other_le&quot;, &quot;en&quot;, &quot;legal/models&quot;) .setInputCols([&quot;sentence_embeddings&quot;]) .setOutputCol(&quot;class&quot;) ) sentence_pipeline = nlp.Pipeline( stages=[document, embeddings, paragraph_classifier]) df = spark.createDataFrame([[&quot;'Destruction of Confidential Information. \xa0 Promptly (and in any event within five days) after the earlier of&quot;]]).toDF(&quot;text&quot;) model = sentence_pipeline.fit(df) result = model.transform(df) result.select(&quot;text&quot;, &quot;class.result&quot;).show(truncate=False) Results +-------------------------------------------------------------------------------------------------------------+---------------------+ |text |result | +-------------------------------------------------------------------------------------------------------------+---------------------+ |'Destruction of Confidential Information. Promptly (and in any event within five days) after the earlier of|[RETURN_OF_CONF_INFO]| +-------------------------------------------------------------------------------------------------------------+---------------------+ Model Information Model Name: legmulticlf_mnda_sections_paragraph_other_le Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [class] Language: en Size: 14.0 MB References In-house MNDA Benchmarking | | precision | recall | f1-score | support | |---------------|-----------|--------|----------|---------| | APPLIC_LAW | 0.91 | 0.91 | 0.91 | 58 | | ASSIGNMENT | 0.96 | 0.87 | 0.91 | 52 | | DEF_OF_CONF_INFO | 0.91 | 0.83 | 0.87 | 89 | | DISPUTE_RESOL | 0.90 | 0.72 | 0.80 | 64 | | EXCEPTIONS | 0.97 | 0.92 | 0.95 | 144 | | NAMES_OF_PARTIES | 0.95 | 0.85 | 0.89 | 84 | | NON_COMP | 0.80 | 0.80 | 0.80 | 25 | | NON_SOLIC | 0.92 | 0.80 | 0.86 | 60 | | PREAMBLE | 0.79 | 0.82 | 0.80 | 186 | | REMEDIES | 0.91 | 0.79 | 0.85 | 76 | | REQ_DISCL | 0.88 | 0.86 | 0.87 | 73 | | RETURN_OF_CONF_INFO | 0.91 | 0.89 | 0.90 | 83 | | TERMINATION | 0.98 | 0.86 | 0.92 | 96 | | USE_OF_CONF_INFO | 0.85 | 0.85 | 0.85 | 47 | | OTHER | 0.86 | 0.77 | 0.81 | 87 | | **micro avg** | **0.90** | **0.84** | **0.87** | **1224**| | **macro avg** | **0.90** | **0.84** | **0.87** | **1224**| | **weighted avg** | **0.90** | **0.84** | **0.87** | **1224**| | **samples avg** | **0.85** | **0.85** | **0.85** | **1224**|</summary></entry><entry><title type="html">Detect Past Assertion Status with Contextual Assertion</title><link href="/2024/07/04/contextual_assertion_past_en.html" rel="alternate" type="text/html" title="Detect Past Assertion Status with Contextual Assertion" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/contextual_assertion_past_en</id><content type="html" xml:base="/2024/07/04/contextual_assertion_past_en.html">## Description
-
-This model identifies contextual cues within text data to detect past assertions. It annotates text chunks with assertions using configurable rules, prefix and suffix patterns, and exception patterns.
-
-## Predicted Entities
-
-`past`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_past_en_5.4.0_3.0_1720051604670.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_past_en_5.4.0_3.0_1720051604670.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document_assembler = DocumentAssembler() \
-    .setInputCol(&quot;text&quot;) \
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetector() \
-    .setInputCols([&quot;document&quot;]) \
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer() \
-    .setInputCols([&quot;sentence&quot;]) \
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel \
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = MedicalNerModel \
-    .pretrained(&quot;ner_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverter() \
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion_past = ContextualAssertion.pretrained(&quot;contextual_assertion_past&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;) \
-    .setOutputCol(&quot;assertionPast&quot;) \
-  
-
-flattener = Flattener() \
-    .setInputCols(&quot;assertionPast&quot;) \
-    .setExplodeSelectedFields({&quot;assertionPast&quot;:[&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                            &quot;begin as begin&quot;,
-                                            &quot;end as end&quot;,
-                                            &quot;metadata.ner_label as ner_label&quot;,
-                                            &quot;result as result&quot;]})
-
-pipeline = Pipeline(
-    stages=[
-      document_assembler,
-      sentence_detector,
-      tokenizer,
-      word_embeddings,
-      clinical_ner,
-      ner_converter,
-      contextual_assertion_past,
-      flattener
-
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-
-model = pipeline.fit(empty_data)
-text = &quot;&quot;&quot;The patient had no history of smoking or alcohol consumption and there was no family history of any types of tumor. &quot;&quot;&quot;
-
-data = spark.createDataFrame([[text]]).toDF('text')
-
-result = model.transform(data)
-result.show(truncate=False)
-```
-```scala
-val documentAssembler = new DocumentAssembler()
-  .setInputCol(&quot;text&quot;)
-  .setOutputCol(&quot;document&quot;)
-
-val sentenceDetector = new SentenceDetector()
-  .setInputCols(Array(&quot;document&quot;))
-  .setOutputCol(&quot;sentences&quot;)
-
-val tokenizer = new Tokenizer()
-  .setInputCols(Array(&quot;sentences&quot;))
-  .setOutputCol(&quot;tokens&quot;)
-
-val embedder = WordEmbeddingsModel
-  .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-  .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;))
-  .setOutputCol(&quot;embeddings&quot;)
-
-val nerTagger = MedicalNerModel
-  .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-  .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;))
-  .setOutputCol(&quot;nerTags&quot;)
-
-val nerConverter = new NerConverterInternal()
-  .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;))
-  .setOutputCol(&quot;nerChunks&quot;)
-
-val contextualAssertionAbsent = ContextualAssertion.pretrained(&quot;contextual_assertion_past&quot;,&quot;en&quot; ,&quot;clinical/models&quot;)
-  .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;)
-  .setOutputCol(&quot;assertionPast&quot;)
-
-
-val flattener = new Flattener()
-  .setInputCols(&quot;assertionPast&quot;)
-  .setExplodeSelectedFields(Map(&quot;assertionPast&quot; -&gt; Array(&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                          &quot;metadata.entity&quot;,
-                                                          &quot;begin as begin&quot;,
-                                                          &quot;end as end&quot;,
-                                                          &quot;metadata.ner_label as ner_label&quot;,
-                                                          &quot;result as result&quot;)
-                            ))
-  
-val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;)
-
-val pipeline = new Pipeline()
-  .setStages(
-      Array(documentAssembler,
-            sentenceDetector,
-            tokenizer,
-            embedder,
-            nerTagger,
-            nerConverter,
-            contextualAssertionAbsent,
-            flattener
-  )).fit(emptyDataSet)
-
-val text = Seq(&quot;The patient had no history of smoking or alcohol consumption and there was no family history of any types of tumor.&quot;).toDS.toDF(&quot;text&quot;)
-
-val dataSetResult = pipeline.transform(text)
-dataSetResult.show(100)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+---------+-----+---+-----------+------+
-|ner_chunk|begin|end|ner_label  |result|
-+---------+-----+---+-----------+------+
-|smoking  |30   |36 |Smoking    |past  |
-|alcohol  |41   |47 |Alcohol    |past  |
-|tumor    |109  |113|Oncological|past  |
-+---------+-----+---+-----------+------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|contextual_assertion_past|
-|Compatibility:|Healthcare NLP 5.4.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, chunk]|
-|Output Labels:|[assertionPast]|
-|Language:|en|
-|Size:|1.5 KB|
-|Case sensitive:|false|
-
-## Benchmarking
-
-```bash
-       label  precision    recall  f1-score   support
-        Past       1.00      0.92      0.96        92
-    accuracy        -          -       0.92        92
-   macro_avg       0.50      0.46      0.48        92
-weighted_avg       1.00      0.92      0.96        92
-```</content><author><name>John Snow Labs</name></author><category term="assertion" /><category term="past" /><category term="clinical" /><category term="en" /><category term="contextual" /><category term="licensed" /><summary type="html">Description This model identifies contextual cues within text data to detect past assertions. It annotates text chunks with assertions using configurable rules, prefix and suffix patterns, and exception patterns. Predicted Entities past Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel \ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel \ .pretrained(&quot;ner_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverter() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion_past = ContextualAssertion.pretrained(&quot;contextual_assertion_past&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;) \ .setOutputCol(&quot;assertionPast&quot;) \ flattener = Flattener() \ .setInputCols(&quot;assertionPast&quot;) \ .setExplodeSelectedFields({&quot;assertionPast&quot;:[&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot;]}) pipeline = Pipeline( stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion_past, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;The patient had no history of smoking or alcohol consumption and there was no family history of any types of tumor. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) result.show(truncate=False) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentences&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentences&quot;)) .setOutputCol(&quot;tokens&quot;) val embedder = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerTagger = MedicalNerModel .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;nerTags&quot;) val nerConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;)) .setOutputCol(&quot;nerChunks&quot;) val contextualAssertionAbsent = ContextualAssertion.pretrained(&quot;contextual_assertion_past&quot;,&quot;en&quot; ,&quot;clinical/models&quot;) .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;) .setOutputCol(&quot;assertionPast&quot;) val flattener = new Flattener() .setInputCols(&quot;assertionPast&quot;) .setExplodeSelectedFields(Map(&quot;assertionPast&quot; -&amp;gt; Array(&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;metadata.entity&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot;) )) val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;) val pipeline = new Pipeline() .setStages( Array(documentAssembler, sentenceDetector, tokenizer, embedder, nerTagger, nerConverter, contextualAssertionAbsent, flattener )).fit(emptyDataSet) val text = Seq(&quot;The patient had no history of smoking or alcohol consumption and there was no family history of any types of tumor.&quot;).toDS.toDF(&quot;text&quot;) val dataSetResult = pipeline.transform(text) dataSetResult.show(100) Results +---------+-----+---+-----------+------+ |ner_chunk|begin|end|ner_label |result| +---------+-----+---+-----------+------+ |smoking |30 |36 |Smoking |past | |alcohol |41 |47 |Alcohol |past | |tumor |109 |113|Oncological|past | +---------+-----+---+-----------+------+ Model Information Model Name: contextual_assertion_past Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Input Labels: [sentence, token, chunk] Output Labels: [assertionPast] Language: en Size: 1.5 KB Case sensitive: false Benchmarking label precision recall f1-score support Past 1.00 0.92 0.96 92 accuracy - - 0.92 92 macro_avg 0.50 0.46 0.48 92 weighted_avg 1.00 0.92 0.96 92</summary></entry><entry><title type="html">Medical Assertion E5 Embedding ( Oncology )</title><link href="/2024/07/03/e5_base_v2_embeddings_medical_assertion_oncology_en.html" rel="alternate" type="text/html" title="Medical Assertion E5 Embedding ( Oncology )" /><published>2024-07-03T00:00:00+00:00</published><updated>2024-07-03T00:00:00+00:00</updated><id>/2024/07/03/e5_base_v2_embeddings_medical_assertion_oncology_en</id><content type="html" xml:base="/2024/07/03/e5_base_v2_embeddings_medical_assertion_oncology_en.html">## Description
-
-This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_oncology_en_5.3.3_3.0_1720011788844.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_oncology_en_5.3.3_3.0_1720011788844.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;e5_embeddings&quot;)
-
-pipeline = Pipeline().setStages([document_assembler, e5_embeddings])
-
-text = [
-    [&quot;I feel a bit drowsy after taking an insulin.&quot;],
-    [&quot;Peter Parker is a nice guy and lives in New York&quot;]
-]
-
-data = spark.createDataFrame(text).toDF(&quot;text&quot;)
-
-result = pipeline.fit(data).transform(data)
-
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;e5_embeddings&quot;)
-
-val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings))
-
-val result = pipeline.fit(data).transform(data)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                                                                                                                                              embeddings|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -&gt; 0}, [0.013063217, 0.021155916, 0.047363397, 0.0150518585, -0.013764424, -0.05267421, -0.011824028, -0.011092...|
-|[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -&gt; 0}, [0.03685236, 0.05191949, 0.025875507, 0.04316585, 0.011442473, -0.04750773, -0.03281609, 0.012618238...|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|e5_base_v2_embeddings_medical_assertion_oncology|
-|Compatibility:|Healthcare NLP 5.3.3+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[document]|
-|Output Labels:|[embeddings]|
-|Language:|en|
-|Size:|393.7 MB|
-|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="embeddings" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="oncology" /><category term="onnx" /><summary type="html">Description This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG). Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;e5_embeddings&quot;) pipeline = Pipeline().setStages([document_assembler, e5_embeddings]) text = [ [&quot;I feel a bit drowsy after taking an insulin.&quot;], [&quot;Peter Parker is a nice guy and lives in New York&quot;] ] data = spark.createDataFrame(text).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;e5_embeddings&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings)) val result = pipeline.fit(data).transform(data) Results +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ | embeddings| +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -&amp;gt; 0}, [0.013063217, 0.021155916, 0.047363397, 0.0150518585, -0.013764424, -0.05267421, -0.011824028, -0.011092...| |[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -&amp;gt; 0}, [0.03685236, 0.05191949, 0.025875507, 0.04316585, 0.011442473, -0.04750773, -0.03281609, 0.012618238...| +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: e5_base_v2_embeddings_medical_assertion_oncology Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [embeddings] Language: en Size: 393.7 MB Case sensitive: false</summary></entry><entry><title type="html">Few-Shot Assertion Model ( Oncology )</title><link href="/2024/07/03/fewhot_assertion_oncology_e5_base_v2_oncology_en.html" rel="alternate" type="text/html" title="Few-Shot Assertion Model ( Oncology )" /><published>2024-07-03T00:00:00+00:00</published><updated>2024-07-03T00:00:00+00:00</updated><id>/2024/07/03/fewhot_assertion_oncology_e5_base_v2_oncology_en</id><content type="html" xml:base="/2024/07/03/fewhot_assertion_oncology_e5_base_v2_oncology_en.html">## Description
-
-Assign assertion status to clinical entities extracted by NER based on their context in the text. Also, this model is trained on a list of clinical and biomedical datasets curated in-house
-
-
-## Predicted Entities
-
-`Absent`, `Past`, `Present`, `Family`, `Hypothetical`, `Possible`
-
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_oncology_e5_base_v2_oncology_en_5.3.3_3.0_1720013627652.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_oncology_e5_base_v2_oncology_en_5.3.3_3.0_1720013627652.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)\
-    .setSplitChars([&quot;-&quot;, &quot;\/&quot;])
-
-word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-# ner_oncology
-ner_oncology = MedicalNerModel.pretrained(&quot;ner_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner_oncology&quot;)
-
-ner_oncology_converter = NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner_oncology&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-few_shot_assertion_converter = FewShotAssertionSentenceConverter()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;])\
-    .setOutputCol(&quot;assertion_sentence&quot;)
-
-e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;assertion_sentence&quot;])\
-    .setOutputCol(&quot;assertion_embedding&quot;)
-
-few_shot_assertion_classifier = FewShotAssertionClassifierModel()\
-    .pretrained(&quot;fewhot_assertion_oncology_e5_base_v2_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;assertion_embedding&quot;])\
-    .setOutputCol(&quot;assertion&quot;)
- 
-assertion_pipeline = Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    ner_oncology,
-    ner_oncology_converter,
-    few_shot_assertion_converter,
-    e5_embeddings,
-    few_shot_assertion_classifier
-])
-
-sample_text= [
-&quot;&quot;&quot;The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases.&quot;&quot;&quot;
-]
-
-data = spark.createDataFrame([sample_text]).toDF(&quot;text&quot;)
-
-result = assertion_pipeline.fit(data).transform(data)
-
-```
-```scala
-val document_assembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;sentence&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(Array(&quot;sentence&quot;))
-    .setOutputCol(&quot;token&quot;)
-
-val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-# ner_oncology
-val ner_oncology = MedicalNerModel.pretrained(&quot;ner_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;ner_oncology&quot;)
-
-val ner_oncology_converter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner_oncology&quot;))
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-val few_shot_assertion_converter = new FewShotAssertionSentenceConverter()
-    .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;))
-    .setOutputCol(&quot;assertion_sentence&quot;)
-
-val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;assertion_sentence&quot;))
-    .setOutputCol(&quot;assertion_embedding&quot;)
-
-val few_shot_assertion_classifier = FewShotAssertionClassifierModel()
-    .pretrained(&quot;fewhot_assertion_oncology_e5_base_v2_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;assertion_embedding&quot;))
-    .setOutputCol(&quot;assertion&quot;)
-
-val pipeline = new Pipeline().setStages(Array(    
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    ner_oncology,
-    ner_oncology_converter,
-    few_shot_assertion_converter,
-    e5_embeddings,
-    few_shot_assertion_classifier))
-
-val data = Seq(&quot;The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases.&quot;).toDF(&quot;text&quot;)
-
-val result = pipeline.fit(data).transform(data)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-| chunks            |   begin |   end | entities         | assertion   |   confidence |
-|:------------------|--------:|------:|:-----------------|:------------|-------------:|
-| colorectal cancer |      33 |    49 | Cancer_Dx        | Possible    |     0.581282 |
-| Her               |      52 |    54 | Gender           | Present     |     0.9563   |
-| cancers           |      93 |    99 | Cancer_Dx        | Family      |     0.234656 |
-| biopsy            |     120 |   125 | Pathology_Test   | Past        |     0.957321 |
-| CT scan           |     143 |   149 | Imaging_Test     | Past        |     0.95717  |
-| metastases        |     175 |   184 | Metastasis       | Possible    |     0.549866 |
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|fewhot_assertion_oncology_e5_base_v2_oncology|
-|Compatibility:|Healthcare NLP 5.3.3+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[assertion_embedding]|
-|Output Labels:|[assertion]|
-|Language:|en|
-|Size:|25.4 KB|
-
-
-## Benchmarking
-
-```bash
-       label  precision    recall  f1-score   support
-      Absent       0.86      0.86      0.86       343
-      Family       1.00      0.86      0.92        35
-Hypothetical       0.72      0.71      0.71       216
-        Past       0.90      0.95      0.93      2024
-    Possible       0.76      0.79      0.77        80
-     Present       0.93      0.87      0.90      1842
-    accuracy        -         -        0.90      4540
-   macro-avg       0.86      0.84      0.85      4540
-weighted-avg       0.90      0.90      0.90      4540
-```</content><author><name>John Snow Labs</name></author><category term="assertion" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="oncology" /><category term="fewshot" /><summary type="html">Description Assign assertion status to clinical entities extracted by NER based on their context in the text. Also, this model is trained on a list of clinical and biomedical datasets curated in-house Predicted Entities Absent, Past, Present, Family, Hypothetical, Possible Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;)\ .setSplitChars([&quot;-&quot;, &quot;\/&quot;]) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) # ner_oncology ner_oncology = MedicalNerModel.pretrained(&quot;ner_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner_oncology&quot;) ner_oncology_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner_oncology&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) few_shot_assertion_converter = FewShotAssertionSentenceConverter()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;])\ .setOutputCol(&quot;assertion_sentence&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_sentence&quot;])\ .setOutputCol(&quot;assertion_embedding&quot;) few_shot_assertion_classifier = FewShotAssertionClassifierModel()\ .pretrained(&quot;fewhot_assertion_oncology_e5_base_v2_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;assertion_embedding&quot;])\ .setOutputCol(&quot;assertion&quot;) assertion_pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, ner_oncology, ner_oncology_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier ]) sample_text= [ &quot;&quot;&quot;The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases.&quot;&quot;&quot; ] data = spark.createDataFrame([sample_text]).toDF(&quot;text&quot;) result = assertion_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) # ner_oncology val ner_oncology = MedicalNerModel.pretrained(&quot;ner_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner_oncology&quot;) val ner_oncology_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner_oncology&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val few_shot_assertion_converter = new FewShotAssertionSentenceConverter() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)) .setOutputCol(&quot;assertion_sentence&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_sentence&quot;)) .setOutputCol(&quot;assertion_embedding&quot;) val few_shot_assertion_classifier = FewShotAssertionClassifierModel() .pretrained(&quot;fewhot_assertion_oncology_e5_base_v2_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;assertion_embedding&quot;)) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, ner_oncology, ner_oncology_converter, few_shot_assertion_converter, e5_embeddings, few_shot_assertion_classifier)) val data = Seq(&quot;The patient is suspected to have colorectal cancer. Her family history is positive for other cancers. The result of the biopsy was positive. A CT scan was ordered to rule out metastases.&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results | chunks | begin | end | entities | assertion | confidence | |:------------------|--------:|------:|:-----------------|:------------|-------------:| | colorectal cancer | 33 | 49 | Cancer_Dx | Possible | 0.581282 | | Her | 52 | 54 | Gender | Present | 0.9563 | | cancers | 93 | 99 | Cancer_Dx | Family | 0.234656 | | biopsy | 120 | 125 | Pathology_Test | Past | 0.957321 | | CT scan | 143 | 149 | Imaging_Test | Past | 0.95717 | | metastases | 175 | 184 | Metastasis | Possible | 0.549866 | Model Information Model Name: fewhot_assertion_oncology_e5_base_v2_oncology Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [assertion_embedding] Output Labels: [assertion] Language: en Size: 25.4 KB Benchmarking label precision recall f1-score support Absent 0.86 0.86 0.86 343 Family 1.00 0.86 0.92 35 Hypothetical 0.72 0.71 0.71 216 Past 0.90 0.95 0.93 2024 Possible 0.76 0.79 0.77 80 Present 0.93 0.87 0.90 1842 accuracy - - 0.90 4540 macro-avg 0.86 0.84 0.85 4540 weighted-avg 0.90 0.90 0.90 4540</summary></entry><entry><title type="html">JSL_MedM (LLM - q16)</title><link href="/2024/07/03/jsl_medm_q16_v1_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q16)" /><published>2024-07-03T00:00:00+00:00</published><updated>2024-07-03T00:00:00+00:00</updated><id>/2024/07/03/jsl_medm_q16_v1_en</id><content type="html" xml:base="/2024/07/03/jsl_medm_q16_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-07-13T12:37:57+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">JSL_MedM (LLM - q16)</title><link href="/2024/07/12/jsl_medm_q16_v1_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q16)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_medm_q16_v1_en</id><content type="html" xml:base="/2024/07/12/jsl_medm_q16_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
 &lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
 
@@ -1040,7 +87,7 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
       &lt;td&gt;11.8 GB&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><category term="rag" /><category term="chat" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q16_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 11.8 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q4)</title><link href="/2024/07/03/jsl_medm_q4_v1_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q4)" /><published>2024-07-03T00:00:00+00:00</published><updated>2024-07-03T00:00:00+00:00</updated><id>/2024/07/03/jsl_medm_q4_v1_en</id><content type="html" xml:base="/2024/07/03/jsl_medm_q4_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><category term="rag" /><category term="chat" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q16_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 11.8 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q4)</title><link href="/2024/07/12/jsl_medm_q4_v1_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q4)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_medm_q4_v1_en</id><content type="html" xml:base="/2024/07/12/jsl_medm_q4_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
 &lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
 
@@ -1128,7 +175,7 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
       &lt;td&gt;4.5 GB&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><category term="ragi chat" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q4_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 4.5 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q8)</title><link href="/2024/07/03/jsl_medm_q8_v1_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q8)" /><published>2024-07-03T00:00:00+00:00</published><updated>2024-07-03T00:00:00+00:00</updated><id>/2024/07/03/jsl_medm_q8_v1_en</id><content type="html" xml:base="/2024/07/03/jsl_medm_q8_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><category term="ragi chat" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q4_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 4.5 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q8)</title><link href="/2024/07/12/jsl_medm_q8_v1_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q8)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_medm_q8_v1_en</id><content type="html" xml:base="/2024/07/12/jsl_medm_q8_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
 &lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
 
@@ -1216,4 +263,708 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
       &lt;td&gt;7.7 GB&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><category term="rag" /><category term="chat" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q8_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 7.7 GB</summary></entry></feed>
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><category term="rag" /><category term="chat" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q8_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 7.7 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q16)</title><link href="/2024/07/12/jsl_medner_zs_q16_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q16)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_medner_zs_q16_en</id><content type="html" xml:base="/2024/07/12/jsl_medner_zs_q16_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reaction&lt;/code&gt;. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q16_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q16_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medner_zs_q16&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Template:
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;reactions&quot;: []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medner_zs_q16&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Template:
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;reactions&quot;: []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'''
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;Arthrotec&quot;,
+            &quot;reactions&quot;: [
+                &quot;drowsy&quot;,
+                &quot;blurred vision&quot;,
+                &quot;gastric problems&quot;
+            ]
+        }
+    ]
+}
+'''&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_medner_zs_q16&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;5.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medner_zs_q16&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medner_zs_q16&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_medner_zs_q16 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q4)</title><link href="/2024/07/12/jsl_medner_zs_q4_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q4)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_medner_zs_q4_en</id><content type="html" xml:base="/2024/07/12/jsl_medner_zs_q4_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reaction&lt;/code&gt;. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q4_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q4_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medner_zs_q4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Template:
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;reactions&quot;: []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medner_zs_q4&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Template:
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;reactions&quot;: []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'''
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;Arthrotec&quot;,
+            &quot;reactions&quot;: [
+                &quot;drowsy&quot;,
+                &quot;blurred vision&quot;,
+                &quot;gastric problems&quot;
+            ]
+        }
+    ]
+}
+'''&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_medner_zs_q4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medner_zs_q4&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medner_zs_q4&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_medner_zs_q4 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedM (LLM - q8)</title><link href="/2024/07/12/jsl_medner_zs_q8_en.html" rel="alternate" type="text/html" title="JSL_MedM (LLM - q8)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_medner_zs_q8_en</id><content type="html" xml:base="/2024/07/12/jsl_medner_zs_q8_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reaction&lt;/code&gt;. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q8_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q8_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medner_zs_q8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Template:
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;reactions&quot;: []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medner_zs_q8&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Template:
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;reactions&quot;: []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'''
+{
+    &quot;drugs&quot;: [
+        {
+            &quot;name&quot;: &quot;Arthrotec&quot;,
+            &quot;reactions&quot;: [
+                &quot;drowsy&quot;,
+                &quot;blurred vision&quot;,
+                &quot;gastric problems&quot;
+            ]
+        }
+    ]
+}
+'''&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_medner_zs_q8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;3.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medner_zs_q8&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medner_zs_q8&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_medner_zs_q8 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">JSL_MedS (LLM - q16)</title><link href="/2024/07/12/jsl_meds_q18_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS (LLM - q16)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_meds_q18_v1_en</id><content type="html" xml:base="/2024/07/12/jsl_meds_q18_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Summarization and Q&amp;amp;A based on a given context.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v1_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v1_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Based on the following text, what age group is most susceptible to breast cancer?
+|## Text:
+|The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+|- A personal or family history of breast cancer
+|- A genetic mutation, such as BRCA1 or BRCA2
+|- Exposure to radiation
+|- Age (most commonly occurring in women over 50)
+|- Early onset of menstruation or late menopause
+|- Obesity
+|- Hormonal factors, such as taking hormone replacement therapy&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;stripMargin&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q16_v1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;5.6 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><summary type="html">Description This LLM model is trained to perform Summarization and Q&amp;amp;A based on a given context. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;Based on the following text, what age group is most susceptible to breast cancer? |## Text: |The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: |- A personal or family history of breast cancer |- A genetic mutation, such as BRCA1 or BRCA2 |- Exposure to radiation |- Age (most commonly occurring in women over 50) |- Early onset of menstruation or late menopause |- Obesity |- Hormonal factors, such as taking hormone replacement therapy&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.&quot; Model Information Model Name: jsl_meds_q16_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS (LLM - q4)</title><link href="/2024/07/12/jsl_meds_q4_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS (LLM - q4)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_meds_q4_v1_en</id><content type="html" xml:base="/2024/07/12/jsl_meds_q4_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Summarization and Q&amp;amp;A based on a given context.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v1_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v1_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Based on the following text, what age group is most susceptible to breast cancer?
+|## Text:
+|The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+|- A personal or family history of breast cancer
+|- A genetic mutation, such as BRCA1 or BRCA2
+|- Exposure to radiation
+|- Age (most commonly occurring in women over 50)
+|- Early onset of menstruation or late menopause
+|- Obesity
+|- Hormonal factors, such as taking hormone replacement therapy&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;stripMargin&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q4_v1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><summary type="html">Description This LLM model is trained to perform Summarization and Q&amp;amp;A based on a given context. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;Based on the following text, what age group is most susceptible to breast cancer? |## Text: |The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: |- A personal or family history of breast cancer |- A genetic mutation, such as BRCA1 or BRCA2 |- Exposure to radiation |- Age (most commonly occurring in women over 50) |- Early onset of menstruation or late menopause |- Obesity |- Hormonal factors, such as taking hormone replacement therapy&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.&quot; Model Information Model Name: jsl_meds_q4_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS (LLM - q8)</title><link href="/2024/07/12/jsl_meds_q8_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS (LLM - q8)" /><published>2024-07-12T00:00:00+00:00</published><updated>2024-07-12T00:00:00+00:00</updated><id>/2024/07/12/jsl_meds_q8_v1_en</id><content type="html" xml:base="/2024/07/12/jsl_meds_q8_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Summarization and Q&amp;amp;A based on a given context.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v1_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v1_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Based on the following text, what age group is most susceptible to breast cancer?
+|## Text:
+|The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+|- A personal or family history of breast cancer
+|- A genetic mutation, such as BRCA1 or BRCA2
+|- Exposure to radiation
+|- Age (most commonly occurring in women over 50)
+|- Early onset of menstruation or late menopause
+|- Obesity
+|- Hormonal factors, such as taking hormone replacement therapy&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;stripMargin&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q8_v1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;3.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="summarization" /><category term="qa" /><summary type="html">Description This LLM model is trained to perform Summarization and Q&amp;amp;A based on a given context. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) ptompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(ptompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;Based on the following text, what age group is most susceptible to breast cancer? |## Text: |The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: |- A personal or family history of breast cancer |- A genetic mutation, such as BRCA1 or BRCA2 |- Exposure to radiation |- Age (most commonly occurring in women over 50) |- Early onset of menstruation or late menopause |- Obesity |- Hormonal factors, such as taking hormone replacement therapy&quot;&quot;&quot;.stripMargin val response = llmLoader.generate(prompt) Results &quot;The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.&quot; Model Information Model Name: jsl_meds_q8_v1 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">Medical Assertion E5 Embedding ( SDOH )</title><link href="/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html" rel="alternate" type="text/html" title="Medical Assertion E5 Embedding ( SDOH )" /><published>2024-07-04T00:00:00+00:00</published><updated>2024-07-04T00:00:00+00:00</updated><id>/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en</id><content type="html" xml:base="/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html">## Description
+
+This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_sdoh_en_5.3.3_3.0_1720084681662.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_sdoh_en_5.3.3_3.0_1720084681662.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+document_assembler = DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
+
+e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;e5_embeddings&quot;)
+
+pipeline = Pipeline().setStages([document_assembler, e5_embeddings])
+
+text = [
+    [&quot;I feel a bit drowsy after taking an insulin.&quot;],
+    [&quot;Peter Parker is a nice guy and lives in New York&quot;]
+]
+
+data = spark.createDataFrame(text).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+
+```
+```scala
+val document_assembler = new DocumentAssembler()
+    .setInputCol(&quot;text&quot;)
+    .setOutputCol(&quot;document&quot;)
+
+val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+    .setInputCols(Array(&quot;document&quot;))
+    .setOutputCol(&quot;e5_embeddings&quot;)
+
+val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings))
+
+val result = pipeline.fit(data).transform(data)
+
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                                                                                              embeddings|
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -&gt; 0}, [0.016282124, 0.03343147, 0.06332478, -0.018355524, 0.07614877, -0.05762618, -0.027328357, 8.692102E-4, ...|
+|[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -&gt; 0}, [0.119976304, 0.04998236, 0.038619783, 0.04968784, -0.01774702, -0.009462719, 0.012399124, 0.0409855...|
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|e5_base_v2_embeddings_medical_assertion_sdoh|
+|Compatibility:|Healthcare NLP 5.3.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document]|
+|Output Labels:|[embeddings]|
+|Language:|en|
+|Size:|393.0 MB|
+|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="embeddings" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="e5" /><category term="medical" /><category term="sdoh" /><category term="onnx" /><summary type="html">Description This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG). Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;e5_embeddings&quot;) pipeline = Pipeline().setStages([document_assembler, e5_embeddings]) text = [ [&quot;I feel a bit drowsy after taking an insulin.&quot;], [&quot;Peter Parker is a nice guy and lives in New York&quot;] ] data = spark.createDataFrame(text).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val e5_embeddings = E5Embeddings.pretrained(&quot;e5_base_v2_embeddings_medical_assertion_sdoh&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;e5_embeddings&quot;) val pipeline = new Pipeline().setStages(Array(document_assembler, e5_embeddings)) val result = pipeline.fit(data).transform(data) Results +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ | embeddings| +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -&amp;gt; 0}, [0.016282124, 0.03343147, 0.06332478, -0.018355524, 0.07614877, -0.05762618, -0.027328357, 8.692102E-4, ...| |[{sentence_embeddings, 0, 47, Peter Parker is a nice guy and lives in New York, {sentence -&amp;gt; 0}, [0.119976304, 0.04998236, 0.038619783, 0.04968784, -0.01774702, -0.009462719, 0.012399124, 0.0409855...| +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: e5_base_v2_embeddings_medical_assertion_sdoh Compatibility: Healthcare NLP 5.3.3+ License: Licensed Edition: Official Input Labels: [document] Output Labels: [embeddings] Language: en Size: 393.0 MB Case sensitive: false</summary></entry></feed>

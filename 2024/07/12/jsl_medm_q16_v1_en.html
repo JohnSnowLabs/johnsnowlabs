@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>JSL_MedS (LLM - q4) | jsl_meds_q4_v1 | Healthcare NLP 5.4.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>JSL_MedM (LLM - q16) | jsl_medm_q16_v1 | Healthcare NLP 5.4.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis LLM model is trained to perform Summarization and Q&amp;A based on a given context.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp_jsl.llm import LLMLoaderllm_loader_pretrained = LLMLoader(spark).pretrained("jsl_meds_q4_v1", "en", "clinical/mode...">
-<!-- <link rel="canonical" href="/2024/07/03/jsl_meds_q4_v1_en.html"> -->
-<link rel="canonical" href="/2024/07/03/jsl_meds_q4_v1_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp_jsl.llm import LLMLoaderllm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medm_q16_v1", "en", "clinical/models")ptompt =...">
+<!-- <link rel="canonical" href="/2024/07/12/jsl_medm_q16_v1_en.html"> -->
+<link rel="canonical" href="/2024/07/12/jsl_medm_q16_v1_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,25 +497,25 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2024-07-12-jsl_meds_q4_v1_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2024-07-12-jsl_medm_q16_v1_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 03, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-03T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>JSL_MedS (LLM - q4)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="JSL_MedS (LLM - q4)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>clinical</li><li>medical</li><li>llm</li><li>summarization</li><li>qa</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-03T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed,clinical,medical,llm,summarization,qa"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 12, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>JSL_MedM (LLM - q16)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="JSL_MedM (LLM - q16)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>clinical</li><li>medical</li><li>llm</li><li>summarization</li><li>qa</li><li>rag</li><li>chat</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-12T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,clinical,medical,llm,summarization,qa,rag,chat"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This LLM model is trained to perform Summarization and Q&amp;A based on a given context.</p>
+<p>This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v1_en_5.4.0_3.0_1720040078717.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v1_en_5.4.0_3.0_1720040078717.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medm_q16_v1_en_5.4.0_3.0_1720040078717.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medm_q16_v1_en_5.4.0_3.0_1720040078717.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -524,20 +524,16 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.llm</span> <span class="kn">import</span> <span class="n">LLMLoader</span>
 
-<span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_q4_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_medm_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
 <span class="n">ptompt</span> <span class="o">=</span> <span class="s">"""
-Based on the following text, what age group is most susceptible to breast cancer?
-
-## Text:
-The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
-- A personal or family history of breast cancer
-- A genetic mutation, such as BRCA1 or BRCA2
-- Exposure to radiation
-- Age (most commonly occurring in women over 50)
-- Early onset of menstruation or late menopause
-- Obesity
-- Hormonal factors, such as taking hormone replacement therapy
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
 """</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">ptompt</span><span class="p">)</span>
@@ -546,18 +542,15 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ml.gguf.LLMLoader</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.SparkAccessor.spark</span>
 
-<span class="k">val</span> <span class="nv">llmLoader</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LLMLoader</span><span class="o">().</span><span class="py">setSparkSession</span><span class="o">(</span><span class="n">spark</span><span class="o">).</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"jsl_meds_q4_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">llmLoader</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LLMLoader</span><span class="o">().</span><span class="py">setSparkSession</span><span class="o">(</span><span class="n">spark</span><span class="o">).</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"jsl_medm_q16_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"""Based on the following text, what age group is most susceptible to breast cancer?
-|## Text:
-|The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
-|- A personal or family history of breast cancer
-|- A genetic mutation, such as BRCA1 or BRCA2
-|- Exposure to radiation
-|- Age (most commonly occurring in women over 50)
-|- Early onset of menstruation or late menopause
-|- Obesity
-|- Hormonal factors, such as taking hormone replacement therapy"""</span><span class="o">.</span><span class="py">stripMargin</span>
+<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"""A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin"""</span><span class="o">.</span><span class="py">stripMargin</span>
 
 <span class="k">val</span> <span class="nv">response</span> <span class="k">=</span> <span class="nv">llmLoader</span><span class="o">.</span><span class="py">generate</span><span class="o">(</span><span class="n">prompt</span><span class="o">)</span>
 
@@ -566,7 +559,10 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50."</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"""The correct answer is E: Nitrofurantoin.
+
+The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus.
+"""</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -575,7 +571,7 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>jsl_meds_q4_v1</td>
+      <td>jsl_medm_q16_v1</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -595,12 +591,12 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
     </tr>
     <tr>
       <td>Size:</td>
-      <td>2.2 GB</td>
+      <td>11.8 GB</td>
     </tr>
   </tbody>
 </table>
 
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-07-03T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-07-12T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -785,7 +781,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/07/03/jsl_meds_q18_v1_en.html">JSL_MedS (LLM - q16)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/07/03/jsl_meds_q8_v1_en.html">JSL_MedS (LLM - q8)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/07/04/contextual_assertion_past_en.html">Detect Past Assertion Status with Contextual Assertion</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/07/12/jsl_medm_q4_v1_en.html">JSL_MedM (LLM - q4)</a></div></div></div>
 
 </div>
 </div>
