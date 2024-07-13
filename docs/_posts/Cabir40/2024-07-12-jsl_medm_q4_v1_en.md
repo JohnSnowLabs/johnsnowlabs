@@ -3,7 +3,7 @@ layout: model
 title: JSL_MedM (LLM - q4)
 author: John Snow Labs
 name: jsl_medm_q4_v1
-date: 2024-07-03
+date: 2024-07-12
 tags: [en, licensed, clinical, medical, llm, summarization, qa, ragi chat]
 task: [Summarization, Question Answering]
 language: en

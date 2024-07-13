@@ -3,7 +3,7 @@ layout: model
 title: JSL_MedM (LLM - q8)
 author: John Snow Labs
 name: jsl_medner_zs_q8
-date: 2024-07-03
+date: 2024-07-12
 tags: [en, licensed, clinical, medical, llm, ner]
 task: [Summarization, Question Answering, Named Entity Recognition]
 language: en
