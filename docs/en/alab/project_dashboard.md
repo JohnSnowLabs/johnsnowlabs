@@ -18,14 +18,14 @@ When logging in to the Generative AI Lab, the user sees the main `Projects Dashb
 Projects can be filtered based on the creator: **My Projects**, created by the current user or **Shared With Me**, created by other users and shared with the current one.
 **All Projects** option combines the list of the projects created by the current user and those shared by others.
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/dashboardShared.png" style="width:100%;"/>
+![Dashboard](/assets/images/annotation_lab/4.1.0/dashboardShared.png "lit_shadow")
 
 The list of projects can be sorted according to the name of the project. Also, projects can be sorted in ascending or descending order according to the creation date.
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/dashboardSort.png" style="width:100%;"/>
+![Dashboard](/assets/images/annotation_lab/4.1.0/dashboardSort.png "lit_shadow")
 
 The filters associated with the `Projects Dashboard` are clear, simple, and precise to make the users more productive and efficient while working with a large number of projects.
 
-![DashboardFilterGIF](https://user-images.githubusercontent.com/46840490/193030380-df251a49-07fa-48a6-85b0-ce342c1fcb65.gif)
+![DashboardFilterGIF](https://user-images.githubusercontent.com/46840490/193030380-df251a49-07fa-48a6-85b0-ce342c1fcb65.gif "lit_shadow")
 
 Searching features are also available and help users identify projects based on their name.

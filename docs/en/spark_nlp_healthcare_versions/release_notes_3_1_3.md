@@ -17,12 +17,16 @@ sidebar:
 We are glad to announce that Spark NLP for Healthcare 3.1.3 has been released!.
 This release comes with new features, new models, bug fixes, and examples.
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + New Relation Extraction model and a Pretrained pipeline for extracting and linking ADEs
 + New Entity Resolver model for SNOMED codes
 + ChunkConverter Annotator
 + BugFix: getAnchorDateMonth method in DateNormalizer.
 + BugFix: character map in MedicalNerModel fine-tuning.
+
+</div><div class="h3-box" markdown="1">
 
 ##### New Relation Extraction model and a Pretrained pipeline for extracting and linking ADEs
 
@@ -80,6 +84,9 @@ Relations:
 | 3  | cramps                        | ADE        | voltaren    | DRUG    |        1 |
 
 ```
+
+</div><div class="h3-box" markdown="1">
+
 ##### New Entity Resolver model for SNOMED codes
 
 We are releasing a new SentenceEntityResolver model for SNOMED codes. This model also includes AUX SNOMED concepts and can find codes for Morph Abnormality, Procedure, Substance, Physical Object, and Body Structure entities. In the metadata, the `all_k_aux_labels` can be divided to get further information: `ground truth`, `concept`, and `aux` . In the example shared below the ground truth is `Atherosclerosis`, concept is `Observation`, and aux is `Morph Abnormality`.
@@ -111,6 +118,7 @@ result = snomed_lp.fullAnnotate("atherosclerosis")
 |  0 | atherosclerosis | 38716007 | [atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis, atherosclerosis artery, coronary atherosclerosis, coronary atherosclerosis, coronary atherosclerosis, coronary atherosclerosis, coronary atherosclerosis, arteriosclerosis, carotid atherosclerosis, cardiovascular arteriosclerosis, aortic atherosclerosis, aortic atherosclerosis, atherosclerotic ischemic disease] | [38716007, 155382007, 155414001, 195251000, 266318005, 194848007, 441574008, 443502000, 41702007, 266231003, 155316000, 194841001, 28960008, 300920004, 39468009, 155415000, 195252007, 129573006] | 'Atherosclerosis', 'Observation', 'Morph Abnormality' | [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0280, 0.0451, 0.0451, 0.0451, 0.0451, 0.0451, 0.0462, 0.0477, 0.0466, 0.0490, 0.0490, 0.0485 |
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ##### ChunkConverter Annotator
 

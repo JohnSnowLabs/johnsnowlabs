@@ -44,7 +44,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/SECTION_HEADER/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NORMALIZED_SECTION_HEADER_MAPPER.ipynb
         - title: Resolve Clinical Abbreviations and Acronyms
           id: resolve_clinical_abbreviations_acronyms    
           image: 

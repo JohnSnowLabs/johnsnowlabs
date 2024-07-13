@@ -78,6 +78,7 @@ sample_text = ["The doctor pescribed Majezik for my severe headache.",
 
 + We are releasing 4 new `MedicalNerModel` and 3 new `MedicalBertForTokenClassifier` NER models in Spanish.
 
+{:.table-model-big}
 | model name                                          	| description                                                                	| predicted entities          	|
 |-----------------------------------------------------	|----------------------------------------------------------------------------	|-----------------------------	|
 | [ner_negation_uncertainty](https://nlp.johnsnowlabs.com/2022/08/13/ner_negation_uncertainty_es_3_0.html)                            	| This model detects relevant entities from Spanish medical texts            	| `NEG` `UNC` `USCO` `NSCO`   	|
@@ -128,6 +129,7 @@ example_text=  """"Efecto de la suplementación con ácido fólico sobre los niv
 
 + We are releasing 8 new `MedicalBertForSequenceClassification` models to classify text from social media data in English and German related to public health topics (depression, covid sentiment, health mentions)
 
+{:.table-model-big.db}
 | model name                                           	| description                                                                                                                                        	| predicted entities                          	|
 |------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------------	|---------------------------------------------	|
 | [bert_sequence_classifier_depression_binary](https://nlp.johnsnowlabs.com/2022/08/10/bert_sequence_classifier_depression_binary_en_3_0.html)           	| This model classifies whether a social media text expresses depression or not.                                                                     	| `no-depression` `depression`                	|

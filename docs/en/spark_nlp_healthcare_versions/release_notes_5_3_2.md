@@ -77,6 +77,7 @@ texts = [
 
 *Result*:
 
+{:.table-model-big}
 |chunk                                |begin|end|entity                   |assertion|confidence|
 |-------------------------------------|-----|---|-------------------------|---------|----------|
 |hypertension                         |9    |20 |Hypertension             |present  |1.0       |
@@ -148,6 +149,7 @@ Cocke County Baptist Hospital, 0295 Keats Street
 
 *Result*:
 
+{:.table-model-big}
 |Original Sentence                                  |Deidentified	                          |Masked                                         |
 |---------------------------------------------------|-----------------------------------------|-----------------------------------------------|
 |Record date : 2093-01-13 ,M.D David Hale.          |Record date : 28-01-1979 ,M.D John.      |Record date : 2093-01-13 ,M.D \<DOCTOR>.     |
@@ -177,6 +179,7 @@ text= "The patient was prescribed Albuterol inhaler, two puffs every 4 hours as 
 ```
 *Result*:
 
+{:.table-model-big}
 |ner_chunk|rxnorm_sbert code|rxnorm_sbert resolution|rxnorm_sbert code|rxnorm_sbert resolution|
 |-|-|-|-|-|
 |aspirin 10 meq/ 5 ml oral sol|979446|alupent 10 mg per 5 ml oral solution [metaproterenol sulfate 2 mg/ml oral solution [alupent]]|685589|aspirin 1.5 mg/ml oral solution [aspirin 1.5 mg/ml oral solution]|
@@ -185,8 +188,6 @@ text= "The patient was prescribed Albuterol inhaler, two puffs every 4 hours as 
 |metformin 1000 mg|316255|metformin 1000 mg [metformin 1000 mg]|316255|metformin 1000 mg [metformin 1000 mg]|
 
 Please check the [model card](https://nlp.johnsnowlabs.com/2024/04/18/biolordresolve_rxnorm_augmented_en.html)
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -219,6 +220,7 @@ Physical examination on presentation was significant for dry oral mucosa; signif
 
 *Ner Chunk Result*:
 
+{:.table-model-big}
 |                ner_chunk|begin|end|ner_label|
 |-------------------------|-----|---|---------|
 |                metformin|   11| 19|TREATMENT|
@@ -239,6 +241,7 @@ Physical examination on presentation was significant for dry oral mucosa; signif
 
 *Multi Chunk Result*:
 
+{:.table-model-big}
 |multi_chunk_doc      |
 |----------------------|
 |[{document, 0, 81, < T2DM, HTG, dry oral mucosa, tenderness, guarding, rigidity > {document -> 0, chunk_count -> 6}, []}]|
@@ -270,6 +273,7 @@ sample_texts = [["""Smith is 55 years old, living in New York, a divorced Mexcia
 
 *Result*:
 
+{:.table-model-big}
 |chunk                  |begin|end|label              |
 |-----------------------|-----|---|-------------------|
 |New York               |33   |40 |Geographic_Entity  |
@@ -301,6 +305,7 @@ Please check the [model card](https://nlp.johnsnowlabs.com/2024/04/08/ner_sdoh_c
 
 We are excited to introduce our new profiling pipeline that focuses on De-identification domains. We can use pretrained NER profiling pipelines to explore all the available pretrained NER models simultaneously. This profiling pipeline offers powerful tools for extracting meaningful information from medical text data in the respective domains. It assists in uncovering patterns, trends, and insights that are crucial for research, analysis, and decision-making in healthcare and related fields. Here’s a brief overview of the pipeline and the included NER model:
 
+{:.table-model-big}
 **Pipeline Name**      |  **included NER Models**
 -----------------------|--------------------
 [ner_profiling_deidentification](https://nlp.johnsnowlabs.com/2024/03/28/ner_profiling_deidentification_en.html) |  `ner_deid_augmented`, `ner_deid_enriched`, `ner_deid_generic_augmented`, `ner_deid_name_multilingual_clinical`, `ner_deid_sd`, `ner_deid_subentity_augmented`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_synthetic`, `ner_jsl`, `ner_jsl_enriched`
@@ -382,6 +387,7 @@ She had close follow-up with endocrinology post discharge .
 
 *directionSensitive Result*:
 
+{:.table-model-big.db}
 |index|sentence|entity1\_begin|entity1\_end|chunk1|entity1|entity2\_begin|entity2\_end|chunk2|entity2|relation|confidence|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |2|1|511|521|amoxicillin|TREATMENT|527|555|a respiratory tract infection|PROBLEM|TrAP|0\.9999393|
@@ -434,6 +440,7 @@ She had close follow-up with endocrinology post discharge .
 
 *filterByTokenDistance Result*:
 
+{:.table-model-big.db}
 |index|sentence|entity1\_begin|entity1\_end|chunk1|entity1|entity2\_begin|entity2\_end|chunk2|entity2|relation|confidence|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |1|1|511|521|amoxicillin|TREATMENT|527|555|a respiratory tract infection|PROBLEM|TrAP|0\.9999393|
@@ -452,7 +459,7 @@ Please check [Clinical Relation Extraction Notebook](https://colab.research.goog
 
 These results show speed benchmarks and cost evaluations for deidentification pipelines deployed across diverse cloud platforms, including AWS EMR and EC2. Additionally, forthcoming results from DataBricks promise to further enrich the analysis, offering deeper insights into de-identification pipeline performance. 
 
-
+{:.table-model-big.db}
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
 | 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec**       |

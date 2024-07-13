@@ -99,7 +99,7 @@ For instance, `sbiobertresolve_hcc_augmented` resolver model must be used with `
 </div>
 <div class="h3-box" markdown="1">
 
-<table cellspacing="0" border="0" class="sortable table-model-big no_td_shadow db"><thead><tr>
+<table cellspacing="0" border="0" class="table-model-big db"><thead><tr>
 		<th>ENTITY RESOLVER MODEL</th>
 		<th>SENTENCE EMBEDDINGS</th>
 		<th>NER MODEL</th>

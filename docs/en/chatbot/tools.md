@@ -40,21 +40,29 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 ## NLP Tools 
 The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.
 
+</div><div class="h3-box" markdown="1">
+
 ### Deidentification/Obfuscation of PHI
 
 Automatically detects and masks or obfuscates personally identifiable information (PHI) from medical text to ensure privacy and compliance with data protection regulations.
    
    <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+</div><div class="h3-box" markdown="1">
+
 ### General Medical Entity Extraction
 Identifies and extracts general medical entities from text, facilitating quick access to relevant medical terms and concepts.
 
    <iframe width="800" height="450" src="https://www.youtube.com/embed/FjAzlImC0zQ?si=N415bCn2AU2h6i6U&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+</div><div class="h3-box" markdown="1">
+
 ### Oncological Entity Extraction
 Specialized for recognizing and extracting terms related to oncology, aiding in the analysis of cancer-related medical texts.
 
    <iframe width="800" height="450" src="https://www.youtube.com/embed/qTbH57SI6R0?si=HO8riHFw-cXYeIvK&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</div><div class="h3-box" markdown="1">
 
 ### Posology Entity Extraction
 Focuses on extracting dosage and medication instructions from medical documents, crucial for understanding treatment protocols.
@@ -74,6 +82,7 @@ Focuses on extracting dosage and medication instructions from medical documents,
 - **User-Controlled Flexibility**: Offers the flexibility to tailor tool engagement to individual preferences and requirements.
 - **Efficient Tool Access**: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.
 
+</div><div class="h3-box" markdown="1">
 
 ## Wikipedia: Answering Short or Generic Questions
 
@@ -87,7 +96,7 @@ For users seeking quick answers to short or generic questions, the Medical Chatb
 
 John's Memory is a versatile feature within the Medical Chatbot, dedicated to summarization tasks and answering general questions. This tool is particularly useful when users need a succinct summary of extensive information or when they have broad questions that do not require deep, research-level detail. John's Memory employs advanced NLP (Natural Language Processing) techniques to comprehend, interpret, and condense information, making it an invaluable asset for users who need quick insights or overviews.
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## @ Operator for Accessibility
 
@@ -111,3 +120,4 @@ When interacting with the chatbot, the generated answer prominently displays the
 Similarly, when selecting a specific tool using the '@' Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.
 Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.    
 
+</div>

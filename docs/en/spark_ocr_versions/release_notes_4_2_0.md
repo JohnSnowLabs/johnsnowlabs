@@ -17,14 +17,17 @@ sidebar:
 
 Release date: 31-10-2022
 
-
 We are glad to announce that Spark OCR 4.2.0 has been released. This is mostly a compatibility release to ensure compatibility of Spark OCR against Spark NLP 4.2.1, and Spark NLP Healthcare 4.2.1.
 
 #### Improvements
 * Improved memory consumption and performance in the training of Visual NER models.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 * PdfToForm new param: useFullyQualifiedName, added capability to return fully qualified key names.
+
+</div><div class="h3-box" markdown="1">
 
 #### New or Updated Notebooks
 * [SparkOcrProcessMultiplepageScannedPDF.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrProcessMultiplepageScannedPDF.ipynb) has been added to show how to serve a multi-page document processing pipeline.

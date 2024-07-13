@@ -37,10 +37,6 @@ This is a small compatibility release to ensure the product runs smoothly on Goo
 
 This release is compatible with ```Spark NLP 5.1.1``` and Spark NLP for``` Healthcare 5.1.1```
 
-
-
-
-
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Previous versions

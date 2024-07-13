@@ -13,16 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-<style>
-bl {
-  font-weight: 400;
-}
-
-es {
-  font-weight: 400;
-  font-style: italic;
-}
-</style>
+<div class="h3-box" markdown="1">
 
 The Generative AI Lab keeps a human expert as productive as possible. It minimizes the number of mouse clicks, keystrokes, and eye movements in the main workflow. The continuous improvement in the UI and the UX is from iterative feedback from the users.
 
@@ -35,6 +26,8 @@ On the header of the Labeling area, you can find the list of labels defined for 
 - Annotations
 - Versions
 - Progress
+
+</div><div class="h3-box" markdown="1">
 
 ## Labeling Widgets
 
@@ -54,7 +47,7 @@ It is an important to ensure a complete audit trail of all user actions. Generat
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/completion_history.png" style="width:40%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Predictions
 
@@ -64,7 +57,7 @@ To reuse a prediction to bootstrap the annotation process, users can copy it to 
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/prediction.png" style="width:40%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Confidence
 
@@ -74,7 +67,7 @@ From version <bl>3.3.0</bl>, running pre-annotations on a text project provides 
 
 On the Labeling page, when selecting the <es>Prediction</es> widget, users can see all preannotation in the <es>Annotations</es> section with a score assigned to them. Using the confidence slider, users can filter out low confidence labels before starting to edit/correct the labels. Both _Accept Prediction_ and _Add a new completion based on this prediction_ operation apply to the filtered annotations from the confidence slider.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Annotations
 
@@ -84,7 +77,7 @@ The Annotations widget has two sections.
 
 <bl>Relations</bl> - Lists all the relations that have been created. When the user moves the mouse over any one relation, it is highlighted in the labeling editor.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Progress
 
@@ -97,6 +90,8 @@ Annotator/Reviewer can see their overall work progress from within the labeling 
 <bl>For Reviewer View:</bl>
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/progress_reviewer.png" style="width:40%;"/>
+
+</div><div class="h3-box" markdown="1">
 
 ## Text Annotation
 
@@ -114,7 +109,7 @@ When annotating text, it is possible and probable that the annotation is not ver
 
 ![trim_spaces_punctuations](/assets/images/annotation_lab/4.1.0/trimming_characters-min.gif)
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Assertion Labels
 
@@ -122,7 +117,7 @@ To add an assertion label to an extracted entity, select the assertion label and
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/assertion.png" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Relation Extraction
 
@@ -134,7 +129,7 @@ You can add a label to the relation, change its direction or delete it using the
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/relations2.png" style="width:40%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 #### Cross page Annotation
 
@@ -142,7 +137,7 @@ From version <bl>2.8.0</bl>, Generative AI Lab supports cross-page NER annotatio
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation-min.gif" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ## Visual NER Annotation
 
@@ -163,6 +158,8 @@ The entire process is illustrated below:
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/visual_ner-min.gif" style="width:100%;"/>
 
+</div><div class="h3-box" markdown="1">
+
 ### Support for multi-page PDF documents
 
 When a valid Visual NLP license is available, Generative AI Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.
@@ -180,7 +177,7 @@ Users can also jump to a specific page in multi-page task, instead of passing th
 
 <img class="image image__shadow" src="https://user-images.githubusercontent.com/26042994/203706994-ebb86f14-0a9c-4633-a4c9-8873ae613acb.gif" style="width:100%;"/>
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Support for multiple OCR servers
 
@@ -189,3 +186,5 @@ Just like for [Preannotation](/docs/en/alab/preannotation) servers, Generative A
 To work on a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users need to go to the <es>Import</es> page, click on the OCR Server button on the top-right corner and from the popup, choose one of the available OCR servers. If no suitable OCR server is present, you can create a new server by selecting the `Create Server` option and then clicking on the `Deploy` button.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ocr_server-min.gif" style="width:100%;"/>
+
+</div>

@@ -53,6 +53,7 @@ These new annotators provide a valuable capability for handling scenarios where 
 
 In our experiment, we compared the Few-Shot Classifier trained on partial data, equivalent to 40% of our entire dataset, against the ClassifierDL trained on both full (80% of the dataset) and partial data. To maintain fairness, the test set was constant at 20% of the entire dataset for all cases, and the same sentence embeddings were employed across the board. The Few-Shot Classifier achieved a macro F1 score of 0.867, outperforming outperform that of the ClassifierDL using the full dataset, which scored a macro F1 score of 0.847. The ClassifierDL using partial data also showed comparable results to its full data counterpart, demonstrating its robustness with less training data, but it was still surpassed by the Few-Shot Classifier. This superior performance from the Few-Shot Classifier with less data signifies that it is highly efficient and effective, making it an excellent choice for scenarios where data scarcity is a concern. We're excited to see how this innovative feature will enhance the future of text classification tasks in our library. Stay tuned for more updates as we continue to optimize and improve our offerings.
 
+{:.table-model-big}
 |                           | macro-f1-score | weighted-f1-score | accuracy  |
 |---------------------------|----------------|-------------------|-----------|
 | ClassifierDL_full_Data    | 0.85       | 0.84        | 0.84  |
@@ -102,6 +103,7 @@ tests = [
 
 *Result*:
 
+{:.table-model-big}
 text          |prediction category      
 --------------|--------------------
 Bleomycin pneumonitis potentiated by oxygen administration.    | ADE_positive
@@ -132,8 +134,6 @@ sbiobert_embeddings = BertSentenceEmbeddings\
 Gives a 768 dimensional vector representation of the sentence.
 ```
 Please see the [model card](https://nlp.johnsnowlabs.com/2023/07/11/sbiobert_base_cased_mli_onnx_en.html)
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -171,6 +171,7 @@ please check: [MEDICAL LLM Demo](https://demo.johnsnowlabs.com/healthcare/MEDICA
 
 Introducing our new set of SDOH NER models that are specifically designed to identify and extract entities related to various social determinants of health. Here is a brief overview of each model and the entities it predicts:
 
+{:.table-model-big}
 **model name** | **description** | **predicted entities**   
 ---------------------------------|-----------------|-----------------------
 [ner_sdoh_access_to_healthcare](https://nlp.johnsnowlabs.com/2023/07/02/ner_sdoh_access_to_healthcare_en.html)| extract entities related to access to healthcare | `Access_To_Care`, `Healthcare_Institution`, `Insurance_Status`                                                 
@@ -194,6 +195,7 @@ sample_text = """The patient is a 54-year-old female with a complex medical hist
 
 *Result*:
 
+{:.table-model-big}
 |chunk                 |begin|end|ner_label           |
 |----------------------|-----|---|--------------------|
 |anxiety               |78   |84 |Mental_Health       |
@@ -214,17 +216,15 @@ sample_text = """The patient is a 54-year-old female with a complex medical hist
 |mental well-being     |583  |599|Mental_Health       |
 |sexual satisfaction   |620  |638|Sexual_Activity     |
 
-
 please check [Social Determinant of Health Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)  for more information
-
 
 </div><div class="h3-box" markdown="1">
 
 #### New Profiling Pipelines For Social Determinants Of Health (SDOH), Voice Of The Patient (VOP), and Oncology To Run Multiple Models At Once In A Single Line
 
-
 We are excited to introduce our new profiling pipelines that focus on Social Determinants of Health (SDOH), Voice of Patient (VOP), and Oncology domains. We can use pretrained NER profiling pipelines for exploring all the available pretrained NER models at once. These profiling pipelines offer powerful tools for extracting meaningful information from medical text data in the respective domains. They assist in uncovering patterns, trends, and insights that are crucial for research, analysis, and decision-making in healthcare and related fields. Here's a brief overview of each pipeline and the included NER  models:
 
+{:.table-model-big}
 **Pipeline Name**      |  **included NER Models**
 -----------------------|--------------------
 [ner_profiling_oncology](https://nlp.johnsnowlabs.com/2023/07/03/ner_profiling_oncology_en.html) |  `ner_oncology_unspecific_posology`, `ner_oncology_tnm`, `ner_oncology_therapy`, `ner_oncology_test`, `ner_oncology_response_to_treatment`, `ner_oncology_posology`, `ner_oncology`, `ner_oncology_limited_80p_for_benchmarks`, `ner_oncology_diagnosis`, `ner_oncology_demographics`, `ner_oncology_biomarker`, `ner_oncology_anatomy_granular`, `ner_oncology_anatomy_general`
@@ -247,14 +247,13 @@ For results and different examples, please see
 -   [Social Determinant of Health Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)  
 -   [Oncology Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb)
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### New Clinical Multi-Class Classifier Models for Classification Of Articles Based On Cancer Hallmarks And Covid-19 Topics
 
 We are pleased to introduce our two new multi-classifier models. Here's a brief overview of each model and the entities they predict:
 
+{:.table-model-big}
 **model name**  | **description**    | **predicted entities**
 ----------------|--------------------|-----------------------
 [multiclassifierdl_hoc](https://nlp.johnsnowlabs.com/2023/07/04/multiclassifierdl_hoc_en.html)    | This model makes a semantic classification of the article according to the hallmarks of cancer based on its abstract | `Activating_Invasion_And_Metastasis`, `Avoiding_Immune_Destruction`, `Cellular_Energetics`, `Enabling_Replicative_Immortality`, `Evading_Growth_Suppressors`, `Genomic_Instability_And_Mutation`, `Inducing_Angiogenesis`, `Resisting_Cell_Death`, `Sustaining_Proliferative_Signaling`, `Tumor_Promoting_Inflammation`
@@ -274,12 +273,10 @@ text = """Low level of plasminogen increases risk for mortality in COVID-19 pati
 
 *Result*:
 
+{:.table-model-big}
 |  text|   result|
 |------|---------|
 |Low level of plasminogen increases risk for mortality in COVID-19 patients. The pathophysiology of coronavirus diseas...|[Mechanism, Treatment, Diagnosis]|
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -305,6 +302,7 @@ sample_text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |text|  result|
 |--------|--------|
 |I think my father is having a stroke. His face is drooping, he can’t move his right side and he’s...|   High |
@@ -318,7 +316,6 @@ sample_text_list = [
 
 [`ner_clinical`](https://nlp.johnsnowlabs.com/2023/07/05/ner_clinical_nl.html) and [`bert_token_classifier_ner_clinical`](https://nlp.johnsnowlabs.com/2023/07/05/bert_token_classifier_ner_clinical_nl.html): These two Dutch clinical NER models provide valuable tools for processing and analyzing Dutch clinical texts. They assist in automating the extraction of important clinical information, facilitating research, medical documentation, and other applications within the Dutch healthcare domain.
 
-
 *Example*:
 
 ```python
@@ -331,6 +328,7 @@ text = """Dhr. Van Dijk, 58 jaar oud, kwam naar de kliniek met klachten van aanh
 
 *Result*:
 
+{:.table-model-big}
 |chunk                                |begin|end|ner_label|confidence|
 |-------------------------------------|-----|---|---------|----------|
 |aanhoudende hoest                    |66   |82 |PROBLEM  |0.82    |
@@ -345,8 +343,6 @@ text = """Dhr. Van Dijk, 58 jaar oud, kwam naar de kliniek met klachten van aanh
 |antibiotica kuur                     |332  |347|TREATMENT|0.63    |
 |een sterke hoestsiroop               |352  |373|TREATMENT|0.47    |
 |een voedzaam dieet                   |418  |435|TREATMENT|0.69    |
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -369,13 +365,11 @@ text = ["Dyspnoe", "Lymphknoten"]
 
 *Result*:
 
+{:.table-model-big}
 | chunks  | code    | resolutions   | all_codes     | all_distances   |
 |:--------|:--------|:-------------:|--------------:|:----------------|
 | Dyspnoe | R06.0   |Dyspnoe:::Dysphagie:::Dysurie...| R06.0:::R13:::R30.0... | 0.00:::1.09:::1.17... |
 | Lymphknoten|D36.0 |Lymphknoten:::Lymphknotenvergrößerung...| D36.0:::R59:::Q82.0... | 0.00:::0.04:::0.12... |
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -435,8 +429,6 @@ ner_clinical_en_3.0.0_3.0_1617208419368/
 ner_jsl_en_4.2.0_3.0_1666181370373/
 ```
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### New Feature For `ChunkFilterer` To Enable Filtering Chunks According To Confidence Thresholds
@@ -470,6 +462,7 @@ sample_text = 'The patient was prescribed 1 capsule of Advil for 5 days. He was 
 
 *Detected chunks*:
 
+{:.table-model-big}
 |sentence_id |chunks	       |entities  |confidence |
 |------------|-----------------|----------|-----------|
 |0     	     |1                |DOSAGE    |0.99 |
@@ -482,6 +475,7 @@ sample_text = 'The patient was prescribed 1 capsule of Advil for 5 days. He was 
 
 *Filtered by confidence scores*:
 
+{:.table-model-big}
 |sentence_id |chunks    |entitie  |confidence |
 |------------|----------|---------|-----------|
 |0     	     |1         |DOSAGE   |0.99 |
@@ -514,6 +508,7 @@ obfuscator_df = obfuscator.obfuscateColumns(df)
 
 *Original Dataframe*:
 
+{:.table-model-big}
 |NAME           |DOB       |AGE|ADDRESS                                |
 |---------------|----------|---|---------------------------------------|
 |Cecilia Chapman|04/02/1935|83 |711-2880 Nulla St. Mankato Mississippi |
@@ -525,6 +520,7 @@ obfuscator_df = obfuscator.obfuscateColumns(df)
 
 *Obfuscated Result*:
 
+{:.table-model-big}
 |NAME                 |DOB         |AGE  |ADDRESS                       |
 |---------------------|------------|-----|------------------------------|
 | Giesela Janzen      | 19/03/1935 | 86  | Annie-Lübs-Platz 8/0         |
@@ -601,14 +597,9 @@ alab.get_relation_extraction_data(
 + `clinical_deidentification`
 + `sbiobert_base_cased_mli_onnx`
 
-
-
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
 
 </div><div class="h3-box" markdown="1">
 

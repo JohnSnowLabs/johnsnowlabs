@@ -21,11 +21,15 @@ Release date: 22-05-2020
 
 New functionality for de-identification problem.
 
+</div><div class="h3-box" markdown="1">
+
 #### Enhancements
 
 * Renamed TesseractOCR to ImageToText. 
 * Simplified installation.
 * Added check license from `SPARK_NLP_LICENSE` env varibale.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 

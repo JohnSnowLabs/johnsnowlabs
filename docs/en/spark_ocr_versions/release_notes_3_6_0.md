@@ -30,6 +30,7 @@ Handwritten detection and visualization improvement.
 * Added possibility to scale image to fixed size in [ImageScaler](/docs/en/ocr_pipeline_components#imagescaler)
  with keeping original ratio.
 
+</div><div class="h3-box" markdown="1">
 
 #### Enhancements
 
@@ -38,11 +39,13 @@ Handwritten detection and visualization improvement.
 * Added an auto inferencing of the input shape for detector models
 * New license validator
 
+</div><div class="h3-box" markdown="1">
 
 #### Bugfixes
 
 * Fixed display BGR images in display functions
 
+</div><div class="h3-box" markdown="1">
 
 #### New and updated notebooks
 

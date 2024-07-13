@@ -54,7 +54,9 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="ChunkMapperFilterer" summary="Annotator to be used after `ChunkMapper` that allows to filter chunks based on the results of the mapping, whether it was successful or failed."%}
 {% include templates/licensed_table_entry.md  name="ChunkMerge" summary="Merges entities coming from different CHUNK annotations."%}
 {% include templates/licensed_table_entry.md  name="ChunkSentenceSplitter" summary="Annotator can split the documents into chunks according to separators given as `CHUNK` columns. It is useful when you need to perform different models or analysis in different sections of your document"%}
+{% include templates/licensed_table_entry.md  name="ContextualAssertion" summary="This model identifies  contextual cues within text data, such as negation, uncertainty etc.It annotates text chunks with assertions based on configurable rules, prefix and suffix patterns, and exception patterns."%}
 {% include templates/licensed_table_entry.md  name="ContextualParser" summary="Extracts entity from a document based on user defined rules."%}
+{% include templates/licensed_table_entry.md  name="ContextSplitAssembler" summary="Converts and assembles `VECTOR_SIMILARITY_RANKINGS` type annotations into `DOCUMENT` type."%}
 {% include templates/licensed_table_entry.md  name="DateNormalizer" summary="This annotator transforms date mentions to a common standard format: YYYY/MM/DD. It is useful when using data from different sources, some times from different countries that has different formats to represent dates."%}
 {% include templates/licensed_table_entry.md  name="DeIdentification" summary="Deidentifies Input Annotations of types DOCUMENT, TOKEN and CHUNK, by either masking or obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="DistilBertForSequenceClassification" summary="Can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks."%}
@@ -70,6 +72,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="FeaturesAssembler" summary="Collects features from different columns."%}
 {% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
 {% include templates/licensed_table_entry.md  name="FewShotAssertionClassifierModel" summary="assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach."%}
+{% include templates/licensed_table_entry.md  name="FewShotAssertionSentenceClassifier" summary="It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel."%}
 {% include templates/licensed_table_entry.md  name="Flattener" summary="`Flattener` annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation."%}
 {% include templates/licensed_table_entry.md  name="GenericClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="GenericLogRegClassifier" summary="Is a derivative of GenericClassifier which implements a multinomial logistic regression."%}
@@ -77,6 +80,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="InternalDocumentSplitter" summary="This annotator splits large documents into small documents."%}
 {% include templates/licensed_table_entry.md  name="IOBTagger" summary="Merges token tags and NER labels from chunks in the specified format."%}
 {% include templates/licensed_table_entry.md  name="LightDeIdentification" summary="Light version of DeIdentification."%}
+{% include templates/licensed_table_entry.md  name="LLMLoader" summary="LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs' licensed LLMs at various sizes that are finetuned on medical context for certain tasks."%}
 {% include templates/licensed_table_entry.md  name="MultiChunk2Doc" summary="Merges a given chunks to create a document."%}
 {% include templates/licensed_table_entry.md  name="NameChunkObfuscator" summary="This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="NerChunker" summary="Extracts phrases that fits into a known pattern using the NER tags."%}
@@ -99,6 +103,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="TextGenerator" summary="Uses the basic BioGPT model to perform various tasks related to medical text abstraction."%}
 {% include templates/licensed_table_entry.md  name="TextMatcherInternal" summary="This annotator match exact phrases provided in a file against a Document."%}
 {% include templates/licensed_table_entry.md  name="TFGraphBuilder" summary="Creates Tensorflow graphs."%}
+{% include templates/licensed_table_entry.md  name="VectorDBPostProcessor" summary="VectorDBPostProcessor is used to filter and sort the annotations from the :class:`sparknlp_jsl.annotator.resolution.VectorDBModel`."%}
 {% include templates/licensed_table_entry.md  name="WindowedSentenceModel" summary="This annotator that helps you to merge the previous and following sentences of a given piece of text, so that you add the context surrounding them."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotNerModel" summary="This is a zero-shot named entity recognition using `RoBertaForQuestionAnswering`. It identifies entities across diverse data without domain-specific fine-tuning."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotRelationExtractionModel" summary="This annotator implements zero-shot binary relations extraction by utilizing `BERT` transformer models trained on the NLI (Natural Language Inference) task."%}

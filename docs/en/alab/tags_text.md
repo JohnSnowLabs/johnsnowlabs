@@ -13,10 +13,14 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 The `Text` tag shows text that can be labeled. The text template is divided into the following segments:
 - Information extraction: Includes NER and extracting relations among entities.
 - Classification: Includes text classification and multi-class classification.
 - Text summarization.
+
+</div><div class="h3-box" markdown="1">
 
 ### Information Extraction
 
@@ -38,6 +42,8 @@ For the case of relation extraction, the configuration additionally needs a `Rel
 
 ![Relations-extraction](/assets/images/annotation_lab/xml-tags/relation_extraction.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Classification
 
 For a classification task, the configuration needs the `Text` and `Choices` tags. For instance, you have the input JSON as shown below. The `Choices` tag is used to create a group of choices (a set of `Choice` tags), with radio buttons or checkboxes. It can be used for single or multi-class classification.
@@ -57,8 +63,12 @@ In the case of multi-class classification, the configuration would look as shown
 
 ![multi-class](/assets/images/annotation_lab/xml-tags/multi-class-classification.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Text summarization
 
 For a simple text summarization, the configuration just needs the `Text` and `TextArea` tags. The `TextArea` tag is used to display a text area for the user input. It is mainly used for transcription, paraphrasing, or captioning task.
 
 ![Text-summarization](/assets/images/annotation_lab/xml-tags/text_summarization.png)
+
+</div>

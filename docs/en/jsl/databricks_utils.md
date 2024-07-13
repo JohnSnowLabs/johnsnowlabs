@@ -111,6 +111,7 @@ nlp.query_endpoint('bert_ENDPOINT','My String to embed')
 `nlp.deploy_endpoint` will register a ML-FLow model into your registry and deploy an Endpoint with a JSL license. 
 It has the following parameters:
 
+{:.table-model-big.db}
 | Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | `model`                | Model to be deployed as endpoint which is [converted into NluPipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe), supported classes are: `String` Reference to NLU Pipeline name like 'bert', `NLUPipeline`, `List[Annotator]`, `Pipeline`, `LightPipeline`, `PretrainedPipeline`, `PipelineModel`. In case of a NLU reference, the endpoint name is auto-generated aus `<nlu_ref>_ENDPOINT` i.e. `bert_ENDPOINT`. '.' is replaced with '_' in the nlu reference for the endpoint name |
@@ -128,6 +129,7 @@ It has the following parameters:
 `nlp.query_endpoint` translates your query to JSON, sends it to the endpoint and returns the result as pandas DataFrame.
 It has the following parameters which are forwarded to the [model.predict()](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) call inside of the endpoint:
 
+{:.table-model-big.db}
 | Parameter                   | Description                                                                                       |
 |-----------------------------|---------------------------------------------------------------------------------------------------| 
 | `endpoint_name`        | Name of the endpoint to query           |
@@ -147,6 +149,7 @@ It has the following parameters which are forwarded to the [model.predict()](htt
 
 `nlp.query_endpoint` and `nlp.deploy_endpoint` check the following **mandatory** env vars to resolve wheels for endpoints
 
+{:.table-model-big.db}
 | Env Var Name                | Description                                                                                                                                                 | 
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `HEALTHCARE_SECRET`         | Automatically set on your cluster if you run nlp.install()                                                                                                  |

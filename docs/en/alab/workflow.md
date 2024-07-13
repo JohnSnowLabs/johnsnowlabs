@@ -24,9 +24,8 @@ The default workflow supported by the Generative AI Lab involves task assignment
 
 When more complex workflows need to be implemented, this is possible using the task tagging functionality provided by the Generative AI Lab. Tags can be used for splitting work across the team but also for differentiating between first-level annotators and second-level reviewers.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/tags.png" style="width:100%;"/>
-
+![Task Assignment](/assets/images/annotation_lab/4.1.0/tags.png "lit_shadow")
 
 To add a tag, select a task and press _Tags > Add More_. Tasks can be filtered by tags, making it easier to identify, for example, which documents are completed and which ones need to be reviewed.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/tag_assign.png" style="width:100%;"/>
+![Task Assignment](/assets/images/annotation_lab/4.1.0/tag_assign.png "lit_shadow")

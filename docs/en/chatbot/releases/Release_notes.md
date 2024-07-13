@@ -16,6 +16,8 @@ sidebar:
 
 We are excited to announce two significant enhancements to the Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
 
+</div><div class="h3-box" markdown="1">
+
 ## Introducing Document Q&A (DocQA) Feature
 
 ### Overview
@@ -23,7 +25,7 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/BJ4cXJl7ZyY?si=P1GBmRtTBTmPeRJ0&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-
+</div><div class="h3-box" markdown="1">
 
 ### Key Features
 1.**Document Upload and Session Initiation**
@@ -65,6 +67,8 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 
 ![Reference_highlighting](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/91c5dfe2-f77d-463a-af5b-287831d87b41)
 
+</div><div class="h3-box" markdown="1">
+
 ### User Benefits
 
 - **Focused Answers:** Provides precise information derived directly from uploaded documents.
@@ -74,10 +78,14 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 
 This feature is part of our ongoing commitment to enhance user interaction and improve the informational value of the Medical Chatbot. We look forward to your feedback and continual engagement with this new functionality.
 
+</div><div class="h3-box" markdown="1">
+
 ## Introducing the NLP Tools 
 
 ### Overview
 The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.
+
+</div><div class="h3-box" markdown="1">
 
 ### Key Features
 1.**Tools Overview**
@@ -120,12 +128,15 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 
 ![CSV_Download](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/18526211-0ebc-43bb-beba-2c2439d479b7)
 
+</div><div class="h3-box" markdown="1">
+
 ### User Benefits
 - **Enhanced Privacy and Compliance**: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.
 - **Focused Content Extraction**: Enables precise extraction of medical entities tailored to general, oncological, and posology contexts, enhancing the utility and accuracy of information retrieval.
 - **User-Controlled Flexibility**: Offers the flexibility to tailor tool engagement to individual preferences and requirements.
 - **Efficient Tool Access**: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.
 
+</div><div class="h3-box" markdown="1">
 
 ## 03-13-2024
 

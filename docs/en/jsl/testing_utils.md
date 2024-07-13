@@ -27,6 +27,7 @@ You can test the following things with the `test_markdown()` function :
 
 Test-Report Pandas Dataframe has the columns:
 
+{:.table-model-big.db}
 | Report Column | Description                                                   | 
 |---------------|---------------------------------------------------------------|
 | `test_script` | is the generated script for testing                           |
@@ -93,6 +94,7 @@ You can test the following things with the `test_ipynb()` function :
 
 The generated Test-Report Pandas Dataframe has the columns:
 
+{:.table-model-big.db}
 | Report Column | Description                                                                                                                         | 
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `test_script` | is the generated script for testing. If you think the notebook should not crash, check the file, there could be a generation error. |

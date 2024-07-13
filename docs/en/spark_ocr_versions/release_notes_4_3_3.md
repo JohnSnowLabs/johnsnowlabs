@@ -19,6 +19,8 @@ Release date: 14-03-2023
 
 We're glad to announce that Visual NLP 😎 4.3.3 has been released.
 
+</div><div class="h3-box" markdown="1">
+
 ### Highlights
 * New parameter keepOriginalEncoding in PdfToHocr.
 * New Yolo-based table and form detector. 
@@ -26,32 +28,39 @@ We're glad to announce that Visual NLP 😎 4.3.3 has been released.
 * Fixes in AlabReader
 * Fixes in HocrToTextTable.
 
+</div><div class="h3-box" markdown="1">
+
 #### New parameter keepOriginalEncoding in PdfToHocr
 Now you can choose to make PdfToHocr return an ASCII normalized version of the characters present in the PDF(keepOriginalEncoding=False) or to return the original Unicode character(keepOriginalEncoding=True).
 Source PDF,
-![image](/assets/images/ocr/source.png)
+![keepOriginalEncoding in PdfToHocr](/assets/images/ocr/source.png)
 
 Keeping the encoding,
-![image](/assets/images/ocr/keeping.png)
+![keepOriginalEncoding in PdfToHocr](/assets/images/ocr/keeping.png)
 
 Not keeping it,
-![image](/assets/images/ocr/notkeeping.png)
+![keepOriginalEncoding in PdfToHocr](/assets/images/ocr/notkeeping.png)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Yolo-based Table and Form detector
 This new model allows to distinguish between forms and tables, so you can apply different downstream processing afterwards.
 
-![image](/assets/images/ocr/form_tables.jpg)
+![New Yolo-based Table and Form detector](/assets/images/ocr/form_tables.jpg)
 
 Check a full example of utilization in [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableAndFormDetection.ipynb).
 
+</div><div class="h3-box" markdown="1">
 
 #### Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved
 Memory utilization has been improved to make it more GC friendly. The practical result is that big jobs are more stable, and less likely to get restarted because of exhausting resources.
 
+</div><div class="h3-box" markdown="1">
 
 #### Fixes in AlabReader
 AlabReader has been improved to fix some bugs, and to improve the performance.
+
+</div><div class="h3-box" markdown="1">
 
 #### Fixes in HocrToTextTable
 HocrToTextTable has been improved in order to better handle some corner cases in which the last rows of tables were being missed.

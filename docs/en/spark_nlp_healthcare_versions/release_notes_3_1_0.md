@@ -15,6 +15,9 @@ sidebar:
 
 ## 3.1.0
 We are glad to announce that Spark NLP for Healthcare 3.1.0 has been released!
+
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + Improved load time & memory consumption for SentenceResolver models.
 + New JSL Bert Models.
@@ -33,11 +36,13 @@ We are glad to announce that Spark NLP for Healthcare 3.1.0 has been released!
 + Bug fixes in Deidentification module.
 + New notebooks.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Sentence Resolver Models load time improvement
 Sentence resolver models now have faster load times, with a speedup of about 6X when compared to previous versions.
 Also, the load process now is more  memory friendly meaning that the maximum memory required during load time is smaller, reducing the chances of OOM exceptions, and thus relaxing hardware requirements.
+
+</div><div class="h3-box" markdown="1">
 
 #### New JSL SBert Models
 We trained new sBert models in TF2 and fined tuned on MedNLI, NLI and UMLS datasets with various parameters to cover common NLP tasks in medical domain. You can find the details in the following table.
@@ -51,8 +56,11 @@ We trained new sBert models in TF2 and fined tuned on MedNLI, NLI and UMLS datas
 + `sbert_jsl_tiny_uncased`
 + `sbert_jsl_tiny_umls_uncased`
 
+</div><div class="h3-box" markdown="1">
+
 #### JSL SBert Model Speed Benchmark
 
+{:.table-model-big}
 | JSL SBert Model| Base Model | Is Cased | Train Datasets | Inference speed (100 rows) |
 |-|-|-|-|-|
 | sbiobert_jsl_cased | biobert_v1.1_pubmed | Cased | medNLI, allNLI| 274,53 |
@@ -64,36 +72,43 @@ We trained new sBert models in TF2 and fined tuned on MedNLI, NLI and UMLS datas
 | sbert_jsl_tiny_uncased | uncased_L-2_H-128_A-2 | Uncased | medNLI, allNLI| 4,54 |
 | sbert_jsl_tiny_umls_uncased | uncased_L-2_H-128_A-2 | Uncased | medNLI, allNL, umls | 4,54 |
 
+</div><div class="h3-box" markdown="1">
+
 #### New ICD10CM resolver models:
 These models map clinical entities and concepts to ICD10 CM codes using sentence bert embeddings. They also return the official resolution text within the brackets inside the metadata. Both models are augmented with synonyms, and previous augmentations are flexed according to cosine distances to unnormalized terms (ground truths).
 
 + `sbiobertresolve_icd10cm_slim_billable_hcc`: Trained with classic sbiobert mli. (`sbiobert_base_cased_mli`)
 
-Models Hub Page : https://nlp.johnsnowlabs.com/2021/05/25/sbiobertresolve_icd10cm_slim_billable_hcc_en.html
+Models Hub Page : [https://nlp.johnsnowlabs.com/2021/05/25/sbiobertresolve_icd10cm_slim_billable_hcc_en.html](https://nlp.johnsnowlabs.com/2021/05/25/sbiobertresolve_icd10cm_slim_billable_hcc_en.html)
 
 + `sbertresolve_icd10cm_slim_billable_hcc_med`: Trained with new jsl sbert(`sbert_jsl_medium_uncased`)
 
-Models Hub Page : https://nlp.johnsnowlabs.com/2021/05/25/sbertresolve_icd10cm_slim_billable_hcc_med_en.html
+Models Hub Page : [https://nlp.johnsnowlabs.com/2021/05/25/sbertresolve_icd10cm_slim_billable_hcc_med_en.html](https://nlp.johnsnowlabs.com/2021/05/25/sbertresolve_icd10cm_slim_billable_hcc_med_en.html)
 
 
 *Example*: 'bladder cancer'
 + `sbiobertresolve_icd10cm_augmented_billable_hcc`
 
+{:.table-model-big}
 | chunks | code | all_codes | resolutions |all_distances | 100x Loop(sec) |
 |-|-|-|-|-|-|
 | bladder cancer | C679 | [C679, Z126, D090, D494, C7911] | [bladder cancer, suspected bladder cancer, cancer in situ of urinary bladder, tumor of bladder neck, malignant tumour of bladder neck] | [0.0000, 0.0904, 0.0978, 0.1080, 0.1281] | 26,9 |
 
 + ` sbiobertresolve_icd10cm_slim_billable_hcc`
 
+{:.table-model-big}
 | chunks | code | all_codes | resolutions |all_distances | 100x Loop(sec) |
 | - | - | - | - | - | - |
 | bladder cancer | D090 | [D090, D494, C7911, C680, C679] | [cancer in situ of urinary bladder [Carcinoma in situ of bladder], tumor of bladder neck [Neoplasm of unspecified behavior of bladder], malignant tumour of bladder neck [Secondary malignant neoplasm of bladder], carcinoma of urethra [Malignant neoplasm of urethra], malignant tumor of urinary bladder [Malignant neoplasm of bladder, unspecified]] | [0.0978, 0.1080, 0.1281, 0.1314, 0.1284] | 20,9 |
 
 + `sbertresolve_icd10cm_slim_billable_hcc_med`
 
+{:.table-model-big}
 | chunks | code | all_codes | resolutions |all_distances | 100x Loop(sec) |
 | - | - | - | - | - | - |
 | bladder cancer | C671 | [C671, C679, C61, C672, C673] | [bladder cancer, dome [Malignant neoplasm of dome of bladder], cancer of the urinary bladder [Malignant neoplasm of bladder, unspecified], prostate cancer [Malignant neoplasm of prostate], cancer of the urinary bladder] | [0.0894, 0.1051, 0.1184, 0.1180, 0.1200] | 12,8 |
+
+</div><div class="h3-box" markdown="1">
 
 #### New Deidentification NER Models
 
@@ -101,8 +116,9 @@ We trained four new NER models to find PHI data (protected health information) t
 
 + `ner_deid_generic_augmented`  : Detects PHI 7 entities (`DATE`, `NAME`, `LOCATION`, `PROFESSION`, `CONTACT`, `AGE`, `ID`).
 
-Models Hub Page : https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html
+Models Hub Page : [https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html](https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html)
 
+{:.table-model-big}
 | entity| ner_deid_large (v3.0.3 and before)|ner_deid_generic_augmented (v3.1.0)|
 |--|:--:|:--:|
 |   CONTACT| 0.8695|0.9592 |
@@ -112,8 +128,9 @@ Models Hub Page : https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augme
 
 + `ner_deid_subentity_augmented`: Detects PHI 23 entities (`MEDICALRECORD`, `ORGANIZATION`, `DOCTOR`, `USERNAME`, `PROFESSION`, `HEALTHPLAN`, `URL`, `CITY`, `DATE`, `LOCATION-OTHER`, `STATE`, `PATIENT`, `DEVICE`, `COUNTRY`, `ZIP`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `SREET`, `BIOID`, `FAX`, `AGE`)
 
-Models Hub Page : https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html
+Models Hub Page : [https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html](https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html)
 
+{:.table-model-big}
 |entity| ner_deid_enriched (v3.0.3 and before)| ner_deid_subentity_augmented (v3.1.0)|
 |-------------|:------:|:--------:|
 |     HOSPITAL| 0.8519| 0.8983 |
@@ -175,6 +192,7 @@ results = model.transform(spark.createDataFrame(pd.DataFrame({"text": ["""A. Rec
 +-----------------------------+-------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New column returned in DeidentificationModel
 
@@ -199,6 +217,8 @@ Annotation(
 )
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Reidentification feature
 
 With the new ReidetificationModel, the user can go back to the original sentences using the mappings columns and the deidentification sentences.
@@ -220,6 +240,8 @@ reDeidentification = ReIdentification()
      .setInputCols(["mappings","deid_chunks"])
      .setOutputCol("original")
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New Deidentification Pretrained Pipelines
 We developed a `clinical_deidentification` pretrained pipeline that can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`,  `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
@@ -283,6 +305,8 @@ val result = deid_pipeline.annotate("Record date : 2093-01-13, David Hale, M.D. 
    '1HGBH41JXMN109286']}
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Chunk filtering based on confidence
 
 We added a new annotator ChunkFiltererApproach that allows to load a csv with both entities and confidence thresholds.
@@ -344,6 +368,7 @@ Producing the following entities:
 ```
 As you can see, only the treatment entities with confidence score of more than 0.7, and the problem entities with confidence score of more than 0.9 have been kept in the output.
 
+</div><div class="h3-box" markdown="1">
 
 #### Extended regex dictionary fuctionallity in Deidentification
 
@@ -354,6 +379,8 @@ Examples:
 
 Given the sentence `The patient with ssn 123123123` we can use the following regex to capture the entitty `ssn (\d{9})`
 Given the sentence `The patient has 12 years` we can use the following regex to capture the entitty `(\d{2}) years`
+
+</div><div class="h3-box" markdown="1">
 
 #### Enhanced RelationExtractionDL Model to create and identify relations between entities across the entire document
 
@@ -373,11 +400,15 @@ Examples:
 
 Given a document containing multiple sentences: `John somkes cigrettes. He also consumes alcohol.`, now we can generate relation pairs across sentences and relate `alcohol` with `John` .
 
+</div><div class="h3-box" markdown="1">
+
 #### Set NER graph explicitely in MedicalNerApproach
 Now MedicalNerApproach can receives the path to the graph directly. When a graph location is provided through this method, previous graph search behavior is disabled.
 ```
 MedicalNerApproach.setGraphFile(graphFilePath)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### MedicalNerApproach can now accept a user-defined name for log file.
 Now MedicalNerApproach can accept a user-defined name for the log file. If not such a name is provided, the conventional naming will take place.
@@ -386,14 +417,19 @@ MedicalNerApproach.setLogPrefix("oncology_ner")
 ```
 This will result in `oncology_ner_20210605_141701.log` filename being used, in which the `20210605_141701` is a timestamp.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Notebooks
 
-+ A [new notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.4.Biomedical_NER_SparkNLP_paper_reproduce.ipynb)  to reproduce our peer-reviewed NER paper (https://arxiv.org/abs/2011.06315)
++ A [new notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.4.Biomedical_NER_SparkNLP_paper_reproduce.ipynb)  to reproduce our peer-reviewed NER paper ([https://arxiv.org/abs/2011.06315](https://arxiv.org/abs/2011.06315))
 + New databricks [case study notebooks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/databricks/python/healthcare_case_studies). In these notebooks, we showed the examples of how to work with oncology notes dataset and OCR on databricks for both DBr and community edition versions.
 
+</div><div class="h3-box" markdown="1">
 
 #### Updated Resolver Models
 We updated `sbiobertresolve_snomed_findings` and `sbiobertresolve_cpt_procedures_augmented` resolver models to reflect the latest changes in the official terminologies.
+
+</div><div class="h3-box" markdown="1">
 
 #### Getting Started with Spark NLP for Healthcare Notebook in Databricks
 We prepared a new notebook for those who want to get started with Spark NLP for Healthcare in Databricks : [Getting Started with Spark NLP for Healthcare Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare_case_studies/Get_Started_Spark_NLP_for_Healthcare.ipynb)
