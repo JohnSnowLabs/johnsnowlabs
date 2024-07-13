@@ -20,15 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 Assign assertion status to clinical entities extracted by NER based on their context in the text.
 
-## Predicted Entities
-
-`absent`, `associated_with_someone_else`, `conditional`, `hypothetical`, `possible`, `present`
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_i2b2_e5_base_v2_i2b2_en_5.3.3_3.0_1720879694320.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_i2b2_e5_base_v2_i2b2_en_5.3.3_3.0_1720879694320.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_i2b2_e5_base_v2_i2b2_en_5.3.3_3.0_1720882264520.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/fewhot_assertion_i2b2_e5_base_v2_i2b2_en_5.3.3_3.0_1720882264520.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -36,7 +32,6 @@ Assign assertion status to clinical entities extracted by NER based on their con
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -192,18 +187,3 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[assertion]|
 |Language:|en|
 |Size:|25.4 KB|
-
-## Benchmarking
-
-```bash
-                       label  precision    recall  f1-score   support
-                      absent       0.94      0.97      0.95       303
-associated_with_someone_else       0.94      0.88      0.91        17
-                 conditional       0.60      0.20      0.30        15
-                hypothetical       0.86      0.91      0.89        70
-                    possible       0.65      0.85      0.74        60
-                     present       0.96      0.94      0.95       880
-                    accuracy          -         -      0.93      1345
-                   macro-avg       0.83      0.79      0.79      1345
-                weighted-avg       0.93      0.93      0.93      1345
-```
