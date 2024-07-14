@@ -71,9 +71,9 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 |[JSL_MedM_q16_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q16_v1_en.html)      |  Summarization, Q&A, RAG, and Chat |
 |[JSL_MedM_q8_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q8_v1_en.html)       | Summarization, Q&A, RAG, and Chat |
 |[JSL_MedM_q4_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medm_q4_v1_en.html)       | Summarization, Q&A, RAG, and Chat |
-|[JSL_MedSNer_ZS_q16_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_en.html)| Extract and link medical named entities |
-|[JSL_MedSNer_ZS_q8_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_en.html) | Extract and link medical named entities |
-|[JSL_MedSNer_ZS_q4_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_en.html) | Extract and link medical named entities |
+|[JSL_MedSNer_ZS_q16_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_v1_en.html)| Extract and link medical named entities |
+|[JSL_MedSNer_ZS_q8_v1_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_v1_en.html) | Extract and link medical named entities |
+|[JSL_MedSNer_ZS_q4_v1](https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_v1_en.html) | Extract and link medical named entities |
 
 **We recommend using 8b quantized versions of the models as the qualitative performance difference between q16 and q8 versions is very negligible.**
 
@@ -83,7 +83,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 from sparknlp_jsl.llm import LLMLoader
 
-llm_loader_pretrained = LLMLoader(spark).pretrained("JSL_MedS_q16_v1", "en", "clinical/models")
+llm_loader_pretrained = LLMLoader(spark).pretrained("jsl_meds_q16_v1", "en", "clinical/models")
 
 llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 ```

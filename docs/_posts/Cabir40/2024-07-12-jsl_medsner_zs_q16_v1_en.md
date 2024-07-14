@@ -1,8 +1,8 @@
 ---
 layout: model
-title: JSL_MedM (LLM - q8)
+title: JSL_MedSNER (LLM - q16)
 author: John Snow Labs
-name: jsl_medner_zs_q8
+name: jsl_medsner_zs_q16_v1
 date: 2024-07-12
 tags: [en, licensed, clinical, medical, llm, ner]
 task: [Summarization, Question Answering, Named Entity Recognition]
@@ -29,8 +29,8 @@ This LLM model is trained to extract and link entities in a document. Users need
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q8_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medner_zs_q8_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medsner_zs_q16_v1_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medsner_zs_q16_v1_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -42,7 +42,7 @@ This LLM model is trained to extract and link entities in a document. Users need
 ```python
 from sparknlp_jsl.llm import LLMLoader
 
-llm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medner_zs_q8", "en", "clinical/models")
+llm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medsner_zs_q16_v1", "en", "clinical/models")
 
 ptompt = """
 ### Template:
@@ -69,7 +69,7 @@ response = llm_loader_pretrained.generate(ptompt)
 import com.johnsnowlabs.ml.gguf.LLMLoader
 import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-val llmLoader = new LLMLoader().setSparkSession(spark).pretrained("jsl_medner_zs_q8", "en", "clinical/models")
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained("jsl_medsner_zs_q16_v1", "en", "clinical/models")
 
 val prompt = """
 ### Template:
@@ -118,12 +118,12 @@ val response = llmLoader.generate(prompt)
 
 {:.table-model}
 |---|---|
-|Model Name:|jsl_medner_zs_q8|
+|Model Name:|jsl_medsner_zs_q16_v1|
 |Compatibility:|Healthcare NLP 5.4.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|3.7 GB|
+|Size:|5.7 GB|
 
 
 
