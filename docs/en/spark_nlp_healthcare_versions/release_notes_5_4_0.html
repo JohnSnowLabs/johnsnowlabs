@@ -712,15 +712,15 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>Summarization, Q&amp;A, RAG, and Chat</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_en.html">JSL_MedSNer_ZS_q16_v1</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_v1_en.html">JSL_MedSNer_ZS_q16_v1</a></td>
         <td>Extract and link medical named entities</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_en.html">JSL_MedSNer_ZS_q8_v1</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_v1_en.html">JSL_MedSNer_ZS_q8_v1</a></td>
         <td>Extract and link medical named entities</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_en.html">JSL_MedSNer_ZS_q4_v1</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_v1_en.html">JSL_MedSNer_ZS_q4_v1</a></td>
         <td>Extract and link medical named entities</td>
       </tr>
     </tbody>
@@ -733,7 +733,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.llm</span> <span class="kn">import</span> <span class="n">LLMLoader</span>
 
-<span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"JSL_MedS_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
 <span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="s">"What is the indication for the drug Methadone?"</span><span class="p">)</span>
 </code></pre></div>  </div>
