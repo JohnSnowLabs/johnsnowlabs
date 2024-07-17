@@ -172,7 +172,7 @@ val res = mapperPipeline.fit(test_data).transform(test_data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[NerQuestionGeneratorNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerQuestionGenerator.ipynb)
+[NerQuestionGeneratorNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerQuestionGenerator.ipynb)
 {%- endcapture -%}
 
 

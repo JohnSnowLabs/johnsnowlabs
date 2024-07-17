@@ -200,7 +200,7 @@ result.show(false)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[FewShotAssertionClassifierModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb)
+[FewShotAssertionClassifierModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/FewShotClassifierModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}

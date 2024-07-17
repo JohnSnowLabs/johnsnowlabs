@@ -415,7 +415,7 @@ val result= pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ChunkMapperModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperModel.ipynb)
+[ChunkMapperModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -841,7 +841,7 @@ model.stagesArray(-1) .write() .save("models/legal_mapper")
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[ChunkMapperApproachModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperApproach.ipynb)
+[ChunkMapperApproachModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

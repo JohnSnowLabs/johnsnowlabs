@@ -118,7 +118,7 @@ val clf_Pipeline = new Pipeline().setStages(Array(features_asm, gc_logreg_graph_
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[GenericLogRegClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericLogRegClassifierModel.ipynb)
+[GenericLogRegClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericLogRegClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

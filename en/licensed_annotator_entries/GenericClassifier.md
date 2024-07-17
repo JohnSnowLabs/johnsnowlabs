@@ -120,7 +120,7 @@ val result = pipeline.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[GenericClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierModel.ipynb)
+[GenericClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -352,7 +352,7 @@ val clf_model = pipeline.fit(data)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[GenericClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierApproach.ipynb)
+[GenericClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

@@ -192,7 +192,7 @@ val result = nlpPipeline.fit(data).transfrom(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[NameChunkObfuscatorNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscator.ipynb)
+[NameChunkObfuscatorNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscator.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -398,7 +398,7 @@ val res = nlpPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[NameChunkObfuscatorApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscatorApproach.ipynb)
+[NameChunkObfuscatorApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscatorApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

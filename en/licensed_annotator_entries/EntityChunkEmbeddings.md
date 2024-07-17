@@ -212,7 +212,7 @@ val results = rxnorm_model.fit(rxnorm_model).transform(rxnorm_model)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[EntityChunkEmbeddingsModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/EntityChunkEmbeddings.ipynb)
+[EntityChunkEmbeddingsModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/EntityChunkEmbeddings.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

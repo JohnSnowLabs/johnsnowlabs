@@ -460,7 +460,7 @@ val result = pipeline.fit(textList).transform(textList)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ZeroShotNerModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotNerModel.ipynb)
+[ZeroShotNerModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotNerModel.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

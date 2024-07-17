@@ -340,7 +340,7 @@ val result = pipeline.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[SentenceEntityResolverModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverApproach_SentenceEntityResolverModel.ipynb)
+[SentenceEntityResolverModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -634,7 +634,7 @@ val snomedModel = bertExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[SentenceEntityResolverApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverApproach_SentenceEntityResolverModel.ipynb)
+[SentenceEntityResolverApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

@@ -52,7 +52,7 @@ Parameters:
 
 from sparknlp_jsl.llm import LLMLoader
 
-llm_loader_pretrained = LLMLoader(spark).pretrained("JSL_MedS_q16_v1", "en", "clinical/models")
+llm_loader_pretrained = medical.LLMLoader(spark).pretrained("JSL_MedS_q16_v1", "en", "clinical/models")
 
 llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 
