@@ -188,7 +188,7 @@ val result = pipeline.fit(df) .transform(df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[NerDisambiguatorModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerDisambiguatorModel.ipynb)
+[NerDisambiguatorModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerDisambiguatorModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}

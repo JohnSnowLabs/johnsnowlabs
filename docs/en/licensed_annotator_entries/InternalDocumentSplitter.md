@@ -163,7 +163,7 @@ val res = mapperPipeline.fit(test_data).transform(test_data)
 
 
 {%- capture model_notebook_link -%}
-[InternalDocumentSplitterNotebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb)
+[InternalDocumentSplitterNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/InternalDocumentSplitter.ipynb)
 {%- endcapture -%}
 
 
