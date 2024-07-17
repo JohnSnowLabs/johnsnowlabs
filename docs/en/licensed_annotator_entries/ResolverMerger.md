@@ -230,7 +230,7 @@ val res = mapperPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ResolverMergerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ResolverMerger.ipynb)
+[ResolverMergerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ResolverMerger.ipynb)
 {%- endcapture -%}
 
 

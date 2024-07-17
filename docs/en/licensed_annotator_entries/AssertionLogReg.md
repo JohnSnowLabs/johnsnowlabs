@@ -45,7 +45,7 @@ ASSERTION
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[AssertionLogRegModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegModel.ipynb)
+[AssertionLogRegModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -368,7 +368,7 @@ val assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[AssertionLogRegApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegApproach.ipynb)
+[AssertionLogRegApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

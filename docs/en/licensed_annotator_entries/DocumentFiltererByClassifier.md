@@ -269,7 +269,7 @@ val result = pipeline.fit(df) .transform(df)
 
 
 {%- capture model_notebook_link -%}
-[DocumentFiltererByClassifierNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.1.Section_Header_Splitting_and_Classification.ipynb)
+[DocumentFiltererByClassifierNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByClassifier.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

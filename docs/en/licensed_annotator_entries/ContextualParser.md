@@ -393,7 +393,7 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[ContextualParserApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualParserApproach.ipynb)
+[ContextualParserApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualParserApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
