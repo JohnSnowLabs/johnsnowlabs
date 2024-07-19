@@ -27,7 +27,7 @@ You can test the following things with the `test_markdown()` function :
 
 Test-Report Pandas Dataframe has the columns:
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Report Column | Description                                                   | 
 |---------------|---------------------------------------------------------------|
 | `test_script` | is the generated script for testing                           |

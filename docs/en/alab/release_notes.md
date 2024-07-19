@@ -26,16 +26,24 @@ Lastly, users can "batch" clear predicted and manually annotated labels, providi
 
 Here are the highlights of this release:
 
+</div><div class="h3-box" markdown="1">
+
 ## Test Suite Management
 A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.
+
+</div><div class="h3-box" markdown="1">
 
 ### Test Suites HUB
 The new **"Test Suites HUB"** option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the **"Test Suite"** page, where all existing Test Suites he/she has access to are listed.
 
  ![GenaiImage](/assets/images/annotation_lab/6.2.0/1.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Create, Update, and Delete Test Suites
 Managing a Test Suite is easy: a Test Suite can be created using the **"Test"** page under a parent project and can be fully managed in the **"Test Suite"** page within the **"Test Suites HUB"** option where users can create, update, and delete test suites.
+
+</div><div class="h3-box" markdown="1">
 
 #### Test Suite Creation
 Creating a new Test Suite from the **"Test Suite"** page is straightforward:
@@ -51,6 +59,8 @@ Creating a new Test Suite from the **"Test Suite"** page is straightforward:
 **Note**: The Model type is set to "NER" and cannot be changed, as Generative AI Lab supports only testing NER models in this version.
 
  ![GenaiImage](/assets/images/annotation_lab/6.2.0/2.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### Supported Test Categories
 The following are the currently supported categories for NER models within the Generative AI Lab application, available through the LangTest framework:
@@ -92,6 +102,8 @@ Model robustness tests evaluate a model’s ability to maintain consistent perfo
 
 More information on Robustness tests is available in the [LangTest Robustness Documentation](https://langtest.org/docs/pages/docs/test_categories#robustness-tests).
 
+</div><div class="h3-box" markdown="1">
+
 #### **Managing Test Suites**
 To edit an existing Test Suite, navigate to the **"Test Suites"** page and follow these steps:
 
@@ -104,12 +116,12 @@ Selecting a test category will display its associated test types and correspondi
 
 **Note**: Name and Model Type of a test suite cannot be modified.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/4.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/4.gif)
  
  **Full-screen Mode and Search**
 To boost productivity, you can create or edit a test suite using full-screen mode and the search functionality to quickly locate specific tests within the **"TESTS"** section.
  
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/5.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/5.gif)
 
  **Test Suite Deletion**
 
@@ -122,7 +134,9 @@ To delete a test suite from the **"Test Suite"** page, follow these steps:
 
 **Note**: a test suite used within at least one project in your enterprise cannot be deleted.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/6.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/6.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### Importing and Exporting Test Suites
 Users can export and import test suites using the **"Test Suites HUB"**. To export a test suite from the **"Test Suite"** page, follow these simple steps:
@@ -131,7 +145,7 @@ Users can export and import test suites using the **"Test Suites HUB"**. To expo
 2. Click on the **"Export"**.
 3. Upon selecting **"Export"**, the test suite will be saved as **<test_suite_name>.json**, and a confirmation message indicating successful export will appear.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/7.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/7.gif)
 
 Users can import a test suite into the **"Test Suites HUB"** by following these few steps:
 
@@ -140,21 +154,27 @@ Users can import a test suite into the **"Test Suites HUB"** by following these 
 3. Upon successful import, a confirmation message will be displayed.
 4. You can then view the imported test suite on the **"Test Suite"** page.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/8.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/8.gif)
  
+</div><div class="h3-box" markdown="1">
+
 ### Searching for a specific Test Suite
 Use the search feature on the **"Test Suite"** page, the **"SEARCH TEST SUITES ..."** search bar to find the desired Test Suite, by matching it’s name.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/9.gif)
- 
+![GenaiImage](/assets/images/annotation_lab/6.2.0/9.gif)
+
+</div><div class="h3-box" markdown="1">
+
 ### New "Test" page under Project Menu
 A new entry, **"Test"** has been added under the project menu in the left navigation bar for NER projects. Clicking on the **"Test"** node in the left navigation bar will take the user to the **"Test"** page, where they can manage tests and execute model testing.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/10.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/10.png)
  
 On this page, project managers can configure tests settings and corresponding parameters, create and edit test cases, start and stop model testing, review test logs, and review, download, or delete test results. 
 
 **Note**: The functionality available on the Test page is exclusively available to users with project manager roles.
+
+</div><div class="h3-box" markdown="1">
 
 #### Test - setup and configuration**
 
@@ -201,7 +221,7 @@ Users have two methods to select Test Settings and Test Parameters:
  - Also within Testing Parameters, select tags from the **"Filter test by tag for testing"** dropdown.
  - Click the **"Save"** button to confirm your selections and save the configuration.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/12.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/12.gif)
  
 **2. Wizard Mode (Guided Setup):**
 
@@ -213,11 +233,13 @@ Users have two methods to select Test Settings and Test Parameters:
  - Choose one or more tags, or none, from the **"Filter test by tag for testing"** dropdown.
  - Click **"Next"** to save the Test Settings and Parameters.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/13.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/13.gif)
  
 To modify the Test Settings and Parameters, simply click on the **"Edit"** icon.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/14.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/14.png)
+
+</div><div class="h3-box" markdown="1">
 
 ####  Generating Test Cases
 After saving the Test Settings and Parameters, the following options become available: **"Generate Test Cases"**, **"Start Testing"**, and **"Edit"**. 
@@ -230,24 +252,27 @@ Only Bias and Robustness test cases can be edited and updated; other test cases 
 
 Modifying Test Settings or Parameters and generating new test cases will discard any existing ones. If no relevant tasks or data are available, no test cases will be generated.
 
+![GenaiImage](/assets/images/annotation_lab/6.2.0/15.gif)
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/15.gif)
+</div><div class="h3-box" markdown="1">
 
 #### Start Model Testing
 When **"Start Testing"** is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on **"Show Logs"**. The testing process can be halted by clicking on **"Stop Testing"**. If no test cases have been generated, the **"Start Testing"** option will be disabled, preventing the user from initiating testing.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/16.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/16.gif)
 
 If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on "Start Testing" will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/17.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/17.png)
+
+</div><div class="h3-box" markdown="1">
 
 #### View and Delete Test Results 
 Once the execution of model testing is complete, users can access the test results via the **"Test Results History"** section in the **"Test Results"** tab. 
 
 Under this tab, the application displays all the “test runs” and corresponding results, for every test previously conducted for the project.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/18.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/18.png)
 
 Clicking on **"Show Results"** will display the results for the selected test execution run. The test results consist of two reports:
 
@@ -255,7 +280,7 @@ Clicking on **"Show Results"** will display the results for the selected test ex
 
 This section of the results provides a summary of all tests performed, including their status. It includes details such as **"Number"**, **"Category"**, **"Test Type"**, **"Fail Count"**, **"Pass Count"**, **"Pass Rate"**, **"Minimum Pass Rate"** and **"Status"**.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/19.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/19.png)
 
 **2. Detailed Report:**
 
@@ -263,22 +288,26 @@ The detailed report contains information about each test case within the selecte
 
 In this context, **"Expected Results"** refer to the prediction output by the testing model on the **"Original"** data, while **"Actual Results"** indicate the prediction output by the testing model on the **"Test Case"** data generated. A test is considered passed if the **"Expected Results"** match the **"Actual Results"**; otherwise, it is deemed failed.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/20.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/20.png)
 
 Users have the option to simultaneously download both reports in CSV format by selecting the download button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
 
 For a detailed report, users can enter full-screen mode by clicking the full-screen button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
 
 Furthermore, users can delete test results from the **"Test Results History"** by selecting the three dots followed by the **"Delete"** button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/23.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/23.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ## Use Text-based classification model for Visual NER Project
 We are excited to introduce the capability of using text-based classification models for visual tasks. Users can now classify images and PDF documents with over 1500 pre-trained models available in the Models Hub. Additionally, manual classification is supported, allowing users to classify documents themselves. This update enables document classification in its original form, preserving the integrity of PDFs without converting them to plain text.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Project Type- Visual NLP Classification:
 A new project type called "Visual NLP Classification" has been added.
@@ -288,7 +317,9 @@ Configuring a Visual Classification project is easy:
 2. Select the “Image” tab.
 3. Choose "Visual NLP Classification" as the project type.
    
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/24.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/24.png)
+
+</div><div class="h3-box" markdown="1">
 
 #### Visual Classification with Generative AI Lab 6.2
 With version 6.2, users can classify both images and PDFs using their original form. This means working with the complete/original document, preserving its layout and content, rather than just classifying extracted text.
@@ -301,7 +332,7 @@ Classification is easy, and the workflow and user interface are consistent with 
     - Import OCR Documents
     - Once the tasks are imported, click on the pre-annotate button to classify tasks based on classification models.
       
-   ![GenaiImage](/assets/images/annotation_lab/6.2.0/25.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/25.gif)
 
 2. **Manual Classification**:
     - After selecting the project type, go to the “Customize Labels” page.
@@ -311,7 +342,9 @@ Classification is easy, and the workflow and user interface are consistent with 
     - Import OCR Documents
     - Open the tasks and classify them manually.
       
-   ![GenaiImage](/assets/images/annotation_lab/6.2.0/26.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/26.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ## Sort tasks by file name on the labeling page
 
@@ -325,13 +358,14 @@ Sorting can be done either "By Date" or "By Title" at a time.
 The sorting direction is visually indicated by an up arrow within a circle, indicating the default sorting in ascending order for both options. 
 Changing the sort order is done by clicking on the up/down arrow. After selecting the sorting type and order, the user must click **"Apply Filter"** to see the sorting results.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/27.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/27.gif)
  
 In previous versions of the application a prefix **“Task{No}”** was added to each task title during import step. 
 This behavior has been modified. No prefix will be added to imported tasks, except for tasks without a title, which will use **"Task{No}"** as the title.
 
 Additionally, to improve sorting by original name, tasks imported from an archive will no longer include the full path as part of the title. Only the file name will be used for title, without the **"Task{No}" prefix or file path**.
 
+</div><div class="h3-box" markdown="1">
 
 ### Improvements
 ### Restrict uploaded file types throughout the application
@@ -356,6 +390,7 @@ Users can confidently upload and import files, knowing that the system will enfo
 
 5. **Robust Monitoring**: Attempts to circumvent file type restrictions by changing file extensions are detected and logged, providing an additional layer of security and oversight.
 
+</div><div class="h3-box" markdown="1">
 
 ### There should be a way to "batch" clear predicted labels in a Section after pre-annotation 
 Version 6.2 of Generative AI Lab introduces a significant enhancement improving the application's security and robustness by restricting the types of files that can be uploaded or imported. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, maintaining the platform's integrity and reliability while enhancing its security. 
@@ -366,20 +401,24 @@ Version 6.2 of Generative AI Lab introduces a significant enhancement improving 
     - **Shift + Drag**: press and hold the **Shift** key, while dragging, to select the specific area where all labels will be cleared.
     - click the **Delete** button to remove the selected labels.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/28.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/28.gif)
  
 2. **Clear All Labels**:
     - **Annotation Tab**: clear all labels from the labeling page by clicking on the **Delete** icon located under the **Annotation tab** next to **Regions**. 
   
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/29.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/29.gif)
  
+</div><div class="h3-box" markdown="1">
+
 ### Disable "Import Sample Task" along with information when active OCR server, is not available
 In previous versions of Generative AI Lab, the **Add Sample Task** button was always enabled, allowing users to attempt importing sample tasks for all project types, including Visual NER projects. However, if the OCR server was not deployed and active, users encountered issues where the sample tasks could not be imported, leading to confusion as no error message or indication was provided.
 
 With version 6.2 the button is disabled if an active OCR server is not available preventing any confusion during the sample task import process and providing clear feedback regarding the availability of the OCR server before attempting to import sample tasks.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/30.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/30.png)
  
+</div><div class="h3-box" markdown="1">
+
 ### Bring your own License for AMI instances
 The previous version of Generative AI Lab only supported PayG (Pay-As-You-Go) licenses, preventing users from uploading or switching to existing Airgap or Floating licenses.
 
@@ -399,8 +438,10 @@ With version 6.2, managing licenses for AMI (Amazon Machine Image) instances pro
    - Click the option to upload a new license.
    - Choose your preferred license type (Airgap, Floating, or PayG) and complete the upload process.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/31.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/31.gif)
  
+</div><div class="h3-box" markdown="1">
+
 ### Bug Fixes
 - **Prompts with spaces in their names caused errors when added to the project configuration:**
 
@@ -429,7 +470,6 @@ Previously, features that the annotator did not have access to were visible to t
 - **Application Crashes When Annotating Large Texts Exceeding 5000 or more Characters per Page**
 
 When manually annotating a large number of tokens on the labeling page, the application would crash, especially when the annotated text exceeded 5000 characters per page. This issue prevented users from completing their annotations, causing workflow interruptions and potential data loss. This problem has now been resolved. Although pages with many labels may take some time to load, the labeling page no longer crashes.
-
  
 </div><div class="prev_ver h3-box" markdown="1">
 

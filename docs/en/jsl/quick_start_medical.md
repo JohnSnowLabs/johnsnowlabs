@@ -39,6 +39,7 @@ nlp.load('med_ner.jsl.wip.clinical').predict(medical_text)
 
 ```
 
+{:.table-model-big}
 | entity      | entity_class | entity_confidence |
 |:------------|:-------------|------------------:|
 | 5-month-old | Age          |            0.9982 |

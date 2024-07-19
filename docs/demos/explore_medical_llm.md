@@ -32,6 +32,18 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_LLM.ipynb     
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_LLM.ipynb
+        - title: GPT-4 vs Healthcare NLP
+          id: gpt4_vs_healthcare_nlp
+          image: 
+              src: /assets/images/GPT-4_vs_Healthcare_NLP.svg
+          excerpt: The purpose of this demo is to compare the results between Healthcare NLP and GPT-4.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/JSL_GPT4/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SparkNLP_vs_ChatGPT.ipynb
 ---
 
