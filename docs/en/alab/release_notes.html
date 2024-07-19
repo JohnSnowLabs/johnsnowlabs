@@ -633,16 +633,28 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Here are the highlights of this release:</p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="test-suite-management">Test Suite Management</h2>
   <p>A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="test-suites-hub">Test Suites HUB</h3>
   <p>The new <strong>“Test Suites HUB”</strong> option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the <strong>“Test Suite”</strong> page, where all existing Test Suites he/she has access to are listed.</p>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/1.png" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="create-update-and-delete-test-suites">Create, Update, and Delete Test Suites</h3>
   <p>Managing a Test Suite is easy: a Test Suite can be created using the <strong>“Test”</strong> page under a parent project and can be fully managed in the <strong>“Test Suite”</strong> page within the <strong>“Test Suites HUB”</strong> option where users can create, update, and delete test suites.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="test-suite-creation">Test Suite Creation</h4>
   <p>Creating a new Test Suite from the <strong>“Test Suite”</strong> page is straightforward:</p>
@@ -660,6 +672,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p><strong>Note</strong>: The Model type is set to “NER” and cannot be changed, as Generative AI Lab supports only testing NER models in this version.</p>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/2.gif" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="supported-test-categories">Supported Test Categories</h3>
   <p>The following are the currently supported categories for NER models within the Generative AI Lab application, available through the LangTest framework:</p>
@@ -701,6 +716,9 @@ Model robustness tests evaluate a model’s ability to maintain consistent perfo
 
   <p>More information on Robustness tests is available in the <a href="https://langtest.org/docs/pages/docs/test_categories#robustness-tests">LangTest Robustness Documentation</a>.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="managing-test-suites"><strong>Managing Test Suites</strong></h4>
   <p>To edit an existing Test Suite, navigate to the <strong>“Test Suites”</strong> page and follow these steps:</p>
 
@@ -737,6 +755,9 @@ To boost productivity, you can create or edit a test suite using full-screen mod
 
   <p><img src="/assets/images/annotation_lab/6.2.0/6.gif" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="importing-and-exporting-test-suites">Importing and Exporting Test Suites</h3>
   <p>Users can export and import test suites using the <strong>“Test Suites HUB”</strong>. To export a test suite from the <strong>“Test Suite”</strong> page, follow these simple steps:</p>
 
@@ -759,10 +780,16 @@ To boost productivity, you can create or edit a test suite using full-screen mod
 
   <p><img src="/assets/images/annotation_lab/6.2.0/8.gif" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="searching-for-a-specific-test-suite">Searching for a specific Test Suite</h3>
   <p>Use the search feature on the <strong>“Test Suite”</strong> page, the <strong>“SEARCH TEST SUITES …“</strong> search bar to find the desired Test Suite, by matching it’s name.</p>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/9.gif" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="new-test-page-under-project-menu">New “Test” page under Project Menu</h3>
   <p>A new entry, <strong>“Test”</strong> has been added under the project menu in the left navigation bar for NER projects. Clicking on the <strong>“Test”</strong> node in the left navigation bar will take the user to the <strong>“Test”</strong> page, where they can manage tests and execute model testing.</p>
@@ -772,6 +799,9 @@ To boost productivity, you can create or edit a test suite using full-screen mod
   <p>On this page, project managers can configure tests settings and corresponding parameters, create and edit test cases, start and stop model testing, review test logs, and review, download, or delete test results.</p>
 
   <p><strong>Note</strong>: The functionality available on the Test page is exclusively available to users with project manager roles.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="test---setup-and-configuration">Test - setup and configuration**</h4>
 
@@ -842,6 +872,9 @@ By default, the dropdown includes all default tags such as “Validated”, “T
 
   <p><img src="/assets/images/annotation_lab/6.2.0/14.png" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="generating-test-cases">Generating Test Cases</h4>
   <p>After saving the Test Settings and Parameters, the following options become available: <strong>“Generate Test Cases”</strong>, <strong>“Start Testing”</strong>, and <strong>“Edit”</strong>. 
 Users must generate test cases and conduct testing independently.</p>
@@ -855,6 +888,9 @@ Only Bias and Robustness test cases can be edited and updated; other test cases 
 
   <p><img src="/assets/images/annotation_lab/6.2.0/15.gif" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="start-model-testing">Start Model Testing</h4>
   <p>When <strong>“Start Testing”</strong> is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on <strong>“Show Logs”</strong>. The testing process can be halted by clicking on <strong>“Stop Testing”</strong>. If no test cases have been generated, the <strong>“Start Testing”</strong> option will be disabled, preventing the user from initiating testing.</p>
 
@@ -863,6 +899,9 @@ Only Bias and Robustness test cases can be edited and updated; other test cases 
   <p>If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on “Start Testing” will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.</p>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/17.png" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="view-and-delete-test-results">View and Delete Test Results</h4>
   <p>Once the execution of model testing is complete, users can access the test results via the <strong>“Test Results History”</strong> section in the <strong>“Test Results”</strong> tab.</p>
@@ -899,8 +938,14 @@ Only Bias and Robustness test cases can be edited and updated; other test cases 
 
   <p><img src="/assets/images/annotation_lab/6.2.0/23.gif" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="use-text-based-classification-model-for-visual-ner-project">Use Text-based classification model for Visual NER Project</h2>
   <p>We are excited to introduce the capability of using text-based classification models for visual tasks. Users can now classify images and PDF documents with over 1500 pre-trained models available in the Models Hub. Additionally, manual classification is supported, allowing users to classify documents themselves. This update enables document classification in its original form, preserving the integrity of PDFs without converting them to plain text.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-project-type--visual-nlp-classification">New Project Type- Visual NLP Classification:</h4>
   <p>A new project type called “Visual NLP Classification” has been added.</p>
@@ -913,6 +958,9 @@ Only Bias and Robustness test cases can be edited and updated; other test cases 
   </ol>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/24.png" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="visual-classification-with-generative-ai-lab-62">Visual Classification with Generative AI Lab 6.2</h4>
   <p>With version 6.2, users can classify both images and PDFs using their original form. This means working with the complete/original document, preserving its layout and content, rather than just classifying extracted text.
@@ -927,9 +975,12 @@ Classification is easy, and the workflow and user interface are consistent with 
         <li>Import OCR Documents</li>
         <li>Once the tasks are imported, click on the pre-annotate button to classify tasks based on classification models.</li>
       </ul>
-
-      <p><img src="/assets/images/annotation_lab/6.2.0/25.gif" alt="GenaiImage" /></p>
     </li>
+  </ol>
+
+  <p><img src="/assets/images/annotation_lab/6.2.0/25.gif" alt="GenaiImage" /></p>
+
+  <ol>
     <li><strong>Manual Classification</strong>:
       <ul>
         <li>After selecting the project type, go to the “Customize Labels” page.</li>
@@ -939,10 +990,13 @@ Classification is easy, and the workflow and user interface are consistent with 
         <li>Import OCR Documents</li>
         <li>Open the tasks and classify them manually.</li>
       </ul>
-
-      <p><img src="/assets/images/annotation_lab/6.2.0/26.gif" alt="GenaiImage" /></p>
     </li>
   </ol>
+
+  <p><img src="/assets/images/annotation_lab/6.2.0/26.gif" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="sort-tasks-by-file-name-on-the-labeling-page">Sort tasks by file name on the labeling page</h2>
 
@@ -962,6 +1016,9 @@ Changing the sort order is done by clicking on the up/down arrow. After selectin
 This behavior has been modified. No prefix will be added to imported tasks, except for tasks without a title, which will use <strong>“Task{No}”</strong> as the title.</p>
 
   <p>Additionally, to improve sorting by original name, tasks imported from an archive will no longer include the full path as part of the title. Only the file name will be used for title, without the <strong>“Task{No}” prefix or file path</strong>.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="improvements">Improvements</h3>
   <h3 id="restrict-uploaded-file-types-throughout-the-application">Restrict uploaded file types throughout the application</h3>
@@ -995,6 +1052,9 @@ This behavior has been modified. No prefix will be added to imported tasks, exce
     <li><strong>Robust Monitoring</strong>: Attempts to circumvent file type restrictions by changing file extensions are detected and logged, providing an additional layer of security and oversight.</li>
   </ol>
 
+</div>
+<div class="h3-box">
+
   <h3 id="there-should-be-a-way-to-batch-clear-predicted-labels-in-a-section-after-pre-annotation">There should be a way to “batch” clear predicted labels in a Section after pre-annotation</h3>
   <p>Version 6.2 of Generative AI Lab introduces a significant enhancement improving the application’s security and robustness by restricting the types of files that can be uploaded or imported. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, maintaining the platform’s integrity and reliability while enhancing its security.</p>
 
@@ -1021,12 +1081,18 @@ This behavior has been modified. No prefix will be added to imported tasks, exce
 
   <p><img src="/assets/images/annotation_lab/6.2.0/29.gif" alt="GenaiImage" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="disable-import-sample-task-along-with-information-when-active-ocr-server-is-not-available">Disable “Import Sample Task” along with information when active OCR server, is not available</h3>
   <p>In previous versions of Generative AI Lab, the <strong>Add Sample Task</strong> button was always enabled, allowing users to attempt importing sample tasks for all project types, including Visual NER projects. However, if the OCR server was not deployed and active, users encountered issues where the sample tasks could not be imported, leading to confusion as no error message or indication was provided.</p>
 
   <p>With version 6.2 the button is disabled if an active OCR server is not available preventing any confusion during the sample task import process and providing clear feedback regarding the availability of the OCR server before attempting to import sample tasks.</p>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/30.png" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="bring-your-own-license-for-ami-instances">Bring your own License for AMI instances</h3>
   <p>The previous version of Generative AI Lab only supported PayG (Pay-As-You-Go) licenses, preventing users from uploading or switching to existing Airgap or Floating licenses.</p>
@@ -1057,6 +1123,9 @@ This behavior has been modified. No prefix will be added to imported tasks, exce
   </ol>
 
   <p><img src="/assets/images/annotation_lab/6.2.0/31.gif" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="bug-fixes">Bug Fixes</h3>
   <ul>
