@@ -26,19 +26,7 @@ Here are the NER models that this pretrained pipeline includes:
 `jsl_ner_wip_clinical`, `jsl_ner_wip_greedy_clinical`, `jsl_ner_wip_modifier_clinical`, `jsl_rd_ner_wip_greedy_clinical`, `ner_abbreviation_clinical`, `ner_ade_binary`, `ner_ade_clinical`,
 `ner_ade_clinical_langtest`, `ner_alcohol_smoking`, `ner_anatomy`, `ner_anatomy_coarse`,  `ner_bacterial_species`, `ner_bacterial_species_langtest`, `ner_biomarker`, `ner_biomarker_langtest`,
 `ner_biomedical_bc2gm`, `ner_bionlp`, `ner_bionlp_langtest`, `ner_cancer_genetics`, `ner_cellular`, `ner_cellular_langtest`, `ner_chemd_clinical`, `ner_chemicals`, `ner_chemprot_clinical`,
-`ner_chemprot_clinical_langtest`, `ner_chexpert`, `ner_clinical`, `ner_clinical_abbreviation_langtest`, `ner_clinical_langtest`, `ner_clinical_large`, `ner_clinical_large_langtest`, `ner_clinical_trials_abstracts`, 
-`ner_covid_trials`, `ner_deid_augmented`, `ner_deid_enriched`, `ner_deid_enriched_langtest`, `ner_deid_generic_augmented`, `ner_deid_generic_augmented_allUpperCased_langtest`, `ner_deid_generic_augmented_langtest`,
-`ner_deid_large`, `ner_deid_large_langtest`, `ner_deid_sd`, `ner_deid_sd_large`, `ner_deid_subentity_augmented`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_subentity_augmented_langtest`, `ner_deid_synthetic`, 
-`ner_deidentify_dl`, `ner_diseases`, `ner_diseases_langtest`, `ner_diseases_large`, `ner_drugprot_clinical`, `ner_drugs`, `ner_drugs_greedy`, `ner_drugs_large`, `ner_eu_clinical_case`, `ner_eu_clinical_condition`, 
-`ner_eu_clinical_condition_langtest`, `ner_events_admission_clinical`, `ner_events_clinical`, `ner_events_clinical_langtest`, `ner_genetic_variants`, `ner_human_phenotype_gene_clinical`, `ner_human_phenotype_gene_clinical_langtest`,
-`ner_human_phenotype_go_clinical`, `ner_human_phenotype_go_clinical_langtest`, `ner_jsl`, `ner_jsl_enriched`, `ner_jsl_greedy`, `ner_jsl_langtest`, `ner_jsl_limited_80p_for_benchmarks`, `ner_jsl_slim`,
-`ner_living_species`, `ner_living_species_langtest`, `ner_measurements_clinical`, `ner_medmentions_coarse`, `ner_menopause_core`, `ner_nature_nero_clinical`, `ner_nihss`, `ner_oncology`,
-`ner_oncology_anatomy_general`, `ner_oncology_anatomy_general_langtest`, `ner_oncology_anatomy_granular`, `ner_oncology_anatomy_granular_langtest`, `ner_oncology_biomarker`,
-`ner_oncology_biomarker_langtest`, `ner_oncology_demographics`, `ner_oncology_demographics_langtest`, `ner_oncology_diagnosis`, `ner_oncology_diagnosis_langtest`, `ner_oncology_langtest`,
-`ner_oncology_limited_80p_for_benchmarks`, `ner_oncology_posology`, `ner_oncology_posology_langtest`, `ner_oncology_response_to_treatment`, `ner_oncology_response_to_treatment_langtest`,
-`ner_oncology_test`, `ner_oncology_test_langtest`, `ner_oncology_therapy`, `ner_oncology_therapy_langtest`, `ner_oncology_tnm`, `ner_oncology_tnm_langtest`, `ner_oncology_unspecific_posology`,
-`ner_oncology_unspecific_posology_langtest`, `ner_opioid`, `ner_pathogen`, `ner_posology`, `ner_posology_small`, `ner_posology_experimental`, `ner_posology_greedy`, `ner_posology_large`, 
-`ner_posology_langtest`, `ner_radiology`, `ner_radiology_wip_clinical`, `ner_risk_factors`, `ner_risk_factors_langtest`, `ner_sdoh`, `ner_sdoh_access_to_healthcare`,
+`ner_chemprot_clinical_langtest`, `ner_chexpert`, `ner_clinical`, `ner_clinical_abbreviation_langtest`, `ner_clinical_langtest`, `ner_clinical_large`, `ner_clinical_large_langtest`, `ner_clinical_trials_abstracts`, `ner_covid_trials`, `ner_deid_augmented`, `ner_deid_enriched`, `ner_deid_enriched_langtest`, `ner_deid_generic_augmented`, `ner_deid_generic_augmented_allUpperCased_langtest`, `ner_deid_generic_augmented_langtest`, `ner_deid_large`, `ner_deid_large_langtest`, `ner_deid_sd`, `ner_deid_sd_large`, `ner_deid_subentity_augmented`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_subentity_augmented_langtest`, `ner_deid_synthetic`, `ner_deidentify_dl`, `ner_diseases`, `ner_diseases_langtest`, `ner_diseases_large`, `ner_drugprot_clinical`, `ner_drugs`, `ner_drugs_greedy`, `ner_drugs_large`, `ner_eu_clinical_case`, `ner_eu_clinical_condition`, `ner_eu_clinical_condition_langtest`, `ner_events_admission_clinical`, `ner_events_clinical`, `ner_events_clinical_langtest`, `ner_genetic_variants`, `ner_human_phenotype_gene_clinical`, `ner_human_phenotype_gene_clinical_langtest`, `ner_human_phenotype_go_clinical`, `ner_human_phenotype_go_clinical_langtest`, `ner_jsl`, `ner_jsl_enriched`, `ner_jsl_greedy`, `ner_jsl_langtest`, `ner_jsl_limited_80p_for_benchmarks`, `ner_jsl_slim`, `ner_living_species`, `ner_living_species_langtest`, `ner_measurements_clinical`, `ner_medmentions_coarse`, `ner_menopause_core`, `ner_nature_nero_clinical`, `ner_nihss`, `ner_oncology`, `ner_oncology_anatomy_general`, `ner_oncology_anatomy_general_langtest`, `ner_oncology_anatomy_granular`, `ner_oncology_anatomy_granular_langtest`, `ner_oncology_biomarker`, `ner_oncology_biomarker_langtest`, `ner_oncology_demographics`, `ner_oncology_demographics_langtest`, `ner_oncology_diagnosis`, `ner_oncology_diagnosis_langtest`, `ner_oncology_langtest`, `ner_oncology_limited_80p_for_benchmarks`, `ner_oncology_posology`, `ner_oncology_posology_langtest`, `ner_oncology_response_to_treatment`, `ner_oncology_response_to_treatment_langtest`, `ner_oncology_test`, `ner_oncology_test_langtest`, `ner_oncology_therapy`, `ner_oncology_therapy_langtest`, `ner_oncology_tnm`, `ner_oncology_tnm_langtest`, `ner_oncology_unspecific_posology`, `ner_oncology_unspecific_posology_langtest`, `ner_opioid`, `ner_pathogen`, `ner_posology`, `ner_posology_small`, `ner_posology_experimental`, `ner_posology_greedy`, `ner_posology_large`,  `ner_posology_langtest`, `ner_radiology`, `ner_radiology_wip_clinical`, `ner_risk_factors`, `ner_risk_factors_langtest`, `ner_sdoh`, `ner_sdoh_access_to_healthcare`,
 `ner_sdoh_community_condition`, `ner_sdoh_core`, `ner_sdoh_demographics`, `ner_sdoh_health_behaviours_problems`, `ner_sdoh_income_social_status`, `ner_sdoh_langtest`, `ner_sdoh_mentions`,
 `ner_sdoh_mentions_test`, `ner_sdoh_social_environment`, `ner_sdoh_substance_usage`, `ner_section_header_diagnosis`, `ner_snomed_term`, `ner_supplement_clinical`,
 `ner_vop`, `ner_vop_anatomy`, `ner_vop_anatomy_langtest`, `ner_vop_clinical_dept`, `ner_vop_clinical_dept_langtest`, `ner_vop_demographic`, `ner_vop_demographic_langtest`,
@@ -54,9 +42,9 @@ Here are the NER models that this pretrained pipeline includes:
 ## How to use
 
 
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -99,8 +87,6 @@ presented with a one-week history of polyuria , polydipsia , poor appetite , and
 
 [('gestational diabetes mellitus', 'Disease_Syndrome_Disorder'), ('type two diabetes mellitus', 'Disease_Syndrome_Disorder'), ('T2DM', 'Disease_Syndrome_Disorder'), ('HTG-induced pancreatitis', 'Disease_Syndrome_Disorder'), ('acute hepatitis', 'Disease_Syndrome_Disorder'), ('obesity', 'Disease_Syndrome_Disorder'), ('body', 'BodyPart'), ('mass index', 'Symptom'), ('BMI', 'Test'), ('33.5', 'Measurements'), ('kg/m2', 'Units'), ('polyuria', 'Symptom'), ('polydipsia', 'Symptom'), ('poor appetite', 'Symptom'), ('vomiting', 'Symptom')]
 
-Model: ner_radiology
-
 
 ******************** ner_clinical Model Results ********************
 
@@ -113,7 +99,6 @@ Model: ner_clinical
 [('female', 'Organism_Attribute'), ('diabetes mellitus', 'Disease_or_Syndrome'), ('diabetes mellitus', 'Disease_or_Syndrome'), ('T2DM', 'Disease_or_Syndrome'), ('HTG-induced pancreatitis', 'Disease_or_Syndrome'), ('associated with', 'Qualitative_Concept'), ('acute hepatitis', 'Disease_or_Syndrome'), ('obesity', 'Disease_or_Syndrome'), ('body mass index', 'Clinical_Attribute'), ('BMI', 'Clinical_Attribute'), ('polyuria', 'Sign_or_Symptom'), ('polydipsia', 'Sign_or_Symptom'), ('poor appetite', 'Sign_or_Symptom'), ('vomiting', 'Sign_or_Symptom')]
 
 ...
-
 
 ```
 
