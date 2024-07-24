@@ -95,7 +95,7 @@ llm_loader_pretrained.generate("What is the indication for the drug Methadone?")
 Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to help individuals who are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain in patients who have developed tolerance to other opioids.
 ```
 
-Please check the [LLMLoader](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.LLMLoader.ipynb) Notebook for more information
+Please check the [LLMLoader](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook for more information
 
 
 </div><div class="h3-box" markdown="1">
@@ -974,6 +974,7 @@ Please check the [Spark_NLP_Udemy_MOOC](https://github.com/JohnSnowLabs/spark-nl
 - New [Contextual Assertion](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb) notebook
 - New [VectorDB and PostProcessor for RAG Generative AI](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/45.VectorDB_and_PostProcessor_for_RAG_Generative_AI.ipynb) notebook
 - New [Analyse Veterinary Documents with Healthcare NLP](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/44.Analyse_Veterinary_Documents_with_Healthcare_NLP.ipynb) notebook
+- [LLMLoader](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) notebook
 - Updated [FewShot Assertion Classifier](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb) notebook
 - New [ALCOHOL SMOKING](https://demo.johnsnowlabs.com/healthcare/ALCOHOL_SMOKING/) Demo
 - New [JSL vs GPT4](https://demo.johnsnowlabs.com/healthcare/JSL_GPT4/) Demo
