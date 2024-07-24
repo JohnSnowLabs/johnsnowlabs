@@ -17,11 +17,17 @@ sidebar:
 
 Release date: **06-19-2024**
 
+</div><div class="h3-box" markdown="1">
+
 ### Feature
 - Add a feature to Save Credentials while importing  projects from cloud
- 
+
+</div><div class="h3-box" markdown="1">
+
 ### Improvements
 - Section Classifier server should be deleted when idle for a long time
+
+</div><div class="h3-box" markdown="1">
  
 ### Bug Fixes
 - User is not able to see relations arrows before completion is submitted
