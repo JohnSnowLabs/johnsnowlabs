@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Medical Assertion MPNet Embedding ( i2b2 )
+title: Medical Assertion MPNet Embedding
 author: John Snow Labs
 name: mpnet_embeddings_medical_assertion
 date: 2024-07-25
@@ -37,6 +37,7 @@ This model is trained on a list of clinical and biomedical datasets curated in-h
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
