@@ -188,6 +188,10 @@ val result = nlpPipeline.fit(data).transform(data)
 [Flattener](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/flattener/index.html)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[FlattenerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Flattener.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -198,4 +202,5 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

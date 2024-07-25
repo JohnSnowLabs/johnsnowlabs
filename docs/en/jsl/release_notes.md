@@ -3666,7 +3666,7 @@ Additionally, new Spanish Deidentification NER models for entities like `STATE`,
 
 Integrates models from [Spark NLP 3.4.2](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.4.2) release
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Language   | NLU Reference                                                                                       | Spark NLP  Reference                                                                       | Task       | Annotator Class   |
 |:-----------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|:-----------|:------------------|
 | en         | [en.embed.deberta_v3_xsmall](https://nlp.johnsnowlabs.com/2022/03/10/deberta_v3_xsmall_en_3_0.html) | [deberta_v3_xsmall](https://nlp.johnsnowlabs.com/2022/03/10/deberta_v3_xsmall_en_3_0.html) | Embeddings | DeBertaEmbeddings |
@@ -3907,7 +3907,7 @@ For `Sequence Classification` new models for classifying `Toxicity in Russian te
 #### New NLU OCR Models
 The following Transformers have been integrated from [Spark OCR](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components)
 
-{:.table-model-big.db}
+{:.table-model-big}
 | NLU Spell            | Transformer Class                                                                       |
 |----------------------|-----------------------------------------------------------------------------------------|
 | nlu.load(`img2text`) | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#imagetotext) |

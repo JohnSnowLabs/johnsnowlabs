@@ -17,12 +17,12 @@ See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for
 
 
 
-# 5.4.0
+## 5.4.0
 Release date: 7-13-2024
 
 The John Snow Labs 5.4.0 Library released with the following pre-installed and recommended dependencies
 
-
+{:.table-model-big}
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.4.0` |
@@ -36,7 +36,7 @@ The John Snow Labs 5.4.0 Library released with the following pre-installed and r
 
 
 
-# 5.3.6
+## 5.3.6
 Release date: 5-22-2024
 
 The John Snow Labs 5.3.6 Library released with the following pre-installed and recommended dependencies
@@ -55,7 +55,7 @@ The John Snow Labs 5.3.6 Library released with the following pre-installed and r
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0` |
 
 
-# 5.3.5
+## 5.3.5
 Release date: 5-11-2024
 
 The John Snow Labs 5.3.5 Library released with the following pre-installed and recommended dependencies
@@ -74,7 +74,7 @@ The John Snow Labs 5.3.5 Library released with the following pre-installed and r
 
 
 
-# 5.3.4
+## 5.3.4
 Release date: 4-12-2024
 
 The John Snow Labs 5.3.4 Library released with the following pre-installed and recommended dependencies
@@ -92,7 +92,7 @@ The John Snow Labs 5.3.4 Library released with the following pre-installed and r
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0` |
 
 
-# 5.3.3
+## 5.3.3
 Release date: 4-5-2024
 
 The John Snow Labs 5.3.3 Library released with the following pre-installed and recommended dependencies
@@ -111,7 +111,7 @@ The John Snow Labs 5.3.3 Library released with the following pre-installed and r
 
 
 
-# 5.3.2
+## 5.3.2
 Release date: 3-13-2024
 
 The John Snow Labs 5.3.2 Library released with the following pre-installed and recommended dependencies
@@ -130,8 +130,7 @@ The John Snow Labs 5.3.2 Library released with the following pre-installed and r
 
 
 
-
-# 5.3.1
+## 5.3.1
 Release date: 3-12-2024
 
 The John Snow Labs 5.3.1 Library released with the following pre-installed and recommended dependencies
@@ -150,7 +149,7 @@ The John Snow Labs 5.3.1 Library released with the following pre-installed and r
 
 
 
-# 5.3.0
+## 5.3.0
 Release date: 3-8-2024
 
 The John Snow Labs 5.3.0 Library released with the following pre-installed and recommended dependencies
@@ -189,7 +188,7 @@ The John Snow Labs 5.2.8 Library released with the following pre-installed and r
 
 
 
-# 5.2.7
+## 5.2.7
 Release date: 2-15-2024
 
 The John Snow Labs 5.2.7 Library released with the following pre-installed and recommended dependencies

@@ -33,9 +33,8 @@ nlp.viz(ade_pipeline, text)
 
 ```
 returns:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
 
-
+![nlp.viz(pipe,data)](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png "lit_shadow")
 
 If a pipeline has multiple models candidates that can be used for a viz,  
 the first Annotator that is vizzable will be used to create viz.  
@@ -74,6 +73,7 @@ nlu_pipe.predict(text)
 
 returns :
 
+{:.table-model-big}
 | relation | relation_confidence | relation_entity1          | relation_entity2          | relation_entity2_class       |
 |---------:|--------------------:|:--------------------------|:--------------------------|:-----------------------------|
 |        1 |                   1 | allergic reaction         | vancomycin                | Drug_Ingredient              |
@@ -113,6 +113,7 @@ nlp.to_pretty_df(ade_pipeline,text)
 ```
 returns :
 
+{:.table-model-big}
 | assertion   | asserted_entitiy                    | entitiy_class                             |                           assertion_confidence |
 |:------------|:------------------------------------|:------------------------------------------|-----------------------------------------------:|
 | present     | allergic reaction                   | ADE                                       |                                        0.998   |
@@ -157,6 +158,7 @@ nlu_pipe.vanilla_transformer_pipe.transform(spark_df)
 
 returns :
 
+{:.table-model-big}
 | assertion   | asserted_entitiy                    | entitiy_class                             |                           assertion_confidence |
 |:------------|:------------------------------------|:------------------------------------------|-----------------------------------------------:|
 | present     | allergic reaction                   | ADE                                       |                                        0.998   |
@@ -166,6 +168,6 @@ returns :
 
 and
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
+![nlp.to_nlu_pipe(pipe)](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png "lit_shadow")
 
 </div>

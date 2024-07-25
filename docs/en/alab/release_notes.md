@@ -240,7 +240,6 @@ Previously, users were unable to access the license page to delete an existing l
 - **Editing Non-Editable Generated Test Cases Causes Repeated Error Popup Until UI Refresh**
 
   Previously, when users edited generated test cases, such as accuracy tests that didn't require text modifications, a constant popup would appear. Now, editing non-editable generated test cases no longer triggers repeated error popups.
-
  
 </div><div class="prev_ver h3-box" markdown="1">
 
