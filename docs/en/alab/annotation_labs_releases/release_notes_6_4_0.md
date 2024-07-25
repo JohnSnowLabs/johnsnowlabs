@@ -173,7 +173,7 @@ In previous versions, users were unable to view the resolvers in the pre-annotat
 #### Delete the downloading models from the Models page
 In previous versions, there was no option to cancel a model download once it had started. This limitation posed significant challenges for users, particularly in scenarios where the model download became stuck or took an unusually long time to complete. With this update, users can cancel an ongoing model download directly from the Local Models page. This enhancement provides greater control and flexibility, allowing users to efficiently manage their model downloads and avoid unnecessary delays.
 
-![GenaiImage](/assets/images/annotation_lab/6.4.0/11.png)
+![GenaiImage](/assets/images/annotation_lab/6.4.0/11.gif)
 
 #### Assertion Labels are differentiated with a dashed border
 In previous versions, assertion labels were displayed with solid border lines. This made it difficult for annotators to quickly distinguish assertion labels from other types of labels. In this update, assertion labels feature dashed border lines in both the preview section and the labels section. This visual enhancement helps annotators to easily identify and differentiate assertion labels, thereby improving the annotation process and reducing potential errors.
