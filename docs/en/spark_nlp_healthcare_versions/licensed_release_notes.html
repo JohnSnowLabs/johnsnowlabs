@@ -626,10 +626,10 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with a brand new LLM Loader to allow any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 81 new and updated clinical pretrained models, and pipelines</strong>.</p>
+  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with a brand new LLM Loader to load and run any size of LLMs in gguf format, a few-shot assertion classifier, contextual assertion detection, and a demo to showcase accuracy differences between Healthcare NLP and GPT-4 for information extraction tasks as well as the first Menopause-specific medical models, 81 new and updated clinical pretrained models, and pipelines</strong>.</p>
 
   <ul>
-    <li>Introducing a brand new <code class="language-plaintext highlighter-rouge">LLMLoader</code> annotator to load and run large language models in gguf format. We also announce <strong>9 LLMs at various sizes and quantizations</strong> (3x small size medical summarizer and QA model, 3x medium size general model, and 3x small size zero shot entity extractor)</li>
+    <li>Introducing a brand new <code class="language-plaintext highlighter-rouge">LLMLoader</code> annotator to load and run large language models in gguf format. We also announce <strong>9 LLMs at various sizes and quantization</strong> (3x small size medical summarizer and QA model, 3x medium size general model and 3x small size zero shot entity extractor)</li>
     <li>Introducing a brand new <code class="language-plaintext highlighter-rouge">FewshotAssertionClassifier</code> annotator to train assertion detection models using a few samples with better accuracy</li>
     <li>Introducing a rule-based <code class="language-plaintext highlighter-rouge">ContextualAssertion</code> annotator to detect assertion status using patterns and rules without any training or annotation</li>
     <li>Introducing <code class="language-plaintext highlighter-rouge">VectorDBPostProcessor</code> annotator to filter and sort the document splits returned by vector databases in a RAG application</li>
@@ -712,15 +712,15 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>Summarization, Q&amp;A, RAG, and Chat</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q16_v1_en.html">JSL_MedSNer_ZS_q16_v1</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zs_q16_v1_en.html">JSL_MedSNer_ZS_q16_v1</a></td>
         <td>Extract and link medical named entities</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q8_v1_en.html">JSL_MedSNer_ZS_q8_v1_v1</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zs_q8_v1_en.html">JSL_MedSNer_ZS_q8_v1</a></td>
         <td>Extract and link medical named entities</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zh_q4_v1_en.html">JSL_MedSNer_ZS_q4_v1</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/12/jsl_medsner_zs_q4_v1_en.html">JSL_MedSNer_ZS_q4_v1</a></td>
         <td>Extract and link medical named entities</td>
       </tr>
     </tbody>
@@ -743,7 +743,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Methadone is used to treat opioid addiction. It is a long-acting opioid agonist that is used to <span class="nb">help </span>individuals <span class="nb">who </span>are addicted to short-acting opioids such as heroin or other illicit opioids. It is also used to treat chronic pain <span class="k">in </span>patients <span class="nb">who </span>have developed tolerance to other opioids.
 </code></pre></div>  </div>
 
-  <p>Please check the <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.LLMLoader.ipynb">LLMLoader</a> Notebook for more information</p>
+  <p>Please check the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb">LLMLoader</a>Notebook for more information</p>
 
 </div>
 <div class="h3-box">
@@ -800,7 +800,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <p><img src="/assets/images/AssertionDL_vs_FewShotAssertion.png" alt="Annotator to Train Assertion Detection Models" /></p>
+  <p><img src="/assets/images/release-note-540-AssertionDL_vs_FewShotAssertion.png" alt="Annotator to Train Assertion Detection Models" /></p>
 
   <table class="table-model-big">
     <thead>
@@ -815,7 +815,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <td><code class="language-plaintext highlighter-rouge">Present</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Hypothetical</code>, <code class="language-plaintext highlighter-rouge">SomeoneElse</code></td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/03/fewhot_assertion_i2b2_e5_base_v2_i2b2_en.html">fewhot_assertion_i2b2_e5_base_v2_i2b2</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/03/fewhot_assertion_e5_base_v2_en.html">fewhot_assertion_e5_base_v2</a></td>
         <td><code class="language-plaintext highlighter-rouge">absent</code>, <code class="language-plaintext highlighter-rouge">associated_with_someone_else</code>, <code class="language-plaintext highlighter-rouge">conditional</code>, <code class="language-plaintext highlighter-rouge">hypothetical</code>, <code class="language-plaintext highlighter-rouge">possible</code>, <code class="language-plaintext highlighter-rouge">present</code></td>
       </tr>
       <tr>
@@ -1522,7 +1522,7 @@ No evidence of hypertension. Patient denies nausea at this time. zofran declined
     <li>NER Model</li>
   </ul>
 
-  <table class="table-model-big">
+  <table>
     <thead>
       <tr>
         <th>Model Name</th>
@@ -1926,7 +1926,7 @@ He was placed on CIWA protocol w/ lorazepam for management. Scheduled for cognit
 
   <p><em>Result</em>:</p>
 
-  <table class="table-model-big db">
+  <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: right"> </th>
@@ -2669,8 +2669,8 @@ The patient has a manic disorder, is presently psychotic and shows impulsive beh
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/05/23/mpnet_embeddings_medical_assertion_i2b2_en.html"><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion_i2b2</code></a></td>
-        <td>Fine-tuned on the i2b2 dataset using the MPNet architecture.</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/05/23/mpnet_embeddings_medical_assertion_en.html"><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion</code></a></td>
+        <td>Fine-tuned on the in-house dataset using the MPNet architecture.</td>
       </tr>
       <tr>
         <td><a href="https://nlp.johnsnowlabs.com/2024/05/23/mpnet_embeddings_medical_assertion_jsl_en.html"><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion_jsl</code></a></td>
@@ -2693,8 +2693,8 @@ The patient has a manic disorder, is presently psychotic and shows impulsive beh
         <td>Fine-tuned on the in-house dataset using the E5 architecture.</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/07/03/e5_base_v2_embeddings_medical_assertion_i2b2_en.html"><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_i2b2</code></a></td>
-        <td>Fine-tuned on the i2b2 dataset using the E5 architecture.</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/07/03/e5_base_v2_embeddings_medical_assertion_en.html"><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion</code></a></td>
+        <td>Fine-tuned on the the in-house dataset using the E5 architecture.</td>
       </tr>
       <tr>
         <td><a href="https://nlp.johnsnowlabs.com/2024/07/04/e5_base_v2_embeddings_medical_assertion_sdoh_en.html"><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_sdoh</code></a></td>
@@ -2757,12 +2757,12 @@ The patient has a manic disorder, is presently psychotic and shows impulsive beh
 </div>
 <div class="h3-box">
 
-  <h4 id="rxnorm-code-mapping-benchmarks-and-cost-comparisons-healthcare-nlp-gpt-4-and-amazon-comprehend-medical">RxNorm Code Mapping Benchmarks and Cost Comparisons: Healthcare NLP, GPT-4, and Amazon Comprehend Medical</h4>
+  <h4 id="rxnorm-code-mapping-benchmarks-and-cost-comparisons-john-snow-labs-gpt-4-and-amazon-comprehend-medical">RxNorm Code Mapping Benchmarks and Cost Comparisons: John Snow Labs, GPT-4, and Amazon Comprehend Medical</h4>
 
   <p>We have prepared an accuracy benchmark and the cost analysis between Healthcare NLP, GPT-4, and Amazon Comprehend Medical for mapping medications to their RxNorm terms. Here are the notes:</p>
   <ul>
     <li>For the ground truth dataset, we used 79 in-house clinical notes annotated by the medical experts of John Snow Labs.</li>
-    <li>Healthcare NLP: We used <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented</code> and <code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented</code> models for this benchmark. These models can return up to 25 closest results sorted by their distances.</li>
+    <li>John Snow Labs: We used <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented</code> and <code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented</code> models for this benchmark. These models can return up to 25 closest results sorted by their distances.</li>
     <li>GPT-4: Both GPT-4 (Turbo) and GPT-4o models are used. According to the <a href="https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3">official announcement</a>, the performance of GPT-4 and GPT-4o is almost identical, and we used both versions for the accuracy calculation. Additionally, the GPT-4 returns <strong>only one result</strong>, which means you will see the same results in both evaluation approaches.</li>
     <li>Amazon Comprehend Medical: The RxNorm tool of this service is used, and it returns up to 5 closest matches sorted by their distances.</li>
     <li>We adopted two approaches for evaluating these tools, given that the model outputs may not precisely match the annotations:
@@ -2777,31 +2777,31 @@ The patient has a manic disorder, is presently psychotic and shows impulsive beh
 
   <p><strong>Top-3 Results:</strong></p>
 
-  <p><img src="/assets/images/345525698-550d89b5-1c4c-4d40-a5ea-1f9ec86387da.png" alt="top_3" /></p>
+  <p><img src="/assets/images/release-note-540-top-3.png" alt="top_3" /></p>
 
   <p><strong>Top-5 Results:</strong></p>
 
-  <p><img src="/assets/images/345525777-44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7.png" alt="top_5" /></p>
+  <p><img src="/assets/images/release-note-540-top-5.png" alt="top_5" /></p>
 
   <p><strong>Conclusion:</strong></p>
 
   <p>Based on the evaluation results:</p>
   <ul>
-    <li>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented</code> model of Healthcare NLP consistently provides <strong>the most accurate</strong> results in each top_k comparison.</li>
-    <li>The <code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented</code> model of Healthcare NLP <strong>outperforms</strong> Amazon Comprehend Medical and GPT-4 in mapping terms to their RxNorm codes.</li>
-    <li>The GPT-4 could only return one result, reflected similarly in both charts and has proven to be <strong>the least accurate</strong>.</li>
+    <li>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented</code> model of John Snow Labs consistently provides <strong>the most accurate</strong> results in each top_k comparison.</li>
+    <li>The <code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented</code> model of John Snow Labs <strong>outperforms</strong> Amazon Comprehend Medical and GPT-4 in mapping terms to their RxNorm codes.</li>
+    <li>The GPT-4 could only return one result, reflected similarly in both charts, and has proven to be <strong>the least accurate</strong>.</li>
   </ul>
 
   <p>If you want to process <strong>1M documents</strong> and extract RxNorm codes for medication entities (<em>excluding the NER stage</em>), the total cost:</p>
   <ul>
-    <li>With Healthcare NLP is about <strong>$4,500, including the infrastructure costs</strong>.</li>
+    <li>With John Snow Labs is about <strong>$4,500, including the infrastructure costs</strong>.</li>
     <li><strong>$24,250</strong> with Amazon Comprehend Medical</li>
     <li><strong>$44,000</strong> with the GPT-4 and <strong>$22,000</strong> with the GPT-4o model.</li>
   </ul>
 
-  <p>Therefore, <strong>Healthcare NLP is almost 5 times cheaper than its closest alternative</strong>, not to mention the accuracy differences (<strong>Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 8.9%</strong>).</p>
+  <p>Therefore, <strong>John Snow Labs is almost 5 times cheaper than its closest alternative</strong>, not to mention the accuracy differences (<strong>Top 3: John Snow Labs 82.7% vs Amazon 55.8% vs GPT-4 8.9%</strong>).</p>
 
-  <table class="table-model-big">
+  <table>
     <caption>Accuracy &amp; Cost Table</caption>
     <thead>
       <tr>
@@ -2813,7 +2813,7 @@ The patient has a manic disorder, is presently psychotic and shows impulsive beh
     </thead>
     <tbody>
       <tr>
-        <td>Healthcare NLP</td>
+        <td>John Snow Labs</td>
         <td>82.7%</td>
         <td>84.6%</td>
         <td>$4,500</td>
@@ -2903,6 +2903,7 @@ and <a href="https://medium.com/john-snow-labs/state-of-the-art-rxnorm-code-mapp
     <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb">Contextual Assertion</a> notebook</li>
     <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/45.VectorDB_and_PostProcessor_for_RAG_Generative_AI.ipynb">VectorDB and PostProcessor for RAG Generative AI</a> notebook</li>
     <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/44.Analyse_Veterinary_Documents_with_Healthcare_NLP.ipynb">Analyse Veterinary Documents with Healthcare NLP</a> notebook</li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb">LLMLoader</a> notebook</li>
     <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.2.FewShot_Assertion_Classifier.ipynb">FewShot Assertion Classifier</a> notebook</li>
     <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ALCOHOL_SMOKING/">ALCOHOL SMOKING</a> Demo</li>
     <li>New <a href="https://demo.johnsnowlabs.com/healthcare/JSL_GPT4/">JSL vs GPT4</a> Demo</li>
@@ -2938,18 +2939,18 @@ and <a href="https://medium.com/john-snow-labs/state-of-the-art-rxnorm-code-mapp
     <li><code class="language-plaintext highlighter-rouge">ner_menopause_core</code></li>
     <li><code class="language-plaintext highlighter-rouge">assertion_menopause_wip</code></li>
     <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_jsl_e5_base_v2_jsl</code></li>
-    <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_i2b2_e5_base_v2_i2b2</code></li>
+    <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_e5_base_v2</code></li>
     <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_sdoh_e5_base_v2_sdoh</code></li>
     <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_smoking_e5_base_v2_smoking</code></li>
     <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_oncology_e5_base_v2_oncology</code></li>
     <li><code class="language-plaintext highlighter-rouge">fewhot_assertion_radiology_e5_base_v2_radiology</code></li>
-    <li><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion_i2b2</code></li>
+    <li><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion</code></li>
     <li><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion_jsl</code></li>
     <li><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion_oncology</code></li>
     <li><code class="language-plaintext highlighter-rouge">mpnet_embeddings_medical_assertion_sdoh</code></li>
     <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_base</code></li>
     <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_jsl</code></li>
-    <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_i2b2</code></li>
+    <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion</code></li>
     <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_sdoh</code></li>
     <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_smoking</code></li>
     <li><code class="language-plaintext highlighter-rouge">e5_base_v2_embeddings_medical_assertion_oncology</code></li>
