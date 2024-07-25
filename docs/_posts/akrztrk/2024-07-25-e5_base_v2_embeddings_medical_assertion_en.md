@@ -37,6 +37,7 @@ This model has been trained on a curated list of clinical and biomedical dataset
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
