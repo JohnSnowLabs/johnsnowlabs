@@ -15,420 +15,231 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Test Automation for NER models using LangTest framework, Pre-annotate Visual documents with Text-based Classification Models and Bulk clear prediction labels during annotation with Generative AI Lab - 6.2
-The release of Generative AI Lab version 6.2 brings several new features aimed at enhancing user experience and improving platform efficiency.
+## Introducing Support for De-Identification in Generative AI Lab 6.4
+We are happy to announce the release of Generative AI Lab 6.4, bringing exciting new features and enhancements. Leading this release is the support for de-identification projects, which enables users to anonymize documents containing sensitive data, such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This ensures robust data privacy and compliance with privacy regulations while maintaining the utility of the data for further analysis and processing. 
 
-The first notable feature is the integration of John Snow Labs **LangTest** framework. Test case generation, test execution, and model testing across various categories are now part of Generative AI Lab. This integration offers data augmentation and seamlessly fits into the project flow of Generative AI Lab, supporting numerous test types and effectively identifying and addressing model issues.
+Additionally, version 6.4 enhances collaboration and quality control in the annotation process by allowing annotators to view completions submitted by reviewers. Annotators can now view and clone reviewed submissions, make corrections, or add comments directly on the annotated chunks, providing clear communication and improving overall annotation quality. The new release also simplifies the identification of differences between two completions by automatically highlighting discrepancies, streamlining the validation process. 
 
-Additionally, users can now pre-annotate visual documents with text-based classification models, enabling the classification of image and PDF documents using over 1500 pre-trained models available in the Models Hub.
+Alongside these major updates, this release includes numerous improvements and bug fixes, making Generative AI Lab more efficient and user-friendly than ever.
 
-Lastly, users can "batch" clear predicted and manually annotated labels, providing greater flexibility and control over the annotation process.
+## Support for De-identification
+Version 6.4 of the Generative AI Lab introduces a new de-identification feature, enabling users to anonymize documents containing sensitive information such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This functionality is intended to protect data privacy and ensure compliance with privacy regulations while preserving the data’s usefulness for subsequent analysis and processing.
 
-Here are the highlights of this release:
+**De-identification Projects:** When creating a new project in the Generative AI Lab, users can mark it as De-Identification specific. These projects allow the use of manually trained or pre-trained text-based NER models, together with prompts, rules, and custom labels created by the user for identifying sensitive data inside of tasks. Once the sensitive data is identified (either automatically or manually) and validated by human users, it can be exported for further processing. 
+When creating De-identification projects make sure you only target sensitive entities as part of your project configuration and avoid annotating relevant data you need for downstream processing as all those entities will be removed when exporting the project tasks as de-identified documents. The best practice, in this case, is to re-use de-identification specific models combined with custom prompts/rules. 
 
-## Test Suite Management
-A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.
+**Exporting De-identified Documents:** The tasks of your project with PII/PHI labeled entities can be exported as de-identified documents. During the export process, labeled entities will be replaced by the label names, or special characters (such as "*"), or obfuscated and replaced with fake data. This ensures that sensitive information is removed and not available for downstream analysis.
 
-### Test Suites HUB
-The new **"Test Suites HUB"** option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the **"Test Suite"** page, where all existing Test Suites he/she has access to are listed.
+**Re-importing and Further Processing:** The de-identified documents can be re-imported into any text-based project. This allows for further labeling and data preparation for model training/tuning by annotators, ensuring that the de-identified data can be utilized effectively.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/1.png)
+### Types of De-identification
+Generative AI Lab supports four kinds of de-identification:
+1.	**Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "<Patient> is a <Age> y.o. patient admitted to ICU after an MVA. "
+2.	**Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
+3.	**Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
+4.	**Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
 
-### Create, Update, and Delete Test Suites
-Managing a Test Suite is easy: a Test Suite can be created using the **"Test"** page under a parent project and can be fully managed in the **"Test Suite"** page within the **"Test Suites HUB"** option where users can create, update, and delete test suites.
+### Working with de-identification projects
 
-#### Test Suite Creation
-Creating a new Test Suite from the **"Test Suite"** page is straightforward:
+**Step 1.** When creating a new project, after defining the project name and general settings, check the de-identification option at the bottom of the Project setup page, and select the type of anonymization you prefer.
 
-1.	In the Test Suite page, click on the **"New"** button to open the **"Add Test Suite"** form.
-2.	Provide a name (mandatory) and a description (optional) for the test suite.
-3.	Under **"TESTS"**, select the desired category and click on it to expand and view all available test types within that category. (Category samples - **Robustness**, **Bias**,etc.). 
-4.	Choose the desired test types by selecting the checkboxes for the relevant categories.
-5.	Provide or modify the necessary details for each selected test type.
-6.	Apply the steps above for any number of different categories you require to configure the test suite.
-7.	Save your work, when configuration is complete by clicking on the **"Save"** button.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/1.png)
 
-**Note**: The Model type is set to "NER" and cannot be changed, as Generative AI Lab supports only testing NER models in this version.
+**Step 2.** Configure your project to reuse sensitive labels from existing NER Models, Rules, Prompts. It is also possible to create custom labels that can be used to manually annotate the entities you want to anonymize in your documents.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/2.gif)
+When selecting pre-annotation resources for your project, ensure that no critical downstream data is inadvertently identified and removed. For instance, if you pre-annotate documents with models, rules, or prompts that identify diseases, those labels will be anonymized upon export, rendering them unavailable to document consumers.
 
-### Supported Test Categories
-The following are the currently supported categories for NER models within the Generative AI Lab application, available through the LangTest framework:
+To mitigate this, employ pre-trained or custom de-identification models and augment them with rules and prompts tailored to your specific use cases (e.g., unique identifiers present in your documents). You can also selectively include specific labels from each model in your project configuration. For example, if age information is essential for your consumers, you can exclude this label from the project configuration to retain the data in your document.
 
-**1. ACCURACY**
-The goal of the Accuracy is to give users real, useful insights into how accurate the model is. It’s all about helping the user make smart choices on when and where to use the model in real-life situations. Accuracy tests evaluate the correctness of a model's predictions. This category comprises six test types, three of which - **"Min F1 Score"**, **"Min Precision Score"** and **"Min Recall Score"** - require the user to provide model labels. The user can add labels in the "Add Model Labels" section, which becomes active immediately after selecting the corresponding checkbox for the test. Labels can be added or removed as shown below:
+![GenaiImage](/assets/images/annotation_lab/6.4.0/2.png)
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/3.gif)
- 
-For more details about Accuracy tests, visit the [LangTest Accuracy Documentation](https://langtest.org/docs/pages/tests/accuracy).
+**Step 3.** Pre-annotate your documents, then have your team review them for any overlooked sensitive data. Once your project is set up and tasks are imported, use the pre-annotation feature to automatically identify sensitive information.
+Incorporate a review process where your team checks the pre-annotations using the standard annotation workflow, making manual corrections or annotations to any sensitive segments as necessary. Ensure that all sensitive information is accurately labeled for effective de-identification.  !
 
-**Note:** Tests using custom labels require tasks with ground truth data.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/3.png)
 
-**2. BIAS**
-Model bias tests aim to gauge how well a model aligns its predictions with actual outcomes. Detecting and mitigating model bias is essential to prevent negative consequences such as perpetuating stereotypes or discrimination. This testing explores the impact of replacing documents with different genders, ethnicities, religions, or countries on the model’s predictions compared to the original training set, helping identify and rectify potential biases
-LangTest framework provides support for more than 20 distinct test types for the Bias category. 
+**Step 4.** Export De-identified Documents. After completing the labeling process, proceed to export the de-identified documents. Ensure the "Export with De-identification" option is selected on the export page to generate de-identified documents.
 
-For detailed information on Bias category, supported tests and samples, please refer to the [LangTest Bias Documentation](https://langtest.org/docs/pages/docs/test_categories#bias-tests).
+During the export process, de-identification is executed based on the type of anonymization selected during project setup. This de-identification option can be updated at any time if necessary.
 
-**3. FAIRNESS**
-Fairness testing is essential to evaluate a model’s performance without bias, particularly concerning specific groups. The goal is to ensure unbiased results across all groups, avoiding favoritism or discrimination. Various tests, including those focused on attributes like gender, contribute to this evaluation, promoting fairness and equality in model outcomes.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/4.png)
 
-This category comprises two test types: **"Max Gender F1 Score"** and **"Min Gender F1 Score"**. 
+**Step 5.** Import the de-identified tasks in a new project for further processing. These tasks, once exported, can be re-imported into any text-based project in case you need to extract additional data or in case you want to use them for model training/tuning.
 
-Further information on Fairness tests can be accessed through the [LangTest Fairness Documentation](https://langtest.org/docs/pages/docs/test_categories#fairness-tests).
+![GenaiImage](/assets/images/annotation_lab/6.4.0/5.png)
 
-**4. PERFORMANCE**
-Performance tests gauge the efficiency and speed of a language model's predictions. This category consists of one test type: **"speed"** which evaluates the execution speed of the model based on tokens.
+-	Identifying De-identification Projects: De-identified projects are easily identifiable without needing to open them. A small de-identification icon is displayed on the bottom left corner of the project card, clearly indicating the project's status.
+-	Limitation: Projects can only be designated as de-identification projects at the time of their initial creation. Existing projects or newly created non-de-identification projects cannot be converted into de-identification projects.
 
-Further information on Performance test can be accessed through the [LangTest Performance Documentation](https://langtest.org/docs/pages/tutorials/test_specific_notebooks/performance).
+### Export of De-identified tasks
+**Completion Submission:** Pre-annotations alone are not sufficient for exporting de-identified data. Only starred completions are considered during the export of de-identified tasks. This means that each task intended for de-identified export must be validated by a human user, with at least one completion marked with a star by an annotator, reviewer, or manager.
 
-**5. REPRESENTATION**
-Representation testing assesses whether a dataset accurately represents a specific population. It aims to identify potential biases within the dataset that could impact the results of any analysis, ensuring that the data used for training and testing is representative and unbiased. 
+**Multiple Submissions:** In instances where multiple submissions exist from various annotators, the de-identification process will prioritize the starred completion from the highest priority user as specified on the Teams page. This ensures that de-identification is based on the most relevant and prioritized annotations.
 
-For additional details on Representation tests, please visit the [LangTest Representation Documentation](https://langtest.org/docs/pages/tests/representation).
+This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
 
-**6. ROBUSTNESS**
-Model robustness tests evaluate a model’s ability to maintain consistent performance when subjected to perturbations in the data it predicts. For tasks like Named Entity Recognition (NER), these tests assess how variations in input data, such as documents with typos or fully uppercased sentences, impact the model’s prediction performance. This provides insights into the model’s stability and reliability.
+## Annotators Can View Completions Submitted by Reviewers
+In version 6.4, of the Generative AI Lab, a new feature has been added that allows annotators to view the completion submitted by the reviewer. This enhancement fosters better collaboration and quality control in the annotation process. Previously, reviewers could only provide feedback on annotations, but now they can clone annotator submissions, make corrections, and add comments directly within the text using meta information. The updated submissions are then visible to the original annotator, providing clear insights into the reviewer's expectations and suggestions.
 
-More information on Robustness tests is available in the [LangTest Robustness Documentation](https://langtest.org/docs/pages/docs/test_categories#robustness-tests).
+**How to Enable**:
+- The project manager must enable the option **“Allow annotators to view completions from reviewers”** in the project settings.
 
-#### **Managing Test Suites**
-To edit an existing Test Suite, navigate to the **"Test Suites"** page and follow these steps:
+![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
 
-1. Click on the three dots at the top-right corner of the test suite card to display the three options available: **"Export"**, **"Edit"**, and **"Delete"**.
-2.	Selecting "Edit" takes you to the "Edit Test Suite" page. 
-3. Modify the description as necessary.
-4.	Under **"LIST OF TESTS"**, view all previously configured test categories and test types. Use the filter functionality to faster lookup the test category you need to edit.
-Selecting a test category will display its associated test types and corresponding pre-configured values. Clicking on the three dots next to a test type will present two options: **"Edit"** and **"Delete"**. Choosing **"Delete"** will deselect the test type, while selecting **"Edit"** will redirect you to the corresponding test type under **TESTS**, where you can modify the test type values. You can directly edit each test type within the **TESTS** section of the test suite.
-5. Click the **"Save"** button to apply the changes.
-
-**Note**: Name and Model Type of a test suite cannot be modified.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/4.gif)
- 
- **Full-screen Mode and Search**
-To boost productivity, you can create or edit a test suite using full-screen mode and the search functionality to quickly locate specific tests within the **"TESTS"** section.
- 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/5.gif)
-
- **Test Suite Deletion**
-
-To delete a test suite from the **"Test Suite"** page, follow these steps:
-
-1. Locate the test suite you wish to delete and click on the three dots next to it. This will reveal three options: **"Export"**, **"Edit"**, and **"Delete"**.
-2. Select the **"Delete"** option.
-3. A pop-up box will be shown. Click the **"Yes"** option.
-4. The test suite will be deleted, and a deletion message will confirm the action.
-
-**Note**: a test suite used within at least one project in your enterprise cannot be deleted.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/6.gif)
-
-### Importing and Exporting Test Suites
-Users can export and import test suites using the **"Test Suites HUB"**. To export a test suite from the **"Test Suite"** page, follow these simple steps:
-
-1. Click on the ellipsis symbol located next to the test suite you wish to export. This will present three options: **"Export"**, **"Edit"**, and **"Delete"**.
-2. Click on the **"Export"**.
-3. Upon selecting **"Export"**, the test suite will be saved as **<test_suite_name>.json**, and a confirmation message indicating successful export will appear.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/7.gif)
-
-Users can import a test suite into the **"Test Suites HUB"** by following these few steps:
-
-1. Navigate to the **"Test Suite"** page and click on the **"Import"** button to open the **"Import Test Suite"** page.
-2.	Either drag and drop the test suite file into the designated area or click to import the test suite file from your local file system.
-3. Upon successful import, a confirmation message will be displayed.
-4. You can then view the imported test suite on the **"Test Suite"** page.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/8.gif)
- 
-### Searching for a specific Test Suite
-Use the search feature on the **"Test Suite"** page, the **"SEARCH TEST SUITES ..."** search bar to find the desired Test Suite, by matching it’s name.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/9.gif)
- 
-### New "Test" page under Project Menu
-A new entry, **"Test"** has been added under the project menu in the left navigation bar for NER projects. Clicking on the **"Test"** node in the left navigation bar will take the user to the **"Test"** page, where they can manage tests and execute model testing.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/10.png)
- 
-On this page, project managers can configure tests settings and corresponding parameters, create and edit test cases, start and stop model testing, review test logs, and review, download, or delete test results. 
-
-**Note**: The functionality available on the Test page is exclusively available to users with project manager roles.
-
-#### Test - setup and configuration**
-
-Navigating to the **"Test”** page under a specific project, allows the user to specify what tests will be used to assess the quality of the project’s model.
-
-There are two mandatory sections that need to be filled:
-
-**1. Select Model:**
-Select the NER model pretrained/trained that is used to predict annotations for the tasks/documents in the current project. The user can choose a NER model from the dropdown. All available models configured within the project are listed in this dropdown menu for selection.
-
-**2. Select Test Suite:**
-The test suite comprises a collection of tests designed to evaluate your trained model in various scenarios.
-
-The user can choose an existing test suite from the dropdown menu or create a new one by clicking on "+ Create New Test Suite" within the dropdown menu. 
-
-**Note**: The option to create a new test suite is available only to supervisor and admin users with the manager role.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/11.gif)
- 
-There are two configuration options available in the "Test Parameters" section; they are optional:
-
-**1. Filter completions by:**
-
-This option enables users to narrow down their analysis by selecting tasks based on their completion status.
-The available options are:
-
-- **Clear "Filter completions by"**: Removes selected completion filters.
-- **Submitted completions**: Select only tasks with submitted completions for analysis.
-- **Reviewed completions**: Select only tasks with reviewed completions for analysis.
-
-**2. Filter test by tag:**
-
-This functionality enables users to refine their analysis by selecting only project tasks associated with specific tags. 
-By default, the dropdown includes all default tags such as "Validated", "Test", "Corrections Needed", and "Train", as well as any custom tags created within the project. 
-
-Users can select tags to focus the model testing execution on the specific tagged tasks; if no tags are selected, all tasks will be considered for analysis.
-
-Users have two methods to select Test Settings and Test Parameters:
-
-**1. Direct Selection Method (Without Wizard Mode):**
- - Go to the **"Test"** page.
- - In the Test Settings section, choose a model from the **"Select Model"** dropdown.
- - Within the Testing Parameters section, pick completions from the **"Filter completions by"** dropdown.
- - Also within Testing Parameters, select tags from the **"Filter test by tag for testing"** dropdown.
- - Click the **"Save"** button to confirm your selections and save the configuration.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/12.gif)
- 
-**2. Wizard Mode (Guided Setup):**
-
- - Click the **"Wizard"** button to initiate Wizard mode. This will reveal the **"Test Setting"** tab, offering detailed information about Model Selection and Test Suite.
- - From the **"Select Model"** dropdown, choose a model.
- - Select a test suite from the dropdown or create a new one by clicking on **"+ Create New Test Suite"**.
- - Click "Next" to proceed to the **"Test Parameters"** tab, where you'll see detailed information about **"Filter completions by"** and **"Tags"**.
- - Within the **"Filter completions by"** dropdown, select the appropriate option.
- - Choose one or more tags, or none, from the **"Filter test by tag for testing"** dropdown.
- - Click **"Next"** to save the Test Settings and Parameters.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/13.gif)
- 
-To modify the Test Settings and Parameters, simply click on the **"Edit"** icon.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/14.png)
-
-####  Generating Test Cases
-After saving the Test Settings and Parameters, the following options become available: **"Generate Test Cases"**, **"Start Testing"**, and **"Edit"**. 
-Users must generate test cases and conduct testing independently. 
-
-Clicking on **"Generate Test Cases"** will produce test cases based on the saved Test Settings and Parameters. The generated test cases will appear under the "Test Cases" tab.
-
-**Note**: 
-Only Bias and Robustness test cases can be edited and updated; other test cases are not editable.
-
-Modifying Test Settings or Parameters and generating new test cases will discard any existing ones. If no relevant tasks or data are available, no test cases will be generated.
-
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/15.gif)
-
-#### Start Model Testing
-When **"Start Testing"** is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on **"Show Logs"**. The testing process can be halted by clicking on **"Stop Testing"**. If no test cases have been generated, the **"Start Testing"** option will be disabled, preventing the user from initiating testing.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/16.gif)
-
-If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on "Start Testing" will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/17.png)
-
-#### View and Delete Test Results 
-Once the execution of model testing is complete, users can access the test results via the **"Test Results History"** section in the **"Test Results"** tab. 
-
-Under this tab, the application displays all the “test runs” and corresponding results, for every test previously conducted for the project.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/18.png)
-
-Clicking on **"Show Results"** will display the results for the selected test execution run. The test results consist of two reports:
-
-**1. Result Metrics:**
-
-This section of the results provides a summary of all tests performed, including their status. It includes details such as **"Number"**, **"Category"**, **"Test Type"**, **"Fail Count"**, **"Pass Count"**, **"Pass Rate"**, **"Minimum Pass Rate"** and **"Status"**.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/19.png)
-
-**2. Detailed Report:**
-
-The detailed report contains information about each test case within the selected tests. It includes **"Number"**, **"Category"**, **"Test Type"**, **"Original"**,**"Test Case"**, **"Expected Results"**, **"Actual Results"** and **"Status"**.
-
-In this context, **"Expected Results"** refer to the prediction output by the testing model on the **"Original"** data, while **"Actual Results"** indicate the prediction output by the testing model on the **"Test Case"** data generated. A test is considered passed if the **"Expected Results"** match the **"Actual Results"**; otherwise, it is deemed failed.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/20.png)
-
-Users have the option to simultaneously download both reports in CSV format by selecting the download button.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
-
-For a detailed report, users can enter full-screen mode by clicking the full-screen button.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
-
-Furthermore, users can delete test results from the **"Test Results History"** by selecting the three dots followed by the **"Delete"** button.
-
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/23.gif)
-
-## Use Text-based classification model for Visual NER Project
-We are excited to introduce the capability of using text-based classification models for visual tasks. Users can now classify images and PDF documents with over 1500 pre-trained models available in the Models Hub. Additionally, manual classification is supported, allowing users to classify documents themselves. This update enables document classification in its original form, preserving the integrity of PDFs without converting them to plain text.
-
-#### New Project Type- Visual NLP Classification:
-A new project type called "Visual NLP Classification" has been added.
-
-Configuring a Visual Classification project is easy:
-1. Go to the “Content Type” page.
-2. Select the “Image” tab.
-3. Choose "Visual NLP Classification" as the project type.
+#### Workflow:
+1.	**Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
+2.	**Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
+3.	**Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
+4.	**Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
    
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/24.png)
+![GenaiImage](/assets/images/annotation_lab/6.4.0/7.gif)
 
-#### Visual Classification with Generative AI Lab 6.2
-With version 6.2, users can classify both images and PDFs using their original form. This means working with the complete/original document, preserving its layout and content, rather than just classifying extracted text.
-Classification is easy, and the workflow and user interface are consistent with previous implementations:
+**Benefits**:
+- **Enhanced Feedback**: Reviewers can now make precise corrections and add detailed comments on individual labels, helping annotators understand exactly what changes are needed.
+- **Improved Collaboration**: Annotators can better align their work with the reviewer’s expectations by viewing the reviewer's cloned submission.
+- **Quality Control**: This feature helps in maintaining a higher standard of annotations by ensuring that feedback is clear and actionable.
 
-1. **Pre-annotation using Classification Models**:
-    - After selecting the project type, go to the “Reuse Resource” page.
-    - Choose a classification model from the available pre-trained models.
-    - Save the configuration.
-    - Import OCR Documents
-    - Once the tasks are imported, click on the pre-annotate button to classify tasks based on classification models.
-      
-   ![GenaiImage](/assets/images/annotation_lab/6.2.0/25.gif)
+This feature significantly enhances the annotation process, making it more transparent and collaborative, and ensuring that annotators have a clear understanding of the reviewer's feedback.
 
-2. **Manual Classification**:
-    - After selecting the project type, go to the “Customize Labels” page.
-    - Click on the Choices tab and Add/Remove choices for classification
-    - Click on “Code” view and change the choice property in Choice tag to multiple to enable multiple classification.
-    - Save the configuration.
-    - Import OCR Documents
-    - Open the tasks and classify them manually.
-      
-   ![GenaiImage](/assets/images/annotation_lab/6.2.0/26.gif)
+## Enhanced Comparison View for Completion Differences
+In version 6.4, a new feature has been introduced in Generative AI Lab that allows annotators and project managers to easily compare the differences between two completions. This enhancement significantly simplifies the process of identifying discrepancies between annotations.
+Previously, differences between completions had to be manually validated, which could be a time-consuming and tedious process. With the new comparison feature, differences are automatically highlighted, making it easy for users to spot discrepancies in annotations.
 
-## Sort tasks by file name on the labeling page
+**How to Use**:
+- **Step 1**: Click on the **Comparison View** button.
+- **Step 2**: Select the two completions you want to compare.
+- **Step 3**: Click on **Show Diff**.
 
-In previous versions of Generative AI Lab, sorting tasks could be done only by using the creation time, with two options: **"Newest"** and **"Oldest"**. 
-With this version, there is a new option to sort tasks by using the **"original name of the file"**.
-Choosing "Sort" will offer two options: **"By Date"** and **"By Title"**.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/8.gif)
 
-Sorting using the original name of the file is done when selecting the option **"By Title"**. 
-Sorting can be done either "By Date" or "By Title" at a time.
+The **Diff View** will then open, displaying the differences between the two completions. Annotations that differ are highlighted, with **green** indicating the annotation in base completion and **red** indicating the annotations in compared completion.
 
-The sorting direction is visually indicated by an up arrow within a circle, indicating the default sorting in ascending order for both options. 
-Changing the sort order is done by clicking on the up/down arrow. After selecting the sorting type and order, the user must click **"Apply Filter"** to see the sorting results.
+**Benefits**:
+- **Efficiency and Clarity**: Automatically highlighting differences saves time and reduces the potential for human error in identifying discrepancies. Also, the visual differentiation between annotations makes it easy to understand what changes have been made.
+- **Collaboration**: Facilitates better communication between annotators and project managers by clearly showing where differences occur.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/27.gif)
- 
-In previous versions of the application a prefix **“Task{No}”** was added to each task title during import step. 
-This behavior has been modified. No prefix will be added to imported tasks, except for tasks without a title, which will use **"Task{No}"** as the title.
-
-Additionally, to improve sorting by original name, tasks imported from an archive will no longer include the full path as part of the title. Only the file name will be used for title, without the **"Task{No}" prefix or file path**.
-
+This feature enhances the accuracy and efficiency of the annotation process, ensuring that all team members can easily identify and address any inconsistencies between completions.
 
 ### Improvements
-### Restrict uploaded file types throughout the application
-Version 6.2 of Generative AI Lab introduces a significant enhancement for improving the application's security and robustness by restricting the types of files that can be uploaded or imported. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, maintaining the platform's integrity and reliability while enhancing its security. 
+#### Support for CPU cluster nodes in Azure
+Previously, when creating a cluster in Azure, only instances with GPU resources were supported. This restriction limited the available options for users who did not require GPU capabilities. With the latest update, users can now select instances that do not have GPU resources. This enhancement provides greater flexibility in cluster configuration, allowing for a wider range of use cases and cost-effective options. The following instance types have been added to the list of allowed instance types:
+
+   - "Standard_D8_v3"
+   - "Standard_D8s_v3"
+   - "Standard_D8d_v4"
+   - "Standard_D8ds_v4"
+   - "Standard_DC8_v2"
+
+#### Updated validation for Imports 
+Version 6.4 of Generative AI Lab introduces an enhancement for improving the application’s security and robustness by restricting the types of files that can be uploaded or imported from URL, S3, and Azure as well. Previously this was implemented for the local upload and import only. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, and maintaining the platform’s integrity and reliability while enhancing its security.
 
 Users can confidently upload and import files, knowing that the system will enforce these important security measures.
 
-** Key features and benefits:**
+**Key features and benefits:**
 
-1. **File Type Validation**:
-    - The application now checks the type of files being uploaded or imported.
-    - Only supported file types are allowed, and any unsupported file types are automatically restricted.
+   1. File Type Validation:
+        The application now checks the type of files being uploaded or imported from URL, S3, and Azure.
+        Only supported file types are allowed, and any unsupported file types are automatically restricted.
+   2. Enhanced Security Measures:
+        Increased application security by preventing the upload or import of potentially harmful files reducing the risk of introducing malicious files into the system.
+        Attempts to bypass these restrictions by changing file extensions are now detected and logged.
+   3. File Name Length:
+        The application checks the length of the file name to ensure it meets specified requirements before import or upload.
+   4. Improved User Experience:
+        Immediate feedback is provided when attempting to upload an unsupported file type, preventing potential errors and confusion during the project configuration workflow.
+   6. Robust Monitoring:
+        Attempts to circumvent file type restrictions by changing file extensions are detected and logged, providing an additional layer of security and oversight.
 
-2. **Enhanced Security Measures**:
-    - Increased application security by preventing the upload or import of potentially harmful files reducing the risk of introducing malicious files into the system.
-    - Attempts to bypass these restrictions by changing file extensions are now detected and logged.
+#### Upload model form will support special characters
+When uploading a model, users are permitted to use special characters in labels and choices, except the following six characters:
+1. double quote (") 
+2. single quote (') 
+3. less than (<) 
+4. greater than (>) 
+5. ampersand (&) 
+6. space ( ) 
 
-3. **File Name Length**:
-   - The application checks the length of the file name to ensure it meets specified requirements before import or upload.
-     
-4. **Improved User Experience**: Immediate feedback is provided when attempting to upload an unsupported file type, preventing potential errors and confusion during the project configuration workflow.
+The inclusion of any of the above characters in labels or choices will result in an error during the model upload process. This restriction is implemented to ensure proper parsing and handling of the data. Users should take care to avoid these characters to prevent upload failures and ensure a smooth model deployment experience.
 
-5. **Robust Monitoring**: Attempts to circumvent file type restrictions by changing file extensions are detected and logged, providing an additional layer of security and oversight.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/9.png)
 
+#### List deployed resolver in the pre-annotation popup
+In previous versions, users were unable to view the resolvers in the pre-annotation pop-up. With this update, the deployed resolver list is now displayed in the pre-annotation pop-up. This enhancement ensures that users can easily access and utilize the resolvers, streamlining the pre-annotation process and improving overall efficiency.
 
-### There should be a way to "batch" clear predicted labels in a Section after pre-annotation 
-Version 6.2 of Generative AI Lab introduces a significant enhancement improving the application's security and robustness by restricting the types of files that can be uploaded or imported. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, maintaining the platform's integrity and reliability while enhancing its security. 
+![GenaiImage](/assets/images/annotation_lab/6.4.0/10.png)
 
-**Key Features of This Improvement:**
+#### Delete the downloading models from the Models page
+In previous versions, there was no option to cancel a model download once it had started. This limitation posed significant challenges for users, particularly in scenarios where the model download became stuck or took an unusually long time to complete. With this update, users can cancel an ongoing model download directly from the Local Models page. This enhancement provides greater control and flexibility, allowing users to efficiently manage their model downloads and avoid unnecessary delays.
 
-1. **Selective Label Clearing**:
-    - **Shift + Drag**: press and hold the **Shift** key, while dragging, to select the specific area where all labels will be cleared.
-    - click the **Delete** button to remove the selected labels.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/11.png)
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/28.gif)
- 
-2. **Clear All Labels**:
-    - **Annotation Tab**: clear all labels from the labeling page by clicking on the **Delete** icon located under the **Annotation tab** next to **Regions**. 
-  
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/29.gif)
- 
-### Disable "Import Sample Task" along with information when active OCR server, is not available
-In previous versions of Generative AI Lab, the **Add Sample Task** button was always enabled, allowing users to attempt importing sample tasks for all project types, including Visual NER projects. However, if the OCR server was not deployed and active, users encountered issues where the sample tasks could not be imported, leading to confusion as no error message or indication was provided.
+#### Assertion Labels are differentiated with a dashed border
+In previous versions, assertion labels were displayed with solid border lines. This made it difficult for annotators to quickly distinguish assertion labels from other types of labels. In this update, assertion labels feature dashed border lines in both the preview section and the labels section. This visual enhancement helps annotators to easily identify and differentiate assertion labels, thereby improving the annotation process and reducing potential errors.
 
-With version 6.2 the button is disabled if an active OCR server is not available preventing any confusion during the sample task import process and providing clear feedback regarding the availability of the OCR server before attempting to import sample tasks.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/12.png)
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/30.png)
- 
-### Bring your own License for AMI instances
-The previous version of Generative AI Lab only supported PayG (Pay-As-You-Go) licenses, preventing users from uploading or switching to existing Airgap or Floating licenses.
+#### Disable the "Generate License" button when the license is available in AMI
 
-With version 6.2, managing licenses for AMI (Amazon Machine Image) instances provides increased flexibility and control over the licensing options by supporting multiple License Types:
+In previous versions, the "Generate License" button was always available, even if a license was already present in the AMI. Clicking this button when a license was already available had no effect, leading to potential confusion and unnecessary actions. With this update, the "Generate License" button is now disabled by default if a license is already present in the AMI. The button will only be enabled if the license is missing. This improvement ensures a more intuitive user experience, preventing redundant actions and making it clear when a new license generation is necessary.
 
-**Features**:
-- **Delete Autogenerated PayG License**: Users can now delete the autogenerated PayG license in AMI instances.
-- **Upload Existing Licenses**: Users can upload their existing Airgap, Floating, or a different PayG license, providing greater flexibility and accommodating various licensing needs.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/13.gif)
 
-**Managing your licenses is simple and can be done in just a few steps:**
+#### License page crash on empty license file loading
 
-1. **Delete Autogenerated PayG License**:
-   - Navigate to the License page in your AMI instance.
-   - Select the autogenerated PayG license and delete it.
+Previously, users were unable to access the license page to delete an existing license or add a new one if the license key was empty. This limitation hindered users from managing licenses effectively when dealing with empty license keys. With this improvement, users can now delete licenses with empty license keys and add or generate new licenses as needed. This enhancement provides greater flexibility and control over license management, ensuring a smoother and more efficient workflow.
 
-2. **Upload a New License**:
-   - Click the option to upload a new license.
-   - Choose your preferred license type (Airgap, Floating, or PayG) and complete the upload process.
+**Delete and add new licenses:**
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/31.gif)
- 
+![GenaiImage](/assets/images/annotation_lab/6.4.0/14.gif)
+
+**Delete and generate a new license:**
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/15.gif)
+
 ### Bug Fixes
-- **Prompts with spaces in their names caused errors when added to the project configuration:**
+- **Entries of failed training are skipped in History View**
 
-Previously, adding a prompt with spaces in its name resulted in an error in the project configuration. To address this, a new improvement prevents users from creating prompts with spaces. However, if users attempt to use existing prompts that contain spaces, an error will still be displayed.
+  Previously, the Training and Active Learning History Tab only displayed successful training sessions. If the latest training failed, it was shown on the Train page, but there was no way to know the exact number of failed training sessions. This issue has now been fixed, and users can see the history of both failed and successful training logs.
 
-- **Assigning roles to user fails**
+- **User needs to click the "Apply Filter" twice to apply the selected filter**
 
-Previously, when using the API (or in some cases, the UI) to assign roles to users for an existing project, the roles were not consistently assigned and were saved randomly, despite specifying all three roles: annotator, reviewer, and manager. This issue has been resolved. Now, when users are added to a project with all roles via either the API or UI, the assigned roles are consistently saved.
+  Previously, users had to click "Apply Filter" twice to apply the selected filter, and the options would collapse after each click. Now, the filter is applied  with a single click, and the filter options remain expanded.
+  
+- **Edit count in Visual NER project is inconsistent(temporarily) and Pagination is not working for multipage tasks while comparing completions**
 
-- **Side navigation highlights "Settings" when a model is deployed in Playground**
+  Previously, the edit count number was random when the compare completion button was pressed. Additionally, navigating to different pages during comparison displayed a single completion instead of the comparison between completions. Now, the pagination works as expected for multi-page tasks while comparing completions.
 
-Previously, the side navigation highlighted 'Settings' when a model was deployed in the Playground. Now, deploying a model in the Playground no longer highlights 'Settings' in the side navigation. Additionally, there will be no changes in the selected option in the side navigation when a model, rule, or prompt is deployed in the Playground.
+- **Labels are still shown after deleting tasks(sample task) with meta and adding another sample task**
 
-- **Wrong error message is seen on HUB page when valid license is not present**
+  Previously, labels were still shown after deleting tasks (sample tasks) with metadata and adding another sample task. This issue has now been resolved, and the labels no longer appear in newly added tasks.
+  
+- **Zoomed images cannot be moved around in Visual NER project**
 
-Previously, the HUB page displayed an incorrect error message, 'Missing or invalid AWS keys. Click here to import license,' when a valid license was not present. The message has now been updated to 'Missing or invalid Spark NLP license. Click here to import license.'
+  Previously, zoomed images could not be moved around in Visual NER projects as the move function was not working as expected. This issue has now been resolved, and the move function can be used in Visual NER tasks without any problems.
 
-- **Adding Sample Task in Visual NER project does not redirect the user to Task Page**
+- **Consecutive texts that should be predicted as different tokens are merged as one in Visual NER project**
 
-Previously, when a sample task was added, the user remained on the import page instead of being automatically navigated to the Task page, which could be confusing. Now, the user is given the option to either 'Explore Tasks' to navigate to the Task page or 'Close' to stay on the import page.
+  Consecutive texts that should be predicted as different tokens were previously merged into one in Visual NER projects. This issue has now been resolved, and consecutive tokens with the same labels are no longer merged.
+  
+- **Cronjob for backup created without validation and backup page doesn't auto refresh**
 
-- **Annotators can see permission-denied buttons in UI**
+  Previously, the cron job for backups was created without validation, and the backup page did not auto-refresh. This issue has been resolved. Users can now independently trigger an ad-hoc backup without needing to save the backup information.
 
-Previously, features that the annotator did not have access to were visible to them. This issue has been resolved, and UI components that annotators don’t have access to are no longer visible. Additionally, the 'Show Meta in Region' option is now available in task settings only if the admin or project manager enabled meta during project configuration. When meta is enabled during project configuration, the option to show or hide meta is available in the settings within the labeling page.
+- **When non-GPU instance type is used for GPU-enabled AMI, "GPU Resource Available" is seen on the Infrastructure page**
 
-- **Application Crashes When Annotating Large Texts Exceeding 5000 or more Characters per Page**
+  Previously, if the instance type was changed from GPU to non-GPU, the "GPU Resource Available" message still appeared on the Infrastructure page, which could be confusing for users. Additionally, the GPU option was visible in the Visual NER project mode. This issue has been addressed. The system now actively monitors such changes and removes GPU features from the application as needed.
 
-When manually annotating a large number of tokens on the labeling page, the application would crash, especially when the annotated text exceeded 5000 characters per page. This issue prevented users from completing their annotations, causing workflow interruptions and potential data loss. This problem has now been resolved. Although pages with many labels may take some time to load, the labeling page no longer crashes.
+- **Internal server error when trying to export/import the project for RatePDF project type**
+
+  Previously, there was an internal server error when trying to export or import projects for the RatePDF project type. This issue has now been resolved, allowing users to export and import tasks without any problems. Additionally, tasks are now accessible for both CustomXML and regular RatePDF project types.
+  
+- **External Service Provider cannot be integrated when character count exceeds 128**
+
+  External Service Provider integration was previously not possible when the URL character count exceeded 128. Now, integration with external service providers is possible even when the URL character count exceeds 128.
+
+- **Editing Non-Editable Generated Test Cases Causes Repeated Error Popup Until UI Refresh**
+
+  Previously, when users edited generated test cases, such as accuracy tests that didn't require text modifications, a constant popup would appear. Now, editing non-editable generated test cases no longer triggers repeated error popups.
 
  
 </div><div class="prev_ver h3-box" markdown="1">
@@ -438,9 +249,11 @@ When manually annotating a large number of tokens on the labeling page, the appl
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
