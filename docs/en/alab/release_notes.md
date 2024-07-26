@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2024-06-11"
+modify_date: "2024-07-26"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -34,10 +34,10 @@ When creating De-identification projects make sure you only target sensitive ent
 
 ### Types of De-identification
 Generative AI Lab supports four kinds of de-identification:
-1.	**Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "<Patient> is a <Age> y.o. patient admitted to ICU after an MVA. "
-2.	**Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
-3.	**Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
-4.	**Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
+1.   **Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "\<Patient\> is a \<Age\> y.o. patient admitted to ICU after an MVA. "
+2.   **Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
+3.   **Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
+4.   **Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
 
 ### Working with de-identification projects
 
@@ -54,7 +54,7 @@ To mitigate this, employ pre-trained or custom de-identification models and augm
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/2.png)
 
 **Step 3.** Pre-annotate your documents, then have your team review them for any overlooked sensitive data. Once your project is set up and tasks are imported, use the pre-annotation feature to automatically identify sensitive information.
-Incorporate a review process where your team checks the pre-annotations using the standard annotation workflow, making manual corrections or annotations to any sensitive segments as necessary. Ensure that all sensitive information is accurately labeled for effective de-identification.  !
+Incorporate a review process where your team checks the pre-annotations using the standard annotation workflow, making manual corrections or annotations to any sensitive segments as necessary. Ensure that all sensitive information is accurately labeled for effective de-identification.
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/3.png)
 
@@ -68,8 +68,10 @@ During the export process, de-identification is executed based on the type of an
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/5.png)
 
--	Identifying De-identification Projects: De-identified projects are easily identifiable without needing to open them. A small de-identification icon is displayed on the bottom left corner of the project card, clearly indicating the project's status.
--	Limitation: Projects can only be designated as de-identification projects at the time of their initial creation. Existing projects or newly created non-de-identification projects cannot be converted into de-identification projects.
+> **_HOW TO:_** De-identification projects can be easily identified without opening them. A small de-identification icon is displayed in the bottom left corner of the project card, clearly indicating the project's status.
+
+
+> **_LIMITATION:_** Projects must be designated as de-identification projects during their initial creation. It is not possible to convert existing projects or newly created non-de-identification projects into de-identification projects.
 
 ### Export of De-identified tasks
 **Completion Submission:** Pre-annotations alone are not sufficient for exporting de-identified data. Only starred completions are considered during the export of de-identified tasks. This means that each task intended for de-identified export must be validated by a human user, with at least one completion marked with a star by an annotator, reviewer, or manager.
@@ -87,10 +89,10 @@ In version 6.4, of the Generative AI Lab, a new feature has been added that allo
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
 
 #### Workflow:
-1.	**Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
-2.	**Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
-3.	**Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
-4.	**Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
+1.   **Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
+2.   **Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
+3.   **Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
+4.   **Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
    
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/7.gif)
 
@@ -120,8 +122,8 @@ The **Diff View** will then open, displaying the differences between the two com
 
 This feature enhances the accuracy and efficiency of the annotation process, ensuring that all team members can easily identify and address any inconsistencies between completions.
 
-### Improvements
-#### Support for CPU cluster nodes in Azure
+## Improvements
+### Support for CPU cluster nodes in Azure
 Previously, when creating a cluster in Azure, only instances with GPU resources were supported. This restriction limited the available options for users who did not require GPU capabilities. With the latest update, users can now select instances that do not have GPU resources. This enhancement provides greater flexibility in cluster configuration, allowing for a wider range of use cases and cost-effective options. The following instance types have been added to the list of allowed instance types:
 
    - "Standard_D8_v3"
@@ -130,7 +132,7 @@ Previously, when creating a cluster in Azure, only instances with GPU resources 
    - "Standard_D8ds_v4"
    - "Standard_DC8_v2"
 
-#### Updated validation for Imports 
+### Updated validation for Imports 
 Version 6.4 of Generative AI Lab introduces an enhancement for improving the application’s security and robustness by restricting the types of files that can be uploaded or imported from URL, S3, and Azure as well. Previously this was implemented for the local upload and import only. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, and maintaining the platform’s integrity and reliability while enhancing its security.
 
 Users can confidently upload and import files, knowing that the system will enforce these important security measures.
@@ -150,7 +152,7 @@ Users can confidently upload and import files, knowing that the system will enfo
    6. Robust Monitoring:
         Attempts to circumvent file type restrictions by changing file extensions are detected and logged, providing an additional layer of security and oversight.
 
-#### Upload model form will support special characters
+### Upload model form will support special characters
 When uploading a model, users are permitted to use special characters in labels and choices, except the following six characters:
 1. double quote (") 
 2. single quote (') 
@@ -163,28 +165,28 @@ The inclusion of any of the above characters in labels or choices will result in
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/9.png)
 
-#### List deployed resolver in the pre-annotation popup
+### List deployed resolver in the pre-annotation popup
 In previous versions, users were unable to view the resolvers in the pre-annotation pop-up. With this update, the deployed resolver list is now displayed in the pre-annotation pop-up. This enhancement ensures that users can easily access and utilize the resolvers, streamlining the pre-annotation process and improving overall efficiency.
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/10.png)
 
-#### Delete the downloading models from the Models page
+### Delete the downloading models from the Models page
 In previous versions, there was no option to cancel a model download once it had started. This limitation posed significant challenges for users, particularly in scenarios where the model download became stuck or took an unusually long time to complete. With this update, users can cancel an ongoing model download directly from the Local Models page. This enhancement provides greater control and flexibility, allowing users to efficiently manage their model downloads and avoid unnecessary delays.
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/11.gif)
 
-#### Assertion Labels are differentiated with a dashed border
+### Assertion Labels are differentiated with a dashed border
 In previous versions, assertion labels were displayed with solid border lines. This made it difficult for annotators to quickly distinguish assertion labels from other types of labels. In this update, assertion labels feature dashed border lines in both the preview section and the labels section. This visual enhancement helps annotators to easily identify and differentiate assertion labels, thereby improving the annotation process and reducing potential errors.
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/12.png)
 
-#### Disable the "Generate License" button when the license is available in AMI
+### Disable the "Generate License" button when the license is available in AMI
 
 In previous versions, the "Generate License" button was always available, even if a license was already present in the AMI. Clicking this button when a license was already available had no effect, leading to potential confusion and unnecessary actions. With this update, the "Generate License" button is now disabled by default if a license is already present in the AMI. The button will only be enabled if the license is missing. This improvement ensures a more intuitive user experience, preventing redundant actions and making it clear when a new license generation is necessary.
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/13.gif)
 
-#### License page crash on empty license file loading
+### License page crash on empty license file loading
 
 Previously, users were unable to access the license page to delete an existing license or add a new one if the license key was empty. This limitation hindered users from managing licenses effectively when dealing with empty license keys. With this improvement, users can now delete licenses with empty license keys and add or generate new licenses as needed. This enhancement provides greater flexibility and control over license management, ensuring a smoother and more efficient workflow.
 
@@ -196,7 +198,7 @@ Previously, users were unable to access the license page to delete an existing l
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/15.gif)
 
-### Bug Fixes
+## Bug Fixes
 - **Entries of failed training are skipped in History View**
 
   Previously, the Training and Active Learning History Tab only displayed successful training sessions. If the latest training failed, it was shown on the Train page, but there was no way to know the exact number of failed training sessions. This issue has now been fixed, and users can see the history of both failed and successful training logs.
