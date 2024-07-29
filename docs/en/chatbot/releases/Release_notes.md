@@ -42,23 +42,61 @@ The Web Search Tool is now available in the Tool Selection menu and can be enabl
 
 ## Document Q&A Enhancements 
 
-### Document Upload Statuses
+### Document Upload - File Processing Status 
+
+In the Document Q&A Session, we've improved the UI for file upload and processing to enhance the document upload process and make it more intuitive. During file upload, users can swill be able to remove the selected files using the cross button provided for each file. However, once processing begins, the file cannot be removed. As the processing of a file begins, the UI will indicate the file's status as follows:
+
+1. **Processing:** The current file is being processed, indicated by a loading icon.
+2. **Processing Complete:** The file has been successfully processed and is now part of the knowledge base, shown by a green tick icon.
+3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
+
+After all files are processed, users can confirm the processed files and move forward with utilizing the Document Q&A Session for the best responses to their document-related queries.
 
 ### Quick Access the Uploaded Documents in the DocQA Session
 
+In the Document Q&A session, you can now view the content of documents uploaded during the current session. This allows you to easily identify which documents are included in the Document Q&A knowledge base. By clicking on the document name in the "Target Document" section at the top of the session, you can open the selected document in a new tab. This functionality is available for both PDF and TXT files present in the Document Q&A session. 
+
+
 ### Document Preview with Reference Numbers
+
+Responses generated in the Document Q&A session include precise citations to the specific sections of the document used as references. These sections can be previewed in the Document Preview UI. Now, to enhance usability, reference numbers have been added to each preview, allowing users to easily track and identify the relevant references while reviewing the content.
 
 ### Quick load for Reference Document Preview
 
+To improve the efficiency of document previews, we have implemented a better pre-loading process. This enhancement significantly reduces the time required for document previews for each reference/citation while ensuring accurate section highlighting for both PDF and TXT files.
+
 ### Tuned for more accurate Response with Proper Citations
+The Document Q&A Feature is continuously refined through ongoing testing, feedback, and technical adjustments to ensure it delivers highly accurate and focused responses based on the targeted documents. In this release, we have further enhanced the Document Q&A feature to better handle medical information, providing improved citations and a more comprehensive understanding of the target documents. Additionally, we have refined the highlighting of target sections in document previews to offer clearer insights into how responses are formulated based on the available information. These enhancements are part of our commitment to delivering powerful, user-friendly tools that support and elevate your medical information management and decision-making processes.
+
 
 </div><div class="h3-box" markdown="1">
 
 ## NLP Tools and Chat Improvements
 
 ### Entities, Assertion, and Relations Extraction Using Medical, Oncology, and Posology NLP Tools
+
+With the integration of NLP tools, we initially supported Named Entity Recognition (NER) entity extraction across the Medical, Oncology, and Posology domains. We also provided assertion and relation extraction capabilities within the Medical NLP tool. We are now extending assertion and relation extraction support to all NLP tools, including Oncology and Posology.
+
+The response generated will show the Assertions and NER entity extractions while using any of the NER Extraction tools. Users will also have the option to download extraction responses, which will include detailed information on the relations found and other pertinent data related to the NLP extraction.
+
 ### Updated Tool Name and Tool Description
+
+The tool names and their descriptions have been updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
+
+- Additionally, @ Selector keywords for some tools have been shortened to enhance ease of use:
+
+    - `@medical_research`: Query the Medical Research Knowledge Bases
+    - `@web_search`: Search the Web
+    - `@deidentification`: De-identification of Medical Text
+    - `@obfuscation`: Obfuscation of Medical Text
+    - `@medical`: General Medical Entity Extraction
+    - `@oncology `: Oncological Entity Extraction
+    - `@posology `: Posology Entity Extraction
+
+
 ### References Included while Using "Copy Response"
+
+All responses have featured a copy button for ease of use. But now, when a chatbot response is copied and pasted, the related references, including relevant metadata and hyperlinks to the original articles, will be appended at the end of the pasted content. This will apply to responses generated using all current knowledge bases, including PubMed, bioRxiv, medRxiv, Web Search results, and even Document Q&A responses.
 
 </div><div class="h3-box" markdown="1">
 
