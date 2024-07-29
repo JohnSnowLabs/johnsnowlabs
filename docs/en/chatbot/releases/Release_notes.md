@@ -12,6 +12,9 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
+## 07-30-2024 - DocQA and NLP tools Improvements
+
+
 ## 05-17-2024 - Introducing Document Q&A and NLP Tools
 
 We are excited to announce two significant enhancements to the Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
