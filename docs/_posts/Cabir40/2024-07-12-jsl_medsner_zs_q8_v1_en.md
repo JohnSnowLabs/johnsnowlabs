@@ -62,7 +62,7 @@ Gp 's started me on 75 twice a day and I have to take it every day for the next 
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
 """
 
-response = llm_loader_pretrained.generate(ptompt)
+response = llm_loader_pretrained.generate(prompt)
 
 ```
 ```scala
