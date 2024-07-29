@@ -44,7 +44,7 @@ from sparknlp_jsl.llm import LLMLoader
 
 llm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medsner_zs_q8_v1", "en", "clinical/models")
 
-ptompt = """
+prompt = """
 ### Template:
 {
     "drugs": [
