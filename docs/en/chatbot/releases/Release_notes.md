@@ -14,9 +14,29 @@ sidebar:
 
 ## 07-30-2024 
 
-We are pleased to announce significant enhancements to our Medical Chatbot, focusing on bolstering its capabilities and user-friendliness with the focus on pure performance and accuracy. This release introduces our new "Web Search" Feature, which is designed to harness the power of advanced search algorithms and deep learning to provide you with the most accurate and relevant information available online. When you make a query, this feature scans the web for the best possible resources and synthesizes the information to deliver an optimal answer. We have also refined our powerful Document Q&A functionality for greater accuracy, specifically in the medical domain. Additionally, we have improved our NLP tools by adding capacities such as assertion and relation extraction for all available NLP tools and made significant upgrades to our chat functionalities. These enhancements are designed to ensure our Medical Chatbot remains highly effective and intuitive, meeting the evolving needs of our users.
+We are pleased to announce significant enhancements to our Medical Chatbot, focusing on bolstering its capabilities and user-friendliness with the focus on pure performance and accuracy. This release introduces our new "Web Search" Tool, which is designed to harness the power of advanced search algorithms and deep learning to provide you with the most accurate and relevant information available online. When you make a query, this feature scans the web for the best possible resources and synthesizes the information to deliver an optimal answer. We have also refined our powerful Document Q&A functionality for greater accuracy, specifically in the medical domain. Additionally, we have improved our NLP tools by adding capacities such as assertion and relation extraction for all available NLP tools and made significant upgrades to our chat functionalities. These enhancements are designed to ensure our Medical Chatbot remains highly effective and intuitive, meeting the evolving needs of our users.
+
+</div><div class="h3-box" markdown="1">
 
 ## Introducing the "Web Search" Tool
+
+We are excited to introduce the Web Search tool, a significant upgrade from the previous Wikipedia search tool. While the Wikipedia search tool was adept at providing information from a vast database of general topics, the new Web Search tool extends its capabilities to the entire web, ensuring you receive the most comprehensive and relevant information available.
+
+### Key Features:
+
+1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
+
+2. **Intelligent Query Handling:** The Web Search tool leverages advanced deep learning algorithms to understand your queries better and retrieve the most accurate and relevant information.
+
+3. **Smart Tool Usage:** The Medical ChatBot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
+
+4. **Best Possible Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the ChatBot's intelligence to give you a well-rounded accurate perspective.
+
+5. **Manual Response Generation:** In addition to its automatic usage, you can manually trigger the Web Search tool for specific use cases using the @ Selector tool. This feature allows for customized response generation based on your specific needs.
+
+### Tool Usage and Manual Tool Selection (@ Selector)
+The Web Search Tool is now available in the Tool Selection menu and can be enabled or disabled as needed. Enabling this tool allows the Medical ChatBot to intelligently utilize the Web Search Tool based on your query requirements. Additionally, enabling the tool will make it available in the Manual Tool selection menu, allowing users to manually invoke it by typing "@web_search" at the beginning of a query to receive responses specifically using the Web Search Tool. The @ Selector menu will automatically auto-fill the keyword for the Web Search while typing and the user can easily use the Web Search Tool manually for the response generation.
+
 
 </div><div class="h3-box" markdown="1">
 
