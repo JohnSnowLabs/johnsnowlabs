@@ -12,7 +12,36 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
-## 07-30-2024 - DocQA and NLP tools Improvements
+## 07-30-2024 
+
+We are pleased to announce significant enhancements to our Medical Chatbot, focusing on bolstering its capabilities and user-friendliness with the focus on pure performance and accuracy. This release introduces our new "Web Search" Feature, which is designed to harness the power of advanced search algorithms and deep learning to provide you with the most accurate and relevant information available online. When you make a query, this feature scans the web for the best possible resources and synthesizes the information to deliver an optimal answer. We have also refined our powerful Document Q&A functionality for greater accuracy, specifically in the medical domain. Additionally, we have improved our NLP tools by adding capacities such as assertion and relation extraction for all available NLP tools and made significant upgrades to our chat functionalities. These enhancements are designed to ensure our Medical Chatbot remains highly effective and intuitive, meeting the evolving needs of our users.
+
+## Introducing the "Web Search" Tool
+
+</div><div class="h3-box" markdown="1">
+
+## Document Q&A Enhancements 
+
+### Document Upload Statuses
+
+### Quick Access the Uploaded Documents in the DocQA Session
+
+### Document Preview with Reference Numbers
+
+### Quick load for Reference Document Preview
+
+### Tuned for more accurate Response with Proper Citations
+
+</div><div class="h3-box" markdown="1">
+
+## NLP Tools and Chat Improvements
+
+### Entities, Assertion, and Relations Extraction Using Medical, Oncology, and Posology NLP Tools
+### Updated Tool Name and Tool Description
+### References Included while Using "Copy Response"
+
+</div><div class="h3-box" markdown="1">
+
 
 
 ## 05-17-2024 - Introducing Document Q&A and NLP Tools
