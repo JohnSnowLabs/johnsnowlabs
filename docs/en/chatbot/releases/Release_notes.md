@@ -5,110 +5,104 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-04-24"
+modify_date: "2024-07-30"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
 <div class="h3-box" markdown="1">
 
-## 07-30-2024 
+## 07-30-2024 - Improved DocQA, New Web Search and Enhanced NLP Tools 
 
-We are pleased to announce significant enhancements to our Medical Chatbot, focusing on bolstering its capabilities and user-friendliness with the focus on pure performance and accuracy. This release introduces our new "Web Search" Tool, which is designed to harness the power of advanced search algorithms and deep learning to provide you with the most accurate and relevant information available online. When you make a query, this feature scans the web for the best possible resources and synthesizes the information to deliver an optimal answer. We have also refined our powerful Document Q&A functionality for greater accuracy, specifically in the medical domain. Additionally, we have improved our NLP tools by adding capacities such as assertion and relation extraction for all available NLP tools and made significant upgrades to our chat functionalities. These enhancements are designed to ensure our Medical Chatbot remains highly effective and intuitive, meeting the evolving needs of our users.
+We are happy to announce a new release of the Medical Chatbot, focused on enhancing its capabilities and usability in the medical domain. 
+
+**Highlights**:
+
+- Improved Document Q&A (DocQA) capabilities and accuracy. This feature was refined through ongoing testing, feedback, and technical adjustments to ensure it delivers highly accurate and focused responses based on the targeted documents.
+- A new tool for "Web Search", designed to harness the power of advanced search algorithms and LLMs to provide you with the most accurate and relevant information from online sources. 
+- Enhanced set of NLP tools. New capabilities were added to existing tools such as support for assertion labels and relation extraction. New NLP tools were added for specific types of content – Radiology, Drug Adverse Events, Social Determinants of Health, Voice of the Patient.
+- Improved UI and easier interactions with available tools and resources. 
+ These enhancements are designed to ensure the Medical Chatbot remains highly effective and intuitive, meeting the evolving needs of our users.
+
+</div><div class="h3-box" markdown="1">
+   
+## DocQ&A Enhancements 
+
+### Tuned for more accurate responses with precise citations
+The DocQ&A Feature is continuously refined through ongoing testing, feedback, and technical adjustments to ensure it delivers highly accurate and focused responses based on the targeted documents. In this release, the DocQ&A was enhanced to better handle medical information, providing improved citations and a more comprehensive understanding of the target documents. Additionally, the highlighting of target sections in document previews was refined to offer clearer insights into how responses are formulated based on the available information. These enhancements are part of our commitment to delivering powerful, user-friendly tools that support and elevate your medical information management and decision-making processes.
+
+### Document upload - file processing status 
+
+The DocQ&A Session has an improved UI for file upload and processing designed to make the document interactions and processing status more intuitive. During file upload, users are able to remove the selected files using the cross button provided for each file. Furthermore, as the processing of a file begins, the UI indicates the file's status as follows:
+1. **Processing:** The current file is being processed, indicated by a loading icon.
+2. **Processing Complete:** The file has been successfully processed and is now part of the knowledge base, shown by a green tick icon.
+3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
+After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
+
+### Quick access to uploaded documents
+In the DocQ&A session, you can now easily view the content of uploaded documents (both txt and Pdf) by clicking on their name in the "Target Document" section at the top of your chatbot screen. This action opens the selected document in a new tab. 
+
+### More precise references
+Responses generated in the DocQ&A session include citations pointing to specific sections of the document used as references. These sections can be previewed in the Document Preview UI. Now, to enhance usability, reference numbers have been added to each preview, allowing users to easily track and identify the relevant references while reviewing the content.
+
+### Quick load for reference previews
+To improve the efficiency of document previews, the chatbot offers a better pre-loading process. This enhancement reduces the time required for document previews for each reference/citation while ensuring accurate section highlighting for both PDF and TXT files.
 
 </div><div class="h3-box" markdown="1">
 
 ## Introducing the "Web Search" Tool
+### Overview
+We are excited to introduce the Web Search tool, an enhancement of the already available Wikipedia search tool. While the Wikipedia search tool effectively provided information from a vast database of general topics, the new Web Search tool extends its capabilities to the entire web, ensuring you receive the most comprehensive and relevant information available.
 
-We are excited to introduce the Web Search tool, a significant upgrade from the previous Wikipedia search tool. While the Wikipedia search tool was adept at providing information from a vast database of general topics, the new Web Search tool extends its capabilities to the entire web, ensuring you receive the most comprehensive and relevant information available.
-
-### Key Features:
-
+### Key Features
 1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
+2. **Intelligent Query Handling:** The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.
+3. **Smart Tool Selection:** The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
+4. **Best Possible Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded accurate perspective.
 
-2. **Intelligent Query Handling:** The Web Search tool leverages advanced deep learning algorithms to understand your queries better and retrieve the most accurate and relevant information.
+**Tool Usage and Manual Tool Selection (@ Selector)**
+The Web Search Tool is now available in the Tool Selection menu and can be enabled or disabled as needed. Enabling this tool allows the Medical Chabot to intelligently utilize the Web Search Tool based on your query requirements. Additionally, enabling the tool will make it available in the Manual Tool selection menu, allowing users to manually invoke it by typing "@web_search" at the beginning of a query to receive responses specifically using the Web Search tool. The @ selector menu will automatically auto-fill the keyword for the Web Search while typing and the user can easily use the Web Search tool manually for the response generation.
 
-3. **Smart Tool Usage:** The Medical ChatBot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
-
-4. **Best Possible Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the ChatBot's intelligence to give you a well-rounded accurate perspective.
-
-5. **Manual Response Generation:** In addition to its automatic usage, you can manually trigger the Web Search tool for specific use cases using the @ Selector tool. This feature allows for customized response generation based on your specific needs.
-
-### Tool Usage and Manual Tool Selection (@ Selector)
-The Web Search Tool is now available in the Tool Selection menu and can be enabled or disabled as needed. Enabling this tool allows the Medical ChatBot to intelligently utilize the Web Search Tool based on your query requirements. Additionally, enabling the tool will make it available in the Manual Tool selection menu, allowing users to manually invoke it by typing "@web_search" at the beginning of a query to receive responses specifically using the Web Search Tool. The @ Selector menu will automatically auto-fill the keyword for the Web Search while typing and the user can easily use the Web Search Tool manually for the response generation.
-
-
-</div><div class="h3-box" markdown="1">
-
-## Document Q&A Enhancements 
-
-### Document Upload - File Processing Status 
-
-In the Document Q&A Session, we've improved the UI for file upload and processing to enhance the document upload process and make it more intuitive. During file upload, users can swill be able to remove the selected files using the cross button provided for each file. However, once processing begins, the file cannot be removed. As the processing of a file begins, the UI will indicate the file's status as follows:
-
-1. **Processing:** The current file is being processed, indicated by a loading icon.
-2. **Processing Complete:** The file has been successfully processed and is now part of the knowledge base, shown by a green tick icon.
-3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
-
-After all files are processed, users can confirm the processed files and move forward with utilizing the Document Q&A Session for the best responses to their document-related queries.
-
-### Quick Access the Uploaded Documents in the DocQA Session
-
-In the Document Q&A session, you can now view the content of documents uploaded during the current session. This allows you to easily identify which documents are included in the Document Q&A knowledge base. By clicking on the document name in the "Target Document" section at the top of the session, you can open the selected document in a new tab. This functionality is available for both PDF and TXT files present in the Document Q&A session. 
-
-
-### Document Preview with Reference Numbers
-
-Responses generated in the Document Q&A session include precise citations to the specific sections of the document used as references. These sections can be previewed in the Document Preview UI. Now, to enhance usability, reference numbers have been added to each preview, allowing users to easily track and identify the relevant references while reviewing the content.
-
-### Quick load for Reference Document Preview
-
-To improve the efficiency of document previews, we have implemented a better pre-loading process. This enhancement significantly reduces the time required for document previews for each reference/citation while ensuring accurate section highlighting for both PDF and TXT files.
-
-### Tuned for more accurate Response with Proper Citations
-The Document Q&A Feature is continuously refined through ongoing testing, feedback, and technical adjustments to ensure it delivers highly accurate and focused responses based on the targeted documents. In this release, we have further enhanced the Document Q&A feature to better handle medical information, providing improved citations and a more comprehensive understanding of the target documents. Additionally, we have refined the highlighting of target sections in document previews to offer clearer insights into how responses are formulated based on the available information. These enhancements are part of our commitment to delivering powerful, user-friendly tools that support and elevate your medical information management and decision-making processes.
-
+### User Benefits
+In the medical domain, this tool can be useful when looking at:
+-  patient feedback on the effectiveness of new medications, side effects, and personal experiences with healthcare providers;
+-  notifications about recalls of faulty medical devices or alerts on newly discovered device malfunctions;
+-  outbreaks of infectious diseases like West Nile, Ebola, Zika, Monkeypox, etc. in specific areas of the world;
+-  recent updates on vaccination schedules, new health screening guidelines, and preventive care recommendations;
+-  recent changes in healthcare laws, insurance coverage policies, and public health initiatives.
+-  newly developed treatments or medical technologies that are in the early stages of deployment but not yet widely studied or published;
+-  upcoming health fairs, free screening events, and vaccination drives, etc.
 
 </div><div class="h3-box" markdown="1">
 
 ## NLP Tools and Chat Improvements
 
-### Entities, Assertion, and Relations Extraction Using Medical, Oncology, and Posology NLP Tools
+### Support for entities, assertion statuses, and relations in the NLP Tools
 
-With the integration of NLP tools, we initially supported Named Entity Recognition (NER) entity extraction across the Medical, Oncology, and Posology domains. We also provided assertion and relation extraction capabilities within the Medical NLP tool. We are now extending assertion and relation extraction support to all NLP tools, including Oncology and Posology.
+With the integration of NLP tools, the Medical Chatbot supported Named Entity Recognition specialized for the Clinical, Oncology, and Posology domains. In this release, the NLP tools were enhanced to support assertion labels as well as relation discovery between entities. Furthermore, new specific tools have been added to cover Radiology, Adverse Drug Events, Social Determinants of Health and Voice of the Patient specific use-cases. 
+The generated responses visually highlight the detected entities and assertion statuses. Users also have the option to download the extraction results in structured format (csv), to access detailed information on the detected relations between entities as well as information on the confidence of each annotation.
 
-The response generated will show the Assertions and NER entity extractions while using any of the NER Extraction tools. Users will also have the option to download extraction responses, which will include detailed information on the relations found and other pertinent data related to the NLP extraction.
+### Updated Tool Names and Descriptions
 
-### Updated Tool Name and Tool Description
+The tools have been renamed and their descriptions was updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
 
-The tool names and their descriptions have been updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
+### Copy response with references 
 
-- Additionally, @ Selector keywords for some tools have been shortened to enhance ease of use:
+All responses have a copy button for ease of use. The copy option now also included the related references, including relevant metadata and hyperlinks to the original articles. This information is now appended at the end of the pasted content. This applies to responses generated using all current knowledge bases, including PubMed, bioRxiv, medRxiv, Web Search results, and even DocQ&A responses.
 
-    - `@medical_research`: Query the Medical Research Knowledge Bases
-    - `@web_search`: Search the Web
-    - `@deidentification`: De-identification of Medical Text
-    - `@obfuscation`: Obfuscation of Medical Text
-    - `@medical`: General Medical Entity Extraction
-    - `@oncology `: Oncological Entity Extraction
-    - `@posology `: Posology Entity Extraction
+### New features for Enterprise Admin Users
+Several new Enterprise features have also been added to the Medical Chatbot, specifically designed to enhance the experience for Admin users. Firstly, a comprehensive API documentation is now accessible, providing detailed guidance on integrating and leveraging the chatbot's capabilities within your systems. Additionally, Admin users have the option to extended the trial period for their users, allowing them more time to explore and evaluate the full potential of the platform before making a commitment. Furthermore, significant improvements have been made to the User Management UI, including new filters and a more intuitive interface, making it easier for Admin users to manage and organize their teams effectively. These enhancements are tailored to streamline administrative tasks and optimize the overall user experience.
 
+</div><div class="h3-box" markdown="1">
+---
 
-### References Included while Using "Copy Response"
+## 05-17-2024 - Introducing DocQ&A and NLP Tools
 
-All responses have featured a copy button for ease of use. But now, when a chatbot response is copied and pasted, the related references, including relevant metadata and hyperlinks to the original articles, will be appended at the end of the pasted content. This will apply to responses generated using all current knowledge bases, including PubMed, bioRxiv, medRxiv, Web Search results, and even Document Q&A responses.
+We are excited to announce two significant enhancements to the Medical Chatbot: the DocQ&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
 
 </div><div class="h3-box" markdown="1">
 
-
-
-## 05-17-2024 - Introducing Document Q&A and NLP Tools
-
-We are excited to announce two significant enhancements to the Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
-
-</div><div class="h3-box" markdown="1">
-
-## Introducing Document Q&A (DocQA) Feature
+## Introducing DocQ&A (DocQA) Feature
 
 ### Overview
 The DocQA feature enhances the Medical Chatbot by allowing users to upload and interact with up to 10 text (.txt) or PDF (.pdf) documents. This feature is designed to provide tailored answers based on the content of the uploaded documents.
@@ -126,7 +120,7 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 ![Start_DocQA_Session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/17f402c1-e3ff-4533-b135-fcf47791444a)
 
 2.**Session Management and Visibility**
-   - The active DocQA session appears as "Document Q&A" in the Conversation History.
+   - The active DocQA session appears as "DocQ&A" in the Conversation History.
    - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
 
 <img width="2944" alt="Session_Visibility" src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719">
@@ -226,7 +220,9 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 - **User-Controlled Flexibility**: Offers the flexibility to tailor tool engagement to individual preferences and requirements.
 - **Efficient Tool Access**: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.
 
+
 </div><div class="h3-box" markdown="1">
+---
 
 ## 03-13-2024
 
@@ -349,6 +345,7 @@ In addition to the new UI features, this update includes a series of bug fixes a
 We believe these updates, both in enhancing transparency and usability and in improving the internal workings of the chatbot, will greatly enrich the user experience. We remain committed to continuous improvement and innovation, always prioritizing the needs and satisfaction of our users.
 
 </div><div class="h3-box" markdown="1">
+   ---
 
 ## 02-21-2024
 
