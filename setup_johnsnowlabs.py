@@ -28,7 +28,7 @@ setup(
     version=johnsnowlabs.settings.raw_version_jsl_lib,
     name="johnsnowlabs",
     description="The John Snow Labs Library gives you access to all of John Snow Labs Enterprise And Open Source products in an easy and simple manner. Access 10000+ state-of-the-art NLP and OCR models for "
-    "Finance, Legal and Medical domains. Easily scalable to Spark Cluster ",
+                "Finance, Legal and Medical domains. Easily scalable to Spark Cluster ",
     long_description=long_description,
     install_requires=REQUIRED_PKGS,
     long_description_content_type="text/markdown",
@@ -50,7 +50,11 @@ setup(
     keywords="Spark NLP OCR Finance Legal Medical John Snow Labs  ",
     packages=find_packages(exclude=["test*", "tmp*"]),  # exclude=['test']
     include_package_data=True,
-    data_files=[("/johnsnowlabs/auto_install/docker/build",
-                 ["./johnsnowlabs/auto_install/docker/build/base_dockerfile"])],
+    data_files=[
+        ("/johnsnowlabs/auto_install/docker/build",
+         ["./johnsnowlabs/auto_install/docker/build/app.py",
+          "./johnsnowlabs/auto_install/docker/build/base_dockerfile",
+          "./johnsnowlabs/auto_install/docker/build/installer.py"]),
+    ],
 
 )
