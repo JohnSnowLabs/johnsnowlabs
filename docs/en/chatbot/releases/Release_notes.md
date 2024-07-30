@@ -33,23 +33,21 @@ The DocQA Feature is continuously refined through ongoing testing, feedback, and
 
 ![Tuned_docQA](https://github.com/user-attachments/assets/e05018fd-2a01-4721-9412-509f91238a18)
 
-
 ### Document upload - file processing status 
 
 The DocQA Session has an improved UI for file upload and processing designed to make the document interactions and processing status more intuitive. During file upload, users are able to remove the selected files using the cross button provided for each file. Furthermore, as the processing of a file begins, the UI indicates the file's status as follows:
 1. **Processing:** The current file is being processed, indicated by a loading icon.
 
-![Processing_Status](https://github.com/user-attachments/assets/b8bfa3e3-548e-4ea3-ba95-e1315e406cb7)
-
+![File_processing](https://github.com/user-attachments/assets/152cc921-2c32-4118-8e55-b29c8bc2883a)
 
 2. **Processing Complete:** The file has been successfully processed and is now part of the knowledge base, shown by a green tick icon.
 
-![Processing_Complete](https://github.com/user-attachments/assets/e2bdcf00-f34c-472e-8fee-93ae76bb5af0)
+![image](https://github.com/user-attachments/assets/0d93f381-7516-4c54-89c1-8ebd19e3495b)
 
 3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
 After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
 
-![image](https://github.com/user-attachments/assets/436e12c5-fc5b-44a9-879c-f5a25e06a2be)
+![image](https://github.com/user-attachments/assets/d9aab12f-251f-49ee-871a-4ed158f17cd0)
 
 ### Quick access to uploaded documents
 In the DocQA session, you can now easily view the content of uploaded documents (both txt and Pdf) by clicking on their name in the "Target Document" section at the top of your chatbot screen. This action opens the selected document in a new tab. 
