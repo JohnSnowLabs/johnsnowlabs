@@ -45,9 +45,10 @@ The DocQA Session has an improved UI for file upload and processing designed to 
 ![image](https://github.com/user-attachments/assets/0d93f381-7516-4c54-89c1-8ebd19e3495b)
 
 3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
-After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
 
 ![image](https://github.com/user-attachments/assets/d9aab12f-251f-49ee-871a-4ed158f17cd0)
+
+After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
 
 ### Quick access to uploaded documents
 In the DocQA session, you can now easily view the content of uploaded documents (both txt and Pdf) by clicking on their name in the "Target Document" section at the top of your chatbot screen. This action opens the selected document in a new tab. 
