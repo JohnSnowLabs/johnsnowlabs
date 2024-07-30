@@ -20,7 +20,7 @@ We are happy to announce a new release of the Medical Chatbot, focused on enhanc
 
 - Improved Document Q&A (DocQA) capabilities and accuracy. This feature was refined through ongoing testing, feedback, and technical adjustments to ensure it delivers highly accurate and focused responses based on the targeted documents.
 - A new tool for "Web Search", designed to harness the power of advanced search algorithms and LLMs to provide you with the most accurate and relevant information from online sources. 
-- Enhanced set of NLP tools. New capabilities were added to existing tools such as support for assertion labels and relation extraction. New NLP tools were added for specific types of content – Radiology, Drug Adverse Events, Social Determinants of Health, Voice of the Patient.
+- Enhanced NLP tools. New capabilities were added to existing tools such as support for assertion labels and relation extraction. 
 - Improved UI and easier interactions with available tools and resources. 
  These enhancements are designed to ensure the Medical Chatbot remains highly effective and intuitive, meeting the evolving needs of our users.
 
@@ -68,12 +68,14 @@ To improve the efficiency of document previews, the chatbot offers a better pre-
 ## Introducing the "Web Search" Tool
 ### Overview
 We are excited to introduce the Web Search tool, an enhancement of the already available Wikipedia search tool. While the Wikipedia search tool effectively provided information from a vast database of general topics, the new Web Search tool extends its capabilities to the entire web, ensuring you receive the most comprehensive and relevant information available.
+   
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Key Features
 1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
 2. **Intelligent Query Handling:** The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.
 3. **Smart Tool Selection:** The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
-4. **Best Possible Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded accurate perspective.
+4. **Up-to-Date Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded accurate perspective.
 
 **Tool Usage and Manual Tool Selection (@ Selector)**
 The Web Search Tool is now available in the Tool Selection menu and can be enabled or disabled as needed. Enabling this tool allows the Medical Chabot to intelligently utilize the Web Search Tool based on your query requirements. Additionally, enabling the tool will make it available in the Manual Tool selection menu, allowing users to manually invoke it by typing "@web_search" at the beginning of a query to receive responses specifically using the Web Search tool. The @ selector menu will automatically auto-fill the keyword for the Web Search while typing and the user can easily use the Web Search tool manually for the response generation.
@@ -94,7 +96,7 @@ In the medical domain, this tool can be useful when looking at:
 
 ### Support for entities, assertion statuses, and relations in the NLP Tools
 
-With the integration of NLP tools, the Medical Chatbot supported Named Entity Recognition specialized for the Clinical, Oncology, and Posology domains. In this release, the NLP tools were enhanced to support assertion labels as well as relation discovery between entities. Furthermore, new specific tools have been added to cover Radiology, Adverse Drug Events, Social Determinants of Health, and Voice of the Patient specific use-cases. 
+With the integration of NLP tools, the Medical Chatbot supported Named Entity Recognition specialized for the Clinical, Oncology, and Posology domains. In this release, the NLP tools were enhanced to support assertion labels as well as relation discovery between entities. 
 The generated responses visually highlight the detected entities and assertion statuses. Users also have the option to download the extraction results in structured format (CSV), to access detailed information on the detected relations between entities as well as information on the confidence of each annotation.
 
 ### Updated Tool Names and Descriptions
