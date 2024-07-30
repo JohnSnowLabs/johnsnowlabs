@@ -23,7 +23,7 @@ The Medical Chatbot is equipped with three dynamic tools, each tailored to meet 
 - MedRxiv
 
 along with specialized custom knowledge bases such as:
-- Drug Leaflets - a Knowledge Base that indexes Drug data published by [FDA](www.fda.gov)
+- Drug Leaflets - a Knowledge Base that indexes Drug data published by [FDA](https://www.fda.gov/)
 - Cigna Insurance Plans - a Knowledge base that indexes insurance plans (large PDF documents) offered by Cigna  
 
 Whether you're looking for the latest findings in a specific medical field, detailed drug information, or comprehensive research outcomes, MedResearch provides direct access to a vast repository of academic resources. This feature is especially valuable for medical professionals, researchers, and students seeking to base their work on the most current and authoritative sources.
