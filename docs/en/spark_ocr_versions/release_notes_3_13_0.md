@@ -17,8 +17,10 @@ sidebar:
 
 Release date: 25-05-2022
 
-We are glad to announce that Spark OCR 3.13.0 has been released!.
+We are glad to announce that Spark OCR 3.13.0 has been released!
 This release focuses around VisualDocumentNer models, adding ability to fine-tune, fixing bugs, and to leverage the Annotation Lab to generate training data.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
@@ -28,10 +30,13 @@ This release focuses around VisualDocumentNer models, adding ability to fine-tun
 * AlabReaders: 
   * New class to allow training data from the Annotation Lab to be imported into Spark OCR. Currently, the reader supports Visual Ner only.
 
+</div><div class="h3-box" markdown="1">
 
 #### Bug Fixes
 
 * Feature extraction on VisualDocumentNer has been improved.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

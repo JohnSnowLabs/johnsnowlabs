@@ -18,14 +18,14 @@ sidebar:
 Release date: 17-11-2023
 
 
-**We are glad to announce that Visual NLP 5.1.0 has been released! This release comes with new models, annotators, bug fixes, and more!.📢📢📢**
+**We are glad to announce that Visual NLP 5.1.0 has been released! This release comes with new models, annotators, bug fixes, and more!📢📢📢**
 
 **New Models &  Annotators**
 * VisualQuestionAnsweringPix2Struct: we are adding a new Visual Question Answering(VQA) checkpoint for Pix2Struct. Document VQA is the task of answering questions about documents, in which visual clues are important in the answer.
 The practical impact of this type of models is that you can create "data extractors" for your own particular use case without fine-tuning on your data. So you can ask questions about tables, or forms or other structures in which the visual information is relevant, in a zero-shot manner.
 
 We started our journey with Donut-like models, which were great in many different tasks. Check [this code and example](https://nlp.johnsnowlabs.com/2023/01/17/docvqa_donut_base_en_3_2.html), and [this webinar](https://www.johnsnowlabs.com/watch-zero-shot-visual-question-answering/), in case you missed it.
-![image](/assets/images/ocr/pix2struct_sample.png)
+![5.1.0](/assets/images/ocr/pix2struct_sample.png)
 
 ```
 |[What's the estimated population in poverty of Lawrence? ->  5,696, What's the population of Stoddard? ->  26,000, What is the page number of the document? ->  6, What is the date in the document? ->  January, 1970]|
@@ -36,7 +36,7 @@ Now, we're taking one step further and integrating Pix2Struct which, when compar
 Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnsweringJsl.ipynb) with examples on how to use it.
 
 * DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
-![image](/assets/images/ocr/dit-layout-sample.png)
+![5.1.0](/assets/images/ocr/dit-layout-sample.png)
 
 
  

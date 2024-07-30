@@ -65,6 +65,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 - NER Model
 
+{:.table-model-big}
 |Model Name         | Predicted Entities | Description      |
 |-------------------|--------------------|------------------|
 | [ner_opioid](https://nlp.johnsnowlabs.com/2024/02/28/ner_opioid_en.html) | `communicable_disease`, `general_symptoms`, `substance_use_disorder`, `drug_duration`, `psychiatric_issue`, `drug_strength`, `drug_quantity`, `other_drug`, `drug_form`, `drug_frequency`, `opioid_drug`, `drug_route`, `employment`, `violence`, `legal_issue`, `other_disease`, `alcohol_use`, `test`, `marital_status`, `test_result`, `antidote`, `sexual_orientation` | Detects opioid-related entities within text data |
@@ -85,6 +86,7 @@ sample_texts = ["""The patient, unmarried and with a significant history of subs
 
 *Result*:
 
+{:.table-model-big}
 |chunk               |begin|end|ner_label             |
 |--------------------|-----|---|----------------------|
 |unmarried           |13   |21 |marital_status        |
@@ -113,6 +115,7 @@ sample_texts = ["""The patient, unmarried and with a significant history of subs
 
 - Assertion Models
 
+{:.table-model-big}
 |Model Name         | Assertion Status | Description      |
 |-------------------|-------------------|------------------|
 | [assertion_opioid_wip](https://nlp.johnsnowlabs.com/2024/02/28/assertion_opioid_wip_en.html) | `present`, `history`, `absent`, `hypothetical`, `past`, `family_or_someoneelse` | Detects the assertion status of entities related to opioid |
@@ -135,6 +138,7 @@ sample_texts = [
 
 *Result*:
 
+{:.table-model-big}
 |chunk                 |begin|end|ner_label             |assertion   |confidence|
 |----------------------|-----|---|----------------------|------------|----------|
 |substance abuse       |30   |44 |substance_use_disorder|history     |0.9644    |
@@ -186,6 +190,7 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |doc_id|begin|end|chunk                        |ner_label |
 |------|-----|---|-----------------------------|----------|
 |1     |14   |23 |2093-01-13                   |DATE      |
@@ -249,6 +254,7 @@ sample_texts = [
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                                text|         result|
 |----------------------------------------------------------------------------------------------------|---------------|
 |The patient presents with conditions often associated with the stresses and lifestyle of early ca...|          Adult|
@@ -285,6 +291,7 @@ sample_texts = [
 
 *Result*:
 
+{:.table-model-big}
 |sentence                                                                                                                                                    |prediction|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response.                       |0         |
@@ -328,6 +335,7 @@ text_list = ["""The patient was diagnosed with acute appendicitis and scheduled 
 
 *Result*:
 
+{:.table-model-big}
 |doc_id|begin|end|chunk             |ner_label  |
 |------|-----|---|------------------|-----------|
 |1     |31   |48 |acute appendicitis|snomed_term|
@@ -350,6 +358,7 @@ Please check: [ner_snomed_term](https://nlp.johnsnowlabs.com/2024/02/13/ner_snom
 
 Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between UMLS, LOINC, CPT, and SNOMED codes, offering a comprehensive solution for interoperability within medical systems.
 
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 |[`umls_loinc_mapper`](https://nlp.johnsnowlabs.com/2024/02/15/umls_loinc_mapper_en.html)  | Maps UMLS codes to corresponding LOINC codes. |
@@ -373,11 +382,10 @@ text = "acebutolol"
 
 *Result*:
 
+{:.table-model-big}
 |      chunk |     UMLS |     LOINC |   relation |
 |-----------:|---------:|----------:|-----------:|
 | acebutolol | C0000946 | LP16015-7 | loinc_code |
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -387,7 +395,7 @@ We introduce a suite of advanced, hybrid pretrained pipelines, specifically desi
 
 What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
 
-
+{:.table-model-big.db}
 | Pipeline Name                                                            |      Description            |
 |--------------------------------------------------------------------------|-------------------------------------------|
 | [`hcpcs_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/30/hcpcs_resolver_pipeline_en.html) | This pipeline extracts `PROCEDURE` entities and maps them to their corresponding [Healthcare Common Procedure Coding System (HCPCS)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HCPCS/index.html) codes. |
@@ -445,6 +453,7 @@ EXTREMITIES: There is some edema, but no cyanosis and clubbing .
 
 *Result*:
 
+{:.table-model-big}
 |ner_chunks                        |begins|ends|entity                   |assertions|confidence|
 |----------------------------------|------|----|-------------------------|----------|----------|
 |distress                          |49    |56  |SYMPTOM                  |Absent    |0.9999    |
@@ -499,6 +508,7 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 
 *Result*:
 
+{:.table-model-big}
 |  regex_result|begin|end|ner_label|
 |--------------|-----|---|---------|
 |    2093-01-13|   38| 47|     DATE|
@@ -516,6 +526,7 @@ The `TextMatcherInternal` annotator provides a robust solution for matching exac
 
 *Text Matcher Pretrained Models*:
 
+{:.table-model-big}
 |model|entities|
 |:----|-------|
 | [drug_matcher](https://nlp.johnsnowlabs.com/2024/03/06/drug_matcher_en.html)  |`DRUG` |
@@ -549,6 +560,7 @@ text = """John's doctor prescribed aspirin 100mg for his heart condition, along 
 
 *Result*:
 
+{:.table-model-big}
 |        chunk|begin|end|label|
 |-------------|-----|---|-----|
 |      aspirin|   25| 31| Drug|
@@ -604,6 +616,7 @@ text = """John's doctor prescribed aspirin for his heart condition, along with p
 
 *Result*:
 
+{:.table-model-big}
 |          chunk|begin|end|  label|
 |---------------|-----|---|-------|
 |        aspirin|   25| 31|   Drug|
@@ -642,6 +655,7 @@ text = """Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora
 
 *Result*:
 
+{:.table-model-big.db}
 |    | sentence  | deidentified    | masked  |
 |---:|:----------|:----------------|:--------------|
 |  0 | Record date : 2093-01-13 , David Hale , M.D . | Record date : 2093-02-12 , Docia Chuck , M.D . |  Record date : \<DATE> , \<DOCTOR> , M.D .  |
@@ -682,6 +696,7 @@ Jennifer is 58 years old. She was  seen by Dr. John Green and discharged on metf
 
 *Result for without rules*:
 
+{:.table-model-big}
 |       chunk|begin|end|   entity|confidence|
 |------------|-----|---|---------|----------|
 |    Jennifer|    1|  8|  PATIENT|    0.9993|
@@ -699,7 +714,7 @@ Jennifer is 58 years old. She was  seen by Dr. John Green and discharged on metf
 In the example, "metformin" has been classified as a DRUG entity, while "glipizide" has been removed due to the setFalsePositives rules.
 Additionally, "Jennifer" and "John Green" chunks have been labeled as NAME according to the setReplaceDict rules.
 
-
+{:.table-model-big}
 |       chunk|begin|end|   entity|confidence|
 |------------|-----|---|---------|----------|
 |    Jennifer|    1|  8|     NAME|    0.9993|
@@ -737,7 +752,7 @@ question = "What is the primary issue reported by patient?"
 
 *Result*:
 
-
+{:.table-model-big}
 |Question           |Answer                         |metadata               |
 |-------------------|-------------------------------|-----------------------|
 |What is the primary issue reported by patient?|The primary issue reported by the patient is hypertension.|{score -> 0.97722054}|
@@ -789,6 +804,7 @@ resolver_pipeline = Pipeline(stages = [
 
 ***Results Table***
 
+{:.table-model-big}
 | partition | NER Timing     |NER and Resolver Timing| 
 | ---------:|:-------------- |:----------------------| 
 |4          |  24.7 seconds  |1 minutes 8.5  seconds|
@@ -842,6 +858,7 @@ resolver_pipeline = PipelineModel(
 
 ***Results Table***
 
+{:.table-model-big}
 |partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
 |--------:|------------:|---------:|------------:|--------------:|------------:|
 | 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
@@ -858,9 +875,6 @@ resolver_pipeline = PipelineModel(
 Please check [Speed Benchmarks](https://nlp.johnsnowlabs.com/docs/en/benchmark) for more information.
 
 </div><div class="h3-box" markdown="1">
-
-
-
 
 #### Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, And Reliability Of Spark NLP For Healthcare
 
@@ -936,18 +950,12 @@ Please check [Speed Benchmarks](https://nlp.johnsnowlabs.com/docs/en/benchmark) 
 + `sbiobertresolve_snomed_findings_aux_concepts`
 + `sbiobertresolve_snomed_procedures_measurements`
 
-
-
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
 
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

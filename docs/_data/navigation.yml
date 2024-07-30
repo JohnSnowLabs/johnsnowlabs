@@ -169,6 +169,8 @@ annotation-lab:
             url: /docs/en/alab/transfer_learning
           - title: Test Project Configuration
             url: /docs/en/alab/test_project_configuration
+          - title: LangTest
+            url: /docs/en/alab/langtest
       - subtitle: Administration
         children:
           - title: User Management
@@ -227,7 +229,7 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Wiki
         url: /docs/en/wiki
-      - title: Speed Benchmarks
+      - title: Benchmarks
         url: /docs/en/benchmark      
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
@@ -255,6 +257,8 @@ sparknlp-healthcare:
         url: /docs/en/ocr_object_detection
       - title: Structures and helpers
         url: /docs/en/ocr_structures
+      - title: Speed benchmarks
+        url: /docs/en/ocr_benchmark
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
   - title: Finance NLP

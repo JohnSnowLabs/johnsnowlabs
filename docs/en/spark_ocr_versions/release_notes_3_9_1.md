@@ -21,9 +21,13 @@ Release date: 02-11-2021
 
 Added preserving of original file formatting
 
+</div><div class="h3-box" markdown="1">
+
 #### Enhancements
 
 * Added keepLayout param to the [ImageToText](/docs/en/ocr_pipeline_components#imagetotext)
+
+</div><div class="h3-box" markdown="1">
 
 #### New and updated notebooks
 

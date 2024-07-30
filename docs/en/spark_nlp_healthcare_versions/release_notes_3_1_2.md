@@ -17,6 +17,8 @@ sidebar:
 We are glad to announce that Spark NLP for Healthcare 3.1.2 has been released!.
 This release comes with new features, new models, bug fixes, and examples.
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + Support for Fine-tuning of Ner models.
 + More builtin(pre-defined) graphs for MedicalNerApproach.
@@ -27,6 +29,7 @@ This release comes with new features, new models, bug fixes, and examples.
 + Java Workshop Examples.
 + Deprecated Compatibility class in Python.
 
+</div><div class="h3-box" markdown="1">
 
 ##### Support for Fine Tuning of Ner models
 
@@ -58,12 +61,15 @@ ner_tagger = MedicalNerApproach()\
 
 In this case, the new tags `B-VIP` and `I-VIP` will replace the already trained tags 'B-PER' and 'I-PER'. Unmapped old tags will remain in use and unmapped new tags will be allocated to new outpout nodes, if any.
 
-Jupyter Notebook: [Finetuning Medical NER Model Notebook] (https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.5.Resume_MedicalNer_Model_Training.ipynb)
+Jupyter Notebook: [Finetuning Medical NER Model Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.5.Resume_MedicalNer_Model_Training.ipynb)
+
+</div><div class="h3-box" markdown="1">
 
 ##### More builtin graphs for MedicalNerApproach
 
 Seventy new TensorFlow graphs have been added to the library of available graphs which are used to train MedicalNer models. The graph with the optimal set of parameters is automatically chosen by MedicalNerApproach.
 
+</div><div class="h3-box" markdown="1">
 
 ##### DateNormalizer
 
@@ -115,6 +121,8 @@ Example:
 |next week   |2021/06/19|
 +-----------+----------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ##### New Relation Extraction Models for ADE
 
@@ -170,10 +178,14 @@ Avg.                0.928     0.936     0.932
 Weighted Avg.       0.934     0.934     0.933
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ##### Bug Fixes
 + RelationExtractionDLModel had an issue(BufferOverflowException) on versions 3.1.0 and 3.1.1, which is fixed with this release.
 + Some pretrained RelationExtractionDLModels got outdated after release 3.0.3, new updated models were created, tested and made available to be used with versions 3.0.3, and later.
 + Some SentenceEntityResolverModels which did not work with Spark 2.4/2.3 were fixed.
+
+</div><div class="h3-box" markdown="1">
 
 ##### Support for user-defined Custom Transformer.
 Utility classes to define custom transformers in python are included in this release. This allows users to define functions in Python to manipulate Spark-NLP annotations. This new Transformers can be added to pipelines like any of the other models you're already familiar with.
@@ -188,10 +200,14 @@ Example how to use the custom transformer.
         outputDf = custom_transformer.transform(outdf).select("custom").toPandas()
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ##### Java Workshop Examples
 
 Add Java examples in the workshop repository.
-https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/java/healthcare
+[https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/java/healthcare](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/java/healthcare)
+
+</div><div class="h3-box" markdown="1">
 
 ##### Deprecated Compatibility class in Python
 

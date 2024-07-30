@@ -16,6 +16,8 @@ sidebar:
 ## 3.3.1
 We are glad to announce that Spark NLP Healthcare 3.3.1 has been released!.
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + New ChunkKeyPhraseExtraction Annotator
 + New BERT-Based NER Models
@@ -26,6 +28,8 @@ We are glad to announce that Spark NLP Healthcare 3.3.1 has been released!.
 + New and Updated Deidentification() Parameters
 + New Python API Documentation
 + Updated Spark NLP For Healthcare Notebooks and New Notebooks
+
+</div><div class="h3-box" markdown="1">
 
 #### New ChunkKeyPhraseExtraction Annotator
 
@@ -64,6 +68,8 @@ ngram_ner_results =  ngram_ner_pipeline.transform(textDF)
 |28-year-old female        |ngrams|0.31692529374916967|0.10043002919664669|0       |
 +--------------------------+------+-------------------+-------------------+--------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New BERT-Based NER Models
 
@@ -153,6 +159,7 @@ result = p_model.transform(spark.createDataFrame([[test_sentence]]).toDF("text")
 +-------------------------------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New UMLS Sentence Entity Resolver Models
 
@@ -220,9 +227,13 @@ results = model.fit(data).transform(data)
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated RxNorm Entity Resolver Model (Dropping Invalid Codes)
 
 `sbiobertresolve_rxnorm` model was updated by dropping invalid codes using 02 August 2021 RxNorm dataset.
+
+</div><div class="h3-box" markdown="1">
 
 #### New showVersion() Method in Compatibility Class
 
@@ -244,6 +255,8 @@ After the execution you will see the following table,
 +---------------------------------+------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Docker Images for Spark NLP for Healthcare and Spark OCR
 
 We are releasing new Docker Images for Spark NLP for Healthcare and Spark OCR containing a jupyter environment. Users having a valid license can run the image on their local system, and connect to pre-configured jupyter instance without installing the library on their local system.
@@ -262,6 +275,8 @@ For users who want to run Spark OCR and then feed the output of OCR pipeline to 
 
 - Instructions: [Spark NLP for Healthcare & OCR Docker Image](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/jupyter/docker_image_ocr)
 
+</div><div class="h3-box" markdown="1">
+
 #### New and Updated Deidentification() Parameters
 
 *New Parameter* :
@@ -271,9 +286,13 @@ For users who want to run Spark OCR and then feed the output of OCR pipeline to 
 
 + `.setObfuscateRefSource()` : It was set `faker` as default.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Python API Documentation
 
 We have new Spark NLP for Healthcare [Python API Documentation](https://nlp.johnsnowlabs.com/licensed/api/python/) . This page contains information how to use the library with Python examples.
+
+</div><div class="h3-box" markdown="1">
 
 #### Updated Spark NLP For Healthcare Notebooks and New Notebooks
 

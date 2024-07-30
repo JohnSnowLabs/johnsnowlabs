@@ -251,7 +251,7 @@ Obfuscated text :  Joseeduardo is a 62 y.o. patient admitted. Mr. Teigan was see
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ReplacerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb)
+[ReplacerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb)
 {%- endcapture -%}
 
 

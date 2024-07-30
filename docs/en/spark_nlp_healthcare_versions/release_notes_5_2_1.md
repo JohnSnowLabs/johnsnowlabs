@@ -71,6 +71,7 @@ Father is HCP, student in [**Name (NI) 108**], Biology major, parents and brothe
 
 *Result*:
 
+{:.table-model-big}
 |chunk            |begin|end |ner_label             |
 |-----------------|-----|----|----------------------|
 |percocet         |92   |99  |opioid_drug           |
@@ -124,6 +125,7 @@ text = ["""Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR.
 
 *Result*:
 
+{:.table-model-big}
 | doc_id |                chunks | begin | end | entities |
 |-------:|----------------------:|------:|----:|----------|
 |      0 |            David Hale |    26 |  35 |     NAME |
@@ -138,15 +140,13 @@ Please see the model card [ner_deid_name_multilingual](https://nlp.johnsnowlabs.
 
 </div><div class="h3-box" markdown="1">
 
-
-
 #### Clinical Document Analysis With State-Of-The-Art Pretrained Pipelines for Specific Clinical Tasks and Concepts
 
 We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the process of analyzing clinical documents. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for extracting vital information with unprecedented ease.
 
 What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
 
-
+{:.table-model-big.db}
 | Pipeline Name                                                            |      Description            |
 |--------------------------------------------------------------------------|-------------------------------------------|
 | [`explain_clinical_doc_generic`](https://nlp.johnsnowlabs.com/2024/01/16/explain_clinical_doc_generic_en.html) | This pipeline is designed to extract all clinical/medical entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical texts. |
@@ -191,6 +191,7 @@ text = 'metformin 100 mg'
 
 *Result*:
 
+{:.table-model-big}
 |            text|                                                                                          embeddings|
 |----------------|----------------------------------------------------------------------------------------------------|
 |metformin 100 mg| -0.20578815, 0.25846115, -0.7783525, 0.80831814, 0.91270417, -0.43411028, 0.41243184, 0.2023627... |
@@ -225,6 +226,7 @@ text ="""Hypersensitivity to aspirin can be manifested as acute asthma, urticari
 
 *Result*:
 
+{:.table-model-big}
 | chunk1 | entity1| chunk2                          | entity2|relation |confidence |
 |:-------|:-------|:--------------------------------|:-------|--------:|----------:|
 | aspirin| DRUG   | acute asthma                    | ADE    |       1 |  0.99978  |
@@ -252,6 +254,7 @@ If the resolver-only timing is equal to or very close to the combined mapper and
   - AWS EC2 Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
 **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
 
+{:.table-model-big.db}
 | partition | DataBricks <br> mapper timing | AWS EC2 <br> mapper timing | DataBricks <br> resolver timing | AWS EC2 <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS EC2 <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
@@ -271,6 +274,7 @@ Explore the efficiency of our `clinical_deidentification` pipeline through a ded
 
 **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
 
+{:.table-model-big}
 | partition | AWS EC2 <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
 |----------:|-------------:|-------------:|-------------:|
 | 1024      |  1 min 3 sec | 1 min 55 sec | 5 min 45 sec |
@@ -323,8 +327,6 @@ This update opens doors to a wider range of deployment scenarios and interoperab
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-
-
 + `ner_deid_name_multilingual`
 + `ner_opioid_small_wip`
 + `ner_oncology_pipeline`
@@ -354,10 +356,7 @@ This update opens doors to a wider range of deployment scenarios and interoperab
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

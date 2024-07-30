@@ -23,19 +23,26 @@ Image processing on GPU. It is in 3.5 times faster than on CPU.
 
 More details please read in [GPU image preprocessing in Spark OCR](https://medium.com/spark-nlp/gpu-image-pre-processing-in-spark-ocr-3-1-0-6fc27560a9bb)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
 * [GPUImageTransformer](/docs/en/ocr_pipeline_components#gpuimagetransformer) with support: scaling, erosion, delation, Otsu and Huang thresholding.
 * Added [display_images](/docs/en/ocr_structures#displayimages) util function for displaying images from Spark DataFrame in Jupyter notebooks.
 
+</div><div class="h3-box" markdown="1">
+
 #### Enhancements
 
 * Improve [display_image](/docs/en/ocr_structures#displayimage) util function.
 
+</div><div class="h3-box" markdown="1">
+
 #### Bug fixes
 
 * Fixed issue with extra dependencies in [start](/docs/en/ocr_install#using-start-function) function
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

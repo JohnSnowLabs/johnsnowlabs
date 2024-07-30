@@ -49,6 +49,7 @@ The load method provides for now just one parameter **verbose**.
 Setting nlp.load(nlp_reference, verbose=True) will generate log outputs that can be helpful for troubleshooting.   
 If you encounter any errors, please run Verbose mode and post your output on our Github Issues page.    
 
+{:.table-model-big}
 | Description                                                                              | Parameter name                  | 
 |------------------------------------------------------------------------------------------|---------------------------------| 
 | NLP reference of the model                                                               | request                         |
