@@ -114,7 +114,7 @@ df.select(
 +--------------+----------+---------------------------------------------+---+------+-----------+----+--------+
 ```
 
-For more details and usage examples, check the [Medicare Risk Adjustment](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) notebook from our Spark NLP Workshop repository.
+For more details and usage examples, check the [Medicare Risk Adjustment](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/05.3.Calculate_Medicare_Risk_Adjustment_Score.ipynb) notebook from our Spark NLP Workshop repository.
 
 </div><div class="h3-box" markdown="1">
 
