@@ -17,12 +17,53 @@ See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for
 
 
 
-## 5.4.0
-Release date: 07-13-2024
+# 5.4.2
+Release date: 7-30-2024
+
+The John Snow Labs 5.4.2 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.4.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `5.4.0`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1rc1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `5.4.0`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+
+
+# 5.4.1
+Release date: 7-15-2024
+
+The John Snow Labs 5.4.1 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.4.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `5.4.0`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1rc1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `5.4.0`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+
+
+
+# 5.4.0
+Release date: 7-13-2024
 
 The John Snow Labs 5.4.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.4.0` |
@@ -36,13 +77,12 @@ The John Snow Labs 5.4.0 Library released with the following pre-installed and r
 
 
 
-## 5.3.6
-Release date: 05-22-2024
+# 5.3.6
+Release date: 5-22-2024
 
-The John Snow Labs 5.3.6 Library released with the following pre-installed and recommended dependencies
+The John Snow Labs 5.3.5 Library released with the following pre-installed and recommended dependencies
 
 
-{:.table-model-big}
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.2` |
@@ -55,12 +95,12 @@ The John Snow Labs 5.3.6 Library released with the following pre-installed and r
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0` |
 
 
-## 5.3.5
-Release date: 05-11-2024
+# 5.3.5
+Release date: 5-11-2024
 
 The John Snow Labs 5.3.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.2` |
@@ -74,12 +114,12 @@ The John Snow Labs 5.3.5 Library released with the following pre-installed and r
 
 
 
-## 5.3.4
-Release date: 04-12-2024
+# 5.3.4
+Release date: 4-12-2024
 
 The John Snow Labs 5.3.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.1` |
@@ -92,12 +132,12 @@ The John Snow Labs 5.3.4 Library released with the following pre-installed and r
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0` |
 
 
-## 5.3.3
-Release date: 04-5-2024
+# 5.3.3
+Release date: 4-5-2024
 
 The John Snow Labs 5.3.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.0` |
@@ -111,12 +151,12 @@ The John Snow Labs 5.3.3 Library released with the following pre-installed and r
 
 
 
-## 5.3.2
-Release date: 03-13-2024
+# 5.3.2
+Release date: 3-13-2024
 
 The John Snow Labs 5.3.2 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.0` |
@@ -130,12 +170,12 @@ The John Snow Labs 5.3.2 Library released with the following pre-installed and r
 
 
 
-## 5.3.1
-Release date: 03-12-2024
+# 5.3.1
+Release date: 3-12-2024
 
 The John Snow Labs 5.3.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -149,12 +189,12 @@ The John Snow Labs 5.3.1 Library released with the following pre-installed and r
 
 
 
-## 5.3.0
-Release date: 03-11-2024
+# 5.3.0
+Release date: 3-8-2024
 
 The John Snow Labs 5.3.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.0` |
@@ -174,7 +214,7 @@ Release date: 02-15-2024
 
 The John Snow Labs 5.2.8 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -188,12 +228,12 @@ The John Snow Labs 5.2.8 Library released with the following pre-installed and r
 
 
 
-## 5.2.7
-Release date: 02-15-2024
+# 5.2.7
+Release date: 2-15-2024
 
 The John Snow Labs 5.2.7 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -212,7 +252,7 @@ Release date: 02-04-2024
 
 The John Snow Labs 5.2.6 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -231,7 +271,7 @@ Release date: 02-03-2024
 
 The John Snow Labs 5.2.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -252,7 +292,7 @@ Release date: 02-01-2024
 
 The John Snow Labs 5.2.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -271,7 +311,7 @@ Release date: 31-01-2024
 
 The John Snow Labs 5.2.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -290,7 +330,7 @@ Release date: 22-01-2024
 
 The John Snow Labs 5.2.2 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -307,7 +347,7 @@ Release date: 20-01-2024
 
 The John Snow Labs 5.2.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -326,7 +366,7 @@ Release date: 04-01-2024
 
 The John Snow Labs 5.2.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.2` |
@@ -343,7 +383,7 @@ Release date: 05-12-2023
 
 The John Snow Labs 5.1.9 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.1.0` |
@@ -361,7 +401,7 @@ Release date: 17-11-2023
 
 The John Snow Labs 5.1.8 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.0.2` |
@@ -378,7 +418,7 @@ Release date: 19-10-2023
 
 The John Snow Labs 5.1.7 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.0.2` |
@@ -399,7 +439,7 @@ Release date: 11-10-2023
 The John Snow Labs 5.1.6 Library released with the following pre-installed and recommended dependencies
 
 
-{:.table-model-big}
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.0.2` |
@@ -419,7 +459,7 @@ Release date: 09-10-2023
 
 The John Snow Labs 5.1.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
@@ -439,7 +479,7 @@ Release date: 08-10-2023
 
 The John Snow Labs 5.1.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
@@ -457,7 +497,7 @@ Release date: 06-10-2023
 
 The John Snow Labs 5.1.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
@@ -477,7 +517,7 @@ Release date: 04-10-2023
 
 The John Snow Labs 5.1.2 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
@@ -496,7 +536,7 @@ Release date: 01-10-2023
 
 The John Snow Labs 5.1.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
@@ -515,7 +555,7 @@ Release date: 25-09-2023
 
 The John Snow Labs 5.1.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
@@ -533,7 +573,7 @@ Release date: 11-09-2023
 
 The John Snow Labs 5.0.9 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
@@ -551,7 +591,7 @@ Release date: 10-09-2023
 
 The John Snow Labs 5.0.8 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
@@ -569,19 +609,17 @@ Release date: 03-09-2023
 
 The John Snow Labs 5.0.7 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
 | [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  | `5.0.2` |
 | [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes) | `1.X.X` |
 | [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)       | `1.X.X` |
-| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.0` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.1` |
 | [Spark-NLP-Display](https://sparknlp.org/docs/en/display)           | `4.4`   |
 | [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.0.2` |
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
-
-
 
 
 ## 5.0.6
@@ -589,7 +627,7 @@ Release date: 03-09-2023
 
 The John Snow Labs 5.0.6 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
@@ -609,7 +647,7 @@ Release date: 25-08-2023
 
 The John Snow Labs 5.0.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
@@ -629,7 +667,7 @@ Release date: 23-08-2023
 
 The John Snow Labs 5.0.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
@@ -648,7 +686,7 @@ Release date: 23-08-2023
 
 The John Snow Labs 5.0.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                         | Version |
 |---------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.0` |
@@ -665,7 +703,7 @@ Release date: 02-08-2023
 
 The John Snow Labs 5.0.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.4` |
@@ -685,7 +723,7 @@ Release date: 13-07-2023
 
 The John Snow Labs 5.0.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.3` |
@@ -706,7 +744,7 @@ Release date: 11-07-2023
 
 The John Snow Labs 4.4.11 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.3` |
@@ -726,7 +764,7 @@ Release date: 04-07-2023
 
 The John Snow Labs 4.4.10 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.3` |
@@ -746,7 +784,7 @@ Release date: 04-07-2023
 
 The John Snow Labs 4.4.9 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.3` |
@@ -765,7 +803,7 @@ Release date: 14-06-2023
 
 The John Snow Labs 4.4.8 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.2` |
@@ -784,7 +822,7 @@ Release date: 06-06-2023
 
 The John Snow Labs 4.4.7 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.2` |
@@ -805,7 +843,6 @@ Release date: 28-05-2023
 
 The John Snow Labs 4.4.6 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.1` |
@@ -838,7 +875,6 @@ Release date: 03-05-2023
 
 The John Snow Labs 4.4.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.0` |
@@ -858,7 +894,6 @@ Release date: 26-04-2023
 
 The John Snow Labs 4.4.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.0` |
@@ -879,7 +914,6 @@ Release date: 26-04-2023
 
 The John Snow Labs 4.4.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.0` |
@@ -896,7 +930,6 @@ Release date: 18-04-2023
 
 The John Snow Labs 4.4.2 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.4.0`    |
@@ -913,7 +946,6 @@ Release date: 13-04-2023
 
 The John Snow Labs 4.4.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.3`    |
@@ -930,7 +962,6 @@ Release date: 12-04-2023
 
 The John Snow Labs 4.4.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.3`    |
@@ -947,7 +978,6 @@ Release date: 25-03-2023
 
 The John Snow Labs 4.3.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.3`    |
@@ -964,7 +994,6 @@ Release date: 20-03-2023
 
 The John Snow Labs 4.3.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.3`    |
@@ -981,7 +1010,6 @@ Release date: 23-02-2023
 
 The John Snow Labs 4.3.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.1`    |
@@ -998,7 +1026,6 @@ Release date: 21-02-2023
 
 The John Snow Labs 4.3.2 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.0`    |
@@ -1015,7 +1042,6 @@ Release date: 14-02-2023
 
 The John Snow Labs 4.3.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.0`    |
@@ -1032,7 +1058,6 @@ Release date: 14-02-2023
 
 The John Snow Labs 4.3.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.0`    |
@@ -1049,7 +1074,6 @@ Release date: 01-02-2023
 
 The John Snow Labs 4.2.9 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.0`    |
@@ -1066,7 +1090,6 @@ Release date: 29-01-2023
 
 The John Snow Labs 4.2.8 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.3.0`    |
@@ -1083,7 +1106,6 @@ Release date: 27-12-2022
 
 The John Snow Labs 4.2.5 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.2.4`    |
@@ -1101,7 +1123,6 @@ Release date: 21-12-2022
 
 The John Snow Labs 4.2.4 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.2.1`    |
@@ -1119,7 +1140,6 @@ Release date: 02-12-2022
 
 The John Snow Labs 4.2.3 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.2.1`    |
@@ -1137,7 +1157,6 @@ Release date: 17-10-2022
 
 The John Snow Labs 4.2.2 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.2.0`    |
@@ -1155,7 +1174,6 @@ Release date: 10-10-2022
 
 The John Snow Labs 4.2.1 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.1.0`    |
@@ -1174,7 +1192,6 @@ Release date: 06-10-2022
 
 The John Snow Labs 4.2.0 Library released with the following pre-installed and recommended dependencies
 
-{:.table-model-big}
 | Library                                                                     | Version    |
 |-----------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `4.0.0`    |
