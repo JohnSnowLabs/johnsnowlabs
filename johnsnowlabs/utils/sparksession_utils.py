@@ -186,6 +186,7 @@ def start(
         "spark.kryoserializer.buffer.max": "2000M",
         "spark.driver.maxResultSize": "2000M",
         "spark.jars": ",".join(jars),
+        'spark.extraListeners': 'com.johnsnowlabs.license.LicenseLifeCycleManager',
     }
 
     if suite.ocr and suite.ocr.get_java_path():
