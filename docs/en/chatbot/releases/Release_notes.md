@@ -31,19 +31,35 @@ We are happy to announce a new release of the Medical Chatbot, focused on enhanc
 ### Tuned for more accurate responses with precise citations
 The DocQA Feature is continuously refined through ongoing testing, feedback, and technical adjustments to ensure it delivers highly accurate and focused responses based on the targeted documents. In this release, the DocQA was enhanced to better handle medical information, providing improved citations and a more comprehensive understanding of the target documents. Additionally, the highlighting of target sections in document previews was refined to offer clearer insights into how responses are formulated based on the available information. These enhancements are part of our commitment to delivering powerful, user-friendly tools that support and elevate your medical information management and decision-making processes.
 
+![Tuned_docQA](https://github.com/user-attachments/assets/e05018fd-2a01-4721-9412-509f91238a18)
+
+
 ### Document upload - file processing status 
 
 The DocQA Session has an improved UI for file upload and processing designed to make the document interactions and processing status more intuitive. During file upload, users are able to remove the selected files using the cross button provided for each file. Furthermore, as the processing of a file begins, the UI indicates the file's status as follows:
 1. **Processing:** The current file is being processed, indicated by a loading icon.
+
+![Processing_Status](https://github.com/user-attachments/assets/b8bfa3e3-548e-4ea3-ba95-e1315e406cb7)
+
+
 2. **Processing Complete:** The file has been successfully processed and is now part of the knowledge base, shown by a green tick icon.
+
+![Processing_Complete](https://github.com/user-attachments/assets/e2bdcf00-f34c-472e-8fee-93ae76bb5af0)
+
 3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
 After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
+
+![image](https://github.com/user-attachments/assets/436e12c5-fc5b-44a9-879c-f5a25e06a2be)
 
 ### Quick access to uploaded documents
 In the DocQA session, you can now easily view the content of uploaded documents (both txt and Pdf) by clicking on their name in the "Target Document" section at the top of your chatbot screen. This action opens the selected document in a new tab. 
 
+![Quick_Access_Docs](https://github.com/user-attachments/assets/1db16ea3-dbd5-4e79-9534-0b0c4a26169b)
+
 ### More precise references
 Responses generated in the DocQA session include citations pointing to specific sections of the document used as references. These sections can be previewed in the Document Preview UI. Now, to enhance usability, reference numbers have been added to each preview, allowing users to easily track and identify the relevant references while reviewing the content.
+
+![image](https://github.com/user-attachments/assets/f0bc44fb-8972-4cbf-a1ea-5425390dbcb9)
 
 ### Quick load for reference previews
 To improve the efficiency of document previews, the chatbot offers a better pre-loading process. This enhancement reduces the time required for document previews for each reference/citation while ensuring accurate section highlighting for both PDF and TXT files.
@@ -79,16 +95,21 @@ In the medical domain, this tool can be useful when looking at:
 
 ### Support for entities, assertion statuses, and relations in the NLP Tools
 
-With the integration of NLP tools, the Medical Chatbot supported Named Entity Recognition specialized for the Clinical, Oncology, and Posology domains. In this release, the NLP tools were enhanced to support assertion labels as well as relation discovery between entities. Furthermore, new specific tools have been added to cover Radiology, Adverse Drug Events, Social Determinants of Health and Voice of the Patient specific use-cases. 
-The generated responses visually highlight the detected entities and assertion statuses. Users also have the option to download the extraction results in structured format (csv), to access detailed information on the detected relations between entities as well as information on the confidence of each annotation.
+With the integration of NLP tools, the Medical Chatbot supported Named Entity Recognition specialized for the Clinical, Oncology, and Posology domains. In this release, the NLP tools were enhanced to support assertion labels as well as relation discovery between entities. Furthermore, new specific tools have been added to cover Radiology, Adverse Drug Events, Social Determinants of Health, and Voice of the Patient specific use-cases. 
+The generated responses visually highlight the detected entities and assertion statuses. Users also have the option to download the extraction results in structured format (CSV), to access detailed information on the detected relations between entities as well as information on the confidence of each annotation.
 
 ### Updated Tool Names and Descriptions
 
-The tools have been renamed and their descriptions was updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
+The tools have been renamed and their descriptions were updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
+
+![image](https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97)
+
 
 ### Copy response with references 
 
 All responses have a copy button for ease of use. The copy option now also included the related references, including relevant metadata and hyperlinks to the original articles. This information is now appended at the end of the pasted content. This applies to responses generated using all current knowledge bases, including PubMed, bioRxiv, medRxiv, Web Search results, and even DocQ&A responses.
+
+![Copy_Response_citations](https://github.com/user-attachments/assets/38612434-152d-4ae2-8b6c-3576d260fa0a)
 
 ### New features for Enterprise Admin Users
 Several new Enterprise features have also been added to the Medical Chatbot, specifically designed to enhance the experience for Admin users. Firstly, a comprehensive API documentation is now accessible, providing detailed guidance on integrating and leveraging the chatbot's capabilities within your systems. Additionally, Admin users have the option to extended the trial period for their users, allowing them more time to explore and evaluate the full potential of the platform before making a commitment. Furthermore, significant improvements have been made to the User Management UI, including new filters and a more intuitive interface, making it easier for Admin users to manage and organize their teams effectively. These enhancements are tailored to streamline administrative tasks and optimize the overall user experience.
