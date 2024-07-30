@@ -33,7 +33,7 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_LLM.ipynb
-        - title: GPT-4 vs Healthcare NLP
+        - title: GPT-4 vs John Snow Labs
           id: gpt4_vs_healthcare_nlp
           image: 
               src: /assets/images/GPT-4_vs_Healthcare_NLP.svg
