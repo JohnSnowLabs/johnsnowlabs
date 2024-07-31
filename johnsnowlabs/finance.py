@@ -10,9 +10,6 @@ try:
         from sparknlp_jsl.training import *
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.base import FeaturesAssembler
-        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
-            WindowedSentenceModel,
-        )
         from sparknlp_jsl.finance.token_classification.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
@@ -112,6 +109,16 @@ try:
             TextMatcherInternalModel as TextMatcherModel,
             RegexMatcherInternal as RegexMatcher,
             RegexMatcherInternalModel as RegexMatcherModel,
+            AssertionMerger,
+            LightDeIdentification,
+            WindowedSentenceModel,
+            MultiChunk2Doc,
+            FewShotAssertionClassifierModel,
+            FewShotAssertionClassifierApproach,
+            FewShotAssertionSentenceConverter,
+            VectorDBPostProcessor,
+            ContextSplitAssembler,
+            ContextualAssertion,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer

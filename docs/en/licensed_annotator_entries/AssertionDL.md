@@ -31,6 +31,8 @@ Parameters:
 
 - `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
 
+- `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
 {%- endcapture -%}
@@ -434,7 +436,7 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[AssertionDLModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLModel.ipynb)
+[AssertionDLModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -453,6 +455,8 @@ Parameters:
 - `ScopeWindow`: Sets the scope of the window of the assertion expression.
 
 - `StartCol`: Set a column that contains the token number for the start of the target.
+
+- `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
 
 {%- endcapture -%}
 
@@ -763,7 +767,7 @@ val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[AssertionDLApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLApproach.ipynb)
+[AssertionDLApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

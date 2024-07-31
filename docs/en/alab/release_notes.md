@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2024-04-11"
+modify_date: "2024-07-26"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,159 +15,233 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Generative AI Lab – No-Code Environment for Building Task-Specific AI Models with LLMs
-We are happy to announce the release of Generative AI Lab 6, marking the transition from the previous NLP Lab to a state-of-the-art No-Code platform that enables domain experts to train task-specific AI models using large language models (LLMs). This new product introduces a suite of advanced features and functionalities designed to facilitate the creation, management, and deployment of AI-driven solutions efficiently and accurately. With robust integration capabilities, comprehensive model training tools, and enhanced security measures tailored for high-compliance sectors such as healthcare, Generative AI Lab sets a new standard in the generative AI platform landscape. John Snow Labs is committed to democratizing AI tool interaction and making it more accessible, especially within the healthcare sector. We aim to equip healthcare professionals, from clinicians to researchers, with the tools to construct bespoke AI models. These models are pivotal in analyzing extensive datasets, discerning patterns, aiding in diagnosis, and enhancing patient care, all achievable without in-depth coding expertise. This opens new avenues in personalized medicine, accelerates research, and improves patient outcomes, thereby revolutionizing the healthcare landscape.
+## Introducing Support for De-Identification in Generative AI Lab 6.4
+We are happy to announce the release of Generative AI Lab 6.4, bringing exciting new features and enhancements. Leading this release is the support for de-identification projects, which enables users to anonymize documents containing sensitive data, such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This ensures robust data privacy and compliance with privacy regulations while maintaining the utility of the data for further analysis and processing. 
 
-In this release, Generative AI Lab enhances its capabilities by integrating seamlessly with the OpenAI API, enabling the effortless training, testing, and refinement of task-specific models tailored to the distinct needs of your domain and use case. Whether your focus is on refining document processing, orchestrating AI assets, or fortifying regulatory compliance, Generative AI Lab delivers a comprehensive, secure, and effective framework to transform your AI ambitions into tangible outcomes. 
+Additionally, version 6.4 enhances collaboration and quality control in the annotation process by allowing annotators to view completions submitted by reviewers. Annotators can now view and clone reviewed submissions, make corrections, or add comments directly on the annotated chunks, providing clear communication and improving overall annotation quality. The new release also simplifies the identification of differences between two completions by automatically highlighting discrepancies, streamlining the validation process. 
 
-Generative AI Lab 6 marks a significant leap forward in hardware architecture and performance optimization for model training and Visual Document understanding. Now available on the AWS marketplace with a GPU-enabled template, this release simplifies license provisioning and unlocks immediate access to all features, including prompts, Rules, pretrained medical models, medical resolvers, medical model training, and visual document understanding. This enhancement not only accelerates performance but also broadens your access to a plethora of AI capabilities, reaffirming our commitment to advancing the NLP community's capabilities. 
+Alongside these major updates, this release includes numerous improvements and bug fixes, making Generative AI Lab more efficient and user-friendly than ever.
+
+## Support for De-identification
+Version 6.4 of the Generative AI Lab introduces a new de-identification feature, enabling users to anonymize documents containing sensitive information such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This functionality is intended to protect data privacy and ensure compliance with privacy regulations while preserving the data’s usefulness for subsequent analysis and processing.
+
+**De-identification Projects:** When creating a new project in the Generative AI Lab, users can mark it as De-Identification specific. These projects allow the use of manually trained or pre-trained text-based NER models, together with prompts, rules, and custom labels created by the user for identifying sensitive data inside of tasks. Once the sensitive data is identified (either automatically or manually) and validated by human users, it can be exported for further processing. 
+When creating De-identification projects make sure you only target sensitive entities as part of your project configuration and avoid annotating relevant data you need for downstream processing as all those entities will be removed when exporting the project tasks as de-identified documents. The best practice, in this case, is to re-use de-identification specific models combined with custom prompts/rules. 
+
+**Exporting De-identified Documents:** The tasks of your project with PII/PHI labeled entities can be exported as de-identified documents. During the export process, labeled entities will be replaced by the label names, or special characters (such as "*"), or obfuscated and replaced with fake data. This ensures that sensitive information is removed and not available for downstream analysis.
+
+**Re-importing and Further Processing:** The de-identified documents can be re-imported into any text-based project. This allows for further labeling and data preparation for model training/tuning by annotators, ensuring that the de-identified data can be utilized effectively.
+
+### Types of De-identification
+Generative AI Lab supports four kinds of de-identification:
+1.   **Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "\<Patient\> is a \<Age\> y.o. patient admitted to ICU after an MVA. "
+2.   **Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
+3.   **Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
+4.   **Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
+
+### Working with de-identification projects
+
+**Step 1.** When creating a new project, after defining the project name and general settings, check the de-identification option at the bottom of the Project setup page, and select the type of anonymization you prefer.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/1.png)
+
+**Step 2.** Configure your project to reuse sensitive labels from existing NER Models, Rules, Prompts. It is also possible to create custom labels that can be used to manually annotate the entities you want to anonymize in your documents.
+
+When selecting pre-annotation resources for your project, ensure that no critical downstream data is inadvertently identified and removed. For instance, if you pre-annotate documents with models, rules, or prompts that identify diseases, those labels will be anonymized upon export, rendering them unavailable to document consumers.
+
+To mitigate this, employ pre-trained or custom de-identification models and augment them with rules and prompts tailored to your specific use cases (e.g., unique identifiers present in your documents). You can also selectively include specific labels from each model in your project configuration. For example, if age information is essential for your consumers, you can exclude this label from the project configuration to retain the data in your document.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/2.png)
+
+**Step 3.** Pre-annotate your documents, then have your team review them for any overlooked sensitive data. Once your project is set up and tasks are imported, use the pre-annotation feature to automatically identify sensitive information.
+Incorporate a review process where your team checks the pre-annotations using the standard annotation workflow, making manual corrections or annotations to any sensitive segments as necessary. Ensure that all sensitive information is accurately labeled for effective de-identification.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/3.png)
+
+**Step 4.** Export De-identified Documents. After completing the labeling process, proceed to export the de-identified documents. Ensure the "Export with De-identification" option is selected on the export page to generate de-identified documents.
+
+During the export process, de-identification is executed based on the type of anonymization selected during project setup. This de-identification option can be updated at any time if necessary.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/4.png)
+
+**Step 5.** Import the de-identified tasks in a new project for further processing. These tasks, once exported, can be re-imported into any text-based project in case you need to extract additional data or in case you want to use them for model training/tuning.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/5.png)
+
+> **_HOW TO:_** De-identification projects can be easily identified without opening them. A small de-identification icon is displayed in the bottom left corner of the project card, clearly indicating the project's status.
 
 
-## Use LLMs to bootstrap task-specific models 
-Generative AI Lab facilitates seamless integration with the OpenAI API, empowering domain experts to easily define prompts for classification or entity extraction. This integration allows Generative AI Lab to process the LLM's responses, adjust the indexes of the extracted segments, and overlay pre-annotation results directly onto the original documents. 
+> **_LIMITATION:_** Projects must be designated as de-identification projects during their initial creation. It is not possible to convert existing projects or newly created non-de-identification projects into de-identification projects.
 
- ![LLMPrompt](/assets/images/annotation_lab/6.0.0/11.png)
+### Export of De-identified tasks
+**Completion Submission:** Pre-annotations alone are not sufficient for exporting de-identified data. Only starred completions are considered during the export of de-identified tasks. This means that each task intended for de-identified export must be validated by a human user, with at least one completion marked with a star by an annotator, reviewer, or manager.
 
-Once pre-annotations are generated, domain experts can step in and review these results through a user-friendly interface, offering their expertise in the form of adjustments or corrections. This refined data can then be employed to develop smaller, more specialized models that are optimized for processing the document of interest.
+**Multiple Submissions:** In instances where multiple submissions exist from various annotators, the de-identification process will prioritize the starred completion from the highest priority user as specified on the Teams page. This ensures that de-identification is based on the most relevant and prioritized annotations.
 
-Furthermore, Generative AI Lab supports comprehensive training experiments and provides access to benchmarking data to evaluate the performance during the model training process. For continuous model enhancement, users can augment the training dataset with additional examples and reinitiate the training process, ensuring sustained improvement and adaptation.
+This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
 
-The final step is iterative refinement. Here, users can assess the model's performance metrics and introduce more data as needed. This process ensures that the model can be adapted and improved, as a response to new information and evolving requirements in the healthcare domain.
+## Annotators Can View Completions Submitted by Reviewers
+In version 6.4, of the Generative AI Lab, a new feature has been added that allows annotators to view the completion submitted by the reviewer. This enhancement fosters better collaboration and quality control in the annotation process. Previously, reviewers could only provide feedback on annotations, but now they can clone annotator submissions, make corrections, and add comments directly within the text using meta information. The updated submissions are then visible to the original annotator, providing clear insights into the reviewer's expectations and suggestions.
 
-## Private, on-premise, high-compliance prompt engineering
-In the healthcare sector, protecting Personal Health Information (PHI) is paramount. To this end, Generative AI Lab provides support for Zero-Shot models that can process PHI directly within your infrastructure, thus ensuring privacy and compliance. Mirroring the workflow used for integrating LLMs via external APIs, you can now utilize Zero-Shot Learning for pre-annotation of your documents. This functionality is available directly within Generative AI Lab, eliminating the need for external API calls to LLMs.
+**How to Enable**:
+- The project manager must enable the option **“Allow annotators to view completions from reviewers”** in the project settings.
 
-By adopting this approach, you can ensure adherence to stringent healthcare regulations, providing reassurance and peace of mind.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
 
-![zeroPrompt](/assets/images/annotation_lab/6.0.0/12.png)
+#### Workflow:
+1.   **Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
+2.   **Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
+3.   **Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
+4.   **Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
+   
+![GenaiImage](/assets/images/annotation_lab/6.4.0/7.gif)
 
-## Organize and share models, prompts, and rules within one private enterprise hub
-The Models Hub acts as a centralized platform where users from your organization can easily manage their AI development lifecycle. It supports operations like the secure sharing, searching, filtering, testing, publishing, importing, and exporting of AI models, prompts, and rules. This functionality simplifies the management of proprietary AI assets, enabling teams to efficiently collaborate and leverage these assets for their projects.
+**Benefits**:
+- **Enhanced Feedback**: Reviewers can now make precise corrections and add detailed comments on individual labels, helping annotators understand exactly what changes are needed.
+- **Improved Collaboration**: Annotators can better align their work with the reviewer’s expectations by viewing the reviewer's cloned submission.
+- **Quality Control**: This feature helps in maintaining a higher standard of annotations by ensuring that feedback is clear and actionable.
 
-![ModelsHub](/assets/images/annotation_lab/6.0.0/13.png)
- 
-The Models Hub implements role-based access control (RBAC), allowing you to define who in your organization has access to your assets, who can experiment with prompts or rules or who can export your models. Versioning and backup features are available to keep a record of changes made to your assets, ensuring that you can always revert to previous versions if needed. 
+This feature significantly enhances the annotation process, making it more transparent and collaborative, and ensuring that annotators have a clear understanding of the reviewer's feedback.
 
-Finally, the playground allows for easy editing and testing of prompts, rules or models without coding.
+## Enhanced Comparison View for Completion Differences
+In version 6.4, a new feature has been introduced in Generative AI Lab that allows annotators and project managers to easily compare the differences between two completions. This enhancement significantly simplifies the process of identifying discrepancies between annotations.
+Previously, differences between completions had to be manually validated, which could be a time-consuming and tedious process. With the new comparison feature, differences are automatically highlighted, making it easy for users to spot discrepancies in annotations.
 
-Generative AI Lab is integrated with the NLP Models Hub, which gives access to an extensive library of over 40,000 models and pipelines, ready to be integrated into your projects. This integration not only enhances your capabilities but also provides easy access to model benchmarking data, to model documentation and one-click downloads.
+**How to Use**:
+- **Step 1**: Click on the **Comparison View** button.
+- **Step 2**: Select the two completions you want to compare.
+- **Step 3**: Click on **Show Diff**.
 
-**Models:**
+![GenaiImage](/assets/images/annotation_lab/6.4.0/8.gif)
 
-Within the Models page, you'll find a private repository tailored for your organization's needs, including models you've trained, uploaded, or downloaded from the NLP Models Hub. This centralized management system ensures your AI assets are organized and readily available.
+The **Diff View** will then open, displaying the differences between the two completions. Annotations that differ are highlighted, with **green** indicating the annotation in base completion and **red** indicating the annotations in compared completion.
 
-**Rules:** 
+**Benefits**:
+- **Efficiency and Clarity**: Automatically highlighting differences saves time and reduces the potential for human error in identifying discrepancies. Also, the visual differentiation between annotations makes it easy to understand what changes have been made.
+- **Collaboration**: Facilitates better communication between annotators and project managers by clearly showing where differences occur.
 
-The Rules page offers a dedicated space for creating and managing the rules you can define and use in your projects. With an intuitive editing interface and practical examples, crafting custom rules becomes a straightforward process.
+This feature enhances the accuracy and efficiency of the annotation process, ensuring that all team members can easily identify and address any inconsistencies between completions.
 
-**Prompts:** 
+## Improvements
+### Support for CPU cluster nodes in Azure
+Previously, when creating a cluster in Azure, only instances with GPU resources were supported. This restriction limited the available options for users who did not require GPU capabilities. With the latest update, users can now select instances that do not have GPU resources. This enhancement provides greater flexibility in cluster configuration, allowing for a wider range of use cases and cost-effective options. The following instance types have been added to the list of allowed instance types:
 
-Lastly, the Prompts page allows you to curate a collection of prompts, essential for preannotating your documents and for training your AI models. Through an easy-to-use editing and testing interface, you can ensure your prompts are effective and achieve the intended responses.
+   - "Standard_D8_v3"
+   - "Standard_D8s_v3"
+   - "Standard_D8d_v4"
+   - "Standard_D8ds_v4"
+   - "Standard_DC8_v2"
 
+### Updated validation for Imports 
+Version 6.4 of Generative AI Lab introduces an enhancement for improving the application’s security and robustness by restricting the types of files that can be uploaded or imported from URL, S3, and Azure as well. Previously this was implemented for the local upload and import only. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, and maintaining the platform’s integrity and reliability while enhancing its security.
 
-## Deployment
+Users can confidently upload and import files, knowing that the system will enforce these important security measures.
 
-**AWS Marketplace**
+**Key features and benefits:**
 
-Generative AI lab is available on AWS Marketplace as a one-click deployment within your security parameter. This subscription offers immediate access to Visual document understanding features including tools for Optical Character Recognition, PDF preannotations, or Visual Model Training. For healthcare professionals, the platform offers specialized resources such as embeddings and models designed and tuned for healthcare data, covering tasks like entity recognition, assertion status detection, relation extraction, or entity resolution. 
+   1. File Type Validation:
+        The application now checks the type of files being uploaded or imported from URL, S3, and Azure.
+        Only supported file types are allowed, and any unsupported file types are automatically restricted.
+   2. Enhanced Security Measures:
+        Increased application security by preventing the upload or import of potentially harmful files reducing the risk of introducing malicious files into the system.
+        Attempts to bypass these restrictions by changing file extensions are now detected and logged.
+   3. File Name Length:
+        The application checks the length of the file name to ensure it meets specified requirements before import or upload.
+   4. Improved User Experience:
+        Immediate feedback is provided when attempting to upload an unsupported file type, preventing potential errors and confusion during the project configuration workflow.
+   6. Robust Monitoring:
+        Attempts to circumvent file type restrictions by changing file extensions are detected and logged, providing an additional layer of security and oversight.
 
-And, you’re never alone in this process; professional support is always at your fingertips to assist with any questions or integrations.
+### Upload model form will support special characters
+When uploading a model, users are permitted to use special characters in labels and choices, except the following six characters:
+1. double quote (") 
+2. single quote (') 
+3. less than (<) 
+4. greater than (>) 
+5. ampersand (&) 
+6. space ( ) 
 
-**On-premise:**
+The inclusion of any of the above characters in labels or choices will result in an error during the model upload process. This restriction is implemented to ensure proper parsing and handling of the data. Users should take care to avoid these characters to prevent upload failures and ensure a smooth model deployment experience.
 
-Generative AI lab is also available for on-premise deployments on both GPU and CPU servers. To utilize GPU resources, add the case-insensitive 'gpu' parameter when running the installation script available here. This parameter acts as a toggle: if specified, the script will activate GPU support, assuming the host server has the necessary GPU resources. If omitted, the script will proceed without configuring GPU-related settings.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/9.png)
 
-Use `gpu` (case-insensitive) **optional** parameter with annotationlab-installer.sh script to enable usage of GPU resources. This will only work if your host has GPU resources. This parameter is used as a flag, it will enable GPU resources when used, otherwise, the installer will ignore anything related to GPU.
+### List deployed resolver in the pre-annotation popup
+In previous versions, users were unable to view the resolvers in the pre-annotation pop-up. With this update, the deployed resolver list is now displayed in the pre-annotation pop-up. This enhancement ensures that users can easily access and utilize the resolvers, streamlining the pre-annotation process and improving overall efficiency.
 
-```bash
-$ ./annotationlab-installer.sh gpu
-```
+![GenaiImage](/assets/images/annotation_lab/6.4.0/10.png)
 
-Please note, that you can disable GPU usage at any time by modifying the install script and setting the `useGPU` variable to false. This action will stop the application from utilizing GPU resources but will not uninstall any previously installed Nvidia drivers or plugins.
-With this update, a GPU-based AMI is now available, offering users the opportunity to leverage the increased performance and capabilities that come with GPU acceleration.
+### Delete the downloading models from the Models page
+In previous versions, there was no option to cancel a model download once it had started. This limitation posed significant challenges for users, particularly in scenarios where the model download became stuck or took an unusually long time to complete. With this update, users can cancel an ongoing model download directly from the Local Models page. This enhancement provides greater control and flexibility, allowing users to efficiently manage their model downloads and avoid unnecessary delays.
 
-### Migrate your NLP Lab Backup to Generative AI Lab 
+![GenaiImage](/assets/images/annotation_lab/6.4.0/11.gif)
 
-Migrating to the new version is easy! Users who are using the NLP Lab can migrate their annotated data and configured settings to Generative AI Lab through our Backup and Restore feature. This process enables users to back up their projects (including data and files) from an NLP Lab server to Azure Blob or AWS S3 and then restore the configurations to a Generative AI server. For this, the following steps need to be taken: 
+### Assertion Labels are differentiated with a dashed border
+In previous versions, assertion labels were displayed with solid border lines. This made it difficult for annotators to quickly distinguish assertion labels from other types of labels. In this update, assertion labels feature dashed border lines in both the preview section and the labels section. This visual enhancement helps annotators to easily identify and differentiate assertion labels, thereby improving the annotation process and reducing potential errors.
 
-<iframe src="/assets/images/annotation_lab/6.0.0/BackupAndRestore.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+![GenaiImage](/assets/images/annotation_lab/6.4.0/12.png)
 
-**Follow these steps to migrate your data**:
-#### 1. Backup Data:
-- Navigate to the Backup page of your Generative AI Lab instance.
-- Enter backup details.
-- Schedule an immediate backup via backend modification: 
-```bash
-kubectl edit cronjob
-```
-- Monitor the backup pod status: 
-```bash
-kubectl get pods
-```
-#### 2. Verify Backup:
-- Upon completion, your backed-up database and files will be visible in cloud storage.
+### Disable the "Generate License" button when the license is available in AMI
 
-#### 3. Restore Data:
-- Access the backend of your target Generative AI Lab instance.
-- Transfer backed-up data from cloud storage to artifacts/restore/database.
-- Perform database restoration: 
-```bash
-sudo ./restore_all_databases.sh <backed-up_database_name>
-```
-- Copy backed-up files from cloud storage to artifacts/restore/files.
-- Execute file restoration: 
-```bash
-sudo ./restore_files.sh <backed-up_files_name>
-```
-#### 4. Verify Restoration:
-- Access the UI, all data and files should now be successfully restored.
+In previous versions, the "Generate License" button was always available, even if a license was already present in the AMI. Clicking this button when a license was already available had no effect, leading to potential confusion and unnecessary actions. With this update, the "Generate License" button is now disabled by default if a license is already present in the AMI. The button will only be enabled if the license is missing. This improvement ensures a more intuitive user experience, preventing redundant actions and making it clear when a new license generation is necessary.
 
-## Resource configuration
-### GPU Resource Availability
-If the Generative AI Lab is equipped with a GPU, the following message will be displayed on the infrastructure page:  
+![GenaiImage](/assets/images/annotation_lab/6.4.0/13.gif)
 
-"**GPU Resource Available**".
-![infra](/assets/images/annotation_lab/6.0.0/1.png)
+### License page crash on empty license file loading
 
-### Visual NER Training with GPU
-The Training & Active Learning page now includes a new option "**Use available GPU**" for Visual NER projects. Selecting this option enables Visual NER model training using GPU.
+Previously, users were unable to access the license page to delete an existing license or add a new one if the license key was empty. This limitation hindered users from managing licenses effectively when dealing with empty license keys. With this improvement, users can now delete licenses with empty license keys and add or generate new licenses as needed. This enhancement provides greater flexibility and control over license management, ensuring a smoother and more efficient workflow.
 
-![infra](/assets/images/annotation_lab/6.0.0/2.png)
+**Delete and add new licenses:**
 
-**Note**:Find CPU vs GPU Benchmarks for Visual NER model training [here](/docs/en/alab/training_configurations#boost-performance-with-the-use-of-gpu--side-by-side-cpu---gpu-benchmark-for-visual-named-entity-recognition-ner-project).
+![GenaiImage](/assets/images/annotation_lab/6.4.0/14.gif)
 
-## Using Healthcare and Visual Document Understanding Features 
+**Delete and generate a new license:**
 
-The Generative AI Lab brings support for the PAYG (Pay-As-You-Go) license option offered by John Snow Labs for the use of pre-trained medical and visual models. This comes as an additional option on top of the support for floating licenses and airgap licenses and was added for enhanced flexibility, reducing costs, and providing the mechanism for paying only for the utilized resources.
+![GenaiImage](/assets/images/annotation_lab/6.4.0/15.gif)
 
-## PAYG License Features:
-- **PAYG License Included in AMI Installation:** The Generative AI Lab AWS product includes a PAYG license key generated at subscription time and readily available on the License page within the AMI environment. Users do not need to worry about manually adding the license. Therefore, concerns regarding expiration or accidental deletion are eliminated. 
-- **BYOL for on-premise deployments:** For on-premise deployments of the Generative AI Lab, users can buy a PAYG license from my.johnsnowlabs.com, download it, and import it to Generative AI Lab via the License page. Note that the deployment server needs to allow license heartbeat to be sent to johnsnowlabs services to validate license usage.
-- **Flexible Billing:** With the PAYG license, users are billed based on only the resources they use, offering a more tailored and cost-effective pricing model.
-- **Support for Multiple Servers:** PAYG license also comes with support for running multiple training and pre-annotation servers in parallel. PAYG license enables users to deploy and utilize multiple pre-annotation servers and training instances in parallel. This boosts workflow efficiency and productivity, allowing the execution of tasks simultaneously and accelerating project completion.
+## Bug Fixes
+- **Entries of failed training are skipped in History View**
 
-![MultipleServerDeploymentWithPayG](/assets/images/annotation_lab/6.0.0/3.png)
+  Previously, the Training and Active Learning History Tab only displayed successful training sessions. If the latest training failed, it was shown on the Train page, but there was no way to know the exact number of failed training sessions. This issue has now been fixed, and users can see the history of both failed and successful training logs.
 
-### Cost Awareness Banner for PAYG License
-With the introduction of PAYG license support, proactive measures have been taken to inform users about the potential costs associated with the use of licensed features. Users will now be presented with a noticeable message banner at the top of the page, stating: "Continuous Server Usage Incurs Costs! Please check the deployed server." The message is always shown even if no server is deployed on the cluster page. It helps users to be aware of the fact that they are billed based on application and resource usage.
+- **User needs to click the "Apply Filter" twice to apply the selected filter**
 
-![LicensePageInAMI](/assets/images/annotation_lab/6.0.0/5.gif)
+  Previously, users had to click "Apply Filter" twice to apply the selected filter, and the options would collapse after each click. Now, the filter is applied  with a single click, and the filter options remain expanded.
+  
+- **Edit count in Visual NER project is inconsistent(temporarily) and Pagination is not working for multipage tasks while comparing completions**
 
-By presenting this message, users are reminded to monitor their server usage and associated costs, promoting cost-conscious behavior. This feature enhances user awareness and ensures transparency regarding the cost implications of utilizing the PAYG license within Generative AI Lab.
+  Previously, the edit count number was random when the compare completion button was pressed. Additionally, navigating to different pages during comparison displayed a single completion instead of the comparison between completions. Now, the pagination works as expected for multi-page tasks while comparing completions.
 
-## Bug Fixes and Improvements
+- **Labels are still shown after deleting tasks(sample task) with meta and adding another sample task**
 
-### Support for multiple spaces and tabs in Label Metadata
-Previously, within the label metadata, multiple spaces were considered as a single space, and tabs were not supported. Pressing the tab key would render the text area inactive. Now within label metadata, users can utilize multiple spaces and tabs, both of which are preserved when adding metadata to labeled texts.
+  Previously, labels were still shown after deleting tasks (sample tasks) with metadata and adding another sample task. This issue has now been resolved, and the labels no longer appear in newly added tasks.
+  
+- **Zoomed images cannot be moved around in Visual NER project**
 
-### Pre-annotation using Text Classification model with HC license is not working
+  Previously, zoomed images could not be moved around in Visual NER projects as the move function was not working as expected. This issue has now been resolved, and the move function can be used in Visual NER tasks without any problems.
 
-Previously, healthcare classification models such as "classifierml_ade" were not deployed in pre-annotation even with a healthcare license. However, this issue has now been rectified.
- 
-### Zoom Feature not working in predictions and submitted completions in Visual NER Project
+- **Consecutive texts that should be predicted as different tokens are merged as one in Visual NER project**
 
-In previous versions, the zoom-in and zoom-out functionalities for submitted completions and predictions in the Visual NER project were not functioning properly. This issue has been resolved.
- 
+  Consecutive texts that should be predicted as different tokens were previously merged into one in Visual NER projects. This issue has now been resolved, and consecutive tokens with the same labels are no longer merged.
+  
+- **Cronjob for backup created without validation and backup page doesn't auto refresh**
+
+  Previously, the cron job for backups was created without validation, and the backup page did not auto-refresh. This issue has been resolved. Users can now independently trigger an ad-hoc backup without needing to save the backup information.
+
+- **When non-GPU instance type is used for GPU-enabled AMI, "GPU Resource Available" is seen on the Infrastructure page**
+
+  Previously, if the instance type was changed from GPU to non-GPU, the "GPU Resource Available" message still appeared on the Infrastructure page, which could be confusing for users. Additionally, the GPU option was visible in the Visual NER project mode. This issue has been addressed. The system now actively monitors such changes and removes GPU features from the application as needed.
+
+- **Internal server error when trying to export/import the project for RatePDF project type**
+
+  Previously, there was an internal server error when trying to export or import projects for the RatePDF project type. This issue has now been resolved, allowing users to export and import tasks without any problems. Additionally, tasks are now accessible for both CustomXML and regular RatePDF project types.
+  
+- **External Service Provider cannot be integrated when character count exceeds 128**
+
+  External Service Provider integration was previously not possible when the URL character count exceeded 128. Now, integration with external service providers is possible even when the URL character count exceeds 128.
+
+- **Editing Non-Editable Generated Test Cases Causes Repeated Error Popup Until UI Refresh**
+
+  Previously, when users edited generated test cases, such as accuracy tests that didn't require text modifications, a constant popup would appear. Now, editing non-editable generated test cases no longer triggers repeated error popups.
  
 </div><div class="prev_ver h3-box" markdown="1">
 
@@ -176,8 +250,16 @@ In previous versions, the zoom-in and zoom-out functionalities for submitted com
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
@@ -218,25 +300,4 @@ In previous versions, the zoom-in and zoom-out functionalities for submitted com
     <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
 	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_5_0">3.5.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_4_0">3.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_1">3.3.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_0">3.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_2_0">3.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_1">3.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_0">3.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_1">3.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_0">3.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_8_0">2.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_2">2.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_1">2.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_0">2.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_6_0">2.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_5_0">2.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_4_0">2.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_3_0">2.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_2_2">2.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_1_0">2.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_0_1">2.0.1</a></li>
 </ul>

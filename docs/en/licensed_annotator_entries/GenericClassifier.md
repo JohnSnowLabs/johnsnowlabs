@@ -19,6 +19,8 @@ Parameter:
 
 - `multiClass` *(Boolean)*: Whether to return all clases or only the one with highest score (Default: False)
 
+- `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -118,7 +120,7 @@ val result = pipeline.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[GenericClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierModel.ipynb)
+[GenericClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -149,6 +151,8 @@ Parametres:
 - `outputLogsPath`: (str) Folder path to save training logs. If no path is specified, the logs won't be stored in disk. The path can be a local file path, a distributed file path (HDFS, DBFS), or a cloud storage (S3).
 
 - `validationSplit`: (float) The proportion of training dataset to be used as validation set.The model will be validated against this dataset on each Epoch and will not be used for training. The value should be between 0.0 and 1.0.
+
+- `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
 
 For a more extensive example please see the
 [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/8.Generic_Classifier.ipynb).
@@ -348,7 +352,7 @@ val clf_model = pipeline.fit(data)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[GenericClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierApproach.ipynb)
+[GenericClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

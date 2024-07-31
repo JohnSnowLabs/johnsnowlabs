@@ -31,6 +31,8 @@ Parameters:
 
 - `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
 
+- `scopeWindow` (IntArrayParam) The scope window of feature generation for relations. Given scope window list must contain two integers.
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Relation+Extraction) for available models.
 
@@ -214,7 +216,7 @@ val result = pipeline.fit(df) .transform(df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[RelationExtractionModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionModel.ipynb)
+[RelationExtractionModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -283,6 +285,8 @@ Parameters:
 - `directionSensitive` (Boolean) Specify direction sensitivity in processing relation pairs
 
 - `filterByTokenDistance` (Int) Filtering criterion based on number of token between entities
+
+- `scopeWindow` (IntArrayParam) The scope window of feature generation for relations. Given scope window list must contain two integers.
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}

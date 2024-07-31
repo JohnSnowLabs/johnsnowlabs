@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparknlp_jsl.pipeline_tracer &#8212; Spark NLP  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/pipeline_tracer/index';</script>
+    <link rel="icon" href="../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-sparknlp_jsl.pipeline_tracer">
+<span id="sparknlp-jsl-pipeline-tracer"></span><h1><a class="reference internal" href="#module-sparknlp_jsl.pipeline_tracer" title="sparknlp_jsl.pipeline_tracer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.pipeline_tracer</span></code></a><a class="headerlink" href="#module-sparknlp_jsl.pipeline_tracer" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.pipeline_tracer.PipelineStage" title="sparknlp_jsl.pipeline_tracer.PipelineStage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineStage</span></code></a></p></td>
+<td><p>Represents a stage of a pipeline.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer" title="sparknlp_jsl.pipeline_tracer.PipelineTracer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineTracer</span></code></a></p></td>
+<td><p>PipelineTracer is a class that allows to trace the stages of a pipeline and get information about them.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.pipeline_tracer.StageField" title="sparknlp_jsl.pipeline_tracer.StageField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StageField</span></code></a></p></td>
+<td><p>Represents a field of a stage. A stage field contains information about the name, value and fieldType of the field.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineStage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PipelineStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputCol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputCol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputAnnotatorType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputAnnotatorType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineStage" title="Permalink to this definition">#</a></dt>
+<dd><p>Represents a stage of a pipeline.
+It contains information about the stage such as the uid, name, index, inputCol, outputCol, inputAnnotatorType and outputAnnotatorType.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PipelineTracer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer" title="Permalink to this definition">#</a></dt>
+<dd><p>PipelineTracer is a class that allows to trace the stages of a pipeline and get information about them.
+The <cite>PipelineTracer</cite> class provides functionality for tracing and retrieving information about the various stages of a pipeline.
+It can be used to obtain detailed insights into the entities, assertions, and relationships utilized within the pipeline.
+Compatibility with both <cite>PipelineModel</cite> and <cite>PretrainedPipeline</cite>.
+It can be used with a PipelineModel or a PretrainedPipeline.
+Additionally, it can be used to create a parser dictionary that can be used to create a PipelineOutputParser.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.createParserDictionary">
+<span class="sig-name descname"><span class="pre">createParserDictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.createParserDictionary" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a parser dictionary that can be used to create a PipelineOutputParser.
+Notes:
+——
+This method tries to return a compatible PipelineOutputParser.
+You should make sure that the parser dictionary is compatible with the PipelineOutputParser that you are using.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.getParserDictDirectly">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getParserDictDirectly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getParserDictDirectly" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a parser dictionary that can be used to create a PipelineOutputParser.
+This method is used to get the parser dictionary directly without creating a PipelineTracer object.
+This method throws an IllegalArgumentException if the model is not available.
+You can use the listAvailableModels method to get a list of available models.</p>
+<section id="parameters">
+<h4>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>model: str</dt><dd><p>The name of the model.</p>
+</dd>
+<dt>language: str</dt><dd><p>The language of the model. Default is “en”.</p>
+</dd>
+<dt>source: str</dt><dd><p>The source of the model. Default is “clinical/models”.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h4>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>A dictionary that can be used to create a PipelineOutputParser.</p>
+</dd>
+</dl>
+</section>
+<section id="throws">
+<h4>Throws:<a class="headerlink" href="#throws" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>IllegalArgumentException</dt><dd><p>If the model is not available.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.getPipelineStages">
+<span class="sig-name descname"><span class="pre">getPipelineStages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPipelineStages" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list of PipelineStage objects that represent the stages of the pipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleAssertions">
+<span class="sig-name descname"><span class="pre">getPossibleAssertions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleAssertions" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list of possible assertions that the pipeline can include.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleEntities">
+<span class="sig-name descname"><span class="pre">getPossibleEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list of possible entities that the pipeline can include.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleRelations">
+<span class="sig-name descname"><span class="pre">getPossibleRelations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleRelations" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list of possible relations that the pipeline can include.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.listAvailableModels">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">listAvailableModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.listAvailableModels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list of available models for a given language and source.</p>
+<section id="id1">
+<h4>Parameters:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>language: str</dt><dd><p>The language of the models. Default is “en”.</p>
+</dd>
+<dt>source: str</dt><dd><p>The source of the models. Default is “clinical/models”.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.printPipelineSchema">
+<span class="sig-name descname"><span class="pre">printPipelineSchema</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.printPipelineSchema" title="Permalink to this definition">#</a></dt>
+<dd><p>Prints the schema of the pipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.PipelineTracer.showAvailableModels">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">showAvailableModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.showAvailableModels" title="Permalink to this definition">#</a></dt>
+<dd><p>Prints a list of available models for a given language and source.</p>
+<section id="id2">
+<h4>Parameters:<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>language: str</dt><dd><p>The language of the models. Default is “en”.</p>
+</dd>
+<dt>source: str</dt><dd><p>The source of the models. Default is “clinical/models”.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_tracer.StageField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StageField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fieldType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_tracer.StageField" title="Permalink to this definition">#</a></dt>
+<dd><p>Represents a field of a stage. A stage field contains information about the name, value and fieldType of the field.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineStage"><code class="docutils literal notranslate"><span class="pre">PipelineStage</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer"><code class="docutils literal notranslate"><span class="pre">PipelineTracer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.createParserDictionary"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.createParserDictionary()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getParserDictDirectly"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.getParserDictDirectly()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPipelineStages"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.getPipelineStages()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleAssertions"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.getPossibleAssertions()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleEntities"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.getPossibleEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.getPossibleRelations"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.getPossibleRelations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.listAvailableModels"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.listAvailableModels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.printPipelineSchema"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.printPipelineSchema()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.PipelineTracer.showAvailableModels"><code class="docutils literal notranslate"><span class="pre">PipelineTracer.showAvailableModels()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_tracer.StageField"><code class="docutils literal notranslate"><span class="pre">StageField</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

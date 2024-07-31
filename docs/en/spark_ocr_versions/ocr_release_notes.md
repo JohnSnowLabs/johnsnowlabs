@@ -18,7 +18,7 @@ sidebar:
 Release date: 11-04-2024
 
 
- ## Visual NLP 5.3.1 Release Notes 🕶️
+## Visual NLP 5.3.1 Release Notes 🕶️
 
 
 **we're glad to announce that Visual NLP 5.3.1 has been released. New models, notebooks, bug fixes and more!!! 📢📢📢**
@@ -39,6 +39,7 @@ Release date: 11-04-2024
 ## Improved table extraction capabilities in HocrToTextTable
 Many issues related to column detection in our Table Extraction pipelines are addressed in this release, compared to previous Visual NLP version the metrics have improved. Table below shows F1-score(CAR or Cell Adjacency Relationship) performances on ICDAR 19 Track B dataset for different IoU values of our two versions in comparison with [other results](https://paperswithcode.com/paper/multi-type-td-tsr-extracting-tables-from/review/).
 
+{:.table-model-big}
 | Model  | 0.6 | 0.7 | 0.8 | 0.9 |
 | ------------- | ------------- |------------- |------------- |------------- |
 | CascadeTabNet	  | 0.438  | 0.354 | 0.19 | 0.036 |
@@ -88,7 +89,7 @@ ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") 
     .setIncludeConfidence(True)
 ```
 
-![image](/assets/images/ocr/confidence_score.png)
+![Confidence scores in ImageToTextV2](/assets/images/ocr/confidence_score.png)
 
 Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/TextRecognition/SparkOcrImageToTextV2.ipynb) for an end-to-end example.
 
@@ -130,9 +131,6 @@ ImageDrawRegions is the annotator used for rendering regions into images so we c
 
 ### Bug Fixes
 + PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.
-
-
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

@@ -32,6 +32,7 @@ nlp.install_to_emr()
 
 ### AWS specific parameters
 
+{:.table-model-big.db}
 | Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `boto_session`         | The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer [this](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html) for more information                                                                                                            |
@@ -42,10 +43,12 @@ nlp.install_to_emr()
 | `subnet_id`            | The subnet to launch the EMR cluster in. Refer [this](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-vpc-subnet.html) for more information                                                                                                                                                                                                                |
 | `ec2_key_name`         | The key pair name to ssh into your EMR cluster                                                                                                                                                                                                                                                                                                                             |
 | `auto_terminate_hours` | The idle hours to wait before the cluster teminated. Default: 1 hour                                                                                                                                                                                                                                                                                                       |
+
 </div><div class="h3-box" markdown="1">
 
 ### License Retrieval Parameters
 
+{:.table-model-big.db}
 | Parameter           | Description                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `browser_login`     | Enable or disable browser based login and pop up if no license is provided or automatically detected. Defaults to True.                                             |

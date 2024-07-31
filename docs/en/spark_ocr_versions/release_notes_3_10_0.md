@@ -22,6 +22,7 @@ Release date: 10-01-2022
 
 Form recognition using LayoutLMv2 and text detection.
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
@@ -30,12 +31,14 @@ Form recognition using LayoutLMv2 and text detection.
 * Support rotated regions in [ImageSplitRegions](/docs/en/ocr_pipeline_components#imagesplitregions)
 * Support rotated regions in [ImageDrawRegions](/docs/en/ocr_pipeline_components#imagedrawregions)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Models
 
 * LayoutLMv2 fine-tuned on FUNSD dataset
 * Text detection model based on CRAFT architecture
 
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

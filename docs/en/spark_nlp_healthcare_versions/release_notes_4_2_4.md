@@ -38,10 +38,9 @@ sidebar:
     + [MENTAL HEALTH DEPRESSION](https://demo.johnsnowlabs.com/healthcare/MENTAL_HEALTH_DEPRESSION/)
 + 5 new clinical models and pipelines added & updated in total
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Chunk Mapper Model For Matching Drugs by Categories As Well As Other Brands and Names
-
 
 We have a new `drug_category_mapper` chunk mapper model that maps drugs to their categories, other brands and names. It has two categories called **main category** and **subcategory**.
 
@@ -71,6 +70,8 @@ sample_text= "She is given OxyContin, folic acid, levothyroxine, Norvasc, aspiri
 |    Neurontin|          Neurologics|                       GABA Analogs|    Gralise|
 +-------------+---------------------+-----------------------------------+-----------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### 4 New NER and Classification Models for Social Determinant of Health
 
@@ -105,6 +106,7 @@ text = """Mr. John Smith is a pleasant, cooperative gentleman with a long standi
 
 + `MedicalBertForSequenceClassification` models that can be used in Social Determinant of Health related classification tasks:
 
+{:.table-model-big.db}
 | model name                                           	| description                                                                                                                                        	| predicted entities                          	|
 |------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------------	|---------------------------------------------	|
 | [bert_sequence_classifier_sdoh_community_absent_status]()           	| Classifies the clinical texts related to the loss of social support such as a family member or friend in the clinical documents. A discharge summary was classified True for Community-Absent if the discharge summary had passages related to the loss of social support and False if such passages were not found in the discharge summary.                                                                     	| `True` `False`                	|
@@ -134,7 +136,7 @@ sample_text = ["Right inguinal hernia repair in childhood Cervical discectomy 3 
 +----------------------------------------------------------------------------------------------------+-------+
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Allow Fuzzy Matching in the `ChunkMapper` Annotator
 
@@ -265,7 +267,7 @@ cm = ChunkMapperApproach() \
 
 You can check [Chunk_Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb) notebook for more examples.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New `NameChunkObfuscatorApproach` Annotator to Obfuscate Doctor and Patient Names Using a Custom External List (consistent name obfuscation)
 
@@ -304,7 +306,7 @@ Obfuscated text :  Fitzpatrick is a <AGE> y.o. patient admitted. Mr. Bowman was 
 
 You can check [Clinical DeIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) notebook for more examples.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New `AssertionChunkConverter` Annotator to Prepare Assertion Model Training Dataset From Chunk Indices
 
@@ -339,11 +341,13 @@ sample_data = spark.createDataFrame([["An angiography showed bleeding in two ves
 +------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New `training_log_parser` Module to Parse Training Log Files of NER And Assertion Status Detection Models  
 
 We are releasing a new `training_log_parser` module that helps to parse NER and Assertion Status Detection model training log files using a single module. Here are the methods and their descriptions:
 
+{:.table-model-big.db}
 ||Description|ner_log_parser|assertion_log_parser|
 |-|-|-|-|
 |How to import | You can import this module for NER and Assertion as shown here |`from sparknlp_jsl.training_log_parser import ner_log_parser`   | `from sparknlp_jsl.training_log_parser import assertion_log_parser`  |
@@ -394,7 +398,7 @@ assertion_parser.get_best_f1_scores('Assertion_training_log_file.log', ['Absent'
 
 ![image](https://user-images.githubusercontent.com/76607915/208671659-eca0b063-234b-412f-bfac-d2da8625a39b.png)
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Obfuscation of Age Entities by Age Groups in `Deidentification`
 
@@ -435,6 +439,7 @@ deidentification = DeIdentification()\
 +--------------------------------+---------+--------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Controlling the behaviour of unnormalized dates while shifting the days in `Deidentification` (`setUnnormalizedDateMode` parameter)
 
@@ -466,6 +471,7 @@ de_identification = DeIdentification() \
 +-----------+---------+------------+------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Setting Default Day, Months or Years for Partial Dates via `DateNormalizer`
 
@@ -505,7 +511,7 @@ date_normalizer_us = DateNormalizer()\
 
 You can check [Date Normalizer](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/25.Date_Normalizer.ipynb) notebook for more examples
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Setting Label Case Sensitivity in `AssertionFilterer`
 
@@ -531,6 +537,7 @@ sample_text = "The patient was admitted 2 weeks ago with a headache. No alopecia
 | Alopecia | Disease_Syndrome_Disorder | Absent    |          1 |
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### `getClasses` Method to Zero Shot NER and Zero Shot Relation Extraction Models
 
@@ -557,6 +564,7 @@ zero_shot_ner.getClasses()
 ['DRUG', 'PATIENT_AGE', 'ADMISSION_DATE', 'PROBLEM']
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Setting Max Syntactic Distance Flexibility In `RelationExtractionApproach`
 
@@ -598,6 +606,8 @@ text = """Pathology showed tumor cells, which were positive for estrogen and pro
 |       0 |           42 |         49 | positive  | Biomarker_Result |           68 |         89 | progesterone receptors | Biomarker        | Biomarker_Result-Biomarker      |         1|
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Core improvements and bug fixes
 
 - Fixed obfuscated addresses capitalized word style
@@ -606,6 +616,7 @@ text = """Pathology showed tumor cells, which were positive for estrogen and pro
 - Fixed serialization Issue with MLFlow ContextualParser
 - Renamed `TFGraphBuilder.setIsMedical` to `TFGraphBuilder.setIsLicensed`
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
 
@@ -624,6 +635,7 @@ text = """Pathology showed tumor cells, which were positive for estrogen and pro
 
 + Updated [Chunk Mapping](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb) notebook with fuzzy matching flexibility examples.
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Demos
 
@@ -631,7 +643,7 @@ text = """Pathology showed tumor cells, which were positive for estrogen and pro
 + [SMOKING STATUS](https://demo.johnsnowlabs.com/healthcare/SMOKING_STATUS/)
 + [MENTAL HEALTH DEPRESSION](https://demo.johnsnowlabs.com/healthcare/MENTAL_HEALTH_DEPRESSION/)
 
-
+</div><div class="h3-box" markdown="1">
 
 #### 5 New Clinical Models and Pipelines Added & Updated in Total
 

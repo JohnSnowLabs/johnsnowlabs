@@ -49,7 +49,7 @@ This feature enables users to check how their resources (models, rules and promp
 Another benefit of experimenting with NLP prompts and rules in the playground is the immediate feedback that you receive. When you make changes to the parameters of your rules or to the questions in your prompts, the updates are deployed instantly. Manually deploying the server is not necessary any more for changes made to Rules/Prompts to be reflected in the preannotation results. Once the changes are saved, by simply clicking on the Test button, updated results are presented. 
 This allows you to experiment with a range of variables and see how each one affects the correctness and completeness of the results. The real-time feedback and immediate deployment of changes in the playground make it a powerful tool for pushing the boundaries of what is possible with language processing.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.7.1/219060474-0c6fc8ab-f946-4ea5-886c-659f357b7f7d.gif" style="width:100%;"/>
+![Automatic Deployment of Updated Rules/Prompts](/assets/images/annotation_lab/4.7.1/219060474-0c6fc8ab-f946-4ea5-886c-659f357b7f7d.gif "lit_shadow")
 
 ## Playground Server Destroyed after 5 Minutes of Inactivity
 

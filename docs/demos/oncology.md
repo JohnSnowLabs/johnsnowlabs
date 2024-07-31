@@ -43,7 +43,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_ONCOLOGY_CLINICAL/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Identify Tests, Biomarkers, and their Results
           id: extract_biomarker_information 
           image: 
@@ -55,7 +55,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_BIOMARKER/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Identify Demographic Information from Oncology Texts
           id: identify_demographic_information_from_oncology_texts   
           image: 
@@ -67,7 +67,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_ONCOLOGY_DEMOGRAPHICS/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Detect Assertion Status from Clinics Entities
           id: detect_assertion_status_clinics_entities   
           image: 
@@ -79,7 +79,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ASSERTION_ONCOLOGY/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb
         - title: Detect Relation Extraction between different Oncological entity types
           id: detect_relation_extraction_different_oncological_entity_types   
           image: 
@@ -91,7 +91,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/RE_ONCOLOGY/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb       
         - title: Resolve Oncology terminology using the ICD-O taxonomy
           id: resolve_oncology_terminology_using_icdo_taxonomy
           image: 

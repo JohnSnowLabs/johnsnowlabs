@@ -15,12 +15,12 @@ sidebar:
 
 All the embeddings available in the Generative AI Lab are listed on this page. General information about the embeddings like the name, version, source, and date of upload/download is available. Like models, any compatible embeddings can be downloaded from [NLP Models Hub](https://nlp.johnsnowlabs.com/models). By default, `glove_100d`, `bert_base_cased`, `tfhub_use` embeddings are included in every fresh installation of Generative AI Lab.
 
-<img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/embeddings.png" style="width:100%;" />
+![Embeddings](/assets/images/annotation_lab/4.1.0/embeddings.png "lit_shadow")
 
 ## Custom Embeddings Upload
 
 Custom embeddings can be uploaded using the Upload button present in the top right corner of the page.
 
-<img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/upload_embeddings.png" style="width:70%;"/>
+![Custom Embeddings Upload](/assets/images/annotation_lab/4.1.0/upload_embeddings.png "lit_shadow w_80")
 
 > **Note:** The embeddings to upload need to be Spark NLP compatible.

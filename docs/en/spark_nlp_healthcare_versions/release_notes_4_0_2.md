@@ -38,6 +38,7 @@ sidebar:
 
 + We are releasing 11 new `MedicalBertForSequenceClassification` models to classify text from social media data for English and Spanish languages.
 
+{:.table-model-big.db}
 | model name                                                                                                                                                                    | description                                                                             | predicted entities                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------|
 |[bert_sequence_classifier_ade_augmented](https://nlp.johnsnowlabs.com/2022/07/27/bert_sequence_classifier_ade_augmented_en_3_0.html)                                           | this model classify tweets reporting ADEs (Adverse Drug Events).                        | `ADE` `noADE`                                              |
@@ -78,6 +79,7 @@ sample_text = ["Is it bad for a 19 year old it's been getting worser.",
 
 + We are releasing 5 new public health classification models.
 
+{:.table-model-big.db}
 | model name                                                                                                                                | description                                                                             | predicted entities             |
 |-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------------|
 |[bert_sequence_classifier_health_mentions](https://nlp.johnsnowlabs.com/2022/07/25/bert_sequence_classifier_health_mentions_en_3_0.html)    | This model can classify public health mentions in social media text | `figurative_mention` `other_mention` `health_mention`|
@@ -219,6 +221,7 @@ example_text = """El diagnóstico fueron varios. Principal: Neumonía en el pulm
 
 We are releasing 5 new `ChunkMapperModel` models to map clinical entities with their corresponding UMLS CUI codes.
 
+{:.table-model-big}
 | Mapper Name                                                                                                      | Source                  | Target   |
 |--------------------------------------------------------------------------------------------------------------------|-------------------------|----------|
 | [umls_clinical_drugs_mapper](https://nlp.johnsnowlabs.com/2022/07/06/umls_clinical_drugs_mapper_en_3_0.html)       | Drugs                   | UMLS CUI |
@@ -265,6 +268,7 @@ example_text = """The patient was given  metformin, lenvatinib and lavender 700 
 
 We now have 5 new resolver `PretrainedPipeline` to convert clinical entities to their UMLS CUI codes. You just need to feed your text and it will return the corresponding UMLS codes.
 
+{:.table-model-big}
 | Pipeline Name                                                                                                                            | Entity                  | Target   |
 |------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------|
 | [umls_drug_resolver_pipeline](https://nlp.johnsnowlabs.com/2022/07/26/umls_drug_resolver_pipeline_en_3_0.html)                           | Drugs                   | UMLS CUI |

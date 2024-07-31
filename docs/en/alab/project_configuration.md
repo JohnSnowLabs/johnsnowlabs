@@ -13,11 +13,15 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 Generative AI Lab currently supports multiple predefined project configurations. The most popular ones are `Text Classification`, `Named Entity Recognition` (NER) and `Visual NER`. Create a setup from scratch or customize a predefined one according to your needs.
 
 For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.
 
 After you finish editing the labels you want to define for your project click the “Save” button.
+
+</div><div class="h3-box" markdown="1">
 
 ### Project templates
 
@@ -27,15 +31,17 @@ We currently support multiple predefined project configurations. The most popula
 
 The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: `Video`, `Audio`, `HTML`, `Image`, `PDF` and `Text`. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.
 
- <img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.10.0/add_video_type.png" style="width:100%"/>
+![Generative AI Lab](/assets/images/annotation_lab/4.10.0/add_video_type.png "lit_shadow")
 
 For customizing a predefined configuration, choose a `Content Type` and then a template from the list. Then navigate to the `Customize Labels` tab and manually edit/update the configuration to contain the labels you need.
 
 Users can add custom labels and choices in the project configuration from the Visual tab for both text and Visual NER projects.
 
-<img class="image image--xl image__shadow" src="https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif" style="width:100%;"/>
+![Generative AI Lab](https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif "lit_shadow")
 
 After you finish editing the labels click the “Save” button.
+
+</div><div class="h3-box" markdown="1">
 
 ### Named Entity Recognition
 
@@ -46,9 +52,9 @@ The **Generative AI Lab** offers support for two types of labels:
 - Simple labels for NER or assertion models;
 - Binary relations for relation extraction models.
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.2.0/NER_Template.png" style="width:100%;"/>
+![Generative AI Lab](/assets/images/annotation_lab/4.2.0/NER_Template.png "lit_shadow")
 
-<br />
+</div><div class="h3-box" markdown="1">
  
 ### Assertion Labels 
 The syntax for defining an Assertion Status label is the same as for the NER labels, with an additional attribute - **assertion** which should be set to true (see example below). This convention is defined by Generative AI Lab users which we exploited for identifying the labels to include in the training and prediction of Assertion Models.
@@ -71,7 +77,7 @@ A simple Labeling Config with Assertion Status defined should look like the foll
 
 > **NOTE:** Notice assertion="true" in **Absent** and **Past** labels, which marks each of those labels as Assertion Status Labels.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Classification
 
@@ -81,6 +87,7 @@ The choices tag is used as part of the classification projects to create a group
 
 The Choices tag supports the following parameters/attributes:
 
+{:.table-model-big}
 | Param           | Type                   | Default  | Description                                                                              |
 | --------------- | ---------------------- | -------- | ---------------------------------------------------------------------------------------- |
 | required        | `boolean`              | `false`  | Verify if a choice is selected                                                           |
@@ -108,7 +115,7 @@ When using the `perRegion` attribute, choices can be defined for each chunk anno
 
 ![perRegion](https://user-images.githubusercontent.com/45035063/197151637-fa9034b1-0d09-4658-b1bb-7c47e68f435c.gif)
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Relation Extraction
 
@@ -122,7 +129,7 @@ Generative AI Lab also offers support for relation extraction. Relations are int
   </Relations>
 ```
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Constraints for relation labeling
 
@@ -154,3 +161,5 @@ Below you can find a sample Project Configuration with constraints for Relation 
 <Text name="text" value="$text"/>
 </View>
 ```
+
+</div>

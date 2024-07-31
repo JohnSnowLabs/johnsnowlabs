@@ -22,6 +22,8 @@ Release date: 20-11-2020
 Optimisation performance for processing multipage PDF documents.
 Support up to 10k pages per document.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Added [ImageAdaptiveBinarizer](/docs/en/ocr_pipeline_components#imageadaptivebinarizer) Scala transformer with support:
@@ -30,6 +32,7 @@ Support up to 10k pages per document.
     - Sauvola local thresholding
 * Added possibility to split pdf to small documents for optimize processing in [PdfToImage](/docs/en/ocr_pipeline_components#pdftoimage).
 
+</div><div class="h3-box" markdown="1">
 
 #### Enhancements
 

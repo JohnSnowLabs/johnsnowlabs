@@ -18,17 +18,19 @@ sidebar:
 Release date: 20-03-2024
 
 
- ## Visual NLP 5.3.0 Release Notes 🕶️
-
+## Visual NLP 5.3.0 Release Notes 🕶️
 
 **We are glad to announce that Visual NLP 5.3.0 has been released!. This is a small compatibility release, to ensure proper inter-operability against Spark NLP and Spark NLP for Healthcare, plus some LightPipelines features.!! 📢📢📢**
 
+</div><div class="h3-box" markdown="1">
 
 ## Highlights 🔴
 
 + Tested against Spark NLP 5.3.1 and Spark NLP for Healthcare 5.3.0.
 + New Base64ToBinary annotator.
 + Positions output in ImageToText annotator has been fixed for LightPipelines.
+
+</div><div class="h3-box" markdown="1">
 
 ## New Base64ToBinary Annotator
 This new annotator, as its name suggests, serves the purpose of converting in-memory base64 encoded buffers into binary format. This is useful, among other things, for the use case in which your data is not stored in disk, and it can be really helpful in combination with PdfToText, or PdfToImage, e.g.,

@@ -59,6 +59,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 Introducing 2 new Sentence Entity Resolver Models  `sbiobertresolve_meddra_lowest_level_term` and `sbiobertresolve_meddra_preferred_term` help to map medical entities to MedDRA codes.
 
+{:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`sbiobertresolve_meddra_lowest_level_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_lowest_level_term_en.html) | This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes. |
@@ -78,6 +79,7 @@ text= """This is an 82-year-old male with a history of prior tobacco use, benign
 
 *Result*:
 
+{:.table-model-big.db}
 |                         ner_chunk|begin|end|                   entity|meddra_llt_code|                        resolution|                                               all_k_results|                                           all_k_resolutions|
 |----------------------------------|-----|---|-------------------------|---------------|----------------------------------|------------------------------------------------------------|------------------------------------------------------------|
 |                           tobacco|   52| 58|                  Smoking|       10067622|               tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10...|tobacco interaction:::tobaccoism:::tobacco user:::exposur...|
@@ -98,6 +100,7 @@ text= """This is an 82-year-old male with a history of prior tobacco use, benign
 
 Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between  RxNorm, ICD-10, MedDRA-LLT, and MedDRA-PT codes, offering a comprehensive solution for interoperability within medical systems.
 
+{:.table-model-big}
 | Model Name                                                            |      Description           |
 |-----------------------------------------------------------------------|----------------------------|
 |[`icd10_meddra_llt_mapper`](https://nlp.johnsnowlabs.com/2024/03/14/icd10_meddra_llt_mapper_en.html)| Maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes. |
@@ -120,6 +123,7 @@ text = ["10002442", "10000007", "10003696"]
 
 *Result*:
 
+{:.table-model-big}
 |llt_code|pt_code                                 |
 |--------|----------------------------------------|
 |10002442|10002442:Angiogram pulmonary normal     |
@@ -130,6 +134,7 @@ text = ["10002442", "10000007", "10003696"]
 
 These pipelines are capable of extracting clinical entities and linking them to their respective MedDRA LLT and PT codes, while also facilitating mapping of these codes to LLT/PT or ICD-10 codes.
 
+{:.table-model-big.db}
 | Pipeline Name                                                            |      Description            |
 |--------------------------------------------------------------------------|-----------------------------|
 | [`meddra_llt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_llt_resolver_pipeline_en.html) | This dedicated pipeline extracts clinical terms and links them to their corresponding MedDRA LLT (Lowest Level Term) codes, map those codes to their MedDRA PT (Preferred Term) codes and ICD-10 codes.|
@@ -148,7 +153,7 @@ result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a hi
 *Result*:
 
 
-
+{:.table-model-big.db}
 |chunk                                 |label                    |meddra_llt_code|resolution                        |icd10_mappings                                   |meddra_pt_mappings                             |
 |--------------------------------------|-------------------------|---------------|----------------------------------|-------------------------------------------------|-----------------------------------------------|
 |tobacco                               |Smoking                  |10067622       |tobacco interaction               |NONE                                             |10067622:Tobacco interaction                   |
@@ -231,6 +236,7 @@ text = [
 
 *Result*:
 
+{:.table-model-big}
 |idx|ner_chunk     |begin|end|ner_label|assertion|assertion_source|confidence|
 |---|--------------|-----|---|---------|---------|----------------|----------|
 |0  |headache      |14   |21 |Symptom  |Past     |assertion_jsl   |0.9999    |
@@ -253,7 +259,7 @@ Please check [Clinical Assertion Model Notebook](https://colab.research.google.c
 
 The Comprehensive Clinical Deidentification Pipeline offers a robust solution for anonymizing sensitive PHI (Protected Health Information) from medical texts. This versatile pipeline is equipped to mask and obfuscate a wide array of PHI entities including A`AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR`, and more. With support for multiple languages including `Arabic`, `German`,  `French`, `English` `Spanish`, `Italian`, `Portuguese`, and `Romanian` this pipeline ensures compliance with privacy regulations across diverse healthcare settings. Choose from various models optimized for different use cases, such as obfuscation levels and subentity recognition, to tailor the deidentification process according to specific requirements.
 
-
+{:.table-model-big}
 |index|model|lang|
 |-----:|:-----|----|
 | 1| [clinical_deidentification](https://nlp.johnsnowlabs.com/2022/09/14/clinical_deidentification_en.html)  | ar, de, en, es, fr, it, pt, ro|
@@ -280,7 +286,7 @@ We will share a detailed table on our [wiki page](https://nlp.johnsnowlabs.com/d
 
 These results show speed benchmarks and cost evaluations for deidentification pipelines deployed across diverse cloud platforms, including AWS EMR and EC2. Additionally, forthcoming results from DataBricks promise to further enrich the analysis, offering deeper insights into de-identification pipeline performance. 
 
-
+{:.table-model-big}
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|
 | 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                |
@@ -319,6 +325,7 @@ sample_texts = """History of Present Illness: A 20-year-old male was transferred
 
 *Result*:
 
+{:.table-model-big}
 |chunk                      |begin|end |ner_label             |
 |---------------------------|-----|----|----------------------|
 |Percocet                   |136  |143 |opioid_drug           |
@@ -383,15 +390,13 @@ sample_texts = """John's doctor prescribed aspirin for his heart condition, alon
 
 *Result*:
 
+{:.table-model-big}
 |       chunk|begin|end|label|
 |------------|-----|---|-----|
 |     aspirin|   25| 31| DRUG|
 | paracetamol|   69| 79| DRUG|
 | amoxicillin|  109|119| DRUG|
 |lansoprazole|  144|155| DRUG|
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -418,6 +423,7 @@ sample_texts = [
 
 *Result*:
 
+{:.table-model-big}
 |                                                                                               text |result|
 |----------------------------------------------------------------------------------------------------|------|
 |The breast ultrasound after neoadjuvant chemotherapy displayed a decrease in the primary lesion s...| Yes |
@@ -443,7 +449,7 @@ weighted-avg     0.9823    0.9816    0.9819      3257
 
 Introducing 2 new Sentence Entity Resolver Models `sbiobertresolve_snomed_no_class` and `sbiobertresolve_snomed_conditions` help to map medical entities to SNOMED codes.
 
-
+{:.table-model-big.db}
 | Model Name                                                            |      Description            |
 |--------------------------------------------------------------------------|-------------------------------------------|
 | [`sbiobertresolve_snomed_no_class`](https://nlp.johnsnowlabs.com/2024/03/05/sbiobertresolve_snomed_no_class_en.html) | This model maps extracted medical entities (no concept class) to SNOMED codes. |
@@ -469,6 +475,7 @@ a sudden loss of consciousness likely stemming from inadequate oxygenation. Furt
 
 *Result*:
 
+{:.table-model-big}
 |                              chunk|                    label|snomed_code|                         resolution|             all_codes|                               all_resolutions|
 |-----------------------------------|-------------------------|-----------|-----------------------------------|----------------------|----------------------------------------------|
 |               respiratory distress|               VS_Finding|  271825005|               respiratory distress|271825005,418092006...|respiratory distress,respiratory tract cong...|
@@ -492,7 +499,7 @@ We introduce a suite of advanced, hybrid pretrained pipelines, specifically desi
 
 What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
 
-
+{:.table-model-big.db}
 | Pipeline Name                                                            |      Description            |
 |--------------------------------------------------------------------------|-----------------------------|
 | [`icd10cm_rxnorm_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/07/icd10cm_rxnorm_resolver_pipeline_en.html) | This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes. |
@@ -504,7 +511,7 @@ What sets this release apart is the elimination of complexities typically involv
 | [`snomed_drug_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_drug_resolver_pipeline_en.html) | This advanced pipeline extracts drug entities from clinical texts and maps these entities to their corresponding SNOMED codes. |
 | [`snomed_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_resolver_pipeline_en.html) | This pipeline extracts `Clinical Findings `, `Morph Abnormality`, `Clinical Drug`, `Clinical Drug Form`, `Procedure`, `Substance`, `Physical Object`, and `Body Structure` concepts from clinical notes and maps them to their corresponding SNOMED codes. |
 | [`clinical_deidentification_generic_optimized`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html) | This pipeline can be used to deidentify PHI information from medical texts. |
-| [`clinical_deidentification_nameAugmented`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
+| [`clinical_deidentification_subentity_nameAugmented`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
 | [`clinical_deidentification_subentity_optimized`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be obfuscated in the resulting text and also masked with entity labels in the metadata. |
 | [`explain_clinical_doc_public_health`](https://nlp.johnsnowlabs.com/2024/03/19/explain_clinical_doc_public_health_en.html) | This specialized public health pipeline can extract public health-related entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, five NER, one assertion, and one relation extraction model were used to achieve those tasks. |
 | [`explain_clinical_doc_biomarker`](https://nlp.johnsnowlabs.com/2024/03/11/explain_clinical_doc_biomarker_en.html) | This specialized biomarker pipeline can extract biomarker entities, classify sentences whether they contain biomarker entities or not, establish relations between the extracted biomarker and biomarker results from the clinical documents. |
@@ -540,6 +547,7 @@ text_list = [
 
 *Result*:
 
+{:.table-model-big}
 |              ner_chunk|begin|end|ner_label|
 |-----------------------|-----|---|---------|
 |             David Hale|   25| 34|     NAME|
@@ -660,7 +668,7 @@ The CPT and MedDRA models have been removed from the S3 storage. As a result, wh
 + `snomed_drug_resolver_pipeline`
 + `snomed_resolver_pipeline`
 + `clinical_deidentification_generic_optimized`
-+ `clinical_deidentification_nameAugmented`
++ `clinical_deidentification_subentity_nameAugmented`
 + `clinical_deidentification_subentity_optimized`
 + `umls_rxnorm_mapper`
 + `icd10_meddra_llt_mapper`

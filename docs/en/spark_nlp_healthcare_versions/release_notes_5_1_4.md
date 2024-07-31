@@ -38,9 +38,6 @@ We are delighted to announce a suite of remarkable enhancements and updates in o
 
 These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined healthcare-related natural language data analysis.
 
-
-
-
 </div><div class="h3-box" markdown="1">
   
 ####  Introducing the Advanced `Medical Document Splitter` Annotator with More Flexibility and Customization for RAG Pipelines
@@ -82,6 +79,7 @@ text = [(
 
 *Result*:
 
+{:.table-model-big}
 |sentence                                          |doc_id|
 |--------------------------------------------------|------|
 |The patient is a 28-year-old, who is status post gastric bypass surgery nearly one year ago.       |0     |
@@ -122,6 +120,7 @@ text ='The patient was prescribed 1 capsule of Advil for 5 days . He was seen by
 
 *Without Filtering Results*:
 
+{:.table-model-big}
 | chunks                       | begin | end | sentence_id | entities  |confidence |
 |:-----------------------------|------:|----:|------------:|:----------|--------:|
 | 1 capsule of Advil           |    27 |  44 |           0 | DRUG      |    0.64 |
@@ -136,15 +135,12 @@ text ='The patient was prescribed 1 capsule of Advil for 5 days . He was seen by
 
 *Filtered Results*:
 
+{:.table-model-big}
 | chunks           | begin | end | sentence_id | entities  | confidence |
 |:-----------------|------:|----:|------------:|:----------|-----------:|
 | at night         |   155 | 162 |           1 | FREQUENCY |    0.74 |
 | with meals       |   193 | 202 |           1 | FREQUENCY |    0.72 |
 | SGLT2 inhibitors |   269 | 284 |           2 | DRUG      |    0.89 |
-
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -195,9 +191,6 @@ deid = DeIdentification()\
 
 Please check: [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) for more information
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 ####  Robust Exception Handling in `MedicalNerModel` for Corrupted Inputs
@@ -214,10 +207,6 @@ clinical_ner = MedicalNerModel.pretrained("ner_oncology", "en", "clinical/models
 ```
 
 Please check: [Clinical Named Entity Recognition Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb) for more information
-
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -239,15 +228,11 @@ Please check: [Clinical Named Entity Recognition Notebook](https://colab.researc
 - Updated [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) with `setRegexPatternsDictionaryAsJsonString` and `setCombineRegexPatterns` examples
 - Updated [Calculate Medicare Risk Adjustment Score Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) with the latest improvement
 
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

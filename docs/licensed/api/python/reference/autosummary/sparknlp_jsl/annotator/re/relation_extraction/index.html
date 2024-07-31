@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>sparknlp_jsl.annotator.re.relation_extraction &#8212; Spark NLP  documentation</title>
   
@@ -19,36 +18,34 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../../static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../../static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
-    <script src="../../../../../../static/jquery.js"></script>
-    <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../../../static/doctools.js"></script>
-    <script src="../../../../../../static/sphinx_highlight.js"></script>
-    <script src="../../../../../../static/toggleprompt.js"></script>
-    <script src="../../../../../../static/clipboard.min.js"></script>
-    <script src="../../../../../../static/copybutton.js"></script>
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../static/copybutton.js?v=6dbb43f8"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index';</script>
-    <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
+    <link rel="icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -61,6 +58,15 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -85,8 +91,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -101,9 +107,11 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../../../index.html">
@@ -111,25 +119,26 @@
   
   
   
+  
     
     
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
     
   </div>
   
-  
   <div class="col-lg-9 navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
-        <div class="navbar-item"><nav class="navbar-nav">
+        <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -161,23 +170,27 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -188,18 +201,21 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
       <span class="fa-solid fa-outdent"></span>
     </label>
   
@@ -219,7 +235,8 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item"><nav class="navbar-nav">
+          <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -251,12 +268,13 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -266,7 +284,8 @@ document.write(`
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
@@ -275,6 +294,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -362,34 +383,39 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rag/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rag/context_split_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag.context_split_assembler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rag/vectordb_post_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag.vectordb_post_processor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relation_extraction_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction_dl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relation_ner_chunk_filter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_ner_chunk_filter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../zero_shot_relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.zero_shot_relation_extraction</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../regex/regex_matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex.regex_matcher</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../resolution/resolver_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.resolver_merger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../resolution/sentence_entity_resolver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.sentence_entity_resolver</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
@@ -438,15 +464,15 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction</span></code></li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
   </ul>
 </nav>
 </div>
@@ -490,6 +516,9 @@ document.write(`
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GenericREModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.re.GenericREModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel" title="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RelationExtractionModel</span></code></a></p>
 <p>Generic Relation Extraction Model.</p>
+<p>Instantiated RelationExtractionModel for extracting relationships between any entities.
+This class is not intended to be directly used, please use the RelationExtractionModel instead.
+Pairs of entities should be specified using setRelationPairs.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.classes" title="Permalink to this definition">#</a></dt>
@@ -498,6 +527,11 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.customLabels">
 <span class="sig-name descname"><span class="pre">customLabels</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.customLabels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -552,7 +586,7 @@ document.write(`
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">RelationExtractionModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'RelationExtractionModel'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -583,6 +617,11 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.relationPairsCaseSensitive">
 <span class="sig-name descname"><span class="pre">relationPairsCaseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.relationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.scopeWindow">
+<span class="sig-name descname"><span class="pre">scopeWindow</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.scopeWindow" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -797,6 +836,17 @@ open-source location. Other values are “clinical/models”,
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDirectionSensitive">
 <span class="sig-name descname"><span class="pre">setDirectionSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDirectionSensitive" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to sensitive for direction in processing relation pairs.
@@ -974,6 +1024,14 @@ Increasing this value will increase recall, but also increase the number of fals
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setScopeWindow">
+<span class="sig-name descname"><span class="pre">setScopeWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setScopeWindow" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the scope of the window of the feature generation for relations
+:param value: Left and right offset if the scope window. Offsets must be non-negative values
+:type value: [int, int]</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
@@ -1009,6 +1067,10 @@ Increasing this value will increase recall, but also increase the number of fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PosologyREModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.re.PosologyREModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel" title="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RelationExtractionModel</span></code></a></p>
 <p>Model for Posology Relation Extraction.</p>
+<p>Instantiated RelationExtractionModel for extracting relationships between different recognized drug entitites.
+This class is not intended to be directly used, please use the RelationExtractionModel instead.
+Possible values are “DRUG-DOSAGE”, “DRUG-ADE”, “DRUG-FORM”, “DRUG-FREQUENCY”,
+“DRUG-ROUTE”, “DRUG-REASON”, “DRUG-STRENGTH”, “DRUG-DURATION”.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.classes" title="Permalink to this definition">#</a></dt>
@@ -1017,6 +1079,11 @@ Increasing this value will increase recall, but also increase the number of fals
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.customLabels">
 <span class="sig-name descname"><span class="pre">customLabels</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.customLabels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1071,7 +1138,7 @@ Increasing this value will increase recall, but also increase the number of fals
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">RelationExtractionModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'RelationExtractionModel'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1102,6 +1169,11 @@ Increasing this value will increase recall, but also increase the number of fals
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.relationPairsCaseSensitive">
 <span class="sig-name descname"><span class="pre">relationPairsCaseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.relationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.scopeWindow">
+<span class="sig-name descname"><span class="pre">scopeWindow</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.scopeWindow" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1316,6 +1388,17 @@ open-source location. Other values are “clinical/models”,
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDirectionSensitive">
 <span class="sig-name descname"><span class="pre">setDirectionSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDirectionSensitive" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to sensitive for direction in processing relation pairs.
@@ -1493,6 +1576,14 @@ Increasing this value will increase recall, but also increase the number of fals
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setScopeWindow">
+<span class="sig-name descname"><span class="pre">setScopeWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setScopeWindow" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the scope of the window of the feature generation for relations
+:param value: Left and right offset if the scope window. Offsets must be non-negative values
+:type value: [int, int]</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
@@ -1573,6 +1664,7 @@ for training the new model. The path can be a local file path,
 a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <li><p><strong>directionSensitive</strong> – Specify direction sensitivity in processing relation pairs Default is ‘false’.</p></li>
 <li><p><strong>filterByTokenDistance</strong> – Filtering criterion based on number of token between entities (Default: 0).</p></li>
+<li><p><strong>scopeWindow</strong> – The scope window of the feature generation. Default :[-1, -1].</p></li>
 </ul>
 </dd>
 </dl>
@@ -1653,6 +1745,11 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.customLabels">
 <span class="sig-name descname"><span class="pre">customLabels</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.customLabels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.datasetInfo" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1757,7 +1854,7 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">RelationExtractionApproach</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'RelationExtractionApproach'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1793,6 +1890,11 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.relationDirectionCol">
 <span class="sig-name descname"><span class="pre">relationDirectionCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.relationDirectionCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.scopeWindow">
+<span class="sig-name descname"><span class="pre">scopeWindow</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.scopeWindow" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2066,6 +2168,17 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDirectionSensitive">
 <span class="sig-name descname"><span class="pre">setDirectionSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDirectionSensitive" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to sensitive for direction in processing relation pairs.
@@ -2305,6 +2418,14 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setScopeWindow">
+<span class="sig-name descname"><span class="pre">setScopeWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setScopeWindow" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the scope of the window of the feature generation for relations
+:param value: Left and right offset if the scope window. Offsets must be non-negative values
+:type value: [int, int]</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setToEntity">
 <span class="sig-name descname"><span class="pre">setToEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setToEntity" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets to entity</p>
@@ -2385,6 +2506,7 @@ between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p></li>
 <li><p><strong>customLabels</strong> – Custom relation labels.</p></li>
 <li><p><strong>directionSensitive</strong> – Specify direction sensitivity in processing relation pairs Default is ‘false’.</p></li>
 <li><p><strong>filterByTokenDistance</strong> – Filtering criterion based on number of token between entities (Default: 0).</p></li>
+<li><p><strong>scopeWindow</strong> – The scope window of the feature generation for relations. Default :[-1, -1].</p></li>
 </ul>
 </dd>
 </dl>
@@ -2500,6 +2622,11 @@ between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.datasetInfo">
+<span class="sig-name descname"><span class="pre">datasetInfo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.datasetInfo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.directionSensitive">
 <span class="sig-name descname"><span class="pre">directionSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.directionSensitive" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2551,7 +2678,7 @@ between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">RelationExtractionModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'RelationExtractionModel'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2582,6 +2709,11 @@ between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.relationPairsCaseSensitive">
 <span class="sig-name descname"><span class="pre">relationPairsCaseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.relationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.scopeWindow">
+<span class="sig-name descname"><span class="pre">scopeWindow</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.scopeWindow" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2796,6 +2928,17 @@ open-source location. Other values are “clinical/models”,
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDatasetInfo">
+<span class="sig-name descname"><span class="pre">setDatasetInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDatasetInfo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets descriptive information about the dataset being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDirectionSensitive">
 <span class="sig-name descname"><span class="pre">setDirectionSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDirectionSensitive" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to sensitive for direction in processing relation pairs.
@@ -2973,6 +3116,14 @@ Increasing this value will increase recall, but also increase the number of fals
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setScopeWindow">
+<span class="sig-name descname"><span class="pre">setScopeWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setScopeWindow" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the scope of the window of the feature generation for relations
+:param value: Left and right offset if the scope window. Offsets must be non-negative values
+:type value: [int, int]</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
@@ -3012,16 +3163,12 @@ Increasing this value will increase recall, but also increase the number of fals
               
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -3031,6 +3178,7 @@ Increasing this value will increase recall, but also increase the number of fals
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
+
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
@@ -3041,6 +3189,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel"><code class="docutils literal notranslate"><span class="pre">GenericREModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.classes"><code class="docutils literal notranslate"><span class="pre">GenericREModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.customLabels"><code class="docutils literal notranslate"><span class="pre">GenericREModel.customLabels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericREModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.directionSensitive"><code class="docutils literal notranslate"><span class="pre">GenericREModel.directionSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericREModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">GenericREModel.featureScaling</span></code></a></li>
@@ -3058,6 +3207,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.predictionThreshold"><code class="docutils literal notranslate"><span class="pre">GenericREModel.predictionThreshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.relationPairs"><code class="docutils literal notranslate"><span class="pre">GenericREModel.relationPairs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.relationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">GenericREModel.relationPairsCaseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.scopeWindow"><code class="docutils literal notranslate"><span class="pre">GenericREModel.scopeWindow</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">GenericREModel.skipLPInputColsValidation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.clear"><code class="docutils literal notranslate"><span class="pre">GenericREModel.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.copy"><code class="docutils literal notranslate"><span class="pre">GenericREModel.copy()</span></code></a></li>
@@ -3083,6 +3233,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.save"><code class="docutils literal notranslate"><span class="pre">GenericREModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.set"><code class="docutils literal notranslate"><span class="pre">GenericREModel.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setCustomLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDirectionSensitive"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setDirectionSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setFeatureScaling()</span></code></a></li>
@@ -3099,6 +3250,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setRelationPairs"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setRelationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setRelationPairsCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.setScopeWindow"><code class="docutils literal notranslate"><span class="pre">GenericREModel.setScopeWindow()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.transform"><code class="docutils literal notranslate"><span class="pre">GenericREModel.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel.write"><code class="docutils literal notranslate"><span class="pre">GenericREModel.write()</span></code></a></li>
 </ul>
@@ -3106,6 +3258,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel"><code class="docutils literal notranslate"><span class="pre">PosologyREModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.classes"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.customLabels"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.customLabels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.directionSensitive"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.directionSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.featureScaling</span></code></a></li>
@@ -3123,6 +3276,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.predictionThreshold"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.predictionThreshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.relationPairs"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.relationPairs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.relationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.relationPairsCaseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.scopeWindow"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.scopeWindow</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.skipLPInputColsValidation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.clear"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.copy"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.copy()</span></code></a></li>
@@ -3148,6 +3302,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.save"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.set"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setCustomLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDirectionSensitive"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setDirectionSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setFeatureScaling()</span></code></a></li>
@@ -3164,6 +3319,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setRelationPairs"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setRelationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setRelationPairsCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.setScopeWindow"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.setScopeWindow()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.transform"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel.write"><code class="docutils literal notranslate"><span class="pre">PosologyREModel.write()</span></code></a></li>
 </ul>
@@ -3171,6 +3327,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.batchSize</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.customLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.customLabels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.directionSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.directionSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.dropout"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.dropout</span></code></a></li>
@@ -3199,6 +3356,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.overrideExistingLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.overrideExistingLabels</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.pretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.pretrainedModelPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.relationDirectionCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.relationDirectionCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.scopeWindow"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.scopeWindow</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.skipLPInputColsValidation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.toEntityBeginCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.toEntityBeginCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.toEntityEndCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.toEntityEndCol</span></code></a></li>
@@ -3229,6 +3387,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.set"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setBatchSize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setCustomLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDirectionSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setDirectionSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setDropout()</span></code></a></li>
@@ -3250,6 +3409,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setPretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setPretrainedModelPath()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setRelationDirectionCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setRelationDirectionCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setScopeWindow"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setScopeWindow()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setToEntity"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setToEntity()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setValidationSplit"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setValidationSplit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setverrideExistingLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setОverrideExistingLabels()</span></code></a></li>
@@ -3259,6 +3419,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.classes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.customLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.customLabels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.datasetInfo"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.directionSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.directionSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.featureScaling</span></code></a></li>
@@ -3276,6 +3437,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.predictionThreshold"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.predictionThreshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.relationPairs"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.relationPairs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.relationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.relationPairsCaseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.scopeWindow"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.scopeWindow</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.skipLPInputColsValidation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.clear"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.copy"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.copy()</span></code></a></li>
@@ -3301,6 +3463,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.save"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.set"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setCustomLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setDatasetInfo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDirectionSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setDirectionSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setFeatureScaling()</span></code></a></li>
@@ -3317,6 +3480,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairs"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationPairsCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setScopeWindow"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setScopeWindow()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.transform"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.write"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.write()</span></code></a></li>
 </ul>
@@ -3341,8 +3505,8 @@ Increasing this value will increase recall, but also increase the number of fals
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -3350,6 +3514,7 @@ Increasing this value will increase recall, but also increase the number of fals
     <div class="footer-items__start">
       
         <div class="footer-item">
+
   <p class="copyright">
     
       © Copyright 2022, John Snow Labs.
@@ -3359,8 +3524,9 @@ Increasing this value will increase recall, but also increase the number of fals
 </div>
       
         <div class="footer-item">
+
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     <br/>
   </p>
 </div>
@@ -3368,10 +3534,12 @@ Increasing this value will increase recall, but also increase the number of fals
     </div>
   
   
+  
     <div class="footer-items__end">
       
-        <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
 </p></div>
       
     </div>

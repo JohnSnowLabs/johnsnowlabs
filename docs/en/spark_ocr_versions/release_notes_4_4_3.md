@@ -19,6 +19,8 @@ Release date: 33-06-2023
 
 We are glad to announce that Visual NLP 😎 4.4.3 has been released. 
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 
 In line with our unwavering dedication to delivering top-notch products, Visual NLP is backed by our steadfast commitment to quality and stability. We have meticulously addressed various issues and introduced enhancements to ensure a seamless user experience. By diligently resolving bugs, improving error handling, and expanding functionality, we prioritize the reliability and robustness of Visual NLP.

@@ -92,7 +92,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT_ES/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.2.Clinical_Deidentification_in_Spanish.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb
         - title: Detect PHI for Deidentification in Spanish
           id: detect_phi_deidentification_spanish    
           image: 
@@ -104,7 +104,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_DEID_ES/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.2.Clinical_Deidentification_in_Spanish.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb
         - title: Detection of disease mentions in Spanish tweets 
           id: detection_disease_mentions_spanish_tweets       
           image: 

@@ -13,7 +13,7 @@ sidebar:
 
 ## Utilities for Testing Models & Modelshub Code Snippets
 
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 You can use the John Snow Labs library to automatically test 10000+ models and 100+ Notebooks in 1 line of code within
 a small machine like a **single Google Colab Instance** and generate very handy error reports of potentially broken Models, Notebooks or Models hub Markdown Snippets.
@@ -27,6 +27,7 @@ You can test the following things with the `test_markdown()` function :
 
 Test-Report Pandas Dataframe has the columns:
 
+{:.table-model-big}
 | Report Column | Description                                                   | 
 |---------------|---------------------------------------------------------------|
 | `test_script` | is the generated script for testing                           |
@@ -35,11 +36,7 @@ Test-Report Pandas Dataframe has the columns:
 | `success`     | True if script ran successfully from top to bottom            |
 | `notebook`    | The Source notebook for testing                               |
 
-
-
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ### Test a Local Models Hub Markdown Snippet
 
@@ -48,6 +45,8 @@ from johnsnowlabs.utils.modelhub_markdown import test_markdown
 test_markdown('path/to/my/file.md')
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Test a Remote Models Hub Markdown Snippet
 
 ```python
@@ -55,12 +54,16 @@ from johnsnowlabs.utils.modelhub_markdown import test_markdown
 test_markdown('https://nlp.johnsnowlabs.com/2022/08/31/legpipe_deid_en.html')
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Test a Folder with Models Hub Markdown Snippets
 This will scan the folder for all files ending with `.md` , test them and generate a report
 ```python
 from johnsnowlabs.utils.modelhub_markdown import test_markdown
 test_markdown('my/markdown/folder')
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Test a List of Markdown References
 Can be mixed with Urls and paths, will generate a report
@@ -71,12 +74,7 @@ md_to_test = ['legpipe_deid_en.html',
 test_markdown(md_to_test)
 ```
 
-
-</div>
-
-
-
-<div class="main-docs" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Utilities for Testing Notebooks
 
@@ -94,10 +92,9 @@ You can test the following things with the `test_ipynb()` function :
 - A sub-folder of the [John Snow Labs Workshop Certification Folder](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings) , i.e. only OCR or only Legal. Generates a Report
 
 
-
-
 The generated Test-Report Pandas Dataframe has the columns:
 
+{:.table-model-big.db}
 | Report Column | Description                                                                                                                         | 
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `test_script` | is the generated script for testing. If you think the notebook should not crash, check the file, there could be a generation error. |
@@ -106,11 +103,7 @@ The generated Test-Report Pandas Dataframe has the columns:
 | `success`     | True if script ran successfully from top to bottom                                                                                  |
 | `notebook`    | The Source notebook for testing                                                                                                     |
 
-
-
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ### Test a Local Notebook
 
@@ -119,12 +112,16 @@ from johnsnowlabs.utils.notebooks import test_ipynb
 test_ipynb('path/to/local/notebook.ipynb')
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Test a Remote Notebook
 
 ```python
 from johnsnowlabs.utils.notebooks import test_ipynb
 test_ipynb('https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/tutorials/Certification_Trainings/Healthcare/5.Spark_OCR.ipynb',)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Test a Folder with Notebooks
 This will scan the folder for all files ending with `.ipynb` , test them and generate a report
@@ -133,7 +130,7 @@ from johnsnowlabs.utils.notebooks import test_ipynb
 test_ipynb('my/notebook/folder')
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ### Test a List of Notebook References
 Can be mixed with Urls and paths, will generate a report
@@ -145,6 +142,7 @@ nb_to_test = [
 test_ipynb(nb_to_test)
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Run All Certification Notebooks
 Will generate a report
@@ -153,8 +151,7 @@ from johnsnowlabs.utils.notebooks import test_ipynb
 test_result = test_ipynb('WORKSHOP')
 ```
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ### Run Finance Certification Notebooks only
 Will generate a report
@@ -163,12 +160,16 @@ from johnsnowlabs.utils.notebooks import test_ipynb
 test_result = test_ipynb('WORKSHOP-FIN')
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Run Legal notebooks only
 Will generate a report
 ```python
 from johnsnowlabs.utils.notebooks import test_ipynb
 test_result = test_ipynb('WORKSHOP-LEG')
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Run Medical notebooks only
 Will generate a report
@@ -177,6 +178,8 @@ from johnsnowlabs.utils.notebooks import test_ipynb
 test_result = test_ipynb('WORKSHOP-MED')
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Run Open Source notebooks only
 Will generate a report
 ```python
@@ -184,6 +187,4 @@ from johnsnowlabs.utils.notebooks import test_ipynb
 test_result = test_ipynb('WORKSHOP-OS')
 ```
 
-
-
-</div>
+</div></div>

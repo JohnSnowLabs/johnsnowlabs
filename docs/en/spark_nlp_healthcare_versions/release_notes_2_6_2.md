@@ -19,6 +19,8 @@ sidebar:
 We are very happy to announce that version 2.6.2 of Spark NLP Enterprise is ready to be installed and used.
 We are making available Named Entity Recognition, Sentence Classification and Entity Resolution models to analyze Adverse Drug Events in natural language text from clinical domains.
 
+</div><div class="h3-box" markdown="1">
+
 #### Models
 
 ##### NERs
@@ -35,6 +37,8 @@ More information and examples [here](https://colab.research.google.com/github/Jo
 
 We are also releasing our first clinical pretrained classifier for ADE classification tasks. This new ADE classifier is trained on various ADE datasets, including the mentions in tweets to represent the daily life conversations as well. So it works well on the texts coming from academic context, social media and clinical notes. It’s trained with `Clinical Biobert` embeddings, which is the most powerful contextual language model in the clinical domain out there.
 
+</div><div class="h3-box" markdown="1">
+
 ##### Classifiers
 ADE classifier will have two versions in the library, trained with different Bert embeddings:
 
@@ -42,6 +46,8 @@ ADE classifier will have two versions in the library, trained with different Ber
 `classifierdl_adee_clinicalbert` (768d ClinicalBert embeddings)  
 
 More information and examples [here](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb)
+
+</div><div class="h3-box" markdown="1">
 
 ##### Pipeline
 By combining ADE NER and Classifier, we are releasing a new pretrained clinical pipeline for ADE tasks to save you from building pipelines from scratch. Pretrained pipelines are already fitted using certain annotators and transformers according to various use cases and you can use them as easy as follows:
@@ -54,6 +60,7 @@ pipeline.annotate('my string')
 
 More information and examples [here](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 ##### Entity Resolver
 We are releasing the first Entity Resolver for `Athena` (Automated Terminology Harmonization, Extraction and Normalization for Analytics, [https://athena.ohdsi.org/](https://athena.ohdsi.org/)) to extract concept ids via standardized medical vocabularies. For now, it only supports `conditions` section and can be used to map the clinical conditions with the corresponding standard terminology and then get the concept ids to store them in various database schemas.
@@ -65,6 +72,8 @@ We added slim versions of several clinical NER models that are trained with 100d
 `assertion_dl_healthcare`
 `ner_posology_healthcare`
 `ner_events_healthcare`
+
+</div><div class="h3-box" markdown="1">
 
 ##### Graph Builder
 Spark NLP Licensed version has several DL based annotators (modules) such as NerDL, AssertionDL, RelationExtraction and GenericClassifier, and they are all based on Tensorflow (tf) with custom graphs. In order to make the creating and customizing the tf graphs for these models easier for our licensed users, we added a graph builder to the Python side of the library. Now you can customize your graphs and use them in the respected models while training a new DL model.

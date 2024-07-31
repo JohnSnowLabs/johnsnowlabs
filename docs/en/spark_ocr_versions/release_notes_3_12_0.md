@@ -21,6 +21,8 @@ Release date: 14-04-2022
 We're glad to announce that Spark OCR 3.12.0 has been released!
 This release comes with new models for Handwritten Text Recognition, Spark 3.2 support, bug fixes, and notebook examples.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Added to the ImageTextDetectorV2:
@@ -57,15 +59,21 @@ spark.conf.set("spark.sql.optimizer.nestedSchemaPruning.enabled", False)
 
 * Improved documentation on the website.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Models
 
 ocr_small_printed: Text recognition small model for printed text based on ImageToTextV2
 ocr_small_handwritten: Text recognition small model for handwritten text based on ImageToTextV2
 ocr_base_handwritten: Text recognition base model for handwritten text based on ImageToTextV2
 
+</div><div class="h3-box" markdown="1">
+
 #### Bug Fixes
 
 * display_table() function failing to display tables coming from digital PDFs.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

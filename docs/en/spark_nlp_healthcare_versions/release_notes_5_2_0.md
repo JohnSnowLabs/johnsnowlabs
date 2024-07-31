@@ -66,6 +66,7 @@ The classifier model has a `headless` version too to cover the use cases in whic
 
 These models offer enhanced capabilities to precisely classify clinical document text content into specific sections, aiding in structured information extraction and facilitating streamlined analysis within healthcare and clinical research domains.
 
+{:.table-model-big}
 | Model Name           |            Predicted Classes              |
 |----------------------|-------------------------------------------|
 | [`bert_sequence_classifier_clinical_sections`](https://nlp.johnsnowlabs.com/2023/12/21/bert_sequence_classifier_clinical_sections_en.html) | `Complications and Risk Factors`, `Consultation and Referral`, `Diagnostic and Laboratory Data`, `Discharge Information`, `Habits`, `History`, `Patient Information`, `Procedures`, `Impression`, `Other` |
@@ -93,6 +94,7 @@ PROCEDURES: Aortic valve replacement using a mechanical valve and two-vessel cor
 
 *Result*:
 
+{:.table-model-big.db}
 |                                                                       text|                       Classes|
 |:--------------------------------------------------------------------------|:-----------------------------|
 |         Medical Specialty:\nCardiovascular / Pulmonary\n\nSample Name: Aortic Valve Replacement\n\n|                       History|
@@ -139,6 +141,7 @@ document_filterer = DocumentFiltererByClassifier()\
 
 *Results before filtering*:
 
+{:.table-model-big}
 |                                                                          splits|                       classes|
 |--------------------------------------------------------------------------------|------------------------------|
 |Medical Specialty:\nCardiovascular / Pulmonary\n\nSample Name: Aortic Valve R...|                       History|
@@ -157,6 +160,7 @@ document_filterer = DocumentFiltererByClassifier()\
 
 *Results after filtering*:
 
+{:.table-model-big}
 |                                                                          splits|                       classes|
 |--------------------------------------------------------------------------------|------------------------------|
 |DIAGNOSIS: Aortic valve stenosis with coronary artery disease associated with...|Diagnostic and Laboratory Data|
@@ -179,7 +183,7 @@ The models adeptly categorize text, assisting in identifying susceptibility to h
 
 These innovative models signify a substantial leap forward in identifying and addressing key social determinants impacting overall health and well-being.
 
-
+{:.table-model-big}
 | Model Name           |            Predicted Classes              |
 |----------------------|-------------------------------------------|
 | [`bert_sequence_classifier_sdoh_violence_abuse`](https://nlp.johnsnowlabs.com/2023/12/20/bert_sequence_classifier_sdoh_violence_abuse_en.html) | `Domestic_Violence_Abuse`, `Personal_Violence_Abuse`, `No_Violence_Abuse`, `Unknown` |
@@ -205,6 +209,7 @@ sample_texts = [
 
 *Result*:
 
+{:.table-model-big}
 |   text                |      result|
 |-----------------------|------------|
 |Repeated visits for fractures, with vague explanations suggesting potential family-related trauma.  | Domestic_Violence_Abuse |
@@ -271,6 +276,7 @@ PROCEDURES: Aortic valve replacement using a mechanical valve and two-vessel cor
 
 *Result*:
 
+{:.table-model-big}
 |metadata                                 | result       |
 |:----------------------------------------|:-------------|
 | {id -> 0, sentence -> 0, document -> 0} |Description: Aortic valve replacement using a mechanical valve and two-vessel coronary artery byp...|
@@ -323,8 +329,6 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

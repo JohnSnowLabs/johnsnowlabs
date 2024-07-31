@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-AraBert v2 model, trained in house, using the dataset available [here](https://ontology.birzeit.edu/Wojood/) and augmenting with financial and legal information.
+AraBert v2 model, trained in house, using the dataset available [here](https://sina.birzeit.edu/wojood/) and augmenting with financial and legal information.
 
 The entities you can find in this model are:
 

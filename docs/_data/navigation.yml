@@ -78,7 +78,9 @@ healthcare-gpt:
       - title: Features
         url: /docs/en/chatbot/features
       - title: Tools
-        url: /docs/en/chatbot/tools        
+        url: /docs/en/chatbot/tools       
+      - title: DocQA
+        url: /docs/en/chatbot/docqa          
       - title: User Guide
         url: /docs/en/chatbot/usage_guides
       - title: Support
@@ -167,6 +169,8 @@ annotation-lab:
             url: /docs/en/alab/transfer_learning
           - title: Test Project Configuration
             url: /docs/en/alab/test_project_configuration
+          - title: LangTest
+            url: /docs/en/alab/langtest
       - subtitle: Administration
         children:
           - title: User Management
@@ -201,7 +205,9 @@ sparknlp-healthcare:
     children:
       - title: Getting Started
         url: /docs/en/license_getting_started
-      - title: Installation
+  - title: Healthcare NLP
+    children:
+      - title: Installation 
         url: /docs/en/licensed_install
       - title: Annotators
         url: /docs/en/licensed_annotators
@@ -223,13 +229,11 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Wiki
         url: /docs/en/wiki
-      - title: Speed Benchmarks
+      - title: Benchmarks
         url: /docs/en/benchmark      
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
-  - title: Healthcare NLP
-    children:
-      - title: Release Notes
+      - title: Release Notes 
         url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
       - title: Healthcare Models
         url: /models?edition=Spark+NLP+for+Healthcare
@@ -253,6 +257,8 @@ sparknlp-healthcare:
         url: /docs/en/ocr_object_detection
       - title: Structures and helpers
         url: /docs/en/ocr_structures
+      - title: Speed benchmarks
+        url: /docs/en/ocr_benchmark
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
   - title: Finance NLP

@@ -17,6 +17,10 @@ Parameters:
 
 - `relationPairsCaseSensitive` *(Boolean)*: Determines whether relation pairs are case sensitive.
 
+- `directionSensitive` *(Boolean)*: Specify direction sensitivity in processing relation pairs Default is 'False'.
+
+- `filterByTokenDistance` *(Int)*: Filtering criterion based on number of token between entities (Default: 0)
+
 For example, the [ner_clinical](https://nlp.johnsnowlabs.com/2021/03/31/ner_clinical_en.html) NER model can identify `PROBLEM`, `TEST`, and `TREATMENT` entities. By using the `RENerChunksFilter`, one can filter only the relations between `PROBLEM` and `TREATMENT`  entities only, removing any relation between the other entities, to further analyze the  associations between clinical problems and treatments.
 
 {%- endcapture -%}
@@ -579,7 +583,7 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[RENerChunksFilter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RENerChunksFilter.ipynb)
+[RENerChunksFilter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RENerChunksFilter.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

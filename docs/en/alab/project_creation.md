@@ -34,13 +34,13 @@ To open the project creation wizard click on the `+ New Project` button on the `
 - instructions for annotators or Annotation Guidelines which will help annotators and reviewers generate high quality annotations.  
 
 
-![Description](https://user-images.githubusercontent.com/46840490/193200891-d2098f36-c300-4693-924d-168801ae5acd.png)
+![Project Description](https://user-images.githubusercontent.com/46840490/193200891-d2098f36-c300-4693-924d-168801ae5acd.png "lit_shadow")
 
 
 > **NOTE:** Reserved words cannot be used as project names. The use of keywords like count, permission, or name as project names generated UI glitches. To avoid such issues, these keywords are no longer accepted as project names.
 
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/reserved.gif" style="width:100%;"/>
+![Project Description](/assets/images/annotation_lab/4.1.0/reserved.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -58,7 +58,7 @@ When defining the project team, a project owner has access to three distinct rol
 
 To add a user to your project team, select your Project, then from the left side menu access the `Setup` option and then the `Team` option. On the `Add Team Member` page that opens, start typing the name of a user in the available text box. This will populate a list of available users having the username start with the characters you typed. From the dropdown select the user you want to add to your team. Select a role for the user and click on the `Add to team` button.
 
-![teamMembers](https://user-images.githubusercontent.com/46840490/193060010-3394cccd-93ab-40a8-8479-98155ea8b417.gif)
+![teamMembers](https://user-images.githubusercontent.com/46840490/193060010-3394cccd-93ab-40a8-8479-98155ea8b417.gif "lit_shadow")
 
 In the `Add Team Member` page users can add/remove/update the team members even in the case of a large number of members. The team members are displayed in a tabular view. Each member has a **priority** assigned to them for CONLL export which can be changed by dragging users across the list. 
 
@@ -70,14 +70,14 @@ In the `Add Team Member` page users can add/remove/update the team members even 
 
 The Project Configuration itself is a multi-step process. The wizard will guide users through each step while providing useful information and hints for all available options.
 
-![projectConfiguration](https://user-images.githubusercontent.com/46840490/193033349-534cc2ab-2e5a-4caa-a050-0ee650949b21.gif)
+![projectConfiguration](https://user-images.githubusercontent.com/46840490/193033349-534cc2ab-2e5a-4caa-a050-0ee650949b21.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ## Clone
 You can create a copy of a project, by using the Clone option. The option to clone the project is also listed in the kebab menu of each project. The cloned project is differentiated as it contains cloned suffix in its project name.
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/dashboardCloneImportExport.png" style="width:100%;"/>
+![Clone](/assets/images/annotation_lab/4.1.0/dashboardCloneImportExport.png "lit_shadow")
   
 </div><div class="h3-box" markdown="1">
 
@@ -101,10 +101,10 @@ As the number of projects can grow significantly over time, for an easier manage
 
 The list of visible projects can be filtered based on group name, or using the search functionality which applies to both group name and project name. 
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/dashboardGroup.png" style="width:100%;"/>
+![Project Grouping](/assets/images/annotation_lab/4.1.0/dashboardGroup.png "lit_shadow")
 
 Projects can be organized in custom groups, and each project card will inherit the group color so that the users can visually distinguish the projects easily in a large cluster of projects. The new color picker for the group is user-friendly and customizable.
 
-![DashboardGroupGIF](https://user-images.githubusercontent.com/46840490/193201637-57a7e7b6-9d25-48b4-9196-e6bed61fa2ad.gif)
+![DashboardGroupGIF](https://user-images.githubusercontent.com/46840490/193201637-57a7e7b6-9d25-48b4-9196-e6bed61fa2ad.gif "lit_shadow")
 
 </div></div>

@@ -35,13 +35,43 @@ th {
 [AirGap Environment](#airgap-environment){:.button.button-blue}
 [OpenShift](#openshift){:.button.button-blue}
 
-</div><div class="h3-box" markdown="1">
+
+## Recommended Configurations
+
+<table class="table2">
+  <tr>
+    <th>System requirements</th>
+    <td>You can install Generative AI Lab on a Ubuntu 20+ machine.</td>
+  </tr>
+  <tr>
+    <th>Port requirements</th>
+    <td>Generative AI Lab expects ports <bl>443</bl> and <bl>80</bl> to be open by default.</td>
+  </tr>
+  <tr>
+    <th>Server requirements</th>
+    <td>The minimal required configuration is <bl>32GB RAM, 8 Core CPU, 512 Storage (Root directory requires 80 gb free space for k3s installation)</bl>.<br /><br />
+
+    The ideal configuration in case model training and preannotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 512 SSD</bl>.
+    </td>
+
+  </tr>
+  <tr>
+    <th>Web browser support</th>
+    <td>Generative AI Lab is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
+      <ul>
+      <li>Google Chrome</li>
+      <li>Apple Safari</li>
+      <li>Mozilla Firefox</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+</div>
 
 ## Dedicated Server
 
 Install Generative AI Lab (NLP Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
 
-</div><div class="h3-box" markdown="1">
 
 ### Fresh install
 
@@ -59,7 +89,6 @@ For installing the latest available version of the Generative AI Lab use:
 wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s --
 ```
 
-</div><div class="h3-box" markdown="1">
 
 **Fresh GPU installation**
 
@@ -94,7 +123,6 @@ After running the install/upgrade script, the Generative AI Lab is available at 
 
 We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of Generative AI Lab using animated GIFs.
 
-</div><div class="h3-box" markdown="1">
 
 ## AWS Marketplace
 
@@ -112,7 +140,6 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
-</div><div class="h3-box" markdown="1">
 
 ## Secure access to Generative AI Lab on AWS
 
@@ -194,16 +221,35 @@ Once created, go do the Outputs tab and click on the Generative AI Lab URL. You 
 
 Now, to access the Generative AI Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier. 
 
-</div><div class="h3-box" markdown="1">
 
 ## Azure Marketplace
 
-Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview) and follow the instructions on the video below to subscribe and deploy.
+Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview) and follow these steps. Generative AI Lab offers a one-click deployment within your security perimeter using Azure Kubernetes Service (AKS), a fully managed Kubernetes solution that simplifies the deployment, management, and scaling of containerized applications.
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='e6aB3z5tB0k' -%}<div class="video-descr">Deploy Generative AI Lab via Azure Marketplace</div></div></div>
+1. Click on the "Get It Now" link.
 
-</div><div class="h3-box" markdown="1">
+	![azure](/assets/images/annotation_lab/aws/getitnow.png)
 
+2. Select your subscription and the region where you want to deploy the cluster, then click "Next."
+
+	![azure](/assets/images/annotation_lab/aws/resourceGroup.png)
+
+3. Choose the appropriate VM size and enable auto-scaling if you want nodes to be added automatically when needed. Then click "Next."
+
+	![azure](/assets/images/annotation_lab/aws/clustersize.png)
+
+4. Provide the password (this will be used to access the Generative AI Lab UI with the admin user), then click "Next."
+
+	![azure](/assets/images/annotation_lab/aws/pass.png)
+
+5. Review the configuration and then click "Create."
+
+	![azure](/assets/images/annotation_lab/aws/create.png)
+	
+6. Visit the login page at http://External_IP for a guided experience. For your initial login, use the following credentials: Username: admin, Password: the password set in step 4.
+
+**Note:** You can find the External_IP under Kubernetes resources by navigating to Services and ingresses and locating the addon-http-application-routing-nginx-ingress service name.
+ 
 ## EKS deployment
 
 1. Create NodeGroup for a given cluster
@@ -397,7 +443,6 @@ Edit annotationlab-installer.sh inside artifact folder as follows:
    kubectl apply -f ingress.yaml
    ```
 
-</div><div class="h3-box" markdown="1">
 
 ## AKS deployment
 
@@ -424,124 +469,62 @@ To deploy Generative AI Lab on Azure Kubernetes Service (AKS) a Kubernetes clust
 7. On the newly created resource page, click on `Connect` button. You will be shown a list of commands to run on the `Cloud Shell` or `Azure CLI` to connect to this resource. We will execute them successively in the following steps.
 
 8. Run the following commands to connect to Azure Kubernetes Service.
-
-   ```sh
-   az account set --subscription <subscription-id>
-   ```
+    ```sh
+    az account set --subscription <subscription-id>
+    ```
 
    > **NOTE:** Replace <subscription-id> with your account's subscription id.
 
-   ```sh
-   az aks get-credentials --resource-group <resource-group-name> --name <cluster-name>
-   ```
-
-   > **NOTE:** Replace <resource-group-name> and <cluster-name> with what you selected in Step 3.
-
-9. Check to see if `azurefile` or `azuredisk` storage class is present by running the following command:
-
-   ```sh
-   kubectl get storageclass
-   ```
-
-   Later in the helm script we need to update the value of `sharedData.storageClass` with the respective storage class.
-
-10. Go to the `artifact` directory and from there edit the `annotationlab-installer.sh` script.
 
     ```sh
-    helm install annotationlab annotationlab-${ANNOTATIONLAB_VERSION}.tgz                                 \
-        --set image.tag=${ANNOTATIONLAB_VERSION}                                                          \
-        --set model_server.count=1                                                                        \
-        --set ingress.enabled=true                                                                        \
-        --set networkPolicy.enabled=true                                                                  \
-        --set networkPolicy.enabled=true --set extraNetworkPolicies='- namespaceSelector:
-        matchLabels:
-          kubernetes.io/metadata.name: kube-system
-      podSelector:
-        matchLabels:
-          app.kubernetes.io/name: traefik
-          app.kubernetes.io/instance: traefik'                                                            \
-        --set keycloak.postgresql.networkPolicy.enabled=true                                              \
-        --set sharedData.storageClass=azurefile                                                           \
-        --set airflow.postgresql.networkPolicy.enabled=true                                               \
-        --set postgresql.networkPolicy.enabled=true                                                       \
-        --set airflow.networkPolicies.enabled=true                                                        \
-        --set ingress.defaultBackend=true                                                                 \
-        --set ingress.uploadLimitInMegabytes=16                                                           \
-        --set 'ingress.hosts[0].host=domain.tld'                                                          \
-        --set airflow.model_server.count=1                                                                \
-        --set airflow.redis.password=$(bash -c "echo ${password_gen_string}")                             \
-        --set configuration.FLASK_SECRET_KEY=$(bash -c "echo ${password_gen_string}")                     \
-        --set configuration.KEYCLOAK_CLIENT_SECRET_KEY=$(bash -c "echo ${uuid_gen_string}")               \
-        --set postgresql.postgresqlPassword=$(bash -c "echo ${password_gen_string}")                      \
-        --set keycloak.postgresql.postgresqlPassword=$(bash -c "echo ${password_gen_string}")             \
-        --set keycloak.secrets.admincreds.stringData.user=admin                                           \
-        --set keycloak.secrets.admincreds.stringData.password=$(bash -c "echo ${password_gen_string}")
+    az aks get-credentials --resource-group <resource-group-name> --name <cluster-name>
+    ```
+    > **NOTE:** Replace <resource-group-name> and <cluster-name> with what you selected in Step 3.
+
+9. Go to the artifact directory and from there edit the annotationlab-installer.sh script.
+	
+    Comment or delete the following lines:
+
+    ```console
+    IMAGES="${ANNOTATIONLAB_VERSION} active-learning-${ANNOTATIONLAB_VERSION} dataflows-${ANNOTATIONLAB_VERSION} auth-theme-${ANNOTATIONLAB_VERSION} backup-${ANNOTATIONLAB_VERSION}" for image in $IMAGES; 
+    do crictl pull johnsnowlabs/annotationlab:${image};
+    done
+    ```
+    Replace “helm install” command:
+    
+    ```console
+  	helm install annotationlab annotationlab-${ANNOTATIONLAB_VERSION}.tgz \
+  	--set image.tag=${ANNOTATIONLAB_VERSION} \
+  	--set ingress.enabled=true \
+  	--set networkPolicy.enabled=true \
+  	--set keycloak.postgresql.networkPolicy.enabled=true \
+  	--set sharedData.storageClass=azurefile \
+  	--set airflow.postgresql.networkPolicy.enabled=true \
+  	--set postgresql.networkPolicy.enabled=true \
+  	--set airflow.networkPolicies.enabled=true \
+  	--set ingress.defaultBackend=true \
+  	--set ingress.uploadLimitInMegabytes=16 \
+  	--set airflow.redis.password=$(bash -c "echo ${password_gen_string}") \
+  	--set configuration.FLASK_SECRET_KEY=$(bash -c "echo ${password_gen_string}") \
+  	--set configuration.KEYCLOAK_CLIENT_SECRET_KEY=$(bash -c "echo ${uuid_gen_string}") \
+  	--set postgresql.postgresqlPassword=$(bash -c "echo ${password_gen_string}") \
+  	--set keycloak.postgresql.postgresqlPassword=$(bash -c "echo ${password_gen_string}") \
+  	--set keycloak.secrets.admincreds.stringData.user=admin \
+  	--set keycloak.secrets.admincreds.stringData.password=$(bash -c "echo ${password_gen_string}")
     ```
 
-11. Execute the `annotationlab-installer.sh` script to run the Generative AI Lab installation.
-
+10. Execute the annotationlab-installer.sh script to run the Generative AI Lab installation.
+	
     ```sh
     ./annotationlab-installer.sh
     ```
 
-12. Verify if the installation was successful.
+11. Verify if the installation was successful (all pods should be in Running state).
 
     ```sh
     kubectl get pods
     ```
 
-13. Install ingress controller. This will be required for load-balancing purpose.
-
-    ```
-    helm repo add nginx-stable https://helm.nginx.com/stable
-    helm repo update
-    helm install my-release nginx-stable/nginx-ingress
-    ```
-
-14. Create a YAML configuration file named `ingress.yaml` with the following configuration
-
-    ```sh
-    apiVersion: networking.k8s.io/v1
-    kind: Ingress
-    metadata:
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        meta.helm.sh/release-name: annotationlab
-        meta.helm.sh/release-namespace: default
-      name: annotationlab
-    spec:
-      defaultBackend:
-        service:
-          name: annotationlab
-          port:
-            name: http
-      rules:
-      - host: domain.tld
-        http:
-          paths:
-          - backend:
-              service:
-                  name: annotationlab
-                  port:
-                    name: http
-            path: /
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                  name: annotationlab-keyclo-http
-                  port:
-                    name: http
-            path: /auth
-            pathType: ImplementationSpecific
-    ```
-
-15. Apply the `ingress.yaml` by running the following command
-
-    ```sh
-    kubectl apply -f ingress.yaml
-    ```
-
-</div><div class="h3-box" markdown="1">
 
 ## AirGap Environment
 
@@ -562,7 +545,6 @@ cd artifacts
 
 Replace `$VERSION` with the version you want to download and install.
 
-</div><div class="h3-box" markdown="1">
 
 ### Fresh Install
 
@@ -573,7 +555,6 @@ $ sudo su
 $ ./annotationlab-installer.sh
 ```
 
-</div><div class="h3-box" markdown="1">
 
 ### Upgrade
 
@@ -584,13 +565,11 @@ $ sudo su
 $ ./annotationlab-updater.sh
 ```
 
-</div><div class="h3-box" markdown="1">
 
 ## OpenShift
 
 Generative AI Lab can also be installed using the operator framework on an OpenShift cluster. The Generative AI Lab operator can be found under the <bl>OperatorHub</bl>.
 
-</div><div class="h3-box" markdown="1">
 
 ### Find and select
 
@@ -598,7 +577,6 @@ The <bl>OperatorHub</bl> has a large list of operators that can be installed int
 
 ![Select Operator](/assets/images/annotation_lab/Select-Operator.png)
 
-</div><div class="h3-box" markdown="1">
 
 ### Install
 
@@ -612,7 +590,6 @@ Click on the `Install` button located on the top-left corner of this panel to st
 
 After successful installation of the Generative AI Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.
 
-</div><div class="h3-box" markdown="1">
 
 ### Create Instance
 
@@ -634,7 +611,6 @@ Update the `host` property in the YAML configuration to define the required doma
 
 Click on `Create` button once you have made all the necessary changes. This will also set up all the necessary resources to run the instance in addition to standing up the services themselves.
 
-</div><div class="h3-box" markdown="1">
 
 ### View Resources
 
@@ -644,7 +620,6 @@ After the instance is successfully created we can visit its page to view all the
 
 Now, we can access the Generative AI Lab from the provided domain name or also from the location defined for this service under the `Networking > Routes` page
 
-</div><div class="h3-box" markdown="1">
 
 ## Work over proxy
 
@@ -660,7 +635,6 @@ _cachain.pem_ must include a certificate in the following format:
 -----END CERTIFICATE-----
 ```
 
-</div><div class="h3-box" markdown="1">
 
 **Proxy env variables**
 
@@ -672,36 +646,4 @@ You can provide a proxy to use for external communications. To do that add
 
 commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` files.
 
-</div><div class="h3-box" markdown="1">
 
-## Recommended Configurations
-
-<table class="table2">
-  <tr>
-    <th>System requirements</th>
-    <td>You can install Generative AI Lab on a Ubuntu 20+ machine.</td>
-  </tr>
-  <tr>
-    <th>Port requirements</th>
-    <td>Generative AI Lab expects ports <bl>443</bl> and <bl>80</bl> to be open by default.</td>
-  </tr>
-  <tr>
-    <th>Server requirements</th>
-    <td>The minimal required configuration is <bl>32GB RAM, 8 Core CPU, 512 SSD</bl>.<br /><br />
-
-    The ideal configuration in case model training and preannotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 512 SSD</bl>.
-    </td>
-
-  </tr>
-  <tr>
-    <th>Web browser support</th>
-    <td>Generative AI Lab is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
-      <ul>
-      <li>Google Chrome</li>
-      <li>Apple Safari</li>
-      <li>Mozilla Firefox</li>
-      </ul>
-    </td>
-  </tr>
-</table>
-</div>
