@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Spark NLP release notes 3.2.0</title><meta property="og:title" content="Spark NLP"/>
+<!-- End Google Tag Manager --><title>Spark OCR release notes</title><meta property="og:title" content="Spark OCR | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_2_0"> -->
-<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_2_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_0"> -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark NLP</li><li class="toc-h2"><a href="/docs/en/quickstart">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/install">Install Spark NLP</a></li><li class="toc-h2"><a href="/docs/en/concepts">General Concepts</a></li><li class="toc-h2"><a href="/docs/en/annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/transformers">Transformers</a></li><li class="toc-h2"><a href="/docs/en/training">Training</a></li><li class="toc-h2"><a href="/docs/en/display">Spark NLP Display</a></li><li class="toc-h2"><a href="/docs/en/mlflow">Experiment Tracking</a></li><li class="toc-h2"><a href="/docs/en/serving_spark_nlp_via_api_databricks_mlflow">Serving Spark NLP&#58 MLFlow on Databricks</a></li><li class="toc-h2"><a href="/docs/en/hardware_acceleration">Hardware Acceleration</a></li><li class="toc-h2"><a href="/docs/en/CPUvsGPUbenchmark">GPU vs CPU Training</a></li><li class="toc-h2"><a href="/docs/en/auxiliary">Helpers</a></li><li class="toc-h2"><a href="/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/api/python/">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/developers">Developers</a></li><li class="toc-h2"><a href="/docs/en/third-party-projects">Third Party Projects</a></li><li class="toc-h2"><a href="/docs/en/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">All Enterprise libraries</li><li class="toc-h2"><a href="/docs/en/license_getting_started">Getting Started</a></li><li class="toc-h1">Healthcare NLP</li><li class="toc-h2"><a href="/docs/en/licensed_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/licensed_annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/licensed_training">Training</a></li><li class="toc-h2"><a href="/docs/en/evaluation">Evaluation</a></li><li class="toc-h2"><a href="/docs/en/healthcare_risk_adjustments_score_calculation">Risk Adjustments Score Calculation</a></li><li class="toc-h2"><a href="/docs/en/utility_helper_modules">Utility & Helper Modules</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_synapseml">Serving Spark NLP&#58 SynapseML</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_fastapi">Serving Spark NLP&#58 FastAPI</a></li><li class="toc-h2"><a href="/licensed/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/licensed/api/python">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/wiki">Wiki</a></li><li class="toc-h2"><a href="/docs/en/benchmark">Benchmarks</a></li><li class="toc-h2"><a href="/docs/en/best_practices_pretrained_models">Best Practices Using Pretrained Models Together</a></li><li class="toc-h2"><a href="/docs/en/spark_nlp_healthcare_versions/licensed_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Healthcare">Healthcare Models</a></li><li class="toc-h2"><a href="/docs/en/licensed_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Visual NLP</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2"><a href="/docs/en/ocr_benchmark">Speed benchmarks</a></li><li class="toc-h2"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li><li class="toc-h1">Finance NLP</li><li class="toc-h2"><a href="/docs/en/financial_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Finance">Financial Models</a></li><li class="toc-h2"><a href="/docs/en/financial_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Legal NLP</li><li class="toc-h2"><a href="/docs/en/legal_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Legal">Legal Models</a></li><li class="toc-h2"><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -610,70 +610,171 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Spark NLP release notes 3.2.0</li>
+    <li>Spark OCR release notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Spark NLP release notes 3.2.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_3_2_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP release notes 3.2.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_5_4_0.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.2.0</h2>
+  <h2 id="section">5.4.0</h2>
 
-  <p>Release date: 28-05-2021</p>
+  <p>Release date: 15-07-2024</p>
 
-  <h4 id="overview">Overview</h4>
+  <h2 id="visual-nlp-540-release-notes-">Visual NLP 5.4.0 Release Notes 🕶️</h2>
 
-  <p>Multi-modal visual document understanding, built on the LayoutLM architecture.
-It achieves new state-of-the-art accuracy in several downstream tasks,
-including form understanding and receipt understanding.</p>
+  <p><strong>we’re glad to announce that Visual NLP 5.4.0 has been released. New transformers, notebooks, metrics, bug fixes and more!!! 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-features">New Features</h4>
+  <h2 id="highlights-">Highlights 🔴</h2>
 
   <ul>
-    <li><a href="/docs/en/ocr_pipeline_components#visualdocumentner">VisualDocumentNER</a> is a DL model for NER problem using text and layout data.
-Currently available pre-trained model on the SROIE dataset.</li>
+    <li>Improvements in Table Processing.</li>
+    <li>Dicom Transformers access to S3 directly.</li>
+    <li>New Options for ImageToPdf transformer.</li>
+    <li>Support for rotated text regions in ImageToTextV2.</li>
+    <li>New Pdf-To-Pdf Pretrained Pipeline for De-Identification.</li>
+    <li>ImageToTextV3 support for HOCR output.</li>
+    <li>Performance Metrics for De-identification Pipelines.</li>
+    <li>Other Changes.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="enhancements">Enhancements</h4>
+  <h3 id="improvements-in-table-processing">Improvements in Table Processing</h3>
+  <p>New RegionsMerger component for merging Text Regions and Cell Regions to improve accuracy in Table Extraction Pipelines:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>PretrainedPipeline</th>
+        <th>Score Improvement(*)</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>table_extractor_image_to_text_v2</td>
+        <td>0.34 to 0.5</td>
+        <td>Internally it uses ImageToTextV2(case insensitive)</td>
+      </tr>
+      <tr>
+        <td>table_extractor_image_to_text_v1</td>
+        <td>0.711 to 0.728</td>
+        <td>Internally it uses ImageToText(case sensitive)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>(*) This is the cell adjacency Table Extraction metric as defined by ICDAR Table Extraction Challenge.
+The improvements are measured against previous release of Visual NLP.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="dicom-transformers-access-to-s3-directly">Dicom Transformers access to S3 directly</h3>
+  <p>Now Dicom Transformers can access S3 directly from executors instead of reading through the Spark Dataframe. This is particularly advantageous in the situation where we only care about the metadata of each file because we don’t need to load the entire file into memory, also,</p>
+  <ul>
+    <li>It reduces memory usage and allows processing of files larger than 2 GB (a limitation of Spark).</li>
+    <li>It improves performance when computing statistics over large DICOM datasets.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+  <p>\</p>
+
+  <h3 id="new-options-for-imagetopdf-transformer">New Options for ImageToPdf transformer.</h3>
+  <p>New options have been added to ImageToPdf. ImageToPdf is the transformer we use to create PDFs from images, we use it for example when we de-identify PDFs and we want to write back to the PDF to obtain a redacted version of the PDF.
+The new options are intended to control the size of the resulting PDF document by controlling the resolution and compression of the images that are included in the PDF,</p>
 
   <ul>
-    <li>Added support <code class="language-plaintext highlighter-rouge">SPARK_OCR_LICENSE</code> env key for read license.</li>
-    <li>Update dependencies and sync Spark versions with Spark NLP.</li>
+    <li>
+      <p>compression: Compression type for images in PDF document. It can be one of <code class="language-plaintext highlighter-rouge">CompressionType.LOSSLESS</code>, <code class="language-plaintext highlighter-rouge">CompressionType.JPEG</code>.</p>
+    </li>
+    <li>
+      <p>resolution: Resolution in DPI used to render images into the PDF document. There are three sources for the resolution(in decreasing order or precedence): this parameter, the image schema in the input image, or the default value of 300DPI.</p>
+    </li>
+    <li>
+      <p>quality: Quality of images in PDF document for JPEG compression. A value that ranges between 1.0(best quality) to 0.0(best compression). Defaults to 0.75.</p>
+    </li>
+    <li>
+      <p>aggregatePages: Aggregate pages in one PDF document.</p>
+    </li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="bugfixes">Bugfixes</h4>
+  <h3 id="support-for-rotated-text-regions-in-imagetotextv2">Support for rotated text regions in ImageToTextV2</h3>
+  <p>Text regions at the input of ImageToTextV2 support rotation. Detected text regions come with an angle to represent the rotation that the detected text has in the image.
+Now, this angle is used to extract a straightened version of the region, and fed to the OCR. The resulting text is placed into the returned output text using the center of the region to decide its final location.
+See the following example,
+<img src="/assets/images/ocr/rotated_regions.png" alt="image" /></p>
 
+  <p>and the resulting(truncated) text,</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             SUBURBAN HOSPITAL
+            HEALTHCARE SYSTEM
+                               APPROVED ROTATED TEXT
+      MEDICAL RECORD
+              PATIENT INFORMATION: NAME: HOMER SIMPSON AGE: 40 YEARS
+                  GENDER: MALE WEIGHT: CLASSIFIED (BUT LET'S JUST SAY ITS IN THE "ROBUST" CATEGORY)
+     HEIGHT: 6'0"
+        BML: OFF THE CHARTS (LITERALLY)
+               OCCUPATION: SAFETY INSPECTOR AT SPRINGFIELD NUCLEAR POWER PLANT
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="new-pdf-to-pdf-pretrained-pipelines-for-de-identification">New Pdf-To-Pdf Pretrained Pipelines for De-Identification.</h3>
+  <p>New de-ideintification pipeline that consumes PDFs and produces de-identified PDFs: <code class="language-plaintext highlighter-rouge">pdf_deid_pdf_output</code>. 
+For a description of this pipeline please check its
+<a href="https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html">card on Models Hub</a>, and also this <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">notebook example</a>.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="imagetotextv3-support-for-hocr-output">ImageToTextV3 support for HOCR output</h3>
+  <p>ImageToTextV3 is an LSTM based OCR model that can consume high quality text regions to perform the text recognition. Adding HOCR support to this annotator, allows it to be placed in HOCR pipelines like Visual NER or Table Extraction. Main advantage compared to other OCR models is case sensitivity, and high recall due to the use of independent Text Detection models.
+Check an example <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionCaseSensitive.ipynb">here</a></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="performance-metrics-for-deidentification-pipelines">Performance Metrics for Deidentification Pipelines</h3>
+  <p>In order to make it easier for users to estimate runtime figures, we have published the <a href="https://nlp.johnsnowlabs.com/docs/en/ocr_benchmark">following metrics</a>. This metrics corresponds to a pipeline that performs the following actions,</p>
   <ul>
-    <li>Fixed an issue that some ImageReaderSpi plugins are unavailable in the fat jar.</li>
+    <li>Extract PDF pages as images.</li>
+    <li>Perform OCR on these Images.</li>
+    <li>Run NLP De-identification stages(embeddings, NER, etc).</li>
+    <li>Maps PHI entities to regions.</li>
+    <li>Writes PHI regions back to PDF.
+The goal is for these numbers to be used as proxies when estimating hardware requirements of new jobs.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-notebooks">New notebooks</h4>
-
+  <h3 id="other-changes--bug-fixes">Other Changes &amp; Bug Fixes</h3>
   <ul>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/3.2.0/jupyter/SparkOCRVisualDocumentNer.ipynb">Visual Document NER</a></li>
+    <li>start() functions now accepts the new <code class="language-plaintext highlighter-rouge">apple_silicon</code> parameter. apple_silicon: whether to use Apple Silicon binaries or not. Defaults to ‘False’.</li>
+    <li>Bug Fix: ImageDrawRegions removes image resolution after drawing regions.</li>
+    <li>Bug Fix: RasterFormatException in ImageToTextV2.</li>
+    <li>Bug Fix: PdfToTextTable, PptToTextTable, DocToTextTable didn’t include a <code class="language-plaintext highlighter-rouge">load()</code> method.</li>
   </ul>
 
 </div>
 <div class="prev_ver h3-box">
 
-  <h2 id="versions">Versions</h2>
+  <h2 id="previous-versions">Previous versions</h2>
 
 </div>
 <ul class="pagination">
@@ -743,7 +844,7 @@ Currently available pre-trained model on the SROIE dataset.</li>
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-01-06T00:00:00+00:00">Jan 06, 2022</time>
+      <time itemprop="dateModified" datetime="2024-07-15T00:00:00+00:00">Jul 15, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -929,7 +1030,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/release_notes">Release Notes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></div></div></div>
 
 </div>
 </div>

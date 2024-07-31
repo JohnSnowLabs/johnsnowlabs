@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Spark NLP release notes 3.2.0</title><meta property="og:title" content="Spark NLP"/>
+<!-- End Google Tag Manager --><title>Spark OCR release notes</title><meta property="og:title" content="Spark OCR | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_2_0"> -->
-<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_2_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_3_2"> -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_3_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark NLP</li><li class="toc-h2"><a href="/docs/en/quickstart">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/install">Install Spark NLP</a></li><li class="toc-h2"><a href="/docs/en/concepts">General Concepts</a></li><li class="toc-h2"><a href="/docs/en/annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/transformers">Transformers</a></li><li class="toc-h2"><a href="/docs/en/training">Training</a></li><li class="toc-h2"><a href="/docs/en/display">Spark NLP Display</a></li><li class="toc-h2"><a href="/docs/en/mlflow">Experiment Tracking</a></li><li class="toc-h2"><a href="/docs/en/serving_spark_nlp_via_api_databricks_mlflow">Serving Spark NLP&#58 MLFlow on Databricks</a></li><li class="toc-h2"><a href="/docs/en/hardware_acceleration">Hardware Acceleration</a></li><li class="toc-h2"><a href="/docs/en/CPUvsGPUbenchmark">GPU vs CPU Training</a></li><li class="toc-h2"><a href="/docs/en/auxiliary">Helpers</a></li><li class="toc-h2"><a href="/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/api/python/">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/developers">Developers</a></li><li class="toc-h2"><a href="/docs/en/third-party-projects">Third Party Projects</a></li><li class="toc-h2"><a href="/docs/en/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">All Enterprise libraries</li><li class="toc-h2"><a href="/docs/en/license_getting_started">Getting Started</a></li><li class="toc-h1">Healthcare NLP</li><li class="toc-h2"><a href="/docs/en/licensed_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/licensed_annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/licensed_training">Training</a></li><li class="toc-h2"><a href="/docs/en/evaluation">Evaluation</a></li><li class="toc-h2"><a href="/docs/en/healthcare_risk_adjustments_score_calculation">Risk Adjustments Score Calculation</a></li><li class="toc-h2"><a href="/docs/en/utility_helper_modules">Utility & Helper Modules</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_synapseml">Serving Spark NLP&#58 SynapseML</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_fastapi">Serving Spark NLP&#58 FastAPI</a></li><li class="toc-h2"><a href="/licensed/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/licensed/api/python">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/wiki">Wiki</a></li><li class="toc-h2"><a href="/docs/en/benchmark">Benchmarks</a></li><li class="toc-h2"><a href="/docs/en/best_practices_pretrained_models">Best Practices Using Pretrained Models Together</a></li><li class="toc-h2"><a href="/docs/en/spark_nlp_healthcare_versions/licensed_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Healthcare">Healthcare Models</a></li><li class="toc-h2"><a href="/docs/en/licensed_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Visual NLP</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2"><a href="/docs/en/ocr_benchmark">Speed benchmarks</a></li><li class="toc-h2"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li><li class="toc-h1">Finance NLP</li><li class="toc-h2"><a href="/docs/en/financial_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Finance">Financial Models</a></li><li class="toc-h2"><a href="/docs/en/financial_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Legal NLP</li><li class="toc-h2"><a href="/docs/en/legal_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Legal">Legal Models</a></li><li class="toc-h2"><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -610,70 +610,203 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Spark NLP release notes 3.2.0</li>
+    <li>Spark OCR release notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Spark NLP release notes 3.2.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_3_2_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP release notes 3.2.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_5_3_2.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.2.0</h2>
+  <h2 id="section">5.3.2</h2>
 
-  <p>Release date: 28-05-2021</p>
+  <p>Release date: 15-05-2024</p>
 
-  <h4 id="overview">Overview</h4>
+  <h2 id="visual-nlp-532-release-notes-">Visual NLP 5.3.2 Release Notes 🕶️</h2>
 
-  <p>Multi-modal visual document understanding, built on the LayoutLM architecture.
-It achieves new state-of-the-art accuracy in several downstream tasks,
-including form understanding and receipt understanding.</p>
+  <p><strong>We are glad to announce that Visual NLP 5.3.2 has been released.!!! 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-features">New Features</h4>
+  <h2 id="highlights-">Highlights 🔴</h2>
 
   <ul>
-    <li><a href="/docs/en/ocr_pipeline_components#visualdocumentner">VisualDocumentNER</a> is a DL model for NER problem using text and layout data.
-Currently available pre-trained model on the SROIE dataset.</li>
+    <li>Ocr Metrics against Cloud Providers: Textract, and CGP.</li>
+    <li>LightPipeline support for Table Recognition and Clustering.</li>
+    <li>PositionFinder supports entities spawning multiple lines.</li>
+    <li>Other Changes.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="enhancements">Enhancements</h4>
+  <h3 id="ocr-metrics-against-cloud-providers-textract-and-cgp">Ocr Metrics against Cloud Providers: Textract, and CGP.</h3>
+  <p>Next are metrics for Text Detection and Recognition tasks collected on the FUNSD dataset, the final metric is the average F score across Text Detection and Recognition tasks.</p>
 
-  <ul>
-    <li>Added support <code class="language-plaintext highlighter-rouge">SPARK_OCR_LICENSE</code> env key for read license.</li>
-    <li>Update dependencies and sync Spark versions with Spark NLP.</li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Detection</th>
+        <th>Recognition</th>
+        <th> </th>
+        <th>Detection Metrics</th>
+        <th> </th>
+        <th>Recognition Metrics</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td>Precision</td>
+        <td>Recall</td>
+        <td>Precision</td>
+        <td>Recall</td>
+        <td>Avg. F Score</td>
+      </tr>
+      <tr>
+        <td>Google OCR</td>
+        <td>Google OCR</td>
+        <td>0.3528</td>
+        <td>0.7776</td>
+        <td>0.8889</td>
+        <td>0.8823</td>
+        <td>0.6854</td>
+      </tr>
+      <tr>
+        <td>Amazon Textract</td>
+        <td>Amazon Textract</td>
+        <td>0.5284</td>
+        <td>0.8534</td>
+        <td>0.8236</td>
+        <td>0.8539</td>
+        <td>0.7455</td>
+      </tr>
+      <tr>
+        <td>ImageTextDetector (memOpt)</td>
+        <td>ImageToTextV2 (base checkpoint)</td>
+        <td>0.6199</td>
+        <td>0.9044</td>
+        <td>0.9354</td>
+        <td>0.9331</td>
+        <td>0.8349</td>
+      </tr>
+      <tr>
+        <td>ImageTextDetector (memOpt)</td>
+        <td>ImageToTextV2 (large checkpoint)</td>
+        <td>0.6199</td>
+        <td>0.9044</td>
+        <td>0.9457</td>
+        <td>0.9426</td>
+        <td><strong>0.8398</strong></td>
+      </tr>
+      <tr>
+        <td>ImageTextDetectorV2</td>
+        <td>ImageToTextV2 (base checkpoint)</td>
+        <td>0.598</td>
+        <td>0.9046</td>
+        <td>0.9354</td>
+        <td>0.9331</td>
+        <td>0.8271</td>
+      </tr>
+      <tr>
+        <td>ImageTextDetectorV2</td>
+        <td>ImageToTextV2 (large checkpoint)</td>
+        <td>0.598</td>
+        <td>0.9046</td>
+        <td>0.9457</td>
+        <td>0.9426</td>
+        <td><strong>0.8320</strong></td>
+      </tr>
+      <tr>
+        <td>ImageTextDetector (memOpt)</td>
+        <td>ImageToText</td>
+        <td>0.6199</td>
+        <td>0.9044</td>
+        <td>0.464</td>
+        <td>0.4654</td>
+        <td>0.6001</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Not only the scores are slightly better than those of cloud providers, but also the cost is lower(*),</p>
+
+  <p><span><span class="ui-provider rr b c d e f g h i j k l m n o p q r s t u v w x y z ab ac ae af ag ah ai aj ak" dir="ltr">&lt;p&gt; &lt;/p&gt;</span></span></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Cost(USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Amazon</td>
+        <td>120</td>
+      </tr>
+      <tr>
+        <td>Azure</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Google</td>
+        <td>43.5</td>
+      </tr>
+      <tr>
+        <td>JSL</td>
+        <td>17.6</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>(*) JSL costs were estimated assuming a Databricks setup.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="bugfixes">Bugfixes</h4>
+  <h3 id="lightpipeline-support-for-table-recognition-and-clustering">LightPipeline support for Table Recognition and Clustering</h3>
+  <p>Now you can use Table Extraction and Clustering pipelines as LightPipelines. To do so you just need to create the LightPipeline as usual, check this example using PretrainedPipeline,</p>
 
+  <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrLightPipelinesBase64.ipynb">Full Example here.</a></p>
   <ul>
-    <li>Fixed an issue that some ImageReaderSpi plugins are unavailable in the fat jar.</li>
+    <li>new <code class="language-plaintext highlighter-rouge">LightPipeline.fromBinary()</code> method that allows the usage of in-memory binary buffers as inputs to Visual NLP pipelines.</li>
   </ul>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lp = PretrainedPipeline("digital_pdf_table_extractor")
+lp.fromLocalPath("page_with_tables.png")
+
+</code></pre></div>  </div>
+  <p>For other examples please check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb">this notebook</a>.</p>
+</div>
+<div class="h3-box">
+
+  <h3 id="positionfinder">PositionFinder</h3>
+  <p>For cases in which entities spawn multiple lines, PositionFinder was not working properly,
+<img src="/assets/images/ocr/highlight.png" alt="5.3.2" /></p>
+
+  <p>Now, the expected bounding boxes for the entity are returned. Keep in mind that as before more than one bounding box will be returned, and all will share the same <code class="language-plaintext highlighter-rouge">chunk_id</code>.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-notebooks">New notebooks</h4>
-
+  <h3 id="other-changes">Other Changes</h3>
   <ul>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/3.2.0/jupyter/SparkOCRVisualDocumentNer.ipynb">Visual Document NER</a></li>
+    <li>CVE related to commons-compress was removed.</li>
+    <li>Bug Fixes: ImageToPdf rendering images outside page boundaries.</li>
   </ul>
 
 </div>
 <div class="prev_ver h3-box">
 
-  <h2 id="versions">Versions</h2>
+  <h2 id="previous-versions">Previous versions</h2>
 
 </div>
 <ul class="pagination">
@@ -743,7 +876,7 @@ Currently available pre-trained model on the SROIE dataset.</li>
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-01-06T00:00:00+00:00">Jan 06, 2022</time>
+      <time itemprop="dateModified" datetime="2024-05-15T00:00:00+00:00">May 15, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -929,7 +1062,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/release_notes">Release Notes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></div></div></div>
 
 </div>
 </div>
