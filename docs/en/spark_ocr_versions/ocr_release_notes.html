@@ -622,169 +622,153 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.3.1</h2>
+  <h2 id="section">5.4.0</h2>
 
-  <p>Release date: 11-04-2024</p>
+  <p>Release date: 15-07-2024</p>
 
-  <h2 id="visual-nlp-531-release-notes-">Visual NLP 5.3.1 Release Notes 🕶️</h2>
+  <h2 id="visual-nlp-540-release-notes-">Visual NLP 5.4.0 Release Notes 🕶️</h2>
 
-  <p><strong>we’re glad to announce that Visual NLP 5.3.1 has been released. New models, notebooks, bug fixes and more!!! 📢📢📢</strong></p>
+  <p><strong>we’re glad to announce that Visual NLP 5.4.0 has been released. New transformers, notebooks, metrics, bug fixes and more!!! 📢📢📢</strong></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="highlights-">Highlights 🔴</h2>
 
   <ul>
-    <li>Improved table extraction capabilities in HocrToTextTable.</li>
-    <li>Improvements in LightPipelines.</li>
-    <li>Confidence scores in ImageToTextV2.</li>
-    <li>New HocrMerger annotator.</li>
-    <li>Checkbox detection in Visual NER.</li>
-    <li>New Document Clustering Pipeline using Vit Embeddings.</li>
-    <li>Enhancements to color options in ImageDrawRegions.</li>
-    <li>New notebooks &amp; updates.</li>
-    <li>Bug Fixes.</li>
+    <li>Improvements in Table Processing.</li>
+    <li>Dicom Transformers access to S3 directly.</li>
+    <li>New Options for ImageToPdf transformer.</li>
+    <li>Support for rotated text regions in ImageToTextV2.</li>
+    <li>New Pdf-To-Pdf Pretrained Pipeline for De-Identification.</li>
+    <li>ImageToTextV3 support for HOCR output.</li>
+    <li>Performance Metrics for De-identification Pipelines.</li>
+    <li>Other Changes.</li>
   </ul>
 
-  <h2 id="improved-table-extraction-capabilities-in-hocrtotexttable">Improved table extraction capabilities in HocrToTextTable</h2>
-  <p>Many issues related to column detection in our Table Extraction pipelines are addressed in this release, compared to previous Visual NLP version the metrics have improved. Table below shows F1-score(CAR or Cell Adjacency Relationship) performances on ICDAR 19 Track B dataset for different IoU values of our two versions in comparison with <a href="https://paperswithcode.com/paper/multi-type-td-tsr-extracting-tables-from/review/">other results</a>.</p>
+</div>
+<div class="h3-box">
 
-  <table class="table-model-big">
+  <h3 id="improvements-in-table-processing">Improvements in Table Processing</h3>
+  <p>New RegionsMerger component for merging Text Regions and Cell Regions to improve accuracy in Table Extraction Pipelines:</p>
+
+  <table>
     <thead>
       <tr>
-        <th>Model</th>
-        <th>0.6</th>
-        <th>0.7</th>
-        <th>0.8</th>
-        <th>0.9</th>
+        <th>PretrainedPipeline</th>
+        <th>Score Improvement(*)</th>
+        <th>Comments</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>CascadeTabNet</td>
-        <td>0.438</td>
-        <td>0.354</td>
-        <td>0.19</td>
-        <td>0.036</td>
+        <td>table_extractor_image_to_text_v2</td>
+        <td>0.34 to 0.5</td>
+        <td>Internally it uses ImageToTextV2(case insensitive)</td>
       </tr>
       <tr>
-        <td>NLPR-PAL</td>
-        <td>0.365</td>
-        <td>0.305</td>
-        <td>0.195</td>
-        <td>0.035</td>
-      </tr>
-      <tr>
-        <td>Multi-Type-TD-TSR</td>
-        <td>0.589</td>
-        <td>0.404</td>
-        <td>0.137</td>
-        <td>0.015</td>
-      </tr>
-      <tr>
-        <td>Visual NLP 5.3.0</td>
-        <td>0.463</td>
-        <td>0.420</td>
-        <td>0.355</td>
-        <td>0.143</td>
-      </tr>
-      <tr>
-        <td>Visual NLP 5.3.1</td>
-        <td>0.509</td>
-        <td><strong>0.477</strong></td>
-        <td><strong>0.403</strong></td>
-        <td><strong>0.162</strong></td>
+        <td>table_extractor_image_to_text_v1</td>
+        <td>0.711 to 0.728</td>
+        <td>Internally it uses ImageToText(case sensitive)</td>
       </tr>
     </tbody>
   </table>
 
-  <h3 id="improvements-in-lightpipelines">Improvements in LightPipelines</h3>
+  <p>(*) This is the cell adjacency Table Extraction metric as defined by ICDAR Table Extraction Challenge.
+The improvements are measured against previous release of Visual NLP.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="dicom-transformers-access-to-s3-directly">Dicom Transformers access to S3 directly</h3>
+  <p>Now Dicom Transformers can access S3 directly from executors instead of reading through the Spark Dataframe. This is particularly advantageous in the situation where we only care about the metadata of each file because we don’t need to load the entire file into memory, also,</p>
   <ul>
-    <li>ImageSplitRegions, ImageToTextV2, ImageTextDetectorCraft are now supported to be used with LightPipelines.</li>
-    <li>New <code class="language-plaintext highlighter-rouge">Base64ToBinary()</code> annotator to enable the use of in-memory base64 string buffers as input to LightPipelines.</li>
+    <li>It reduces memory usage and allows processing of files larger than 2 GB (a limitation of Spark).</li>
+    <li>It improves performance when computing statistics over large DICOM datasets.</li>
   </ul>
 
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sparkocr.enums import ImageType
-# Transform base64 to binary
-base64_to_bin = Base64ToBinary()
-base64_to_bin.setOutputCol("content")
+</div>
+<div class="h3-box">
+  <p>\</p>
 
-pdf_to_image = PdfToImage()
-pdf_to_image.setInputCol("content")
-pdf_to_image.setOutputCol("image")
+  <h3 id="new-options-for-imagetopdf-transformer">New Options for ImageToPdf transformer.</h3>
+  <p>New options have been added to ImageToPdf. ImageToPdf is the transformer we use to create PDFs from images, we use it for example when we de-identify PDFs and we want to write back to the PDF to obtain a redacted version of the PDF.
+The new options are intended to control the size of the resulting PDF document by controlling the resolution and compression of the images that are included in the PDF,</p>
 
-# Run OCR for each region
-ocr = ImageToText()
-ocr.setInputCol("image")
-ocr.setOutputCol("text")
-
-# OCR pipeline
-pipeline = PipelineModel(stages=[
-    base64_to_bin,
-    pdf_to_image,
-    ocr
-])
-lp = LightPipeline(pipeline)
-result = lp.fromString(base64_pdf)
-</code></pre></div>  </div>
-
-  <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrLightPipelinesBase64.ipynb">Full Example here.</a></p>
-  <ul>
-    <li>new <code class="language-plaintext highlighter-rouge">LightPipeline.fromBinary()</code> method that allows the usage of in-memory binary buffers as inputs to Visual NLP pipelines.</li>
-  </ul>
-
-  <h3 id="confidence-scores-in-imagetotextv2">Confidence scores in ImageToTextV2</h3>
-  <p>You can now enable confidence scores in ImageToTextV2 like this,</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") \
-    .setIncludeConfidence(True)
-</code></pre></div>  </div>
-
-  <p><img src="/assets/images/ocr/confidence_score.png" alt="Confidence scores in ImageToTextV2" /></p>
-
-  <p>Check this <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/TextRecognition/SparkOcrImageToTextV2.ipynb">updated notebook</a> for an end-to-end example.</p>
-
-  <h3 id="new-hocrmerger-annotator">New HocrMerger annotator</h3>
-  <p>HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
-This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.</p>
-
-  <h3 id="new-document-clustering-pipeline-using-vit-embeddings">New Document Clustering Pipeline using Vit Embeddings.</h3>
-  <p>Now we can use Vit Embeddings to create document representations for clustering.</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>binary_to_image = BinaryToImage() \
-    .setInputCol("content") \
-    .setOutputCol("image")
-
-embeddings = VitImageEmbeddings \
-    .pretrained("vit_image_embeddings", "en", "clinical/ocr") \
-    .setInputCol("image") \
-    .setOutputCol("embeddings")
-</code></pre></div>  </div>
-  <p>For an end-to-end example, please check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Clustering/VisualDocumentClustering.ipynb">this notebook</a>.</p>
-
-  <h3 id="enhancements-to-color-options-in-imagedrawregions">Enhancements to color options in ImageDrawRegions.</h3>
-  <p>ImageDrawRegions is the annotator used for rendering regions into images so we can visualize results from different models, like, for example, Text Detection. The setColorMap method, is used to set the colors of bounding boxes drawn at top of images, the new behavior is as follows,</p>
-
-  <ul>
-    <li>setColorMap: when called with a ‘*’ as argument, it will apply a single color to the bounding boxes of all labels.</li>
-    <li>setColorMap: when called with a dictionary in the form: {label -&gt; color}, it will apply a different color to each label. If a key is missing, it will pick a random value.</li>
-    <li>setColorMap is not called: random colors will be picked for each label, each time you call transform() a new set of colors will be selected.</li>
-  </ul>
-
-  <h3 id="new-notebooks--updates">New notebooks &amp; updates</h3>
   <ul>
     <li>
-      <p>New <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRInfographicsVisualQuestionAnswering.ipynb">notebook</a> for Visual Question Answering on Infographics!</p>
+      <p>compression: Compression type for images in PDF document. It can be one of <code class="language-plaintext highlighter-rouge">CompressionType.LOSSLESS</code>, <code class="language-plaintext highlighter-rouge">CompressionType.JPEG</code>.</p>
     </li>
     <li>
-      <p>New <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrChartToTextLLM.ipynb">notebook</a> for combining Visual NLP Chart Exraction and Open Source LLMs!.</p>
+      <p>resolution: Resolution in DPI used to render images into the PDF document. There are three sources for the resolution(in decreasing order or precedence): this parameter, the image schema in the input image, or the default value of 300DPI.</p>
     </li>
     <li>
-      <p>New <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRHandwrittenAndSignatureDetection.ipynb">notebook</a> on Signature and Handwritten text detection.</p>
+      <p>quality: Quality of images in PDF document for JPEG compression. A value that ranges between 1.0(best quality) to 0.0(best compression). Defaults to 0.75.</p>
+    </li>
+    <li>
+      <p>aggregatePages: Aggregate pages in one PDF document.</p>
     </li>
   </ul>
 
-  <h3 id="bug-fixes">Bug Fixes</h3>
+</div>
+<div class="h3-box">
+
+  <h3 id="support-for-rotated-text-regions-in-imagetotextv2">Support for rotated text regions in ImageToTextV2</h3>
+  <p>Text regions at the input of ImageToTextV2 support rotation. Detected text regions come with an angle to represent the rotation that the detected text has in the image.
+Now, this angle is used to extract a straightened version of the region, and fed to the OCR. The resulting text is placed into the returned output text using the center of the region to decide its final location.
+See the following example,
+<img src="/assets/images/ocr/rotated_regions.png" alt="image" /></p>
+
+  <p>and the resulting(truncated) text,</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             SUBURBAN HOSPITAL
+            HEALTHCARE SYSTEM
+                               APPROVED ROTATED TEXT
+      MEDICAL RECORD
+              PATIENT INFORMATION: NAME: HOMER SIMPSON AGE: 40 YEARS
+                  GENDER: MALE WEIGHT: CLASSIFIED (BUT LET'S JUST SAY ITS IN THE "ROBUST" CATEGORY)
+     HEIGHT: 6'0"
+        BML: OFF THE CHARTS (LITERALLY)
+               OCCUPATION: SAFETY INSPECTOR AT SPRINGFIELD NUCLEAR POWER PLANT
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="new-pdf-to-pdf-pretrained-pipelines-for-de-identification">New Pdf-To-Pdf Pretrained Pipelines for De-Identification.</h3>
+  <p>New de-ideintification pipeline that consumes PDFs and produces de-identified PDFs: <code class="language-plaintext highlighter-rouge">pdf_deid_pdf_output</code>. 
+For a description of this pipeline please check its
+<a href="https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html">card on Models Hub</a>, and also this <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">notebook example</a>.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="imagetotextv3-support-for-hocr-output">ImageToTextV3 support for HOCR output</h3>
+  <p>ImageToTextV3 is an LSTM based OCR model that can consume high quality text regions to perform the text recognition. Adding HOCR support to this annotator, allows it to be placed in HOCR pipelines like Visual NER or Table Extraction. Main advantage compared to other OCR models is case sensitivity, and high recall due to the use of independent Text Detection models.
+Check an example <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionCaseSensitive.ipynb">here</a></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="performance-metrics-for-deidentification-pipelines">Performance Metrics for Deidentification Pipelines</h3>
+  <p>In order to make it easier for users to estimate runtime figures, we have published the <a href="https://nlp.johnsnowlabs.com/docs/en/ocr_benchmark">following metrics</a>. This metrics corresponds to a pipeline that performs the following actions,</p>
   <ul>
-    <li>PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.</li>
+    <li>Extract PDF pages as images.</li>
+    <li>Perform OCR on these Images.</li>
+    <li>Run NLP De-identification stages(embeddings, NER, etc).</li>
+    <li>Maps PHI entities to regions.</li>
+    <li>Writes PHI regions back to PDF.
+The goal is for these numbers to be used as proxies when estimating hardware requirements of new jobs.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="other-changes--bug-fixes">Other Changes &amp; Bug Fixes</h3>
+  <ul>
+    <li>start() functions now accepts the new <code class="language-plaintext highlighter-rouge">apple_silicon</code> parameter. apple_silicon: whether to use Apple Silicon binaries or not. Defaults to ‘False’.</li>
+    <li>Bug Fix: ImageDrawRegions removes image resolution after drawing regions.</li>
+    <li>Bug Fix: RasterFormatException in ImageToTextV2.</li>
+    <li>Bug Fix: PdfToTextTable, PptToTextTable, DocToTextTable didn’t include a <code class="language-plaintext highlighter-rouge">load()</code> method.</li>
   </ul>
 
 </div>
