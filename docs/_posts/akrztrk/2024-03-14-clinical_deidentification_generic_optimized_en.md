@@ -18,7 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to de-identify PHI information from medical texts. The PHI information will be obfuscated in the resulting text and masked with entity labels in the metadata. The pipeline can obfuscate and mask `AGE`, `CONTACT`, `DATE`, `LOCATION`, `COUNTRY`, `NAME`, `PROFESSION`, `ID`, `MEDICALRECORD`, `PHONE`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE` entities. This pipeline is built using the `ner_deid_generic_augmented` model, and `ContextualParser`, `RegexMatcher`, and `TextMatcher` and a single `Deidentification` stage for optimization.
+This pipeline can be used to de-identify PHI information from medical texts. The PHI information will be obfuscated in the resulting text and masked with entity labels in the metadata. The pipeline can obfuscate and mask `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `ID`, `AGE`, `COUNTRY`, `SSN`, `ACCOUNT`, `DLN`, `PLATE`, `VIN`, `LICENSE`, `PHONE`, `ZIP`, `MEDICALRECORD`, `EMAIL` entities. This pipeline is built using the `ner_deid_generic_augmented` model, and `ContextualParser`, `RegexMatcher`, and `TextMatcher` and a single `Deidentification` stage for optimization.
+
+## Predicted Entities
+
+`LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `ID`, `AGE`, `COUNTRY`, `SSN`, `ACCOUNT`, `DLN`, `PLATE`, `VIN`, `LICENSE`, `PHONE`, `ZIP`, `MEDICALRECORD`, `EMAIL`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
