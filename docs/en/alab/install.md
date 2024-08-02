@@ -133,7 +133,14 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 **Steps to get started:**
 - Subscribe to the product on the AWS Marketplace.
 - Deploy it on a new machine.
-- Attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+- In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+
+	![IAM](/assets/images/annotation_lab/iam.png)
+		
+- In advance details, enable `Metadata accessible` and select `V1 and V2` in `Metadata version`
+
+	![metadata](/assets/images/annotation_lab/metadata.png)
+
 - Access the login page for a guided experience on `http://INSTANCE_IP`. For the first login use the following credentials:
 	Username: admin
 	Password: INSTANCE_ID
