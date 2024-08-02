@@ -61,14 +61,20 @@ pipeline = Pipeline(stages=[
     sequenceClassifier
 ])
 
-data = spark.createDataFrame([["""A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.
-Initial imaging studies reveal a mass in the left lung lobe with possible metastatic nodules in the liver.
-After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined. 
-The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.
-The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease.
-Peritoneal carcinomatosis is observed, which is a form of widespread metastatic disease within the peritoneal cavity."""]]).toDF("text")
+sample_texts = [
+                ["Contrast MRI confirmed the findings of meningeal carcinomatosis."],
+                ["A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis."],
+                ["The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci."] ,
+                ["After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined."],
+                ["A bone scan showed bone metastases; computed tomography revealed bone spread and abnormal mediastinal lymphadenopathy."],
+                ["The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease."],
+                ]
 
-result = pipeline.fit(data).transform(data)
+sample_data = spark.createDataFrame(sample_texts).toDF("text")
+
+result = pipeline.fit(sample_data).transform(sample_data)
+
+result.select("text", "prediction.result").show(truncate=False)
 
 ```
 ```scala
@@ -97,12 +103,13 @@ val pipeline = new Pipeline().setStages(Array(
 ))
 
 
-val data = Seq([["""A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.
-Initial imaging studies reveal a mass in the left lung lobe with possible metastatic nodules in the liver.
-After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined. 
-The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.
-The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease.
-Peritoneal carcinomatosis is observed, which is a form of widespread metastatic disease within the peritoneal cavity."""]]).toDF("text")
+val data = Seq(Array("Contrast MRI confirmed the findings of meningeal carcinomatosis.",
+                     "A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.",
+                     "The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci." ,
+                     "After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.",
+                     "A bone scan showed bone metastases; computed tomography revealed bone spread and abnormal mediastinal lymphadenopathy.",
+                     "The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease."
+                    )).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -113,16 +120,16 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
-|sentence                                                                                                                                                                                                             |prediction|
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
-|A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.                                                                                                                          |0         |
-|Initial imaging studies reveal a mass in the left lung lobe with possible metastatic nodules in the liver.                                                                                                           |1         |
-|After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.                                                                                       |0         |
-|The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.|1         |
-|The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease.                                                                                                       |0         |
-|Peritoneal carcinomatosis is observed, which is a form of widespread metastatic disease within the peritoneal cavity.                                                                                                |1         |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+
+|text                                                                                                                                                                                                                 |result|
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+
+|Contrast MRI confirmed the findings of meningeal carcinomatosis.                                                                                                                                                     |[1]   |
+|A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.                                                                                                                          |[0]   |
+|The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.|[1]   |
+|After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.                                                                                       |[0]   |
+|A bone scan showed bone metastases; computed tomography revealed bone spread and abnormal mediastinal lymphadenopathy.                                                                                               |[1]   |
+|The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease.                                                                                                       |[0]   |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+
 
 ```
 
