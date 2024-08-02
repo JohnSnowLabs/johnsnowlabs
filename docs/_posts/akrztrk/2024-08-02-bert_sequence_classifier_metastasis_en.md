@@ -35,19 +35,24 @@ This model is a [BioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
-    .setInputCol('text')     .setOutputCol('document')
+    .setInputCol('text')\
+    .setOutputCol('document')
 
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-    .setInputCols(["document"])     .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
-    .setInputCols(['sentence'])     .setOutputCol('token')
+    .setInputCols(['sentence'])\
+    .setOutputCol('token')
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_metastasis","en","clinical/models")\
-    .setInputCols(["sentence",'token'])    .setOutputCol("prediction")
+    .setInputCols(["sentence",'token'])\
+    .setOutputCol("prediction")
 
 pipeline = Pipeline(stages=[
     document_assembler,
