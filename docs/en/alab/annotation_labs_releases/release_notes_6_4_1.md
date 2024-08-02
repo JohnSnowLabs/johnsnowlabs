@@ -1,13 +1,11 @@
 ---
 layout: docs
-comment: no
 header: true
-seotitle: Release Notes | John Snow Labs
-title: Release Notes
-permalink: /docs/en/alab/release_notes
-key: docs-training
-modify_date: "2024-07-26"
-use_language_switcher: "Python-Scala"
+seotitle: Generative AI Lab | John Snow Labs
+title: Generative AI Lab Release Notes 6.4.0
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_4_0
+key: docs-licensed-release-notes
+modify_date: 2024-06-21
 show_nav: true
 sidebar:
   nav: annotation-lab
@@ -15,7 +13,12 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Introducing Support for De-Identification in Generative AI Lab 6.4
+## 6.4.0
+
+Release date: **07-25-2024**
+
+
+### Introducing Support for De-Identification in Generative AI Lab 6.4
 We are happy to announce the release of Generative AI Lab 6.4, bringing exciting new features and enhancements. Leading this release is the support for de-identification projects, which enables users to anonymize documents containing sensitive data, such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This ensures robust data privacy and compliance with privacy regulations while maintaining the utility of the data for further analysis and processing. 
 
 Additionally, version 6.4 enhances collaboration and quality control in the annotation process by allowing annotators to view completions submitted by reviewers. Annotators can now view and clone reviewed submissions, make corrections, or add comments directly on the annotated chunks, providing clear communication and improving overall annotation quality. The new release also simplifies the identification of differences between two completions by automatically highlighting discrepancies, streamlining the validation process. 
@@ -34,10 +37,10 @@ When creating De-identification projects make sure you only target sensitive ent
 
 ### Types of De-identification
 Generative AI Lab supports four kinds of de-identification:
-1.   **Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "\<Patient\> is a \<Age\> y.o. patient admitted to ICU after an MVA. "
-2.   **Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
-3.   **Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
-4.   **Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
+1.	**Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "\<Patient\> is a \<Age\> y.o. patient admitted to ICU after an MVA. "
+2.	**Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
+3.	**Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
+4.	**Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
 
 ### Working with de-identification projects
 
@@ -89,10 +92,10 @@ In version 6.4, of the Generative AI Lab, a new feature has been added that allo
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
 
 #### Workflow:
-1.   **Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
-2.   **Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
-3.   **Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
-4.   **Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
+1.	**Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
+2.	**Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
+3.	**Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
+4.	**Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
    
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/7.gif)
 
@@ -242,63 +245,11 @@ Previously, users were unable to access the license page to delete an existing l
 - **Editing Non-Editable Generated Test Cases Causes Repeated Error Popup Until UI Refresh**
 
   Previously, when users edited generated test cases, such as accuracy tests that didn't require text modifications, a constant popup would appear. Now, editing non-editable generated test cases no longer triggers repeated error popups.
- 
+
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
 
 </div>
 
-<ul class="pagination owl-carousel pagination_big">
-    <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_7_0">5.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_1">5.6.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_1">5.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_0">5.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_3_2">5.3.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_3">5.2.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_2">5.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_1">4.10.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_2">4.8.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_1">4.8.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_7_4">4.7.4</a></li>   
-    <li><a href="annotation_labs_releases/release_notes_4_7_1">4.7.1</a></li>        
-    <li><a href="annotation_labs_releases/release_notes_4_6_5">4.6.5</a></li>    
-    <li><a href="annotation_labs_releases/release_notes_4_6_3">4.6.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_6_2">4.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_1">4.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_0">4.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_1">4.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_0">4.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
-</ul>
+{%- include docs-annotation-pagination.html -%}
