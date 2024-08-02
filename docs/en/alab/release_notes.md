@@ -250,6 +250,7 @@ Previously, users were unable to access the license page to delete an existing l
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
