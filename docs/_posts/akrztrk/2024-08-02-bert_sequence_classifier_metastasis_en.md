@@ -66,7 +66,7 @@ sample_texts = [
                 ["A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis."],
                 ["The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci."] ,
                 ["After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined."],
-                ["A bone scan showed bone metastases; computed tomography revealed bone spread and abnormal mediastinal lymphadenopathy."],
+                ["The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer."],
                 ["The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease."],
                 ]
 
@@ -107,7 +107,7 @@ val data = Seq(Array("Contrast MRI confirmed the findings of meningeal carcinoma
                      "A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.",
                      "The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci." ,
                      "After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.",
-                     "A bone scan showed bone metastases; computed tomography revealed bone spread and abnormal mediastinal lymphadenopathy.",
+                     "The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.",
                      "The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease."
                     )).toDF("text")
 
@@ -127,7 +127,7 @@ val result = pipeline.fit(data).transform(data)
 |A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.                                                                                                                          |[0]   |
 |The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.|[1]   |
 |After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.                                                                                       |[0]   |
-|A bone scan showed bone metastases; computed tomography revealed bone spread and abnormal mediastinal lymphadenopathy.                                                                                               |[1]   |
+|The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.                                                                                                                       |[1]   |
 |The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease.                                                                                                       |[0]   |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+
 
