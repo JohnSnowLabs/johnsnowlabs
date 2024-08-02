@@ -733,7 +733,16 @@ th {
 <ul>
   <li>Subscribe to the product on the AWS Marketplace.</li>
   <li>Deploy it on a new machine.</li>
-  <li>Attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both <code class="language-plaintext highlighter-rouge">aws-marketplace:MeterUsage</code> and <code class="language-plaintext highlighter-rouge">ec2:DescribeInstanceTypes</code> permission)</li>
+  <li>
+    <p>In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both <code class="language-plaintext highlighter-rouge">aws-marketplace:MeterUsage</code> and <code class="language-plaintext highlighter-rouge">ec2:DescribeInstanceTypes</code> permission)</p>
+
+    <p><img src="/assets/images/annotation_lab/iam.png" alt="IAM" /></p>
+  </li>
+  <li>
+    <p>In advance details, enable <code class="language-plaintext highlighter-rouge">Metadata accessible</code> and select <code class="language-plaintext highlighter-rouge">V1 and V2</code> in <code class="language-plaintext highlighter-rouge">Metadata version</code></p>
+
+    <p><img src="/assets/images/annotation_lab/metadata.png" alt="metadata" /></p>
+  </li>
   <li>Access the login page for a guided experience on <code class="language-plaintext highlighter-rouge">http://INSTANCE_IP</code>. For the first login use the following credentials:
   Username: admin
   Password: INSTANCE_ID</li>
