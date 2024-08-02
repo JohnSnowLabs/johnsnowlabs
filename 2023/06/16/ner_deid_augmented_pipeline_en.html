@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Detect PHI for Deidentification (Augmented) | ner_deid_augmented_pipeline | Healthcare NLP 4.4.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_augmented model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_augmented_pipeline", "en", "clinical/models")text = '...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_augmented model.Predicted EntitiesLOCATION, CONTACT, PROFESSION, NAME, DATE, ID, AGELive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_aug...">
 <!-- <link rel="canonical" href="/2023/06/16/ner_deid_augmented_pipeline_en.html"> -->
 <link rel="canonical" href="/2023/06/16/ner_deid_augmented_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -511,6 +511,8 @@ function wrapWordInSpan(data, wordToWrap) {
 <p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2021/03/31/ner_deid_augmented_en.html">ner_deid_augmented</a> model.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
