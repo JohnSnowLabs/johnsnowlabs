@@ -18,10 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline is trained with sciwiki_300d embeddings and can be used to deidentify PHI information from medical texts in Spanish. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `AGE`, `DATE`, `PROFESSION`, `E-MAIL`, `USERNAME`, `LOCATION`, `DOCTOR`, `HOSPITAL`, `PATIENT`, `URL`, `IP`, `MEDICALRECORD`, `IDNUM`, `ORGANIZATION`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `PLATE`, `SEX` and `IPADDR`
+This pipeline is trained with sciwiki_300d embeddings and can be used to deidentify PHI information from medical texts in Spanish. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `DOCTOR`, `PROFESSION`, `USERNAME`, `DATE`, `ZIP`, `PATIENT`, `PHONE`, `HOSPITAL`, `E-MAIL`, `AGE`, `SSN`, `SEX`
 
 ## Predicted Entities
 
+`LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `DOCTOR`, `PROFESSION`, `USERNAME`, `DATE`, `ZIP`, `PATIENT`, `PHONE`, `HOSPITAL`, `E-MAIL`, `AGE`, `SSN`, `SEX`
 
 
 {:.btn-box}
