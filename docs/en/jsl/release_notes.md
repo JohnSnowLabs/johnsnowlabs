@@ -4493,7 +4493,7 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 </div><div class="h3-box" markdown="1">
 
 #### Sentence Entity Resolver Training
-[Sentence Entity Resolver Training Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/sentence_entity_resolution/sentence_entity_resolution_training.ipynb)
+[Sentence Entity Resolver Training Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/entity_resolution/sentence_entity_resolution_training.ipynb)
 Named Entities are sub pieces in textual data which are labeled with classes.    
 These classes and strings are still ambiguous though and it is not possible to group semantically identically entities without any definition of `terminology`.
 With the `Sentence Resolver` you can train a state-of-the-art deep learning architecture to map entities to their unique terminological representation.
@@ -4664,7 +4664,7 @@ you have a Pyarrow version installed that works with your Pyspark version.
 </div><div class="h3-box" markdown="1">
 
 #### New Notebooks
-- [Sentence Resolution Training Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/sentence_entity_resolution/sentence_entity_resolution_training.ipynb)
+- [Sentence Resolution Training Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/entity_resolution/sentence_entity_resolution_training.ipynb)
 - [Benchmark Notebook](https://colab.research.google.com/drive/1Ja9_QF9Sm1zhr-tyhFv6z2a3qnNjOaR6?usp=sharing)
 
 </div><div class="h3-box" markdown="1">

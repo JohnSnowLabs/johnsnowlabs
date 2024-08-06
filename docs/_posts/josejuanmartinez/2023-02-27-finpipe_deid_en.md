@@ -22,7 +22,12 @@ use_language_switcher: "Python-Scala-Java"
 This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
 
 You can carry out both masking and obfuscation with this pipeline, on the following entities:
-`ALIAS`, `EMAIL`, `PHONE`, `PROFESSION`, `ORG`, `DATE`, `PERSON`, `ADDRESS`, `STREET`, `CITY`, `STATE`, `ZIP`, `COUNTRY`, `TITLE_CLASS`, `TICKER`, `STOCK_EXCHANGE`, `CFN`, `IRS`
+`PROFESSION`, `URL`, `LOCATION-OTHER`, `CITY`, `DATE`, `ZIP`, `PERSON`, `STATE`, `COUNTRY`, `STREET`, `ORG`, `PHONE`, `EMAIL`, `AGE`, `ADDRESS`, `FISCAL_YEAR`, `TICKER`, `TITLE_CLASS`, `CFN`, `STOCK_EXCHANGE`, `IRS`, `SIGNING_PERSON`, `PARTY`, `SIGNING_TITLE`, `ALIAS`
+
+## Predicted Entities
+
+`PROFESSION`, `URL`, `LOCATION-OTHER`, `CITY`, `DATE`, `ZIP`, `PERSON`, `STATE`, `COUNTRY`, `STREET`, `ORG`, `PHONE`, `EMAIL`, `AGE`, `ADDRESS`, `FISCAL_YEAR`, `TICKER`, `TITLE_CLASS`, `CFN`, `STOCK_EXCHANGE`, `IRS`, `SIGNING_PERSON`, `PARTY`, `SIGNING_TITLE`, `ALIAS`
+
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/finance/DEID_FIN/){:.button.button-orange}

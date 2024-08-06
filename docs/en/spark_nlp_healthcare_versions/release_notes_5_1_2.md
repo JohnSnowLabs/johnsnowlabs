@@ -59,7 +59,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 | [`ner_cellular_langtest`](https://nlp.johnsnowlabs.com/2023/10/15/ner_cellular_langtest_en.html) | `DNA`, `Cell_type`, `Cell_line`, `RNA`, `Protein` |
 | [`ner_deid_enriched_langtest`](https://nlp.johnsnowlabs.com/2023/10/15/ner_deid_enriched_langtest_en.html) | `AGE`, `CITY`, `COUNTRY`, `DATE`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `USERNAME`, `ZIP` |
 | [`ner_deid_large_langtest`](https://nlp.johnsnowlabs.com/2023/10/15/ner_deid_large_langtest_en.html) | `AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION`, `NAME`, `PROFESSION` |
-| [`ner_diseases_langtest`](https://nlp.johnsnowlabs.com/2023/10/17/ner_diseases_langtest_en.html) | `Disease` |
+| [`ner_diseases_langtest`](https://nlp.johnsnowlabs.com/2023/10/15/ner_diseases_langtest_en.html) | `Disease` |
 | [`ner_oncology_langtest`](https://nlp.johnsnowlabs.com/2023/10/15/ner_oncology_langtest_en.html) | `Staging`, `Cancer_Score`, `Tumor_Finding`, `Site_Lymph_Node`, `Response_To_Treatment`, `Smoking_Status`, `Tumor_Size`, `Cycle_Count`, `Adenopathy` `Biomarker_Result`,  `Chemotherapy`, `Cancer_Surgery`, `Line_Of_Therapy`, `Pathology_Result`, `Hormonal_Therapy`, `Biomarker`, `Immunotherapy`, `Metastasis`, `Cancer_Dx`, `Grade`... |
 | [`ner_deid_generic_augmented_allUpperCased_langtest`](https://nlp.johnsnowlabs.com/2023/10/16/ner_deid_generic_augmented_allUpperCased_langtest_en.html) | `DATE`, `NAME`, `LOCATION`, `PROFESSION`, `CONTACT`, `AGE`, `ID` |
 
@@ -93,7 +93,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 | Model Name         | Predicted Entities           | Language |
 |--------------------|------------------------------|----------|
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/06/ner_clinical_ar.html)   | `PROBLEM` `TEST` `TREATMENT` | ar |
-| [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/16/ner_clinical_bg.html)   | `PROBLEM` `TEST` `TREATMENT` | bg |
+| [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/13/ner_clinical_bg.html)   | `PROBLEM` `TEST` `TREATMENT` | bg |
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/16/ner_clinical_fi.html)   | `PROBLEM` `TEST` `TREATMENT` | fi |
 
 *Example*:
@@ -136,8 +136,8 @@ The PHS-BERT Respiratory Disease Classifier Model is a specialized text classifi
 |Model|Description|Predicted Labels|
 |-|-|-|
 |[`multiclassifierdl_respiratory_disease`](https://nlp.johnsnowlabs.com/2023/10/03/multiclassifierdl_respiratory_disease_en.html) |This model identifies and categorizes textual mentions of four prominent respiratory diseases: Asthma, Chronic Obstructive Pulmonary Disease (COPD), Emphysema, and Chronic bronchitis.| `Astham`, `COPD`, `Emphysema`, `Chronic bronchitis`, `Other/Unknown`, `No` |
-|[`multiclassifierdl_heart_disease`](https://nlp.johnsnowlabs.com/2023/10/17/multiclassifierdl_heart_disease_en.html)|This model identifies and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction.| `Hypertension`, `MI`, `CAD`, `Other/Unknown`, `No` |
-|[`multiclassifierdl_mental_disorder`](https://nlp.johnsnowlabs.com/2023/10/17/multiclassifierdl_mental_disorder_en.html)|This model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).| `Anxiety Disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown` |
+|[`multiclassifierdl_heart_disease`](https://nlp.johnsnowlabs.com/2023/10/16/multiclassifierdl_heart_disease_en.html)|This model identifies and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction.| `Hypertension`, `MI`, `CAD`, `Other/Unknown`, `No` |
+|[`multiclassifierdl_mental_disorder`](https://nlp.johnsnowlabs.com/2023/10/16/multiclassifierdl_mental_disorder_en.html)|This model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).| `Anxiety Disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown` |
 
 *Example*:
 
