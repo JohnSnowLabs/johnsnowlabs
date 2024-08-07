@@ -1531,4 +1531,141 @@ In NB section, you can create your own NB or load existing NBs.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
+
+
+---
+## Microsoft Fabric Instructions
+
+### Step 1: Log into MS Fabric
+Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your MS Fabric Account credentials.
+
+### Step 2: Create a Lakehouse
+- Go to the **Synapse Data Science** section.
+- Navigate to the **Create** section.
+- Create a new lakehouse, (for instance let us say named `jsl_workspace`.)
+
+### Step 3: Create a Notebook
+- Similarly, create a new notebook ( for instance let us say named `JSL_Notebook`.)
+
+### Step 4: Attach the Lakehouse
+Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
+
+### Step 5: Upload Files
+Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
+
+### Step 6: Configure the Notebook Session
+Configure the session within the notebook as follows:
+```json
+%%configure -f
+{
+  "conf": {
+    "spark.hadoop.fs.s3a.access.key": {
+      "parameterName": "awsAccessKey",
+      "defaultValue": "<AWS-ACCESS-KEY>"
+    },
+    "spark.hadoop.fs.s3a.secret.key": {
+      "parameterName": "awsSecretKey",
+      "defaultValue": "<AWS-SECRET-KEY>"
+    },
+    "spark.yarn.appMasterEnv.SPARK_NLP_LICENSE": {
+      "parameterName": "sparkNlpLicense",
+      "defaultValue": "<LICENSE-KEY>"
+    },
+    "spark.jars": {
+      "parameterName": "sparkJars",
+      "defaultValue": "<abfs-path-spark-nlp-assembly-jar>,<abfs-path-spark-nlp-jsl-jar>"
+    }
+  }
+}
+
+```
+### Step 7: Install Spark NLP Libraries
+Install the required Spark NLP libraries using pip commands:
+```bash
+%pip install <spark-nlp whl File API path>
+%pip install <spark-nlp-jsl whl File API path>
+```
+
+### Step 8: Make Necessary Imports
+Import the necessary Python and Spark libraries:
+```python
+import functools
+import numpy as np
+import pandas as pd
+from scipy import spatial
+
+import pyspark.sql.types as T
+from pyspark.ml import Pipeline
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+
+import sparknlp
+import sparknlp_jsl
+from sparknlp.base import *
+from sparknlp.annotator import *
+from sparknlp_jsl.annotator import *
+```
+
+### Step 9: Explore Available Licensed Models
+Download and explore the list of available licensed models:
+```bash
+! pip install -q boto3
+! wget https://nlp.johnsnowlabs.com/models.json
+
+import json
+with open("models.json", "r", encoding="utf-8") as f:
+    full_list = json.load(f)
+```
+
+### Step 10: Download and Extract Required Models
+Set up AWS credentials and use Boto3 to handle files:
+```python
+import shutil
+import boto3
+
+# Setup AWS credentials
+ACCESS_KEY = "<AWS-ACCESS-KEY>"
+SECRET_KEY = "<AWS-SECRET-KEY>"
+
+# Connect to S3
+s3 = boto3.resource('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
+buck_auxdata = s3.Bucket('auxdata.johnsnowlabs.com')
+
+!mkdir -p /lakehouse/default/Files/zip_files /lakehouse/default/Files/
+
+# Download and extract model
+import shutil
+from sparknlp.pretrained import PretrainedPipeline
+
+zip_file_path = '/lakehouse/default/Files/zip_files/<Model-ZIP>'
+unzip_dir_path = '/lakehouse/default/Files/<MODEL-NAME>'
+
+try:
+    buck_auxdata.download_file('clinical/models/<Model-ZIP>', zip_file_path)
+    shutil.unpack_archive(zip_file_path, unzip_dir_path, 'zip')
+    print("Model downloaded and extracted successfully.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
+
+### Step 11: Load the Model and Make Predictions
+Load the model and perform predictions on the desired text:
+```python
+pipeline = PretrainedPipeline.from_disk("Files/<MODEL-NAME>")
+text = "<INPUT-TEXT>"
+result = pipeline.annotate(text)
+```
+
+**Example Usage:**
+```python
+# Assuming ner_ade_biobert_pipeline is loaded
+text ="""A 28-year-old female with a history of gestational diabetes mellitus, used to take metformin 1000 mg two times a day, presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
+She was seen by the endocrinology service and discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals.
+"""
+result = pipeline.annotate(text)
+```
+
+---
+
+
 </div>
