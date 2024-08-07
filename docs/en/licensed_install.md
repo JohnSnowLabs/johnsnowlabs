@@ -1532,8 +1532,6 @@ In NB section, you can create your own NB or load existing NBs.
 ![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
 
-
----
 ## Microsoft Fabric Instructions
 
 ### Step 1: Log into MS Fabric
@@ -1544,17 +1542,37 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us say named `jsl_workspace`.)
 
+![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
+
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us say named `JSL_Notebook`.)
+
+  ![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
+
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
+![image](https://github.com/user-attachments/assets/63996c40-4cd6-4aa2-925f-a1ad886914f4)
+
+![image](https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be)
+
+
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
+
+![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
+
+![image](https://github.com/user-attachments/assets/48339e38-fb5e-4dd7-b235-bfcb645cc855)
+
+
+After uploading is complete, you can configure and run the notebook.
+
+
 ### Step 6: Configure the Notebook Session
 Configure the session within the notebook as follows:
+
 ```json
 %%configure -f
 {
@@ -1586,6 +1604,11 @@ Install the required Spark NLP libraries using pip commands:
 %pip install <spark-nlp-jsl whl File API path>
 ```
 
+**Example Usage:**
+
+![image](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
+
+
 ### Step 8: Make Necessary Imports
 Import the necessary Python and Spark libraries:
 ```python
@@ -1616,6 +1639,11 @@ import json
 with open("models.json", "r", encoding="utf-8") as f:
     full_list = json.load(f)
 ```
+
+**Example Usage:**
+
+![image](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
+
 
 ### Step 10: Download and Extract Required Models
 Set up AWS credentials and use Boto3 to handle files:
@@ -1657,15 +1685,12 @@ result = pipeline.annotate(text)
 ```
 
 **Example Usage:**
-```python
-# Assuming ner_ade_biobert_pipeline is loaded
-text ="""A 28-year-old female with a history of gestational diabetes mellitus, used to take metformin 1000 mg two times a day, presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
-She was seen by the endocrinology service and discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals.
-"""
-result = pipeline.annotate(text)
-```
 
----
+![image](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
+
+![image](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
+
+
 
 
 </div>
