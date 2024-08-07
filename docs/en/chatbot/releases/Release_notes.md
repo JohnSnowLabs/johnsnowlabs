@@ -12,7 +12,57 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
-## 07-30-2024
+## 08-08-2024 New NLP Tools and Response Styles!
+
+#introduction
+
+### Introducing 4 New NLP Tools
+
+The integration of our advanced NLP tools into the Medical Chatbot enhanced its capabilities in processing medical texts, particularly in the domains of data masking, medical named entity recognition (NER), and relationship extraction. Continuing our commitment to offering precise and efficient medical data analysis solutions, we have introduced four new state-of-the-art NLP tools designed to meet the specific needs of the medical field:
+
+1. Extract Radiological Entities and Relations
+2. Extract Social Determinants of Health
+3. Extract Adverse Drug Events
+4. Extract Voice Of The Patient
+
+These tools are tailored to meet the unique challenges of the medical field, ensuring accurate and efficient data extraction and analysis, further empowering our users with cutting-edge solutions.
+
+#### Tools Overview
+All four of the new tools are seamlessly integrated with the @ Selector. By simply typing '@' at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
+
+
+##### 1. Extract Radiological Entities and Relations:
+Designed to extract radiology-related entities, assign assertion statuses to these entities, and establish relationships between them within clinical documents. 
+It specializes in identifying entities regarding tests, imaging techniques, and test findings within radiology reports, while also accurately determining their assertion statuses and relations.
+
+##### 2. Extract Social Determinants of Health:
+
+Meticulously engineered to extract all clinical and medical entities considered as Social Determinants of Health (SDoH) from textual data, assign assertion statuses to the identified entities, and establish and elucidate relationships. Specifically, it identifies socio-environmental health determinants such as access to care, diet, employment, and housing from health records, providing comprehensive insights into factors affecting patient health outcomes.
+
+##### 3. Extract Adverse Drug Events:
+Efficiently identifies and extracts adverse drug events and related clinical entities from medical texts. It can help users identify adverse reactions to drugs (ADE) from various drug reviews, tweets, and medical texts while also providing assertion statuses and relationship analysis.
+
+##### 4. Extract Voice Of The Patient:
+Designed to meticulously extract healthcare-related entities from patient-generated content, assign assertion statuses, and establish relationships between these entities. It proficiently identifies clinical and behavioral entities from various sources, including social media posts, blogs, forums, and direct patient communications.
+
+
+### Response Styles are back!
+We are bringing back the Response Styles feature with an enhanced, intuitive interface that allows users to easily customize their conversation settings. This feature enables dynamic response style selection, improving the personalization of interactions and empowering users to tailor responses to their specific needs. Users can make efficient adjustments to the generated text, offering greater control over the creative process without the need to rephrase their prompts entirely.
+
+#### Key Features:
+
+- **Streamlined Access:** Each response now includes a Response Style settings button, accessible through the conversation settings icon in the contextual menu.
+
+- **Dynamic Customization:** By default, a standard response style is applied when starting a new conversation. However, you can now effortlessly switch to a different style after the initial response. Simply click the settings button to select your preferred style, and the chatbot will regenerate the response accordingly.
+
+- **Understand Your Preferences:** Once you choose a response style, it will remain active for all subsequent interactions within the current conversation. You can easily modify this setting at any time until the conversation ends.
+
+- **Custom Response Styles:** Want a unique touch? Create your own Custom Response Style by providing a simple prompt describing your preferred response tone or format. The Medical Chatbot will adapt to your specifications seamlessly.
+
+Enhance your conversational experience with these new features and enjoy a more tailored and responsive interaction.
+
+### Chat Improvements
+We are committed to continuously enhancing the chat and conversational capabilities of the Medical Chatbot. Recent improvements include advanced memory management for conversational history, enabling the Chatbot to handle interactions more effectively and maintain context. Additionally, enhancements in automatic tool selection ensure that the most appropriate tool is chosen for the user's complex queries, providing the most accurate and relevant responses. The Medical Chatbot is now adept at understanding the specialties of each tool and applying them appropriately based on the context of the user's query.
 
 <div class="h3-box" markdown="1">
 
