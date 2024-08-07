@@ -1540,12 +1540,12 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 ### Step 2: Create a Lakehouse
 - Go to the **Synapse Data Science** section.
 - Navigate to the **Create** section.
-- Create a new lakehouse, (for instance let us say named `jsl_workspace`.)
+- Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
 ![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
 
 ### Step 3: Create a Notebook
-- Similarly, create a new notebook ( for instance let us say named `JSL_Notebook`.)
+- Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
   ![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
 
