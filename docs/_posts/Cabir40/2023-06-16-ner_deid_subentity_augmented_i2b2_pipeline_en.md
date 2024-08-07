@@ -22,6 +22,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity_augmented_i2
 
 ## Predicted Entities
 
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `URL`, `LOCATION-OTHER`, `DEVICE`, `CITY`, `DATE`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `AGE`
 
 
 {:.btn-box}

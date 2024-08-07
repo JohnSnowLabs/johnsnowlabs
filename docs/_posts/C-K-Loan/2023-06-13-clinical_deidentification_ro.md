@@ -18,9 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline is trained with `w2v_cc_300d` Romanian embeddings and can be used to deidentify PHI information from medical texts in Romanian. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `AGE`, `CITY`, `COUNTRY`, `DATE`, `DOCTOR`, `EMAIL`, `FAX`, `HOSPITAL`, `IDNUM`, `LOCATION-OTHER`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STREET`, `ZIP`, `ACCOUNT`, `LICENSE`, `PLATE`
+This pipeline is trained with `w2v_cc_300d` Romanian embeddings and can be used to deidentify PHI information from medical texts in Romanian. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `LOCATION-OTHER`, `CITY`, `DATE`, `PATIENT`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `FAX`, `AGE`, `ACCOUNT`, `PLATE`, `LICENSE`
 
 ## Predicted Entities
+
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `LOCATION-OTHER`, `CITY`, `DATE`, `PATIENT`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `FAX`, `AGE`, `ACCOUNT`, `PLATE`, `LICENSE`
 
 
 
