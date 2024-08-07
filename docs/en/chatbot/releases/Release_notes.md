@@ -12,6 +12,10 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
+## 07-30-2024
+
+<div class="h3-box" markdown="1">
+
 ## 07-30-2024 - Improved DocQA, New Web Search and Enhanced NLP Tools 
 
 We are happy to announce a new release of the Medical Chatbot, focused on enhancing its capabilities and usability in the medical domain. 
