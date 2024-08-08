@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ept2dbql5slue
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/facfaf55-00f6-496c-a8db-a395631130ec/John-Snow-Labs_Clinical-Deidentification
+
 ---
 
 ## Description
@@ -31,6 +37,17 @@ This pipeline simultaneously produces masked with entity labels, fixed-length ch
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_multi_mode_output_en_5.3.1_3.4_1711532922696.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_multi_mode_output_en_5.3.1_3.4_1711532922696.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+
+{% if page.deploy %}
+## Deploy
+
+{:.tac}
+Click on the following markets to deploy this model
+
+{% include display_platform_information.html %}
+{% endif %}
+
 
 ## How to use
 
