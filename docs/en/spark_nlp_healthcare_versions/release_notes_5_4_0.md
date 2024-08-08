@@ -437,6 +437,7 @@ A suite of models designed for the identification and analysis of alcohol and sm
 
 - NER Model
 
+{:.table-model-big}
 |Model Name         | Predicted Entities | Description      |
 |-------------------|--------------------|------------------|
 | [ner_alcohol_smoking](https://nlp.johnsnowlabs.com/2024/07/01/ner_alcohol_smoking_en.html) | `Drinking_Status`, `Alcohol_Type`, `Smoking_Status`, `Smoking_Type`, `Substance_Duration`, `Substance_Frequency`, `Substance_Quantity`, `Cardiovascular_Issues`, `Respiratory_Issues`, `GUT_Issues`, `Neurologic_Issues`, `Psychiatric_Issues`, `Other_Health_Issues`, `Drinking_Environment`, `Cessation_Treatment`, `Withdrawal_Treatment` | Detects alcohol and smoking related entities within text data |
@@ -555,7 +556,7 @@ text = ["""Pulmonary Function Tests: Demonstrates airflow limitation consistent 
 
 *Result*:
 
-{:.table-model-big}
+{:.table-model-big.db}
 |    |   sentence |   entity1_begin |   entity1_end | chunk1   | entity1            |   entity2_begin |   entity2_end | chunk2                    | entity2             | relation     |   confidence |
 |---:|-----------:|----------------:|--------------:|:---------|:-------------------|----------------:|--------------:|:--------------------------|:--------------------|:-------------|-------------:|
 |  0 |          2 |             154 |           157 | COPD     | Respiratory_Issues |             172 |           178 | smoking                   | Smoking_Status      | is_caused_by |     0.999902 |
@@ -829,9 +830,6 @@ text = [
 |---------------------|
 |[{sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., {sentence -> 0}, [-0.09830807, 0.0137982415, -0.051585164, -0.0023749713, -0.017916167, 0.017543513, 0.025593378, 0.05106...|
 |[{sentence_embeddings, 0, 47, Peter Parker is a nice lad and lives in New York, {sentence -> 0}, [-0.10453681, 0.010062916, -0.024983741, 0.009945293, -0.01242009, 0.018787898, 0.039723188, 0.04624...|
-
-
-
 
 </div><div class="h3-box" markdown="1">
 

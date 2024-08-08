@@ -17,7 +17,6 @@ sidebar:
 
 Release date: 17-11-2023
 
-
 **We are glad to announce that Visual NLP 5.1.0 has been released! This release comes with new models, annotators, bug fixes, and more!📢📢📢**
 
 **New Models &  Annotators**
@@ -25,6 +24,7 @@ Release date: 17-11-2023
 The practical impact of this type of models is that you can create "data extractors" for your own particular use case without fine-tuning on your data. So you can ask questions about tables, or forms or other structures in which the visual information is relevant, in a zero-shot manner.
 
 We started our journey with Donut-like models, which were great in many different tasks. Check [this code and example](https://nlp.johnsnowlabs.com/2023/01/17/docvqa_donut_base_en_3_2.html), and [this webinar](https://www.johnsnowlabs.com/watch-zero-shot-visual-question-answering/), in case you missed it.
+
 ![5.1.0](/assets/images/ocr/pix2struct_sample.png)
 
 ```
@@ -36,11 +36,10 @@ Now, we're taking one step further and integrating Pix2Struct which, when compar
 Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnsweringJsl.ipynb) with examples on how to use it.
 
 * DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
+
 ![5.1.0](/assets/images/ocr/dit-layout-sample.png)
 
-
- 
-   Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
+Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
 Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb) for an example on how to apply this new model to sample documents.
 
 * DicomDeidentifier: new annotator that allows deidentification of Dicom Images using Dicom metadata contained in the same Dicom document. This is a rule-based annotator which leverages PHI collected from the metadata like patient names or test results to deidentify PHI contained on images in the Dicom file. It also supports a black list parameter to remove specific content present in the image text.
@@ -54,6 +53,8 @@ As well as related blogposts,
     * [DICOM de-identification at scale in Visual NLP — Part 2.](https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-2-361af5e36412)
 
     * [DICOM de-identification at scale in Visual NLP — Part 3.](https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-3-ac750be386cb)
+
+</div><div class="h3-box" markdown="1">
 
 **Bug Fixes & Changes**
 
@@ -76,10 +77,6 @@ VisualDocumentClassifierV3.fit(base_model_path='path_to_local_chkpt')
 * Transformer OCR pretrained pipelines have been updated to use faster components and to avoid some serialization issues under some Spark versions, check [this query](https://nlp.johnsnowlabs.com/models?edition=Visual+NLP&type=pipeline) on Models Hub.
 
 * This release is compatible with ```Spark NLP 5.1.2``` and Spark NLP for``` Healthcare 5.1.2```
-
-
-
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

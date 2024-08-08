@@ -42,11 +42,11 @@ The DocQA Session has an improved UI for file upload and processing designed to 
 
 2. **Processing Complete:** The file has been successfully processed and is now part of the knowledge base, shown by a green tick icon.
 
-![image](https://github.com/user-attachments/assets/0d93f381-7516-4c54-89c1-8ebd19e3495b)
+![DocQA Enhancements](https://github.com/user-attachments/assets/0d93f381-7516-4c54-89c1-8ebd19e3495b)
 
 3. **Processing Failed:** There was an issue with file processing, indicated by a red cross icon.
 
-![image](https://github.com/user-attachments/assets/d9aab12f-251f-49ee-871a-4ed158f17cd0)
+![DocQA Enhancements](https://github.com/user-attachments/assets/d9aab12f-251f-49ee-871a-4ed158f17cd0)
 
 After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
 
@@ -58,7 +58,7 @@ In the DocQA session, you can now easily view the content of uploaded documents 
 ### More precise references
 Responses generated in the DocQA session include citations pointing to specific sections of the document used as references. These sections can be previewed in the Document Preview UI. Now, to enhance usability, reference numbers have been added to each preview, allowing users to easily track and identify the relevant references while reviewing the content.
 
-![image](https://github.com/user-attachments/assets/f0bc44fb-8972-4cbf-a1ea-5425390dbcb9)
+![DocQA Enhancements](https://github.com/user-attachments/assets/f0bc44fb-8972-4cbf-a1ea-5425390dbcb9)
 
 ### Quick load for reference previews
 To improve the efficiency of document previews, the chatbot offers a better pre-loading process. This enhancement reduces the time required for document previews for each reference/citation while ensuring accurate section highlighting for both PDF and TXT files.
@@ -69,7 +69,7 @@ To improve the efficiency of document previews, the chatbot offers a better pre-
 ### Overview
 We are excited to introduce the Web Search tool, an enhancement of the already available Wikipedia search tool. While the Wikipedia search tool effectively provided information from a vast database of general topics, the new Web Search tool extends its capabilities to the entire web, ensuring you receive the most comprehensive and relevant information available.
    
-   <iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Key Features
 1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
@@ -103,8 +103,7 @@ The generated responses visually highlight the detected entities and assertion s
 
 The tools have been renamed and their descriptions were updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
 
-![image](https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97)
-
+![DocQA Enhancements](https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97)
 
 ### Copy response with references 
 
@@ -145,7 +144,7 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
    - The active DocQA session appears as "DocQ&A" in the Conversation History.
    - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
 
-<img width="2944" alt="Session_Visibility" src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719">
+![Introducing DocQ&A](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719)
 
 3.**Document Management within Sessions**
    - If a document is uploaded in a regular chat while a DocQA session is active, it will be automatically added to the existing session's Target Documents.
@@ -242,8 +241,8 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 - **User-Controlled Flexibility**: Offers the flexibility to tailor tool engagement to individual preferences and requirements.
 - **Efficient Tool Access**: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.
 
-
 </div><div class="h3-box" markdown="1">
+
 ---
 
 ## 03-13-2024
@@ -267,7 +266,6 @@ In our continuous effort to ensure the reliability and responsiveness of the Med
 With the introduction of this feature, should the user volume exceed the system's configured threshold, resulting in an inability to process additional requests, the Medical Chatbot's user interface will now display a clear and informative message: “We’re experiencing exceptionally high demand in the Medical Chatbot. Please try again in a few minutes.” This message is designed to inform users of the current high demand and guide them to retry their request after a brief period, ensuring a better user experience during peak times.
 
 ![high demand final](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/515acf12-6e26-47b2-9e76-a0c73004eded)
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -307,7 +305,7 @@ repositioned the conversation settings. Previously located next to the "New Conv
 1. **Contextual Menu Placement**: The contextual menu, which includes the conversation settings, has been relocated below the response box. This change ensures visibility immediately after a response is generated, especially important when dealing with longer responses that could previously obscure the menu.
 2. **Dedicated Settings Icon**: A settings icon has been introduced to the contextual menu for conversation settings, making it easier for users to find and adjust their response style preferences. The response style options have been removed from the Chat settings pop-up and are now accessible via a separate pop-up when the user clicks on the conversation settings icon in the contextual menu. This approach allows for a more streamlined and focused user experience.
    
-![Screenshot 2024-03-13 at 2 33 19 PM](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/f2e12115-604d-4e17-b51e-68e25c0212d2)
+![Response Style Customization](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/f2e12115-604d-4e17-b51e-68e25c0212d2)
 
 </div><div class="h3-box" markdown="1">
 
@@ -315,7 +313,7 @@ repositioned the conversation settings. Previously located next to the "New Conv
 
 Upon initiating a new conversation, the Default response style is applied. However, users now have the flexibility to change the response style after the first response is generated by the chatbot. By clicking on the conversation settings button, users can select a different style, prompting the chatbot to regenerate the response in the new style. This selected style will persist for all subsequent interactions within the current conversation until the conversation concludes or the user opts to change the style again.
 
-![response style_1](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/26996a41-a9f6-455f-8ea2-b238f850b090)
+![Response Style Customization](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/26996a41-a9f6-455f-8ea2-b238f850b090)
 
 </div><div class="h3-box" markdown="1">
 
@@ -333,8 +331,7 @@ To improve accessibility and user experience, we have made the following changes
 3. **Customizable Knowledge Base Interaction**: When the MedResearch tool is enabled, users will be shown a list of accessible KBs, similar to the existing functionality. Importantly, users now have the capability to individually activate or deactivate these KBs. This flexibility ensures that the queries are matched against the most relevant and preferred knowledge bases, enhancing the accuracy and relevance of the chatbot's responses. 
 When all tools are turned off, John will respond from its memory. See next section for details.
 
-
-![Tools_Selection_Gif](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/b9b2f9fd-e938-43c6-a050-e2e201f78cb2)
+![Tools Selection](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/b9b2f9fd-e938-43c6-a050-e2e201f78cb2)
 
 </div><div class="h3-box" markdown="1">
 
@@ -356,7 +353,7 @@ When John provides a response drawn from memory, the following changes will be e
 - **Notification Replaces References**: The usual "References" section will be substituted with a distinct notification to users. This alert aims to inform users that the response has been generated based on information available up to a certain date, highlighting that it may not include the latest findings or updates.
 - **Content of the Notification**: The notification will convey the following message: “Please note that this response was generated from John's memory and may not reflect the most recent developments. For the most current information, consider verifying details from up-to-date sources.” This message is designed to prompt users to seek out the most current data for their inquiries, ensuring they have access to the most accurate and relevant information.
 
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/2ba0c6b5-c7f8-42aa-aa82-1528e9e0fceb)
+![Enhanced Transparency for LLM Memory-Based Responses](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/2ba0c6b5-c7f8-42aa-aa82-1528e9e0fceb)
 
 </div><div class="h3-box" markdown="1">
 
