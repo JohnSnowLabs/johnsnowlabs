@@ -17,7 +17,6 @@ sidebar:
 
 Release date: 15-05-2024
 
-
 ## Visual NLP 5.3.2 Release Notes 🕶️
 
 **We are glad to announce that Visual NLP 5.3.2 has been released.!!! 📢📢📢**
@@ -36,6 +35,7 @@ Release date: 15-05-2024
 ### Ocr Metrics against Cloud Providers: Textract, and CGP.
 Next are metrics for Text Detection and Recognition tasks collected on the FUNSD dataset, the final metric is the average F score across Text Detection and Recognition tasks.
 
+{:.table-model-big}
 |Detection | Recognition |  | Detection Metrics |  | Recognition Metrics |  |
 |-- | -- | -- | -- | -- | -- | -- |
 | | |  Precision | Recall | Precision | Recall |Avg. F Score|
@@ -49,8 +49,7 @@ Next are metrics for Text Detection and Recognition tasks collected on the FUNSD
 
 Not only the scores are slightly better than those of cloud providers, but also the cost is lower(*),
 
-<span><span class="ui-provider rr b c d e f g h i j k l m n o p q r s t u v w x y z ab ac ae af ag ah ai aj ak" dir="ltr"><p>&nbsp;</p>
-
+{:.table-model-big}
 |Service | Cost(USD)|
 |-- | --|
 |Amazon | 120|
@@ -60,8 +59,6 @@ Not only the scores are slightly better than those of cloud providers, but also 
 
 
 (*) JSL costs were estimated assuming a Databricks setup.
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -77,14 +74,15 @@ lp.fromLocalPath("page_with_tables.png")
 
 ```
 For other examples please check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb).
+
 </div><div class="h3-box" markdown="1">
 
 ### PositionFinder 
-For cases in which entities spawn multiple lines, PositionFinder was not working properly,
+For cases in which entities spawn multiple lines, PositionFinder was not working properly.
+
 ![5.3.2](/assets/images/ocr/highlight.png)
 
 Now, the expected bounding boxes for the entity are returned. Keep in mind that as before more than one bounding box will be returned, and all will share the same `chunk_id`.
-
 
 </div><div class="h3-box" markdown="1">
 

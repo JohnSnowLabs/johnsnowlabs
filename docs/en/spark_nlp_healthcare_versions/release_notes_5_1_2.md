@@ -410,7 +410,6 @@ Please see [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/s
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
-
 - New [LANGTEST NER](https://demo.johnsnowlabs.com/healthcare/LANGTEST_NER/) for the most popular clinical NER models
 - New [Date Shifting and Date Normalization Demo](https://demo.johnsnowlabs.com/healthcare/DATE_SHIFTING_AND_NORMALIZATION/) demonstrates the most popular deidentification date operation
 - New [Respiratory Disease Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/) with new `multiclassifierdl_respiratory_disease` model

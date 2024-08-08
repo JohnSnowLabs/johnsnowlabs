@@ -17,7 +17,6 @@ sidebar:
 
 Release date: 15-07-2024
 
-
 ## Visual NLP 5.4.0 Release Notes 🕶️
 
 **we're glad to announce that Visual NLP 5.4.0 has been released. New transformers, notebooks, metrics, bug fixes and more!!! 📢📢📢**
@@ -40,6 +39,7 @@ Release date: 15-07-2024
 ### Improvements in Table Processing
 New RegionsMerger component for merging Text Regions and Cell Regions to improve accuracy in Table Extraction Pipelines:
 
+{:.table-model-big}
 | PretrainedPipeline   | Score Improvement(*) | Comments
 | ------------------ | --------------------- |---------------------------|
 | table_extractor_image_to_text_v2   | 0.34 to 0.5 | Internally it uses ImageToTextV2(case insensitive)|
@@ -55,7 +55,7 @@ Now Dicom Transformers can access S3 directly from executors instead of reading 
 * It reduces memory usage and allows processing of files larger than 2 GB (a limitation of Spark).
 * It improves performance when computing statistics over large DICOM datasets.
 
-</div><div class="h3-box" markdown="1">\
+</div><div class="h3-box" markdown="1">
 
 ### New Options for ImageToPdf transformer.
 New options have been added to ImageToPdf. ImageToPdf is the transformer we use to create PDFs from images, we use it for example when we de-identify PDFs and we want to write back to the PDF to obtain a redacted version of the PDF.
@@ -69,14 +69,14 @@ The new options are intended to control the size of the resulting PDF document b
     
 * aggregatePages: Aggregate pages in one PDF document.
 
-
 </div><div class="h3-box" markdown="1">
 
 ### Support for rotated text regions in ImageToTextV2
 Text regions at the input of ImageToTextV2 support rotation. Detected text regions come with an angle to represent the rotation that the detected text has in the image.
 Now, this angle is used to extract a straightened version of the region, and fed to the OCR. The resulting text is placed into the returned output text using the center of the region to decide its final location.
-See the following example,
-![image](/assets/images/ocr/rotated_regions.png)
+See the following example.
+
+![Support for rotated text regions in ImageToTextV2](/assets/images/ocr/rotated_regions.png)
 
 and the resulting(truncated) text,
 ```
@@ -95,8 +95,7 @@ and the resulting(truncated) text,
 
 ### New Pdf-To-Pdf Pretrained Pipelines for De-Identification.
 New de-ideintification pipeline that consumes PDFs and produces de-identified PDFs: `pdf_deid_pdf_output`. 
-For a description of this pipeline please check its
-[card on Models Hub](https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html), and also this [notebook example](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb).
+For a description of this pipeline please check its [card on Models Hub](https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html), and also this [notebook example](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb).
 
 </div><div class="h3-box" markdown="1">
 
@@ -122,7 +121,6 @@ The goal is for these numbers to be used as proxies when estimating hardware req
 * Bug Fix: ImageDrawRegions removes image resolution after drawing regions.
 * Bug Fix: RasterFormatException in ImageToTextV2.
 * Bug Fix: PdfToTextTable, PptToTextTable, DocToTextTable didn't include a `load()` method.
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 
