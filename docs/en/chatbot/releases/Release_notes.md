@@ -14,9 +14,16 @@ sidebar:
 
 ## 08-08-2024 New NLP Tools and Response Styles!
 
+
+
 #introduction
 
-### Introducing 4 New NLP Tools
+
+</div><div class="h3-box" markdown="1">
+    
+## Introducing 4 New NLP Tools
+
+
 
 The integration of our advanced NLP tools into the Medical Chatbot enhanced its capabilities in processing medical texts, particularly in the domains of data masking, medical named entity recognition (NER), and relationship extraction. Continuing our commitment to offering precise and efficient medical data analysis solutions, we have introduced four new state-of-the-art NLP tools designed to meet the specific needs of the medical field:
 
@@ -31,22 +38,24 @@ These tools are tailored to meet the unique challenges of the medical field, ens
 All four of the new tools are seamlessly integrated with the @ Selector. By simply typing '@' at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
 
 
-##### 1. Extract Radiological Entities and Relations:
+1. ##### Extract Radiological Entities and Relations:
 Designed to extract radiology-related entities, assign assertion statuses to these entities, and establish relationships between them within clinical documents. 
 It specializes in identifying entities regarding tests, imaging techniques, and test findings within radiology reports, while also accurately determining their assertion statuses and relations.
 
-##### 2. Extract Social Determinants of Health:
-
+2. ##### Extract Social Determinants of Health:
 Meticulously engineered to extract all clinical and medical entities considered as Social Determinants of Health (SDoH) from textual data, assign assertion statuses to the identified entities, and establish and elucidate relationships. Specifically, it identifies socio-environmental health determinants such as access to care, diet, employment, and housing from health records, providing comprehensive insights into factors affecting patient health outcomes.
 
-##### 3. Extract Adverse Drug Events:
+4. ##### Extract Adverse Drug Events:
 Efficiently identifies and extracts adverse drug events and related clinical entities from medical texts. It can help users identify adverse reactions to drugs (ADE) from various drug reviews, tweets, and medical texts while also providing assertion statuses and relationship analysis.
 
-##### 4. Extract Voice Of The Patient:
+4. ##### Extract Voice Of The Patient:
 Designed to meticulously extract healthcare-related entities from patient-generated content, assign assertion statuses, and establish relationships between these entities. It proficiently identifies clinical and behavioral entities from various sources, including social media posts, blogs, forums, and direct patient communications.
 
+</div><div class="h3-box" markdown="1">
 
-### Response Styles are back!
+## Response Styles are back!
+
+    
 We are bringing back the Response Styles feature with an enhanced, intuitive interface that allows users to easily customize their conversation settings. This feature enables dynamic response style selection, improving the personalization of interactions and empowering users to tailor responses to their specific needs. Users can make efficient adjustments to the generated text, offering greater control over the creative process without the need to rephrase their prompts entirely.
 
 #### Key Features:
@@ -61,10 +70,15 @@ We are bringing back the Response Styles feature with an enhanced, intuitive int
 
 Enhance your conversational experience with these new features and enjoy a more tailored and responsive interaction.
 
-### Chat Improvements
+</div><div class="h3-box" markdown="1">
+
+## Chat Improvements
+
+
+    
 We are committed to continuously enhancing the chat and conversational capabilities of the Medical Chatbot. Recent improvements include advanced memory management for conversational history, enabling the Chatbot to handle interactions more effectively and maintain context. Additionally, enhancements in automatic tool selection ensure that the most appropriate tool is chosen for the user's complex queries, providing the most accurate and relevant responses. The Medical Chatbot is now adept at understanding the specialties of each tool and applying them appropriately based on the context of the user's query.
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## 07-30-2024 - Improved DocQA, New Web Search and Enhanced NLP Tools 
 
@@ -248,7 +262,7 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 </div><div class="h3-box" markdown="1">
 
 ### Key Features
-1.**Tools Overview**
+1. **Tools Overview**
    - **Deidentification/Obfuscation of PHI**: Automatically detects and masks or obfuscates protected health information (PHI) from medical text to ensure privacy and compliance with data protection regulations. Users can specify to de-identify or obfuscate the medical text based on their requirements. 
    
    <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -265,9 +279,9 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 
    <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-2.**Customizable Accessibility**
+2. **Customizable Accessibility**
    - Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
-3.**Accessing Tools**
+3. **Accessing Tools**
    - NLP tools can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct tool activation.
    - Typing '@' at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
    - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance, when using `@medical_research` at the beginning of your question, the chatbot will directly engage the `MedResearch` tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
@@ -283,7 +297,7 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
    - Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.    
 ![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
 
-4.**Export results in CSV format**
+4. **Export results in CSV format**
    - All the Entity Extraction results computed using the NLP tools can be exported in CSV format. For each detected entity, the export also contains confidence information, ensuring transparency and reliability in data analysis.
 
 ![CSV_Download](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/18526211-0ebc-43bb-beba-2c2439d479b7)
