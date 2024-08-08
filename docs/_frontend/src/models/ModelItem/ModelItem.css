@@ -142,3 +142,10 @@
   font-size: 12px;
   position: absolute;
 }
+
+.model-item__footer {
+  padding: 0px 20px;
+  border-top: 1px solid #e8f8ff;
+  display: flex;
+  gap: 10px;
+}

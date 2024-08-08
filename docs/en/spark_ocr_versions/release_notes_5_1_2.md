@@ -107,10 +107,11 @@ PipelineModel(stages=[
     cell_detector
     hocr_to_table])
 ```
-The following image depicts intermediate cell detection along with the final result,
-![table_cell_sample](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/d001a40b-2106-4932-a148-96b521f0fccd)
+The following image depicts intermediate cell detection along with the final result.
 
-For a complete, end-to-end example we encourage you to check the sample notebook,
+![table_cell_sample](/assets/images/ocr/292925958-d001a40b-2106-4932-a148-96b521f0fccd.png "lit_shadow")
+
+For a complete, end-to-end example we encourage you to check the sample notebook.
 
 [SparkOcrImageTableRecognitionWHOCR.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb)
 

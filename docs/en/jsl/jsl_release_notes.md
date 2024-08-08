@@ -22,7 +22,7 @@ Release date: 7-30-2024
 
 The John Snow Labs 5.4.2 Library released with the following pre-installed and recommended dependencies
 
-
+{:.table-model-big}
 | Library                                                                                 | Version    |
 |-----------------------------------------------------------------------------------------|------------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.4.0`    |

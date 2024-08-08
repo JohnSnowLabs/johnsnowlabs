@@ -3,6 +3,23 @@ import ModelItemTag from '../ModelItemTag';
 import { addNamingConventions } from './utils';
 import './ModelItem.css';
 
+const MarketplaceIcon = ({ platform, deployLink }) => (
+  <div>
+    {deployLink ? <a target="_blank" href={`${deployLink}`}>
+      <figure><img src={`/assets/images/posts_image/active_${platform}.svg`} alt="" /></figure>
+    </a> : <figure><img src={`/assets/images/posts_image/inactive_${platform}.svg`} alt="" /></figure>
+    }
+  </div>
+)
+
+const ModelItemMarketplace = ({ snowflake, databricks, sagemaker }) => (
+  <div className="model-item__footer">
+    <MarketplaceIcon platform="sagemaker" deployLink={sagemaker} />
+    <MarketplaceIcon platform="snowflake" deployLink={snowflake} />
+    <MarketplaceIcon platform="databricks" deployLink={databricks} />
+  </div>
+)
+
 const ModelItem = ({
   title,
   url,
@@ -14,6 +31,7 @@ const ModelItem = ({
   recommended,
   deprecated,
   highlight,
+  marketplace,
 }) => {
   let body;
   if (highlight && highlight.body && highlight.body[0]) {
@@ -64,6 +82,8 @@ const ModelItem = ({
           <ModelItemTag icon="flag" name="Language" value={language} />
           <ModelItemTag icon="clone" name="Edition" value={edition} />
         </div>
+
+        {marketplace && <ModelItemMarketplace {...marketplace} />}
       </div>
     </div>
   );

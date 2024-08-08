@@ -39,8 +39,10 @@ Release date: 11-04-2024
 </div><div class="h3-box" markdown="1">
 
 ## Improved table extraction capabilities in HocrToTextTable
+
 Many issues related to column detection in our Table Extraction pipelines are addressed in this release, compared to previous Visual NLP version the metrics have improved. Table below shows F1-score(CAR or Cell Adjacency Relationship) performances on ICDAR 19 Track B dataset for different IoU values of our two versions in comparison with [other results](https://paperswithcode.com/paper/multi-type-td-tsr-extracting-tables-from/review/).
 
+{:.table-model-big}
 | Model  | 0.6 | 0.7 | 0.8 | 0.9 |
 | ------------- | ------------- |------------- |------------- |------------- |
 | CascadeTabNet	  | 0.438  | 0.354 | 0.19 | 0.036 |
@@ -52,6 +54,7 @@ Many issues related to column detection in our Table Extraction pipelines are ad
 </div><div class="h3-box" markdown="1">
 
 ### Improvements in LightPipelines
+
 * ImageSplitRegions, ImageToTextV2, ImageTextDetectorCraft are now supported to be used with LightPipelines.
 * New `Base64ToBinary()` annotator to enable the use of in-memory base64 string buffers as input to LightPipelines.
 
@@ -86,6 +89,7 @@ result = lp.fromString(base64_pdf)
 </div><div class="h3-box" markdown="1">\
 
 ### Confidence scores in ImageToTextV2
+
 You can now enable confidence scores in ImageToTextV2 like this,
 
 ```
@@ -100,6 +104,7 @@ Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop
 </div><div class="h3-box" markdown="1">
 
 ### New HocrMerger annotator
+
 HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
 This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.
 
@@ -118,7 +123,8 @@ check_box_detector = ImageCheckBoxDetector \
     .setLabels(["No", "Yes"])
 ```
 
-In this case we are receiving an image as input, and returning a HOCR representation with labels 'Yes', and 'No' to represent whether the checkbox is marked or not. You can see this idea directly in the following picture,
+In this case we are receiving an image as input, and returning a HOCR representation with labels 'Yes', and 'No' to represent whether the checkbox is marked or not. You can see this idea directly in the following picture.
+
 ![5.3.1](/assets/images/ocr/checkboxes.png)
 
 </div><div class="h3-box" markdown="1">
@@ -141,6 +147,7 @@ For an end-to-end example, please check [this notebook](https://github.com/JohnS
 </div><div class="h3-box" markdown="1">
 
 ### Enhancements to color options in ImageDrawRegions.
+
 ImageDrawRegions is the annotator used for rendering regions into images so we can visualize results from different models, like, for example, Text Detection. The setColorMap method, is used to set the colors of bounding boxes drawn at top of images, the new behavior is as follows,
  
   * setColorMap: when called with a '*' as argument, it will apply a single color to the bounding boxes of all labels.
@@ -150,6 +157,7 @@ ImageDrawRegions is the annotator used for rendering regions into images so we c
 </div><div class="h3-box" markdown="1">
 
 ### New notebooks & updates
+
 + New [notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRInfographicsVisualQuestionAnswering.ipynb) for Visual Question Answering on Infographics!
 
 + New [notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrChartToTextLLM.ipynb) for combining Visual NLP Chart Exraction and Open Source LLMs!.
@@ -159,8 +167,8 @@ ImageDrawRegions is the annotator used for rendering regions into images so we c
 </div><div class="h3-box" markdown="1">
 
 ### Bug Fixes
-+ PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.
 
++ PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.
 
 </div><div class="prev_ver h3-box" markdown="1">
 
