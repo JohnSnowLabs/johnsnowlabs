@@ -84,7 +84,6 @@
   list-style: none;
   min-width: 100%;
   max-height: 240px;
-  overflow: scroll;
 }
 
 .menu__item {

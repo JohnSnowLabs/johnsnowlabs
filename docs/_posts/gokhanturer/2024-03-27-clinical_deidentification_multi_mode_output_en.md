@@ -40,11 +40,9 @@ This pipeline simultaneously produces masked with entity labels, fixed-length ch
 
 
 {% if page.deploy %}
-## Deploy
+## Available as Private API Endpoint
 
 {:.tac}
-Click on the following markets to deploy this model
-
 {% include display_platform_information.html %}
 {% endif %}
 
