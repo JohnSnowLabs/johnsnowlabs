@@ -1,0 +1,29 @@
+<div class="disp_platform_wrapper">
+    <div class="disp_platform_item">
+        <div class="dp_top df">
+            <figure><img src="/assets/images/posts_image/amazon.svg" alt=""></figure>
+        </div>
+        <div class="dp_body">
+            <p class="tac">SageMaker</p>
+            <a target="_blank" rel="noopener" {% if !page.deploy.sagemaker_link %} href="{{ page.deploy.sagemaker_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+        </div>
+    </div>
+    <div class="disp_platform_item">
+        <div class="dp_top df">
+            <figure><img src="/assets/images/posts_image/snowflake.svg" alt=""></figure>
+        </div>
+        <div class="dp_body">
+            <p class="tac">Snowflake</p>
+            <a target="_blank" rel="noopener" {% if !page.deploy.snowflake_link %} href="{{ page.deploy.snowflake_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+        </div>
+    </div>
+    <div class="disp_platform_item">
+        <div class="dp_top df">
+            <figure><img src="/assets/images/posts_image/databr.svg" alt=""></figure>
+        </div>
+        <div class="dp_body">
+            <p class="tac">Databricks</p>
+            <a target="_blank" rel="noopener" {% if page.deploy.databricks_link %} href="{{ page.deploy.databricks_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+        </div>
+    </div>
+</div>
