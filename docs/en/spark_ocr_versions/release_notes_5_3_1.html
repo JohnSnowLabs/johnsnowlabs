@@ -651,9 +651,10 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="h3-box">
 
   <h2 id="improved-table-extraction-capabilities-in-hocrtotexttable">Improved table extraction capabilities in HocrToTextTable</h2>
+
   <p>Many issues related to column detection in our Table Extraction pipelines are addressed in this release, compared to previous Visual NLP version the metrics have improved. Table below shows F1-score(CAR or Cell Adjacency Relationship) performances on ICDAR 19 Track B dataset for different IoU values of our two versions in comparison with <a href="https://paperswithcode.com/paper/multi-type-td-tsr-extracting-tables-from/review/">other results</a>.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Model</th>
@@ -706,6 +707,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="h3-box">
 
   <h3 id="improvements-in-lightpipelines">Improvements in LightPipelines</h3>
+
   <ul>
     <li>ImageSplitRegions, ImageToTextV2, ImageTextDetectorCraft are now supported to be used with LightPipelines.</li>
     <li>New <code class="language-plaintext highlighter-rouge">Base64ToBinary()</code> annotator to enable the use of in-memory base64 string buffers as input to LightPipelines.</li>
@@ -745,6 +747,7 @@ result = lp.fromString(base64_pdf)
   <p>\</p>
 
   <h3 id="confidence-scores-in-imagetotextv2">Confidence scores in ImageToTextV2</h3>
+
   <p>You can now enable confidence scores in ImageToTextV2 like this,</p>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") \
@@ -759,6 +762,7 @@ result = lp.fromString(base64_pdf)
 <div class="h3-box">
 
   <h3 id="new-hocrmerger-annotator">New HocrMerger annotator</h3>
+
   <p>HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
 This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.</p>
 
@@ -777,8 +781,9 @@ check_box_detector = ImageCheckBoxDetector \
     .setLabels(["No", "Yes"])
 </code></pre></div>  </div>
 
-  <p>In this case we are receiving an image as input, and returning a HOCR representation with labels ‘Yes’, and ‘No’ to represent whether the checkbox is marked or not. You can see this idea directly in the following picture,
-<img src="/assets/images/ocr/checkboxes.png" alt="5.3.1" /></p>
+  <p>In this case we are receiving an image as input, and returning a HOCR representation with labels ‘Yes’, and ‘No’ to represent whether the checkbox is marked or not. You can see this idea directly in the following picture.</p>
+
+  <p><img src="/assets/images/ocr/checkboxes.png" alt="5.3.1" /></p>
 
 </div>
 <div class="h3-box">
@@ -801,6 +806,7 @@ embeddings = VitImageEmbeddings \
 <div class="h3-box">
 
   <h3 id="enhancements-to-color-options-in-imagedrawregions">Enhancements to color options in ImageDrawRegions.</h3>
+
   <p>ImageDrawRegions is the annotator used for rendering regions into images so we can visualize results from different models, like, for example, Text Detection. The setColorMap method, is used to set the colors of bounding boxes drawn at top of images, the new behavior is as follows,</p>
 
   <ul>
@@ -813,6 +819,7 @@ embeddings = VitImageEmbeddings \
 <div class="h3-box">
 
   <h3 id="new-notebooks--updates">New notebooks &amp; updates</h3>
+
   <ul>
     <li>
       <p>New <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRInfographicsVisualQuestionAnswering.ipynb">notebook</a> for Visual Question Answering on Infographics!</p>
@@ -829,6 +836,7 @@ embeddings = VitImageEmbeddings \
 <div class="h3-box">
 
   <h3 id="bug-fixes">Bug Fixes</h3>
+
   <ul>
     <li>PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.</li>
   </ul>

@@ -634,8 +634,9 @@ function wrapWordInSpan(data, wordToWrap) {
 The practical impact of this type of models is that you can create “data extractors” for your own particular use case without fine-tuning on your data. So you can ask questions about tables, or forms or other structures in which the visual information is relevant, in a zero-shot manner.</li>
   </ul>
 
-  <p>We started our journey with Donut-like models, which were great in many different tasks. Check <a href="https://nlp.johnsnowlabs.com/2023/01/17/docvqa_donut_base_en_3_2.html">this code and example</a>, and <a href="https://www.johnsnowlabs.com/watch-zero-shot-visual-question-answering/">this webinar</a>, in case you missed it.
-<img src="/assets/images/ocr/pix2struct_sample.png" alt="5.1.0" /></p>
+  <p>We started our journey with Donut-like models, which were great in many different tasks. Check <a href="https://nlp.johnsnowlabs.com/2023/01/17/docvqa_donut_base_en_3_2.html">this code and example</a>, and <a href="https://www.johnsnowlabs.com/watch-zero-shot-visual-question-answering/">this webinar</a>, in case you missed it.</p>
+
+  <p><img src="/assets/images/ocr/pix2struct_sample.png" alt="5.1.0" /></p>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|[What's the estimated population in poverty of Lawrence? -&gt;  5,696, What's the population of Stoddard? -&gt;  26,000, What is the page number of the document? -&gt;  6, What is the date in the document? -&gt;  January, 1970]|
 
@@ -645,13 +646,15 @@ The practical impact of this type of models is that you can create “data extra
 Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnsweringJsl.ipynb">this notebook</a> with examples on how to use it.</p>
 
   <ul>
-    <li>
-      <p>DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
-<img src="/assets/images/ocr/dit-layout-sample.png" alt="5.1.0" /></p>
+    <li>DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.</li>
+  </ul>
 
-      <p>Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
+  <p><img src="/assets/images/ocr/dit-layout-sample.png" alt="5.1.0" /></p>
+
+  <p>Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
 Check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb">this notebook</a> for an example on how to apply this new model to sample documents.</p>
-    </li>
+
+  <ul>
     <li>
       <p>DicomDeidentifier: new annotator that allows deidentification of Dicom Images using Dicom metadata contained in the same Dicom document. This is a rule-based annotator which leverages PHI collected from the metadata like patient names or test results to deidentify PHI contained on images in the Dicom file. It also supports a black list parameter to remove specific content present in the image text.
 This annotator can work either in isolation or combined with Spark NLP for Healthcare NER models. By using ChunkMergeApproach, NER models can be combined with DicomDeidentifier to deliver an ensemble of ML and Rule Based techniques to cover the most challenging de-identification scenarios.
@@ -672,6 +675,9 @@ As well as related blogposts,</p>
       </ul>
     </li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <p><strong>Bug Fixes &amp; Changes</strong></p>
 

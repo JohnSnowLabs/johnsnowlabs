@@ -648,7 +648,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <h3 id="ocr-metrics-against-cloud-providers-textract-and-cgp">Ocr Metrics against Cloud Providers: Textract, and CGP.</h3>
   <p>Next are metrics for Text Detection and Recognition tasks collected on the FUNSD dataset, the final metric is the average F score across Text Detection and Recognition tasks.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Detection</th>
@@ -738,9 +738,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Not only the scores are slightly better than those of cloud providers, but also the cost is lower(*),</p>
 
-  <p><span><span class="ui-provider rr b c d e f g h i j k l m n o p q r s t u v w x y z ab ac ae af ag ah ai aj ak" dir="ltr">&lt;p&gt; &lt;/p&gt;</span></span></p>
-
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>Service</th>
@@ -785,12 +783,14 @@ lp.fromLocalPath("page_with_tables.png")
 
 </code></pre></div>  </div>
   <p>For other examples please check <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb">this notebook</a>.</p>
+
 </div>
 <div class="h3-box">
 
   <h3 id="positionfinder">PositionFinder</h3>
-  <p>For cases in which entities spawn multiple lines, PositionFinder was not working properly,
-<img src="/assets/images/ocr/highlight.png" alt="5.3.2" /></p>
+  <p>For cases in which entities spawn multiple lines, PositionFinder was not working properly.</p>
+
+  <p><img src="/assets/images/ocr/highlight.png" alt="5.3.2" /></p>
 
   <p>Now, the expected bounding boxes for the entity are returned. Keep in mind that as before more than one bounding box will be returned, and all will share the same <code class="language-plaintext highlighter-rouge">chunk_id</code>.</p>
 

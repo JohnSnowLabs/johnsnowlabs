@@ -694,7 +694,7 @@ by <a href="https://arxiv.org/pdf/2006.11477.pdf">Wav2Vec 2.0</a>, <a href="http
 <span class="n">asr_df</span>
 </code></pre></div>    </div>
 
-    <table>
+    <table class="table-model-big">
       <thead>
         <tr>
           <th style="text-align: left">text</th>
@@ -755,7 +755,7 @@ and NLU will return a pandas DF with one row per image detected</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.base_patch16_224'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png" alt="image_classification 1.png" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png" alt="NLU" /></p>
 
     <p>To use <strong>SWIN</strong> we just update the parameter to <code class="language-plaintext highlighter-rouge">load()</code></p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">'en.classify_image.swin.tiny'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/content/images/images'</span><span class="p">)</span>
@@ -771,8 +771,9 @@ and NLU will return a pandas DF with one row per image detected</p>
 
     <p><a href="https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb">Demo Notebook</a></p>
 
-    <p>Powered by <a href="https://aclanthology.org/2020.acl-main.398.pdf">TAPAS: Weakly Supervised Table Parsing via Pre-training</a>
-<img src="https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png" alt="TAPAS" /></p>
+    <p>Powered by <a href="https://aclanthology.org/2020.acl-main.398.pdf">TAPAS: Weakly Supervised Table Parsing via Pre-training</a></p>
+
+    <p><img src="https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png" alt="TAPAS" /></p>
 
     <p><strong>Usage:</strong></p>
 
@@ -3083,8 +3084,9 @@ Ontop of this, we are now supporting Apple M1 based architectures and every Pysp
 
     <h4 id="extract-tables-from-ppt-files-as-pandas-dataframe">Extract Tables from PPT files as Pandas DataFrame</h4>
 
-    <p>Sample PPT with two tables:
-<img src="https://github.com/JohnSnowLabs/nlu/blob/4.0.0/docs/assets/images/ocr/nlu_ocr/tables/ppt.png?raw=true" alt="Sample PPT with two tables" /></p>
+    <p>Sample PPT with two tables:</p>
+
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/4.0.0/docs/assets/images/ocr/nlu_ocr/tables/ppt.png?raw=true" alt="Sample PPT with two tables" /></p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'ppt2table'</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'/path/to/sample.docx'</span><span class="p">)</span>  
 </code></pre></div>    </div>
@@ -3296,8 +3298,9 @@ I would not recommend this drug to anyone, especially since I have never had suc
 <span class="n">nlu</span><span class="p">.</span><span class="n">viz</span><span class="p">(</span><span class="n">ade_pipeline</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 
 </code></pre></div>    </div>
-    <p>returns:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png" /></p>
+    <p>returns:</p>
+
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png" alt="New NLU helper Methods" /></p>
 
     <p>If a pipeline has multiple models candidates that can be used for a viz,<br />
 the first Annotator that is vizzable will be used to create viz.<br />
@@ -3594,7 +3597,7 @@ I would not recommend this drug to anyone, especially since I have never had suc
 
     <p>and</p>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png" alt="to_nlu_pipe(pipe)" /></p>
 
     <hr />
 
@@ -3771,8 +3774,9 @@ The following annotator classes are newly captured:</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en.ner.clinical_trials_abstracts'</span><span class="p">).</span><span class="n">viz</span><span class="p">(</span><span class="s">'A one-year, randomised, multicentre trial comparing insulin glargine with NPH insulin in combination with oral agents in patients with type 2 diabetes.'</span><span class="p">)</span>
 
 </code></pre></div>    </div>
-    <p>Results:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.ner.clinical_trials_abstracts.png" /></p>
+    <p>Results:</p>
+
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.ner.clinical_trials_abstracts.png" alt="en.ner.clinical_trials_abstracts" /></p>
 
     <h4 id="enmednerpathogen"><a href="https://nlp.johnsnowlabs.com/2022/06/28/ner_pathogen_en_3_0.html">en.med_ner.pathogen</a></h4>
     <p>Code:</p>
@@ -3842,7 +3846,7 @@ The following annotator classes are newly captured:</p>
 </code></pre></div>    </div>
     <p>Results:</p>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.med_ner.pathogen.png" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.med_ner.pathogen.png" alt="en.med_ner.pathogen" /></p>
 
     <h4 id="esmednerlivingspeciesroberta"><a href="https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_roberta_es_3_0.html">es.med_ner.living_species.roberta</a></h4>
     <p>Code:</p>
@@ -3938,7 +3942,7 @@ The following annotator classes are newly captured:</p>
 
     <p>Results:</p>
 
-    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/es.med_ner.living_species.roberta.png" /></p>
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/es.med_ner.living_species.roberta.png" alt="es.med_ner.living_species.roberta" /></p>
 
     <p>All healthcare models added in NLU 4.0 :</p>
 
@@ -23036,7 +23040,7 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
     <h4 id="new-medical-spanish-models">New Medical Spanish Models</h4>
     <ul>
       <li><strong>Spanish Word2Vec Embeddings</strong> available with <a href="https://nlp.johnsnowlabs.com/2020/05/27/embeddings_sciwiki_300d_es.html">es.embed.sciwiki_300d</a></li>
-      <li><strong>Spanish PHI Deidentification NER models</strong> with two different subsets of entities extracted, available with <a href="https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_generic_es.html">ner_deid_generic</a>        and <a href="https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_subentity_es.html">ner_deid_subentity</a></li>
+      <li><strong>Spanish PHI Deidentification NER models</strong> with two different subsets of entities extracted, available with <a href="https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_generic_es.html">ner_deid_generic</a> and <a href="https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_subentity_es.html">ner_deid_subentity</a></li>
     </ul>
 
   </div>
@@ -25250,7 +25254,7 @@ You can pick additional NER models and compare them via the GUI dropdown on the 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/09_entity_embedding_manifolds.py
 </code></pre></div>    </div>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true" alt="Streamlit Entity Manifold visualization" /></p>
 
     <h4 id="function-parameters-pipevizstreamlitsentenceembedmanifold"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_sentence_embed_manifold</code></h4>
 
@@ -26150,7 +26154,7 @@ which can be colored by various classifier labels!
 <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'embed_sentence.bert'</span><span class="p">).</span><span class="n">viz_streamlit_sentence_embed_manifold</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true" alt="Streamlit Sentence Embedding visualization via Manifold and Matrix Decomposition algorithms" /></p>
 
   </div>
   <div class="h3-box">
@@ -26814,7 +26818,7 @@ Additionally, you can color the lower dimensional points with a label that has b
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'bert'</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="n">viz_streamlit_word_embed_manifold</span><span class="p">(</span><span class="n">default_texts</span><span class="o">=</span><span class="n">THE_MATRIX_ARCHITECT_SCRIPT</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">),</span><span class="n">default_algos_to_apply</span><span class="o">=</span><span class="p">[</span><span class="s">'TSNE'</span><span class="p">],</span><span class="n">MAX_DISPLAY_NUM</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true" alt="Streamlit Word Embedding visualization via Manifold and Matrix Decomposition algorithms" /></p>
 
   </div>
   <div class="h3-box">
@@ -26951,9 +26955,9 @@ Additionally, you can color the lower dimensional points with a label that has b
   </div>
   <div class="h3-box">
 
-    <h4 id="larger-example-showcasing-more-dimension-reduction-techniques-on-a-larger-corpus-">Larger Example showcasing more dimension reduction techniques on a larger corpus :</h4>
+    <h4 id="larger-example-showcasing-more-dimension-reduction-techniques-on-a-larger-corpus">Larger Example showcasing more dimension reduction techniques on a larger corpus:</h4>
 
-    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true" /></p>
+    <p><img src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true" alt="Larger Example showcasing more dimension reduction techniques on a larger corpus" /></p>
 
     <h4 id="supported-manifold-algorithms-"><a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.manifold">Supported Manifold Algorithms </a></h4>
     <ul>
@@ -35117,7 +35121,8 @@ Additionally, you can color the lower dimensional points with a label that has b
   <div class="h3-box">
 
     <h2 id="nlu-version-302">NLU Version 3.0.2</h2>
-    <p><img width="65%" align="right" src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif" /></p>
+
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif" alt="NLU Version 3.0.2" title="lit_shadow w_80" /></p>
 
     <p>This release contains examples and tutorials on how to visualize the 1000+ state-of-the-art NLP models provided by NLU in <em>just 1 line of code</em> in <code class="language-plaintext highlighter-rouge">streamlit</code>.
 It includes simple <code class="language-plaintext highlighter-rouge">1-liners</code> you can sprinkle into your Streamlit app to for features like <strong>Dependency Trees, Named Entities (NER), text classification results, semantic simmilarity,
@@ -35731,6 +35736,7 @@ You can use this with <a href="https://nlp.johnsnowlabs.com/models">any of the 1
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'stemm pos spell'</span><span class="p">).</span><span class="n">viz_streamlit_token</span><span class="p">(</span><span class="s">'I liek pentut buttr and jelly !'</span><span class="p">)</span>
 </code></pre></div>    </div>
+
     <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif" alt="text_class1" /></p>
 
     <h4 id="function-parameters-pipevizstreamlittoken"><kbd>function parameters</kbd> <code class="language-plaintext highlighter-rouge">pipe.viz_streamlit_token</code></h4>
@@ -35979,8 +35985,7 @@ Applicable with <a href="https://nlp.johnsnowlabs.com/models?task=Embeddings">an
   </div>
   <div class="h3-box">
 
-    <p>## 
-In addition have added some new features to our T5 Transformer annotator to help with longer and more accurate text generation, trained some new multi-lingual models and pipelines in <code class="language-plaintext highlighter-rouge">Farsi</code>, <code class="language-plaintext highlighter-rouge">Hebrew</code>, <code class="language-plaintext highlighter-rouge">Korean</code>, and <code class="language-plaintext highlighter-rouge">Turkish</code>.</p>
+    <p>In addition have added some new features to our T5 Transformer annotator to help with longer and more accurate text generation, trained some new multi-lingual models and pipelines in <code class="language-plaintext highlighter-rouge">Farsi</code>, <code class="language-plaintext highlighter-rouge">Hebrew</code>, <code class="language-plaintext highlighter-rouge">Korean</code>, and <code class="language-plaintext highlighter-rouge">Turkish</code>.</p>
 
     <h4 id="t5-model-improvements">T5 Model Improvements</h4>
     <ul>
@@ -40362,7 +40367,7 @@ All it takes is just nlu.load(‘train.classifier).fit(dataset) . Your dataset c
       <li>Automatic to Numpy conversion of embeddings</li>
       <li>Added various testing classes</li>
       <li><a href="https://medium.com/spark-nlp/1-line-of-code-for-bert-albert-elmo-electra-xlnet-glove-part-of-speech-with-nlu-and-t-sne-9ebcd5379cd">New 6 embeddings at once notebook with t-SNE and Medium article</a>
-<img src="https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png" /></li>
+<img src="https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png" alt="NLU Version 1.0.0" /></li>
       <li>Integration of Spark NLP 2.6.2 enhancements and bugfixes <a href="https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2">https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2</a></li>
       <li>Updated old T-SNE notebooks with more elegant and simpler generation of t-SNE embeddings</li>
     </ul>
@@ -40390,7 +40395,8 @@ A picture says more than a 1000 words, so here is a demo clip of the 12 coolest 
   <div class="h3-box">
 
     <h4 id="nlu-in-action">NLU in action</h4>
-    <p><img src="https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif" width="1800" height="500" /></p>
+
+    <p><img src="https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif" alt="NLU in action" /></p>
 
   </div>
   <div class="h3-box">

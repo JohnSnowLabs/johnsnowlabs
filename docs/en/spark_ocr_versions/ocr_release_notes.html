@@ -652,7 +652,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <h3 id="improvements-in-table-processing">Improvements in Table Processing</h3>
   <p>New RegionsMerger component for merging Text Regions and Cell Regions to improve accuracy in Table Extraction Pipelines:</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th>PretrainedPipeline</th>
@@ -689,7 +689,6 @@ The improvements are measured against previous release of Visual NLP.</p>
 
 </div>
 <div class="h3-box">
-  <p>\</p>
 
   <h3 id="new-options-for-imagetopdf-transformer">New Options for ImageToPdf transformer.</h3>
   <p>New options have been added to ImageToPdf. ImageToPdf is the transformer we use to create PDFs from images, we use it for example when we de-identify PDFs and we want to write back to the PDF to obtain a redacted version of the PDF.
@@ -716,8 +715,9 @@ The new options are intended to control the size of the resulting PDF document b
   <h3 id="support-for-rotated-text-regions-in-imagetotextv2">Support for rotated text regions in ImageToTextV2</h3>
   <p>Text regions at the input of ImageToTextV2 support rotation. Detected text regions come with an angle to represent the rotation that the detected text has in the image.
 Now, this angle is used to extract a straightened version of the region, and fed to the OCR. The resulting text is placed into the returned output text using the center of the region to decide its final location.
-See the following example,
-<img src="/assets/images/ocr/rotated_regions.png" alt="image" /></p>
+See the following example.</p>
+
+  <p><img src="/assets/images/ocr/rotated_regions.png" alt="Support for rotated text regions in ImageToTextV2" /></p>
 
   <p>and the resulting(truncated) text,</p>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             SUBURBAN HOSPITAL
@@ -736,8 +736,7 @@ See the following example,
 
   <h3 id="new-pdf-to-pdf-pretrained-pipelines-for-de-identification">New Pdf-To-Pdf Pretrained Pipelines for De-Identification.</h3>
   <p>New de-ideintification pipeline that consumes PDFs and produces de-identified PDFs: <code class="language-plaintext highlighter-rouge">pdf_deid_pdf_output</code>. 
-For a description of this pipeline please check its
-<a href="https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html">card on Models Hub</a>, and also this <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">notebook example</a>.</p>
+For a description of this pipeline please check its <a href="https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html">card on Models Hub</a>, and also this <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">notebook example</a>.</p>
 
 </div>
 <div class="h3-box">
