@@ -37,9 +37,10 @@ The integration of Natural Language Processing (NLP) tools into the Medical Chat
 
 These tools are tailored to meet the unique challenges of the medical field, ensuring accurate and efficient data extraction and analysis, further empowering users with cutting-edge solutions.
 
+![New_NLP_Tools](https://github.com/user-attachments/assets/a355d90a-e4bb-4ea0-9e1d-1018e5ec2a36)
+
 #### Tools Overview
 All four of the new tools are seamlessly integrated and available via the @ Selector. By simply typing '@' at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
-
 
 **1.Extract Radiological Entities and Relations**
 Designed to extract radiology-related entities, assign assertion statuses to these entities, and establish relationships between them within clinical documents. This tool specializes in identifying entities such as tests, imaging techniques, and test findings within radiology reports, while also accurately determining their assertion statuses and relations.
@@ -60,13 +61,16 @@ Designed to detect healthcare-related entities from patient-generated content, a
     
 The Medical Chatbot now offers support for Response Styles via an enhanced, intuitive interface that allows users to easily customize their conversation settings. This feature enables dynamic response style selection, improving the personalization of interactions and empowering users to tailor responses to their specific needs. Users can tailor the generated text to their needs and have greater control over the creative process without the need to rephrase their prompts entirely.
 
+![image](https://github.com/user-attachments/assets/f6807f43-6787-42ac-9e88-8d1a335f3807)
+
+
 #### Key Features:
 
 - **Streamlined Access:** Each response now includes a Response Style settings button, accessible through the conversation settings icon in the contextual menu.
 
 - **Dynamic Customization:** By default, a standard response style is applied when starting a new conversation. However, you can now effortlessly switch to a different style after the initial response. Simply click the settings button to select your preferred style, and the chatbot will regenerate the response accordingly.
 
-- **Understand Your Preferences:** Once you choose a response style, it will remain active for all subsequent interactions within the current conversation. You can easily modify this setting at any time until the conversation ends.
+- **Understand Your Preferences:** Once you choose a response style, it will remain active for all subsequent interactions within the current conversation and even future conversations. You can easily modify this setting at any time at any point of the conversation.
 
 - **Custom Response Styles:** Want a unique touch? Create your own Custom Response Style by providing a simple prompt describing your preferred response tone or format. The Medical Chatbot will adapt to your specifications.
 
