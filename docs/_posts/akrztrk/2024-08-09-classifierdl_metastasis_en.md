@@ -89,6 +89,11 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en",
   .setInputCols(Array("document","token"))
   .setOutputCol("word_embeddings")
 
+val sentence_embeddings = new SentenceEmbeddings()
+  .setInputCols(Array("document", "word_embeddings"))
+  .setOutputCol("sentence_embeddings")
+  .setPoolingStrategy("AVERAGE")
+
 val classifier_dl = ClassifierDLModel.pretrained("classifierdl_metastasis","en","clinical/models")
   .setInputCols(Array("sentence_embeddings"))
   .setOutputCol("prediction")
@@ -97,6 +102,7 @@ val clf_Pipeline = new Pipeline().setStages(Array(
   documentAssembler,
   tokenizer,
   word_embeddings,
+  sentence_embeddings,
   classifier_dl
 ))
 
