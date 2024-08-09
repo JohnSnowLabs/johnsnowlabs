@@ -71,10 +71,10 @@ clf_Pipeline = Pipeline(
     sentence_embeddings,
     classifier_dl])
 
-data = spark.createDataFrame([["""[['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'],
+data = spark.createDataFrame([['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'],
  ['The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.'],
  ['After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.'],
-['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]"""]]).toDF("text")
+['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]).toDF("text")
 
 result = clf_Pipeline.fit(data).transform(data)
 
