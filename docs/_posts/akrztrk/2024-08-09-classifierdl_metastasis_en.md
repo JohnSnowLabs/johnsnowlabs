@@ -4,7 +4,7 @@ title: Classifier for Metastasis
 author: John Snow Labs
 name: classifierdl_metastasis
 date: 2024-08-09
-tags: [licensed, en, classifierdlmodel, metastasis, classification, oncology, tensorflow]
+tags: [licensed, en, classifier_dl, metastasis, classification, oncology, tensorflow]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.4.0
