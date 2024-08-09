@@ -22,6 +22,10 @@ This model is a metastasis classification model that determines whether clinical
 - `True`: Contains metastasis related terms.
 - `False`: Doesn't contain metastasis related terms.
 
+## Predicted Entities
+
+`True`, `False`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -154,3 +158,15 @@ val result = clf_Pipeline.fit(data).transform(data)
 |Output Labels:|[prediction]|
 |Language:|en|
 |Size:|1.5 MB|
+
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+       False       0.99      0.98      0.98      4365
+        True       0.92      0.96      0.94      1094
+    accuracy          -         -      0.97      5459
+   macro-avg       0.95      0.97      0.96      5459
+weighted-avg       0.98      0.97      0.97      5459
+```
