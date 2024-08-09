@@ -2321,6 +2321,157 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 
   <p><img src="/assets/images/azure/azure_7.png" alt="Azure AI Studio instructions" /></p>
 
+  <h2 id="microsoft-fabric-instructions">Microsoft Fabric Instructions</h2>
+
+  <h3 id="step-1-log-into-ms-fabric">Step 1: Log into MS Fabric</h3>
+  <p>Navigate to <a href="https://app.fabric.microsoft.com/">MS Fabric</a> and sign in with your MS Fabric Account credentials.</p>
+
+  <h3 id="step-2-create-a-lakehouse">Step 2: Create a Lakehouse</h3>
+  <ul>
+    <li>Go to the <strong>Synapse Data Science</strong> section.</li>
+    <li>Navigate to the <strong>Create</strong> section.</li>
+    <li>Create a new lakehouse, (for instance let us name it <code class="language-plaintext highlighter-rouge">jsl_workspace</code>.)</li>
+  </ul>
+
+  <p><img src="https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b" alt="image" /></p>
+
+  <h3 id="step-3-create-a-notebook">Step 3: Create a Notebook</h3>
+  <ul>
+    <li>
+      <p>Similarly, create a new notebook ( for instance let us name it <code class="language-plaintext highlighter-rouge">JSL_Notebook</code>.)</p>
+
+      <p><img src="https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0" alt="image" /></p>
+    </li>
+  </ul>
+
+  <h3 id="step-4-attach-the-lakehouse">Step 4: Attach the Lakehouse</h3>
+  <p>Attach the newly created lakehouse (<code class="language-plaintext highlighter-rouge">jsl_workspace</code>) to your notebook.</p>
+
+  <p><img src="https://github.com/user-attachments/assets/63996c40-4cd6-4aa2-925f-a1ad886914f4" alt="image" /></p>
+
+  <p><img src="https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be" alt="image" /></p>
+
+  <h3 id="step-5-upload-files">Step 5: Upload Files</h3>
+  <p>Upload the necessary <code class="language-plaintext highlighter-rouge">.jar</code> and <code class="language-plaintext highlighter-rouge">.whl</code> files to the attached lakehouse.</p>
+
+  <p><img src="https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690" alt="image" /></p>
+
+  <p><img src="https://github.com/user-attachments/assets/48339e38-fb5e-4dd7-b235-bfcb645cc855" alt="image" /></p>
+
+  <p>After uploading is complete, you can configure and run the notebook.</p>
+
+  <h3 id="step-6-configure-the-notebook-session">Step 6: Configure the Notebook Session</h3>
+  <p>Configure the session within the notebook as follows:</p>
+
+  <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">%%configure</span><span class="w"> </span><span class="err">-f</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"conf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"spark.hadoop.fs.s3a.access.key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awsAccessKey"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS-ACCESS-KEY&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"spark.hadoop.fs.s3a.secret.key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awsSecretKey"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS-SECRET-KEY&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"spark.yarn.appMasterEnv.SPARK_NLP_LICENSE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sparkNlpLicense"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;LICENSE-KEY&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"spark.jars"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sparkJars"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;abfs-path-spark-nlp-assembly-jar&gt;,&lt;abfs-path-spark-nlp-jsl-jar&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>  </div>
+  <h3 id="step-7-install-spark-nlp-libraries">Step 7: Install Spark NLP Libraries</h3>
+  <p>Install the required Spark NLP libraries using pip commands:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pip <span class="nb">install</span> &lt;spark-nlp whl File API path&gt;
+%pip <span class="nb">install</span> &lt;spark-nlp-jsl whl File API path&gt;
+</code></pre></div>  </div>
+
+  <p><strong>Example Usage:</strong></p>
+
+  <p><img src="https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2" alt="image" /></p>
+
+  <h3 id="step-8-make-necessary-imports">Step 8: Make Necessary Imports</h3>
+  <p>Import the necessary Python and Spark libraries:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">spatial</span>
+
+<span class="kn">import</span> <span class="nn">pyspark.sql.types</span> <span class="k">as</span> <span class="n">T</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>  </div>
+
+  <h3 id="step-9-explore-available-licensed-models">Step 9: Explore Available Licensed Models</h3>
+  <p>Download and explore the list of available licensed models:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">!</span> pip <span class="nb">install</span> <span class="nt">-q</span> boto3
+<span class="o">!</span> wget https://nlp.johnsnowlabs.com/models.json
+
+import json
+with open<span class="o">(</span><span class="s2">"models.json"</span>, <span class="s2">"r"</span>, <span class="nv">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="o">)</span> as f:
+    full_list <span class="o">=</span> json.load<span class="o">(</span>f<span class="o">)</span>
+</code></pre></div>  </div>
+
+  <p><strong>Example Usage:</strong></p>
+
+  <p><img src="https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b" alt="image" /></p>
+
+  <h3 id="step-10-download-and-extract-required-models">Step 10: Download and Extract Required Models</h3>
+  <p>Set up AWS credentials and use Boto3 to handle files:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Setup AWS credentials
+</span><span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="s">"&lt;AWS-ACCESS-KEY&gt;"</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s">"&lt;AWS-SECRET-KEY&gt;"</span>
+
+<span class="c1"># Connect to S3
+</span><span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">ACCESS_KEY</span><span class="p">,</span> <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">SECRET_KEY</span><span class="p">)</span>
+<span class="n">buck_auxdata</span> <span class="o">=</span> <span class="n">s3</span><span class="p">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s">'auxdata.johnsnowlabs.com'</span><span class="p">)</span>
+
+<span class="err">!</span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">lakehouse</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">Files</span><span class="o">/</span><span class="n">zip_files</span> <span class="o">/</span><span class="n">lakehouse</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">Files</span><span class="o">/</span>
+
+<span class="c1"># Download and extract model
+</span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
+<span class="n">zip_file_path</span> <span class="o">=</span> <span class="s">'/lakehouse/default/Files/zip_files/&lt;Model-ZIP&gt;'</span>
+<span class="n">unzip_dir_path</span> <span class="o">=</span> <span class="s">'/lakehouse/default/Files/&lt;MODEL-NAME&gt;'</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">buck_auxdata</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">'clinical/models/&lt;Model-ZIP&gt;'</span><span class="p">,</span> <span class="n">zip_file_path</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="n">zip_file_path</span><span class="p">,</span> <span class="n">unzip_dir_path</span><span class="p">,</span> <span class="s">'zip'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Model downloaded and extracted successfully."</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <h3 id="step-11-load-the-model-and-make-predictions">Step 11: Load the Model and Make Predictions</h3>
+  <p>Load the model and perform predictions on the desired text:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">.</span><span class="n">from_disk</span><span class="p">(</span><span class="s">"Files/&lt;MODEL-NAME&gt;"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"&lt;INPUT-TEXT&gt;"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><strong>Example Usage:</strong></p>
+
+  <p><img src="https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f" alt="image" /></p>
+
+  <p><img src="https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9" alt="image" /></p>
+
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-03-09T00:00:00+00:00">Mar 09, 2021</time>
