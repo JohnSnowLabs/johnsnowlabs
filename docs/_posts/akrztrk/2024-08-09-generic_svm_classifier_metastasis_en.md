@@ -24,7 +24,7 @@ This model is trained with the Generic Classifier annotator and the Support Vect
 
 ## Predicted Entities
 
-`True`, `False`,
+`True`, `False`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
