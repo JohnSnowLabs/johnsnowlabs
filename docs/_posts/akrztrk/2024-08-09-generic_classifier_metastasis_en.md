@@ -63,7 +63,7 @@ features_asm = FeaturesAssembler()\
     .setOutputCol("features")
 
 generic_classifier = GenericClassifierModel.pretrained("generic_classifier_metastasis","en","clinical/models")\
-    .setInputCols(["sentence_embeddings"])\
+    .setInputCols(["features"])\
     .setOutputCol("prediction")
 
 clf_Pipeline = Pipeline(
@@ -107,7 +107,7 @@ val features_asm = new FeaturesAssembler()
   .setOutputCol("features")
 
 val generic_classifier = GenericClassifierModel.pretrained("generic_classifier_metastasis","en","clinical/models")
-  .setInputCols(Array("sentence_embeddings"))
+  .setInputCols(Array("features"))
   .setOutputCol("prediction")
 
 val clf_Pipeline = new Pipeline().setStages(Array(
@@ -120,10 +120,10 @@ val clf_Pipeline = new Pipeline().setStages(Array(
 ))
 
 
-val data = Seq([["""[['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'],
+val data = Seq([['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'],
  ['The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.'],
  ['After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.'],
- ['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]"""]]).toDF("text")
+ ['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]).toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 
