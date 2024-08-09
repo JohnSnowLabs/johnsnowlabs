@@ -4,7 +4,7 @@ title: Generic Classifier for for Metastasis
 author: John Snow Labs
 name: generic_classifier_metastasis
 date: 2024-08-09
-tags: [licensed, en, genericclassifiermodel, metastasis, classification, oncology]
+tags: [licensed, en, generic_classifier, metastasis, classification, oncology]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.4.0
