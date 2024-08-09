@@ -4,7 +4,7 @@ title: Generic Classifier for for Metastasis (SVM)
 author: John Snow Labs
 name: generic_svm_classifier_metastasis
 date: 2024-08-09
-tags: [licensed, en, generic_classifier, svm, metastasis, classification, oncology]
+tags: [licensed, en, generic_svm_classifier, svm, metastasis, classification, oncology]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.4.0
@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 This model is trained with the Generic Classifier annotator and the Support Vector Machine (SVM) algorithm and classifies text/sentence into two categories.
 - `True`: Contains metastasis related terms.
 - `False`: Doesn't contain metastasis related terms.
+
+## Predicted Entities
+
+`True`, `False`,
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -58,7 +62,7 @@ features_asm = FeaturesAssembler()\
     .setInputCols(["sentence_embeddings"])\
     .setOutputCol("features")
 
-generic_classifier = GenericClassifierModel.pretrained("generic_svm_classifier_metastasis","en","clinical/models")\
+generic_classifier = GenericSVMClassifierModel.pretrained("generic_svm_classifier_metastasis","en","clinical/models")\
     .setInputCols(["sentence_embeddings"])\
     .setOutputCol("prediction")
 
@@ -102,7 +106,7 @@ val features_asm = new FeaturesAssembler()
   .setInputCols(Array("sentence_embeddings"))
   .setOutputCol("features")
 
-val generic_classifier = GenericClassifierModel.pretrained("generic_svm_classifier_metastasis","en","clinical/models")
+val generic_classifier = GenericSVMClassifierModel.pretrained("generic_svm_classifier_metastasis","en","clinical/models")
   .setInputCols(Array("sentence_embeddings"))
   .setOutputCol("prediction")
 
@@ -154,3 +158,14 @@ val result = clf_Pipeline.fit(data).transform(data)
 |Output Labels:|[prediction]|
 |Language:|en|
 |Size:|14.0 KB|
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+       False       0.96      0.99      0.97      4365
+        True       0.94      0.84      0.89      1094
+    accuracy          -         -      0.96      5459
+   macro-avg       0.95      0.91      0.93      5459
+weighted-avg       0.96      0.96      0.96      5459
+```
