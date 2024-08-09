@@ -34,6 +34,7 @@ This model is a metastasis classification model that determines whether clinical
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -70,7 +71,10 @@ clf_Pipeline = Pipeline(
     features_asm,
     generic_classifier])
 
-data = spark.createDataFrame([["""[['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'], ['The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.'], ['After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.'], ['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]"""]]).toDF("text")
+data = spark.createDataFrame([["""[['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'],
+ ['The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.'],
+ ['After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.'],
+ ['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]"""]]).toDF("text")
 
 result = clf_Pipeline.fit(data).transform(data)
 
@@ -112,7 +116,10 @@ val clf_Pipeline = new Pipeline().setStages(Array(
 ))
 
 
-val data = Seq([["""[['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'], ['The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.'], ['After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.'], ['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]"""]]).toDF("text")
+val data = Seq([["""[['A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.'],
+ ['The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci.'],
+ ['After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined.'],
+ ['The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.']]"""]]).toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 
