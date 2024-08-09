@@ -4,7 +4,7 @@ title: Generic Classifier for for Metastasis (LogReg)
 author: John Snow Labs
 name: generic_logreg_classifier_metastasis
 date: 2024-08-09
-tags: [licensed, en, generic_classifier, logreg, metastasis, classification, oncology]
+tags: [licensed, en, generic_logreg_classifier, logreg, metastasis, classification, oncology]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.4.0
@@ -158,6 +158,8 @@ val result = clf_Pipeline.fit(data).transform(data)
 |Output Labels:|[prediction]|
 |Language:|en|
 |Size:|14.1 KB|
+
+## Benchmarking
 
 ```bash
        label  precision    recall  f1-score   support
