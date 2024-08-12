@@ -111,3 +111,14 @@ result.select(col("text"), col("prediction.result").getItem(0).alias("result")).
 ## References
 
 This model has been trained using internal datasets.
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+         ADE     0.9560    0.9136    0.9343      2732
+       noADE     0.9329    0.9661    0.9492      3397
+    accuracy        -        -       0.9427      6129
+   macro-avg     0.9444    0.9399    0.9418      6129
+weighted-avg     0.9432    0.9427    0.9426      6129
+```
