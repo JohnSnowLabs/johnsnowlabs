@@ -36,7 +36,7 @@ This model is a few-shot classification model designed to identify and classify 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
+
 ```python
 document_assembler = DocumentAssembler() \
     .setInputCol("text") \
@@ -67,24 +67,24 @@ result.select("text", col("prediction.result").getItem(0).alias("result")).show(
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
-val largeFewShotClassifier = LargeFewShotClassifierModel
-  .pretrained("large_fewshot_classifier_ade")
-  .setInputCols("document")
-  .setOutputCol("prediction")
+val largeFewShotClassifier = LargeFewShotClassifierModel()
+    .pretrained("large_fewshot_classifier_ade")
+    .setInputCols("document")
+    .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(
-  documentAssembler,
-  largeFewShotClassifier
+    documentAssembler,
+    largeFewShotClassifier
 ))
 
 val textList = Seq(
-  ("The patient developed severe liver toxicity after taking the medication for three weeks"),
-  ("He experienced no complications during the treatment and reported feeling much better."),
-  ("She experienced a sudden drop in blood pressure after the administration of the new drug."),
-  ("The doctor recommended a daily dosage of the vitamin supplement to improve her health.")
+    ("The patient developed severe liver toxicity after taking the medication for three weeks"),
+    ("He experienced no complications during the treatment and reported feeling much better."),
+    ("She experienced a sudden drop in blood pressure after the administration of the new drug."),
+    ("The doctor recommended a daily dosage of the vitamin supplement to improve her health.")
 )
 
 val data = spark.createDataFrame(textList).toDF("text")
