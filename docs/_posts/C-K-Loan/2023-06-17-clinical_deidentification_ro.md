@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-7wad364vb24u6
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/68c7064e-c1dc-459f-971b-e759bb80810d/John-Snow-Labs_Clinical-Deidentification-for-Romanian
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ This pipeline is trained with `w2v_cc_300d` Romanian embeddings and can be used 
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_ro_4.4.4_3.0_1686990523505.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_ro_4.4.4_3.0_1686990523505.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
