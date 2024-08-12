@@ -36,20 +36,31 @@ This model is a few-shot classification model designed to identify and classify 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-document_assembler = DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+document_assembler = DocumentAssembler() \
+    .setInputCol("text") \
+    .setOutputCol("document")
 
-large_few_shot_classifier = LargeFewShotClassifierModel()
-.pretrained("large_fewshot_classifier_ade")
-.setInputCols("document")
-.setOutputCol("prediction")
+large_few_shot_classifier = LargeFewShotClassifierModel()\
+    .pretrained('large_fewshot_classifier_ade')\
+    .setInputCols("document")\
+    .setOutputCol("prediction")
 
-pipeline = sparknlp.base.Pipeline().setStages([ document_assembler, large_few_shot_classifier ])
+pipeline = Pipeline().setStages([
+    document_assembler,
+    large_few_shot_classifier
+])
 
-data = spark.createDataFrame(["The patient developed severe liver toxicity after taking the medication for three weeks", "He experienced no complications during the treatment and reported feeling much better.", "She experienced a sudden drop in blood pressure after the administration of the new drug.", "The doctor recommended a daily dosage of the vitamin supplement to improve her health."], StringType()).toDF("text")
+text_list = [
+    ["The patient developed severe liver toxicity after taking the medication for three weeks"],
+    ["He experienced no complications during the treatment and reported feeling much better."],
+    ["She experienced a sudden drop in blood pressure after the administration of the new drug."],
+    ["The doctor recommended a daily dosage of the vitamin supplement to improve her health."]
+]
 
+data = spark.createDataFrame(text_list, ["text"])
+              
 result = pipeline.fit(data).transform(data)
 
 result.select("text", col("prediction.result").getItem(0).alias("result")).show(truncate=False)
@@ -69,12 +80,14 @@ val pipeline = new Pipeline().setStages(Array(
   largeFewShotClassifier
 ))
 
-val data = Seq(
-  "The patient developed severe liver toxicity after taking the medication for three weeks",
-  "He experienced no complications during the treatment and reported feeling much better.",
-  "She experienced a sudden drop in blood pressure after the administration of the new drug.",
-  "The doctor recommended a daily dosage of the vitamin supplement to improve her health."
-).toDF("text")
+val textList = Seq(
+  ("The patient developed severe liver toxicity after taking the medication for three weeks"),
+  ("He experienced no complications during the treatment and reported feeling much better."),
+  ("She experienced a sudden drop in blood pressure after the administration of the new drug."),
+  ("The doctor recommended a daily dosage of the vitamin supplement to improve her health.")
+)
+
+val data = spark.createDataFrame(textList).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
