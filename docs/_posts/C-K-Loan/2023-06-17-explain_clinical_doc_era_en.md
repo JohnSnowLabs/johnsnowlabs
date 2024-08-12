@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-oi26faao26z54
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/2a078943-c56d-48b1-a99d-3addb38d688f/John-Snow-Labs_Extract-clinical-events-and-find-temporal-relations
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ A pipeline with `ner_clinical_events`, `assertion_dl` and `re_temporal_events_cl
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_era_en_4.4.4_3.0_1686978987222.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_era_en_4.4.4_3.0_1686978987222.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
