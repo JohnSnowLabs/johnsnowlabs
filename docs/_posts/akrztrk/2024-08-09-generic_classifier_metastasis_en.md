@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Generic Classifier for for Metastasis
+title: Generic Classifier for Metastasis
 author: John Snow Labs
 name: generic_classifier_metastasis
 date: 2024-08-09
