@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 deploy:
   sagemaker_link: 
   snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/1edf9844-470b-4e3a-a157-3ed8c5af89a9/John-Snow-Labs_ICD10CM-to-SNOMED-Code-Mapper
+  databricks_link: https://marketplace.databricks.com/details/5e6f0af1-bcc7-4aa6-a1de-21ca58638fce/John-Snow-Labs_SNOMED-to-ICD10CM-Code-Mapper
 
 ---
 
