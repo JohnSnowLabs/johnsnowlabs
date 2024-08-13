@@ -74,10 +74,10 @@ clf_Pipeline = Pipeline(
     generic_classifier])
 
 data = spark.createDataFrame([
-['The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.'],
+["The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass."],
 ["Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."],
-['During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.'],
-['Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.']
+["During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes."],
+["Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task."]
 ]).toDF("text")
 
 result = clf_Pipeline.fit(data).transform(data)
@@ -120,10 +120,10 @@ val clf_Pipeline = new Pipeline().setStages(Array(
 ))
 
 val data = Seq([
-['The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.'],
+["The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass."],
 ["Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."],
-['During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.'],
-['Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.']
+["During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes."],
+["Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task."]
 ]).toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
