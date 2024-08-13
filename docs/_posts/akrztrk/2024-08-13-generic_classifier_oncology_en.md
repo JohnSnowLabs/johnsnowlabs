@@ -34,10 +34,9 @@ This model is a oncology classification model that determines whether clinical s
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -74,7 +73,12 @@ clf_Pipeline = Pipeline(
     features_asm,
     generic_classifier])
 
-data = spark.createDataFrame([['The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.'], ["Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."], ['During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.'], ['Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.']]).toDF("text")
+data = spark.createDataFrame([
+['The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.'],
+["Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."],
+['During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.'],
+['Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.']
+]).toDF("text")
 
 result = clf_Pipeline.fit(data).transform(data)
 
@@ -115,8 +119,12 @@ val clf_Pipeline = new Pipeline().setStages(Array(
   generic_classifier
 ))
 
-
-val data = Seq([['The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.'], ["Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."], ['During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.'], ['Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.']]).toDF("text")
+val data = Seq([
+['The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.'],
+["Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."],
+['During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.'],
+['Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.']
+]).toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 
@@ -126,7 +134,6 @@ val result = clf_Pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
 |text                                                                                                                                                      |result |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
@@ -135,7 +142,6 @@ val result = clf_Pipeline.fit(data).transform(data)
 |During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.                        | True  |
 |Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.                                                     | False |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
-
 ```
 
 {:.model-param}
@@ -151,3 +157,14 @@ val result = clf_Pipeline.fit(data).transform(data)
 |Output Labels:|[prediction]|
 |Language:|en|
 |Size:|1.5 MB|
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+       False       0.90      0.86      0.88      2093
+        True       0.89      0.93      0.91      2714
+    accuracy          -         -      0.90      4807
+   macro-avg       0.90      0.89      0.89      4807
+weighted-avg       0.90      0.90      0.90      4807
+```
