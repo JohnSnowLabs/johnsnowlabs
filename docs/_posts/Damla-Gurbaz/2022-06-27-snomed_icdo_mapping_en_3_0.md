@@ -15,6 +15,12 @@ annotator: PipelineModel
 article_header:
 type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/e3d2930b-b3bc-4f26-9d35-e81fa9fdd161/John-Snow-Labs_SNOMED-Codes-to-ICDO-Codes-Mapper
+
 ---
 
 ## Description
@@ -26,6 +32,13 @@ This pretrained pipeline is built on the top of `snomed_icdo_mapper` model.
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_icdo_mapping_en_3.5.3_3.0_1656364941154.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/snomed_icdo_mapping_en_3.5.3_3.0_1656364941154.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
