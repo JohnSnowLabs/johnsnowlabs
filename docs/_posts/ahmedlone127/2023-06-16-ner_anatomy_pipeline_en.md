@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/7487be7b-0f6d-4aaf-82ef-ea2b1833685a/John-Snow-Labs_Extract-Anatomical-Structures
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pretrained pipeline is built on the top of [ner_anatomy](https://nlp.johnsn
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_pipeline_en_4.4.4_3.4_1686923745906.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_pipeline_en_4.4.4_3.4_1686923745906.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

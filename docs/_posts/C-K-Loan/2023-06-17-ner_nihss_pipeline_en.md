@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/7afe6ca0-ad66-489b-b2d0-b31b0644d053/John-Snow-Labs_Extract-neurologic-deficits-related-to-Stroke-Scale-NIHSS
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pretrained pipeline is built on the top of [ner_nihss](https://nlp.johnsnow
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_nihss_pipeline_en_4.4.4_3.0_1686986980493.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_nihss_pipeline_en_4.4.4_3.0_1686986980493.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

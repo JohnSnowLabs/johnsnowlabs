@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/d07d7654-d483-4f1d-bb26-13b02197b87f/John-Snow-Labs_Extract-phenotypic-abnormalities-and-the-coresponding-HPO-codes
+
 ---
 
 ## Description
@@ -25,6 +31,13 @@ This advanced pipeline extracts human phenotype entities from clinical texts and
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.4_1705567225042.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/hpo_resolver_pipeline_en_5.2.1_3.4_1705567225042.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
