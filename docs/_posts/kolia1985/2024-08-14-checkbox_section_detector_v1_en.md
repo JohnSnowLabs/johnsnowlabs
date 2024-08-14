@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: OCR Object Detection
 language: en
 edition: Visual NLP 5.0.0
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 annotator: ImageTableDetector
 article_header:
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Models detects  sections with check-boxes on the image document.
+Model detects  sections with check-boxes on the image document.
 
 ## Predicted Entities
 
@@ -27,8 +27,8 @@ Models detects  sections with check-boxes on the image document.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/checkbox_section_detector_v1_en_5.0.0_3.2_1723629187073.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/checkbox_section_detector_v1_en_5.0.0_3.2_1723629187073.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/checkbox_section_detector_v1_en_5.0.0_3.0_1723630949985.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/checkbox_section_detector_v1_en_5.0.0_3.0_1723630949985.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
