@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparknlp_jsl.finance.sequence_generation.qa_ner_generator &#8212; Spark NLP  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/finance/sequence_generation/qa_ner_generator/index';</script>
+    <link rel="icon" href="../../../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chunk_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chunk_classification/assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.assertion</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chunk_classification/assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.assertion.assertionDL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chunk_classification/deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chunk_classification/deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.deid.deIdentification</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chunk_classification/deid/document_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.deid.document_hashcoder</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chunk_classification/resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chunk_classification/resolution/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chunk_classification/resolution/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.resolution.docmapper</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chunk_classification/resolution/sentence_entity_resolver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.chunk_classification.resolution.sentence_entity_resolver</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../graph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.graph</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../graph/relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.graph.relation_extraction</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../graph/relation_extraction/relation_extraction_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../graph/relation_extraction/zero_shot_relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.graph.relation_extraction.zero_shot_relation_extraction</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/finance_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/finance_classifier_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_classifier_dl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/finance_document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequence_classification/finance_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../finance_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation.finance_encoder_decoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../finance_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation.finance_qa</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../finance_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation.finance_summarizer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../finance_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation.finance_text_generator</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation.qa_ner_generator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../token_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.token_classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../token_classification/ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.token_classification.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../token_classification/ner/finance_bert_for_token_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.token_classification.ner.finance_bert_for_token_classifier</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../token_classification/ner/finance_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.token_classification.ner.finance_ner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../token_classification/ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.token_classification.ner.zero_shot_ner</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-sparknlp_jsl.finance.sequence_generation.qa_ner_generator">
+<span id="sparknlp-jsl-finance-sequence-generation-qa-ner-generator"></span><h1><a class="reference internal" href="#module-sparknlp_jsl.finance.sequence_generation.qa_ner_generator" title="sparknlp_jsl.finance.sequence_generation.qa_ner_generator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.finance.sequence_generation.qa_ner_generator</span></code></a><a class="headerlink" href="#module-sparknlp_jsl.finance.sequence_generation.qa_ner_generator" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator" title="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator</span></code></a></p></td>
+<td><p>The chunk mapper Approach load a JsonDictionary that have the relations to be mapped in the ChunkMapperModel</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceNerQuestionGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.sequence_generation.FinanceNerQuestionGenerator'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.NerQuestionGenerator</span></code></p>
+<p>The chunk mapper Approach load a JsonDictionary that have the relations to be mapped in the ChunkMapperModel</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
+<th class="head"><p>Output Annotation type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CHUNK</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LABEL_DEPENDENCY</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dictionary</strong> – Dictionary path where is the json that contains the mappinmgs columns</p></li>
+<li><p><strong>rel</strong> – Relation that we going to use to map the chunk</p></li>
+<li><p><strong>lowerCase</strong> – Parameter to decide if we going to use the chunk mapper or not</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_posology_large&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;mappings&quot;</span><span class="p">)</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s2">&quot;/home/jsl/mappings2.json&quot;</span><span class="p">)</span>     <span class="o">...</span>    <span class="o">.</span><span class="n">setRels</span><span class="p">([</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>     <span class="o">&gt;&gt;&gt;</span> <span class="n">sampleData</span> <span class="o">=</span> <span class="s2">&quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">setStages</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">documenter</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sentence_detector</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tokenizer</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">embeddings</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ner_model</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ner_converter</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;mappings&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="go">|mappings                                                                                                                                                                                                                                                                                                                                                                                               |</span>
+<span class="go">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="go">|[{labeled_dependency, 22, 35, Analgesic, {chunk -&gt; 0, relation -&gt; action, confidence -&gt; 0.56995, all_relations -&gt; Antipyretic, entity -&gt; Warfarina Lusa, sentence -&gt; 0}, []}, {labeled_dependency, 41, 50, NONE, {entity -&gt; amlodipine, sentence -&gt; 0, chunk -&gt; 1, confidence -&gt; 0.9989}, []}, {labeled_dependency, 55, 56, NONE, {entity -&gt; MG, sentence -&gt; 0, chunk -&gt; 2, confidence -&gt; 0.9123}, []}]|</span>
+<span class="go">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.entities1">
+<span class="sig-name descname"><span class="pre">entities1</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.entities1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.entities2">
+<span class="sig-name descname"><span class="pre">entities2</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.entities2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'NerQuestionGenerator'</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.questionMark">
+<span class="sig-name descname"><span class="pre">questionMark</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.questionMark" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.questionPronoun">
+<span class="sig-name descname"><span class="pre">questionPronoun</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.questionPronoun" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.strategyType">
+<span class="sig-name descname"><span class="pre">strategyType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.strategyType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setEntities1">
+<span class="sig-name descname"><span class="pre">setEntities1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setEntities1" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the list of entity types that appear first in the question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em>) – List of entity types.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setEntities2">
+<span class="sig-name descname"><span class="pre">setEntities2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setEntities2" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the list of entity types that appear second in the question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em>) – List of entity types.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setQuestionMark">
+<span class="sig-name descname"><span class="pre">setQuestionMark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setQuestionMark" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether we want to add a question mark at the end of the question.</p>
+<p>Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – True if we want to add a question mark at the end of the question, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setQuestionPronoun">
+<span class="sig-name descname"><span class="pre">setQuestionPronoun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pronoun</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setQuestionPronoun" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the pronoun to be used in the question.</p>
+<p>E.g., ‘When’, ‘Where’, ‘Why’, ‘How’, ‘Who’, ‘What’.
+Defaults to empty string (“”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pronoun</strong> (<em>str</em>) – The pronoun to be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setStrategyType">
+<span class="sig-name descname"><span class="pre">setStrategyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setStrategyType" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the strategy to be used in the proccess. Either <cite>Paired</cite> or <cite>Combined</cite>.</p>
+<p>If set to <cite>Paired</cite> (default), applies a one-vs-one strategy. In this case, the number of chunks
+in Entity 1 must be aligned with the number of chunks in Entity 2. E.g., if Entity 1 has
+3 chunks and Entity 2 has 3 chunks, the first chunk of Entity 1 will be grouped with first chunk of Entity 2,
+the second with second, third with third, etc.</p>
+<p>If set to <cite>Combined</cite>, applies a one-vs-all strategy. In this case, the number of chunks
+in Entity 1 don’t need to be the same as the number of chunks in Entity 2, and each chunk
+in Entity 1 will be grouped with all chunks in Entity 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The strategy to be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.entities1"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.entities1</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.entities2"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.entities2</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.name"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.questionMark"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.questionMark</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.questionPronoun"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.questionPronoun</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.strategyType"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.strategyType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.clear"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.copy"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.explainParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.explainParams"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.getParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.hasDefault"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.hasParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.isDefined"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.isSet"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.load"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.read"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.save"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.set"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setEntities1"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setEntities1()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setEntities2"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setEntities2()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setParams"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setQuestionMark"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setQuestionMark()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setQuestionPronoun"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setQuestionPronoun()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.setStrategyType"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.setStrategyType()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.transform"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_generation.qa_ner_generator.FinanceNerQuestionGenerator.write"><code class="docutils literal notranslate"><span class="pre">FinanceNerQuestionGenerator.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
