@@ -8,7 +8,7 @@ tags: [en, clinical, licensed, url, regexmatcher]
 task: Contextual Parser
 language: en
 edition: Healthcare NLP 5.4.0
-spark_version: 3.4
+spark_version: 3.0
 supported: true
 annotator: RegexMatcherInternal
 article_header:
