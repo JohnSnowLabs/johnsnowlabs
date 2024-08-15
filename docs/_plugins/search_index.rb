@@ -521,9 +521,9 @@ unless ENV['ELASTICSEARCH_URL'].to_s.empty?
             },
             "marketplace": {
               "properties": {
-                "databricks": "keyword",
-                "snowflake": "keyword",
-                "sagemaker": "keyword"
+                "databricks": {"type": "keyword"},
+                "snowflake": {"type": "keyword"},
+                "sagemaker": {"type": "keyword" }
               }
             }
         }
