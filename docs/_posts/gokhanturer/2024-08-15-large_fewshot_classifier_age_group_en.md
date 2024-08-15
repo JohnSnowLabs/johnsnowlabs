@@ -36,6 +36,7 @@ This model is a few-shot classification model designed to identify and classify 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler() \
     .setInputCol("text") \
