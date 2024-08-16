@@ -43,7 +43,7 @@ document_assembler = DocumentAssembler() \
     .setOutputCol("document")
 
 large_few_shot_classifier = LargeFewShotClassifierModel()\
-    .pretrained('large_fewshot_classifier_age_group')\
+    .pretrained('large_fewshot_classifier_age_group', "en", "clinical/models")\
     .setInputCols("document")\
     .setOutputCol("prediction")
 
@@ -70,7 +70,7 @@ val documentAssembler = new DocumentAssembler()
     .setOutputCol("document")
 
 val largeFewShotClassifier = LargeFewShotClassifierModel()
-    .pretrained("large_fewshot_classifier_age_group")
+    .pretrained("large_fewshot_classifier_age_group", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("prediction")
 
