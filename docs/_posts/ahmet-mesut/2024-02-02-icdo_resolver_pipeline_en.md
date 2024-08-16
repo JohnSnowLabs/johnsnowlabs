@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline extracts oncological entities from clinical texts and map them to their corresponding ICD-O codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
+## Predicted Entities
+
+`Oncological`, `Histological_Type`, `Tumor_Finding`, `Cancer_Dx`, `Metastasis`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

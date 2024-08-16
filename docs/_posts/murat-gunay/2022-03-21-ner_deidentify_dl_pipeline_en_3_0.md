@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_deidentify_dl](https://nlp.johnsnowlabs.com/2021/03/31/ner_deidentify_dl_en.html) model.
 
+## Predicted Entities
+
+`DATE`, `PATIENT`, `MEDICALRECORD`, `DOCTOR`, `AGE`, `HOSPITAL`,`STATE`, `CITY`, `PROFESSION`, `STREET`, `ZIP`, `PHONE`, `COUNTRY`, `ORGANIZATION`, `FAX`, `IDNUM`, `HEALTHPLAN`, `USERNAME`, `EMAIL`, `BIOID`, `LOCATION-OTHER`, `DEVICE`, `URL`,`ID`
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
