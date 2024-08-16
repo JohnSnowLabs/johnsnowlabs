@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Detect PHI for Deidentification | ner_deidentify_dl_pipeline | Healthcare NLP 3.4.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deidentify_dl model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deidentify_dl_pipeline", "en", "clinical/models")pipeline.annotate("A . Recor...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deidentify_dl model.Predicted EntitiesDATE, PATIENT, MEDICALRECORD, DOCTOR, AGE, HOSPITAL,STATE, CITY, PROFESSION, STREET, ZIP, PHONE, COUNTRY, ORGANIZATION, FAX, IDNUM, HEALTHPLAN, USERNAME, EMAIL, BIOID, LOCATION-OTHER, DEVICE, URL,IDLive DemoOpen in C...">
 <!-- <link rel="canonical" href="/2022/03/21/ner_deidentify_dl_pipeline_en_3_0.html"> -->
 <link rel="canonical" href="/2022/03/21/ner_deidentify_dl_pipeline_en_3_0.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -509,6 +509,10 @@ function wrapWordInSpan(data, wordToWrap) {
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
 <p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2021/03/31/ner_deidentify_dl_en.html">ner_deidentify_dl</a> model.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>,<code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">URL</code>,<code class="language-plaintext highlighter-rouge">ID</code></p>
 
 <p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/" class="button button-orange">Live Demo</a>
 <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
