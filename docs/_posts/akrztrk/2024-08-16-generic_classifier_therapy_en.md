@@ -38,6 +38,7 @@ This model is a therapy classification model that determines whether clinical se
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -74,7 +75,11 @@ clf_Pipeline = Pipeline(
     features_asm,
     generic_classifier])
 
-data = spark.createDataFrame([['Patient was briefly started on Arimidex due to significant complaints of hot flashes and joint pain, for which these symptoms increased while on Arimidex.'], ['The patient continues to report pain more at the base of her skull radiating to the top of the head and into the jaws.'], ['Post-Surgical Finding: There are post-surgical findings from a previous lumpectomy with radiation seen in the left breast.'], ['Significant narrowing of the disc with tiny osteophyte and bulging disc producing mild ventral impress and minimal facet degenerative change.']]).toDF("text")
+data = spark.createDataFrame([
+['Patient was briefly started on Arimidex due to significant complaints of hot flashes and joint pain, for which these symptoms increased while on Arimidex.'],
+['The patient continues to report pain more at the base of her skull radiating to the top of the head and into the jaws.'],
+['Post-Surgical Finding: There are post-surgical findings from a previous lumpectomy with radiation seen in the left breast.'],
+['Significant narrowing of the disc with tiny osteophyte and bulging disc producing mild ventral impress and minimal facet degenerative change.']]).toDF("text")
 
 result = clf_Pipeline.fit(data).transform(data)
 
@@ -116,7 +121,11 @@ val clf_Pipeline = new Pipeline().setStages(Array(
 ))
 
 
-val data = Seq([['Patient was briefly started on Arimidex due to significant complaints of hot flashes and joint pain, for which these symptoms increased while on Arimidex.'], ['The patient continues to report pain more at the base of her skull radiating to the top of the head and into the jaws.'], ['Post-Surgical Finding: There are post-surgical findings from a previous lumpectomy with radiation seen in the left breast.'], ['Significant narrowing of the disc with tiny osteophyte and bulging disc producing mild ventral impress and minimal facet degenerative change.']]).toDF("text")
+val data = Seq([
+['Patient was briefly started on Arimidex due to significant complaints of hot flashes and joint pain, for which these symptoms increased while on Arimidex.'],
+['The patient continues to report pain more at the base of her skull radiating to the top of the head and into the jaws.'],
+['Post-Surgical Finding: There are post-surgical findings from a previous lumpectomy with radiation seen in the left breast.'],
+['Significant narrowing of the disc with tiny osteophyte and bulging disc producing mild ventral impress and minimal facet degenerative change.']]).toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 
