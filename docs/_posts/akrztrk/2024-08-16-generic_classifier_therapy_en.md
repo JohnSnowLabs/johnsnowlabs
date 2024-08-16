@@ -122,10 +122,10 @@ val clf_Pipeline = new Pipeline().setStages(Array(
 
 
 val data = Seq([
-['Patient was briefly started on Arimidex due to significant complaints of hot flashes and joint pain, for which these symptoms increased while on Arimidex.'],
-['The patient continues to report pain more at the base of her skull radiating to the top of the head and into the jaws.'],
-['Post-Surgical Finding: There are post-surgical findings from a previous lumpectomy with radiation seen in the left breast.'],
-['Significant narrowing of the disc with tiny osteophyte and bulging disc producing mild ventral impress and minimal facet degenerative change.']]).toDF("text")
+["Patient was briefly started on Arimidex due to significant complaints of hot flashes and joint pain, for which these symptoms increased while on Arimidex."],
+["The patient continues to report pain more at the base of her skull radiating to the top of the head and into the jaws."],
+["Post-Surgical Finding: There are post-surgical findings from a previous lumpectomy with radiation seen in the left breast."],
+["Significant narrowing of the disc with tiny osteophyte and bulging disc producing mild ventral impress and minimal facet degenerative change."]]).toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 
@@ -160,3 +160,13 @@ val result = clf_Pipeline.fit(data).transform(data)
 |Output Labels:|[prediction]|
 |Language:|en|
 |Size:|1.5 MB|
+
+## Benchmarking
+```bash
+       label  precision    recall  f1-score   support
+       False       0.94      0.92      0.93      3044
+        True       0.86      0.90      0.88      1607
+    accuracy          -         -      0.92      4651
+   macro-avg       0.90      0.91      0.91      4651
+weighted-avg       0.92      0.92      0.92      4651
+```
