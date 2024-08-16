@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [re_bodypart_proceduretest](http
 
 ## Predicted Entities
 
-
+`Injury_or_Poisoning`, `Direction`, `Test`, `Route`, `Admission_Discharge`, `Death_Entity`, `Triglycerides`, `Oxygen_Therapy`, `Relationship_Status`, `Duration`, `Alcohol`, `Date`, `Drug`, `Hyperlipidemia`, `Respiration`, `Birth_Entity`, `VS_Finding`, `Age`, `Social_History_Header`, `Family_History_Header`, `Medical_Device`, `Labour_Delivery`, `BMI`, `Fetus_NewBorn`, `Temperature`, `Section_Header`, `Communicable_Disease`, `ImagingFindings`, `Psychological_Condition`, `Obesity`, `Sexually_Active_or_Sexual_Orientation`, `Modifier`, `Vaccine`, `Symptom`, `Pulse`, `Kidney_Disease`, `Oncological`, `EKG_Findings`, `Medical_History_Header`, `Cerebrovascular_Disease`, `Blood_Pressure`, `Diabetes`, `O2_Saturation`, `Heart_Disease`, `Employment`, `Frequency`, `Disease_Syndrome_Disorder`, `Pregnancy`, `RelativeDate`, `Procedure`, `Overweight`, `Race_Ethnicity`, `Hypertension`, `External_body_part_or_region`, `Imaging_Technique`, `Test_Result`, `Treatment`, `Substance`, `Clinical_Dept`, `LDL`, `Diet`, `Substance_Quantity`, `Allergen`, `Gender`, `RelativeTime`, `Total_Cholesterol`, `Internal_organ_or_component`, `Smoking`, `Vital_Signs_Header`, `Height`, `Form`, `Strength`, `Weight`, `Time`, `Dosage`, `HDL`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
