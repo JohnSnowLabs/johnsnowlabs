@@ -8,7 +8,7 @@ tags: [en, clinical, licensed, ner, cancer_types, oncology, biomarker]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.4.0
-spark_version: 3.4
+spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
 article_header:
@@ -30,12 +30,11 @@ This Named Entity Recognition (NER) model is specifically trained to extract cri
 The model also extracts the following items, which provide crucial context for cancer diagnosis, treatment, and prognosis.
 
 `Metastasis`: Recognizes terms related to the spread of cancer to different parts of the body, including mentions of metastatic sites and related clinical descriptions.
-`Biomarkers`: Extracts entities related to cancer biomarkers, including genetic markers, protein levels, and other measurable indicators used for cancer diagnosis, prognosis, and treatment response.
+`Biomarker`: Extracts entities related to cancer biomarkers, including genetic markers, protein levels, and other measurable indicators used for cancer diagnosis, prognosis, and treatment response.
+`Biomarker_Quant`: Extracts numerical measurements or values associated with the biomarker.
+`Biomarker_Result`: Extracts descriptive or categorical assessments of the biomarker status.
 `Body Site`: Knowing the primary site of the tumor is essential for diagnosis and treatment planning. The body site where the cancer originates often determines the type of cancer and influences therapeutic approaches.
-    
-Predicted entities are:
 
-`CNS_Tumor_Type`, `Carcinoma_Type`, `Leukemia_Type`, `Lymphoma_Type`, `Melanoma`, `Sarcoma_Type`, `Metastasis`, `Body_Site`, `Biomarker`, `Biomarker_Quant`, `Biomarker_Result`
 
 ## Predicted Entities
 
@@ -44,8 +43,8 @@ Predicted entities are:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_cancer_types_wip_en_5.4.0_3.4_1723812559734.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_cancer_types_wip_en_5.4.0_3.4_1723812559734.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_cancer_types_wip_en_5.4.0_3.0_1723812559734.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_cancer_types_wip_en_5.4.0_3.0_1723812559734.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -106,7 +105,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","en","clinical/models")
     .setInputCols("document")
     .setOutputCol("sentence")
 
