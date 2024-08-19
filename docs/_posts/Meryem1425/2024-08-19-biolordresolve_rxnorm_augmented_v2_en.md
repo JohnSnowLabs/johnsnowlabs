@@ -71,7 +71,7 @@ biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c"
     .setInputCols(["ner_chunk_doc"])\
     .setOutputCol("embeddings")
 
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented_v2", "en", "clinical/models")\ \
+rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented_v2", "en", "clinical/models")\
     .setInputCols(["embeddings"]) \
     .setOutputCol("rxnorm_code")\
     .setDistanceFunction("EUCLIDEAN")
