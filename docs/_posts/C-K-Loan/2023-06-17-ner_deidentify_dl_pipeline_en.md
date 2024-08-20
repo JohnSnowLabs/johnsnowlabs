@@ -22,6 +22,7 @@ This pretrained pipeline is built on the top of [ner_deidentify_dl](https://nlp.
 
 ## Predicted Entities
 
+`DATE`, `PATIENT`, `MEDICALRECORD`, `DOCTOR`, `AGE`, `HOSPITAL`, `STATE`, `CITY`, `PROFESSION`, `STREET`, `ZIP`, `PHONE`, `COUNTRY`, `ORGANIZATION`, `FAX`, `IDNUM`, `HEALTHPLAN`, `USERNAME`, `EMAIL`, `BIOID`, `LOCATION-OTHER`, `DEVICE`, `URL`, `ID`
 
 
 {:.btn-box}

@@ -35,6 +35,7 @@ th {
 [AirGap Environment](#airgap-environment){:.button.button-blue}
 [OpenShift](#openshift){:.button.button-blue}
 
+</div><div class="h3-box" markdown="1">
 
 ## Recommended Configurations
 
@@ -66,12 +67,12 @@ th {
     </td>
   </tr>
 </table>
-</div>
+
+</div><div class="h3-box" markdown="1">
 
 ## Dedicated Server
 
 Install Generative AI Lab (NLP Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
-
 
 ### Fresh install
 
@@ -123,6 +124,7 @@ After running the install/upgrade script, the Generative AI Lab is available at 
 
 We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of Generative AI Lab using animated GIFs.
 
+</div><div class="h3-box" markdown="1">
 
 ## AWS Marketplace
 
@@ -133,13 +135,21 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 **Steps to get started:**
 - Subscribe to the product on the AWS Marketplace.
 - Deploy it on a new machine.
-- Attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+- In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+
+	![IAM](/assets/images/annotation_lab/iam.png)
+		
+- In advance details, enable `Metadata accessible` and select `V1 and V2` in `Metadata version`
+
+	![metadata](/assets/images/annotation_lab/metadata.png)
+
 - Access the login page for a guided experience on `http://INSTANCE_IP`. For the first login use the following credentials:
 	Username: admin
 	Password: INSTANCE_ID
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
+</div><div class="h3-box" markdown="1">
 
 ## Secure access to Generative AI Lab on AWS
 
@@ -221,6 +231,7 @@ Once created, go do the Outputs tab and click on the Generative AI Lab URL. You 
 
 Now, to access the Generative AI Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier. 
 
+</div><div class="h3-box" markdown="1">
 
 ## Azure Marketplace
 
@@ -250,6 +261,8 @@ Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft
 
 **Note:** You can find the External_IP under Kubernetes resources by navigating to Services and ingresses and locating the addon-http-application-routing-nginx-ingress service name.
  
+</div><div class="h3-box" markdown="1">
+
 ## EKS deployment
 
 1. Create NodeGroup for a given cluster
@@ -443,6 +456,7 @@ Edit annotationlab-installer.sh inside artifact folder as follows:
    kubectl apply -f ingress.yaml
    ```
 
+</div><div class="h3-box" markdown="1">
 
 ## AKS deployment
 
@@ -525,6 +539,7 @@ To deploy Generative AI Lab on Azure Kubernetes Service (AKS) a Kubernetes clust
     kubectl get pods
     ```
 
+</div><div class="h3-box" markdown="1">
 
 ## AirGap Environment
 
@@ -555,7 +570,6 @@ $ sudo su
 $ ./annotationlab-installer.sh
 ```
 
-
 ### Upgrade
 
 Run the upgrade script `annotationlab-updater.sh` with `sudo` privileges.
@@ -565,6 +579,7 @@ $ sudo su
 $ ./annotationlab-updater.sh
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ## OpenShift
 
@@ -620,6 +635,7 @@ After the instance is successfully created we can visit its page to view all the
 
 Now, we can access the Generative AI Lab from the provided domain name or also from the location defined for this service under the `Networking > Routes` page
 
+</div><div class="h3-box" markdown="1">
 
 ## Work over proxy
 
@@ -646,4 +662,4 @@ You can provide a proxy to use for external communications. To do that add
 
 commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` files.
 
-
+</div>

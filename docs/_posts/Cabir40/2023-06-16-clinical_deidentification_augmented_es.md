@@ -20,9 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is trained with sciwiki_300d embeddings and can be used to deidentify PHI information from medical texts in Spanish. It differs from the previous `clinical_deidentificaiton` pipeline in that it includes the `ner_deid_subentity_augmented` NER model and some improvements in ContextualParsers and RegexMatchers.
 
-The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `AGE`, `DATE`, `PROFESSION`, `EMAIL`, `USERNAME`, `STREET`, `COUNTRY`, `CITY`, `DOCTOR`, `HOSPITAL`, `PATIENT`, `URL`, `MEDICALRECORD`, `IDNUM`, `ORGANIZATION`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `PLATE`, `SEX` and `IPADDR`
+The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `ID`, `CITY`, `DATE`, `PATIENT`, `SEX`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `AGE`, `SSN`, `IDNUM`
 
 ## Predicted Entities
+
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `ID`, `CITY`, `DATE`, `PATIENT`, `SEX`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `AGE`, `SSN`, `IDNUM`
 
 
 

@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [ner_oncology_tnm](https://nlp.j
 
 ## Predicted Entities
 
-
+`Cancer_Dx`, `Lymph_Node`, `Metastasis`, `Tumor_Description`, `Staging`, `Tumor`, `Lymph_Node_Modifier`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

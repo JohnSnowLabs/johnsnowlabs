@@ -46,7 +46,6 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 </div><div class="h3-box" markdown="1">
 
-
 #### Introducing a New State-of-The-Art Text2SQL Model Supporting Custom Database Schemas with Single Tables
 
 We are excited to introduce the new State-of-the-Art (SOTA) Large Language Model (LLM) designed to convert natural language questions into SQL queries, with support for custom database schemas containing single tables. This model has demonstrated superior performance compared to the current SOTA model (Defog's SQLCoder) by a margin of 6 points (**0.86 to 0.92**) when evaluated on a novel dataset that was not included in training (specifically tailored for the clinical domain). The model is obtained by finetuning an LLM on an augmented dataset containing schemas with single tables.
@@ -74,8 +73,7 @@ question = "What is the average age of male patients with 'Diabetes'?"
 [SELECT AVG(age) FROM medical_treatment WHERE gender = 'male' AND diagnosis = 'diabetes']
 ```
 
-
-please check: [Model Card](https://nlp.johnsnowlabs.com/2023/09/14/text2sql_with_schema_single_table_augmented_en.html) and [Text2SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) for more information
+please check: [Model Card](https://nlp.johnsnowlabs.com/2023/09/25/text2sql_with_schema_single_table_augmented_en.html) and [Text2SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) for more information
 
 </div><div class="h3-box" markdown="1">
 
@@ -132,10 +130,10 @@ Designed explicitly for deidentification tasks in the Arabic language, these mod
 {:.table-model-big}
 | NER model                                                                 |            predicted entities             |
 |---------------------------------------------------------------------------|-------------------------------------------|
-| [`ner_deid_subentity_arabert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_subentity_arabert_en.html) | `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
-| [`ner_deid_generic_arabert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_generic_arabert_en.html)     | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
-| [`ner_deid_subentity_camelbert`](https://nlp.johnsnowlabs.com/2023/09/22/ner_deid_subentity_camelbert_en.html) | `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
-| [`ner_deid_generic_camelbert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_generic_camelbert_en.html)     | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
+| [`ner_deid_subentity_arabert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_subentity_arabert_ar.html) | `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
+| [`ner_deid_generic_arabert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_generic_arabert_ar.html)     | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
+| [`ner_deid_subentity_camelbert`](https://nlp.johnsnowlabs.com/2023/09/22/ner_deid_subentity_camelbert_ar.html) | `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
+| [`ner_deid_generic_camelbert`](https://nlp.johnsnowlabs.com/2023/09/16/ner_deid_generic_camelbert_ar.html)     | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
 
 
 *Example*:
@@ -167,16 +165,13 @@ abcd@gmail.com.
 |مستشفى مدينة الرباط           |HOSPITAL |
 |abcd@gmail.com                  |EMAIL    |
 
-
 please check [Arabic Ner Demographics Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS_AR/)
-
 
 </div><div class="h3-box" markdown="1">
        
 #### 2 New Classification Models for Healthcare Social Determinants of Healthcare Concepts within Financial and Food Insecurity Contexts
 
 Introducing two cutting-edge classification models tailored to address critical social determinants of healthcare: financial and food insecurity. These models, [genericclassifier_sdoh_financial_insecurity_mpnet](https://nlp.johnsnowlabs.com/2023/09/19/genericclassifier_sdoh_financial_insecurity_mpnet_en.html) and [genericclassifier_sdoh_food_insecurity_mpnet](https://nlp.johnsnowlabs.com/2023/09/19/genericclassifier_sdoh_food_insecurity_mpnet_en.html) have been meticulously designed to categorize healthcare-related text into key classifications.
-
 
 *Example*:
 
@@ -222,7 +217,6 @@ This [bert_sequence_classifier_vop_adverse_event](https://nlp.johnsnowlabs.com/2
 
 `False`: Denoting the absence of unfavorable experiences during the course of treatment.
 
-
 *Example*:
 
 ```python
@@ -247,9 +241,7 @@ text_list = [
 
 Please check [VOP SIDE EFFECT CLASSIFICATION demo](https://demo.johnsnowlabs.com/healthcare/VOP_CLASSIFICATION_SIDE_EFFECT/)
 
-
 </div><div class="h3-box" markdown="1">
-
 
 #### 18 New Augmented NER Models by Leveraging the Capabilities of the LangTest Library to Boost Their Robustness Significantly
 
@@ -340,7 +332,6 @@ text = """The patient presented a mass in her left breast, and a possible metast
 | breast   |      41 |    46 | Site_Breast |
 | lungs    |      82 |    86 | Site_Lung   |
 | liver    |      99 |   103 | Site_Liver  |
-
 
 </div><div class="h3-box" markdown="1">
 

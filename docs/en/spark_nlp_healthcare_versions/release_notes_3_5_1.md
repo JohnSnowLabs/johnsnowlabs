@@ -164,10 +164,9 @@ Results:
 |  7 | DOUTORA: Eva Andrade           | DOUTORA: <DOCTOR>          | DOUTORA: [*********]           | DOUTORA: ****             | DOUTORA: Isabel Magalhães         |
 ```
 
- See [Model Hub Page](https://nlp.johnsnowlabs.com/2022/04/14/clinical_deidentification_pt_3_0.html) for details.
+See [Model Hub Page](https://nlp.johnsnowlabs.com/2022/04/14/clinical_deidentification_pt_3_0.html) for details.
 
-
-Check Spark NLP Portuguese capabilities in [4.7.Clinical_Deidentification_in_Portuguese.ipynb notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.7.Clinical_Deidentification_in_Portuguese.ipynb) we have prepared for you.
+Check Spark NLP Portuguese capabilities in [4.1.Clinical_Multi_Language_Deidentification.ipynb notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb) we have prepared for you.
 
 </div><div class="h3-box" markdown="1">
 

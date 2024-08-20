@@ -22,6 +22,7 @@ This pretrained pipeline is built on the top of [ner_deid_synthetic](https://nlp
 
 ## Predicted Entities
 
+`LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `ID`, `AGE`
 
 
 {:.btn-box}

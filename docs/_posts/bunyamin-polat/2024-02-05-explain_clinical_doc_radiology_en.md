@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-kriuw433xdo4u
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/a516cbd4-107d-4194-ab02-74095c155f34/John-Snow-Labs_Extract-findings-in-radiology-reports
+
 ---
 
 ## Description
@@ -39,6 +45,13 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_radiology_en_5.2.1_3.0_1707126709129.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_radiology_en_5.2.1_3.0_1707126709129.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

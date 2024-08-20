@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline maps entities (Clinical Major Concepts) with their corresponding UMLS CUI codes. You’ll just feed your text and it will return the corresponding UMLS codes.
 
+## Predicted Entities
+
+`Qualitative_Concept`, `Mental_Process`, `Health_Care_Activity`, `Professional_or_Occupational_Group`, `Population_Group`, `Group`,`Pharmacologic_Substance`, `Research_Activity`, `Medical_Device`, `Diagnostic_Procedure`, `Molecular_Function`, `Spatial_Concept`, `Organic_Chemical`, `Amino_Acid`, `Peptide_or_Protein`, `Disease_or_Syndrome`, `Daily_or_Recreational_Activity`, `Quantitative_Concept`, `Biologic_Function`, `Organism_Attribute`, `Clinical_Attribute`, `Pathologic_Function`, `Eukaryote`,`Body_Part`,`Organ_or_Organ_Component`,`Anatomical_Structure`,`Cell_Component`,`Geographic_Area`,`Manufactured_Object`,`Tissue`,`Plant`,`Nucleic_Acid`,`Nucleoside_or_Nucleotide`,`Indicator`,`Reagent_or_Diagnostic_Aid`,`Prokaryote`,`Chemical`,`Therapeutic_or_Preventive_Procedure`,`Gene_or_Genome`,`Mammal`,`Laboratory_Procedure`,`Substance`,`Molecular_Biology_Research_Technique`,`Neoplastic_Process`,`Cell`,`Food`,`Genetic_Function`,`Mental_or_Behavioral_Dysfunction`,`Body_Substance`,`Sign_or_Symptom`,`Injury_or_Poisoning`,`Body_Location_or_Region`,`Organization`,`Body_System`,`Fungus`,`Virus`,`Nucleotide_Sequence`,`Biomedical_or_Dental_Material`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

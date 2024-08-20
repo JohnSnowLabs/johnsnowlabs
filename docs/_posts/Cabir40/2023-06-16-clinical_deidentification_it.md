@@ -18,9 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to deidentify PHI information from medical texts in Italian. The pipeline can mask and obfuscate the following entities: `DATE`, `AGE`, `SEX`, `PROFESSION`, `ORGANIZATION`, `PHONE`, `E-MAIL`, `ZIP`, `STREET`, `CITY`, `COUNTRY`, `PATIENT`, `DOCTOR`, `HOSPITAL`, `MEDICALRECORD`, `SSN`, `IDNUM`, `ACCOUNT`, `PLATE`, `USERNAME`, `URL`, and `IPADDR`.
+This pipeline can be used to deidentify PHI information from medical texts in Italian. The pipeline can mask and obfuscate the following entities: `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `CITY`, `DATE`, `SEX`, `PATIENT`, `SSN`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`, `E-MAIL`, `ID`, `ACCOUNT`, `PLATE`, `IPADDR`
 
 ## Predicted Entities
+
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `CITY`, `DATE`, `SEX`, `PATIENT`, `SSN`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`, `E-MAIL`, `ID`, `ACCOUNT`, `PLATE`, `IPADDR`
 
 
 
