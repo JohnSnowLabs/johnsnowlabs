@@ -92,9 +92,14 @@ pipeline = Pipeline(stages=[
     ner_converter   
     ])
 
-sample_texts = ["""
-Despite his confrontational attitude, efforts were made to educate Mr. Brown on the importance of following his treatment plan and dietary restrictions. Multiple attempts to discuss his condition and the need for continuous care were met with defensiveness. He declined several recommendations, becoming agitated and tearful during discussions about his health.
-"""]
+sample_texts = [
+"""The healthcare team observed that Mr. Smith exhibited somewhat aggressive behavior and heightened irritability, especially when discussing his treatment plan. He showed a full range of emotions and fixated on certain incorrect beliefs about his health. Concerns about his poor judgment and insight were frequently discussed in multidisciplinary team meetings. For example, he often insisted that his symptoms were purely due to stress.""",
+"""Once stabilized, Mr. Smith was discharged with a comprehensive care plan emphasizing the importance of medication adherence and regular follow-up appointments. Despite extensive counseling on the risks associated with non-compliance, concerns about his judgment persisted. He expressed skepticism about the need for certain medications, particularly those for managing his diabetes and COPD.""",
+"""David Brown's hospital stay underscored the significant impact of poor reasoning and judgment on his health outcomes. His initial reluctance to seek care and resistance to necessary treatments highlighted the crucial need for patient education and compliance. Moving forward, strict adherence to his treatment plan and regular follow-up are vital to preventing further complications and ensuring his ongoing well-being.""",
+"""Despite his confrontational attitude, efforts were made to educate Mr. Brown on the importance of following his treatment plan and dietary restrictions. Multiple attempts to discuss his condition and the need for continuous care were met with defensiveness. He declined several recommendations, becoming agitated and tearful during discussions about his health.""",
+"""Efforts to educate Ms. Martin on the importance of adhering to her asthma management plan were met with resistance. She frequently questioned the necessity of her medications and expressed dissatisfaction with her care. Despite these challenges, the team remained dedicated to providing thorough care, working to address her concerns and educate her on the importance of following her treatment regimen. Ms. Martin became particularly agitated when discussing her anxiety and the impact of her asthma on her quality of life. "No one understands how hard this is for me," she argued during a consultation with the psychiatrist. Despite her defensive attitude, the team continued to offer support and reassurance, acknowledging the complexity of her psychosocial barriers to care.""",
+"""History of Present Illness: Ms. ___ is a very pleasant ___ female who underwent a left partial mastectomy and left axillary sentinel node biopsy on ___ for left invasive ductal carcinoma. Her surgical pathology report indicated that all six margins were either involved with or close to atypical or carcinoma cells. We subsequently recommended a global re-excision lumpectomy, which was then performed on ___."""
+]
 
 data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
 
@@ -134,7 +139,14 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter   
 ))
 
-val sample_texts = Seq("""Despite his confrontational attitude, efforts were made to educate Mr. Brown on the importance of following his treatment plan and dietary restrictions. Multiple attempts to discuss his condition and the need for continuous care were met with defensiveness. He declined several recommendations, becoming agitated and tearful during discussions about his health.""").toDF("text")
+val sample_texts = Seq(
+"""The healthcare team observed that Mr. Smith exhibited somewhat aggressive behavior and heightened irritability, especially when discussing his treatment plan. He showed a full range of emotions and fixated on certain incorrect beliefs about his health. Concerns about his poor judgment and insight were frequently discussed in multidisciplinary team meetings. For example, he often insisted that his symptoms were purely due to stress.""",
+"""Once stabilized, Mr. Smith was discharged with a comprehensive care plan emphasizing the importance of medication adherence and regular follow-up appointments. Despite extensive counseling on the risks associated with non-compliance, concerns about his judgment persisted. He expressed skepticism about the need for certain medications, particularly those for managing his diabetes and COPD.""",
+"""David Brown's hospital stay underscored the significant impact of poor reasoning and judgment on his health outcomes. His initial reluctance to seek care and resistance to necessary treatments highlighted the crucial need for patient education and compliance. Moving forward, strict adherence to his treatment plan and regular follow-up are vital to preventing further complications and ensuring his ongoing well-being.""",
+"""Despite his confrontational attitude, efforts were made to educate Mr. Brown on the importance of following his treatment plan and dietary restrictions. Multiple attempts to discuss his condition and the need for continuous care were met with defensiveness. He declined several recommendations, becoming agitated and tearful during discussions about his health.""",
+"""Efforts to educate Ms. Martin on the importance of adhering to her asthma management plan were met with resistance. She frequently questioned the necessity of her medications and expressed dissatisfaction with her care. Despite these challenges, the team remained dedicated to providing thorough care, working to address her concerns and educate her on the importance of following her treatment regimen. Ms. Martin became particularly agitated when discussing her anxiety and the impact of her asthma on her quality of life. "No one understands how hard this is for me," she argued during a consultation with the psychiatrist. Despite her defensive attitude, the team continued to offer support and reassurance, acknowledging the complexity of her psychosocial barriers to care.""",
+"""History of Present Illness: Ms. ___ is a very pleasant ___ female who underwent a left partial mastectomy and left axillary sentinel node biopsy on ___ for left invasive ductal carcinoma. Her surgical pathology report indicated that all six margins were either involved with or close to atypical or carcinoma cells. We subsequently recommended a global re-excision lumpectomy, which was then performed on ___."""
+).toDF("text")
 
 val result = pipeline.fit(sample_texts).transform(sample_texts)
 ```
@@ -143,14 +155,30 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 ## Results
 
 ```bash
-+---------------+-----+---+-------------+
-|chunk          |begin|end|ner_label    |
-+---------------+-----+---+-------------+
-|confrontational|12   |26 |Argumentative|
-|defensiveness  |243  |255|Argumentative|
-|declined       |261  |268|Resistant    |
-|agitated       |304  |311|Aggressive   |
-+---------------+-----+---+-------------+
++---------------------------+-----+---+--------------------+
+|chunk                      |begin|end|ner_label           |
++---------------------------+-----+---+--------------------+
+|aggressive                 |63   |72 |Aggressive          |
+|poor judgment              |272  |284|Poor_Reasoning      |
+|insisted                   |382  |389|Credibility_Doubts  |
+|adherence                  |114  |122|Compliant           |
+|non-compliance             |218  |231|Noncompliant        |
+|poor reasoning and judgment|66   |92 |Poor_Reasoning      |
+|reluctance                 |130  |139|Resistant           |
+|resistance                 |158  |167|Resistant           |
+|compliance                 |248  |257|Compliant           |
+|adherence                  |283  |291|Compliant           |
+|confrontational            |12   |26 |Argumentative       |
+|defensiveness              |243  |255|Argumentative       |
+|declined                   |261  |268|Resistant           |
+|agitated                   |304  |311|Aggressive          |
+|adhering                   |51   |58 |Compliant           |
+|resistance                 |104  |113|Argumentative       |
+|agitated                   |435  |442|Aggressive          |
+|argued                     |575  |580|Argumentative       |
+|defensive                  |639  |647|Argumentative       |
+|pleasant                   |46   |53 |Positive_Descriptors|
++---------------------------+-----+---+--------------------+
 ```
 
 {:.model-param}
