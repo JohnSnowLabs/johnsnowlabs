@@ -140,6 +140,19 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 ```
 </div>
 
+## Results
+
+```bash
++---------------+-----+---+-------------+
+|chunk          |begin|end|ner_label    |
++---------------+-----+---+-------------+
+|confrontational|12   |26 |Argumentative|
+|defensiveness  |243  |255|Argumentative|
+|declined       |261  |268|Resistant    |
+|agitated       |304  |311|Aggressive   |
++---------------+-----+---+-------------+
+```
+
 {:.model-param}
 ## Model Information
 
