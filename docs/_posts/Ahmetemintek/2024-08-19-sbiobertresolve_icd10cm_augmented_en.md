@@ -123,6 +123,7 @@ val chunk2doc = new Chunk2Doc()
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
     .setInputCols("ner_chunk_doc")
     .setOutputCol("sbert_embeddings")
+    .setCaseSensitive(False)
 
 val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")
     .setInputCols("sbert_embeddings") 
