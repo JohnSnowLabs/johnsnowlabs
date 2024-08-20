@@ -196,3 +196,7 @@ val results = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|437.8 MB|
 |Case sensitive:|false|
+
+## References
+
+This model is trained with the 2025 version of ICD-10-CM dataset. 
