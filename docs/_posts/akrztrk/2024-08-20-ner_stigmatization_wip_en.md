@@ -80,8 +80,8 @@ ner_model = MedicalNerModel.pretrained('ner_stigmatization_wip', "en", "clinical
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
-    .setInputCols(['sentence', 'token', 'ner'])\
-    .setOutputCol('ner_chunk')
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
 
 pipeline = Pipeline(stages=[
     document_assembler, 
