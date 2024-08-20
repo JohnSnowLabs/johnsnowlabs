@@ -178,3 +178,7 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|438.2 MB|
 |Case sensitive:|false|
+
+## References
+
+This model is trained with the 2025 version of ICD-10-CM dataset. 
