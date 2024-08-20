@@ -57,6 +57,7 @@ It includes entities based on the behavior exhibited by patients as reported in 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
