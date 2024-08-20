@@ -71,11 +71,11 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-clinical_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical', "en", "clinical/models")\
+clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-ner_model = MedicalNerModel.pretrained('ner_stigmatization_wip', "en", "clinical/models")\
+ner_model = MedicalNerModel.pretrained("ner_stigmatization_wip", "en", "clinical/models")\
     .setInputCols(["sentence", "token","embeddings"])\
     .setOutputCol("ner")
 
