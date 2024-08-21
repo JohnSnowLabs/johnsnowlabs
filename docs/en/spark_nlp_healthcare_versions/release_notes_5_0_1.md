@@ -50,7 +50,7 @@ We are pleased to introduce support for RxHCC risk score calculation in two new 
 
 Input Data Frame:
 
-{:.table-model-big}
+{:.table-model-big.db}
 |      filename|Age|                              icd10_code|                  Extracted_Entities_vs_ICD_Codes|Gender|   eligibility|orec|    esrd|
 |--------------|---|----------------------------------------|-------------------------------------------------|------|--------------|----|--------|
 |patient_01.txt| 66|C49.9, J18.9, C49.9, D61.81, I26, M06.9 | {leiomyosarcoma, C49.9}, {pneumonia, J18.9}, ...|     F|  CE_NoLowAged|   1|   false|
@@ -71,7 +71,7 @@ df = df.withColumn("risk_score", df.rxhcc_profile.getItem("risk_score"))\
 
 *Results (V08-Y23)*:
 
-{:.table-model-big}
+{:.table-model-big.db}
 |      filename|Age|                             icd10_code|                  Extracted_Entities_vs_ICD_Codes|Gender|   eligibility|orec|    esrd|                                     rxhcc_profile|risk_score|                       parameters|                     details|
 |--------------|---|---------------------------------------|-------------------------------------------------|------|--------------|----|--------|--------------------------------------------------|----------|---------------------------------|----------------------------|
 |patient_01.txt| 66|C49.9, J18.9, C49.9, D61.81, I26, M06.9| {leiomyosarcoma, C49.9}, {pneumonia, J18.9}, ...|     F|  CE_NoLowAged|   1|   false|{0.575, null, {"elig":"CE_NoLowAged","age":66, ...|     0.575|{"elig":"CE_NoLowAged","age": ...|{"Rx_CE_NoLowAged_F65_69"...|

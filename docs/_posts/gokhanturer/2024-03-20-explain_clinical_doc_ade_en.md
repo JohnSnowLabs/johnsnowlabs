@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-sueq4zd6lhe7e
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/64d6608b-8341-4b14-8edd-c1a1b31823a6/John-Snow-Labs_Extract-Adverse-Drug-Events-ADE
+
 ---
 
 ## Description
@@ -41,6 +47,13 @@ In this pipeline, two NER, one text matcher, one sentence classifier, one assert
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_ade_en_5.3.0_3.0_1710947938199.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_ade_en_5.3.0_3.0_1710947938199.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

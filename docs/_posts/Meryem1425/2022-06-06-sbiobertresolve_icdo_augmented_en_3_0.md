@@ -15,6 +15,12 @@ annotator: SentenceEntityResolverModel
 article_header:
 type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/074bbfa7-20ad-4444-8e0a-bc05ff07d6ea/John-Snow-Labs_Resolve-Oncology-terminology-with-ICDO-Taxonomy
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ This model maps extracted clinical entities to ICD-O codes using `sbiobert_base_
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_icdo_augmented_en_3.5.2_3.0_1654546345691.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_icdo_augmented_en_3.5.2_3.0_1654546345691.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

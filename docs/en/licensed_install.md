@@ -1531,4 +1531,166 @@ In NB section, you can create your own NB or load existing NBs.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
+
+## Microsoft Fabric Instructions
+
+### Step 1: Log into MS Fabric
+Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your MS Fabric Account credentials.
+
+### Step 2: Create a Lakehouse
+- Go to the **Synapse Data Science** section.
+- Navigate to the **Create** section.
+- Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
+
+![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
+
+### Step 3: Create a Notebook
+- Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
+
+  ![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
+
+
+### Step 4: Attach the Lakehouse
+Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
+
+![image](https://github.com/user-attachments/assets/63996c40-4cd6-4aa2-925f-a1ad886914f4)
+
+![image](https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be)
+
+
+### Step 5: Upload Files
+Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
+
+
+![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
+
+![image](https://github.com/user-attachments/assets/48339e38-fb5e-4dd7-b235-bfcb645cc855)
+
+
+After uploading is complete, you can configure and run the notebook.
+
+
+### Step 6: Configure the Notebook Session
+Configure the session within the notebook as follows:
+
+```json
+%%configure -f
+{
+  "conf": {
+    "spark.hadoop.fs.s3a.access.key": {
+      "parameterName": "awsAccessKey",
+      "defaultValue": "<AWS-ACCESS-KEY>"
+    },
+    "spark.hadoop.fs.s3a.secret.key": {
+      "parameterName": "awsSecretKey",
+      "defaultValue": "<AWS-SECRET-KEY>"
+    },
+    "spark.yarn.appMasterEnv.SPARK_NLP_LICENSE": {
+      "parameterName": "sparkNlpLicense",
+      "defaultValue": "<LICENSE-KEY>"
+    },
+    "spark.jars": {
+      "parameterName": "sparkJars",
+      "defaultValue": "<abfs-path-spark-nlp-assembly-jar>,<abfs-path-spark-nlp-jsl-jar>"
+    }
+  }
+}
+
+```
+### Step 7: Install Spark NLP Libraries
+Install the required Spark NLP libraries using pip commands:
+```bash
+%pip install <spark-nlp whl File API path>
+%pip install <spark-nlp-jsl whl File API path>
+```
+
+**Example Usage:**
+
+![image](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
+
+
+### Step 8: Make Necessary Imports
+Import the necessary Python and Spark libraries:
+```python
+import functools
+import numpy as np
+import pandas as pd
+from scipy import spatial
+
+import pyspark.sql.types as T
+from pyspark.ml import Pipeline
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+
+import sparknlp
+import sparknlp_jsl
+from sparknlp.base import *
+from sparknlp.annotator import *
+from sparknlp_jsl.annotator import *
+```
+
+### Step 9: Explore Available Licensed Models
+Download and explore the list of available licensed models:
+```bash
+! pip install -q boto3
+! wget https://nlp.johnsnowlabs.com/models.json
+
+import json
+with open("models.json", "r", encoding="utf-8") as f:
+    full_list = json.load(f)
+```
+
+**Example Usage:**
+
+![image](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
+
+
+### Step 10: Download and Extract Required Models
+Set up AWS credentials and use Boto3 to handle files:
+```python
+import shutil
+import boto3
+
+# Setup AWS credentials
+ACCESS_KEY = "<AWS-ACCESS-KEY>"
+SECRET_KEY = "<AWS-SECRET-KEY>"
+
+# Connect to S3
+s3 = boto3.resource('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
+buck_auxdata = s3.Bucket('auxdata.johnsnowlabs.com')
+
+!mkdir -p /lakehouse/default/Files/zip_files /lakehouse/default/Files/
+
+# Download and extract model
+import shutil
+from sparknlp.pretrained import PretrainedPipeline
+
+zip_file_path = '/lakehouse/default/Files/zip_files/<Model-ZIP>'
+unzip_dir_path = '/lakehouse/default/Files/<MODEL-NAME>'
+
+try:
+    buck_auxdata.download_file('clinical/models/<Model-ZIP>', zip_file_path)
+    shutil.unpack_archive(zip_file_path, unzip_dir_path, 'zip')
+    print("Model downloaded and extracted successfully.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
+
+### Step 11: Load the Model and Make Predictions
+Load the model and perform predictions on the desired text:
+```python
+pipeline = PretrainedPipeline.from_disk("Files/<MODEL-NAME>")
+text = "<INPUT-TEXT>"
+result = pipeline.annotate(text)
+```
+
+**Example Usage:**
+
+![image](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
+
+![image](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
+
+
+
+
 </div>

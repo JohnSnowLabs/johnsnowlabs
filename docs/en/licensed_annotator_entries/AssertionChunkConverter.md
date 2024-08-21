@@ -26,6 +26,8 @@ Parameters:
 
 - `outputTokenEndCol`: (Str) The column containing the selected token end index.
 
+- `metadataFields`:  (Dict) The dictionary of of metadata fields to be added to the chunk column
+
 > *NOTE*: Chunk begin and end indices in the assertion status model training dataframe can be populated using the new version of the ALAB module.
 
 {%- endcapture -%}
@@ -365,7 +367,7 @@ val results = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[AssertionChunkConverterNootebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb)
+[AssertionChunkConverterNootebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

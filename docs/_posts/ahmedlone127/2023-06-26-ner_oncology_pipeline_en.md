@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-jjrar26fcq7pg
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/00affefe-d268-4bd2-9fa1-8d3a07199be0/John-Snow-Labs_Extract-oncological-entities-and-relations
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pretrained pipeline is built on the top of [ner_oncology](https://nlp.johns
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_pipeline_en_4.4.4_3.0_1687802877717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_pipeline_en_4.4.4_3.0_1687802877717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

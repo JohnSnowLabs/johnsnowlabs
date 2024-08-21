@@ -180,16 +180,16 @@ ocr_entity_processor(spark=spark,file_path=path, ner_pipeline = nlp_modelchunk_c
 
 - **Bounding box with labels and black list**
 
-![image](https://user-images.githubusercontent.com/64752006/205349180-8222ec38-8b43-44a2-abf2-def72fd82d68.png)
+![New Utility & Helper OCR Modules to Handle Annotations](https://user-images.githubusercontent.com/64752006/205349180-8222ec38-8b43-44a2-abf2-def72fd82d68.png)
 
 
 - **Highlight with labels and black_list**
 
-![image](https://user-images.githubusercontent.com/64752006/205343977-7f54eb4e-4a3c-4be2-8acf-2f0f3b7dd0f5.png)
+![New Utility & Helper OCR Modules to Handle Annotations](https://user-images.githubusercontent.com/64752006/205343977-7f54eb4e-4a3c-4be2-8acf-2f0f3b7dd0f5.png)
 
 - **black_band with labels**
 
-![image](https://user-images.githubusercontent.com/64752006/205343389-9563a9ce-f971-4865-b94f-4b0cc92e2bcc.png)
+![New Utility & Helper OCR Modules to Handle Annotations](https://user-images.githubusercontent.com/64752006/205343389-9563a9ce-f971-4865-b94f-4b0cc92e2bcc.png)
 
 
 </div><div class="h3-box" markdown="1">
@@ -252,7 +252,7 @@ loss_plot('./ner_logs/'+log_files[0])
 
 *Results*:
 
-![image](https://user-images.githubusercontent.com/64752006/205368367-f70bb792-b1ff-41cd-8ed5-8dee94f10aa8.png)
+![New Utility & Helper NER Log Parser](https://user-images.githubusercontent.com/64752006/205368367-f70bb792-b1ff-41cd-8ed5-8dee94f10aa8.png)
 
 
 - `get_charts` : Plots the figures of metrics ( precision, recall, f1) vs epochs
@@ -267,11 +267,9 @@ get_charts('./ner_logs/'+log_files[0])
 
 *Results*:
 
-![image](https://user-images.githubusercontent.com/64752006/205368210-f5ffb64c-8a22-4758-8423-ade6ac3ee8cd.png)
+![New Utility & Helper NER Log Parser](https://user-images.githubusercontent.com/64752006/205368210-f5ffb64c-8a22-4758-8423-ade6ac3ee8cd.png)
 
-![image](https://user-images.githubusercontent.com/64752006/205368132-c86e7c2b-555e-4653-a799-c55cc5e9e9a0.png)
-
-
+![New Utility & Helper NER Log Parser](https://user-images.githubusercontent.com/64752006/205368132-c86e7c2b-555e-4653-a799-c55cc5e9e9a0.png)
 
 </div><div class="h3-box" markdown="1">
 

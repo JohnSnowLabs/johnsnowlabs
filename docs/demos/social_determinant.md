@@ -57,6 +57,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Models.ipynb
+        - title: Alcohol and Smoking  
+          id: alcohol_and_smoking         
+          image: 
+              src: /assets/images/Alcohol_and_Smoking.svg
+          excerpt: This demo is designed to detect and label alcohol and smoking-related entities within text data.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ALCOHOL_SMOKING/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ALCOHOL_SMOKING.ipynb
         - title: Classify Social Support 
           id: classify_social_support         
           image: 

@@ -286,6 +286,7 @@ text = "Patient has a headache for the last 2 weeks, no alopecia noted."
 
 + We are releasing 2 new chunk mapper models to map entities to their corresponding CVX codes, vaccine names and CPT codes. There are 3 types of vaccine names mapped; `short_name`, `full_name` and `trade_name`
 
+{:.table-model-big}
 | model name      | description                                                                             |
 |-----------------|-----------------------------------------------------------------------------------------|
 | [cvx_name_mapper](https://nlp.johnsnowlabs.com/2022/10/12/cvx_name_mapper_en.html) | Mapping vaccine products to their corresponding CVX codes, vaccine names and CPT codes. |

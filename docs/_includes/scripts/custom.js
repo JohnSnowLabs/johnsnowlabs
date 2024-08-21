@@ -138,8 +138,8 @@ try {
 
   // Set active page and update version containers
   for (let i = 0; i < paginationItems.length; i++) {
-    const item = paginationItems[i];
-    const itemTitle = item.firstElementChild.innerHTML;
+    const item = paginationItems[i],
+          itemTitle = item.firstElementChild.innerHTML;
     if (itemTitle === currentPageTitle) {
       item.classList.add('active');
       currentVersionContainer.textContent = itemTitle;       

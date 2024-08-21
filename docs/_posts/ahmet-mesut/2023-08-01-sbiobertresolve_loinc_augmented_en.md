@@ -14,6 +14,12 @@ annotator: SentenceEntityResolverModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/a299884a-7a95-4ddf-96e0-b8594c4290d3/John-Snow-Labs_Extract-Laboratory-Observations-and-the-corresponding-LOINC-codes
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This model maps extracted clinical NER entities to Logical Observation Identifie
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_loinc_augmented_en_5.0.0_3.0_1690896071392.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_loinc_augmented_en_5.0.0_3.0_1690896071392.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Speed Bencmarks
+title: Bencmarks
 permalink: /docs/en/benchmark
 key: docs-benchmark
 modify_date: "2021-10-04"
@@ -57,8 +57,7 @@ sidebar:
 
 + Since given computation durations are highly dependent on different parameters including driver node and worker node configurations as well as partitions, **results show that explode method increases duration  %10-30  on chosen configurations.**
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### NER Benchmark Tables
 
@@ -123,8 +122,7 @@ sidebar:
 
 
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Clinical Bert For Token Classification Benchmark Experiment
 
@@ -158,11 +156,9 @@ nlpPipeline = Pipeline(stages=[
 
 + In the second experiment, the data read from the delta table was written to the delta table after it was processed.
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 #### Bert For Token Classification Benchmark Table
-
-<div class="h3-box" markdown="1">
 
 <table class="table-model-big table3">
     <thead>
@@ -210,11 +206,7 @@ nlpPipeline = Pipeline(stages=[
     </tbody>
 </table>
 
-</div>
-
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### NER speed benchmarks across various Spark NLP and PySpark versions
 
@@ -255,9 +247,7 @@ nlpPipeline = Pipeline(
 
 Results show that the different versions can have some variance in the execution time, but the difference is not too relevant. 
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### ChunkMapper and Sentence Entity Resolver Benchmark Experiment
 
@@ -333,6 +323,8 @@ We choosed 3 different configurations for AWS EC2 machines that have same core w
 
 + **NER models were kept as same in all pipelines:** Pretrained `ner_posology_greedy` NER model was used in each pipeline.
 
+</div><div class="h3-box" markdown="1">
+
 #### Benchmark Tables
 
 These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
@@ -388,10 +380,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 | 100       | 6.32 sec      | 10 sec        | 1.16 mins       | 1.08 mins       |  50.9 sec                  | 45 sec                     |
 | 1000      | 8.37 sec      | 10 sec        | 59.6 sec        | 1.02 mins       |  49.3 sec                  | 41 sec                     |
 
-</div>
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
     
 ### ONNX and Base Embeddings in Resolver 
 
@@ -570,10 +559,7 @@ deid_pipeline = Pipeline().setStages([
 
 PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.
 
-</div>
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Deidentification Pipelines Cost Benchmarks 
 
@@ -671,9 +657,7 @@ pipeline_base = Pipeline().setStages([
     deid_obfuscated,
     finisher])
 ```
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 {:.table-model-big.db}
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
@@ -695,7 +679,110 @@ Estimated Minimum Costs:
 - DataBricks Base Pipeline: partition number: 1024, 10K cost:**$0.46**, 1M cost:**$45.76** 
 - DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:**$0.27**, 1M cost:**$27.13** 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
+
+## RxNorm Benchmark: Healthcare NLP & GPT-4 & Amazon
+
+### Motivation
+
+Accurately mapping medications to RxNorm codes is crucial for several reasons like safer patient care, improved billing and reimbursement, enhanced research, etc. In this benchmark, you can find these tools' performance and cost comparisons.
+
+### Ground Truth
+
+To ensure a fair comparison of these tools, we enlisted the assistance of human annotators. Medical annotation experts from John Snow Labs utilized the [Generative AI Lab](https://nlp.johnsnowlabs.com/docs/en/alab/quickstart) to annotate 79 clinical in-house documents.
+
+### Benchmark Tools
+
+- **Healthcare NLP:** Two distinct RxNorm models within the library was used.
+  - [sbiobertresolve_rxnorm_augmented](https://nlp.johnsnowlabs.com/2024/01/17/sbiobertresolve_rxnorm_augmented_en.html): Trained with `sbiobert_base_cased_mli` embeddings.
+  - [biolordresolve_rxnorm_augmented](https://nlp.johnsnowlabs.com/2024/05/06/biolordresolve_rxnorm_augmented_en.html): Trained with `mpnet_embeddings_biolord_2023_c` embeddings.
+
+- **GPT-4:** *GPT-4 (Turbo)* and *GPT-4o* models.
+
+- **Amazon:** *Amazon Comprehend Medical* service  
+
+### Evaluation Notes
+
+- Healthcare NLP returns up to 25 closest results, and Amazon Medical Comprehend returns up to five results, both sorted starting from the closest one. In contrast, the GPT-4 returns only one result, *so its scores are reflected similarly in both charts*.
+- Since the performance of GPT-4 and GPT-4o is almost identical according to the [official announcement](https://community.openai.com/t/announcing-gpt-4o-in-the-api/744700?page=3), and we used both versions for the accuracy calculation. Additionally, the GPT-4 returns **only one result**, which means you will see the same results in both evaluation approaches.
+- Two approaches were adopted for evaluating these tools, given that the model outputs may not precisely match the annotations:
+  - **Top-3:** Compare the annotations to see if they appear in the first three results.
+  - **Top-5:** Compare the annotations to see if they appear in the first five results.
+
+### Accuracy Results
+
+- Top-3 Results:
+
+![top_3](/assets/images/345525698-550d89b5-1c4c-4d40-a5ea-1f9ec86387da.png)
+
+- Top-5 Results:
+
+![top_5](/assets/images/345525777-44353e0b-c8c1-4570-9cb9-e0a1f59e3dd7.png)
+
+### Price Analysis Of The Tools
+
+Since we don't have such a small dataset in real world, we calculated the price of these tools according to 1M clinical notes. 
+
+- *Open AI Pricing:* We created a prompt to achieve better results, which costs $3.476 on GPT-4 and $1.738 GPT-4o model for the 79 documents. This means that for processing **1 million notes, the estimated cost would be $44,000 for the GPT-4** and **$22,000 for the GPT-4o**.
+
+- *Amazon Comprehend Medical Pricing:* According to the price calculator, obtaining RxNorm predictions for **1M documents, with an average of 9,700 characters per document, costs $24,250**.
+
+- *Healthcare NLP Pricing:* When using John Snow Labs-Healthcare NLP Prepaid product on an *EC2-32 CPU (c6a.8xlarge at $1,2 per hour) machine*, obtaining the RxNorm codes for medications (*excluding the NER stage*) from approximately 80 documents takes around 2 minutes. Based on this, processing **1M documents** and extracting RxNorm codes would take about 25,000 minutes (416 hours, or 18 days), **costing $500 for infrastructure** and **$4,000 for the license** (considering a 1-month license price of $7,000). Thus, **the total cost for Healthcare NLP is approximately $4,500**.
+
+### Conclusion
+
+Based on the evaluation results:
+- The `sbiobertresolve_rxnorm_augmented` model of Spark NLP for Healthcare consistently provides **the most accurate** results in each top_k comparison.
+- The `biolordresolve_rxnorm_augmented` model of Spark NLP for Healthcare **outperforms** Amazon Comprehend Medical and GPT-4 models in mapping terms to their RxNorm codes.
+- The GPT-4 model could **only return one result**, reflected similarly in both charts and has proven to be **the least accurate**.
+
+If you want to process **1M documents** and extract RxNorm codes for medication entities (*excluding the NER stage*), the total cost:
+- With Healthcare NLP is about **$4,500, including the infrastructure costs**.
+- **$24,250** with Amazon Comprehend Medical
+- **$44,000** with the GPT-4 and **$22,000** with the GPT-4o.
+
+Therefore, **Healthcare NLP is almost 5 times cheaper than its closest alternative**, not to mention the accuracy differences (**Top 3: Healthcare NLP 82.7% vs Amazon 55.8% vs GPT-4 8.9%**).
+
+**Accuracy & Cost Table**
+
+<table class="table-model-big">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Top-3 Accuracy</th>
+        <th>Top-5 Accuracy</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Healthcare NLP</td>
+        <td>82.7%</td>
+        <td>84.6%</td>
+        <td>$4,500</td>
+      </tr>
+      <tr>
+        <td>Amazon Comprehend Medical</td>
+        <td>55.8%</td>
+        <td>56.2%</td>
+        <td>$24,250</td>
+      </tr>
+      <tr>
+        <td>GPT-4 (Turbo)</td>
+        <td>8.9%</td>
+        <td>8.9%</td>
+        <td>$44,000</td>
+      </tr>
+      <tr>
+        <td>GPT-4o</td>
+        <td>8.9%</td>
+        <td>8.9%</td>
+        <td>$22,000</td>
+      </tr>  
+    </tbody>
+  </table>
+
+</div><div class="h3-box" markdown="1">
 
 ## AWS EMR Cluster Benchmark
 
@@ -753,9 +840,7 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 |512        |  23.8 seconds  |1 minutes 8.4  seconds|
 |1024       |  25.9 seconds  |1 minutes 10.2 seconds|
 
-</div>
-
-
+</div><div class="h3-box" markdown="1">
 
 ## CPU NER Benchmarks
 
@@ -836,8 +921,7 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
     </tbody>
 </table>
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## GPU vs CPU benchmark
 
@@ -845,22 +929,19 @@ This section includes a benchmark for MedicalNerApproach(), comparing its perfor
 
 Big improvements have been carried out from version 3.3.4, so please, make sure you use at least that version to fully levearge Spark NLP capabilities on GPU.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Machine specs
 
 #### CPU
 An AWS `m5.8xlarge` machine was used for the CPU benchmarking. This machine consists of `32 vCPUs` and `128 GB of RAM`, as you can check in the official specification webpage available [here](https://aws.amazon.com/ec2/instance-types/m5/)
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### GPU
 A `Tesla V100 SXM2` GPU with `32GB` of memory was used to calculate the GPU benchmarking.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Versions
 The benchmarking was carried out with the following Spark NLP versions:
@@ -875,8 +956,7 @@ SparkNLP for Healthcare version: `3.3.4`
 
 Spark nodes: 1
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Benchmark on MedicalNerDLApproach()
 
@@ -887,8 +967,7 @@ We used the Spark NLP class `MedicalNer` and it's method `Approach()` as describ
 The pipeline looks as follows:
 ![Benchmark on MedicalNerDLApproach](/assets/images/CPUvsGPUbenchmarkpic4.png)
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Dataset
 The size of the dataset was small (17K), consisting of:
@@ -897,8 +976,7 @@ Training (rows): `14041`
 
 Test (rows): `3250`
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Training params
 Different batch sizes were tested to demonstrate how GPU performance improves with bigger batches compared to CPU, for a constant number of epochs and learning rate.
@@ -909,18 +987,16 @@ Learning rate:  `0.003`
 
 Batch sizes: `32`, `64`, `256`,  `512`, `1024`, `2048`
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Results
 Even for this small dataset, we can observe that GPU is able to beat the CPU machine by a `62%` in `training` time and a `68%` in `inference` times. It's important to mention that the batch size is very relevant when using GPU, since CPU scales much worse with bigger batch sizes than GPU.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Training times depending on batch (in minutes)
 
-![](/assets/images/CPUvsGPUbenchmarkpic6.png)
+![Training times depending on batch](/assets/images/CPUvsGPUbenchmarkpic6.png)
 
 {:.table-model-big}
 | Batch size | CPU | GPU |
@@ -932,8 +1008,7 @@ Even for this small dataset, we can observe that GPU is able to beat the CPU mac
 | 1024 | 6.5 | 2.5 |
 | 2048 | 6.5 | 2.5 |
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Inference times (in minutes)
 Although CPU times in inference remain more or less constant regardless the batch sizes, GPU time experiment good improvements the bigger the batch size is.
@@ -952,16 +1027,14 @@ CPU times: `~29 min`
 
 ![Inference times](/assets/images/CPUvsGPUbenchmarkpic7.png)
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Performance metrics
 A macro F1-score of about `0.92` (`0.90` in micro) was achieved, with the following charts extracted from the `MedicalNerApproach()` logs:
 
 ![Inference times](/assets/images/CPUvsGPUbenchmarkpic8.png)
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Takeaways: How to get the best of the GPU
 You will experiment big GPU improvements in the following cases:

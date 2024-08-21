@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-sqj6oymvmv27k
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/48daa468-2417-437a-b59d-0a06a8935d99/John-Snow-Labs_Detect-Drug-Side-Effect-Narratives
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_drug_side_effect_pipeline_en_4.4.4_3.0_1687409134262.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_drug_side_effect_pipeline_en_4.4.4_3.0_1687409134262.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

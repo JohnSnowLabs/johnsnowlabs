@@ -11,10 +11,12 @@ sidebar:
     nav: sparknlp-healthcare
 ---
 
-<div class="prev_ver h3-box" markdown="1">
+<div class="h3-box" markdown="1">
 
 ## 3.2.0
 We are glad to announce that Spark NLP Healthcare 3.2.0 has been released!.
+
+</div><div class="h3-box" markdown="1">
 
 #### Highlights
 
@@ -26,6 +28,7 @@ We are glad to announce that Spark NLP Healthcare 3.2.0 has been released!.
 + New CMS-HCC risk-adjustment score calculation module
 + New Embedding generation module for entity resolution
 
+</div><div class="h3-box" markdown="1">
 
 ##### New Sentence Boundary Detection Model for Healthcare text
 
@@ -72,6 +75,8 @@ result = sd_model.fullAnnotate(text)
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ##### New Assertion Status Models
 
 We are releasing two new Assertion Status Models based on the BiLSTM architecture. Apart from what we released in other assertion models, an in-house annotations on a curated dataset (6K clinical notes) is used to augment the base assertion dataset (2010 i2b2/VA).
@@ -82,6 +87,7 @@ We are releasing two new Assertion Status Models based on the BiLSTM architectur
 
 *assertion_dl vs assertion_jsl*:
 
+{:.table-model-big}
 |chunks|entities|assertion_dl|assertion_jsl|
 |-|-|-|-|
 |Mesothelioma|PROBLEM|present|Present|
@@ -132,6 +138,8 @@ result = model.transform(spark.createDataFrame([["The patient is a 41-year-old a
 +-------------------+-----+---+-------------------------+-------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Sentence Entity Resolver Model
 
 We are releasing `sbiobertresolve_rxnorm_disposition` model that maps medication entities (like drugs/ingredients) to RxNorm codes and their dispositions using `sbiobert_base_cased_mli` Sentence Bert Embeddings. In the result, look for the aux_label parameter in the metadata to get dispositions that were divided by `|`.
@@ -173,6 +181,8 @@ result = rxnorm_lp.fullAnnotate("belimumab 80 mg/ml injectable solution")
 |---:|:--------------------------------------|:--------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|:--------------------------------------------------------------------------------------------|:----------------------------------------------|
 |  0 |belimumab 80 mg/ml injectable solution | 1092440 | [belimumab 80 mg/ml injectable solution, belimumab 80 mg/ml injectable solution [benlysta], ifosfamide 80 mg/ml injectable solution, belimumab 80 mg/ml [benlysta], belimumab 80 mg/ml, ...]| [1092440, 1092444, 107034, 1092442, 1092438, ...] | [Immunomodulator, Immunomodulator, Alkylating agent, Immunomodulator, Immunomodulator, ...] | [0.0000, 0.0145, 0.0479, 0.0619, 0.0636, ...] |
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Finetuning Sentence Entity Resolvers with Your Data
 
@@ -226,15 +236,19 @@ light_model.fullAnnotate("sepsis")
 
 *Main Model Results*:
 
+{:.table-model-big}
 |chunks |begin |end |code |all_codes |resolutions |all_k_aux_labels |all_distances|
 |-|-|-|-|-|-|-|-|
 |sepsis   |0   |5   |A4189 |[A4189, L419, A419, A267, E771, ...]   | [sepsis [Other specified sepsis], parapsoriasis [Parapsoriasis, unspecified], postprocedural sepsis [Sepsis, unspecified organism], erysipelothrix sepsis [Erysipelothrix sepsis], fucosidosis [Defects in glycoprotein degradation], ... ]| [1\|1\|2, 1\|1\|2, 1\|1\|2, 1\|1\|2, 1\|1\|23, ...]  |[0.0000, 0.2079, 0.2256, 0.2359, 0.2399,...]   |
 
 *Re-Trained Model Results*:
 
+{:.table-model-big}
 |chunks |begin |end |code |all_codes |resolutions |all_k_aux_labels |all_distances|
 |-|-|-|-|-|-|-|-|
 |sepsis   |0   |5   |X1234 |[X1234, A4189, A419, L419, A267, ...]   | [sepsis [Sepsis, new resolution], sepsis [Other specified sepsis], SEPSIS [Sepsis, unspecified organism], parapsoriasis [Parapsoriasis, unspecified], erysipelothrix sepsis [Erysipelothrix sepsis], ... ]| [1\|1\|74, 1\|1\|2, 1\|1\|2, 1\|1\|2, 1\|1\|2, ...]  |[0.0000, 0.0000, 0.0000, 0.2079, 0.2359, ...]   |
+
+</div><div class="h3-box" markdown="1">
 
 #### New Clinical NER Models
 
@@ -244,6 +258,7 @@ light_model.fullAnnotate("sepsis")
 
 *ner_jsl vs ner_jsl_slim*:
 
+{:.table-model-big}
 |chunks|ner_jsl|ner_jsl_slim|
 |-|-|-|
 |Description:|Section_Header|Header|
@@ -373,6 +388,8 @@ results = model.transform(spark.createDataFrame([["The patient is a 21-day-old C
 | 39 | bowel                                          | Internal_organ_or_component  |
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New CMS-HCC risk-adjustment score calculation module
 
 We are releasing a new module to calculate medical risk adjusment score by using the Centers for Medicare & Medicaid Service (CMS) risk adjustment model. The main input to this model are ICD codes of the diseases. After getting ICD codes of diseases by Spark NLP Healthcare ICD resolvers, risk score can be calculated by this module in spark environment.
@@ -480,6 +497,8 @@ RECORD 0------------------------------------------------------------------------
 {% endraw %}
 
 Here is a sample notebook : [Calculating Medicare Risk Adjustment Score](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb)
+
+</div><div class="h3-box" markdown="1">
 
 #### New Embedding generation module for entity resolution
 

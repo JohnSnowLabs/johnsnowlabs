@@ -35,6 +35,7 @@ This module supports **versions 22, 23, 24, 28 and ESRDV21 of the CMS-HCC** risk
 
 **CMS-HCC** module supports the following versions and years:
 
+{:.table-model-big}
 | Version 22| Version 23| Version 24| Version 28| ESRD V21|
 |-|-|-|-|-|
 |Year 2017|Year 2018|Year 2019| Year 24| Year 19|
@@ -114,7 +115,7 @@ df.select(
 +--------------+----------+---------------------------------------------+---+------+-----------+----+--------+
 ```
 
-For more details and usage examples, check the [Medicare Risk Adjustment](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) notebook from our Spark NLP Workshop repository.
+For more details and usage examples, check the [Medicare Risk Adjustment](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/05.3.Calculate_Medicare_Risk_Adjustment_Score.ipynb) notebook from our Spark NLP Workshop repository.
 
 </div><div class="h3-box" markdown="1">
 
@@ -135,6 +136,7 @@ This module supports **versions 05 and 08 of CMS-RxHCC** risk adjustment model a
 
 **CMS-RxHCC** module supports the following versions and years:
 
+{:.table-model-big}
 | Version 05| Version 08|
 |-|-|
 |Year 20|Year 22|

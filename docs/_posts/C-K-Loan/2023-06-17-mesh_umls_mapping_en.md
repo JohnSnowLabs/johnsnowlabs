@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/5b4cc372-b9b5-4632-9090-89ddfbef7fe5/John-Snow-Labs_MeSH-to-UMLS-Code-Mapper
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pretrained pipeline is built on the top of `mesh_umls_mapper` model.
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/mesh_umls_mapping_en_4.4.4_3.0_1686979222270.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/mesh_umls_mapping_en_4.4.4_3.0_1686979222270.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

@@ -471,6 +471,14 @@ img[title*="lit_shadow"] {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+img[title*="w_60"] {
+	width:60%; 
+}
+
+img[title*="w_80"] {
+	width:80%; 
+}
+
 .table-inner {
 	overflow: auto;
 }
@@ -1249,6 +1257,10 @@ summary.button {
 	p {
 		text-align: center;
 	}	
+}
+
+.tac {
+	text-align: center !important;
 }
 
 .tabs-python-scala-box>.highlighter-rouge {
@@ -2755,6 +2767,64 @@ code {
 			right: 38%;
 			bottom: -19px;
 		}
+	}
+}
+
+.disp_platform_wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 -15px;
+	padding-bottom: 75px;
+	.disp_platform_item {
+		width: 33%;
+		margin: 0 15px;
+		border: 1px solid #e9e9e9;
+		border-radius: 6px;
+		.dp_top {
+			background: #f9f9f9;
+			border-bottom: 1px solid #e9e9e9;
+			justify-content: center;
+			padding: 8px 10px;
+			height: 66px;
+			figure {
+				margin: 0;
+				img {
+					transform: scale(1.4);
+  					transform-origin: center;
+				}
+			}
+		}
+		.dp_body {
+				text-align: center;
+				padding: 18px 10px;
+		}
+	}
+}
+
+.btn2 {
+	border: 2px solid #0992f8;
+	border-radius: 4px;
+	display: inline-block;
+	padding: 0 10px;
+	color: #0992f8 !important;
+	font-size: 12px;
+	font-weight: 600;
+	transition: all 300ms ease;
+	min-width: 120px;
+	text-align: center;
+	background: #fff;
+	line-height: 22px;
+	&:hover {
+		background: #0052cc;
+		color: #fff !important;
+		border-color: #0052cc;
+		text-decoration: none !important;
+	}
+	&[disabled] {
+		background: #aeaeae;
+		border-color: #aeaeae;
+		color: #fff !important;
+		cursor: not-allowed;
 	}
 }
 
@@ -4321,6 +4391,12 @@ code {
 		width: 28%;
 		margin: 0 15px;
 	}
+	.disp_platform_wrapper {
+		margin: 0 -10px;
+		.disp_platform_wrapper .disp_platform_item {
+			margin: 0 10px;
+		}
+	}
 	.nlp_content_item {
 		font-size: 18px;
 		line-height: 24px;
@@ -4831,6 +4907,18 @@ code {
 	}
 	.top_demos .tab-item {
 		width: 100%;
+	}
+	.disp_platform_wrapper {
+		flex-direction: column;
+		margin: 0;
+		padding-bottom: 10px;
+		.disp_platform_item {
+			width: 100%;
+			margin: 0 0 30px;
+		}
+	}
+	.model-wrap .btn-box {
+		padding: 40px 0 20px;
 	}
 }
 

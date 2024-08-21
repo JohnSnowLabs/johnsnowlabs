@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [ner_deid_large](https://nlp.joh
 
 ## Predicted Entities
 
-
+`LOCATION`, `CONTACT`, `PROFESSION`, `HEALTHPLAN`, `NAME`, `DATE`, `ID`, `URL`, `AGE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

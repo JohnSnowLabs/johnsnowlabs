@@ -88,7 +88,7 @@ Our clinical summarizer models with only 250M parameters perform 30-35% better t
 
 🔎 Benchmark on MtSamples Summarization Dataset
 
-{:.table-model-big}
+{:.table-model-big.db}
 | model_name | model_size | Rouge | Bleu | bertscore_precision | bertscore_recall: | bertscore_f1 |
 |--|--|--|--|--|--|--|
 philschmid/flan-t5-base-samsum | 250M | 0.1919 | 0.1124 | 0.8409 | 0.8964 | 0.8678 |
@@ -100,7 +100,7 @@ transformersbook/pegasus-samsum | 500M | 0.1924 | 0.0965 | 0.8920 | 0.8149 | 0.8
 
 🔎 Benchmark on MIMIC Summarization Dataset
 
-{:.table-model-big}
+{:.table-model-big.db}
 | model_name | model_size | Rouge | Bleu | bertscore_precision | bertscore_recall: | bertscore_f1 |
 |--|--|--|--|--|--|--|
 philschmid/flan-t5-base-samsum | 250M | 0.1910 | 0.1037 | 0.8708 | 0.9056 | 0.8879 |
@@ -110,7 +110,7 @@ transformersbook/pegasus-samsum | 570M | 0.1425 | 0.0582 | 0.9171 | 0.8682 | 0.8
 **summarizer_clinical_jsl** | **250M** | **0.395** | **0.2962** | **0.895** | **0.9316** | **0.913** |
 **summarizer_clinical_jsl_augmented** | **250M** | **0.3964** | **0.307** | **0.9109** | **0.9452** | **0.9227** |
 
-![image](https://user-images.githubusercontent.com/64752006/230899745-3a67d142-1bdf-4f4b-83cb-d012953b1e09.png)
+![Benchmark on MIMIC Summarization Dataset](https://user-images.githubusercontent.com/64752006/230899745-3a67d142-1bdf-4f4b-83cb-d012953b1e09.png)
 
 </div><div class="h3-box" markdown="1">
 

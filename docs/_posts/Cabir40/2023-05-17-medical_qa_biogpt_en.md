@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is directly ported from the  official BioGPT [implementation](https://github.com/microsoft/BioGPT)  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called [BioGPT-QA-PubMedQA-BioGPT](https://msramllasc.blob.core.windows.net/modelrelease/BioGPT/checkpoints/QA-PubMedQA-BioGPT.tgz).
+This model is directly ported from the  official BioGPT [implementation](https://github.com/microsoft/BioGPT)  that is trained on Pubmed abstracts and then finetuned with PubmedQA dataset. It is the baseline version called `BioGPT-QA-PubMedQA-BioGPT`.
 It can generate two types of answers, short and long. Types of questions are supported: `"short"`(producing yes/no/maybe) answers and `"full"` (long answers).
 
 ## Predicted Entities

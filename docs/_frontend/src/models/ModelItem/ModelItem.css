@@ -1,14 +1,15 @@
 .model-item {
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0 0 35px rgba(0,152,218,.15);
   box-sizing: border-box;
-  box-shadow: 0px 0px 35px rgba(0, 152, 218, 0.15);
-  padding: 20px;
-  padding-top: 46px;
-  margin-bottom: 30px;
-  display: block;
+  display: flex;
   height: calc(100% - 30px);
+  margin-bottom: 30px;
+  padding: 46px 20px 20px;
   position: relative;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .model-item__supported {
@@ -141,4 +142,11 @@
   top: 15px;
   font-size: 12px;
   position: absolute;
+}
+
+.model-item__footer {
+  padding: 0px 20px;
+  border-top: 1px solid #e8f8ff;
+  display: flex;
+  gap: 10px;
 }

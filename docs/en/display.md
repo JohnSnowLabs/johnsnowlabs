@@ -60,7 +60,7 @@ dependency_vis.display(pipeline_result[0], #should be the results of a single ex
 
 The following image gives an example of html output that is obtained for a test sentence:
 
-![Visualize a dependency tree](/assets/images/dependency tree viz.png "lit_shadow")
+![Visualize a dependency tree](/assets/images/dependency_tree_viz.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 

@@ -20,8 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline can be used to simultaneously evaluate various pre-trained named entity recognition (NER) models, enabling comprehensive analysis of text data related to oncology.  When you run this pipeline over your text, you will end up with the predictions coming out of each pretrained clinical NER model trained with the`embeddings_clinical`, which are specifically designed for clinical and biomedical text.
 
-`ner_oncology`, `ner_oncology_anatomy_general`, `ner_oncology_anatomy_general_langtest`, `ner_oncology_anatomy_granular`, `ner_oncology_anatomy_granular_langtest`, 'ner_oncology_biomarker', 'ner_oncology_biomarker_langtest', `ner_oncology_demographics`, `ner_oncology_demographics_langtest`, `ner_oncology_diagnosis`, `ner_oncology_diagnosis_langtest`, `ner_oncology_langtest`, `ner_oncology_limited_80p_for_benchmarks`, `ner_oncology_posology`, `ner_oncology_posology_langtest`, `ner_oncology_response_to_treatment`, `ner_oncology_response_to_treatment_langtest`, `ner_oncology_test`, `ner_oncology_test_langtest`,
-`ner_oncology_therapy`, `ner_oncology_therapy_langtest`, `ner_oncology_tnm`, `ner_oncology_tnm_langtest`, `ner_oncology_unspecific_posology`, `ner_oncology_unspecific_posology_langtest`, `ner_jsl`, `ner_jsl_langtest`, `ner_jsl_greedy`, `ner_jsl_enriched`, `ner_jsl_slim`
+`ner_oncology`, `ner_oncology_anatomy_general`, `ner_oncology_anatomy_general_langtest`, `ner_oncology_anatomy_granular`, `ner_oncology_anatomy_granular_langtest`, `ner_oncology_biomarker`, `ner_oncology_biomarker_langtest`, `ner_oncology_demographics`, `ner_oncology_demographics_langtest`, `ner_oncology_diagnosis`, `ner_oncology_diagnosis_langtest`, `ner_oncology_langtest`, `ner_oncology_limited_80p_for_benchmarks`, `ner_oncology_posology`, `ner_oncology_posology_langtest`, `ner_oncology_response_to_treatment`, `ner_oncology_response_to_treatment_langtest`, `ner_oncology_test`, `ner_oncology_test_langtest`,`ner_oncology_therapy`, `ner_oncology_therapy_langtest`, `ner_oncology_tnm`, `ner_oncology_tnm_langtest`, `ner_oncology_unspecific_posology`, `ner_oncology_unspecific_posology_langtest`, `ner_jsl`, `ner_jsl_langtest`, `ner_jsl_greedy`, `ner_jsl_enriched`, `ner_jsl_slim`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -35,6 +34,7 @@ This pipeline can be used to simultaneously evaluate various pre-trained named e
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

@@ -18,9 +18,9 @@ sidebar:
 Release date: 03-01-2024
 
 
- ## Visual NLP 5.1.2 Release Notes 🕶️
+## Visual NLP 5.1.2 Release Notes 🕶️
 
-
+</div><div class="h3-box" markdown="1">
 
 **We are glad to announce that Visual NLP 5.1.2 has been released!TThis release comes with faster than ever OCR models, improved Table Extraction pipelines, bug fixes, and more! 📢📢📢**
 
@@ -31,9 +31,13 @@ Release date: 03-01-2024
 + Other Changes.
 + Bug fixes.
 
+</div><div class="h3-box" markdown="1">
+
 ## New optimized OCR checkpoints with up to 5x speed ups and GPU support 🚀
 ImageToTextV2, is our Transformer-based OCR model which delivers SOTA accuracy across different pipelines like Text Extraction(OCR), Table Extraction, and Deidentification. </br>
 We've added new checkpoints together with more options to choose which optimizations to apply.
+
+</div><div class="h3-box" markdown="1">
 
 ### New checkpoints for ImageToTextV2 📍
 All previous checkpoints have been updated to work with the latest optimizations, and in addition these 4 new checkpoints have been added,
@@ -45,27 +49,33 @@ All previous checkpoints have been updated to work with the latest optimizations
 
 These 4 checkpoints are more accurate than their 'base' counterparts. We are releasing metrics for the 'base' checkpoints today, and a full chart including these checkpoints will be presented in a blogpost to be released soon.
 
+</div><div class="h3-box" markdown="1">
+
 ### New options for ImageToTextV2 ⚡️
 ImageToTextV2 now supports the following configurations:
 * setUseCaching(Boolean): whether or not to use caching during processing.
 * setBatchSize(Integer): the batch size dictates the size of the groups that are processes internally at a single time by the model, typically used when setUseGPU() is set to true. 
 
+</div><div class="h3-box" markdown="1">
+
 ### Choosing the best checkpoint for your problem 💥
 We put together this grid reflecting performance and accuracy metrics to help you choose the most appropriate checkpoint for your use case.
 * Accuracy
 
-![image](/assets/images/ocr/acc.png)
+![5.1.2](/assets/images/ocr/acc.png)
 
 
 * Performance
 
-![image](/assets/images/ocr/perf.png)
+![5.1.2](/assets/images/ocr/perf.png)
 
 Note:
 * CER: character error rate.
 * These runtime performance metrics were collected in Databricks.
 * The CPU cluster is a 30 node cluster of 64 DBU/h, and the GPU cluster is a 10 node cluster, of 15 DBU/h.
 * Compared to previous releases, the optimizations introduced in this release yield a speed up of almost 5X, and a cost reduction of more than 4 times, if GPU is used.
+
+</div><div class="h3-box" markdown="1">
 
 ## New improved Table Extraction Pipeline with improved Cell Detection stage. 🔥
 Starting in this release, our HocrToTextTable annotator can receive information related to cells regions to improve the quality of results in Table Extraction tasks. This is particularly useful for cases in which cells are multi-line, or for borderless tables.  </br>
@@ -97,13 +107,15 @@ PipelineModel(stages=[
     cell_detector
     hocr_to_table])
 ```
-The following image depicts intermediate cell detection along with the final result,
-![table_cell_sample](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/d001a40b-2106-4932-a148-96b521f0fccd)
+The following image depicts intermediate cell detection along with the final result.
 
-For a complete, end-to-end example we encourage you to check the sample notebook,
+![table_cell_sample](/assets/images/ocr/292925958-d001a40b-2106-4932-a148-96b521f0fccd.png "lit_shadow")
+
+For a complete, end-to-end example we encourage you to check the sample notebook.
 
 [SparkOcrImageTableRecognitionWHOCR.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 ## Other changes 🎯
 * Dicom private tags in metadata now can be removed in DicomMetadataDeidentifier: calling  setRemovePrivateTags(true) will cause the tags marked as private to be removed in the output Dicom document.
@@ -112,36 +124,15 @@ For a complete, end-to-end example we encourage you to check the sample notebook
 * start() function now supports the configuration of GPU through the boolean `use_gpu` parameter.
 * Faster(20%), and smaller footprint, `docvqa_pix2struct_jsl_opt` Visual Question Answering checkpoint.
 
+</div><div class="h3-box" markdown="1">
+
 ## Bug Fixes 🪲
 * ImageSplitRegions does not work after Table Detector.
 * VisualDocumentNerLilt output has been fixed to include entire tokens instead of pieces.
 * Null Regions in HocrToTextTable are handled properly.
 * display_tables can now handle empty tables better.
 * Vulnerabilities in Python dependencies.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * This release is compatible with ```Spark NLP 5.2.0``` and Spark NLP for``` Healthcare 5.1.1```
-
-
-
 
 
 </div><div class="prev_ver h3-box" markdown="1">

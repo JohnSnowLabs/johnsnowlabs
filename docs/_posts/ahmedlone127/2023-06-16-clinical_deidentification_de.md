@@ -18,11 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to deidentify PHI information from **German** medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE`, `CONTACT`, `ID`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `DLN`, `PLATE` entities.
+This pipeline can be used to deidentify PHI information from **German** medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `ORGANIZATION`, `DOCTOR`, `USERNAME`, `CITY`, `DATE`, `COUNTRY`, `PROFESSION`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `AGE`, `ACCOUNT`, `DLN`, `ID`, `PLATE`, `SSN`, `ZIP`, `EMAIL` entities.
 
 ## Predicted Entities
 
-
+`ORGANIZATION`, `DOCTOR`, `USERNAME`, `CITY`, `DATE`, `COUNTRY`, `PROFESSION`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `AGE`, `ACCOUNT`, `DLN`, `ID`, `PLATE`, `SSN`, `ZIP`, `EMAIL`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

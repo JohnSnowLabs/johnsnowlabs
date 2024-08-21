@@ -21,7 +21,13 @@ The `NameChunkObfuscatorApproach` annotator is used to identify and obfuscate se
 
 Parameter:
 
-- `setUseReplacement`: (Boolean) Select what output format should be used. By default it will use the current day.   
+- `setUseReplacement`: (Boolean) Select what output format should be used. By default it will use the current day.
+- `setPlaceHolderDelimiters`: (String) Sets the placeholder string to use when noneValuesTo is set to "place_holder". This placeholder string will be wrapped by the delimiters defined in placeHolderDelimiters.
+- `setPlaceHolder`: (String) Determines the action to take when encountering a value of 'NONE' in the annotation. This parameter can take one of the following three string values:
+   * "entity": Replaces 'NONE' values with the entity field extracted from the annotation, if available. If the entity field is not available, it uses the string "NONE" wrapped by the specified delimiters.
+   * "place_holder": Replaces 'NONE' values with a placeholder string wrapped by the specified delimiters.
+   * "skip": Retains the original target_text from the annotation's metadata if available. If not available, it retains the original annotation result.
+- `setNoneValuesTo`: (String) Sets an array of two strings used as delimiters to wrap the placeholder or entity field when noneValuesTo is set to "place_holder" or "entity". The first element of the array is the prefix delimiter, and the second element is the suffix delimiter.
 
 {%- endcapture -%}
 
@@ -115,7 +121,10 @@ nameChunkObfuscator = medical.NameChunkObfuscatorApproach()\
 replacer_name = medical.Replacer()\
   .setInputCols("replacement","sentence")\
   .setOutputCol("obfuscated_document_name")\
-  .setUseReplacement(True)
+  .setUseReplacement(False) \
+  .setNoneValuesTo("entity") \
+  .setPlaceHolder("******") \
+  .setPlaceHolderDelimiters(["<", ">"])
 
 nlpPipeline = nlp.Pipeline(stages=[
     documentAssembler, 
@@ -219,6 +228,9 @@ val replacer_name = new Replacer()
     .setInputCols("replacement","sentence")
     .setOutputCol("obfuscated_document_name")
     .setUseReplacement(true)
+    .setNoneValuesTo("entity")
+    .setPlaceHolder("******")
+    .setPlaceHolderDelimiters(["<", ">"])
 
 val nlpPipeline = new Pipeline().setStages(Array(
     documentAssembler, 
@@ -251,7 +263,7 @@ Obfuscated text :  Joseeduardo is a 62 y.o. patient admitted. Mr. Teigan was see
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ReplacerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb)
+[ReplacerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb)
 {%- endcapture -%}
 
 

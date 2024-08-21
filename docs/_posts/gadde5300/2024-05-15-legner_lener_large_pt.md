@@ -64,7 +64,7 @@ tokenizer = nlp.Tokenizer()\
   .setInputCols("sentence")\
   .setOutputCol("token")
 
-tokenClassifier = legal.BertForTokenClassification.load("legner_lener_large","pt", "legal/models")\
+tokenClassifier = legal.BertForTokenClassification.pretrained("legner_lener_large","pt", "legal/models")\
   .setInputCols("token", "sentence")\
   .setOutputCol("label")\
   .setCaseSensitive(True)

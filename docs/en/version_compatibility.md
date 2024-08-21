@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-
+{:.table-model-big}
 | Healthcare NLP | Spark OCR | Spark NLP |
 |----------------|-----------|-----------|
 | 3.0.0          | 3.4.0     | 3.0.0     |

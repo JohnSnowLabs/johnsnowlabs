@@ -11,9 +11,9 @@ sidebar:
     nav: jsl
 ---
 
-## Utilities for Testing Models & Modelshub Code Snippets
-
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
+
+## Utilities for Testing Models & Modelshub Code Snippets
 
 You can use the John Snow Labs library to automatically test 10000+ models and 100+ Notebooks in 1 line of code within
 a small machine like a **single Google Colab Instance** and generate very handy error reports of potentially broken Models, Notebooks or Models hub Markdown Snippets.
@@ -27,7 +27,7 @@ You can test the following things with the `test_markdown()` function :
 
 Test-Report Pandas Dataframe has the columns:
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Report Column | Description                                                   | 
 |---------------|---------------------------------------------------------------|
 | `test_script` | is the generated script for testing                           |
