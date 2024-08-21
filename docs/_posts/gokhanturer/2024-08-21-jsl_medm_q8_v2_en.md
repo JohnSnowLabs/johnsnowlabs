@@ -97,7 +97,7 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|5.7 GB|
+|Size:|3.7 GB|
 
 
 
