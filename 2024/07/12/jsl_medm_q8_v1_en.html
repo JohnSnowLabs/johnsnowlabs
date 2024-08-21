@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>JSL_MedM (LLM - q8) | jsl_medm_q8_v1 | Healthcare NLP 5.4.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp_jsl.llm import LLMLoaderllm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medm_q8_v1", "en", "clinical/models")ptompt = ...">
+<meta name="description" content="DescriptionThis LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp_jsl.llm import LLMLoaderllm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medm_q8_v1", "en", "clinical/models")prompt = ...">
 <!-- <link rel="canonical" href="/2024/07/12/jsl_medm_q8_v1_en.html"> -->
 <link rel="canonical" href="/2024/07/12/jsl_medm_q8_v1_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_medm_q8_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">ptompt</span> <span class="o">=</span> <span class="s">"""
+<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -536,7 +536,7 @@ D: Doxycycline
 E: Nitrofurantoin
 """</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">ptompt</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ml.gguf.LLMLoader</span>

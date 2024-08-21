@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">llm_loader_pretrained</span> <span class="o">=</span> <span class="n">LLMLoader</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_q8_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">ptompt</span> <span class="o">=</span> <span class="s">"""
+<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
 Based on the following text, what age group is most susceptible to breast cancer?
 
 ## Text:
@@ -540,7 +540,7 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 - Hormonal factors, such as taking hormone replacement therapy
 """</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">ptompt</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm_loader_pretrained</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ml.gguf.LLMLoader</span>
