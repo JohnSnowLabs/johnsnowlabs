@@ -7,7 +7,7 @@ date: 2024-08-21
 tags: [en, licensed, clinical, medical, llm, ner]
 task: [Summarization, Question Answering, Named Entity Recognition]
 language: en
-edition: Healthcare NLP 5.4.0
+edition: Healthcare NLP 5.4.1
 spark_version: 3.0
 supported: true
 annotator: LLMLoader
@@ -29,8 +29,8 @@ This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q16_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q16_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -102,11 +102,11 @@ Additionally, obesity can also contribute to the development of type 1 diabetes 
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_rag_q16_v1|
-|Compatibility:|Healthcare NLP 5.4.0+|
+|Compatibility:|Healthcare NLP 5.4.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|5.7 GB|
+|Size:|5.6 GB|
 
 
 
