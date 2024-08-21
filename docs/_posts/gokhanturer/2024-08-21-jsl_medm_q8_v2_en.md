@@ -7,7 +7,7 @@ date: 2024-08-21
 tags: [en, licensed, clinical, medical, llm, ner]
 task: [Summarization, Question Answering, Named Entity Recognition]
 language: en
-edition: Healthcare NLP 5.4.0
+edition: Healthcare NLP 5.4.1
 spark_version: 3.0
 supported: true
 annotator: LLMLoader
@@ -29,8 +29,8 @@ This LLM model is trained to extract and link entities in a document. Users need
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -93,7 +93,7 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
 {:.table-model}
 |---|---|
 |Model Name:|jsl_medm_q8_v2|
-|Compatibility:|Healthcare NLP 5.4.0+|
+|Compatibility:|Healthcare NLP 5.4.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
