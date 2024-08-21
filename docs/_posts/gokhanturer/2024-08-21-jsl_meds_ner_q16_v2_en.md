@@ -119,7 +119,7 @@ val response = llmLoader.generate(prompt)
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_ner_q16_v2|
-|Compatibility:|Healthcare NLP 5.4.0+|
+|Compatibility:|Healthcare NLP 5.4.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
