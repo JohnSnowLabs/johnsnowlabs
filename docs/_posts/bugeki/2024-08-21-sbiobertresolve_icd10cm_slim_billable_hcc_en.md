@@ -25,8 +25,8 @@ Predicted Entities = `ICD-10-CM Codes`, `billable status`, `hcc status`, `hcc sc
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_icd10cm_slim_billable_hcc_en_5.3.3_3.0_1724248738884.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_icd10cm_slim_billable_hcc_en_5.3.3_3.0_1724248738884.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_icd10cm_slim_billable_hcc_en_5.4.0_3.0_1724248738884.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_icd10cm_slim_billable_hcc_en_5.4.0_3.0_1724248738884.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -164,7 +164,7 @@ val result = pipeline.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|sbiobertresolve_icd10cm_slim_billable_hcc|
-|Compatibility:|Healthcare NLP 5.3.3+|
+|Compatibility:|Healthcare NLP 5.4.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence_embeddings]|
