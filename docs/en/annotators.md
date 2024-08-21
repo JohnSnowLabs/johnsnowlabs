@@ -71,6 +71,7 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="LanguageDetectorDL" summary="Language Identification and Detection by using CNN and RNN architectures in TensorFlow."%}
 {% include templates/anno_table_entry.md path="" name="LargeFewShotClassifier" summary="This annotator is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes."%}
 {% include templates/anno_table_entry.md path="" name="Lemmatizer" summary="Finds lemmas out of words with the objective of returning a base dictionary word."%}
+{% include templates/anno_table_entry.md path="" name="Mapper2Chunk" summary="This annotator converts 'LABELED_DEPENDENCY' type annotations coming from [[ChunkMapper]] into 'CHUNK' type to create new chunk-type column"%}
 {% include templates/anno_table_entry.md path="" name="MultiClassifierDL" summary="Multi-label Text Classification."%}
 {% include templates/anno_table_entry.md path="" name="MultiDateMatcher" summary="Matches standard date formats into a provided format."%}
 {% include templates/anno_table_entry.md path="" name="MultiDocumentAssembler" summary="Prepares data into a format that is processable by Spark NLP."%}
@@ -85,6 +86,7 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="RecursiveTokenizer" summary="Tokenizes raw text recursively based on a handful of definable rules."%}
 {% include templates/anno_table_entry.md path="" name="RegexMatcher" summary="Uses rules to match a set of regular expressions and associate them with a provided identifier."%}
 {% include templates/anno_table_entry.md path="" name="RegexTokenizer" summary="A tokenizer that splits text by a regex pattern."%}
+{% include templates/anno_table_entry.md path="" name="Replacer" summary="This annotator allows to replace entities in the original text with the ones extracted by the annotators `NameChunkObfuscatorApproach` or `DateNormalizer`."%}
 {% include templates/anno_table_entry.md path="" name="SentenceDetector" summary="Annotator that detects sentence boundaries using regular expressions."%}
 {% include templates/anno_table_entry.md path="" name="SentenceDetectorDL" summary="Detects sentence boundaries using a deep learning approach."%}
 {% include templates/anno_table_entry.md path="" name="SentenceEmbeddings" summary="Converts the results from WordEmbeddings, BertEmbeddings, or ElmoEmbeddings into sentence or document embeddings by either summing up or averaging all the word embeddings in a sentence or a document (depending on the inputCols)."%}
