@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>PDF Deidentification (Subentity- Context Augmented) | pdf_deid_subentity_context_augmented_pipeline | Healthcare NLP 5.3.2</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Medical Assertion MPNet Embedding | e5_base_v2_embeddings_medical_assertion | Healthcare NLP 5.3.3</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN...">
-<!-- <link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"> -->
-<link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to us...">
+<!-- <link rel="canonical" href="/2024/07/25/e5_base_v2_embeddings_medical_assertion_en.html"> -->
+<link rel="canonical" href="/2024/07/25/e5_base_v2_embeddings_medical_assertion_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,35 +497,73 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/kolia1985/2024-06-12-pdf_deid_subentity_context_augmented_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-07-25-e5_base_v2_embeddings_medical_assertion_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 12, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>PDF Deidentification (Subentity- Context Augmented)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="PDF Deidentification (Subentity- Context Augmented)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 25, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-25T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Medical Assertion MPNet Embedding</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Medical Assertion MPNet Embedding"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>embeddings</li><li>en</li><li>licensed</li><li>clinical</li><li>e5</li><li>medical</li><li>assertion</li><li>onnx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-25T00:00:00+00:00">
+    <meta itemprop="keywords" content="embeddings,en,licensed,clinical,e5,medical,assertion,onnx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
-The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.</p>
+<p>This model has been trained on a curated list of clinical and biomedical datasets. It has been fine-tuned for Few-Shot Assertion but can also be utilized for other purposes, such as Classification and Retrieval-Augmented Generation (RAG).</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_en_5.3.3_3.0_1721896502885.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/e5_base_v2_embeddings_medical_assertion_en_5.3.3_3.0_1721896502885.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_deid_subentity_context_augmented_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">e5_embeddings</span> <span class="o">=</span> <span class="n">E5Embeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"e5_base_v2_embeddings_medical_assertion"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"e5_embeddings"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">e5_embeddings</span><span class="p">])</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"I feel a bit drowsy after taking an insulin."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Peter Parker is a nice guy and lives in New York"</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">text</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">e5_embeddings</span> <span class="k">=</span> <span class="nv">E5Embeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"e5_base_v2_embeddings_medical_assertion"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"e5_embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">e5_embeddings</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+</code></pre></div>  </div>
 </div>
+
+<h2 id="results">Results</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                                                                                              embeddings|
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[<span class="o">{</span>sentence_embeddings, 0, 43, I feel a bit drowsy after taking an insulin., <span class="o">{</span>sentence -&gt; 0<span class="o">}</span>, <span class="o">[</span>0.10690122, 0.04766797, 0.028667178, 0.034236252, 0.021426275, <span class="nt">-0</span>.0070309048, 0.0345942, 0.023983167, -...|
+|[<span class="o">{</span>sentence_embeddings, 0, 47, Peter Parker is a <span class="nb">nice </span>guy and lives <span class="k">in </span>New York, <span class="o">{</span>sentence -&gt; 0<span class="o">}</span>, <span class="o">[</span>0.08507857, 0.05005135, 0.025660643, 0.023364363, <span class="nt">-2</span>.0823967E-4, <span class="nt">-0</span>.0011765185, 0.02459659, 0.00737...|
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -533,15 +571,11 @@ The output is a PDF document, similar to the one at the input, but with black bo
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>pdf_deid_subentity_context_augmented_pipeline</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>e5_base_v2_embeddings_medical_assertion</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.3.2+</td>
+      <td>Healthcare NLP 5.3.3+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -552,108 +586,28 @@ The output is a PDF document, similar to the one at the input, but with black bo
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[document]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[embeddings]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>393.1 MB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="included-models">Included Models</h2>
-
-<ul>
-  <li>PdfToImage</li>
-  <li>ImageToText</li>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverter</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>PositionFinder</li>
-  <li>ImageDrawRegions</li>
-  <li>ImageToPdf</li>
-  <li>PdfAssembler</li>
-</ul>
-
-<h2 id="speed-benchmarks">Speed Benchmarks</h2>
-
-<ul>
-  <li><strong>Dataset:</strong> 1000 scanned PDF pages.</li>
-  <li><strong>Instance :</strong>
-    <ul>
-      <li>m5n.4xlarge (16 vCPUs, 64 GiB memory)</li>
-      <li>m5n.8xlarge (32 vCPUs, 128 GiB memory)</li>
-    </ul>
-  </li>
-  <li><strong>AMI:</strong> ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240411</li>
-  <li><strong>Versions:</strong>
-    <ul>
-      <li><strong>spark-nlp Version:</strong> v5.4.0</li>
-      <li><strong>visual-nlp Version:</strong> v5.3.2</li>
-      <li><strong>spark-nlp-jsl Version :</strong> v5.3.2</li>
-      <li><strong>Spark Version :</strong> v3.4.1</li>
-    </ul>
-  </li>
-  <li><strong>Visual NLP Pipeline:</strong> ‘pdf_deid_subentity_context_augmented_pipeline’</li>
-</ul>
-
-<h4 id="benchmark-table">Benchmark Table</h4>
-
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Instance</th>
-      <th>memory</th>
-      <th>cores</th>
-      <th>input_data_pages</th>
-      <th>partition</th>
-      <th>second per page</th>
-      <th>timing</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>m5n.4xlarge</td>
-      <td>64 GB</td>
-      <td>16</td>
-      <td>1000</td>
-      <td>10</td>
-      <td>0.24</td>
-      <td>4 mins</td>
-    </tr>
-    <tr>
-      <td>m5n.8xlarge</td>
-      <td>128 GB</td>
-      <td>32</td>
-      <td>1000</td>
-      <td>32</td>
-      <td>0.15</td>
-      <td>2.5 mins</td>
-    </tr>
-  </tbody>
-</table>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-06-12T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-07-25T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -838,7 +792,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/06/12/finel_tickers2names_fe_en.html">Resolve Tickers to Company Names</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/06/17/cancer_diagnosis_matcher_en.html">Cancer Diagnosis Text Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/07/22/ner_profiling_clinical_en.html">Named Entity Recognition Profiling (Clinical)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/07/25/fewhot_assertion_e5_base_v2_en.html">Few-Shot Assertion Model</a></div></div></div>
 
 </div>
 </div>

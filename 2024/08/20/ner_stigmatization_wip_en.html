@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>PDF Deidentification (Subentity- Context Augmented) | pdf_deid_subentity_context_augmented_pipeline | Healthcare NLP 5.3.2</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Detect Stigmatization Language | ner_stigmatization_wip | Healthcare NLP 5.4.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN...">
-<!-- <link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"> -->
-<link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical text related to stigmatization. This model aims to systematically collect and analyze data on stigmatizing language found in patients’ medical records.It includes entities based on the behavior ...">
+<!-- <link rel="canonical" href="/2024/08/20/ner_stigmatization_wip_en.html"> -->
+<link rel="canonical" href="/2024/08/20/ner_stigmatization_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,35 +497,173 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/kolia1985/2024-06-12-pdf_deid_subentity_context_augmented_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-08-20-ner_stigmatization_wip_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 12, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>PDF Deidentification (Subentity- Context Augmented)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="PDF Deidentification (Subentity- Context Augmented)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Aug 20, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-08-20T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Detect Stigmatization Language</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Detect Stigmatization Language"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>stigmatization</li><li>clinical</li><li>en</li><li>licensed</li><li>ner</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-08-20T00:00:00+00:00">
+    <meta itemprop="keywords" content="stigmatization,clinical,en,licensed,ner"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
-The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.</p>
+<p>This Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical text related to stigmatization. This model aims to systematically collect and analyze data on stigmatizing language found in patients’ medical records.</p>
+
+<p>It includes entities based on the behavior exhibited by patients as reported in clinical texts:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Aggressive</code>: Hostile, confrontational, or excessively assertive behaviors, including aggression, agitation, belligerence, and combativeness.
+<code class="language-plaintext highlighter-rouge">Argumentative</code>: Challenging or difficult behaviors, including being uncooperative, argumentative, and defensive.
+<code class="language-plaintext highlighter-rouge">Calm</code>: Tranquil, composed, and cooperative demeanor, including descriptions such as calm, quiet, and cooperative.
+<code class="language-plaintext highlighter-rouge">Resistant</code>: Stubborn or oppositional behavior, including descriptions such as obstinate, adamant, refusing, denying, and declining.
+<code class="language-plaintext highlighter-rouge">Credibility_Doubts</code>: Skepticism or doubt about the accuracy or truthfulness of information given by a patient.
+<code class="language-plaintext highlighter-rouge">Suspected_DSB</code>: Suspected ulterior motives for obtaining medication, particularly controlled substances.
+<code class="language-plaintext highlighter-rouge">Compliant</code>: Demonstrates adherence to prescribed medical advice, treatment plans, or medication regimens.
+<code class="language-plaintext highlighter-rouge">Noncompliant</code>: Does not follow prescribed medical advice, treatment plans, or medication regimens.
+<code class="language-plaintext highlighter-rouge">Well_Kept_Appearance</code>: Demonstrates good personal care, hygiene, and an orderly appearance.
+<code class="language-plaintext highlighter-rouge">Neglected_Appearance</code>: Exhibits signs of inadequate personal care or hygiene.
+<code class="language-plaintext highlighter-rouge">Paternalistic_Tone</code>: Conveys a sense of authority and control by the healthcare provider over the patient.
+<code class="language-plaintext highlighter-rouge">Poor_Reasoning</code>: Behaviors or decisions perceived as irrational, illogical, or lacking sound judgment.
+<code class="language-plaintext highlighter-rouge">Poor_Decision-Making</code>: Careless, irresponsible, or lacking proper attention and management in decision-making.
+<code class="language-plaintext highlighter-rouge">Other_Discriminatory_Language</code>: Derogatory, outdated, or prejudiced terms related to physical disability, intellectual disability, and age.
+<code class="language-plaintext highlighter-rouge">Positive_Descriptors</code>: Positive and complimentary terms used to describe a patient’s demeanor, behavior, or appearance.
+<code class="language-plaintext highlighter-rouge">Positive_Assessment</code>: Positive attributes indicating dedication, enthusiasm, or a proactive attitude toward health and treatment.
+<code class="language-plaintext highlighter-rouge">Shared_Decision</code>: Patients are collaboratively involved in the decision-making process regarding their treatment or care.
+<code class="language-plaintext highlighter-rouge">Patient_Autonomy</code>: Acknowledgement and respect of the patient’s right to make their own decisions regarding their healthcare.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Aggressive</code>, <code class="language-plaintext highlighter-rouge">Argumentative</code>, <code class="language-plaintext highlighter-rouge">Calm</code>, <code class="language-plaintext highlighter-rouge">Resistant</code>, <code class="language-plaintext highlighter-rouge">Credibility_Doubts</code>, <code class="language-plaintext highlighter-rouge">Suspected_DSB</code>, <code class="language-plaintext highlighter-rouge">Compliant</code>, <code class="language-plaintext highlighter-rouge">Noncompliant</code>, <code class="language-plaintext highlighter-rouge">Well_Kept_Appearance</code>, <code class="language-plaintext highlighter-rouge">Neglected_Appearance</code>, <code class="language-plaintext highlighter-rouge">Paternalistic_Tone</code>, <code class="language-plaintext highlighter-rouge">Poor_Reasoning</code>, <code class="language-plaintext highlighter-rouge">Poor_Decision-Making</code>, <code class="language-plaintext highlighter-rouge">Other_Discriminatory_Language</code>, <code class="language-plaintext highlighter-rouge">Positive_Descriptors</code>, <code class="language-plaintext highlighter-rouge">Positive_Assessment</code>, <code class="language-plaintext highlighter-rouge">Shared_Decision</code>, <code class="language-plaintext highlighter-rouge">Patient_Autonomy</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_stigmatization_wip_en_5.4.0_3.0_1724152681455.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_stigmatization_wip_en_5.4.0_3.0_1724152681455.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_deid_subentity_context_augmented_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">clinical_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_stigmatization_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> 
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">clinical_embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span>   
+    <span class="p">])</span>
+
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s">"""The healthcare team observed that Mr. Smith exhibited somewhat aggressive behavior and heightened irritability, especially when discussing his treatment plan. He showed a full range of emotions and fixated on certain incorrect beliefs about his health. Concerns about his poor judgment and insight were frequently discussed in multidisciplinary team meetings. For example, he often insisted that his symptoms were purely due to stress."""</span><span class="p">,</span>
+<span class="s">"""Once stabilized, Mr. Smith was discharged with a comprehensive care plan emphasizing the importance of medication adherence and regular follow-up appointments. Despite extensive counseling on the risks associated with non-compliance, concerns about his judgment persisted. He expressed skepticism about the need for certain medications, particularly those for managing his diabetes and COPD."""</span><span class="p">,</span>
+<span class="s">"""David Brown's hospital stay underscored the significant impact of poor reasoning and judgment on his health outcomes. His initial reluctance to seek care and resistance to necessary treatments highlighted the crucial need for patient education and compliance. Moving forward, strict adherence to his treatment plan and regular follow-up are vital to preventing further complications and ensuring his ongoing well-being."""</span><span class="p">,</span>
+<span class="s">"""Despite his confrontational attitude, efforts were made to educate Mr. Brown on the importance of following his treatment plan and dietary restrictions. Multiple attempts to discuss his condition and the need for continuous care were met with defensiveness. He declined several recommendations, becoming agitated and tearful during discussions about his health."""</span><span class="p">,</span>
+<span class="s">"""Efforts to educate Ms. Martin on the importance of adhering to her asthma management plan were met with resistance. She frequently questioned the necessity of her medications and expressed dissatisfaction with her care. Despite these challenges, the team remained dedicated to providing thorough care, working to address her concerns and educate her on the importance of following her treatment regimen. Ms. Martin became particularly agitated when discussing her anxiety and the impact of her asthma on her quality of life. "No one understands how hard this is for me," she argued during a consultation with the psychiatrist. Despite her defensive attitude, the team continued to offer support and reassurance, acknowledging the complexity of her psychosocial barriers to care."""</span><span class="p">,</span>
+<span class="s">"""History of Present Illness: Ms. ___ is a very pleasant ___ female who underwent a left partial mastectomy and left axillary sentinel node biopsy on ___ for left invasive ductal carcinoma. Her surgical pathology report indicated that all six margins were either involved with or close to atypical or carcinoma cells. We subsequently recommended a global re-excision lumpectomy, which was then performed on ___."""</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clinical_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_stigmatization_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentenceDetector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">clinical_embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span>   
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">sample_texts</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+<span class="s">"""The healthcare team observed that Mr. Smith exhibited somewhat aggressive behavior and heightened irritability, especially when discussing his treatment plan. He showed a full range of emotions and fixated on certain incorrect beliefs about his health. Concerns about his poor judgment and insight were frequently discussed in multidisciplinary team meetings. For example, he often insisted that his symptoms were purely due to stress."""</span><span class="o">,</span>
+<span class="s">"""Once stabilized, Mr. Smith was discharged with a comprehensive care plan emphasizing the importance of medication adherence and regular follow-up appointments. Despite extensive counseling on the risks associated with non-compliance, concerns about his judgment persisted. He expressed skepticism about the need for certain medications, particularly those for managing his diabetes and COPD."""</span><span class="o">,</span>
+<span class="s">"""David Brown's hospital stay underscored the significant impact of poor reasoning and judgment on his health outcomes. His initial reluctance to seek care and resistance to necessary treatments highlighted the crucial need for patient education and compliance. Moving forward, strict adherence to his treatment plan and regular follow-up are vital to preventing further complications and ensuring his ongoing well-being."""</span><span class="o">,</span>
+<span class="s">"""Despite his confrontational attitude, efforts were made to educate Mr. Brown on the importance of following his treatment plan and dietary restrictions. Multiple attempts to discuss his condition and the need for continuous care were met with defensiveness. He declined several recommendations, becoming agitated and tearful during discussions about his health."""</span><span class="o">,</span>
+<span class="s">"""Efforts to educate Ms. Martin on the importance of adhering to her asthma management plan were met with resistance. She frequently questioned the necessity of her medications and expressed dissatisfaction with her care. Despite these challenges, the team remained dedicated to providing thorough care, working to address her concerns and educate her on the importance of following her treatment regimen. Ms. Martin became particularly agitated when discussing her anxiety and the impact of her asthma on her quality of life. "No one understands how hard this is for me," she argued during a consultation with the psychiatrist. Despite her defensive attitude, the team continued to offer support and reassurance, acknowledging the complexity of her psychosocial barriers to care."""</span><span class="o">,</span>
+<span class="s">"""History of Present Illness: Ms. ___ is a very pleasant ___ female who underwent a left partial mastectomy and left axillary sentinel node biopsy on ___ for left invasive ductal carcinoma. Her surgical pathology report indicated that all six margins were either involved with or close to atypical or carcinoma cells. We subsequently recommended a global re-excision lumpectomy, which was then performed on ___."""</span>
+<span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">)</span>
+</code></pre></div>  </div>
 </div>
+
+<h2 id="results">Results</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------+-----+---+--------------------+
+|chunk                      |begin|end|ner_label           |
++---------------------------+-----+---+--------------------+
+|aggressive                 |63   |72 |Aggressive          |
+|poor judgment              |272  |284|Poor_Reasoning      |
+|insisted                   |382  |389|Credibility_Doubts  |
+|adherence                  |114  |122|Compliant           |
+|non-compliance             |218  |231|Noncompliant        |
+|poor reasoning and judgment|66   |92 |Poor_Reasoning      |
+|reluctance                 |130  |139|Resistant           |
+|resistance                 |158  |167|Resistant           |
+|compliance                 |248  |257|Compliant           |
+|adherence                  |283  |291|Compliant           |
+|confrontational            |12   |26 |Argumentative       |
+|defensiveness              |243  |255|Argumentative       |
+|declined                   |261  |268|Resistant           |
+|agitated                   |304  |311|Aggressive          |
+|adhering                   |51   |58 |Compliant           |
+|resistance                 |104  |113|Argumentative       |
+|agitated                   |435  |442|Aggressive          |
+|argued                     |575  |580|Argumentative       |
+|defensive                  |639  |647|Argumentative       |
+|pleasant                   |46   |53 |Positive_Descriptors|
++---------------------------+-----+---+--------------------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -533,15 +671,11 @@ The output is a PDF document, similar to the one at the input, but with black bo
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>pdf_deid_subentity_context_augmented_pipeline</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>ner_stigmatization_wip</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.3.2+</td>
+      <td>Healthcare NLP 5.4.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -552,108 +686,50 @@ The output is a PDF document, similar to the one at the input, but with black bo
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[sentence, token, embeddings]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[ner]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>5.0 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<ul>
-  <li>PdfToImage</li>
-  <li>ImageToText</li>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverter</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>PositionFinder</li>
-  <li>ImageDrawRegions</li>
-  <li>ImageToPdf</li>
-  <li>PdfAssembler</li>
-</ul>
-
-<h2 id="speed-benchmarks">Speed Benchmarks</h2>
-
-<ul>
-  <li><strong>Dataset:</strong> 1000 scanned PDF pages.</li>
-  <li><strong>Instance :</strong>
-    <ul>
-      <li>m5n.4xlarge (16 vCPUs, 64 GiB memory)</li>
-      <li>m5n.8xlarge (32 vCPUs, 128 GiB memory)</li>
-    </ul>
-  </li>
-  <li><strong>AMI:</strong> ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240411</li>
-  <li><strong>Versions:</strong>
-    <ul>
-      <li><strong>spark-nlp Version:</strong> v5.4.0</li>
-      <li><strong>visual-nlp Version:</strong> v5.3.2</li>
-      <li><strong>spark-nlp-jsl Version :</strong> v5.3.2</li>
-      <li><strong>Spark Version :</strong> v3.4.1</li>
-    </ul>
-  </li>
-  <li><strong>Visual NLP Pipeline:</strong> ‘pdf_deid_subentity_context_augmented_pipeline’</li>
-</ul>
-
-<h4 id="benchmark-table">Benchmark Table</h4>
-
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Instance</th>
-      <th>memory</th>
-      <th>cores</th>
-      <th>input_data_pages</th>
-      <th>partition</th>
-      <th>second per page</th>
-      <th>timing</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>m5n.4xlarge</td>
-      <td>64 GB</td>
-      <td>16</td>
-      <td>1000</td>
-      <td>10</td>
-      <td>0.24</td>
-      <td>4 mins</td>
-    </tr>
-    <tr>
-      <td>m5n.8xlarge</td>
-      <td>128 GB</td>
-      <td>32</td>
-      <td>1000</td>
-      <td>32</td>
-      <td>0.15</td>
-      <td>2.5 mins</td>
-    </tr>
-  </tbody>
-</table>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-06-12T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                        label  precision    recall  f1-score   support
+                   Aggressive       0.97      0.51      0.67        72
+                Argumentative       0.93      0.96      0.95        57
+                         Calm       1.00      0.93      0.96        27
+                    Compliant       1.00      0.98      0.99        51
+           Credibility_Doubts       0.99      0.87      0.92        77
+              Kept_Appearance       1.00      1.00      1.00        20
+         Poor_Decision-Making       1.00      0.76      0.86        21
+         Neglected_Appearance       0.90      0.78      0.84        23
+                 Noncompliant       1.00      0.91      0.96        35
+Other_Discriminatory_Language       1.00      0.88      0.94        17
+           Paternalistic_Tone       1.00      1.00      1.00        76
+             Patient_Autonomy       1.00      0.40      0.57        10
+               Poor_Reasoning       1.00      0.85      0.92        41
+          Positive_Assessment       0.82      0.98      0.90        48
+         Positive_Descriptors       0.86      1.00      0.92         6
+                    Resistant       0.88      0.79      0.83        28
+              Shared_Decision       1.00      1.00      1.00        18
+                Suspected_DSB       0.80      0.67      0.73        12
+                    micro-avg       0.96      0.86      0.91       639
+                    macro-avg       0.95      0.85      0.89       639
+                 weighted-avg       0.96      0.86      0.90       639
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-08-20T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -838,7 +914,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/06/12/finel_tickers2names_fe_en.html">Resolve Tickers to Company Names</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/06/17/cancer_diagnosis_matcher_en.html">Cancer Diagnosis Text Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/08/20/biolordresolve_avg_rxnorm_augmented_v2_en.html">Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/08/21/email_matcher_en.html">Email Regex Matcher</a></div></div></div>
 
 </div>
 </div>

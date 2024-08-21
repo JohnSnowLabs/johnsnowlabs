@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>PDF Deidentification (Subentity- Context Augmented) | pdf_deid_subentity_context_augmented_pipeline | Healthcare NLP 5.3.2</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>ICD10CM HCC CMS 2024 MidYear Resolver | mpnetresolve_icd10_cms_hcc_2024_midyear | Healthcare NLP 5.3.3</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN...">
-<!-- <link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"> -->
-<link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model maps clinical concepts to ICD10CM codes and their corresponding HCC categories.Note: This model only supports ICD10CM codes that have valid HCC categories according to 2024 CMS HCC MidYear mappings.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documen...">
+<!-- <link rel="canonical" href="/2024/07/27/mpnetresolve_icd10_cms_hcc_2024_midyear_en.html"> -->
+<link rel="canonical" href="/2024/07/27/mpnetresolve_icd10_cms_hcc_2024_midyear_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,35 +497,127 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/kolia1985/2024-06-12-pdf_deid_subentity_context_augmented_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/HashamUlHaq/2024-07-27-mpnetresolve_icd10_cms_hcc_2024_midyear_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 12, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>PDF Deidentification (Subentity- Context Augmented)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="PDF Deidentification (Subentity- Context Augmented)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 27, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-27T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>ICD10CM HCC CMS 2024 MidYear Resolver</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="ICD10CM HCC CMS 2024 MidYear Resolver"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>entity_resolution</li><li>hcc</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-07-27T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,entity_resolution,hcc"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
-The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.</p>
+<p>This model maps clinical concepts to ICD10CM codes and their corresponding HCC categories.
+Note: This model only supports ICD10CM codes that have valid HCC categories according to 2024 CMS HCC MidYear mappings.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/mpnetresolve_icd10_cms_hcc_2024_midyear_en_5.3.3_3.4_1722106166369.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/mpnetresolve_icd10_cms_hcc_2024_midyear_en_5.3.3_3.4_1722106166369.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">DocumentAssembler</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="p">)</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_deid_subentity_context_augmented_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-</code></pre></div>  </div>
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> 
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span><span class="c1">#.setCustomBounds(['\|'])
+</span><span class="p">)</span>
+    
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span><span class="c1">#\
+</span>        
+<span class="n">clinical_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'embeddings_clinical'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'ner_clinical'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_conv</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'sentence'</span><span class="p">,</span> <span class="s">'ner'</span><span class="p">,</span> <span class="s">'token'</span><span class="p">]).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'ner_chunk'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">'PROBLEM'</span><span class="p">,</span> <span class="s">'TREATMENT'</span><span class="p">])</span>
+
+<span class="n">clinical_assertion</span> <span class="o">=</span> <span class="n">AssertionDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"assertion_dl_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
+
+<span class="n">assertion_filterer</span> <span class="o">=</span> <span class="n">AssertionFilterer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">,</span><span class="s">"assertion"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_filtered"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Present"</span><span class="p">])</span>
+
+<span class="n">c2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"assertion_filtered"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">schunk_embeddings</span> <span class="o">=</span> <span class="n">MPNetEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"all_mpnet_base_v2"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span> \
+            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span> \
+            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mpnet_embeddings"</span><span class="p">)</span>
+
+<span class="n">icd10_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"mpnetresolve_icd10_cms_hcc_2024_midyear"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"mpnet_embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10cm_code"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"COSINE"</span><span class="p">)</span>
+
+
+<span class="n">jsl_single_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">documentAssembler</span><span class="p">,</span>
+        <span class="n">sentenceDetector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">clinical_embeddings</span><span class="p">,</span>
+        <span class="n">ner_model</span><span class="p">,</span>
+        <span class="n">ner_conv</span><span class="p">,</span>
+        <span class="n">clinical_assertion</span><span class="p">,</span>
+        <span class="n">assertion_filterer</span><span class="p">,</span>
+        <span class="n">c2doc</span><span class="p">,</span> <span class="n">schunk_embeddings</span><span class="p">,</span> <span class="n">icd10_resolver</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">data_ner</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">p_model</span> <span class="o">=</span> <span class="n">jsl_single_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_ner</span><span class="p">)</span>
+<span class="n">l_model</span> <span class="o">=</span> <span class="n">LightPipeline</span><span class="p">(</span><span class="n">p_model</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""A 36-year-old patient with no significant medical history presented with acute deep venous thrombosis in the right lower extremity and bilateral pulmonary embolism. The patient was on intravenous heparin, complicated by acute renal failure. The patient, who works as a sales representative involving extensive travel, experienced acute dyspnea and syncope. Further investigations revealed a nonocclusive right popliteal artery thrombosis, multiple pulmonary emboli, and a possible renal infarct. With no family history of hypercoagulable conditions, the patient denies recent injury or calf symptoms. Medical and surgical history is unremarkable. The physical exam shows a robust individual with no evident signs of clotting, and laboratory findings indicate leukocytosis, possibly a reactive response."""</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">l_model</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">([</span><span class="n">text</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">res_df</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">res</span><span class="p">[</span><span class="s">'icd10cm_code'</span><span class="p">]:</span>
+    <span class="n">res_df</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">'chunk'</span><span class="p">:</span> <span class="n">chunk</span><span class="p">.</span><span class="n">metadata</span><span class="p">[</span><span class="s">'target_text'</span><span class="p">],</span>
+                   <span class="s">'icd10_code'</span><span class="p">:</span> <span class="n">chunk</span><span class="p">.</span><span class="n">result</span><span class="p">,</span>
+                   <span class="s">'icd10_desc'</span><span class="p">:</span> <span class="n">chunk</span><span class="p">.</span><span class="n">metadata</span><span class="p">[</span><span class="s">'resolved_text'</span><span class="p">],</span>
+                   <span class="s">'confidence'</span><span class="p">:</span> <span class="mi">1</span><span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">metadata</span><span class="p">[</span><span class="s">'all_k_cosine_distances'</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">':::'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span>
+                   <span class="s">'hcc_details'</span><span class="p">:</span> <span class="n">chunk</span><span class="p">.</span><span class="n">metadata</span><span class="p">[</span><span class="s">'all_k_aux_labels'</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">':::'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]})</span>
+
+<span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_df</span><span class="p">)</span>
+<span class="n">res_df</span><span class="p">[</span><span class="n">res_df</span><span class="p">[</span><span class="s">'confidence'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.80</span><span class="p">]</span> <span class="c1">## selecting codes with high confidence
+</span></code></pre></div>  </div>
 
 </div>
+
+<h2 id="results">Results</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| chunk                                                     | icd10_code   | icd10_desc                                                                      |   confidence | hcc_details                                                                                              |
+|:----------------------------------------------------------|:-------------|:--------------------------------------------------------------------------------|-------------:|:---------------------------------------------------------------------------------------------------------|
+| acute deep venous thrombosis <span class="k">in </span>the right lower extremity | I82402       | Acute embolism and thrombosis of unspecified deep veins of left lower extremity |       0.8804 | version:v22,cat:108.0,billable:Yes|version:v24,cat:108.0,billable:Yes|version:v28,cat:267.0,billable:Yes |
+| bilateral pulmonary embolism                              | I2699        | Other pulmonary embolism without acute cor pulmonale                            |       0.8343 | version:v22,cat:107.0,billable:Yes|version:v24,cat:107.0,billable:Yes|version:v28,cat:267.0,billable:Yes |
+| acute renal failure                                       | N179         | Acute kidney failure, unspecified                                               |       0.9626 | version:v22,cat:135.0,billable:Yes|version:v24,cat:135.0,billable:Yes|version:v28,cat:N/A,billable:No    |
+| a nonocclusive right popliteal artery thrombosis          | I82432       | Acute embolism and thrombosis of left popliteal vein                            |       0.9432 | version:v22,cat:108.0,billable:Yes|version:v24,cat:108.0,billable:Yes|version:v28,cat:267.0,billable:Yes |
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -533,15 +625,11 @@ The output is a PDF document, similar to the one at the input, but with black bo
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>pdf_deid_subentity_context_augmented_pipeline</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>mpnetresolve_icd10_cms_hcc_2024_midyear</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.3.2+</td>
+      <td>Healthcare NLP 5.3.3+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -552,108 +640,32 @@ The output is a PDF document, similar to the one at the input, but with black bo
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[mpnet_embeddings]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[icd_code]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>97.6 MB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="references">References</h2>
 
-<ul>
-  <li>PdfToImage</li>
-  <li>ImageToText</li>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverter</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>PositionFinder</li>
-  <li>ImageDrawRegions</li>
-  <li>ImageToPdf</li>
-  <li>PdfAssembler</li>
-</ul>
-
-<h2 id="speed-benchmarks">Speed Benchmarks</h2>
-
-<ul>
-  <li><strong>Dataset:</strong> 1000 scanned PDF pages.</li>
-  <li><strong>Instance :</strong>
-    <ul>
-      <li>m5n.4xlarge (16 vCPUs, 64 GiB memory)</li>
-      <li>m5n.8xlarge (32 vCPUs, 128 GiB memory)</li>
-    </ul>
-  </li>
-  <li><strong>AMI:</strong> ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240411</li>
-  <li><strong>Versions:</strong>
-    <ul>
-      <li><strong>spark-nlp Version:</strong> v5.4.0</li>
-      <li><strong>visual-nlp Version:</strong> v5.3.2</li>
-      <li><strong>spark-nlp-jsl Version :</strong> v5.3.2</li>
-      <li><strong>Spark Version :</strong> v3.4.1</li>
-    </ul>
-  </li>
-  <li><strong>Visual NLP Pipeline:</strong> ‘pdf_deid_subentity_context_augmented_pipeline’</li>
-</ul>
-
-<h4 id="benchmark-table">Benchmark Table</h4>
-
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Instance</th>
-      <th>memory</th>
-      <th>cores</th>
-      <th>input_data_pages</th>
-      <th>partition</th>
-      <th>second per page</th>
-      <th>timing</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>m5n.4xlarge</td>
-      <td>64 GB</td>
-      <td>16</td>
-      <td>1000</td>
-      <td>10</td>
-      <td>0.24</td>
-      <td>4 mins</td>
-    </tr>
-    <tr>
-      <td>m5n.8xlarge</td>
-      <td>128 GB</td>
-      <td>32</td>
-      <td>1000</td>
-      <td>32</td>
-      <td>0.15</td>
-      <td>2.5 mins</td>
-    </tr>
-  </tbody>
-</table>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-06-12T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>2024 CMS HCC MidYear Mappings, and ICD10CM JSL augmented data.</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-07-27T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -838,7 +850,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/06/12/finel_tickers2names_fe_en.html">Resolve Tickers to Company Names</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/06/17/cancer_diagnosis_matcher_en.html">Cancer Diagnosis Text Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/07/25/mpnet_embeddings_medical_assertion_en.html">Medical Assertion MPNet Embedding</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/08/02/bert_sequence_classifier_metastasis_en.html">Bert For Sequence Classification (Metastasis)</a></div></div></div>
 
 </div>
 </div>

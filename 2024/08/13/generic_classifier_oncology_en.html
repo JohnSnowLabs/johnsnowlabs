@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>PDF Deidentification (Subentity- Context Augmented) | pdf_deid_subentity_context_augmented_pipeline | Healthcare NLP 5.3.2</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Generic Classifier for Oncology | generic_classifier_oncology | Healthcare NLP 5.4.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN...">
-<!-- <link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"> -->
-<link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is a oncology classification model that determines whether clinical sentences include terms related to oncology.  True: Contains oncology related terms.  False: Doesn’t contain oncology related terms.Predicted EntitiesTrue, FalseLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScal...">
+<!-- <link rel="canonical" href="/2024/08/13/generic_classifier_oncology_en.html"> -->
+<link rel="canonical" href="/2024/08/13/generic_classifier_oncology_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,35 +497,140 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/kolia1985/2024-06-12-pdf_deid_subentity_context_augmented_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-08-13-generic_classifier_oncology_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jun 12, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>PDF Deidentification (Subentity- Context Augmented)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="PDF Deidentification (Subentity- Context Augmented)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-06-12T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Aug 13, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-08-13T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Generic Classifier for Oncology</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Generic Classifier for Oncology"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>genericclassifiermodel</li><li>classification</li><li>oncology</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-08-13T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,genericclassifiermodel,classification,oncology"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
-The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.</p>
+<p>This model is a oncology classification model that determines whether clinical sentences include terms related to oncology.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">True</code>: Contains oncology related terms.</li>
+  <li><code class="language-plaintext highlighter-rouge">False</code>: Doesn’t contain oncology related terms.</li>
+</ul>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/generic_classifier_oncology_en_5.4.0_3.0_1723533974344.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/generic_classifier_oncology_en_5.4.0_3.0_1723533974344.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_deid_subentity_context_augmented_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
+
+<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">SentenceEmbeddings</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence_embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setPoolingStrategy</span><span class="p">(</span><span class="s">"AVERAGE"</span><span class="p">)</span>
+
+<span class="n">features_asm</span> <span class="o">=</span> <span class="n">FeaturesAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"features"</span><span class="p">)</span>
+
+<span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"generic_classifier_oncology"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+
+<span class="n">clf_Pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+  <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">sentence_embeddings</span><span class="p">,</span>
+    <span class="n">features_asm</span><span class="p">,</span>
+    <span class="n">generic_classifier</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+<span class="p">[</span><span class="s">"The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass."</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"Following this adjustment, the patient's ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation."</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes."</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task."</span><span class="p">]</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">clf_Pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
 </code></pre></div>  </div>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"word_embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentence_embeddings</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceEmbeddings</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span> <span class="s">"word_embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setPoolingStrategy</span><span class="o">(</span><span class="s">"AVERAGE"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">features_asm</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FeaturesAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence_embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"features"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">generic_classifier</span> <span class="k">=</span> <span class="nv">GenericClassifierModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"generic_classifier_oncology"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"features"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"prediction"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clf_Pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">documentAssembler</span><span class="o">,</span>
+  <span class="n">tokenizer</span><span class="o">,</span>
+  <span class="n">word_embeddings</span><span class="o">,</span>
+  <span class="n">sentence_embeddings</span><span class="o">,</span>
+  <span class="n">features_asm</span><span class="o">,</span>
+  <span class="n">generic_classifier</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([</span>
+<span class="o">[</span><span class="err">"</span><span class="kt">The</span> <span class="kt">patient</span> <span class="kt">was</span> <span class="kt">diagnosed</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">malignant</span> <span class="kt">tumor</span>, <span class="kt">and</span> <span class="kt">surgery</span> <span class="kt">was</span> <span class="kt">promptly</span> <span class="kt">scheduled</span> <span class="kt">to</span> <span class="kt">remove</span> <span class="kt">the</span> <span class="kt">mass.</span><span class="err">"</span><span class="o">]</span>,
+<span class="o">[</span><span class="err">"</span><span class="kt">Following</span> <span class="kt">this</span> <span class="kt">adjustment</span>, <span class="kt">the</span> <span class="kt">patient's</span> <span class="kt">ECG</span> <span class="kt">remained</span> <span class="kt">in</span> <span class="kt">sinus</span> <span class="kt">rhythm</span>, <span class="kt">with</span> <span class="kt">heart</span> <span class="kt">rates</span> <span class="kt">varying</span> <span class="kt">between</span> <span class="err">45</span> <span class="kt">and</span> <span class="err">70</span> <span class="kt">bpm</span> <span class="kt">and</span> <span class="kt">no</span> <span class="kt">significant</span> <span class="kt">QTc</span> <span class="kt">prolongation.</span><span class="err">"</span><span class="o">]</span>,
+<span class="o">[</span><span class="err">"</span><span class="kt">During</span> <span class="kt">the</span> <span class="kt">treatment</span> <span class="kt">review</span>, <span class="kt">the</span> <span class="kt">oncologist</span> <span class="kt">discussed</span> <span class="kt">the</span> <span class="kt">progression</span> <span class="kt">of</span> <span class="kt">metastases</span> <span class="kt">from</span> <span class="kt">the</span> <span class="kt">primary</span> <span class="kt">lesion</span> <span class="kt">to</span> <span class="kt">nearby</span> <span class="kt">lymph</span> <span class="kt">nodes.</span><span class="err">"</span><span class="o">]</span>,
+<span class="o">[</span><span class="err">"</span><span class="kt">Functional</span> <span class="kt">MRI</span> <span class="o">(</span><span class="kt">fMRI</span><span class="o">)</span> <span class="kt">showed</span> <span class="kt">increased</span> <span class="kt">activation</span> <span class="kt">in</span> <span class="kt">the</span> <span class="kt">motor</span> <span class="kt">cortex</span> <span class="kt">during</span> <span class="kt">the</span> <span class="kt">finger-tapping</span> <span class="kt">task.</span><span class="err">"</span><span class="o">]</span>
+<span class="o">]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">clf_Pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+</code></pre></div>  </div>
 </div>
+
+<h2 id="results">Results</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+|text                                                                                                                                                      |result |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+|The patient was diagnosed with a malignant tumor, and surgery was promptly scheduled to remove the mass.                                                  | True  |
+|Following this adjustment, the patient<span class="s1">'s ECG remained in sinus rhythm, with heart rates varying between 45 and 70 bpm and no significant QTc prolongation.| False |
+|During the treatment review, the oncologist discussed the progression of metastases from the primary lesion to nearby lymph nodes.                        | True  |
+|Functional MRI (fMRI) showed increased activation in the motor cortex during the finger-tapping task.                                                     | False |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+</span></code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -533,15 +638,11 @@ The output is a PDF document, similar to the one at the input, but with black bo
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>pdf_deid_subentity_context_augmented_pipeline</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>generic_classifier_oncology</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.3.2+</td>
+      <td>Healthcare NLP 5.4.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -552,108 +653,34 @@ The output is a PDF document, similar to the one at the input, but with black bo
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[features]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[prediction]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.7 GB</td>
+      <td>1.5 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<ul>
-  <li>PdfToImage</li>
-  <li>ImageToText</li>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverter</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>PositionFinder</li>
-  <li>ImageDrawRegions</li>
-  <li>ImageToPdf</li>
-  <li>PdfAssembler</li>
-</ul>
-
-<h2 id="speed-benchmarks">Speed Benchmarks</h2>
-
-<ul>
-  <li><strong>Dataset:</strong> 1000 scanned PDF pages.</li>
-  <li><strong>Instance :</strong>
-    <ul>
-      <li>m5n.4xlarge (16 vCPUs, 64 GiB memory)</li>
-      <li>m5n.8xlarge (32 vCPUs, 128 GiB memory)</li>
-    </ul>
-  </li>
-  <li><strong>AMI:</strong> ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240411</li>
-  <li><strong>Versions:</strong>
-    <ul>
-      <li><strong>spark-nlp Version:</strong> v5.4.0</li>
-      <li><strong>visual-nlp Version:</strong> v5.3.2</li>
-      <li><strong>spark-nlp-jsl Version :</strong> v5.3.2</li>
-      <li><strong>Spark Version :</strong> v3.4.1</li>
-    </ul>
-  </li>
-  <li><strong>Visual NLP Pipeline:</strong> ‘pdf_deid_subentity_context_augmented_pipeline’</li>
-</ul>
-
-<h4 id="benchmark-table">Benchmark Table</h4>
-
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Instance</th>
-      <th>memory</th>
-      <th>cores</th>
-      <th>input_data_pages</th>
-      <th>partition</th>
-      <th>second per page</th>
-      <th>timing</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>m5n.4xlarge</td>
-      <td>64 GB</td>
-      <td>16</td>
-      <td>1000</td>
-      <td>10</td>
-      <td>0.24</td>
-      <td>4 mins</td>
-    </tr>
-    <tr>
-      <td>m5n.8xlarge</td>
-      <td>128 GB</td>
-      <td>32</td>
-      <td>1000</td>
-      <td>32</td>
-      <td>0.15</td>
-      <td>2.5 mins</td>
-    </tr>
-  </tbody>
-</table>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-06-12T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       label  precision    recall  f1-score   support
+       False       0.90      0.86      0.88      2093
+        True       0.89      0.93      0.91      2714
+    accuracy          -         -      0.90      4807
+   macro-avg       0.90      0.89      0.89      4807
+weighted-avg       0.90      0.90      0.90      4807
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-08-13T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -838,7 +865,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/06/12/finel_tickers2names_fe_en.html">Resolve Tickers to Company Names</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/06/17/cancer_diagnosis_matcher_en.html">Cancer Diagnosis Text Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/08/12/large_fewshot_classifier_ade_en.html">Adverse Drug Events Binary Classifier (LargeFewShot)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/08/14/sbiobertresolve_rxnorm_augmented_v2_en.html">Sentence Entity Resolver for RxNorm (sbiobert_base_cased_mli embeddings)</a></div></div></div>
 
 </div>
 </div>
