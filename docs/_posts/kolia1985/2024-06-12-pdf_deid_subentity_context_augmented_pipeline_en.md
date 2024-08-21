@@ -18,6 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
+
 This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
 The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.
 
@@ -28,6 +29,7 @@ The output is a PDF document, similar to the one at the input, but with black bo
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
+
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
@@ -106,3 +108,4 @@ deid_pipeline = PretrainedPipeline("pdf_deid_subentity_context_augmented_pipelin
 | ------------- | ------ | ----- | ----------------- | ------------- | --------------- | ------- |
 | m5n.4xlarge   | 64 GB  | 16    | 1000              | 10            | 0.24            | 4 mins  |
 | m5n.8xlarge   | 128 GB | 32    | 1000              | 32            | 0.15            | 2.5 mins|
+

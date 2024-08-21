@@ -25,6 +25,7 @@ This pipeline can be used to extract PHI information such as `LOCATION`, `CONTAC
 `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `ID`, `AGE`, `COUNTRY`, `SSN`, `ACCOUNT`, `DLN`, `PLATE`, `VIN`, `LICENSE`, `PHONE`, `ZIP`, `MEDICALRECORD`, `EMAIL`, `IPADDR`
 
 
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
