@@ -765,6 +765,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>This annotator sorts documents based on classifier results. It uses white and black lists, allowing or blocking specific outcomes. It can be case-sensitive or case-insensitive for broader matching. This tool efficiently organizes documents based on classifier outcomes.</td>
     </tr>
     <tr>
+      <td><a href="#documentfiltererbyner">DocumentFiltererByNER</a></td>
+      <td>This annotator returns sentences containing the entity chunks you have filtered, allowing you to see only the sentences with the entities you want.</td>
+    </tr>
+    <tr>
       <td><a href="#documenthashcoder">DocumentHashCoder</a></td>
       <td>This annotator swaps dates in a document column with hash codes from another column, creating a new column with shifted day information. The subsequent <code class="language-plaintext highlighter-rouge">DeIdentification</code> annotator anonymizes the document, incorporating the altered dates.</td>
     </tr>
@@ -829,12 +833,20 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>Merges token tags and NER labels from chunks in the specified format.</td>
     </tr>
     <tr>
+      <td><a href="#largefewshotclassifier">LargeFewShotClassifier</a></td>
+      <td>This annotator is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes.</td>
+    </tr>
+    <tr>
       <td><a href="#lightdeidentification">LightDeIdentification</a></td>
       <td>Light version of DeIdentification.</td>
     </tr>
     <tr>
       <td><a href="#llmloader">LLMLoader</a></td>
       <td>LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs’ licensed LLMs at various sizes that are finetuned on medical context for certain tasks.</td>
+    </tr>
+    <tr>
+      <td><a href="#mapper2chunk">Mapper2Chunk</a></td>
+      <td>This annotator converts ‘LABELED_DEPENDENCY’ type annotations coming from ChunkMapper into ‘CHUNK’ type to create new chunk-type column</td>
     </tr>
     <tr>
       <td><a href="#multichunk2doc">MultiChunk2Doc</a></td>
@@ -1820,6 +1832,9 @@ Cadence completed its annual goodwill impairment test during the third quarter o
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">outputTokenEndCol</code>: (Str) The column containing the selected token end index.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">metadataFields</code>:  (Dict) The dictionary of of metadata fields to be added to the chunk column</p>
       </li>
     </ul>
 
@@ -9811,6 +9826,7 @@ clinical assertion detection. It annotates text chunks with assertions based on 
       <li><code class="language-plaintext highlighter-rouge">assertion</code>: Assertion to match</li>
       <li><code class="language-plaintext highlighter-rouge">scopeWindowDelimiter</code>: Delimiters used to limit the scope window.</li>
       <li><code class="language-plaintext highlighter-rouge">includeChunkToScope</code>: Whether to include chunk to scope when matching values</li>
+      <li><code class="language-plaintext highlighter-rouge">ConfidenceCalculationDirection</code>: Indicates the direction for calculating assertion confidence (left, right, or both; default is left).</li>
     </ul>
 
     <p>See <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb">Spark NLP Workshop</a> for more examples of usage.</p>
@@ -13170,6 +13186,232 @@ The patient came off cardiopulmonary bypass after aortic cross-clamp was release
 <span class="kt">|The</span> <span class="kt">radial</span> <span class="kt">artery</span> <span class="kt">was</span> <span class="kt">used</span> <span class="kt">for</span> <span class="kt">the</span> <span class="kt">left</span> <span class="kt">anterior</span> <span class="kt">descending</span> <span class="kt">artery.</span> <span class="kt">Flow</span> <span class="kt">was</span> <span class="kt">...|Diagnostic</span> <span class="kt">and</span> <span class="kt">Laboratory</span> <span class="kt">Data|</span>
 <span class="kt">|The</span> <span class="kt">first</span> <span class="kt">obtuse</span> <span class="kt">marginal</span> <span class="kt">artery</span> <span class="kt">was</span> <span class="kt">a</span> <span class="kt">very</span> <span class="kt">large</span> <span class="kt">target</span> <span class="kt">and</span> <span class="kt">the</span> <span class="kt">vein</span> <span class="kt">graft</span> <span class="kt">t...|Diagnostic</span> <span class="kt">and</span> <span class="kt">Laboratory</span> <span class="kt">Data|</span>
 <span class="kt">+--------------------------------------------------------------------------------+------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="documentfiltererbyner">DocumentFiltererByNER</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>The <code class="language-plaintext highlighter-rouge">DocumentFiltererByNER</code> annotator returns sentences containing the entity chunks you have filtered, allowing you to see only the sentences with the entities you want.It is particularly useful for extracting and organizing the results obtained from Spark NLP Pipelines.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">blackList</code>: If defined, list of entities to ignore. The rest will be processed.</li>
+      <li><code class="language-plaintext highlighter-rouge">whiteList</code>: If defined, list of entities to process. The rest will be ignored.</li>
+      <li><code class="language-plaintext highlighter-rouge">caseSensitive</code>: Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</li>
+      <li><code class="language-plaintext highlighter-rouge">outputAsDocument</code>: Whether to return all sentences joined into a single document.(default : <code class="language-plaintext highlighter-rouge">False</code>).</li>
+      <li><code class="language-plaintext highlighter-rouge">joinString</code>: This parameter specifies the string that will be inserted between results of documents when combining them into a single result if outputAsDocument is set to <code class="language-plaintext highlighter-rouge">True</code> (default is : “ “).</li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb">DocumentFiltererByNER</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_jsl</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">filterer</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">DocumentFiltererByNER</span><span class="p">()</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"filterer"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Disease_Syndrome_Disorder"</span><span class="p">])</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sentenceDetector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">ner_jsl</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">filterer</span><span class="p">])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Most people infected with the virus will experience mild to moderate respiratory illness and recover without requiring special treatment."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"However, some will become seriously ill and require medical attention. "</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Older people and those with underlying medical conditions like cardiovascular disease, diabetes, chronic respiratory disease, or cancer are more likely to develop serious illness."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Anyone can get sick with COVID-19 and become seriously ill or die at any age."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The best way to prevent and slow down transmission is to be well informed about the disease and how the virus spreads."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Protect yourself and others from infection by staying at least 1 metre apart from others, wearing a properly fitted mask, and washing your hands or using an alcohol-based rub frequently."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Get vaccinated when it’s your turn and follow local guidance."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Stay home if you feel unwell."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"If you have a fever, cough and difficulty breathing, seek medical attention."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe. "</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"These particles range from larger respiratory droplets to smaller aerosols. It is important to practice respiratory etiquette, for example by coughing into a flexed elbow, and to stay home and self-isolate until you recover if you feel unwell."</span><span class="p">]</span>
+    <span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span> <span class="k">as</span> <span class="n">W</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="n">spark_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">coalesce</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"idx"</span><span class="p">,</span> <span class="n">F</span><span class="p">.</span><span class="n">monotonically_increasing_id</span><span class="p">())</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark_df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">spark_df</span><span class="p">)</span>
+
+<span class="c1"># Result
+</span>
+<span class="n">res</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"idx as doc_id"</span><span class="p">,</span><span class="s">"explode(filterer) as filter"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="o">+------+--------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">doc_id</span><span class="o">|</span>                                                                          <span class="nb">filter</span><span class="o">|</span>
+<span class="o">+------+--------------------------------------------------------------------------------+</span>
+<span class="o">|</span>     <span class="mi">0</span><span class="o">|</span><span class="p">{</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="n">Coronavirus</span> <span class="n">disease</span> <span class="p">(</span><span class="n">COVID</span><span class="o">-</span><span class="mi">19</span><span class="p">)</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">infectious</span> <span class="n">DISAESE</span> <span class="n">cau</span><span class="p">...</span><span class="o">|</span>
+<span class="o">|</span>     <span class="mi">1</span><span class="o">|</span><span class="p">{</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="n">Most</span> <span class="n">people</span> <span class="n">infected</span> <span class="k">with</span> <span class="n">the</span> <span class="n">virus</span> <span class="n">will</span> <span class="n">experience</span> <span class="n">mild</span> <span class="n">t</span><span class="p">...</span><span class="o">|</span>
+<span class="o">|</span>     <span class="mi">3</span><span class="o">|</span><span class="p">{</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="n">Older</span> <span class="n">people</span> <span class="ow">and</span> <span class="n">those</span> <span class="k">with</span> <span class="n">underlying</span> <span class="n">medical</span> <span class="n">conditions</span> <span class="p">...</span><span class="o">|</span>
+<span class="o">|</span>     <span class="mi">6</span><span class="o">|</span><span class="p">{</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="n">Protect</span> <span class="n">yourself</span> <span class="ow">and</span> <span class="n">others</span> <span class="k">from</span> <span class="n">infection</span> <span class="n">by</span> <span class="n">staying</span> <span class="n">at</span> <span class="n">l</span><span class="p">...</span><span class="o">|</span>
+<span class="o">|</span>    <span class="mi">10</span><span class="o">|</span><span class="p">{</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="n">The</span> <span class="n">virus</span> <span class="n">can</span> <span class="n">spread</span> <span class="k">from</span> <span class="n">an</span> <span class="n">infected</span> <span class="n">person</span><span class="err">’</span><span class="n">s</span> <span class="n">mouth</span> <span class="ow">or</span> <span class="n">no</span><span class="p">...</span><span class="o">|</span>
+<span class="o">+------+--------------------------------------------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+ 
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nc">SentenceDetectorDLModel</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_jsl</span> <span class="k">=</span> <span class="nc">NerModel</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">filterer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentFiltererByNER</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"ner_chunk"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"filterer"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Disease_Syndrome_Disorder"</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">documentAssembler</span><span class="o">,</span>
+  <span class="n">sentenceDetector</span><span class="o">,</span>
+  <span class="n">tokenizer</span><span class="o">,</span>
+  <span class="n">wordEmbeddings</span><span class="o">,</span>
+  <span class="n">ner_jsl</span><span class="o">,</span>
+  <span class="n">nerConverter</span><span class="o">,</span>
+  <span class="n">filterer</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="s">"Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus."</span><span class="o">,</span>
+  <span class="s">"Most people infected with the virus will experience mild to moderate respiratory illness and recover without requiring special treatment."</span><span class="o">,</span>
+  <span class="s">"However, some will become seriously ill and require medical attention."</span><span class="o">,</span>
+  <span class="s">"Older people and those with underlying medical conditions like cardiovascular disease, diabetes, chronic respiratory disease, or cancer are more likely to develop serious illness."</span><span class="o">,</span>
+  <span class="s">"Anyone can get sick with COVID-19 and become seriously ill or die at any age."</span><span class="o">,</span>
+  <span class="s">"The best way to prevent and slow down transmission is to be well informed about the disease and how the virus spreads."</span><span class="o">,</span>
+  <span class="s">"Protect yourself and others from infection by staying at least 1 metre apart from others, wearing a properly fitted mask, and washing your hands or using an alcohol-based rub frequently."</span><span class="o">,</span>
+  <span class="s">"Get vaccinated when it’s your turn and follow local guidance."</span><span class="o">,</span>
+  <span class="s">"Stay home if you feel unwell."</span><span class="o">,</span>
+  <span class="s">"If you have a fever, cough and difficulty breathing, seek medical attention."</span><span class="o">,</span>
+  <span class="s">"The virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe."</span><span class="o">,</span>
+  <span class="s">"These particles range from larger respiratory droplets to smaller aerosols. It is important to practice respiratory etiquette, for example by coughing into a flexed elbow, and to stay home and self-isolate until you recover if you feel unwell."</span>
+<span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dfWithIdx</span> <span class="k">=</span> <span class="nv">data</span><span class="o">.</span><span class="py">coalesce</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="py">withColumn</span><span class="o">(</span><span class="s">"idx"</span><span class="o">,</span> <span class="nf">monotonically_increasing_id</span><span class="o">())</span>
+
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">dfWithIdx</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">dfWithIdx</span><span class="o">)</span>
+
+<span class="nv">result</span><span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span> 
+
+<span class="c1">// result </span>
+
+<span class="o">+------+--------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">doc_id</span><span class="o">|</span>                                                                          <span class="n">filter</span><span class="o">|</span>
+<span class="o">+------+--------------------------------------------------------------------------------+</span>
+<span class="o">|</span>     <span class="mi">0</span><span class="o">|{</span><span class="n">document</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">86</span><span class="o">,</span> <span class="nc">Coronavirus</span> <span class="nf">disease</span> <span class="o">(</span><span class="nc">COVID</span><span class="o">-</span><span class="mi">19</span><span class="o">)</span> <span class="n">is</span> <span class="n">an</span> <span class="n">infectious</span> <span class="nc">DISAESE</span> <span class="n">cau</span><span class="o">...|</span>
+<span class="o">|</span>     <span class="mi">1</span><span class="o">|{</span><span class="n">document</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">136</span><span class="o">,</span> <span class="nc">Most</span> <span class="n">people</span> <span class="n">infected</span> <span class="k">with</span> <span class="n">the</span> <span class="n">virus</span> <span class="n">will</span> <span class="n">experience</span> <span class="n">mild</span> <span class="n">t</span><span class="o">...|</span>
+<span class="o">|</span>     <span class="mi">3</span><span class="o">|{</span><span class="n">document</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">178</span><span class="o">,</span> <span class="nc">Older</span> <span class="n">people</span> <span class="n">and</span> <span class="n">those</span> <span class="k">with</span> <span class="n">underlying</span> <span class="n">medical</span> <span class="n">conditions</span> <span class="o">...|</span>
+<span class="o">|</span>     <span class="mi">6</span><span class="o">|{</span><span class="n">document</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">185</span><span class="o">,</span> <span class="nc">Protect</span> <span class="n">yourself</span> <span class="n">and</span> <span class="n">others</span> <span class="n">from</span> <span class="n">infection</span> <span class="n">by</span> <span class="n">staying</span> <span class="n">at</span> <span class="n">l</span><span class="o">...|</span>
+<span class="o">|</span>    <span class="mi">10</span><span class="o">|{</span><span class="n">document</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">134</span><span class="o">,</span> <span class="nc">The</span> <span class="n">virus</span> <span class="n">can</span> <span class="n">spread</span> <span class="n">from</span> <span class="n">an</span> <span class="n">infected</span> <span class="n">person</span><span class="err">’</span><span class="n">s</span> <span class="n">mouth</span> <span class="n">or</span> <span class="n">no</span><span class="o">...|</span>
+<span class="o">+------+--------------------------------------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -18882,6 +19124,159 @@ flexible and extensible framework for interacting with language models in a Pyth
 
 <div class="tabs-model-aproach">
 
+  <h2 id="largefewshotclassifier">LargeFewShotClassifier</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>The  LargeFewShotClassifierModel annotator is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes. Key parameters include batch size, case sensitivity, and maximum sentence length.Large Few-Shot Classifier Model can achieve impressive performance even with minimal labeled data.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">inputCols</code>: The name of the columns containing the input annotations. It can read either a String column or an Array.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">outputCol</code>: The name of the column in Document type that is generated. We can specify only one column here.</p>
+      </li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/LargeFewShotClassifier.html">LargeFewShotClassifier</a></td>
+          <td><strong>Notebook:</strong> <a href="https://https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare/30.4.Text_Classification_with_LargeFewShotClassifier.ipynb">Mapper2Chunk</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">large_few_shot_classifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">LargeFewShotClassifierModel</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"large_fewshot_classifier_ade"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">large_few_shot_classifier</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="s">"The patient developed severe liver toxicity after taking the medication for three weeks"</span><span class="p">,</span>
+                              <span class="s">"He experienced no complications during the treatment and reported feeling much better."</span><span class="p">,</span>
+                              <span class="s">"She experienced a sudden drop in blood pressure after the administration of the new drug."</span><span class="p">,</span>
+                              <span class="s">"The doctor recommended a daily dosage of the vitamin supplement to improve her health."</span><span class="p">],</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s">"prediction.result"</span><span class="p">).</span><span class="n">getItem</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">"result"</span><span class="p">)).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1">## Result
+</span>
+<span class="o">+-----------------------------------------------------------------------------------------+------+</span>
+<span class="o">|</span><span class="n">text</span>                                                                                     <span class="o">|</span><span class="n">result</span><span class="o">|</span>
+<span class="o">+-----------------------------------------------------------------------------------------+------+</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">patient</span> <span class="n">developed</span> <span class="n">severe</span> <span class="n">liver</span> <span class="n">toxicity</span> <span class="n">after</span> <span class="n">taking</span> <span class="n">the</span> <span class="n">medication</span> <span class="k">for</span> <span class="n">three</span> <span class="n">weeks</span>  <span class="o">|</span><span class="n">ADE</span>   <span class="o">|</span>
+<span class="o">|</span><span class="n">He</span> <span class="n">experienced</span> <span class="n">no</span> <span class="n">complications</span> <span class="n">during</span> <span class="n">the</span> <span class="n">treatment</span> <span class="ow">and</span> <span class="n">reported</span> <span class="n">feeling</span> <span class="n">much</span> <span class="n">better</span><span class="p">.</span>   <span class="o">|</span><span class="n">noADE</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">She</span> <span class="n">experienced</span> <span class="n">a</span> <span class="n">sudden</span> <span class="n">drop</span> <span class="ow">in</span> <span class="n">blood</span> <span class="n">pressure</span> <span class="n">after</span> <span class="n">the</span> <span class="n">administration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">new</span> <span class="n">drug</span><span class="p">.</span><span class="o">|</span><span class="n">ADE</span>   <span class="o">|</span>
+<span class="o">|</span><span class="n">The</span> <span class="n">doctor</span> <span class="n">recommended</span> <span class="n">a</span> <span class="n">daily</span> <span class="n">dosage</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vitamin</span> <span class="n">supplement</span> <span class="n">to</span> <span class="n">improve</span> <span class="n">her</span> <span class="n">health</span><span class="p">.</span>   <span class="o">|</span><span class="n">noADE</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------------------------------------------------------+------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">largeFewShotClassifier</span> <span class="k">=</span> <span class="nc">LargeFewShotClassifierModel</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"large_fewshot_classifier_ade"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"prediction"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">documentAssembler</span><span class="o">,</span>
+    <span class="n">largeFewShotClassifier</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">textList</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+    <span class="o">(</span><span class="s">"The patient developed severe liver toxicity after taking the medication for three weeks"</span><span class="o">),</span>
+    <span class="o">(</span><span class="s">"He experienced no complications during the treatment and reported feeling much better."</span><span class="o">),</span>
+    <span class="o">(</span><span class="s">"She experienced a sudden drop in blood pressure after the administration of the new drug."</span><span class="o">),</span>
+    <span class="o">(</span><span class="s">"The doctor recommended a daily dosage of the vitamin supplement to improve her health."</span><span class="o">)</span>
+<span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">createDataFrame</span><span class="o">(</span><span class="n">textList</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="nf">col</span><span class="o">(</span><span class="s">"text"</span><span class="o">),</span> <span class="nf">col</span><span class="o">(</span><span class="s">"prediction.result"</span><span class="o">).</span><span class="py">getItem</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="py">alias</span><span class="o">(</span><span class="s">"result"</span><span class="o">)).</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+
+<span class="c1">// Result</span>
+
+<span class="o">+-----------------------------------------------------------------------------------------+------+</span>
+<span class="o">|</span><span class="n">text</span>                                                                                     <span class="o">|</span><span class="n">result</span><span class="o">|</span>
+<span class="o">+-----------------------------------------------------------------------------------------+------+</span>
+<span class="o">|</span><span class="nc">The</span> <span class="n">patient</span> <span class="n">developed</span> <span class="n">severe</span> <span class="n">liver</span> <span class="n">toxicity</span> <span class="n">after</span> <span class="n">taking</span> <span class="n">the</span> <span class="n">medication</span> <span class="k">for</span> <span class="n">three</span> <span class="n">weeks</span>  <span class="o">|</span><span class="nc">ADE</span>   <span class="o">|</span>
+<span class="o">|</span><span class="nc">He</span> <span class="n">experienced</span> <span class="n">no</span> <span class="n">complications</span> <span class="n">during</span> <span class="n">the</span> <span class="n">treatment</span> <span class="n">and</span> <span class="n">reported</span> <span class="n">feeling</span> <span class="n">much</span> <span class="n">better</span><span class="o">.</span>   <span class="o">|</span><span class="n">noADE</span> <span class="o">|</span>
+<span class="o">|</span><span class="nc">She</span> <span class="n">experienced</span> <span class="n">a</span> <span class="n">sudden</span> <span class="n">drop</span> <span class="n">in</span> <span class="n">blood</span> <span class="n">pressure</span> <span class="n">after</span> <span class="n">the</span> <span class="n">administration</span> <span class="n">of</span> <span class="n">the</span> <span class="k">new</span> <span class="n">drug</span><span class="o">.|</span><span class="nc">ADE</span>   <span class="o">|</span>
+<span class="o">|</span><span class="nc">The</span> <span class="n">doctor</span> <span class="n">recommended</span> <span class="n">a</span> <span class="n">daily</span> <span class="n">dosage</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vitamin</span> <span class="n">supplement</span> <span class="n">to</span> <span class="n">improve</span> <span class="n">her</span> <span class="n">health</span><span class="o">.</span>   <span class="o">|</span><span class="n">noADE</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------------------------------------------------------+------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
   <h2 id="lightdeidentification">LightDeIdentification</h2>
 
   <div class="annotator_type tac mont">Model</div>
@@ -19191,6 +19586,192 @@ You can specify the entity and the terms to be used for obfuscation.</p>
 <span class="kt">|PCP</span> <span class="kt">:</span> <span class="kt">Oliveira</span> <span class="o">,</span> <span class="mi">95</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span> <span class="o">,</span> <span class="nc">Record</span> <span class="n">date</span> <span class="k">:</span> <span class="err">2079</span><span class="kt">-</span><span class="err">11</span><span class="kt">-</span><span class="err">09</span> <span class="kt">.</span>            <span class="kt">|PCP</span> <span class="kt">:</span> <span class="kt">Joe</span> <span class="o">,</span> <span class="mi">95</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span> <span class="o">,</span> <span class="nc">Record</span> <span class="n">date</span> <span class="k">:</span> <span class="err">2079</span><span class="kt">-</span><span class="err">11</span><span class="kt">-</span><span class="err">16</span> <span class="kt">.|</span>
 <span class="kt">|Cocke</span> <span class="kt">County</span> <span class="kt">Baptist</span> <span class="kt">Hospital</span> <span class="o">,</span> <span class="mi">0295</span> <span class="nc">Keats</span> <span class="nc">Street</span> <span class="o">,</span> <span class="nc">Phone</span> <span class="mi">55</span><span class="o">-</span><span class="mi">555</span><span class="o">-</span><span class="mf">5555.</span><span class="o">|</span><span class="nc">Medical</span> <span class="nc">Center</span> <span class="o">,</span> <span class="nc">Main</span> <span class="nc">Street</span> <span class="o">,</span> <span class="nc">Phone</span> <span class="mi">62</span><span class="o">-</span><span class="mi">130</span><span class="o">-</span><span class="mf">8657.</span>    <span class="o">|</span>
 <span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="mapper2chunk">Mapper2Chunk</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>This annotator converts ‘LABELED_DEPENDENCY’ type annotations coming from [[ChunkMapper]] into ‘CHUNK’ type to create new chunk-type column, compatible with annotators that use chunk type as input.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">filterNoneValues</code>: (Bool) Filter ‘NONE’ values</li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">LABELED_DEPENDENCY</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CHUNK</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="">Mapper2Chunk</a></td>
+          <td><strong>Scala API:</strong> <a href="">Mapper2Chunk</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Mapper2Chunk.ipynb">Mapper2Chunk</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="c1"># Annotator that transforms a text column from dataframe into an Annotation ready for NLP
+</span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
+
+<span class="c1"># Tokenizer splits words in a relevant format for NLP
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+
+<span class="c1"># Clinical word embeddings trained on PubMED dataset
+</span><span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="c1"># NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets
+</span><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter_name</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">chunkMapper</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"drug_action_treatment_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"action"</span><span class="p">])</span>
+
+<span class="n">mapper2chunk</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Mapper2Chunk</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"relations"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setFilterNoneValues</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span> 
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">clinical_ner</span><span class="p">,</span>
+    <span class="n">ner_converter_name</span><span class="p">,</span>
+    <span class="n">chunkMapper</span><span class="p">,</span>
+    <span class="n">mapper2chunk</span>
+    <span class="p">])</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"Patient resting in bed. Patient given azithromycin without any difficulty. Patient denies nausea at this time. zofran declined. Patient is also having intermittent sweating"</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1">## Result
+</span>
+<span class="o">+--------------------------+--------------+</span>
+<span class="o">|</span><span class="n">result</span>                    <span class="o">|</span><span class="n">annotatorType</span> <span class="o">|</span>
+<span class="o">+--------------------------+--------------+</span>
+<span class="o">|</span><span class="p">[</span><span class="n">bactericidal</span><span class="p">,</span> <span class="n">antiemetic</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="n">chunk</span><span class="p">,</span> <span class="n">chunk</span><span class="p">]</span><span class="o">|</span>
+<span class="o">+--------------------------+--------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clinical_ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter_name</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">chunkMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"drug_action_treatment_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"relations"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRels</span><span class="o">(</span><span class="s">"action"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">mapper2chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Mapper2Chunk</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"relations"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setFilterNoneValues</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">documentAssembler</span><span class="o">,</span> 
+    <span class="n">tokenizer</span><span class="o">,</span> 
+    <span class="n">word_embeddings</span><span class="o">,</span> 
+    <span class="n">clinical_ner</span><span class="o">,</span> 
+    <span class="n">ner_converter_name</span><span class="o">,</span> 
+    <span class="n">chunkMapper</span><span class="o">,</span> 
+    <span class="n">mapper2chunk</span><span class="o">))</span>
+
+
+<span class="k">val</span> <span class="nv">test_data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""Patient resting in bed. Patient given azithromycin without any difficulty. Patient denies nausea at this time. zofran declined. Patient is also having intermittent sweating"""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">res</span> <span class="k">=</span> <span class="nv">mapperPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">test_data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">test_data</span><span class="o">)</span>
+
+<span class="c1">// Show results</span>
+
+<span class="o">+--------------------------+--------------+</span>
+<span class="o">|</span><span class="n">result</span>                    <span class="o">|</span><span class="n">annotatorType</span> <span class="o">|</span>
+<span class="o">+--------------------------+--------------+</span>
+<span class="o">|[</span><span class="kt">bactericidal</span>, <span class="kt">antiemetic</span><span class="o">]|[</span><span class="kt">chunk</span>, <span class="kt">chunk</span><span class="o">]|</span>
+<span class="o">+--------------------------+--------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -25512,6 +26093,15 @@ He was seen by the endocrinology service and she was discharged on 40 units of i
 
     <ul>
       <li><code class="language-plaintext highlighter-rouge">setUseReplacement</code>: (Boolean) Select what output format should be used. By default it will use the current day.</li>
+      <li><code class="language-plaintext highlighter-rouge">setPlaceHolderDelimiters</code>: (String) Sets the placeholder string to use when noneValuesTo is set to “place_holder”. This placeholder string will be wrapped by the delimiters defined in placeHolderDelimiters.</li>
+      <li><code class="language-plaintext highlighter-rouge">setPlaceHolder</code>: (String) Determines the action to take when encountering a value of ‘NONE’ in the annotation. This parameter can take one of the following three string values:
+        <ul>
+          <li>“entity”: Replaces ‘NONE’ values with the entity field extracted from the annotation, if available. If the entity field is not available, it uses the string “NONE” wrapped by the specified delimiters.</li>
+          <li>“place_holder”: Replaces ‘NONE’ values with a placeholder string wrapped by the specified delimiters.</li>
+          <li>“skip”: Retains the original target_text from the annotation’s metadata if available. If not available, it retains the original annotation result.</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">setNoneValuesTo</code>: (String) Sets an array of two strings used as delimiters to wrap the placeholder or entity field when noneValuesTo is set to “place_holder” or “entity”. The first element of the array is the prefix delimiter, and the second element is the suffix delimiter.</li>
     </ul>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
@@ -25624,7 +26214,10 @@ Fitzpatrick#NAME
 <span class="n">replacer_name</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Replacer</span><span class="p">()</span>\
   <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"replacement"</span><span class="p">,</span><span class="s">"sentence"</span><span class="p">)</span>\
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"obfuscated_document_name"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setUseReplacement</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">setUseReplacement</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setNoneValuesTo</span><span class="p">(</span><span class="s">"entity"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setPlaceHolder</span><span class="p">(</span><span class="s">"******"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setPlaceHolderDelimiters</span><span class="p">([</span><span class="s">"&lt;"</span><span class="p">,</span> <span class="s">"&gt;"</span><span class="p">])</span>
 
 <span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
     <span class="n">documentAssembler</span><span class="p">,</span> 
@@ -25738,6 +26331,9 @@ Fitzpatrick#NAME
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"replacement"</span><span class="o">,</span><span class="s">"sentence"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"obfuscated_document_name"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setUseReplacement</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setNoneValuesTo</span><span class="o">(</span><span class="s">"entity"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPlaceHolder</span><span class="o">(</span><span class="s">"******"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPlaceHolderDelimiters</span><span class="o">([</span><span class="err">"</span><span class="kt">&lt;</span><span class="err">"</span>, <span class="err">"</span><span class="kt">&gt;</span><span class="err">"</span><span class="o">])</span>
 
 <span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
     <span class="n">documentAssembler</span><span class="o">,</span> 
