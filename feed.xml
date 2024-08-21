@@ -1,25 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-08-21T16:42:42+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">JSL_MedM_v2 (LLM - q16)</title><link href="/2024/08/21/jsl_medm_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedM_v2 (LLM - q16)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_medm_q16_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_medm_q16_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-08-21T17:45:53+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">JSL_MedM_v2 (LLM - q16)</title><link href="/2024/08/21/jsl_medm_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedM_v2 (LLM - q16)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_medm_q16_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_medm_q16_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medm_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -27,17 +35,18 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medm_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -45,71 +54,61 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;The correct answer is E: Nitrofurantoin.
+```bash
+&quot;&quot;&quot;The correct answer is E: Nitrofurantoin.
 
 The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_medm_q16_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q16_v2 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedM_v2 (LLM - q8)</title><link href="/2024/08/21/jsl_medm_q18_v2_en.html" rel="alternate" type="text/html" title="JSL_MedM_v2 (LLM - q8)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_medm_q18_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_medm_q18_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_medm_q16_v2|
+|Compatibility:|Healthcare NLP 5.4.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q16_v2 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedM_v2 (LLM - q8)</title><link href="/2024/08/21/jsl_medm_q18_v2_en.html" rel="alternate" type="text/html" title="JSL_MedM_v2 (LLM - q8)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_medm_q18_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_medm_q18_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medm_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_zs_q16_v2_en_5.4.0_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -117,17 +116,18 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medm_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -135,71 +135,61 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;The correct answer is E: Nitrofurantoin.
+```bash
+&quot;&quot;&quot;The correct answer is E: Nitrofurantoin.
 
 The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_medm_q8_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q8_v2 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedM_v2 (LLM - q4)</title><link href="/2024/08/21/jsl_medm_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedM_v2 (LLM - q4)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_medm_q4_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_medm_q4_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_medm_q8_v2|
+|Compatibility:|Healthcare NLP 5.4.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q8_v2 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedM_v2 (LLM - q4)</title><link href="/2024/08/21/jsl_medm_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedM_v2 (LLM - q4)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_medm_q4_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_medm_q4_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medm_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -207,17 +197,18 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_medm_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -225,71 +216,61 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;The correct answer is E: Nitrofurantoin.
+```bash
+&quot;&quot;&quot;The correct answer is E: Nitrofurantoin.
 
 The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_medm_q4_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q4_v2 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedS_NER_v2 (LLM - q16)</title><link href="/2024/08/21/jsl_meds_ner_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER_v2 (LLM - q16)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_ner_q16_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_ner_q16_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_medm_q4_v2|
+|Compatibility:|Healthcare NLP 5.4.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_medm_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_medm_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot;The correct answer is E: Nitrofurantoin. The patient is presenting with symptoms of urinary tract infection (UTI), which is common during pregnancy. Nitrofurantoin is a first-line antibiotic for uncomplicated UTI during pregnancy. It is safe and effective in treating UTI during pregnancy and has been used for many years without any adverse effects on the fetus. &quot;&quot;&quot; Model Information Model Name: jsl_medm_q4_v2 Compatibility: Healthcare NLP 5.4.0+ License: Licensed Edition: Official Language: en Size: 5.7 GB</summary></entry><entry><title type="html">JSL_MedS_NER_v2 (LLM - q16)</title><link href="/2024/08/21/jsl_meds_ner_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER_v2 (LLM - q16)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_ner_q16_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_ner_q16_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reaction&lt;/code&gt;. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like `name` and `reaction`. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q16_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q16_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_ner_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q16_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q16_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;&amp;lt;|input|&amp;gt;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;&lt;|input|&gt;
 ### Template:
 {
     &quot;drugs&quot;: [
@@ -300,22 +281,23 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
     ]
 }
 ### Text:
-I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
 I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_ner_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;&amp;lt;|input|&amp;gt;
+val prompt = &quot;&quot;&quot;&lt;|input|&gt;
 ### Template:
 {
     &quot;drugs&quot;: [
@@ -326,21 +308,22 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
     ]
 }
 ### Text:
-I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
 I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'''
+```bash
+'''
 {
     &quot;drugs&quot;: [
         {
@@ -353,59 +336,48 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
         }
     ]
 }
-'''&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+'''
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_ner_q16_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.6 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot;&amp;lt;|input|&amp;gt; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;&amp;lt;|input|&amp;gt; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_meds_ner_q16_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_NER_v2 (LLM - q4)</title><link href="/2024/08/21/jsl_meds_ner_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER_v2 (LLM - q4)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_ner_q4_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_ner_q4_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_ner_q16_v2|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.6 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot;&amp;lt;|input|&amp;gt; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;&amp;lt;|input|&amp;gt; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_meds_ner_q16_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_NER_v2 (LLM - q4)</title><link href="/2024/08/21/jsl_meds_ner_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER_v2 (LLM - q4)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_ner_q4_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_ner_q4_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reaction&lt;/code&gt;. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like `name` and `reaction`. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q4_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q4_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_ner_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q4_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q4_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 ### Template:
 {
     &quot;drugs&quot;: [
@@ -416,22 +388,23 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
     ]
 }
 ### Text:
-I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
 I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_ner_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;&amp;lt;|input|&amp;gt;
+val prompt = &quot;&quot;&quot;&lt;|input|&gt;
 ### Template:
 {
     &quot;drugs&quot;: [
@@ -442,21 +415,22 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
     ]
 }
 ### Text:
-I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
 I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'''
+```bash
+'''
 {
     &quot;drugs&quot;: [
         {
@@ -469,59 +443,48 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
         }
     ]
 }
-'''&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+'''
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_ner_q4_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;2.2 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;&amp;lt;|input|&amp;gt; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_meds_ner_q4_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">Jsl_Meds_NER_v2 (LLM - q8)</title><link href="/2024/08/21/jsl_meds_ner_q8_v2_en.html" rel="alternate" type="text/html" title="Jsl_Meds_NER_v2 (LLM - q8)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_ner_q8_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_ner_q8_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_ner_q4_v2|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|2.2 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot;&amp;lt;|input|&amp;gt; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_meds_ner_q4_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">Jsl_Meds_NER_v2 (LLM - q8)</title><link href="/2024/08/21/jsl_meds_ner_q8_v2_en.html" rel="alternate" type="text/html" title="Jsl_Meds_NER_v2 (LLM - q8)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_ner_q8_v2_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_ner_q8_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reaction&lt;/code&gt;. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.&lt;/p&gt;
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like `name` and `reaction`. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q8_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q8_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_ner_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q8_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q8_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 ### Template:
 {
     &quot;drugs&quot;: [
@@ -532,22 +495,23 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
     ]
 }
 ### Text:
-I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
 I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_ner_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 ### Template:
 {
     &quot;drugs&quot;: [
@@ -558,21 +522,22 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
     ]
 }
 ### Text:
-I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems .
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
 I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'''
+```bash
+'''
 {
     &quot;drugs&quot;: [
         {
@@ -585,59 +550,48 @@ So far its been very good , pains almost gone , but I feel a bit weird , did n't
         }
     ]
 }
-'''&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+'''
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_ner_q8_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;3.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_meds_ner_q8_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">JSL_MedS_Rag_v1 (LLM - q16)</title><link href="/2024/08/21/jsl_meds_rag_q16_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_Rag_v1 (LLM - q16)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_rag_q16_v1_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_rag_q16_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_ner_q8_v2|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|3.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since name is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_ner_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_ner_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;&quot;, &quot;reactions&quot;: [] } ] } ### Text: I feel a bit drowsy &amp;amp; have a little blurred vision , and some gastric problems . I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it . Due to my arthritis getting progressively worse , to the point where I am in tears with the agony. Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes . So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50. &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results ''' { &quot;drugs&quot;: [ { &quot;name&quot;: &quot;Arthrotec&quot;, &quot;reactions&quot;: [ &quot;drowsy&quot;, &quot;blurred vision&quot;, &quot;gastric problems&quot; ] } ] } ''' Model Information Model Name: jsl_meds_ner_q8_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">JSL_MedS_Rag_v1 (LLM - q16)</title><link href="/2024/08/21/jsl_meds_rag_q16_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_Rag_v1 (LLM - q16)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_rag_q16_v1_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_rag_q16_v1_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q16_v1_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q16_v1_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_rag_q16_v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q16_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q16_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 ### Template:
 Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'.
 If you don't know the answer, just say that you don't know, don't try to make up an answer .
@@ -645,21 +599,22 @@ If you don't know the answer, just say that you don't know, don't try to make up
 
 ### Context:
 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.',
-'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\xa0&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.',
+'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.',
 
 ### Questions:
 relationship between diabetes and obesity?
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_rag_q16_v1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 ### Template:
 Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'.
 If you don't know the answer, just say that you don't know, don't try to make up an answer .
@@ -670,73 +625,63 @@ If you don't know the answer, just say that you don't know, don't try to make up
 
 ### Questions:
 relationship between diabetes and obesity?
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes.
 Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin.
 This resistance can result in elevated blood glucose levels, leading to diabetes.
 Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_rag_q16_v1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.6 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes. Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin. This resistance can result in elevated blood glucose levels, leading to diabetes. Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin &quot;&quot;&quot; Model Information Model Name: jsl_meds_rag_q16_v1 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_Rag_v1 (LLM - q4)</title><link href="/2024/08/21/jsl_meds_rag_q4_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_Rag_v1 (LLM - q4)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_rag_q4_v1_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_rag_q4_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_rag_q16_v1|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.6 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q16_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes. Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin. This resistance can result in elevated blood glucose levels, leading to diabetes. Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin &quot;&quot;&quot; Model Information Model Name: jsl_meds_rag_q16_v1 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_Rag_v1 (LLM - q4)</title><link href="/2024/08/21/jsl_meds_rag_q4_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_Rag_v1 (LLM - q4)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_rag_q4_v1_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_rag_q4_v1_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q4_v1_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q4_v1_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_rag_q4_v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q4_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q4_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 ### Template:
 Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'.
 If you don't know the answer, just say that you don't know, don't try to make up an answer .
@@ -744,21 +689,22 @@ If you don't know the answer, just say that you don't know, don't try to make up
 
 ### Context:
 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.',
-'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\xa0&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.',
+'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.',
 
 ### Questions:
 relationship between diabetes and obesity?
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_rag_q4_v1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 ### Template:
 Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'.
 If you don't know the answer, just say that you don't know, don't try to make up an answer .
@@ -769,73 +715,63 @@ If you don't know the answer, just say that you don't know, don't try to make up
 
 ### Questions:
 relationship between diabetes and obesity?
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes.
 Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin.
 This resistance can result in elevated blood glucose levels, leading to diabetes.
 Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_rag_q4_v1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;2.2 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes. Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin. This resistance can result in elevated blood glucose levels, leading to diabetes. Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin &quot;&quot;&quot; Model Information Model Name: jsl_meds_rag_q4_v1 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_Rag_v1 (LLM - q8)</title><link href="/2024/08/21/jsl_meds_rag_q8_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_Rag_v1 (LLM - q8)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_rag_q8_v1_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_rag_q8_v1_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_rag_q4_v1|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|2.2 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q4_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes. Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin. This resistance can result in elevated blood glucose levels, leading to diabetes. Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin &quot;&quot;&quot; Model Information Model Name: jsl_meds_rag_q4_v1 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_Rag_v1 (LLM - q8)</title><link href="/2024/08/21/jsl_meds_rag_q8_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_Rag_v1 (LLM - q8)" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/jsl_meds_rag_q8_v1_en</id><content type="html" xml:base="/2024/08/21/jsl_meds_rag_q8_v1_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q8_v1_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q8_v1_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_rag_q8_v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q8_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_rag_q8_v1_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 ### Template:
 Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'.
 If you don't know the answer, just say that you don't know, don't try to make up an answer .
@@ -843,21 +779,22 @@ If you don't know the answer, just say that you don't know, don't try to make up
 
 ### Context:
 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.',
-'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\xa0&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.',
+'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.',
 
 ### Questions:
 relationship between diabetes and obesity?
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_rag_q8_v1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 ### Template:
 Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'.
 If you don't know the answer, just say that you don't know, don't try to make up an answer .
@@ -868,53 +805,35 @@ If you don't know the answer, just say that you don't know, don't try to make up
 
 ### Questions:
 relationship between diabetes and obesity?
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes.
 Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin.
 This resistance can result in elevated blood glucose levels, leading to diabetes.
 Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_rag_q8_v1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;3.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes. Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin. This resistance can result in elevated blood glucose levels, leading to diabetes. Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin &quot;&quot;&quot; Model Information Model Name: jsl_meds_rag_q8_v1 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">Email Regex Matcher</title><link href="/2024/08/21/email_matcher_en.html" rel="alternate" type="text/html" title="Email Regex Matcher" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/email_matcher_en</id><content type="html" xml:base="/2024/08/21/email_matcher_en.html">## Description
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_rag_q8_v1|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|3.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_rag_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_rag_q8_v1&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Template: Use the following pieces of context to answer the user's question. If you return an answer, end with 'It's my pleasure'. If you don't know the answer, just say that you don't know, don't try to make up an answer . ### Context: 'Background: Diabetes is referred to a group of diseases characterized by high glucose levels in blood. It is caused by a deficiency in the production or function of insulin or both, which can occur because of different reasons, resulting in protein and lipid metabolic disorders. The aim of this study was to systematically review the prevalence and incidence of type 1 diabetes in the world.', 'A higher prevalence of diabetes mellitus was observed in Addis Ababa public health institutions.\xa0Factors such as age, alcohol drinking, HDL, triglycerides, and vagarious physical activity were associated with diabetes mellitus. Concerned bodies need to work over the ever-increasing diabetes mellitus in Addis Ababa.', ### Questions: relationship between diabetes and obesity? &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Diabetes and obesity are closely related conditions. Obesity is a significant risk factor for the development of type 2 diabetes. Excess body fat, particularly in the abdominal area, can lead to insulin resistance, where the body's cells do not respond effectively to insulin. This resistance can result in elevated blood glucose levels, leading to diabetes. Additionally, obesity can also contribute to the development of type 1 diabetes by triggering an autoimmune response that destines the body's cells to be resistant to insulin &quot;&quot;&quot; Model Information Model Name: jsl_meds_rag_q8_v1 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">Email Regex Matcher</title><link href="/2024/08/21/email_matcher_en.html" rel="alternate" type="text/html" title="Email Regex Matcher" /><published>2024-08-21T00:00:00+00:00</published><updated>2024-08-21T00:00:00+00:00</updated><id>/2024/08/21/email_matcher_en</id><content type="html" xml:base="/2024/08/21/email_matcher_en.html">## Description
 
 This model extracts emails in clinical notes using rule-based RegexMatcherInternal annotator.
 
