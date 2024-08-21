@@ -69,6 +69,7 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="GraphFinisher" summary="Helper class to convert the knowledge graph from GraphExtraction into a generic format, such as RDF."%}
 {% include templates/anno_table_entry.md path="" name="ImageAssembler" summary="Prepares images read by Spark into a format that is processable by Spark NLP."%}
 {% include templates/anno_table_entry.md path="" name="LanguageDetectorDL" summary="Language Identification and Detection by using CNN and RNN architectures in TensorFlow."%}
+{% include templates/anno_table_entry.md path="" name="LargeFewShotClassifier" summary="This annotator is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes."%}
 {% include templates/anno_table_entry.md path="" name="Lemmatizer" summary="Finds lemmas out of words with the objective of returning a base dictionary word."%}
 {% include templates/anno_table_entry.md path="" name="MultiClassifierDL" summary="Multi-label Text Classification."%}
 {% include templates/anno_table_entry.md path="" name="MultiDateMatcher" summary="Matches standard date formats into a provided format."%}
