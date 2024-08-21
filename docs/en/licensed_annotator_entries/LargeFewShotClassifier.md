@@ -116,6 +116,10 @@ result.select(col("text"), col("prediction.result").getItem(0).alias("result")).
 [LargeFewShotClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/LargeFewShotClassifier.html)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[Mapper2Chunk](https://https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare/30.4.Text_Classification_with_LargeFewShotClassifier.ipynb)
+{%- endcapture -%}
+
 
 
 
@@ -128,4 +132,5 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
+model_notebook_link=model_notebook_link
 %}
