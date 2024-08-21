@@ -40,7 +40,7 @@ We are delighted to announce remarkable enhancements and updates in our latest r
     - Resolved the AssertionMerger loading issue; an exception was thrown when attempting to load the AssertionMerger model.
 + Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
     - New [DocumentFiltererByNER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb) MOOC Notebook
-    - New [LargeFewShotClassifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/LargeFewShotClassifier.ipynb) MOOC Notebook
+    - New [LargeFewShotClassifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/LargeFewShotClassifierModel.ipynb) MOOC Notebook
     - New [Mapper2Chunk](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Mapper2Chunk.ipynb) MOOC Notebook
     - Updated [AssertionChunkConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb) MOOC Notebook
     - Updated [ContextualAssertion](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualAssertion.ipynb) MOOC Notebook
@@ -68,12 +68,12 @@ Discover nine newly released large language models designed to tackle various ta
 {:.table-model-big}
 | Model Name              | Description |
 |-------------------------|-------------|
-| [JSL_MedM_q16_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q16_v2_en.html)    | Summarization and Q&A |
-| [JSL_MedM_q8_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q8_v2_en.html)      | Summarization and Q&A |
-| [JSL_MedM_q4_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q4_v2_en.html)      | Summarization and Q&A |
-| [JSL_MedS_RAG_q16_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q16_v1_en.html)| Summarization, Q&A, RAG, and Chat |
-| [JSL_MedS_RAG_q8_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q8_v1_en.html)  | Summarization, Q&A, RAG, and Chat |
-| [JSL_MedS_RAG_q4_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q4_v1_en.html)  | Summarization, Q&A, RAG, and Chat |
+| [JSL_MedM_q16_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q16_v2_en.html)    | Summarization, Q&A, RAG, and Chat |
+| [JSL_MedM_q8_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q8_v2_en.html)      | Summarization, Q&A, RAG, and Chat |
+| [JSL_MedM_q4_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q4_v2_en.html)      | Summarization, Q&A, RAG, and Chat |
+| [JSL_MedS_RAG_q16_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q16_v1_en.html)| LLM component of Retrieval Augmented Generation (RAG)  |
+| [JSL_MedS_RAG_q8_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q8_v1_en.html)  | LLM component of Retrieval Augmented Generation (RAG)  |
+| [JSL_MedS_RAG_q4_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q4_v1_en.html)  | LLM component of Retrieval Augmented Generation (RAG)  |
 | [JSL_MedS_NER_q16_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_ner_q16_v2_en.html)| Extract and link medical named entities |
 | [JSL_MedS_NER_q8_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_ner_q8_v2_en.html)  | Extract and link medical named entities |
 | [JSL_MedS_NER_q4_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_ner_q4_v2_en.html)  | Extract and link medical named entities |
@@ -658,7 +658,7 @@ Explore the latest developments in healthcare NLP through our new blog posts, wh
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
 - New [DocumentFiltererByNER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb) MOOC Notebook
-- New [LargeFewShotClassifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/LargeFewShotClassifier.ipynb) MOOC Notebook
+- New [LargeFewShotClassifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/LargeFewShotClassifierModel.ipynb) MOOC Notebook
 - New [Mapper2Chunk](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Mapper2Chunk.ipynb) MOOC Notebook
 - Updated [AssertionChunkConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb) MOOC Notebook
 - Updated [ContextualAssertion](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualAssertion.ipynb) MOOC Notebook
