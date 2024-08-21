@@ -38,42 +38,42 @@ Predicted Entities = `ICD-10-CM Codes`, `billable status`, `hcc status`, `hcc sc
 ```python
 
 document_assembler = DocumentAssembler()\
-.setInputCol("text")\
-.setOutputCol("document")
+  .setInputCol("text")\
+  .setOutputCol("document")
 
 sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")
-.setInputCols(["document"])
-.setOutputCol("sentence")
+  .setInputCols(["document"])
+  .setOutputCol("sentence")
 
 tokenizer = Tokenizer()
-.setInputCols(["sentence"])
-.setOutputCol("token")
+  .setInputCols(["sentence"])
+  .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
-.setOutputCol("word_embeddings")
+  .setInputCols(["sentence", "token"])
+  .setOutputCol("word_embeddings")
 
 ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token", "word_embeddings"])
-.setOutputCol("ner")
+  .setInputCols(["sentence", "token", "word_embeddings"])
+  .setOutputCol("ner")
 ner_converter = NerConverterInternal()
-.setInputCols(["sentence", "token", "ner"])
-.setOutputCol("ner_chunk")
-.setWhiteList(["PROBLEM"])
+  .setInputCols(["sentence", "token", "ner"])
+  .setOutputCol("ner_chunk")
+  .setWhiteList(["PROBLEM"])
 
 c2doc = Chunk2Doc()
-.setInputCols("ner_chunk")
-.setOutputCol("ner_chunk_doc")
+  .setInputCols("ner_chunk")
+  .setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
-.setInputCols(["ner_chunk_doc"])
-.setOutputCol("sentence_embeddings")
-.setCaseSensitive(False)
+  .setInputCols(["ner_chunk_doc"])
+  .setOutputCol("sentence_embeddings")
+  .setCaseSensitive(False)
 
 icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_slim_billable_hcc", "en", "clinical/models")
-.setInputCols(["sentence_embeddings"])
-.setOutputCol("resolution")
-.setDistanceFunction("EUCLIDEAN")
+  .setInputCols(["sentence_embeddings"])
+  .setOutputCol("resolution")
+  .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler, sentenceDetectorDL, tokenizer, word_embeddings, ner, ner_converter, c2doc, sbert_embedder, icd_resolver])
 
@@ -116,6 +116,7 @@ val chunk2doc = new Chunk2Doc()
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
     .setInputCols("ner_chunk_doc")
     .setOutputCol("sbert_embeddings")
+    .setCaseSensitive(False)
 
 val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_slim_billable_hcc","en", "clinical/models")
     .setInputCols("sbert_embeddings") 
