@@ -23,22 +23,39 @@ This Named Entity Recognition (NER) model is specifically trained to extract cri
 It includes entities based on the behavior exhibited by patients as reported in clinical texts:
 
 `Aggressive`: Hostile, confrontational, or excessively assertive behaviors, including aggression, agitation, belligerence, and combativeness.
+
 `Argumentative`: Challenging or difficult behaviors, including being uncooperative, argumentative, and defensive.
+
 `Calm`: Tranquil, composed, and cooperative demeanor, including descriptions such as calm, quiet, and cooperative.
+
 `Resistant`: Stubborn or oppositional behavior, including descriptions such as obstinate, adamant, refusing, denying, and declining.
+
 `Credibility_Doubts`: Skepticism or doubt about the accuracy or truthfulness of information given by a patient.
+
 `Suspected_DSB`: Suspected ulterior motives for obtaining medication, particularly controlled substances.
+
 `Compliant`: Demonstrates adherence to prescribed medical advice, treatment plans, or medication regimens.
+
 `Noncompliant`: Does not follow prescribed medical advice, treatment plans, or medication regimens.
+
 `Well_Kept_Appearance`: Demonstrates good personal care, hygiene, and an orderly appearance.
+
 `Neglected_Appearance`: Exhibits signs of inadequate personal care or hygiene.
+
 `Paternalistic_Tone`: Conveys a sense of authority and control by the healthcare provider over the patient.
+
 `Poor_Reasoning`: Behaviors or decisions perceived as irrational, illogical, or lacking sound judgment.
+
 `Poor_Decision-Making`: Careless, irresponsible, or lacking proper attention and management in decision-making.
+
 `Other_Discriminatory_Language`: Derogatory, outdated, or prejudiced terms related to physical disability, intellectual disability, and age.
+
 `Positive_Descriptors`: Positive and complimentary terms used to describe a patient's demeanor, behavior, or appearance.
+
 `Positive_Assessment`: Positive attributes indicating dedication, enthusiasm, or a proactive attitude toward health and treatment.
+
 `Shared_Decision`: Patients are collaboratively involved in the decision-making process regarding their treatment or care.
+
 `Patient_Autonomy`: Acknowledgement and respect of the patient's right to make their own decisions regarding their healthcare.
 
 ## Predicted Entities
