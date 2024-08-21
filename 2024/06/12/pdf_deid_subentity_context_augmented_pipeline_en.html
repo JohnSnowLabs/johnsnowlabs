@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>PDF Deidentification (Subentity- Context Augmented) | pdf_deid_subentity_context_augmented_pipeline | Healthcare NLP 5.3.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to extract PHI information from PDF such as AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPAD...">
+<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN...">
 <!-- <link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"> -->
 <link rel="canonical" href="/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -508,7 +508,8 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to extract PHI information from PDF such as AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, IPADDR entities.</p>
+<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
+The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
@@ -593,6 +594,64 @@ function wrapWordInSpan(data, wordToWrap) {
   <li>ImageToPdf</li>
   <li>PdfAssembler</li>
 </ul>
+
+<h2 id="speed-benchmarks">Speed Benchmarks</h2>
+
+<ul>
+  <li><strong>Dataset:</strong> 1000 scanned PDF pages.</li>
+  <li><strong>Instance :</strong>
+    <ul>
+      <li>m5n.4xlarge (16 vCPUs, 64 GiB memory)</li>
+      <li>m5n.8xlarge (32 vCPUs, 128 GiB memory)</li>
+    </ul>
+  </li>
+  <li><strong>AMI:</strong> ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240411</li>
+  <li><strong>Versions:</strong>
+    <ul>
+      <li><strong>spark-nlp Version:</strong> v5.4.0</li>
+      <li><strong>visual-nlp Version:</strong> v5.3.2</li>
+      <li><strong>spark-nlp-jsl Version :</strong> v5.3.2</li>
+      <li><strong>Spark Version :</strong> v3.4.1</li>
+    </ul>
+  </li>
+  <li><strong>Visual NLP Pipeline:</strong> ‘pdf_deid_subentity_context_augmented_pipeline’</li>
+</ul>
+
+<h4 id="benchmark-table">Benchmark Table</h4>
+
+<table class="table-model-big">
+  <thead>
+    <tr>
+      <th>Instance</th>
+      <th>memory</th>
+      <th>cores</th>
+      <th>input_data_pages</th>
+      <th>partition</th>
+      <th>second per page</th>
+      <th>timing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>m5n.4xlarge</td>
+      <td>64 GB</td>
+      <td>16</td>
+      <td>1000</td>
+      <td>10</td>
+      <td>0.24</td>
+      <td>4 mins</td>
+    </tr>
+    <tr>
+      <td>m5n.8xlarge</td>
+      <td>128 GB</td>
+      <td>32</td>
+      <td>1000</td>
+      <td>32</td>
+      <td>0.15</td>
+      <td>2.5 mins</td>
+    </tr>
+  </tbody>
+</table>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-06-12T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
