@@ -36,25 +36,47 @@ This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_ba
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "word_embeddings"])\
+    .setOutputCol("ner")\
 
-ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token", "word_embeddings"])    .setOutputCol("ner")
-ner_converter = NerConverterInternal()    .setInputCols(["sentence", "token", "ner"])    .setOutputCol("ner_chunk")    .setWhiteList(["PROBLEM"])
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["PROBLEM"])
 
-c2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc") 
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("sentence_embeddings")    .setCaseSensitive(False)
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sentence_embeddings")\
+    .setCaseSensitive(False)
 
-icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")     .setInputCols(["sentence_embeddings"])     .setOutputCol("resolution")    .setDistanceFunction("EUCLIDEAN")
+icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models") \
+    .setInputCols(["sentence_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sentenceDetectorDL,
@@ -66,14 +88,12 @@ resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sbert_embedder,
                                        icd_resolver])
 
-data = spark.createDataFrame([[/"/"/"A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection./"/"/"]]).toDF("text")
+data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
 
-
 ```
 ```scala
-
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
@@ -110,18 +130,18 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
     .setCaseSensitive(False)
 
 val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")
-    .setInputCols("sbert_embeddings")
+    .setInputCols("sbert_embeddings") 
     .setOutputCol("resolution")
     .setDistanceFunction("EUCLIDEAN")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                               sentence_detector,
-                               tokenizer,
-                               word_embeddings,
-                               clinical_ner,
-                               ner_converter,
-                               chunk2doc,
-                               sbert_embedder,
+val pipeline = new Pipeline().setStages(Array(document_assembler, 
+                               sentence_detector, 
+                               tokenizer, 
+                               word_embeddings, 
+                               clinical_ner, 
+                               ner_converter, 
+                               chunk2doc, 
+                               sbert_embedder, 
                                icd10_resolver))
 
 val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.").toDS().toDF("text")
@@ -150,7 +170,6 @@ val result = pipeline.fit(data).transform(data)
 |        a respiratory tract infection|PROBLEM|     J98.8|[respiratory tract infection [other specified respiratory disorders], up...|[J98.8, J06.9, A49.9, J22, J20.9, Z59.3, T17, J04.10, Z13.83, J18.9, P28...|
 +-------------------------------------+-------+----------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
-
 ```
 
 {:.model-param}
@@ -167,3 +186,7 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|1.3 GB|
 |Case sensitive:|false|
+
+## References
+
+This model is trained with the 2025 version of ICD-10-CM dataset. 
