@@ -307,6 +307,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper_filterer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.docmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/mapper2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.mapper2_chunk</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -425,6 +426,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_ner</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
@@ -539,6 +541,7 @@ prefix and suffix patterns, and exception patterns.</p>
 <li><p><strong>assertion</strong> – Assertion to match</p></li>
 <li><p><strong>includeChunkToScope</strong> – Whether to include chunk to scope when matching values</p></li>
 <li><p><strong>scopeWindowDelimiters</strong> – Delimiters used to limit the scope window.</p></li>
+<li><p><strong>confidenceCalculationDirection</strong> – Direction of confidence calculation. Accepted values are “left”, “right”, “both”. Default is “left”</p></li>
 </ul>
 </dd>
 </dl>
@@ -615,6 +618,11 @@ PROBLEM</p></td>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.caseSensitive">
 <span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.confidenceCalculationDirection">
+<span class="sig-name descname"><span class="pre">confidenceCalculationDirection</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.confidenceCalculationDirection" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -921,6 +929,23 @@ open-source location. Other values are “clinical/models”,
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setConfidenceCalculationDirection">
+<span class="sig-name descname"><span class="pre">setConfidenceCalculationDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setConfidenceCalculationDirection" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets Direction of confidence calculation.</dt><dd><p>If <cite>left</cite>, the confidence is calculated based on the distance of the found regex or keyword in left side of the sentence from a chunk.
+If <cite>right</cite>, the confidence is calculated based on the distance of the found regex or keyword in right side of the sentence from a chunk.
+If <cite>both</cite>, the confidence is calculated based on the minimum distance of the found regex or keyword in both sides of the sentence from a chunk.
+Default is “left”</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Direction of confidence calculation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setDoExceptionHandling">
 <span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd><p>If True, exceptions are handled.
@@ -1198,6 +1223,7 @@ to the right of the chunk. Default is (-1, -1) which means the whole sentence</p
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.assertion"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.assertion</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.confidenceCalculationDirection"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.confidenceCalculationDirection</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.getter_attrs"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.includeChunkToScope"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.includeChunkToScope</span></code></a></li>
@@ -1237,6 +1263,7 @@ to the right of the chunk. Default is (-1, -1) which means the whole sentence</p
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.set"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setAssertion"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.setAssertion()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setConfidenceCalculationDirection"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.setConfidenceCalculationDirection()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setExceptionKeywords"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.setExceptionKeywords()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.contextual_assertion.ContextualAssertion.setExceptionRegexPatterns"><code class="docutils literal notranslate"><span class="pre">ContextualAssertion.setExceptionRegexPatterns()</span></code></a></li>

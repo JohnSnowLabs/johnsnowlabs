@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.Flattener</title>
-          <meta name="description" content="Spark NLP 5.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.Flattener" />
-          <meta name="keywords" content="Spark NLP 5.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.Flattener" />
+          <title>Spark NLP 5.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.Flattener</title>
+          <meta name="description" content="Spark NLP 5.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.Flattener" />
+          <meta name="keywords" content="Spark NLP 5.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.Flattener" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -525,6 +525,10 @@
                         <a class="object" href="DocumentFiltererByClassifier$.html" title="This is the companion object of DocumentFiltererByClassifier."></a>
                         <a class="class" href="DocumentFiltererByClassifier.html" title="Filters documents by the result of classifier annotators."></a>
                         <a href="DocumentFiltererByClassifier.html" title="Filters documents by the result of classifier annotators.">DocumentFiltererByClassifier</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="DocumentFiltererByNER$.html" title="This is the companion object of DocumentFiltererByNER."></a>
+                        <a class="class" href="DocumentFiltererByNER.html" title="Filters documents by the entity fields of the chunks."></a>
+                        <a href="DocumentFiltererByNER.html" title="Filters documents by the entity fields of the chunks.">DocumentFiltererByNER</a>
                       </li><li class="current-entities indented4">
                         <a class="object" href="DrugNormalizer$.html" title=""></a>
                         <a class="class" href="DrugNormalizer.html" title="Annotator which normalizes raw text from clinical documents, e.g."></a>
@@ -1478,6 +1482,27 @@ information for the specified columns.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.Flattener#keepOriginalColumns" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="keepOriginalColumns:org.apache.spark.ml.param.StringArrayParam"></a><a id="keepOriginalColumns:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/Flattener.html#keepOriginalColumns:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keepOriginalColumns</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">An array of column names that should be kept in the DataFrame
+after the flattening process.</p><div class="fullcomment"><div class="comment cmt"><p>An array of column names that should be kept in the DataFrame
+after the flattening process. These columns will not be affected
+by the flattening operation and will be included in the final
+output as they are.
+</p></div></div>
     </li><li name="org.apache.spark.internal.Logging#log" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="log:org.slf4j.Logger"></a><a id="log:Logger"></a>
       <span class="permalink">
@@ -2140,6 +2165,27 @@ information for the specified columns.
       <p class="shortcomment cmt">Sets the names of input annotation columns for the transformation.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the names of input annotation columns for the transformation.
 If <code>explodeSelectedFields</code> is not set (default), the transformation will return all
 information for the specified columns.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.Flattener#setKeepOriginalColumns" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setKeepOriginalColumns(value:Array[String]):Flattener.this.type"></a><a id="setKeepOriginalColumns(Array[String]):Flattener.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/Flattener.html#setKeepOriginalColumns(value:Array[String]):Flattener.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setKeepOriginalColumns</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.Flattener">Flattener</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">An array of column names that should be kept in the DataFrame
+after the flattening process.</p><div class="fullcomment"><div class="comment cmt"><p>An array of column names that should be kept in the DataFrame
+after the flattening process. These columns will not be affected
+by the flattening operation and will be included in the final
+output as they are.
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.Flattener#setOrderByColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
       <a id="setOrderByColumn(value:String):Flattener.this.type"></a><a id="setOrderByColumn(String):Flattener.this.type"></a>

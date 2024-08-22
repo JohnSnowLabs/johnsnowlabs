@@ -307,6 +307,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper_filterer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.docmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/mapper2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.mapper2_chunk</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -425,6 +426,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_ner</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
@@ -508,7 +510,7 @@ document.write(`
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
 <p>Replaces entities in the original text with new ones.</p>
 <p>This class allows to replace entities in the original text with the ones obtained with,
-for example, :py:class:: <a href="#id1"><span class="problematic" id="id2">`DeIdentificationModel`_</span></a> or :py:class:: <a href="#id3"><span class="problematic" id="id4">`DateNormalizer`_</span></a>.</p>
+for example, :py:class:: <a href="#id4"><span class="problematic" id="id5">`DeIdentificationModel`_</span></a> or :py:class:: <a href="#id6"><span class="problematic" id="id7">`DateNormalizer`_</span></a>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.useReplacement">
 <span class="sig-name descname"><span class="pre">useReplacement</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.useReplacement" title="Permalink to this definition">#</a></dt>
@@ -516,6 +518,39 @@ for example, :py:class:: <a href="#id1"><span class="problematic" id="id2">`DeId
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.noneValuesTo">
+<span class="sig-name descname"><span class="pre">noneValuesTo</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.noneValuesTo" title="Permalink to this definition">#</a></dt>
+<dd><p>Action to take when encountering a value of ‘NONE’ in the annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.placeHolder">
+<span class="sig-name descname"><span class="pre">placeHolder</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.placeHolder" title="Permalink to this definition">#</a></dt>
+<dd><p>The value to replace ‘NONE’ values with when noneValuesTo is set to ‘place_holder’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.placeHolderDelimiters">
+<span class="sig-name descname"><span class="pre">placeHolderDelimiters</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.placeHolderDelimiters" title="Permalink to this definition">#</a></dt>
+<dd><p>An array of two strings used as delimiters to wrap the placeholder or entity field. Default is [‘&lt;’, ‘&gt;’].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -608,6 +643,11 @@ for example, :py:class:: <a href="#id1"><span class="problematic" id="id2">`DeId
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">noneValuesTo</span></span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.optionalInputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -623,13 +663,23 @@ for example, :py:class:: <a href="#id1"><span class="problematic" id="id2">`DeId
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">placeHolder</span></span><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">placeHolderDelimiters</span></span><a class="headerlink" href="#id2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.skipLPInputColsValidation">
 <span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">useReplacement</span></span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">useReplacement</span></span><a class="headerlink" href="#id3" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -828,6 +878,25 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setNoneValuesTo">
+<span class="sig-name descname"><span class="pre">setNoneValuesTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setNoneValuesTo" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Determines the action to take when encountering a value of ‘NONE’ in the annotation.</dt><dd><p>This parameter can take one of the following three string values:
+- “entity”: Replaces ‘NONE’ values with the entity field extracted from the annotation, if available. If the entity field is not available, it uses the string “NONE” wrapped by the specified delimiters.
+- “place_holder”: Replaces ‘NONE’ values with a placeholder string wrapped by the specified delimiters.
+- “skip”: Retains the original annotation result or uses the target_text from the annotation’s metadata if available.
+Allowed Values: “entity”, “place_holder”, “skip”
+Error Handling: If an unrecognized value is provided, an IllegalArgumentException will be thrown.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Action to take when encountering a value of ‘NONE’ in the annotation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setOutputCol">
 <span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setOutputCol" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets output column name of annotations.</p>
@@ -853,6 +922,36 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setParams">
 <span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setParams" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setPlaceHolder">
+<span class="sig-name descname"><span class="pre">setPlaceHolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setPlaceHolder" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Specifies the placeholder string to use when <cite>noneValuesTo</cite> is set to “place_holder”.</dt><dd><p>This placeholder string will be wrapped by the delimiters if placeHolderDelimiters are defined.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The value to replace ‘NONE’ values with when noneValuesTo is set to ‘place_holder’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setPlaceHolderDelimiters">
+<span class="sig-name descname"><span class="pre">setPlaceHolderDelimiters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setPlaceHolderDelimiters" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>An array of two strings used as delimiters to wrap the placeholder or entity field</dt><dd><p>when noneValuesTo is set to “place_holder” or “entity”. The first element of the array
+is the prefix delimiter,and the second element is the suffix delimiter.
+Default is [‘&lt;’, ‘&gt;’]</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em>) – An array of two strings used as delimiters to wrap the placeholder or entity field.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setUseReplacement">
@@ -930,16 +1029,22 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer"><code class="docutils literal notranslate"><span class="pre">Replacer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.useReplacement"><code class="docutils literal notranslate"><span class="pre">Replacer.useReplacement</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.noneValuesTo"><code class="docutils literal notranslate"><span class="pre">Replacer.noneValuesTo</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.placeHolder"><code class="docutils literal notranslate"><span class="pre">Replacer.placeHolder</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.placeHolderDelimiters"><code class="docutils literal notranslate"><span class="pre">Replacer.placeHolderDelimiters</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getter_attrs"><code class="docutils literal notranslate"><span class="pre">Replacer.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">Replacer.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.inputCols"><code class="docutils literal notranslate"><span class="pre">Replacer.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Replacer.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.name"><code class="docutils literal notranslate"><span class="pre">Replacer.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Replacer.noneValuesTo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">Replacer.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">Replacer.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.outputCol"><code class="docutils literal notranslate"><span class="pre">Replacer.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Replacer.placeHolder</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Replacer.placeHolderDelimiters</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">Replacer.skipLPInputColsValidation</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Replacer.useReplacement</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Replacer.useReplacement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.clear"><code class="docutils literal notranslate"><span class="pre">Replacer.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.copy"><code class="docutils literal notranslate"><span class="pre">Replacer.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.explainParam"><code class="docutils literal notranslate"><span class="pre">Replacer.explainParam()</span></code></a></li>
@@ -964,9 +1069,12 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">Replacer.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setInputCols"><code class="docutils literal notranslate"><span class="pre">Replacer.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Replacer.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setNoneValuesTo"><code class="docutils literal notranslate"><span class="pre">Replacer.setNoneValuesTo()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setOutputCol"><code class="docutils literal notranslate"><span class="pre">Replacer.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setParamValue"><code class="docutils literal notranslate"><span class="pre">Replacer.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setParams"><code class="docutils literal notranslate"><span class="pre">Replacer.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setPlaceHolder"><code class="docutils literal notranslate"><span class="pre">Replacer.setPlaceHolder()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setPlaceHolderDelimiters"><code class="docutils literal notranslate"><span class="pre">Replacer.setPlaceHolderDelimiters()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setUseReplacement"><code class="docutils literal notranslate"><span class="pre">Replacer.setUseReplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.transform"><code class="docutils literal notranslate"><span class="pre">Replacer.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.write"><code class="docutils literal notranslate"><span class="pre">Replacer.write()</span></code></a></li>

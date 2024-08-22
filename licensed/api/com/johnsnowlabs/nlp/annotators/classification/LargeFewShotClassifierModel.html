@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel</title>
-          <meta name="description" content="Spark NLP 5.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel" />
-          <meta name="keywords" content="Spark NLP 5.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel" />
+          <title>Spark NLP 5.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel</title>
+          <meta name="description" content="Spark NLP 5.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel" />
+          <meta name="keywords" content="Spark NLP 5.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -299,31 +299,27 @@
   .setInputCol(<span class="lit">"text"</span>)
   .setOutputCol(<span class="lit">"document"</span>)
 
- <span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
-   .setInputCols(<span class="std">Array</span>(<span class="lit">"document"</span>))
-   .setOutputCol(<span class="lit">"sentences"</span>)
 
- <span class="kw">val</span> largeFewShotClassifier = LargeFewShotClassifierModel.pretrained(<span class="lit">"clinical_assertion"</span>)
-   .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence"</span>))
+ <span class="kw">val</span> largeFewShotClassifier = LargeFewShotClassifierModel.pretrained()
+   .setInputCols(<span class="std">Array</span>(<span class="lit">"document"</span>))
    .setBatchSize(<span class="num">1</span>)
    .setOutputCol(<span class="lit">"label"</span>)
 
  <span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(
   document_assembler,
-  sentenceDetector,
   largeFewShotClassifier))
 
  <span class="kw">val</span> model = pipeline.fit(<span class="std">Seq</span>().toDS.toDF(<span class="lit">"text"</span>))
  <span class="kw">val</span> results = model.transform(
-   <span class="std">Seq</span>(<span class="lit">"Hypertension:includes hypertension and chronic obstructive pulmonary disease."</span>).toDS.toDF(<span class="lit">"text"</span>))
+   <span class="std">Seq</span>(<span class="lit">"I felt a bit drowsy and had blurred vision after taking Aspirin."</span>).toDS.toDF(<span class="lit">"text"</span>))
 
  results
    .selectExpr(<span class="lit">"explode(label) as label"</span>)
-   .select(<span class="lit">"label.result"</span>, <span class="lit">"label.metadata.confidence"</span>).show()</pre><pre>+-----------+----------+
-|     result|confidence|
-+-----------+----------+
-|conditional|<span class="num">0.34774542</span>|
-+-----------+----------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel">LargeFewShotClassifierModel</a> for instantiated models</p></span><span class="cmt"><p><a href="https://arxiv.org/abs/2209.11055" target="_blank">https://arxiv.org/abs/2209.11055</a> for details about the SetFit approach</p></span></dd></dl><div class="toggleContainer block">
+   .select(<span class="lit">"label.result"</span>, <span class="lit">"label.metadata.confidence"</span>).show()</pre><pre>+------+----------+
+|result|confidence|
++------+----------+
+|   ADE| <span class="num">0.9672883</span>|
++------+----------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.LargeFewShotClassifierModel">LargeFewShotClassifierModel</a> for instantiated models</p></span><span class="cmt"><p><a href="https://arxiv.org/abs/2209.11055" target="_blank">https://arxiv.org/abs/2209.11055</a> for details about the SetFit approach</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>

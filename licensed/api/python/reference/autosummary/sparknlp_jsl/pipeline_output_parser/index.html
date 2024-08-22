@@ -362,7 +362,8 @@ document.write(`
 <span class="gp">... </span>    <span class="s2">&quot;Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="s2">&quot;The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.&quot;</span> <span class="o">+</span>
 <span class="gp">... </span>    <span class="s2">&quot;The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast. The cancer recurred as a right lung metastasis 13 years later.&quot;</span> <span class="o">+</span>
-<span class="gp">... </span>    <span class="s2">&quot;He underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="s2">&quot;He underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.&quot;</span>
+<span class="gp">... </span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oncology_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s2">&quot;oncology_biomarker_pipeline&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>
@@ -379,7 +380,7 @@ document.write(`
 <span class="gp">... </span>    <span class="s1">&#39;relations&#39;</span><span class="p">:</span> <span class="p">[],</span>
 <span class="gp">... </span>    <span class="s1">&#39;summaries&#39;</span><span class="p">:</span> <span class="p">[],</span>
 <span class="gp">... </span>    <span class="s2">&quot;deidentifications&quot;</span> <span class="p">:</span> <span class="p">[],</span>
-<span class="gp">... </span>   <span class="s2">&quot;classifications&quot;</span><span class="p">:[]</span>
+<span class="gp">... </span>    <span class="s2">&quot;classifications&quot;</span><span class="p">:[]</span>
 <span class="gp">... </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -425,6 +426,7 @@ It also checks if the values of the entities, relations, and summary keys are al
 <li><p>chunk_id (str): The unique identifier for the chunk of text that the assertion applies to.</p></li>
 <li><p>chunk (str): The text of the chunk.</p></li>
 <li><p>assertion (str): The assertion status.</p></li>
+<li><p>assertion_confidence (str): The confidence score of the assertion model in identifying assertion status.</p></li>
 <li><p>assertion_source (str): The source of the assertion information</p></li>
 </ul>
 </p>
@@ -561,6 +563,7 @@ Each dictionary contains the following keys:</p>
 <li><p>all_k_resolutions (list): A list of all k resolutions.</p></li>
 <li><p>all_k_aux_labels (list): A list of all k aux labels.</p></li>
 <li><p>all_k_distances (list): A list of all k distances.</p></li>
+<li><p>confidence (float): The confidence score of the resolutions.</p></li>
 </ul>
 </p>
 </dd>
@@ -602,7 +605,8 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p>document_identifier (str): The ID of the document.</p></li>
+<li><p>document_identifier (str): The informations of the document.</p></li>
+<li><p>document_id (str): The ID of the document.</p></li>
 <li><p>document_text (str): The text of the document.</p></li>
 <li><dl class="simple">
 <dt>entities (list): A list of dictionaries, where each dictionary represents a named entity, containing the following keys:</dt><dd><ul>
@@ -622,6 +626,7 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 <li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
 <li><p>chunk (str): The text of the chunk.</p></li>
 <li><p>assertion (str): The assertion status.</p></li>
+<li><p>assertion_confidence (str): The confidence score of the assertion model in identifying assertion status.</p></li>
 <li><p>assertion_source (str): The source of the assertion information</p></li>
 </ul>
 </dd>
@@ -638,6 +643,7 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 <li><p>all_k_resolutions (list): A list of all k resolutions.</p></li>
 <li><p>all_k_aux_labels (list): A list of all k aux labels.</p></li>
 <li><p>all_k_distances (list): A list of all k distances.</p></li>
+<li><p>confidence (float): The confidence score of the resolutions.</p></li>
 </ul>
 </dd>
 </dl>

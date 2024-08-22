@@ -307,6 +307,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper_filterer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.docmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/mapper2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.mapper2_chunk</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -425,6 +426,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_ner</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
@@ -542,8 +544,11 @@ If true use random displacement days in dates entities, if false use the <cite>d
 The default value is false.</p></li>
 <li><p><strong>mappingsColumn</strong> – This is the mapping column that will return the Annotations chunks with the fake entities.</p></li>
 <li><p><strong>returnEntityMappings</strong> – With this property, you can select if you want to return mapping column</p></li>
-<li><p><strong>blackList</strong> – List of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”</p></li>
+<li><p><strong>blackList</strong> – List of entities that will be ignored in the regex rules. The rest will be processed.
+The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.</p></li>
+<li><p><strong>blackListEntities</strong> – List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed.
+Default: []</p></li>
 <li><p><strong>maskingPolicy</strong> – <p>Select the masking policy</p>
 <ul>
 <li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets,being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
@@ -552,7 +557,7 @@ The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PAS
 </ul>
 </p></li>
 <li><p><strong>sameLengthFormattedEntities</strong> – List of formatted entities to generate the same length outputs as original ones during obfuscation.
-The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</p></li>
+The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE, CONTACT, ACCOUNT.</p></li>
 <li><p><strong>genderAwareness</strong> – Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If the value is true, it might decrease performance. Default: False</p></li>
 <li><p><strong>ageRangesByHipaa</strong> – Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.
@@ -609,6 +614,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.blackList">
 <span class="sig-name descname"><span class="pre">blackList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.blackList" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.blackListEntities">
+<span class="sig-name descname"><span class="pre">blackListEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.blackListEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -838,19 +848,31 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackList" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”
+The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.
 :param s: List of entities that will be ignored in the regex file. The rest will be processed.
 :type s: list
 :param The default values are “IBAN”:
 :param “ZIP”:
 :param “NPI”:
-:param “URL”:
 :param “DLN”:
 :param “PASSPORT”:
-:param “EMAIL”:
 :param “C_CARD”:
 :param “DEA”:
-:param “SSN”:</p>
+:param “SSN”:
+:param “IP”:
+:param “DEA”.:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackListEntities">
+<span class="sig-name descname"><span class="pre">setBlackListEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackListEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed. Default: []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em>) – List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1282,6 +1304,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ageRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.blackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateTag</span></code></a></li>
@@ -1319,6 +1342,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setBlackListEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setConsistentObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDateTag()</span></code></a></li>

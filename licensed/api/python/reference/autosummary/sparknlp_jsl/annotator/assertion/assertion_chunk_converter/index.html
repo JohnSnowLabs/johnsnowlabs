@@ -307,6 +307,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper_filterer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../chunker/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.docmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/mapper2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.mapper2_chunk</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -425,6 +426,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_ner</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
@@ -535,6 +537,10 @@ dataframe can be populated using the new version of ALAB module.</p>
 <li><p><strong>chunkEndCol</strong> (<em>str</em>) – Name of the column containing the end index of the chunk.</p></li>
 <li><p><strong>outputTokenBeginCol</strong> (<em>str</em>) – Name of the column containing selected token start index.</p></li>
 <li><p><strong>outputTokenEndCol</strong> (<em>str</em>) – Name of the column containing selected token end index.</p></li>
+<li><p><strong>metadataFields</strong> (<em>dict</em>) – The dictionary of metadata fields to be added to the chunk column.
+Add the specified data to the metadata fields of the chunk outputs in the appropriate columns.
+First element of the tuple is the column name to read the data from, and the second element is the name of the metadata field.
+The given column names must be present in the DataFrame and must be of StringType.</p></li>
 </ul>
 </dd>
 </dl>
@@ -826,6 +832,30 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setMetadataFields">
+<span class="sig-name descname"><span class="pre">setMetadataFields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setMetadataFields" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the dictionary of metadata fields to be added to the chunk column.
+Add the specified data to the metadata fields of the chunk outputs in the appropriate columns.
+First element of the tuple is the column name to read the data from, and the second element is the name of the metadata field.
+The given column names must be present in the DataFrame and must be of StringType.</p>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AssertionChunkConverter</span><span class="p">()</span> \
+<span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setMetadataFields</span><span class="p">({</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;entity&#39;</span><span class="p">})</span> \
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The dictionary of of metadata fields to be added to the chunk column.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setOutputCol">
 <span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setOutputCol" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column name of output annotations.</p>
@@ -969,6 +999,7 @@ a default value.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setChunkEndCol"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setChunkEndCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setChunkTextCol"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setChunkTextCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setInputCols"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setMetadataFields"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setMetadataFields()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setOutputCol"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setOutputTokenBeginCol"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setOutputTokenBeginCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter.setOutputTokenEndCol"><code class="docutils literal notranslate"><span class="pre">AssertionChunkConverter.setOutputTokenEndCol()</span></code></a></li>

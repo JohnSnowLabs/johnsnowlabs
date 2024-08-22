@@ -581,6 +581,11 @@ If value is true, it might decrease performance. Default: False</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.blackListEntities">
+<span class="sig-name descname"><span class="pre">blackListEntities</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.blackListEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.combineRegexPatterns">
 <span class="sig-name descname"><span class="pre">combineRegexPatterns</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.combineRegexPatterns" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1107,19 +1112,31 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setBlackList" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”
+The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.
 :param s: List of entities that will be ignored in the regex file. The rest will be processed.
 :type s: list
 :param The default values are “IBAN”:
 :param “ZIP”:
 :param “NPI”:
-:param “URL”:
 :param “DLN”:
 :param “PASSPORT”:
-:param “EMAIL”:
 :param “C_CARD”:
 :param “DEA”:
-:param “SSN”:</p>
+:param “SSN”:
+:param “IP”:
+:param “DEA”.:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setBlackListEntities">
+<span class="sig-name descname"><span class="pre">setBlackListEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setBlackListEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed. Default: []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em>) – List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1837,6 +1854,11 @@ If value is true, it might decrease performance. Default: False</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.blackListEntities">
+<span class="sig-name descname"><span class="pre">blackListEntities</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.blackListEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation">
 <span class="sig-name descname"><span class="pre">consistentObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2307,19 +2329,31 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackList" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”
+The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.
 :param s: List of entities that will be ignored in the regex file. The rest will be processed.
 :type s: list
 :param The default values are “IBAN”:
 :param “ZIP”:
 :param “NPI”:
-:param “URL”:
 :param “DLN”:
 :param “PASSPORT”:
-:param “EMAIL”:
 :param “C_CARD”:
 :param “DEA”:
-:param “SSN”:</p>
+:param “SSN”:
+:param “IP”:
+:param “DEA”.:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackListEntities">
+<span class="sig-name descname"><span class="pre">setBlackListEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackListEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed. Default: []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em>) – List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2849,6 +2883,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ageRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.blackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.combineRegexPatterns"><code class="docutils literal notranslate"><span class="pre">DeIdentification.combineRegexPatterns</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateFormats</span></code></a></li>
@@ -2926,6 +2961,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setBlackListEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setCombineRegexPatterns"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setCombineRegexPatterns()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setConsistentObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateFormats()</span></code></a></li>
@@ -2978,6 +3014,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.blackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateTag</span></code></a></li>
@@ -3048,6 +3085,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setBlackListEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setConsistentObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateTag()</span></code></a></li>

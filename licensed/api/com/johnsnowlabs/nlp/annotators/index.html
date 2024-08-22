@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators</title>
-          <meta name="description" content="Spark NLP 5.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators" />
-          <meta name="keywords" content="Spark NLP 5.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators" />
+          <title>Spark NLP 5.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators</title>
+          <meta name="description" content="Spark NLP 5.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators" />
+          <meta name="keywords" content="Spark NLP 5.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -526,6 +526,10 @@
                         <a class="class" href="DocumentFiltererByClassifier.html" title="Filters documents by the result of classifier annotators."></a>
                         <a href="DocumentFiltererByClassifier.html" title="Filters documents by the result of classifier annotators.">DocumentFiltererByClassifier</a>
                       </li><li class="current-entities indented4">
+                        <a class="object" href="DocumentFiltererByNER$.html" title="This is the companion object of DocumentFiltererByNER."></a>
+                        <a class="class" href="DocumentFiltererByNER.html" title="Filters documents by the entity fields of the chunks."></a>
+                        <a href="DocumentFiltererByNER.html" title="Filters documents by the entity fields of the chunks.">DocumentFiltererByNER</a>
+                      </li><li class="current-entities indented4">
                         <a class="object" href="DrugNormalizer$.html" title=""></a>
                         <a class="class" href="DrugNormalizer.html" title="Annotator which normalizes raw text from clinical documents, e.g."></a>
                         <a href="DrugNormalizer.html" title="Annotator which normalizes raw text from clinical documents, e.g.">DrugNormalizer</a>
@@ -771,6 +775,32 @@ result.selectExpr(<span class="lit">"explode(filteredDocuments)"</span>).show(<s
 +------------------------------------------------------------------------------------------------+
 |{document, <span class="num">159</span>, <span class="num">211</span>, I wish everyone to be safe at home and stop pandemic., {sentence -&gt; <span class="num">2</span>}, []}|
 +------------------------------------------------------------------------------------------------+</pre></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DocumentFiltererByNERextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER]withWhiteAndBlackListParamswithCheckLicense"></a><a id="DocumentFiltererByNER:DocumentFiltererByNER"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/DocumentFiltererByNER.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Filters documents by the entity fields of the chunks." href="DocumentFiltererByNER.html"><span class="name">DocumentFiltererByNER</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="DocumentFiltererByNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER">DocumentFiltererByNER</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="DocumentFiltererByNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER">DocumentFiltererByNER</a>] with <a href="params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Filters documents by the entity fields of the chunks.</p><div class="fullcomment"><div class="comment cmt"><p>Filters documents by the entity fields of the chunks.
+Documents are filtered by the white list and black list.
+The white list is a list of classifier results that are allowed to pass the filter.
+The black list is a list of classifier results that are not allowed to pass the filter.
+The filter is case sensitive. If the caseSensitive is set to false, the filter is case in-sensitive.
+If the outputAsDocument is set to true, the output will be a single document with all sentences joined.
+The joinString parameter is used to add the delimiter between results of annotations when combining them into a single result.</p><p>The input annotators are expected to be of type <code>DOCUMENT</code> and <code>CHUNK</code>.
+The output annotation type is <code>DOCUMENT</code>.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>A document may contain multiple chunks.
+      If any of the chunks in the document is in the white list, the document will pass the filter.
+      And white list has priority over black list.</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.DrugNormalizer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DrugNormalizerextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.DrugNormalizer]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.DrugNormalizer]withCheckLicense"></a><a id="DrugNormalizer:DrugNormalizer"></a>
       <span class="permalink">
@@ -957,6 +987,24 @@ And a separator can be placed between the chunks.</p><h4>Example</h4><pre><span 
       </span>
       
       <p class="shortcomment cmt">This is the companion object of <a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>. Please refer to that class for the
+documentation.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DocumentFiltererByNER"></a><a id="DocumentFiltererByNER:DocumentFiltererByNER"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/DocumentFiltererByNER$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="This is the companion object of DocumentFiltererByNER." href="DocumentFiltererByNER$.html"><span class="name">DocumentFiltererByNER</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.util.DefaultParamsReadable">DefaultParamsReadable</span>[<a href="DocumentFiltererByNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER">DocumentFiltererByNER</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">This is the companion object of <a href="DocumentFiltererByNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER">DocumentFiltererByNER</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="DocumentFiltererByNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByNER">DocumentFiltererByNER</a>. Please refer to that class for the
 documentation.
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.DrugNormalizer" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
