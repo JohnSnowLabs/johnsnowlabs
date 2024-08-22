@@ -33,6 +33,7 @@ ICD-10-CM entities: `PROBLEM`, `CEREBROVASCULAR_DISEASE`, `COMMUNICABLE_DISEASE`
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
