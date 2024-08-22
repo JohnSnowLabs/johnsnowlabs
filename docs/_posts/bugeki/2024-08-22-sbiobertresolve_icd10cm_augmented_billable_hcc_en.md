@@ -22,7 +22,7 @@ This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_ba
 
 ## Predicted Entities
 
-`ICD-10-CM Codes, billable status, hcc status, hcc score`
+`ICD-10-CM Codes, `HCC Scores`, `Billable Status`, `HCC Status`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -167,3 +167,7 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|1.3 GB|
 |Case sensitive:|false|
+
+## References
+
+This model is trained with the 2025 version of ICD-10-CM dataset. 
