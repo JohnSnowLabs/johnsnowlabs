@@ -37,6 +37,7 @@ This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_ba
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
+
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
