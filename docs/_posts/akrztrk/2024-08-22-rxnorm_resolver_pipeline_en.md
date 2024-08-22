@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained pipeline maps entities with their corresponding RxNorm codes. You’ll just feed your text and it will return the corresponding RxNorm codes.
+This pretrained pipeline maps medication entities with their corresponding RxNorm codes. You’ll just feed your text and it will return the corresponding RxNorm codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
