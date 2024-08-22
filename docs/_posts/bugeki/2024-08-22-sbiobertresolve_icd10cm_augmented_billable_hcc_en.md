@@ -22,7 +22,7 @@ This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_ba
 
 ## Predicted Entities
 
-`ICD-10-CM Codes, `HCC Scores`, `Billable Status`, `HCC Status`
+`ICD-10-CM Codes`, `HCC Scores`, `Billable Status`, `HCC Status`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -33,11 +33,10 @@ This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_ba
 ## How to use
 
 
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 
 document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
 
@@ -70,10 +69,9 @@ data = spark.createDataFrame([[/"/"/"A 28-year-old female with a history of gest
 
 result = resolver_pipeline.fit(data).transform(data)
 
-
 ```
-```scala
 
+```scala
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
@@ -135,7 +133,6 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-
 +-------------------------------------+-------+----------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+
 |                            ner_chunk| entity|icd10_code|                                                                resolutions|                                                                  all_codes|                                                                   hcc_list|
 +-------------------------------------+-------+----------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+
@@ -150,9 +147,7 @@ val result = pipeline.fit(data).transform(data)
 |        a respiratory tract infection|PROBLEM|     J98.8|[respiratory tract infection [other specified respiratory disorders], up...|[J98.8, J06.9, A49.9, J22, J20.9, Z59.3, T17, J04.10, Z13.83, J18.9, P28...|[1||0||0, 1||0||0, 1||0||0, 1||0||0, 1||0||0, 1||0||0, 0||0||0, 1||0||0,...|
 +-------------------------------------+-------+----------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------------+ 
 
-
 ```
-
 {:.model-param}
 ## Model Information
 
