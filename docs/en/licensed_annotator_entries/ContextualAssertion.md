@@ -25,6 +25,7 @@ Parametres:
 - `assertion`: Assertion to match
 - `scopeWindowDelimiter`: Delimiters used to limit the scope window.
 - `includeChunkToScope`: Whether to include chunk to scope when matching values
+- `ConfidenceCalculationDirection`: Indicates the direction for calculating assertion confidence (left, right, or both; default is left).
 
 
 See [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb) for more examples of usage.

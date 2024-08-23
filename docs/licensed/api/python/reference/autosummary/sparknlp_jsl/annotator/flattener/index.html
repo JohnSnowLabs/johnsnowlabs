@@ -307,6 +307,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../chunker/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chunker/chunkmapper_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper_filterer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chunker/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.docmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chunker/mapper2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.mapper2_chunk</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -425,6 +426,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../document_filterer_by_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_ner</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
@@ -615,6 +617,11 @@ Absent</p></td>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.flattener.Flattener.inputCols">
 <span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.flattener.Flattener.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.flattener.Flattener.keepOriginalColumns">
+<span class="sig-name descname"><span class="pre">keepOriginalColumns</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.flattener.Flattener.keepOriginalColumns" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -837,6 +844,23 @@ information for the specified columns.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.flattener.Flattener.setKeepOriginalColumns">
+<span class="sig-name descname"><span class="pre">setKeepOriginalColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.flattener.Flattener.setKeepOriginalColumns" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets array of column names that should be kept in the DataFrame</dt><dd><p>after the flattening process. These columns will not be affected
+by the flattening operation and will be included in the final
+output as they are.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Array of column names that should be kept in the DataFrame
+after the flattening process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.flattener.Flattener.setOrderByColumn">
 <span class="sig-name descname"><span class="pre">setOrderByColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.flattener.Flattener.setOrderByColumn" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
@@ -948,6 +972,7 @@ information for the specified columns.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.flattenExplodedColumns"><code class="docutils literal notranslate"><span class="pre">Flattener.flattenExplodedColumns</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.getter_attrs"><code class="docutils literal notranslate"><span class="pre">Flattener.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.inputCols"><code class="docutils literal notranslate"><span class="pre">Flattener.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.keepOriginalColumns"><code class="docutils literal notranslate"><span class="pre">Flattener.keepOriginalColumns</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.name"><code class="docutils literal notranslate"><span class="pre">Flattener.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.orderByColumn"><code class="docutils literal notranslate"><span class="pre">Flattener.orderByColumn</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.orderDescending"><code class="docutils literal notranslate"><span class="pre">Flattener.orderDescending</span></code></a></li>
@@ -973,6 +998,7 @@ information for the specified columns.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setExplodeSelectedFields"><code class="docutils literal notranslate"><span class="pre">Flattener.setExplodeSelectedFields()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setFlattenExplodedColumns"><code class="docutils literal notranslate"><span class="pre">Flattener.setFlattenExplodedColumns()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setInputCols"><code class="docutils literal notranslate"><span class="pre">Flattener.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setKeepOriginalColumns"><code class="docutils literal notranslate"><span class="pre">Flattener.setKeepOriginalColumns()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setOrderByColumn"><code class="docutils literal notranslate"><span class="pre">Flattener.setOrderByColumn()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setOrderDescending"><code class="docutils literal notranslate"><span class="pre">Flattener.setOrderDescending()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.flattener.Flattener.setParamValue"><code class="docutils literal notranslate"><span class="pre">Flattener.setParamValue()</span></code></a></li>

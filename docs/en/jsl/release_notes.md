@@ -16,9 +16,7 @@ sidebar:
 
 ## NLU Version 4.2.2
 
-
 - support for Medical Summarizers
-
 
 New Medical Summarizers:
 - 'en.summarize.clinical_jsl'
@@ -81,11 +79,10 @@ asr_df = nlu.load('en.speech2text.wav2vec2.v2_base_960h').predict('ngm_12484_010
 asr_df
 ```
 
-| text                                          |
+{:.table-model-big}
+| text                                         |
 |:---------------------------------------------|
 | PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES |
-
-
 
 To test out **HuBERT** you just need to update the parameter for `load()`
 ```python
@@ -107,7 +104,6 @@ You can check [Scale Vision Transformers (ViT) Beyond Hugging Face](https://hac
 This is Powerd by Spark-NLP's [VitForImageClassification Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#vitforimageclassification)
 
 ![VIT](https://camo.githubusercontent.com/b27f01b616e81636a6135573bbf37a006619ab0853f7dd55ea4fb0e9e89dd33d/68747470733a2f2f692e696d6775722e636f6d2f676e31736369742e706e67)
-
 
 Swin is a hierarchical Transformer whose representation is computed with Shifted windows.
 The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
@@ -139,9 +135,7 @@ and NLU will return a pandas DF with one row per image detected
 nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 ```
 
-
-![image_classification 1.png](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png)
-
+![NLU](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png)
 
 To use **SWIN** we just update the parameter to `load()`
 ```python
@@ -158,6 +152,7 @@ TapasForQuestionAnswering can load TAPAS Models with a cell selection head and o
 [Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
 
 Powered by [TAPAS: Weakly Supervised Table Parsing via Pre-training](https://aclanthology.org/2020.acl-main.398.pdf)
+
 ![TAPAS](https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png)
 
 **Usage:**
@@ -967,7 +962,6 @@ nlu.load('doc2table').predict('/path/to/sample.docx')
 ```     
 **Output of DOCX Table OCR :**
 
-
 {:.table-model-big}
 | Screen Reader   |   Responses | Share   |  
 |:----------------|------------:|:--------|  
@@ -982,6 +976,7 @@ nlu.load('doc2table').predict('/path/to/sample.docx')
 #### Extract Tables from PPT files as Pandas DataFrame
 
 Sample PPT with two tables:
+
 ![Sample PPT with two tables](https://github.com/JohnSnowLabs/nlu/blob/4.0.0/docs/assets/images/ocr/nlu_ocr/tables/ppt.png?raw=true)
 
 ```python  
@@ -1128,7 +1123,8 @@ nlu.viz(ade_pipeline, text)
 
 ```
 returns:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
+
+![New NLU helper Methods](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png)
 
 If a pipeline has multiple models candidates that can be used for a viz,  
 the first Annotator that is vizzable will be used to create viz.  
@@ -1261,7 +1257,7 @@ returns :
 
 and
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
+![to_nlu_pipe(pipe)](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png)
 
 ---------------
 
@@ -1390,8 +1386,8 @@ nlu.load('en.ner.clinical_trials_abstracts').viz('A one-year, randomised, multic
 
 ```
 Results:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.ner.clinical_trials_abstracts.png"  />
 
+![en.ner.clinical_trials_abstracts](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.ner.clinical_trials_abstracts.png)
 
 
 #### [en.med_ner.pathogen](https://nlp.johnsnowlabs.com/2022/06/28/ner_pathogen_en_3_0.html)
@@ -1421,7 +1417,7 @@ nlu.load('en.med_ner.pathogen').viz('Racecadotril is an antisecretory medication
 ```
 Results:
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.med_ner.pathogen.png"  />
+![en.med_ner.pathogen](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.med_ner.pathogen.png)
 
 
 #### [es.med_ner.living_species.roberta](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_roberta_es_3_0.html)
@@ -1457,8 +1453,7 @@ nlu.load('es.med_ner.living_species.roberta').viz('Lactante varón de dos años.
 
 Results:
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/es.med_ner.living_species.roberta.png"  />
-
+![es.med_ner.living_species.roberta](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/es.med_ner.living_species.roberta.png)
 
 
 All healthcare models added in NLU 4.0 :
@@ -3362,7 +3357,6 @@ for the first time by NLU, including ancient and exotic languages like `Ancient 
 
 #### NLU for Healthcare
 
-
 On the healthcare NLP side, a new `ZeroShotRelationExtractionModel` is available, which can extract relations between
 clinical entities in an unsupervised fashion, no training required!
 Additionally, New French and Italian Deidentification models are available for clinical and healthcare domains.
@@ -3782,7 +3776,7 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
 
 #### New Medical Spanish Models
 - **Spanish Word2Vec Embeddings** available with [es.embed.sciwiki_300d](https://nlp.johnsnowlabs.com/2020/05/27/embeddings_sciwiki_300d_es.html)
-- **Spanish PHI Deidentification NER models** with two different subsets of entities extracted, available with [ner_deid_generic](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_generic_es.html)        and [ner_deid_subentity](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_subentity_es.html)
+- **Spanish PHI Deidentification NER models** with two different subsets of entities extracted, available with [ner_deid_generic](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_generic_es.html) and [ner_deid_subentity](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_subentity_es.html)
 
 </div><div class="h3-box" markdown="1">
 
@@ -4051,7 +4045,6 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 ## NLU Version 3.3.1
 
 #### 48 new Transformer based models in 9 new languages, including NER for Finance, Industry, Politcal Policies, COVID and Chemical Trials, various clinical and medical domains in Spanish and English and much more in NLU 3.3.1
-
 
 We are incredibly excited to announce NLU 3.3.1 has been released with 48 new models in 9 languages!
 
@@ -4469,8 +4462,7 @@ or just run
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/09_entity_embedding_manifolds.py
 ```
 
-
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true">
+![Streamlit Entity Manifold visualization](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true)
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
 
@@ -4731,7 +4723,7 @@ which can be colored by various classifier labels!
 nlu.load('embed_sentence.bert').viz_streamlit_sentence_embed_manifold(text)
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true">
+![Streamlit Sentence Embedding visualization via Manifold and Matrix Decomposition algorithms](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true)
 
 </div><div class="h3-box" markdown="1">
 
@@ -4991,7 +4983,6 @@ See [https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html](https
 
 </div><div class="h3-box" markdown="1">
 
-
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
@@ -5045,7 +5036,7 @@ Additionally, you can color the lower dimensional points with a label that has b
 nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=THE_MATRIX_ARCHITECT_SCRIPT.split('\n'),default_algos_to_apply=['TSNE'],MAX_DISPLAY_NUM=5)
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true">
+![Streamlit Word Embedding visualization via Manifold and Matrix Decomposition algorithms](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true)
 
 </div><div class="h3-box" markdown="1">
 
@@ -5076,9 +5067,9 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 
 </div><div class="h3-box" markdown="1">
 
-#### Larger Example showcasing more dimension reduction techniques on a larger corpus :
+#### Larger Example showcasing more dimension reduction techniques on a larger corpus:
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true">
+![Larger Example showcasing more dimension reduction techniques on a larger corpus](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true)
 
 
 #### [Supported Manifold Algorithms ](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.manifold)
@@ -7171,7 +7162,8 @@ In the following table the NLU and Spark-NLP references are listed:
 </div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.0.2
-<img width="65%" align="right" src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif">
+
+![NLU Version 3.0.2](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif "lit_shadow w_80")
 
 This release contains examples and tutorials on how to visualize the 1000+ state-of-the-art NLP models provided by NLU in *just 1 line of code* in `streamlit`.
 It includes simple `1-liners` you can sprinkle into your Streamlit app to for features like **Dependency Trees, Named Entities (NER), text classification results, semantic simmilarity,
@@ -7218,7 +7210,7 @@ You can use the first example to generate python-code snippets which you can rec
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py
 ```
 
- </div><div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Example:  [`02_NER`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py)
 ```shell
@@ -7433,6 +7425,7 @@ You can use this with [any of the 1000+ models](https://nlp.johnsnowlabs.com/mod
 ```python
 nlu.load('stemm pos spell').viz_streamlit_token('I liek pentut buttr and jelly !')
 ```
+
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif)
 
 
@@ -7498,10 +7491,7 @@ nlu.load('bert').viz_streamlit_word_similarity(['I love love loooove NLU! <3','I
 
 </div><div class="h3-box" markdown="1">
 
-## 
 In addition have added some new features to our T5 Transformer annotator to help with longer and more accurate text generation, trained some new multi-lingual models and pipelines in `Farsi`, `Hebrew`, `Korean`, and `Turkish`.
-
-
 
 #### T5 Model Improvements
 * Add 6 new features to T5Transformer for longer and better text generation
@@ -7551,8 +7541,6 @@ Five new resolver models:
 |Resolver|[`en.resolve.loinc.bluebert`          ](https://nlp.johnsnowlabs.com/2021/04/29/sbluebertresolve_loinc_en.html)| [`sbluebertresolve_loinc`](https://nlp.johnsnowlabs.com/2021/04/29/sbluebertresolve_loinc_en.html)                  |
 |Resolver|[`en.resolve.HPO`                     ](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_HPO_en.html)| [`sbiobertresolve_HPO`](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_HPO_en.html)                     |
 
-
-
 [en.resolve.HPO](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_HPO_en.html)
 
 ```python
@@ -7561,8 +7549,6 @@ nlu.load('med_ner.jsl.wip.clinical en.resolve.HPO').viz("""These disorders inclu
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/HPO.png)
 
-
-
 [en.resolve.loinc.bluebert](https://nlp.johnsnowlabs.com/2021/04/29/sbluebertresolve_loinc_en.html)
 ```python
 nlu.load('med_ner.jsl.wip.clinical en.resolve.loinc.bluebert').viz("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and
@@ -7570,8 +7556,6 @@ subsequent type two diabetes mellitus (TSS2DM), one prior episode of HTG-induced
 hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC_blue.png)
-
-
 
 [en.resolve.umls.findings](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_umls_findings_en.html)
 ```python
@@ -7582,7 +7566,6 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/umls_finding.png)
 
-
 [en.resolve.umls](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_umls_major_concepts_en.html)
 ```python
 nlu.load('med_ner.jsl.wip.clinical en.resolve.umls').viz("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and
@@ -7590,9 +7573,6 @@ subsequent type two diabetes mellitus (TSS2DM), one prior episode of HTG-induced
 hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/umls.png)
-
-
-
 
 [en.resolve.loinc](https://nlp.johnsnowlabs.com/2021/04/29/sbiobertresolve_loinc_en.html)
 ```python
@@ -7602,8 +7582,6 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC.png)
 
-
-
 [en.resolve.loinc.biobert](https://nlp.johnsnowlabs.com/2021/04/29/sbiobertresolve_loinc_en.html)
 ```python
 nlu.load('med_ner.jsl.wip.clinical en.resolve.loinc.biobert').predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and
@@ -7611,7 +7589,6 @@ subsequent type two diabetes mellitus (TSS2DM), one prior episode of HTG-induced
 hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC_BIOBERT.png)
-
 
 * [140+ tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
 * [New Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
@@ -9808,7 +9785,7 @@ Check it out here :  [https://nlp.johnsnowlabs.com/](https://nlp.johnsnowlabs.co
 - Automatic to Numpy conversion of embeddings
 - Added various testing classes
 - [New 6 embeddings at once notebook with t-SNE and Medium article](https://medium.com/spark-nlp/1-line-of-code-for-bert-albert-elmo-electra-xlnet-glove-part-of-speech-with-nlu-and-t-sne-9ebcd5379cd)
-  <img src="https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png" >
+![NLU Version 1.0.0](https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png)
 - Integration of Spark NLP 2.6.2 enhancements and bugfixes [https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2)
 - Updated old T-SNE notebooks with more elegant and simpler generation of t-SNE embeddings
 
@@ -9829,7 +9806,8 @@ A picture says more than a 1000 words, so here is a demo clip of the 12 coolest 
 </div><div class="h3-box" markdown="1">
 
 #### NLU in action
-<img src="https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif" width="1800" height="500"/>
+
+![NLU in action](https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif)
 
 </div><div class="h3-box" markdown="1">
 

@@ -19,7 +19,10 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 A pretrained pipeline to detect medication entities. It was built on the top of `ner_posology`, `ner_jsl` and `drug_matcher` models.
-Predicted entities: `DRUG`, `DOSAGE`, `FREQUENCY`, `ROUTE` and `STRENGTH`.
+
+## Predicted Entities
+
+`DRUG`, `DOSAGE`, `FREQUENCY`, `ROUTE`, `STRENGTH`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

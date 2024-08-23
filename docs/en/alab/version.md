@@ -15,7 +15,9 @@ sidebar:
 
 The table below displays the bundled version of NLP Libraries associated with various versions of the Generative AI Lab.
 
-|Generative AI Lab Version |Spark NLP|Healthcare NLP|Visual NLP |Legal NLP|Finance NLP|Spark Version
+{:.table-model-big}
+|Generative AI Lab Version |Spark NLP|Healthcare NLP|Visual NLP |Legal NLP|Finance NLP|Spark Version|
+|-----|------|--------|-----|--------|-------|--|
 |-----|------|--------|-----|--------|-------|x |
 | 3.5.0 - 4.2.2 | 4.0.2 | 4.0.0 | 3.13.0 |  x | 3.2.1 |
 | 4.3.0 - 4.5.1 | 4.2.1 | 4.2.1 | 4.0.0 | 1.0.0 | 1.0.0 | 3.2.1 |

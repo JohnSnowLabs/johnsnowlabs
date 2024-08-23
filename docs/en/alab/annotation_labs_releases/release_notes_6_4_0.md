@@ -25,6 +25,8 @@ Additionally, version 6.4 enhances collaboration and quality control in the anno
 
 Alongside these major updates, this release includes numerous improvements and bug fixes, making Generative AI Lab more efficient and user-friendly than ever.
 
+</div><div class="h3-box" markdown="1">
+
 ## Support for De-identification
 Version 6.4 of the Generative AI Lab introduces a new de-identification feature, enabling users to anonymize documents containing sensitive information such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This functionality is intended to protect data privacy and ensure compliance with privacy regulations while preserving the data’s usefulness for subsequent analysis and processing.
 
@@ -83,6 +85,8 @@ During the export process, de-identification is executed based on the type of an
 
 This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
 
+</div><div class="h3-box" markdown="1">
+
 ## Annotators Can View Completions Submitted by Reviewers
 In version 6.4, of the Generative AI Lab, a new feature has been added that allows annotators to view the completion submitted by the reviewer. This enhancement fosters better collaboration and quality control in the annotation process. Previously, reviewers could only provide feedback on annotations, but now they can clone annotator submissions, make corrections, and add comments directly within the text using meta information. The updated submissions are then visible to the original annotator, providing clear insights into the reviewer's expectations and suggestions.
 
@@ -124,6 +128,8 @@ The **Diff View** will then open, displaying the differences between the two com
 - **Collaboration**: Facilitates better communication between annotators and project managers by clearly showing where differences occur.
 
 This feature enhances the accuracy and efficiency of the annotation process, ensuring that all team members can easily identify and address any inconsistencies between completions.
+
+</div><div class="h3-box" markdown="1">
 
 ## Improvements
 ### Support for CPU cluster nodes in Azure
@@ -200,6 +206,8 @@ Previously, users were unable to access the license page to delete an existing l
 **Delete and generate a new license:**
 
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/15.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ## Bug Fixes
 - **Entries of failed training are skipped in History View**

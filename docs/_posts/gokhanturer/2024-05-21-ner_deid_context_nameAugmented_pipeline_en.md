@@ -18,6 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
+
 This pipeline can be used to extract PHI information such as `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `ID`, `AGE`, `MEDICALRECORD`, `ORGANIZATION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `SSN`, `ACCOUNT`, `DLN`, `PLATE`, `VIN`, `LICENSE`, `IPADDR` entities. In this pipeline, there are `ner_deid_generic_augmented`, `ner_deid_subentity_augmented`, `ner_deid_name_multilingual_clinical` NER models and several ContextualParser, RegexMatcher, and TextMatcher models were used.
 
 ## Predicted Entities

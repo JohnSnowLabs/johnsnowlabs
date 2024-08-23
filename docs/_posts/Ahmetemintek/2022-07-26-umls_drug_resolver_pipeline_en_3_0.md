@@ -15,6 +15,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/10de7650-8e88-461e-bea4-6c38bb3f0d00/John-Snow-Labs_Extract-Drugs-and-Substances-and-their-UMLS-Codes
+
 ---
 
 ## Description
@@ -26,6 +32,13 @@ This pretrained pipeline maps entities (Clinical Drugs) with their corresponding
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_drug_resolver_pipeline_en_4.0.0_3.0_1658815710311.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_drug_resolver_pipeline_en_4.0.0_3.0_1658815710311.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

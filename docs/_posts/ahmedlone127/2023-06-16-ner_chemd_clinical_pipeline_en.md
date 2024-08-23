@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_chemd_clinical](https://nlp
 
 ## Predicted Entities
 
+`MULTIPLE`, `TRIVIAL`, `SYSTEMATIC`, `FORMULA`, `FAMILY`, `IDENTIFIER`, `ABBREVIATION`
+
 
 
 {:.btn-box}

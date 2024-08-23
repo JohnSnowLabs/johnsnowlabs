@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ej2fultjiktzs
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/bb9e02a3-3926-4125-bfdf-49cdef5d1ca7/John-Snow-Labs_Clinical-Deidentification-for-Spanish
+
 ---
 
 ## Description
@@ -31,6 +37,13 @@ This pipeline is trained with sciwiki_300d embeddings and can be used to deident
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_es_4.4.4_3.0_1686979448782.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_es_4.4.4_3.0_1686979448782.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

@@ -17,6 +17,7 @@ const fromSearchString = () => {
     'tags',
     'sort',
     'predicted_entities',
+    'marketplace',
     'page',
   ].forEach((key) => {
     if (!searchParams.has(key)) {
@@ -25,6 +26,7 @@ const fromSearchString = () => {
     switch (key) {
       case 'tags':
       case 'predicted_entities':
+      case 'marketplace':
         params[key] = searchParams.getAll(key);
         break;
 
