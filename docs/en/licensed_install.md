@@ -1564,7 +1564,8 @@ Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
 ![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
 
-![image](https://github.com/user-attachments/assets/48339e38-fb5e-4dd7-b235-bfcb645cc855)
+![image](https://github.com/user-attachments/assets/53bc84ae-40dc-41dc-9522-e87bf70d4fba)
+
 
 
 After uploading is complete, you can configure and run the notebook.
