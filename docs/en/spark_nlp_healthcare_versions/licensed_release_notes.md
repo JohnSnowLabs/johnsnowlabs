@@ -385,8 +385,8 @@ The new LargeFewShotClassifierModel annotator  is designed to work effectively w
 {:.table-model-big}
 | Model Name              | Description | Predicted Entities  | Benchmarking  |
 |-------------------------|-------------|---------------------|---------------------|
-|[large_fewshot_classifier_age_group](https://nlp.johnsnowlabs.com/2024/08/15/large_fewshot_classifier_age_group_en)      | Identifies and classifies tweets reporting Adverse Drug Events (ADEs), learning effectively from minimal labeled examples and adapting to new, unseen classes. | `ADE`, `noADE` | Achieves 0.90 accuracy and 0.81 macro F1 across 3 entities |
-|[large_fewshot_classifier_ade](https://nlp.johnsnowlabs.com/2024/08/12/large_fewshot_classifier_ade_en)      | Identifies and classifies the age group of a person mentioned in health documents, learning effectively from minimal labeled examples and adapting to new, unseen classes. |`Adult`, `Child`, `Unknown` | Achieves 0.89 accuracy and 0.81 macro F1 across 3 entities |
+|[large_fewshot_classifier_age_group](https://nlp.johnsnowlabs.com/2024/08/15/large_fewshot_classifier_age_group_en.html)      | Identifies and classifies tweets reporting Adverse Drug Events (ADEs), learning effectively from minimal labeled examples and adapting to new, unseen classes. | `ADE`, `noADE` | Achieves 0.90 accuracy and 0.81 macro F1 across 3 entities |
+|[large_fewshot_classifier_ade](https://nlp.johnsnowlabs.com/2024/08/12/large_fewshot_classifier_ade_en.html)      | Identifies and classifies the age group of a person mentioned in health documents, learning effectively from minimal labeled examples and adapting to new, unseen classes. |`Adult`, `Child`, `Unknown` | Achieves 0.89 accuracy and 0.81 macro F1 across 3 entities |
 
 
 *Example*:
