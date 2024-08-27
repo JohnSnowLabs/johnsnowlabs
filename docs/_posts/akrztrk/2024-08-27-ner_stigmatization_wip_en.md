@@ -8,7 +8,7 @@ tags: [clinical, en, licensed, ner, stigmatization]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.4.1
-spark_version: 3.4
+spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
 article_header:
