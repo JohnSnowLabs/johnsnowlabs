@@ -66,3 +66,13 @@ This new feature enhances the annotation capabilities of Generative AI Lab, allo
 
 - While it's possible to copy and modify completions, it's important to note that the resolved code and descriptions cannot be directly edited. In such cases, deletion of the existing content or addition of new key-value pairs is necessary. In instances where no prediction is available, manual annotation of tasks can be performed using lookup codes/terms, provided that a lookup table has been configured.
 ![Resolver_copy_and_renames](/assets/images/annotation_lab/5.9.0/10.gif)
+
+## Pair Entity resolver models with rules and zero-shot prompts
+Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
+
+**How to Use**:
+  - **Step 1**: Add a rule or prompt from the Re-use Resource page.
+  - **Step 2**: Edit the label in the Customize Labels page and select the appropriate ER model to associate with the labels.
+  - **Step 3**: Import tasks and Pre-annotate the task.
+    
+![genAI650](/assets/images/annotation_lab/6.5.0/13.gif)

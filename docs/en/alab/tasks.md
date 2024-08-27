@@ -94,6 +94,29 @@ When multiple Annotators are assigned to a task, the reviewer will see the task 
 
 </div><div class="h3-box" markdown="1">
 
+### Annotators Can View Completions Submitted by Reviewers
+In version 6.4, of the Generative AI Lab, a new feature has been added that allows annotators to view the completion submitted by the reviewer. This enhancement fosters better collaboration and quality control in the annotation process. Previously, reviewers could only provide feedback on annotations, but now they can clone annotator submissions, make corrections, and add comments directly within the text using meta information. The updated submissions are then visible to the original annotator, providing clear insights into the reviewer's expectations and suggestions.
+
+**How to Enable**:
+- The project manager must enable the option **“Allow annotators to view completions from reviewers”** in the project settings.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
+
+#### Workflow:
+1.	**Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
+2.	**Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
+3.	**Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
+4.	**Implement Changes:** The annotator can then make the required changes based on the detailed feedback provided by the reviewer.
+   
+![GenaiImage](/assets/images/annotation_lab/6.4.0/7.gif)
+
+**Benefits**:
+- **Enhanced Feedback**: Reviewers can now make precise corrections and add detailed comments on individual labels, helping annotators understand exactly what changes are needed.
+- **Improved Collaboration**: Annotators can better align their work with the reviewer’s expectations by viewing the reviewer's cloned submission.
+- **Quality Control**: This feature helps in maintaining a higher standard of annotations by ensuring that feedback is clear and actionable.
+
+This feature significantly enhances the annotation process, making it more transparent and collaborative, and ensuring that annotators have a clear understanding of the reviewer's feedback.
+
 ## Task Filters
 
 As normally annotation projects involve a large number of tasks, the Task page includes filtering and sorting options which will help the user identify the tasks he/she needs faster.
