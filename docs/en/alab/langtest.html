@@ -620,308 +620,335 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="LangTest"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="test-suite-management">Test Suite Management</h2>
-<p>A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<h3 id="test-suites-hub">Test Suites HUB</h3>
-<p>The new <strong>“Test Suites HUB”</strong> option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the <strong>“Test Suite”</strong> page, where all existing Test Suites he/she has access to are listed.</p>
+  <h2 id="test-suite-management">Test Suite Management</h2>
+  <p>A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/1.png" alt="GenaiImage" /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="create-update-and-delete-test-suites">Create, Update, and Delete Test Suites</h3>
-<p>Managing a Test Suite is easy: a Test Suite can be created using the <strong>“Test”</strong> page under a parent project and can be fully managed in the <strong>“Test Suite”</strong> page within the <strong>“Test Suites HUB”</strong> option where users can create, update, and delete test suites.</p>
+  <h3 id="test-suites-hub">Test Suites HUB</h3>
+  <p>The new <strong>“Test Suites HUB”</strong> option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the <strong>“Test Suite”</strong> page, where all existing Test Suites he/she has access to are listed.</p>
 
-<h4 id="test-suite-creation">Test Suite Creation</h4>
-<p>Creating a new Test Suite from the <strong>“Test Suite”</strong> page is straightforward:</p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/1.png" alt="GenaiImage" /></p>
 
-<ol>
-  <li>In the Test Suite page, click on the <strong>“New”</strong> button to open the <strong>“Add Test Suite”</strong> form.</li>
-  <li>Provide a name (mandatory) and a description (optional) for the test suite.</li>
-  <li>Under <strong>“TESTS”</strong>, select the desired category and click on it to expand and view all available test types within that category. (Category samples - <strong>Robustness</strong>, <strong>Bias</strong>,etc.).</li>
-  <li>Choose the desired test types by selecting the checkboxes for the relevant categories.</li>
-  <li>Provide or modify the necessary details for each selected test type.</li>
-  <li>Apply the steps above for any number of different categories you require to configure the test suite.</li>
-  <li>Save your work, when configuration is complete by clicking on the <strong>“Save”</strong> button.</li>
-</ol>
+</div>
+<div class="h3-box">
 
-<p><strong>Note</strong>: The Model type is set to “NER” and cannot be changed, as Generative AI Lab supports only testing NER models in this version.</p>
+  <h3 id="create-update-and-delete-test-suites">Create, Update, and Delete Test Suites</h3>
+  <p>Managing a Test Suite is easy: a Test Suite can be created using the <strong>“Test”</strong> page under a parent project and can be fully managed in the <strong>“Test Suite”</strong> page within the <strong>“Test Suites HUB”</strong> option where users can create, update, and delete test suites.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/2.gif" alt="GenaiImage" /></p>
+  <h4 id="test-suite-creation">Test Suite Creation</h4>
+  <p>Creating a new Test Suite from the <strong>“Test Suite”</strong> page is straightforward:</p>
 
-<h3 id="supported-test-categories">Supported Test Categories</h3>
-<p>The following are the currently supported categories for NER models within the Generative AI Lab application, available through the LangTest framework:</p>
+  <ol>
+    <li>In the Test Suite page, click on the <strong>“New”</strong> button to open the <strong>“Add Test Suite”</strong> form.</li>
+    <li>Provide a name (mandatory) and a description (optional) for the test suite.</li>
+    <li>Under <strong>“TESTS”</strong>, select the desired category and click on it to expand and view all available test types within that category. (Category samples - <strong>Robustness</strong>, <strong>Bias</strong>,etc.).</li>
+    <li>Choose the desired test types by selecting the checkboxes for the relevant categories.</li>
+    <li>Provide or modify the necessary details for each selected test type.</li>
+    <li>Apply the steps above for any number of different categories you require to configure the test suite.</li>
+    <li>Save your work, when configuration is complete by clicking on the <strong>“Save”</strong> button.</li>
+  </ol>
 
-<p><strong>1. ACCURACY</strong>
+  <p><strong>Note</strong>: The Model type is set to “NER” and cannot be changed, as Generative AI Lab supports only testing NER models in this version.</p>
+
+  <p><img src="/assets/images/annotation_lab/6.2.0/2.gif" alt="GenaiImage" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="supported-test-categories">Supported Test Categories</h3>
+  <p>The following are the currently supported categories for NER models within the Generative AI Lab application, available through the LangTest framework:</p>
+
+  <p><strong>1. ACCURACY</strong>
 The goal of the Accuracy is to give users real, useful insights into how accurate the model is. It’s all about helping the user make smart choices on when and where to use the model in real-life situations. Accuracy tests evaluate the correctness of a model’s predictions. This category comprises six test types, three of which - <strong>“Min F1 Score”</strong>, <strong>“Min Precision Score”</strong> and <strong>“Min Recall Score”</strong> - require the user to provide model labels. The user can add labels in the “Add Model Labels” section, which becomes active immediately after selecting the corresponding checkbox for the test. Labels can be added or removed as shown below:</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/3.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/3.gif" alt="GenaiImage" /></p>
 
-<p>For more details about Accuracy tests, visit the <a href="https://langtest.org/docs/pages/tests/accuracy">LangTest Accuracy Documentation</a>.</p>
+  <p>For more details about Accuracy tests, visit the <a href="https://langtest.org/docs/pages/tests/accuracy">LangTest Accuracy Documentation</a>.</p>
 
-<p><strong>Note:</strong> Tests using custom labels require tasks with ground truth data.</p>
+  <p><strong>Note:</strong> Tests using custom labels require tasks with ground truth data.</p>
 
-<p><strong>2. BIAS</strong>
+  <p><strong>2. BIAS</strong>
 Model bias tests aim to gauge how well a model aligns its predictions with actual outcomes. Detecting and mitigating model bias is essential to prevent negative consequences such as perpetuating stereotypes or discrimination. This testing explores the impact of replacing documents with different genders, ethnicities, religions, or countries on the model’s predictions compared to the original training set, helping identify and rectify potential biases
 LangTest framework provides support for more than 20 distinct test types for the Bias category.</p>
 
-<p>For detailed information on Bias category, supported tests and samples, please refer to the <a href="https://langtest.org/docs/pages/docs/test_categories#bias-tests">LangTest Bias Documentation</a>.</p>
+  <p>For detailed information on Bias category, supported tests and samples, please refer to the <a href="https://langtest.org/docs/pages/docs/test_categories#bias-tests">LangTest Bias Documentation</a>.</p>
 
-<p><strong>3. FAIRNESS</strong>
+  <p><strong>3. FAIRNESS</strong>
 Fairness testing is essential to evaluate a model’s performance without bias, particularly concerning specific groups. The goal is to ensure unbiased results across all groups, avoiding favoritism or discrimination. Various tests, including those focused on attributes like gender, contribute to this evaluation, promoting fairness and equality in model outcomes.</p>
 
-<p>This category comprises two test types: <strong>“Max Gender F1 Score”</strong> and <strong>“Min Gender F1 Score”</strong>.</p>
+  <p>This category comprises two test types: <strong>“Max Gender F1 Score”</strong> and <strong>“Min Gender F1 Score”</strong>.</p>
 
-<p>Further information on Fairness tests can be accessed through the <a href="https://langtest.org/docs/pages/docs/test_categories#fairness-tests">LangTest Fairness Documentation</a>.</p>
+  <p>Further information on Fairness tests can be accessed through the <a href="https://langtest.org/docs/pages/docs/test_categories#fairness-tests">LangTest Fairness Documentation</a>.</p>
 
-<p><strong>4. PERFORMANCE</strong>
+  <p><strong>4. PERFORMANCE</strong>
 Performance tests gauge the efficiency and speed of a language model’s predictions. This category consists of one test type: <strong>“speed”</strong> which evaluates the execution speed of the model based on tokens.</p>
 
-<p>Further information on Performance test can be accessed through the <a href="https://langtest.org/docs/pages/tutorials/test_specific_notebooks/performance">LangTest Performance Documentation</a>.</p>
+  <p>Further information on Performance test can be accessed through the <a href="https://langtest.org/docs/pages/tutorials/test_specific_notebooks/performance">LangTest Performance Documentation</a>.</p>
 
-<p><strong>5. REPRESENTATION</strong>
+  <p><strong>5. REPRESENTATION</strong>
 Representation testing assesses whether a dataset accurately represents a specific population. It aims to identify potential biases within the dataset that could impact the results of any analysis, ensuring that the data used for training and testing is representative and unbiased.</p>
 
-<p>For additional details on Representation tests, please visit the <a href="https://langtest.org/docs/pages/tests/representation">LangTest Representation Documentation</a>.</p>
+  <p>For additional details on Representation tests, please visit the <a href="https://langtest.org/docs/pages/tests/representation">LangTest Representation Documentation</a>.</p>
 
-<p><strong>6. ROBUSTNESS</strong>
+  <p><strong>6. ROBUSTNESS</strong>
 Model robustness tests evaluate a model’s ability to maintain consistent performance when subjected to perturbations in the data it predicts. For tasks like Named Entity Recognition (NER), these tests assess how variations in input data, such as documents with typos or fully uppercased sentences, impact the model’s prediction performance. This provides insights into the model’s stability and reliability.</p>
 
-<p>More information on Robustness tests is available in the <a href="https://langtest.org/docs/pages/docs/test_categories#robustness-tests">LangTest Robustness Documentation</a>.</p>
+  <p>More information on Robustness tests is available in the <a href="https://langtest.org/docs/pages/docs/test_categories#robustness-tests">LangTest Robustness Documentation</a>.</p>
 
-<h4 id="managing-test-suites"><strong>Managing Test Suites</strong></h4>
-<p>To edit an existing Test Suite, navigate to the <strong>“Test Suites”</strong> page and follow these steps:</p>
+</div>
+<div class="h3-box">
 
-<ol>
-  <li>Click on the three dots at the top-right corner of the test suite card to display the three options available: <strong>“Export”</strong>, <strong>“Edit”</strong>, and <strong>“Delete”</strong>.</li>
-  <li>Selecting “Edit” takes you to the “Edit Test Suite” page.</li>
-  <li>Modify the description as necessary.</li>
-  <li>Under <strong>“LIST OF TESTS”</strong>, view all previously configured test categories and test types. Use the filter functionality to faster lookup the test category you need to edit.
+  <h4 id="managing-test-suites"><strong>Managing Test Suites</strong></h4>
+  <p>To edit an existing Test Suite, navigate to the <strong>“Test Suites”</strong> page and follow these steps:</p>
+
+  <ol>
+    <li>Click on the three dots at the top-right corner of the test suite card to display the three options available: <strong>“Export”</strong>, <strong>“Edit”</strong>, and <strong>“Delete”</strong>.</li>
+    <li>Selecting “Edit” takes you to the “Edit Test Suite” page.</li>
+    <li>Modify the description as necessary.</li>
+    <li>Under <strong>“LIST OF TESTS”</strong>, view all previously configured test categories and test types. Use the filter functionality to faster lookup the test category you need to edit.
 Selecting a test category will display its associated test types and corresponding pre-configured values. Clicking on the three dots next to a test type will present two options: <strong>“Edit”</strong> and <strong>“Delete”</strong>. Choosing <strong>“Delete”</strong> will deselect the test type, while selecting <strong>“Edit”</strong> will redirect you to the corresponding test type under <strong>TESTS</strong>, where you can modify the test type values. You can directly edit each test type within the <strong>TESTS</strong> section of the test suite.</li>
-  <li>Click the <strong>“Save”</strong> button to apply the changes.</li>
-</ol>
+    <li>Click the <strong>“Save”</strong> button to apply the changes.</li>
+  </ol>
 
-<p><strong>Note</strong>: Name and Model Type of a test suite cannot be modified.</p>
+  <p><strong>Note</strong>: Name and Model Type of a test suite cannot be modified.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/4.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/4.gif" alt="GenaiImage" /></p>
 
-<p><strong>Full-screen Mode and Search</strong>
+  <p><strong>Full-screen Mode and Search</strong>
 To boost productivity, you can create or edit a test suite using full-screen mode and the search functionality to quickly locate specific tests within the <strong>“TESTS”</strong> section.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/5.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/5.gif" alt="GenaiImage" /></p>
 
-<p><strong>Test Suite Deletion</strong></p>
+  <p><strong>Test Suite Deletion</strong></p>
 
-<p>To delete a test suite from the <strong>“Test Suite”</strong> page, follow these steps:</p>
+  <p>To delete a test suite from the <strong>“Test Suite”</strong> page, follow these steps:</p>
 
-<ol>
-  <li>Locate the test suite you wish to delete and click on the three dots next to it. This will reveal three options: <strong>“Export”</strong>, <strong>“Edit”</strong>, and <strong>“Delete”</strong>.</li>
-  <li>Select the <strong>“Delete”</strong> option.</li>
-  <li>A pop-up box will be shown. Click the <strong>“Yes”</strong> option.</li>
-  <li>The test suite will be deleted, and a deletion message will confirm the action.</li>
-</ol>
+  <ol>
+    <li>Locate the test suite you wish to delete and click on the three dots next to it. This will reveal three options: <strong>“Export”</strong>, <strong>“Edit”</strong>, and <strong>“Delete”</strong>.</li>
+    <li>Select the <strong>“Delete”</strong> option.</li>
+    <li>A pop-up box will be shown. Click the <strong>“Yes”</strong> option.</li>
+    <li>The test suite will be deleted, and a deletion message will confirm the action.</li>
+  </ol>
 
-<p><strong>Note</strong>: a test suite used within at least one project in your enterprise cannot be deleted.</p>
+  <p><strong>Note</strong>: a test suite used within at least one project in your enterprise cannot be deleted.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/6.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/6.gif" alt="GenaiImage" /></p>
 
-<h3 id="importing-and-exporting-test-suites">Importing and Exporting Test Suites</h3>
-<p>Users can export and import test suites using the <strong>“Test Suites HUB”</strong>. To export a test suite from the <strong>“Test Suite”</strong> page, follow these simple steps:</p>
+</div>
+<div class="h3-box">
 
-<ol>
-  <li>Click on the ellipsis symbol located next to the test suite you wish to export. This will present three options: <strong>“Export”</strong>, <strong>“Edit”</strong>, and <strong>“Delete”</strong>.</li>
-  <li>Click on the <strong>“Export”</strong>.</li>
-  <li>Upon selecting <strong>“Export”</strong>, the test suite will be saved as **<test_suite_name>.json**, and a confirmation message indicating successful export will appear.</test_suite_name></li>
-</ol>
+  <h3 id="importing-and-exporting-test-suites">Importing and Exporting Test Suites</h3>
+  <p>Users can export and import test suites using the <strong>“Test Suites HUB”</strong>. To export a test suite from the <strong>“Test Suite”</strong> page, follow these simple steps:</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/7.gif" alt="GenaiImage" /></p>
+  <ol>
+    <li>Click on the ellipsis symbol located next to the test suite you wish to export. This will present three options: <strong>“Export”</strong>, <strong>“Edit”</strong>, and <strong>“Delete”</strong>.</li>
+    <li>Click on the <strong>“Export”</strong>.</li>
+    <li>Upon selecting <strong>“Export”</strong>, the test suite will be saved as **<test_suite_name>.json**, and a confirmation message indicating successful export will appear.</test_suite_name></li>
+  </ol>
 
-<p>Users can import a test suite into the <strong>“Test Suites HUB”</strong> by following these few steps:</p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/7.gif" alt="GenaiImage" /></p>
 
-<ol>
-  <li>Navigate to the <strong>“Test Suite”</strong> page and click on the <strong>“Import”</strong> button to open the <strong>“Import Test Suite”</strong> page.</li>
-  <li>Either drag and drop the test suite file into the designated area or click to import the test suite file from your local file system.</li>
-  <li>Upon successful import, a confirmation message will be displayed.</li>
-  <li>You can then view the imported test suite on the <strong>“Test Suite”</strong> page.</li>
-</ol>
+  <p>Users can import a test suite into the <strong>“Test Suites HUB”</strong> by following these few steps:</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/8.gif" alt="GenaiImage" /></p>
+  <ol>
+    <li>Navigate to the <strong>“Test Suite”</strong> page and click on the <strong>“Import”</strong> button to open the <strong>“Import Test Suite”</strong> page.</li>
+    <li>Either drag and drop the test suite file into the designated area or click to import the test suite file from your local file system.</li>
+    <li>Upon successful import, a confirmation message will be displayed.</li>
+    <li>You can then view the imported test suite on the <strong>“Test Suite”</strong> page.</li>
+  </ol>
 
-<h3 id="searching-for-a-specific-test-suite">Searching for a specific Test Suite</h3>
-<p>Use the search feature on the <strong>“Test Suite”</strong> page, the <strong>“SEARCH TEST SUITES …“</strong> search bar to find the desired Test Suite, by matching it’s name.</p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/8.gif" alt="GenaiImage" /></p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/9.gif" alt="GenaiImage" /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="new-test-page-under-project-menu">New “Test” page under Project Menu</h3>
-<p>A new entry, <strong>“Test”</strong> has been added under the project menu in the left navigation bar for NER projects. Clicking on the <strong>“Test”</strong> node in the left navigation bar will take the user to the <strong>“Test”</strong> page, where they can manage tests and execute model testing.</p>
+  <h3 id="searching-for-a-specific-test-suite">Searching for a specific Test Suite</h3>
+  <p>Use the search feature on the <strong>“Test Suite”</strong> page, the <strong>“SEARCH TEST SUITES …“</strong> search bar to find the desired Test Suite, by matching it’s name.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/10.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/9.gif" alt="GenaiImage" /></p>
 
-<p>On this page, project managers can configure tests settings and corresponding parameters, create and edit test cases, start and stop model testing, review test logs, and review, download, or delete test results.</p>
+</div>
+<div class="h3-box">
 
-<p><strong>Note</strong>: The functionality available on the Test page is exclusively available to users with project manager roles.</p>
+  <h3 id="new-test-page-under-project-menu">New “Test” page under Project Menu</h3>
+  <p>A new entry, <strong>“Test”</strong> has been added under the project menu in the left navigation bar for NER projects. Clicking on the <strong>“Test”</strong> node in the left navigation bar will take the user to the <strong>“Test”</strong> page, where they can manage tests and execute model testing.</p>
 
-<h4 id="test---setup-and-configuration">Test - setup and configuration**</h4>
+  <p><img src="/assets/images/annotation_lab/6.2.0/10.png" alt="GenaiImage" /></p>
 
-<p>Navigating to the <strong>“Test”</strong> page under a specific project, allows the user to specify what tests will be used to assess the quality of the project’s model.</p>
+  <p>On this page, project managers can configure tests settings and corresponding parameters, create and edit test cases, start and stop model testing, review test logs, and review, download, or delete test results.</p>
 
-<p>There are two mandatory sections that need to be filled:</p>
+  <p><strong>Note</strong>: The functionality available on the Test page is exclusively available to users with project manager roles.</p>
 
-<p><strong>1. Select Model:</strong>
+  <h4 id="test---setup-and-configuration">Test - setup and configuration**</h4>
+
+  <p>Navigating to the <strong>“Test”</strong> page under a specific project, allows the user to specify what tests will be used to assess the quality of the project’s model.</p>
+
+  <p>There are two mandatory sections that need to be filled:</p>
+
+  <p><strong>1. Select Model:</strong>
 Select the NER model pretrained/trained that is used to predict annotations for the tasks/documents in the current project. The user can choose a NER model from the dropdown. All available models configured within the project are listed in this dropdown menu for selection.</p>
 
-<p><strong>2. Select Test Suite:</strong>
+  <p><strong>2. Select Test Suite:</strong>
 The test suite comprises a collection of tests designed to evaluate your trained model in various scenarios.</p>
 
-<p>The user can choose an existing test suite from the dropdown menu or create a new one by clicking on “+ Create New Test Suite” within the dropdown menu.</p>
+  <p>The user can choose an existing test suite from the dropdown menu or create a new one by clicking on “+ Create New Test Suite” within the dropdown menu.</p>
 
-<p><strong>Note</strong>: The option to create a new test suite is available only to supervisor and admin users with the manager role.</p>
+  <p><strong>Note</strong>: The option to create a new test suite is available only to supervisor and admin users with the manager role.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/11.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/11.gif" alt="GenaiImage" /></p>
 
-<p>There are two configuration options available in the “Test Parameters” section; they are optional:</p>
+  <p>There are two configuration options available in the “Test Parameters” section; they are optional:</p>
 
-<p><strong>1. Filter completions by:</strong></p>
+  <p><strong>1. Filter completions by:</strong></p>
 
-<p>This option enables users to narrow down their analysis by selecting tasks based on their completion status.
+  <p>This option enables users to narrow down their analysis by selecting tasks based on their completion status.
 The available options are:</p>
 
-<ul>
-  <li><strong>Clear “Filter completions by”</strong>: Removes selected completion filters.</li>
-  <li><strong>Submitted completions</strong>: Select only tasks with submitted completions for analysis.</li>
-  <li><strong>Reviewed completions</strong>: Select only tasks with reviewed completions for analysis.</li>
-</ul>
+  <ul>
+    <li><strong>Clear “Filter completions by”</strong>: Removes selected completion filters.</li>
+    <li><strong>Submitted completions</strong>: Select only tasks with submitted completions for analysis.</li>
+    <li><strong>Reviewed completions</strong>: Select only tasks with reviewed completions for analysis.</li>
+  </ul>
 
-<p><strong>2. Filter test by tag:</strong></p>
+  <p><strong>2. Filter test by tag:</strong></p>
 
-<p>This functionality enables users to refine their analysis by selecting only project tasks associated with specific tags. 
+  <p>This functionality enables users to refine their analysis by selecting only project tasks associated with specific tags. 
 By default, the dropdown includes all default tags such as “Validated”, “Test”, “Corrections Needed”, and “Train”, as well as any custom tags created within the project.</p>
 
-<p>Users can select tags to focus the model testing execution on the specific tagged tasks; if no tags are selected, all tasks will be considered for analysis.</p>
+  <p>Users can select tags to focus the model testing execution on the specific tagged tasks; if no tags are selected, all tasks will be considered for analysis.</p>
 
-<p>Users have two methods to select Test Settings and Test Parameters:</p>
+  <p>Users have two methods to select Test Settings and Test Parameters:</p>
 
-<p><strong>1. Direct Selection Method (Without Wizard Mode):</strong></p>
-<ul>
-  <li>Go to the <strong>“Test”</strong> page.</li>
-  <li>In the Test Settings section, choose a model from the <strong>“Select Model”</strong> dropdown.</li>
-  <li>Within the Testing Parameters section, pick completions from the <strong>“Filter completions by”</strong> dropdown.</li>
-  <li>Also within Testing Parameters, select tags from the <strong>“Filter test by tag for testing”</strong> dropdown.</li>
-  <li>Click the <strong>“Save”</strong> button to confirm your selections and save the configuration.</li>
-</ul>
+  <p><strong>1. Direct Selection Method (Without Wizard Mode):</strong></p>
+  <ul>
+    <li>Go to the <strong>“Test”</strong> page.</li>
+    <li>In the Test Settings section, choose a model from the <strong>“Select Model”</strong> dropdown.</li>
+    <li>Within the Testing Parameters section, pick completions from the <strong>“Filter completions by”</strong> dropdown.</li>
+    <li>Also within Testing Parameters, select tags from the <strong>“Filter test by tag for testing”</strong> dropdown.</li>
+    <li>Click the <strong>“Save”</strong> button to confirm your selections and save the configuration.</li>
+  </ul>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/12.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/12.gif" alt="GenaiImage" /></p>
 
-<p><strong>2. Wizard Mode (Guided Setup):</strong></p>
+  <p><strong>2. Wizard Mode (Guided Setup):</strong></p>
 
-<ul>
-  <li>Click the <strong>“Wizard”</strong> button to initiate Wizard mode. This will reveal the <strong>“Test Setting”</strong> tab, offering detailed information about Model Selection and Test Suite.</li>
-  <li>From the <strong>“Select Model”</strong> dropdown, choose a model.</li>
-  <li>Select a test suite from the dropdown or create a new one by clicking on <strong>”+ Create New Test Suite”</strong>.</li>
-  <li>Click “Next” to proceed to the <strong>“Test Parameters”</strong> tab, where you’ll see detailed information about <strong>“Filter completions by”</strong> and <strong>“Tags”</strong>.</li>
-  <li>Within the <strong>“Filter completions by”</strong> dropdown, select the appropriate option.</li>
-  <li>Choose one or more tags, or none, from the <strong>“Filter test by tag for testing”</strong> dropdown.</li>
-  <li>Click <strong>“Next”</strong> to save the Test Settings and Parameters.</li>
-</ul>
+  <ul>
+    <li>Click the <strong>“Wizard”</strong> button to initiate Wizard mode. This will reveal the <strong>“Test Setting”</strong> tab, offering detailed information about Model Selection and Test Suite.</li>
+    <li>From the <strong>“Select Model”</strong> dropdown, choose a model.</li>
+    <li>Select a test suite from the dropdown or create a new one by clicking on <strong>”+ Create New Test Suite”</strong>.</li>
+    <li>Click “Next” to proceed to the <strong>“Test Parameters”</strong> tab, where you’ll see detailed information about <strong>“Filter completions by”</strong> and <strong>“Tags”</strong>.</li>
+    <li>Within the <strong>“Filter completions by”</strong> dropdown, select the appropriate option.</li>
+    <li>Choose one or more tags, or none, from the <strong>“Filter test by tag for testing”</strong> dropdown.</li>
+    <li>Click <strong>“Next”</strong> to save the Test Settings and Parameters.</li>
+  </ul>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/13.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/13.gif" alt="GenaiImage" /></p>
 
-<p>To modify the Test Settings and Parameters, simply click on the <strong>“Edit”</strong> icon.</p>
+  <p>To modify the Test Settings and Parameters, simply click on the <strong>“Edit”</strong> icon.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/14.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/14.png" alt="GenaiImage" /></p>
 
-<h4 id="generating-test-cases">Generating Test Cases</h4>
-<p>After saving the Test Settings and Parameters, the following options become available: <strong>“Generate Test Cases”</strong>, <strong>“Start Testing”</strong>, and <strong>“Edit”</strong>. 
+  <h4 id="generating-test-cases">Generating Test Cases</h4>
+  <p>After saving the Test Settings and Parameters, the following options become available: <strong>“Generate Test Cases”</strong>, <strong>“Start Testing”</strong>, and <strong>“Edit”</strong>. 
 Users must generate test cases and conduct testing independently.</p>
 
-<p>Clicking on <strong>“Generate Test Cases”</strong> will produce test cases based on the saved Test Settings and Parameters. The generated test cases will appear under the “Test Cases” tab.</p>
+  <p>Clicking on <strong>“Generate Test Cases”</strong> will produce test cases based on the saved Test Settings and Parameters. The generated test cases will appear under the “Test Cases” tab.</p>
 
-<p><strong>Note</strong>: 
+  <p><strong>Note</strong>: 
 Only Bias and Robustness test cases can be edited and updated; other test cases are not editable.</p>
 
-<p>Modifying Test Settings or Parameters and generating new test cases will discard any existing ones. If no relevant tasks or data are available, no test cases will be generated.</p>
+  <p>Modifying Test Settings or Parameters and generating new test cases will discard any existing ones. If no relevant tasks or data are available, no test cases will be generated.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/15.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/15.gif" alt="GenaiImage" /></p>
 
-<h4 id="start-model-testing">Start Model Testing</h4>
-<p>When <strong>“Start Testing”</strong> is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on <strong>“Show Logs”</strong>. The testing process can be halted by clicking on <strong>“Stop Testing”</strong>. If no test cases have been generated, the <strong>“Start Testing”</strong> option will be disabled, preventing the user from initiating testing.</p>
+  <h4 id="start-model-testing">Start Model Testing</h4>
+  <p>When <strong>“Start Testing”</strong> is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on <strong>“Show Logs”</strong>. The testing process can be halted by clicking on <strong>“Stop Testing”</strong>. If no test cases have been generated, the <strong>“Start Testing”</strong> option will be disabled, preventing the user from initiating testing.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/16.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/16.gif" alt="GenaiImage" /></p>
 
-<p>If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on “Start Testing” will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.</p>
+  <p>If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on “Start Testing” will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/17.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/17.png" alt="GenaiImage" /></p>
 
-<h4 id="view-and-delete-test-results">View and Delete Test Results</h4>
-<p>Once the execution of model testing is complete, users can access the test results via the <strong>“Test Results History”</strong> section in the <strong>“Test Results”</strong> tab.</p>
+  <h4 id="view-and-delete-test-results">View and Delete Test Results</h4>
+  <p>Once the execution of model testing is complete, users can access the test results via the <strong>“Test Results History”</strong> section in the <strong>“Test Results”</strong> tab.</p>
 
-<p>Under this tab, the application displays all the “test runs” and corresponding results, for every test previously conducted for the project.</p>
+  <p>Under this tab, the application displays all the “test runs” and corresponding results, for every test previously conducted for the project.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/18.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/18.png" alt="GenaiImage" /></p>
 
-<p>Clicking on <strong>“Show Results”</strong> will display the results for the selected test execution run. The test results consist of two reports:</p>
+  <p>Clicking on <strong>“Show Results”</strong> will display the results for the selected test execution run. The test results consist of two reports:</p>
 
-<p><strong>1. Result Metrics:</strong></p>
+  <p><strong>1. Result Metrics:</strong></p>
 
-<p>This section of the results provides a summary of all tests performed, including their status. It includes details such as <strong>“Number”</strong>, <strong>“Category”</strong>, <strong>“Test Type”</strong>, <strong>“Fail Count”</strong>, <strong>“Pass Count”</strong>, <strong>“Pass Rate”</strong>, <strong>“Minimum Pass Rate”</strong> and <strong>“Status”</strong>.</p>
+  <p>This section of the results provides a summary of all tests performed, including their status. It includes details such as <strong>“Number”</strong>, <strong>“Category”</strong>, <strong>“Test Type”</strong>, <strong>“Fail Count”</strong>, <strong>“Pass Count”</strong>, <strong>“Pass Rate”</strong>, <strong>“Minimum Pass Rate”</strong> and <strong>“Status”</strong>.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/19.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/19.png" alt="GenaiImage" /></p>
 
-<p><strong>2. Detailed Report:</strong></p>
+  <p><strong>2. Detailed Report:</strong></p>
 
-<p>The detailed report contains information about each test case within the selected tests. It includes <strong>“Number”</strong>, <strong>“Category”</strong>, <strong>“Test Type”</strong>, <strong>“Original”</strong>,<strong>“Test Case”</strong>, <strong>“Expected Results”</strong>, <strong>“Actual Results”</strong> and <strong>“Status”</strong>.</p>
+  <p>The detailed report contains information about each test case within the selected tests. It includes <strong>“Number”</strong>, <strong>“Category”</strong>, <strong>“Test Type”</strong>, <strong>“Original”</strong>,<strong>“Test Case”</strong>, <strong>“Expected Results”</strong>, <strong>“Actual Results”</strong> and <strong>“Status”</strong>.</p>
 
-<p>In this context, <strong>“Expected Results”</strong> refer to the prediction output by the testing model on the <strong>“Original”</strong> data, while <strong>“Actual Results”</strong> indicate the prediction output by the testing model on the <strong>“Test Case”</strong> data generated. A test is considered passed if the <strong>“Expected Results”</strong> match the <strong>“Actual Results”</strong>; otherwise, it is deemed failed.</p>
+  <p>In this context, <strong>“Expected Results”</strong> refer to the prediction output by the testing model on the <strong>“Original”</strong> data, while <strong>“Actual Results”</strong> indicate the prediction output by the testing model on the <strong>“Test Case”</strong> data generated. A test is considered passed if the <strong>“Expected Results”</strong> match the <strong>“Actual Results”</strong>; otherwise, it is deemed failed.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/20.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/20.png" alt="GenaiImage" /></p>
 
-<p>Users have the option to simultaneously download both reports in CSV format by selecting the download button.</p>
+  <p>Users have the option to simultaneously download both reports in CSV format by selecting the download button.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/21.png" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/21.png" alt="GenaiImage" /></p>
 
-<p>For a detailed report, users can enter full-screen mode by clicking the full-screen button.</p>
+  <p>For a detailed report, users can enter full-screen mode by clicking the full-screen button.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/22.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/22.gif" alt="GenaiImage" /></p>
 
-<p>Furthermore, users can delete test results from the <strong>“Test Results History”</strong> by selecting the three dots followed by the <strong>“Delete”</strong> button.</p>
+  <p>Furthermore, users can delete test results from the <strong>“Test Results History”</strong> by selecting the three dots followed by the <strong>“Delete”</strong> button.</p>
 
-<p><img src="/assets/images/annotation_lab/6.2.0/23.gif" alt="GenaiImage" /></p>
+  <p><img src="/assets/images/annotation_lab/6.2.0/23.gif" alt="GenaiImage" /></p>
 
-<p>## Data Augmentation for more Robust Model Training
-Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the “<strong>Improve Test Results</strong>” button to generate augmented tasks for the test types that failed.</p>
+</div>
+<div class="h3-box">
 
-<p>The new tab called “<strong>Generate Augmented Data</strong>” on the import page will make it easier for you to create augmented tasks. By clicking on the “<strong>Improve Test Results</strong>” option, you’ll be redirected to the “<strong>Generate Augmented Data</strong>” page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under “<strong>Proportional Augmentation</strong>”.</p>
+  <h2 id="data-augmentation-for-more-robust-model-training">Data Augmentation for more Robust Model Training</h2>
+  <p>Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the “<strong>Improve Test Results</strong>” button to generate augmented tasks for the test types that failed.</p>
 
-<p><img src="/assets/images/annotation_lab/6.5.0/1.gif" alt="genAI650" /></p>
+  <p>The new tab called “<strong>Generate Augmented Data</strong>” on the import page will make it easier for you to create augmented tasks. By clicking on the “<strong>Improve Test Results</strong>” option, you’ll be redirected to the “<strong>Generate Augmented Data</strong>” page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under “<strong>Proportional Augmentation</strong>”.</p>
 
-<h4 id="proportional-augmentaiton">Proportional Augmentaiton</h4>
+  <p><img src="/assets/images/annotation_lab/6.5.0/1.gif" alt="genAI650" /></p>
 
-<p>This method enhances data quality by using various testing techniques to generate new data based on an existing dataset. Proportional Augmentation is particularly effective in improving model performance by addressing specific weaknesses, such as the inability to recognize lowercase text, uppercase text, typos, and more. It is especially beneficial for bias and robustness testing, ensuring that the model produces high-quality and accurate results for machine learning, predictive modeling, and decision-making tasks. After setting the test types and max_proportion, click on “<strong>Generate Results</strong>” to create augmented tasks. Based on your configuration, data augmentation will enhance the existing tasks and generate new ones.</p>
+  <h4 id="proportional-augmentaiton">Proportional Augmentaiton</h4>
 
-<p><img src="/assets/images/annotation_lab/6.5.0/2.gif" alt="genAI650" /></p>
+  <p>This method enhances data quality by using various testing techniques to generate new data based on an existing dataset. Proportional Augmentation is particularly effective in improving model performance by addressing specific weaknesses, such as the inability to recognize lowercase text, uppercase text, typos, and more. It is especially beneficial for bias and robustness testing, ensuring that the model produces high-quality and accurate results for machine learning, predictive modeling, and decision-making tasks. After setting the test types and max_proportion, click on “<strong>Generate Results</strong>” to create augmented tasks. Based on your configuration, data augmentation will enhance the existing tasks and generate new ones.</p>
 
-<p>Another way to generate augmented tasks is through “<strong>Templatic augmentation</strong>”.</p>
+  <p><img src="/assets/images/annotation_lab/6.5.0/2.gif" alt="genAI650" /></p>
 
-<h4 id="templatic-augementation">Templatic Augementation</h4>
-<p>Templatic Augmentation creates new data by using templates or patterns that are similar in structure and context to the original input. This method depends a lot on the templates provided by the user. There are two options for using this approach:</p>
+  <p>Another way to generate augmented tasks is through “<strong>Templatic augmentation</strong>”.</p>
 
-<h5 id="a-manually-add-templates">A. Manually Add Templates</h5>
-<p>Users can manually choose templates along with the available labels. They can choose how many results to generate for each template using a scroll bar, which can be set from 1 to 50.</p>
+  <h4 id="templatic-augementation">Templatic Augementation</h4>
+  <p>Templatic Augmentation creates new data by using templates or patterns that are similar in structure and context to the original input. This method depends a lot on the templates provided by the user. There are two options for using this approach:</p>
 
-<p><img src="/assets/images/annotation_lab/6.5.0/3.gif" alt="genAI650" /></p>
+  <h5 id="a-manually-add-templates">A. Manually Add Templates</h5>
+  <p>Users can manually choose templates along with the available labels. They can choose how many results to generate for each template using a scroll bar, which can be set from 1 to 50.</p>
 
-<h5 id="b-generate-templates-with-openai">B. Generate Templates with OpenAI</h5>
+  <p><img src="/assets/images/annotation_lab/6.5.0/3.gif" alt="genAI650" /></p>
 
-<p>Users can create more templates using OpenAI, which must be integrated into the project for this feature to work. After choosing how many extra templates to generate for each existing one (from 1 to 10), users can select how many results they want for each template by adjusting a scroll bar from 1 to 50. The total expected number of results will also be shown.</p>
+  <h5 id="b-generate-templates-with-openai">B. Generate Templates with OpenAI</h5>
 
-<p><img src="/assets/images/annotation_lab/6.5.0/4.gif" alt="genAI650" /></p>
+  <p>Users can create more templates using OpenAI, which must be integrated into the project for this feature to work. After choosing how many extra templates to generate for each existing one (from 1 to 10), users can select how many results they want for each template by adjusting a scroll bar from 1 to 50. The total expected number of results will also be shown.</p>
 
-<p><strong>Note:</strong> <strong>Automatic tags in import augmented tasks</strong> 
+  <p><img src="/assets/images/annotation_lab/6.5.0/4.gif" alt="genAI650" /></p>
+
+  <p><strong>Note:</strong> <strong>Automatic tags in import augmented tasks</strong> 
 After the augmented tasks are generated, the user can import the tasks. The augmented tasks are imported with the “<strong>Augmented</strong>” default tag.</p>
 
-<p><img src="/assets/images/annotation_lab/6.5.0/5.gif" alt="genAI650" /></p>
+  <p><img src="/assets/images/annotation_lab/6.5.0/5.gif" alt="genAI650" /></p>
 
-<p>Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model’s performance under the augmented conditions.</p>
+  <p>Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model’s performance under the augmented conditions.</p>
 
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2024-06-12T00:00:00+00:00">Jun 12, 2024</time>
     </span><!-- start custom article footer snippet -->
