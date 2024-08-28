@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-6tsjiywfualhq
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-fslxwvs65fwuu
   snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/b3bac611-ed88-4391-b013-08de4e32a503/John-Snow-Labs_Clinical-Deidentification-for-Arabic
 

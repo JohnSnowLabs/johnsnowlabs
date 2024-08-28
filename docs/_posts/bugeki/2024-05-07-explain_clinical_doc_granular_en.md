@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-oi26faao26z54
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-v7nmnswuxgcue
   snowflake_link: 
   databricks_link: 
 
