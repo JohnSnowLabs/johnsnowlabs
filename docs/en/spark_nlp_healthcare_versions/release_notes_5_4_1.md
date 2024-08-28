@@ -257,7 +257,7 @@ This NER model identifies and categorizes stigmatizing language in medical recor
 {:.table-model-big}
 | Model Name              | Description | Predicted Entities  |
 |-------------------------|-------------|---------------------|
-|[ner_stigmatization_wip](https://nlp.johnsnowlabs.com/2024/08/20/ner_stigmatization_wip_en.html)      | This Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical text related to stigmatization. This model aims to systematically collect and analyze data on stigmatizing language found in patients' medical records. | `Aggressive`, `Argumentative`, `Calm`, `Resistant`, `Credibility_Doubts`, `Suspected_DSB`, `Compliant`, `Noncompliant`, `Well_Kept_Appearance`, `Neglected_Appearance`, `Paternalistic_Tone`, `Poor_Reasoning`, `Poor_Decision-Making`, `Other_Discriminatory_Language`, `Positive_Descriptors`, `Positive_Assessment`, `Shared_Decision`, `Patient_Autonomy`|
+|[ner_stigmatization_wip](https://nlp.johnsnowlabs.com/2024/08/27/ner_stigmatization_wip_en.html)      | This Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical text related to stigmatization. This model aims to systematically collect and analyze data on stigmatizing language found in patients' medical records. |`Aggressive`, `Argumentative`, `Calm`, `Resistant`, `Credibility_Doubts`, `Suspected_DSB`, `Compliant`, `Noncompliant`, `Collaborative_Decision_Making`, `Neglected_Appearance`, `Paternalistic_Tone`, `Poor_Reasoning`, `Poor_Decision_Making`, `Other_Discriminatory_Language`, `Positive_Descriptors`, `Positive_Assessment`, `Disoriented`, `Test`, `Treatment`, `Problem`|
 
 This model achieves 0.91 accuracy and 0.89 macro F1 across 11 entities
 
@@ -279,11 +279,16 @@ sample_texts = """During his hospital stay, David Brown's reluctance to seek car
 |---------------------------|-----|---|------------------|
 |reluctance                 |40   |49 |Resistant         |
 |resistance                 |68   |77 |Resistant         |
+|treatments                 |92   |101|TREATMENT         |
 |poor reasoning and judgment|141  |167|Poor_Reasoning    |
 |confrontational            |197  |211|Argumentative     |
 |defensiveness              |235  |247|Argumentative     |
+|the deep-seated anxieties  |302  |326|PROBLEM           |
 |adhering                   |463  |470|Compliant         |
+|his prescribed regimen     |475  |496|TREATMENT         |
 |insisting                  |599  |607|Credibility_Doubts|
+|his symptoms               |614  |625|PROBLEM           |
+|stress                     |646  |651|PROBLEM           |
 
 
 
