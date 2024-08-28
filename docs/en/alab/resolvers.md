@@ -13,8 +13,12 @@ sidebar:
     nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 ### Lookup code/terms in Labeling page
 Generative AI Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, Generative AI Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
+
+</div><div class="h3-box" markdown="1">
 
 ### Configuring Lookup
 Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:
@@ -24,10 +28,14 @@ Configuring lookup datasets is straightforward: use the well-known Customize Lab
 
 ![LookUpConfiguration](/assets/images/annotation_lab/5.9.0/1.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Identifying Entities with Lookup Data:
 Once setup is done, it is easy to identify entities eligible for lookup by a small ⌄ icon displayed next to them. This icon signifies that lookup data can be added to those entities, providing users with clear guidance on annotation possibilities.
 
 ![ViewingIfLookupIsAvailable](/assets/images/annotation_lab/5.9.0/2.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### Adding/Viewing and Updating Lookup Data:
 **Adding Lookup Data in Labeling Page:** Users can select the available lookup data from the list available for a particular label.
@@ -43,6 +51,8 @@ Once setup is done, it is easy to identify entities eligible for lookup by a sma
 ![UpdateLookup](/assets/images/annotation_lab/5.9.0/5.gif)
 
 This new feature enhances the annotation capabilities of Generative AI Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
+
+</div><div class="h3-box" markdown="1">
 
 ## Pre-annotate metadata using Resolvers 
 
@@ -67,6 +77,8 @@ This new feature enhances the annotation capabilities of Generative AI Lab, allo
 - While it's possible to copy and modify completions, it's important to note that the resolved code and descriptions cannot be directly edited. In such cases, deletion of the existing content or addition of new key-value pairs is necessary. In instances where no prediction is available, manual annotation of tasks can be performed using lookup codes/terms, provided that a lookup table has been configured.
 ![Resolver_copy_and_renames](/assets/images/annotation_lab/5.9.0/10.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ## Pair Entity resolver models with rules and zero-shot prompts
 Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
 
@@ -76,3 +88,5 @@ Version 6.5.0 introduces expanded support for using Entity Resolution (ER) model
   - **Step 3**: Import tasks and Pre-annotate the task.
     
 ![genAI650](/assets/images/annotation_lab/6.5.0/13.gif)
+
+</div>
