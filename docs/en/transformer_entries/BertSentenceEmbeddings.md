@@ -23,7 +23,7 @@ and the [BertSentenceEmbeddingsTestSpec](https://github.com/JohnSnowLabs/spark-n
 
 [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
-https://github.com/google-research/bert
+[https://github.com/google-research/bert](https://github.com/google-research/bert)
 
 **Paper abstract**
 

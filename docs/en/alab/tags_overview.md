@@ -42,7 +42,7 @@ To use a variable, define it with the value parameter of a tag and specify it us
 
 When you look on the preview window, you can see the header set on top of the labels/choices. 
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## Configure project using Visual Menu Builder
 
@@ -93,3 +93,5 @@ The **Show parent action buttons on hover** button in the Visual Menu Builder al
 The "**Fullscreen**" button in the visual menu builder allows users to expand the workspace to occupy the entire screen, providing a larger and more focused view of the project configuration. Clicking on the "**Fullscreen**" button maximizes the Visual Menu Builder, hiding other UI elements so the entire screen is dedicated to the project configuration. To exit fullscreen mode, users can click the "**Fullscreen**" button again or use the Esc key to return to the normal view with all standard UI elements visible.
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/12.gif)
+
+</div>

@@ -26,6 +26,8 @@ Lastly, the new menu builder allows users to visually configure every setting fo
 
 Here are the highlights of this release:
 
+</div><div class="h3-box" markdown="1">
+
 ## Data Augmentation for more Robust Model Training
 Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
 
@@ -62,6 +64,7 @@ After the augmented tasks are generated, the user can import the tasks. The augm
 
 Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
 
+</div><div class="h3-box" markdown="1">
 
 ## Configure project using Visual Menu Builder
 
@@ -113,6 +116,8 @@ The "**Fullscreen**" button in the visual menu builder allows users to expand th
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/12.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ## Pair Entity resolver models with rules and zero-shot prompts
 Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
 
@@ -125,6 +130,8 @@ Version 6.5.0 introduces expanded support for using Entity Resolution (ER) model
 
 This update broadens the capabilities of ER models, making them more versatile in annotation projects.
 
+</div><div class="h3-box" markdown="1">
+
 ### Improvements
 ### By default "synthetic" tag is added for imported synthetic tasks
 In previous versions, users had to manually add tags to synthetically generated tasks or else tasks imported into the task page lacked any associated tags. Starting with version 6.5.0, when tasks are imported, they now come with synthetic tags already associated with them during import in the task page.
@@ -133,31 +140,43 @@ In previous versions, users had to manually add tags to synthetically generated 
 
 This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
 
+</div><div class="h3-box" markdown="1">
+
 ### Enhanced task filtering
 
 With this version, users can combine multiple filters simultaneously to refine their task search, significantly enhancing the control and flexibility in task management.
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/15.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Enhanced visibility - Annotator's Instructions 
 The instruction section in Version 6.5.0 has been enhanced for better visibility. Now displayed with a faded blue background and an icon, the instructions stand out clearly, making them easily identifiable by annotators.
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/16.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### View instructions on the tasks page for "compact view"
 View the instructions directly on the task page itself when using the compact view in Classification Project type. 
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/17.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Bulk test suite deletion API
 Delete multiple test suites in bulk using the API. This streamlines the process of managing test suites, the new bulk deletion API can be accessed and tested directly from the API Integration page within the application as well. 
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/18.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Pyspark version displayed on "About" page
 This information is useful when training models or when using specific PySpark features, ensuring compatibility. 
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/19.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### Bug Fixes
 - **Bugs Fixes for Testing** 

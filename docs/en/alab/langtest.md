@@ -13,14 +13,19 @@ sidebar:
   nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 ## Test Suite Management
 A Test Suite represents a collection of tests designed to evaluate your trained model across different scenarios. LangTest is a comprehensive framework for assessing AI language models in the Generative AI Lab, focusing on dimensions such as robustness, representation, and fairness. The framework subjects the models to a series of tests to evaluate their performance in these areas. Through iterative training cycles, the models are continuously improved until they achieve satisfactory results in these tests. This iterative process ensures that the models are well-equipped to handle diverse scenarios and meet essential requirements for reliable and effective language processing.
+
+</div><div class="h3-box" markdown="1">
 
 ### Test Suites HUB
 The new **"Test Suites HUB"** option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the **"Test Suite"** page, where all existing Test Suites he/she has access to are listed.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/1.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/1.png)
 
+</div><div class="h3-box" markdown="1">
 
 ### Create, Update, and Delete Test Suites
 Managing a Test Suite is easy: a Test Suite can be created using the **"Test"** page under a parent project and can be fully managed in the **"Test Suite"** page within the **"Test Suites HUB"** option where users can create, update, and delete test suites.
@@ -38,7 +43,9 @@ Creating a new Test Suite from the **"Test Suite"** page is straightforward:
 
 **Note**: The Model type is set to "NER" and cannot be changed, as Generative AI Lab supports only testing NER models in this version.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/2.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/2.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### Supported Test Categories
 The following are the currently supported categories for NER models within the Generative AI Lab application, available through the LangTest framework:
@@ -80,6 +87,8 @@ Model robustness tests evaluate a model’s ability to maintain consistent perfo
 
 More information on Robustness tests is available in the [LangTest Robustness Documentation](https://langtest.org/docs/pages/docs/test_categories#robustness-tests).
 
+</div><div class="h3-box" markdown="1">
+
 #### **Managing Test Suites**
 To edit an existing Test Suite, navigate to the **"Test Suites"** page and follow these steps:
 
@@ -92,12 +101,12 @@ Selecting a test category will display its associated test types and correspondi
 
 **Note**: Name and Model Type of a test suite cannot be modified.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/4.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/4.gif)
  
  **Full-screen Mode and Search**
 To boost productivity, you can create or edit a test suite using full-screen mode and the search functionality to quickly locate specific tests within the **"TESTS"** section.
  
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/5.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/5.gif)
 
  **Test Suite Deletion**
 
@@ -110,7 +119,9 @@ To delete a test suite from the **"Test Suite"** page, follow these steps:
 
 **Note**: a test suite used within at least one project in your enterprise cannot be deleted.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/6.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/6.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### Importing and Exporting Test Suites
 Users can export and import test suites using the **"Test Suites HUB"**. To export a test suite from the **"Test Suite"** page, follow these simple steps:
@@ -119,7 +130,7 @@ Users can export and import test suites using the **"Test Suites HUB"**. To expo
 2. Click on the **"Export"**.
 3. Upon selecting **"Export"**, the test suite will be saved as **<test_suite_name>.json**, and a confirmation message indicating successful export will appear.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/7.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/7.gif)
 
 Users can import a test suite into the **"Test Suites HUB"** by following these few steps:
 
@@ -128,17 +139,21 @@ Users can import a test suite into the **"Test Suites HUB"** by following these 
 3. Upon successful import, a confirmation message will be displayed.
 4. You can then view the imported test suite on the **"Test Suite"** page.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/8.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/8.gif)
  
+</div><div class="h3-box" markdown="1">
+
 ### Searching for a specific Test Suite
 Use the search feature on the **"Test Suite"** page, the **"SEARCH TEST SUITES ..."** search bar to find the desired Test Suite, by matching it’s name.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/9.gif)
- 
+![GenaiImage](/assets/images/annotation_lab/6.2.0/9.gif)
+
+</div><div class="h3-box" markdown="1">
+
 ### New "Test" page under Project Menu
 A new entry, **"Test"** has been added under the project menu in the left navigation bar for NER projects. Clicking on the **"Test"** node in the left navigation bar will take the user to the **"Test"** page, where they can manage tests and execute model testing.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/10.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/10.png)
  
 On this page, project managers can configure tests settings and corresponding parameters, create and edit test cases, start and stop model testing, review test logs, and review, download, or delete test results. 
 
@@ -205,7 +220,7 @@ Users have two methods to select Test Settings and Test Parameters:
  
 To modify the Test Settings and Parameters, simply click on the **"Edit"** icon.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/14.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/14.png)
 
 ####  Generating Test Cases
 After saving the Test Settings and Parameters, the following options become available: **"Generate Test Cases"**, **"Start Testing"**, and **"Edit"**. 
@@ -219,7 +234,7 @@ Only Bias and Robustness test cases can be edited and updated; other test cases 
 Modifying Test Settings or Parameters and generating new test cases will discard any existing ones. If no relevant tasks or data are available, no test cases will be generated.
 
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/15.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/15.gif)
 
 #### Start Model Testing
 When **"Start Testing"** is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on **"Show Logs"**. The testing process can be halted by clicking on **"Stop Testing"**. If no test cases have been generated, the **"Start Testing"** option will be disabled, preventing the user from initiating testing.
@@ -228,7 +243,7 @@ When **"Start Testing"** is clicked, model testing commences based on the genera
 
 If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on "Start Testing" will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/17.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/17.png)
 
 #### View and Delete Test Results 
 Once the execution of model testing is complete, users can access the test results via the **"Test Results History"** section in the **"Test Results"** tab. 
@@ -265,7 +280,9 @@ Furthermore, users can delete test results from the **"Test Results History"** b
 
  ![GenaiImage](/assets/images/annotation_lab/6.2.0/23.gif)
  
- ## Data Augmentation for more Robust Model Training
+</div><div class="h3-box" markdown="1">
+
+## Data Augmentation for more Robust Model Training
 Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
 
 The new tab called "**Generate Augmented Data**" on the import page will make it easier for you to create augmented tasks. By clicking on the "**Improve Test Results**" option, you'll be redirected to the "**Generate Augmented Data**" page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under "**Proportional Augmentation**".
@@ -280,7 +297,7 @@ This method enhances data quality by using various testing techniques to generat
 
 Another way to generate augmented tasks is through "**Templatic augmentation**".
 
-####  Templatic Augementation
+#### Templatic Augementation
 Templatic Augmentation creates new data by using templates or patterns that are similar in structure and context to the original input. This method depends a lot on the templates provided by the user. There are two options for using this approach:
  
 ##### A. Manually Add Templates
@@ -301,4 +318,4 @@ After the augmented tasks are generated, the user can import the tasks. The augm
 
 Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
 
- 
+</div>

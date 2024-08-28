@@ -110,8 +110,6 @@ Answer: E. Nitrofurantoin. This is the best treatment for that patient.
 
 Please check the [LLMLoader](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook for more information
 
-
-
 </div><div class="h3-box" markdown="1">
 
 ####  Introducing 7 New Oncological Text Classification Models to Detect Documents Mentioning Metastasis, Therapy, and Other Oncology Terms

@@ -18,7 +18,6 @@ The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
 
-
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
 </div><div class="h3-box" markdown="1">

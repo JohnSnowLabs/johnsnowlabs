@@ -42,7 +42,7 @@ Azure OpenAI can also be used to generate synthetic tasks. Here's a quick guide:
 
 ![Synthetictaskgeneration](/assets/images/annotation_lab/5.5.0/4.gif)
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ### By default "synthetic" tag is added for imported synthetic tasks
 In previous versions, users had to manually add tags to synthetically generated tasks or else tasks imported into the task page lacked any associated tags. Starting with version 6.5.0, when tasks are imported, they now come with synthetic tags already associated with them during import in the task page.
@@ -50,3 +50,5 @@ In previous versions, users had to manually add tags to synthetically generated 
 ![genAI650](/assets/images/annotation_lab/6.5.0/14.gif)
 
 This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
+
+</div>

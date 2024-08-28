@@ -13,6 +13,8 @@ sidebar:
     nav: annotation-lab
 ---
 
+<div class="h3-box" markdown="1">
+
 ## Introducing Support for De-Identification in Generative AI Lab 6.4
 We are happy to announce the release of Generative AI Lab 6.4, bringing exciting new features and enhancements. Leading this release is the support for de-identification projects, which enables users to anonymize documents containing sensitive data, such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This ensures robust data privacy and compliance with privacy regulations while maintaining the utility of the data for further analysis and processing. 
 
@@ -32,12 +34,16 @@ When creating De-identification projects make sure you only target sensitive ent
 
 **Re-importing and Further Processing:** The de-identified documents can be re-imported into any text-based project. This allows for further labeling and data preparation for model training/tuning by annotators, ensuring that the de-identified data can be utilized effectively.
 
+</div><div class="h3-box" markdown="1">
+
 ### Types of De-identification
 Generative AI Lab supports four kinds of de-identification:
 1.	**Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "\<Patient\> is a \<Age\> y.o. patient admitted to ICU after an MVA. "
 2.	**Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
 3.	**Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
 4.	**Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
+
+</div><div class="h3-box" markdown="1">
 
 ### Working with de-identification projects
 
@@ -73,6 +79,8 @@ During the export process, de-identification is executed based on the type of an
 
 > **_LIMITATION:_** Projects must be designated as de-identification projects during their initial creation. It is not possible to convert existing projects or newly created non-de-identification projects into de-identification projects.
 
+</div><div class="h3-box" markdown="1">
+
 ### Export of De-identified tasks
 **Completion Submission:** Pre-annotations alone are not sufficient for exporting de-identified data. Only starred completions are considered during the export of de-identified tasks. This means that each task intended for de-identified export must be validated by a human user, with at least one completion marked with a star by an annotator, reviewer, or manager.
 
@@ -80,4 +88,4 @@ During the export process, de-identification is executed based on the type of an
 
 This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
 
-</div><div class="h3-box" markdown="1">
+</div>
