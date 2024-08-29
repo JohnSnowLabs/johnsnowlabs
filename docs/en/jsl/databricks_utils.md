@@ -72,7 +72,7 @@ Go to your Databricks notebook and paste the license key into the JSL-License wi
 
 ![CancerGeneticsNotebook.png](/assets/images/jsl_lib/databricks_utils/CancerGeneticsNotebook.png)
 
-**Configure the Notebook**: Fill in the widgets with workspace-specific values and the PAYG license that you can copy from [my.JohnSnowLabs.com](my.JohnSnowLabs.com) (see Step 4).
+**Configure the Notebook**: Fill in the widgets with workspace-specific values and the PAYG license that you can copy from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com) (see Step 4).
 
 ![CancerGeneticsRunNotebook.png](/assets/images/jsl_lib/databricks_utils/CancerGeneticsRunNotebook.png)
 
