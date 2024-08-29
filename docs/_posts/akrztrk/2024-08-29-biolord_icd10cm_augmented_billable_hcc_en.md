@@ -71,7 +71,8 @@ c2doc = Chunk2Doc()\
 
 embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
     .setInputCols(["ner_chunk_doc"])\
-    .setOutputCol("mpnet_embeddings")
+    .setOutputCol("mpnet_embeddings")\
+    .setCaseSensitive(False)
 
 icd_resolver = SentenceEntityResolverModel.pretrained("biolord_icd10cm_augmented_billable_hcc", "en", "clinical/models")\
     .setInputCols(["mpnet_embeddings"])\
@@ -127,6 +128,7 @@ val c2doc = new Chunk2Doc()
 val embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")
     .setInputCols("ner_chunk_doc")
     .setOutputCol("mpnet_embeddings")
+    .setCaseSensitive(False)
 
 val icd_resolver = SentenceEntityResolverModel.pretrained("biolord_icd10cm_augmented_billable_hcc", "en", "clinical/models")
     .setInputCols("mpnet_embeddings")
