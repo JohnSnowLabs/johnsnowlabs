@@ -37,24 +37,46 @@ For example if the result is `1||1||8`: `the billable status is 1`, `hcc status 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token", "word_embeddings"])    .setOutputCol("ner")
-ner_converter = NerConverterInternal()    .setInputCols(["sentence", "token", "ner"])    .setOutputCol("ner_chunk")    .setWhiteList(["PROBLEM"])
+ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "word_embeddings"])\
+    .setOutputCol("ner")
 
-c2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["PROBLEM"])
 
-embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("mpnet_embeddings")
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-icd_resolver = SentenceEntityResolverModel.pretrained("biolord_icd10cm_augmented_billable_hcc", "en", "clinical/models")    .setInputCols(["mpnet_embeddings"])    .setOutputCol("resolution")    .setDistanceFunction("EUCLIDEAN")
+embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")
+
+icd_resolver = SentenceEntityResolverModel.pretrained("biolord_icd10cm_augmented_billable_hcc", "en", "clinical/models")\
+    .setInputCols(["mpnet_embeddings"])\
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sentenceDetectorDL,
