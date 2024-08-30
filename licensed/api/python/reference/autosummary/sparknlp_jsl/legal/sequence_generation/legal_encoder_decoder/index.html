@@ -160,6 +160,13 @@
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
       
@@ -255,6 +262,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../../index.html">
                         API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
                       </a>
                     </li>
                 
@@ -417,11 +431,6 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.caseSensitive">
-<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.caseSensitive" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.configProtoBytes">
 <span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.configProtoBytes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -542,19 +551,24 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.uid">
+<span class="sig-name descname"><span class="pre">uid</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.uid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.useCache">
 <span class="sig-name descname"><span class="pre">useCache</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.useCache" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.param.Param.html#pyspark.ml.param.Param" title="(in PySpark vmaster)"><span class="pre">pyspark.ml.param.Param</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear" title="Permalink to this definition">#</a></dt>
 <dd><p>Clears a param from the param map if it has been explicitly set.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JP</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a copy of this instance with the same uid and some
 extra params. This implementation first calls Params.copy and
 then make a copy of the companion Java pipeline component with
@@ -575,21 +589,21 @@ component get copied.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParam">
-<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Explains a single param and returns its name, doc, and optional
 default value and user-supplied value in a string.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams">
-<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the documentation of all params with their optionally
 default values and user-supplied values.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap">
-<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.ml._typing.ParamMap</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap" title="Permalink to this definition">#</a></dt>
 <dd><p>Extracts the embedded default param values and user-supplied
 values, and then merges them with extra values from input into
 a flat param map, where the latter value is used if there exist
@@ -623,20 +637,6 @@ user-supplied values &lt; extra.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getCaseSensitive">
-<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getCaseSensitive" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getInputCols">
 <span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets current column names of input annotations.</p>
@@ -651,7 +651,9 @@ RecursivePipeline.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault">
-<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span></dt>
 <dd><p>Gets the value of a param in the user-supplied param map or its
 default value. Raises an error if neither is set.</p>
 </dd></dl>
@@ -664,7 +666,7 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParam">
-<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Param</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets a param by its name.</p>
 </dd></dl>
 
@@ -681,13 +683,13 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasDefault">
-<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasDefault" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasDefault" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param has a default value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasParam">
-<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Tests whether this instance contains a param with a given
 (string) name.</p>
 </dd></dl>
@@ -699,20 +701,20 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isDefined">
-<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isDefined" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isDefined" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param is explicitly set by user or has
 a default value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isSet">
-<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isSet" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isSet" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param is explicitly set by user.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.load">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.load" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RL</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.load" title="Permalink to this definition">#</a></dt>
 <dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
 </dd></dl>
 
@@ -724,13 +726,13 @@ a default value.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save" title="Permalink to this definition">#</a></dt>
 <dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a parameter in the embedded param map.</p>
 </dd></dl>
 
@@ -741,17 +743,6 @@ a default value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setCaseSensitive">
-<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setCaseSensitive" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
 </dd>
 </dl>
 </dd></dl>
@@ -959,7 +950,7 @@ top-k-filtering.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.transform" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -982,7 +973,7 @@ top-k-filtering.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.write" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JavaMLWriter</span></span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.write" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
@@ -1022,7 +1013,6 @@ top-k-filtering.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.batchSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.batchSize</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.caseSensitive"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.configProtoBytes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.doSample"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.doSample</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getter_attrs</span></code></a></li>
@@ -1047,6 +1037,7 @@ top-k-filtering.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.stopAtEos"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.stopAtEos</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.task"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.task</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.topK"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.topK</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.uid"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.useCache"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.useCache</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.copy()</span></code></a></li>
@@ -1054,7 +1045,6 @@ top-k-filtering.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.extractParamMap()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getBatchSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getBatchSize()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getInputCols"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getOrDefault()</span></code></a></li>
@@ -1071,7 +1061,6 @@ top-k-filtering.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setBatchSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setBatchSize()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setDoSample"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setDoSample()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setForceInputTypeValidation()</span></code></a></li>
