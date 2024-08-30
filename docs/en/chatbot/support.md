@@ -33,7 +33,7 @@ We continuously strive to improve `John` and welcome your suggestions. If you ha
 
 For direct assistance, our support team is available via:
 - **Email:** [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com)
-- **Live Chat:** Available on our [website](www.johnsnowlabs.com) during business hours
+- **Live Chat:** Available on our [website](https://www.johnsnowlabs.com/) during business hours
 - **Slack:** Contact us on [slack](https://spark-nlp.slack.com/archives/C06E88Q93FE). 
 
 </div>
