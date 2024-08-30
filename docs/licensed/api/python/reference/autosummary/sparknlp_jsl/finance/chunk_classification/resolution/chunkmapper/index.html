@@ -160,6 +160,13 @@
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
       
@@ -255,6 +262,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../../../index.html">
                         API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
                       </a>
                     </li>
                 
@@ -631,15 +645,20 @@ document.write(`
 <span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.uid">
+<span class="sig-name descname"><span class="pre">uid</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.uid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.clear" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.param.Param.html#pyspark.ml.param.Param" title="(in PySpark vmaster)"><span class="pre">pyspark.ml.param.Param</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.clear" title="Permalink to this definition">#</a></dt>
 <dd><p>Clears a param from the param map if it has been explicitly set.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.copy" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JP</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.copy" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a copy of this instance with the same uid and some
 extra params. This implementation first calls Params.copy and
 then make a copy of the companion Java pipeline component with
@@ -660,21 +679,21 @@ component get copied.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParam">
-<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Explains a single param and returns its name, doc, and optional
 default value and user-supplied value in a string.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParams">
-<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParams" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the documentation of all params with their optionally
 default values and user-supplied values.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.extractParamMap">
-<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.ml._typing.ParamMap</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
 <dd><p>Extracts the embedded default param values and user-supplied
 values, and then merges them with extra values from input into
 a flat param map, where the latter value is used if there exist
@@ -695,7 +714,9 @@ user-supplied values &lt; extra.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.fit" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">...</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">M</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.fit" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">M</span><span class="p"><span class="pre">]</span></span></span></span></dt>
 <dd><p>Fits a model to the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -720,7 +741,7 @@ models.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.fitMultiple">
-<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">M</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
 <dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.3.0.</span></p>
@@ -758,7 +779,9 @@ RecursivePipeline.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.getOrDefault">
-<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span></dt>
 <dd><p>Gets the value of a param in the user-supplied param map or its
 default value. Raises an error if neither is set.</p>
 </dd></dl>
@@ -771,7 +794,7 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.getParam">
-<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.getParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Param</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.getParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets a param by its name.</p>
 </dd></dl>
 
@@ -788,13 +811,13 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.hasDefault">
-<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.hasDefault" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param has a default value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.hasParam">
-<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.hasParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Tests whether this instance contains a param with a given
 (string) name.</p>
 </dd></dl>
@@ -806,20 +829,20 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.isDefined">
-<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.isDefined" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param is explicitly set by user or has
 a default value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.isSet">
-<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.isSet" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.isSet" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param is explicitly set by user.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.load">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.load" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RL</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.load" title="Permalink to this definition">#</a></dt>
 <dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
 </dd></dl>
 
@@ -831,13 +854,13 @@ a default value.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.save" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.save" title="Permalink to this definition">#</a></dt>
 <dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.set" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.set" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a parameter in the embedded param map.</p>
 </dd></dl>
 
@@ -1134,7 +1157,7 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.write" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JavaMLWriter</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.write" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
@@ -1234,36 +1257,6 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableCharFingerprintMatching">
-<span class="sig-name descname"><span class="pre">enableCharFingerprintMatching</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableCharFingerprintMatching" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableFuzzyMatching">
-<span class="sig-name descname"><span class="pre">enableFuzzyMatching</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableFuzzyMatching" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableTokenFingerprintMatching">
-<span class="sig-name descname"><span class="pre">enableTokenFingerprintMatching</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableTokenFingerprintMatching" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyDistanceScalingMode">
-<span class="sig-name descname"><span class="pre">fuzzyDistanceScalingMode</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyDistanceScalingMode" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyMatchingDistanceThresholds">
-<span class="sig-name descname"><span class="pre">fuzzyMatchingDistanceThresholds</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyMatchingDistanceThresholds" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyMatchingDistances">
-<span class="sig-name descname"><span class="pre">fuzzyMatchingDistances</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyMatchingDistances" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getter_attrs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1286,41 +1279,6 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.lowerCase">
 <span class="sig-name descname"><span class="pre">lowerCase</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.lowerCase" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxCharNgramFingerprint">
-<span class="sig-name descname"><span class="pre">maxCharNgramFingerprint</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingCharsRatio">
-<span class="sig-name descname"><span class="pre">maxTokenNgramDroppingCharsRatio</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingCharsRatio" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingOperator">
-<span class="sig-name descname"><span class="pre">maxTokenNgramDroppingOperator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingOperator" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingTokens">
-<span class="sig-name descname"><span class="pre">maxTokenNgramDroppingTokens</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingTokens" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramFingerprint">
-<span class="sig-name descname"><span class="pre">maxTokenNgramFingerprint</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.minCharNgramFingerprint">
-<span class="sig-name descname"><span class="pre">minCharNgramFingerprint</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.minCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.minTokenNgramFingerprint">
-<span class="sig-name descname"><span class="pre">minTokenNgramFingerprint</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.minTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1363,15 +1321,20 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.uid">
+<span class="sig-name descname"><span class="pre">uid</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.uid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.clear" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.param.Param.html#pyspark.ml.param.Param" title="(in PySpark vmaster)"><span class="pre">pyspark.ml.param.Param</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.clear" title="Permalink to this definition">#</a></dt>
 <dd><p>Clears a param from the param map if it has been explicitly set.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.copy" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JP</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.copy" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a copy of this instance with the same uid and some
 extra params. This implementation first calls Params.copy and
 then make a copy of the companion Java pipeline component with
@@ -1392,21 +1355,21 @@ component get copied.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParam">
-<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Explains a single param and returns its name, doc, and optional
 default value and user-supplied value in a string.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParams">
-<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParams" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParams" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the documentation of all params with their optionally
 default values and user-supplied values.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.extractParamMap">
-<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.ml._typing.ParamMap</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.extractParamMap" title="Permalink to this definition">#</a></dt>
 <dd><p>Extracts the embedded default param values and user-supplied
 values, and then merges them with extra values from input into
 a flat param map, where the latter value is used if there exist
@@ -1440,7 +1403,9 @@ RecursivePipeline.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getOrDefault">
-<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span></dt>
 <dd><p>Gets the value of a param in the user-supplied param map or its
 default value. Raises an error if neither is set.</p>
 </dd></dl>
@@ -1453,7 +1418,7 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getParam">
-<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Param</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets a param by its name.</p>
 </dd></dl>
 
@@ -1470,13 +1435,13 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.hasDefault">
-<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.hasDefault" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param has a default value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.hasParam">
-<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.hasParam" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.hasParam" title="Permalink to this definition">#</a></dt>
 <dd><p>Tests whether this instance contains a param with a given
 (string) name.</p>
 </dd></dl>
@@ -1488,20 +1453,20 @@ default value. Raises an error if neither is set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.isDefined">
-<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.isDefined" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.isDefined" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param is explicitly set by user or has
 a default value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.isSet">
-<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.isSet" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.isSet" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param is explicitly set by user.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.load">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.load" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RL</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.load" title="Permalink to this definition">#</a></dt>
 <dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
 </dd></dl>
 
@@ -1536,13 +1501,13 @@ open-source location. Other values are “clinical/models”,
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.save" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.save" title="Permalink to this definition">#</a></dt>
 <dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.set" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.set" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a parameter in the embedded param map.</p>
 </dd></dl>
 
@@ -1571,83 +1536,9 @@ Processing continues with the next one. This comes with a performance penalty.</
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableCharFingerprintMatching">
-<span class="sig-name descname"><span class="pre">setEnableCharFingerprintMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ecfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableCharFingerprintMatching" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether to apply char Ngram fingerprint matching.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ecfm</strong> (<em>bool</em>) – Whether to apply char Ngram fingerprint matching.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableFuzzyMatching">
-<span class="sig-name descname"><span class="pre">setEnableFuzzyMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">efm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableFuzzyMatching" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether to apply fuzzy matching.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>efm</strong> (<em>bool</em>) – Whether to apply fuzzy matching.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableTokenFingerprintMatching">
-<span class="sig-name descname"><span class="pre">setEnableTokenFingerprintMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableTokenFingerprintMatching" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether to apply partial token Ngram fingerprint matching.</p>
-<p>This will create matching keys with partial Ngrams driven by three params:
-- minTokenNgramFingerprint
-- maxTokenNgramFingerprint
-- maxTokenNgramDropping</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>etfm</strong> (<em>bool</em>) – Whether to apply partial token Ngram fingerprint matching.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setForceInputTypeValidation">
 <span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyDistanceScalingMode">
-<span class="sig-name descname"><span class="pre">setFuzzyDistanceScalingMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdsm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyDistanceScalingMode" title="Permalink to this definition">#</a></dt>
-<dd><p>Scaling mode for Integer Edit Distances.</p>
-<p>Possible values are: left, right, long, short, none.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fdsm</strong> (<em>str</em>) – Scaling mode for Integer Edit Distances.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyMatchingDistanceThresholds">
-<span class="sig-name descname"><span class="pre">setFuzzyMatchingDistanceThresholds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmdth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyMatchingDistanceThresholds" title="Permalink to this definition">#</a></dt>
-<dd><p>Thresholds for fuzzy matching.</p>
-<p>The parameter enableFuzzyMatching must be set to true.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fmdth</strong> (<em>float</em><em> or </em><em>list</em>) – Threshold(s) for fuzzy matching.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyMatchingDistances">
-<span class="sig-name descname"><span class="pre">setFuzzyMatchingDistances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyMatchingDistances" title="Permalink to this definition">#</a></dt>
-<dd><p>Distance function to use for fuzzy matching.</p>
-<p>The parameter enableFuzzyMatching must be set to true.</p>
-<p>Possible values are: levenshtein, longest-common-subsequence, cosine, and/or jaccard.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fmd</strong> (<em>str</em><em> or </em><em>list</em>) – Distance function(s) to use for fuzzy matching.</p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setInputCols">
@@ -1680,96 +1571,6 @@ RecursivePipeline</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>lc</strong> (<em>bool</em>) – True to use the keys in lower case; False to save in the original casing.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxCharNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMaxCharNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd><p>Maximum number of chars for Ngrams in Fingerprint.</p>
-<p>The parameter enableCharFingerprintMatching must be set to true.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>etfm</strong> (<em>int</em>) – Maximum number of chars for Ngrams in Fingerprint.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingCharsRatio">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingCharsRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingCharsRatio" title="Permalink to this definition">#</a></dt>
-<dd><p>Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
-<p>The parameter enableTokenNgramMatching must be set to true.
-Whenever it is desired for all Ngrams to be used as keys, no matter how short the
-final chunk is, this param should be set to 1.0.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>etd</strong> (<em>float</em>) – Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingOperator">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingOperator" title="Permalink to this definition">#</a></dt>
-<dd><p>Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
-<p>The parameter enableTokenNgramMatching must be set to true.
-Whenever it is desired for all Ngrams to be used as keys, no matter how short, this
-param should be set to <cite>1.0</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>etd</strong> (<em>float</em>) – Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingTokens">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingTokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingTokens" title="Permalink to this definition">#</a></dt>
-<dd><p>Maximum number of tokens allowed to be dropped from the full chunk.</p>
-<p>The parameter enableTokenNgramMatching must be set to true.
-Whenever it is desired for all Ngrams to be used as keys, no matter how short the final
-chunk may be, this parameter should be set to a very high value: e.g., <cite>sys.maxsize</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>etd</strong> (<em>int</em>) – Maximum number of tokens allowed to be dropped from the full chunk.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mxtnf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd><p>The max number of tokens for partial Ngrams in Fingerprint.</p>
-<p>The parameter enableTokenFingerprintMatching must be set to true.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mxtnf</strong> (<em>int</em>) – The max number of tokens for partial Ngrams in Fingerprint.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMinCharNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMinCharNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMinCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd><p>Minimum number of chars for Ngrams in Fingerprint.</p>
-<p>The parameter enableCharFingerprintMatching must be set to true.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>etfm</strong> (<em>int</em>) – Minimum number of chars for Ngrams in Fingerprint.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMinTokenNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMinTokenNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mntnf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMinTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd><p>The min number of tokens for partial Ngrams in Fingerprint.</p>
-<p>The parameter enableTokenFingerprintMatching must be set to true.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mntnf</strong> (<em>int</em>) – The min number of tokens for partial Ngrams in Fingerprint.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1836,7 +1637,7 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.transform" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -1859,7 +1660,7 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.write" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JavaMLWriter</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.write" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
@@ -1927,6 +1728,7 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.rel"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.rel</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.rels"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.rels</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.uid"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.clear"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.copy"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">ChunkMapperApproach.explainParam()</span></code></a></li>
@@ -1980,24 +1782,11 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.allowMultiTokenChunk"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.allowMultiTokenChunk</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.doExceptionHandling</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableCharFingerprintMatching"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.enableCharFingerprintMatching</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableFuzzyMatching"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.enableFuzzyMatching</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.enableTokenFingerprintMatching"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.enableTokenFingerprintMatching</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyDistanceScalingMode"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.fuzzyDistanceScalingMode</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyMatchingDistanceThresholds"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.fuzzyMatchingDistanceThresholds</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.fuzzyMatchingDistances"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.fuzzyMatchingDistances</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.inputCols"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.lowerCase"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.lowerCase</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxCharNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.maxCharNgramFingerprint</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingCharsRatio"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.maxTokenNgramDroppingCharsRatio</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingOperator"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.maxTokenNgramDroppingOperator</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramDroppingTokens"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.maxTokenNgramDroppingTokens</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.maxTokenNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.maxTokenNgramFingerprint</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.minCharNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.minCharNgramFingerprint</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.minTokenNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.minTokenNgramFingerprint</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.multivaluesRelations"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.multivaluesRelations</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.name"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.optionalInputAnnotatorTypes</span></code></a></li>
@@ -2006,6 +1795,7 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.rel"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.rel</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.rels"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.rels</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.uid"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.clear"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.copy"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.explainParam"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.explainParam()</span></code></a></li>
@@ -2029,23 +1819,10 @@ chunk may be, this parameter should be set to a very high value: e.g., <cite>sys
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.set"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setAllowMultiTokenChunk"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setAllowMultiTokenChunk()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setDoExceptionHandling()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableCharFingerprintMatching"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setEnableCharFingerprintMatching()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableFuzzyMatching"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setEnableFuzzyMatching()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setEnableTokenFingerprintMatching"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setEnableTokenFingerprintMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setForceInputTypeValidation()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyDistanceScalingMode"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setFuzzyDistanceScalingMode()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyMatchingDistanceThresholds"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setFuzzyMatchingDistanceThresholds()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setFuzzyMatchingDistances"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setFuzzyMatchingDistances()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setLowerCase"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setLowerCase()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxCharNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMaxCharNgramFingerprint()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingCharsRatio"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMaxTokenNgramDroppingCharsRatio()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingOperator"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMaxTokenNgramDroppingOperator()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramDroppingTokens"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMaxTokenNgramDroppingTokens()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMaxTokenNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMaxTokenNgramFingerprint()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMinCharNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMinCharNgramFingerprint()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMinTokenNgramFingerprint"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMinTokenNgramFingerprint()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setMultivaluesRelations"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setMultivaluesRelations()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">ChunkMapperModel.setParamValue()</span></code></a></li>
