@@ -33,6 +33,7 @@ It has been updated by dropping the invalid codes that exist in the previous ver
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
 document_assembler = DocumentAssembler()\
