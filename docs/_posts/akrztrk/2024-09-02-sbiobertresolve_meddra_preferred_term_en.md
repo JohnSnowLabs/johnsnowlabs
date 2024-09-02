@@ -36,6 +36,7 @@ This model maps clinical terms to their corresponding MedDRA PT (Preferred Term)
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
