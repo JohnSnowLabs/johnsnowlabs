@@ -21,8 +21,7 @@ For instance, features of `sbertresolve_ner_model_finder` are under **FEATURES**
 
 *NOTE*: This table is shared just to give you a rough idea about which pretrained models can be used together. You can get better or worse performance by playing out with different models.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 {:.table-model-big.db}
@@ -85,8 +84,7 @@ For instance, features of `sbertresolve_ner_model_finder` are under **FEATURES**
 | 55 | [sbiobertresolve\_umls\_major\_concepts](https://nlp.johnsnowlabs.com/2021/10/03/sbiobertresolve_umls_major_concepts_en.html)                                          | • UMLS CUI Codes for clinical entities and concepts<br>• sbiobert\_base\_cased\_mli  embeddings<br>• 4 major categories (Clinical Findings, Medical Devices, Anatomical Structures, and Injuries & Poisoning terms) of UMLS CUI codes                                                                                                                                                                                                        | sbiobert\_base\_cased\_mli           | EN       |                                                                                              |
                                                                                          |
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Entity Resolver Model and NER Model Pairs
 
@@ -96,8 +94,7 @@ For instance, `sbiobertresolve_hcc_augmented` resolver model must be used with `
 
 *NOTE*: This table is shared just to give you a rough idea about which pretrained models can be used together. You can get better or worse performance by playing out with different models.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 <table cellspacing="0" border="0" class="table-model-big db"><thead><tr>
 		<th>ENTITY RESOLVER MODEL</th>
@@ -266,8 +263,7 @@ For instance, `sbiobertresolve_hcc_augmented` resolver model must be used with `
 	</tr>
 </tbody></table>
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Relation Extraction Models and Relation Pairs Table
 
@@ -277,8 +273,7 @@ For instance, `re_bodypart_proceduretest` RE model returns **(0,1)** labels (bin
 
 *NOTE*: This table is shared just to give you a rough idea about which pretrained models can be used together. You can get better or worse performance by playing out with different models.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 {:.table-model-big.db}

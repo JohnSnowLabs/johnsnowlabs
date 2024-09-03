@@ -53,7 +53,7 @@ The following are the currently supported categories for NER models within the G
 **1. ACCURACY**
 The goal of the Accuracy is to give users real, useful insights into how accurate the model is. It’s all about helping the user make smart choices on when and where to use the model in real-life situations. Accuracy tests evaluate the correctness of a model's predictions. This category comprises six test types, three of which - **"Min F1 Score"**, **"Min Precision Score"** and **"Min Recall Score"** - require the user to provide model labels. The user can add labels in the "Add Model Labels" section, which becomes active immediately after selecting the corresponding checkbox for the test. Labels can be added or removed as shown below:
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/3.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/3.gif)
  
 For more details about Accuracy tests, visit the [LangTest Accuracy Documentation](https://langtest.org/docs/pages/tests/accuracy).
 
@@ -175,7 +175,7 @@ The user can choose an existing test suite from the dropdown menu or create a ne
 
 **Note**: The option to create a new test suite is available only to supervisor and admin users with the manager role.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/11.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/11.gif)
  
 There are two configuration options available in the "Test Parameters" section; they are optional:
 
@@ -204,7 +204,7 @@ Users have two methods to select Test Settings and Test Parameters:
  - Also within Testing Parameters, select tags from the **"Filter test by tag for testing"** dropdown.
  - Click the **"Save"** button to confirm your selections and save the configuration.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/12.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/12.gif)
  
 **2. Wizard Mode (Guided Setup):**
 
@@ -216,7 +216,7 @@ Users have two methods to select Test Settings and Test Parameters:
  - Choose one or more tags, or none, from the **"Filter test by tag for testing"** dropdown.
  - Click **"Next"** to save the Test Settings and Parameters.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/13.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/13.gif)
  
 To modify the Test Settings and Parameters, simply click on the **"Edit"** icon.
 
@@ -239,7 +239,7 @@ Modifying Test Settings or Parameters and generating new test cases will discard
 #### Start Model Testing
 When **"Start Testing"** is clicked, model testing commences based on the generated test cases and the configured test settings. To view the test logs, click on **"Show Logs"**. The testing process can be halted by clicking on **"Stop Testing"**. If no test cases have been generated, the **"Start Testing"** option will be disabled, preventing the user from initiating testing.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/16.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/16.gif)
 
 If any changes are made to the Test Settings that differ from those used to generate the test cases, clicking on "Start Testing" will trigger a pop-up notification informing the user of the configuration change. The user must either ensure that the Test Settings and Parameters match those used for test case generation or create new test cases based on the updated configuration to proceed with model testing.
 
@@ -250,7 +250,7 @@ Once the execution of model testing is complete, users can access the test resul
 
 Under this tab, the application displays all the “test runs” and corresponding results, for every test previously conducted for the project.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/18.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/18.png)
 
 Clicking on **"Show Results"** will display the results for the selected test execution run. The test results consist of two reports:
 
@@ -258,7 +258,7 @@ Clicking on **"Show Results"** will display the results for the selected test ex
 
 This section of the results provides a summary of all tests performed, including their status. It includes details such as **"Number"**, **"Category"**, **"Test Type"**, **"Fail Count"**, **"Pass Count"**, **"Pass Rate"**, **"Minimum Pass Rate"** and **"Status"**.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/19.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/19.png)
 
 **2. Detailed Report:**
 
@@ -266,19 +266,19 @@ The detailed report contains information about each test case within the selecte
 
 In this context, **"Expected Results"** refer to the prediction output by the testing model on the **"Original"** data, while **"Actual Results"** indicate the prediction output by the testing model on the **"Test Case"** data generated. A test is considered passed if the **"Expected Results"** match the **"Actual Results"**; otherwise, it is deemed failed.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/20.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/20.png)
 
 Users have the option to simultaneously download both reports in CSV format by selecting the download button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/21.png)
 
 For a detailed report, users can enter full-screen mode by clicking the full-screen button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/22.gif)
 
 Furthermore, users can delete test results from the **"Test Results History"** by selecting the three dots followed by the **"Delete"** button.
 
- ![GenaiImage](/assets/images/annotation_lab/6.2.0/23.gif)
+![GenaiImage](/assets/images/annotation_lab/6.2.0/23.gif)
  
 </div><div class="h3-box" markdown="1">
 

@@ -32,7 +32,7 @@ image: struct (nullable = true)
  |    |-- data: binary (nullable = true)
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 #### Fields
 
@@ -51,8 +51,10 @@ image: struct (nullable = true)
 NOTE: Image `data` stored in a binary format. Image data is represented
       as a 3-dimensional array with the dimension shape (height, width, nChannels)
       and array values of type t specified by the mode field.
-{:.info}
+  
+</div><div class="h3-box" markdown="1">
 
+{:.info}
 ## Coordinate Schema
 
 ```
@@ -77,7 +79,7 @@ element: struct (containsNull = true)
 | score | float |  The score of the object |
 | label | string |  The label of the object |
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## PageMatrix Schema
 
@@ -92,7 +94,7 @@ element: struct (containsNull = true)
 | mappings | Array[Mapping] | Array of mappings |
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Mapping Schema
 
@@ -118,7 +120,7 @@ element: struct (containsNull = true)
 | height | float |  The height of the rectangle |
 | fontSize | integer | Font size in points |
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Enums
 
@@ -270,6 +272,8 @@ element: struct (containsNull = true)
  * ***TABLE*** - Table struct format
  * ***CSV*** - Comma separated CSV
 
+</div><div class="h3-box" markdown="1">
+
 ## OCR implicits
 
 ### asImage
@@ -384,6 +388,8 @@ images_example_df = spark.read.format("binaryFile").load(images_path).cache()
 display_image(BinaryToImage().transform(images_example_df).collect()[0].image)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### display_images
 
 Show images from dataframe.
@@ -411,13 +417,13 @@ images_example_df = spark.read.format("binaryFile").load(images_path).cache()
 
 display_images(BinaryToImage().transform(images_example_df), limit=3)
 ```
-![image](/assets/images/ocr/showImage1.png)
+![Structures and helpers](/assets/images/ocr/showImage1.png)
 
+</div><div class="h3-box" markdown="1">
 
 ### display_images_horizontal
 
 Show one or more images per row from dataframe.
-
 
 #### Parameters
 
@@ -438,12 +444,13 @@ from sparkocr.utils import display_images_horizontal
 display_images_horizontal(df_with_few_image_fields, fields="images, image_with_regions", limit=10)
 ```
 
-![image](/assets/images/ocr/display_images_horizontal.png)
+![Structures and helpers](/assets/images/ocr/display_images_horizontal.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### display_pdf
 
 Show pdf from dataframe.
-
 
 #### Parameters
 
@@ -465,12 +472,13 @@ pdf_df = spark.read.format("binaryFile").load(pdf_path)
 display_pdf(pdf_df)
 ```
 
-![image](/assets/images/ocr/display_pdf.png)
+![Structures and helpers](/assets/images/ocr/display_pdf.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### display_pdf_file
 
 Show pdf file using embedded pdf viewer.
-
 
 #### Parameters
 
@@ -491,11 +499,15 @@ display_pdf_file("path to the pdf file")
 
 **Example output:**
 
-![image](/assets/images/ocr/display_pdf_file.png)
+![Structures and helpers](/assets/images/ocr/display_pdf_file.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### display_table
 
 Display table from the dataframe.
+
+</div><div class="h3-box" markdown="1">
 
 ### display_tables
 
@@ -504,8 +516,9 @@ of table recognition from the multipage documents/few tables per page.
 
 **Example output:**
 
-![image](/assets/images/ocr/display_table.png)
+![Structures and helpers](/assets/images/ocr/display_table.png)
 
+</div><div class="h3-box" markdown="1">
 
 ## Databricks Python helpers
 
@@ -513,6 +526,7 @@ of table recognition from the multipage documents/few tables per page.
 
 Show images from dataframe.
 
+</div><div class="h3-box" markdown="1">
 
 #### Parameters
 
@@ -536,4 +550,6 @@ images_example_df = spark.read.format("binaryFile").load(images_path).cache()
 display_images(BinaryToImage().transform(images_example_df), limit=3)
 ```
 
-![image](/assets/images/ocr/showImage.png)
+![Databricks Python helpers](/assets/images/ocr/showImage.png)
+
+</div>
