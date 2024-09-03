@@ -33,6 +33,7 @@ The model is augmented with synonyms, and previous augmentations are flexed acco
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
