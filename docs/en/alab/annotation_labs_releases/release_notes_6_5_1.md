@@ -18,19 +18,17 @@ sidebar:
 Release date: **09-03-2024**
 
 ### Improvements
-- In Visual NER annotation, when a chunk is selected without a label and saved, the selection indication should be removed
-- Improvements on Template Augmentation
+- In Visual NER annotation, the selection indication is now cleared when a chunk is selected without a label and then saved.
+- Enhanced the user interface for the Templatic Augmentation option.
 
 ### Bug Fixes
-- The test status should be "pending" when the model-test server is in the pending state
-- XML Validation Fails When a User Removes a Model Linked to Tasks with Labels/Choices from the Removed Model in Multi-Model Configuration
-- "Show submit button" is not working as expected for the textarea
-- The API "api/test_suite/test_suite_config" is called twice while creating a new test suite
-- DB Session Rollback error on pod logs
-- Rename "Template Augmentation" to "Templatic Augmentation"
-- Relations cannot be added without NER Labels during Project Configuration
-- Project Configuration error when new project is created 
-- Error "list index out of range" is seen in the new project's configuration 
+- The test status will now correctly display as “pending” when the model-test server is in a pending state.
+- Fixed an issue where XML validation would fail if a user removed a model linked to tasks with labels or choices in a multi-model configuration.
+- Corrected the visibility behavior of the “Show submit button” feature for text areas; it now functions according to the configured settings.
+- Resolved a DB session rollback error appearing in pod logs
+- The “Template Augmentation” option has been renamed to “Templatic Augmentation.”
+- Addressed a bug that prevented adding relations without NER labels during project configuration; relations can now be added in Visual NER projects.
+- Fixed the “list index out of range” error that was occurring on the configuration page for newly created projects.
 
 
 </div><div class="prev_ver h3-box" markdown="1">
