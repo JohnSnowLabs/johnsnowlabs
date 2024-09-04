@@ -1133,9 +1133,9 @@ For melanoma screening, a suspicious mole on the patient's arm was biopsied, and
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/08/20/ner_stigmatization_wip_en.html">ner_stigmatization_wip</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/08/27/ner_stigmatization_wip_en.html">ner_stigmatization_wip</a></td>
         <td>This Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical text related to stigmatization. This model aims to systematically collect and analyze data on stigmatizing language found in patients’ medical records.</td>
-        <td><code class="language-plaintext highlighter-rouge">Aggressive</code>, <code class="language-plaintext highlighter-rouge">Argumentative</code>, <code class="language-plaintext highlighter-rouge">Calm</code>, <code class="language-plaintext highlighter-rouge">Resistant</code>, <code class="language-plaintext highlighter-rouge">Credibility_Doubts</code>, <code class="language-plaintext highlighter-rouge">Suspected_DSB</code>, <code class="language-plaintext highlighter-rouge">Compliant</code>, <code class="language-plaintext highlighter-rouge">Noncompliant</code>, <code class="language-plaintext highlighter-rouge">Well_Kept_Appearance</code>, <code class="language-plaintext highlighter-rouge">Neglected_Appearance</code>, <code class="language-plaintext highlighter-rouge">Paternalistic_Tone</code>, <code class="language-plaintext highlighter-rouge">Poor_Reasoning</code>, <code class="language-plaintext highlighter-rouge">Poor_Decision-Making</code>, <code class="language-plaintext highlighter-rouge">Other_Discriminatory_Language</code>, <code class="language-plaintext highlighter-rouge">Positive_Descriptors</code>, <code class="language-plaintext highlighter-rouge">Positive_Assessment</code>, <code class="language-plaintext highlighter-rouge">Shared_Decision</code>, <code class="language-plaintext highlighter-rouge">Patient_Autonomy</code></td>
+        <td><code class="language-plaintext highlighter-rouge">Aggressive</code>, <code class="language-plaintext highlighter-rouge">Argumentative</code>, <code class="language-plaintext highlighter-rouge">Calm</code>, <code class="language-plaintext highlighter-rouge">Resistant</code>, <code class="language-plaintext highlighter-rouge">Credibility_Doubts</code>, <code class="language-plaintext highlighter-rouge">Suspected_DSB</code>, <code class="language-plaintext highlighter-rouge">Compliant</code>, <code class="language-plaintext highlighter-rouge">Noncompliant</code>, <code class="language-plaintext highlighter-rouge">Collaborative_Decision_Making</code>, <code class="language-plaintext highlighter-rouge">Neglected_Appearance</code>, <code class="language-plaintext highlighter-rouge">Paternalistic_Tone</code>, <code class="language-plaintext highlighter-rouge">Poor_Reasoning</code>, <code class="language-plaintext highlighter-rouge">Poor_Decision_Making</code>, <code class="language-plaintext highlighter-rouge">Other_Discriminatory_Language</code>, <code class="language-plaintext highlighter-rouge">Positive_Descriptors</code>, <code class="language-plaintext highlighter-rouge">Positive_Assessment</code>, <code class="language-plaintext highlighter-rouge">Disoriented</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Problem</code></td>
       </tr>
     </tbody>
   </table>
@@ -1177,6 +1177,12 @@ For melanoma screening, a suspicious mole on the patient's arm was biopsied, and
         <td>Resistant</td>
       </tr>
       <tr>
+        <td>treatments</td>
+        <td>92</td>
+        <td>101</td>
+        <td>TREATMENT</td>
+      </tr>
+      <tr>
         <td>poor reasoning and judgment</td>
         <td>141</td>
         <td>167</td>
@@ -1195,16 +1201,40 @@ For melanoma screening, a suspicious mole on the patient's arm was biopsied, and
         <td>Argumentative</td>
       </tr>
       <tr>
+        <td>the deep-seated anxieties</td>
+        <td>302</td>
+        <td>326</td>
+        <td>PROBLEM</td>
+      </tr>
+      <tr>
         <td>adhering</td>
         <td>463</td>
         <td>470</td>
         <td>Compliant</td>
       </tr>
       <tr>
+        <td>his prescribed regimen</td>
+        <td>475</td>
+        <td>496</td>
+        <td>TREATMENT</td>
+      </tr>
+      <tr>
         <td>insisting</td>
         <td>599</td>
         <td>607</td>
         <td>Credibility_Doubts</td>
+      </tr>
+      <tr>
+        <td>his symptoms</td>
+        <td>614</td>
+        <td>625</td>
+        <td>PROBLEM</td>
+      </tr>
+      <tr>
+        <td>stress</td>
+        <td>646</td>
+        <td>651</td>
+        <td>PROBLEM</td>
       </tr>
     </tbody>
   </table>
@@ -1457,13 +1487,13 @@ Visit http://198.51.100.42 for more information. File transfers can be done via 
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/08/15/large_fewshot_classifier_age_group_en">large_fewshot_classifier_age_group</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/08/15/large_fewshot_classifier_age_group_en.html">large_fewshot_classifier_age_group</a></td>
         <td>Identifies and classifies tweets reporting Adverse Drug Events (ADEs), learning effectively from minimal labeled examples and adapting to new, unseen classes.</td>
         <td><code class="language-plaintext highlighter-rouge">ADE</code>, <code class="language-plaintext highlighter-rouge">noADE</code></td>
         <td>Achieves 0.90 accuracy and 0.81 macro F1 across 3 entities</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/08/12/large_fewshot_classifier_ade_en">large_fewshot_classifier_ade</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/08/12/large_fewshot_classifier_ade_en.html">large_fewshot_classifier_ade</a></td>
         <td>Identifies and classifies the age group of a person mentioned in health documents, learning effectively from minimal labeled examples and adapting to new, unseen classes.</td>
         <td><code class="language-plaintext highlighter-rouge">Adult</code>, <code class="language-plaintext highlighter-rouge">Child</code>, <code class="language-plaintext highlighter-rouge">Unknown</code></td>
         <td>Achieves 0.89 accuracy and 0.81 macro F1 across 3 entities</td>
