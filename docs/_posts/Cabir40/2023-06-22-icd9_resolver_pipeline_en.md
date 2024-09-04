@@ -22,6 +22,7 @@ This pretrained pipeline maps entities with their corresponding ICD-9-CM codes. 
 
 ## Predicted Entities
 
+`TREATMENT`, `PROBLEM`, `TEST`
 
 
 {:.btn-box}
