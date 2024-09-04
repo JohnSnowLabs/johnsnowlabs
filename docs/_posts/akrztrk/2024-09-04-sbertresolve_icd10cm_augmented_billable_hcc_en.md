@@ -34,6 +34,7 @@ In the result, look for the `all_k_aux_labels` parameter in the metadata to get 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
