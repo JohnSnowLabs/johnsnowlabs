@@ -24,8 +24,7 @@ The following benchmarks have been done by using a single Dell Server with the f
 - CPU: Intel(R) Xeon(R) CPU E5-2698 v4 @ 2.20GHz - 40 Cores
 - Memory: 80G
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### GPU
 
@@ -56,8 +55,7 @@ Spark NLP 4.3.2 is built with TensorFlow 2.7.1 and the following NVIDIA® softwa
 - CUDA® Toolkit 11.2
 - cuDNN SDK 8.1.0
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### CPU
 
@@ -96,8 +94,7 @@ In future TensorFlow releases, the oneDNN will be enabled by default (starting T
 
 [Maximize TensorFlow* Performance on CPU: Considerations and Recommendations for Inference Workloads](https://www.intel.com/content/www/us/en/developer/articles/technical/maximize-tensorflow-performance-on-cpu-considerations-and-recommendations-for-inference.html)
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### GPU vs. CPU
 
@@ -105,3 +102,5 @@ In future TensorFlow releases, the oneDNN will be enabled by default (starting T
 
 
 [Webinar: Speed Optimization & Benchmarks in Spark NLP 3: Making the Most of Modern Hardware](https://www.johnsnowlabs.com/watch-webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware/)
+
+</div>

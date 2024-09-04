@@ -38,8 +38,6 @@ This object is **automatically generated** by annotators after a transform proce
 
 ## Annotators
 
-<div class="h3-box" markdown="1">
-
 Annotators are the spearhead of NLP functions in Spark NLP. There are two forms of annotators:
 
 - **Annotator Approaches:** are those who represent a Spark ML Estimator and require a training stage. They have a function called fit(data) which trains a model based on some data. They produce the second type of annotator which is an annotator model or transformer.
@@ -342,11 +340,9 @@ OUTPUT:
 +-------------------------------------------+
 ```
 
-</div></div>
+</div></div><div class="h3-box" markdown="1">
 
 ## Setup your own pipeline
-
-<div class="h3-box" markdown="1">
 
 ### Annotator types
 
@@ -485,7 +481,7 @@ import org.apache.spark.sql.functions._
 
 df.withColumn("tmp", explode(col("chunk"))).select("tmp.*")
 ```
-</div></div>
+</div></div><div class="h3-box" markdown="1">
 
 ## Using Spark ML Pipeline
 
@@ -540,6 +536,7 @@ OUTPUT:
 ```
 
 </div>
+</div><div class="h3-box" markdown="1">
 
 ## Using Spark NLP's LightPipeline
 
@@ -597,11 +594,9 @@ Map[String,Seq[String]] =
     )
 ```
 
-</div>
+</div></div><div class="h3-box" markdown="1">
 
 ## Training annotators
-
-<div class="h3-box" markdown="1">
 
 ### Training methodology
 
@@ -633,7 +628,6 @@ allow importing your own graphs or even training from Python and
 converting them into an AnnotatorModel.
 
 </div><div class="h3-box" markdown="1">
-
 
 ### Spark NLP Imports
 

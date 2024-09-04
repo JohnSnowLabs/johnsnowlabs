@@ -23,6 +23,10 @@ This model is a [BioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed
 - `1`: Contains metastasis related terms.
 - `0`: Doesn't contain metastasis related terms.
 
+## Predicted Entities
+
+`True`, `False`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -148,3 +152,14 @@ val result = pipeline.fit(data).transform(data)
 |Size:|406.4 MB|
 |Case sensitive:|false|
 |Max sentence length:|512|
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+           0     0.9979    0.9986    0.9983      4357
+           1     0.9944    0.9916    0.9930      1072
+    accuracy        -         -      0.9972      5429
+   macro-avg     0.9962    0.9951    0.9956      5429
+weighted-avg     0.9972    0.9972    0.9972      5429
+```

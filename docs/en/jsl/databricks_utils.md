@@ -57,7 +57,6 @@ Carefully review the End User License Agreement and the Terms and Conditions doc
 
 ![PAYGSubscription.png](/assets/images/jsl_lib/databricks_utils/PAYGSubscription.png)
 
-
 **Copy License Key**: Once the process is complete, you will find your PAY-As-You-Go license listed on the My Subscriptions page. Visit the My Subscriptions page and copy the PAYG license key by clicking on the corresponding copy icon in the License Key column.
 
 ![PAYGLicenseDownload.png](/assets/images/jsl_lib/databricks_utils/PAYGLicenseDownload.png)
