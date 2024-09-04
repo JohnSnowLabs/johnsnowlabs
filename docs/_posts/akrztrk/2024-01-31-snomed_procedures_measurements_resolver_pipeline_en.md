@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline extracts `Procedure` and measurement (`Test`) entities and maps them to their corresponding SNOMED codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
+## Predicted Entities
+
+`Test`, `Procedure`, `Test_Result`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
