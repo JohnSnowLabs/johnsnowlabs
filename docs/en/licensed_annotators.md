@@ -28,7 +28,7 @@ Also, for most of the annotators, you will find examples for the different enter
 
 Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/annotators) for more information on how to read this page.
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## Available Annotators
 
@@ -110,6 +110,8 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="WindowedSentenceModel" summary="This annotator that helps you to merge the previous and following sentences of a given piece of text, so that you add the context surrounding them."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotNerModel" summary="This is a zero-shot named entity recognition using `RoBertaForQuestionAnswering`. It identifies entities across diverse data without domain-specific fine-tuning."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotRelationExtractionModel" summary="This annotator implements zero-shot binary relations extraction by utilizing `BERT` transformer models trained on the NLI (Natural Language Inference) task."%}
+
+</div>
 
 <script> {% include scripts/approachModelSwitcher.js %} </script>
 

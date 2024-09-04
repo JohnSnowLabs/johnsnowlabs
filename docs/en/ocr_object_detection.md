@@ -12,6 +12,8 @@ sidebar:
     nav: sparknlp-healthcare
 ---
 
+<div class="h3-box" markdown="1">
+
 ## ImageHandwrittenDetector
 
 `ImageHandwrittenDetector` is a DL model for detect handwritten text on the image.
@@ -129,12 +131,11 @@ val data = pipeline.transform(df)
 data.storeImage("image_with_regions")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 **Output:**
 
-![image](/assets/images/ocr/signature.png)
-
+![Object detection](/assets/images/ocr/signature.png)
 
 
 ## ImageTextDetector
@@ -261,12 +262,13 @@ val data = pipeline.transform(df)
 data.storeImage("image_with_regions")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 **Output:**
 
-![image](/assets/images/ocr/text_detection.png)
+![Object detection](/assets/images/ocr/text_detection.png)
 
+</div><div class="h3-box" markdown="1">
 
 ## ImageTextDetectorV2
 
@@ -355,6 +357,8 @@ display_images(data, "image_with_regions")
 not implemented
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
-![image](/assets/images/ocr/text_detection1.png)
+![Object detection](/assets/images/ocr/text_detection1.png)
+
+</div>
