@@ -36,6 +36,7 @@ This pretrained model maps MedDRA-LLT (Lowest Level Term) codes to corresponding
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
