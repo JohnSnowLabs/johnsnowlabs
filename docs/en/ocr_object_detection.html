@@ -620,103 +620,105 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Object detection"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="imagehandwrittendetector">ImageHandwrittenDetector</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">ImageHandwrittenDetector</code> is a DL model for detect handwritten text on the image.
+  <h2 id="imagehandwrittendetector">ImageHandwrittenDetector</h2>
+
+  <p><code class="language-plaintext highlighter-rouge">ImageHandwrittenDetector</code> is a DL model for detect handwritten text on the image.
 It’s based on Cascade Region-based CNN network.</p>
 
-<p>Detector support following labels:</p>
-<ul>
-  <li>‘signature’</li>
-  <li>‘date’</li>
-  <li>‘name’</li>
-  <li>‘title’</li>
-  <li>‘address’</li>
-  <li>‘others’</li>
-</ul>
+  <p>Detector support following labels:</p>
+  <ul>
+    <li>‘signature’</li>
+    <li>‘date’</li>
+    <li>‘name’</li>
+    <li>‘title’</li>
+    <li>‘address’</li>
+    <li>‘others’</li>
+  </ul>
 
-<h4 id="input-columns">Input Columns</h4>
+  <h4 id="input-columns">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>image</td>
-      <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="parameters">Parameters</h4>
+  <h4 id="parameters">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>scoreThreshold</td>
-      <td>float</td>
-      <td>0.5</td>
-      <td>Score threshold for output regions.</td>
-    </tr>
-    <tr>
-      <td>outputLabels</td>
-      <td>Array[String]</td>
-      <td> </td>
-      <td>White list for output labels.</td>
-    </tr>
-    <tr>
-      <td>labels</td>
-      <td>Array[String]</td>
-      <td> </td>
-      <td>List of labels</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>scoreThreshold</td>
+        <td>float</td>
+        <td>0.5</td>
+        <td>Score threshold for output regions.</td>
+      </tr>
+      <tr>
+        <td>outputLabels</td>
+        <td>Array[String]</td>
+        <td> </td>
+        <td>White list for output labels.</td>
+      </tr>
+      <tr>
+        <td>labels</td>
+        <td>Array[String]</td>
+        <td> </td>
+        <td>List of labels</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h4 id="output-columns">Output Columns</h4>
+  <h4 id="output-columns">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>table_regions</td>
-      <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>table_regions</td>
+        <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+  <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -751,9 +753,9 @@ It’s based on Cascade Region-based CNN network.</p>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="n">display_images</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">"image_with_regions"</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -785,119 +787,120 @@ It’s based on Cascade Region-based CNN network.</p>
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
 
 <span class="nv">data</span><span class="o">.</span><span class="py">storeImage</span><span class="o">(</span><span class="s">"image_with_regions"</span><span class="o">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-</div>
+  </div>
+  <div class="h3-box">
 
-<p><strong>Output:</strong></p>
+    <p><strong>Output:</strong></p>
 
-<p><img src="/assets/images/ocr/signature.png" alt="image" /></p>
+    <p><img src="/assets/images/ocr/signature.png" alt="Object detection" /></p>
 
-<h2 id="imagetextdetector">ImageTextDetector</h2>
+    <h2 id="imagetextdetector">ImageTextDetector</h2>
 
-<p><code class="language-plaintext highlighter-rouge">ImageTextDetector</code> is a DL model for detecting text on the image.
+    <p><code class="language-plaintext highlighter-rouge">ImageTextDetector</code> is a DL model for detecting text on the image.
 It’s based on CRAFT network architecture.</p>
 
-<h4 id="input-columns-1">Input Columns</h4>
+    <h4 id="input-columns-1">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>image</td>
-      <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
-    </tr>
-  </tbody>
-</table>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Param name</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Column Data Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>inputCol</td>
+          <td>string</td>
+          <td>image</td>
+          <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
+        </tr>
+      </tbody>
+    </table>
 
-<h4 id="parameters-1">Parameters</h4>
+    <h4 id="parameters-1">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>scoreThreshold</td>
-      <td>float</td>
-      <td>0.9</td>
-      <td>Score threshold for output regions. Regions with an area below the threshold won’t be returned.</td>
-    </tr>
-    <tr>
-      <td>sizeThreshold</td>
-      <td>int</td>
-      <td>5</td>
-      <td>Threshold for the area of the detected regions.</td>
-    </tr>
-    <tr>
-      <td>textThreshold</td>
-      <td>float</td>
-      <td>0.4f</td>
-      <td>Threshold for the score of a region potentially containing text. The region score represents the probability that a given pixel is the center of the character. Higher values for this threshold will result in that only regions for which the confidence of containing text is high will be returned.</td>
-    </tr>
-    <tr>
-      <td>linkThreshold</td>
-      <td>float</td>
-      <td>0.4f</td>
-      <td>Threshold for the the link(affinity) score. The link score represents the space allowed between adjacent characters to be considered as a single word.</td>
-    </tr>
-    <tr>
-      <td>width</td>
-      <td>integer</td>
-      <td>0</td>
-      <td>Scale width to this value, if 0 use original width</td>
-    </tr>
-    <tr>
-      <td>height</td>
-      <td>integer</td>
-      <td>0</td>
-      <td>Scale height to this value, if 0 use original height</td>
-    </tr>
-  </tbody>
-</table>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Param name</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>scoreThreshold</td>
+          <td>float</td>
+          <td>0.9</td>
+          <td>Score threshold for output regions. Regions with an area below the threshold won’t be returned.</td>
+        </tr>
+        <tr>
+          <td>sizeThreshold</td>
+          <td>int</td>
+          <td>5</td>
+          <td>Threshold for the area of the detected regions.</td>
+        </tr>
+        <tr>
+          <td>textThreshold</td>
+          <td>float</td>
+          <td>0.4f</td>
+          <td>Threshold for the score of a region potentially containing text. The region score represents the probability that a given pixel is the center of the character. Higher values for this threshold will result in that only regions for which the confidence of containing text is high will be returned.</td>
+        </tr>
+        <tr>
+          <td>linkThreshold</td>
+          <td>float</td>
+          <td>0.4f</td>
+          <td>Threshold for the the link(affinity) score. The link score represents the space allowed between adjacent characters to be considered as a single word.</td>
+        </tr>
+        <tr>
+          <td>width</td>
+          <td>integer</td>
+          <td>0</td>
+          <td>Scale width to this value, if 0 use original width</td>
+        </tr>
+        <tr>
+          <td>height</td>
+          <td>integer</td>
+          <td>0</td>
+          <td>Scale height to this value, if 0 use original height</td>
+        </tr>
+      </tbody>
+    </table>
 
-<h4 id="output-columns-1">Output Columns</h4>
+    <h4 id="output-columns-1">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>table_regions</td>
-      <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
-    </tr>
-  </tbody>
-</table>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Param name</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Column Data Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>outputCol</td>
+          <td>string</td>
+          <td>table_regions</td>
+          <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
+        </tr>
+      </tbody>
+    </table>
 
-<p><strong>Example:</strong></p>
+    <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+    <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -938,9 +941,9 @@ It’s based on CRAFT network architecture.</p>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="n">display_images</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">"image_with_regions"</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>      </div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
+      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.</span><span class="o">*</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
@@ -978,121 +981,125 @@ It’s based on CRAFT network architecture.</p>
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
 
 <span class="nv">data</span><span class="o">.</span><span class="py">storeImage</span><span class="o">(</span><span class="s">"image_with_regions"</span><span class="o">)</span>
-</code></pre></div>  </div>
+</code></pre></div>      </div>
 
-</div>
+    </div>
+    <div class="h3-box">
 
-<p><strong>Output:</strong></p>
+      <p><strong>Output:</strong></p>
 
-<p><img src="/assets/images/ocr/text_detection.png" alt="image" /></p>
+      <p><img src="/assets/images/ocr/text_detection.png" alt="Object detection" /></p>
 
-<h2 id="imagetextdetectorv2">ImageTextDetectorV2</h2>
+    </div>
+    <div class="h3-box">
 
-<p><code class="language-plaintext highlighter-rouge">ImageTextDetectorV2</code> is a DL model for detecting text on images.
+      <h2 id="imagetextdetectorv2">ImageTextDetectorV2</h2>
+
+      <p><code class="language-plaintext highlighter-rouge">ImageTextDetectorV2</code> is a DL model for detecting text on images.
 It is based on the CRAFT network architecture with refiner net. Refiner net 
 runs as postprocessing, and is able to merge single words regions into lines.
 Currently, it’s available only on Python side.</p>
 
-<h4 id="input-columns-2">Input Columns</h4>
+      <h4 id="input-columns-2">Input Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>inputCol</td>
-      <td>string</td>
-      <td>image</td>
-      <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
-    </tr>
-  </tbody>
-</table>
+      <table class="table-model-big">
+        <thead>
+          <tr>
+            <th>Param name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Column Data Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>inputCol</td>
+            <td>string</td>
+            <td>image</td>
+            <td>image struct (<a href="ocr_structures#image-schema">Image schema</a>)</td>
+          </tr>
+        </tbody>
+      </table>
 
-<h4 id="parameters-2">Parameters</h4>
+      <h4 id="parameters-2">Parameters</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>scoreThreshold</td>
-      <td>float</td>
-      <td>0.7</td>
-      <td>Score threshold for output regions.</td>
-    </tr>
-    <tr>
-      <td>sizeThreshold</td>
-      <td>int</td>
-      <td>10</td>
-      <td>Threshold for height of the detected regions. Regions with a height below the threshold won’t be returned.</td>
-    </tr>
-    <tr>
-      <td>textThreshold</td>
-      <td>float</td>
-      <td>0.4f</td>
-      <td>Threshold for the score of a region potentially containing text. The region score represents the probability that a given pixel is the center of the character. Higher values for this threshold will result in that only regions for which the confidence of containing text is high will be returned.</td>
-    </tr>
-    <tr>
-      <td>linkThreshold</td>
-      <td>float</td>
-      <td>0.4f</td>
-      <td>Threshold for the the link(affinity) score. The link score represents the space allowed between adjacent characters to be considered as a single word.</td>
-    </tr>
-    <tr>
-      <td>width</td>
-      <td>integer</td>
-      <td>1280</td>
-      <td>Width of the desired input image. Image will be resized to this width.</td>
-    </tr>
-    <tr>
-      <td>withRefiner</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>Enable to run refiner net as postprocessing step.</td>
-    </tr>
-  </tbody>
-</table>
+      <table class="table-model-big">
+        <thead>
+          <tr>
+            <th>Param name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>scoreThreshold</td>
+            <td>float</td>
+            <td>0.7</td>
+            <td>Score threshold for output regions.</td>
+          </tr>
+          <tr>
+            <td>sizeThreshold</td>
+            <td>int</td>
+            <td>10</td>
+            <td>Threshold for height of the detected regions. Regions with a height below the threshold won’t be returned.</td>
+          </tr>
+          <tr>
+            <td>textThreshold</td>
+            <td>float</td>
+            <td>0.4f</td>
+            <td>Threshold for the score of a region potentially containing text. The region score represents the probability that a given pixel is the center of the character. Higher values for this threshold will result in that only regions for which the confidence of containing text is high will be returned.</td>
+          </tr>
+          <tr>
+            <td>linkThreshold</td>
+            <td>float</td>
+            <td>0.4f</td>
+            <td>Threshold for the the link(affinity) score. The link score represents the space allowed between adjacent characters to be considered as a single word.</td>
+          </tr>
+          <tr>
+            <td>width</td>
+            <td>integer</td>
+            <td>1280</td>
+            <td>Width of the desired input image. Image will be resized to this width.</td>
+          </tr>
+          <tr>
+            <td>withRefiner</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Enable to run refiner net as postprocessing step.</td>
+          </tr>
+        </tbody>
+      </table>
 
-<h4 id="output-columns-2">Output Columns</h4>
+      <h4 id="output-columns-2">Output Columns</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Param name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Column Data Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>outputCol</td>
-      <td>string</td>
-      <td>table_regions</td>
-      <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
-    </tr>
-  </tbody>
-</table>
+      <table class="table-model-big">
+        <thead>
+          <tr>
+            <th>Param name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Column Data Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>outputCol</td>
+            <td>string</td>
+            <td>table_regions</td>
+            <td>array of [Coordinaties]ocr_structures#coordinate-schema)</td>
+          </tr>
+        </tbody>
+      </table>
 
-<p><strong>Example:</strong></p>
+      <p><strong>Example:</strong></p>
 
-<div class="tabs-new pt0">
+      <div class="tabs-new pt0">
 
-  <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">imagePath</span> <span class="o">=</span> <span class="s">"path to image"</span>
@@ -1131,14 +1138,20 @@ Currently, it’s available only on Python side.</p>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="n">display_images</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">"image_with_regions"</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>        </div>
 
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">not</span> <span class="n">implemented</span>
-</code></pre></div>  </div>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">not</span> <span class="n">implemented</span>
+</code></pre></div>        </div>
 
+      </div>
+      <div class="h3-box">
+
+        <p><img src="/assets/images/ocr/text_detection1.png" alt="Object detection" /></p>
+
+      </div>
+    </div>
+  </div>
 </div>
-
-<p><img src="/assets/images/ocr/text_detection1.png" alt="image" /></p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-04-08T00:00:00+00:00">Apr 08, 2020</time>
     </span><!-- start custom article footer snippet -->

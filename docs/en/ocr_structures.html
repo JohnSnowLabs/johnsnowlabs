@@ -641,123 +641,128 @@ function wrapWordInSpan(data, wordToWrap) {
 </code></pre></div>  </div>
 
 </div>
+<div class="h3-box">
 
-<h4 id="fields">Fields</h4>
+  <h4 id="fields">Fields</h4>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Field name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>origin</td>
-      <td>string</td>
-      <td>source URI</td>
-    </tr>
-    <tr>
-      <td>height</td>
-      <td>integer</td>
-      <td>image height in pixels</td>
-    </tr>
-    <tr>
-      <td>width</td>
-      <td>integer</td>
-      <td>image width in pixels</td>
-    </tr>
-    <tr>
-      <td>nChannels</td>
-      <td>integer</td>
-      <td>number of color channels</td>
-    </tr>
-    <tr>
-      <td>mode</td>
-      <td><a href="#imagetype">ImageType</a></td>
-      <td>the data type and channel order the data is stored in</td>
-    </tr>
-    <tr>
-      <td>resolution</td>
-      <td>integer</td>
-      <td>resolution of image in dpi</td>
-    </tr>
-    <tr>
-      <td>data</td>
-      <td>binary</td>
-      <td>image data in a binary format</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Field name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>origin</td>
+        <td>string</td>
+        <td>source URI</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>integer</td>
+        <td>image height in pixels</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>integer</td>
+        <td>image width in pixels</td>
+      </tr>
+      <tr>
+        <td>nChannels</td>
+        <td>integer</td>
+        <td>number of color channels</td>
+      </tr>
+      <tr>
+        <td>mode</td>
+        <td><a href="#imagetype">ImageType</a></td>
+        <td>the data type and channel order the data is stored in</td>
+      </tr>
+      <tr>
+        <td>resolution</td>
+        <td>integer</td>
+        <td>resolution of image in dpi</td>
+      </tr>
+      <tr>
+        <td>data</td>
+        <td>binary</td>
+        <td>image data in a binary format</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p class="info">NOTE: Image <code class="language-plaintext highlighter-rouge">data</code> stored in a binary format. Image data is represented
+  <p>NOTE: Image <code class="language-plaintext highlighter-rouge">data</code> stored in a binary format. Image data is represented
       as a 3-dimensional array with the dimension shape (height, width, nChannels)
       and array values of type t specified by the mode field.</p>
 
-<h2 id="coordinate-schema">Coordinate Schema</h2>
+</div>
+<div class="h3-box">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>element: struct (containsNull = true)
+  <h2 class="info" id="coordinate-schema">Coordinate Schema</h2>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>element: struct (containsNull = true)
  |    |    |-- index: integer (nullable = false)
  |    |    |-- page: integer (nullable = false)
  |    |    |-- x: float (nullable = false)
  |    |    |-- y: float (nullable = false)
  |    |    |-- width: float (nullable = false)
  |    |    |-- height: float (nullable = false)
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Field name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>index</td>
-      <td>integer</td>
-      <td>Chunk index</td>
-    </tr>
-    <tr>
-      <td>page</td>
-      <td>integer</td>
-      <td>Page number</td>
-    </tr>
-    <tr>
-      <td>x</td>
-      <td>float</td>
-      <td>The lower left x coordinate</td>
-    </tr>
-    <tr>
-      <td>y</td>
-      <td>float</td>
-      <td>The lower left y coordinate</td>
-    </tr>
-    <tr>
-      <td>width</td>
-      <td>float</td>
-      <td>The width of the rectangle</td>
-    </tr>
-    <tr>
-      <td>height</td>
-      <td>float</td>
-      <td>The height of the rectangle</td>
-    </tr>
-    <tr>
-      <td>score</td>
-      <td>float</td>
-      <td>The score of the object</td>
-    </tr>
-    <tr>
-      <td>label</td>
-      <td>string</td>
-      <td>The label of the object</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Field name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>index</td>
+        <td>integer</td>
+        <td>Chunk index</td>
+      </tr>
+      <tr>
+        <td>page</td>
+        <td>integer</td>
+        <td>Page number</td>
+      </tr>
+      <tr>
+        <td>x</td>
+        <td>float</td>
+        <td>The lower left x coordinate</td>
+      </tr>
+      <tr>
+        <td>y</td>
+        <td>float</td>
+        <td>The lower left y coordinate</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>float</td>
+        <td>The width of the rectangle</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>float</td>
+        <td>The height of the rectangle</td>
+      </tr>
+      <tr>
+        <td>score</td>
+        <td>float</td>
+        <td>The score of the object</td>
+      </tr>
+      <tr>
+        <td>label</td>
+        <td>string</td>
+        <td>The label of the object</td>
+      </tr>
+    </tbody>
+  </table>
 
+</div>
 <div class="h3-box">
 
   <h2 id="pagematrix-schema">PageMatrix Schema</h2>
@@ -783,11 +788,12 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h2 id="mapping-schema">Mapping Schema</h2>
+  <h2 id="mapping-schema">Mapping Schema</h2>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>element: struct (containsNull = true)
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>element: struct (containsNull = true)
  |    |    |-- c: string (nullable = false)
  |    |    |-- p: integer (nullable = false)
  |    |    |-- x: float (nullable = false)
@@ -795,293 +801,297 @@ function wrapWordInSpan(data, wordToWrap) {
  |    |    |-- width: float (nullable = false)
  |    |    |-- height: float (nullable = false)
  |    |    |-- fontSize: integer (nullable = false)
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Field name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>c</td>
-          <td>string</td>
-          <td>Character</td>
-        </tr>
-        <tr>
-          <td>p</td>
-          <td>integer</td>
-          <td>Page number</td>
-        </tr>
-        <tr>
-          <td>x</td>
-          <td>float</td>
-          <td>The lower left x coordinate</td>
-        </tr>
-        <tr>
-          <td>y</td>
-          <td>float</td>
-          <td>The lower left y coordinate</td>
-        </tr>
-        <tr>
-          <td>width</td>
-          <td>float</td>
-          <td>The width of the rectangle</td>
-        </tr>
-        <tr>
-          <td>height</td>
-          <td>float</td>
-          <td>The height of the rectangle</td>
-        </tr>
-        <tr>
-          <td>fontSize</td>
-          <td>integer</td>
-          <td>Font size in points</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Field name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>c</td>
+        <td>string</td>
+        <td>Character</td>
+      </tr>
+      <tr>
+        <td>p</td>
+        <td>integer</td>
+        <td>Page number</td>
+      </tr>
+      <tr>
+        <td>x</td>
+        <td>float</td>
+        <td>The lower left x coordinate</td>
+      </tr>
+      <tr>
+        <td>y</td>
+        <td>float</td>
+        <td>The lower left y coordinate</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>float</td>
+        <td>The width of the rectangle</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>float</td>
+        <td>The height of the rectangle</td>
+      </tr>
+      <tr>
+        <td>fontSize</td>
+        <td>integer</td>
+        <td>Font size in points</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h2 id="enums">Enums</h2>
+  <h2 id="enums">Enums</h2>
 
-      <h3 id="pagesegmentationmode">PageSegmentationMode</h3>
+  <h3 id="pagesegmentationmode">PageSegmentationMode</h3>
 
-      <ul>
-        <li><strong><em>OSD_ONLY</em></strong>: Orientation and script detection only.</li>
-        <li><strong><em>AUTO_OSD</em></strong>: Automatic page segmentation with orientation and script detection.</li>
-        <li><strong><em>AUTO_ONLY</em></strong>: Automatic page segmentation, but no OSD, or OCR.</li>
-        <li><strong><em>AUTO</em></strong>: Fully automatic page segmentation, but no OSD.</li>
-        <li><strong><em>SINGLE_COLUMN</em></strong>: Assume a single column of text of variable sizes.</li>
-        <li><strong><em>SINGLE_BLOCK_VERT_TEXT</em></strong>: Assume a single uniform block of vertically aligned text.</li>
-        <li><strong><em>SINGLE_BLOCK</em></strong>: Assume a single uniform block of text.</li>
-        <li><strong><em>SINGLE_LINE</em></strong>: Treat the image as a single text line.</li>
-        <li><strong><em>SINGLE_WORD</em></strong>: Treat the image as a single word.</li>
-        <li><strong><em>CIRCLE_WORD</em></strong>: Treat the image as a single word in a circle.</li>
-        <li><strong><em>SINGLE_CHAR</em></strong>: Treat the image as a single character.</li>
-        <li><strong><em>SPARSE_TEXT</em></strong>: Find as much text as possible in no particular order.</li>
-        <li><strong><em>SPARSE_TEXT_OSD</em></strong>: Sparse text with orientation and script detection.</li>
-      </ul>
+  <ul>
+    <li><strong><em>OSD_ONLY</em></strong>: Orientation and script detection only.</li>
+    <li><strong><em>AUTO_OSD</em></strong>: Automatic page segmentation with orientation and script detection.</li>
+    <li><strong><em>AUTO_ONLY</em></strong>: Automatic page segmentation, but no OSD, or OCR.</li>
+    <li><strong><em>AUTO</em></strong>: Fully automatic page segmentation, but no OSD.</li>
+    <li><strong><em>SINGLE_COLUMN</em></strong>: Assume a single column of text of variable sizes.</li>
+    <li><strong><em>SINGLE_BLOCK_VERT_TEXT</em></strong>: Assume a single uniform block of vertically aligned text.</li>
+    <li><strong><em>SINGLE_BLOCK</em></strong>: Assume a single uniform block of text.</li>
+    <li><strong><em>SINGLE_LINE</em></strong>: Treat the image as a single text line.</li>
+    <li><strong><em>SINGLE_WORD</em></strong>: Treat the image as a single word.</li>
+    <li><strong><em>CIRCLE_WORD</em></strong>: Treat the image as a single word in a circle.</li>
+    <li><strong><em>SINGLE_CHAR</em></strong>: Treat the image as a single character.</li>
+    <li><strong><em>SPARSE_TEXT</em></strong>: Find as much text as possible in no particular order.</li>
+    <li><strong><em>SPARSE_TEXT_OSD</em></strong>: Sparse text with orientation and script detection.</li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="enginemode">EngineMode</h3>
+  <h3 id="enginemode">EngineMode</h3>
 
-      <ul>
-        <li><strong><em>TESSERACT_ONLY</em></strong>: Legacy engine only.</li>
-        <li><strong><em>OEM_LSTM_ONLY</em></strong>: Neural nets LSTM engine only.</li>
-        <li><strong><em>TESSERACT_LSTM_COMBINED</em></strong>: Legacy + LSTM engines.</li>
-        <li><strong><em>DEFAULT</em></strong>: Default, based on what is available.</li>
-      </ul>
+  <ul>
+    <li><strong><em>TESSERACT_ONLY</em></strong>: Legacy engine only.</li>
+    <li><strong><em>OEM_LSTM_ONLY</em></strong>: Neural nets LSTM engine only.</li>
+    <li><strong><em>TESSERACT_LSTM_COMBINED</em></strong>: Legacy + LSTM engines.</li>
+    <li><strong><em>DEFAULT</em></strong>: Default, based on what is available.</li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="pageiteratorlevel">PageIteratorLevel</h3>
+  <h3 id="pageiteratorlevel">PageIteratorLevel</h3>
 
-      <ul>
-        <li><strong><em>BLOCK</em></strong>: Block of text/image/separator line.</li>
-        <li><strong><em>PARAGRAPH</em></strong>: Paragraph within a block.</li>
-        <li><strong><em>TEXTLINE</em></strong>: Line within a paragraph.</li>
-        <li><strong><em>WORD</em></strong>: Word within a text line.</li>
-        <li><strong><em>SYMBOL</em></strong>: Symbol/character within a word.</li>
-      </ul>
+  <ul>
+    <li><strong><em>BLOCK</em></strong>: Block of text/image/separator line.</li>
+    <li><strong><em>PARAGRAPH</em></strong>: Paragraph within a block.</li>
+    <li><strong><em>TEXTLINE</em></strong>: Line within a paragraph.</li>
+    <li><strong><em>WORD</em></strong>: Word within a text line.</li>
+    <li><strong><em>SYMBOL</em></strong>: Symbol/character within a word.</li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="language">Language</h3>
+  <h3 id="language">Language</h3>
 
-      <ul>
-        <li><strong><em>ENG</em></strong>: English</li>
-        <li><strong><em>FRA</em></strong>: French</li>
-        <li><strong><em>SPA</em></strong>: Spanish</li>
-        <li><strong><em>RUS</em></strong>: Russian</li>
-        <li><strong><em>DEU</em></strong>: German</li>
-        <li><strong><em>VIE</em></strong>: Vietnamese</li>
-        <li><strong><em>ARA</em></strong>: Arabic</li>
-      </ul>
+  <ul>
+    <li><strong><em>ENG</em></strong>: English</li>
+    <li><strong><em>FRA</em></strong>: French</li>
+    <li><strong><em>SPA</em></strong>: Spanish</li>
+    <li><strong><em>RUS</em></strong>: Russian</li>
+    <li><strong><em>DEU</em></strong>: German</li>
+    <li><strong><em>VIE</em></strong>: Vietnamese</li>
+    <li><strong><em>ARA</em></strong>: Arabic</li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="modeltype">ModelType</h3>
+  <h3 id="modeltype">ModelType</h3>
 
-      <ul>
-        <li><strong><em>BASE</em></strong>: Block of text/image/separator line.</li>
-        <li><strong><em>BEST</em></strong>: Paragraph within a block.</li>
-        <li><strong><em>FAST</em></strong>: Line within a paragraph.</li>
-      </ul>
+  <ul>
+    <li><strong><em>BASE</em></strong>: Block of text/image/separator line.</li>
+    <li><strong><em>BEST</em></strong>: Paragraph within a block.</li>
+    <li><strong><em>FAST</em></strong>: Line within a paragraph.</li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="imagetype">ImageType</h3>
+  <h3 id="imagetype">ImageType</h3>
 
-      <ul>
-        <li><strong><em>TYPE_BYTE_GRAY</em></strong></li>
-        <li><strong><em>TYPE_BYTE_BINARY</em></strong></li>
-        <li><strong><em>TYPE_3BYTE_BGR</em></strong></li>
-        <li><strong><em>TYPE_4BYTE_ABGR</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>TYPE_BYTE_GRAY</em></strong></li>
+    <li><strong><em>TYPE_BYTE_BINARY</em></strong></li>
+    <li><strong><em>TYPE_3BYTE_BGR</em></strong></li>
+    <li><strong><em>TYPE_4BYTE_ABGR</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="noisemethod">NoiseMethod</h3>
+  <h3 id="noisemethod">NoiseMethod</h3>
 
-      <ul>
-        <li><strong><em>VARIANCE</em></strong></li>
-        <li><strong><em>RATIO</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>VARIANCE</em></strong></li>
+    <li><strong><em>RATIO</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="kernelshape">KernelShape</h3>
+  <h3 id="kernelshape">KernelShape</h3>
 
-      <ul>
-        <li><strong><em>SQUARE</em></strong></li>
-        <li><strong><em>DIAMOND</em></strong></li>
-        <li><strong><em>DISK</em></strong></li>
-        <li><strong><em>OCTAHEDRON</em></strong></li>
-        <li><strong><em>OCTAGON</em></strong></li>
-        <li><strong><em>STAR</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>SQUARE</em></strong></li>
+    <li><strong><em>DIAMOND</em></strong></li>
+    <li><strong><em>DISK</em></strong></li>
+    <li><strong><em>OCTAHEDRON</em></strong></li>
+    <li><strong><em>OCTAGON</em></strong></li>
+    <li><strong><em>STAR</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="morphologyoperationtype">MorphologyOperationType</h3>
+  <h3 id="morphologyoperationtype">MorphologyOperationType</h3>
 
-      <ul>
-        <li><strong><em>OPENING</em></strong></li>
-        <li><strong><em>CLOSING</em></strong></li>
-        <li><strong><em>EROSION</em></strong></li>
-        <li><strong><em>DILATION</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>OPENING</em></strong></li>
+    <li><strong><em>CLOSING</em></strong></li>
+    <li><strong><em>EROSION</em></strong></li>
+    <li><strong><em>DILATION</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="cropsquaretype">CropSquareType</h3>
+  <h3 id="cropsquaretype">CropSquareType</h3>
 
-      <ul>
-        <li><strong><em>TOP_LEFT</em></strong></li>
-        <li><strong><em>TOP_CENTER</em></strong></li>
-        <li><strong><em>TOP_RIGHT</em></strong></li>
-        <li><strong><em>CENTER_LEFT</em></strong></li>
-        <li><strong><em>CENTER</em></strong></li>
-        <li><strong><em>CENTER_RIGHT</em></strong></li>
-        <li><strong><em>BOTTOM_LEFT</em></strong></li>
-        <li><strong><em>BOTTOM_CENTER</em></strong></li>
-        <li><strong><em>BOTTOM_RIGHT</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>TOP_LEFT</em></strong></li>
+    <li><strong><em>TOP_CENTER</em></strong></li>
+    <li><strong><em>TOP_RIGHT</em></strong></li>
+    <li><strong><em>CENTER_LEFT</em></strong></li>
+    <li><strong><em>CENTER</em></strong></li>
+    <li><strong><em>CENTER_RIGHT</em></strong></li>
+    <li><strong><em>BOTTOM_LEFT</em></strong></li>
+    <li><strong><em>BOTTOM_CENTER</em></strong></li>
+    <li><strong><em>BOTTOM_RIGHT</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="splittingstrategy">SplittingStrategy</h3>
+  <h3 id="splittingstrategy">SplittingStrategy</h3>
 
-      <ul>
-        <li><strong><em>FIXED_NUMBER_OF_PARTITIONS</em></strong></li>
-        <li><strong><em>FIXED_SIZE_OF_PARTITION</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>FIXED_NUMBER_OF_PARTITIONS</em></strong></li>
+    <li><strong><em>FIXED_SIZE_OF_PARTITION</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="adaptivethresholdingmethod">AdaptiveThresholdingMethod</h3>
+  <h3 id="adaptivethresholdingmethod">AdaptiveThresholdingMethod</h3>
 
-      <ul>
-        <li><strong><em>GAUSSIAN</em></strong></li>
-        <li><strong><em>MEAN</em></strong></li>
-        <li><strong><em>MEDIAN</em></strong></li>
-        <li><strong><em>WOLF</em></strong></li>
-        <li><strong><em>SINGH</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>GAUSSIAN</em></strong></li>
+    <li><strong><em>MEAN</em></strong></li>
+    <li><strong><em>MEDIAN</em></strong></li>
+    <li><strong><em>WOLF</em></strong></li>
+    <li><strong><em>SINGH</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="tresholdingmethod">TresholdingMethod</h3>
+  <h3 id="tresholdingmethod">TresholdingMethod</h3>
 
-      <ul>
-        <li><strong><em>GAUSSIAN</em></strong></li>
-        <li><strong><em>OTSU</em></strong></li>
-        <li><strong><em>SAUVOLA</em></strong></li>
-        <li><strong><em>WOLF</em></strong></li>
-      </ul>
+  <ul>
+    <li><strong><em>GAUSSIAN</em></strong></li>
+    <li><strong><em>OTSU</em></strong></li>
+    <li><strong><em>SAUVOLA</em></strong></li>
+    <li><strong><em>WOLF</em></strong></li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="celldetectionalgos">CellDetectionAlgos</h3>
+  <h3 id="celldetectionalgos">CellDetectionAlgos</h3>
 
-      <ul>
-        <li><strong><em>CONTOURS</em></strong> - Detect cells in bordered tables</li>
-        <li><strong><em>MORPHOPS</em></strong> - Detected calls in: bordered, borderless and combined tables</li>
-      </ul>
+  <ul>
+    <li><strong><em>CONTOURS</em></strong> - Detect cells in bordered tables</li>
+    <li><strong><em>MORPHOPS</em></strong> - Detected calls in: bordered, borderless and combined tables</li>
+  </ul>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="tableoutputformat">TableOutputFormat</h3>
+  <h3 id="tableoutputformat">TableOutputFormat</h3>
 
-      <ul>
-        <li><strong><em>TABLE</em></strong> - Table struct format</li>
-        <li><strong><em>CSV</em></strong> - Comma separated CSV</li>
-      </ul>
+  <ul>
+    <li><strong><em>TABLE</em></strong> - Table struct format</li>
+    <li><strong><em>CSV</em></strong> - Comma separated CSV</li>
+  </ul>
 
-      <h2 id="ocr-implicits">OCR implicits</h2>
+</div>
+<div class="h3-box">
 
-      <h3 id="asimage">asImage</h3>
+  <h2 id="ocr-implicits">OCR implicits</h2>
 
-      <p><code class="language-plaintext highlighter-rouge">asImage</code> transforms binary content to <a href="#image-schema">Image schema</a>.</p>
+  <h3 id="asimage">asImage</h3>
 
-    </div>
-    <div class="h3-box">
+  <p><code class="language-plaintext highlighter-rouge">asImage</code> transforms binary content to <a href="#image-schema">Image schema</a>.</p>
 
-      <h4 id="parameters">Parameters</h4>
+</div>
+<div class="h3-box">
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>outputCol</td>
-            <td>string</td>
-            <td>image</td>
-            <td>output column name</td>
-          </tr>
-          <tr>
-            <td>contentCol</td>
-            <td>string</td>
-            <td>content</td>
-            <td>input column name with binary content</td>
-          </tr>
-          <tr>
-            <td>pathCol</td>
-            <td>string</td>
-            <td>path</td>
-            <td>input column name with path to original file</td>
-          </tr>
-        </tbody>
-      </table>
+  <h4 id="parameters">Parameters</h4>
 
-      <p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>output column name</td>
+      </tr>
+      <tr>
+        <td>contentCol</td>
+        <td>string</td>
+        <td>content</td>
+        <td>input column name with binary content</td>
+      </tr>
+      <tr>
+        <td>pathCol</td>
+        <td>string</td>
+        <td>path</td>
+        <td>input column name with path to original file</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
+  <p><strong>Example:</strong></p>
+
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
 
@@ -1092,54 +1102,54 @@ function wrapWordInSpan(data, wordToWrap) {
   <span class="o">.</span><span class="py">asImage</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span>
 
 <span class="nv">df</span><span class="o">.</span><span class="py">show</span><span class="o">()</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="storeimage">storeImage</h3>
+  <h3 id="storeimage">storeImage</h3>
 
-      <p><code class="language-plaintext highlighter-rouge">storeImage</code> stores the image(s) to tmp location and return Dataset with path(s) to stored image files.</p>
+  <p><code class="language-plaintext highlighter-rouge">storeImage</code> stores the image(s) to tmp location and return Dataset with path(s) to stored image files.</p>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h4 id="parameters-1">Parameters</h4>
+  <h4 id="parameters-1">Parameters</h4>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>inputColumn</td>
-            <td>string</td>
-            <td> </td>
-            <td>input column name with image struct</td>
-          </tr>
-          <tr>
-            <td>formatName</td>
-            <td>string</td>
-            <td>png</td>
-            <td>image format name</td>
-          </tr>
-          <tr>
-            <td>prefix</td>
-            <td>string</td>
-            <td>sparknlp_ocr_</td>
-            <td>prefix for output file</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputColumn</td>
+        <td>string</td>
+        <td> </td>
+        <td>input column name with image struct</td>
+      </tr>
+      <tr>
+        <td>formatName</td>
+        <td>string</td>
+        <td>png</td>
+        <td>image format name</td>
+      </tr>
+      <tr>
+        <td>prefix</td>
+        <td>string</td>
+        <td>sparknlp_ocr_</td>
+        <td>prefix for output file</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.OcrContext.implicits._</span>
 
 <span class="k">val</span> <span class="nv">imagePath</span> <span class="k">=</span> <span class="s">"path to image"</span>
 
@@ -1150,378 +1160,401 @@ function wrapWordInSpan(data, wordToWrap) {
   <span class="o">.</span><span class="py">asImage</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span>
 
 <span class="nv">df</span><span class="o">.</span><span class="py">storeImage</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h3 id="showimages">showImages</h3>
+  <h3 id="showimages">showImages</h3>
 
-      <p>Show images on Databrics notebook.</p>
+  <p>Show images on Databrics notebook.</p>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h4 id="parameters-2">Parameters</h4>
+  <h4 id="parameters-2">Parameters</h4>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>field</td>
-            <td>string</td>
-            <td>image</td>
-            <td>input column name with image struct</td>
-          </tr>
-          <tr>
-            <td>limit</td>
-            <td>integer</td>
-            <td>5</td>
-            <td>count of rows for display</td>
-          </tr>
-          <tr>
-            <td>width</td>
-            <td>string</td>
-            <td>“800”</td>
-            <td>width of image</td>
-          </tr>
-          <tr>
-            <td>show_meta</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>enable/disable displaying metadata of image</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>field</td>
+        <td>string</td>
+        <td>image</td>
+        <td>input column name with image struct</td>
+      </tr>
+      <tr>
+        <td>limit</td>
+        <td>integer</td>
+        <td>5</td>
+        <td>count of rows for display</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>string</td>
+        <td>“800”</td>
+        <td>width of image</td>
+      </tr>
+      <tr>
+        <td>show_meta</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>enable/disable displaying metadata of image</td>
+      </tr>
+    </tbody>
+  </table>
 
-    </div>
-    <div class="h3-box">
+</div>
+<div class="h3-box">
 
-      <h2 id="jupyter-python-helpers">Jupyter Python helpers</h2>
+  <h2 id="jupyter-python-helpers">Jupyter Python helpers</h2>
 
-      <h3 id="displayimage">display_image</h3>
+  <h3 id="displayimage">display_image</h3>
 
-      <p>Show single image with metadata in Jupyter notebook.</p>
+  <p>Show single image with metadata in Jupyter notebook.</p>
 
-      <h4 id="parameters-3">Parameters</h4>
+  <h4 id="parameters-3">Parameters</h4>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>width</td>
-            <td>string</td>
-            <td>“600”</td>
-            <td>width of image</td>
-          </tr>
-          <tr>
-            <td>show_meta</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>enable/disable displaying metadata of image</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>width</td>
+        <td>string</td>
+        <td>“600”</td>
+        <td>width of image</td>
+      </tr>
+      <tr>
+        <td>show_meta</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>enable/disable displaying metadata of image</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_image</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_image</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">BinaryToImage</span>
 
 <span class="n">images_path</span> <span class="o">=</span> <span class="s">"/tmp/ocr/images/*.tif"</span>
 <span class="n">images_example_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">images_path</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 
 <span class="n">display_image</span><span class="p">(</span><span class="n">BinaryToImage</span><span class="p">().</span><span class="n">transform</span><span class="p">(</span><span class="n">images_example_df</span><span class="p">).</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">image</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <h3 id="displayimages">display_images</h3>
+</div>
+<div class="h3-box">
 
-      <p>Show images from dataframe.</p>
+  <h3 id="displayimages">display_images</h3>
 
-      <h4 id="parameters-4">Parameters</h4>
+  <p>Show images from dataframe.</p>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>field</td>
-            <td>string</td>
-            <td>image</td>
-            <td>input column name with image struct</td>
-          </tr>
-          <tr>
-            <td>limit</td>
-            <td>integer</td>
-            <td>5</td>
-            <td>count of rows for display</td>
-          </tr>
-          <tr>
-            <td>width</td>
-            <td>string</td>
-            <td>“600”</td>
-            <td>width of image</td>
-          </tr>
-          <tr>
-            <td>show_meta</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>enable/disable displaying metadata of image</td>
-          </tr>
-        </tbody>
-      </table>
+  <h4 id="parameters-4">Parameters</h4>
 
-      <p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>field</td>
+        <td>string</td>
+        <td>image</td>
+        <td>input column name with image struct</td>
+      </tr>
+      <tr>
+        <td>limit</td>
+        <td>integer</td>
+        <td>5</td>
+        <td>count of rows for display</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>string</td>
+        <td>“600”</td>
+        <td>width of image</td>
+      </tr>
+      <tr>
+        <td>show_meta</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>enable/disable displaying metadata of image</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_images</span>
+  <p><strong>Example:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_images</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">BinaryToImage</span>
 
 <span class="n">images_path</span> <span class="o">=</span> <span class="s">"/tmp/ocr/images/*.tif"</span>
 <span class="n">images_example_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">images_path</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 
 <span class="n">display_images</span><span class="p">(</span><span class="n">BinaryToImage</span><span class="p">().</span><span class="n">transform</span><span class="p">(</span><span class="n">images_example_df</span><span class="p">),</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div>      </div>
-      <p><img src="/assets/images/ocr/showImage1.png" alt="image" /></p>
+</code></pre></div>  </div>
+  <p><img src="/assets/images/ocr/showImage1.png" alt="Structures and helpers" /></p>
 
-      <h3 id="displayimageshorizontal">display_images_horizontal</h3>
+</div>
+<div class="h3-box">
 
-      <p>Show one or more images per row from dataframe.</p>
+  <h3 id="displayimageshorizontal">display_images_horizontal</h3>
 
-      <h4 id="parameters-5">Parameters</h4>
+  <p>Show one or more images per row from dataframe.</p>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>fields</td>
-            <td>string</td>
-            <td>image</td>
-            <td>comma separated input column names with image struct</td>
-          </tr>
-          <tr>
-            <td>limit</td>
-            <td>integer</td>
-            <td>5</td>
-            <td>count of rows for display</td>
-          </tr>
-          <tr>
-            <td>width</td>
-            <td>string</td>
-            <td>“600”</td>
-            <td>width of image</td>
-          </tr>
-          <tr>
-            <td>show_meta</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>enable/disable displaying metadata of image</td>
-          </tr>
-        </tbody>
-      </table>
+  <h4 id="parameters-5">Parameters</h4>
 
-      <p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>fields</td>
+        <td>string</td>
+        <td>image</td>
+        <td>comma separated input column names with image struct</td>
+      </tr>
+      <tr>
+        <td>limit</td>
+        <td>integer</td>
+        <td>5</td>
+        <td>count of rows for display</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>string</td>
+        <td>“600”</td>
+        <td>width of image</td>
+      </tr>
+      <tr>
+        <td>show_meta</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>enable/disable displaying metadata of image</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_images_horizontal</span>
+  <p><strong>Example:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_images_horizontal</span>
 
 <span class="n">display_images_horizontal</span><span class="p">(</span><span class="n">df_with_few_image_fields</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s">"images, image_with_regions"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <p><img src="/assets/images/ocr/display_images_horizontal.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/display_images_horizontal.png" alt="Structures and helpers" /></p>
 
-      <h3 id="displaypdf">display_pdf</h3>
+</div>
+<div class="h3-box">
 
-      <p>Show pdf from dataframe.</p>
+  <h3 id="displaypdf">display_pdf</h3>
 
-      <h4 id="parameters-6">Parameters</h4>
+  <p>Show pdf from dataframe.</p>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>field</td>
-            <td>string</td>
-            <td>content</td>
-            <td>input column with binary representation of pdf</td>
-          </tr>
-          <tr>
-            <td>limit</td>
-            <td>integer</td>
-            <td>5</td>
-            <td>count of rows for display</td>
-          </tr>
-          <tr>
-            <td>width</td>
-            <td>string</td>
-            <td>“600”</td>
-            <td>width of image</td>
-          </tr>
-          <tr>
-            <td>show_meta</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>enable/disable displaying metadata of image</td>
-          </tr>
-        </tbody>
-      </table>
+  <h4 id="parameters-6">Parameters</h4>
 
-      <p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>field</td>
+        <td>string</td>
+        <td>content</td>
+        <td>input column with binary representation of pdf</td>
+      </tr>
+      <tr>
+        <td>limit</td>
+        <td>integer</td>
+        <td>5</td>
+        <td>count of rows for display</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>string</td>
+        <td>“600”</td>
+        <td>width of image</td>
+      </tr>
+      <tr>
+        <td>show_meta</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>enable/disable displaying metadata of image</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_pdf</span>
+  <p><strong>Example:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_pdf</span>
 
 <span class="n">pdf_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
 <span class="n">display_pdf</span><span class="p">(</span><span class="n">pdf_df</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <p><img src="/assets/images/ocr/display_pdf.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/display_pdf.png" alt="Structures and helpers" /></p>
 
-      <h3 id="displaypdffile">display_pdf_file</h3>
+</div>
+<div class="h3-box">
 
-      <p>Show pdf file using embedded pdf viewer.</p>
+  <h3 id="displaypdffile">display_pdf_file</h3>
 
-      <h4 id="parameters-7">Parameters</h4>
+  <p>Show pdf file using embedded pdf viewer.</p>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>pdf</td>
-            <td>string</td>
-            <td> </td>
-            <td>Path to the file name</td>
-          </tr>
-          <tr>
-            <td>size</td>
-            <td>integer</td>
-            <td>size=(600, 500)</td>
-            <td>count of rows for display</td>
-          </tr>
-        </tbody>
-      </table>
+  <h4 id="parameters-7">Parameters</h4>
 
-      <p><strong>Example:</strong></p>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>pdf</td>
+        <td>string</td>
+        <td> </td>
+        <td>Path to the file name</td>
+      </tr>
+      <tr>
+        <td>size</td>
+        <td>integer</td>
+        <td>size=(600, 500)</td>
+        <td>count of rows for display</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_pdf_file</span>
+  <p><strong>Example:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_pdf_file</span>
 
 <span class="n">display_pdf_file</span><span class="p">(</span><span class="s">"path to the pdf file"</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <p><strong>Example output:</strong></p>
+  <p><strong>Example output:</strong></p>
 
-      <p><img src="/assets/images/ocr/display_pdf_file.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/display_pdf_file.png" alt="Structures and helpers" /></p>
 
-      <h3 id="displaytable">display_table</h3>
+</div>
+<div class="h3-box">
 
-      <p>Display table from the dataframe.</p>
+  <h3 id="displaytable">display_table</h3>
 
-      <h3 id="displaytables">display_tables</h3>
+  <p>Display table from the dataframe.</p>
 
-      <p>Display tables from the dataframe. It is useful for display results
+</div>
+<div class="h3-box">
+
+  <h3 id="displaytables">display_tables</h3>
+
+  <p>Display tables from the dataframe. It is useful for display results
 of table recognition from the multipage documents/few tables per page.</p>
 
-      <p><strong>Example output:</strong></p>
+  <p><strong>Example output:</strong></p>
 
-      <p><img src="/assets/images/ocr/display_table.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/display_table.png" alt="Structures and helpers" /></p>
 
-      <h2 id="databricks-python-helpers">Databricks Python helpers</h2>
+</div>
+<div class="h3-box">
 
-      <h3 id="displayimages-1">display_images</h3>
+  <h2 id="databricks-python-helpers">Databricks Python helpers</h2>
 
-      <p>Show images from dataframe.</p>
+  <h3 id="displayimages-1">display_images</h3>
 
-      <h4 id="parameters-8">Parameters</h4>
+  <p>Show images from dataframe.</p>
 
-      <table class="table-model-big">
-        <thead>
-          <tr>
-            <th>Param name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>field</td>
-            <td>string</td>
-            <td>image</td>
-            <td>input column name with image struct</td>
-          </tr>
-          <tr>
-            <td>limit</td>
-            <td>integer</td>
-            <td>5</td>
-            <td>count of rows for display</td>
-          </tr>
-          <tr>
-            <td>width</td>
-            <td>string</td>
-            <td>“800”</td>
-            <td>width of image</td>
-          </tr>
-          <tr>
-            <td>show_meta</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>enable/disable displaying metadata of image</td>
-          </tr>
-        </tbody>
-      </table>
+</div>
+<div class="h3-box">
 
-      <p><strong>Example:</strong></p>
+  <h4 id="parameters-8">Parameters</h4>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.databricks</span> <span class="kn">import</span> <span class="n">display_images</span>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>field</td>
+        <td>string</td>
+        <td>image</td>
+        <td>input column name with image struct</td>
+      </tr>
+      <tr>
+        <td>limit</td>
+        <td>integer</td>
+        <td>5</td>
+        <td>count of rows for display</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>string</td>
+        <td>“800”</td>
+        <td>width of image</td>
+      </tr>
+      <tr>
+        <td>show_meta</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>enable/disable displaying metadata of image</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.databricks</span> <span class="kn">import</span> <span class="n">display_images</span>
 <span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">BinaryToImage</span>
 
 <span class="n">images_path</span> <span class="o">=</span> <span class="s">"/tmp/ocr/images/*.tif"</span>
 <span class="n">images_example_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">images_path</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 
 <span class="n">display_images</span><span class="p">(</span><span class="n">BinaryToImage</span><span class="p">().</span><span class="n">transform</span><span class="p">(</span><span class="n">images_example_df</span><span class="p">),</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <p><img src="/assets/images/ocr/showImage.png" alt="image" /></p>
-    </div>
-  </div>
+  <p><img src="/assets/images/ocr/showImage.png" alt="Databricks Python helpers" /></p>
+
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-04-08T00:00:00+00:00">Apr 08, 2020</time>

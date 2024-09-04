@@ -666,7 +666,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We used the Spark NLP class <code class="language-plaintext highlighter-rouge">MedicalNer</code> and it’s method <code class="language-plaintext highlighter-rouge">Approach()</code> as described in the <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#medicalner">documentation</a>.</p>
 
   <p>The pipeline looks as follows:
-<img src="/assets/images/CPUvsGPUbenchmarkpic4.png" alt="" /></p>
+<img src="/assets/images/CPUvsGPUbenchmarkpic4.png" alt="GPU vs CPU benchmark" /></p>
 
 </div>
 <div class="h3-box">
@@ -701,7 +701,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="training-times-depending-on-batch-in-minutes">Training times depending on batch (in minutes)</h4>
 
-  <p><img src="/assets/images/CPUvsGPUbenchmarkpic6.png" alt="" /></p>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic6.png" alt="GPU vs CPU benchmark" /></p>
 
   <table class="table-model-big">
     <thead>
@@ -788,7 +788,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <p><img src="/assets/images/CPUvsGPUbenchmarkpic7.png" alt="" /></p>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic7.png" alt="GPU vs CPU benchmark" /></p>
 
 </div>
 <div class="h3-box">
@@ -796,7 +796,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <h4 id="performance-metrics">Performance metrics</h4>
   <p>A macro F1-score of about <code class="language-plaintext highlighter-rouge">0.92</code> (<code class="language-plaintext highlighter-rouge">0.90</code> in micro) was achieved, with the following charts extracted from the <code class="language-plaintext highlighter-rouge">MedicalNerApproach()</code> logs:</p>
 
-  <p><img src="/assets/images/CPUvsGPUbenchmarkpic8.png" alt="" /></p>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic8.png" alt="GPU vs CPU benchmark" /></p>
 
 </div>
 <div class="h3-box">
@@ -815,17 +815,17 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h3 id="multigpu-inference-on-databricks">MultiGPU Inference on Databricks</h3>
   <p>In this part, we will give you an idea on how to choose appropriate hardware specifications for Databricks. Here is a few different hardwares, their prices, as well as their performance:
-<img src="https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png" alt="image" /></p>
+<img src="https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png" alt="GPU vs CPU benchmark" /></p>
 
   <p>Apparently, GPU hardware is the cheapest among them although it performs the best. Let’s see how overall performance looks like:</p>
 
-  <p><img src="https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png" alt="image" /></p>
+  <p><img src="https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png" alt="GPU vs CPU benchmark" /></p>
 
   <p>Figure above clearly shows us that GPU should be the first option of ours.</p>
 
   <p>In conclusion, please find the best specifications for your use case since these benchmarks might depend on dataset size, inference batch size, quickness, pricing and so on.</p>
 
-  <p>Please refer to this video for further info: https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417</p>
+  <p>Please refer to this video for further info: <a href="https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417">https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417</a></p>
 
   <h3 id="multigpu-training">MultiGPU training</h3>
   <p>Currently, we don’t support multiGPU training, meaning training 1 model in different GPUs in parallel. However, you can train different models in different GPUs.</p>

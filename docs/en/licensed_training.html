@@ -620,19 +620,21 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Training"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h3 id="training-datasets">Training Datasets</h3>
-<p>These are classes to load common datasets to train annotators for tasks such as
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
+
+  <h3 id="training-datasets">Training Datasets</h3>
+  <p>These are classes to load common datasets to train annotators for tasks such as
 Relation Model, Assertion models and more.</p>
 
-<div class="h3-box">
+  <div class="h3-box">
 
-  <h3 id="annotation-tool-json-reader">Annotation tool json reader.</h3>
+    <h3 id="annotation-tool-json-reader">Annotation tool json reader.</h3>
 
-  <p>All the annotations from Annotation Lab can be exported in a standard JSON format as shown below. The JSON holds multiple types of annotations like NER, Assertion, and Relations. To generate training datasets from the json, a utility class <code class="language-plaintext highlighter-rouge">AnnotationToolJsonReader</code> can be used, which can generate training datasets for training NER and Assertion models. <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/AL_API_import_export_pre_annotate.ipynb">AnnotationToolJsonReader Colab Notebook</a> provides the code and details of processing the exported JSON to generate training datasets for NER and Assertion models in section 2. Users can distinguish between different label types by using constructor parameters described below. This notebook also explains how to connect to your Annotation Lab instance via API for uploading tasks, pre-annotations, and exporting entire projects.</p>
+    <p>All the annotations from Annotation Lab can be exported in a standard JSON format as shown below. The JSON holds multiple types of annotations like NER, Assertion, and Relations. To generate training datasets from the json, a utility class <code class="language-plaintext highlighter-rouge">AnnotationToolJsonReader</code> can be used, which can generate training datasets for training NER and Assertion models. <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/AL_API_import_export_pre_annotate.ipynb">AnnotationToolJsonReader Colab Notebook</a> provides the code and details of processing the exported JSON to generate training datasets for NER and Assertion models in section 2. Users can distinguish between different label types by using constructor parameters described below. This notebook also explains how to connect to your Annotation Lab instance via API for uploading tasks, pre-annotations, and exporting entire projects.</p>
 
-  <p><strong>Input File Format:</strong></p>
+    <p><strong>Input File Format:</strong></p>
 
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
   {
     "completions": [
       {
@@ -839,45 +841,45 @@ Relation Model, Assertion models and more.</p>
     "predictions": []
   }
 ]
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <p><strong>Constructor Parameters:</strong></p>
+    <p><strong>Constructor Parameters:</strong></p>
 
-  <ul>
-    <li><strong>assertion_labels</strong>:  The assertions labels are used for the training dataset creation.</li>
-    <li><strong>excluded_labels</strong>:  The assertions labels that are excluded for the training dataset creation.</li>
-    <li><strong>split_chars</strong>:  The split chars that are used in the default tokenizer.</li>
-    <li><strong>context_chars</strong>: The context chars that are used in the default tokenizer.</li>
-    <li><strong>SDDLPath</strong>: The context chars that are used in the default tokenizer.</li>
-  </ul>
+    <ul>
+      <li><strong>assertion_labels</strong>:  The assertions labels are used for the training dataset creation.</li>
+      <li><strong>excluded_labels</strong>:  The assertions labels that are excluded for the training dataset creation.</li>
+      <li><strong>split_chars</strong>:  The split chars that are used in the default tokenizer.</li>
+      <li><strong>context_chars</strong>: The context chars that are used in the default tokenizer.</li>
+      <li><strong>SDDLPath</strong>: The context chars that are used in the default tokenizer.</li>
+    </ul>
 
-  <p><strong>Parameters for <code class="language-plaintext highlighter-rouge">readDataset</code>:</strong></p>
+    <p><strong>Parameters for <code class="language-plaintext highlighter-rouge">readDataset</code>:</strong></p>
 
-  <ul>
-    <li><strong>spark</strong>: Initiated Spark Session with Spark NLP</li>
-    <li><strong>path</strong>: Path to the resource</li>
-  </ul>
+    <ul>
+      <li><strong>spark</strong>: Initiated Spark Session with Spark NLP</li>
+      <li><strong>path</strong>: Path to the resource</li>
+    </ul>
 
-  <p>Refer to the documentation for more details on the API:</p>
+    <p>Refer to the documentation for more details on the API:</p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/training/AnnotationToolJsonReader.html">AnnotationToolJsonReader</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/training/AnnotationToolJsonReader.html">AnnotationToolJsonReader</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
 <span class="n">assertion_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">"AsPresent"</span><span class="p">,</span><span class="s">"Absent"</span><span class="p">]</span>
 <span class="n">excluded_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Treatment"</span><span class="p">]</span>
 <span class="n">split_chars</span> <span class="o">=</span> <span class="p">[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"</span><span class="se">\\</span><span class="s">-"</span><span class="p">]</span>
@@ -900,9 +902,9 @@ Relation Model, Assertion models and more.</p>
 <span class="o">|</span><span class="n">To</span> <span class="n">have</span> <span class="n">faith</span> <span class="ow">is</span> <span class="p">...</span><span class="o">|</span> <span class="n">To</span> <span class="n">have</span> <span class="n">faith</span><span class="o">|</span><span class="n">AsPresent</span><span class="o">|</span>    <span class="mi">0</span><span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>
 <span class="o">|</span><span class="n">To</span> <span class="n">have</span> <span class="n">faith</span> <span class="ow">is</span> <span class="p">...</span><span class="o">|</span><span class="n">trust</span> <span class="n">yourself</span><span class="o">|</span><span class="n">AsPresent</span><span class="o">|</span>    <span class="mi">5</span><span class="o">|</span>  <span class="mi">6</span><span class="o">|</span>
 <span class="o">+--------------------+--------------+---------+-----+---+</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.training.POS</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.training.POS</span>
 
 <span class="k">val</span> <span class="nv">filename</span> <span class="k">=</span> <span class="s">"src/test/resources/json_import.json"</span>
 
@@ -922,57 +924,60 @@ Relation Model, Assertion models and more.</p>
 <span class="o">|</span><span class="nc">To</span> <span class="n">have</span> <span class="n">faith</span> <span class="n">is</span> <span class="o">...|</span> <span class="nc">To</span> <span class="n">have</span> <span class="n">faith</span><span class="o">|</span><span class="nc">AsPresent</span><span class="o">|</span>    <span class="mi">0</span><span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>
 <span class="o">|</span><span class="nc">To</span> <span class="n">have</span> <span class="n">faith</span> <span class="n">is</span> <span class="o">...|</span><span class="n">trust</span> <span class="n">yourself</span><span class="o">|</span><span class="nc">AsPresent</span><span class="o">|</span>    <span class="mi">5</span><span class="o">|</span>  <span class="mi">6</span><span class="o">|</span>
 <span class="o">+--------------------+--------------+---------+-----+---+</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
+  </div>
+
 </div>
+<div class="h3-box">
 
-<h3 id="assertion">Assertion</h3>
+  <h3 id="assertion">Assertion</h3>
 
-<p>Trains AssertionDL, a deep Learning based approach used to extract Assertion Status from extracted entities and text.</p>
+  <p>Trains AssertionDL, a deep Learning based approach used to extract Assertion Status from extracted entities and text.</p>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="assertiondlapproach">AssertionDLApproach</h3>
+    <h3 id="assertiondlapproach">AssertionDLApproach</h3>
 
-  <p>Train a Assertion Model algorithm using deep learning.</p>
+    <p>Train a Assertion Model algorithm using deep learning.</p>
 
-  <p>The training data should have annotations columns of type <code class="language-plaintext highlighter-rouge">DOCUMENT</code>, <code class="language-plaintext highlighter-rouge">CHUNK</code>, <code class="language-plaintext highlighter-rouge">WORD_EMBEDDINGS</code>, the <code class="language-plaintext highlighter-rouge">label</code>column (The assertion status that you want to predict), the <code class="language-plaintext highlighter-rouge">start</code> (the start index for the term that has the assertion status),
+    <p>The training data should have annotations columns of type <code class="language-plaintext highlighter-rouge">DOCUMENT</code>, <code class="language-plaintext highlighter-rouge">CHUNK</code>, <code class="language-plaintext highlighter-rouge">WORD_EMBEDDINGS</code>, the <code class="language-plaintext highlighter-rouge">label</code>column (The assertion status that you want to predict), the <code class="language-plaintext highlighter-rouge">start</code> (the start index for the term that has the assertion status),
 the <code class="language-plaintext highlighter-rouge">end</code> column (the end index for the term that has the assertion status).This model use a deep learning to predict the entity.</p>
 
-  <p>Excluding the label, this can be done with for example</p>
-  <ul>
-    <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
-    <li>a <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#chunker">Chunk</a> ,</li>
-    <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a>
+    <p>Excluding the label, this can be done with for example</p>
+    <ul>
+      <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
+      <li>a <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#chunker">Chunk</a> ,</li>
+      <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a>
 (any word embeddings can be chosen, e.g. <a href="/docs/en/transformers#bertembeddings">BertEmbeddings</a> for BERT based embeddings).</li>
-  </ul>
+    </ul>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK, WORD_EMBEDDINGS</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK, WORD_EMBEDDINGS</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.AssertionDLApproach.html">AssertionDLApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLApproach.html">AssertionDLApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.AssertionDLApproach.html">AssertionDLApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLApproach.html">AssertionDLApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1026,9 +1031,9 @@ the <code class="language-plaintext highlighter-rouge">end</code> column (the en
 <span class="n">trainingData</span> <span class="o">=</span> <span class="n">conll</span><span class="p">.</span><span class="n">readDataset</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="s">"src/test/resources/conll2003/eng.train"</span><span class="p">)</span>
 
 <span class="n">pipelineModel</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This CoNLL dataset already includes the sentence, token, pos and label column with their respective annotator types.</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This CoNLL dataset already includes the sentence, token, pos and label column with their respective annotator types.</span>
 <span class="c1">// If a custom dataset is used, these need to be defined.</span>
 
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
@@ -1094,53 +1099,53 @@ the <code class="language-plaintext highlighter-rouge">end</code> column (the en
 <span class="n">train_data</span> <span class="k">=</span> <span class="nv">SparkContextForTest</span><span class="o">.</span><span class="py">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"header"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">).</span><span class="py">csv</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"file:///"</span> <span class="o">+</span> <span class="nv">os</span><span class="o">.</span><span class="py">getcwd</span><span class="o">()</span> <span class="o">+</span> <span class="n">datasetPath</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipelineModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainingData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
-</div>
+  </div>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="assertionlogregapproach">AssertionLogRegApproach</h3>
+    <h3 id="assertionlogregapproach">AssertionLogRegApproach</h3>
 
-  <p>Train a Assertion Model algorithm using a regression log model.</p>
+    <p>Train a Assertion Model algorithm using a regression log model.</p>
 
-  <p>The training data should have annotations columns of type <code class="language-plaintext highlighter-rouge">DOCUMENT</code>, <code class="language-plaintext highlighter-rouge">CHUNK</code>, <code class="language-plaintext highlighter-rouge">WORD_EMBEDDINGS</code>, the <code class="language-plaintext highlighter-rouge">label</code>column (The assertion status that you want to predict), the <code class="language-plaintext highlighter-rouge">start</code> (the start index for the term that has the assertion status),
+    <p>The training data should have annotations columns of type <code class="language-plaintext highlighter-rouge">DOCUMENT</code>, <code class="language-plaintext highlighter-rouge">CHUNK</code>, <code class="language-plaintext highlighter-rouge">WORD_EMBEDDINGS</code>, the <code class="language-plaintext highlighter-rouge">label</code>column (The assertion status that you want to predict), the <code class="language-plaintext highlighter-rouge">start</code> (the start index for the term that has the assertion status),
 the <code class="language-plaintext highlighter-rouge">end</code> column (the end index for the term that has the assertion status).This model use a deep learning to predict the entity.</p>
 
-  <p>Excluding the label, this can be done with for example</p>
-  <ul>
-    <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
-    <li>a <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#chunker">Chunk</a> ,</li>
-    <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a>
+    <p>Excluding the label, this can be done with for example</p>
+    <ul>
+      <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
+      <li>a <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#chunker">Chunk</a> ,</li>
+      <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a>
 (any word embeddings can be chosen, e.g. <a href="/docs/en/transformers#bertembeddings">BertEmbeddings</a> for BERT based embeddings).</li>
-  </ul>
+    </ul>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK, WORD_EMBEDDINGS</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK, WORD_EMBEDDINGS</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.AssertionLogRegApproach.html">AssertionLogRegApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegApproach.html">AssertionLogRegApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.AssertionLogRegApproach.html">AssertionLogRegApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegApproach.html">AssertionLogRegApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1193,9 +1198,9 @@ the <code class="language-plaintext highlighter-rouge">end</code> column (the en
 <span class="n">trainingData</span> <span class="o">=</span> <span class="n">conll</span><span class="p">.</span><span class="n">readDataset</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="s">"src/test/resources/conll2003/eng.train"</span><span class="p">)</span>
 
 <span class="n">pipelineModel</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This CoNLL dataset already includes the sentence, token, pos and label column with their respective annotator types.</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This CoNLL dataset already includes the sentence, token, pos and label column with their respective annotator types.</span>
 <span class="c1">// If a custom dataset is used, these need to be defined.</span>
 
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
@@ -1258,61 +1263,64 @@ the <code class="language-plaintext highlighter-rouge">end</code> column (the en
 <span class="n">train_data</span> <span class="k">=</span> <span class="nv">SparkContextForTest</span><span class="o">.</span><span class="py">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"header"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">).</span><span class="py">csv</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"file:///"</span> <span class="o">+</span> <span class="nv">os</span><span class="o">.</span><span class="py">getcwd</span><span class="o">()</span> <span class="o">+</span> <span class="n">datasetPath</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipelineModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainingData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
+  </div>
+
 </div>
+<div class="h3-box">
 
-<h3 id="token-classification">Token Classification</h3>
+  <h3 id="token-classification">Token Classification</h3>
 
-<p>These are annotators that can be trained to recognize named entities in text.</p>
+  <p>These are annotators that can be trained to recognize named entities in text.</p>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="medicalner">MedicalNer</h3>
+    <h3 id="medicalner">MedicalNer</h3>
 
-  <p>This Named Entity recognition annotator allows to train generic NER model based on Neural Networks.</p>
+    <p>This Named Entity recognition annotator allows to train generic NER model based on Neural Networks.</p>
 
-  <p>The architecture of the neural network is a Char CNNs - BiLSTM - CRF that achieves state-of-the-art in most datasets.</p>
+    <p>The architecture of the neural network is a Char CNNs - BiLSTM - CRF that achieves state-of-the-art in most datasets.</p>
 
-  <p>For instantiated/pretrained models, see NerDLModel.</p>
+    <p>For instantiated/pretrained models, see NerDLModel.</p>
 
-  <p>The training data should be a labeled Spark Dataset, in the format of <a href="/docs/en/training#conll-dataset">CoNLL</a>
+    <p>The training data should be a labeled Spark Dataset, in the format of <a href="/docs/en/training#conll-dataset">CoNLL</a>
 2003 IOB with <code class="language-plaintext highlighter-rouge">Annotation</code> type columns. The data should have columns of type <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN, WORD_EMBEDDINGS</code> and an
 additional label column of annotator type <code class="language-plaintext highlighter-rouge">NAMED_ENTITY</code>.
 Excluding the label, this can be done with for example</p>
-  <ul>
-    <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
-    <li>a <a href="/docs/en/annotators#tokenizer">Tokenizer</a> and</li>
-    <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a> with clinical embeddings
+    <ul>
+      <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
+      <li>a <a href="/docs/en/annotators#tokenizer">Tokenizer</a> and</li>
+      <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a> with clinical embeddings
 (any <a href="https://nlp.johnsnowlabs.com/models?task=Embeddings">clinical word embeddings</a> can be chosen).</li>
-  </ul>
+    </ul>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN, WORD_EMBEDDINGS</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, TOKEN, WORD_EMBEDDINGS</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">NAMED_ENTITY</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">NAMED_ENTITY</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.MedicalNerApproach.html">MedicalNerApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/MedicalNerApproach.html">MedicalNerApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.MedicalNerApproach.html">MedicalNerApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/MedicalNerApproach.html">MedicalNerApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1366,9 +1374,9 @@ Excluding the label, this can be done with for example</p>
 <span class="n">trainingData</span> <span class="o">=</span> <span class="n">conll</span><span class="p">.</span><span class="n">readDataset</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="s">"src/test/resources/conll2003/eng.train"</span><span class="p">)</span>
 
 <span class="n">pipelineModel</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.Tokenizer</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.embeddings.WordEmbeddingsModel</span>
@@ -1421,46 +1429,49 @@ Excluding the label, this can be done with for example</p>
 <span class="k">val</span> <span class="nv">trainingData</span> <span class="k">=</span> <span class="nv">conll</span><span class="o">.</span><span class="py">readDataset</span><span class="o">(</span><span class="n">spark</span><span class="o">,</span> <span class="s">"src/test/resources/conll2003/eng.train"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipelineModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainingData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
+  </div>
+
 </div>
+<div class="h3-box">
 
-<h3 id="text--classification">Text  Classification</h3>
-<p>These are annotators that can be trained to classify text into different classes, such as sentiment.</p>
+  <h3 id="text--classification">Text  Classification</h3>
+  <p>These are annotators that can be trained to classify text into different classes, such as sentiment.</p>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="documentlogregclassifier">DocumentLogRegClassifier</h3>
+    <h3 id="documentlogregclassifier">DocumentLogRegClassifier</h3>
 
-  <p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
+    <p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
 text and their label. The result is a trained GenericClassifierModel.</p>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">TOKEN</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">TOKEN</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.DocumentLogRegClassifierApproach.html">DocumentLogRegClassifierApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentLogRegClassifierApproach.html">DocumentLogRegClassifierApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.DocumentLogRegClassifierApproach.html">DocumentLogRegClassifierApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentLogRegClassifierApproach.html">DocumentLogRegClassifierApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1505,9 +1516,9 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <span class="p">])</span>
 
 <span class="n">clf_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.Tokenizer</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.embeddings.WordEmbeddingsModel</span>
@@ -1560,47 +1571,47 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <span class="k">val</span> <span class="nv">trainingData</span> <span class="k">=</span> <span class="nv">conll</span><span class="o">.</span><span class="py">readDataset</span><span class="o">(</span><span class="n">spark</span><span class="o">,</span> <span class="s">"src/test/resources/conll2003/eng.train"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipelineModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainingData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
-</div>
+  </div>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="genericclassifier">GenericClassifier</h3>
+    <h3 id="genericclassifier">GenericClassifier</h3>
 
-  <p>Trains a TensorFlow model for generic classification of feature vectors. It takes FEATURE_VECTOR annotations from
+    <p>Trains a TensorFlow model for generic classification of feature vectors. It takes FEATURE_VECTOR annotations from
 <code class="language-plaintext highlighter-rouge">FeaturesAssembler</code> as input, classifies them and outputs CATEGORY annotations.
 Please see the Parameters section for required training parameters.</p>
 
-  <p>For a more extensive example please see the
+    <p>For a more extensive example please see the
 <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/8.Generic_Classifier.ipynb">Spark NLP Workshop</a>.</p>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">FEATURE_VECTOR</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">FEATURE_VECTOR</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.GenericClassifierApproach.html">GenericClassifierApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html">GenericClassifierApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.GenericClassifierApproach.html">GenericClassifierApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html">GenericClassifierApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1632,9 +1643,9 @@ Please see the Parameters section for required training parameters.</p>
 <span class="p">])</span>
 
 <span class="n">clf_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base.DocumentAssembler</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.Tokenizer</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.embeddings.WordEmbeddingsModel</span>
@@ -1687,70 +1698,73 @@ Please see the Parameters section for required training parameters.</p>
 <span class="k">val</span> <span class="nv">trainingData</span> <span class="k">=</span> <span class="nv">conll</span><span class="o">.</span><span class="py">readDataset</span><span class="o">(</span><span class="n">spark</span><span class="o">,</span> <span class="s">"src/test/resources/conll2003/eng.train"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">pipelineModel</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">trainingData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
+  </div>
+
 </div>
+<div class="h3-box">
 
-<h3 id="relation-models">Relation Models</h3>
+  <h3 id="relation-models">Relation Models</h3>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="relationextractionapproach">RelationExtractionApproach</h3>
+    <h3 id="relationextractionapproach">RelationExtractionApproach</h3>
 
-  <p>Trains a Relation Extraction Model to predict attributes and relations for entities in a sentence.</p>
+    <p>Trains a Relation Extraction Model to predict attributes and relations for entities in a sentence.</p>
 
-  <p>Relation Extraction is the key component for building relation knowledge graphs, and it is of crucial significance to natural language 
+    <p>Relation Extraction is the key component for building relation knowledge graphs, and it is of crucial significance to natural language 
 processing applications such as structured search, sentiment analysis, question answering, and summarization.</p>
 
-  <p>The dataset will be a csv with the following that contains the following columns (<code class="language-plaintext highlighter-rouge">sentence</code>,<code class="language-plaintext highlighter-rouge">chunk1</code>,<code class="language-plaintext highlighter-rouge">firstCharEnt1</code>,<code class="language-plaintext highlighter-rouge">lastCharEnt1</code>,<code class="language-plaintext highlighter-rouge">label1</code>,<code class="language-plaintext highlighter-rouge">chunk2</code>,<code class="language-plaintext highlighter-rouge">firstCharEnt2</code>,<code class="language-plaintext highlighter-rouge">lastCharEnt2</code>,<code class="language-plaintext highlighter-rouge">label2</code>,<code class="language-plaintext highlighter-rouge">rel</code>),</p>
+    <p>The dataset will be a csv with the following that contains the following columns (<code class="language-plaintext highlighter-rouge">sentence</code>,<code class="language-plaintext highlighter-rouge">chunk1</code>,<code class="language-plaintext highlighter-rouge">firstCharEnt1</code>,<code class="language-plaintext highlighter-rouge">lastCharEnt1</code>,<code class="language-plaintext highlighter-rouge">label1</code>,<code class="language-plaintext highlighter-rouge">chunk2</code>,<code class="language-plaintext highlighter-rouge">firstCharEnt2</code>,<code class="language-plaintext highlighter-rouge">lastCharEnt2</code>,<code class="language-plaintext highlighter-rouge">label2</code>,<code class="language-plaintext highlighter-rouge">rel</code>),</p>
 
-  <p>This annotator can be don with for example:
+    <p>This annotator can be don with for example:
 Excluding the rel, this can be done with for example</p>
-  <ul>
-    <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
-    <li>a <a href="/docs/en/annotators#tokenizer">Tokenizer</a> and</li>
-    <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a>
+    <ul>
+      <li>a <a href="/docs/en/annotators#sentencedetector">SentenceDetector</a>,</li>
+      <li>a <a href="/docs/en/annotators#tokenizer">Tokenizer</a> and</li>
+      <li>a <a href="/docs/en/annotators#wordembeddings">WordEmbeddingsModel</a>
 (any word embeddings can be chosen, e.g. <a href="/docs/en/transformers#bertembeddings">BertEmbeddings</a> for BERT based embeddings).</li>
-    <li>a Chunk can be created using the <code class="language-plaintext highlighter-rouge">firstCharEnt1</code>, <code class="language-plaintext highlighter-rouge">lastCharEnt1</code>,<code class="language-plaintext highlighter-rouge">chunk1</code>, <code class="language-plaintext highlighter-rouge">label1</code> columns and <code class="language-plaintext highlighter-rouge">firstCharEnt2</code>, <code class="language-plaintext highlighter-rouge">lastCharEnt2</code>, <code class="language-plaintext highlighter-rouge">chunk2</code>,  <code class="language-plaintext highlighter-rouge">label2</code> <code class="language-plaintext highlighter-rouge">columns</code></li>
-    <li></li>
-  </ul>
+      <li>a Chunk can be created using the <code class="language-plaintext highlighter-rouge">firstCharEnt1</code>, <code class="language-plaintext highlighter-rouge">lastCharEnt1</code>,<code class="language-plaintext highlighter-rouge">chunk1</code>, <code class="language-plaintext highlighter-rouge">label1</code> columns and <code class="language-plaintext highlighter-rouge">firstCharEnt2</code>, <code class="language-plaintext highlighter-rouge">lastCharEnt2</code>, <code class="language-plaintext highlighter-rouge">chunk2</code>,  <code class="language-plaintext highlighter-rouge">label2</code> <code class="language-plaintext highlighter-rouge">columns</code></li>
+      <li></li>
+    </ul>
 
-  <p>An example of that dataset can be found in the following link <a href="https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/tutorials/Certification_Trainings/Healthcare/data/i2b2_clinical_rel_dataset.csv">i2b2_clinical_dataset</a></p>
+    <p>An example of that dataset can be found in the following link <a href="https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/tutorials/Certification_Trainings/Healthcare/data/i2b2_clinical_rel_dataset.csv">i2b2_clinical_dataset</a></p>
 
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sentence,chunk1,firstCharEnt1,lastCharEnt1,label1,chunk2,firstCharEnt2,lastCharEnt2,label2,rel						
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sentence,chunk1,firstCharEnt1,lastCharEnt1,label1,chunk2,firstCharEnt2,lastCharEnt2,label2,rel						
 Previous studies have reported the association of prodynorphin (PDYN) promoter polymorphism with temporal lobe epilepsy (TLE) susceptibility, but the results remain inconclusive.,PDYN,64,67,GENE,epilepsy,111,118,PHENOTYPE,0						
 The remaining cases, clinically similar to XLA, are autosomal recessive agammaglobulinemia (ARA).,XLA,43,45,GENE,autosomal recessive,52,70,PHENOTYPE,0						
 YAP/TAZ have been reported to be highly expressed in malignant tumors.,YAP,19,21,GENE,tumors,82,87,PHENOTYPE,0						
 
-</code></pre></div>  </div>
-  <p>Apart from that, no additional training data is needed.</p>
+</code></pre></div>    </div>
+    <p>Apart from that, no additional training data is needed.</p>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">WORD_EMBEDDINGS, POS, CHUNK, DEPENDENCY</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">WORD_EMBEDDINGS, POS, CHUNK, DEPENDENCY</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.RelationExtractionApproach.html">RelationExtractionApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html">RelationExtractionApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.RelationExtractionApproach.html">RelationExtractionApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html">RelationExtractionApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">functools</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="n">F</span>
 <span class="kn">import</span> <span class="nn">pyspark.sql.types</span> <span class="k">as</span> <span class="n">T</span>
@@ -1843,9 +1857,9 @@ YAP/TAZ have been reported to be highly expressed in malignant tumors.,YAP,19,21
             <span class="n">reApproach</span>
 <span class="p">])</span>
 <span class="n">rel_model</span> <span class="o">=</span> <span class="n">train_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.</span><span class="o">{</span><span class="nc">DocumentAssembler</span><span class="o">}</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.</span><span class="o">{</span><span class="nc">DocumentAssembler</span><span class="o">}</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.Tokenizer</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators.ner.</span><span class="o">{</span><span class="nc">MedicalNerModel</span><span class="o">,</span> <span class="nc">NerConverter</span><span class="o">}</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.embeddings.WordEmbeddingsModel</span>
@@ -1944,54 +1958,57 @@ YAP/TAZ have been reported to be highly expressed in malignant tumors.,YAP,19,21
     <span class="n">re</span><span class="o">).</span><span class="py">parallelDownload</span><span class="o">)</span>
 
     <span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">dataEncoded</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
+  </div>
+
 </div>
+<div class="h3-box">
 
-<h3 id="entity-resolution">Entity Resolution</h3>
+  <h3 id="entity-resolution">Entity Resolution</h3>
 
-<p>Those models predict what are the normalized entity for a particular trained ontology / curated dataset.
+  <p>Those models predict what are the normalized entity for a particular trained ontology / curated dataset.
 (e.g. ICD-10, RxNorm, SNOMED etc.).</p>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="sentenceentityresolver">SentenceEntityResolver</h3>
+    <h3 id="sentenceentityresolver">SentenceEntityResolver</h3>
 
-  <p>Contains all the parameters and methods to train a SentenceEntityResolverModel.
+    <p>Contains all the parameters and methods to train a SentenceEntityResolverModel.
 The model transforms a dataset with Input Annotation type SENTENCE_EMBEDDINGS, coming from e.g.
 <a href="/docs/en/transformers#bertsentenceembeddings">BertSentenceEmbeddings</a>
 and returns the normalized entity for a particular trained ontology / curated dataset.
 (e.g. ICD-10, RxNorm, SNOMED etc.)</p>
 
-  <p>To use pretrained models please use SentenceEntityResolverModel
+    <p>To use pretrained models please use SentenceEntityResolverModel
 and see the <a href="https://nlp.johnsnowlabs.com/models?task=Entity+Resolution">Models Hub</a> for available models.</p>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">SENTENCE_EMBEDDINGS</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">SENTENCE_EMBEDDINGS</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ENTITY</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ENTITY</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.SentenceEntityResolverApproach.html">SentenceEntityResolverApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach.html">SentenceEntityResolverApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl.annotator.SentenceEntityResolverApproach.html">SentenceEntityResolverApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach.html">SentenceEntityResolverApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
@@ -2034,9 +2051,9 @@ and see the <a href="https://nlp.johnsnowlabs.com/models?task=Entity+Resolution"
   <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="n">snomedModel</span> <span class="o">=</span> <span class="n">bertExtractor</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">snomedData</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Training a SNOMED resolution model using BERT sentence embeddings</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Training a SNOMED resolution model using BERT sentence embeddings</span>
 <span class="c1">// Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.</span>
 <span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"normalized_text"</span><span class="o">)</span>
@@ -2069,48 +2086,48 @@ and see the <a href="https://nlp.johnsnowlabs.com/models?task=Entity+Resolution"
   <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">snomedModel</span> <span class="k">=</span> <span class="nv">bertExtractor</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">snomedData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
-</div>
+  </div>
 
-<div class="h3-box tabs-python-scala-box">
+  <div class="h3-box tabs-python-scala-box">
 
-  <h3 id="chunkentityresolver">ChunkEntityResolver</h3>
+    <h3 id="chunkentityresolver">ChunkEntityResolver</h3>
 
-  <p>Contains all the parameters and methods to train a ChunkEntityResolverModel.
+    <p>Contains all the parameters and methods to train a ChunkEntityResolverModel.
 It transform a dataset with two Input Annotations of types TOKEN and WORD_EMBEDDINGS, coming from e.g. ChunkTokenizer
 and ChunkEmbeddings Annotators and returns the normalized entity for a particular trained ontology / curated dataset.
 (e.g. ICD-10, RxNorm, SNOMED etc.)</p>
 
-  <p>To use pretrained models please use ChunkEntityResolverModel
+    <p>To use pretrained models please use ChunkEntityResolverModel
 and see the <a href="https://nlp.johnsnowlabs.com/models?task=Entity+Resolution">Models Hub</a> for available models.</p>
 
-  <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">TOKEN, WORD_EMBEDDINGS</code></p>
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">TOKEN, WORD_EMBEDDINGS</code></p>
 
-  <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ENTITY</code></p>
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ENTITY</code></p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.ChunkEntityResolverApproach.html">ChunkEntityResolverApproach</a></td>
-        <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/">ChunkEntityResolverApproach</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.comlicensed/api/python/reference/autosummary/sparknlp_jsl.annotator.ChunkEntityResolverApproach.html">ChunkEntityResolverApproach</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/">ChunkEntityResolverApproach</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <details>
+    <details>
 
 <summary class="button"><b>Show Example</b></summary>
 
 <div class="tabs-new">
 
-      <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+        <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
@@ -2169,9 +2186,9 @@ and see the <a href="https://nlp.johnsnowlabs.com/models?task=Entity+Resolution"
     <span class="p">.</span><span class="n">setPoolingStrategy</span><span class="p">(</span><span class="s">"MAX"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setThreshold</span><span class="p">(</span><span class="mf">1e32</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">snomedExtractor</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">snomedData</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-      <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Training a SNOMED resolution model using BERT sentence embeddings</span>
+        <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Training a SNOMED resolution model using BERT sentence embeddings</span>
 <span class="c1">// Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.</span>
 <span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"normalized_text"</span><span class="o">)</span>
@@ -2204,14 +2221,15 @@ and see the <a href="https://nlp.johnsnowlabs.com/models?task=Entity+Resolution"
   <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">snomedModel</span> <span class="k">=</span> <span class="nv">bertExtractor</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">snomedData</span><span class="o">)</span>
-</code></pre></div>      </div>
+</code></pre></div>        </div>
 
-    </div>
+      </div>
 
 </details>
 
-</div>
+  </div>
 
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-08-10T00:00:00+00:00">Aug 10, 2020</time>
     </span><!-- start custom article footer snippet -->

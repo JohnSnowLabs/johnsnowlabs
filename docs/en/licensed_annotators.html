@@ -641,319 +641,322 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
   <p>Check out the <a href="https://nlp.johnsnowlabs.com/docs/en/annotators">Spark NLP Annotators page</a> for more information on how to read this page.</p>
 
 </div>
+<div class="h3-box">
 
-<h2 id="available-annotators">Available Annotators</h2>
+  <h2 id="available-annotators">Available Annotators</h2>
 
-<table class="table-model-big">
-  <thead>
-    <tr>
-      <th>Annotators</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="#annotationmerger">AnnotationMerger</a></td>
-      <td>Merge annotations from different pipeline steps that have the same annotation type into a unified annotation.</td>
-    </tr>
-    <tr>
-      <td><a href="#assertionchunkconverter">AssertionChunkConverter</a></td>
-      <td>AssertionChunkConverter annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data.</td>
-    </tr>
-    <tr>
-      <td><a href="#assertiondl">AssertionDL</a></td>
-      <td>AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text.</td>
-    </tr>
-    <tr>
-      <td><a href="#assertionfilterer">AssertionFilterer</a></td>
-      <td>Filters entities coming from ASSERTION type annotations and returns the CHUNKS.</td>
-    </tr>
-    <tr>
-      <td><a href="#assertionlogreg">AssertionLogReg</a></td>
-      <td>Logistic Regression is used to extract Assertion Status from extracted entities and text.</td>
-    </tr>
-    <tr>
-      <td><a href="#assertionmerger">AssertionMerger</a></td>
-      <td>Merges variety assertion columns coming from Assertion annotators</td>
-    </tr>
-    <tr>
-      <td><a href="#averageembeddings">AverageEmbeddings</a></td>
-      <td>Computes the mean of vector embeddings for two sentences of equal size, producing a unified representation</td>
-    </tr>
-    <tr>
-      <td><a href="#bertforsequenceclassification">BertForSequenceClassification</a></td>
-      <td>Can load Bert Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</td>
-    </tr>
-    <tr>
-      <td><a href="#bertfortokenclassifier">BertForTokenClassifier</a></td>
-      <td>Can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks.</td>
-    </tr>
-    <tr>
-      <td><a href="#bertsentencechunkembeddings">BertSentenceChunkEmbeddings</a></td>
-      <td>This annotator combines sentence and NER chunk embeddings to enhance resolution codes, leveraging contextual information in the embeddings for more precise results. It takes sentence context and NER chunks as input and produces embeddings for each chunk, facilitating input for the resolution model.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunk2token">Chunk2Token</a></td>
-      <td>A feature transformer that converts the input array of strings (annotatorType CHUNK) into an array of chunk-based tokens (annotatorType TOKEN).</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkconverter">ChunkConverter</a></td>
-      <td>This annotator merges NER-detected entities with RegexMatcher-based rules for unified processing in the pipeline.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkentityresolver">ChunkEntityResolver</a></td>
-      <td>Returns a normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC’s EDGAR database,  etc).</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkfilterer">ChunkFilterer</a></td>
-      <td>Filters entities coming from CHUNK annotations.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkkeyphraseextraction">ChunkKeyPhraseExtraction</a></td>
-      <td>Uses Bert Sentence Embeddings to determine the most relevant key phrases describing a text.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkmapper">ChunkMapper</a></td>
-      <td>We can use ChunkMapper to map entities with their associated code/reference based on pre-defined dictionaries.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkmapperfilterer">ChunkMapperFilterer</a></td>
-      <td>Annotator to be used after <code class="language-plaintext highlighter-rouge">ChunkMapper</code> that allows to filter chunks based on the results of the mapping, whether it was successful or failed.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunkmerge">ChunkMerge</a></td>
-      <td>Merges entities coming from different CHUNK annotations.</td>
-    </tr>
-    <tr>
-      <td><a href="#chunksentencesplitter">ChunkSentenceSplitter</a></td>
-      <td>Annotator can split the documents into chunks according to separators given as <code class="language-plaintext highlighter-rouge">CHUNK</code> columns. It is useful when you need to perform different models or analysis in different sections of your document</td>
-    </tr>
-    <tr>
-      <td><a href="#contextualassertion">ContextualAssertion</a></td>
-      <td>This model identifies  contextual cues within text data, such as negation, uncertainty etc.It annotates text chunks with assertions based on configurable rules, prefix and suffix patterns, and exception patterns.</td>
-    </tr>
-    <tr>
-      <td><a href="#contextualparser">ContextualParser</a></td>
-      <td>Extracts entity from a document based on user defined rules.</td>
-    </tr>
-    <tr>
-      <td><a href="#contextsplitassembler">ContextSplitAssembler</a></td>
-      <td>Converts and assembles <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code> type annotations into <code class="language-plaintext highlighter-rouge">DOCUMENT</code> type.</td>
-    </tr>
-    <tr>
-      <td><a href="#datenormalizer">DateNormalizer</a></td>
-      <td>This annotator transforms date mentions to a common standard format: YYYY/MM/DD. It is useful when using data from different sources, some times from different countries that has different formats to represent dates.</td>
-    </tr>
-    <tr>
-      <td><a href="#deidentification">DeIdentification</a></td>
-      <td>Deidentifies Input Annotations of types DOCUMENT, TOKEN and CHUNK, by either masking or obfuscating the given CHUNKS.</td>
-    </tr>
-    <tr>
-      <td><a href="#distilbertforsequenceclassification">DistilBertForSequenceClassification</a></td>
-      <td>Can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</td>
-    </tr>
-    <tr>
-      <td><a href="#doc2chunkinternal">Doc2ChunkInternal</a></td>
-      <td>Converts <code class="language-plaintext highlighter-rouge">DOCUMENT</code>, <code class="language-plaintext highlighter-rouge">TOKEN</code> typed annotations into <code class="language-plaintext highlighter-rouge">CHUNK</code> type with the contents of a <code class="language-plaintext highlighter-rouge">chunkCol</code>.</td>
-    </tr>
-    <tr>
-      <td><a href="#docmapper">DocMapper</a></td>
-      <td>Uses the text representation of document annotations to map clinical codes to other codes or relevant information.</td>
-    </tr>
-    <tr>
-      <td><a href="#documentfiltererbyclassifier">DocumentFiltererByClassifier</a></td>
-      <td>This annotator sorts documents based on classifier results. It uses white and black lists, allowing or blocking specific outcomes. It can be case-sensitive or case-insensitive for broader matching. This tool efficiently organizes documents based on classifier outcomes.</td>
-    </tr>
-    <tr>
-      <td><a href="#documentfiltererbyner">DocumentFiltererByNER</a></td>
-      <td>This annotator returns sentences containing the entity chunks you have filtered, allowing you to see only the sentences with the entities you want.</td>
-    </tr>
-    <tr>
-      <td><a href="#documenthashcoder">DocumentHashCoder</a></td>
-      <td>This annotator swaps dates in a document column with hash codes from another column, creating a new column with shifted day information. The subsequent <code class="language-plaintext highlighter-rouge">DeIdentification</code> annotator anonymizes the document, incorporating the altered dates.</td>
-    </tr>
-    <tr>
-      <td><a href="#documentlogregclassifier">DocumentLogRegClassifier</a></td>
-      <td>Classifies documents with a Logarithmic Regression algorithm.</td>
-    </tr>
-    <tr>
-      <td><a href="#documentmlclassifier">DocumentMLClassifier</a></td>
-      <td>classifies documents with a Logarithmic Regression algorithm.</td>
-    </tr>
-    <tr>
-      <td><a href="#drugnormalizer">DrugNormalizer</a></td>
-      <td>Annotator which normalizes raw text from documents, e.g. scraped web pages or xml documents.</td>
-    </tr>
-    <tr>
-      <td><a href="#entitychunkembeddings">EntityChunkEmbeddings</a></td>
-      <td>Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average vector represention of related entity chunks.</td>
-    </tr>
-    <tr>
-      <td><a href="#entityrulerinternal">EntityRulerInternal</a></td>
-      <td>This annotator match exact strings or regex patterns provided in a file against a Document and assigns them an named entity.</td>
-    </tr>
-    <tr>
-      <td><a href="#featuresassembler">FeaturesAssembler</a></td>
-      <td>Collects features from different columns.</td>
-    </tr>
-    <tr>
-      <td><a href="#fewshotclassifier">FewShotClassifier</a></td>
-      <td>This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data.</td>
-    </tr>
-    <tr>
-      <td><a href="#fewshotassertionclassifiermodel">FewShotAssertionClassifierModel</a></td>
-      <td>assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach.</td>
-    </tr>
-    <tr>
-      <td><a href="#fewshotassertionsentenceclassifier">FewShotAssertionSentenceClassifier</a></td>
-      <td>It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel.</td>
-    </tr>
-    <tr>
-      <td><a href="#flattener">Flattener</a></td>
-      <td><code class="language-plaintext highlighter-rouge">Flattener</code> annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation.</td>
-    </tr>
-    <tr>
-      <td><a href="#genericclassifier">GenericClassifier</a></td>
-      <td>Creates a generic single-label classifier which uses pre-generated Tensorflow graphs.</td>
-    </tr>
-    <tr>
-      <td><a href="#genericlogregclassifier">GenericLogRegClassifier</a></td>
-      <td>Is a derivative of GenericClassifier which implements a multinomial logistic regression.</td>
-    </tr>
-    <tr>
-      <td><a href="#genericsvmclassifier">GenericSVMClassifier</a></td>
-      <td>Creates a generic single-label classifier which uses pre-generated Tensorflow graphs.</td>
-    </tr>
-    <tr>
-      <td><a href="#internaldocumentsplitter">InternalDocumentSplitter</a></td>
-      <td>This annotator splits large documents into small documents.</td>
-    </tr>
-    <tr>
-      <td><a href="#iobtagger">IOBTagger</a></td>
-      <td>Merges token tags and NER labels from chunks in the specified format.</td>
-    </tr>
-    <tr>
-      <td><a href="#largefewshotclassifier">LargeFewShotClassifier</a></td>
-      <td>This annotator is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes.</td>
-    </tr>
-    <tr>
-      <td><a href="#lightdeidentification">LightDeIdentification</a></td>
-      <td>Light version of DeIdentification.</td>
-    </tr>
-    <tr>
-      <td><a href="#llmloader">LLMLoader</a></td>
-      <td>LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs’ licensed LLMs at various sizes that are finetuned on medical context for certain tasks.</td>
-    </tr>
-    <tr>
-      <td><a href="#mapper2chunk">Mapper2Chunk</a></td>
-      <td>This annotator converts ‘LABELED_DEPENDENCY’ type annotations coming from ChunkMapper into ‘CHUNK’ type to create new chunk-type column</td>
-    </tr>
-    <tr>
-      <td><a href="#multichunk2doc">MultiChunk2Doc</a></td>
-      <td>Merges a given chunks to create a document.</td>
-    </tr>
-    <tr>
-      <td><a href="#namechunkobfuscator">NameChunkObfuscator</a></td>
-      <td>This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS.</td>
-    </tr>
-    <tr>
-      <td><a href="#nerchunker">NerChunker</a></td>
-      <td>Extracts phrases that fits into a known pattern using the NER tags.</td>
-    </tr>
-    <tr>
-      <td><a href="#nerconverterinternal">NerConverterInternal</a></td>
-      <td>Converts a IOB or IOB2 representation of NER to a user-friendly one, by associating the tokens of recognized entities and their label.</td>
-    </tr>
-    <tr>
-      <td><a href="#nerdisambiguator">NerDisambiguator</a></td>
-      <td>Links words of interest, such as names of persons, locations and companies, from an input text document to a corresponding unique entity in a target Knowledge Base (KB).</td>
-    </tr>
-    <tr>
-      <td><a href="#nermodel">NerModel</a></td>
-      <td>This Named Entity recognition annotator is a generic NER model based on Neural Networks.</td>
-    </tr>
-    <tr>
-      <td><a href="#nerquestiongenerator">NerQuestionGenerator</a></td>
-      <td>This annotator takes an NER chunk (obtained by, e.g., <code class="language-plaintext highlighter-rouge">NerConverterInternal</code>) and generates a questions based on two entity types, a pronoun and a strategy.</td>
-    </tr>
-    <tr>
-      <td><a href="#questionanswering">QuestionAnswering</a></td>
-      <td>GPT-based model for answering questions given a context.</td>
-    </tr>
-    <tr>
-      <td><a href="#regexmatcherinternal">RegexMatcherInternal</a></td>
-      <td><code class="language-plaintext highlighter-rouge">RegexMatcherInternal</code> matches predefined regex patterns with entities in text, allowing for flexible entity recognition based on user-defined rules.</td>
-    </tr>
-    <tr>
-      <td><a href="#reidentification">ReIdentification</a></td>
-      <td>Reidentifies obfuscated entities by DeIdentification.</td>
-    </tr>
-    <tr>
-      <td><a href="#relationextraction">RelationExtraction</a></td>
-      <td>Extracts and classifies instances of relations between named entities.</td>
-    </tr>
-    <tr>
-      <td><a href="#relationextractiondl">RelationExtractionDL</a></td>
-      <td>Extracts and classifies instances of relations between named entities.</td>
-    </tr>
-    <tr>
-      <td><a href="#renerchunksfilter">RENerChunksFilter</a></td>
-      <td>Filters and outputs combinations of relations between extracted entities, for further processing.</td>
-    </tr>
-    <tr>
-      <td><a href="#replacer">Replacer</a></td>
-      <td>This annotator allows to replace entities in the original text with the ones extracted by the annotators <code class="language-plaintext highlighter-rouge">NameChunkObfuscatorApproach</code> or <code class="language-plaintext highlighter-rouge">DateNormalizer</code>.</td>
-    </tr>
-    <tr>
-      <td><a href="#resolution2chunk">Resolution2Chunk</a></td>
-      <td>This annotator is responsible for converting the annotations generated by entity resolver models (typically labeled as ENTITY) into a format compatible with subsequent stages of the pipeline, such as the ChunkMapperModel.</td>
-    </tr>
-    <tr>
-      <td><a href="#resolvermerger">ResolverMerger</a></td>
-      <td>This annotator is provide the ability to merge sentence enitity resolver and chunk mapper model output columns.</td>
-    </tr>
-    <tr>
-      <td><a href="#router">Router</a></td>
-      <td>This annotator is provide the ability to split an output of an annotator for a selected metadata field and the value for that field.</td>
-    </tr>
-    <tr>
-      <td><a href="#sentenceentityresolver">SentenceEntityResolver</a></td>
-      <td>Returns the normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC’s EDGAR database,  etc) based on sentence embeddings.</td>
-    </tr>
-    <tr>
-      <td><a href="#summarizer">Summarizer</a></td>
-      <td>Helps to quickly summarize complex medical information.</td>
-    </tr>
-    <tr>
-      <td><a href="#textgenerator">TextGenerator</a></td>
-      <td>Uses the basic BioGPT model to perform various tasks related to medical text abstraction.</td>
-    </tr>
-    <tr>
-      <td><a href="#textmatcherinternal">TextMatcherInternal</a></td>
-      <td>This annotator match exact phrases provided in a file against a Document.</td>
-    </tr>
-    <tr>
-      <td><a href="#tfgraphbuilder">TFGraphBuilder</a></td>
-      <td>Creates Tensorflow graphs.</td>
-    </tr>
-    <tr>
-      <td><a href="#vectordbpostprocessor">VectorDBPostProcessor</a></td>
-      <td>VectorDBPostProcessor is used to filter and sort the annotations from the :class:<code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.resolution.VectorDBModel</code>.</td>
-    </tr>
-    <tr>
-      <td><a href="#windowedsentencemodel">WindowedSentenceModel</a></td>
-      <td>This annotator that helps you to merge the previous and following sentences of a given piece of text, so that you add the context surrounding them.</td>
-    </tr>
-    <tr>
-      <td><a href="#zeroshotnermodel">ZeroShotNerModel</a></td>
-      <td>This is a zero-shot named entity recognition using <code class="language-plaintext highlighter-rouge">RoBertaForQuestionAnswering</code>. It identifies entities across diverse data without domain-specific fine-tuning.</td>
-    </tr>
-    <tr>
-      <td><a href="#zeroshotrelationextractionmodel">ZeroShotRelationExtractionModel</a></td>
-      <td>This annotator implements zero-shot binary relations extraction by utilizing <code class="language-plaintext highlighter-rouge">BERT</code> transformer models trained on the NLI (Natural Language Inference) task.</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Annotators</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="#annotationmerger">AnnotationMerger</a></td>
+        <td>Merge annotations from different pipeline steps that have the same annotation type into a unified annotation.</td>
+      </tr>
+      <tr>
+        <td><a href="#assertionchunkconverter">AssertionChunkConverter</a></td>
+        <td>AssertionChunkConverter annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data.</td>
+      </tr>
+      <tr>
+        <td><a href="#assertiondl">AssertionDL</a></td>
+        <td>AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text.</td>
+      </tr>
+      <tr>
+        <td><a href="#assertionfilterer">AssertionFilterer</a></td>
+        <td>Filters entities coming from ASSERTION type annotations and returns the CHUNKS.</td>
+      </tr>
+      <tr>
+        <td><a href="#assertionlogreg">AssertionLogReg</a></td>
+        <td>Logistic Regression is used to extract Assertion Status from extracted entities and text.</td>
+      </tr>
+      <tr>
+        <td><a href="#assertionmerger">AssertionMerger</a></td>
+        <td>Merges variety assertion columns coming from Assertion annotators</td>
+      </tr>
+      <tr>
+        <td><a href="#averageembeddings">AverageEmbeddings</a></td>
+        <td>Computes the mean of vector embeddings for two sentences of equal size, producing a unified representation</td>
+      </tr>
+      <tr>
+        <td><a href="#bertforsequenceclassification">BertForSequenceClassification</a></td>
+        <td>Can load Bert Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</td>
+      </tr>
+      <tr>
+        <td><a href="#bertfortokenclassifier">BertForTokenClassifier</a></td>
+        <td>Can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks.</td>
+      </tr>
+      <tr>
+        <td><a href="#bertsentencechunkembeddings">BertSentenceChunkEmbeddings</a></td>
+        <td>This annotator combines sentence and NER chunk embeddings to enhance resolution codes, leveraging contextual information in the embeddings for more precise results. It takes sentence context and NER chunks as input and produces embeddings for each chunk, facilitating input for the resolution model.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunk2token">Chunk2Token</a></td>
+        <td>A feature transformer that converts the input array of strings (annotatorType CHUNK) into an array of chunk-based tokens (annotatorType TOKEN).</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkconverter">ChunkConverter</a></td>
+        <td>This annotator merges NER-detected entities with RegexMatcher-based rules for unified processing in the pipeline.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkentityresolver">ChunkEntityResolver</a></td>
+        <td>Returns a normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC’s EDGAR database,  etc).</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkfilterer">ChunkFilterer</a></td>
+        <td>Filters entities coming from CHUNK annotations.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkkeyphraseextraction">ChunkKeyPhraseExtraction</a></td>
+        <td>Uses Bert Sentence Embeddings to determine the most relevant key phrases describing a text.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkmapper">ChunkMapper</a></td>
+        <td>We can use ChunkMapper to map entities with their associated code/reference based on pre-defined dictionaries.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkmapperfilterer">ChunkMapperFilterer</a></td>
+        <td>Annotator to be used after <code class="language-plaintext highlighter-rouge">ChunkMapper</code> that allows to filter chunks based on the results of the mapping, whether it was successful or failed.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunkmerge">ChunkMerge</a></td>
+        <td>Merges entities coming from different CHUNK annotations.</td>
+      </tr>
+      <tr>
+        <td><a href="#chunksentencesplitter">ChunkSentenceSplitter</a></td>
+        <td>Annotator can split the documents into chunks according to separators given as <code class="language-plaintext highlighter-rouge">CHUNK</code> columns. It is useful when you need to perform different models or analysis in different sections of your document</td>
+      </tr>
+      <tr>
+        <td><a href="#contextualassertion">ContextualAssertion</a></td>
+        <td>This model identifies  contextual cues within text data, such as negation, uncertainty etc.It annotates text chunks with assertions based on configurable rules, prefix and suffix patterns, and exception patterns.</td>
+      </tr>
+      <tr>
+        <td><a href="#contextualparser">ContextualParser</a></td>
+        <td>Extracts entity from a document based on user defined rules.</td>
+      </tr>
+      <tr>
+        <td><a href="#contextsplitassembler">ContextSplitAssembler</a></td>
+        <td>Converts and assembles <code class="language-plaintext highlighter-rouge">VECTOR_SIMILARITY_RANKINGS</code> type annotations into <code class="language-plaintext highlighter-rouge">DOCUMENT</code> type.</td>
+      </tr>
+      <tr>
+        <td><a href="#datenormalizer">DateNormalizer</a></td>
+        <td>This annotator transforms date mentions to a common standard format: YYYY/MM/DD. It is useful when using data from different sources, some times from different countries that has different formats to represent dates.</td>
+      </tr>
+      <tr>
+        <td><a href="#deidentification">DeIdentification</a></td>
+        <td>Deidentifies Input Annotations of types DOCUMENT, TOKEN and CHUNK, by either masking or obfuscating the given CHUNKS.</td>
+      </tr>
+      <tr>
+        <td><a href="#distilbertforsequenceclassification">DistilBertForSequenceClassification</a></td>
+        <td>Can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</td>
+      </tr>
+      <tr>
+        <td><a href="#doc2chunkinternal">Doc2ChunkInternal</a></td>
+        <td>Converts <code class="language-plaintext highlighter-rouge">DOCUMENT</code>, <code class="language-plaintext highlighter-rouge">TOKEN</code> typed annotations into <code class="language-plaintext highlighter-rouge">CHUNK</code> type with the contents of a <code class="language-plaintext highlighter-rouge">chunkCol</code>.</td>
+      </tr>
+      <tr>
+        <td><a href="#docmapper">DocMapper</a></td>
+        <td>Uses the text representation of document annotations to map clinical codes to other codes or relevant information.</td>
+      </tr>
+      <tr>
+        <td><a href="#documentfiltererbyclassifier">DocumentFiltererByClassifier</a></td>
+        <td>This annotator sorts documents based on classifier results. It uses white and black lists, allowing or blocking specific outcomes. It can be case-sensitive or case-insensitive for broader matching. This tool efficiently organizes documents based on classifier outcomes.</td>
+      </tr>
+      <tr>
+        <td><a href="#documentfiltererbyner">DocumentFiltererByNER</a></td>
+        <td>This annotator returns sentences containing the entity chunks you have filtered, allowing you to see only the sentences with the entities you want.</td>
+      </tr>
+      <tr>
+        <td><a href="#documenthashcoder">DocumentHashCoder</a></td>
+        <td>This annotator swaps dates in a document column with hash codes from another column, creating a new column with shifted day information. The subsequent <code class="language-plaintext highlighter-rouge">DeIdentification</code> annotator anonymizes the document, incorporating the altered dates.</td>
+      </tr>
+      <tr>
+        <td><a href="#documentlogregclassifier">DocumentLogRegClassifier</a></td>
+        <td>Classifies documents with a Logarithmic Regression algorithm.</td>
+      </tr>
+      <tr>
+        <td><a href="#documentmlclassifier">DocumentMLClassifier</a></td>
+        <td>classifies documents with a Logarithmic Regression algorithm.</td>
+      </tr>
+      <tr>
+        <td><a href="#drugnormalizer">DrugNormalizer</a></td>
+        <td>Annotator which normalizes raw text from documents, e.g. scraped web pages or xml documents.</td>
+      </tr>
+      <tr>
+        <td><a href="#entitychunkembeddings">EntityChunkEmbeddings</a></td>
+        <td>Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average vector represention of related entity chunks.</td>
+      </tr>
+      <tr>
+        <td><a href="#entityrulerinternal">EntityRulerInternal</a></td>
+        <td>This annotator match exact strings or regex patterns provided in a file against a Document and assigns them an named entity.</td>
+      </tr>
+      <tr>
+        <td><a href="#featuresassembler">FeaturesAssembler</a></td>
+        <td>Collects features from different columns.</td>
+      </tr>
+      <tr>
+        <td><a href="#fewshotclassifier">FewShotClassifier</a></td>
+        <td>This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data.</td>
+      </tr>
+      <tr>
+        <td><a href="#fewshotassertionclassifiermodel">FewShotAssertionClassifierModel</a></td>
+        <td>assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach.</td>
+      </tr>
+      <tr>
+        <td><a href="#fewshotassertionsentenceclassifier">FewShotAssertionSentenceClassifier</a></td>
+        <td>It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel.</td>
+      </tr>
+      <tr>
+        <td><a href="#flattener">Flattener</a></td>
+        <td><code class="language-plaintext highlighter-rouge">Flattener</code> annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation.</td>
+      </tr>
+      <tr>
+        <td><a href="#genericclassifier">GenericClassifier</a></td>
+        <td>Creates a generic single-label classifier which uses pre-generated Tensorflow graphs.</td>
+      </tr>
+      <tr>
+        <td><a href="#genericlogregclassifier">GenericLogRegClassifier</a></td>
+        <td>Is a derivative of GenericClassifier which implements a multinomial logistic regression.</td>
+      </tr>
+      <tr>
+        <td><a href="#genericsvmclassifier">GenericSVMClassifier</a></td>
+        <td>Creates a generic single-label classifier which uses pre-generated Tensorflow graphs.</td>
+      </tr>
+      <tr>
+        <td><a href="#internaldocumentsplitter">InternalDocumentSplitter</a></td>
+        <td>This annotator splits large documents into small documents.</td>
+      </tr>
+      <tr>
+        <td><a href="#iobtagger">IOBTagger</a></td>
+        <td>Merges token tags and NER labels from chunks in the specified format.</td>
+      </tr>
+      <tr>
+        <td><a href="#largefewshotclassifier">LargeFewShotClassifier</a></td>
+        <td>This annotator is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes.</td>
+      </tr>
+      <tr>
+        <td><a href="#lightdeidentification">LightDeIdentification</a></td>
+        <td>Light version of DeIdentification.</td>
+      </tr>
+      <tr>
+        <td><a href="#llmloader">LLMLoader</a></td>
+        <td>LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs’ licensed LLMs at various sizes that are finetuned on medical context for certain tasks.</td>
+      </tr>
+      <tr>
+        <td><a href="#mapper2chunk">Mapper2Chunk</a></td>
+        <td>This annotator converts ‘LABELED_DEPENDENCY’ type annotations coming from ChunkMapper into ‘CHUNK’ type to create new chunk-type column</td>
+      </tr>
+      <tr>
+        <td><a href="#multichunk2doc">MultiChunk2Doc</a></td>
+        <td>Merges a given chunks to create a document.</td>
+      </tr>
+      <tr>
+        <td><a href="#namechunkobfuscator">NameChunkObfuscator</a></td>
+        <td>This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS.</td>
+      </tr>
+      <tr>
+        <td><a href="#nerchunker">NerChunker</a></td>
+        <td>Extracts phrases that fits into a known pattern using the NER tags.</td>
+      </tr>
+      <tr>
+        <td><a href="#nerconverterinternal">NerConverterInternal</a></td>
+        <td>Converts a IOB or IOB2 representation of NER to a user-friendly one, by associating the tokens of recognized entities and their label.</td>
+      </tr>
+      <tr>
+        <td><a href="#nerdisambiguator">NerDisambiguator</a></td>
+        <td>Links words of interest, such as names of persons, locations and companies, from an input text document to a corresponding unique entity in a target Knowledge Base (KB).</td>
+      </tr>
+      <tr>
+        <td><a href="#nermodel">NerModel</a></td>
+        <td>This Named Entity recognition annotator is a generic NER model based on Neural Networks.</td>
+      </tr>
+      <tr>
+        <td><a href="#nerquestiongenerator">NerQuestionGenerator</a></td>
+        <td>This annotator takes an NER chunk (obtained by, e.g., <code class="language-plaintext highlighter-rouge">NerConverterInternal</code>) and generates a questions based on two entity types, a pronoun and a strategy.</td>
+      </tr>
+      <tr>
+        <td><a href="#questionanswering">QuestionAnswering</a></td>
+        <td>GPT-based model for answering questions given a context.</td>
+      </tr>
+      <tr>
+        <td><a href="#regexmatcherinternal">RegexMatcherInternal</a></td>
+        <td><code class="language-plaintext highlighter-rouge">RegexMatcherInternal</code> matches predefined regex patterns with entities in text, allowing for flexible entity recognition based on user-defined rules.</td>
+      </tr>
+      <tr>
+        <td><a href="#reidentification">ReIdentification</a></td>
+        <td>Reidentifies obfuscated entities by DeIdentification.</td>
+      </tr>
+      <tr>
+        <td><a href="#relationextraction">RelationExtraction</a></td>
+        <td>Extracts and classifies instances of relations between named entities.</td>
+      </tr>
+      <tr>
+        <td><a href="#relationextractiondl">RelationExtractionDL</a></td>
+        <td>Extracts and classifies instances of relations between named entities.</td>
+      </tr>
+      <tr>
+        <td><a href="#renerchunksfilter">RENerChunksFilter</a></td>
+        <td>Filters and outputs combinations of relations between extracted entities, for further processing.</td>
+      </tr>
+      <tr>
+        <td><a href="#replacer">Replacer</a></td>
+        <td>This annotator allows to replace entities in the original text with the ones extracted by the annotators <code class="language-plaintext highlighter-rouge">NameChunkObfuscatorApproach</code> or <code class="language-plaintext highlighter-rouge">DateNormalizer</code>.</td>
+      </tr>
+      <tr>
+        <td><a href="#resolution2chunk">Resolution2Chunk</a></td>
+        <td>This annotator is responsible for converting the annotations generated by entity resolver models (typically labeled as ENTITY) into a format compatible with subsequent stages of the pipeline, such as the ChunkMapperModel.</td>
+      </tr>
+      <tr>
+        <td><a href="#resolvermerger">ResolverMerger</a></td>
+        <td>This annotator is provide the ability to merge sentence enitity resolver and chunk mapper model output columns.</td>
+      </tr>
+      <tr>
+        <td><a href="#router">Router</a></td>
+        <td>This annotator is provide the ability to split an output of an annotator for a selected metadata field and the value for that field.</td>
+      </tr>
+      <tr>
+        <td><a href="#sentenceentityresolver">SentenceEntityResolver</a></td>
+        <td>Returns the normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC’s EDGAR database,  etc) based on sentence embeddings.</td>
+      </tr>
+      <tr>
+        <td><a href="#summarizer">Summarizer</a></td>
+        <td>Helps to quickly summarize complex medical information.</td>
+      </tr>
+      <tr>
+        <td><a href="#textgenerator">TextGenerator</a></td>
+        <td>Uses the basic BioGPT model to perform various tasks related to medical text abstraction.</td>
+      </tr>
+      <tr>
+        <td><a href="#textmatcherinternal">TextMatcherInternal</a></td>
+        <td>This annotator match exact phrases provided in a file against a Document.</td>
+      </tr>
+      <tr>
+        <td><a href="#tfgraphbuilder">TFGraphBuilder</a></td>
+        <td>Creates Tensorflow graphs.</td>
+      </tr>
+      <tr>
+        <td><a href="#vectordbpostprocessor">VectorDBPostProcessor</a></td>
+        <td>VectorDBPostProcessor is used to filter and sort the annotations from the :class:<code class="language-plaintext highlighter-rouge">sparknlp_jsl.annotator.resolution.VectorDBModel</code>.</td>
+      </tr>
+      <tr>
+        <td><a href="#windowedsentencemodel">WindowedSentenceModel</a></td>
+        <td>This annotator that helps you to merge the previous and following sentences of a given piece of text, so that you add the context surrounding them.</td>
+      </tr>
+      <tr>
+        <td><a href="#zeroshotnermodel">ZeroShotNerModel</a></td>
+        <td>This is a zero-shot named entity recognition using <code class="language-plaintext highlighter-rouge">RoBertaForQuestionAnswering</code>. It identifies entities across diverse data without domain-specific fine-tuning.</td>
+      </tr>
+      <tr>
+        <td><a href="#zeroshotrelationextractionmodel">ZeroShotRelationExtractionModel</a></td>
+        <td>This annotator implements zero-shot binary relations extraction by utilizing <code class="language-plaintext highlighter-rouge">BERT</code> transformer models trained on the NLI (Natural Language Inference) task.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
 
 <script> /* jQuery(document).ready(function () {
     $(".model-button").click(function () {
