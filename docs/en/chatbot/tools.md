@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Wikipedia`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
+The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `NLP Tools`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
 
 ## MedResearch: Your Gateway to Academic Medical Research
 
@@ -105,11 +105,17 @@ Designed to detect healthcare-related entities from patient-generated content, a
 
 </div><div class="h3-box" markdown="1">
 
-## Wikipedia: Answering Short or Generic Questions
+## "Web Search” Tool: Answering Short or Generic Questions
 
-For users seeking quick answers to short or generic questions, the Medical Chatbot integrates seamlessly with Wikipedia. This feature is designed to fetch concise and reliable information from the vast expanse of Wikipedia's medical content. Whether it's a brief overview of a medical condition, historical context, or general health information, this tool ensures users can obtain quick answers efficiently. It's an excellent resource for those in need of rapid, accessible, and accurate information without the need for deep research.
+Designed for users needing quick answers to short or generic questions, the Search Web AI tool is an enhancement of the existing Wikipedia search function. While the Wikipedia search tool offers reliable information from a vast database of general topics, the Search Web AI tool expands these capabilities by tapping into the entire web. This ensures you access the most comprehensive and relevant information available, making it your go-to solution for swift, accurate insights.
 
-> **_NOTE:_**  To enforce the use of this tool add the following sentence at the end of your query: **Ask Wikipedia.** or use the @ operator. 
+### Key Features
+1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
+2. **Intelligent Query Handling:** The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.
+3. **Smart Tool Selection:** The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
+4. **Up-to-Date Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded accurate perspective.
+
+> **_NOTE:_**  To enforce the use of this tool, add the following phrase at the beginning/end of your query: **Search Web** or use the @ operator. 
 
 </div><div class="h3-box" markdown="1">
 
@@ -128,13 +134,17 @@ Typing '@' in the query box triggers a contextual menu displaying all available 
 
 For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
 
-Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
- - `@search_wikipedia`: Query Wikipedia Pages
+Similarly, for Web Search and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+ - `@web_search`: Query the Web
  - `@deidentification`: De-identification of Medical Text
  - `@obfuscation`: Obfuscation of Medical Text
- - `@ner_medical`: General Medical Entity Extraction
- - `@ner_medical_oncology `: Oncological Entity Extraction
- - `@ner_medical_posology `: Posology Entity Extraction
+ - `@medical`: General Medical Entity Extraction
+ - `@oncology`: Oncological Entity Extraction
+ - `@posology`: Posology Entity Extraction
+ - `@adverse_drug_event`: Adverse Drug Events Extraction
+ - `@social_determinants_of_health`: Social Determinants of Health Entity Extraction
+ - `@radiology`: Radiological Entity Extraction
+ - `@voice_of_the_patient `: Voice of the Patient Entity Extraction
 
 When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.
 
