@@ -36,6 +36,7 @@ This pretrained model maps ICD-10 codes to corresponding MedDRA PT (Preferred Te
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
