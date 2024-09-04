@@ -622,7 +622,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <p>The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are <code class="language-plaintext highlighter-rouge">MedResearch</code>, <code class="language-plaintext highlighter-rouge">Wikipedia</code>, and <code class="language-plaintext highlighter-rouge">John's Memory</code>, collectively providing a comprehensive solution for a wide range of queries.</p>
+  <p>The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are <code class="language-plaintext highlighter-rouge">MedResearch</code>, <code class="language-plaintext highlighter-rouge">Web Search</code>, <code class="language-plaintext highlighter-rouge">NLP Tools</code>, and <code class="language-plaintext highlighter-rouge">John's Memory</code>, collectively providing a comprehensive solution for a wide range of queries.</p>
 
   <h2 id="medresearch-your-gateway-to-academic-medical-research">MedResearch: Your Gateway to Academic Medical Research</h2>
 
@@ -653,7 +653,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="h3-box">
 
   <h2 id="nlp-tools">NLP Tools</h2>
-  <p>The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.</p>
+  <p>The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these NLP Tools have the ability to extract 261 distinct entity types. Additionally, they can assign assertion statuses to these entities and establish complex relationships between them.</p>
 
 </div>
 <div class="h3-box">
@@ -688,7 +688,32 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 
-  <p><strong>Export results in csv format-</strong> All results computed using the NLP tools can be exported in csv format. For each detected entity the export also contains confidence information.</p>
+</div>
+<div class="h3-box">
+
+  <p>To further support precise and efficient medical data analysis, four new NLP tools have been made available, tailored to meet the specific requirements of the medical field. All four of the new tools are seamlessly integrated and available via the @ Selector. By simply typing ‘@’ at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).</p>
+
+</div>
+<div class="h3-box">
+
+  <p><img src="https://github.com/user-attachments/assets/a355d90a-e4bb-4ea0-9e1d-1018e5ec2a36" alt="New_NLP_Tools" /></p>
+
+  <h3 id="extract-radiological-entities-and-relations">Extract Radiological Entities and Relations</h3>
+  <p>Designed to extract radiology-related entities, assign assertion statuses to these entities, and establish relationships between them within clinical documents. This tool specializes in identifying entities such as tests, imaging techniques, and test findings within radiology reports, while also accurately determining their assertion statuses and relations.</p>
+
+  <h3 id="extract-social-determinants-of-health">Extract Social Determinants of Health</h3>
+  <p>Engineered to extract all clinical and medical entities considered as Social Determinants of Health (SDoH) from textual data, assign assertion statuses to the identified entities, and detect relationships between entities. Specifically, it identifies socio-environmental health determinants such as access to care, diet, employment, and housing from health records, providing comprehensive insights into factors affecting patient health outcomes.</p>
+
+  <h3 id="extract-adverse-drug-events">Extract Adverse Drug Events</h3>
+  <p>Designed to identify and extract adverse drug events and related clinical entities from medical texts. This tool can help users identify adverse reactions to drugs (ADE) from various drug reviews, tweets, and medical texts while also providing assertion statuses and relationship analysis.</p>
+
+  <h3 id="extract-voice-of-the-patient">Extract Voice Of The Patient</h3>
+  <p>Designed to detect healthcare-related entities from patient-generated content, assign assertion statuses, and establish relationships between these entities. This tool proficiently identifies clinical and behavioral entities from various sources, including social media posts, blogs, forums, and direct patient communications.</p>
+
+</div>
+<div class="h3-box">
+
+  <p><strong>Export results in CSV format-</strong> All results computed using the NLP tools can be exported in CSV format. For each detected entity the export also contains confidence information.</p>
 
   <p><strong>NLP Tools activation-</strong> Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.</p>
 
@@ -705,12 +730,22 @@ function wrapWordInSpan(data, wordToWrap) {
 </div>
 <div class="h3-box">
 
-  <h2 id="wikipedia-answering-short-or-generic-questions">Wikipedia: Answering Short or Generic Questions</h2>
+  <h2 id="web-search-for-latest-news-or-generic-questions">Web Search: For Latest News or Generic Questions</h2>
 
-  <p>For users seeking quick answers to short or generic questions, the Medical Chatbot integrates seamlessly with Wikipedia. This feature is designed to fetch concise and reliable information from the vast expanse of Wikipedia’s medical content. Whether it’s a brief overview of a medical condition, historical context, or general health information, this tool ensures users can obtain quick answers efficiently. It’s an excellent resource for those in need of rapid, accessible, and accurate information without the need for deep research.</p>
+  <p>Designed for users needing quick answers to short or generic questions, the Search Web tool is an enhancement of the existing Wikipedia search function. While the Wikipedia search tool offers reliable information from a vast database of general topics, the Search Web tool expands these capabilities by tapping into the entire web. This ensures you access the most comprehensive and relevant information available, making it your go-to solution for swift, accurate insights.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <p><strong>Key Features</strong></p>
+  <ol>
+    <li><strong>Expanded Search Capabilities:</strong> Unlike the Wikipedia search tool, which was limited to Wikipedia’s database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.</li>
+    <li><strong>Intelligent Query Handling:</strong> The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.</li>
+    <li><strong>Smart Tool Selection:</strong> The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.</li>
+    <li><strong>Up-to-Date Answers:</strong> By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot’s intelligence to give you a well-rounded accurate perspective.</li>
+  </ol>
 
   <blockquote>
-    <p><strong><em>NOTE:</em></strong>  To enforce the use of this tool add the following sentence at the end of your query: <strong>Ask Wikipedia.</strong> or use the @ operator.</p>
+    <p><strong><em>NOTE:</em></strong>  To enforce the use of this tool, add the following phrase at the beginning/end of your query: <strong>Search Web</strong> or use the @ operator.</p>
   </blockquote>
 
 </div>
@@ -727,18 +762,22 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Typing ‘@’ in the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.</p>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241" alt="Risk_Factors" /></p>
+  <p><img src="https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97" alt="DocQA Enhancements" /></p>
 
-  <p>For instance, the @ operator also allows direct access to <code class="language-plaintext highlighter-rouge">MedResearch</code> tool for targeted questions to all active knowledgebases (see <a href="/docs/en/chatbot/tools">MedResearch</a>). When using <code class="language-plaintext highlighter-rouge">@MedResearch</code> at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.</p>
+  <p>For instance, the @ operator also allows direct access to <code class="language-plaintext highlighter-rouge">MedResearch</code> tool for targeted questions to all active knowledgebases (see <a href="/docs/en/chatbot/tools">MedResearch</a>). When using <code class="language-plaintext highlighter-rouge">@MedResearch</code> at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.</p>
 
-  <p>Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:</p>
+  <p>Similarly, for Web Search and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:</p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">@search_wikipedia</code>: Query Wikipedia Pages</li>
+    <li><code class="language-plaintext highlighter-rouge">@web_search</code>: Query the Web</li>
     <li><code class="language-plaintext highlighter-rouge">@deidentification</code>: De-identification of Medical Text</li>
     <li><code class="language-plaintext highlighter-rouge">@obfuscation</code>: Obfuscation of Medical Text</li>
-    <li><code class="language-plaintext highlighter-rouge">@ner_medical</code>: General Medical Entity Extraction</li>
-    <li><code class="language-plaintext highlighter-rouge">@ner_medical_oncology </code>: Oncological Entity Extraction</li>
-    <li><code class="language-plaintext highlighter-rouge">@ner_medical_posology </code>: Posology Entity Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@medical</code>: General Medical Entity Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@oncology</code>: Oncological Entity Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@posology</code>: Posology Entity Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@adverse_drug_event</code>: Adverse Drug Events Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@social_determinants_of_health</code>: Social Determinants of Health Entity Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@radiology</code>: Radiological Entity Extraction</li>
+    <li><code class="language-plaintext highlighter-rouge">@voice_of_the_patient </code>: Voice of the Patient Entity Extraction</li>
   </ul>
 
   <p>When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.</p>
