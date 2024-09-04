@@ -84,7 +84,7 @@ resolver_pipeline = Pipeline(stages = [document_assembler,
                                        embeddings,
                                        icd_resolver])
 
-data = spark.createDataFrame([["""The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management."""]]).toDF("text")
+data = spark.createDataFrame([["""The patient's medical record indicates reticulosarcoma of the spleen and chronic obstructive pulmonary disease, requiring comprehensive care and management."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
 
@@ -140,7 +140,7 @@ val pipeline = new Pipeline().setStages(Array(document_assembler,
                                embeddings,
                                icd10_resolver))
 
-val data = Seq([["""The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management."""]]).toDF("text")
+val data = Seq([["""The patient's medical record indicates reticulosarcoma of the spleen and chronic obstructive pulmonary disease, requiring comprehensive care and management."""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
 
@@ -154,8 +154,8 @@ val result = resolver_pipeline.fit(data).transform(data)
 +-------------------------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+-----------+
 |                                chunk|begin|end|ner_label|hcc_code|                                                 description|                                                 resolutions|  all_codes|
 +-------------------------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+-----------+
-|                             Diabetes|   54| 61|  PROBLEM|       0|              bronze diabetes [disorders of iron metabolism]|bronze diabetes [disorders of iron metabolism]:::brittle ...|0:::19:::18|
-|Chronic Obstructive Pulmonary Disease|   67|103|  PROBLEM|     111|chronic obstructive pulmonary disease [chronic obstructiv...|chronic obstructive pulmonary disease [chronic obstructiv...|    111:::0|
+|        reticulosarcoma of the spleen|   39| 67|  PROBLEM|       0|   reticulosarcoma of spleen [diffuse large b-cell lymphoma]|reticulosarcoma of spleen [diffuse large b-cell lymphoma]...|0:::10:::11|
+|chronic obstructive pulmonary disease|   73|109|  PROBLEM|     111|chronic obstructive pulmonary disease [chronic obstructiv...|chronic obstructive pulmonary disease [chronic obstructiv...|    111:::0|
 +-------------------------------------+-----+---+---------+--------+------------------------------------------------------------+------------------------------------------------------------+-----------+
 
 ```
