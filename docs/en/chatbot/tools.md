@@ -38,7 +38,7 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 </div><div class="h3-box" markdown="1">
 
 ## NLP Tools 
-The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these NLP Tools have the ability to extract 161 distinct entity types. Additionally, they can assign assertion statuses to these entities and establish complex relationships between them.
+The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these NLP Tools have the ability to extract 261 distinct entity types. Additionally, they can assign assertion statuses to these entities and establish complex relationships between them.
 
 </div><div class="h3-box" markdown="1">
 
@@ -73,6 +73,8 @@ Focuses on extracting dosage and medication instructions from medical documents,
 
 To further support precise and efficient medical data analysis, four new NLP tools have been made available, tailored to meet the specific requirements of the medical field. All four of the new tools are seamlessly integrated and available via the @ Selector. By simply typing ‘@’ at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
 
+</div><div class="h3-box" markdown="1">
+    
 ![New_NLP_Tools](https://github.com/user-attachments/assets/a355d90a-e4bb-4ea0-9e1d-1018e5ec2a36)
 
 ### Extract Radiological Entities and Relations
