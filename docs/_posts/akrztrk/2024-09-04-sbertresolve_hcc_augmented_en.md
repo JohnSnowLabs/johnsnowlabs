@@ -32,6 +32,7 @@ This model maps extracted medical entities to Hierarchical Condition Categories 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
