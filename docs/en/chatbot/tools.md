@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Wikipedia`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
+The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `NLP Tools`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
 
 ## MedResearch: Your Gateway to Academic Medical Research
 
@@ -38,7 +38,7 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 </div><div class="h3-box" markdown="1">
 
 ## NLP Tools 
-The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.
+The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these NLP Tools have the ability to extract 261 distinct entity types. Additionally, they can assign assertion statuses to these entities and establish complex relationships between them.
 
 </div><div class="h3-box" markdown="1">
 
@@ -69,7 +69,29 @@ Focuses on extracting dosage and medication instructions from medical documents,
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Export results in csv format-** All results computed using the NLP tools can be exported in csv format. For each detected entity the export also contains confidence information.
+</div><div class="h3-box" markdown="1">
+
+To further support precise and efficient medical data analysis, four new NLP tools have been made available, tailored to meet the specific requirements of the medical field. All four of the new tools are seamlessly integrated and available via the @ Selector. By simply typing ‘@’ at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
+
+</div><div class="h3-box" markdown="1">
+    
+![New_NLP_Tools](https://github.com/user-attachments/assets/a355d90a-e4bb-4ea0-9e1d-1018e5ec2a36)
+
+### Extract Radiological Entities and Relations
+Designed to extract radiology-related entities, assign assertion statuses to these entities, and establish relationships between them within clinical documents. This tool specializes in identifying entities such as tests, imaging techniques, and test findings within radiology reports, while also accurately determining their assertion statuses and relations.
+
+### Extract Social Determinants of Health
+Engineered to extract all clinical and medical entities considered as Social Determinants of Health (SDoH) from textual data, assign assertion statuses to the identified entities, and detect relationships between entities. Specifically, it identifies socio-environmental health determinants such as access to care, diet, employment, and housing from health records, providing comprehensive insights into factors affecting patient health outcomes.
+
+### Extract Adverse Drug Events
+Designed to identify and extract adverse drug events and related clinical entities from medical texts. This tool can help users identify adverse reactions to drugs (ADE) from various drug reviews, tweets, and medical texts while also providing assertion statuses and relationship analysis.
+
+### Extract Voice Of The Patient
+Designed to detect healthcare-related entities from patient-generated content, assign assertion statuses, and establish relationships between these entities. This tool proficiently identifies clinical and behavioral entities from various sources, including social media posts, blogs, forums, and direct patient communications.
+
+</div><div class="h3-box" markdown="1">
+
+**Export results in CSV format-** All results computed using the NLP tools can be exported in CSV format. For each detected entity the export also contains confidence information.
 
 **NLP Tools activation-** Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
 
@@ -83,11 +105,19 @@ Focuses on extracting dosage and medication instructions from medical documents,
 
 </div><div class="h3-box" markdown="1">
 
-## Wikipedia: Answering Short or Generic Questions
+## Web Search: For Latest News or Generic Questions
 
-For users seeking quick answers to short or generic questions, the Medical Chatbot integrates seamlessly with Wikipedia. This feature is designed to fetch concise and reliable information from the vast expanse of Wikipedia's medical content. Whether it's a brief overview of a medical condition, historical context, or general health information, this tool ensures users can obtain quick answers efficiently. It's an excellent resource for those in need of rapid, accessible, and accurate information without the need for deep research.
+Designed for users needing quick answers to short or generic questions, the Search Web tool is an enhancement of the existing Wikipedia search function. While the Wikipedia search tool offers reliable information from a vast database of general topics, the Search Web tool expands these capabilities by tapping into the entire web. This ensures you access the most comprehensive and relevant information available, making it your go-to solution for swift, accurate insights.
 
-> **_NOTE:_**  To enforce the use of this tool add the following sentence at the end of your query: **Ask Wikipedia.** or use the @ operator. 
+<iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**Key Features**
+1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
+2. **Intelligent Query Handling:** The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.
+3. **Smart Tool Selection:** The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
+4. **Up-to-Date Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded accurate perspective.
+
+> **_NOTE:_**  To enforce the use of this tool, add the following phrase at the beginning/end of your query: **Search Web** or use the @ operator. 
 
 </div><div class="h3-box" markdown="1">
 
@@ -101,18 +131,22 @@ John's Memory is a versatile feature within the Medical Chatbot, dedicated to su
 
 Typing '@' in the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
 
-![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
+![DocQA Enhancements](https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97)
 
 
-For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
 
-Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
- - `@search_wikipedia`: Query Wikipedia Pages
+Similarly, for Web Search and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+ - `@web_search`: Query the Web
  - `@deidentification`: De-identification of Medical Text
  - `@obfuscation`: Obfuscation of Medical Text
- - `@ner_medical`: General Medical Entity Extraction
- - `@ner_medical_oncology `: Oncological Entity Extraction
- - `@ner_medical_posology `: Posology Entity Extraction
+ - `@medical`: General Medical Entity Extraction
+ - `@oncology`: Oncological Entity Extraction
+ - `@posology`: Posology Entity Extraction
+ - `@adverse_drug_event`: Adverse Drug Events Extraction
+ - `@social_determinants_of_health`: Social Determinants of Health Entity Extraction
+ - `@radiology`: Radiological Entity Extraction
+ - `@voice_of_the_patient `: Voice of the Patient Entity Extraction
 
 When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.
 
