@@ -38,7 +38,7 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 </div><div class="h3-box" markdown="1">
 
 ## NLP Tools 
-The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.
+The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these NLP Tools have the ability to extract 161 distinct entity types. Additionally, they can assign assertion statuses to these entities and establish complex relationships between them.
 
 </div><div class="h3-box" markdown="1">
 
@@ -69,7 +69,27 @@ Focuses on extracting dosage and medication instructions from medical documents,
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Export results in csv format-** All results computed using the NLP tools can be exported in csv format. For each detected entity the export also contains confidence information.
+</div><div class="h3-box" markdown="1">
+
+To further support precise and efficient medical data analysis, four new NLP tools have been made available, tailored to meet the specific requirements of the medical field. All four of the new tools are seamlessly integrated and available via the @ Selector. By simply typing ‘@’ at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
+
+![New_NLP_Tools](https://github.com/user-attachments/assets/a355d90a-e4bb-4ea0-9e1d-1018e5ec2a36)
+
+### Extract Radiological Entities and Relations
+Designed to extract radiology-related entities, assign assertion statuses to these entities, and establish relationships between them within clinical documents. This tool specializes in identifying entities such as tests, imaging techniques, and test findings within radiology reports, while also accurately determining their assertion statuses and relations.
+
+### Extract Social Determinants of Health
+Engineered to extract all clinical and medical entities considered as Social Determinants of Health (SDoH) from textual data, assign assertion statuses to the identified entities, and detect relationships between entities. Specifically, it identifies socio-environmental health determinants such as access to care, diet, employment, and housing from health records, providing comprehensive insights into factors affecting patient health outcomes.
+
+### Extract Adverse Drug Events
+Designed to identify and extract adverse drug events and related clinical entities from medical texts. This tool can help users identify adverse reactions to drugs (ADE) from various drug reviews, tweets, and medical texts while also providing assertion statuses and relationship analysis.
+
+### Extract Voice Of The Patient
+Designed to detect healthcare-related entities from patient-generated content, assign assertion statuses, and establish relationships between these entities. This tool proficiently identifies clinical and behavioral entities from various sources, including social media posts, blogs, forums, and direct patient communications.
+
+</div><div class="h3-box" markdown="1">
+
+**Export results in CSV format-** All results computed using the NLP tools can be exported in CSV format. For each detected entity the export also contains confidence information.
 
 **NLP Tools activation-** Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
 
@@ -104,7 +124,7 @@ Typing '@' in the query box triggers a contextual menu displaying all available 
 ![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
 
 
-For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
 
 Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
  - `@search_wikipedia`: Query Wikipedia Pages
