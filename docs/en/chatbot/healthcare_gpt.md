@@ -11,7 +11,7 @@ sidebar:
     nav: healthcare-gpt
 ---
 
-[Join the Waiting List](https://chat.johnsnowlabs.com/signup) and start chating with `John`, a Medical Chatbot powered by John Snow Labs Healthcare GPT that explains its answers, cites references, updates medical knowledge daily, and lets you process your own data into custom knowledge bases.
+[Sign-up ](https://chat.johnsnowlabs.com/signup) and start chating with `John`, a Medical Chatbot powered by John Snow Labs Healthcare GPT that explains its answers, cites references, updates medical knowledge daily, and lets you process your own data into custom knowledge bases.
 
 
 ![Healthcare GPT Start](\assets\images\chatbot\john.gif)

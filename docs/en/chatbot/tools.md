@@ -105,13 +105,13 @@ Designed to detect healthcare-related entities from patient-generated content, a
 
 </div><div class="h3-box" markdown="1">
 
-## "Web Search” Tool: Answering Short or Generic Questions
+## Web Search: For Latest News or Generic Questions
 
 Designed for users needing quick answers to short or generic questions, the Search Web tool is an enhancement of the existing Wikipedia search function. While the Wikipedia search tool offers reliable information from a vast database of general topics, the Search Web tool expands these capabilities by tapping into the entire web. This ensures you access the most comprehensive and relevant information available, making it your go-to solution for swift, accurate insights.
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Key Features
+**Key Features**
 1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
 2. **Intelligent Query Handling:** The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.
 3. **Smart Tool Selection:** The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
