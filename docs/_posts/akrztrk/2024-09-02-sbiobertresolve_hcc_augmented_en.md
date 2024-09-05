@@ -7,7 +7,7 @@ date: 2024-09-02
 tags: [licensed, en, entity_resolution, hcc, clinical]
 task: Entity Resolution
 language: en
-edition: Healthcare NLP 5.3.1
+edition: Healthcare NLP 5.4.0
 spark_version: 3.0
 supported: true
 annotator: SentenceEntityResolverModel
@@ -24,8 +24,8 @@ It has been updated by dropping the invalid codes that exist in the previous ver
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hcc_augmented_en_5.3.1_3.0_1725270646358.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hcc_augmented_en_5.3.1_3.0_1725270646358.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hcc_augmented_en_5.4.0_3.0_1725270646358.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hcc_augmented_en_5.4.0_3.0_1725270646358.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -35,7 +35,6 @@ It has been updated by dropping the invalid codes that exist in the previous ver
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 	
 ```python
-
 document_assembler = DocumentAssembler()\
 	.setInputCol("text")\
 	.setOutputCol("document")
@@ -91,7 +90,6 @@ result = nlpPipeline.fit(data).transform(data)
 
 ```
 ```scala
-
 val document_assembler = new DocumentAssembler()
   .setInputCol("text") 
   .setOutputCol("document") 
@@ -168,7 +166,7 @@ val result = nlpPipeline.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|sbiobertresolve_hcc_augmented|
-|Compatibility:|Healthcare NLP 5.3.1+|
+|Compatibility:|Healthcare NLP 5.4.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence_embeddings]|
