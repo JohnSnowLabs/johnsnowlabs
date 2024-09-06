@@ -36,6 +36,7 @@ The Named Entity Recognition (NER) annotator works at the document level, allowi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
