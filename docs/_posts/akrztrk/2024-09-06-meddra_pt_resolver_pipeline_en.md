@@ -26,8 +26,6 @@ This pipeline can extract the following clincial entities:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_pt_resolver_pipeline_en_5.4.1_3.0_1725640507930.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_pt_resolver_pipeline_en_5.4.1_3.0_1725640507930.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -50,7 +48,6 @@ result = meddra_pt_pipeline.fullAnnotate("""This is an 82-year-old male with a h
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val meddra_pt_pipeline = PretrainedPipeline.from_disk("meddra_pt_resolver_pipeline")
-
 
 val result = meddra_pt_pipeline.fullAnnotate("""This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.""")
 
