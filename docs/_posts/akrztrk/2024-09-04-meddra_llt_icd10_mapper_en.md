@@ -29,8 +29,7 @@ This pretrained model maps MedDRA-LLT (Lowest Level Term) codes to corresponding
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_llt_icd10_mapper_en_5.4.1_3.0_1725432751297.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_llt_icd10_mapper_en_5.4.1_3.0_1725432751297.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
