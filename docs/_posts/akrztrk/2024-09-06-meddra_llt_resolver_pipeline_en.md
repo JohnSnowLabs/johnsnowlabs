@@ -25,8 +25,8 @@ This pipeline can extract the following clincial entities:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_llt_resolver_pipeline_en_5.4.1_3.0_1725638194203.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_llt_resolver_pipeline_en_5.4.1_3.0_1725638194203.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_llt_resolver_pipeline_en_5.4.1_3.0_1725640765771.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_llt_resolver_pipeline_en_5.4.1_3.0_1725640765771.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -34,7 +34,6 @@ This pipeline can extract the following clincial entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -112,7 +111,3 @@ val result = meddra_llt_pipeline.fullAnnotate("""This is an 82-year-old male wit
 - Resolution2Chunk
 - ChunkMapperModel
 - ChunkMapperModel
-
-## References
-This pipeline is prepared using the models that are trained with the September 2024 (v27.1) of MedDRA dataset.
-**To utilize this pipeline, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
