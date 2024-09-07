@@ -36,6 +36,7 @@ The Named Entity Recognition (NER) annotator works at the document level, allowi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
@@ -67,9 +68,9 @@ nlpPipeline = Pipeline(stages=[
 
 text = '''Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 .'''
 
-deid_model = nlpPipeline.fit(empty_data)
+data = spark.createDataFrame([[text]]).toDF("text")
 
-result = deid_model.transform(spark.createDataFrame([[text]]).toDF("text"))
+result = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
@@ -102,9 +103,8 @@ val nlpPipeline = new Pipeline().setStages(Array(
 
 val text = Seq("Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890.").toDF("text")
 
-val model = nlpPipeline.fit(spark.emptyDataFrame)
-
-val result = model.transform(text)
+val data = Seq((text)).toDF("text")
+val result = nlpPipeline.fit(data).transform(data)
 ```
 </div>
 
