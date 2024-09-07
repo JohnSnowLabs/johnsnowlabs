@@ -68,9 +68,9 @@ nlpPipeline = Pipeline(stages=[
 
 text = '''Dr. John Taylor, ID 982345, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old male patient.'''
 
-deid_model = nlpPipeline.fit(empty_data)
+data = spark.createDataFrame([[text]]).toDF("text")
 
-result = deid_model.transform(spark.createDataFrame([[text]]).toDF("text"))
+result = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
@@ -103,8 +103,9 @@ val nlpPipeline = new Pipeline().setStages(Array(
 
 val text = Seq("""Dr. John Taylor, ID 982345, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old male patient.""").toDF("text")
 
-val model = nlpPipeline.fit(spark.emptyDataFrame)
-val result = model.transform(text)
+val data = Seq((text)).toDF("text")
+val result = nlpPipeline.fit(data).transform(data)
+
 ```
 </div>
 
