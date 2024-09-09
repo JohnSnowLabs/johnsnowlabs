@@ -5,7 +5,7 @@ author: John Snow Labs
 name: explain_clinical_doc_cancer_type
 date: 2024-09-09
 tags: [licensed, en, oncology, pipeline, ner, assertion, relation_extraction]
-task: Pipeline Healthcare
+task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.4.1
 spark_version: 3.2
@@ -59,6 +59,7 @@ In this pipeline, three NER, one assertion and two relation extraction models we
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
