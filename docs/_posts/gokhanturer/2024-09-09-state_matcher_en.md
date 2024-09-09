@@ -36,6 +36,7 @@ This model extracts US state entities in clinical notes using a rule-based TextM
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
