@@ -5,7 +5,7 @@ author: John Snow Labs
 name: explain_clinical_doc_cancer_type
 date: 2024-09-09
 tags: [licensed, en, oncology, pipeline, ner, assertion, relation_extraction]
-task: Pipeline Healthcare
+task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.4.1
 spark_version: 3.4
@@ -42,6 +42,10 @@ In this pipeline, three NER, one assertion and two relation extraction models we
 
 - Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`
 
+## Predicted Entities
+
+`Age`, `Gender`, `Race_Ethnicity`, `Oncological`, `Weight`, `Alcohol`, `Communicable_Disease`, `BMI`, `Obesity`, `Diabetes`, `Test`, `Date`, `VS_Finding`, `ImagingFindings`, `Modifier`, `Symptom`, `Disease_Syndrome_Disorder`, `RelativeDate`, `Procedure`, `External_body_part_or_region`, `Imaging_Technique`, `Test_Result`, `Treatment`, `Internal_organ_or_component`, `Cycle_Number`, `Direction`, `Histological_Type`, `Site_Other_Body_Part`, `Hormonal_Therapy`, `Death_Entity`, `Targeted_Therapy`, `Route`, `Tumor_Finding`, `Duration`, `Pathology_Result`, `Chemotherapy`, `Radiotherapy`, `Radiation_Dose`, `Oncogene`, `Cancer_Surgery`, `Tumor_Size`, `Staging`, `Pathology_Test`, `Cancer_Dx`, `Site_Lung`, `Site_Breast`, `Site_Liver`, `Site_Lymph_Node`, `Response_To_Treatment`, `Site_Brain`, `Immunotherapy`, `Race_Ethnicity`, `Metastasis`, `Smoking_Status`, `Imaging_Test`, `Relative_Date`, `Line_Of_Therapy`, `Unspecific_Therapy`, `Site_Bone`, `Cycle_Count`, `Cancer_Score`, `Adenopathy`, `Grade`, `Biomarker`, `Invasion`, `Frequency`, `Performance_Status`, `Dosage`, `Cycle_Day`, `Carcinoma_Type`, `CNS_Tumor_Type`, `Melanoma`, `Biomarker_Result`, `Biomarker_Quant`, `Lymphoma_Type`, `Sarcoma_Type`, `Body_Site`, `Leukemia_Type`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -54,6 +58,7 @@ In this pipeline, three NER, one assertion and two relation extraction models we
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
