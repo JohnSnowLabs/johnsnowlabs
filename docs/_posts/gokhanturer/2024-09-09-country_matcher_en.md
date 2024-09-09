@@ -36,6 +36,7 @@ This model extracts countries in clinical notes using rule-based TextMatcherInte
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
