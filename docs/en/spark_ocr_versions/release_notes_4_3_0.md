@@ -8,7 +8,7 @@ key: docs-ocr-release-notes
 modify_date: "2023-01-13"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -19,6 +19,7 @@ Release date: 2023-01-13
 
 We are glad to announce that Spark OCR 4.3.0 has been released!! This big release comes with improvements in Dicom Processing, Visual Question Answering, new Table Extraction annotators, and much more!.
 
+</div><div class="h3-box" markdown="1">
  
 ### New Features
 * PositionFinder now works in LightPipelines.
@@ -42,11 +43,14 @@ Optimized model is smaller(about a half) of the original open-source version, ma
 Two models available: `docvqa_donut_base` and `docvqa_donut_base_opt`(quantized).
 LightPipelines support.
  	
+</div><div class="h3-box" markdown="1">
 
 #### Bug Fixes
 
 * Empty tables now handled properly in ImageCellsToTextTable.
 * Pretrained models for VisualDocumentNerV21 are now accessible.
+
+</div><div class="h3-box" markdown="1">
 
 #### New/updated Notebooks
 

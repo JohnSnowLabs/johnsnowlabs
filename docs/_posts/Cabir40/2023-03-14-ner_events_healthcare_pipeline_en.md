@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_events_healthcare](https://nlp.johnsnowlabs.com/2021/04/01/ner_events_healthcare_en.html) model.
 
+## Predicted Entities
+
+`OCCURRENCE`, `DATE`,`PROBLEM`,`DURATION`,`EVIDENTIAL`,`TREATMENT`,`TEST`,`CLINICAL_DEPT`,`FREQUENCY`,`TIME`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [re_bodypart_proceduretest](http
 
 ## Predicted Entities
 
-
+`Injury_or_Poisoning`, `Direction`, `Test`, `Route`, `Admission_Discharge`, `Death_Entity`, `Triglycerides`, `Oxygen_Therapy`, `Relationship_Status`, `Duration`, `Alcohol`, `Date`, `Drug`, `Hyperlipidemia`, `Respiration`, `Birth_Entity`, `VS_Finding`, `Age`, `Social_History_Header`, `Family_History_Header`, `Medical_Device`, `Labour_Delivery`, `BMI`, `Fetus_NewBorn`, `Temperature`, `Section_Header`, `Communicable_Disease`, `ImagingFindings`, `Psychological_Condition`, `Obesity`, `Sexually_Active_or_Sexual_Orientation`, `Modifier`, `Vaccine`, `Symptom`, `Pulse`, `Kidney_Disease`, `Oncological`, `EKG_Findings`, `Medical_History_Header`, `Cerebrovascular_Disease`, `Blood_Pressure`, `Diabetes`, `O2_Saturation`, `Heart_Disease`, `Employment`, `Frequency`, `Disease_Syndrome_Disorder`, `Pregnancy`, `RelativeDate`, `Procedure`, `Overweight`, `Race_Ethnicity`, `Hypertension`, `External_body_part_or_region`, `Imaging_Technique`, `Test_Result`, `Treatment`, `Substance`, `Clinical_Dept`, `LDL`, `Diet`, `Substance_Quantity`, `Allergen`, `Gender`, `RelativeTime`, `Total_Cholesterol`, `Internal_organ_or_component`, `Smoking`, `Vital_Signs_Header`, `Height`, `Form`, `Strength`, `Weight`, `Time`, `Dosage`, `HDL`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -64,9 +64,14 @@ nlu.load("en.relation.bodypart_proceduretest.pipeline").predict("""TECHNIQUE IN 
 ## Results
 
 ```bash
-| index | relations | entity1                      | entity1_begin | entity1_end | chunk1 | entity2 | entity2_end | entity2_end | chunk2              | confidence |
-|-------|-----------|------------------------------|---------------|-------------|--------|---------|-------------|-------------|---------------------|------------|
-| 0     | 1         | External_body_part_or_region | 94            | 98          | chest  | Test    | 117         | 135         | portable ultrasound | 1.0        |
+|   | sentence | entity1_begin | entity1_end |               chunk1 |                      entity1 | entity2_begin | entity2_end |              chunk2 |                      entity2 | relation | confidence |
+|--:|---------:|--------------:|------------:|---------------------:|-----------------------------:|--------------:|------------:|--------------------:|-----------------------------:|---------:|-----------:|
+| 0 |        0 |             0 |          19 | TECHNIQUE IN DETAIL: |               Section_Header |            78 |          87 |          his mother |                       Gender |        1 |  0.9999987 |
+| 1 |        0 |             0 |          19 | TECHNIQUE IN DETAIL: |               Section_Header |            94 |          98 |               chest | External_body_part_or_region |        1 |  0.9999529 |
+| 2 |        0 |             0 |          19 | TECHNIQUE IN DETAIL: |               Section_Header |           117 |         135 | portable ultrasound |                         Test |        1 |  0.9999838 |
+| 3 |        0 |            78 |          87 |           his mother |                       Gender |            94 |          98 |               chest | External_body_part_or_region |        1 |        1.0 |
+| 4 |        0 |            78 |          87 |           his mother |                       Gender |           117 |         135 | portable ultrasound |                         Test |        1 |  0.9999982 |
+| 5 |        0 |            94 |          98 |                chest | External_body_part_or_region |           117 |         135 | portable ultrasound |                         Test |        1 |        1.0 |
 ```
 
 {:.model-param}

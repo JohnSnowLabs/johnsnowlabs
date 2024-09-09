@@ -5,9 +5,14 @@ from typing import List, Optional
 
 from johnsnowlabs.auto_install import jsl_home
 from johnsnowlabs.auto_install.softwares import Software
-from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib, LocalPyLib
+from johnsnowlabs.py_models.install_info import (
+    InstallSuite,
+    LocalPy4JLib,
+    LocalPyLib,
+    RootInfo,
+)
 from johnsnowlabs.py_models.lib_version import LibVersion
-from johnsnowlabs.utils.env_utils import is_running_in_databricks
+from johnsnowlabs.utils.env_utils import is_running_in_databricks_runtime
 from .dbfs import *
 
 # https://pypi.org/project/databricks-api/
@@ -33,6 +38,82 @@ def clean_cluster(
         settings.dbfs_home_dir,
         recursive=True,
     )
+
+
+def install_license_to_cluster(install_suite: InstallSuite, db: DatabricksAPI, ):
+    lic = {
+        "SECRET": install_suite.secrets.HC_SECRET,
+        "SPARK_OCR_SECRET": install_suite.secrets.OCR_SECRET,
+        "SPARK_NLP_LICENSE": install_suite.secrets.HC_LICENSE,
+        "SPARK_OCR_LICENSE": install_suite.secrets.OCR_LICENSE,
+    }
+    lic = {k: v for k, v in lic.items() if v is not None}
+
+    put_file_on_dbfs(db, settings.dbfs_license_path, lic, overwrite=True)
+    return settings.dbfs_license_path
+
+
+def install_info_to_cluster(db: DatabricksAPI, ):
+    info = RootInfo.get_from_jsl_home().dict()
+    info["version"] = info["version"].as_str()
+    put_file_on_dbfs(
+        db,
+        settings.dbfs_info_path,
+        info,
+        overwrite=True,
+    )
+    return settings.dbfs_info_path
+
+
+def get_spark_conf(user_spark_conf):
+    # Return merged user and default spark conf
+    default_spark_conf = {
+        "spark.kryoserializer.buffer.max": "2000M",
+        "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+        "spark.sql.optimizer.expression.nestedPruning.enabled": "false",
+        "spark.sql.optimizer.nestedSchemaPruning.enabled": "false",
+        "spark.sql.legacy.allowUntypedScalaUDF": "true",
+        "spark.sql.repl.eagerEval.enabled": "true",
+    }
+
+    if not user_spark_conf:
+        spark_conf = default_spark_conf
+    else:
+        user_spark_conf.update(default_spark_conf)
+        spark_conf = user_spark_conf
+    return spark_conf
+
+
+def get_spark_env_vars(user_spark_env_vars, install_suite: InstallSuite, databricks_host,
+                       databricks_token,
+                       visual, medical_nlp, write_db_credentials,
+                       ):
+    # Return merged user and default spark env vars
+    default_spark_env_vars = dict(
+        SPARK_NLP_LICENSE_FILE=f"/dbfs/johnsnowlabs/license.json",
+        AWS_ACCESS_KEY_ID=install_suite.secrets.AWS_ACCESS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
+    )
+
+    if install_suite.secrets.OCR_SECRET and visual:
+        default_spark_env_vars["VISUAL_SECRET"] = install_suite.secrets.OCR_SECRET
+    if install_suite.secrets.HC_SECRET and medical_nlp:
+        default_spark_env_vars["HEALTHCARE_SECRET"] = install_suite.secrets.HC_SECRET
+
+    if write_db_credentials:
+        default_spark_env_vars["DATABRICKS_HOST"] = databricks_host
+        default_spark_env_vars["DATABRICKS_TOKEN"] = databricks_token
+    # Env vars may not be None, so we drop any that are None
+    default_spark_env_vars = {
+        k: v for k, v in default_spark_env_vars.items() if v is not None
+    }
+
+    if not user_spark_env_vars:
+        spark_env_vars = default_spark_env_vars
+    else:
+        user_spark_env_vars.update(default_spark_env_vars)
+        spark_env_vars = user_spark_env_vars
+    return spark_env_vars
 
 
 def create_cluster(
@@ -68,53 +149,13 @@ def create_cluster(
     if not install_suite:
         install_suite = jsl_home.get_install_suite_from_jsl_home()
 
-    default_spark_conf = {
-        "spark.kryoserializer.buffer.max": "2000M",
-        "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
-        "spark.sql.optimizer.expression.nestedPruning.enabled": "false",
-        "spark.sql.optimizer.nestedSchemaPruning.enabled": "false",
-        "spark.sql.legacy.allowUntypedScalaUDF": "true",
-        "spark.sql.repl.eagerEval.enabled": "true",
-    }
-    lic = {
-        "SECRET": install_suite.secrets.HC_SECRET,
-        "SPARK_OCR_SECRET": install_suite.secrets.OCR_SECRET,
-        "SPARK_NLP_LICENSE": install_suite.secrets.HC_LICENSE,
-        "SPARK_OCR_LICENSE": install_suite.secrets.OCR_LICENSE,
-    }
-    lic = {k: v for k, v in lic.items() if v is not None}
+    install_license_to_cluster(install_suite, db)
+    install_info_to_cluster(db)
 
-    license_path = "/johnsnowlabs/license.json"
-    put_file_on_dbfs(db, license_path, lic, overwrite=True)
-
-    default_spark_env_vars = dict(
-        SPARK_NLP_LICENSE_FILE=f"/dbfs{license_path}",
-        AWS_ACCESS_KEY_ID=install_suite.secrets.AWS_ACCESS_KEY_ID,
-        AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
-    )
-
-    if "SPARK_OCR_SECRET" in lic and visual:
-        default_spark_env_vars["VISUAL_SECRET"] = lic["SPARK_OCR_SECRET"]
-    if "SECRET" in lic and medical_nlp:
-        default_spark_env_vars["HEALTHCARE_SECRET"] = lic["SECRET"]
-
-    if write_db_credentials:
-        default_spark_env_vars["DATABRICKS_HOST"] = databricks_host
-        default_spark_env_vars["DATABRICKS_TOKEN"] = databricks_token
-    # Env vars may not be None, so we drop any that are None
-    default_spark_env_vars = {
-        k: v for k, v in default_spark_env_vars.items() if v is not None
-    }
-
-    if not spark_conf:
-        spark_conf = default_spark_conf
-    else:
-        spark_conf.update(default_spark_conf)
-
-    if not spark_env_vars:
-        spark_env_vars = default_spark_env_vars
-    else:
-        spark_env_vars.update(default_spark_env_vars)
+    spark_env_vars = get_spark_env_vars(spark_env_vars, install_suite, databricks_host,
+                                        databricks_token,
+                                        visual, medical_nlp, write_db_credentials)
+    spark_conf = get_spark_conf(spark_conf)
 
     cluster_id = db.cluster.create_cluster(
         num_workers=num_workers,
@@ -204,6 +245,66 @@ def install_list_of_pypi_ref_to_cluster(db: DatabricksAPI, cluster_id, pip_insta
         install_py_lib_via_pip(db, cluster_id, package, version)
 
 
+def install_to_existing_cluster(
+        databricks_host: str,
+        databricks_token: str,
+        databricks_cluster_id: str,
+        install_suite: InstallSuite,
+        medical_nlp,
+        spark_nlp,
+        visual,
+        write_db_credentials: bool = True,
+        extra_pip_installs: Optional[List[str]] = None,
+
+):
+    db = get_db_client_for_token(databricks_host, databricks_token)
+    install_license_to_cluster(install_suite, db)
+    install_info_to_cluster(db)
+
+    cluster_info = db.cluster.get_cluster(databricks_cluster_id)
+    if 'spark_conf' in cluster_info['spec']:
+        spark_conf = cluster_info['spec']['spark_conf']
+    else:
+        spark_conf = None
+    if 'spark_env_vars' in cluster_info['spec']:
+        spark_env_vars = cluster_info['spec']['spark_env_vars']
+    else:
+        spark_env_vars = None
+
+
+    spark_env_vars = get_spark_env_vars(spark_env_vars, install_suite, databricks_host,
+                                        databricks_token,
+                                        visual, medical_nlp, write_db_credentials)
+    spark_conf = get_spark_conf(spark_conf)
+
+    db.cluster.edit_cluster(cluster_id=databricks_cluster_id,
+                            spark_conf=spark_conf,
+                            spark_env_vars=spark_env_vars,
+                            num_workers=cluster_info['spec']['num_workers'],
+                            spark_version=cluster_info['spec']['spark_version'],
+                            node_type_id=cluster_info['spec']['node_type_id'],
+                            driver_node_type_id=cluster_info['spec']['driver_node_type_id'],
+                            cluster_name=cluster_info['spec']['cluster_name'],
+                            autotermination_minutes=cluster_info['autotermination_minutes'],
+                            )
+
+    install_jsl_suite_to_cluster(
+        db=db,
+        install_suite=install_suite,
+        cluster_id=databricks_cluster_id,
+        medical_nlp=medical_nlp,
+        spark_nlp=spark_nlp,
+        visual=visual,
+    )
+
+    if extra_pip_installs:
+        install_list_of_pypi_ref_to_cluster(
+            db=db,
+            cluster_id=databricks_cluster_id,
+            pip_installs=extra_pip_installs,
+        )
+
+
 def install_jsl_suite_to_cluster(
     db: DatabricksAPI,
     cluster_id: str,
@@ -256,7 +357,7 @@ def install_jsl_suite_to_cluster(
         )
 
     # On databricks environment should restart current cluster to apply uninstalls and installations
-    if is_running_in_databricks():
+    if is_running_in_databricks_runtime():
         try:
             restart_cluster(db, cluster_id)
         except:

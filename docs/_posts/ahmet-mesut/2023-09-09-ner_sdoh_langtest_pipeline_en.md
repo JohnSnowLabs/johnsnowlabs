@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-4nvvaaklzddsy
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/c23fe435-9461-4d0e-a829-d64f6fecb659/John-Snow-Labs_Extract-Social-Determinants-of-Health
+
 ---
 
 ## Description
@@ -25,6 +31,13 @@ This pretrained pipeline is built on the top of [ner_sdoh_langtest](https://nlp.
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_langtest_pipeline_en_5.1.0_3.4_1694279837983.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_langtest_pipeline_en_5.1.0_3.4_1694279837983.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

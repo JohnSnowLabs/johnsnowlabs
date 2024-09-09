@@ -42,40 +42,76 @@ Use as part of an nlp pipeline with the following stages: DocumentAssembler, Sen
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-...
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-.setInputCols(["sentence", "token"])\
-.setOutputCol("embeddings")
-clinical_ner = NerDLModel.pretrained("ner_clinical", "en", "clinical/models") \
-.setInputCols(["sentence", "token", "embeddings"]) \
-.setOutputCol("ner")
-ner_converter = NerConverter() \
-.setInputCols(["sentence", "token", "ner"]) \
-.setOutputCol("ner_chunk")
-clinical_assertion = AssertionDLModel.pretrained("assertion_dl_healthcare","en","clinical/models")\
-.setInputCols(["document","ner_chunk","embeddings"])\
-.setOutputCol("assertion")
+documentAssembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, clinical_assertion])
+sentenceDetector = SentenceDetector()\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_healthcare_100d", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
+
+clinical_ner = MedicalNerModel.pretrained("ner_healthcare", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
+
+ner_converter = NerConverter() \
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")
+
+clinical_assertion = AssertionDLModel.pretrained("assertion_dl_healthcare", "en", "clinical/models") \
+    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
+    .setOutputCol("assertion")
+
+nlpPipeline = Pipeline(stages=[
+    documentAssembler, 
+    sentenceDetector,
+    tokenizer,
+    word_embeddings,
+    clinical_ner,
+    ner_converter,
+    clinical_assertion
+    ])
 
 model = nlpPipeline.fit(spark.createDataFrame([['Patient has a headache for the last 2 weeks and appears anxious when she walks fast. No alopecia noted. She denies pain']]).toDF("text"))
 results = model.transform(data)
 ```
 
 ```scala
-...
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(Array("sentence", "token"))
-.setOutputCol("embeddings")
-val clinical_ner = NerDLModel.pretrained("ner_clinical", "en", "clinical/models")
-.setInputCols(Array("sentence", "token", "embeddings")) 
-.setOutputCol("ner")
-val ner_converter = NerConverter()
-.setInputCols(Array("sentence", "token", "ner"))
-.setOutputCol("ner_chunk")
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+
+val sentenceDetector = new SentenceDetector()
+    .setInputCols("document")
+    .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
+
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_healthcare_100d", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("embeddings")
+
+val clinical_ner = MedicalNerModel.pretrained("ner_healthcare", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "embeddings")) 
+    .setOutputCol("ner")
+
+val ner_converter = new NerConverter()
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
+
 val clinical_assertion = AssertionDLModel.pretrained("assertion_dl_healthcare","en","clinical/models")
-.setInputCols("document","ner_chunk","embeddings")
-.setOutputCol("assertion")
+    .setInputCols("document","ner_chunk","embeddings")
+    .setOutputCol("assertion")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, clinical_assertion))
 

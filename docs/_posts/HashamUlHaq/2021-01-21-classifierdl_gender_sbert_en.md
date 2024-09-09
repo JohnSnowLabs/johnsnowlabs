@@ -37,24 +37,51 @@ This model classifies the gender of the patient in the clinical document using c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
-document_assembler = DocumentAssembler().setInputCol("text").setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli", 'en', 'clinical/models')\
-.setInputCols(["document"])\
-.setOutputCol("sentence_embeddings")
+    .pretrained("sbiobert_base_cased_mli", 'en', 'clinical/models')\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence_embeddings")
 
-gender_classifier = ClassifierDLModel.pretrained( 'classifierdl_gender_sbert', 'en', 'clinical/models') \
-.setInputCols(["document", "sentence_embeddings"]) \
-.setOutputCol("class")
+gender_classifier = ClassifierDLModel.pretrained('classifierdl_gender_sbert', 'en', 'clinical/models') \
+    .setInputCols(["sentence_embeddings"])\
+    .setOutputCol("class")
 
 nlp_pipeline = Pipeline(stages=[document_assembler, sbert_embedder, gender_classifier])
 
 light_pipeline = LightPipeline(nlp_pipeline.fit(spark.createDataFrame([['']]).toDF("text")))
+
 annotations = light_pipeline.fullAnnotate("""social history: shows that  does not smoke cigarettes or drink alcohol, lives in a nursing home. family history: shows a family history of breast cancer.""")
 ```
 
+```scala
+val document_assembler = new DocumentAssembler()
+	.setInputCol("text")
+	.setOutputCol("document")
+	
+val sbert_embedder = BertSentenceEmbeddings
+	.pretrained("sbiobert_base_cased_mli","en","clinical/models")
+	.setInputCols(Array("document"))
+	.setOutputCol("sentence_embeddings")
+	
+val gender_classifier = ClassifierDLModel.pretrained("classifierdl_gender_sbert","en","clinical/models")
+	.setInputCols(Array("sentence_embeddings"))
+	.setOutputCol("class")
+	
+val nlp_pipeline = nnew Pipeline().setStages(Array(
+		 document_assembler,
+		 sbert_embedder,
+		 gender_classifier))
+
+val data = Seq("""social history: shows that does not smoke cigarettes or drink alcohol,lives in a nursing home. family history: shows a family history of breast cancer.""").toDF("text")	
+
+val result = nlp_pipeline.fit(data).transform(data)
+```
 
 
 {:.nlu-block}

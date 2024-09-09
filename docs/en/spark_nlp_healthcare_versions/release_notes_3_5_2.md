@@ -28,6 +28,8 @@ sidebar:
 + New and updated notebooks
 + List of recently updated or added models
 
+</div><div class="h3-box" markdown="1">
+
 #### `TFGraphBuilder` annotator to create graphs for Training NER, Assertion, Relation Extraction, and Generic Classifier Models
 
 We have a new annotator used to create graphs in the model training pipeline. `TFGraphBuilder` inspects the data and creates the proper graph if a suitable version of TensorFlow (<= 2.7 ) is available. The graph is stored in the defined folder and loaded by the approach.
@@ -60,6 +62,8 @@ medner_pipeline = Pipeline()([
 
 For more examples, please check [TFGraph Builder Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/17.Graph_builder_for_DL_models.ipynb).
 
+</div><div class="h3-box" markdown="1">
+
 #### Default TF graphs added for `AssertionDLApproach` to let users train models without custom graphs
 
 We added default TF graphs for the `AssertionDLApproach` to let users train assertion models without specifying any custom TF graph.
@@ -67,6 +71,8 @@ We added default TF graphs for the `AssertionDLApproach` to let users train asse
 **Default Graph Features:**
 + Feature Sizes: 100, 200, 768
 + Number of Classes: 2, 4, 8
+
+</div><div class="h3-box" markdown="1">
 
 #### New Functionalities in `ContextualParserApproach`
 
@@ -102,6 +108,8 @@ contextual_parser = ContextualParserApproach()\
     .setCaseSensitive(True)\
     .setOptionalContextRules(True)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Printing the List of Clinical Pretrained Models and Pipelines with One-Liner
 
@@ -167,6 +175,8 @@ InternalResourceDownloader.showPrivatePipelines("en")
 +--------------------------------------------------------+------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New `ner_biomedical_bc2gm` NER Model
 
 This model has been trained to extract genes/proteins from a medical text.
@@ -197,6 +207,8 @@ result = model.transform(text)
 |cytokeratin|GENE_PROTEIN|
 +-----------+------------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New Clinical `ChunkMapper` Models
 
@@ -293,6 +305,8 @@ input = ['doxepin hydrochloride 50 MG/ML', 'macadamia nut 100 MG/ML']
 +------------------------------+------------+------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Bug Fixes
 
 We fixed some issues in `DrugNormalizer`, `DateNormalizer` and `ContextualParserApproach` annotators.
@@ -304,6 +318,7 @@ We fixed some issues in `DrugNormalizer`, `DateNormalizer` and `ContextualParser
   - Extracting the right content for suffix.
   - Handling special characters in prefix and suffix.
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
   - We prepared [Spark NLP for Healthcare 3hr Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/1hr_workshop/SparkNLP_for_Healthcare_3h_Notebook.ipynb) to cover mostly used components of Spark NLP in ODSC East 2022-3 hours hands-on workshop on 'Modular Approach to Solve Problems at Scale in Healthcare NLP'. You can also find its Databricks version [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare_tutorials/SparkNLP_for_Healthcare_3h_Notebook.ipynb).
@@ -311,6 +326,8 @@ We fixed some issues in `DrugNormalizer`, `DateNormalizer` and `ContextualParser
   - [Updated healthcare tutorial notebooks for Databricks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare/databricks_notebooks) with `sparknlp_jsl` v3.5.1
   - We have a new [Databricks healthcare tutorials folder](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/databricks/python/healthcare_tutorials) in which you can find all Spark NLP for Healthcare Databricks tutorial notebooks. 
   - [Updated Graph Builder Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/17.Graph_builder_for_DL_models.ipynb) by adding the examples of new `TFGraphBuilder` annotator.
+
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated or Added Models
 

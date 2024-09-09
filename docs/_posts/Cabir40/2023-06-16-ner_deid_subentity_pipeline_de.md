@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity](https://nlp
 
 ## Predicted Entities
 
-
+`ORGANIZATION`, `DOCTOR`, `USERNAME`, `CITY`, `DATE`, `COUNTRY`, `PROFESSION`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `AGE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -40,7 +40,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "de", "clinical/models")
 
-text = '''Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.'''
+text = """Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."""
 
 result = pipeline.fullAnnotate(text)
 ```

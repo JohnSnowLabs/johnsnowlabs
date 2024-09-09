@@ -2,9 +2,6 @@ import time
 from os import path
 from typing import Optional
 
-import boto3
-import botocore
-
 from johnsnowlabs import settings
 from johnsnowlabs.auto_install.emr.enums import EMRClusterStates
 from johnsnowlabs.auto_install.emr.work_utils import create_emr_bucket
@@ -18,7 +15,7 @@ here = path.abspath(path.dirname(__file__))
 
 
 def create_emr_cluster(
-    boto_session: boto3.Session,
+    boto_session: "boto3.Session",
     secrets: JslSecrets,
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
@@ -54,6 +51,8 @@ def create_emr_cluster(
     # Refer: https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html
     # Refer Also: https://docs.aws.amazon.com/code-library/latest/ug/python_3_emr_code_examples.html
     """
+
+    import botocore
 
     try:
         if not boto_session:
@@ -205,7 +204,9 @@ def block_till_emr_cluster_ready(emr_client, cluster_id: str):
     print(f"👌 Cluster-Id {cluster_id} is ready!")
 
 
-def create_initialization_step_script(boto_session: boto3.Session, bucket: str) -> str:
+def create_initialization_step_script(
+    boto_session: "boto3.Session", bucket: str
+) -> str:
     """Creates a EMR initialization step script and uploads it to s3 bucket. Returns the s3 path of the script
     :param boto_session: Boto3 session
     :param s3_client: S3 boto3 client
@@ -223,6 +224,7 @@ sudo python3 -m pip install "numpy>1.17.3"
 sudo python3 -m pip install scipy scikit-learn "tensorflow==2.11.0" tensorflow-addons
 exit 0
 """
+
     return upload_content(
         boto_session=boto_session,
         bucket=bucket,
@@ -232,7 +234,7 @@ exit 0
 
 
 def create_bootstrap_script(
-    boto_session: boto3.Session,
+    boto_session: "boto3.Session",
     bucket: str,
     secrets: JslSecrets,
     spark_nlp: bool = True,

@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/5e6f0af1-bcc7-4aa6-a1de-21ca58638fce/John-Snow-Labs_SNOMED-to-ICD10CM-Code-Mapper
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ This pretrained pipeline is built on the top of `snomed_icd10cm_mapper` model.
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_icd10cm_mapping_en_4.4.4_3.0_1686979216454.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/snomed_icd10cm_mapping_en_4.4.4_3.0_1686979216454.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
+
 ## How to use
 
 <div class="tabs-box" markdown="1">
@@ -40,14 +53,14 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("snomed_icd10cm_mapping", "en", "clinical/models")
 
-result = pipeline.fullAnnotate(128041000119107 292278006 293072005)
+result = pipeline.fullAnnotate(["128041000119107", "292278006", "293072005"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("snomed_icd10cm_mapping", "en", "clinical/models")
 
-val result = pipeline.fullAnnotate(128041000119107 292278006 293072005)
+val result = pipeline.fullAnnotate(["128041000119107", "292278006", "293072005"])
 ```
 
 
@@ -63,9 +76,11 @@ nlu.load("en.map_entity.snomed_to_icd10cm.pipe").predict("""Put your text here."
 ## Results
 
 ```bash
-|    | snomed_code                             | icd10cm_code               |
-|---:|:----------------------------------------|:---------------------------|
-|  0 | 128041000119107 | 292278006 | 293072005 | K22.70 | T43.595 | T37.1X5 |
+|   | icd10cm_code |     snomed_code |
+|--:|-------------:|----------------:|
+| 0 |       K22.70 | 128041000119107 |
+| 1 |      T43.595 |       292278006 |
+| 2 |      T37.1X5 |       293072005 |
 ```
 
 {:.model-param}

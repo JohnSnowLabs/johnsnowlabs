@@ -13,6 +13,8 @@ header:
   - title: Demo
     url: /demos
     key: demo
+  - title: '<span style="color: #FF8A00;"><i class = "fas fa-search fa-2x"></i></span>'
+    url: /search
   - title: '<span style="color: #FF8A00;"><i class = "fab fa-github fa-2x"></i></span>'
     url: https://github.com/JohnSnowLabs/spark-nlp
   - title: '<span style="color: #FF8A00;"><i class="fab fa-slack-hash fa-2x"></i></span>'
@@ -65,9 +67,29 @@ sparknlp:
         url: /docs/en/third-party-projects
       - title: Release Notes
         url: /docs/en/release_notes
+      
+healthcare-gpt:
+  - title: Medical Chatbot
+    children:
+      - title: Home
+        url: /docs/en/chatbot/healthcare_gpt
+      - title: Getting Started
+        url: /docs/en/chatbot/getting_started
+      - title: Features
+        url: /docs/en/chatbot/features
+      - title: Tools
+        url: /docs/en/chatbot/tools       
+      - title: DocQA
+        url: /docs/en/chatbot/docqa          
+      - title: User Guide
+        url: /docs/en/chatbot/usage_guides
+      - title: Support
+        url: /docs/en/chatbot/support
+      - title: Release Notes
+        url: /docs/en/chatbot/releases/release_notes
 
 annotation-lab:
-  - title: NLP Lab
+  - title: Generative AI Lab
     children:
       - title: Getting Started
         url: /docs/en/alab/quickstart
@@ -97,7 +119,7 @@ annotation-lab:
             url: /docs/en/alab/project_creation
           - title: Configuration
             url: /docs/en/alab/project_configuration
-          - title: Import Tasks
+          - title: Import
             url: /docs/en/alab/import
           - title: Generate Synthetic Data
             url: /docs/en/alab/synthetic_task
@@ -126,7 +148,11 @@ annotation-lab:
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
           - title: Section Based Annotation
-            url: /docs/en/alab/section_based_annotations 
+            url: /docs/en/alab/section_based_annotations
+          - title: Entity Resolution
+            url: /docs/en/alab/resolvers 
+          - title: De-Identification
+            url: /docs/en/alab/de_identify
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
@@ -145,6 +171,8 @@ annotation-lab:
             url: /docs/en/alab/transfer_learning
           - title: Test Project Configuration
             url: /docs/en/alab/test_project_configuration
+          - title: LangTest
+            url: /docs/en/alab/langtest
       - subtitle: Administration
         children:
           - title: User Management
@@ -163,6 +191,8 @@ annotation-lab:
             url: /docs/en/alab/cluster_management
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
+      - title: Spark Library Version
+        url: /docs/en/alab/version
       - title: Security and Privacy
         url: /docs/en/alab/security
       - title: Video Tutorials
@@ -177,7 +207,9 @@ sparknlp-healthcare:
     children:
       - title: Getting Started
         url: /docs/en/license_getting_started
-      - title: Installation
+  - title: Healthcare NLP
+    children:
+      - title: Installation 
         url: /docs/en/licensed_install
       - title: Annotators
         url: /docs/en/licensed_annotators
@@ -199,43 +231,17 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Wiki
         url: /docs/en/wiki
-      - title: Cluster Speed Benchmarks
-        url: /docs/en/benchmark
-      - title: CPU NER Benchmarks
-        url: /docs/en/cpu-ner-benchmark
-      - title: GPU vs CPU benchmarks
-        url: /docs/en/CPUvsGPUbenchmark_healthcare
-      - title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
-        url: /docs/en/spark_spacy_pandas_udf_with_arrow_enabled_benchmark_web
+      - title: Benchmarks
+        url: /docs/en/benchmark      
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
-  - title: Healthcare NLP
-    children:
-      - title: Release Notes
+      - title: Release Notes 
         url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
       - title: Healthcare Models
         url: /models?edition=Spark+NLP+for+Healthcare
       - title: Version Compatibility
         url: /docs/en/licensed_version_compatibility
-  - title: Finance NLP
-    children:
-      - title: Release Notes
-        url: /docs/en/financial_release_notes
-      - title: Financial Models
-        url: /models?edition=Spark+NLP+for+Finance
-      - title: Version Compatibility
-        url: /docs/en/financial_version_compatibility
-  - title: Legal NLP
-    children:
-      - title: Release Notes
-        url: /docs/en/legal_release_notes
-      - title: Legal Models
-        url: /models?edition=Spark+NLP+for+Legal
-      - title: Version Compatibility
-        url: /docs/en/legal_version_compatibility
-
-spark-ocr:
-  - title: Spark OCR
+  - title: Visual NLP
     children:
       - title: Getting Started
         url: /docs/en/ocr
@@ -253,8 +259,27 @@ spark-ocr:
         url: /docs/en/ocr_object_detection
       - title: Structures and helpers
         url: /docs/en/ocr_structures
+      - title: Speed benchmarks
+        url: /docs/en/ocr_benchmark
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
+  - title: Finance NLP
+    children:
+      - title: Release Notes
+        url: /docs/en/financial_release_notes
+      - title: Financial Models
+        url: /models?edition=Spark+NLP+for+Finance
+      - title: Version Compatibility
+        url: /docs/en/financial_version_compatibility
+  - title: Legal NLP
+    children:
+      - title: Release Notes
+        url: /docs/en/legal_release_notes
+      - title: Legal Models
+        url: /models?edition=Spark+NLP+for+Legal
+      - title: Version Compatibility
+        url: /docs/en/legal_version_compatibility
+
 
 jsl:
   - title: John Snow Labs NLP
@@ -324,12 +349,20 @@ jsl:
         url:    /docs/en/jsl/start-a-sparksession
       - title:  Settings & Cache Folder
         url:    /docs/en/jsl/john-snow-labs-home
+      - title:  Utilities for Docker
+        url:    /docs/en/jsl/docker-utils
+      - title:  Utilities for Snowflake
+        url:    /docs/en/jsl/snowflake-utils
       - title:  Utilities for Databricks
         url:    /docs/en/jsl/databricks-utils
       - title:  Utilities for AWS EMR
         url:    /docs/en/jsl/aws-emr-utils
       - title:  Utilities for AWS Glue
         url:    /docs/en/jsl/aws-glue-utils
+      - title:  Utilities for Haystack
+        url:    /docs/en/jsl/haystack-utils
+      - title:  Utilities for Langchain
+        url:    /docs/en/jsl/langchain-utils
       - title:  Release Testing Utilities
         url:    /docs/en/jsl/testing-utils
       - title:  Module Structure

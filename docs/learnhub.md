@@ -24,7 +24,7 @@ modify_date: "2019-05-16"
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/spark-nlp-blog/">Spark NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/healthcare-nlp-blog/">Healthcare NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/visual-nlp-blog/">Spark OCR</a></li>
-                    <li><a target="_blank" href="https://www.johnsnowlabs.com/annotation-lab-blog/">NLP Lab</a></li>
+                    <li><a target="_blank" href="https://www.johnsnowlabs.com/annotation-lab-blog/">Generative AI Lab</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/auto-nlp-blog/">Auto NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/multimodal-ai-blog/">Multimodal AI</a></li>
                 </ul>
@@ -57,3 +57,8 @@ modify_date: "2019-05-16"
         </div>
     </div>
 </div>
+<div class="dn">
+  <!-- HTML elements for search -->
+  <input type="text" id="search-input" placeholder="Search...">
+  <ul id="results-container" class="shadow results-container"></ul>
+</div> 

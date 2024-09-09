@@ -27,11 +27,15 @@ The model was pre-trained on the __COCO dataset__ and fine-tuned on __ICDAR 2019
 
 More details please read in [Table Detection & Extraction in Spark OCR](https://medium.com/spark-nlp/table-detection-extraction-in-spark-ocr-50765c6cedc9)
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * [ImageTableDetector](/docs/en/ocr_table_recognition#imagetabledetector) is a DL model for detect tables on the image.
 * [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector) is a transformer for detect regions of cells in the table image.
 * [ImageCellsToTextTable](/docs/en/ocr_table_recognition#imagecellstotexttable) is a transformer for extract text from the detected cells.
+
+</div><div class="h3-box" markdown="1">
 
 #### New notebooks
 

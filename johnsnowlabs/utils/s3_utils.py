@@ -1,8 +1,5 @@
 from typing import Tuple
 
-import boto3
-import botocore
-
 from johnsnowlabs.utils.boto_utils import BotoException
 
 
@@ -11,11 +8,13 @@ def parse_s3_url(s3_url: str) -> Tuple[str, str]:
     return s3_url.split("/")[2], "/".join(s3_url.split("/")[3:]).rstrip("/")
 
 
-def create_bucket(boto_session: boto3.Session, bucket: str):
+def create_bucket(boto_session: "boto3.Session", bucket: str):
     """Create a bucket for EMR cluster logs
     :param boto_session: Botocore session
     :param bucket: Bucket name
     """
+    import botocore
+
     try:
         s3_client = boto_session.client("s3")
         region = boto_session.region_name
@@ -37,11 +36,13 @@ def create_bucket(boto_session: boto3.Session, bucket: str):
         )
 
 
-def check_if_file_exists_in_s3(boto_session: boto3.Session, s3_url: str):
+def check_if_file_exists_in_s3(boto_session: "boto3.Session", s3_url: str):
     """Check if file exists in s3 using s3 client
     :param boto_session : Botocore session
     :param s3_url: S3 url to check
     """
+    import botocore
+
     try:
         s3_client = boto_session.client("s3")
         bucket, key = parse_s3_url(s3_url)
@@ -55,7 +56,7 @@ def check_if_file_exists_in_s3(boto_session: boto3.Session, s3_url: str):
 
 
 def upload_file_to_s3(
-    boto_session: boto3.Session, file_path: str, bucket: str, file_name: str
+    boto_session: "boto3.Session", file_path: str, bucket: str, file_name: str
 ) -> str:
     """Upload a file to s3 bucket
     :botocore_session: Botocore session
@@ -64,6 +65,8 @@ def upload_file_to_s3(
     :param file_name: File name to create
     :return s3_url: S3 url of uploaded file
     """
+    import botocore
+
     try:
         s3_client = boto_session.client("s3")
         s3_client.upload_file(file_path, bucket, file_name)
@@ -75,8 +78,10 @@ def upload_file_to_s3(
 
 
 def upload_content(
-    boto_session: boto3.Session, content: str, bucket: str, file_name: str
+    boto_session: "boto3.Session", content: str, bucket: str, file_name: str
 ) -> str:
+    import botocore
+
     """Upload content to s3 bucket
     :param boto_session: Botocore session
     :param content: Content to upload

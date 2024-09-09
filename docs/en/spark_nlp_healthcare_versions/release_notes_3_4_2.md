@@ -29,6 +29,8 @@ We are glad to announce that Spark NLP Healthcare 3.4.2 has been released!
  + New & updated notebooks
  + List of recently updated or added models
 
+</div><div class="h3-box" markdown="1">
+
 #### New RCT Classifier, NER Models and Pipeline (Deidentification)
 
 We are releasing a new `bert_sequence_classifier_rct_biobert` model, four new Spanish deidentification NER models (`ner_deid_generic_augmented`, `ner_deid_subentity_augmented`, `ner_deid_generic_roberta_augmented`, `ner_deid_subentity_roberta_augmented`) and a pipeline (`clinical_deidentification_augmented`).
@@ -91,6 +93,8 @@ España                   COUNTRY             LOCATION
 Clinica San Carlos       HOSPITAL            LOCATION
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Setting the Scope Window (Target Area) Dynamically in Assertion Status Detection Models
 
 This parameter allows you to train the Assertion Status Models to focus on specific context windows when resolving the status of a NER chunk. The window is in format `[X,Y]` being `X` the number of tokens to consider on the left of the chunk, and `Y` the max number of tokens to consider on the right. Let's take a look at what different windows mean:
@@ -113,6 +117,8 @@ assertion_status = AssertionDLApproach() \
           .setScopeWindow([9, 15])     # NEW! Scope Window!
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Reading JSON Files (Exported from ALAB) From HDFS with `AnnotationJsonReader`
 
 Now we can read the dataframe from a HDFS that we read the files from in our cluster.
@@ -125,6 +131,8 @@ reader = AnnotationToolJsonReader(assertion_labels = ['AsPresent', 'AsAbsent', '
 df = reader.readDataset(spark, filename)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Allow Users Write Tensorflow Graphs to HDFS
 
 Now we can save custom Tensorflow graphs to the HDFS that mainly being used in a cluster environment.
@@ -132,6 +140,8 @@ Now we can save custom Tensorflow graphs to the HDFS that mainly being used in a
 ```python
 tf_graph.build("ner_dl", build_params={"embeddings_dim": 200, "nchars": 128, "ntags": 12, "is_medical": 1}, model_location="hdfs:///user/livy", model_filename="auto")
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Serving Spark NLP on APIs
 
@@ -148,20 +158,27 @@ The difference between both approaches are the following:
 + `FastAPI` + `LightPipelines`: A solution to run Spark NLP using a FastAPI webserver. It uses LightPipelines, what means having a very good performance but not leveraging Spark Clusters. Also, no Load Balancer is available in the suggestion, but you can create your own. Best approach if you look for performance.
 + `Databricks` and `MLFlow`: Using MLFlow Serve or Databricks Jobs APIs to serve for inference Spark NLP pipelines from within Databricks. Best approach if you look for scalability within Databricks.
 
+</div><div class="h3-box" markdown="1">
 
 #### Updated Documentation on Installing Spark NLP For Healthcare in AWS EMR (Jupyter, Livy, Yarn, Hadoop)
 
 Ready-to-go Spark NLP for Healthcare environment in AWS EMR. Full instructions are [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/emr).
 
+</div><div class="h3-box" markdown="1">
+
 #### New Series of Notebooks to Reproduce the Academic Papers Published by Our Colleagues
 
 You can find all these notebooks [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/academic)
+
+</div><div class="h3-box" markdown="1">
 
 #### PySpark Tutorial Notebooks to Let Non-Spark Users to Get Started with Apache Spark Ecosystem in Python
 
 John Snow Labs has created a series of 8 notebooks to go over PySpark from zero to hero. Notebooks cover PySpark essentials, DataFrame creation, querying, importing data from different formats, functions / udfs, Spark MLLib examples (regression, classification, clustering) and Spark NLP best practises (usage of parquet, repartition, coalesce, custom annotators, etc).
 
 You can find all these notebooks [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/PySpark).
+
+</div><div class="h3-box" markdown="1">
 
 #### New & Updated Notebooks
 
@@ -173,6 +190,8 @@ You can find all these notebooks [here](https://github.com/JohnSnowLabs/spark-nl
 + `Serving_SparkNLP_with_Synapse.ipynb`: Serving SparkNLP for production purposes using Synapse ML. Available [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/RestAPI/Serving_SparkNLP_with_Synapse.ipynb)
 + `Serving_SparkNLP_with_FastAPI_and_LP.ipynb`: Serving SparkNLP for production purposes using FastAPI, RestAPI and LightPipelines. Available [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/RestAPI/Serving_SparkNLP_with_FastAPI_and_LP.ipynb)
 + `Series of PySpark tutorial notebooks`: Available [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/PySpark)
+
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated or Added Models
 

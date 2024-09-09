@@ -15,6 +15,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-toznqfuzuf35q
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/8dd5abe1-4df8-41b5-a251-dcf3b161f5c3/John-Snow-Labs_Clinical-Deidentification-for-Portuguese
+
 ---
 
 ## Description
@@ -26,6 +32,13 @@ This pipeline is trained with `w2v_cc_300d` portuguese embeddings and can be use
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_pt_3.5.0_3.0_1655820388743.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_pt_3.5.0_3.0_1655820388743.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

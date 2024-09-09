@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Video
 permalink: /docs/en/alab/tags_video
 key: docs-training
@@ -12,6 +12,8 @@ show_nav: true
 sidebar:
   nav: annotation-lab
 ---
+
+<div class="h3-box" markdown="1">
 
 The video template is split into two parts: video classification and video timeline segmentation. To play a video, you need a `HyperText` tag which requires the **name** parameter and **value** parameter. 
 
@@ -29,6 +31,8 @@ The simplest configuration in this case will look as shown below.
 
 ![video_classification](/assets/images/annotation_lab/xml-tags/vid_classification.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Video Timeline Segmentation
 
 This is a labeling task, and thus requires the use of `Label` tags to assign variables. For example, you have a sample task with a video and it's corresponding audio, and you wish to label segments. The sample JSON looks like this:
@@ -45,3 +49,5 @@ The configuration in this case is shown below.
 ![video_timeline_segmentation](/assets/images/annotation_lab/xml-tags/vid_timeline_segment.png)
 
 The `background` parameter refers to the color of the label. From above, you could see that the labels will work on the audio encryption since the name parameter in the `AudioPlus` tag is the same as the toName parameter in the `Labels` tag.
+
+</div>

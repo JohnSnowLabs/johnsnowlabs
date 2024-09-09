@@ -97,6 +97,7 @@ If you have multiple licenses you can re-run an authorization method and use the
 between licenses you have access to.      
 Licenses are locally numbered in order they have been provided, for more info see [License Caching](https://nlp.johnsnowlabs.com/docs/en/jsl/install#storage-of-license-data-and-license-search-behaviour).
 
+{:.table-model-big}
 | Auth Flow Method                                             | Description                                                                                                                                                                                                                            | Python `nlp.install()` usage                                                                                                                                                       |
 |--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Browser Based Login (OAuth) Localhost                        | Browser window will pop up, where you can give access to your license. Use `remote_license_number` parameter to choose between licenses. Use `remote_license_number` parameter to choose between licenses                              | `nlp.install()`                                                                                                                                                                    |
@@ -114,6 +115,7 @@ Licenses are locally numbered in order they have been provided, for more info se
 
 Use these parameters to configure **the preferred authorization flow**.
 
+{:.table-model-big}
 | Parameter                  | description                                                                                                                                                                                                                                                       |
 |----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `browser_login`            | Enable or disable browser based login and pop up if no license is provided or automatically detected. Defaults to `True`.                                                                                                                                         |
@@ -129,6 +131,7 @@ Use these parameters to configure **the preferred authorization flow**.
 
 Use these parameters to configure **where** to install the libraries.
 
+{:.table-model-big}
 | Parameter                                 | description                                                                                                                                                                                                                    |
 |-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `python_exec_path`                        | Specify path to a python executable into whose environment the libraries will be installed. Defaults to the current executing Python process, i.e. `sys.executable` and it's pip module is used for setup.                     |
@@ -142,6 +145,7 @@ Use these parameters to configure **where** to install the libraries.
 
 Use the following parameters to configure **what should** be installed. 
 
+{:.table-model-big}
 | Parameter              | description                                                                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `install_optional`     | By default install all open source libraries if missing. Set the `False` to disable.                                                                                                                                 |
@@ -164,6 +168,7 @@ Labs license,which will be installed to your Databricks cluster.
 A John Snow Labs Home directory is constructed in the distributed Databricks File System`/dbfs/johnsnowlabs` which has
 all Jars, Wheels and License Information to run all features in a Databricks cluster.
 
+{:.table-model-big}
 | Databricks Auth Flow Method | Description                                                                                                                                                                                                                                                                                           | Python `nlp.install()` usage                                                                                                        | 
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `Access Token`              | See [Databricks Documentation](https://docs.databricks.com/dev-tools/api/latest/authentication.html) for  extracting a token which you can provide to databricks access, see [Databricks Install Section](https://nlp.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation) for details | `nlp.install(databricks_cluster_id=my_cluster_id, databricks_host=my_databricks_host, databricks_token=my_access_databricks_token)` |
@@ -177,8 +182,13 @@ Where to find your Databricks Access Token:
 You can set the following parameters on the `nlp.install()` function to define properties of the cluster which will be created.  
 See [Databricks Cluster Creation](https://docs.databricks.com/dev-tools/api/latest/clusters.html#create) for a detailed description of all parameters.
 
+You can use the `extra_pip_installs` parameter to installl a list of additional pypi libraries to the cluster. 
+Just set `nlp.install_to_databricks(extra_pip_installs=['langchain','farm-haystack==1.2.3'])` to install the libraries.
+
+{:.table-model-big}
 | Cluster creation Parameter | Default Value                              | 
 |----------------------------|--------------------------------------------|
+| extra_pip_installs         | `None`                                     | 
 | block_till_cluster_ready   | `True`                                     | 
 | num_workers                | `1`                                        | 
 | cluster_name               | `John-Snow-Labs-Databricks-Auto-Cluster🚀` | 
@@ -230,8 +240,8 @@ NOTE: Instead of `JSL_LEGAL_LICENSE`, `HC_LICENSE` and `JSL_FINANCE_LICENSE` you
 ### Via Auto Detection & Browser Login
 
 All [default search locations ]() are searched, if any credentials are found they will be used.
-If no credentials are auto-detected, a Browser Window will pop up, asking to authorize access to https://my.johnsnowlabs.com/
-In Google Colab, a clickable button will appear, which will make a window pop up where you can authorize access to https://my.johnsnowlabs.com/.
+If no credentials are auto-detected, a Browser Window will pop up, asking to authorize access to [https://my.johnsnowlabs.com/](https://my.johnsnowlabs.com/)
+In Google Colab, a clickable button will appear, which will make a window pop up where you can authorize access to [https://my.johnsnowlabs.com/](https://my.johnsnowlabs.com/).
 
 ```python
 nlp.install()
@@ -390,7 +400,7 @@ Your can get it from:
 
 ``` python
 # Create a new Cluster with Spark NLP and all licensed libraries ready to go:
-nlp.install(databricks_host='https://your_host.cloud.databricks.com', databricks_token = 'dbapi_token123',)
+nlp.install_to_databricks(databricks_host='https://your_host.cloud.databricks.com', databricks_token = 'dbapi_token123',)
 ```
 </div><div class="h3-box" markdown="1">
 
@@ -405,7 +415,7 @@ you must install the `johnsnowlabs_for_databricks` pypi package instead of `john
 
 ## Storage of License Data and License Search behaviour
 
-The John Snow Labs library caches license data in `~/.johnsnowlabs/licenses` whenever a new one is provided .
+The John Snow Labs library caches license data in `~/.johnsnowlabs/licenses` whenever a new one is provided.
 After having provided license data once, you don't need to specify it again since the cached licensed will be used.
 Use the `local_license_number` and `remote_license_number` parameters to switch between multiple licenses.  
 **Note:** Locally cached licenses are numbered in the order they have been provided, starting at 0.            
@@ -417,7 +427,7 @@ Use the following functions to see all your avaiable licenses.
 
 ## List all available licenses
 
-This shows you all licenses for your account in https://my.johnsnowlabs.com/.         
+This shows you all licenses for your account in [https://my.johnsnowlabs.com/](https://my.johnsnowlabs.com/).         
 Use this to decide which license number to install when installing via browser or access token.
 
 ```python
@@ -476,8 +486,6 @@ to gian access to the latest enterprise libraries.
 {:.h2-select}
 ## Next Steps & Frequently Asked Questions
 
-</div><div class="h3-box" markdown="1">
-
 ## How to setup Java 8
 
 - [Setup Java 8 on Windows](https://access.redhat.com/documentation/en-us/openjdk/8/html/openjdk_8_for_windows_getting_started_guide/getting_started_with_openjdk_for_windows)
@@ -501,7 +509,6 @@ or [Licensed Annotators Overview](https://nlp.johnsnowlabs.com/docs/en/licensed_
 Detailed information about Johnsnowlabs Libraries APIs, concepts, components and more can be found on the following pages :
 
 {:.list4}
-
 - [Starting a Spark Session](start-a-sparksession)
 - [John Snow Labs Library usage and import Overview](import-structure)
 - [The NLU load function](load_api)

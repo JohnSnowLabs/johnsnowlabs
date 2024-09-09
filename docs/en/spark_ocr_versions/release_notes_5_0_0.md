@@ -8,7 +8,7 @@ key: docs-ocr-release-notes
 modify_date: "2023-08-21"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -19,6 +19,8 @@ Release date: 21-08-2023
 
 We are glad to announce that Visual NLP 😎 5.0.0 has been released! 
 This release comes with new models, bug fixes and more!
+
+</div><div class="h3-box" markdown="1">
 
 #### New Models
 * New dit_base_finetuned_rvlcdip_opt: Dit based Visual Document Classification model. This is an optimized version of previous dit_base_finetuned_rvlcdip model. It has a reduced model size of 80MB(vs. 304 of original model), which reduces the memory footprint, also memory management within the model itself has been improved. It offers a speedup of 1.54x compared to the original implementation. The impact in accuracy is minimal, it achieves an accuracy of 91.55% over RVL-CDIP dataset compared to 91.83% of the original model.
@@ -56,15 +58,20 @@ doc_class = VisualDocumentClassifierLilt() \
 ```
 Use [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentClassifierLiLT.ipynb) as a reference.
 
+</div><div class="h3-box" markdown="1">
 
 #### New Annotators
 * New DicomToPdf and DicomUpdatePdf annotators: the new annotators now make it possible to extract and update encapsulated PDF files within DICOM documents. This opens up opportunities to building de-identification pipelines for the purpose of anonymizing PDF documents that have been encapsulated(embedded) into Dicom files.
+
+</div><div class="h3-box" markdown="1">
 
 #### Bug Fixes
 * ImageDrawAnnotations serialization issues were solved.
 * FormRelationExtraction is now compatible with the new Lilt Visual Ner models.
 * Pipeline serialization issues in Databricks affecting annotators like ImageHandwrittenDetector have been solved.
 * Pillow related errors in Colab setup have been fixed. 
+
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 * [VisualDocumentClassifierTraining](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/VisualDocumentClassifierTraining), notebooks for Visual Documents Classifier fine tuning have been updated to use the new Lilt based models.

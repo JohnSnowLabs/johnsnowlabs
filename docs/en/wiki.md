@@ -15,8 +15,7 @@ sidebar:
 
 This page is created for sharing some tips and tricks for the Spark NLP library. You can find valuable information under the related highlights.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Miscellaneous
 
@@ -28,15 +27,13 @@ You can only load 1 model per annotator, once that happens that model with all i
 
 **So the lesson here is, if you want to use the same model in different places, you must make sure they all have the same parameters.** This behavior is the same for LP and `.transform`.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### LightPipeline
 
 + `LightPipeline` does not check the `storageRef` of resolver models. This feature will make LP so complicated and also slower. So, the resolver models can work with an embeddings model that is not trained with in `LightPipeline`, but they return irrelevant results.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### ChunkMergeApproach
 
@@ -74,8 +71,7 @@ You can only load 1 model per annotator, once that happens that model with all i
 
  + **Confidence scores don't have any effect on prioritization.**
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Sentence Entity Resolver
 
@@ -88,5 +84,11 @@ If you get two distances 0.1 and 0.1, Softmax would return 0.5 and 0.5 for each.
 You can have a low distance (chunks are very similar semantically) but low confidence if there are many other chunks also very similar. And sometimes you can have high confidence but high distance, meaning there is only one chunk "close" to your target but not so close.
 
 In general, *we can see less distance and less confidence but not perfect linear relationships*. We can say that **using the distance is a better parameter to judge the "goodness" of the resolution than the confidence**. So, We recommend that you consider the cosine distance.
+
+</div><div class="h3-box" markdown="1">
+
+### Definition for Assertion Labels
+
+[2010 - i2b2 VA Challenge Evaluation Assertion Annotation Guidelines](https://www.i2b2.org/NLP/Relations/assets/Assertion%20Annotation%20Guideline.pdf)
 
 </div>

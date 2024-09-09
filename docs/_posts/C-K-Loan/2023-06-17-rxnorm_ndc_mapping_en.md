@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/bf4cd2a7-55b5-40fa-b010-c89f54b29ab8/John-Snow-Labs_RxNorm-to-NDC-Code-Converter
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ This pretrained pipeline maps RXNORM codes to NDC codes without using any text d
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/rxnorm_ndc_mapping_en_4.4.4_3.0_1686990370017.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/rxnorm_ndc_mapping_en_4.4.4_3.0_1686990370017.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
+
 ## How to use
 
 <div class="tabs-box" markdown="1">
@@ -39,15 +52,13 @@ This pretrained pipeline maps RXNORM codes to NDC codes without using any text d
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("rxnorm_ndc_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(1652674 259934)
+result = pipeline.fullAnnotate(["1652674", "259934"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("rxnorm_ndc_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(1652674 259934)
+val result = pipeline.fullAnnotate(["1652674", "259934"])
 ```
 
 
@@ -63,10 +74,10 @@ nlu.load("en.map_entity.rxnorm_to_ndc.pipe").predict("""Put your text here.""")
 ## Results
 
 ```bash
-{'document': ['1652674 259934'],
-'package_ndc': ['62135-0625-60', '13349-0010-39'],
-'product_ndc': ['46708-0499', '13349-0010'],
-'rxnorm_code': ['1652674', '259934']}
+|   | rxnorm_code |   package_ndc | product_ndc |
+|--:|------------:|--------------:|------------:|
+| 0 |     1652674 | 62135-0625-60 |  46708-0499 |
+| 1 |      259934 | 13349-0010-39 |  13349-0010 |
 ```
 
 {:.model-param}

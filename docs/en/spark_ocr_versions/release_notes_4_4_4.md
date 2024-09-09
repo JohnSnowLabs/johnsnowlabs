@@ -8,7 +8,7 @@ key: docs-ocr-release-notes
 modify_date: "2023-08-02"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -40,6 +40,8 @@ Default value is true(ligatures will be expanded).
 Among other things, this helps the process of matching entities to coordinates in PositionFinder.
 
 * PositionFinder has an improved matching strategy to map entities to coordinates that prevents entities from remaining unmapped in many situations. Also, error reporting has been improved, making it clear in the logs when for some reason an entity couldn't be located in the document, and coordinates were not returned.
+
+</div><div class="h3-box" markdown="1">
 
 #### Bug Fixes & Improvements
 * Serialization problems in ImageDrawRegions and ImageDrawAnnotations were fixed.

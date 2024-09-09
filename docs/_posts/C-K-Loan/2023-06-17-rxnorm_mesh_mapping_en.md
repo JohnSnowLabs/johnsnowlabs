@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/b1a7c3ca-3d76-4434-a979-7ed9ad720530/John-Snow-Labs_RxNorm-to-MeSH-Code-Mapper
+
 ---
 
 ## Description
@@ -30,27 +36,36 @@ This pretrained pipeline maps RxNorm codes to MeSH codes without using any text 
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/rxnorm_mesh_mapping_en_4.4.4_3.0_1686979224907.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/rxnorm_mesh_mapping_en_4.4.4_3.0_1686979224907.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
+
 ## How to use
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-from sparknlp.pretrained import PretrainedPipeline 
+from sparknlp.pretrained import PretrainedPipeline
+
 pipeline = PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
-pipeline.annotate("1191 6809 47613")
+result = pipeline.fullAnnotate(["1191", "6809", "47613"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
 val pipeline = new PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
-val result = pipeline.annotate("1191 6809 47613")
+val result = pipeline.annotate(["1191", "6809", "47613"])
 ```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.rxnorm.mesh").predict("""1191 6809 47613""")
+nlu.load("en.resolve.rxnorm.mesh").predict("""Put your text here.""")
 ```
 
 </div>
@@ -59,15 +74,18 @@ nlu.load("en.resolve.rxnorm.mesh").predict("""1191 6809 47613""")
 ## Results
 
 ```bash
-{'rxnorm': ['1191', '6809', '47613'],
-'mesh': ['D001241', 'D008687', 'D019355']}
+|   | rxnorm | mesh_code |
+|--:|-------:|----------:|
+| 0 |   1191 |   D001241 |
+| 1 |   6809 |   D008687 |
+| 2 |  47613 |   D019355 |
 
 
 Note: 
 
 | RxNorm     | Details             | 
 | ---------- | -------------------:|
-| 1191       |  aspirin            |
+| 1191       | aspirin             |
 | 6809       | metformin           |
 | 47613      | calcium citrate     |
 

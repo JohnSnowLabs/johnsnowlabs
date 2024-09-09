@@ -21,11 +21,14 @@ Release date: 14-09-2021
 
 Support Microsoft PPT and PPTX documents.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 
 * Added [PptToPdf](/docs/en/ocr_pipeline_components#ppttopdf) transformer for converting PPT and PPTX slides to the PDF document.
 * Added [PptToTextTable](/docs/en/ocr_pipeline_components#ppttotexttable) transformer for extracting tables from PPT and PPTX slides.
 
+</div><div class="h3-box" markdown="1">
 
 #### New and updated notebooks
 

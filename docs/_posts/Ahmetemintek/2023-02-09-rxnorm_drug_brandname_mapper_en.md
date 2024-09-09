@@ -21,6 +21,8 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps RxNorm and RxNorm Extension codes with their corresponding drug brand names. It returns 2 types of brand names for the corresponding RxNorm or RxNorm Extension code.
 
+
+
 ## Predicted Entities
 
 `rxnorm_brandname`, `rxnorm_extension_brandname`

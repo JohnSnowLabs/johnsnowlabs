@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -18,33 +17,34 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="static/css/custom.css?v=e1fb877f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
-    <script src="static/jquery.js"></script>
-    <script src="static/underscore.js"></script>
-    <script src="static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="static/doctools.js"></script>
-    <script src="static/sphinx_highlight.js"></script>
-    <script src="static/toggleprompt.js"></script>
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js?v=b3ba4146"></script>
+    <script src="static/doctools.js?v=888ff710"></script>
+    <script src="static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="static/toggleprompt.js?v=670350bf"></script>
+    <script src="static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="static/copybutton.js?v=6dbb43f8"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'py-modindex';</script>
-    <link rel="shortcut icon" href="static/fav.ico"/>
+    <link rel="icon" href="static/fav.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
 
@@ -60,6 +60,15 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -84,8 +93,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -100,9 +109,11 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -110,25 +121,26 @@
   
   
   
+  
     
     
       
     
     
-    <img src="static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
     
   </div>
   
-  
   <div class="col-lg-9 navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
-        <div class="navbar-item"><nav class="navbar-nav">
+        <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -150,6 +162,13 @@
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
       
@@ -160,23 +179,27 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -187,13 +210,16 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
@@ -214,7 +240,8 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item"><nav class="navbar-nav">
+          <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -236,6 +263,13 @@ document.write(`
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
         
@@ -246,12 +280,13 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -303,201 +338,6 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/index.html#module-sparknlp_jsl._tf_graph_builders"><code class="xref">sparknlp_jsl._tf_graph_builders</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/assertion_dl/index.html#module-sparknlp_jsl._tf_graph_builders.assertion_dl"><code class="xref">sparknlp_jsl._tf_graph_builders.assertion_dl</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/assertion_dl/assertion_model/index.html#module-sparknlp_jsl._tf_graph_builders.assertion_dl.assertion_model"><code class="xref">sparknlp_jsl._tf_graph_builders.assertion_dl.assertion_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/generic_classifier/index.html#module-sparknlp_jsl._tf_graph_builders.generic_classifier"><code class="xref">sparknlp_jsl._tf_graph_builders.generic_classifier</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/generic_classifier/basetfmodel/index.html#module-sparknlp_jsl._tf_graph_builders.generic_classifier.basetfmodel"><code class="xref">sparknlp_jsl._tf_graph_builders.generic_classifier.basetfmodel</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/generic_classifier/build_model/index.html#module-sparknlp_jsl._tf_graph_builders.generic_classifier.build_model"><code class="xref">sparknlp_jsl._tf_graph_builders.generic_classifier.build_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/generic_classifier/generic_classifier_model/index.html#module-sparknlp_jsl._tf_graph_builders.generic_classifier.generic_classifier_model"><code class="xref">sparknlp_jsl._tf_graph_builders.generic_classifier.generic_classifier_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/generic_classifier/progresstracker/index.html#module-sparknlp_jsl._tf_graph_builders.generic_classifier.progresstracker"><code class="xref">sparknlp_jsl._tf_graph_builders.generic_classifier.progresstracker</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/generic_classifier/settings/index.html#module-sparknlp_jsl._tf_graph_builders.generic_classifier.settings"><code class="xref">sparknlp_jsl._tf_graph_builders.generic_classifier.settings</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.html#module-sparknlp_jsl._tf_graph_builders.graph_builders"><code class="xref">sparknlp_jsl._tf_graph_builders.graph_builders</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/ner_dl/index.html#module-sparknlp_jsl._tf_graph_builders.ner_dl"><code class="xref">sparknlp_jsl._tf_graph_builders.ner_dl</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/ner_dl/create_graph/index.html#module-sparknlp_jsl._tf_graph_builders.ner_dl.create_graph"><code class="xref">sparknlp_jsl._tf_graph_builders.ner_dl.create_graph</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/ner_dl/dataset_encoder/index.html#module-sparknlp_jsl._tf_graph_builders.ner_dl.dataset_encoder"><code class="xref">sparknlp_jsl._tf_graph_builders.ner_dl.dataset_encoder</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/ner_dl/ner_model/index.html#module-sparknlp_jsl._tf_graph_builders.ner_dl.ner_model"><code class="xref">sparknlp_jsl._tf_graph_builders.ner_dl.ner_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/ner_dl/ner_model_saver/index.html#module-sparknlp_jsl._tf_graph_builders.ner_dl.ner_model_saver"><code class="xref">sparknlp_jsl._tf_graph_builders.ner_dl.ner_model_saver</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/ner_dl/sentence_grouper/index.html#module-sparknlp_jsl._tf_graph_builders.ner_dl.sentence_grouper"><code class="xref">sparknlp_jsl._tf_graph_builders.ner_dl.sentence_grouper</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/core_rnn_cell/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib.core_rnn_cell"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib.core_rnn_cell</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/fused_rnn_cell/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib.fused_rnn_cell"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib.fused_rnn_cell</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/gru_ops/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib.gru_ops"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib.gru_ops</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/lstm_ops/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib.lstm_ops"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib.lstm_ops</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/rnn/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib.rnn"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib.rnn</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders/tf2contrib/rnn_cell/index.html#module-sparknlp_jsl._tf_graph_builders.tf2contrib.rnn_cell"><code class="xref">sparknlp_jsl._tf_graph_builders.tf2contrib.rnn_cell</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/index.html#module-sparknlp_jsl._tf_graph_builders_1x"><code class="xref">sparknlp_jsl._tf_graph_builders_1x</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/assertion_dl/index.html#module-sparknlp_jsl._tf_graph_builders_1x.assertion_dl"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.assertion_dl</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/assertion_dl/assertion_model/index.html#module-sparknlp_jsl._tf_graph_builders_1x.assertion_dl.assertion_model"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.assertion_dl.assertion_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/generic_classifier/index.html#module-sparknlp_jsl._tf_graph_builders_1x.generic_classifier"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.generic_classifier</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/generic_classifier/basetfmodel/index.html#module-sparknlp_jsl._tf_graph_builders_1x.generic_classifier.basetfmodel"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.generic_classifier.basetfmodel</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/generic_classifier/build_model/index.html#module-sparknlp_jsl._tf_graph_builders_1x.generic_classifier.build_model"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.generic_classifier.build_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/generic_classifier/generic_classifier_model/index.html#module-sparknlp_jsl._tf_graph_builders_1x.generic_classifier.generic_classifier_model"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.generic_classifier.generic_classifier_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/generic_classifier/progresstracker/index.html#module-sparknlp_jsl._tf_graph_builders_1x.generic_classifier.progresstracker"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.generic_classifier.progresstracker</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/generic_classifier/settings/index.html#module-sparknlp_jsl._tf_graph_builders_1x.generic_classifier.settings"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.generic_classifier.settings</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/graph_builders/index.html#module-sparknlp_jsl._tf_graph_builders_1x.graph_builders"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.graph_builders</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/ner_dl/index.html#module-sparknlp_jsl._tf_graph_builders_1x.ner_dl"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.ner_dl</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/ner_dl/create_graph/index.html#module-sparknlp_jsl._tf_graph_builders_1x.ner_dl.create_graph"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.ner_dl.create_graph</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/ner_dl/dataset_encoder/index.html#module-sparknlp_jsl._tf_graph_builders_1x.ner_dl.dataset_encoder"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.ner_dl.dataset_encoder</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/ner_dl/ner_model/index.html#module-sparknlp_jsl._tf_graph_builders_1x.ner_dl.ner_model"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.ner_dl.ner_model</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/ner_dl/ner_model_saver/index.html#module-sparknlp_jsl._tf_graph_builders_1x.ner_dl.ner_model_saver"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.ner_dl.ner_model_saver</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/_tf_graph_builders_1x/ner_dl/sentence_grouper/index.html#module-sparknlp_jsl._tf_graph_builders_1x.ner_dl.sentence_grouper"><code class="xref">sparknlp_jsl._tf_graph_builders_1x.ner_dl.sentence_grouper</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/alab/index.html#module-sparknlp_jsl.alab"><code class="xref">sparknlp_jsl.alab</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -528,7 +368,22 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/assertion/assertion_merger/index.html#module-sparknlp_jsl.annotator.assertion.assertion_merger"><code class="xref">sparknlp_jsl.annotator.assertion.assertion_merger</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/assertion/assertionDL/index.html#module-sparknlp_jsl.annotator.assertion.assertionDL"><code class="xref">sparknlp_jsl.annotator.assertion.assertionDL</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/assertion/contextual_assertion/index.html#module-sparknlp_jsl.annotator.assertion.contextual_assertion"><code class="xref">sparknlp_jsl.annotator.assertion.contextual_assertion</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/assertion/fewshot_assertion_sentence_converter/index.html#module-sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter"><code class="xref">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -583,6 +438,11 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/chunker/mapper2_chunk/index.html#module-sparknlp_jsl.annotator.chunker.mapper2_chunk"><code class="xref">sparknlp_jsl.annotator.chunker.mapper2_chunk</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/classification/index.html#module-sparknlp_jsl.annotator.classification"><code class="xref">sparknlp_jsl.annotator.classification</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -598,6 +458,11 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/classification/few_shot_assertion_classifier/index.html#module-sparknlp_jsl.annotator.classification.few_shot_assertion_classifier"><code class="xref">sparknlp_jsl.annotator.classification.few_shot_assertion_classifier</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/classification/few_shot_classifier/index.html#module-sparknlp_jsl.annotator.classification.few_shot_classifier"><code class="xref">sparknlp_jsl.annotator.classification.few_shot_classifier</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -609,6 +474,11 @@ document.write(`
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#module-sparknlp_jsl.annotator.classification.generic_svm_classifier"><code class="xref">sparknlp_jsl.annotator.classification.generic_svm_classifier</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/classification/large_few_shot_classifier/index.html#module-sparknlp_jsl.annotator.classification.large_few_shot_classifier"><code class="xref">sparknlp_jsl.annotator.classification.large_few_shot_classifier</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -643,12 +513,22 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/deid/deidentication_params/index.html#module-sparknlp_jsl.annotator.deid.deidentication_params"><code class="xref">sparknlp_jsl.annotator.deid.deidentication_params</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#module-sparknlp_jsl.annotator.deid.deIdentification"><code class="xref">sparknlp_jsl.annotator.deid.deIdentification</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/deid/doccument_hashcoder/index.html#module-sparknlp_jsl.annotator.deid.doccument_hashcoder"><code class="xref">sparknlp_jsl.annotator.deid.doccument_hashcoder</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/deid/light_deIdentification/index.html#module-sparknlp_jsl.annotator.deid.light_deIdentification"><code class="xref">sparknlp_jsl.annotator.deid.light_deIdentification</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -683,6 +563,16 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/document_filterer_by_classifier/index.html#module-sparknlp_jsl.annotator.document_filterer_by_classifier"><code class="xref">sparknlp_jsl.annotator.document_filterer_by_classifier</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/document_filterer_by_ner/index.html#module-sparknlp_jsl.annotator.document_filterer_by_ner"><code class="xref">sparknlp_jsl.annotator.document_filterer_by_ner</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/embeddings/index.html#module-sparknlp_jsl.annotator.embeddings"><code class="xref">sparknlp_jsl.annotator.embeddings</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -708,12 +598,27 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/er/index.html#module-sparknlp_jsl.annotator.er"><code class="xref">sparknlp_jsl.annotator.er</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/er/entity_ruler_internal/index.html#module-sparknlp_jsl.annotator.er.entity_ruler_internal"><code class="xref">sparknlp_jsl.annotator.er.entity_ruler_internal</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/feature_assembler/index.html#module-sparknlp_jsl.annotator.feature_assembler"><code class="xref">sparknlp_jsl.annotator.feature_assembler</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#module-sparknlp_jsl.annotator.filtering_params"><code class="xref">sparknlp_jsl.annotator.filtering_params</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/flattener/index.html#module-sparknlp_jsl.annotator.flattener"><code class="xref">sparknlp_jsl.annotator.flattener</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -728,12 +633,32 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/handle_exception_params/index.html#module-sparknlp_jsl.annotator.handle_exception_params"><code class="xref">sparknlp_jsl.annotator.handle_exception_params</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/matcher/index.html#module-sparknlp_jsl.annotator.matcher"><code class="xref">sparknlp_jsl.annotator.matcher</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/matcher/text_matcher_internal/index.html#module-sparknlp_jsl.annotator.matcher.text_matcher_internal"><code class="xref">sparknlp_jsl.annotator.matcher.text_matcher_internal</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/merge/index.html#module-sparknlp_jsl.annotator.merge"><code class="xref">sparknlp_jsl.annotator.merge</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#module-sparknlp_jsl.annotator.merge.chunk_merge"><code class="xref">sparknlp_jsl.annotator.merge.chunk_merge</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/multi_chunk2_doc/index.html#module-sparknlp_jsl.annotator.multi_chunk2_doc"><code class="xref">sparknlp_jsl.annotator.multi_chunk2_doc</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -808,6 +733,21 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/rag/index.html#module-sparknlp_jsl.annotator.rag"><code class="xref">sparknlp_jsl.annotator.rag</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/rag/context_split_assembler/index.html#module-sparknlp_jsl.annotator.rag.context_split_assembler"><code class="xref">sparknlp_jsl.annotator.rag.context_split_assembler</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/rag/vectordb_post_processor/index.html#module-sparknlp_jsl.annotator.rag.vectordb_post_processor"><code class="xref">sparknlp_jsl.annotator.rag.vectordb_post_processor</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/re/index.html#module-sparknlp_jsl.annotator.re"><code class="xref">sparknlp_jsl.annotator.re</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -829,6 +769,16 @@ document.write(`
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/re/zero_shot_relation_extraction/index.html#module-sparknlp_jsl.annotator.re.zero_shot_relation_extraction"><code class="xref">sparknlp_jsl.annotator.re.zero_shot_relation_extraction</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/regex/index.html#module-sparknlp_jsl.annotator.regex"><code class="xref">sparknlp_jsl.annotator.regex</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/regex/regex_matcher/index.html#module-sparknlp_jsl.annotator.regex.regex_matcher"><code class="xref">sparknlp_jsl.annotator.regex.regex_matcher</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -888,7 +838,22 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/splitter/index.html#module-sparknlp_jsl.annotator.splitter"><code class="xref">sparknlp_jsl.annotator.splitter</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/splitter/internal_document_splitter/index.html#module-sparknlp_jsl.annotator.splitter.internal_document_splitter"><code class="xref">sparknlp_jsl.annotator.splitter.internal_document_splitter</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#module-sparknlp_jsl.annotator.tf_graph_builder"><code class="xref">sparknlp_jsl.annotator.tf_graph_builder</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/annotator/white_black_list_params/index.html#module-sparknlp_jsl.annotator.white_black_list_params"><code class="xref">sparknlp_jsl.annotator.white_black_list_params</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -1268,62 +1233,27 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/llm/index.html#module-sparknlp_jsl.llm"><code class="xref">sparknlp_jsl.llm</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/llm/llm_loader/index.html#module-sparknlp_jsl.llm.llm_loader"><code class="xref">sparknlp_jsl.llm.llm_loader</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/modelTracer/index.html#module-sparknlp_jsl.modelTracer"><code class="xref">sparknlp_jsl.modelTracer</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/index.html#module-sparknlp_jsl.nlp_test"><code class="xref">sparknlp_jsl.nlp_test</code></a></td><td>
+       <a href="reference/autosummary/sparknlp_jsl/pipeline_output_parser/index.html#module-sparknlp_jsl.pipeline_output_parser"><code class="xref">sparknlp_jsl.pipeline_output_parser</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/bias/index.html#module-sparknlp_jsl.nlp_test.bias"><code class="xref">sparknlp_jsl.nlp_test.bias</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/bias/bias_testing/index.html#module-sparknlp_jsl.nlp_test.bias.bias_testing"><code class="xref">sparknlp_jsl.nlp_test.bias.bias_testing</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/noisy_labels/index.html#module-sparknlp_jsl.nlp_test.noisy_labels"><code class="xref">sparknlp_jsl.nlp_test.noisy_labels</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/noisy_labels/noisy_label_fixing/index.html#module-sparknlp_jsl.nlp_test.noisy_labels.noisy_label_fixing"><code class="xref">sparknlp_jsl.nlp_test.noisy_labels.noisy_label_fixing</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/noisy_labels/noisy_label_testing/index.html#module-sparknlp_jsl.nlp_test.noisy_labels.noisy_label_testing"><code class="xref">sparknlp_jsl.nlp_test.noisy_labels.noisy_label_testing</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/noisy_labels/utils/index.html#module-sparknlp_jsl.nlp_test.noisy_labels.utils"><code class="xref">sparknlp_jsl.nlp_test.noisy_labels.utils</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/robustness/index.html#module-sparknlp_jsl.nlp_test.robustness"><code class="xref">sparknlp_jsl.nlp_test.robustness</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/robustness/robustness_fixing/index.html#module-sparknlp_jsl.nlp_test.robustness.robustness_fixing"><code class="xref">sparknlp_jsl.nlp_test.robustness.robustness_fixing</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/robustness/robustness_testing/index.html#module-sparknlp_jsl.nlp_test.robustness.robustness_testing"><code class="xref">sparknlp_jsl.nlp_test.robustness.robustness_testing</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference/autosummary/sparknlp_jsl/nlp_test/robustness/utils/index.html#module-sparknlp_jsl.nlp_test.robustness.utils"><code class="xref">sparknlp_jsl.nlp_test.robustness.utils</code></a></td><td>
+       <a href="reference/autosummary/sparknlp_jsl/pipeline_tracer/index.html#module-sparknlp_jsl.pipeline_tracer"><code class="xref">sparknlp_jsl.pipeline_tracer</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -1349,6 +1279,51 @@ document.write(`
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/training_log_parser/index.html#module-sparknlp_jsl.training_log_parser"><code class="xref">sparknlp_jsl.training_log_parser</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/index.html#module-sparknlp_jsl.transpiler"><code class="xref">sparknlp_jsl.transpiler</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/builder/index.html#module-sparknlp_jsl.transpiler.builder"><code class="xref">sparknlp_jsl.transpiler.builder</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/class_names/index.html#module-sparknlp_jsl.transpiler.class_names"><code class="xref">sparknlp_jsl.transpiler.class_names</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/converter/index.html#module-sparknlp_jsl.transpiler.converter"><code class="xref">sparknlp_jsl.transpiler.converter</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/externalSources/index.html#module-sparknlp_jsl.transpiler.externalSources"><code class="xref">sparknlp_jsl.transpiler.externalSources</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/nlu_2_python/index.html#module-sparknlp_jsl.transpiler.nlu_2_python"><code class="xref">sparknlp_jsl.transpiler.nlu_2_python</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/python_2_scala/index.html#module-sparknlp_jsl.transpiler.python_2_scala"><code class="xref">sparknlp_jsl.transpiler.python_2_scala</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/source_loader/index.html#module-sparknlp_jsl.transpiler.source_loader"><code class="xref">sparknlp_jsl.transpiler.source_loader</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/transpiler/uploader/index.html#module-sparknlp_jsl.transpiler.uploader"><code class="xref">sparknlp_jsl.transpiler.uploader</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -1423,7 +1398,17 @@ document.write(`
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/utils/run_transpiled_code/index.html#module-sparknlp_jsl.utils.run_transpiled_code"><code class="xref">sparknlp_jsl.utils.run_transpiled_code</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="reference/autosummary/sparknlp_jsl/utils/training_log_parser_utils/index.html#module-sparknlp_jsl.utils.training_log_parser_utils"><code class="xref">sparknlp_jsl.utils.training_log_parser_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="reference/autosummary/sparknlp_jsl/utils/visualner_annotations_parser/index.html#module-sparknlp_jsl.utils.visualner_annotations_parser"><code class="xref">sparknlp_jsl.utils.visualner_annotations_parser</code></a></td><td>
        <em></em></td></tr>
    </table>
 
@@ -1432,16 +1417,12 @@ document.write(`
               
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1459,8 +1440,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1468,6 +1449,7 @@ document.write(`
     <div class="footer-items__start">
       
         <div class="footer-item">
+
   <p class="copyright">
     
       © Copyright 2022, John Snow Labs.
@@ -1477,8 +1459,9 @@ document.write(`
 </div>
       
         <div class="footer-item">
+
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     <br/>
   </p>
 </div>
@@ -1486,10 +1469,12 @@ document.write(`
     </div>
   
   
+  
     <div class="footer-items__end">
       
-        <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
 </p></div>
       
     </div>

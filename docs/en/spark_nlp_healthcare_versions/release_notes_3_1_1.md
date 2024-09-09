@@ -16,6 +16,8 @@ sidebar:
 ## 3.1.1
 We are glad to announce that Spark NLP for Healthcare 3.1.1 has been released!
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 + MedicalNerModel new parameter `includeAllConfidenceScores`.
 + MedicalNerModel new parameter `inferenceBatchSize`.
@@ -23,11 +25,17 @@ We are glad to announce that Spark NLP for Healthcare 3.1.1 has been released!
 + Updated Resolver Models
 + Getting Started with Spark NLP for Healthcare Notebook in Databricks
 
+</div><div class="h3-box" markdown="1">
+
 #### MedicalNer new parameter `includeAllConfidenceScores`
 You can now customize whether you will require confidence score for every token(both entities and non-entities) at the output of the MedicalNerModel, or just for the tokens recognized as entities.
 
+</div><div class="h3-box" markdown="1">
+
 #### MedicalNerModel new parameter `inferenceBatchSize`
 You can now control the batch size used during inference as a separate parameter from the one you used during training of the model. This can be useful in the situation in which the hardware on which you run inference has different capacity. For example, when you have lower available memory during inference, you can reduce the batch size.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Resolver Models
 We trained three new sentence entity resolver models.
@@ -102,9 +110,12 @@ results = model.transform(spark.createDataFrame([["The patient is a very pleasan
 +--------------------+-----+---+-----------+-------------+-------------------------+-------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Updated Resolver Models
 We updated `sbiobertresolve_snomed_findings` and `sbiobertresolve_cpt_procedures_augmented` resolver models to reflect the latest changes in the official terminologies.
+
+</div><div class="h3-box" markdown="1">
 
 #### Getting Started with Spark NLP for Healthcare Notebook in Databricks
 We prepared a new notebook for those who want to get started with Spark NLP for Healthcare in Databricks : [Getting Started with Spark NLP for Healthcare Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare_case_studies/Get_Started_Spark_NLP_for_Healthcare.ipynb)

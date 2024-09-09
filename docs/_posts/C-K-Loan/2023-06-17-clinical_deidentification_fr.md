@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-yiju64qx2hokm
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/eb2042f5-8a50-459c-8884-e11f9573c618/John-Snow-Labs_Clinical-Deidentification-for-French
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pipeline can be used to deidentify PHI information from medical texts in Fr
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_fr_4.4.4_3.0_1686979610464.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_fr_4.4.4_3.0_1686979610464.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

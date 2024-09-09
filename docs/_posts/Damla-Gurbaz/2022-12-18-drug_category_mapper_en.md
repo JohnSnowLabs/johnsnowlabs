@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps drugs to their categories and other brands and names. It has two categories called main category and subcategory.
 
+
 ## Predicted Entities
 
 `main_category`, `sub_category`, `other_name`

@@ -57,6 +57,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Models.ipynb
+        - title: Alcohol and Smoking  
+          id: alcohol_and_smoking         
+          image: 
+              src: /assets/images/Alcohol_and_Smoking.svg
+          excerpt: This demo is designed to detect and label alcohol and smoking-related entities within text data.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ALCOHOL_SMOKING/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ALCOHOL_SMOKING.ipynb
         - title: Classify Social Support 
           id: classify_social_support         
           image: 
@@ -68,7 +80,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION.ipynb    
+        - title: SDOH Classification
+          id: sdoh_frailty_classification         
+          image: 
+              src: /assets/images/SDOH_Frailty_For_Classification.svg
+          excerpt: This model classifies related to frailty, vulnerability, violence, abuse and mental health status in the clinical documents.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_SEQUENCE_CLASSIFICATION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION.ipynb            
         - title: Classify Alcohol Status    
           id: classify_alcohol_status         
           image: 
@@ -129,16 +153,4 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb
-        - title: Classify Mental Health, Housing Insecurity, and Under Treatment
-          id: classify_mental_health_housing_insecurity_under_treatment         
-          image: 
-              src: /assets/images/Classify_Mental_Health,_Housing_Insecurity,_and_Under_Treatment.svg
-          excerpt: This demo demonstrates the application of Spark NLP Healthcare Generic Classification models for detecting mental health issues, housing insecurity, and treatment status as part of social determinants of health in medical texts.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION_GENERIC/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION.ipynb
 ---

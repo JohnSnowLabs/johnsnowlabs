@@ -8,11 +8,10 @@ try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.functions import *
         from sparknlp_jsl.training import *
+        from sparknlp_jsl.utils import *
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.base import FeaturesAssembler
-        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
-            WindowedSentenceModel,
-        )
+        from sparknlp_jsl.finance.token_classification.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.finance import (
@@ -40,7 +39,6 @@ try:
             ChunkMapperApproach,
             SentenceEntityResolverApproach,
             AssertionDLApproach,
-            ZeroShotNerModel,
             FinanceQuestionAnswering as QuestionAnswering,
             FinanceTextGenerator as TextGenerator,
             FinanceSummarizer as Summarizer,
@@ -70,6 +68,7 @@ try:
             ChunkConverter,
             ChunkFilterer,
             NerConverterInternal,
+            NerConverterInternal as NerConverter,
             NerChunker,
             AssertionFilterer,
             AnnotationMerger,
@@ -100,10 +99,37 @@ try:
             Chunk2Token,
             ExtractiveSummarization,
             ChunkFiltererApproach,
+            InternalDocumentSplitter as DocumentSplitter,
             Text2SQL,
+            IOBTagger,
+            DocumentFiltererByClassifier,
+            Flattener,
+            EntityRulerInternalApproach as EntityRulerApproach,
+            EntityRulerInternalModel as EntityRulerModel,
+            TextMatcherInternal as TextMatcher,
+            TextMatcherInternalModel as TextMatcherModel,
+            RegexMatcherInternal as RegexMatcher,
+            RegexMatcherInternalModel as RegexMatcherModel,
+            AssertionMerger,
+            LightDeIdentification,
+            WindowedSentenceModel,
+            MultiChunk2Doc,
+            FewShotAssertionClassifierModel,
+            FewShotAssertionClassifierApproach,
+            FewShotAssertionSentenceConverter,
+            VectorDBPostProcessor,
+            ContextSplitAssembler,
+            ContextualAssertion,
+            LargeFewShotClassifierModel,
+            Mapper2Chunk,
+            DocumentFiltererByNER,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer
+        from sparknlp_jsl.pipeline_tracer import PipelineTracer
+        from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
+        from sparknlp_jsl.updateModels import UpdateModels
+        from sparknlp_jsl.text_to_documents_columns import TextToDocumentsColumns
         from sparknlp_jsl import training_log_parser, Deid
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader

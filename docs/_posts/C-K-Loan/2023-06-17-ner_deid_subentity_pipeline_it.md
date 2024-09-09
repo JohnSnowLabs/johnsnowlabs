@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity](https://nlp
 
 ## Predicted Entities
 
-
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `CITY`, `DATE`, `SEX`, `PATIENT`, `SSN`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -40,7 +40,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
 
-text = '''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''
+text = """Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""
 
 result = pipeline.fullAnnotate(text)
 ```
@@ -60,7 +60,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
 
-text = '''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''
+text = """Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""
 
 result = pipeline.fullAnnotate(text)
 ```

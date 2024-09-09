@@ -37,6 +37,7 @@ This pretrained model maps SNOMED codes to corresponding ICD10-CM codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

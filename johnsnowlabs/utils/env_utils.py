@@ -1,5 +1,6 @@
 import ast
 import importlib
+import inspect
 import os
 import site
 import subprocess
@@ -102,14 +103,10 @@ def is_running_in_emr():
     return False
 
 
-def is_running_in_databricks():
-    """Check if the currently running Python Process is running in Databricks or not
-    If any Environment Variable name contains 'DATABRICKS' this will return True, otherwise False
+def is_running_in_databricks_runtime():
+    """ Check if the currently running Python Process is running in Databricks runtime or not
     """
-    for k in os.environ.keys():
-        if "DATABRICKS" in k:
-            return True
-    return False
+    return "DATABRICKS_RUNTIME_VERSION" in os.environ
 
 
 def env_required_license():
@@ -139,3 +136,13 @@ def set_py4j_logger_to_error_on_databricks():
         logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
     except:
         pass
+
+
+def get_folder_of_func(func):
+    # Get the file path where the function is defined
+    func_file = inspect.getfile(func)
+
+    # Get the directory name from the file path
+    func_dir = os.path.dirname(func_file)
+
+    return func_dir

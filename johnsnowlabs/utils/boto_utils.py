@@ -1,8 +1,3 @@
-from os import environ
-
-import boto3
-
-
 class BotoException(Exception):
     def __init__(self, code, message):
         self.code = code

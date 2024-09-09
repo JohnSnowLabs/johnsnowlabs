@@ -72,7 +72,6 @@ class ImportTestCase(unittest.TestCase):
 
     def test_ocr_session(self):
         # Convert pdf to image
-        p = "/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/licenses/4_1_LATEST_OCR_HC_BCK.json"
         spark = nlp.start(visual=True)
 
         pdf_to_image = visual.PdfToImage()

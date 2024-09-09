@@ -17,6 +17,8 @@ sidebar:
 
 We are glad to announce that Spark NLP for Healthcare 2.7.3 has been released!  
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights:
 
 - Introducing a brand-new **RelationExtractionDL Annotator** – Achieving SOTA results in clinical relation extraction using **BioBert**.
@@ -33,6 +35,7 @@ We are glad to announce that Spark NLP for Healthcare 2.7.3 has been released!
 - Bug fixes & general improvements.
 - Matching the version with Spark NLP open-source v2.7.3.
 
+</div><div class="h3-box" markdown="1">
 
 #### 1. Improvements in De-Identification Module:
 
@@ -49,6 +52,8 @@ Set the flag `setObfuscateRefSource` to `faker`
 		.setObfuscateRefSource("faker")
 
 For more details: Check out this [notebook ](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb)
+
+</div><div class="h3-box" markdown="1">
 
 #### 2. Structured De-Identification Module:
 
@@ -68,6 +73,7 @@ Introduction of a new annotator to handle de-identification of structured data. 
 
 Input Data:
 
+{:.table-model-big}
 Name  | Age
 ------------- | -------------
 Cecilia Chapman|83
@@ -78,6 +84,7 @@ Calista Wise   |76
 
 Deidentified:
 
+{:.table-model-big}
 Name  | Age
 ------------- | -------------
 Menne Erdôs|20
@@ -88,6 +95,8 @@ Vanessa Andersson   |12
 
 
 For more details: Check out this [notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb).
+
+</div><div class="h3-box" markdown="1">
 
 #### 3. Introducing SOTA relation extraction model using BioBert
 
@@ -107,11 +116,13 @@ A brand-new end-to-end trained BERT model, resulting in massive improvements. An
         .setInputCols(["re_ner_chunks", "sentences"])\
         .setOutputCol("relations")
 
+</div><div class="h3-box" markdown="1">
 
 ##### Benchmarks:
 
 **on benchmark datasets**
 
+{:.table-model-big}
 model                           | Spark NLP ML model | Spark NLP DL model | benchmark
 ---------------------------------|-----------|-----------|-----------
 re_temporal_events_clinical     | 68.29     | 71.0      | 80.2 [1](https://arxiv.org/pdf/2012.08790.pdf)
@@ -122,6 +133,7 @@ re_chemprot                     | 76.69     | **94.1**      | 83.64 [5](https://
 
 **on in-house annotations**
 
+{:.table-model-big}
 model                           | Spark NLP ML model | Spark NLP DL model
 ---------------------------------|-----------|-----------
 re_bodypart_problem             | 84.58     | 85.7
@@ -132,7 +144,7 @@ re_bodypart_direction           | 93.5      | 92.5
 
 For more details: Check out the [notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.1.Clinical_Relation_Extraction_BodyParts_Models.ipynb) or [modelshub](https://nlp.johnsnowlabs.com/models?tag=relation_extraction).
 
-
+</div><div class="h3-box" markdown="1">
 
 #### 4. Drug Normalizer:
 
@@ -167,10 +179,13 @@ Standardize units of drugs and handle abbreviations in raw text or drug chunks i
 
 For more details: Check out this [notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/23.Drug_Normalizer.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### 5. Assertion models to support confidence in output:
 
 Just like NER output, assertion models now also provides _confidence scores_ for each prediction.
 
+{:.table-model-big}
 chunks  | entities | assertion | confidence
 -----------|-----------|------------|-------------
 a headache | PROBLEM | present |0.9992
@@ -180,6 +195,7 @@ pain | PROBLEM | absent |0.9238
 
 `.setClasses()` method is deprecated in `AssertionDLApproach`  and users do not need to specify number of classes while training, as it will be inferred from the dataset.
 
+</div><div class="h3-box" markdown="1">
 
 #### 6. New Relation Extraction Models:
 
@@ -192,6 +208,7 @@ We are also releasing new relation extraction models to link the clinical entiti
 
 **Text:** _“MRI demonstrated infarction in the upper brain stem , left cerebellum and right basil ganglia”_
 
+{:.table-model-big}
 relations | entity1                     | chunk1     | entity2                     | chunk2        | confidence
 -----------|-----------------------------|------------|-----------------------------|---------------|------------
 1         | Direction                   | upper      | bodyPart | brain stem    | 0.999
@@ -211,6 +228,7 @@ relations | entity1                     | chunk1     | entity2                  
 
 **Text:** _“No neurologic deficits other than some numbness in his left hand.”_
 
+{:.table-model-big}
 relation | entity1   | chunk1              | entity2                      | chunk2   | confidence  
 --|------------------|--------------------|-----------------------------|---------|-----------  
 0 | Symptom   | neurologic deficits | bodyPart | hand     |          1
@@ -223,6 +241,7 @@ relation | entity1   | chunk1              | entity2                      | chun
 
 **Text:** _“TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.”_
 
+{:.table-model-big}
 relation | entity1                      | chunk1   | entity2   | chunk2              | confidence  
 ---------|-----------------------------|---------|----------|--------------------|-----------
 1 | bodyPart | chest    | Test      | portable ultrasound |    0.999
@@ -233,6 +252,7 @@ relation | entity1                      | chunk1   | entity2   | chunk2         
 
 **Text:** _“This 73 y/o patient had CT on 1/12/95, with progressive memory and cognitive decline since 8/11/94.”_
 
+{:.table-model-big}
 relations | entity1 | chunk1                                   | entity2 | chunk2  | confidence
 -----------|---------|------------------------------------------|---------|---------|------------|
 1         | Test    | CT                                       | Date    | 1/12/95 | 1.0
@@ -255,6 +275,8 @@ For more details: Check out the [notebook](https://github.com/JohnSnowLabs/spark
 
 **New matching scheme for entity resolvers - improved accuracy:** Adding the option to use `cosine similarity` to resolve entities and find closest matches, resulting in better, more semantically correct results.
 
+</div><div class="h3-box" markdown="1">
+
 #### 7. New Resolver Models using `JSL SBERT`:
 
 + `sbiobertresolve_icd10cm_augmented`
@@ -275,6 +297,7 @@ For more details: Check out the [notebook](https://github.com/JohnSnowLabs/spark
 `sbiobertresolve_icd10cm_augmented_billable_hcc`
 **Input Text:** _"bladder cancer"_
 
+{:.table-model-big}
 idx | chunks | code | resolutions | all_codes | billable | hcc_status | hcc_score | all_distances   
 ---|---------------|-------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|--------------------------|--------------------------|---------------------------|---------------------------------------------------
  0 | bladder cancer | C679 | ['bladder cancer', 'suspected bladder cancer', 'cancer in situ of urinary bladder', 'tumor of bladder neck', 'malignant tumour of bladder neck'] | ['C679', 'Z126', 'D090', 'D494', 'C7911'] | ['1', '1', '1', '1', '1'] | ['1', '0', '0', '0', '1'] | ['11', '0', '0', '0', '8'] | ['0.0000', '0.0904', '0.0978', '0.1080', '0.1281'] |
@@ -282,6 +305,7 @@ idx | chunks | code | resolutions | all_codes | billable | hcc_status | hcc_scor
 `sbiobertresolve_cpt_augmented`  
 **Input Text:** _"ct abdomen without contrast"_
 
+{:.table-model-big}
 idx|  cpt code |   distance |resolutions                                                       
 ---:|------:|-----------:|:-------------------------------------------------------------------
 0 | 74150 |     0.0802 | Computed tomography, abdomen; without contrast material            |
@@ -291,11 +315,14 @@ idx|  cpt code |   distance |resolutions
 4 | 74185 |     0.1343 | Magnetic resonance imaging without contrast                        |
 5 | 77059 |     0.1343 | Magnetic resonance imaging without contrast                        |
 
+</div><div class="h3-box" markdown="1">
+
 #### 8. New Pretrained Clinical NER Models
 
 + NER Radiology
 **Input Text:** _"Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma."_
 
+{:.table-model-big}
 |idx | chunks                | entities                  |
 |----|-----------------------|---------------------------|
 | 0  | Bilateral             | Direction                 |

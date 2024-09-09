@@ -1,6 +1,5 @@
 from typing import List, Optional
 
-import boto3
 
 from johnsnowlabs import settings
 from johnsnowlabs.auto_install.softwares import Software
@@ -9,7 +8,7 @@ from johnsnowlabs.utils.boto_utils import get_aws_used_creds
 
 
 def get_printable_glue_notebook_commands(
-    boto_session: boto3.Session,
+    boto_session: "boto3.Session",
     glue_assets_bucket: str,
     packages_s3_location: List[str],
     jars_s3_location: List[str],

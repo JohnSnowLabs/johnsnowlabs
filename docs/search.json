@@ -1,0 +1,19 @@
+---
+layout: none
+---
+[  
+  {% for page in site.pages %}{% if page.title != nil %}
+  {     
+      "title"    : "{{ page.title | escape }}",
+      "demopage": " ",
+      {% if page.layout == "demopagenew" %}
+      "demopage": "<i>Demos page</i>",
+      "content": "{%- for _section in page.data.sections -%}{%- for child in _section.source -%}{{child.title}}, {% endfor %}{% endfor %}",      
+      {% endif %}
+      {% if page.layout != "demopagenew" %}
+        "content"  : "{{ page.content | strip_html | strip_newlines | slugify: "pretty"  | replace: '-', " " }}",         
+      {% endif %}
+      {% if page.seotitle != nil %}"seotitle"    : "{{ page.seotitle | escape }}",{% elsif page.seotitle == nil %}"seotitle"    : " ",{% endif %}
+      "url"      : "{{ site.baseurl }}{{ page.url }}"
+    },{% endif %}{% endfor %}{}
+]

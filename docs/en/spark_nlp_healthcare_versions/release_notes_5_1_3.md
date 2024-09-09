@@ -43,12 +43,11 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 </div><div class="h3-box" markdown="1">
 
-
-
 #### 3 New Augmented NER Models by Leveraging the Capabilities of the LangTest Library to Boost Their Robustness Significantly
 
 Newly introduced 3 augmented NER models that are powered by the innovative `LangTest` library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
 
+{:.table-model-big}
 | Model Name               |   Predicted Entities        |
 |--------------------------|-----------------------------|
 | [`ner_human_phenotype_gene_clinical_langtest`](https://nlp.johnsnowlabs.com/2023/11/04/ner_human_phenotype_gene_clinical_langtest_en.html)  | `GENE`, `HP` |
@@ -57,6 +56,7 @@ Newly introduced 3 augmented NER models that are powered by the innovative `Lang
 
 - The table below shows the robustness of overall test results for these models.
 
+{:.table-model-big}
 | model names        | original robustness  |  new robustness  |
 |-------------------------------------------|---------|--------|
 | ner_human_phenotype_gene_clinical_langtest| 48.79%  | 82.60% |
@@ -71,7 +71,7 @@ Newly introduced 3 augmented NER models that are powered by the innovative `Lang
 
 We have a new clinical NER model specifically designed for the Hebrew language. This model excels at identifying clinical entities, enabling the automation of critical clinical data extraction. It proves invaluable for various healthcare-related tasks, such as research, medical record documentation, and other applications within the Hebrew-speaking healthcare sector.
 
-
+{:.table-model-big}
 | Model Name                                                                   | Predicted Entities           | Language |
 |------------------------------------------------------------------------------|------------------------------|----------|
 | [ner_clinical](https://nlp.johnsnowlabs.com/2023/10/23/ner_clinical_he.html) | `PROBLEM` `TEST` `TREATMENT` |  he      |
@@ -82,37 +82,38 @@ We have a new clinical NER model specifically designed for the Hebrew language. 
 
 ####  New Social Determinants of Healthcare (SDoH) Model for Frailty Classification
 
-Introducing a new frailty classification model trained on a diverse dataset and it provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: `High_or_Low_Frailty` and `No_Frailty_or_Unknown`.
+Introducing a new frailty classification model trained on a diverse dataset and it provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: `Frail` and `Non_Frail`.
 
 
 *Example*:
 
 ```python
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_sdoh_frailty", "en", "clinical/models")\
-    .setInputCols(["document","token"])\
+    .setInputCols(["document", "token"])\
     .setOutputCol("prediction")
 
 sample_texts=[  
-  "Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy.",
-  "Post-chemotherapy, the patient was under regular surveillance for osteosarcoma. Recent imaging showed no signs of local recurrence or distant metastasis. Whereas the recovery was challenging, current evaluation confirms patient is in remission.",
-  "The patient was diagnosed with stage II colon cancer and will be undergoing a treatment regimen that includes both chemotherapy and radiation therapy.",
-  "Thyroid nodules detected during routine examination; fine-needle aspiration was conducted. Cytology results indicated no malignancy, consistent with a benign thyroid adenoma. However, patient is advised for a follow-up ultrasound in 12 months to monitor nodule size.",
-  "The patient's persistent lymphadenopathy led to further tests, which confirmed a diagnosis of AIDS.",
-  "Female patient presented with pelvic discomfort. Ovarian cysts were found during ultrasound; however, CA-125 levels are within normal range, and repeat imaging has shown consistent cyst size. No features of ovarian cancer were present, and a follow-up is scheduled in six months."
+  "Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for basic activities.",
+  "Clinical evaluation indicates robust health with no signs of physical debilitation.",
+  "Noted significant weight loss and diminished muscle mass over the past several months.",
+  "Follow-up examinations show complete remission of previous oncological concerns.",
+  "The patient exhibits increased susceptibility to skin tears and bruising with minimal contact.",
+  "Laboratory results reveal the patient's complete recovery from hepatitis, with normal liver function tests."
 ]
 
 ```
 
 *Result*:
 
-|                                                                                          text      |      result           |
-|----------------------------------------------------------------------------------------------------|-----------------------|
-|Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatm...|   High_or_Low_Frailty |
-|Post-chemotherapy, the patient was under regular surveillance for osteosarcoma. Recent imaging sh...| No_Frailty_or_Unknown |
-|The patient was diagnosed with stage II colon cancer and will be undergoing a treatment regimen t...|   High_or_Low_Frailty |
-|Thyroid nodules detected during routine examination; fine-needle aspiration was conducted. Cytolo...| No_Frailty_or_Unknown |
-| The patient's persistent lymphadenopathy led to further tests, which confirmed a diagnosis of AIDS.|   High_or_Low_Frailty |
-|Female patient presented with pelvic discomfort. Ovarian cysts were found during ultrasound; howe...| No_Frailty_or_Unknown |
+{:.table-model-big}
+|                                                                                          text      | result    |
+|----------------------------------------------------------------------------------------------------|-----------|
+|Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for...| Frail     |
+|Clinical evaluation indicates robust health with no signs of physical debilitation.                 | Non_Frail |
+|Noted significant weight loss and diminished muscle mass over the past several months.              | Frail     |
+|Follow-up examinations show complete remission of previous oncological concerns.                    | Non_Frail |
+|The patient exhibits increased susceptibility to skin tears and bruising with minimal contact.      | Frail     |
+|Laboratory results reveal the patient's complete recovery from hepatitis, with normal liver funct...| Non_Frail |
 
 
 Please check [Social Determinant Sequence Classification Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_SEQUENCE_CLASSIFICATION/)
@@ -151,6 +152,7 @@ MEDICATIONS:
 
 *Result*:
 
+{:.table-model-big}
 |sentence_id|chunk             |begin|end|ner_label|
 |-----------|------------------|-----|---|---------|
 |3          |10.25.23          |64   |71 |DOD      |
@@ -159,9 +161,6 @@ MEDICATIONS:
 
 
 Please check [Model Card](https://nlp.johnsnowlabs.com/2023/11/05/date_of_death_parser_en.html) and [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) for more information.
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -214,20 +213,15 @@ In this release, a new configuration parameter has been introduced in Spark NLP 
 
 The alternative Number Generation Algorithms are `NativePRNG`, `NativePRNGBlocking`, `NativePRNGNonBlocking`, `PKCS11`, `SHA1PRNG`, and `Windows-PRNG`, for more information please see [this documentation](https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#SecureRandom).
 
-
-
 *Example*:
 
 ```python
 import sparknlp_jsl
 
-params = {"spark.jsl.settings.seed.numberGenerationAlgorithm": "SHA1PRNG",}
+params = {"spark.jsl.settings.seed.numberGenerationAlgorithm": "SHA1PRNG"}
 
 spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 ```
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -239,8 +233,6 @@ spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 - License validation process has been fastened now
 - Fixed the issues in ALAB Module; `get_conll_data` "missing sentence detector" failure and `get_assertion_data` method for getting more annotations from annotated JSON file
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
@@ -250,8 +242,6 @@ spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 - Updated [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) with the example of `date_of_death_parser` model
 - Updated [Clinical Relation Extraction Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb) with Filtering Entity Types examples
 - Updated [Spark OCR Utility Module Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/5.3.Spark_OCR_Utility_Module.ipynb#scrollTo=6Eh0uX-ZZLVj) with `text_type` param introduced and examples
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -265,16 +255,11 @@ spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 + `ner_human_phenotype_gene_clinical_langtest`
 + `ner_risk_factors_langtest`
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
 
-
 </div><div class="h3-box" markdown="1">
-
-
 
 ## Versions
 

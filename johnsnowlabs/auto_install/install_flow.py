@@ -3,7 +3,6 @@ import shutil
 import sys
 from typing import Optional, List
 
-import boto3
 
 from johnsnowlabs import settings
 from johnsnowlabs.auto_install.databricks.dbfs import dbfs_rm
@@ -31,75 +30,73 @@ from johnsnowlabs.utils.enums import JvmHardwareTarget, ProductName, PyInstallTy
 
 
 def install(
-    # -- JSL-Auth Flows --
-    # Browser Auth
-    browser_login: bool = True,
-    force_browser: bool = False,
-    # JWT Token Auth
-    access_token: Optional[str] = None,
-    # JSON file Auth
-    json_license_path: Optional[str] = None,
-    # Manual License specification Auth
-    med_license: Optional[str] = None,
-    enterprise_nlp_secret: Optional[str] = None,
-    ocr_secret: Optional[str] = None,
-    ocr_license: Optional[str] = None,
-    fin_license: Optional[str] = None,
-    leg_license: Optional[str] = None,
-    aws_access_key: Optional[str] = None,
-    aws_key_id: Optional[str] = None,
-    # -- Databricks auth flows & Install Target --
-    databricks_cluster_id: Optional[str] = None,
-    databricks_token: Optional[str] = None,
-    databricks_host: Optional[str] = None,
-    databricks_password: Optional[str] = None,
-    databricks_email: Optional[str] = None,
-    # -- Install Params --
-    # Install Target
-    python_exec_path: str = sys.executable,
-    venv_creation_path: Optional[str] = None,
-    offline_zip_dir: Optional[str] = None,
-    # Download Params
-    offline: bool = False,
-    install_optional: bool = True,
-    install_licensed: bool = True,
-    slim_install: bool = False,  # Only Downloads jars
-    product: Optional[str] = ProductName.jsl_full.value,
-    include_dependencies: bool = True,
-    nlp: bool = True,
-    spark_nlp: bool = True,
-    visual: bool = False,
-    # License usage & Caching
-    local_license_number: int = 0,
-    remote_license_number: int = 0,
-    store_in_jsl_home: bool = True,
-    # Install File Types
-    hardware_platform: str = JvmHardwareTarget.cpu.value,
-    py_install_type: str = PyInstallTypes.wheel.value,
-    only_refresh_credentials: bool = False,
-    refresh_install: bool = False,
-    # -- Databricks Cluster Creation Params --
-    block_till_cluster_ready=True,
-    num_workers=1,
-    cluster_name=settings.db_cluster_name,
-    node_type_id=settings.db_node_type_id,
-    driver_node_type_id=settings.db_driver_node_type,
-    spark_env_vars=None,
-    autotermination_minutes=60,
-    spark_version=settings.db_spark_version,
-    spark_conf=None,
-    auto_scale=None,
-    aws_attributes=None,
-    ssh_public_keys=None,
-    custom_tags=None,
-    cluster_log_conf=None,
-    enable_elastic_disk=None,
-    cluster_source=None,
-    instance_pool_id=None,
-    headers=None,
-    clean_cluster=True,
-    write_db_credentials=True,
-    extra_pip_installs: Optional[List[str]] = None,
+        # -- JSL-Auth Flows --
+        # Browser Auth
+        browser_login: bool = True,
+        force_browser: bool = False,
+        # JWT Token Auth
+        access_token: Optional[str] = None,
+        # JSON file Auth
+        json_license_path: Optional[str] = None,
+        # Manual License specification Auth
+        med_license: Optional[str] = None,
+        enterprise_nlp_secret: Optional[str] = None,
+        ocr_secret: Optional[str] = None,
+        ocr_license: Optional[str] = None,
+        fin_license: Optional[str] = None,
+        leg_license: Optional[str] = None,
+        aws_access_key: Optional[str] = None,
+        aws_key_id: Optional[str] = None,
+        # -- Databricks auth flows & Install Target --
+        databricks_cluster_id: Optional[str] = None,
+        databricks_token: Optional[str] = None,
+        databricks_host: Optional[str] = None,
+        # -- Install Params --
+        # Install Target
+        python_exec_path: str = sys.executable,
+        venv_creation_path: Optional[str] = None,
+        offline_zip_dir: Optional[str] = None,
+        # Download Params
+        offline: bool = False,
+        install_optional: bool = True,
+        install_licensed: bool = True,
+        slim_install: bool = False,  # Only Downloads jars
+        product: Optional[str] = ProductName.jsl_full.value,
+        include_dependencies: bool = True,
+        nlp: bool = True,
+        spark_nlp: bool = True,
+        visual: bool = False,
+        # License usage & Caching
+        local_license_number: int = 0,
+        remote_license_number: int = 0,
+        store_in_jsl_home: bool = True,
+        # Install File Types
+        hardware_platform: str = JvmHardwareTarget.cpu.value,
+        py_install_type: str = PyInstallTypes.wheel.value,
+        only_refresh_credentials: bool = False,
+        refresh_install: bool = False,
+        # -- Databricks Cluster Creation Params --
+        block_till_cluster_ready=True,
+        num_workers=1,
+        cluster_name=settings.db_cluster_name,
+        node_type_id=settings.db_node_type_id,
+        driver_node_type_id=settings.db_driver_node_type,
+        spark_env_vars=None,
+        autotermination_minutes=60,
+        spark_version=settings.db_spark_version,
+        spark_conf=None,
+        auto_scale=None,
+        aws_attributes=None,
+        ssh_public_keys=None,
+        custom_tags=None,
+        cluster_log_conf=None,
+        enable_elastic_disk=None,
+        cluster_source=None,
+        instance_pool_id=None,
+        headers=None,
+        clean_cluster=True,
+        write_db_credentials=True,
+        extra_pip_installs: Optional[List[str]] = None,
 ):
     if refresh_install and os.path.exists(settings.root_dir):
         print("🧹 Cleaning up old JSL Home in ", settings.root_dir)
@@ -400,7 +397,7 @@ def install_to_databricks(
 
 
 def install_to_emr(
-    boto_session: Optional[boto3.Session] = None,
+    boto_session: Optional["boto3.Session"] = None,
     # EMR specific configs
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
@@ -449,6 +446,8 @@ def install_to_emr(
     :param auto_terminate_hours : Idle hour to wait before terminating the cluster
     :return: EMR cluster id
     """
+    import boto3
+
     secrets: JslSecrets = JslSecrets.build_or_try_find_secrets(
         browser_login=browser_login,
         force_browser=force_browser,
@@ -486,7 +485,7 @@ def install_to_emr(
 
 
 def install_to_glue(
-    boto_session: Optional[boto3.Session] = None,
+    boto_session: Optional["boto3.Session"] = None,
     glue_assets_bucket: Optional[str] = None,
     # Browser Auth
     browser_login: bool = True,
@@ -522,6 +521,8 @@ def install_to_glue(
     :param hardware_platform: Hardware platform
 
     """
+    import boto3
+
     if not boto_session:
         boto_session = boto3.Session()
 

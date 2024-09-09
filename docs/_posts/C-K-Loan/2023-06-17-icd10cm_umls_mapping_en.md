@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/0ee92a5c-35f1-40c9-a7b3-0282e67d9bd1/John-Snow-Labs_-ICD10CM-to-UMLS-Code-Mapper
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pretrained pipeline maps ICD10CM codes to UMLS codes without using any text
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_umls_mapping_en_4.4.4_3.0_1686979219249.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_umls_mapping_en_4.4.4_3.0_1686979219249.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
@@ -64,8 +77,11 @@ nlu.load("en.icd10cm.umls.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-{'icd10cm': ['M89.50', 'R82.2', 'R09.01'],
-'umls': ['C4721411', 'C0159076', 'C0004044']}
+|   | icd10cm_code | umls_code |
+|--:|-------------:|----------:|
+| 0 |        M8950 |  C4721411 |
+| 1 |         R822 |  C0159076 |
+| 2 |        R0901 |  C0004044 |
 ```
 
 {:.model-param}

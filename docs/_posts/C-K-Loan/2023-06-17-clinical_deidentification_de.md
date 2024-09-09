@@ -14,13 +14,21 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-zjyeemhncdsiu
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/37b22ea9-caf2-429e-ac3c-8b1adb0324cc/John-Snow-Labs_Clinical-Deidentification-for-German
+
 ---
 
 ## Description
 
-This pipeline can be used to deidentify PHI information from **German** medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE`, `CONTACT`, `ID`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `DLN`, `PLATE` entities.
+This pipeline can be used to deidentify PHI information from **German** medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `ORGANIZATION`, `DOCTOR`, `USERNAME`, `CITY`, `DATE`, `COUNTRY`, `PROFESSION`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `AGE`, `ACCOUNT`, `DLN`, `ID`, `PLATE`, `SSN`, `ZIP`, `EMAIL` entities.
 
 ## Predicted Entities
+
+`ORGANIZATION`, `DOCTOR`, `USERNAME`, `CITY`, `DATE`, `COUNTRY`, `PROFESSION`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `AGE`, `ACCOUNT`, `DLN`, `ID`, `PLATE`, `SSN`, `ZIP`, `EMAIL`
 
 
 
@@ -29,6 +37,13 @@ This pipeline can be used to deidentify PHI information from **German** medical 
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_de_4.4.4_3.0_1686979391293.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_de_4.4.4_3.0_1686979391293.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

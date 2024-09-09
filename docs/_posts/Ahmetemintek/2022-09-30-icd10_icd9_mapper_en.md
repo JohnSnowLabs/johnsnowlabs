@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD-10-CM codes to corresponding ICD-9-CM codes
+This pretrained model maps ICD-10-CM codes to corresponding ICD-9-CM codes.
 
 ## Predicted Entities
 
@@ -33,10 +33,9 @@ This pretrained model maps ICD-10-CM codes to corresponding ICD-9-CM codes
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\

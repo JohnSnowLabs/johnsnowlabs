@@ -13,7 +13,7 @@ spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
 article_header:
-  type: cover
+type: cover
 use_language_switcher: "Python-Scala-Java"
 ---
 
@@ -38,41 +38,48 @@ Pretrained named entity recognition deep learning model for clinical terms. The 
 
 ```python
 document_assembler = DocumentAssembler()\
-    .setInputCol("text")\
-    .setOutputCol("document")
-         
-sentence_detector = SentenceDetector()\
+        .setInputCol("text")\
+        .setOutputCol("document")
+
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
-    .setInputCols(["sentence"])\
-    .setOutputCol("token")
+        .setInputCols(["sentence"])\
+        .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "token"])\
-    .setOutputCol("embeddings")
+        .setInputCols(["sentence", "token"])\
+        .setOutputCol("embeddings")
 
 clinical_ner = MedicalNerModel.pretrained("ner_clinical_large", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
+        .setInputCols(["sentence", "token", "embeddings"]) \
+        .setOutputCol("ner")
 
 ner_converter = NerConverter()\
- 	  .setInputCols(["sentence", "token", "ner"])\
- 	  .setOutputCol("ner_chunk")
-    
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter])
+ 	    .setInputCols(["sentence", "token", "ner"])\
+ 	    .setOutputCol("ner_chunk")
 
-model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+nlpPipeline = Pipeline(
+    stages=[
+      document_assembler,
+      sentence_detector,
+      tokenizer,
+      word_embeddings,
+      clinical_ner,
+      ner_converter])
 
-results = model.transform(spark.createDataFrame([['The human KCNJ9 (Kir 3.3, GIRK3) is a member of the G-protein-activated inwardly rectifying potassium (GIRK) channel family. Here we describe the genomicorganization of the KCNJ9 locus on chromosome 1q21-23 as a candidate gene forType II diabetes mellitus in the Pima Indian population. The gene spansapproximately 7.6 kb and contains one noncoding and two coding exons separated byapproximately 2.2 and approximately 2.6 kb introns, respectively. We identified14 single nucleotide polymorphisms (SNPs), including one that predicts aVal366Ala substitution, and an 8 base-pair (bp) insertion/deletion. Ourexpression studies revealed the presence of the transcript in various humantissues including pancreas, and two major insulin-responsive tissues: fat andskeletal muscle. The characterization of the KCNJ9 gene should facilitate furtherstudies on the function of the KCNJ9 protein and allow evaluation of thepotential role of the locus in Type II diabetes. BACKGROUND: At present, it is one of the most important issues for the treatment of breast cancer to develop the standard therapy for patients previously treated with anthracyclines and taxanes.']], ["text"]))
+data = spark.createDataFrame([["""Mr. ABC is a 60-year-old gentleman who had stress test earlier today in my office with severe chest pain after 5 minutes of exercise on the standard Bruce with horizontal ST depressions and moderate apical ischemia on stress imaging only. He required 3 sublingual nitroglycerin in total. The patient underwent cardiac catheterization with myself today which showed mild-to-moderate left main distal disease of 30%, a severe mid-LAD lesion of 99%, and a mid-left circumflex lesion of 80% with normal LV function and some mild luminal irregularities in the right coronary artery with some moderate stenosis seen in the mid to distal right PDA."""]]).toDF("text")
+
+result = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
          
-val sentence_detector = new SentenceDetector()
+val sentence_detector = new entenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols("document")
     .setOutputCol("sentence")
 
@@ -92,9 +99,16 @@ val ner_converter = new NerConverter()
  	  .setInputCols(Array("sentence", "token", "ner"))
  	  .setOutputCol("ner_chunk")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
+val pipeline = new Pipeline().setStages(
+        Array(
+            document_assembler, 
+            sentence_detector, 
+            tokenizer, 
+            word_embeddings,
+            ner, 
+            ner_converter))
 
-val data = Seq("""The human KCNJ9 (Kir 3.3, GIRK3) is a member of the G-protein-activated inwardly rectifying potassium (GIRK) channel family. Here we describe the genomicorganization of the KCNJ9 locus on chromosome 1q21-23 as a candidate gene forType II diabetes mellitus in the Pima Indian population. The gene spansapproximately 7.6 kb and contains one noncoding and two coding exons separated byapproximately 2.2 and approximately 2.6 kb introns, respectively. We identified14 single nucleotide polymorphisms (SNPs), including one that predicts aVal366Ala substitution, and an 8 base-pair (bp) insertion/deletion. Ourexpression studies revealed the presence of the transcript in various humantissues including pancreas, and two major insulin-responsive tissues: fat andskeletal muscle. The characterization of the KCNJ9 gene should facilitate furtherstudies on the function of the KCNJ9 protein and allow evaluation of thepotential role of the locus in Type II diabetes. BACKGROUND: At present, it is one of the most important issues for the treatment of breast cancer to develop the standard therapy for patients previously treated with anthracyclines and taxanes.""").toDS().toDF("text")
+val data = Seq("""Mr. ABC is a 60-year-old gentleman who had stress test earlier today in my office with severe chest pain after 5 minutes of exercise on the standard Bruce with horizontal ST depressions and moderate apical ischemia on stress imaging only. He required 3 sublingual nitroglycerin in total. The patient underwent cardiac catheterization with myself today which showed mild-to-moderate left main distal disease of 30%, a severe mid-LAD lesion of 99%, and a mid-left circumflex lesion of 80% with normal LV function and some mild luminal irregularities in the right coronary artery with some moderate stenosis seen in the mid to distal right PDA.""").toDS().toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -103,30 +117,22 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+-----------------------------------------------------------+---------+
-|chunk                                                      |ner_label|
-+-----------------------------------------------------------+---------+
-|the G-protein-activated inwardly rectifying potassium (GIRK|TREATMENT|
-|the genomicorganization                                    |TREATMENT|
-|a candidate gene forType II diabetes mellitus              |PROBLEM  |
-|byapproximately                                            |TREATMENT|
-|single nucleotide polymorphisms                            |TREATMENT|
-|aVal366Ala substitution                                    |TREATMENT|
-|an 8 base-pair                                             |TREATMENT|
-|insertion/deletion                                         |PROBLEM  |
-|Ourexpression studies                                      |TEST     |
-|the transcript in various humantissues                     |PROBLEM  |
-|fat andskeletal muscle                                     |PROBLEM  |
-|furtherstudies                                             |PROBLEM  |
-|the KCNJ9 protein                                          |TREATMENT|
-|evaluation                                                 |TEST     |
-|Type II diabetes                                           |PROBLEM  |
-|the treatment                                              |TREATMENT|
-|breast cancer                                              |PROBLEM  |
-|the standard therapy                                       |TREATMENT|
-|anthracyclines                                             |TREATMENT|
-|taxanes                                                    |TREATMENT|
-+-----------------------------------------------------------+---------+
++-------------------------------------------------------------+-----+---+---------+
+|chunk                                                        |begin|end|ner_label|
++-------------------------------------------------------------+-----+---+---------+
+|stress test                                                  |43   |53 |TEST     |
+|severe chest pain                                            |87   |103|PROBLEM  |
+|horizontal ST depressions                                    |160  |184|PROBLEM  |
+|moderate apical ischemia                                     |190  |213|PROBLEM  |
+|stress imaging                                               |218  |231|TEST     |
+|3 sublingual nitroglycerin                                   |251  |276|TREATMENT|
+|cardiac catheterization                                      |310  |332|TEST     |
+|mild-to-moderate left main distal disease of 30%             |365  |412|PROBLEM  |
+|a severe mid-LAD lesion                                      |415  |437|PROBLEM  |
+|a mid-left circumflex lesion                                 |451  |478|PROBLEM  |
+|some mild luminal irregularities in the right coronary artery|515  |575|PROBLEM  |
+|some moderate stenosis                                       |582  |603|PROBLEM  |
++-------------------------------------------------------------+-----+---+---------+
 ```
 
 {:.model-param}

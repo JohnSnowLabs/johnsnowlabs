@@ -153,4 +153,16 @@ data:
           - text: Colab
             type: blue_btn
             url:
+        - title: Determine the entities of a section within a subpoena
+          id: determine_entities_section_within_subpoena   
+          image: 
+              src: /assets/images/Determine_the_entities_of_a_section_within_a_subpoena.svg
+          excerpt: This is a legal NER mode trained on Subpoenas, which is aimed to extract the following entities from a Subpoena.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/LEGALNER_SUBPOENA/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/80.1.Legal_Subpoenas_NER.ipynb
 ---

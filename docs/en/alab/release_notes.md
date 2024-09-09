@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2023-09-05"
+modify_date: "2024-07-26"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,187 +15,212 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.4.1
+## Create Augmented Tasks for NER Models, Set up your project using a Visual Menu Builder, and leverage Entity Resolver models, rules, and zero-shot prompts in Generative AI Lab 6.5.
+The release of Generative AI Lab version 6.5 introduces several new features designed to enhance user experience and improve platform efficiency.
 
-Release date: **04-09-2023**
+One of the key updates is the ability to generate augmented data based on the existing tasks. This feature enhances model performance by generating additional data, seamlessly fitting into the Generative AI Lab workflow to support various test types and improve their models without having to create dataset from scratch. 
 
-## NLP Lab 5.4 – Empowering Model Sharing, Enhanced Annotation, and Azure Blob Backups
-We are thrilled to release NLP Lab 5.4 which brings a host of exciting enhancements to further empower your NLP journey. In this release, we’ve focused on simplifying model sharing, making advanced features more accessible with FREE access to Zero-shot NER prompting, streamlining the annotation process with completions and predictions merging, and introducing Azure Blob backup integration.
+Additionally, users can now use an entity resolver by combining it with rules and John Snow Labs' zero-shot prompts, offering a more streamlined approach to entity recognition. 
 
-## Publish Models Directly into Models HUB
+Lastly, the new menu builder allows users to visually configure every setting for the annotation project setups, improving the ability for product creators to streamline the workflow for their agents at the project level.
 
-We're excited to introduce a streamlined way to publish NLP models to the NLP Models HUB directly from NLP Lab. Known for its user-friendly interface for annotating, submitting completions, and training Spark NLP Models, NLP Lab now simplifies the model-sharing process even further.
+Here are the highlights of this release:
 
-### GitHub Integration for Easy Model Sharing
+</div><div class="h3-box" markdown="1">
 
-To use this feature, you’ll need to link your GitHub account with NLP Lab. Here’s a quick guide:
+## Data Augmentation for more Robust Model Training
+Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
 
-- **Access Integrations Settings:** On your NLP Lab instance, navigate to Settings page and then to Integrations Tab.
-- **Connect to GitHub:** The GitHub Integration option is readily available. Simply click the “Connect” button to proceed.
-- **Authenticate with GitHub:** You will be directed to the GitHub website for authentication. Once authenticated, a success message in NLP Lab will confirm the linkage.
+The new tab called "**Generate Augmented Data**" on the import page will make it easier for you to create augmented tasks. By clicking on the "**Improve Test Results**" option, you'll be redirected to the "**Generate Augmented Data**" page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under "**Proportional Augmentation**".
 
-Now, you are all set to publish your models to the NLP Models HUB!
+![genAI650](/assets/images/annotation_lab/6.5.0/1.gif)
 
-![Integration](/assets/images/annotation_lab/5.4.1/1.gif)
+####  Proportional Augmentaiton
 
-### Steps to publish your NLP Lab trained model to NLP Models HUB
+This method enhances data quality by using various testing techniques to generate new data based on an existing dataset. Proportional Augmentation is particularly effective in improving model performance by addressing specific weaknesses, such as the inability to recognize lowercase text, uppercase text, typos, and more. It is especially beneficial for bias and robustness testing, ensuring that the model produces high-quality and accurate results for machine learning, predictive modeling, and decision-making tasks. After setting the test types and max_proportion, click on "**Generate Results**" to create augmented tasks. Based on your configuration, data augmentation will enhance the existing tasks and generate new ones.
 
-If you are an admin user with access to the "Hub" menu, you will find all downloaded or trained models on your "Models" Page. Here's how to publish them on the NLP Models Hub:
+![genAI650](/assets/images/annotation_lab/6.5.0/2.gif)
 
-- **Initiate Publishing:** Locate the model you wish to publish and click the three-dot menu next to it. Choose the "Publish" option, which will direct you to a pre-filled form.
-- **Review and Confirm:** Complete any remaining fields and review the model information. Click "Submit" to finalize. 
-- **GitHub Pull-Request:** A Pull-Request containing your model details will be generated on your behalf.
-    - For Open-Source Models, the Pull Request will be sent to the Repository: "[JohnSnowLabs/spark-nlp](https://github.com/JohnSnowLabs/spark-nlp)".
-    - For Licensed Models, the Pull Request will be sent to the Repository: "[JohnSnowLabs/johnsnowlabs](https://github.com/JohnSnowLabs/johnsnowlabs)".
-- **Final Steps:** Your Pull Request will be reviewed by the NLP Models HUB team and, upon approval, will be published to NLP Models HUB.
+Another way to generate augmented tasks is through "**Templatic augmentation**".
 
-This new feature eliminates the need to manually download the model from NLP Lab and upload it to the NLP Models HUB form. It also pre-fills in as much as possible the model form with model metadata, usage code, and example results. This way, the model publication becomes accessible and convenient for non-technical users who want to share their models with the community. 
+####  Templatic Augementation
+Templatic Augmentation creates new data by using templates or patterns that are similar in structure and context to the original input. This method depends a lot on the templates provided by the user. There are two options for using this approach:
+ 
+ **A. Manually Add Templates**
+ Users can manually choose templates along with the available labels. They can choose how many results to generate for each template using a scroll bar, which can be set from 1 to 50.
 
-![Integration](/assets/images/annotation_lab/5.4.1/2.gif)
+![genAI650](/assets/images/annotation_lab/6.5.0/3.gif)
 
-## Zero-Shot NER Prompts are now available for FREE
-Prompt engineering is gaining traction as a fast-evolving discipline that aims to guide advanced language models like GPT-3 to generate precise and intended results, such as answering queries or constructing meaningful narratives. While NLP Lab has previously provided support for prompt engineering, the feature was restricted to users with license keys.  We are now taking this a step further by offering this entity extraction feature for free to a broader user base.
+ **B. Generate Templates with OpenAI**
 
-With the 5.4 release, NLP Lab enables the unrestricted design and application of Zero-Shot Prompts for entity identification in text. To create NER prompts, users should first download the Roberta zero-shot NER model from the Models HUB. Afterward, they can select the Open-source Domain while setting up an NER prompt. As part of prompt definition, users can specify one or more questions, the answers to which will serve as the target entities for annotation.
+ Users can create more templates using OpenAI, which must be integrated into the project for this feature to work. After choosing how many extra templates to generate for each existing one (from 1 to 10), users can select how many results they want for each template by adjusting a scroll bar from 1 to 50. The total expected number of results will also be shown.
 
-Additionally, for enhanced performance, zero-shot prompts can be seamlessly integrated with GPT prompts, programmatic labeling, and other pre-trained DL models to achieve even more accurate and effective outcomes.
+![genAI650](/assets/images/annotation_lab/6.5.0/4.gif)
 
-![Integration](/assets/images/annotation_lab/5.4.1/3.gif)
+**Note:** **Automatic tags in import augmented tasks** 
+After the augmented tasks are generated, the user can import the tasks. The augmented tasks are imported with the "**Augmented**" default tag.
 
-## Merge Completions and Predictions for enhanced annotation
-Responding to customer feedback, version 5.4 brings a substantial upgrade to our annotation capabilities. Users can now consolidate individual completions and predictions into one unified completion. This merging can occur between predictions and completions and can involve single or multiple annotators.
+![genAI650](/assets/images/annotation_lab/6.5.0/5.gif)
 
-![Integration](/assets/images/annotation_lab/5.4.1/4.png)
+Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
 
-To access this feature, users must first activate the 'Merge Prediction' option within the project configuration settings.
+</div><div class="h3-box" markdown="1">
 
-![Integration](/assets/images/annotation_lab/5.4.1/5.gif)
+## Configure project using Visual Menu Builder
 
-After enabling this setting, users will have the ability to combine multiple completions into a single, unified completion for more streamlined annotation. For this, you simply select the versions you want to merge from the Versions panel and click the Merge button. NLP Lab makes sure to clean up the resulting completion by only retaining one version of identical chunk annotations. 
+This version of Generative AI Lab introduces a new way for configuring your projects, removing the need for manual XML configuration. With the Visual Menu Builder, users can easily create, edit, and manage project configurations through a user-friendly interface. This makes the configuration process much more straightforward, especially for those unfamiliar with XML syntax, while also reducing the risk of errors associated with manual coding.
 
-This provides a simple way to enrich existing completions with new pre-annotations, particularly when you wish to introduce new entities or choices to your project. To do so, simply add the new entity or choice—linked to a model, rule, or prompt—into your project configuration. Then, pre-annotate your task and combine the existing completion with the new prediction. 
+To see the structure of a project configuration XML file and the definitions of the supported tag types and various parameters and variables, and to better understand how Visual Menu Builder maps and creates these elements when configuring your project, see [Project Configuration Overview](https://nlp.johnsnowlabs.com/docs/en/alab/tags_overview).
 
-Additionally, this new feature streamlines the review process, as reviewers can now consolidate the contributions of multiple annotators into a single, unified completion.
+**Key Features:**
 
-## Backup Integration with Azure Blob in NLP Lab 
-In this new version, NLP Lab introduces a feature that allows users to easily configure backups for databases and files directly to Azure Blob, all through a user-friendly interface. Administrators can manage these backup settings by navigating to the System Settings tab, where they can enter the necessary Azure Blob credentials. Users have the flexibility to choose from multiple backup frequencies and specify a particular Blob container for storing the backup files. Once configured, new backups will be auto-generated and stored in the designated Azure Blob container according to the chosen schedule.
+**Add New Element**
 
-![Integration](/assets/images/annotation_lab/5.4.1/6.png)
+The new menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon ("+") within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.
 
-This feature plays a crucial role in disaster recovery planning. For comprehensive guidance, refer to the "instruction.md" file included with the installation artifacts of this release. Below is an example of backup files in Azure Blob configured as per the settings in the NLP Lab.
+![genAI650](/assets/images/annotation_lab/6.5.0/6.gif)
 
-![Integration](/assets/images/annotation_lab/5.4.1/7.png)
+**Edit an Element**
+
+Users can modify the properties and configurations of existing elements within the project. By clicking on the edit icon (a pencil icon), users can access the settings for an existing element. This opens an editable interface where users can adjust the element's parameters to suit the evolving needs of the project.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/7.gif)
+
+**Delete an Element**
+
+Users can remove unwanted elements from the project configuration. Users can click on the cross button ("x") associated with a specific element to remove it from the project. This feature helps in keeping the project configuration clean and relevant by allowing users to easily remove elements that are no longer needed.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/8.gif)
+
+**Drag and Move Element**
+
+The new visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the "Handle" icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/9.gif)
+
+**Show Element Boundaries**
+
+The **Show element Boundaries** button in the visual menu builder highlights the borders of each element within the project configuration, making it easier to visualize and distinguish the different components. By clicking on the "**Show element Boundaries**" button, users can toggle the visibility of the boundaries for all elements in the configuration. When enabled, a visible border will appear around each element, clearly outlining its scope and separation from other elements. This feature is particularly helpful when working with complex configurations where multiple elements are closely positioned. By showing the boundaries, users can easily identify and select the correct element they want to edit, move, or delete.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/10.gif)
+
+**Show Parent Action Buttons on Hover**
+
+The **Show parent action buttons on hover** button in the Visual Menu Builder allows users to quickly access action buttons (such as edit, delete, or add) for parent elements by hovering over them. By hiding the action buttons until needed, it reduces visual clutter and allows users to concentrate on their current tasks. The ability to quickly access these buttons by hovering ensures that they remain easily accessible without overwhelming the interface.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/11.gif)
+
+**Fullscreen Mode**
+
+The "**Fullscreen**" button in the visual menu builder allows users to expand the workspace to occupy the entire screen, providing a larger and more focused view of the project configuration. Clicking on the "**Fullscreen**" button maximizes the Visual Menu Builder, hiding other UI elements so the entire screen is dedicated to the project configuration. To exit fullscreen mode, users can click the "**Fullscreen**" button again or use the Esc key to return to the normal view with all standard UI elements visible.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/12.gif)
+
+</div><div class="h3-box" markdown="1">
+
+## Pair Entity resolver models with rules and zero-shot prompts
+Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
+
+**How to Use**:
+  - **Step 1**: Add a rule or prompt from the Re-use Resource page.
+  - **Step 2**: Edit the label in the Customize Labels page and select the appropriate ER model to associate with the labels.
+  - **Step 3**: Import tasks and Pre-annotate the task.
+    
+![genAI650](/assets/images/annotation_lab/6.5.0/13.gif)
+
+This update broadens the capabilities of ER models, making them more versatile in annotation projects.
+
+</div><div class="h3-box" markdown="1">
 
 ### Improvements
-#### Improved User Experience for Synthetic Text Generation
-In version 5.4, we have overhauled the Synthetic Text Generation page to provide a more user-friendly and efficient experience, while preserving all the familiar features and capabilities. The parameter settings, which were previously visible on the main page by default, have been moved to a convenient pop-up window, resulting in a cleaner layout. To access these settings, simply click on the settings icon located on the right-hand side of the page. It's important to note that all settings, parameters, and functionalities remain unchanged from previous versions. 
+### By default "synthetic" tag is added for imported synthetic tasks
+In previous versions, users had to manually add tags to synthetically generated tasks or else tasks imported into the task page lacked any associated tags. Starting with version 6.5.0, when tasks are imported, they now come with synthetic tags already associated with them during import in the task page.
 
-![Integration](/assets/images/annotation_lab/5.4.1/8.gif)
+![genAI650](/assets/images/annotation_lab/6.5.0/14.gif)
 
-#### Switching between Section-Based Annotation (SBA) and Non-SBA Configurations
+This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
 
-NLP Lab already offers support for "Section-Based Annotation (SBA)" with the ability to customize labels for specific sections, with these configurations located in the XML configuration file under the "Customize Labels" section. As part of our ongoing improvements, the XML configuration will now automatically remove custom labels associated with sections when the "Section-Based Annotation (SBA)" configuration is removed from the project. This enhancement ensures that the labels become available for the entire task, further enhancing the efficiency and flexibility of the annotation process.
+</div><div class="h3-box" markdown="1">
 
-#### Mapping Labels to Sections in Project Configuration
-NLP Lab 5.4 includes several subtle yet significant improvements to the Section Association settings within Project Configuration:
-- **Convenient "Select All" Checkbox:** For enhanced workflows, we've introduced a "Select All" checkbox that simplifies the process of activating all associations between labels and sections.  
-- **Sticky "Section Title" Column and "Label Name" Row:** To facilitate error-free association assignments, both the Section Title Row and Labels Row are now sticky, ensuring they remain visible during scrolling.
-- **Adaptive Title Cell Width:** The Title Cells have been dynamically calibrated to adjust their width based on the content they contain, enhancing the readability and usability of the interface.
-  
-![Integration](/assets/images/annotation_lab/5.4.1/9.gif)
+### Enhanced task filtering
 
-#### Validation for Assertion Labels in Project Configuration
+With this version, users can combine multiple filters simultaneously to refine their task search, significantly enhancing the control and flexibility in task management.
 
-In earlier versions, when the 'assertion=true' attribute was missing in the project configuration for assertion labels, deploying the model would result in a pre-annotation server crash. In our latest release, we've introduced a robust check to ensure a smoother experience.
+![genAI650](/assets/images/annotation_lab/6.5.0/15.gif)
 
-Now, if a user attempts to associate assertion models with a label but forgets to include the 'assertion=true' attribute in the project XML, a user-friendly error message will be prominently displayed on the configuration page. This proactive alert serves as a helpful reminder to rectify the configuration, preventing any unintended disruptions and ensuring the reliability of your project setup.
+</div><div class="h3-box" markdown="1">
 
-###Bug Fixes
+### Enhanced visibility - Annotator's Instructions 
+The instruction section in Version 6.5.0 has been enhanced for better visibility. Now displayed with a faded blue background and an icon, the instructions stand out clearly, making them easily identifiable by annotators.
 
-- **Improved Cluster Page Error Handling:**
+![genAI650](/assets/images/annotation_lab/6.5.0/16.png)
+
+</div><div class="h3-box" markdown="1">
+
+### View instructions on the tasks page for "compact view"
+View the instructions directly on the task page itself when using the compact view in Classification Project type. 
+
+![genAI650](/assets/images/annotation_lab/6.5.0/17.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Bulk test suite deletion API
+Delete multiple test suites in bulk using the API. This streamlines the process of managing test suites, the new bulk deletion API can be accessed and tested directly from the API Integration page within the application as well. 
+
+![genAI650](/assets/images/annotation_lab/6.5.0/18.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Pyspark version displayed on "About" page
+This information is useful when training models or when using specific PySpark features, ensuring compatibility. 
+
+![genAI650](/assets/images/annotation_lab/6.5.0/19.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Bug Fixes
+- **Bugs Fixes for Testing** 
+
+	Test cases were occasionally failing even when the expected and actual results were identical, tests passing despite a mismatch between expected and actual results, tests incorrectly passing even when expected results were empty and actual results were present. These issues have been resolved in version 6.5.0, ensuring accurate test results and consistent behavior across test cases.
+	
+	**Not able to change the Units on the Speed Test:**
+    This issue has been fixed, allowing users to change the unit of the speed test.
     
-    In previous versions, the cluster list page had issues displaying servers for Kubernetes clusters with multiple namespaces. This problem only occurred when NLP Lab was installed using the default namespace. With version 5.4, this bug has been successfully fixed.
+    **Test Suite Import Failure:**
+    Importing test suites encountered issues and was not functioning as expected. This problem has been resolved in version 6.5.0, and users can now import test suites without any issues.
 
-- **Precise Pre-annotation Indexing:**
-    
-    Previously, when text contained multiple spacing and tabs in a task, the pre-annotation label index did not match the actual pre-annotated texts. In the current version, this issue has been resolved, ensuring consistent pre-annotation label indexing even with varying spacing and tabs.
+- **"Emotion Classifier" cannot be deployed in both playground and preannotation server**
 
-- **Visibility of Pre-annotation Progress:**
-    
-    In the past, when tasks were manually selected for pre-annotation, the pre-annotation results' status was not visible. With version 5.4, this issue has been resolved, and pre-annotation status is now displayed accurately.
+    There was an issue with using the model named "Emotional Classifier" after online download. Users must download and use the updated and supported version classifierdl_use_emotion from the Online Models page.
+	
+- **Duplication check for prompt name should be case-insensitive**
 
-- **Enhanced Bulk Pre-annotation:**
-    
-    In the prior version, the bulk pre-annotation process occasionally failed to yield results for certain tasks, despite being visually indicated as successfully pre-annotated (highlighted in green). However, in this current release, the pre-annotation results are precise, consistent, and presented comprehensively.
+	The prompt name validation has been enhanced to be case insensitive, ensuring that creating duplicate prompt names is no longer possible. 
+	
+- **Error while Importing Tasks in JSON Format using URL**
 
-- **Streamlined Model Addition:**
-    
-    In the previous version, when additional models were added to a project from the "re-use" tab and saved, users were redirected to the task page. With version 5.4, users aren’t redirected to the Task page after adding additional models from the "Reuse Resource" page.
+    The issue has been fixed, allowing users to import JSON tasks directly from a URL without any errors.
+	
+- **State of the Previously Opened Project is still Available when Opening a New Project**
 
-- **Improved Editing Experience for Synthetic Tasks:**
-    
-    In earlier versions, editing tasks generated by ChatGPT when multiple tasks were being generated caused auto-refresh issues. The latest version reinstates auto-refresh after task editing is complete.
-    
- ![Integration](/assets/images/annotation_lab/5.4.1/10.gif)
+    When navigating to a different project, the state of the previously opened project was still retained, causing issues. This issue has been resolved, the state of the previously opened project is no longer saved.
+	
+- **Improved Pre-Annotation in case of Failure**
 
-- **Confidence Scores for Pre-annotations generated by OpenAI Prompts:**
-    
-    In previous versions, the confidence score for all OpenAI prompt results was 1. This problem has since been resolved, now for each prompt prediction, it will display actual confidence scores if provided by the OpenAI platform.
+	Pre-annotation would fail for non pre-annotated tasks after pre-annotating incomplete tasks. In version 6.5.0, the entire pre-annotation process was improved and the issue above, fixed. 
+	
+- **Tasks cannot be imported for HTML Dialogues and Conversation project type**
 
-- **Enhanced Search Functionality:**
-    
-    In previous versions, the presence of unintended whitespaces preceding or succeeding the search keyword would result in a failure to yield any search results. This issue has been rectified across all search fields in NLP Lab. Rigorous testing has been conducted to ensure the accuracy and precision of the search functionality.
+This issue has been fixed, allowing the import of tasks for these project types.
+	
+- **Empty pre-annotation results when testing Classification models in Playground**
 
-- **Selective Classification Models for SBA configuration:**
-    
-    Previously, the SBA classifier dropdown listed both downloaded and failed-to-download classification models, leading to errors. Version 5.4 only displays successfully downloaded classification models. 
+Text classification did not function correctly when classification models were tested in the playground. This issue has been fixed, classification models can be tested successfully with pre-annotation results in the Playground.
+	
+- **Annotators can view the unsaved completions of other annotators when "Allow Annotators to view Completion from Reviewers" is enabled**
 
-- **Optimized Export for Visual NER Projects:**
-    
-    The latest version, has significantly reduced the file size of exported projects by adopting a streamlined approach. This enhancement is achieved by selectively including only the OCR images of the filtered files, thereby optimizing both storage efficiency and overall project performance.
-
-- **Tagging issues while importing synthetic tasks:**
-    
-    Previously, users were able to assign both “task” and “train” tags to the synthetically generated tasks, due to which when multiple tags were selected then some tasks were hidden. The issue has been fixed and users can no longer assign the "test” and “train” tags to the tasks in this version.
-
-- **Validation Error Resolution:**
-    
-    Previously, validation errors encountered within the "Reuse Resources" screen inadvertently disabled the option to add other models by rendering the button non-functional. This limitation has been successfully resolved, ensuring that users can now seamlessly rectify errors and continue their debugging processes without any restrictions.
-
-- **Undo action not working for the Section-Based Projects:**
-    
-    Previously, when performing an Undo operation for a section containing NER labels that had been deleted, only the labels were restored, leaving the section inactive. Subsequently, clicking 'save' resulted in orphaned labels. With the latest version of NLP Lab, when an Undo operation is performed, both the section and the associated labels are fully restored, ensuring data consistency and accurate user experience.
-
-- **Preservation of Imported Sections:**
-    
-    In the earlier version, when tasks were imported with "Preserve Imported Sections" option enabled, the sections were created as per the section rules defined by the user instead of applying the above option and use the sections defined in the imported JSON file. In the current version when the section rule does not match the section of the imported JSON/Zip file for a task then no relevant section is created.
-
-- **Classification Filter Functionality:**
-    
-    The "Filter by Confidence Score" was experiencing issues, particularly within Section-Based Configured Projects. In the latest version of NLP Lab, this has been resolved, and the filter functions as intended, ensuring accurate and effective filtering capabilities.
-
-- **Improved Sample Task Import for Visual NER Projects:**
-    
-    In this release, the issue where sample files for Visual NER projects imported from exported files were failing to load in the NLP Lab UI has been addressed. This fix guarantees that all exported files will maintain their integrity and load seamlessly.
-
-- **Task List Count Consistency:**
-    
-    In certain cases, a disparity in the count of incomplete tasks arose during the assignment and submission of completions by various team members within projects. This issue has been resolved. Now, all team members can expect the task list numbers to align with their user role, ensuring a consistent and accurate representation of tasks as per the user/role.
-
-- **Enhanced Section Rule Matching:**
-    
-    In certain cases, the entire task was erroneously marked as a section, even when the section delimiter was not found. This issue has been resolved. Now, sections are only created if the delimiter specified in the configuration is present within the task, ensuring accurate section definition and proper section detection.
-
-- **Cluster Server Limit Handling:**
-    
-    When the cluster limit is at total capacity, users will encounter an error message indicating that the cluster limit has been reached. In the previous versions, even after clearing one or more cluster servers to create space for additional active learning deployments, the error persisted, causing active learning to be obstructed. This issue has been successfully resolved, ensuring a seamless experience where the error no longer persists if the cluster limit is cleared, thus allowing unimpeded training/deployment activities.
-
-- **Benchmarking Display Fix:**
-    
-    In the earlier version, the benchmarking for the 'Inside' tag was not consistently displayed when viewing the benchmarking results in the UI for certain labels. This information was accessible during model training but was not visible in the UI. We have now resolved this issue.
-
-    ![Integration](/assets/images/annotation_lab/5.4.1/11.png)
-
+In the previous versions, when the "Allow Annotators to View Completions from Reviewers" option was enabled, annotators could view not only their completions but also the unsaved completions by other annotators. This issue has been resolved in version 6.5.0. Now, annotators can only view their completions and the submitted completions from reviewers, specifically if a reviewer has cloned and submitted one of their completions.
+ 
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
@@ -203,50 +228,37 @@ Now, if a user attempts to associate assertion models with a label but forgets t
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li> 
+    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_7_0">5.7.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_6_1">5.6.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_5_1">5.5.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_5_0">5.5.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_3_2">5.3.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_2_3">5.2.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_2_2">5.2.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
     <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_1">4.10.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_2">4.8.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_1">4.8.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_7_4">4.7.4</a></li>   
-    <li><a href="annotation_labs_releases/release_notes_4_7_1">4.7.1</a></li>        
-    <li><a href="annotation_labs_releases/release_notes_4_6_5">4.6.5</a></li>    
-    <li><a href="annotation_labs_releases/release_notes_4_6_3">4.6.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_6_2">4.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_1">4.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_0">4.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_1">4.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_0">4.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_5_0">3.5.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_4_0">3.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_1">3.3.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_0">3.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_2_0">3.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_1">3.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_0">3.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_1">3.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_0">3.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_8_0">2.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_2">2.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_1">2.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_0">2.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_6_0">2.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_5_0">2.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_4_0">2.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_3_0">2.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_2_2">2.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_1_0">2.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_0_1">2.0.1</a></li>
 </ul>

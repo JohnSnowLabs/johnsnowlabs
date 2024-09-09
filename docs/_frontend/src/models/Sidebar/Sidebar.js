@@ -1,5 +1,6 @@
 import React from 'react';
 import Radio from '../Radio/Radio';
+import Combobox from '../Combobox';
 import RadioGroup from '../RadioGroup';
 import SidebarSelect from './SidebarSelect';
 import styles from './Sidebar.module.css';
@@ -78,6 +79,17 @@ const Sidebar = ({ meta, params, onSubmit }) => {
           selectedItem={params.annotator}
           onChange={(value) => {
             onSubmit({ annotator: value });
+          }}
+        />
+      </div>
+
+      <div className={styles.control}>
+        <Combobox
+          label="Marketplace"
+          items={["Databricks", "Sagemaker", "Snowflake"]}
+          initialSelectedItems={params.marketplace || []}
+          onChange={(values) => {
+            onSubmit({ marketplace: values });
           }}
         />
       </div>

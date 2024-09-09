@@ -17,6 +17,8 @@ sidebar:
 
 We are glad to announce that Spark NLP for Healthcare 2.7.6 has been released!
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights:
 
 - New pretrained **Radiology Assertion Status** model to assign `Confirmed`, `Suspected`, `Negative` assertion scopes to imaging findings or any clinical tests.
@@ -35,6 +37,8 @@ We are glad to announce that Spark NLP for Healthcare 2.7.6 has been released!
 
 - Bug fixes & general improvements.
 
+</div><div class="h3-box" markdown="1">
+
 #### 1. Radiology Assertion Status Model
 
 We trained a new assertion model to assign `Confirmed`, `Suspected`, `Negative` assertion scopes to imaging findings or any clinical tests. It will try to assign these statuses to any named entity you would feed to the assertion annotater in the same pipeline.
@@ -45,7 +49,7 @@ We trained a new assertion model to assign `Confirmed`, `Suspected`, `Negative` 
 
 `text = Blunting of the left costophrenic angle on the lateral view posteriorly suggests a small left pleural effusion. No right-sided pleural effusion or pneumothorax is definitively seen. There are mildly displaced fractures of the left lateral 8th and likely 9th ribs.`
 
-
+{:.table-model-big}
 |sentences |chunk | ner_label |sent_id|assertion|
 |-----------:|:-----:|:---------:|:------:|:------|
 |Blunting of the left costophrenic angle on the lateral view posteriorly suggests a small left pleural effusion.|Blunting           |ImagingFindings|0      |Confirmed|
@@ -63,6 +67,8 @@ You can also use this with `AssertionFilterer` to return clinical findings from 
 
      >> ["displaced fractures", "effusion"]
 
+</div><div class="h3-box" markdown="1">
+
 #### 2. **Obfuscating** with the same fake name across the same note:
 
      obfuscation = DeIdentification()\
@@ -79,17 +85,20 @@ You can also use this with `AssertionFilterer` to return clinical findings from 
               David told  Jessica that she will need to visit the clinic next month.'''
 
 
-
+{:.table-model-big}
 |    | sentence                                                               | obfuscated                                                          |
 |---:|:-----------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | Provider: `David Hale`, M.D.                                             | Provider: `Dennis Perez`, M.D.                                          |
 |  1 | Pt: `Jessica Parker`                                                     | Pt: `Gerth Bayer`                                                       |
 |  2 | `David` told  `Jessica` that she will need to visit the clinic next month. | `Dennis` told  `Gerth` that she will need to visit the clinic next month. |
 
+</div><div class="h3-box" markdown="1">
+
 #### 3. Library Version Compatibility Table :
 
 We are releasing the version compatibility table to help users get to see which Spark NLP licensed version is built against which core (open source) version. We are going to release a detailed one after running some tests across the jars from each library.
 
+{:.table-model-big}
 | Healthcare| Public |
 |-----------|--------|
 | 2.7.6     | 2.7.4  |
@@ -115,6 +124,7 @@ We are releasing the version compatibility table to help users get to see which 
 | 2.3.5     | 2.3.5  |
 | 2.3.4     | 2.3.4  |
 
+</div><div class="h3-box" markdown="1">
 
 #### 4. Pretrained Models Version Control :
 
@@ -158,6 +168,8 @@ We are releasing a new utility class to help you check your local & existing mod
       >> result['version_comparison_dict']
 
       [{'clinical_ner_assertion': {'current_version': '2.4.0', 'latest_version': '2.6.4'}}, {'jsl_ner_wip_clinical': {'current_version': '2.6.5', 'latest_version': '2.6.1'}}, {'jsl_ner_wip_greedy_clinical': {'current_version': '2.6.5', 'latest_version': '2.6.5'}}, {'jsl_ner_wip_modifier_clinical': {'current_version': '2.6.4', 'latest_version': '2.6.4'}}, {'jsl_rd_ner_wip_greedy_clinical': {'current_version': '2.6.1','latest_version': '2.6.2'}}]
+
+</div><div class="h3-box" markdown="1">
 
 #### 5. Updated Pretrained Models:
 

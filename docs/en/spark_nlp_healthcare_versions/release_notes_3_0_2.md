@@ -17,19 +17,28 @@ sidebar:
 
 We are very excited to announce that **Spark NLP for Healthcare 3.0.2** has been released! This release includes bug fixes and some compatibility improvements.
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 
 * Dictionaries for Obfuscator were augmented with more than 10K names.
 * Improved support for spark 2.3 and spark 2.4.
 * Bug fixes in `DrugNormalizer`.
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 Provide confidence scores for all available tags in `MedicalNerModel`,
+
+</div><div class="h3-box" markdown="1">
 
 ##### MedicalNerModel before 3.0.2
 ```
 [[named_entity, 0, 9, B-PROBLEM, [word -> Pneumonia, confidence -> 0.9998], []]
 ```
+
+</div><div class="h3-box" markdown="1">
+
 ##### Now in Spark NLP for Healthcare 3.0.2
 ```
 [[named_entity, 0, 9, B-PROBLEM, [B-PROBLEM -> 0.9998, I-TREATMENT -> 0.0, I-PROBLEM -> 0.0, I-TEST -> 0.0, B-TREATMENT -> 1.0E-4, word -> Pneumonia, B-TEST -> 0.0], []]

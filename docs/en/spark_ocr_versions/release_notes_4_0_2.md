@@ -20,8 +20,9 @@ Release date: 12-09-2022
 #### Overview
 
 We are glad to announce that Spark OCR 4.0.2 has been released!
-This release comes with new features, fixes and more!.
+This release comes with new features, fixes and more!
 
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 
@@ -29,13 +30,14 @@ This release comes with new features, fixes and more!.
 * Added support for Simplified Chinese.
 * Added new 'PdfToForm' annotator, capable of extracting forms from digital PDFs. This is different from previously introduced VisualDocumentNER annotator in that this new annotator works only on digital documents, as opposite to the scanned forms handled by VisualDocumentNER. PdfToForm is complementary to VisualDocumentNER.
  
+</div><div class="h3-box" markdown="1">
 
 #### Improvements
 
 * Support for multi-frame dicom has been added.
 * Added the missing load()​ method in ImageToTextV2.
 
- 
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 

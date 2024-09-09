@@ -8,7 +8,7 @@ key: docs-ocr-release-notes
 modify_date: "2023-05-15"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -18,6 +18,8 @@ sidebar:
 Release date: 15-05-2023
 
 We are glad to announce that Visual NLP 😎 4.4.1 has been released! This release comes with a number of improvements, bug fixes, new implementations, and more!
+
+</div><div class="h3-box" markdown="1">
 
 ### Highlights
 #### New Features
@@ -30,9 +32,13 @@ We are glad to announce that Visual NLP 😎 4.4.1 has been released! This relea
 * Improvements in Dicom file processing.
 * Fixes in Python installation process.
 
+</div><div class="h3-box" markdown="1">
+
 #### New notebooks
 
 [SparkOcrLightPipelinesBase64.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrLightPipelinesBase64.ipynb).
+
+</div><div class="h3-box" markdown="1">
 
 #### New Features
 * Entirely new implementation for PositionFinder: PositionFinder has been re-implemented to deal with the limitations of the original version. Many bugs in the previous version simply won't be present in the new implementation. Also, the new version will work with coordinates originated in digital PDFs as well as coordinates originated on images. 
@@ -78,6 +84,9 @@ ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") 
     .setOutputCol("text") \
     .setTaskParallelism(12)
 ```
+
+</div><div class="h3-box" markdown="1">
+
 #### Fixes
 * Most vulnerabilities at the Java level were removed: 50 out of 52 reported vulnerabilities were removed from the JAR file of Visual NLP. Only 2 medium vulnerabilities remain.
 
@@ -97,6 +106,8 @@ Added support 16 bit images (across Visual NLP in general).
 Known Limitations: due to mismatch in column types from different annotators returning dimensions, ImageDrawRegions scaling won't work with some of them. This behavior will be fixed on next release.
 
 * Fixes in Python installation process: installation process has been improved especially in environments with newer Python versions like Colab.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 SparkOcrLightPipelinesBase64.ipynb: learn how to use the new Base64ToImage Transformer in LightPipelines to feed in memory string buffers to Visual NLP pipelines.

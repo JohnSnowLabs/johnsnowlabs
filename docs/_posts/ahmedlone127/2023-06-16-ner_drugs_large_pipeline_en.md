@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_drugs_large](https://nlp.jo
 
 ## Predicted Entities
 
+`DRUG`
+
 
 
 {:.btn-box}
