@@ -42,6 +42,10 @@ Relation Extraction Labels:
 
 `DateTime-Symptom`, `DateTime-Disease`, `DateTime-PsychologicalCondition`, `DateTime-InjuryOrPoisoning`, `DateTime-Drug`, `DateTime-Substance`, `DateTime-Procedure`, `DateTime-Treatment`, `DateTime-Test`, `DateTime-TestResult`, `DateTime-Vaccine`, `DateTime-AdmissionDischarge`, `TestResult-Test`, `TestResult-VitalTest`, `PsychologicalCondition-Drug`, `PsychologicalCondition-Procedure`, `PsychologicalCondition-Treatment`, `Disease-Drug`, `Disease-Procedure`, `Disease-Treatment`, `Disease-Allergen`, `Disease-Vaccine`, `Treatment-Drug`, `Treatment-Procedure`, `Drug-Procedure`, `Symptom-Disease`, `Symptom-InjuryOrPoisoning`, `Symptom-PsychologicalCondition`, `BodyPart-Disease`, `BodyPart-Symptom`, `BodyPart-InjuryOrPoisoning`, `BodyPart-Test`, `BodyPart-Procedure`, `Drug-Dosage`, `Drug-Frequency`, `Drug-Form`, `Disease-Test`
 
+## Predicted Entities
+
+`InjuryOrPoisoning`, `Substance`, `Form`, `Frequency`, `Employment`, `Drug`, `Route`, `Disease`, `Gender`, `Dosage`, `Employment`, `Procedure`, `RelationshipStatus`, `ClinicalDept`, `Symptom`, `VitalTest`, `Laterality`, `PsychologicalCondition`,`Modifier`, `Age`, `Vaccine`, `TestResult`, `HealthStatus`, `AdmissionDischarge`, `Allergen`, `DateTime`, `MedicalDevice`, `SubstanceQuantity`, `Treatment`, `BodyPart`, `Test`, `Duration`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -54,6 +58,7 @@ Relation Extraction Labels:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
