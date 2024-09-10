@@ -5,7 +5,7 @@ author: John Snow Labs
 name: explain_clinical_doc_vop_small
 date: 2024-09-09
 tags: [licensed, en, vop, ner, assertion, relation_extraction, pipeline]
-task: Pipeline Healthcare
+task: [Pipeline Healthcare, Named Entity Recognition, Assertion Status, Relation Extraction]
 language: en
 edition: Healthcare NLP 5.4.1
 spark_version: 3.0
@@ -42,15 +42,11 @@ Relation Extraction Labels:
 
 `DateTime-Symptom`, `DateTime-Disease`, `DateTime-PsychologicalCondition`, `DateTime-InjuryOrPoisoning`, `DateTime-Drug`, `DateTime-Substance`, `DateTime-Procedure`, `DateTime-Treatment`, `DateTime-Test`, `DateTime-TestResult`, `DateTime-Vaccine`, `DateTime-AdmissionDischarge`, `TestResult-Test`, `TestResult-VitalTest`, `PsychologicalCondition-Drug`, `PsychologicalCondition-Procedure`, `PsychologicalCondition-Treatment`, `Disease-Drug`, `Disease-Procedure`, `Disease-Treatment`, `Disease-Allergen`, `Disease-Vaccine`, `Treatment-Drug`, `Treatment-Procedure`, `Drug-Procedure`, `Symptom-Disease`, `Symptom-InjuryOrPoisoning`, `Symptom-PsychologicalCondition`, `BodyPart-Disease`, `BodyPart-Symptom`, `BodyPart-InjuryOrPoisoning`, `BodyPart-Test`, `BodyPart-Procedure`, `Drug-Dosage`, `Drug-Frequency`, `Drug-Form`, `Disease-Test`
 
-## Predicted Entities
-
-`InjuryOrPoisoning`, `Substance`, `Form`, `Frequency`, `Employment`, `Drug`, `Route`, `Disease`, `Gender`, `Dosage`, `Employment`, `Procedure`, `RelationshipStatus`, `ClinicalDept`, `Symptom`, `VitalTest`, `Laterality`, `PsychologicalCondition`,`Modifier`, `Age`, `Vaccine`, `TestResult`, `HealthStatus`, `AdmissionDischarge`, `Allergen`, `DateTime`, `MedicalDevice`, `SubstanceQuantity`, `Treatment`, `BodyPart`, `Test`, `Duration`
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_small_en_5.4.1_3.0_1725905965378.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_small_en_5.4.1_3.0_1725905965378.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_small_en_5.4.1_3.0_1725899076508.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_small_en_5.4.1_3.0_1725899076508.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -58,7 +54,6 @@ Relation Extraction Labels:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -74,6 +69,7 @@ Most recently, I've had a lot of joint pain in my shoulders and knees. My primar
 
 ```
 ```scala
+
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("explain_clinical_doc_vop_small", "en", "clinical/models")
