@@ -228,6 +228,7 @@ In the previous versions, when the "Allow Annotators to View Completions from Re
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
