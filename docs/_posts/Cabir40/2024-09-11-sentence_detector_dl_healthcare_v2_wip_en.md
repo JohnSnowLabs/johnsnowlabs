@@ -37,6 +37,7 @@ SentenceDetectorDL (SDDL) is based on a general-purpose neural network model for
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
