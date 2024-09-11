@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 5.6.2</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.4.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_6_2"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_6_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_5_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_5_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -610,29 +610,37 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 5.6.2</li>
+    <li>Generative AI Lab Release Notes 6.4.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 5.6.2</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab Release Notes 6.4.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_5_6_2.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 5.6.2"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_5_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.4.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.6.2</h2>
+  <h2 id="section">6.5.1</h2>
 
-  <p>Release date: <strong>12-12-2023</strong></p>
+  <p>Release date: <strong>09-03-2024</strong></p>
+
+  <h3 id="improvements">Improvements</h3>
+  <ul>
+    <li>In Visual NER annotation, the selection indication is now cleared when a chunk is selected without a label and then saved.</li>
+    <li>Enhanced the user interface for the Templatic Augmentation option.</li>
+  </ul>
 
   <h3 id="bug-fixes">Bug Fixes</h3>
-
   <ul>
-    <li>When the list refreshes, a different classifier completion is shown in the task list compact View</li>
-    <li>Annotators should not see each other’s submission in the compact view</li>
-    <li>If all three filter conditions are enabled during task export, only one task is exported multiple times</li>
-    <li>Get task list API provides text and completions response for NER project</li>
+    <li>The test status will now correctly display as “pending” when the model-test server is in a pending state.</li>
+    <li>Fixed an issue where XML validation would fail if a user removed a model linked to tasks with labels or choices in a multi-model configuration.</li>
+    <li>Corrected the visibility behavior of the “Show submit button” feature for text areas; it now functions according to the configured settings.</li>
+    <li>Resolved a DB session rollback error appearing in pod logs</li>
+    <li>The “Template Augmentation” option has been renamed to “Templatic Augmentation.”</li>
+    <li>Addressed a bug that prevented adding relations without NER labels during project configuration; relations can now be added in Visual NER projects.</li>
+    <li>Fixed the “list index out of range” error that was occurring on the configuration page for newly created projects.</li>
   </ul>
 
 </div>
@@ -689,7 +697,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-12-12T00:00:00+00:00">Dec 12, 2023</time>
+      <time itemprop="dateModified" datetime="2024-06-21T00:00:00+00:00">Jun 21, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
