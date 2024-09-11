@@ -229,3 +229,42 @@ Most recently, I've had a lot of joint pain in my shoulders and knees. My primar
 - PerceptronModel
 - DependencyParserModel
 - GenericREModel
+
+## Benchmarking
+
+```bash
+                 label    tp   fp   fn  total  precision  recall   f1
+                Gender  1291   19   26   1317       0.99    0.98 0.98
+            Employment  1182   56   61   1243       0.95    0.95 0.95
+                   Age   544   50   38    582       0.92    0.93 0.93
+              BodyPart  2711  219  189   2900       0.93    0.93 0.93
+             Substance   390   45   31    421       0.90    0.93 0.91
+                  Form   246   30   20    266       0.89    0.92 0.91
+PsychologicalCondition   403   34   41    444       0.92    0.91 0.91
+               Vaccine    37    4    5     42       0.90    0.88 0.89
+                  Drug  1330  208  110   1440       0.86    0.92 0.89
+              DateTime  4045  690  357   4402       0.85    0.92 0.89
+          ClinicalDept   277   24   49    326       0.92    0.85 0.88
+            Laterality   550   66   78    628       0.89    0.88 0.88
+                  Test  1063  158  145   1208       0.87    0.88 0.88
+    AdmissionDischarge    28    2    6     34       0.93    0.82 0.88
+               Disease  1706  247  309   2015       0.87    0.85 0.86
+             VitalTest   143   19   29    172       0.88    0.83 0.86
+                Dosage   333   38   79    412       0.90    0.81 0.85
+              Duration  1897  320  413   2310       0.86    0.82 0.84
+    RelationshipStatus    19    2    5     24       0.90    0.79 0.84
+                 Route    39    7    9     48       0.85    0.81 0.83
+              Allergen    33    1   13     46       0.97    0.72 0.83
+             Frequency   905  224  174   1079       0.80    0.84 0.82
+               Symptom  3813  973  762   4575       0.80    0.83 0.81
+             Procedure   556  111  149    705       0.83    0.79 0.81
+          HealthStatus    77   15   30    107       0.84    0.72 0.77
+     InjuryOrPoisoning   131   42   45    176       0.76    0.74 0.75
+              Modifier   837  254  302   1139       0.77    0.73 0.75
+             Treatment   164   50   64    228       0.77    0.72 0.74
+     SubstanceQuantity    58   18   27     85       0.76    0.68 0.72
+         MedicalDevice   232   86  100    332       0.73    0.70 0.71
+            TestResult   321   85  203    524       0.79    0.61 0.69
+             macro_avg 25361 4097 3869  29230       0.86    0.83 0.84
+             micro_avg 25361 4097 3869  29230       0.86    0.87 0.86
+```
