@@ -26,7 +26,7 @@ This specialized oncology pipeline can;
 
 - establish relations between the extracted entities from the clinical documents.
 
-In this pipeline, (ner_oncology)[https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_en.html],  NER models, one assertion and two relation extraction model were used to achieve those tasks.
+In this pipeline, [ner_oncology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_en.html), [ner_oncology_anatomy_general](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_anatomy_general_en.html), [ner_oncology_response_to_treatment](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_response_to_treatment_en.html), [ner_oncology_unspecific_posology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_unspecific_posology_en.html), [ner_oncology_tnm](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_tnm_en.html), [ner_jsl](https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html), [ner_oncology_posology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_posology_en.html) NER models, [assertion_oncology](https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_en.html) assertion and [re_oncology_granular](https://nlp.johnsnowlabs.com/2024/07/03/re_oncology_granular_en.html), [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html) relation extraction models were used to achieve those tasks. It can also return the [ner_cancer_types_wip](https://nlp.johnsnowlabs.com/2024/08/16/ner_cancer_types_wip_en.html) outputs seperately from these NER models.
 
 - Clinical Entity Labels: `Adenopathy`, `Age`, `Biomarker`,`Biomarker_Result`, `Cancer_Dx`, `Cancer_Score` ,`Cancer_Surgery`, `Chemotherapy`, `Cycle_Count` ,`Cycle_Day`, `Cycle_Number`, `Date` ,`Death_Entity`, `Direction`, `Dosage` ,`Duration`, `Frequency`, `Gender` ,`Grade`, `Histological_Type`, `Hormonal_Therapy` ,`Imaging_Test`, `Immunotherapy`, `Invasion` ,`Line_Of_Therapy`, `Metastasis`, `Oncogene` ,`PROBLEM`, `Pathology_Result`, `Pathology_Test` ,`PROBLEM`, `Performance_Status`, `Race_Ethnicity` ,`Radiotherapy`, `Response_To_Treatment`, `Relative_Date` ,`Route`, `Site_Bone`, `Site_Brain` ,`Site_Breast`, `Site_Liver`, `Site_Lung` ,`Site_Lymph_Node`, `Site_Other_Body_Part`, `Smoking_Status` ,`Staging`, `Targeted_Therapy`, `Tumor_Finding` ,`Tumor_Size`, `Unspecific_Therapy`, `Radiation_Dose` ,`Anatomical_Site`, `Cancer_Therapy`, `Size_Trend` ,`Lymph_Node`, `Tumor_Description`,`Lymph_Node_Modifier`, `Posology_Information`, `Oncological`,`Weight`,`Alcohol`,`Communicable_Disease`,`BMI`,`Obesity`,`Diabetes`
 
@@ -113,7 +113,7 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 | 26 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count           |
 | 27 |             5 | poor response                           |     644 |   656 | Response_To_Treatment |
 
-# NER ner_cancer_types_wip
+# ner_cancer_types_wip NER Result
 
 |    |   sentence_id | chunks                        |   begin |   end | entities       |
 |---:|--------------:|:------------------------------|--------:|------:|:---------------|
