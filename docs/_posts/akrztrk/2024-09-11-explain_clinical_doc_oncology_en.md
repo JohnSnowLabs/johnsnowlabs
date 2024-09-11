@@ -41,6 +41,10 @@ In this pipeline, [ner_oncology](https://nlp.johnsnowlabs.com/2022/11/24/ner_onc
 `Posology_Information-Dosage`, `Posology_Information-Duration`, `Posology_Information-Frequency`, `Posology_Information-Route`,
 `Unspecific_Therapy-Dosage`, `Unspecific_Therapy-Duration`, `Unspecific_Therapy-Frequency`, `Unspecific_Therapy-Route`
 
+## Predicted Entities
+
+`Adenopathy`, `Age`, `Biomarker`,`Biomarker_Result`, `Cancer_Dx`, `Cancer_Score` ,`Cancer_Surgery`, `Chemotherapy`, `Cycle_Count` ,`Cycle_Day`, `Cycle_Number`, `Date` ,`Death_Entity`, `Direction`, `Dosage` ,`Duration`, `Frequency`, `Gender` ,`Grade`, `Histological_Type`, `Hormonal_Therapy` ,`Imaging_Test`, `Immunotherapy`, `Invasion` ,`Line_Of_Therapy`, `Metastasis`, `Oncogene` ,`PROBLEM`, `Pathology_Result`, `Pathology_Test` ,`PROBLEM`, `Performance_Status`, `Race_Ethnicity` ,`Radiotherapy`, `Response_To_Treatment`, `Relative_Date` ,`Route`, `Site_Bone`, `Site_Brain` ,`Site_Breast`, `Site_Liver`, `Site_Lung` ,`Site_Lymph_Node`, `Site_Other_Body_Part`, `Smoking_Status` ,`Staging`, `Targeted_Therapy`, `Tumor_Finding` ,`Tumor_Size`, `Unspecific_Therapy`, `Radiation_Dose` ,`Anatomical_Site`, `Cancer_Therapy`, `Size_Trend` ,`Lymph_Node`, `Tumor_Description`,`Lymph_Node_Modifier`, `Posology_Information`, `Oncological`,`Weight`,`Alcohol`,`Communicable_Disease`,`BMI`,`Obesity`,`Diabetes`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -53,6 +57,7 @@ In this pipeline, [ner_oncology](https://nlp.johnsnowlabs.com/2022/11/24/ner_onc
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -109,6 +114,22 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 | 25 |             5 | 500 mg/m2                               |     600 |   608 | Dosage                |
 | 26 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count           |
 | 27 |             5 | poor response                           |     644 |   656 | Response_To_Treatment |
+
+# ner_cancer_types_wip NER Result
+
+|    |   sentence_id | chunks                        |   begin |   end | entities       |
+|---:|--------------:|:------------------------------|--------:|------:|:---------------|
+|  0 |             0 | abdomen                       |      61 |    67 | Body_Site      |
+|  1 |             0 | pelvis                        |      73 |    78 | Body_Site      |
+|  2 |             0 | ovarian                       |     104 |   110 | Body_Site      |
+|  3 |             1 | adenocarcinoma                |     213 |   226 | Carcinoma_Type |
+|  4 |             2 | fallopian                     |     298 |   306 | Body_Site      |
+|  5 |             2 | appendix                      |     315 |   322 | Body_Site      |
+|  6 |             2 | omentum                       |     325 |   331 | Body_Site      |
+|  7 |             2 | lymph nodes                   |     358 |   368 | Body_Site      |
+|  8 |             3 | serous ovarian adenocarcinoma |     440 |   468 | Carcinoma_Type |
+|  9 |             4 | lung                          |     520 |   523 | Body_Site      |
+| 10 |             4 | metastases                    |     525 |   534 | Metastasis     |
 
 # Assertion Result
 
