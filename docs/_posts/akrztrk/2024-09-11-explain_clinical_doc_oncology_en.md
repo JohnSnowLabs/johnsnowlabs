@@ -113,6 +113,22 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 | 26 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count           |
 | 27 |             5 | poor response                           |     644 |   656 | Response_To_Treatment |
 
+# NER ner_cancer_types_wip
+
+|    |   sentence_id | chunks                        |   begin |   end | entities       |
+|---:|--------------:|:------------------------------|--------:|------:|:---------------|
+|  0 |             0 | abdomen                       |      61 |    67 | Body_Site      |
+|  1 |             0 | pelvis                        |      73 |    78 | Body_Site      |
+|  2 |             0 | ovarian                       |     104 |   110 | Body_Site      |
+|  3 |             1 | adenocarcinoma                |     213 |   226 | Carcinoma_Type |
+|  4 |             2 | fallopian                     |     298 |   306 | Body_Site      |
+|  5 |             2 | appendix                      |     315 |   322 | Body_Site      |
+|  6 |             2 | omentum                       |     325 |   331 | Body_Site      |
+|  7 |             2 | lymph nodes                   |     358 |   368 | Body_Site      |
+|  8 |             3 | serous ovarian adenocarcinoma |     440 |   468 | Carcinoma_Type |
+|  9 |             4 | lung                          |     520 |   523 | Body_Site      |
+| 10 |             4 | metastases                    |     525 |   534 | Metastasis     |
+
 # Assertion Result
 
 |    |   sentence_id | chunks                                  |   begin |   end | entities            | assertion   |
