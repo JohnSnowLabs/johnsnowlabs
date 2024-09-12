@@ -71,7 +71,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
     .setOutputCol("sentence_embeddings")\
     .setCaseSensitive(False)
 
-ndc_resolver = SentenceEntityResolverModel..pretrained("sbiobertresolve_ndc", "en", "clinical/models")\ \
+ndc_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_ndc", "en", "clinical/models")\ \
     .setInputCols(["sentence_embeddings"]) \
     .setOutputCol("ndc_code")\
     .setDistanceFunction("EUCLIDEAN")
