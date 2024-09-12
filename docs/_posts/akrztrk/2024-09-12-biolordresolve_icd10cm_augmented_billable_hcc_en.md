@@ -41,6 +41,7 @@ For example if the result is `1||1||8`: `the billable status is 1`, `hcc status 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
