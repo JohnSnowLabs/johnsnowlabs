@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This advanced pipeline extracts medication entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding National Drug Codes (NDC) codes.
 
+## Predicted Entities
+
+`NDC` 
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,19 +36,20 @@ This advanced pipeline extracts medication entities from clinical texts and util
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
+ndc_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
+result = ndc_pipeline.fullAnnotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
+val ndc_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
+val result = ndc_pipeline.fullAnnotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
 ```
 </div>
 
