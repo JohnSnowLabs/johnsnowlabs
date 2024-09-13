@@ -41,18 +41,18 @@ This advanced pipeline extracts medication entities from clinical texts and util
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
+ndc_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
+result = ndc_pipeline.fullAnnotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
 
 ```
 ```scala
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
+val ndc_pipeline = PretrainedPipeline("ndc_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
+val result = ndc_pipeline.fullAnnotate("""The patient was given aspirin 81 mg and metformin 500 mg""")
 
 ```
 </div>
