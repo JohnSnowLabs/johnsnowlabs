@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This advanced pipeline extracts medication entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding National Drug Codes (NDC) codes.
 
+## Predicted Entities
+
+`NDC` 
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This advanced pipeline extracts medication entities from clinical texts and util
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
