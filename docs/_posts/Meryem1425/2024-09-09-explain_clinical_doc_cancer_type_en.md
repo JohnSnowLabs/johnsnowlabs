@@ -8,7 +8,7 @@ tags: [licensed, en, oncology, pipeline, ner, assertion, relation_extraction]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.4.1
-spark_version: 3.2
+spark_version: 3.4
 supported: true
 annotator: PipelineModel
 article_header:
@@ -45,8 +45,8 @@ In this pipeline, three NER, one assertion and two relation extraction models we
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.2_1725890992390.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.2_1725890992390.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.4_1725901271177.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.4_1725901271177.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
