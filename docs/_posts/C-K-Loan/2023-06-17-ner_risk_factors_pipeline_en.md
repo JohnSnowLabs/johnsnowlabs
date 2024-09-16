@@ -28,6 +28,8 @@ This pretrained pipeline is built on the top of [ner_risk_factors](https://nlp.j
 
 ## Predicted Entities
 
+`SMOKER`, `PHI`, `CAD`, `HYPERTENSION`, `HYPERLIPIDEMIA`, `MEDICATION`, `DIABETES`, `OBESE`, `FAMILY_HIST`
+
 
 
 {:.btn-box}
