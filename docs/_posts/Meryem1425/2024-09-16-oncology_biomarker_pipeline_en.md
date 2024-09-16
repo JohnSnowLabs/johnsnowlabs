@@ -20,6 +20,14 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline includes Named-Entity Recognition, Assertion Status and Relation Extraction models to extract information from oncology texts. This pipeline focuses on entities related to biomarkers.
 
+## Predicted Entities
+
+- Entities:  `Histological_Type`, `Direction`, `Staging`, `Cancer_Score`, `Imaging_Test`, `Cycle_Number`, `Tumor_Finding`, `Site_Lymph_Node`, `Invasion`, `Response_To_Treatment`, `Smoking_Status`, `Tumor_Size`, `Cycle_Count`, `Adenopathy`, `Age`, `Biomarker_Result`, `Unspecific_Therapy`, `Site_Breast`, `Chemotherapy`, `Targeted_Therapy`, `Radiotherapy`, `Performance_Status`, `Pathology_Test`, `Site_Other_Body_Part`, `Cancer_Surgery`, `Line_Of_Therapy`, `Pathology_Result`, `Hormonal_Therapy`, `Site_Bone`, `Biomarker`, `Immunotherapy`, `Cycle_Day`, `Frequency`, `Route`, `Duration`, `Death_Entity`, `Metastasis`, `Site_Liver`, `Cancer_Dx`, `Grade`, `Date`, `Site_Lung`, `Site_Brain`, `Relative_Date`, `Race_Ethnicity`, `Gender`, `Oncogene`, `Dosage`, `Radiation_Dose`, `Drug`, `CancerModifier`, `Radiological_Test_Result`, `Biomarker_Measurement`, `Radiological_Test`, `Test`, `Test_Result`, `Prognostic_Biomarkers`, `Predictive_Biomarkers`
+  
+- Assertions:  `Past`, `Family`, `Absent`, `Hypothetical`, `Possible`, `Present`, `Hypothetical_Or_Absent`, `Medical_History`
+  
+- Relations: `is_related_to`, `is_size_of`, `is_date_of`, `is_location_of`, `is_finding_of`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +40,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status and Relation E
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
