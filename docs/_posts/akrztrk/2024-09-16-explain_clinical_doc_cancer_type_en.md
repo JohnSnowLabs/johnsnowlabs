@@ -33,7 +33,7 @@ and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html)  rel
 - Clinical Entity Labels: `Adenopathy`, `Age`, `Biomarker`, `Biomarker_Result`, `Cancer_Dx`, `Cancer_Score`, `Cancer_Surgery`,
                           `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Date`, `Death_Entity`, `Direction`, `Dosage`,
                           `Duration`, `Frequency`, `Gender`, `Grade`, `Histological_Type`, `Hormonal_Therapy`, `Imaging_Test`,
-                          `Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Metastasis`,`Oncogene`, `Pathology_Result`, `Pathology_Test`,
+                          `Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Metastasis`, `Oncogene`, `Pathology_Result`, `Pathology_Test`,
                           `Performance_Status`, `Race_Ethnicity`, `Radiation_Dose`, `Radiotherapy`, `Relative_Date`, `Response_To_Treatment`,
                           `Route`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`,
                           `Smoking_Status`, `Staging`, `Targeted_Therapy`, `Tumor_Finding`, `Tumor_Size`, `Unspecific_Therapy`,`Biomarker_Quant`,
@@ -58,6 +58,18 @@ and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html)  rel
                               `Posology_Information-Duration`, `Posology_Information-Frequency`, `Posology_Information-Route`, `Unspecific_Therapy-Dosage`,
                               `Unspecific_Therapy-Duration`, `Unspecific_Therapy-Frequency`
 
+ ## Predicted Entities
+
+`Adenopathy`, `Age`, `Biomarker`, `Biomarker_Result`, `Cancer_Dx`, `Cancer_Score`, `Cancer_Surgery`,
+`Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Date`, `Death_Entity`, `Direction`, `Dosage`,
+`Duration`, `Frequency`, `Gender`, `Grade`, `Histological_Type`, `Hormonal_Therapy`, `Imaging_Test`,
+`Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Metastasis`, `Oncogene`, `Pathology_Result`, `Pathology_Test`,
+`Performance_Status`, `Race_Ethnicity`, `Radiation_Dose`, `Radiotherapy`, `Relative_Date`, `Response_To_Treatment`,
+`Route`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`,
+`Smoking_Status`, `Staging`, `Targeted_Therapy`, `Tumor_Finding`, `Tumor_Size`, `Unspecific_Therapy`,`Biomarker_Quant`,
+`Body_Site`, `CNS_Tumor_Type`, `Carcinoma_Type`, `Leukemia_Type`, `Lymphoma_Type`, `Melanoma`,`Sarcoma_Type`
+ 
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -70,13 +82,13 @@ and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html)  rel
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_oncology_pipeline = PretrainedPipeline("explain_clinical_doc_cancer_type", "en", "clinical/models")
 
-result = ner_oncology_pipeline.fullAnnotate("""A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
-Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+result = ner_oncology_pipeline.fullAnnotate("""A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
 cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
 with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
 a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.""")
@@ -86,8 +98,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_oncology_pipeline = PretrainedPipeline("explain_clinical_doc_cancer_type", "en", "clinical/models")
 
-val result = ner_oncology_pipeline.fullAnnotate("""A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
-Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+val result = ner_oncology_pipeline.fullAnnotate("""A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
 cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
 with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
 a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.""")
