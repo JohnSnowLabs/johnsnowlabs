@@ -510,6 +510,10 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p>This pipeline extracts <code class="language-plaintext highlighter-rouge">TEST</code> entities and maps them to their corresponding Logical Observation Identifiers Names and Codes(LOINC) codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> sentence embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. It also provides the official resolution of the codes within the brackets.</p>
 
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">TEST</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.0_1706630342083.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
