@@ -4,7 +4,7 @@ title: Oncology Pipeline for Biomarkers
 author: John Snow Labs
 name: oncology_biomarker_pipeline
 date: 2024-09-17
-tags: [licensed, en, oncolgy, biomarker, pipeline, clinical]
+tags: [licensed, en, oncology, biomarker, pipeline, clinical]
 task: Pipeline Healthcare
 language: en
 edition: Healthcare NLP 5.4.1
@@ -108,31 +108,21 @@ and negative for HER2.""")
 
 | chunk1               | entity1          | chunk2                         | entity2          | relation      |
 |:---------------------|:-----------------|:-------------------------------|:-----------------|:--------------|
-| Immunohistochemistry | Pathology_Test   | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | thyroid transcription factor-1 | Biomarker        | is_related_to |
 | negative             | Biomarker_Result | napsin A                       | Biomarker        | is_related_to |
 | positive             | Biomarker_Result | ER                             | Biomarker        | is_related_to |
 | positive             | Biomarker_Result | PR                             | Biomarker        | is_related_to |
-| positive             | Biomarker_Result | HER2                           | Oncogene         | O             |
-| ER                   | Biomarker        | negative                       | Biomarker_Result | O             |
-| PR                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_related_to |
-| Immunohistochemistry | Pathology_Test   | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | thyroid transcription factor-1 | Biomarker        | is_finding_of |
 | negative             | Biomarker_Result | napsin A                       | Biomarker        | is_finding_of |
 | positive             | Biomarker_Result | ER                             | Biomarker        | is_finding_of |
 | positive             | Biomarker_Result | PR                             | Biomarker        | is_finding_of |
 | positive             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-| ER                   | Biomarker        | negative                       | Biomarker_Result | O             |
-| PR                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
 | negative             | Biomarker_Result | thyroid transcription factor-1 | Biomarker        | is_finding_of |
 | negative             | Biomarker_Result | napsin A                       | Biomarker        | is_finding_of |
 | positive             | Biomarker_Result | ER                             | Biomarker        | is_finding_of |
 | positive             | Biomarker_Result | PR                             | Biomarker        | is_finding_of |
-| positive             | Biomarker_Result | HER2                           | Oncogene         | O             |
-| ER                   | Biomarker        | negative                       | Biomarker_Result | O             |
-| PR                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
 
 
