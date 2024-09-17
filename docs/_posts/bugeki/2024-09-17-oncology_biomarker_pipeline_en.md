@@ -36,6 +36,11 @@ and [re_oncology_biomarker_result](https://nlp.johnsnowlabs.com/2024/07/03/re_on
 
 - Relation Extraction Labels: `is_related_to`, `is_size_of`, `is_date_of`, `is_location_of`, `is_finding_of`
 
+
+## Predicted Entities
+
+`Histological_Type`, `Direction`, `Staging`, `Cancer_Score`, `Imaging_Test`, `Cycle_Number`, `Tumor_Finding`, `Site_Lymph_Node`, `Invasion`, `Response_To_Treatment`, `Smoking_Status`, `Tumor_Size`, `Cycle_Count`, `Adenopathy`, `Age`, `Biomarker_Result`, `Unspecific_Therapy`, `Site_Breast`, `Chemotherapy`, `Targeted_Therapy`, `Radiotherapy`, `Performance_Status`, `Pathology_Test`, `Site_Other_Body_Part`, `Cancer_Surgery`, `Line_Of_Therapy`, `Pathology_Result`, `Hormonal_Therapy`, `Site_Bone`, `Biomarker`, `Immunotherapy`, `Cycle_Day`, `Frequency`, `Route`, `Duration`, `Death_Entity`, `Metastasis`, `Site_Liver`, `Cancer_Dx`, `Grade`, `Date`, `Site_Lung`, `Site_Brain`, `Relative_Date`, `Race_Ethnicity`, `Gender`, `Oncogene`, `Dosage`, `Radiation_Dose`, `Drug`, `CancerModifier`, `Radiological_Test_Result`, `Biomarker_Measurement`, `Radiological_Test`, `Test`, `Test_Result`, `Prognostic_Biomarkers`, `Predictive_Biomarkers`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
