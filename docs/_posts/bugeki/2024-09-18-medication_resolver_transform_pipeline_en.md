@@ -22,7 +22,7 @@ A pretrained resolver pipeline to extract medications and resolve their adverse 
 
 Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
 
-This pipeline can be used with Spark transform. You can use medication_resolver_pipeline as Lightpipeline (with annotate/fullAnnotate).
+This pipeline can be used with Spark transform. You can use `medication_resolver_pipeline` as LightPipeline (with annotate/fullAnnotate).
 
 ## Predicated Entities
 
