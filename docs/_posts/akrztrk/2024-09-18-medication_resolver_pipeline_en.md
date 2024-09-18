@@ -22,7 +22,7 @@ A pretrained resolver pipeline to extract medications and resolve their adverse 
 
 Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
 
-This pipeline can be used as Lightpipeline (with annotate/fullAnnotate). You can use medication_resolver_transform_pipeline for Spark transform.
+This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can use `medication_resolver_transform_pipeline` for Spark transform.
 
 
 ## Predicated Entities
@@ -45,18 +45,18 @@ This pipeline can be used as Lightpipeline (with annotate/fullAnnotate). You can
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
+resolver_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
+result = resolver_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
 The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
 """)
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
+val resolver_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
+val result = resolver_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
 The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
 """)
 ```
