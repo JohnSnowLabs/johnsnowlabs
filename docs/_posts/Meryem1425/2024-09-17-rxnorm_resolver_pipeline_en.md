@@ -40,17 +40,17 @@ This pretrained pipeline maps entities with their corresponding RxNorm codes. Yo
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
+resolver_pipeline = PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.fullAnnotate("""The patient was prescribed Albuterol inhaler when needed. She was seen by the endocrinology service, prescribed Avandia 4 mg at nights,
+result = resolver_pipeline.fullAnnotate("""The patient was prescribed Albuterol inhaler when needed. She was seen by the endocrinology service, prescribed Avandia 4 mg at nights,
 Coumadin 5 mg with meals, Metformin 100 mg two times a day, and a daily dose of Lisinopril 10 mg.""")
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
+val resolver_pipeline = PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.fullAnnotate("""The patient was prescribed Albuterol inhaler when needed. She was seen by the endocrinology service, prescribed Avandia 4 mg at nights,
+val result = resolver_pipeline.fullAnnotate("""The patient was prescribed Albuterol inhaler when needed. She was seen by the endocrinology service, prescribed Avandia 4 mg at nights,
 Coumadin 5 mg with meals, Metformin 100 mg two times a day, and a daily dose of Lisinopril 10 mg.""")
 ```
 </div>
