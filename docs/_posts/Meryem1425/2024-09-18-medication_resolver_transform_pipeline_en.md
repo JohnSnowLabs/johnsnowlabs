@@ -4,7 +4,7 @@ title: Pipeline to Resolve Medication Codes(Transform)
 author: John Snow Labs
 name: medication_resolver_transform_pipeline
 date: 2024-09-18
-tags: [en, licensed]
+tags: [en, licensed, resolver, snomed, umls, rxnorm, ndc, ade, pipeline]
 task: Pipeline Healthcare
 language: en
 edition: Healthcare NLP 5.4.1
