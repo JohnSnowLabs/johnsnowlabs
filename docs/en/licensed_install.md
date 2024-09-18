@@ -18,7 +18,6 @@ The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
 
-
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
 </div><div class="h3-box" markdown="1">
@@ -132,11 +131,11 @@ Alternatively, you can automatically deploy John Snow Labs libraries on Databric
 
 Login to your account on my.JohnSnowLabs.com, navigate to 'My Subscriptions' page, and identify your license for Databricks. Click on the three dots as illustrated in the image below, then select the `Install On Cluster` option.
 
-<img class="image image--xl" src="/assets/images/myJSLdeployment.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Automatic deployment via my.JohnSnowLabs.com](/assets/images/myJSLdeployment.png "lit_shadow")
 
 On the install form, provide an access token for this account and then select the cluster where you want to install the libraries. Once it is done, you will get an email with information on the status of your deployment and on how to get started with the libraries. 
 
-<img class="image image--xl" src="/assets/images/install_form.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Automatic deployment via my.JohnSnowLabs.com](/assets/images/install_form.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -552,11 +551,11 @@ You can do this setup via Amazon AWS Command Line Interface (AWSCLI).
 
 Instructions about how to install AWSCLI are available at:
 
-<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">Installing the AWS CLI</a>
+[Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 Make sure you configure your credentials with AWS configure following the instructions at:
 
-<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html">Configuring the AWS CLI</a>
+[Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
 Please substitute the `ACCESS_KEY` and `SECRET_KEY` with the credentials available on your license json file. This is available on your account from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/). [Read this](licensed_install#get-a-spark-nlp-for-healthcare-license) for more information.
 
@@ -1607,7 +1606,7 @@ Install the required Spark NLP libraries using pip commands:
 
 **Example Usage:**
 
-![image](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
+![Install Spark NLP Libraries](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
 
 
 ### Step 8: Make Necessary Imports
@@ -1643,7 +1642,7 @@ with open("models.json", "r", encoding="utf-8") as f:
 
 **Example Usage:**
 
-![image](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
+![Explore Available Licensed Models](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
 
 
 ### Step 10: Download and Extract Required Models
@@ -1687,11 +1686,8 @@ result = pipeline.annotate(text)
 
 **Example Usage:**
 
-![image](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
+![Load the Model and Make Predictions](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
 
-![image](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
-
-
-
+![Load the Model and Make Predictions](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
 
 </div>

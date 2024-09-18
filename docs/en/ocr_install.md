@@ -13,7 +13,6 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-
 Spark OCR is built on top of **Apache Spark**. 
 Currently, it supports 3.0.*, 2.4.* and 2.3.* versions of Spark.
 

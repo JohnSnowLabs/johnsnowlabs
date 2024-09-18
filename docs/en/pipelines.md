@@ -12,11 +12,13 @@ sidebar:
     nav: sparknlp
 ---
 
+<div class="h3-box" markdown="1">
+
 Pretrained Pipelines have moved to Models Hub.
 Please follow this link for the updated list of all models and pipelines:
 [Models Hub](https://nlp.johnsnowlabs.com/modelss){:.success}
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## English
 

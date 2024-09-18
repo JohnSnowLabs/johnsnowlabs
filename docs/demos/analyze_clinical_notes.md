@@ -93,6 +93,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb
+        - title: Detect Stigmatization Language Entities
+          id: detect_stigmatization_language_entities
+          image: 
+              src: /assets/images/Detect_Stigmatization_Language_Entities.svg
+          excerpt: This model is specifically trained to extract critical information from clinical text related to stigmatazition. This model aims to systematically collect and analyze data on stigmatizing language found in patients' medical records.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_STIGMATIZATION/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_STIGMATIZATION.ipynb
         - title: Normalize medication-related phrases
           id: normalize_medication-related_phrases
           image: 
