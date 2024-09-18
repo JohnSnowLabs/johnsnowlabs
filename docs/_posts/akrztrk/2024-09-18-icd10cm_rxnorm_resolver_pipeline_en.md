@@ -4,7 +4,7 @@ title: Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver
 author: John Snow Labs
 name: icd10cm_rxnorm_resolver_pipeline
 date: 2024-09-18
-tags: [licensed, en, resolver, icd_10, rxnorm, pipeline]
+tags: [licensed, en, resolver, icd_10_cm, rxnorm, pipeline]
 task: Pipeline Healthcare
 language: en
 edition: Healthcare NLP 5.4.1
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: 
+This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: 
 
 - ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING
 
