@@ -46,16 +46,22 @@ from sparknlp.pretrained import PretrainedPipeline
 
 medication_resolver_pipeline = PretrainedPipeline("medication_resolver_transform_pipeline", "en", "clinical/models")
 
-result = medication_resolver_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
+text = """The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
+The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet."""
+
+data = spark.createDataFrame([[text]]).toDF("text")
+
+result = medication_resolver_pipeline.transform(data)
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val medication_resolver_pipeline = new PretrainedPipeline("medication_resolver_transform_pipeline", "en", "clinical/models")
 
-val result = medication_resolver_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
+val data = Seq("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
+The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""").toDS.toDF("text")
+
+val result = medication_resolver_pipeline.fit(data).transform(data)
 ```
 </div>
 
