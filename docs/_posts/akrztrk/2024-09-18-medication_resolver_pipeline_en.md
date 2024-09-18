@@ -24,6 +24,11 @@ Action/treatments are available for branded medication, and SNOMED codes are ava
 
 This pipeline can be used as Lightpipeline (with annotate/fullAnnotate). You can use medication_resolver_transform_pipeline for Spark transform.
 
+
+## Predicated Entities
+
+`RxNorm Code` `UMLS Code` `NDC Code` `SNOMED CT codes`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -36,6 +41,7 @@ This pipeline can be used as Lightpipeline (with annotate/fullAnnotate). You can
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
