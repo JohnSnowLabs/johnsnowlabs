@@ -53,6 +53,7 @@ and [re_oncology_biomarker_result](https://nlp.johnsnowlabs.com/2024/07/03/re_on
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
