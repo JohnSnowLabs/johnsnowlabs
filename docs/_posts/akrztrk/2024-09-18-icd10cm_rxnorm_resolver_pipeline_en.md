@@ -19,8 +19,14 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: 
+
 - ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING
+
 - RxNorm entities: DRUG
+
+## Predicted Entities
+
+`ICD-10-CM Code` `Rxnorm Code`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -34,6 +40,7 @@ This pipeline can extract clinical conditions and medication entities, map the c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
