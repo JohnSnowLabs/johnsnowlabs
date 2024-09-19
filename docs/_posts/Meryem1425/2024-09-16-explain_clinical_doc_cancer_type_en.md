@@ -5,7 +5,7 @@ author: John Snow Labs
 name: explain_clinical_doc_cancer_type
 date: 2024-09-16
 tags: [licensed, en, oncology, pipeline, assertion, ner, relation_extraction, cancer_type, cancer]
-task: Pipeline Healthcare
+task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.4.1
 spark_version: 3.0
