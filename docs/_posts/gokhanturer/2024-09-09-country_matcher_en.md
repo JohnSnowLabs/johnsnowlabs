@@ -50,6 +50,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
+
 text_matcher = TextMatcherInternalModel.pretrained("country_matcher","en","clinical/models") \
     .setInputCols(["sentence", "token"])\
     .setOutputCol("country_name")\
