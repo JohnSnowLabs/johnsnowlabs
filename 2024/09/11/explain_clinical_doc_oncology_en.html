@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Country Text Matcher | country_matcher | Healthcare NLP 5.4.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Explain Clinical Document - Oncology | explain_clinical_doc_oncology | Healthcare NLP 5.4.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")sentenceDetector = Sentence...">
-<!-- <link rel="canonical" href="/2024/09/09/country_matcher_en.html"> -->
-<link rel="canonical" href="/2024/09/09/country_matcher_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis specialized oncology pipeline can;      extract oncological entities,        assign assertion status to the extracted entities,        establish relations between the extracted entities from the clinical documents.  In this pipeline, ner_oncology, ner_oncology_anatomy_general, ner_oncology_response_t...">
+<!-- <link rel="canonical" href="/2024/09/11/explain_clinical_doc_oncology_en.html"> -->
+<link rel="canonical" href="/2024/09/11/explain_clinical_doc_oncology_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,121 +497,171 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gokhanturer/2024-09-09-country_matcher_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bugeki/2024-09-11-explain_clinical_doc_oncology_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 09, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Country Text Matcher</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Country Text Matcher"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>clinical</li><li>country</li><li>textmatcher</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-09T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed,clinical,country,textmatcher"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 11, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-11T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Explain Clinical Document - Oncology</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document - Oncology"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>oncology</li><li>pipeline</li><li>ner</li><li>assertion</li><li>relation_extraction</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,oncology,pipeline,ner,assertion,relation_extraction"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.</p>
+<p>This specialized oncology pipeline can;</p>
+
+<ul>
+  <li>
+    <p>extract oncological entities,</p>
+  </li>
+  <li>
+    <p>assign assertion status to the extracted entities,</p>
+  </li>
+  <li>
+    <p>establish relations between the extracted entities from the clinical documents.</p>
+  </li>
+</ul>
+
+<p>In this pipeline, <a href="https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_en.html">ner_oncology</a>, <a href="https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_anatomy_general_en.html">ner_oncology_anatomy_general</a>, <a href="https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_response_to_treatment_en.html">ner_oncology_response_to_treatment</a>, <a href="https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_unspecific_posology_en.html">ner_oncology_unspecific_posology</a>, <a href="https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_tnm_en.html">ner_oncology_tnm</a>, <a href="https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html">ner_jsl</a>, <a href="https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_posology_en.html">ner_oncology_posology</a> NER models, <a href="https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_en.html">assertion_oncology</a> assertion and <a href="https://nlp.johnsnowlabs.com/2024/07/03/re_oncology_granular_en.html">re_oncology_granular</a>, <a href="https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html">posology_re</a> relation extraction models were used to achieve those tasks. It can also return the <a href="https://nlp.johnsnowlabs.com/2024/08/16/ner_cancer_types_wip_en.html">ner_cancer_types_wip</a> outputs seperately from these NER models.</p>
+
+<ul>
+  <li>
+    <p>Clinical Entity Labels: <code class="language-plaintext highlighter-rouge">Adenopathy</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Biomarker</code>,<code class="language-plaintext highlighter-rouge">Biomarker_Result</code>, <code class="language-plaintext highlighter-rouge">Cancer_Dx</code>, <code class="language-plaintext highlighter-rouge">Cancer_Score</code> ,<code class="language-plaintext highlighter-rouge">Cancer_Surgery</code>, <code class="language-plaintext highlighter-rouge">Chemotherapy</code>, <code class="language-plaintext highlighter-rouge">Cycle_Count</code> ,<code class="language-plaintext highlighter-rouge">Cycle_Day</code>, <code class="language-plaintext highlighter-rouge">Cycle_Number</code>, <code class="language-plaintext highlighter-rouge">Date</code> ,<code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Dosage</code> ,<code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code> ,<code class="language-plaintext highlighter-rouge">Grade</code>, <code class="language-plaintext highlighter-rouge">Histological_Type</code>, <code class="language-plaintext highlighter-rouge">Hormonal_Therapy</code> ,<code class="language-plaintext highlighter-rouge">Imaging_Test</code>, <code class="language-plaintext highlighter-rouge">Immunotherapy</code>, <code class="language-plaintext highlighter-rouge">Invasion</code> ,<code class="language-plaintext highlighter-rouge">Line_Of_Therapy</code>, <code class="language-plaintext highlighter-rouge">Metastasis</code>, <code class="language-plaintext highlighter-rouge">Oncogene</code> ,<code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">Pathology_Result</code>, <code class="language-plaintext highlighter-rouge">Pathology_Test</code> ,<code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">Performance_Status</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code> ,<code class="language-plaintext highlighter-rouge">Radiotherapy</code>, <code class="language-plaintext highlighter-rouge">Response_To_Treatment</code>, <code class="language-plaintext highlighter-rouge">Relative_Date</code> ,<code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Site_Bone</code>, <code class="language-plaintext highlighter-rouge">Site_Brain</code> ,<code class="language-plaintext highlighter-rouge">Site_Breast</code>, <code class="language-plaintext highlighter-rouge">Site_Liver</code>, <code class="language-plaintext highlighter-rouge">Site_Lung</code> ,<code class="language-plaintext highlighter-rouge">Site_Lymph_Node</code>, <code class="language-plaintext highlighter-rouge">Site_Other_Body_Part</code>, <code class="language-plaintext highlighter-rouge">Smoking_Status</code> ,<code class="language-plaintext highlighter-rouge">Staging</code>, <code class="language-plaintext highlighter-rouge">Targeted_Therapy</code>, <code class="language-plaintext highlighter-rouge">Tumor_Finding</code> ,<code class="language-plaintext highlighter-rouge">Tumor_Size</code>, <code class="language-plaintext highlighter-rouge">Unspecific_Therapy</code>, <code class="language-plaintext highlighter-rouge">Radiation_Dose</code> ,<code class="language-plaintext highlighter-rouge">Anatomical_Site</code>, <code class="language-plaintext highlighter-rouge">Cancer_Therapy</code>, <code class="language-plaintext highlighter-rouge">Size_Trend</code> ,<code class="language-plaintext highlighter-rouge">Lymph_Node</code>, <code class="language-plaintext highlighter-rouge">Tumor_Description</code>,<code class="language-plaintext highlighter-rouge">Lymph_Node_Modifier</code>, <code class="language-plaintext highlighter-rouge">Posology_Information</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>,<code class="language-plaintext highlighter-rouge">Weight</code>,<code class="language-plaintext highlighter-rouge">Alcohol</code>,<code class="language-plaintext highlighter-rouge">Communicable_Disease</code>,<code class="language-plaintext highlighter-rouge">BMI</code>,<code class="language-plaintext highlighter-rouge">Obesity</code>,<code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">CNS_Tumor_Type</code>, <code class="language-plaintext highlighter-rouge">Carcinoma_Type</code>, <code class="language-plaintext highlighter-rouge">Leukemia_Type</code>, <code class="language-plaintext highlighter-rouge">Lymphoma_Type</code>, <code class="language-plaintext highlighter-rouge">Melanoma</code>, <code class="language-plaintext highlighter-rouge">Sarcoma_Type</code>, <code class="language-plaintext highlighter-rouge">Metastasis</code>, <code class="language-plaintext highlighter-rouge">Body_Site</code>, <code class="language-plaintext highlighter-rouge">Biomarker</code>, <code class="language-plaintext highlighter-rouge">Biomarker_Quant</code>, <code class="language-plaintext highlighter-rouge">Biomarker_Result</code></p>
+  </li>
+  <li>
+    <p>Assertion Status Labels: <code class="language-plaintext highlighter-rouge">Present</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">Hypotetical</code></p>
+  </li>
+  <li>
+    <p>Relation Extraction Labels: <code class="language-plaintext highlighter-rouge">is_size_of</code>, <code class="language-plaintext highlighter-rouge">is_finding_of</code>, <code class="language-plaintext highlighter-rouge">is_date_of</code>, <code class="language-plaintext highlighter-rouge">is_location_of</code>,
+<code class="language-plaintext highlighter-rouge">Chemotherapy-Dosage</code>,<code class="language-plaintext highlighter-rouge">Chemotherapy-Cycle_Count</code>,<code class="language-plaintext highlighter-rouge">Chemotherapy-Cycle_Day</code>,<code class="language-plaintext highlighter-rouge">Chemotherapy-Cycle_Number</code>, <code class="language-plaintext highlighter-rouge">Chemotherapy-Route</code>,
+<code class="language-plaintext highlighter-rouge">Cancer_Therapy-Dosage</code>, <code class="language-plaintext highlighter-rouge">Cancer_Therapy-Duration</code>, <code class="language-plaintext highlighter-rouge">Cancer_Therapy-Frequency</code>,<code class="language-plaintext highlighter-rouge">Cancer_Therapy-Route</code>,
+<code class="language-plaintext highlighter-rouge">Hormonal_Therapy-Dosage</code>, <code class="language-plaintext highlighter-rouge">Hormonal_Therapy-Duration</code>, <code class="language-plaintext highlighter-rouge">Hormonal_Therapy-Frequency</code>, <code class="language-plaintext highlighter-rouge">Hormonal_Therapy-Route</code>,
+<code class="language-plaintext highlighter-rouge">Immunotherapy-Dosage</code>, <code class="language-plaintext highlighter-rouge">Immunotherapy-Duration</code>, <code class="language-plaintext highlighter-rouge">Immunotherapy-Frequency</code>, <code class="language-plaintext highlighter-rouge">Immunotherapy-Route</code>,
+<code class="language-plaintext highlighter-rouge">Radiotherapy-Radiation_Dose</code>, <code class="language-plaintext highlighter-rouge">Radiotherapy-Duration</code>, <code class="language-plaintext highlighter-rouge">Radiotherapy-Frequency</code>,
+<code class="language-plaintext highlighter-rouge">Posology_Information-Dosage</code>, <code class="language-plaintext highlighter-rouge">Posology_Information-Duration</code>, <code class="language-plaintext highlighter-rouge">Posology_Information-Frequency</code>, <code class="language-plaintext highlighter-rouge">Posology_Information-Route</code>,
+<code class="language-plaintext highlighter-rouge">Unspecific_Therapy-Dosage</code>, <code class="language-plaintext highlighter-rouge">Unspecific_Therapy-Duration</code>, <code class="language-plaintext highlighter-rouge">Unspecific_Therapy-Frequency</code>, <code class="language-plaintext highlighter-rouge">Unspecific_Therapy-Route</code></p>
+  </li>
+</ul>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
+<p><code class="language-plaintext highlighter-rouge">Adenopathy</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Biomarker</code>,<code class="language-plaintext highlighter-rouge">Biomarker_Result</code>, <code class="language-plaintext highlighter-rouge">Cancer_Dx</code>, <code class="language-plaintext highlighter-rouge">Cancer_Score</code> ,<code class="language-plaintext highlighter-rouge">Cancer_Surgery</code>, <code class="language-plaintext highlighter-rouge">Chemotherapy</code>, <code class="language-plaintext highlighter-rouge">Cycle_Count</code> ,<code class="language-plaintext highlighter-rouge">Cycle_Day</code>, <code class="language-plaintext highlighter-rouge">Cycle_Number</code>, <code class="language-plaintext highlighter-rouge">Date</code> ,<code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Direction</code>, <code class="language-plaintext highlighter-rouge">Dosage</code> ,<code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code> ,<code class="language-plaintext highlighter-rouge">Grade</code>, <code class="language-plaintext highlighter-rouge">Histological_Type</code>, <code class="language-plaintext highlighter-rouge">Hormonal_Therapy</code> ,<code class="language-plaintext highlighter-rouge">Imaging_Test</code>, <code class="language-plaintext highlighter-rouge">Immunotherapy</code>, <code class="language-plaintext highlighter-rouge">Invasion</code> ,<code class="language-plaintext highlighter-rouge">Line_Of_Therapy</code>, <code class="language-plaintext highlighter-rouge">Metastasis</code>, <code class="language-plaintext highlighter-rouge">Oncogene</code> ,<code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">Pathology_Result</code>, <code class="language-plaintext highlighter-rouge">Pathology_Test</code> ,<code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">Performance_Status</code>, <code class="language-plaintext highlighter-rouge">Race_Ethnicity</code> ,<code class="language-plaintext highlighter-rouge">Radiotherapy</code>, <code class="language-plaintext highlighter-rouge">Response_To_Treatment</code>, <code class="language-plaintext highlighter-rouge">Relative_Date</code> ,<code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Site_Bone</code>, <code class="language-plaintext highlighter-rouge">Site_Brain</code> ,<code class="language-plaintext highlighter-rouge">Site_Breast</code>, <code class="language-plaintext highlighter-rouge">Site_Liver</code>, <code class="language-plaintext highlighter-rouge">Site_Lung</code> ,<code class="language-plaintext highlighter-rouge">Site_Lymph_Node</code>, <code class="language-plaintext highlighter-rouge">Site_Other_Body_Part</code>, <code class="language-plaintext highlighter-rouge">Smoking_Status</code> ,<code class="language-plaintext highlighter-rouge">Staging</code>, <code class="language-plaintext highlighter-rouge">Targeted_Therapy</code>, <code class="language-plaintext highlighter-rouge">Tumor_Finding</code> ,<code class="language-plaintext highlighter-rouge">Tumor_Size</code>, <code class="language-plaintext highlighter-rouge">Unspecific_Therapy</code>, <code class="language-plaintext highlighter-rouge">Radiation_Dose</code> ,<code class="language-plaintext highlighter-rouge">Anatomical_Site</code>, <code class="language-plaintext highlighter-rouge">Cancer_Therapy</code>, <code class="language-plaintext highlighter-rouge">Size_Trend</code> ,<code class="language-plaintext highlighter-rouge">Lymph_Node</code>, <code class="language-plaintext highlighter-rouge">Tumor_Description</code>,<code class="language-plaintext highlighter-rouge">Lymph_Node_Modifier</code>, <code class="language-plaintext highlighter-rouge">Posology_Information</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>,<code class="language-plaintext highlighter-rouge">Weight</code>,<code class="language-plaintext highlighter-rouge">Alcohol</code>,<code class="language-plaintext highlighter-rouge">Communicable_Disease</code>,<code class="language-plaintext highlighter-rouge">BMI</code>,<code class="language-plaintext highlighter-rouge">Obesity</code>,<code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">CNS_Tumor_Type</code>, <code class="language-plaintext highlighter-rouge">Carcinoma_Type</code>, <code class="language-plaintext highlighter-rouge">Leukemia_Type</code>, <code class="language-plaintext highlighter-rouge">Lymphoma_Type</code>, <code class="language-plaintext highlighter-rouge">Melanoma</code>, <code class="language-plaintext highlighter-rouge">Sarcoma_Type</code>, <code class="language-plaintext highlighter-rouge">Metastasis</code>, <code class="language-plaintext highlighter-rouge">Body_Site</code>, <code class="language-plaintext highlighter-rouge">Biomarker</code>, <code class="language-plaintext highlighter-rouge">Biomarker_Quant</code>, <code class="language-plaintext highlighter-rouge">Biomarker_Result</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.4.1_3.0_1725872813625.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.4.1_3.0_1725872813625.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.4.1_3.4_1726084388715.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.4.1_3.4_1726084388715.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response"""</span><span class="p">)</span>
 
-
-<span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"country_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"country_name"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="n">mathcer_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sentenceDetector</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">text_matcher</span><span class="p">])</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Côte d’Ivoire
-São Tomé &amp; Príncipe
-Åland Islands
-This is Bahamas and the USAID in the USA here
-Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">mathcer_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_oncology"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response"""</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text_matcher</span> <span class="k">=</span> <span class="nv">TextMatcherInternalModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"country_matcher"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"country_name"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setMergeOverlapping</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">mathcer_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-		<span class="n">documentAssembler</span><span class="o">,</span>
-		<span class="n">sentenceDetector</span><span class="o">,</span>
-		<span class="n">tokenizer</span><span class="o">,</span>
-		<span class="n">text_matcher</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""Côte d’Ivoire
-São Tomé &amp; Príncipe
-Åland Islands
-This is Bahamas and the USAID in the USA here
-Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mathcer_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------+-----+---+-------+
-|chunk              |begin|end|label  |
-+-------------------+-----+---+-------+
-|Côte d’Ivoire      |0    |12 |Country|
-|São Tomé &amp; Príncipe|14   |32 |Country|
-|Åland Islands      |34   |46 |Country|
-|Bahamas            |56   |62 |Country|
-|USA                |85   |87 |Country|
-|USA                |420  |422|Country|
-|Japan              |484  |488|Country|
-|France             |491  |496|Country|
-|Australia          |503  |511|Country|
-+-------------------+-----+---+-------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># NER Result</span>
+
+|    |   sentence_id | chunks                                  |   begin |   end | entities              |
+|---:|--------------:|:----------------------------------------|--------:|------:|:----------------------|
+|  0 |             0 | computed tomography                     |      24 |    42 | Imaging_Test          |
+|  1 |             0 | CT                                      |      45 |    46 | Imaging_Test          |
+|  2 |             0 | abdomen                                 |      61 |    67 | Site_Other_Body_Part  |
+|  3 |             0 | pelvis                                  |      73 |    78 | Site_Other_Body_Part  |
+|  4 |             0 | ovarian                                 |     104 |   110 | Site_Other_Body_Part  |
+|  5 |             0 | mass                                    |     112 |   115 | Tumor_Finding         |
+|  6 |             1 | Pap smear                               |     120 |   128 | Pathology_Test        |
+|  7 |             1 | one month later                         |     140 |   154 | Relative_Date         |
+|  8 |             1 | atypical glandular cells                |     173 |   196 | Pathology_Result      |
+|  9 |             1 | adenocarcinoma                          |     213 |   226 | Cancer_Dx             |
+| 10 |             2 | pathologic specimen                     |     233 |   251 | Pathology_Test        |
+| 11 |             2 | extension                               |     260 |   268 | Invasion              |
+| 12 |             2 | tumor                                   |     277 |   281 | Tumor_Finding         |
+| 13 |             2 | fallopian tubes                         |     298 |   312 | Site_Other_Body_Part  |
+| 14 |             2 | appendix                                |     315 |   322 | Site_Other_Body_Part  |
+| 15 |             2 | omentum                                 |     325 |   331 | Site_Other_Body_Part  |
+| 16 |             2 | enlarged                                |     349 |   356 | Lymph_Node_Modifier   |
+| 17 |             2 | lymph nodes                             |     358 |   368 | Site_Lymph_Node       |
+| 18 |             3 | tumor                                   |     409 |   413 | Tumor_Finding         |
+| 19 |             3 | stage IIIC                              |     419 |   428 | Staging               |
+| 20 |             3 | papillary serous ovarian adenocarcinoma |     430 |   468 | Oncological           |
+| 21 |             4 | Two months later                        |     471 |   486 | Relative_Date         |
+| 22 |             4 | lung metastases                         |     520 |   534 | Oncological           |
+| 23 |             5 | Neoadjuvant chemotherapy                |     536 |   559 | Chemotherapy          |
+| 24 |             5 | Cyclophosphamide                        |     582 |   597 | Chemotherapy          |
+| 25 |             5 | 500 mg/m2                               |     600 |   608 | Dosage                |
+| 26 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count           |
+| 27 |             5 | poor response                           |     644 |   656 | Response_To_Treatment |
+
+<span class="c"># ner_cancer_types_wip NER Result</span>
+
+|    |   sentence_id | chunks                        |   begin |   end | entities       |
+|---:|--------------:|:------------------------------|--------:|------:|:---------------|
+|  0 |             0 | abdomen                       |      61 |    67 | Body_Site      |
+|  1 |             0 | pelvis                        |      73 |    78 | Body_Site      |
+|  2 |             0 | ovarian                       |     104 |   110 | Body_Site      |
+|  3 |             1 | adenocarcinoma                |     213 |   226 | Carcinoma_Type |
+|  4 |             2 | fallopian                     |     298 |   306 | Body_Site      |
+|  5 |             2 | appendix                      |     315 |   322 | Body_Site      |
+|  6 |             2 | omentum                       |     325 |   331 | Body_Site      |
+|  7 |             2 | lymph nodes                   |     358 |   368 | Body_Site      |
+|  8 |             3 | serous ovarian adenocarcinoma |     440 |   468 | Carcinoma_Type |
+|  9 |             4 | lung                          |     520 |   523 | Body_Site      |
+| 10 |             4 | metastases                    |     525 |   534 | Metastasis     |
+
+<span class="c"># Assertion Result</span>
+
+|    |   sentence_id | chunks                                  |   begin |   end | entities            | assertion   |
+|---:|--------------:|:----------------------------------------|--------:|------:|:--------------------|:------------|
+|  0 |             0 | computed tomography                     |      24 |    42 | Imaging_Test        | Past        |
+|  1 |             0 | CT                                      |      45 |    46 | Imaging_Test        | Past        |
+|  2 |             0 | mass                                    |     112 |   115 | Tumor_Finding       | Present     |
+|  3 |             1 | Pap smear                               |     120 |   128 | Pathology_Test      | Past        |
+|  4 |             1 | atypical glandular cells                |     173 |   196 | Pathology_Result    | Present     |
+|  5 |             1 | adenocarcinoma                          |     213 |   226 | Cancer_Dx           | Possible    |
+|  6 |             2 | pathologic specimen                     |     233 |   251 | Pathology_Test      | Past        |
+|  7 |             2 | extension                               |     260 |   268 | Invasion            | Present     |
+|  8 |             2 | tumor                                   |     277 |   281 | Tumor_Finding       | Present     |
+|  9 |             2 | enlarged                                |     349 |   356 | Lymph_Node_Modifier | Present     |
+| 10 |             3 | tumor                                   |     409 |   413 | Tumor_Finding       | Present     |
+| 11 |             3 | papillary serous ovarian adenocarcinoma |     430 |   468 | Oncological         | Present     |
+| 12 |             4 | lung metastases                         |     520 |   534 | Oncological         | Present     |
+| 13 |             5 | Neoadjuvant chemotherapy                |     536 |   559 | Chemotherapy        | Present     |
+| 14 |             5 | Cyclophosphamide                        |     582 |   597 | Chemotherapy        | Present     |
+| 15 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count         | Present     |
+
+
+<span class="c"># Relation Extraction Result</span>
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                   | entity1              |   entity2_begin |   entity2_end | chunk2          | entity2              | relation                 |
+|---:|-----------:|----------------:|--------------:|:-------------------------|:---------------------|----------------:|--------------:|:----------------|:---------------------|:-------------------------|
+|  2 |          0 |             104 |           110 | ovarian                  | Site_Other_Body_Part |             112 |           115 | mass            | Tumor_Finding        | is_location_of           |
+|  3 |          1 |             120 |           128 | Pap smear                | Pathology_Test       |             213 |           226 | adenocarcinoma  | Cancer_Dx            | is_finding_of            |
+|  4 |          2 |             277 |           281 | tumor                    | Tumor_Finding        |             298 |           312 | fallopian tubes | Site_Other_Body_Part | is_location_of           |
+|  5 |          2 |             277 |           281 | tumor                    | Tumor_Finding        |             315 |           322 | appendix        | Site_Other_Body_Part | is_location_of           |
+|  7 |          5 |             536 |           559 | Neoadjuvant chemotherapy | Chemotherapy         |             600 |           608 | 500 mg/m2       | Dosage               | Chemotherapy-Dosage      |
+|  8 |          5 |             536 |           559 | Neoadjuvant chemotherapy | Chemotherapy         |             630 |           637 | 6 cycles        | Cycle_Count          | Chemotherapy-Cycle_Count |
+|  9 |          5 |             582 |           597 | Cyclophosphamide         | Chemotherapy         |             600 |           608 | 500 mg/m2       | Dosage               | Chemotherapy-Dosage      |
+| 10 |          5 |             582 |           597 | Cyclophosphamide         | Chemotherapy         |             630 |           637 | 6 cycles        | Cycle_Count          | Chemotherapy-Cycle_Count |
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -620,7 +670,11 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>country_matcher</td>
+      <td>explain_clinical_doc_oncology</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -635,28 +689,49 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[document, token]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[country_name]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>8.3 KB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>false</td>
+      <td>1.9 GB</td>
     </tr>
   </tbody>
 </table>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-09-09T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<h2 id="included-models">Included Models</h2>
+
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>AssertionDLModel</li>
+  <li>PerceptronModel</li>
+  <li>DependencyParserModel</li>
+  <li>RelationExtractionModel</li>
+  <li>PosologyREModel</li>
+  <li>AnnotationMerger</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-09-11T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +916,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/09/09/explain_clinical_doc_vop_small_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/09/09/explain_clinical_doc_vop_small_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/09/11/explain_clinical_doc_oncology_en.html">Explain Clinical Document - Oncology</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/09/11/state_matcher_en.html">State Text Matcher</a></div></div></div>
 
 </div>
 </div>

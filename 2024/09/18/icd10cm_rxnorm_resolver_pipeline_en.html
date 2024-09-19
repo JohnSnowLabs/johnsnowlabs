@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Country Text Matcher | country_matcher | Healthcare NLP 5.4.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver | icd10cm_rxnorm_resolver_pipeline | Healthcare NLP 5.4.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")sentenceDetector = Sentence...">
-<!-- <link rel="canonical" href="/2024/09/09/country_matcher_en.html"> -->
-<link rel="canonical" href="/2024/09/09/country_matcher_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts:  IC...">
+<!-- <link rel="canonical" href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html"> -->
+<link rel="canonical" href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,121 +497,81 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gokhanturer/2024-09-09-country_matcher_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bugeki/2024-09-18-icd10cm_rxnorm_resolver_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 09, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Country Text Matcher</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Country Text Matcher"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>clinical</li><li>country</li><li>textmatcher</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-09T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed,clinical,country,textmatcher"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 18, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-18T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>resolver</li><li>icd_10_cm</li><li>rxnorm</li><li>pipeline</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-18T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,resolver,icd_10_cm,rxnorm,pipeline"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.</p>
+<p>This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts:</p>
+<ul>
+  <li>ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING</li>
+  <li>RxNorm entities: DRUG</li>
+</ul>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
+<p><code class="language-plaintext highlighter-rouge">ICD-10-CM Code</code> <code class="language-plaintext highlighter-rouge">Rxnorm Code</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.4.1_3.0_1725872813625.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.4.1_3.0_1725872813625.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_rxnorm_resolver_pipeline_en_5.4.1_3.4_1726643468958.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_rxnorm_resolver_pipeline_en_5.4.1_3.4_1726643468958.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"icd10cm_rxnorm_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-
-
-<span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"country_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"country_name"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="n">mathcer_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sentenceDetector</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">text_matcher</span><span class="p">])</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Côte d’Ivoire
-São Tomé &amp; Príncipe
-Åland Islands
-This is Bahamas and the USAID in the USA here
-Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">mathcer_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resolver_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The patient is a 41-year-old Vietnamese female with a cough that started last week.
+She has had right-sided chest pain radiating to her back with fever starting yesterday.
+She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain.
+MEDICATIONS
+1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3.
+2. Amiodarone 100 mg p.o. daily."""</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">resolver_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"icd10cm_rxnorm_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">text_matcher</span> <span class="k">=</span> <span class="nv">TextMatcherInternalModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"country_matcher"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"country_name"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setMergeOverlapping</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">mathcer_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-		<span class="n">documentAssembler</span><span class="o">,</span>
-		<span class="n">sentenceDetector</span><span class="o">,</span>
-		<span class="n">tokenizer</span><span class="o">,</span>
-		<span class="n">text_matcher</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""Côte d’Ivoire
-São Tomé &amp; Príncipe
-Åland Islands
-This is Bahamas and the USAID in the USA here
-Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mathcer_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">resolver_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The patient is a 41-year-old Vietnamese female with a cough that started last week.
+She has had right-sided chest pain radiating to her back with fever starting yesterday.
+She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain.
+MEDICATIONS
+1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3.
+2. Amiodarone 100 mg p.o. daily."""</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------+-----+---+-------+
-|chunk              |begin|end|label  |
-+-------------------+-----+---+-------+
-|Côte d’Ivoire      |0    |12 |Country|
-|São Tomé &amp; Príncipe|14   |32 |Country|
-|Åland Islands      |34   |46 |Country|
-|Bahamas            |56   |62 |Country|
-|USA                |85   |87 |Country|
-|USA                |420  |422|Country|
-|Japan              |484  |488|Country|
-|France             |491  |496|Country|
-|Australia          |503  |511|Country|
-+-------------------+-----+---+-------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RXNORM RESULT</span>
+
+| chunks        | begin | end | code   | all_codes                                           | resolutions                                                                                                                                                                                                                                                                        |
+| <span class="nt">-------------</span> | <span class="nt">-----</span> | <span class="nt">---</span> | <span class="nt">------</span> | <span class="nt">---------------------------------------------------</span> | <span class="nt">----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span> |
+| Coumadin 1 mg | 282   | 294 | 855289 | <span class="o">[</span>855289, 438737, 208469, 205489, 447086, 205485...  | <span class="o">[</span>warfarin sodium 1 MG <span class="o">[</span>Coumadin], coumarin 1 MG[coumarin 1 MG], terazosin 1 MG Oral Capsule <span class="o">[</span>Hytrin], bumetanide 1 MG Oral Tablet <span class="o">[</span>Bumex], propinox 1 MG[propinox 1 MG], dextrothyroxine 1 MG Oral Tablet <span class="o">[</span>Choloxin]...                                                            |
+| Amiodarone    | 369   | 378 | 703    | <span class="o">[</span>703, 1663223, 1151983, 1663270, 1151982, 203114... | <span class="o">[</span>amiodarone[amiodarone], amiodarone Injection[amiodarone Injection], amiodarone Pill[amiodarone Pill], amiodarone Injection <span class="o">[</span>Nexterone][amiodarone Injection <span class="o">[</span>Nexterone]], amiodarone Oral Product[amiodarone Oral Product], amiodarone hydrochloride[amiodarone hydrochloride]... |
+
+
+<span class="c"># ICD-10-CM RESULT</span>
+
+| chunks                 | begin | end | code   | all_codes                                                | resolutions                                                                                                                                                       |
+|------------------------|-------|-----|--------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| a cough                | 52    | 58  | R05    | <span class="o">[</span>R05, R05.3, R05.1, A37, R05.2, R06.01...]               | <span class="o">[</span>cough, chronic cough, acute cough, whooping cough, subacute cough, orthopnea...]                                                                                 |
+| right-sided chest pain | 96    | 117 | R10.11 | <span class="o">[</span>R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | <span class="o">[</span>right upper quadrant pain, pain <span class="k">in </span>right upper arm, pain <span class="k">in </span>right leg, pain <span class="k">in </span>right arm, pain <span class="k">in </span>right shoulder, pain <span class="k">in </span>right forearm...]                      |
+| fever                  | 146   | 150 | A68    | <span class="o">[</span>A68, A78, R50.2, M04.1, A96.2, A68.9...]                | <span class="o">[</span>relapsing fevers, q fever, drug induced fever, periodic fever syndromes, lassa fever, relapsing fever, unspecified...]                                           |
+| pericarditis           | 193   | 204 | I30.1  | <span class="o">[</span>I30.1, B33.23, I30, I31.0, I01.0, I30.9...]             | <span class="o">[</span>infective pericarditis, viral pericarditis, acute pericarditis, chronic adhesive pericarditis, acute rheumatic pericarditis, acute pericarditis, unspecified...] |
+| cough                  | 232   | 236 | R05    | <span class="o">[</span>R05, A37, R05.3, R05.1, R05.2, R06.7...]                | <span class="o">[</span>cough, whooping cough, chronic cough, acute cough, subacute cough, sneezing...]                                                                                  |
+| right-sided chest pain | 243   | 264 | R10.11 | <span class="o">[</span>R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | <span class="o">[</span>right upper quadrant pain, pain <span class="k">in </span>right upper arm, pain <span class="k">in </span>right leg, pain <span class="k">in </span>right arm, pain <span class="k">in </span>right shoulder, pain <span class="k">in </span>right forearm...]                      |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -620,7 +580,11 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>country_matcher</td>
+      <td>icd10cm_rxnorm_resolver_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -635,28 +599,41 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[document, token]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[country_name]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>8.3 KB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>false</td>
+      <td>3.7 GB</td>
     </tr>
   </tbody>
 </table>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-09-09T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<h2 id="included-models">Included Models</h2>
+
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>TextMatcherInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>Chunk2Doc</li>
+  <li>BertSentenceEmbeddings</li>
+  <li>Router</li>
+  <li>Router</li>
+  <li>SentenceEntityResolverModel</li>
+  <li>SentenceEntityResolverModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-09-18T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +818,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/09/09/explain_clinical_doc_vop_small_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/09/09/explain_clinical_doc_vop_small_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/09/18/medication_resolver_transform_pipeline_en.html">Pipeline to Resolve Medication Codes(Transform)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/09/18/medication_resolver_pipeline_en.html">Pipeline to Resolve Medication Codes</a></div></div></div>
 
 </div>
 </div>

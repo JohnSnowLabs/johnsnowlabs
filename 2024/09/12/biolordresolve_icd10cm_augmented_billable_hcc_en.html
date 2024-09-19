@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Country Text Matcher | country_matcher | Healthcare NLP 5.4.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Sentence Entity Resolver for Billable ICD10-CM HCC Codes | biolordresolve_icd10cm_augmented_billable_hcc | Healthcare NLP 5.4.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")sentenceDetector = Sentence...">
-<!-- <link rel="canonical" href="/2024/09/09/country_matcher_en.html"> -->
-<link rel="canonical" href="/2024/09/09/country_matcher_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model maps extracted medical entities to ICD-10-CM codes using mpnet_embeddings_biolord_2023_cMPNet Embeddings and it supports 7-digit codes with Hierarchical Condition Categories (HCC) status.It has been updated by dropping the invalid codes that exist in the previous versions. In the result,look fo...">
+<!-- <link rel="canonical" href="/2024/09/12/biolordresolve_icd10cm_augmented_billable_hcc_en.html"> -->
+<link rel="canonical" href="/2024/09/12/biolordresolve_icd10cm_augmented_billable_hcc_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,36 +497,44 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gokhanturer/2024-09-09-country_matcher_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-09-12-biolordresolve_icd10cm_augmented_billable_hcc_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 09, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Country Text Matcher</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Country Text Matcher"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>clinical</li><li>country</li><li>textmatcher</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-09T00:00:00+00:00">
-    <meta itemprop="keywords" content="en,licensed,clinical,country,textmatcher"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 12, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Sentence Entity Resolver for Billable ICD10-CM HCC Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Sentence Entity Resolver for Billable ICD10-CM HCC Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>biolord</li><li>icd10cm</li><li>entity_resolution</li><li>hcc</li><li>clinical</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-09-12T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,biolord,icd10cm,entity_resolution,hcc,clinical"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.</p>
+<p>This model maps extracted medical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code>
+MPNet Embeddings and it supports 7-digit codes with Hierarchical Condition Categories (HCC) status.
+It has been updated by dropping the invalid codes that exist in the previous versions. In the result,
+look for the <code class="language-plaintext highlighter-rouge">all_k_aux_labels</code> parameter in the metadata to get HCC status. The HCC status can be divided to get further
+information: <code class="language-plaintext highlighter-rouge">billable status</code>, <code class="language-plaintext highlighter-rouge">hcc status</code>, and <code class="language-plaintext highlighter-rouge">hcc score</code>.
+For example if the result is <code class="language-plaintext highlighter-rouge">1||1||8</code>: <code class="language-plaintext highlighter-rouge">the billable status is 1</code>, <code class="language-plaintext highlighter-rouge">hcc status is 1</code>, and <code class="language-plaintext highlighter-rouge">hcc score is 8</code>.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
+<p><code class="language-plaintext highlighter-rouge">icd10cm</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.4.1_3.0_1725872813625.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.4.1_3.0_1725872813625.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biolordresolve_icd10cm_augmented_billable_hcc_en_5.4.1_3.4_1726172516101.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/biolordresolve_icd10cm_augmented_billable_hcc_en_5.4.1_3.4_1726172516101.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+<span class="n">sentenceDetectorDL</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
@@ -534,84 +542,121 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-
-<span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"country_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"country_name"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
 
-<span class="n">mathcer_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sentenceDetector</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">text_matcher</span><span class="p">])</span>
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Côte d’Ivoire
-São Tomé &amp; Príncipe
-Åland Islands
-This is Bahamas and the USAID in the USA here
-Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"PROBLEM"</span><span class="p">])</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">mathcer_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">c2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">embeddings</span> <span class="o">=</span><span class="n">MPNetEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"mpnet_embeddings_biolord_2023_c"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mpnet_embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">icd_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"biolordresolve_icd10cm_augmented_billable_hcc"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"mpnet_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                                       <span class="n">sentenceDetectorDL</span><span class="p">,</span>
+                                       <span class="n">tokenizer</span><span class="p">,</span>
+                                       <span class="n">word_embeddings</span><span class="p">,</span>
+                                       <span class="n">ner</span><span class="p">,</span>
+                                       <span class="n">ner_converter</span><span class="p">,</span>
+                                       <span class="n">c2doc</span><span class="p">,</span>
+                                       <span class="n">embeddings</span><span class="p">,</span>
+                                       <span class="n">icd_resolver</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation, and subsequent type 2 diabetes mellitus associated with obesity (BMI of 33.5 kg/m2), presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">resolver_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentenceDetectorDL</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text_matcher</span> <span class="k">=</span> <span class="nv">TextMatcherInternalModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"country_matcher"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"country_name"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setMergeOverlapping</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"word_embeddings"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">mathcer_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-		<span class="n">documentAssembler</span><span class="o">,</span>
-		<span class="n">sentenceDetector</span><span class="o">,</span>
-		<span class="n">tokenizer</span><span class="o">,</span>
-		<span class="n">text_matcher</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"word_embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""Côte d’Ivoire
-São Tomé &amp; Príncipe
-Åland Islands
-This is Bahamas and the USAID in the USA here
-Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
-Dr. Emily Brown, IP 192.168.1.1.
-She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
-Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
-Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
-Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="s">"PROBLEM"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mathcer_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">c2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span><span class="nv">MPNetEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"mpnet_embeddings_biolord_2023_c"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mpnet_embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">icd_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"biolordresolve_icd10cm_augmented_billable_hcc"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"mpnet_embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span>
+                               <span class="n">sentenceDetectorDL</span><span class="o">,</span>
+                               <span class="n">tokenizer</span><span class="o">,</span>
+                               <span class="n">word_embeddings</span><span class="o">,</span>
+                               <span class="n">ner</span><span class="o">,</span>
+                               <span class="n">ner_converter</span><span class="o">,</span>
+                               <span class="n">c2doc</span><span class="o">,</span>
+                               <span class="n">embeddings</span><span class="o">,</span>
+                               <span class="n">icd10_resolver</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">A</span> <span class="err">28</span><span class="kt">-year-old</span> <span class="kt">female</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">history</span> <span class="kt">of</span> <span class="kt">gestational</span> <span class="kt">diabetes</span> <span class="kt">mellitus</span> <span class="kt">diagnosed</span> <span class="kt">eight</span> <span class="kt">years</span> <span class="kt">prior</span> <span class="kt">to</span> <span class="kt">presentation</span>, <span class="kt">and</span> <span class="kt">subsequent</span> <span class="k">type</span> <span class="err">2</span> <span class="kt">diabetes</span> <span class="kt">mellitus</span> <span class="kt">associated</span> <span class="kt">with</span> <span class="kt">obesity</span> <span class="o">(</span><span class="kt">BMI</span> <span class="kt">of</span> <span class="err">33</span><span class="kt">.</span><span class="err">5</span> <span class="kt">kg/m2</span><span class="o">)</span>, <span class="kt">presented</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">one-week</span> <span class="kt">history</span> <span class="kt">of</span> <span class="kt">polyuria</span>, <span class="kt">polydipsia</span>, <span class="kt">poor</span> <span class="kt">appetite</span>, <span class="kt">and</span> <span class="kt">vomiting.</span> <span class="kt">Two</span> <span class="kt">weeks</span> <span class="kt">prior</span> <span class="kt">to</span> <span class="kt">presentation</span>, <span class="kt">she</span> <span class="kt">was</span> <span class="kt">treated</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">five-day</span> <span class="kt">course</span> <span class="kt">of</span> <span class="kt">amoxicillin</span> <span class="kt">for</span> <span class="kt">a</span> <span class="kt">respiratory</span> <span class="kt">tract</span> <span class="kt">infection.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">resolver_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------+-----+---+-------+
-|chunk              |begin|end|label  |
-+-------------------+-----+---+-------+
-|Côte d’Ivoire      |0    |12 |Country|
-|São Tomé &amp; Príncipe|14   |32 |Country|
-|Åland Islands      |34   |46 |Country|
-|Bahamas            |56   |62 |Country|
-|USA                |85   |87 |Country|
-|USA                |420  |422|Country|
-|Japan              |484  |488|Country|
-|France             |491  |496|Country|
-|Australia          |503  |511|Country|
-+-------------------+-----+---+-------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
++-----------------------------------+-----+---+---------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                              chunk|begin|end|ner_label|icd10_code|                                                 description|                                                 resolutions|                                                   all_codes|                                                    hcc_list|
++-----------------------------------+-----+---+---------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|      gestational diabetes mellitus|   39| 67|  PROBLEM|     O24.4|gestational diabetes mellitus <span class="o">[</span>gestational diabetes melli...|gestational diabetes mellitus <span class="o">[</span>gestational diabetes melli...|O24.4:::O24.41:::O24.9:::Z86.32:::O24.0:::O24.42:::O24.43...|0||0||0:::0||0||0:::0||0||0:::1||0||0:::0||0||0:::0||0||0...|
+|subsequent <span class="nb">type </span>2 diabetes mellitus|  118|152|  PROBLEM|     E11.8|complication of <span class="nb">type </span>ii diabetes mellitus <span class="o">[</span><span class="nb">type </span>2 diabete...|complication of <span class="nb">type </span>ii diabetes mellitus <span class="o">[</span><span class="nb">type </span>2 diabete...|E11.8:::Z86.39:::E11.9:::E11.69:::E11.65:::E11.6:::E11.2:...|1||1||18:::1||0||0:::1||1||19:::1||1||18:::1||1||18:::0||...|
+|                            obesity|  170|176|  PROBLEM|     E66.9|                              obesity <span class="o">[</span>obesity, unspecified]|obesity <span class="o">[</span>obesity, unspecified]:::overweight and obesity <span class="o">[</span>...|E66.9:::E66:::E66.8:::Z68.41:::P90:::E66.01:::Q13.0:::E66...|1||0||0:::0||0||0:::1||0||0:::1||1||22:::1||0||0:::1||1||...|
+|                           polyuria|  236|243|  PROBLEM|    R35.89|                             other polyuria <span class="o">[</span>other polyuria]|other polyuria <span class="o">[</span>other polyuria]:::polyuria <span class="o">[</span>polyuria]:::m...|R35.89:::R35:::R35.0:::R35.81:::N40.1:::R80.8:::N40:::R82...|1||0||0:::0||0||0:::1||0||0:::1||0||0:::1||0||0:::1||0||0...|
+|                         polydipsia|  246|255|  PROBLEM|     E23.2|                     primary polydipsia <span class="o">[</span>diabetes insipidus]|primary polydipsia <span class="o">[</span>diabetes insipidus]:::polydipsia <span class="o">[</span>pol...|E23.2:::R63.1:::F63.89:::Z13.8:::E87.0:::F10.99:::R63.8::...|1||1||23:::1||0||0:::1||0||0:::0||0||0:::1||0||0:::1||1||...|
+|                      poor appetite|  258|270|  PROBLEM|     R63.0|                                    poor appetite <span class="o">[</span>anorexia]|poor appetite <span class="o">[</span>anorexia]:::non-organic loss of appetite <span class="o">[</span>...|R63.0:::F50.8:::P92.9:::R63.8:::Z72.4:::Z73.89:::R46.89::...|1||0||0:::0||0||0:::1||0||0:::1||0||0:::1||0||0:::1||0||0...|
+|                           vomiting|  277|284|  PROBLEM|    R11.10|                   vomiting symptoms <span class="o">[</span>vomiting, unspecified]|vomiting symptoms <span class="o">[</span>vomiting, unspecified]:::vomiting <span class="o">[</span>vom...|R11.10:::R11.1:::R11:::R11.2:::K91.0:::P92.1:::R11.0:::R1...|1||0||0:::0||0||0:::0||0||0:::1||0||0:::1||0||0:::1||0||0...|
+|      a respiratory tract infection|  378|406|  PROBLEM|     J98.8|rti - respiratory tract infection <span class="o">[</span>other specified respir...|rti - respiratory tract infection <span class="o">[</span>other specified respir...|J98.8:::B58.3:::J06.9:::B39.4:::J22:::Z59.3:::J98.51:::J1...|1||0||0:::1||1||6:::1||0||0:::1||0||0:::1||0||0:::1||0||0...|
++-----------------------------------+-----+---+---------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -620,7 +665,7 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>country_matcher</td>
+      <td>biolordresolve_icd10cm_augmented_billable_hcc</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -636,11 +681,11 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[document, token]</td>
+      <td>[mpnet_embeddings]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[country_name]</td>
+      <td>[icd10cm_code]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -648,7 +693,7 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>8.3 KB</td>
+      <td>1.3 GB</td>
     </tr>
     <tr>
       <td>Case sensitive:</td>
@@ -656,7 +701,7 @@ Patient has traveled to Japan, France, and Australia in the past year."""</span>
     </tr>
   </tbody>
 </table>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-09-09T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-09-12T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +886,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/09/09/explain_clinical_doc_vop_small_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/09/09/explain_clinical_doc_vop_small_en.html">Explain Clinical Document - Voice Of Patient (VOP)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/09/12/sbiobertresolve_ndc_en.html">Sentence Entity Resolver for NDC (sbiobert_base_cased_mli embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/09/13/ndc_resolver_pipeline_en.html">Pipeline for National Drug Codes (NDC) Sentence Entity Resolver</a></div></div></div>
 
 </div>
 </div>
