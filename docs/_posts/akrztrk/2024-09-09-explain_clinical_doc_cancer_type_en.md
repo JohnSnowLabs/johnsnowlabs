@@ -42,15 +42,11 @@ In this pipeline, three NER, one assertion and two relation extraction models we
 
 - Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`
 
-## Predicted Entities
-
-`Age`, `Gender`, `Race_Ethnicity`, `Oncological`, `Weight`, `Alcohol`, `Communicable_Disease`, `BMI`, `Obesity`, `Diabetes`, `Test`, `Date`, `VS_Finding`, `ImagingFindings`, `Modifier`, `Symptom`, `Disease_Syndrome_Disorder`, `RelativeDate`, `Procedure`, `External_body_part_or_region`, `Imaging_Technique`, `Test_Result`, `Treatment`, `Internal_organ_or_component`, `Cycle_Number`, `Direction`, `Histological_Type`, `Site_Other_Body_Part`, `Hormonal_Therapy`, `Death_Entity`, `Targeted_Therapy`, `Route`, `Tumor_Finding`, `Duration`, `Pathology_Result`, `Chemotherapy`, `Radiotherapy`, `Radiation_Dose`, `Oncogene`, `Cancer_Surgery`, `Tumor_Size`, `Staging`, `Pathology_Test`, `Cancer_Dx`, `Site_Lung`, `Site_Breast`, `Site_Liver`, `Site_Lymph_Node`, `Response_To_Treatment`, `Site_Brain`, `Immunotherapy`, `Race_Ethnicity`, `Metastasis`, `Smoking_Status`, `Imaging_Test`, `Relative_Date`, `Line_Of_Therapy`, `Unspecific_Therapy`, `Site_Bone`, `Cycle_Count`, `Cancer_Score`, `Adenopathy`, `Grade`, `Biomarker`, `Invasion`, `Frequency`, `Performance_Status`, `Dosage`, `Cycle_Day`, `Carcinoma_Type`, `CNS_Tumor_Type`, `Melanoma`, `Biomarker_Result`, `Biomarker_Quant`, `Lymphoma_Type`, `Sarcoma_Type`, `Body_Site`, `Leukemia_Type`
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.4_1725903881471.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.4_1725903881471.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.4_1725902523540.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.4_1725902523540.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -58,8 +54,8 @@ In this pipeline, three NER, one assertion and two relation extraction models we
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
+
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("explain_clinical_doc_cancer_type", "en", "clinical/models")
@@ -68,8 +64,10 @@ result = ner_pipeline.fullAnnotate("""The patient underwent a magnetic resonance
 A biopsy performed two weeks later confirmed the presence of glioblastoma multiforme. The pathological analysis demonstrated infiltration of the tumor into surrounding brain tissue,
 with evidence of vascular proliferation and necrosis. The final diagnosis was grade IV glioblastoma. Six months later, the patient developed spinal metastases.
 Concurrent chemoradiotherapy with Temozolomide (150 mg/m²) was administered over 6 cycles, with minimal improvement in tumor size.""")
+
 ```
 ```scala
+
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("explain_clinical_doc_cancer_type", "en", "clinical/models")
@@ -78,6 +76,7 @@ val result = ner_pipeline.fullAnnotate("""The patient underwent a magnetic reson
 A biopsy performed two weeks later confirmed the presence of glioblastoma multiforme. The pathological analysis demonstrated infiltration of the tumor into surrounding brain tissue,
 with evidence of vascular proliferation and necrosis. The final diagnosis was grade IV glioblastoma. Six months later, the patient developed spinal metastases.
 Concurrent chemoradiotherapy with Temozolomide (150 mg/m²) was administered over 6 cycles, with minimal improvement in tumor size.""")
+
 ```
 </div>
 
