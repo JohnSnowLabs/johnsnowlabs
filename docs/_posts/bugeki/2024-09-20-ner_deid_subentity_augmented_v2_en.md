@@ -20,11 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 Named Entity recognition annotator allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings)
 inspired on a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM, CNN. Deidentification NER is a Named Entity Recognition model
-that annotates text to find protected health information that may need to be deidentified. It detects 18 entities.
+that annotates text to find protected health information that may need to be deidentified. Model detects 18 entities.
 
 ## Predicted Entities
 
-`'ZIP'`, `'ORGANIZATION'`, `'COUNTRY'`, `'PATIENT'`, `'PROFESSION'`, `'STATE'`, `'IDNUM'`, `'PHONE'`, `'STREET'`, `'HOSPITAL'`, `'LOCATION_OTHER'`, `'AGE'`, `'DOCTOR'`, `'CITY'`, `'MEDICALRECORD'`, `'DEVICE'`, `'DATE'`, `'USERNAME'`
+`ZIP`, `ORGANIZATION`, `COUNTRY`, `PATIENT`, `PROFESSION`, `STATE`, `IDNUM`, `PHONE`, `STREET`, `HOSPITAL`, `LOCATION_OTHER`, `AGE`, `DOCTOR`, `CITY`, `MEDICALRECORD`, `DEVICE`, `DATE`, `USERNAME`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -38,6 +38,7 @@ that annotates text to find protected health information that may need to be dei
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -156,24 +157,25 @@ val result = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-|        entity|    tp|   fp|   fn| total|precision|recall|    f1|
-+--------------+------+-----+-----+------+---------+------+------+
-|           AGE| 727.0| 46.0| 35.0| 762.0|   0.9405|0.9541|0.9472|
-|          CITY| 269.0| 45.0| 72.0| 341.0|   0.8567|0.7889|0.8214|
-|       COUNTRY|  96.0| 35.0| 32.0| 128.0|   0.7328|  0.75|0.7413|
-|          DATE|5531.0| 69.0|111.0|5642.0|   0.9877|0.9803| 0.984|
-|        DEVICE|  10.0|  0.0|  0.0|  10.0|      1.0|   1.0|   1.0|
-|        DOCTOR|3368.0|231.0|179.0|3547.0|   0.9358|0.9495|0.9426|
-|      HOSPITAL|1377.0| 69.0|207.0|1584.0|   0.9523|0.8693|0.9089|
-|         IDNUM| 161.0| 36.0| 49.0| 210.0|   0.8173|0.7667|0.7912|
-|LOCATION_OTHER|  19.0|  3.0|  2.0|  21.0|   0.8636|0.9048|0.8837|
-| MEDICALRECORD| 412.0| 20.0| 32.0| 444.0|   0.9537|0.9279|0.9406|
-|  ORGANIZATION| 101.0| 36.0| 37.0| 138.0|   0.7372|0.7319|0.7345|
-|       PATIENT|1468.0|101.0|159.0|1627.0|   0.9356|0.9023|0.9186|
-|         PHONE| 346.0| 32.0|  8.0| 354.0|   0.9153|0.9774|0.9454|
-|    PROFESSION| 271.0| 72.0| 65.0| 336.0|   0.7901|0.8065|0.7982|
-|         STATE| 178.0| 28.0| 27.0| 205.0|   0.8641|0.8683|0.8662|
-|        STREET| 408.0| 22.0|  7.0| 415.0|   0.9488|0.9831|0.9657|
-|      USERNAME|  87.0|  4.0| 14.0| 101.0|    0.956|0.8614|0.9063|
-|           ZIP| 129.0|  3.0| 10.0| 139.0|   0.9773|0.9281| 0.952|
+         label      tp     fp     fn   total  precision  recall      f1
+           AGE   727.0   46.0   35.0   762.0     0.9405  0.9541  0.9472
+          CITY   269.0   45.0   72.0   341.0     0.8567  0.7889  0.8214
+       COUNTRY    96.0   35.0   32.0   128.0     0.7328  0.75    0.7413
+          DATE  5531.0   69.0  111.0  5642.0     0.9877  0.9803  0.984
+        DEVICE    10.0    0.0    0.0    10.0     1.0     1.0     1.0
+        DOCTOR  3368.0  231.0  179.0  3547.0     0.9358  0.9495  0.9426
+      HOSPITAL  1377.0   69.0  207.0  1584.0     0.9523  0.8693  0.9089
+         IDNUM   161.0   36.0   49.0   210.0     0.8173  0.7667  0.7912
+LOCATION_OTHER    19.0    3.0    2.0    21.0     0.8636  0.9048  0.8837
+ MEDICALRECORD   412.0   20.0   32.0   444.0     0.9537  0.9279  0.9406
+  ORGANIZATION   101.0   36.0   37.0   138.0     0.7372  0.7319  0.7345
+       PATIENT  1468.0  101.0  159.0  1627.0     0.9356  0.9023  0.9186
+         PHONE   346.0   32.0    8.0   354.0     0.9153  0.9774  0.9454
+    PROFESSION   271.0   72.0   65.0   336.0     0.7901  0.8065  0.7982
+         STATE   178.0   28.0   27.0   205.0     0.8641  0.8683  0.8662
+        STREET   408.0   22.0    7.0   415.0     0.9488  0.9831  0.9657
+      USERNAME    87.0    4.0   14.0   101.0     0.956   0.8614  0.9063
+           ZIP   129.0    3.0   10.0   139.0     0.9773  0.9281  0.952
+         macro     -       -      -      -         -        -    0.8916
+         micro     -       -      -      -         -        -    0.94
 ```
