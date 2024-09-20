@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Bencmarks
+title: Benchmarks
 permalink: /docs/en/benchmark
 key: docs-benchmark
 modify_date: "2021-10-04"
