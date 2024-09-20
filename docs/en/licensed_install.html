@@ -2287,15 +2287,21 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 
   <p><img src="/assets/images/azure/azure_1.png" alt="Azure AI Studio instructions" /></p>
 
-  <p>13 Then go to All Azure AI dropdown and choose <strong>Azure Machine Learning Studio</strong>.</p>
+  <ol>
+    <li>Then go to All Azure AI dropdown and choose <strong>Azure Machine Learning Studio</strong>.</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_2.png" alt="Azure AI Studio instructions" /></p>
 
-  <p>14 Such a window will Appear. Go to Add compute.</p>
+  <ol>
+    <li>Such a window will Appear. Go to Add compute.</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_3.png" alt="Azure AI Studio instructions" /></p>
 
-  <p>15 Choose the compute type and enable auto-shutdown as well.</p>
+  <ol>
+    <li>Choose the compute type and enable auto-shutdown as well.</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_10.png" alt="Azure AI Studio instructions" /></p>
 
@@ -2303,28 +2309,42 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 
   <p><img src="/assets/images/azure/azure_9.png" alt="Azure AI Studio instructions" /></p>
 
-  <p>16 Then go to the Notebooks Section.</p>
+  <ol>
+    <li>Then go to the Notebooks Section.</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_4.png" alt="Azure AI Studio instructions" /></p>
 
   <p>In NB section, you can create your own NB or load existing NBs.</p>
 
-  <p>17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.</p>
+  <ol>
+    <li>Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_5.png" alt="Azure AI Studio instructions" /></p>
 
-  <p>18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using <code class="language-plaintext highlighter-rouge">nlp.install()</code> and <code class="language-plaintext highlighter-rouge">nlp.start()</code> you can install the required jars and wheels and start the spark session.</p>
+  <ol>
+    <li>Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using <code class="language-plaintext highlighter-rouge">nlp.install()</code> and <code class="language-plaintext highlighter-rouge">nlp.start()</code> you can install the required jars and wheels and start the spark session.</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_6.png" alt="Azure AI Studio instructions" /></p>
 
-  <p>19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).</p>
+  <ol>
+    <li>Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).</li>
+  </ol>
 
   <p><img src="/assets/images/azure/azure_7.png" alt="Azure AI Studio instructions" /></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="microsoft-fabric-instructions">Microsoft Fabric Instructions</h2>
 
   <h3 id="step-1-log-into-ms-fabric">Step 1: Log into MS Fabric</h3>
   <p>Navigate to <a href="https://app.fabric.microsoft.com/">MS Fabric</a> and sign in with your MS Fabric Account credentials.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-2-create-a-lakehouse">Step 2: Create a Lakehouse</h3>
   <ul>
@@ -2335,14 +2355,18 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 
   <p><img src="https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b" alt="image" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="step-3-create-a-notebook">Step 3: Create a Notebook</h3>
   <ul>
-    <li>
-      <p>Similarly, create a new notebook ( for instance let us name it <code class="language-plaintext highlighter-rouge">JSL_Notebook</code>.)</p>
-
-      <p><img src="https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0" alt="image" /></p>
-    </li>
+    <li>Similarly, create a new notebook ( for instance let us name it <code class="language-plaintext highlighter-rouge">JSL_Notebook</code>.)</li>
   </ul>
+
+  <p><img src="https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0" alt="image" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-4-attach-the-lakehouse">Step 4: Attach the Lakehouse</h3>
   <p>Attach the newly created lakehouse (<code class="language-plaintext highlighter-rouge">jsl_workspace</code>) to your notebook.</p>
@@ -2350,6 +2374,9 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <p><img src="https://github.com/user-attachments/assets/63996c40-4cd6-4aa2-925f-a1ad886914f4" alt="image" /></p>
 
   <p><img src="https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be" alt="image" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-5-upload-files">Step 5: Upload Files</h3>
   <p>Upload the necessary <code class="language-plaintext highlighter-rouge">.jar</code> and <code class="language-plaintext highlighter-rouge">.whl</code> files to the attached lakehouse.</p>
@@ -2359,6 +2386,9 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <p><img src="https://github.com/user-attachments/assets/53bc84ae-40dc-41dc-9522-e87bf70d4fba" alt="image" /></p>
 
   <p>After uploading is complete, you can configure and run the notebook.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-6-configure-the-notebook-session">Step 6: Configure the Notebook Session</h3>
   <p>Configure the session within the notebook as follows:</p>
@@ -2386,7 +2416,12 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h3 id="step-7-install-spark-nlp-libraries">Step 7: Install Spark NLP Libraries</h3>
+
   <p>Install the required Spark NLP libraries using pip commands:</p>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pip <span class="nb">install</span> &lt;spark-nlp whl File API path&gt;
 %pip <span class="nb">install</span> &lt;spark-nlp-jsl whl File API path&gt;
@@ -2395,6 +2430,9 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <p><strong>Example Usage:</strong></p>
 
   <p><img src="https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2" alt="Install Spark NLP Libraries" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-8-make-necessary-imports">Step 8: Make Necessary Imports</h3>
   <p>Import the necessary Python and Spark libraries:</p>
@@ -2415,6 +2453,9 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h3 id="step-9-explore-available-licensed-models">Step 9: Explore Available Licensed Models</h3>
   <p>Download and explore the list of available licensed models:</p>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">!</span> pip <span class="nb">install</span> <span class="nt">-q</span> boto3
@@ -2428,6 +2469,9 @@ with open<span class="o">(</span><span class="s2">"models.json"</span>, <span cl
   <p><strong>Example Usage:</strong></p>
 
   <p><img src="https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b" alt="Explore Available Licensed Models" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-10-download-and-extract-required-models">Step 10: Download and Extract Required Models</h3>
   <p>Set up AWS credentials and use Boto3 to handle files:</p>
@@ -2458,6 +2502,9 @@ with open<span class="o">(</span><span class="s2">"models.json"</span>, <span cl
 <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h3 id="step-11-load-the-model-and-make-predictions">Step 11: Load the Model and Make Predictions</h3>
   <p>Load the model and perform predictions on the desired text:</p>
