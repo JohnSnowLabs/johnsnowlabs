@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `NLP Tools`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
+The Medical Chatbot is equipped with dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `Medical Agents`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
 
 ## MedResearch: Your Gateway to Academic Medical Research
 
@@ -37,8 +37,8 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 
 </div><div class="h3-box" markdown="1">
 
-## NLP Tools 
-The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these NLP Tools have the ability to extract 261 distinct entity types. Additionally, they can assign assertion statuses to these entities and establish complex relationships between them.
+## Medical Agents 
+The Medical Agents are a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). They allow users to access nine distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis. Collectively, these Medical Agents have the ability to extract **261 distinct entity types**. Additionally, they can assign **assertion statuses** to these entities and establish complex **relationships** between them.
 
 </div><div class="h3-box" markdown="1">
 
@@ -71,7 +71,7 @@ Focuses on extracting dosage and medication instructions from medical documents,
 
 </div><div class="h3-box" markdown="1">
 
-To further support precise and efficient medical data analysis, four new NLP tools have been made available, tailored to meet the specific requirements of the medical field. All four of the new tools are seamlessly integrated and available via the @ Selector. By simply typing ‘@’ at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new NLP tools).
+To further support precise and efficient medical data analysis, four new Medical Agents have been made available, tailored to meet the specific requirements of the medical field. Those are seamlessly integrated and available via the @ Selector. By simply typing ‘@’ at the beginning of the query box, users can access the @ Selector menu, which displays all available tools (including the 4 new Medical Agents).
 
 </div><div class="h3-box" markdown="1">
     
@@ -91,17 +91,17 @@ Designed to detect healthcare-related entities from patient-generated content, a
 
 </div><div class="h3-box" markdown="1">
 
-**Export results in CSV format-** All results computed using the NLP tools can be exported in CSV format. For each detected entity the export also contains confidence information.
+**Export results in CSV format-** All results computed using the Medical Agents can be exported in CSV format. For each detected entity the export also contains confidence information.
 
-**NLP Tools activation-** Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
+**Medical Agents activation-** Users can enable or disable the agents based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
 
-**Accessing NLP Tools-** NLP tools can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct tool activation.
+**Accessing Medical Agents-** Medical Agents can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct activation.
 
 **User Benefits**
 - **Enhanced Privacy and Compliance**: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.
 - **Focused Content Extraction**: Enables precise extraction of medical entities tailored to general, oncological, and posology contexts, enhancing the utility and accuracy of information retrieval.
 - **User-Controlled Flexibility**: Offers the flexibility to tailor tool engagement to individual preferences and requirements.
-- **Efficient Tool Access**: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.
+- **Efficient Tool Access**: Simplifies the process of accessing specific Medical Agents through intuitive user interface mechanisms.
 
 </div><div class="h3-box" markdown="1">
 
@@ -136,7 +136,7 @@ Typing '@' in the query box triggers a contextual menu displaying all available 
 
 For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
 
-Similarly, for Web Search and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+Similarly, for Web Search and Medical Agents, each tool can be easily selected and utilized with the @ operator as follows:
  - `@web_search`: Query the Web
  - `@deidentification`: De-identification of Medical Text
  - `@obfuscation`: Obfuscation of Medical Text
