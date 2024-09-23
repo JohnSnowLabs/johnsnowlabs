@@ -12,6 +12,80 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
+## 09-23-2024 Introducing Literature Review
+
+We are happy to announce a new feature offered by the Medical Chatbot: Literature Review, specifically tailored to streamline the complex process of medical literature research and review. This tool enables researchers, healthcare professionals or clinicians to efficiently sift through vast amounts of published research to support in-depth meta-analyses, clinical decision-making, or evidence-based practices.
+
+### Overview
+
+The literature review is a critical and multifaceted process that involves **searching**, **reading**, **analyzing**, and **synthesizing** scholarly materials on a given topic to identify existing knowledge in a particular research area. This process helps map out what is already known and allows for the critical evaluation of prior studies to uncover gaps, inconsistencies, or emerging trends. Navigating through all available literature on a given subject requires specialized skills and highly effective search pathways to achieve both sensitivity and specificity in the results. Even for an experienced team of researchers, the task can become overwhelming, time-consuming, and prone to missed insights or errors.
+
+To address these challenges and improve the efficiency and accuracy of the literature review process, the Medical Chatbot introduces the "Literature Review". This advanced AI agent enables users to intelligently search millions of research papers and articles from prestigious databases such as PubMed, BioRxiv, and MedRxiv (as well as custom knowledge bases), and quickly identify relevant studies. Then, with just the push of a button, the tool allows for automated data extraction, making it easy to gather key data points and insights. Users can also define specific inclusion and exclusion criteria to filter results, honing in on the most pertinent studies for their research. This dramatically reduces the manual effort required for conducting comprehensive reviews, allowing for faster, more informed, and more accurate decision-making in clinical and research environments.
+
+### Key Features
+
+**1. Intelligent Search:**
+Users can effortlessly search through vast amounts of published research papers and articles from trusted databases such as PubMed, BioRxiv, MedRxiv using simple keywords. The system helps streamline clinical decision-making by rapidly identifying relevant literature.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/7MqUPMtuUcI?si=nUiH4cMjh1nFoqgz&hd=1" title="Literature Review - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**2. Smart Data Extraction:**
+Users can define the data points they are interested in, using plain English, and the Medical Chatbot will automatically understand and intelligently scan the filtered literature, identifying and extracting those across all target studies. This automation drastically reduces the manual effort typically required for data extraction, providing users with quick access to key findings.
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/m2YldVGOFXU?si=2sm4LJV60D1fNdUa&hd=1" title="Literature Review - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**3. Customizable Inclusion and Exclusion Criteria:**
+Users can define specific inclusion and exclusion criteria based on their study requirements, making their review highly accurate and targeted. Whether focusing on the intervention, measured outcomes, study population, methodology, or other parameters, these custom criteria ensure that only the most relevant studies are included in the review. The medical chatbot analyzes the literature to verify compliance with these criteria, notifying users of any non-compliant studies and providing a highly accurate literature review.
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/vG7pGsNqrkA?si=vObgXAE971_y-9Ob&hd=1" title="Literature Review - Step 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**4. Data Filtering for Precise Targeting:**
+Results can be further refined by filtering literature based on the date range of publication, the impact factor of the study, and the type of study (e.g., clinical trials, reviews, case studies). This allows users to narrow their search and focus on the most relevant studies for their review. Users can specify the exact characteristics they want the included literature to possess for a more accurate and focused review. This ensures that the results align perfectly with the research objectives.
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/J9FV4r70rLo?si=XKXIhOmZ-Ok7J5lM&hd=1" title="Literature Review - Step 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**5. Real-Time Feedback:**
+As users enter their search criteria, the chatbot filters and displays relevant literature in real-time. This immediate feedback allows users to open and review papers right away, without having to wait for the entire search process to complete. By streamlining the search process, this feature facilitates faster access to relevant information, saving users time and effort.
+
+**6. Comprehensive Result View:**
+The tool provides an intelligent tabular view of all the relevant information from each study, including the title, author, journal, and direct links to the paper. It also displays extracted data points based on user criteria and indicates whether each study complies with the defined inclusion and exclusion criteria. This organized and visual representation saves users significant time and effort in their literature review process.
+For a better understanding of the data points, users can hover over individual data cells in the results table to reveal tooltips containing evidence or explanations of the extracted data. This feature ensures that users have easy access to deeper insights without cluttering the main results view, facilitating a better understanding of the extracted information.
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/cmf13SkFNoQ?si=PzHmgce86IPDxuG9&hd=1" title="Literature Review - Explore Results" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Results are color-coded based on the application of inclusion and exclusion criteria as follows:
+- Studies highlighted in green have successfully met all inclusion and exclusion criteria.
+- Studies highlighted in red were excluded due to failing at least one of the specified exclusion criteria.
+- Studies highlighted in white lacked sufficient information for the chatbot to determine their inclusion or exclusion, as none of the criteria could be validated.
+
+**7. Downloadable CSV Reports:**
+Once the review is complete, users can download all the extracted information in a well-organized CSV file. This functionality enables seamless management and further processing of the data, making it easier for users to analyze the information in-depth or share it with team members for collaboration. By exporting study details and compliance with inclusion/exclusion criteria, users can efficiently manage their literature review data and integrate it into broader research workflows or collaborative projects.
+
+**8. Cloning Literature Reviews for Efficiency:**
+Once a literature review is completed, users can easily clone the existing review, replicating all the parameters with a single click. This includes search keywords, data points, inclusion and exclusion criteria, and the search filter settings. The cloned review retains all of the original settings, but users can also modify these parameters as needed in the new review. This allows the quick creation of multiple variations of the same literature review, optimizing the process for different research angles or clinical considerations. By eliminating the need to re-enter identical parameters repeatedly, the “Clone” button saves significant time and effort, allowing users to replicate previous work and focus on refining and analyzing new sets of results efficiently.
+
+These features work together to provide a powerful, efficient, and user-friendly experience, enabling researchers to complete literature reviews on thousands of articles in minutes instead of weeks or months of study and manual text synthesis.
+
+### User Benefits
+
+In the medical domain, this tool has been designed to make the following impacts:
+
+**1. Time and Effort Savings:**
+The "Literature Review" feature is designed to significantly reduce the manual labor involved in conducting literature reviews. With automated data extraction, customizable filtering, real-time updates, and organized result displays, users can complete comprehensive reviews in a fraction of the time it would take manually. This time-saving aspect is one of the most critical benefits for researchers and clinicians who need to process large amounts of literature quickly.
+
+**2. Specificity for Meta-Analysis:**
+For users conducting meta-analyses, this tool allows for a high degree of specificity in selecting literature that matches the desired characteristics. By being able to filter studies based on exact criteria, users can ensure their meta-analysis is robust, accurate, and fully aligned with their research objectives. This improves the quality and precision of the meta-analysis, making the tool invaluable for detailed, data-driven research.
+
+**3. Automated and Intelligent Data Point Extraction:**
+Users no longer need to manually comb through articles to extract relevant data points. The Medical chatbot understands simple keywords provided by users and autonomously extracts the required information from filtered research papers. This automated extraction drastically reduces the manual workload associated with literature reviews, ensuring critical data points are collected quickly and accurately while minimizing the risk of human error.
+
+**4. Improved Clinical Decision-Making:**
+By providing users with timely and accurate access to relevant studies, the feature directly supports clinical decision-making. With quick and precise data extraction, clinicians and researchers are better equipped to make informed decisions based on the latest and most relevant research. This ensures that decisions are not only quicker but are also grounded in high-quality, peer-reviewed literature, enhancing the overall reliability of the outcomes.
+
 ## 08-08-2024 New NLP Tools and Response Styles
 
 
