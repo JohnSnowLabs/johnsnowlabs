@@ -1,5 +1,545 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-09-20T09:56:49+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver</title><link href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-09-23T12:02:16+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">JSL_MedS_v2 (LLM - q16)</title><link href="/2024/09/19/jsl_meds_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q16)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q16_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q16_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile.
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q16_v2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;5.6 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q16_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_v2 (LLM - q4)</title><link href="/2024/09/19/jsl_meds_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q4)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q4_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q4_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Question:
+who you are, describe yourself
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+### Question:
+who you are, describe yourself
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+Hello! I am JSL Medical LLM, an artificial intelligence language model specialized in medical knowledge. I am here to assist you with any medical inquiries, provide information on health conditions, and help you understand medical terminology. Please feel free to ask me any questions related to health and medicine.
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q4_v2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Question: who you are, describe yourself &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Question: who you are, describe yourself &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Hello! I am JSL Medical LLM, an artificial intelligence language model specialized in medical knowledge. I am here to assist you with any medical inquiries, provide information on health conditions, and help you understand medical terminology. Please feel free to ask me any questions related to health and medicine. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q4_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_v2 (LLM - q8)</title><link href="/2024/09/19/jsl_meds_q8_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q8)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q8_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q8_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+Based on the provided text, the age group most susceptible to breast cancer is women over the age of 50. This is explicitly mentioned in the text, indicating that breast cancer is most commonly occurring in this age group. It is important to note that while age is a significant risk factor, other factors such as genetic mutations, family history, and hormonal factors also contribute to the likelihood of developing breast cancer. Regular screenings and awareness of risk factors are crucial for early detection and effective management of breast cancer.
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q8_v2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;3.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Based on the provided text, the age group most susceptible to breast cancer is women over the age of 50. This is explicitly mentioned in the text, indicating that breast cancer is most commonly occurring in this age group. It is important to note that while age is a significant risk factor, other factors such as genetic mutations, family history, and hormonal factors also contribute to the likelihood of developing breast cancer. Regular screenings and awareness of risk factors are crucial for early detection and effective management of breast cancer. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q8_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q16)</title><link href="/2024/09/19/jsl_meds_q16_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q16)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q16_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q16_v3_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile.
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q16_v3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;5.6 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q16_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q4)</title><link href="/2024/09/19/jsl_meds_q4_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q4)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q4_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q4_v3_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+Based on the provided text, the age group most susceptible to breast cancer is women over 50 years old. This is explicitly mentioned as the most common occurrence age for breast cancer. While other factors like genetic mutations, family history, and hormonal factors also contribute to the risk, the text specifically highlights age as a significant risk factor. It is important to note that while age is a risk factor, breast cancer can still occur in younger women, and awareness and preventive measures should be considered across all age groups.
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q4_v3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Based on the provided text, the age group most susceptible to breast cancer is women over 50 years old. This is explicitly mentioned as the most common occurrence age for breast cancer. While other factors like genetic mutations, family history, and hormonal factors also contribute to the risk, the text specifically highlights age as a significant risk factor. It is important to note that while age is a risk factor, breast cancer can still occur in younger women, and awareness and preventive measures should be considered across all age groups. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q4_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q8)</title><link href="/2024/09/19/jsl_meds_q8_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q8)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q8_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q8_v3_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). It is important to avoid antibiotics that are contraindicated during pregnancy, such as tetracyclines (D: Doxycycline) and fluoroquinolones (C: Ciprofloxacin). Ampicillin (A) and Ceftriaxone (B) are also generally safe during pregnancy, but Nitrofurantoin is often preferred due to its specific efficacy for UTIs.
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;jsl_meds_q8_v3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;3.7 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). It is important to avoid antibiotics that are contraindicated during pregnancy, such as tetracyclines (D: Doxycycline) and fluoroquinolones (C: Ciprofloxacin). Ampicillin (A) and Ceftriaxone (B) are also generally safe during pregnancy, but Nitrofurantoin is often preferred due to its specific efficacy for UTIs. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q8_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver</title><link href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html">## Description
 
 This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: 
 - ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING
@@ -407,652 +947,4 @@ MEDICATIONS
 - Router
 - Router
 - SentenceEntityResolverModel
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="icd_10_cm" /><category term="rxnorm" /><category term="pipeline" /><summary type="html">Description This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING RxNorm entities: DRUG Predicted Entities ICD-10-CM Code Rxnorm Code Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week. She has had right-sided chest pain radiating to her back with fever starting yesterday. She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain. MEDICATIONS 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3. 2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week. She has had right-sided chest pain radiating to her back with fever starting yesterday. She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain. MEDICATIONS 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3. 2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;) Results # RXNORM RESULT | chunks | begin | end | code | all_codes | resolutions | | ------------- | ----- | --- | ------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | | Coumadin 1 mg | 282 | 294 | 855289 | [855289, 438737, 208469, 205489, 447086, 205485... | [warfarin sodium 1 MG [Coumadin], coumarin 1 MG[coumarin 1 MG], terazosin 1 MG Oral Capsule [Hytrin], bumetanide 1 MG Oral Tablet [Bumex], propinox 1 MG[propinox 1 MG], dextrothyroxine 1 MG Oral Tablet [Choloxin]... | | Amiodarone | 369 | 378 | 703 | [703, 1663223, 1151983, 1663270, 1151982, 203114... | [amiodarone[amiodarone], amiodarone Injection[amiodarone Injection], amiodarone Pill[amiodarone Pill], amiodarone Injection [Nexterone][amiodarone Injection [Nexterone]], amiodarone Oral Product[amiodarone Oral Product], amiodarone hydrochloride[amiodarone hydrochloride]... | # ICD-10-CM RESULT | chunks | begin | end | code | all_codes | resolutions | |------------------------|-------|-----|--------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------| | a cough | 52 | 58 | R05 | [R05, R05.3, R05.1, A37, R05.2, R06.01...] | [cough, chronic cough, acute cough, whooping cough, subacute cough, orthopnea...] | | right-sided chest pain | 96 | 117 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...] | | fever | 146 | 150 | A68 | [A68, A78, R50.2, M04.1, A96.2, A68.9...] | [relapsing fevers, q fever, drug induced fever, periodic fever syndromes, lassa fever, relapsing fever, unspecified...] | | pericarditis | 193 | 204 | I30.1 | [I30.1, B33.23, I30, I31.0, I01.0, I30.9...] | [infective pericarditis, viral pericarditis, acute pericarditis, chronic adhesive pericarditis, acute rheumatic pericarditis, acute pericarditis, unspecified...] | | cough | 232 | 236 | R05 | [R05, A37, R05.3, R05.1, R05.2, R06.7...] | [cough, whooping cough, chronic cough, acute cough, subacute cough, sneezing...] | | right-sided chest pain | 243 | 264 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...] Model Information Model Name: icd10cm_rxnorm_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings Router Router SentenceEntityResolverModel SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline to Resolve Medication Codes</title><link href="/2024/09/18/medication_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Resolve Medication Codes" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/medication_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/medication_resolver_pipeline_en.html">## Description
-
-A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text.
-
-Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
-
-This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can use `medication_resolver_transform_pipeline` for Spark transform.
-
-
-## Predicated Entities
-
-`RxNorm Code` `UMLS Code` `NDC Code` `SNOMED CT codes`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.4.1_3.2_1726669975365.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.4.1_3.2_1726669975365.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
-&quot;&quot;&quot;)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
-&quot;&quot;&quot;)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|chunk                       |ner_label|ADE                        |RxNorm |Action                    |Treatment                                 |UMLS    |SNOMED_CT|NDC_Product|NDC_Package  |
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|Amlodopine Vallarta 10-320mg|DRUG     |Gynaecomastia              |722131 |NONE                      |NONE                                      |C1949334|425838008|00093-7693 |00093-7693-56|
-|Eviplera                    |DRUG     |Anxiety                    |217010 |Inhibitory Bone Resorption|Osteoporosis                              |C0720318|NONE     |NONE       |NONE         |
-|Lescol 40 MG                |DRUG     |NONE                       |103919 |Hypocholesterolemic       |Heterozygous Familial Hypercholesterolemia|C0353573|NONE     |00078-0234 |00078-0234-05|
-|Everolimus 1.5 mg tablet    |DRUG     |Acute myocardial infarction|2056895|NONE                      |NONE                                      |C4723581|NONE     |00054-0604 |00054-0604-21|
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|medication_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.3 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- TextMatcherInternalModel
-- ChunkMergeModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperFilterer
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel
-- ResolverMerger
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- Finisher</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="snomed" /><category term="umls" /><category term="rxnorm" /><category term="ndc" /><category term="ade" /><category term="pipeline" /><summary type="html">Description A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text. Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication. This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can use medication_resolver_transform_pipeline for Spark transform. Predicated Entities RxNorm Code UMLS Code NDC Code SNOMED CT codes Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet. &quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet. &quot;&quot;&quot;) Results +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |chunk |ner_label|ADE |RxNorm |Action |Treatment |UMLS |SNOMED_CT|NDC_Product|NDC_Package | +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |Amlodopine Vallarta 10-320mg|DRUG |Gynaecomastia |722131 |NONE |NONE |C1949334|425838008|00093-7693 |00093-7693-56| |Eviplera |DRUG |Anxiety |217010 |Inhibitory Bone Resorption|Osteoporosis |C0720318|NONE |NONE |NONE | |Lescol 40 MG |DRUG |NONE |103919 |Hypocholesterolemic |Heterozygous Familial Hypercholesterolemia|C0353573|NONE |00078-0234 |00078-0234-05| |Everolimus 1.5 mg tablet |DRUG |Acute myocardial infarction|2056895|NONE |NONE |C4723581|NONE |00054-0604 |00054-0604-21| +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ Model Information Model Name: medication_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.3 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel ChunkMergeModel ChunkMapperModel ChunkMapperModel ChunkMapperFilterer Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel ResolverMerger ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel Finisher</summary></entry><entry><title type="html">Pipeline to Resolve Medication Codes(Transform)</title><link href="/2024/09/18/medication_resolver_transform_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Resolve Medication Codes(Transform)" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/medication_resolver_transform_pipeline_en</id><content type="html" xml:base="/2024/09/18/medication_resolver_transform_pipeline_en.html">## Description
-
-A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text.
-
-Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
-
-This pipeline can be used with Spark transform. You can use `medication_resolver_pipeline` as LightPipeline (with annotate/fullAnnotate).
-
-## Predicated Entities
-
-`RxNorm Code` `UMLS Code` `NDC Code` `SNOMED CT codes`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.4.1_3.2_1726667200007.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.4.1_3.2_1726667200007.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-medication_resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot;
-
-data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
-
-result = medication_resolver_pipeline.transform(data)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val medication_resolver_pipeline = new PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val data = Seq(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = medication_resolver_pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|chunk                       |ner_label|ADE                        |RxNorm |Action                    |Treatment                                 |UMLS    |SNOMED_CT|NDC_Product|NDC_Package  |
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|Amlodopine Vallarta 10-320mg|DRUG     |Gynaecomastia              |722131 |NONE                      |NONE                                      |C1949334|425838008|00093-7693 |00093-7693-56|
-|Eviplera                    |DRUG     |Anxiety                    |217010 |Inhibitory Bone Resorption|Osteoporosis                              |C0720318|NONE     |NONE       |NONE         |
-|Lescol 40 MG                |DRUG     |NONE                       |103919 |Hypocholesterolemic       |Heterozygous Familial Hypercholesterolemia|C0353573|NONE     |00078-0234 |00078-0234-05|
-|Everolimus 1.5 mg tablet    |DRUG     |Acute myocardial infarction|2056895|NONE                      |NONE                                      |C4723581|NONE     |00054-0604 |00054-0604-21|
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|medication_resolver_transform_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.3 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- TextMatcherInternalModel
-- ChunkMergeModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperFilterer
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel
-- ResolverMerger
-- Doc2Chunk
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- Doc2Chunk
-- ChunkMapperModel
-- Finisher</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="snomed" /><category term="umls" /><category term="rxnorm" /><category term="ndc" /><category term="ade" /><category term="pipeline" /><summary type="html">Description A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text. Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication. This pipeline can be used with Spark transform. You can use medication_resolver_pipeline as LightPipeline (with annotate/fullAnnotate). Predicated Entities RxNorm Code UMLS Code NDC Code SNOMED CT codes Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline medication_resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = medication_resolver_pipeline.transform(data) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val medication_resolver_pipeline = new PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val data = Seq(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val result = medication_resolver_pipeline.fit(data).transform(data) Results +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |chunk |ner_label|ADE |RxNorm |Action |Treatment |UMLS |SNOMED_CT|NDC_Product|NDC_Package | +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |Amlodopine Vallarta 10-320mg|DRUG |Gynaecomastia |722131 |NONE |NONE |C1949334|425838008|00093-7693 |00093-7693-56| |Eviplera |DRUG |Anxiety |217010 |Inhibitory Bone Resorption|Osteoporosis |C0720318|NONE |NONE |NONE | |Lescol 40 MG |DRUG |NONE |103919 |Hypocholesterolemic |Heterozygous Familial Hypercholesterolemia|C0353573|NONE |00078-0234 |00078-0234-05| |Everolimus 1.5 mg tablet |DRUG |Acute myocardial infarction|2056895|NONE |NONE |C4723581|NONE |00054-0604 |00054-0604-21| +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ Model Information Model Name: medication_resolver_transform_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.3 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel ChunkMergeModel ChunkMapperModel ChunkMapperModel ChunkMapperFilterer Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel ResolverMerger Doc2Chunk ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel Doc2Chunk ChunkMapperModel Finisher</summary></entry><entry><title type="html">Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver</title><link href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html">## Description
-
-This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: 
-- ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING
-- RxNorm entities: DRUG
-
-## Predicted Entities
-
-`ICD-10-CM Code` `Rxnorm Code`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_rxnorm_resolver_pipeline_en_5.4.1_3.4_1726643468958.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_rxnorm_resolver_pipeline_en_5.4.1_3.4_1726643468958.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week.
-She has had right-sided chest pain radiating to her back with fever starting yesterday.
-She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain.
-MEDICATIONS
-1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3.
-2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week.
-She has had right-sided chest pain radiating to her back with fever starting yesterday.
-She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain.
-MEDICATIONS
-1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3.
-2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-# RXNORM RESULT
-
-| chunks        | begin | end | code   | all_codes                                           | resolutions                                                                                                                                                                                                                                                                        |
-| ------------- | ----- | --- | ------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Coumadin 1 mg | 282   | 294 | 855289 | [855289, 438737, 208469, 205489, 447086, 205485...  | [warfarin sodium 1 MG [Coumadin], coumarin 1 MG[coumarin 1 MG], terazosin 1 MG Oral Capsule [Hytrin], bumetanide 1 MG Oral Tablet [Bumex], propinox 1 MG[propinox 1 MG], dextrothyroxine 1 MG Oral Tablet [Choloxin]...                                                            |
-| Amiodarone    | 369   | 378 | 703    | [703, 1663223, 1151983, 1663270, 1151982, 203114... | [amiodarone[amiodarone], amiodarone Injection[amiodarone Injection], amiodarone Pill[amiodarone Pill], amiodarone Injection [Nexterone][amiodarone Injection [Nexterone]], amiodarone Oral Product[amiodarone Oral Product], amiodarone hydrochloride[amiodarone hydrochloride]... |
-
-
-# ICD-10-CM RESULT
-
-| chunks                 | begin | end | code   | all_codes                                                | resolutions                                                                                                                                                       |
-|------------------------|-------|-----|--------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| a cough                | 52    | 58  | R05    | [R05, R05.3, R05.1, A37, R05.2, R06.01...]               | [cough, chronic cough, acute cough, whooping cough, subacute cough, orthopnea...]                                                                                 |
-| right-sided chest pain | 96    | 117 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...]                      |
-| fever                  | 146   | 150 | A68    | [A68, A78, R50.2, M04.1, A96.2, A68.9...]                | [relapsing fevers, q fever, drug induced fever, periodic fever syndromes, lassa fever, relapsing fever, unspecified...]                                           |
-| pericarditis           | 193   | 204 | I30.1  | [I30.1, B33.23, I30, I31.0, I01.0, I30.9...]             | [infective pericarditis, viral pericarditis, acute pericarditis, chronic adhesive pericarditis, acute rheumatic pericarditis, acute pericarditis, unspecified...] |
-| cough                  | 232   | 236 | R05    | [R05, A37, R05.3, R05.1, R05.2, R06.7...]                | [cough, whooping cough, chronic cough, acute cough, subacute cough, sneezing...]                                                                                  |
-| right-sided chest pain | 243   | 264 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...]                      |
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|icd10cm_rxnorm_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.7 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- TextMatcherInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ChunkMergeModel
-- ChunkMergeModel
-- ChunkMergeModel
-- Chunk2Doc
-- BertSentenceEmbeddings
-- Router
-- Router
-- SentenceEntityResolverModel
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="icd_10_cm" /><category term="rxnorm" /><category term="pipeline" /><summary type="html">Description This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING RxNorm entities: DRUG Predicted Entities ICD-10-CM Code Rxnorm Code Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week. She has had right-sided chest pain radiating to her back with fever starting yesterday. She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain. MEDICATIONS 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3. 2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week. She has had right-sided chest pain radiating to her back with fever starting yesterday. She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain. MEDICATIONS 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3. 2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;) Results # RXNORM RESULT | chunks | begin | end | code | all_codes | resolutions | | ------------- | ----- | --- | ------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | | Coumadin 1 mg | 282 | 294 | 855289 | [855289, 438737, 208469, 205489, 447086, 205485... | [warfarin sodium 1 MG [Coumadin], coumarin 1 MG[coumarin 1 MG], terazosin 1 MG Oral Capsule [Hytrin], bumetanide 1 MG Oral Tablet [Bumex], propinox 1 MG[propinox 1 MG], dextrothyroxine 1 MG Oral Tablet [Choloxin]... | | Amiodarone | 369 | 378 | 703 | [703, 1663223, 1151983, 1663270, 1151982, 203114... | [amiodarone[amiodarone], amiodarone Injection[amiodarone Injection], amiodarone Pill[amiodarone Pill], amiodarone Injection [Nexterone][amiodarone Injection [Nexterone]], amiodarone Oral Product[amiodarone Oral Product], amiodarone hydrochloride[amiodarone hydrochloride]... | # ICD-10-CM RESULT | chunks | begin | end | code | all_codes | resolutions | |------------------------|-------|-----|--------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------| | a cough | 52 | 58 | R05 | [R05, R05.3, R05.1, A37, R05.2, R06.01...] | [cough, chronic cough, acute cough, whooping cough, subacute cough, orthopnea...] | | right-sided chest pain | 96 | 117 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...] | | fever | 146 | 150 | A68 | [A68, A78, R50.2, M04.1, A96.2, A68.9...] | [relapsing fevers, q fever, drug induced fever, periodic fever syndromes, lassa fever, relapsing fever, unspecified...] | | pericarditis | 193 | 204 | I30.1 | [I30.1, B33.23, I30, I31.0, I01.0, I30.9...] | [infective pericarditis, viral pericarditis, acute pericarditis, chronic adhesive pericarditis, acute rheumatic pericarditis, acute pericarditis, unspecified...] | | cough | 232 | 236 | R05 | [R05, A37, R05.3, R05.1, R05.2, R06.7...] | [cough, whooping cough, chronic cough, acute cough, subacute cough, sneezing...] | | right-sided chest pain | 243 | 264 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...] | Model Information Model Name: icd10cm_rxnorm_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings Router Router SentenceEntityResolverModel SentenceEntityResolverModel</summary></entry><entry><title type="html">Pipeline to Resolve Medication Codes</title><link href="/2024/09/18/medication_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Resolve Medication Codes" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/medication_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/medication_resolver_pipeline_en.html">## Description
-
-A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text.
-
-Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
-
-This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can use `medication_resolver_transform_pipeline` for Spark transform.
-
-## Predicated Entities
-
-`RxNorm Code` `UMLS Code` `NDC Code` `SNOMED CT codes`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.4.1_3.4_1726673005989.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.4.1_3.4_1726673005989.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|chunk                       |ner_label|ADE                        |RxNorm |Action                    |Treatment                                 |UMLS    |SNOMED_CT|NDC_Product|NDC_Package  |
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|Amlodopine Vallarta 10-320mg|DRUG     |Gynaecomastia              |722131 |NONE                      |NONE                                      |C1949334|425838008|00093-7693 |00093-7693-56|
-|Eviplera                    |DRUG     |Anxiety                    |217010 |Inhibitory Bone Resorption|Osteoporosis                              |C0720318|NONE     |NONE       |NONE         |
-|Lescol 40 MG                |DRUG     |NONE                       |103919 |Hypocholesterolemic       |Heterozygous Familial Hypercholesterolemia|C0353573|NONE     |00078-0234 |00078-0234-05|
-|Everolimus 1.5 mg tablet    |DRUG     |Acute myocardial infarction|2056895|NONE                      |NONE                                      |C4723581|NONE     |00054-0604 |00054-0604-21|
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|medication_resolver_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.3 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- TextMatcherInternalModel
-- ChunkMergeModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperFilterer
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel
-- ResolverMerger
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- Finisher</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="snomed" /><category term="rxnorm" /><category term="umls" /><category term="ndc" /><category term="ade" /><category term="pipeline" /><summary type="html">Description A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text. Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication. This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can use medication_resolver_transform_pipeline for Spark transform. Predicated Entities RxNorm Code UMLS Code NDC Code SNOMED CT codes Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet. import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet. Results +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |chunk |ner_label|ADE |RxNorm |Action |Treatment |UMLS |SNOMED_CT|NDC_Product|NDC_Package | +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |Amlodopine Vallarta 10-320mg|DRUG |Gynaecomastia |722131 |NONE |NONE |C1949334|425838008|00093-7693 |00093-7693-56| |Eviplera |DRUG |Anxiety |217010 |Inhibitory Bone Resorption|Osteoporosis |C0720318|NONE |NONE |NONE | |Lescol 40 MG |DRUG |NONE |103919 |Hypocholesterolemic |Heterozygous Familial Hypercholesterolemia|C0353573|NONE |00078-0234 |00078-0234-05| |Everolimus 1.5 mg tablet |DRUG |Acute myocardial infarction|2056895|NONE |NONE |C4723581|NONE |00054-0604 |00054-0604-21| +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ Model Information Model Name: medication_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.3 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel ChunkMergeModel ChunkMapperModel ChunkMapperModel ChunkMapperFilterer Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel ResolverMerger ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel Finisher</summary></entry><entry><title type="html">Pipeline to Resolve Medication Codes(Transform)</title><link href="/2024/09/18/medication_resolver_transform_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline to Resolve Medication Codes(Transform)" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/medication_resolver_transform_pipeline_en</id><content type="html" xml:base="/2024/09/18/medication_resolver_transform_pipeline_en.html">## Description
-
-A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text.
-
-Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
-
-This pipeline can be used with Spark transform. You can use `medication_resolver_pipeline` as LightPipeline (with annotate/fullAnnotate).
-
-## Predicated Entities
-
-`RxNorm Code` `UMLS Code` `NDC Code` `SNOMED CT codes`
-
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.4.1_3.4_1726669563979.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.4.1_3.4_1726669563979.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-medication_resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-text = &quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot;
-
-data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
-
-result = medication_resolver_pipeline.transform(data)
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val medication_resolver_pipeline = new PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val data = Seq(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-
-val result = medication_resolver_pipeline.fit(data).transform(data)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|chunk                       |ner_label|ADE                        |RxNorm |Action                    |Treatment                                 |UMLS    |SNOMED_CT|NDC_Product|NDC_Package  |
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|Amlodopine Vallarta 10-320mg|DRUG     |Gynaecomastia              |722131 |NONE                      |NONE                                      |C1949334|425838008|00093-7693 |00093-7693-56|
-|Eviplera                    |DRUG     |Anxiety                    |217010 |Inhibitory Bone Resorption|Osteoporosis                              |C0720318|NONE     |NONE       |NONE         |
-|Lescol 40 MG                |DRUG     |NONE                       |103919 |Hypocholesterolemic       |Heterozygous Familial Hypercholesterolemia|C0353573|NONE     |00078-0234 |00078-0234-05|
-|Everolimus 1.5 mg tablet    |DRUG     |Acute myocardial infarction|2056895|NONE                      |NONE                                      |C4723581|NONE     |00054-0604 |00054-0604-21|
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|medication_resolver_transform_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|3.3 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- TextMatcherInternalModel
-- ChunkMergeModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperFilterer
-- Chunk2Doc
-- BertSentenceEmbeddings
-- SentenceEntityResolverModel
-- ResolverMerger
-- Doc2Chunk
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- ChunkMapperModel
-- Doc2Chunk
-- ChunkMapperModel
-- Finisher</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="snomed" /><category term="umls" /><category term="rxnorm" /><category term="ndc" /><category term="ade" /><category term="pipeline" /><summary type="html">Description A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text. Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication. This pipeline can be used with Spark transform. You can use medication_resolver_pipeline as LightPipeline (with annotate/fullAnnotate). Predicated Entities RxNorm Code UMLS Code NDC Code SNOMED CT codes Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline medication_resolver_pipeline = PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = medication_resolver_pipeline.transform(data) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val medication_resolver_pipeline = new PretrainedPipeline(&quot;medication_resolver_transform_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val data = Seq(&quot;&quot;&quot;The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val result = medication_resolver_pipeline.fit(data).transform(data) Results +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |chunk |ner_label|ADE |RxNorm |Action |Treatment |UMLS |SNOMED_CT|NDC_Product|NDC_Package | +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ |Amlodopine Vallarta 10-320mg|DRUG |Gynaecomastia |722131 |NONE |NONE |C1949334|425838008|00093-7693 |00093-7693-56| |Eviplera |DRUG |Anxiety |217010 |Inhibitory Bone Resorption|Osteoporosis |C0720318|NONE |NONE |NONE | |Lescol 40 MG |DRUG |NONE |103919 |Hypocholesterolemic |Heterozygous Familial Hypercholesterolemia|C0353573|NONE |00078-0234 |00078-0234-05| |Everolimus 1.5 mg tablet |DRUG |Acute myocardial infarction|2056895|NONE |NONE |C4723581|NONE |00054-0604 |00054-0604-21| +----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+ Model Information Model Name: medication_resolver_transform_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.3 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel ChunkMergeModel ChunkMapperModel ChunkMapperModel ChunkMapperFilterer Chunk2Doc BertSentenceEmbeddings SentenceEntityResolverModel ResolverMerger Doc2Chunk ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel ChunkMapperModel Doc2Chunk ChunkMapperModel Finisher</summary></entry><entry><title type="html">Oncology Pipeline for Biomarkers</title><link href="/2024/09/17/oncology_biomarker_pipeline_en.html" rel="alternate" type="text/html" title="Oncology Pipeline for Biomarkers" /><published>2024-09-17T00:00:00+00:00</published><updated>2024-09-17T00:00:00+00:00</updated><id>/2024/09/17/oncology_biomarker_pipeline_en</id><content type="html" xml:base="/2024/09/17/oncology_biomarker_pipeline_en.html">## Description
-
-This specialized oncology pipeline can;
-
-- extract oncology biomarker type entities,
-
-- assign assertion status to the extracted entities,
-
-- establish relations between the extracted entities from the clinical documents.
-
-In this pipeline, [ner_oncology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_en.html), [ner_oncology_test](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_test_en.html), [ner_oncology_biomarker](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_biomarker_en.html), [ner_biomarker](https://nlp.johnsnowlabs.com/2021/11/26/ner_biomarker_en.html) and [cancer_diagnosis_matcher](https://nlp.johnsnowlabs.com/2024/06/17/cancer_diagnosis_matcher_en.html) NER models, 
-[assertion_oncology](https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_en.html) and [assertion_oncology_test_binary](https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_test_binary_en.html) assertion models and [re_oncology_granular](https://nlp.johnsnowlabs.com/2024/07/03/re_oncology_granular_en.html)
-and [re_oncology_biomarker_result](https://nlp.johnsnowlabs.com/2024/07/03/re_oncology_biomarker_result_en.html)  relation extraction models were used to achieve those tasks.
-
-- Clinical Entity Labels: `Histological_Type`, `Direction`, `Staging`, `Cancer_Score`, `Imaging_Test`, `Cycle_Number`, `Tumor_Finding`, `Site_Lymph_Node`, `Invasion`, `Response_To_Treatment`, `Smoking_Status`, `Tumor_Size`, `Cycle_Count`, `Adenopathy`, `Age`, `Biomarker_Result`, `Unspecific_Therapy`, `Site_Breast`, `Chemotherapy`, `Targeted_Therapy`, `Radiotherapy`, `Performance_Status`, `Pathology_Test`, `Site_Other_Body_Part`, `Cancer_Surgery`, `Line_Of_Therapy`, `Pathology_Result`, `Hormonal_Therapy`, `Site_Bone`, `Biomarker`, `Immunotherapy`, `Cycle_Day`, `Frequency`, `Route`, `Duration`, `Death_Entity`, `Metastasis`, `Site_Liver`, `Cancer_Dx`, `Grade`, `Date`, `Site_Lung`, `Site_Brain`, `Relative_Date`, `Race_Ethnicity`, `Gender`, `Oncogene`, `Dosage`, `Radiation_Dose`, `Drug`, `CancerModifier`, `Radiological_Test_Result`, `Biomarker_Measurement`, `Radiological_Test`, `Test`, `Test_Result`, `Prognostic_Biomarkers`, `Predictive_Biomarkers`
-
-- Assertion Status Labels: `Past`, `Family`, `Absent`, `Hypothetical`, `Possible`, `Present`, `Hypothetical_Or_Absent`, `Medical_History`
-
-- Relation Extraction Labels: `is_related_to`, `is_size_of`, `is_date_of`, `is_location_of`, `is_finding_of`
-  
-## Predicted Entities
-
-`Histological_Type`, `Direction`, `Staging`, `Cancer_Score`, `Imaging_Test`, `Cycle_Number`, `Tumor_Finding`, `Site_Lymph_Node`, `Invasion`, `Response_To_Treatment`, `Smoking_Status`, `Tumor_Size`, `Cycle_Count`, `Adenopathy`, `Age`, `Biomarker_Result`, `Unspecific_Therapy`, `Site_Breast`, `Chemotherapy`, `Targeted_Therapy`, `Radiotherapy`, `Performance_Status`, `Pathology_Test`, `Site_Other_Body_Part`, `Cancer_Surgery`, `Line_Of_Therapy`, `Pathology_Result`, `Hormonal_Therapy`, `Site_Bone`, `Biomarker`, `Immunotherapy`, `Cycle_Day`, `Frequency`, `Route`, `Duration`, `Death_Entity`, `Metastasis`, `Site_Liver`, `Cancer_Dx`, `Grade`, `Date`, `Site_Lung`, `Site_Brain`, `Relative_Date`, `Race_Ethnicity`, `Gender`, `Oncogene`, `Dosage`, `Radiation_Dose`, `Drug`, `CancerModifier`, `Radiological_Test_Result`, `Biomarker_Measurement`, `Radiological_Test`, `Test`, `Test_Result`, `Prognostic_Biomarkers`, `Predictive_Biomarkers`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/oncology_biomarker_pipeline_en_5.4.1_3.0_1726589469070.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/oncology_biomarker_pipeline_en_5.4.1_3.0_1726589469070.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline(&quot;oncology_biomarker_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = pipeline.fullAnnotate(&quot;&quot;&quot;Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR,
-and negative for HER2.&quot;&quot;&quot;)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = PretrainedPipeline(&quot;oncology_biomarker_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = pipeline.fullAnnotate(&quot;&quot;&quot;Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR,
-and negative for HER2.&quot;&quot;&quot;)
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-******************** ner_biomarker results ********************
-
-| chunk                          |   begin |   end | ner_label             |   confidence |
-|:-------------------------------|--------:|------:|:----------------------|-------------:|
-| Immunohistochemistry           |       0 |    19 | Test                  |     0.9561   |
-| negative                       |      25 |    32 | Biomarker_Measurement |     0.968    |
-| thyroid transcription factor-1 |      38 |    67 | Biomarker             |     0.610925 |
-| napsin A                       |      73 |    80 | Biomarker             |     0.8696   |
-| positive                       |      96 |   103 | Biomarker_Measurement |     0.9228   |
-| ER                             |     109 |   110 | Biomarker             |     0.9978   |
-| PR                             |     116 |   117 | Biomarker             |     0.9932   |
-| negative                       |     124 |   131 | Biomarker_Measurement |     0.9781   |
-| HER2                           |     137 |   140 | Biomarker             |     0.7243   |
-
-
-******************** assertion results ********************
-
-| chunk                          | ner_label        | assertion   | assertion_source   |
-|:-------------------------------|:-----------------|:------------|:-------------------|
-| Immunohistochemistry           | Pathology_Test   | Past        | assertion_oncology |
-| negative                       | Biomarker_Result | Past        | assertion_oncology |
-| thyroid transcription factor-1 | Biomarker        | Present     | assertion_oncology |
-| napsin A                       | Biomarker        | Present     | assertion_oncology |
-| positive                       | Biomarker_Result | Present     | assertion_oncology |
-| ER                             | Biomarker        | Present     | assertion_oncology |
-| PR                             | Biomarker        | Present     | assertion_oncology |
-| negative                       | Biomarker_Result | Present     | assertion_oncology |
-| HER2                           | Oncogene         | Present     | assertion_oncology |
-
-
-******************** re results ********************
-
-| chunk1               | entity1          | chunk2                         | entity2          | relation      |
-|:---------------------|:-----------------|:-------------------------------|:-----------------|:--------------|
-| negative             | Biomarker_Result | thyroid transcription factor-1 | Biomarker        | is_related_to |
-| negative             | Biomarker_Result | napsin A                       | Biomarker        | is_related_to |
-| positive             | Biomarker_Result | ER                             | Biomarker        | is_related_to |
-| positive             | Biomarker_Result | PR                             | Biomarker        | is_related_to |
-| negative             | Biomarker_Result | HER2                           | Oncogene         | is_related_to |
-| negative             | Biomarker_Result | thyroid transcription factor-1 | Biomarker        | is_finding_of |
-| negative             | Biomarker_Result | napsin A                       | Biomarker        | is_finding_of |
-| positive             | Biomarker_Result | ER                             | Biomarker        | is_finding_of |
-| positive             | Biomarker_Result | PR                             | Biomarker        | is_finding_of |
-| positive             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-| negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-| negative             | Biomarker_Result | thyroid transcription factor-1 | Biomarker        | is_finding_of |
-| negative             | Biomarker_Result | napsin A                       | Biomarker        | is_finding_of |
-| positive             | Biomarker_Result | ER                             | Biomarker        | is_finding_of |
-| positive             | Biomarker_Result | PR                             | Biomarker        | is_finding_of |
-| negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-
-
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|oncology_biomarker_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.8 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- TextMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel
-- AssertionDLModel
-- ChunkFilterer
-- AssertionDLModel
-- AssertionMerger
-- PerceptronModel
-- DependencyParserModel
-- RelationExtractionModel
-- RelationExtractionModel
-- AnnotationMerger</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="biomarker" /><category term="pipeline" /><category term="clinical" /><summary type="html">Description This specialized oncology pipeline can; extract oncology biomarker type entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, ner_oncology, ner_oncology_test, ner_oncology_biomarker, ner_biomarker and cancer_diagnosis_matcher NER models, assertion_oncology and assertion_oncology_test_binary assertion models and re_oncology_granular and re_oncology_biomarker_result relation extraction models were used to achieve those tasks. Clinical Entity Labels: Histological_Type, Direction, Staging, Cancer_Score, Imaging_Test, Cycle_Number, Tumor_Finding, Site_Lymph_Node, Invasion, Response_To_Treatment, Smoking_Status, Tumor_Size, Cycle_Count, Adenopathy, Age, Biomarker_Result, Unspecific_Therapy, Site_Breast, Chemotherapy, Targeted_Therapy, Radiotherapy, Performance_Status, Pathology_Test, Site_Other_Body_Part, Cancer_Surgery, Line_Of_Therapy, Pathology_Result, Hormonal_Therapy, Site_Bone, Biomarker, Immunotherapy, Cycle_Day, Frequency, Route, Duration, Death_Entity, Metastasis, Site_Liver, Cancer_Dx, Grade, Date, Site_Lung, Site_Brain, Relative_Date, Race_Ethnicity, Gender, Oncogene, Dosage, Radiation_Dose, Drug, CancerModifier, Radiological_Test_Result, Biomarker_Measurement, Radiological_Test, Test, Test_Result, Prognostic_Biomarkers, Predictive_Biomarkers Assertion Status Labels: Past, Family, Absent, Hypothetical, Possible, Present, Hypothetical_Or_Absent, Medical_History Relation Extraction Labels: is_related_to, is_size_of, is_date_of, is_location_of, is_finding_of Predicted Entities Histological_Type, Direction, Staging, Cancer_Score, Imaging_Test, Cycle_Number, Tumor_Finding, Site_Lymph_Node, Invasion, Response_To_Treatment, Smoking_Status, Tumor_Size, Cycle_Count, Adenopathy, Age, Biomarker_Result, Unspecific_Therapy, Site_Breast, Chemotherapy, Targeted_Therapy, Radiotherapy, Performance_Status, Pathology_Test, Site_Other_Body_Part, Cancer_Surgery, Line_Of_Therapy, Pathology_Result, Hormonal_Therapy, Site_Bone, Biomarker, Immunotherapy, Cycle_Day, Frequency, Route, Duration, Death_Entity, Metastasis, Site_Liver, Cancer_Dx, Grade, Date, Site_Lung, Site_Brain, Relative_Date, Race_Ethnicity, Gender, Oncogene, Dosage, Radiation_Dose, Drug, CancerModifier, Radiological_Test_Result, Biomarker_Measurement, Radiological_Test, Test, Test_Result, Prognostic_Biomarkers, Predictive_Biomarkers Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;oncology_biomarker_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = pipeline.fullAnnotate(&quot;&quot;&quot;Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = PretrainedPipeline(&quot;oncology_biomarker_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = pipeline.fullAnnotate(&quot;&quot;&quot;Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.&quot;&quot;&quot;) Results ******************** ner_biomarker results ******************** | chunk | begin | end | ner_label | confidence | |:-------------------------------|--------:|------:|:----------------------|-------------:| | Immunohistochemistry | 0 | 19 | Test | 0.9561 | | negative | 25 | 32 | Biomarker_Measurement | 0.968 | | thyroid transcription factor-1 | 38 | 67 | Biomarker | 0.610925 | | napsin A | 73 | 80 | Biomarker | 0.8696 | | positive | 96 | 103 | Biomarker_Measurement | 0.9228 | | ER | 109 | 110 | Biomarker | 0.9978 | | PR | 116 | 117 | Biomarker | 0.9932 | | negative | 124 | 131 | Biomarker_Measurement | 0.9781 | | HER2 | 137 | 140 | Biomarker | 0.7243 | ******************** assertion results ******************** | chunk | ner_label | assertion | assertion_source | |:-------------------------------|:-----------------|:------------|:-------------------| | Immunohistochemistry | Pathology_Test | Past | assertion_oncology | | negative | Biomarker_Result | Past | assertion_oncology | | thyroid transcription factor-1 | Biomarker | Present | assertion_oncology | | napsin A | Biomarker | Present | assertion_oncology | | positive | Biomarker_Result | Present | assertion_oncology | | ER | Biomarker | Present | assertion_oncology | | PR | Biomarker | Present | assertion_oncology | | negative | Biomarker_Result | Present | assertion_oncology | | HER2 | Oncogene | Present | assertion_oncology | ******************** re results ******************** | chunk1 | entity1 | chunk2 | entity2 | relation | |:---------------------|:-----------------|:-------------------------------|:-----------------|:--------------| | negative | Biomarker_Result | thyroid transcription factor-1 | Biomarker | is_related_to | | negative | Biomarker_Result | napsin A | Biomarker | is_related_to | | positive | Biomarker_Result | ER | Biomarker | is_related_to | | positive | Biomarker_Result | PR | Biomarker | is_related_to | | negative | Biomarker_Result | HER2 | Oncogene | is_related_to | | negative | Biomarker_Result | thyroid transcription factor-1 | Biomarker | is_finding_of | | negative | Biomarker_Result | napsin A | Biomarker | is_finding_of | | positive | Biomarker_Result | ER | Biomarker | is_finding_of | | positive | Biomarker_Result | PR | Biomarker | is_finding_of | | positive | Biomarker_Result | HER2 | Oncogene | is_finding_of | | negative | Biomarker_Result | HER2 | Oncogene | is_finding_of | | negative | Biomarker_Result | thyroid transcription factor-1 | Biomarker | is_finding_of | | negative | Biomarker_Result | napsin A | Biomarker | is_finding_of | | positive | Biomarker_Result | ER | Biomarker | is_finding_of | | positive | Biomarker_Result | PR | Biomarker | is_finding_of | | negative | Biomarker_Result | HER2 | Oncogene | is_finding_of | Model Information Model Name: oncology_biomarker_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel ChunkFilterer AssertionDLModel AssertionMerger PerceptronModel DependencyParserModel RelationExtractionModel RelationExtractionModel AnnotationMerger</summary></entry></feed>
+- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="resolver" /><category term="icd_10_cm" /><category term="rxnorm" /><category term="pipeline" /><summary type="html">Description This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING RxNorm entities: DRUG Predicted Entities ICD-10-CM Code Rxnorm Code Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week. She has had right-sided chest pain radiating to her back with fever starting yesterday. She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain. MEDICATIONS 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3. 2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val resolver_pipeline = PretrainedPipeline(&quot;icd10cm_rxnorm_resolver_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = resolver_pipeline.annotate(&quot;&quot;&quot;The patient is a 41-year-old Vietnamese female with a cough that started last week. She has had right-sided chest pain radiating to her back with fever starting yesterday. She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain. MEDICATIONS 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3. 2. Amiodarone 100 mg p.o. daily.&quot;&quot;&quot;) Results # RXNORM RESULT | chunks | begin | end | code | all_codes | resolutions | | ------------- | ----- | --- | ------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | | Coumadin 1 mg | 282 | 294 | 855289 | [855289, 438737, 208469, 205489, 447086, 205485... | [warfarin sodium 1 MG [Coumadin], coumarin 1 MG[coumarin 1 MG], terazosin 1 MG Oral Capsule [Hytrin], bumetanide 1 MG Oral Tablet [Bumex], propinox 1 MG[propinox 1 MG], dextrothyroxine 1 MG Oral Tablet [Choloxin]... | | Amiodarone | 369 | 378 | 703 | [703, 1663223, 1151983, 1663270, 1151982, 203114... | [amiodarone[amiodarone], amiodarone Injection[amiodarone Injection], amiodarone Pill[amiodarone Pill], amiodarone Injection [Nexterone][amiodarone Injection [Nexterone]], amiodarone Oral Product[amiodarone Oral Product], amiodarone hydrochloride[amiodarone hydrochloride]... | # ICD-10-CM RESULT | chunks | begin | end | code | all_codes | resolutions | |------------------------|-------|-----|--------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------| | a cough | 52 | 58 | R05 | [R05, R05.3, R05.1, A37, R05.2, R06.01...] | [cough, chronic cough, acute cough, whooping cough, subacute cough, orthopnea...] | | right-sided chest pain | 96 | 117 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...] | | fever | 146 | 150 | A68 | [A68, A78, R50.2, M04.1, A96.2, A68.9...] | [relapsing fevers, q fever, drug induced fever, periodic fever syndromes, lassa fever, relapsing fever, unspecified...] | | pericarditis | 193 | 204 | I30.1 | [I30.1, B33.23, I30, I31.0, I01.0, I30.9...] | [infective pericarditis, viral pericarditis, acute pericarditis, chronic adhesive pericarditis, acute rheumatic pericarditis, acute pericarditis, unspecified...] | | cough | 232 | 236 | R05 | [R05, A37, R05.3, R05.1, R05.2, R06.7...] | [cough, whooping cough, chronic cough, acute cough, subacute cough, sneezing...] | | right-sided chest pain | 243 | 264 | R10.11 | [R10.11, M79.621, M79.604, M79.601, M25.511, M79.631...] | [right upper quadrant pain, pain in right upper arm, pain in right leg, pain in right arm, pain in right shoulder, pain in right forearm...] Model Information Model Name: icd10cm_rxnorm_resolver_pipeline Type: pipeline Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel TextMatcherInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel ChunkMergeModel Chunk2Doc BertSentenceEmbeddings Router Router SentenceEntityResolverModel SentenceEntityResolverModel</summary></entry></feed>
