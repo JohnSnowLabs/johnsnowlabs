@@ -48,11 +48,11 @@ Results can be further refined by filtering literature based on the date range o
 <iframe width="800" height="450" src="https://www.youtube.com/embed/SCBswoxLGcw?si=OJ9qOXnjkjcBEKc5&hd=1" title="Literature Review - Step 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **5. Real-Time Feedback:**
-As users enter their search criteria, the chatbot filters and displays relevant literature in real time. This immediate feedback allows users to open and review papers right away, without having to wait for the entire search process to complete. By streamlining the search process, this feature facilitates faster access to relevant information, saving users time and effort.
+As users enter their search criteria, the chatbot filters and displays relevant literature in real-time. This immediate feedback allows users to open and review papers right away, without having to wait for the entire search process to complete. By streamlining the search process, this feature facilitates faster access to relevant information, saving users time and effort.
 
 **6. Comprehensive Result View:**
 The tool provides an intelligent tabular view of all the relevant information from each study, including the title, author, journal, and direct links to the paper. It also displays extracted data points based on user criteria and indicates whether each study complies with the defined inclusion and exclusion criteria. This organized and visual representation saves users significant time and effort in their literature review process.
-For a better understanding of the data points, users can hover over individual data cells in the results table to reveal tooltips containing exidence or explanations of the extracted data. This feature ensures that users have easy access to deeper insights without cluttering the main results view, facilitating a better understanding of the extracted information.
+For a better understanding of the data points, users can hover over individual data cells in the results table to reveal tooltips containing evidence or explanations of the extracted data. This feature ensures that users have easy access to deeper insights without cluttering the main results view, facilitating a better understanding of the extracted information.
 
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/cmf13SkFNoQ?si=PzHmgce86IPDxuG9&hd=1" title="Literature Review - Explore Results" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -65,6 +65,8 @@ Results are color-coded based on the application of inclusion and exclusion crit
 **7. Downloadable CSV Reports:**
 Once the review is complete, users can download all the extracted information in a well-organized CSV file. This functionality enables seamless management and further processing of the data, making it easier for users to analyze the information in-depth or share it with team members for collaboration. By exporting study details and compliance with inclusion/exclusion criteria, users can efficiently manage their literature review data and integrate it into broader research workflows or collaborative projects.
 
+**8. Cloning Literature Reviews for Efficiency:**
+Once a literature review is completed, users can easily clone the existing review, replicating all the parameters with a single click. This includes search keywords, data points, inclusion and exclusion criteria, and the search filter settings. The cloned review retains all of the original settings, but users can also modify these parameters as needed in the new review. This allows the quick creation of multiple variations of the same literature review, optimizing the process for different research angles or clinical considerations. By eliminating the need to re-enter identical parameters repeatedly, the “Clone” button saves significant time and effort, allowing users to replicate previous work and focus on refining and analyzing new sets of results efficiently.
 
 These features work together to provide a powerful, efficient, and user-friendly experience, enabling researchers to complete literature reviews on thousands of articles in minutes instead of weeks or months of study and manual text synthesis.
 
