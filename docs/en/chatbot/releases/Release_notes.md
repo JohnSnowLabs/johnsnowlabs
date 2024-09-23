@@ -27,25 +27,25 @@ To address these challenges and improve the efficiency and accuracy of the liter
 **1. Intelligent Search:**
 Users can effortlessly search through vast amounts of published research papers and articles from trusted databases such as PubMed, BioRxiv, MedRxiv using simple keywords. The system helps streamline clinical decision-making by rapidly identifying relevant literature.
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/7MqUPMtuUcI?si=rXovu033dWZ8chF8&hd=1" title="Literature Review - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/7MqUPMtuUcI?si=nUiH4cMjh1nFoqgz&hd=1" title="Literature Review - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **2. Smart Data Extraction:**
 Users can define the data points they are interested in, using plain English, and the Medical Chatbot will automatically understand and intelligently scan the filtered literature, identifying and extracting those across all target studies. This automation drastically reduces the manual effort typically required for data extraction, providing users with quick access to key findings.
 
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/DeZiB9uMR14?si=C8w-i5X_TzLuAxJ0&hd=1" title="Literature Review - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/m2YldVGOFXU?si=2sm4LJV60D1fNdUa&hd=1" title="Literature Review - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **3. Customizable Inclusion and Exclusion Criteria:**
 Users can define specific inclusion and exclusion criteria based on their study requirements, making their review highly accurate and targeted. Whether focusing on the intervention, measured outcomes, study population, methodology, or other parameters, these custom criteria ensure that only the most relevant studies are included in the review. The medical chatbot analyzes the literature to verify compliance with these criteria, notifying users of any non-compliant studies and providing a highly accurate literature review.
 
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/7MqUPMtuUcI?si=0_gL49bgLqdCqMKC&hd=1" title="Literature Review - Step 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/vG7pGsNqrkA?si=vObgXAE971_y-9Ob&hd=1" title="Literature Review - Step 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **4. Data Filtering for Precise Targeting:**
 Results can be further refined by filtering literature based on the date range of publication, the impact factor of the study, and the type of study (e.g., clinical trials, reviews, case studies). This allows users to narrow their search and focus on the most relevant studies for their review. Users can specify the exact characteristics they want the included literature to possess for a more accurate and focused review. This ensures that the results align perfectly with the research objectives.
 
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/SCBswoxLGcw?si=OJ9qOXnjkjcBEKc5&hd=1" title="Literature Review - Step 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/J9FV4r70rLo?si=XKXIhOmZ-Ok7J5lM&hd=1" title="Literature Review - Step 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **5. Real-Time Feedback:**
 As users enter their search criteria, the chatbot filters and displays relevant literature in real-time. This immediate feedback allows users to open and review papers right away, without having to wait for the entire search process to complete. By streamlining the search process, this feature facilitates faster access to relevant information, saving users time and effort.
