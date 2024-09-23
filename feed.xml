@@ -1,25 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-09-23T12:02:16+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">JSL_MedS_v2 (LLM - q16)</title><link href="/2024/09/19/jsl_meds_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q16)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q16_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q16_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-09-23T16:22:56+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">JSL_MedS_v2 (LLM - q16)</title><link href="/2024/09/19/jsl_meds_q16_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q16)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q16_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q16_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -27,17 +35,18 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -45,149 +54,130 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_q16_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.6 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q16_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_v2 (LLM - q4)</title><link href="/2024/09/19/jsl_meds_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q4)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q4_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q4_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_q16_v2|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.6 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q16_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_v2 (LLM - q4)</title><link href="/2024/09/19/jsl_meds_q4_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q4)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q4_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q4_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 ### Question:
 who you are, describe yourself
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 ### Question:
 who you are, describe yourself
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 Hello! I am JSL Medical LLM, an artificial intelligence language model specialized in medical knowledge. I am here to assist you with any medical inquiries, provide information on health conditions, and help you understand medical terminology. Please feel free to ask me any questions related to health and medicine.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_q4_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;2.2 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Question: who you are, describe yourself &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Question: who you are, describe yourself &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Hello! I am JSL Medical LLM, an artificial intelligence language model specialized in medical knowledge. I am here to assist you with any medical inquiries, provide information on health conditions, and help you understand medical terminology. Please feel free to ask me any questions related to health and medicine. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q4_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_v2 (LLM - q8)</title><link href="/2024/09/19/jsl_meds_q8_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q8)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q8_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q8_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_q4_v2|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|2.2 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; ### Question: who you are, describe yourself &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; ### Question: who you are, describe yourself &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Hello! I am JSL Medical LLM, an artificial intelligence language model specialized in medical knowledge. I am here to assist you with any medical inquiries, provide information on health conditions, and help you understand medical terminology. Please feel free to ask me any questions related to health and medicine. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q4_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_v2 (LLM - q8)</title><link href="/2024/09/19/jsl_meds_q8_v2_en.html" rel="alternate" type="text/html" title="JSL_MedS_v2 (LLM - q8)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q8_v2_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q8_v2_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v2_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v2_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 Based on the following text, what age group is most susceptible to breast cancer?
 
 ## Text:
@@ -199,17 +189,18 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 - Early onset of menstruation or late menopause
 - Obesity
 - Hormonal factors, such as taking hormone replacement therapy
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 Based on the following text, what age group is most susceptible to breast cancer?
 
 ## Text:
@@ -221,70 +212,60 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 - Early onset of menstruation or late menopause
 - Obesity
 - Hormonal factors, such as taking hormone replacement therapy
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 Based on the provided text, the age group most susceptible to breast cancer is women over the age of 50. This is explicitly mentioned in the text, indicating that breast cancer is most commonly occurring in this age group. It is important to note that while age is a significant risk factor, other factors such as genetic mutations, family history, and hormonal factors also contribute to the likelihood of developing breast cancer. Regular screenings and awareness of risk factors are crucial for early detection and effective management of breast cancer.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_q8_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;3.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Based on the provided text, the age group most susceptible to breast cancer is women over the age of 50. This is explicitly mentioned in the text, indicating that breast cancer is most commonly occurring in this age group. It is important to note that while age is a significant risk factor, other factors such as genetic mutations, family history, and hormonal factors also contribute to the likelihood of developing breast cancer. Regular screenings and awareness of risk factors are crucial for early detection and effective management of breast cancer. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q8_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q16)</title><link href="/2024/09/19/jsl_meds_q16_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q16)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q16_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q16_v3_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_q8_v2|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|3.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Based on the provided text, the age group most susceptible to breast cancer is women over the age of 50. This is explicitly mentioned in the text, indicating that breast cancer is most commonly occurring in this age group. It is important to note that while age is a significant risk factor, other factors such as genetic mutations, family history, and hormonal factors also contribute to the likelihood of developing breast cancer. Regular screenings and awareness of risk factors are crucial for early detection and effective management of breast cancer. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q8_v2 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q16)</title><link href="/2024/09/19/jsl_meds_q16_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q16)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q16_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q16_v3_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v3_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q16_v3_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -292,17 +273,18 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q16_v3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -310,70 +292,60 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_q16_v3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;5.6 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q16_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q4)</title><link href="/2024/09/19/jsl_meds_q4_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q4)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q4_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q4_v3_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_q16_v3|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|5.6 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q16_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q16_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 5.6 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q4)</title><link href="/2024/09/19/jsl_meds_q4_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q4)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q4_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q4_v3_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v3_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q4_v3_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 Based on the following text, what age group is most susceptible to breast cancer?
 
 ## Text:
@@ -385,17 +357,18 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 - Early onset of menstruation or late menopause
 - Obesity
 - Hormonal factors, such as taking hormone replacement therapy
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q4_v3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 Based on the following text, what age group is most susceptible to breast cancer?
 
 ## Text:
@@ -407,70 +380,60 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 - Early onset of menstruation or late menopause
 - Obesity
 - Hormonal factors, such as taking hormone replacement therapy
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 Based on the provided text, the age group most susceptible to breast cancer is women over 50 years old. This is explicitly mentioned as the most common occurrence age for breast cancer. While other factors like genetic mutations, family history, and hormonal factors also contribute to the risk, the text specifically highlights age as a significant risk factor. It is important to note that while age is a risk factor, breast cancer can still occur in younger women, and awareness and preventive measures should be considered across all age groups.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_q4_v3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;2.2 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Based on the provided text, the age group most susceptible to breast cancer is women over 50 years old. This is explicitly mentioned as the most common occurrence age for breast cancer. While other factors like genetic mutations, family history, and hormonal factors also contribute to the risk, the text specifically highlights age as a significant risk factor. It is important to note that while age is a risk factor, breast cancer can still occur in younger women, and awareness and preventive measures should be considered across all age groups. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q4_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q8)</title><link href="/2024/09/19/jsl_meds_q8_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q8)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q8_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q8_v3_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_q4_v3|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|2.2 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q4_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; Based on the following text, what age group is most susceptible to breast cancer? ## Text: The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as: - A personal or family history of breast cancer - A genetic mutation, such as BRCA1 or BRCA2 - Exposure to radiation - Age (most commonly occurring in women over 50) - Early onset of menstruation or late menopause - Obesity - Hormonal factors, such as taking hormone replacement therapy &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; Based on the provided text, the age group most susceptible to breast cancer is women over 50 years old. This is explicitly mentioned as the most common occurrence age for breast cancer. While other factors like genetic mutations, family history, and hormonal factors also contribute to the risk, the text specifically highlights age as a significant risk factor. It is important to note that while age is a risk factor, breast cancer can still occur in younger women, and awareness and preventive measures should be considered across all age groups. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q4_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 2.2 GB</summary></entry><entry><title type="html">JSL_MedS_v3 (LLM - q8)</title><link href="/2024/09/19/jsl_meds_q8_v3_en.html" rel="alternate" type="text/html" title="JSL_MedS_v3 (LLM - q8)" /><published>2024-09-19T00:00:00+00:00</published><updated>2024-09-19T00:00:00+00:00</updated><id>/2024/09/19/jsl_meds_q8_v3_en</id><content type="html" xml:base="/2024/09/19/jsl_meds_q8_v3_en.html">## Description
 
-&lt;p&gt;This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat.&lt;/p&gt;
+This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v3_en_5.4.1_3.0_1720040078717.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+## Predicted Entities
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.llm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v3_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_q8_v3_en_5.4.1_3.0_1720040078717.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+from sparknlp_jsl.llm import LLMLoader
+
+llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -478,17 +441,18 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;llm_loader_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+response = llm_loader_pretrained.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ml.gguf.LLMLoader&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.SparkAccessor.spark&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.ml.gguf.LLMLoader
+import com.johnsnowlabs.nlp.SparkAccessor.spark
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LLMLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setSparkSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jsl_meds_q8_v3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val prompt = &quot;&quot;&quot;
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
 Which of the following is the best treatment for this patient?
 A: Ampicillin
@@ -496,50 +460,32 @@ B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
 E: Nitrofurantoin
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;llmLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val response = llmLoader.generate(prompt)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+```bash
+&quot;&quot;&quot;
 The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). It is important to avoid antibiotics that are contraindicated during pregnancy, such as tetracyclines (D: Doxycycline) and fluoroquinolones (C: Ciprofloxacin). Ampicillin (A) and Ceftriaxone (B) are also generally safe during pregnancy, but Nitrofurantoin is often preferred due to its specific efficacy for UTIs.
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&quot;&quot;&quot;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;jsl_meds_q8_v3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 5.4.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;3.7 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). It is important to avoid antibiotics that are contraindicated during pregnancy, such as tetracyclines (D: Doxycycline) and fluoroquinolones (C: Ciprofloxacin). Ampicillin (A) and Ceftriaxone (B) are also generally safe during pregnancy, but Nitrofurantoin is often preferred due to its specific efficacy for UTIs. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q8_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver</title><link href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html">## Description
+{:.table-model}
+|---|---|
+|Model Name:|jsl_meds_q8_v3|
+|Compatibility:|Healthcare NLP 5.4.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|3.7 GB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="llm" /><category term="ner" /><summary type="html">Description This LLM model is trained to perform Q&amp;amp;A, Summarization, RAG, and Chat. Predicted Entities Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp_jsl.llm import LLMLoader llm_loader_pretrained = LLMLoader(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; response = llm_loader_pretrained.generate(prompt) import com.johnsnowlabs.ml.gguf.LLMLoader import com.johnsnowlabs.nlp.SparkAccessor.spark val llmLoader = new LLMLoader().setSparkSession(spark).pretrained(&quot;jsl_meds_q8_v3&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val prompt = &quot;&quot;&quot; A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. Which of the following is the best treatment for this patient? A: Ampicillin B: Ceftriaxone C: Ciprofloxacin D: Doxycycline E: Nitrofurantoin &quot;&quot;&quot; val response = llmLoader.generate(prompt) Results &quot;&quot;&quot; The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). It is important to avoid antibiotics that are contraindicated during pregnancy, such as tetracyclines (D: Doxycycline) and fluoroquinolones (C: Ciprofloxacin). Ampicillin (A) and Ceftriaxone (B) are also generally safe during pregnancy, but Nitrofurantoin is often preferred due to its specific efficacy for UTIs. &quot;&quot;&quot; Model Information Model Name: jsl_meds_q8_v3 Compatibility: Healthcare NLP 5.4.1+ License: Licensed Edition: Official Language: en Size: 3.7 GB</summary></entry><entry><title type="html">Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver</title><link href="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html" rel="alternate" type="text/html" title="Pipeline for ICD-10-CM and RxNorm Sentence Entity Resolver" /><published>2024-09-18T00:00:00+00:00</published><updated>2024-09-18T00:00:00+00:00</updated><id>/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en</id><content type="html" xml:base="/2024/09/18/icd10cm_rxnorm_resolver_pipeline_en.html">## Description
 
 This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts: 
 - ICD-10-CM entities: PROBLEM, CEREBROVASCULAR_DISEASE, COMMUNICABLE_DISEASE, DIABETES, DISEASE_SYNDROME_DISORDER, EKG_FINDINGS, HEART_DISEASE, HYPERLIPIDEMIA, HYPERTENSION, IMAGINGFINDINGS, INJURY_OR_POISONING, KIDNEY_DISEASE, OBESITY, ONCOLOGICAL, OVERWEIGHT, PREGNANCY, PSYCHOLOGICAL_CONDITION, SYMPTOM, VS_FINDING
