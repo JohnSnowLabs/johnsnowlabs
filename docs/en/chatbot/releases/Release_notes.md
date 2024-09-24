@@ -12,7 +12,7 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
-## 09-23-2024 Introducing Literature Review
+## 09-24-2024 Introducing Literature Review
 
 We are happy to announce a new feature offered by the Medical Chatbot: Literature Review, specifically tailored to streamline the complex process of medical literature research and review. This tool enables researchers, healthcare professionals or clinicians to efficiently sift through vast amounts of published research to support in-depth meta-analyses, clinical decision-making, or evidence-based practices.
 
@@ -45,7 +45,7 @@ Users can define specific inclusion and exclusion criteria based on their study 
 Results can be further refined by filtering literature based on the date range of publication, the impact factor of the study, and the type of study (e.g., clinical trials, reviews, case studies). This allows users to narrow their search and focus on the most relevant studies for their review. Users can specify the exact characteristics they want the included literature to possess for a more accurate and focused review. This ensures that the results align perfectly with the research objectives.
 
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/J9FV4r70rLo?si=XKXIhOmZ-Ok7J5lM&hd=1" title="Literature Review - Step 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/y4NSrKdnWOU?si=HaDcqR-lIZrRSedP&hd=1" title="Literature Review - Step 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **5. Real-Time Feedback:**
 As users enter their search criteria, the chatbot filters and displays relevant literature in real-time. This immediate feedback allows users to open and review papers right away, without having to wait for the entire search process to complete. By streamlining the search process, this feature facilitates faster access to relevant information, saving users time and effort.
