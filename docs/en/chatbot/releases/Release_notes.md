@@ -12,7 +12,7 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
-## 09-23-2024 Introducing Literature Review
+## 09-24-2024 Introducing Literature Review
 
 We are happy to announce a new feature offered by the Medical Chatbot: Literature Review, specifically tailored to streamline the complex process of medical literature research and review. This tool enables researchers, healthcare professionals or clinicians to efficiently sift through vast amounts of published research to support in-depth meta-analyses, clinical decision-making, or evidence-based practices.
 
