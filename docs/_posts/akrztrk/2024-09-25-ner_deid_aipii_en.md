@@ -36,6 +36,7 @@ This Named Entity Recognition (NER) annotator is trained using the `ai4privacy/p
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
