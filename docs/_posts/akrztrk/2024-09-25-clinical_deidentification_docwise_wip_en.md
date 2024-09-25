@@ -5,7 +5,7 @@ author: John Snow Labs
 name: clinical_deidentification_docwise_wip
 date: 2024-09-25
 tags: [deidentification, en, deid, licensed, clinical, pipeline, sent_wise]
-task: Pipeline Healthcare
+task: [De-identification, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.4.1
 spark_version: 3.4
