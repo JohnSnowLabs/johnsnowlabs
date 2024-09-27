@@ -57,7 +57,6 @@ Carefully review the End User License Agreement and the Terms and Conditions doc
 
 ![PAYGSubscription.png](/assets/images/jsl_lib/databricks_utils/PAYGSubscription.png)
 
-
 **Copy License Key**: Once the process is complete, you will find your PAY-As-You-Go license listed on the My Subscriptions page. Visit the My Subscriptions page and copy the PAYG license key by clicking on the corresponding copy icon in the License Key column.
 
 ![PAYGLicenseDownload.png](/assets/images/jsl_lib/databricks_utils/PAYGLicenseDownload.png)
@@ -72,7 +71,7 @@ Go to your Databricks notebook and paste the license key into the JSL-License wi
 
 ![CancerGeneticsNotebook.png](/assets/images/jsl_lib/databricks_utils/CancerGeneticsNotebook.png)
 
-**Configure the Notebook**: Fill in the widgets with workspace-specific values and the PAYG license that you can copy from [my.JohnSnowLabs.com](my.JohnSnowLabs.com) (see Step 4).
+**Configure the Notebook**: Fill in the widgets with workspace-specific values and the PAYG license that you can copy from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com) (see Step 4).
 
 ![CancerGeneticsRunNotebook.png](/assets/images/jsl_lib/databricks_utils/CancerGeneticsRunNotebook.png)
 

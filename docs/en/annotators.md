@@ -42,6 +42,7 @@ There are two types of Annotators:
 
 - `pretrained(name, language, extra_location)` -> by default, pre-trained will bring a default model, sometimes we offer more than one model, in this case, you may have to use name, language or extra location to download them.
 
+</div><div class="h3-box" markdown="1">
 
 ## Available Annotators
 
@@ -102,6 +103,8 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="Word2Vec" summary="Word2Vec model that creates vector representations of words in a text corpus."%}
 {% include templates/anno_table_entry.md path="" name="WordSegmenter" summary="Tokenizes non-english or non-whitespace separated texts."%}
 {% include templates/anno_table_entry.md path="" name="YakeKeywordExtraction" summary="Unsupervised, Corpus-Independent, Domain and Language-Independent and Single-Document keyword extraction."%}
+
+</div><div class="h3-box" markdown="1">
 
 ## Available Transformers
 Additionally, these transformers are available to generate embeddings.

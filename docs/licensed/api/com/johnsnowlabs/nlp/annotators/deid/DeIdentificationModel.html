@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
-          <meta name="description" content="Spark NLP 5.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
-          <meta name="keywords" content="Spark NLP 5.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <title>Spark NLP 5.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
+          <meta name="description" content="Spark NLP 5.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <meta name="keywords" content="Spark NLP 5.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -764,8 +764,26 @@ It utilizes the main point of interest which is getAnonymizeSentence() and calls
       </span>
       
       <p class="shortcomment cmt">List of entities that will be ignored in the regex file.</p><div class="fullcomment"><div class="comment cmt"><p>List of entities that will be ignored in the regex file. The rest will be processed.
-The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;
+The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;, &quot;IP&quot;, &quot;DEA&quot;.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#blackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="blackListEntities:org.apache.spark.ml.param.StringArrayParam"></a><a id="blackListEntities:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">blackListEntities</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed.
+Defaults to an empty array.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#checkSchema" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkSchema(schema:org.apache.spark.sql.types.StructType,inputAnnotatorType:String):Boolean"></a><a id="checkSchema(StructType,String):Boolean"></a>
       <span class="permalink">
@@ -1499,6 +1517,22 @@ Default: False
       <p class="shortcomment cmt">Main point of interest.</p><div class="fullcomment"><div class="comment cmt"><p>Main point of interest. This method projects the sentence into the anonymized form
 This method is called for each sentence in the input collection of Annotations
 </p></div><dl class="paramcmts block"><dt class="param">sentence</dt><dd class="cmt"><p>a sentence, which we want to anonymize</p></dd><dt class="param">protectedEntities</dt><dd class="cmt"><p>a sequence of Entities which we want to anonymize</p></dd><dt class="param">dateTag</dt><dd class="cmt"><p>a String which represents the value with which we replace dates</p></dd><dt>returns</dt><dd class="cmt"><p>a String, which represents an anonymized sentence</p></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getBlackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getBlackListEntities:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#getBlackListEntities:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBlackListEntities</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="DeIdentificationParams.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#blackListEntities">blackListEntities</a> param</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="DeIdentificationParams.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#blackListEntities">blackListEntities</a> param</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -3289,7 +3323,7 @@ For date entities this method doesn't apply.
       
       <p class="shortcomment cmt">List of formatted entities to generate the same length outputs as original ones during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are:
-&quot;phone&quot;, &quot;fax&quot;, &quot;id&quot;, &quot;idnum&quot;, &quot;bioid&quot;, &quot;medicalrecord&quot;, &quot;zip&quot;, &quot;vin&quot;, &quot;ssn&quot;, &quot;dln&quot;, &quot;plate&quot;, &quot;license&quot;, &quot;IRS&quot;, &quot;CFN&quot;.
+&quot;phone&quot;, &quot;fax&quot;, &quot;contact,&quot; &quot;id&quot;, &quot;idnum&quot;, &quot;bioid&quot;, &quot;medicalrecord&quot;, &quot;zip&quot;, &quot;vin&quot;, &quot;ssn&quot;, &quot;dln&quot;, &quot;plate&quot;, &quot;license&quot;, &quot;IRS&quot;, &quot;CFN&quot;, &quot;account&quot;.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.util.MLWritable#save" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(path:String):Unit"></a><a id="save(String):Unit"></a>
@@ -3584,8 +3618,27 @@ while age for patients 90 years or younger can remain unchanged.
         <span class="name">setBlackList</span><span class="params">(<span name="list">list: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">List of entities that will be ignored to in the regex file.</p><div class="fullcomment"><div class="comment cmt"><p>List of entities that will be ignored to in the regex file. The rest will be processed. The default  values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;
+      <p class="shortcomment cmt">List of entities that will be ignored to in the regex file.</p><div class="fullcomment"><div class="comment cmt"><p>List of entities that will be ignored to in the regex file. The rest will be processed.
+The default  values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;, &quot;IP&quot;, &quot;DEA&quot;.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setBlackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setBlackListEntities(value:Array[String]):DeIdentificationParams.this.type"></a><a id="setBlackListEntities(Array[String]):DeIdentificationModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#setBlackListEntities(value:Array[String]):DeIdentificationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBlackListEntities</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed.
+Defaults to an empty array.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setConsistentObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setConsistentObfuscation(s:Boolean):DeIdentificationParams.this.type"></a><a id="setConsistentObfuscation(Boolean):DeIdentificationModel.this.type"></a>
       <span class="permalink">
@@ -4306,7 +4359,7 @@ For date entities this method doesn't apply.
       
       <p class="shortcomment cmt">List of formatted entities to generate the same length outputs as original ones during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are:
-PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE, IRS, CFN.
+PHONE, FAX, CONTACT, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE, IRS, CFN, ACCOUNT.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#setSeed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setSeed(s:Int):DeidModelParams.this.type"></a><a id="setSeed(Int):DeIdentificationModel.this.type"></a>

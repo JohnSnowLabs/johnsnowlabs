@@ -13,7 +13,6 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
-
 ## NLU Version 4.2.2
 
 - support for Medical Summarizers

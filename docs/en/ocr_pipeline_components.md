@@ -3188,7 +3188,7 @@ print(data.select("text").collect()[0].text)
 
 **Image:**
 
-![image](/assets/images/ocr/corrected.png)
+![Pipeline components](/assets/images/ocr/corrected.png)
 
 **Output:**
 
@@ -3220,7 +3220,7 @@ others. One could almost say they feed on and grow on ideas.
 {:.table-model-big}
 | Param name | Type | Default | Column Data Description |
 | --- | --- | --- | --- |
-| inputCols | Array[string] | [image] | Can use as input image struct ([Image schema](ocr_structures#image-schema))  and regions. |
+| inputCols | Array[string] | [Pipeline components] | Can use as input image struct ([Image schema](ocr_structures#image-schema))  and regions. |
 
 </div><div class="h3-box" markdown="1">
 
@@ -3294,7 +3294,7 @@ not implemented
 
 **Image:**
 
-![image](/assets/images/ocr/text_detection1.png)
+![Pipeline components](/assets/images/ocr/text_detection1.png)
 
 **Output:**
 
@@ -3505,7 +3505,7 @@ print(data.select("hocr").collect()[0].hocr)
 
 **Image:**
 
-![image](/assets/images/ocr/corrected.png)
+![Pipeline components](/assets/images/ocr/corrected.png)
 
 **Output:**
 

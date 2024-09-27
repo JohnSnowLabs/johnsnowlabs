@@ -14,10 +14,9 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 ## AWS Marketplace
-The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
+The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-kpac4xtqkxuqu?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
-
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
@@ -132,11 +131,11 @@ Alternatively, you can automatically deploy John Snow Labs libraries on Databric
 
 Login to your account on my.JohnSnowLabs.com, navigate to 'My Subscriptions' page, and identify your license for Databricks. Click on the three dots as illustrated in the image below, then select the `Install On Cluster` option.
 
-<img class="image image--xl" src="/assets/images/myJSLdeployment.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Automatic deployment via my.JohnSnowLabs.com](/assets/images/myJSLdeployment.png "lit_shadow")
 
 On the install form, provide an access token for this account and then select the cluster where you want to install the libraries. Once it is done, you will get an email with information on the status of your deployment and on how to get started with the libraries. 
 
-<img class="image image--xl" src="/assets/images/install_form.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Automatic deployment via my.JohnSnowLabs.com](/assets/images/install_form.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -552,11 +551,11 @@ You can do this setup via Amazon AWS Command Line Interface (AWSCLI).
 
 Instructions about how to install AWSCLI are available at:
 
-<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">Installing the AWS CLI</a>
+[Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 Make sure you configure your credentials with AWS configure following the instructions at:
 
-<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html">Configuring the AWS CLI</a>
+[Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
 Please substitute the `ACCESS_KEY` and `SECRET_KEY` with the credentials available on your license json file. This is available on your account from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/). [Read this](licensed_install#get-a-spark-nlp-for-healthcare-license) for more information.
 
@@ -1497,15 +1496,15 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_1.png)
 
-13 Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
+13. Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_2.png)
 
-14 Such a window will Appear. Go to Add compute.
+14. Such a window will Appear. Go to Add compute.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_3.png)
 
-15 Choose the compute type and enable auto-shutdown as well.
+15. Choose the compute type and enable auto-shutdown as well.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_10.png)
 
@@ -1513,29 +1512,32 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_9.png)
 
-16 Then go to the Notebooks Section.
+16. Then go to the Notebooks Section.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_4.png)
 
 In NB section, you can create your own NB or load existing NBs.
 
-17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
+17. Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_5.png)
 
-18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
+18. Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_6.png)
 
-19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
+19. Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
+</div><div class="h3-box" markdown="1">
 
 ## Microsoft Fabric Instructions
 
 ### Step 1: Log into MS Fabric
 Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your MS Fabric Account credentials.
+
+</div><div class="h3-box" markdown="1">
 
 ### Step 2: Create a Lakehouse
 - Go to the **Synapse Data Science** section.
@@ -1544,11 +1546,14 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 
 ![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-  ![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
+![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
@@ -1557,18 +1562,18 @@ Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
 ![image](https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
-
 ![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
 
-![image](https://github.com/user-attachments/assets/48339e38-fb5e-4dd7-b235-bfcb645cc855)
-
+![image](https://github.com/user-attachments/assets/53bc84ae-40dc-41dc-9522-e87bf70d4fba)
 
 After uploading is complete, you can configure and run the notebook.
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 6: Configure the Notebook Session
 Configure the session within the notebook as follows:
@@ -1597,7 +1602,11 @@ Configure the session within the notebook as follows:
 }
 
 ```
+
+</div><div class="h3-box" markdown="1">
+
 ### Step 7: Install Spark NLP Libraries
+
 Install the required Spark NLP libraries using pip commands:
 ```bash
 %pip install <spark-nlp whl File API path>
@@ -1606,8 +1615,9 @@ Install the required Spark NLP libraries using pip commands:
 
 **Example Usage:**
 
-![image](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
+![Install Spark NLP Libraries](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 8: Make Necessary Imports
 Import the necessary Python and Spark libraries:
@@ -1629,6 +1639,8 @@ from sparknlp.annotator import *
 from sparknlp_jsl.annotator import *
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 9: Explore Available Licensed Models
 Download and explore the list of available licensed models:
 ```bash
@@ -1642,8 +1654,9 @@ with open("models.json", "r", encoding="utf-8") as f:
 
 **Example Usage:**
 
-![image](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
+![Explore Available Licensed Models](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 10: Download and Extract Required Models
 Set up AWS credentials and use Boto3 to handle files:
@@ -1676,6 +1689,8 @@ except Exception as e:
     print(f"An error occurred: {e}")
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 11: Load the Model and Make Predictions
 Load the model and perform predictions on the desired text:
 ```python
@@ -1686,11 +1701,8 @@ result = pipeline.annotate(text)
 
 **Example Usage:**
 
-![image](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
+![Load the Model and Make Predictions](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
 
-![image](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
-
-
-
+![Load the Model and Make Predictions](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
 
 </div>

@@ -160,6 +160,13 @@
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
       
@@ -255,6 +262,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../../index.html">
                         API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
                       </a>
                     </li>
                 
@@ -365,11 +379,142 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_deidentifier</span></code></a>(spark[, input_file_path, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict_to_annotation_converter</span></code></a>(spark, data[, ...])</p></td>
+<td><p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_deidentifier</span></code></a>(spark[, input_file_path, ...])</p></td>
 <td><p>This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter">
+<span class="sig-name descname"><span class="pre">dict_to_annotation_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'document'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chunk'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="Permalink to this definition">#</a></dt>
+<dd><p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p>
+<p>The input data should be a list of dictionaries.
+Each dictionary should have a “text” key and a “chunks” key.
+The “text” key should contain the text of the document and the “chunks” key should contain a list of dictionaries.</p>
+<p>Each dictionary in the “chunks” list should have “begin”, “end”, “result”, “entity” and “metadata” keys.</p>
+<p>The “begin” key should contain the start index of the chunk,
+the “end” key should contain the end index of the chunk,
+the “result” key should contain the text of the chunk,
+the “entity” key should contain the entity type of the chunk
+and the “metadata” key should contain the metadata of the chunk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>SparkSession</strong><strong>)</strong> (<em>spark</em>) – </p></li>
+<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>data</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>chunk_col_name</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>bool</strong><strong>)</strong> (<em>adjust_end</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The provided begin, end, and result values are not validated for accuracy. It is the user’s responsibility to ensure these values are correct.</p></li>
+<li><p>Spark NLP annotators calculate the end index of the annotations by minus 1 from the actual end index. If the end index is not minus 1, the annotators will not be able to calculate the correct end index. Therefore, the end index of the chunks should be minus 1. If the end index is not minus 1 in chunks, the adjust_end parameter should be set to True.</p></li>
+<li><p>document_col_name and chunk_col_name should not be the same as the column names in the input data.</p></li>
+<li><p>The name of ‘document_metadata’ is reserved for the metadata column of the document. ‘document_metadata’ values should be a dictionary. All dictionaries must have a ‘document_metadata’ key if the ‘document_metadata’ is provided in one of the dictionaries.</p></li>
+<li><p>‘text’ and ‘chunks’ keys are reserved for the text and chunks of the document. ‘text’ values should be a string and ‘chunks’ values should be a list of dictionaries.</p></li>
+<li><p>‘begin’, ‘end’, ‘result’, ‘entity’ and ‘metadata’ keys are reserved for the chunk annotations. ‘begin’ and ‘end’ values should be integers, ‘result’ values should be a string, ‘entity’ values should be a string and ‘metadata’ values should be a dictionary.</p></li>
+</ul>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_of_dict</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>       <span class="p">{</span>
+<span class="gp">... </span>           <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;chunks&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;llm_output&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;12/11/1995&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.9&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;llm_output&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">96</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;John Snow labs&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;ORG&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.87&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;llm_output&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">}</span>
+<span class="gp">... </span>               <span class="p">],</span>
+<span class="gp">... </span>           <span class="s2">&quot;doc_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;document_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dateshift&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">},</span>
+<span class="gp">... </span>           <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/file1&quot;</span>
+<span class="gp">... </span>       <span class="p">},</span>
+<span class="gp">... </span>       <span class="p">{</span>
+<span class="gp">... </span>           <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;I am Bush, and English is my native language. You can reach me at my email: bush@example.com.&quot;</span><span class="p">,</span>
+<span class="gp">...</span>
+<span class="gp">... </span>           <span class="s2">&quot;chunks&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;Bush&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_dl&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;LANGUAGE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.98&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_dl&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">76</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;bush@example.com&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;EMAIL&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.87&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_dl&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">}</span>
+<span class="gp">... </span>           <span class="p">],</span>
+<span class="gp">... </span>           <span class="s2">&quot;doc_id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;document_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dateshift&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">},</span>
+<span class="gp">... </span>           <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/file2&quot;</span>
+<span class="gp">... </span>       <span class="p">}</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result_df</span> <span class="o">=</span> <span class="n">dict_to_annotation_converter</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">list_of_dict</span><span class="p">,</span> <span class="n">document_col_name</span><span class="o">=</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="n">chunk_col_name</span><span class="o">=</span><span class="s2">&quot;chunk&quot;</span><span class="p">,</span> <span class="n">adjust_end</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">light_deIdentification</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>       <span class="n">LightDeIdentification</span><span class="p">()</span>
+<span class="gp">... </span>       <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;chunk&quot;</span><span class="p">])</span> <span class="c1"># The document and chunk columns created by the dict_to_annotation_converter function.</span>
+<span class="gp">... </span>       <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;deidentified&quot;</span><span class="p">)</span>
+<span class="gp">... </span>       <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">light_deIdentification</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;deidentified.result&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><table class="table">
+<tbody>
+<tr class="row-odd"><td><p>result</p></td>
+</tr>
+<tr class="row-even"><td><p>[My name is &lt;PERSON&gt;, and I was born on &lt;DATE&gt;. I have the pleasure of working at &lt;ORG&gt;.]
+[I am &lt;PERSON&gt;, and &lt;LANGUAGE&gt; is my native language. You can reach me at my email: &lt;EMAIL&gt;.]</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h4>
+<p>Spark DataFrame: A Spark DataFrame with the converted columns which are compatible with Spark NLP and is ready to deidentify.
+The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.
+Additionally, the returned DataFrame will contain all the columns from the input data except the “chunks” column.</p>
+</section>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier">
 <span class="sig-name descname"><span class="pre">structured_deidentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentified.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'faker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="Permalink to this definition">#</a></dt>
@@ -429,6 +574,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter"><code class="docutils literal notranslate"><span class="pre">dict_to_annotation_converter()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="docutils literal notranslate"><span class="pre">structured_deidentifier()</span></code></a></li>
 </ul>
 </li>

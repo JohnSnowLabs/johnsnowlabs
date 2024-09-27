@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
+## Predicted Entities
+
+`BodyPart` , `Direction`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

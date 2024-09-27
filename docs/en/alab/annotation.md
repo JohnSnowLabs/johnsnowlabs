@@ -93,6 +93,27 @@ Annotator/Reviewer can see their overall work progress from within the labeling 
 
 </div><div class="h3-box" markdown="1">
 
+### Enhanced Comparison View for Completion Differences
+In version 6.4, a new feature has been introduced in Generative AI Lab that allows annotators and project managers to easily compare the differences between two completions. This enhancement significantly simplifies the process of identifying discrepancies between annotations.
+Previously, differences between completions had to be manually validated, which could be a time-consuming and tedious process. With the new comparison feature, differences are automatically highlighted, making it easy for users to spot discrepancies in annotations.
+
+**How to Use**:
+- **Step 1**: Click on the **Comparison View** button.
+- **Step 2**: Select the two completions you want to compare.
+- **Step 3**: Click on **Show Diff**.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/8.gif)
+
+The **Diff View** will then open, displaying the differences between the two completions. Annotations that differ are highlighted, with **green** indicating the annotation in base completion and **red** indicating the annotations in compared completion.
+
+**Benefits**:
+- **Efficiency and Clarity**: Automatically highlighting differences saves time and reduces the potential for human error in identifying discrepancies. Also, the visual differentiation between annotations makes it easy to understand what changes have been made.
+- **Collaboration**: Facilitates better communication between annotators and project managers by clearly showing where differences occur.
+
+This feature enhances the accuracy and efficiency of the annotation process, ensuring that all team members can easily identify and address any inconsistencies between completions.
+
+</div><div class="h3-box" markdown="1">
+
 ## Text Annotation
 
 ### Named Entity Recognition

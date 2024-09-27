@@ -28,8 +28,8 @@ sidebar:
   - **spark-nlp-jsl Version :** v5.3.2
   - **Spark Version :** v3.4.1
 - **Visual NLP Pipeline:** 'pdf_deid_subentity_context_augmented_pipeline'
-</div>
 
+</div><div class="h3-box" markdown="1">
 
 #### Benchmark Table
 
@@ -38,3 +38,5 @@ sidebar:
 | ------------- | ------ | ----- | ----------------- | ------------- | --------------- | ------- |
 | m5n.4xlarge   | 64 GB  | 16    | 1000              | 10            | 0.24            | 4 mins  |
 | m5n.8xlarge   | 128 GB | 32    | 1000              | 32            | 0.15            | 2.5 mins|
+
+</div>

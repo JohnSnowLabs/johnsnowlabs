@@ -35,17 +35,17 @@ There are several ways of deploying a MLFlow Model Registry:
 
 1) **Scenario 1: MLflow on localhost with no Tracking Server:**
 This scenario uses a localhost folder (`./mlruns` by default) to serialize and store your models, but there is no tracking server available (version tracking will be disabled).
-![](/assets/images/mlflow/mlflow1.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow1.png)
 
 2) **Scenario 2: MLflow on localhost with a Tracking Server**
 This scenario uses a localhost folder (`./mlruns` by default) to serialize and store your mdoels, and a database as a Tracking Sever. It uses SQLAlchemy under the hood, so the following databases are supported: `mssql`, `postgresql`, `mysql`, `sqlite`.
-![](/assets/images/mlflow/mlflow3.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow3.png)
 
 We are going to show how to implement this scenario with a `mysql` database.
 
 3) **Scenario 3: MLflow on remote with a Tracking Server**
 This scenario is a remote version of Scenario 2. It uses a remote S3 bucket to serialize and store your mdoels, and a database as a Tracking Sever. Again, it uses SQLAlchemy for the Tracking Server under the hood, so the following databases are supported: `mssql`, `postgresql`, `mysql`, `sqlite`. In this case, you can use any service as AWS RDS or Azure SQL Database.
-![](/assets/images/mlflow/mlflow4.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow4.png)
 
 </div><div class="h3-box" markdown="1">
 
@@ -521,11 +521,11 @@ Now, we just need to launch the MLFLow UI to see:
 </div><div class="h3-box" markdown="1">
 
 ## Some example screenshots
-![](/assets/images/mlflow/mlflow10.png)
-![](/assets/images/mlflow/mlflow11.png)
-![](/assets/images/mlflow/mlflow12.png)
-![](/assets/images/mlflow/mlflow13.png)
-![](/assets/images/mlflow/mlflow14.png)
-![](/assets/images/mlflow/mlflow15.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow10.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow11.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow12.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow13.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow14.png)
+![Serialization and Experiment Tracking with MLFlow](/assets/images/mlflow/mlflow15.png)
 
 </div>

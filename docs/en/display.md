@@ -37,13 +37,13 @@ You can install the Spark NLP Display library via pip by using:
 pip install spark-nlp-display
 ```
 
-A complete guideline on how to use the Spark NLP Display library is available <a href="https://github.com/JohnSnowLabs/spark-nlp-display/blob/main/tutorials/Spark_NLP_Display.ipynb">here</a>.
+A complete guideline on how to use the Spark NLP Display library is available [here](https://github.com/JohnSnowLabs/spark-nlp-display/blob/main/tutorials/Spark_NLP_Display.ipynb).
 
 </div><div class="h3-box" markdown="1">
 
 ### Visualize a dependency tree
 
-For visualizing a dependency trees generated with <a href="https://nlp.johnsnowlabs.com/docs/en/annotators#dependency-parsers">DependencyParserApproach</a> you can use the following code.
+For visualizing a dependency trees generated with [DependencyParserApproach](https://nlp.johnsnowlabs.com/docs/en/annotators#dependency-parsers) you can use the following code.
 
 
 ```bash
@@ -138,7 +138,7 @@ The following image gives an example of html output that is obtained for a coupl
 
 ### Visualize entity resolution
 
-**Entity resolution** refers to the normalization of named entities predicted by Spark NLP with respect to standard terminologies such as ICD-10, SNOMED, RxNorm etc. You can read more about the available entity resolvers <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#chunkentityresolver">here.</a>
+**Entity resolution** refers to the normalization of named entities predicted by Spark NLP with respect to standard terminologies such as ICD-10, SNOMED, RxNorm etc. You can read more about the available entity resolvers [here](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#chunkentityresolver).
 
 The **EntityResolverVisualizer** will automatically display on top of the NER label the standard code (ICD10 CM, PCS, ICDO; CPT) that corresponds to that entity as well as the short description of the code. If no resolution code could be identified a regular NER-type of visualization will be displayed. 
 

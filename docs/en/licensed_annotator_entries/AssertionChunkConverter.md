@@ -26,6 +26,8 @@ Parameters:
 
 - `outputTokenEndCol`: (Str) The column containing the selected token end index.
 
+- `metadataFields`:  (Dict) The dictionary of of metadata fields to be added to the chunk column
+
 > *NOTE*: Chunk begin and end indices in the assertion status model training dataframe can be populated using the new version of the ALAB module.
 
 {%- endcapture -%}

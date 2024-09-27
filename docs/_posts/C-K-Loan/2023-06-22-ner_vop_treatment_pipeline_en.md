@@ -22,6 +22,8 @@ This pipeline extracts mentions of treatment entities from health-related text i
 
 ## Predicted Entities
 
+`Frequency`, `Treatment`, `Drug`, `Route`, `Form`, `Dosage`, `Duration`, `Procedure`.
+
 
 
 {:.btn-box}

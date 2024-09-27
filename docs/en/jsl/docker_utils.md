@@ -20,7 +20,7 @@ This enables you to package any johnsnowlabs model into a docker image and serve
 
 ## Image creation
 With `nlp.build_image` you can create a docker image with any johnsnowlabs model pre-packed and ready to serve.
-You just need to specify the [nlu reference to the model](todo) and the **name of the output image**
+You just need to specify the [nlu reference to the model](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) and the **name of the output image**
 Additionally, you can set the `hardware_target` to `cpu`, `gpu`, `apple_silicon` or `aarch` to package with Jar's optimized for specific hardware.
 
 </div><div class="h3-box" markdown="1">

@@ -24,6 +24,10 @@ use_language_switcher: "Python-Scala-Java"
 This pretrained pipeline is built on the top of [ner_healthcare](https://nlp.johnsnowlabs.com/2021/04/21/ner_healthcare_en.html) model.
 
 
+## Predicted Entities
+
+`DRUG`, `ADE`
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL/){:.button.button-orange.button-orange-trans.arr.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.arr.button-icon}

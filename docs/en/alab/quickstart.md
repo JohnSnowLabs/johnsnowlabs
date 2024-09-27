@@ -32,8 +32,8 @@ All that **without writing a line of code**!
 
 
 {:.btn-block.btn-flex}
-[Install on AWS](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa){:.button.button--primary.button--rounded.button--md}
-[Install on Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview){:.button.button--primary.button--rounded.button--md}
+[Install on AWS](https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa){:.button.button--primary.button--rounded.button--md}
+[Install on Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview){:.button.button--primary.button--rounded.button--md}
 
 </div>
 <div class="block-box-inner alab-top-image df">

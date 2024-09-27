@@ -79,6 +79,8 @@ healthcare-gpt:
         url: /docs/en/chatbot/features
       - title: Tools
         url: /docs/en/chatbot/tools       
+      - title: Literature Review
+        url: /docs/en/chatbot/literature_review
       - title: DocQA
         url: /docs/en/chatbot/docqa          
       - title: User Guide
@@ -151,6 +153,8 @@ annotation-lab:
             url: /docs/en/alab/section_based_annotations
           - title: Entity Resolution
             url: /docs/en/alab/resolvers 
+          - title: De-Identification
+            url: /docs/en/alab/de_identify
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
