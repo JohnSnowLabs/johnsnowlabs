@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_0"> -->
-<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_1"> -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -622,13 +622,14 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.4.0</h2>
+  <h2 id="section">5.4.1</h2>
 
-  <p>Release date: 15-07-2024</p>
+  <p>Release date: 26-09-2024</p>
 
-  <h2 id="visual-nlp-540-release-notes-">Visual NLP 5.4.0 Release Notes 🕶️</h2>
+  <h2 id="visual-nlp-541-release-notes-">Visual NLP 5.4.1 Release Notes 🕶️</h2>
 
-  <p><strong>we’re glad to announce that Visual NLP 5.4.0 has been released. New transformers, notebooks, metrics, bug fixes and more!!! 📢📢📢</strong></p>
+  <p><strong>We are glad to announce that Visual NLP 5.4.1 has been released. 
+This release comes with new models, notebooks, examples, and bug fixes!!! 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
@@ -636,142 +637,90 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="highlights-">Highlights 🔴</h2>
 
   <ul>
-    <li>Improvements in Table Processing.</li>
-    <li>Dicom Transformers access to S3 directly.</li>
-    <li>New Options for ImageToPdf transformer.</li>
-    <li>Support for rotated text regions in ImageToTextV2.</li>
-    <li>New Pdf-To-Pdf Pretrained Pipeline for De-Identification.</li>
-    <li>ImageToTextV3 support for HOCR output.</li>
-    <li>Performance Metrics for De-identification Pipelines.</li>
-    <li>Other Changes.</li>
+    <li>New models for information extraction from Scanned Forms, scoring F1 92.86 on the FUNSD Entity Extraction dataset, and 89.23 on FUNSD Relation Extraction task. This significantly outperforms the Form Understanding capabilities of the AWS, Azure, and Google ‘Form AI’ services.</li>
+    <li>New blogpost on Form Extraction in which we deep dive into the advantages of the models released today against different cloud providers.</li>
+    <li>New PDF Deidentification Pipeline, that ingests PDFs and returns a de-identified version of the PDF.</li>
   </ul>
 
-</div>
-<div class="h3-box">
-
-  <h3 id="improvements-in-table-processing">Improvements in Table Processing</h3>
-  <p>New RegionsMerger component for merging Text Regions and Cell Regions to improve accuracy in Table Extraction Pipelines:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>PretrainedPipeline</th>
-        <th>Score Improvement(*)</th>
-        <th>Comments</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>table_extractor_image_to_text_v2</td>
-        <td>0.34 to 0.5</td>
-        <td>Internally it uses ImageToTextV2(case insensitive)</td>
-      </tr>
-      <tr>
-        <td>table_extractor_image_to_text_v1</td>
-        <td>0.711 to 0.728</td>
-        <td>Internally it uses ImageToText(case sensitive)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>(*) This is the cell adjacency Table Extraction metric as defined by ICDAR Table Extraction Challenge.
-The improvements are measured against previous release of Visual NLP.</p>
-
-</div>
-<div class="h3-box">
-
-  <h3 id="dicom-transformers-access-to-s3-directly">Dicom Transformers access to S3 directly</h3>
-  <p>Now Dicom Transformers can access S3 directly from executors instead of reading through the Spark Dataframe. This is particularly advantageous in the situation where we only care about the metadata of each file because we don’t need to load the entire file into memory, also,</p>
+  <h2 id="other-changes-">Other Changes 🟡</h2>
   <ul>
-    <li>It reduces memory usage and allows processing of files larger than 2 GB (a limitation of Spark).</li>
-    <li>It improves performance when computing statistics over large DICOM datasets.</li>
+    <li>Memory Improvements for Models that cut memory requirements of most models by half.</li>
+    <li>Minor enhancements, changes, and bug fixes that ensure the quality of the library continues to improve over time.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h3 id="new-options-for-imagetopdf-transformer">New Options for ImageToPdf transformer.</h3>
-  <p>New options have been added to ImageToPdf. ImageToPdf is the transformer we use to create PDFs from images, we use it for example when we de-identify PDFs and we want to write back to the PDF to obtain a redacted version of the PDF.
-The new options are intended to control the size of the resulting PDF document by controlling the resolution and compression of the images that are included in the PDF,</p>
+  <h3 id="new-models-for-information-extraction-from-scanned-forms">New models for information extraction from Scanned Forms</h3>
+  <p>This model scores F1 92.86 on the FUNSD Entity Extraction dataset, and 89.23 on FUNSD Relation Extraction task. This significantly outperforms the Form Understanding capabilities of the AWS, Azure, and Google ‘Form AI’ services.</p>
+
+  <p>Two new annotators that work together were added:</p>
 
   <ul>
-    <li>
-      <p>compression: Compression type for images in PDF document. It can be one of <code class="language-plaintext highlighter-rouge">CompressionType.LOSSLESS</code>, <code class="language-plaintext highlighter-rouge">CompressionType.JPEG</code>.</p>
+    <li>VisualDocumentNerGeo: This is a Visual NER model based on Geolayout, which achieves a F1-score of 92.86 on the Entity Extraction part of FUNSD. To use it call,
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ner = VisualDocumentNerGeo().
+pretrained("visual_ner_geo_v1", "en", "clinical/ocr/")
+</code></pre></div>      </div>
     </li>
-    <li>
-      <p>resolution: Resolution in DPI used to render images into the PDF document. There are three sources for the resolution(in decreasing order or precedence): this parameter, the image schema in the input image, or the default value of 300DPI.</p>
-    </li>
-    <li>
-      <p>quality: Quality of images in PDF document for JPEG compression. A value that ranges between 1.0(best quality) to 0.0(best compression). Defaults to 0.75.</p>
-    </li>
-    <li>
-      <p>aggregatePages: Aggregate pages in one PDF document.</p>
-    </li>
+    <li>GeoRelationExtractor: This is a Relation Extraction model based on Geolayout, which achieves a F1-score of 89.45 on the Relation Extraction part of FUNSD. To use it call,</li>
   </ul>
 
-</div>
-<div class="h3-box">
-
-  <h3 id="support-for-rotated-text-regions-in-imagetotextv2">Support for rotated text regions in ImageToTextV2</h3>
-  <p>Text regions at the input of ImageToTextV2 support rotation. Detected text regions come with an angle to represent the rotation that the detected text has in the image.
-Now, this angle is used to extract a straightened version of the region, and fed to the OCR. The resulting text is placed into the returned output text using the center of the region to decide its final location.
-See the following example.</p>
-
-  <p><img src="/assets/images/ocr/rotated_regions.png" alt="Support for rotated text regions in ImageToTextV2" /></p>
-
-  <p>and the resulting(truncated) text,</p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             SUBURBAN HOSPITAL
-            HEALTHCARE SYSTEM
-                               APPROVED ROTATED TEXT
-      MEDICAL RECORD
-              PATIENT INFORMATION: NAME: HOMER SIMPSON AGE: 40 YEARS
-                  GENDER: MALE WEIGHT: CLASSIFIED (BUT LET'S JUST SAY ITS IN THE "ROBUST" CATEGORY)
-     HEIGHT: 6'0"
-        BML: OFF THE CHARTS (LITERALLY)
-               OCCUPATION: SAFETY INSPECTOR AT SPRINGFIELD NUCLEAR POWER PLANT
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>re = GeoRelationExtractor().
+  pretrained("visual_re_geo_v2", "en", "clinical/ocr/")
 </code></pre></div>  </div>
 
-</div>
-<div class="h3-box">
-
-  <h3 id="new-pdf-to-pdf-pretrained-pipelines-for-de-identification">New Pdf-To-Pdf Pretrained Pipelines for De-Identification.</h3>
-  <p>New de-ideintification pipeline that consumes PDFs and produces de-identified PDFs: <code class="language-plaintext highlighter-rouge">pdf_deid_pdf_output</code>. 
-For a description of this pipeline please check its <a href="https://nlp.johnsnowlabs.com/2024/06/12/pdf_deid_subentity_context_augmented_pipeline_en.html">card on Models Hub</a>, and also this <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">notebook example</a>.</p>
+  <p>To see these two models combined on a real example, please check this <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/FormRecognition/FormRecognitionGeo.ipynb">sample notebook</a>.</p>
 
 </div>
 <div class="h3-box">
 
-  <h3 id="imagetotextv3-support-for-hocr-output">ImageToTextV3 support for HOCR output</h3>
-  <p>ImageToTextV3 is an LSTM based OCR model that can consume high quality text regions to perform the text recognition. Adding HOCR support to this annotator, allows it to be placed in HOCR pipelines like Visual NER or Table Extraction. Main advantage compared to other OCR models is case sensitivity, and high recall due to the use of independent Text Detection models.
-Check an example <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionCaseSensitive.ipynb">here</a></p>
+  <h3 id="new-pdf-deidentification-pipeline">New PDF Deidentification Pipeline</h3>
+  <p>A new PDF deidentification pipeline, <code class="language-plaintext highlighter-rouge">pdf_deid_subentity_context_augmented_pipeline</code> has been added to the library. This new pipeline has the ability to ingest PDFs, apply PHI masking through bounding boxes, and re-create the input PDF as a new document in which the PHI has been removed. The pipeline is ready to use and requires no configuration to handle most use cases.&lt;/br&gt;
+You can check an example of this pipeline in action in <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">this notebook</a>.</p>
+</div>
+<div class="h3-box">
+
+  <h3 id="memory-improvements-for-models">Memory Improvements for Models</h3>
+
+  <p>All ONNX models have been refactored to reduce the memory footprint of the graph. There are two sources of memory problems in ML: models and data. Here we tackle model memory consumption by cutting the memory requirements of models by half.</p>
 
 </div>
 <div class="h3-box">
 
-  <h3 id="performance-metrics-for-deidentification-pipelines">Performance Metrics for Deidentification Pipelines</h3>
-  <p>In order to make it easier for users to estimate runtime figures, we have published the <a href="https://nlp.johnsnowlabs.com/docs/en/ocr_benchmark">following metrics</a>. This metrics corresponds to a pipeline that performs the following actions,</p>
+  <h3 id="minor-enhancements-changes-and-bug-fixes">Minor enhancements, changes, and bug fixes.</h3>
+
   <ul>
-    <li>Extract PDF pages as images.</li>
-    <li>Perform OCR on these Images.</li>
-    <li>Run NLP De-identification stages(embeddings, NER, etc).</li>
-    <li>Maps PHI entities to regions.</li>
-    <li>Writes PHI regions back to PDF.
-The goal is for these numbers to be used as proxies when estimating hardware requirements of new jobs.</li>
+    <li>
+      <p>New <code class="language-plaintext highlighter-rouge">display_xml()</code> function for displaying tables as XMLs: similar to existing <code class="language-plaintext highlighter-rouge">display_tables()</code> function, but with XML output instead of Jupyter markdown.</p>
+    </li>
+    <li>
+      <p>Enhanced memory management on ImageToTextV2: lifecycle of ONNX session is now aligned with Spark query plan. This means that models are instantiated only one time for each partition, and no leaks occur across multiple calls to transform() on the same pipeline. This results in a more efficient utilisation of memory.</p>
+    </li>
+    <li>
+      <p>GPU support in Pix2Struct models: Pix2struct checkpoints for Chart Extraction and Visual Question Answering can leverage GPU like this,</p>
+    </li>
   </ul>
 
-</div>
-<div class="h3-box">
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>visual_question_answering = VisualQuestionAnswering()\
+    .pretrained("info_docvqa_pix2struct_jsl_base_opt", "en", "clinical/ocr")\
+    .setUseGPU(True)
+</code></pre></div>  </div>
 
-  <h3 id="other-changes--bug-fixes">Other Changes &amp; Bug Fixes</h3>
   <ul>
-    <li>start() functions now accepts the new <code class="language-plaintext highlighter-rouge">apple_silicon</code> parameter. apple_silicon: whether to use Apple Silicon binaries or not. Defaults to ‘False’.</li>
-    <li>Bug Fix: ImageDrawRegions removes image resolution after drawing regions.</li>
-    <li>Bug Fix: RasterFormatException in ImageToTextV2.</li>
-    <li>Bug Fix: PdfToTextTable, PptToTextTable, DocToTextTable didn’t include a <code class="language-plaintext highlighter-rouge">load()</code> method.</li>
+    <li>
+      <p>Better support for different coordinate formats: we improved the way in which coordinates are handled within Visual NLP. Now, each annotator can detect whether coordinates being fed are regular coordinates or rotated coordinates. Forget about things like <code class="language-plaintext highlighter-rouge">ImageDrawRegions.setRotated()</code> to choose a specific input format, now everything happens automatically behind the scenes.</p>
+    </li>
+    <li>
+      <p>New blogpost on Form Extraction
+We have recently released a new <a href="https://medium.com/john-snow-labs/visual-document-understanding-benchmark-comparative-analysis-of-in-house-and-cloud-based-form-75f6fbf1ae5f">Medium blogpost</a> where we compare our in-house models against different cloud providers. We provide metrics and discuss the results.</p>
+    </li>
   </ul>
 
+  <p>Key takeaways are that first, Visual NLP’s small models can beat cloud providers while at the same time remaining fast and providing more deployment options. Second, in order to obtain a model to be used in practice, fine tuning is mandatory.</p>
+
+  <p>This release is compatible with Spark-NLP 5.4.1, and Spark NLP for Healthcare 5.4.1.</p>
 </div>
-<div class="prev_ver h3-box">
+<div class="h3-box">
 
   <h2 id="previous-versions">Previous versions</h2>
 
@@ -788,6 +737,7 @@ The goal is for these numbers to be used as proxies when estimating hardware req
   </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+   <li><a href="release_notes_5_4_1">5.4.1</a></li>
    <li><a href="release_notes_5_4_0">5.4.0</a></li>
    <li><a href="release_notes_5_3_2">5.3.2</a></li>
    <li><a href="release_notes_5_3_1">5.3.1</a></li>
@@ -843,7 +793,7 @@ The goal is for these numbers to be used as proxies when estimating hardware req
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-07-15T00:00:00+00:00">Jul 15, 2024</time>
+      <time itemprop="dateModified" datetime="2024-09-26T00:00:00+00:00">Sep 26, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
