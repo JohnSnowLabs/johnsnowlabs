@@ -16,8 +16,8 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-sueq4zd6lhe7e
-  snowflake_link: 
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ybvpckhvgtsb4
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ8M/john-snow-labs-extract-adverse-drug-events-ade
   databricks_link: https://marketplace.databricks.com/details/64d6608b-8341-4b14-8edd-c1a1b31823a6/John-Snow-Labs_Extract-Adverse-Drug-Events-ADE
 
 ---
