@@ -105,7 +105,7 @@ nlpPipeline = Pipeline(stages=[
 - 4 Cores setup:
     - Driver: Standard_D4s_v3, 4 core, 16 GB memory
     - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 1
-    - input data rows:1000
+    - Input Data Rows: 1000
 
 {:.table-model-big.db}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
@@ -130,7 +130,7 @@ nlpPipeline = Pipeline(stages=[
 - 8 Cores setup:
   - Driver: Standard_D4s_v3, 4 core, 16 GB memory
   - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 2
-  - input data rows:1000
+  - Input Data Rows: 1000
 
 {:.table-model-big.db}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
@@ -154,7 +154,7 @@ nlpPipeline = Pipeline(stages=[
 - 16 Cores setup:
   - Driver: Standard_D4s_v3, 4 core, 16 GB memory
   - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 4
-  - input data rows:1000
+  - Input Data Rows: 1000
 
 {:.table-model-big.db}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
@@ -177,7 +177,7 @@ nlpPipeline = Pipeline(stages=[
 - 32 Cores setup:
   - Driver: Standard_D4s_v3, 4 core, 16 GB memory
   - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 8
-  - input data rows:1000
+  - Input Data Rows: 1000
 
 {:.table-model-big.db}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
@@ -201,7 +201,7 @@ nlpPipeline = Pipeline(stages=[
 - 64 Cores setup:
   - Driver: Standard_D4s_v3, 4 core, 16 GB memory
   - Worker: Standard_D4s_v2, 8 core, 28 GB memory, total worker number: 8
-  - input data rows:1000
+  - Input Data Rows: 1000
 
 {:.table-model-big.db}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing | 4_NER<br>timing | NER+RE<br>timing |
