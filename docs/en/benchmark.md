@@ -31,8 +31,8 @@ sidebar:
   - **Spark Version :** v5.4.1
 - **Spark NLP Pipeline:**
 
-  ```
-  # NER Pipelime
+```
+# NER Pipelime
 nlpPipeline = Pipeline(stages=[
       documentAssembler,
       sentenceDetector,
@@ -82,7 +82,7 @@ nlpPipeline = Pipeline(stages=[
       dependency_parser,
       re_model
       ])
-  ```
+```
   
 **NOTES:**
 
