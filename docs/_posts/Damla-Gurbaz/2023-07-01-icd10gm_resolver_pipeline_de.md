@@ -32,6 +32,7 @@ This pretrained pipeline maps extracted entities in the German language to ICD-1
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

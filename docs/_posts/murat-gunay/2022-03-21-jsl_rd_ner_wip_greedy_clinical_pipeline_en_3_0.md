@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [jsl_rd_ner_wip_greedy_clinical](https://nlp.johnsnowlabs.com/2021/04/01/jsl_rd_ner_wip_greedy_clinical_en.html) model.
 
+## Predicted Entities
+
+`Injury_or_Poisoning` `Direction` `Test` `Route` `Admission_Discharge` `ImagingTest` `Units` `Death_Entity` `Oxygen_Therapy` `Relationship_Status` `Triglycerides` `Duration` `Alcohol` `Date` `OtherFindings` `BodyPart` `Drug` `Hyperlipidemia` `Respiration` `Birth_Entity` `VS_Finding` `Age` `ManualFix` `Social_History_Header` `Family_History_Header` `Medical_Device` `Labour_Delivery` `BMI` `Fetus_NewBorn` `Temperature` `Section_Header` `Communicable_Disease` `ImagingFindings` `Psychological_Condition` `Obesity` `Sexually_Active_or_Sexual_Orientation` `Modifier` `Vaccine` `Symptom` `Kidney_Disease` `Pulse` `Oncological` `EKG_Findings` `Medical_History_Header` `Cerebrovascular_Disease` `Blood_Pressure` `Diabetes` `O2_Saturation` `Heart_Disease` `Employment` `Frequency` `Disease_Syndrome_Disorder` `Pregnancy` `RelativeDate` `Procedure` `Overweight` `Race_Ethnicity` `Hypertension` `Imaging_Technique` `Test_Result` `Treatment` `Substance` `Clinical_Dept` `LDL` `Measurements` `Diet` `Substance_Quantity` `Allergen` `Gender` `RelativeTime` `Score` `Total_Cholesterol` `Vital_Signs_Header` `Height` `Smoking` `Form` `Strength` `Weight` `Time` `Dosage` `HDL`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
