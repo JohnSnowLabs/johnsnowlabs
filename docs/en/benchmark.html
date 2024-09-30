@@ -640,15 +640,16 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Versions:</strong>
       <ul>
         <li><strong>Databricks Runtime Version :</strong> 8.3(Scala 2.12, Spark 3.1.1)</li>
-        <li><strong>spark-nlp Version:</strong> v3.2.3</li>
-        <li><strong>spark-nlp-jsl Version :</strong> v3.2.3</li>
-        <li><strong>Spark Version :</strong> v3.1.1</li>
+        <li><strong>spark-nlp Version:</strong> v5.4.1</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v5.4.1</li>
+        <li><strong>Spark Version :</strong> v5.4.1</li>
       </ul>
     </li>
-    <li>
-      <p><strong>Spark NLP Pipeline:</strong></p>
+    <li><strong>Spark NLP Pipeline:</strong></li>
+  </ul>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nlpPipeline = Pipeline(stages=[
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># NER Pipelime
+nlpPipeline = Pipeline(stages=[
       documentAssembler,
       sentenceDetector,
       tokenizer,  
@@ -657,9 +658,47 @@ function wrapWordInSpan(data, wordToWrap) {
       ner_converter
       ])
 
-</code></pre></div>      </div>
-    </li>
-  </ul>
+# Multi (2) NER Pipeline
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter,
+      ])
+
+# Multi (4) NER Pipeline
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter
+      ])
+
+# NER &amp; RE Pipeline
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter,
+      pos_tagger,
+      dependency_parser,
+      re_model
+      ])
+</code></pre></div>  </div>
 
   <p><strong>NOTES:</strong></p>
 
@@ -689,693 +728,687 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="ner-benchmark-tables">NER Benchmark Tables</h4>
 
-  <table class="table-model-big db">
-    <thead>
-      <tr>
-        <th>driver_name</th>
-        <th>driver_memory</th>
-        <th>driver_cores</th>
-        <th>worker_name</th>
-        <th>worker_memory</th>
-        <th>worker_cores</th>
-        <th>input_data_rows</th>
-        <th>output_data_rows</th>
-        <th>action</th>
-        <th>total_worker_number</th>
-        <th>total_cores</th>
-        <th>partition</th>
-        <th>NER timing</th>
-        <th>NER+RE timing</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v2</td>
-        <td>28 GB</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>8</td>
-        <td>64</td>
-        <td>64</td>
-        <td>36 sec</td>
-        <td>1.14 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v2</td>
-        <td>28 GB</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>8</td>
-        <td>64</td>
-        <td>64</td>
-        <td>19 sec</td>
-        <td>1.13 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v2</td>
-        <td>28 GB</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>8</td>
-        <td>64</td>
-        <td>100</td>
-        <td>21 sec</td>
-        <td>50 sec</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v2</td>
-        <td>28 GB</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>8</td>
-        <td>64</td>
-        <td>100</td>
-        <td>41 sec</td>
-        <td>51 sec</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v2</td>
-        <td>28 GB</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>8</td>
-        <td>64</td>
-        <td>1000</td>
-        <td>40 sec</td>
-        <td>54 sec</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v2</td>
-        <td>28 GB</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>8</td>
-        <td>64</td>
-        <td>1000</td>
-        <td>22 sec</td>
-        <td>46 sec</td>
-      </tr>
-    </tbody>
-  </table>
+  <ul>
+    <li>4 Cores setup:
+      <ul>
+        <li>Driver: Standard_D4s_v3, 4 core, 16 GB memory</li>
+        <li>Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 1</li>
+        <li>Input Data Count: 1000</li>
+      </ul>
+    </li>
+  </ul>
 
   <table class="table-model-big db">
     <thead>
       <tr>
-        <th>driver_name</th>
-        <th>driver_memory</th>
-        <th>driver_cores</th>
-        <th>worker_name</th>
-        <th>worker_memory</th>
-        <th>worker_cores</th>
-        <th>input_data_rows</th>
-        <th>output_data_rows</th>
         <th>action</th>
-        <th>total_worker_number</th>
-        <th>total_cores</th>
-        <th>partition</th>
-        <th>duration</th>
-        <th>NER+RE timing</th>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">NER<br />timing</th>
+        <th style="text-align: right">2_NER<br />timing</th>
+        <th style="text-align: right">4_NER<br />timing</th>
+        <th style="text-align: right">NER+RE<br />timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>8</td>
-        <td>32</td>
-        <td>32</td>
-        <td>1.21 mins</td>
-        <td>2.05 mins</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">4 min 47 sec</td>
+        <td style="text-align: right">8 min 37 sec</td>
+        <td style="text-align: right">19 min 34 sec</td>
+        <td style="text-align: right">7 min 20 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>8</td>
-        <td>32</td>
-        <td>32</td>
-        <td>55.8 sec</td>
-        <td>1.91 mins</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">4 min 36 sec</td>
+        <td style="text-align: right">8 min 50 sec</td>
+        <td style="text-align: right">20 min 54 sec</td>
+        <td style="text-align: right">7 min 49 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>8</td>
-        <td>32</td>
-        <td>100</td>
-        <td>41 sec</td>
-        <td>1.64 mins</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">4 min 14 sec</td>
+        <td style="text-align: right">8 min 32 sec</td>
+        <td style="text-align: right">19 min 43 sec</td>
+        <td style="text-align: right">7 min 27 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>8</td>
-        <td>32</td>
-        <td>100</td>
-        <td>48 sec</td>
-        <td>1.61 mins</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">4 min 45 sec</td>
+        <td style="text-align: right">8 min 31 sec</td>
+        <td style="text-align: right">20 min 42 sec</td>
+        <td style="text-align: right">7 min 54 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>8</td>
-        <td>32</td>
-        <td>1000</td>
-        <td>1.36 min</td>
-        <td>1.83 mins</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">4 min 20 sec</td>
+        <td style="text-align: right">8 min 31 sec</td>
+        <td style="text-align: right">19 min 13 sec</td>
+        <td style="text-align: right">7 min 24 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>8</td>
-        <td>32</td>
-        <td>1000</td>
-        <td>48 sec</td>
-        <td>1.70 mins</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">4 min 45 sec</td>
+        <td style="text-align: right">8 min 56 sec</td>
+        <td style="text-align: right">19 min 53 sec</td>
+        <td style="text-align: right">7 min 35 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">4 min 26 sec</td>
+        <td style="text-align: right">8 min 16 sec</td>
+        <td style="text-align: right">19 min 39 sec</td>
+        <td style="text-align: right">7 min 22 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">4 min 37 sec</td>
+        <td style="text-align: right">8 min 32 sec</td>
+        <td style="text-align: right">20 min 11 sec</td>
+        <td style="text-align: right">7 min 35 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">4 min 25 sec</td>
+        <td style="text-align: right">8 min 19 sec</td>
+        <td style="text-align: right">18 min 57 sec</td>
+        <td style="text-align: right">7 min 37 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">4 min 45 sec</td>
+        <td style="text-align: right">8 min 43 sec</td>
+        <td style="text-align: right">19 min 26 sec</td>
+        <td style="text-align: right">7 min 46 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">4 min 37 sec</td>
+        <td style="text-align: right">8 min 40 sec</td>
+        <td style="text-align: right">19 min 22 sec</td>
+        <td style="text-align: right">7 min 50 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">4 min 48 sec</td>
+        <td style="text-align: right">8 min 57 sec</td>
+        <td style="text-align: right">20 min 1 sec</td>
+        <td style="text-align: right">7 min 53 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">5 min 32 sec</td>
+        <td style="text-align: right">9 min 49 sec</td>
+        <td style="text-align: right">22 min 41 sec</td>
+        <td style="text-align: right">8 min 46 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">5 min 38 sec</td>
+        <td style="text-align: right">9 min 55 sec</td>
+        <td style="text-align: right">22 min 32 sec</td>
+        <td style="text-align: right">8 min 42 sec</td>
       </tr>
     </tbody>
   </table>
 
-  <table class="table-model-big db">
-    <thead>
-      <tr>
-        <th>driver_name</th>
-        <th>driver_memory</th>
-        <th>driver_cores</th>
-        <th>worker_name</th>
-        <th>worker_memory</th>
-        <th>worker_cores</th>
-        <th>input_data_rows</th>
-        <th>output_data_rows</th>
-        <th>action</th>
-        <th>total_worker_number</th>
-        <th>total_cores</th>
-        <th>partition</th>
-        <th>NER timing</th>
-        <th>NER+RE timing</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>4</td>
-        <td>16</td>
-        <td>10</td>
-        <td>1.4 mins</td>
-        <td>3.78 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>4</td>
-        <td>16</td>
-        <td>10</td>
-        <td>1.76 mins</td>
-        <td>3.93 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>4</td>
-        <td>16</td>
-        <td>16</td>
-        <td>1.41 mins</td>
-        <td>3.97 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>4</td>
-        <td>16</td>
-        <td>16</td>
-        <td>1.42 mins</td>
-        <td>3.82 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>4</td>
-        <td>16</td>
-        <td>32</td>
-        <td>1.36 mins</td>
-        <td>3.70 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>4</td>
-        <td>16</td>
-        <td>32</td>
-        <td>1.35 mins</td>
-        <td>3.65 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>4</td>
-        <td>16</td>
-        <td>100</td>
-        <td>1.21 mins</td>
-        <td>3.18 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>4</td>
-        <td>16</td>
-        <td>100</td>
-        <td>1.24 mins</td>
-        <td>3.15 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_parquet</td>
-        <td>4</td>
-        <td>16</td>
-        <td>1000</td>
-        <td>1.42 mins</td>
-        <td>3.51 mins</td>
-      </tr>
-      <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
-        <td>write_deltalake</td>
-        <td>4</td>
-        <td>16</td>
-        <td>1000</td>
-        <td>1.46 mins</td>
-        <td>3.48 mins</td>
-      </tr>
-    </tbody>
-  </table>
+  <ul>
+    <li>8 Cores setup:
+      <ul>
+        <li>Driver: Standard_D4s_v3, 4 core, 16 GB memory</li>
+        <li>Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 2</li>
+        <li>Input Data Count: 1000</li>
+      </ul>
+    </li>
+  </ul>
 
   <table class="table-model-big db">
     <thead>
       <tr>
-        <th>driver_name</th>
-        <th>driver_memory</th>
-        <th>driver_cores</th>
-        <th>worker_name</th>
-        <th>worker_memory</th>
-        <th>worker_cores</th>
-        <th>input_data_rows</th>
-        <th>output_data_rows</th>
         <th>action</th>
-        <th>total_worker_number</th>
-        <th>total_cores</th>
-        <th>partition</th>
-        <th>NER timing</th>
-        <th>NER+RE timing</th>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">NER<br />timing</th>
+        <th style="text-align: right">2_NER<br />timing</th>
+        <th style="text-align: right">4_NER<br />timing</th>
+        <th style="text-align: right">NER+RE<br />timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>2</td>
-        <td>8</td>
-        <td>10</td>
-        <td>2.82 mins</td>
-        <td>5.91 mins</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">3 min 28 sec</td>
+        <td style="text-align: right">6 min 9 sec</td>
+        <td style="text-align: right">13 min 46 sec</td>
+        <td style="text-align: right">5 min 32 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>2</td>
-        <td>8</td>
-        <td>10</td>
-        <td>2.82 mins</td>
-        <td>5.99 mins</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">3 min 19 sec</td>
+        <td style="text-align: right">6 min 18 sec</td>
+        <td style="text-align: right">14 min 12 sec</td>
+        <td style="text-align: right">5 min 34 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>2</td>
-        <td>8</td>
-        <td>100</td>
-        <td>2.27 mins</td>
-        <td>5.29 mins</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">2 min 58 sec</td>
+        <td style="text-align: right">4 min 56 sec</td>
+        <td style="text-align: right">11 min 31 sec</td>
+        <td style="text-align: right">4 min 37 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>2</td>
-        <td>8</td>
-        <td>100</td>
-        <td>2.25 min</td>
-        <td>5.26 mins</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">2 min 38 sec</td>
+        <td style="text-align: right">5 min 11 sec</td>
+        <td style="text-align: right">11 min 50 sec</td>
+        <td style="text-align: right">4 min 41 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>2</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>2.65 mins</td>
-        <td>5.78 mins</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">2 min 43 sec</td>
+        <td style="text-align: right">5 min 12 sec</td>
+        <td style="text-align: right">11 min 27 sec</td>
+        <td style="text-align: right">4 min 35 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>2</td>
-        <td>8</td>
-        <td>1000</td>
-        <td>2.7 mins</td>
-        <td>5.81 mins</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">2 min 53 sec</td>
+        <td style="text-align: right">5 min 5 sec</td>
+        <td style="text-align: right">11 min 46 sec</td>
+        <td style="text-align: right">4 min 41 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">2 min 42 sec</td>
+        <td style="text-align: right">4 min 55 sec</td>
+        <td style="text-align: right">11 min 15 sec</td>
+        <td style="text-align: right">4 min 25 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">2 min 45 sec</td>
+        <td style="text-align: right">5 min 14 sec</td>
+        <td style="text-align: right">11 min 41 sec</td>
+        <td style="text-align: right">4 min 41 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">2 min 39 sec</td>
+        <td style="text-align: right">5 min 7 sec</td>
+        <td style="text-align: right">11 min 22 sec</td>
+        <td style="text-align: right">4 min 29 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">2 min 45 sec</td>
+        <td style="text-align: right">5 min 11 sec</td>
+        <td style="text-align: right">11 min 31 sec</td>
+        <td style="text-align: right">4 min 30 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">2 min 41 sec</td>
+        <td style="text-align: right">5 min 0 sec</td>
+        <td style="text-align: right">11 min 26 sec</td>
+        <td style="text-align: right">4 min 37 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">2 min 42 sec</td>
+        <td style="text-align: right">5 min 0 sec</td>
+        <td style="text-align: right">11 min 43 sec</td>
+        <td style="text-align: right">4 min 48 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">3 min 10 sec</td>
+        <td style="text-align: right">5 min 36 sec</td>
+        <td style="text-align: right">13 min 3 sec</td>
+        <td style="text-align: right">5 min 10 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">3 min 20 sec</td>
+        <td style="text-align: right">5 min 44 sec</td>
+        <td style="text-align: right">12 min 55 sec</td>
+        <td style="text-align: right">5 min 14 sec</td>
       </tr>
     </tbody>
   </table>
 
+  <ul>
+    <li>16 Cores setup:
+      <ul>
+        <li>Driver: Standard_D4s_v3, 4 core, 16 GB memory</li>
+        <li>Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 4</li>
+        <li>Input Data Count: 1000</li>
+      </ul>
+    </li>
+  </ul>
+
   <table class="table-model-big db">
     <thead>
       <tr>
-        <th>driver_name</th>
-        <th>driver_memory</th>
-        <th>driver_cores</th>
-        <th>worker_name</th>
-        <th>worker_memory</th>
-        <th>worker_cores</th>
-        <th>input_data_rows</th>
-        <th>output_data_rows</th>
         <th>action</th>
-        <th>total_worker_number</th>
-        <th>total_cores</th>
-        <th>partition</th>
-        <th>NER timing</th>
-        <th>NER+RE timing</th>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">NER<br />timing</th>
+        <th style="text-align: right">2_NER<br />timing</th>
+        <th style="text-align: right">4_NER<br />timing</th>
+        <th style="text-align: right">NER+RE<br />timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>1</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4.64 mins</td>
-        <td>13.97 mins</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">3 min 13 sec</td>
+        <td style="text-align: right">5 min 35 sec</td>
+        <td style="text-align: right">12 min 8 sec</td>
+        <td style="text-align: right">4 min 57 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>1</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4.53 mins</td>
-        <td>13.88 mins</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">3 min 26 sec</td>
+        <td style="text-align: right">6 min 8 sec</td>
+        <td style="text-align: right">12 min 46 sec</td>
+        <td style="text-align: right">5 min 12 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>1</td>
-        <td>4</td>
-        <td>10</td>
-        <td>4.42 mins</td>
-        <td>14.13 mins</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">1 min 55 sec</td>
+        <td style="text-align: right">3 min 35 sec</td>
+        <td style="text-align: right">8 min 19 sec</td>
+        <td style="text-align: right">3 min 8 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>1</td>
-        <td>4</td>
-        <td>10</td>
-        <td>4.55 mins</td>
-        <td>14.63 mins</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">2 min 3 sec</td>
+        <td style="text-align: right">4 min 9 sec</td>
+        <td style="text-align: right">8 min 35 sec</td>
+        <td style="text-align: right">3 min 15 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>1</td>
-        <td>4</td>
-        <td>100</td>
-        <td>4.19 mins</td>
-        <td>14.68 mins</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">1 min 36 sec</td>
+        <td style="text-align: right">3 min 11 sec</td>
+        <td style="text-align: right">7 min 14 sec</td>
+        <td style="text-align: right">2 min 35 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>1</td>
-        <td>4</td>
-        <td>100</td>
-        <td>4.18 mins</td>
-        <td>14.89 mins</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">1 min 41 sec</td>
+        <td style="text-align: right">3 min 2 sec</td>
+        <td style="text-align: right">6 min 58 sec</td>
+        <td style="text-align: right">2 min 39 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_parquet</td>
-        <td>1</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>5.01 mins</td>
-        <td>16.38 mins</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">1 min 42 sec</td>
+        <td style="text-align: right">3 min 16 sec</td>
+        <td style="text-align: right">7 min 22 sec</td>
+        <td style="text-align: right">2 min 41 sec</td>
       </tr>
       <tr>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>Standard_D4s_v3</td>
-        <td>16 GB</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>78000</td>
         <td>write_deltalake</td>
-        <td>1</td>
-        <td>4</td>
-        <td>1000</td>
-        <td>4.99 mins</td>
-        <td>16.52 mins</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">1 min 42 sec</td>
+        <td style="text-align: right">3 min 13 sec</td>
+        <td style="text-align: right">7 min 14 sec</td>
+        <td style="text-align: right">2 min 38 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">1 min 24 sec</td>
+        <td style="text-align: right">2 min 32 sec</td>
+        <td style="text-align: right">5 min 57 sec</td>
+        <td style="text-align: right">2 min 22 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">1 min 21 sec</td>
+        <td style="text-align: right">2 min 42 sec</td>
+        <td style="text-align: right">5 min 43 sec</td>
+        <td style="text-align: right">2 min 25 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">1 min 24 sec</td>
+        <td style="text-align: right">2 min 39 sec</td>
+        <td style="text-align: right">5 min 59 sec</td>
+        <td style="text-align: right">2 min 16 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">1 min 28 sec</td>
+        <td style="text-align: right">2 min 56 sec</td>
+        <td style="text-align: right">5 min 48 sec</td>
+        <td style="text-align: right">2 min 43 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">1 min 41 sec</td>
+        <td style="text-align: right">2 min 44 sec</td>
+        <td style="text-align: right">6 min 12 sec</td>
+        <td style="text-align: right">2 min 27 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">1 min 40 sec</td>
+        <td style="text-align: right">2 min 53 sec</td>
+        <td style="text-align: right">6 min 18 sec</td>
+        <td style="text-align: right">2 min 34 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>32 Cores setup:
+      <ul>
+        <li>Driver: Standard_D4s_v3, 4 core, 16 GB memory</li>
+        <li>Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 8</li>
+        <li>Input Data Count: 1000</li>
+      </ul>
+    </li>
+  </ul>
+
+  <table class="table-model-big db">
+    <thead>
+      <tr>
+        <th>action</th>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">NER<br />timing</th>
+        <th style="text-align: right">2_NER<br />timing</th>
+        <th style="text-align: right">4_NER<br />timing</th>
+        <th style="text-align: right">NER+RE<br />timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">3 min 24 sec</td>
+        <td style="text-align: right">5 min 24 sec</td>
+        <td style="text-align: right">16 min 50 sec</td>
+        <td style="text-align: right">8 min 17 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">3 min 5 sec</td>
+        <td style="text-align: right">4 min 15 sec</td>
+        <td style="text-align: right">12 min 7 sec</td>
+        <td style="text-align: right">4 min 45 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">1 min 47 sec</td>
+        <td style="text-align: right">2 min 57 sec</td>
+        <td style="text-align: right">6 min 19 sec</td>
+        <td style="text-align: right">2 min 42 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">1 min 32 sec</td>
+        <td style="text-align: right">2 min 52 sec</td>
+        <td style="text-align: right">6 min 12 sec</td>
+        <td style="text-align: right">2 min 32 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">1 min 0 sec</td>
+        <td style="text-align: right">1 min 57 sec</td>
+        <td style="text-align: right">4 min 23 sec</td>
+        <td style="text-align: right">1 min 38 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">1 min 4 sec</td>
+        <td style="text-align: right">1 min 55 sec</td>
+        <td style="text-align: right">4 min 18 sec</td>
+        <td style="text-align: right">1 min 40 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">49 sec</td>
+        <td style="text-align: right">1 min 42 sec</td>
+        <td style="text-align: right">3 min 32 sec</td>
+        <td style="text-align: right">1 min 21 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">54 sec</td>
+        <td style="text-align: right">1 min 36 sec</td>
+        <td style="text-align: right">3 min 41 sec</td>
+        <td style="text-align: right">1 min 45 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">1 min 13 sec</td>
+        <td style="text-align: right">1 min 45 sec</td>
+        <td style="text-align: right">3 min 42 sec</td>
+        <td style="text-align: right">1 min 28 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">53 sec</td>
+        <td style="text-align: right">1 min 30 sec</td>
+        <td style="text-align: right">3 min 29 sec</td>
+        <td style="text-align: right">1 min 39 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">1 min 4 sec</td>
+        <td style="text-align: right">1 min 27 sec</td>
+        <td style="text-align: right">3 min 23 sec</td>
+        <td style="text-align: right">1 min 23 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">46 sec</td>
+        <td style="text-align: right">1 min 22 sec</td>
+        <td style="text-align: right">3 min 27 sec</td>
+        <td style="text-align: right">1 min 22 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">54 sec</td>
+        <td style="text-align: right">1 min 31 sec</td>
+        <td style="text-align: right">3 min 18 sec</td>
+        <td style="text-align: right">1 min 20 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">57 sec</td>
+        <td style="text-align: right">1 min 30 sec</td>
+        <td style="text-align: right">3 min 20 sec</td>
+        <td style="text-align: right">1 min 20 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>64 Cores setup:
+      <ul>
+        <li>Driver: Standard_D4s_v3, 4 core, 16 GB memory</li>
+        <li>Worker: Standard_D4s_v2, 8 core, 28 GB memory, total worker number: 8</li>
+        <li>Input Data Count: 1000</li>
+      </ul>
+    </li>
+  </ul>
+
+  <table class="table-model-big db">
+    <thead>
+      <tr>
+        <th>action</th>
+        <th style="text-align: right">partition</th>
+        <th style="text-align: right">NER<br />timing</th>
+        <th style="text-align: right">2_NER<br />timing</th>
+        <th style="text-align: right">4_NER<br />timing</th>
+        <th style="text-align: right">NER+RE<br />timing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">1 min 36 sec</td>
+        <td style="text-align: right">3 min 1 sec</td>
+        <td style="text-align: right">6 min 32 sec</td>
+        <td style="text-align: right">3 min 12 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">1 min 38 sec</td>
+        <td style="text-align: right">3 min 2 sec</td>
+        <td style="text-align: right">6 min 30 sec</td>
+        <td style="text-align: right">3 min 18 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">48 sec</td>
+        <td style="text-align: right">1 min 32 sec</td>
+        <td style="text-align: right">3 min 21 sec</td>
+        <td style="text-align: right">1 min 38 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">8</td>
+        <td style="text-align: right">51 sec</td>
+        <td style="text-align: right">1 min 36 sec</td>
+        <td style="text-align: right">3 min 26 sec</td>
+        <td style="text-align: right">1 min 43 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">28 sec</td>
+        <td style="text-align: right">1 min 16 sec</td>
+        <td style="text-align: right">2 min 2 sec</td>
+        <td style="text-align: right">56 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">16</td>
+        <td style="text-align: right">31 sec</td>
+        <td style="text-align: right">57 sec</td>
+        <td style="text-align: right">2 min 2 sec</td>
+        <td style="text-align: right">58 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">20 sec</td>
+        <td style="text-align: right">39 sec</td>
+        <td style="text-align: right">1 min 22 sec</td>
+        <td style="text-align: right">50 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">32</td>
+        <td style="text-align: right">22 sec</td>
+        <td style="text-align: right">41 sec</td>
+        <td style="text-align: right">1 min 45 sec</td>
+        <td style="text-align: right">35 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">17 sec</td>
+        <td style="text-align: right">31 sec</td>
+        <td style="text-align: right">1 min 8 sec</td>
+        <td style="text-align: right">27 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">64</td>
+        <td style="text-align: right">17 sec</td>
+        <td style="text-align: right">32 sec</td>
+        <td style="text-align: right">1 min 11 sec</td>
+        <td style="text-align: right">29 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">18 sec</td>
+        <td style="text-align: right">33 sec</td>
+        <td style="text-align: right">1 min 13 sec</td>
+        <td style="text-align: right">30 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">100</td>
+        <td style="text-align: right">20 sec</td>
+        <td style="text-align: right">33 sec</td>
+        <td style="text-align: right">1 min 32 sec</td>
+        <td style="text-align: right">32 sec</td>
+      </tr>
+      <tr>
+        <td>write_parquet</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">22 sec</td>
+        <td style="text-align: right">36 sec</td>
+        <td style="text-align: right">1 min 12 sec</td>
+        <td style="text-align: right">31 sec</td>
+      </tr>
+      <tr>
+        <td>write_deltalake</td>
+        <td style="text-align: right">1000</td>
+        <td style="text-align: right">23 sec</td>
+        <td style="text-align: right">34 sec</td>
+        <td style="text-align: right">1 min 33 sec</td>
+        <td style="text-align: right">52 sec</td>
       </tr>
     </tbody>
   </table>
