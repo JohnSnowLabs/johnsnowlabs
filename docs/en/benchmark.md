@@ -26,21 +26,62 @@ sidebar:
   - Standard_D4s_v2 - 28 GB Memory - 8 Cores
 - **Versions:**
   - **Databricks Runtime Version :** 8.3(Scala 2.12, Spark 3.1.1)
-  - **spark-nlp Version:** v3.2.3
-  - **spark-nlp-jsl Version :** v3.2.3
-  - **Spark Version :** v3.1.1
+  - **spark-nlp Version:** v5.4.1
+  - **spark-nlp-jsl Version :** v5.4.1
+  - **Spark Version :** v5.4.1
 - **Spark NLP Pipeline:**
 
   ```
-  nlpPipeline = Pipeline(stages=[
-        documentAssembler,
-        sentenceDetector,
-        tokenizer,  
-        embeddings_clinical,  
-        clinical_ner,  
-        ner_converter
-        ])
+  # NER Pipelime
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter
+      ])
 
+# Multi (2) NER Pipeline
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter,
+      ])
+
+# Multi (4) NER Pipeline
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter,
+      clinical_ner,  
+      ner_converter
+      ])
+
+# NER & RE Pipeline
+nlpPipeline = Pipeline(stages=[
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,  
+      embeddings_clinical,  
+      clinical_ner,  
+      ner_converter,
+      pos_tagger,
+      dependency_parser,
+      re_model
+      ])
   ```
   
 **NOTES:**
@@ -61,64 +102,124 @@ sidebar:
 
 #### NER Benchmark Tables
 
-{:.table-model-big.db}
-| driver\_name      | driver\_memory | driver\_cores | worker\_name      | worker\_memory | worker\_cores | input\_data\_rows | output\_data\_rows | action           | total\_worker\_number | total\_cores | partition | NER timing|NER+RE timing|
-| ----------------- | -------------- | ------------- | ----------------- | -------------- | ------------- | ----------------- | ------------------ | ---------------- | --------------------- | ------------ | --------- | --------  |-----------  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v2 | 28 GB          | 8             | 1000              | 78000              | write\_parquet   | 8                     | 64           | 64        | 36 sec    | 1.14 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v2 | 28 GB          | 8             | 1000              | 78000              | write\_deltalake | 8                     | 64           | 64        | 19 sec    | 1.13 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v2 | 28 GB          | 8             | 1000              | 78000              | write\_parquet   | 8                     | 64           | 100       | 21 sec    | 50 sec      |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v2 | 28 GB          | 8             | 1000              | 78000              | write\_deltalake | 8                     | 64           | 100       | 41 sec    | 51 sec      |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v2 | 28 GB          | 8             | 1000              | 78000              | write\_parquet   | 8                     | 64           | 1000      | 40 sec    | 54 sec      |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v2 | 28 GB          | 8             | 1000              | 78000              | write\_deltalake | 8                     | 64           | 1000      | 22 sec    | 46 sec      |
-
+- 4 Cores setup:
+    - Driver: Standard_D4s_v3, 4 core, 16 GB memory
+    - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 1
+    - input_data_rows:1000
 
 {:.table-model-big.db}
-| driver\_name      | driver\_memory | driver\_cores | worker\_name      | worker\_memory | worker\_cores | input\_data\_rows | output\_data\_rows | action           | total\_worker\_number | total\_cores | partition | duration  |NER+RE timing|
-| ----------------- | -------------- | ------------- | ----------------- | -------------- | ------------- | ----------------- | ------------------ | ---------------- | --------------------- | ------------ | --------- | --------- |-----------  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 8                     | 32           | 32        | 1.21 mins | 2.05 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 8                     | 32           | 32        | 55.8 sec  | 1.91 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 8                     | 32           | 100       | 41 sec    | 1.64 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 8                     | 32           | 100       | 48 sec    | 1.61 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 8                     | 32           | 1000      | 1.36 min  | 1.83 mins   |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 8                     | 32           | 1000      | 48 sec    | 1.70 mins   |
+| action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
+|-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
+| write_parquet   |     4     |    4 min 47 sec |    8 min 37 sec |    19 min 34 sec |     7 min 20 sec |
+| write_deltalake |     4     |    4 min 36 sec |    8 min 50 sec |    20 min 54 sec |     7 min 49 sec |
+| write_parquet   |     8     |    4 min 14 sec |    8 min 32 sec |    19 min 43 sec |     7 min 27 sec |
+| write_deltalake |     8     |    4 min 45 sec |    8 min 31 sec |    20 min 42 sec |     7 min 54 sec |
+| write_parquet   |     16    |    4 min 20 sec |    8 min 31 sec |    19 min 13 sec |     7 min 24 sec |
+| write_deltalake |     16    |    4 min 45 sec |    8 min 56 sec |    19 min 53 sec |     7 min 35 sec |
+| write_parquet   |     32    |    4 min 26 sec |    8 min 16 sec |    19 min 39 sec |     7 min 22 sec |
+| write_deltalake |     32    |    4 min 37 sec |    8 min 32 sec |    20 min 11 sec |     7 min 35 sec |
+| write_parquet   |     64    |    4 min 25 sec |    8 min 19 sec |    18 min 57 sec |     7 min 37 sec |
+| write_deltalake |     64    |    4 min 45 sec |    8 min 43 sec |    19 min 26 sec |     7 min 46 sec |
+| write_parquet   |    100    |    4 min 37 sec |    8 min 40 sec |    19 min 22 sec |     7 min 50 sec |
+| write_deltalake |    100    |    4 min 48 sec |    8 min 57 sec |     20 min 1 sec |     7 min 53 sec |
+| write_parquet   |    1000   |    5 min 32 sec |    9 min 49 sec |    22 min 41 sec |     8 min 46 sec |
+| write_deltalake |    1000   |    5 min 38 sec |    9 min 55 sec |    22 min 32 sec |     8 min 42 sec |
 
 
-{:.table-model-big.db}
-| driver\_name      | driver\_memory | driver\_cores | worker\_name      | worker\_memory | worker\_cores | input\_data\_rows | output\_data\_rows | action           | total\_worker\_number | total\_cores | partition | NER timing|NER+RE timing|
-| ----------------- | -------------- | ------------- | ----------------- | -------------- | ------------- | ----------------- | ------------------ | ---------------- | --------------------- | ------------ | --------- | --------- |-----------  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 4                     | 16           | 10        | 1.4 mins  |  3.78 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 4                     | 16           | 10        | 1.76 mins |  3.93 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 4                     | 16           | 16        | 1.41 mins |  3.97 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 4                     | 16           | 16        | 1.42 mins |  3.82 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 4                     | 16           | 32        | 1.36 mins |  3.70 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 4                     | 16           | 32        | 1.35 mins |  3.65 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 4                     | 16           | 100       | 1.21 mins |  3.18 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 4                     | 16           | 100       | 1.24 mins |  3.15 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 4                     | 16           | 1000      | 1.42 mins |  3.51 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 4                     | 16           | 1000      | 1.46 mins |  3.48 mins  |
 
-{:.table-model-big.db}
-| driver\_name      | driver\_memory | driver\_cores | worker\_name      | worker\_memory | worker\_cores | input\_data\_rows | output\_data\_rows | action           | total\_worker\_number | total\_cores | partition | NER timing|NER+RE timing|
-| ----------------- | -------------- | ------------- | ----------------- | -------------- | ------------- | ----------------- | ------------------ | ---------------- | --------------------- | ------------ | --------- | --------- |------------ |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 2                     | 8            | 10        | 2.82 mins | 5.91 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 2                     | 8            | 10        | 2.82 mins | 5.99 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 2                     | 8            | 100       | 2.27 mins | 5.29 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 2                     | 8            | 100       | 2.25 min  | 5.26 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 2                     | 8            | 1000      | 2.65 mins | 5.78 mins  |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 2                     | 8            | 1000      | 2.7 mins  | 5.81 mins  |
-
+- 8 Cores setup:
+  - Driver: Standard_D4s_v3, 4 core, 16 GB memory
+  - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 2
+  - input_data_rows:1000
 
 {:.table-model-big.db}
-| driver\_name      | driver\_memory | driver\_cores | worker\_name      | worker\_memory | worker\_cores | input\_data\_rows | output\_data\_rows | action           | total\_worker\_number | total\_cores | partition | NER timing|NER+RE timing|
-| ----------------- | -------------- | ------------- | ----------------- | -------------- | ------------- | ----------------- | ------------------ | ---------------- | --------------------- | ------------ | --------- | --------- |----------- |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 1                     | 4            | 4         | 4.64 mins | 13.97 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 1                     | 4            | 4         | 4.53 mins | 13.88 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 1                     | 4            | 10        | 4.42 mins | 14.13 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 1                     | 4            | 10        | 4.55 mins | 14.63 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 1                     | 4            | 100       | 4.19 mins | 14.68 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 1                     | 4            | 100       | 4.18 mins | 14.89 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_parquet   | 1                     | 4            | 1000      | 5.01 mins | 16.38 mins |
-| Standard\_D4s\_v3 | 16 GB          | 4             | Standard\_D4s\_v3 | 16 GB          | 4             | 1000              | 78000              | write\_deltalake | 1                     | 4            | 1000      | 4.99 mins | 16.52 mins |
+| action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
+|-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
+| write_parquet   |     4     |    3 min 28 sec |     6 min 9 sec |    13 min 46 sec |     5 min 32 sec |
+| write_deltalake |     4     |    3 min 19 sec |    6 min 18 sec |    14 min 12 sec |     5 min 34 sec |
+| write_parquet   |     8     |    2 min 58 sec |    4 min 56 sec |    11 min 31 sec |     4 min 37 sec |
+| write_deltalake |     8     |    2 min 38 sec |    5 min 11 sec |    11 min 50 sec |     4 min 41 sec |
+| write_parquet   |     16    |    2 min 43 sec |    5 min 12 sec |    11 min 27 sec |     4 min 35 sec |
+| write_deltalake |     16    |    2 min 53 sec |     5 min 5 sec |    11 min 46 sec |     4 min 41 sec |
+| write_parquet   |     32    |    2 min 42 sec |    4 min 55 sec |    11 min 15 sec |     4 min 25 sec |
+| write_deltalake |     32    |    2 min 45 sec |    5 min 14 sec |    11 min 41 sec |     4 min 41 sec |
+| write_parquet   |     64    |    2 min 39 sec |     5 min 7 sec |    11 min 22 sec |     4 min 29 sec |
+| write_deltalake |     64    |    2 min 45 sec |    5 min 11 sec |    11 min 31 sec |     4 min 30 sec |
+| write_parquet   |    100    |    2 min 41 sec |     5 min 0 sec |    11 min 26 sec |     4 min 37 sec |
+| write_deltalake |    100    |    2 min 42 sec |     5 min 0 sec |    11 min 43 sec |     4 min 48 sec |
+| write_parquet   |    1000   |    3 min 10 sec |    5 min 36 sec |     13 min 3 sec |     5 min 10 sec |
+| write_deltalake |    1000   |    3 min 20 sec |    5 min 44 sec |    12 min 55 sec |     5 min 14 sec |
+
+
+- 16 Cores setup:
+  - Driver: Standard_D4s_v3, 4 core, 16 GB memory
+  - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 4
+  - input_data_rows:1000
+
+{:.table-model-big.db}
+| action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
+|-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
+| write_parquet   |     4     |    3 min 13 sec |    5 min 35 sec |     12 min 8 sec |     4 min 57 sec |
+| write_deltalake |     4     |    3 min 26 sec |     6 min 8 sec |    12 min 46 sec |     5 min 12 sec |
+| write_parquet   |     8     |    1 min 55 sec |    3 min 35 sec |     8 min 19 sec |      3 min 8 sec |
+| write_deltalake |     8     |     2 min 3 sec |     4 min 9 sec |     8 min 35 sec |     3 min 15 sec |
+| write_parquet   |     16    |    1 min 36 sec |    3 min 11 sec |     7 min 14 sec |     2 min 35 sec |
+| write_deltalake |     16    |    1 min 41 sec |     3 min 2 sec |     6 min 58 sec |     2 min 39 sec |
+| write_parquet   |     32    |    1 min 42 sec |    3 min 16 sec |     7 min 22 sec |     2 min 41 sec |
+| write_deltalake |     32    |    1 min 42 sec |    3 min 13 sec |     7 min 14 sec |     2 min 38 sec |
+| write_parquet   |     64    |    1 min 24 sec |    2 min 32 sec |     5 min 57 sec |     2 min 22 sec |
+| write_deltalake |     64    |    1 min 21 sec |    2 min 42 sec |     5 min 43 sec |     2 min 25 sec |
+| write_parquet   |    100    |    1 min 24 sec |    2 min 39 sec |     5 min 59 sec |     2 min 16 sec |
+| write_deltalake |    100    |    1 min 28 sec |    2 min 56 sec |     5 min 48 sec |     2 min 43 sec |
+| write_parquet   |    1000   |    1 min 41 sec |    2 min 44 sec |     6 min 12 sec |     2 min 27 sec |
+| write_deltalake |    1000   |    1 min 40 sec |    2 min 53 sec |     6 min 18 sec |     2 min 34 sec |
+
+- 32 Cores setup:
+  - Driver: Standard_D4s_v3, 4 core, 16 GB memory
+  - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 8
+  - input_data_rows:1000
+
+{:.table-model-big.db}
+| action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
+|-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
+| write_parquet   |     4     |    3 min 24 sec |    5 min 24 sec |    16 min 50 sec |     8 min 17 sec |
+| write_deltalake |     4     |     3 min 5 sec |    4 min 15 sec |     12 min 7 sec |     4 min 45 sec |
+| write_parquet   |     8     |    1 min 47 sec |    2 min 57 sec |     6 min 19 sec |     2 min 42 sec |
+| write_deltalake |     8     |    1 min 32 sec |    2 min 52 sec |     6 min 12 sec |     2 min 32 sec |
+| write_parquet   |     16    |     1 min 0 sec |    1 min 57 sec |     4 min 23 sec |     1 min 38 sec |
+| write_deltalake |     16    |     1 min 4 sec |    1 min 55 sec |     4 min 18 sec |     1 min 40 sec |
+| write_parquet   |     32    |          49 sec |    1 min 42 sec |     3 min 32 sec |     1 min 21 sec |
+| write_deltalake |     32    |          54 sec |    1 min 36 sec |     3 min 41 sec |     1 min 45 sec |
+| write_parquet   |     64    |    1 min 13 sec |    1 min 45 sec |     3 min 42 sec |     1 min 28 sec |
+| write_deltalake |     64    |          53 sec |    1 min 30 sec |     3 min 29 sec |     1 min 39 sec |
+| write_parquet   |    100    |     1 min 4 sec |    1 min 27 sec |     3 min 23 sec |     1 min 23 sec |
+| write_deltalake |    100    |          46 sec |    1 min 22 sec |     3 min 27 sec |     1 min 22 sec |
+| write_parquet   |    1000   |          54 sec |    1 min 31 sec |     3 min 18 sec |     1 min 20 sec |
+| write_deltalake |    1000   |          57 sec |    1 min 30 sec |     3 min 20 sec |     1 min 20 sec |
+
+
+- 64 Cores setup:
+  - Driver: Standard_D4s_v3, 4 core, 16 GB memory
+  - Worker: Standard_D4s_v2, 8 core, 28 GB memory, total worker number: 8
+  - input_data_rows:1000
+
+{:.table-model-big.db}
+| action          | partition |  NER<br>timing  | 2_NER<br>timing | 4_NER<br>timing | NER+RE<br>timing |
+|-----------------| ---------:|----------------:|----------------:|----------------:|-----------------:|
+| write_parquet   |     4     | 1 min 36 sec    | 3 min 1 sec     | 6 min 32 sec    |  3 min 12 sec    |
+| write_deltalake |     4     | 1 min 38 sec    | 3 min 2 sec     | 6 min 30 sec    |  3 min 18 sec    |
+| write_parquet   |     8     | 48 sec          | 1 min 32 sec    | 3 min 21 sec    |  1 min 38 sec    |
+| write_deltalake |     8     | 51 sec          | 1 min 36 sec    | 3 min 26 sec    |  1 min 43 sec    |
+| write_parquet   |     16    | 28 sec          | 1 min 16 sec    |  2 min 2 sec    |  56 sec          |
+| write_deltalake |     16    | 31 sec          | 57 sec          |  2 min 2 sec    |  58 sec          |
+| write_parquet   |     32    | 20 sec          | 39 sec          | 1 min 22 sec    |  50 sec          |
+| write_deltalake |     32    | 22 sec          | 41 sec          | 1 min 45 sec    |  35 sec          |
+| write_parquet   |     64    | 17 sec          | 31 sec          |  1 min 8 sec    |  27 sec          |
+| write_deltalake |     64    | 17 sec          | 32 sec          | 1 min 11 sec    |  29 sec          |
+| write_parquet   |    100    | 18 sec          | 33 sec          | 1 min 13 sec    |  30 sec          |
+| write_deltalake |    100    | 20 sec          | 33 sec          | 1 min 32 sec    |  32 sec          |
+| write_parquet   |    1000   | 22 sec          | 36 sec          | 1 min 12 sec    |  31 sec          |
+| write_deltalake |    1000   | 23 sec          | 34 sec          | 1 min 33 sec    |  52 sec          |
 
 </div><div class="h3-box" markdown="1">
 
