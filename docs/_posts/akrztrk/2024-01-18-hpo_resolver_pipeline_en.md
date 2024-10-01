@@ -26,6 +26,10 @@ deploy:
 
 This advanced pipeline extracts human phenotype entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Human Phenotype Ontology (HPO) codes. It also returns associated codes from the following vocabularies for each HPO code: - MeSH (Medical Subject Headings)- SNOMED- UMLS (Unified Medical Language System ) - ORPHA (international reference resource for information on rare diseases and orphan drugs) - OMIM (Online Mendelian Inheritance in Man).
 
+## Predicted Entities
+
+`HP`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -45,6 +49,7 @@ This advanced pipeline extracts human phenotype entities from clinical texts and
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
