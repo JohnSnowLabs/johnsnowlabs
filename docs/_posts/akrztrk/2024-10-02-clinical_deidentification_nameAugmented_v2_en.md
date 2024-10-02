@@ -38,11 +38,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented_v2", "en", "clinical/models")
 
-text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 87719435.
-ID: #12315112, Dr. John Green, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith@gmail.com."""
+text = """Dr. John Taylor, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old male patient."""
 
 deid_result = deid_pipeline.fullAnnotate(text)
 
@@ -54,11 +50,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented_v2", "en", "clinical/models")
 
-val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 87719435.
-ID: #12315112, Dr. John Green, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith@gmail.com."""
+val text = """Dr. John Taylor, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old male patient."""
 
 val deid_result = deid_pipeline.fullAnnotate(text)
 
@@ -72,21 +64,11 @@ println(deid_result(0)("obfuscated").map(_("result").toString).mkString(""))
 ```bash
 Masked with entity labels
 ------------------------------
-Name : <NAME>, Record date: <DATE>, MR: <MEDICALRECORD>.
-ID: <IDNUM>, <NAME>. <NAME>, IP <IP>.
-He is a <AGE>-year-old male was admitted to <ORGANIZATION> for cystectomy on <DATE>.
-Patient's <ORGANIZATION> : <VIN>, SSN <LICENSE>, Driver's license no: <DLN>.
-Phone <PHONE>, 0295 <LOCATION>, <CITY>,  CA <ZIP>.
- E-MAIL: <EMAIL>.
+Dr. <NAME>, a <PROFESSION> at <HOSPITAL> in <CITY>, was contacted on <DATE> regarding a <AGE>-year-old male patient.
 
 Obfuscated
 ------------------------------
-Name : Clydene Darner, Record date: 2093-01-24, MR: 25956387.
-ID: #56433295, Melanee Spire. Elray Hall, IP 28%03d.40%03d.9%03d.1%05d.
-He is a 72-year-old male was admitted to Consolidated Edison for cystectomy on 01/24/93.
-Patient's Pilgrim's Pride : 1OACZ66AYTK160109, SSN #323-55-7322, Driver's license no: G254270W.
-Phone (237) 628-3151, 0295 1050 Division St, Riosecco,  CA 76160.
- E-MAIL: Eurytus@hotmail.com.
+Dr. Rolande Cleverly, a Fish farm manager at NORTH COUNTRY HOSPITAL & HEALTH CENTER in BARMOLLOCH, was contacted on 16/10/2023 regarding a 48-year-old male patient.
 ```
 
 {:.model-param}
