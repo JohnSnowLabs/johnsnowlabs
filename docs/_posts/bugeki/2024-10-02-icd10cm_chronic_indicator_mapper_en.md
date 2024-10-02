@@ -141,22 +141,22 @@ val chunk2doc = new Chunk2Doc()
     .setOutputCol("doc_chunk")
 
 val sbiobert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-    .setInputCols(["doc_chunk"])\
-    .setOutputCol("sbert_embeddings")\
+    .setInputCols(["doc_chunk"])
+    .setOutputCol("sbert_embeddings")
     .setCaseSensitive(False)
 
 val icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented_billable_hcc","en", "clinical/models") \
-    .setInputCols(["sbert_embeddings"]) \
-    .setOutputCol("icd10cm")\
+    .setInputCols(["sbert_embeddings"]) 
+    .setOutputCol("icd10cm")
     .setDistanceFunction("EUCLIDEAN")
 
-val doc2chunk = new Doc2Chunk()\
-      .setInputCols(['icd10cm'])\
+val doc2chunk = new Doc2Chunk()
+      .setInputCols(['icd10cm'])
       .setOutputCol('chunk')
 
 val mapperModel = ChunkMapperModel.pretrained("icd10cm_chronic_indicator_mapper","en", "clinical/models")\
-    .setInputCols(["chunk"])\
-    .setOutputCol("chronic_indicator_mapping")\
+    .setInputCols(["chunk"])
+    .setOutputCol("chronic_indicator_mapping")
     .setRels(["chronic_indicator"])
 
 val pipeline = new Pipeline().setStages(Array(
