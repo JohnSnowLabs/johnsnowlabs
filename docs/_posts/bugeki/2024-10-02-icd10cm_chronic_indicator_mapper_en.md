@@ -83,10 +83,10 @@ doc2chunk = Doc2Chunk()\
     .setInputCols(['icd10cm'])\
     .setOutputCol('chunk')
 
-mapperModel = ChunkMapperModel.pretrained("model_icd_to_chronic_mapper","en", "clinical/models")\
+mapperModel = ChunkMapperModel.pretrained("icd10cm_chronic_indicator_mapper","en", "clinical/models")\
     .setInputCols(["chunk"])\
-    .setOutputCol("mappings")\
-    .setRels(["chronic_indicator_mapping"])
+    .setOutputCol("chronic_indicator_mapping")\
+    .setRels(["chronic_indicator"])
 
 pipeline = Pipeline(
     stages=[
@@ -103,24 +103,7 @@ pipeline = Pipeline(
       mapperModel
       ])
 
-pipeline = Pipeline(
-    stages=[
-      document_assembler,
-      sentence_detector,
-      tokenizer,
-      word_embeddings,
-      clinical_ner,
-      clinical_ner_converter,
-      chunk2doc,
-      sbiobert_embeddings,
-      icd_resolver,
-      doc2chunk,
-      mapperModel
-      ])
-
-data = spark.createDataFrame([["A 42-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus,
-associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation,
-she was treated with a five-day course of amoxicillin for a respiratory tract infection."]]).toDF("text")
+data = spark.createDataFrame([["""A 42-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with besity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 
@@ -150,7 +133,8 @@ val clinical_ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/mo
 
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "clinical_ner"))
-    .setOutputCol("clinical_ner_chunk")    .setWhiteList((Array("PROBLEM"))
+    .setOutputCol("clinical_ner_chunk")
+    .setWhiteList((Array("PROBLEM"))
 
 val chunk2doc = new Chunk2Doc()
     .setInputCols("clinical_ner_chunk")
@@ -170,10 +154,10 @@ val doc2chunk = new Doc2Chunk()\
       .setInputCols(['icd10cm'])\
       .setOutputCol('chunk')
 
-val mapperModel = ChunkMapperModel.pretrained("model_icd_to_chronic_mapper","en", "clinical/models")\
+val mapperModel = ChunkMapperModel.pretrained("icd10cm_chronic_indicator_mapper","en", "clinical/models")\
     .setInputCols(["chunk"])\
-    .setOutputCol("mappings")\
-    .setRels(["chronic_indicator_mapping"])
+    .setOutputCol("chronic_indicator_mapping")\
+    .setRels(["chronic_indicator"])
 
 val pipeline = new Pipeline().setStages(Array(
       document_assembler,
@@ -188,9 +172,7 @@ val pipeline = new Pipeline().setStages(Array(
       doc2chunk,
       mapperModel))
 
-val data = Seq("A 42-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus,
-associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation,
-she was treated with a five-day course of amoxicillin for a respiratory tract infection.").toDS.toDF("text")
+val data = Seq("""A 42-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with besity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.""").toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
