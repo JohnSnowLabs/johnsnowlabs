@@ -151,8 +151,8 @@ val icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10
     .setDistanceFunction("EUCLIDEAN")
 
 val doc2chunk = new Doc2Chunk()
-      .setInputCols(['icd10cm'])
-      .setOutputCol('chunk')
+      .setInputCols(["icd10cm"])
+      .setOutputCol("chunk")
 
 val mapperModel = ChunkMapperModel.pretrained("icd10cm_chronic_indicator_mapper","en", "clinical/models")\
     .setInputCols(["chunk"])
