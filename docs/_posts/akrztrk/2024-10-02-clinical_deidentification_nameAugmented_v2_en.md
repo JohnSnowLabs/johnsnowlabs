@@ -32,8 +32,8 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented_v2", "en", "clinical/models")
@@ -46,15 +46,10 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith
 
 deid_result = deid_pipeline.fullAnnotate(text)
 
-print('
-'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
-print('
-'.join([i.result for i in deid_result[0]['obfuscated']]))
-
-
+print(''.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
+print(''.join([i.result for i in deid_result[0]['obfuscated']]))
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented_v2", "en", "clinical/models")
@@ -67,12 +62,8 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith
 
 val deid_result = deid_pipeline.fullAnnotate(text)
 
-println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkString("
-"))
-println(deid_result(0)("obfuscated").map(_("result").toString).mkString("
-"))
-
-
+println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkString(""))
+println(deid_result(0)("obfuscated").map(_("result").toString).mkString(""))
 ```
 </div>
 
@@ -81,22 +72,21 @@ println(deid_result(0)("obfuscated").map(_("result").toString).mkString("
 ```bash
 Masked with entity labels
 ------------------------------
-Name : <PATIENT>, Record date: <DATE>, MR: <MEDICALRECORD>.
-ID: <IDNUM>, Dr. <DOCTOR>, IP <IPADDR>.
-He is a <AGE>-year-old male was admitted to the <HOSPITAL> for cystectomy on <DATE>.
-Patient's VIN : <VIN>, SSN <SSN>, Driver's license no: <DLN>.
-Phone <PHONE>, <STREET>, <CITY>,  <STATE> <ZIP>.
-E-MAIL: <EMAIL>.
+Name : <NAME>, Record date: <DATE>, MR: <MEDICALRECORD>.
+ID: <IDNUM>, <NAME>. <NAME>, IP <IP>.
+He is a <AGE>-year-old male was admitted to <ORGANIZATION> for cystectomy on <DATE>.
+Patient's <ORGANIZATION> : <VIN>, SSN <LICENSE>, Driver's license no: <DLN>.
+Phone <PHONE>, 0295 <LOCATION>, <CITY>,  CA <ZIP>.
+ E-MAIL: <EMAIL>.
 
 Obfuscated
 ------------------------------
-Name : Axel Bohr, Record date: 2093-02-01, MR: 61443154.
-ID: #00867619, Dr. Rickard Charles, IP 002.002.002.002.
-He is a 73-year-old male was admitted to the LOMA LINDA UNIVERSITY MEDICAL CENTER-MURRIETA for cystectomy on 02/01/93.
-Patient's VIN : 5KDTO67TIWP809983, SSN #382-50-5397, Driver's license no: Q734193X.
-Phone (902) 409-7353, 1555 Long Pond Road, Pomeroy,  Maryland 29924.
- E-MAIL: Halit@google.com.
-
+Name : Clydene Darner, Record date: 2093-01-24, MR: 25956387.
+ID: #56433295, Melanee Spire. Elray Hall, IP 28%03d.40%03d.9%03d.1%05d.
+He is a 72-year-old male was admitted to Consolidated Edison for cystectomy on 01/24/93.
+Patient's Pilgrim's Pride : 1OACZ66AYTK160109, SSN #323-55-7322, Driver's license no: G254270W.
+Phone (237) 628-3151, 0295 1050 Division St, Riosecco,  CA 76160.
+ E-MAIL: Eurytus@hotmail.com.
 ```
 
 {:.model-param}
@@ -106,7 +96,7 @@ Phone (902) 409-7353, 1555 Long Pond Road, Pomeroy,  Maryland 29924.
 |---|---|
 |Model Name:|clinical_deidentification_nameAugmented_v2|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
+|Compatibility:|Healthcare NLP 5.5.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
