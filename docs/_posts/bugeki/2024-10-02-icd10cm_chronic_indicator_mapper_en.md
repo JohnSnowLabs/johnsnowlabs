@@ -215,7 +215,6 @@ val result = pipeline.fit(data).transform(data)
 |          1|  403|431|        a respiratory tract infection|PROBLEM|  J98.8|                       respiratory tract infection [other specified respiratory disorders]|                0|
 +-----------+-----+---+-------------------------------------+-------+-------+------------------------------------------------------------------------------------------+-----------------+
 
-
 ```
 
 {:.model-param}
