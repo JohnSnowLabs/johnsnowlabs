@@ -37,29 +37,71 @@ The `chronic indicator` can have three different values;
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")    .setInputCols(["sentence","token"])    .setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
+    .setInputCols(["sentence","token"])\
+    .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel.pretrained("ner_clinical","en","clinical/models")    .setInputCols(["sentence","token","embeddings"])    .setOutputCol("clinical_ner")
+clinical_ner = MedicalNerModel.pretrained("ner_clinical","en","clinical/models")\
+    .setInputCols(["sentence","token","embeddings"])\
+    .setOutputCol("clinical_ner")
 
-clinical_ner_converter = NerConverterInternal()    .setInputCols(["sentence","token","clinical_ner"])    .setOutputCol("clinical_ner_chunk")    .setWhiteList(['PROBLEM'])
+clinical_ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence","token","clinical_ner"])\
+    .setOutputCol("clinical_ner_chunk")\
+    .setWhiteList(['PROBLEM'])
 
-chunk2doc = Chunk2Doc()     .setInputCols("clinical_ner_chunk")     .setOutputCol("doc_chunk")
+chunk2doc = Chunk2Doc() \
+    .setInputCols("clinical_ner_chunk") \
+    .setOutputCol("doc_chunk")
 
-sbiobert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")    .setInputCols(["doc_chunk"])    .setOutputCol("sbert_embeddings")    .setCaseSensitive(False)
+sbiobert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["doc_chunk"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
 
-icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented_billable_hcc","en", "clinical/models")     .setInputCols(["sbert_embeddings"])     .setOutputCol("icd10cm")    .setDistanceFunction("EUCLIDEAN")
+icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented_billable_hcc","en", "clinical/models") \
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("icd10cm")\
+    .setDistanceFunction("EUCLIDEAN")
 
-doc2chunk = Doc2Chunk()      .setInputCols(['icd10cm'])      .setOutputCol('chunk')
+doc2chunk = Doc2Chunk()\
+    .setInputCols(['icd10cm'])\
+    .setOutputCol('chunk')
 
-mapperModel = ChunkMapperModel.pretrained("model_icd_to_chronic_mapper","en", "clinical/models")    .setInputCols(["chunk"])    .setOutputCol("mappings")    .setRels(["chronic_indicator_mapping"])
+mapperModel = ChunkMapperModel.pretrained("model_icd_to_chronic_mapper","en", "clinical/models")\
+    .setInputCols(["chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["chronic_indicator_mapping"])
+
+pipeline = Pipeline(
+    stages=[
+      document_assembler,
+      sentence_detector,
+      tokenizer,
+      word_embeddings,
+      clinical_ner,
+      clinical_ner_converter,
+      chunk2doc,
+      sbiobert_embeddings,
+      icd_resolver,
+      doc2chunk,
+      mapperModel
+      ])
 
 pipeline = Pipeline(
     stages=[
@@ -114,13 +156,24 @@ val chunk2doc = new Chunk2Doc()
     .setInputCols("clinical_ner_chunk")
     .setOutputCol("doc_chunk")
 
-val sbiobert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")    .setInputCols(["doc_chunk"])    .setOutputCol("sbert_embeddings")    .setCaseSensitive(False)
+val sbiobert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["doc_chunk"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
 
-val icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented_billable_hcc","en", "clinical/models")     .setInputCols(["sbert_embeddings"])     .setOutputCol("icd10cm")    .setDistanceFunction("EUCLIDEAN")
+val icd_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented_billable_hcc","en", "clinical/models") \
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("icd10cm")\
+    .setDistanceFunction("EUCLIDEAN")
 
-val doc2chunk = new Doc2Chunk()      .setInputCols(['icd10cm'])      .setOutputCol('chunk')
+val doc2chunk = new Doc2Chunk()\
+      .setInputCols(['icd10cm'])\
+      .setOutputCol('chunk')
 
-val mapperModel = ChunkMapperModel.pretrained("model_icd_to_chronic_mapper","en", "clinical/models")    .setInputCols(["chunk"])    .setOutputCol("mappings")    .setRels(["chronic_indicator_mapping"])
+val mapperModel = ChunkMapperModel.pretrained("model_icd_to_chronic_mapper","en", "clinical/models")\
+    .setInputCols(["chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["chronic_indicator_mapping"])
 
 val pipeline = new Pipeline().setStages(Array(
       document_assembler,
