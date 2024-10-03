@@ -35,8 +35,8 @@ The pipeline can mask and obfuscate `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented_v2", "en", "clinical/models")
@@ -49,11 +49,8 @@ deid_result = deid_pipeline.fullAnnotate(text)
 
 print(''.join([i.metadata['masked'] for i in deid_result['obfuscated']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented_v2", "en", "clinical/models")
@@ -66,8 +63,6 @@ val deid_result = deid_pipeline.fullAnnotate(text)
 
 println(deid_result("obfuscated").map(_("metadata")("masked").toString).mkString(""))
 println(deid_result("obfuscated").map(_("result").toString).mkString(""))
-
-
 ```
 </div>
 
@@ -85,7 +80,6 @@ Obfuscated
 Dr. Rhodia Cera, from 252 Mchenry St in UNTERLAND,  attended to the patient on 18/06/2024.
 The patient’s medical record number is 16109604.
 The patient, Eulice Hickory, is 44 years old,  her Contact number: 540-981-1914 .
-
 ```
 
 {:.model-param}
