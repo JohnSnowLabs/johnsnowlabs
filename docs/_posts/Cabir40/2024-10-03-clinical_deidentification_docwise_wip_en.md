@@ -7,7 +7,7 @@ date: 2024-10-03
 tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise]
 task: [De-identification, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.4.1
+edition: Healthcare NLP 5.5.0
 spark_version: 3.4
 supported: true
 annotator: PipelineModel
@@ -26,8 +26,8 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.4.1_3.4_1727967134186.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.4.1_3.4_1727967134186.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.4_1727967134186.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.4_1727967134186.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -35,8 +35,8 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
@@ -47,12 +47,8 @@ The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 .""
 
 deid_result = deid_pipeline.fullAnnotate(text)
 
-print('
-'.join([i.result for i in deid_result['mask_entity']]))
-print('
-'.join([i.result for i in deid_result['obfuscated']]))
-
-
+print(''.join([i.result for i in deid_result['mask_entity']]))
+print(''.join([i.result for i in deid_result['obfuscated']]))
 ```
 ```scala
 
@@ -66,19 +62,14 @@ The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 .""
 
 val deid_result = deid_pipeline.fullAnnotate(text)
 
-println(deid_result("mask_entity").map(_("result").toString).mkString("
-"))
-println(deid_result("obfuscated").map(_("result").toString).mkString("
-"))
-
-
+println(deid_result("mask_entity").map(_("result").toString).mkString(""))
+println(deid_result("obfuscated").map(_("result").toString).mkString(""))
 ```
 </div>
 
 ## Results
 
 ```bash
-
 Masked with entity labels
 ------------------------------
 Dr. <DOCTOR>, from <HOSPITAL> in <CITY>,  attended to the patient on <DATE>. 
@@ -90,7 +81,6 @@ Obfuscated
 Dr. Edwardo Graft, from MCBRIDE ORTHOPEDIC HOSPITAL in CLAMART,  attended to the patient on 14/06/2024. 
 The patient’s medical record number is 78295621. 
 The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469 .
-
 ```
 
 {:.model-param}
@@ -100,7 +90,7 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
 |---|---|
 |Model Name:|clinical_deidentification_docwise_wip|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.4.1+|
+|Compatibility:|Healthcare NLP 5.5.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
