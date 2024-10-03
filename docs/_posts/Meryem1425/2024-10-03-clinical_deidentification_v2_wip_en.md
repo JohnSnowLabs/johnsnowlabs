@@ -23,6 +23,11 @@ The pipeline can mask and obfuscate `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION
 `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `AGE`, `LOCATION`, `LOCATION_OTHER`, `DLN`, `CONTACT`, `NAME`,
 `ID`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities.
 
+## Predicted Entities
+
+`LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `ID`, `AGE`, `MEDICALRECORD`, `ORGANIZATION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`,
+`ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `LOCATION_OTHER`, `DLN`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -35,8 +40,8 @@ The pipeline can mask and obfuscate `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_v2_wip", "en", "clinical/models")
@@ -49,11 +54,8 @@ deid_result = deid_pipeline.fullAnnotate(text)
 
 print(''.join([i.metadata['masked'] for i in deid_result['obfuscated']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_v2_wip", "en", "clinical/models")
@@ -66,8 +68,6 @@ val deid_result = deid_pipeline.fullAnnotate(text)
 
 println(deid_result("obfuscated").map(_("metadata")("masked").toString).mkString(""))
 println(deid_result("obfuscated").map(_("result").toString).mkString(""))
-
-
 ```
 </div>
 
@@ -85,7 +85,6 @@ Obfuscated
 Dr. Alissa Irving, from KINDRED HOSPITAL SEATTLE in Geleen,  attended to the patient on 22/06/2024.
 The patient’s medical record number is 16109604.
 The patient, Burnette Carte, is 49 years old,  her Contact number: 540-981-1914 .
-
 ```
 
 {:.model-param}
