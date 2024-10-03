@@ -35,8 +35,8 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
@@ -49,11 +49,8 @@ deid_result = deid_pipeline.fullAnnotate(text)
 
 print(''.join([i.result for i in deid_result['mask_entity']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
@@ -66,15 +63,12 @@ val deid_result = deid_pipeline.fullAnnotate(text)
 
 println(deid_result("mask_entity").map(_("result").toString).mkString(""))
 println(deid_result("obfuscated").map(_("result").toString).mkString(""))
-
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
 Masked with entity labels
 ------------------------------
 Dr. <DOCTOR>, from <HOSPITAL> in <CITY>,  attended to the patient on <DATE>. 
@@ -86,7 +80,6 @@ Obfuscated
 Dr. Edwardo Graft, from MCBRIDE ORTHOPEDIC HOSPITAL in CLAMART,  attended to the patient on 14/06/2024. 
 The patient’s medical record number is 78295621. 
 The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469 .
-
 ```
 
 {:.model-param}
