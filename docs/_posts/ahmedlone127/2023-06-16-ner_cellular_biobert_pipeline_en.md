@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_cellular_biobert](https://n
 
 ## Predicted Entities
 
+`DNA`, `protein`, `cell_type`, `cell_line`, `RNA`.
+
 
 
 {:.btn-box}

@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This advanced pipeline extracts clinical entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Medical Subject Heading (MeSH) codes.
 
+## Predicted Entities
+
+`TREATMENT`, `PROBLEM`, `TEST`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
