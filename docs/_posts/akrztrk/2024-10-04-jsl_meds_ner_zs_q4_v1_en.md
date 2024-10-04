@@ -33,6 +33,7 @@ This LLM model is trained to extract and link entities in a document. Users need
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
