@@ -33,6 +33,7 @@ This LLM model is trained to perform Summarization and Q&A based on a given cont
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
