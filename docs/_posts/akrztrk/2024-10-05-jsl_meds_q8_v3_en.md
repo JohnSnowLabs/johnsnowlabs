@@ -33,6 +33,7 @@ This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
