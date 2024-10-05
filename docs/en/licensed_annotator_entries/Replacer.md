@@ -27,7 +27,10 @@ Parameter:
    * "entity": Replaces 'NONE' values with the entity field extracted from the annotation, if available. If the entity field is not available, it uses the string "NONE" wrapped by the specified delimiters.
    * "place_holder": Replaces 'NONE' values with a placeholder string wrapped by the specified delimiters.
    * "skip": Retains the original target_text from the annotation's metadata if available. If not available, it retains the original annotation result.
-- `setNoneValuesTo`: (String) Sets an array of two strings used as delimiters to wrap the placeholder or entity field when noneValuesTo is set to "place_holder" or "entity". The first element of the array is the prefix delimiter, and the second element is the suffix delimiter.
+- `mappingsColumn`: (String) Column name for mapping. This column maps the annotations to their corresponding chunks before the entities are replaced.
+- `returnEntityMappings`: (Boolean) With this property you select if you want to return mapping column.
+- `staticEntityMappingsFallback`: (String) Fallback option for static entity mappings. Allowed values: 'entity', 'place_holder', 'skip', 'error'.
+- `staticEntityMappings`: (dict)  Static entity mappings. A dictionary with entity types as keys and replacement values as values.
 
 {%- endcapture -%}
 
@@ -246,7 +249,7 @@ val test_data = Seq("""John Davies is a 62 y.o. patient admitted. Mr. Davies was
 
 val res = mapperPipeline.fit(test_data).transform(test_data)
 
-// Show results
+# Result
 
 Original text.  :  John Davies is a 62 y.o. patient admitted. Mr. Davies was seen by attending physician Dr. Lorand and was scheduled for emergency assessment.
 

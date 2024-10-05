@@ -14,8 +14,9 @@ This annotator is important when the user wants to merge entities identified by 
 Parameters:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
-
 - `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+- `resetSentenceIndices`: Whether to reset sentence indices to treat the entire output as if it originates from a single document. Default: False.
+
 
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
