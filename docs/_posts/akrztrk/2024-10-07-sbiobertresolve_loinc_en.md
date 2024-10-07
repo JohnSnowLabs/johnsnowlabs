@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 This model maps extracted medical entities to Logical Observation Identifiers Names and Codes (LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 It also provides the official resolution of the codes within the brackets.
 
+## Predicted Entities
+
+`loinc_code`,
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
