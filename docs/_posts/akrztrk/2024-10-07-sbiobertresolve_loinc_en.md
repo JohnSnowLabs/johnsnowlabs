@@ -62,7 +62,8 @@ ner_model = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
 
 ner_converter = NerConverterInternal() \
  	  .setInputCols(["sentence", "token", "ner"]) \
-	  .setOutputCol("ner_chunk")	  .setWhiteList(["Test"])
+	  .setOutputCol("ner_chunk")\
+	  .setWhiteList(["Test"])
 
 chunk2doc = Chunk2Doc()\
   	.setInputCols("ner_chunk")\
