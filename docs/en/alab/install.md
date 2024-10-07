@@ -33,7 +33,6 @@ th {
 [EKS deployment](#eks-deployment){:.button.button-blue}
 [AKS deployment](#aks-deployment){:.button.button-blue}
 [AirGap Environment](#airgap-environment){:.button.button-blue}
-[OpenShift](#openshift){:.button.button-blue}
 
 </div><div class="h3-box" markdown="1">
 
@@ -578,62 +577,6 @@ Run the upgrade script `annotationlab-updater.sh` with `sudo` privileges.
 $ sudo su
 $ ./annotationlab-updater.sh
 ```
-
-</div><div class="h3-box" markdown="1">
-
-## OpenShift
-
-Generative AI Lab can also be installed using the operator framework on an OpenShift cluster. The Generative AI Lab operator can be found under the <bl>OperatorHub</bl>.
-
-
-### Find and select
-
-The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Generative AI Lab operator under AI/Machine Learning category and select it.
-
-![Select Operator](/assets/images/annotation_lab/Select-Operator.png)
-
-
-### Install
-
-Some basic information about this operator is provided on the navigation panel that opens after selecting Generative AI Lab on the previous step.
-
-> **NOTE:** Make sure you have defined shared storage such as `efs/nfs/cephfs` prior to installing the Generative AI Lab Operator.
-
-Click on the `Install` button located on the top-left corner of this panel to start the installation process.
-
-![Install Operator](/assets/images/annotation_lab/Install-Operator.png)
-
-After successful installation of the Generative AI Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.
-
-
-### Create Instance
-
-Next step is to create a cluster instance of the Generative AI Lab. For this, select the Generative AI Lab operator under the <bl>Installed Operators</bl> page and then switch to _Annotationlab_ tab. On this section, click on `Create Annotationlab` button to spawn a new instance of Generative AI Lab.
-
-![Create Instance](/assets/images/annotation_lab/Create-Instance.png)
-
-**Define shared Storage Class**
-
-Update the `storageClass` property in the YAML configuration to define the storage class to one of `efs`, `nfs`, or `cephfs` depending upon what storage you set up before Generative AI Lab operator installation.
-
-![Define Storage Class](/assets/images/annotation_lab/Define-StorageClass.png)
-
-**Define domain name**
-
-Update the `host` property in the YAML configuration to define the required domain name to use instead of the default hostname `annotationlab` as shown in the image below.
-
-![Define Hostname](/assets/images/annotation_lab/Define-Hostname.png)
-
-Click on `Create` button once you have made all the necessary changes. This will also set up all the necessary resources to run the instance in addition to standing up the services themselves.
-
-
-### View Resources
-
-After the instance is successfully created we can visit its page to view all the resources as well as supporting resources like the secrets, configuration maps, etc that were created.
-
-![View Resources](/assets/images/annotation_lab/View-Resources.png)
-
-Now, we can access the Generative AI Lab from the provided domain name or also from the location defined for this service under the `Networking > Routes` page
 
 </div><div class="h3-box" markdown="1">
 

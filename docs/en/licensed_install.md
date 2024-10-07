@@ -14,13 +14,74 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 ## AWS Marketplace
-The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
+The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-kpac4xtqkxuqu?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
-</div><div class="h3-box" markdown="1">
+</div>
+
+<div class="h3-box" markdown="1">
+
+## Azure Marketplace
+John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go product on Azure Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the Azure product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on Azure Marketplace navigate to the [product page](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.johnsnowlabs_nlp?tab=Overview) and follow the instructions in the video below. 
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='8fwlPcYWME8' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via Azure Marketplace</div></div></div>
+
+**Note**: 30-day free trial are available for AWS and Azure subscriptions. 
+
+</div>
+
+
+<div class="h3-box" markdown="1">
+
+## Private Endpoints - SageMaker, Snowflake, Databricks 
+
+Some of the most popular Medical Language Models we offer are now available as private endpoints on platforms like AWS SageMaker, Snowflake, or Databricks, providing organizations with powerful tools to enhance their data capabilities while ensuring security and control.
+
+<img width="2944" alt="Advantaged of API endpoints" src="/assets/images/api_endpoints/Advantages of API Endpoints.png">
+
+Deploying these models as private endpoints offers several advantages. First, it allows for enhanced data privacy, as sensitive information remains within your own private network and infrastructure, reducing exposure to potential breaches. This  facilitates compliance with industry regulations by enabling organizations to manage their data according to specific governance policies. 
+
+Working with John Snow Labs API endpoints is straightforward. You get rapid access to advanced language models with minimal setup, while eliminating the limitations of relying on specific programming languages. This flexibility allows you to work across different platforms and languages, unlocking valuable insights, automating text processing tasks, and driving innovation—all while maintaining high standards of security and operational efficiency.
+
+Subscribing, deploying, and managing these API endpoints is also effortless.  You can easily adjust resources according to your processing needs. With just a few clicks, you can subscribe to the desired Language Models, deploy them as private endpoints on your preferred cloud platform, and easily scale or stop them as your workloads demand. This flexibility ensures optimal resource utilization while keeping costs in check, without the hassle of long-term commitments, complex configurations, and without compromising on speed or reliability.
+
+
+
+### AWS SageMaker
+
+You can discover the language models available on AWS SageMaker by visiting [this page](https://aws.amazon.com/marketplace/search?prevFilters=%257B%2522ref_%2522%3A%2522mp_nav_category_1498a805-6c11-461e-9424-d766aea336ca%2522%2C%2522category%2522%3A%25221498a805-6c11-461e-9424-d766aea336ca%2522%2C%2522FULFILLMENT_OPTION_TYPE%2522%3A%2522SAAS%2522%2C%2522filters%2522%3A%2522FULFILLMENT_OPTION_TYPE%2522%257D&searchTerms=john+snow+labs&FULFILLMENT_OPTION_TYPE=SAGEMAKER_MODEL&filters=FULFILLMENT_OPTION_TYPE). 
+
+The following video illustrates the steps to discover the language models available as API endpoints on AWS Sagemaker via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.  
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='i04iYe4U9C0' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on AWS SageMaker</div></div></div>
+
+### Snowflake
+
+You can discover the language models available on Snowflake Marketplace by visiting [this page](https://app.snowflake.com/marketplace/providers/GZTYZJKDV8P/John%20Snow%20Labs). 
+
+The following video illustrates the steps to discover the language models available as API endpoints on Snowflake via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.  
+
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='DUcbvDxdk3M' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Snowflake Marketplace</div></div></div>
+
+### Databricks 
+
+You can discover the language models available on Databricks Marketplace by visiting [this page](https://marketplace.databricks.com/?asset=Models&provider=John%20Snow%20Labs&sortBy=date). 
+
+The following video illustrates the steps to discover the language models available as API endpoints on Databricks via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='C3RMZWP5LFg' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Databricks Marketplace</div></div></div>
+
+</div>
+
+
+
+
+
+<div class="h3-box" markdown="1">
 
 ## Installation with johnsnowlabs
 On Oct 4th, 2022 we released `johnsnowlabs` library, which eases the installation and session starting processes in an 
@@ -1496,15 +1557,15 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_1.png)
 
-13 Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
+13. Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_2.png)
 
-14 Such a window will Appear. Go to Add compute.
+14. Such a window will Appear. Go to Add compute.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_3.png)
 
-15 Choose the compute type and enable auto-shutdown as well.
+15. Choose the compute type and enable auto-shutdown as well.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_10.png)
 
@@ -1512,29 +1573,32 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_9.png)
 
-16 Then go to the Notebooks Section.
+16. Then go to the Notebooks Section.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_4.png)
 
 In NB section, you can create your own NB or load existing NBs.
 
-17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
+17. Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_5.png)
 
-18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
+18. Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_6.png)
 
-19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
+19. Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
+</div><div class="h3-box" markdown="1">
 
 ## Microsoft Fabric Instructions
 
 ### Step 1: Log into MS Fabric
 Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your MS Fabric Account credentials.
+
+</div><div class="h3-box" markdown="1">
 
 ### Step 2: Create a Lakehouse
 - Go to the **Synapse Data Science** section.
@@ -1543,11 +1607,14 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 
 ![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-  ![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
+![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
@@ -1556,19 +1623,18 @@ Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
 ![image](https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
-
 
 ![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
 
 ![image](https://github.com/user-attachments/assets/53bc84ae-40dc-41dc-9522-e87bf70d4fba)
 
-
-
 After uploading is complete, you can configure and run the notebook.
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 6: Configure the Notebook Session
 Configure the session within the notebook as follows:
@@ -1597,7 +1663,11 @@ Configure the session within the notebook as follows:
 }
 
 ```
+
+</div><div class="h3-box" markdown="1">
+
 ### Step 7: Install Spark NLP Libraries
+
 Install the required Spark NLP libraries using pip commands:
 ```bash
 %pip install <spark-nlp whl File API path>
@@ -1608,6 +1678,7 @@ Install the required Spark NLP libraries using pip commands:
 
 ![Install Spark NLP Libraries](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 8: Make Necessary Imports
 Import the necessary Python and Spark libraries:
@@ -1629,6 +1700,8 @@ from sparknlp.annotator import *
 from sparknlp_jsl.annotator import *
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 9: Explore Available Licensed Models
 Download and explore the list of available licensed models:
 ```bash
@@ -1644,6 +1717,7 @@ with open("models.json", "r", encoding="utf-8") as f:
 
 ![Explore Available Licensed Models](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 10: Download and Extract Required Models
 Set up AWS credentials and use Boto3 to handle files:
@@ -1675,6 +1749,8 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Step 11: Load the Model and Make Predictions
 Load the model and perform predictions on the desired text:

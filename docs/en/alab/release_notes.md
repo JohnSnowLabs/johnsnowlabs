@@ -15,211 +15,141 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Create Augmented Tasks for NER Models, Set up your project using a Visual Menu Builder, and leverage Entity Resolver models, rules, and zero-shot prompts in Generative AI Lab 6.5.
-The release of Generative AI Lab version 6.5 introduces several new features designed to enhance user experience and improve platform efficiency.
+## Automatic Tests for Classification Models and Results Visualization in Generative AI Lab - 6.6
+Generative AI Labs version 6.6 introduces support for evaluating and testing classification models, a feature previously available only for Named Entity Recognition (NER) models. With this update, users can assess both pre-trained and custom classification models across a variety of dimensions such as Bias, Robustness, Fairness, Representation, Accuracy, and/or Grammar, ensuring their models are fit for the specificities of the target use cases. 
 
-One of the key updates is the ability to generate augmented data based on the existing tasks. This feature enhances model performance by generating additional data, seamlessly fitting into the Generative AI Lab workflow to support various test types and improve their models without having to create dataset from scratch. 
+This release also brings enhanced visualization features for Test reports. Users can now easily toggle the "Show Graph" option to visualize test outcomes as weighted bar charts that display pass and fail percentages. This feature allows users to quickly interpret test results at both high-level and detailed scales. Key parameters such as Test Categories, Test Types, Passing Rate, and Failure Rate are presented alongside the charts for comprehensive insight. 
 
-Additionally, users can now use an entity resolver by combining it with rules and John Snow Labs' zero-shot prompts, offering a more streamlined approach to entity recognition. 
+## Test Classification models
+Version 6.6 brings support for evaluating and testing classification models, a feature previously available only for Named Entity Recognition (NER) models, enabling users to assess the accuracy and performance of both pre-trained and custom classification models across various test types. 
 
-Lastly, the new menu builder allows users to visually configure every setting for the annotation project setups, improving the ability for product creators to streamline the workflow for their agents at the project level.
+While the test types from NER model testing—such as Bias, Robustness, Fairness, Representation, and Accuracy—are still supported for classification models, a notable new addition is the "Grammar" test. This test evaluates how well classification models handle grammatically complex or varied sentences, ensuring that the model maintains high accuracy even with challenging grammatical structures. Users need to select the model type as classification from the **Model Type** dropdown while creating the test suite. 
 
-Here are the highlights of this release:
+![660image](/assets/images/annotation_lab/6.6.0/1.png)
 
-</div><div class="h3-box" markdown="1">
+### Test Setup and Configuration for Classification Models
 
-## Data Augmentation for more Robust Model Training
-Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
+To set up and configure tests for classification models in version 6.6, follow these steps:
 
-The new tab called "**Generate Augmented Data**" on the import page will make it easier for you to create augmented tasks. By clicking on the "**Improve Test Results**" option, you'll be redirected to the "**Generate Augmented Data**" page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under "**Proportional Augmentation**".
+1. **Navigate to the Test Page**: Open the test page within the specific project where the model is used.
 
-![genAI650](/assets/images/annotation_lab/6.5.0/1.gif)
+2. **Select the Appropriate Test Suite**: From the drop-down menu, choose the test suite for classification models. Test suites are clearly labeled with the model type in brackets, making it easy to identify the correct one.
 
-####  Proportional Augmentaiton
+3. **Choose the Model and Target Choices**: Select the classification model and the appropriate classification choices to test.
 
-This method enhances data quality by using various testing techniques to generate new data based on an existing dataset. Proportional Augmentation is particularly effective in improving model performance by addressing specific weaknesses, such as the inability to recognize lowercase text, uppercase text, typos, and more. It is especially beneficial for bias and robustness testing, ensuring that the model produces high-quality and accurate results for machine learning, predictive modeling, and decision-making tasks. After setting the test types and max_proportion, click on "**Generate Results**" to create augmented tasks. Based on your configuration, data augmentation will enhance the existing tasks and generate new ones.
+4. **Configure Additional Testing Parameters** (optional):
+   - Set the **"Filter Completions By"** option if we need to narrow down specific completions for testing.
+   - Apply the **"Filter Tasks by Tags for Testing"** to run the tests on tasks with specific tags.
 
-![genAI650](/assets/images/annotation_lab/6.5.0/2.gif)
+5. **Save the Configuration**: Once the settings are complete, save the configuration.
 
-Another way to generate augmented tasks is through "**Templatic augmentation**".
+6. **Generate Test Cases**: After configuring the test, we can generate test cases based on the saved settings.
 
-####  Templatic Augementation
-Templatic Augmentation creates new data by using templates or patterns that are similar in structure and context to the original input. This method depends a lot on the templates provided by the user. There are two options for using this approach:
- 
- **A. Manually Add Templates**
- Users can manually choose templates along with the available labels. They can choose how many results to generate for each template using a scroll bar, which can be set from 1 to 50.
+7. **Run the Test**: Execute the tests and evaluate the classification model.
 
-![genAI650](/assets/images/annotation_lab/6.5.0/3.gif)
+![660image](/assets/images/annotation_lab/6.6.0/2.gif)
 
- **B. Generate Templates with OpenAI**
+While the core workflow of the application and feature remains the same, users now have the ability to test classification models, allowing them to pinpoint potential issues and improve model performance without the need to develop custom testing solutions.
 
- Users can create more templates using OpenAI, which must be integrated into the project for this feature to work. After choosing how many extra templates to generate for each existing one (from 1 to 10), users can select how many results they want for each template by adjusting a scroll bar from 1 to 50. The total expected number of results will also be shown.
+## Visualizing Test Reports
 
-![genAI650](/assets/images/annotation_lab/6.5.0/4.gif)
+Generative AI Lab 6.6 brings enhanced visualization support for test reports, offering users an intuitive way to assess test results at both high-level and granular views. By toggling the "**Show Graph**" option on, users can visualize test outcomes through a weighted bar chart displaying the pass and fail percentages. This graphical representation simplifies the interpretation of the test report, providing a quick overview of overall test performance. Other parameters such as Test Categories, Test Types, Passing Rate, and Failure Rate are available next to the graph. If you want to hide the charts, **Show Graph** option can be toggled off.
 
-**Note:** **Automatic tags in import augmented tasks** 
-After the augmented tasks are generated, the user can import the tasks. The augmented tasks are imported with the "**Augmented**" default tag.
+![660image](/assets/images/annotation_lab/6.6.0/3.gif)
 
-![genAI650](/assets/images/annotation_lab/6.5.0/5.gif)
+Once enabled, the graph visualizes data for all test categories and associated test types in the report. The chart's pass and fail percentages and counts are computed based on the number of test types that passed or failed within each test category. Hovering over any segment of the chart allows users to see detailed statistics, including the pass and fail counts and their corresponding percentages.
 
-Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
+![660image](/assets/images/annotation_lab/6.6.0/4.gif)
 
-</div><div class="h3-box" markdown="1">
+Clicking on a chart bar or a specific test category navigates users to a more detailed view of that category and its test types. This drill-down capability allows users to move from a high-level summary to an in-depth examination of each test category, offering a more comprehensive understanding of where issues lie or where tests are performing well.
 
-## Configure project using Visual Menu Builder
+![660image](/assets/images/annotation_lab/6.6.0/5.gif)
 
-This version of Generative AI Lab introduces a new way for configuring your projects, removing the need for manual XML configuration. With the Visual Menu Builder, users can easily create, edit, and manage project configurations through a user-friendly interface. This makes the configuration process much more straightforward, especially for those unfamiliar with XML syntax, while also reducing the risk of errors associated with manual coding.
+The users can apply the filters on the graph based on the test category and the test types.
 
-To see the structure of a project configuration XML file and the definitions of the supported tag types and various parameters and variables, and to better understand how Visual Menu Builder maps and creates these elements when configuring your project, see [Project Configuration Overview](https://nlp.johnsnowlabs.com/docs/en/alab/tags_overview).
+![660image](/assets/images/annotation_lab/6.6.0/6.gif)
 
-**Key Features:**
+This visualization tool streamlines the process of analyzing test results, providing both high-level summaries and detailed breakdowns to assist in better decision-making and problem identification.
 
-**Add New Element**
+## Improvements
 
-The new menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon ("+") within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.
+### Improvements for Model Testing
 
-![genAI650](/assets/images/annotation_lab/6.5.0/6.gif)
+- Clicking on the "**Show Config**" button, users can see the configuration applied to generate the results of the Lang test. The user can filter the test types based on the category as well in the configuration. To hide the configuration, simply click the **X** (close) button.
 
-**Edit an Element**
+![660image](/assets/images/annotation_lab/6.6.0/7.gif)
 
-Users can modify the properties and configurations of existing elements within the project. By clicking on the edit icon (a pencil icon), users can access the settings for an existing element. This opens an editable interface where users can adjust the element's parameters to suit the evolving needs of the project.
+- Users can filter generated test cases and reports by both test category and test type. By default, all test categories are selected. To customize the view, users first select a test category, which then displays the associated test types, or they can then choose individual test types within a category.
+- 
+  **Filters On Test Cases View:**
+  ![660image](/assets/images/annotation_lab/6.6.0/8.gif)
 
-![genAI650](/assets/images/annotation_lab/6.5.0/7.gif)
+  **Filter On Test report:**
+  ![660image](/assets/images/annotation_lab/6.6.0/9.gif)
 
-**Delete an Element**
+- The speed test type in the performance test category, designed for NER models, now supports positive float values. Previously, it only accepted positive integers.
+![660image](/assets/images/annotation_lab/6.6.0/10.png)
 
-Users can remove unwanted elements from the project configuration. Users can click on the cross button ("x") associated with a specific element to remove it from the project. This feature helps in keeping the project configuration clean and relevant by allowing users to easily remove elements that are no longer needed.
+- The **Stop** button has been renamed to **Abort** for both test case generation and model testing.
+  Test case generation:
+  ![660image](/assets/images/annotation_lab/6.6.0/11.png)
+  
+  Model testing:
+  ![660image](/assets/images/annotation_lab/6.6.0/12.png)
+  
+- The custom pagination box has been updated with a blue border to enhance the visibility of the plus icon. This design improvement makes the icon stand out more clearly, helping users easily identify and interact with the pagination controls. The blue border provides a visual cue, making the navigation process more intuitive and user-friendly.
+![660image](/assets/images/annotation_lab/6.6.0/13.png)
 
-![genAI650](/assets/images/annotation_lab/6.5.0/8.gif)
+- In the **Select Test Suite** drop-down, the model type is now displayed in parentheses after the test suite name. This allows users to easily identify which model type each test suite is designed for.
+![660image](/assets/images/annotation_lab/6.6.0/14.png)
 
-**Drag and Move Element**
+### Support for GPU-enabled Generative AI lab in RedHat OS
 
-The new visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the "Handle" icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.
+Users can now install the GPU-enabled Generative AI Lab on RedHat OS. Utilizing a GPU will significantly reduce training time for Visual projects, providing notable benefits for users on RedHat OS as well.
 
-![genAI650](/assets/images/annotation_lab/6.5.0/9.gif)
+### Import zipped documents from Cloud storage 
 
-**Show Element Boundaries**
+Users can now import these zip files from cloud storage. Supported cloud storage services include S3 buckets and Azure Blob.
 
-The **Show element Boundaries** button in the visual menu builder highlights the borders of each element within the project configuration, making it easier to visualize and distinguish the different components. By clicking on the "**Show element Boundaries**" button, users can toggle the visibility of the boundaries for all elements in the configuration. When enabled, a visible border will appear around each element, clearly outlining its scope and separation from other elements. This feature is particularly helpful when working with complex configurations where multiple elements are closely positioned. By showing the boundaries, users can easily identify and select the correct element they want to edit, move, or delete.
+### Relation prompt in the edit relation form
 
-![genAI650](/assets/images/annotation_lab/6.5.0/10.gif)
+A new dropdown has been added to the Relation modal, allowing users to view and select relation prompts from the dropdown menu.
 
-**Show Parent Action Buttons on Hover**
-
-The **Show parent action buttons on hover** button in the Visual Menu Builder allows users to quickly access action buttons (such as edit, delete, or add) for parent elements by hovering over them. By hiding the action buttons until needed, it reduces visual clutter and allows users to concentrate on their current tasks. The ability to quickly access these buttons by hovering ensures that they remain easily accessible without overwhelming the interface.
-
-![genAI650](/assets/images/annotation_lab/6.5.0/11.gif)
-
-**Fullscreen Mode**
-
-The "**Fullscreen**" button in the visual menu builder allows users to expand the workspace to occupy the entire screen, providing a larger and more focused view of the project configuration. Clicking on the "**Fullscreen**" button maximizes the Visual Menu Builder, hiding other UI elements so the entire screen is dedicated to the project configuration. To exit fullscreen mode, users can click the "**Fullscreen**" button again or use the Esc key to return to the normal view with all standard UI elements visible.
-
-![genAI650](/assets/images/annotation_lab/6.5.0/12.gif)
-
-</div><div class="h3-box" markdown="1">
-
-## Pair Entity resolver models with rules and zero-shot prompts
-Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
-
-**How to Use**:
-  - **Step 1**: Add a rule or prompt from the Re-use Resource page.
-  - **Step 2**: Edit the label in the Customize Labels page and select the appropriate ER model to associate with the labels.
-  - **Step 3**: Import tasks and Pre-annotate the task.
-    
-![genAI650](/assets/images/annotation_lab/6.5.0/13.gif)
-
-This update broadens the capabilities of ER models, making them more versatile in annotation projects.
-
-</div><div class="h3-box" markdown="1">
-
-### Improvements
-### By default "synthetic" tag is added for imported synthetic tasks
-In previous versions, users had to manually add tags to synthetically generated tasks or else tasks imported into the task page lacked any associated tags. Starting with version 6.5.0, when tasks are imported, they now come with synthetic tags already associated with them during import in the task page.
-
-![genAI650](/assets/images/annotation_lab/6.5.0/14.gif)
-
-This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
-
-</div><div class="h3-box" markdown="1">
-
-### Enhanced task filtering
-
-With this version, users can combine multiple filters simultaneously to refine their task search, significantly enhancing the control and flexibility in task management.
-
-![genAI650](/assets/images/annotation_lab/6.5.0/15.gif)
-
-</div><div class="h3-box" markdown="1">
-
-### Enhanced visibility - Annotator's Instructions 
-The instruction section in Version 6.5.0 has been enhanced for better visibility. Now displayed with a faded blue background and an icon, the instructions stand out clearly, making them easily identifiable by annotators.
-
-![genAI650](/assets/images/annotation_lab/6.5.0/16.png)
-
-</div><div class="h3-box" markdown="1">
-
-### View instructions on the tasks page for "compact view"
-View the instructions directly on the task page itself when using the compact view in Classification Project type. 
-
-![genAI650](/assets/images/annotation_lab/6.5.0/17.png)
-
-</div><div class="h3-box" markdown="1">
-
-### Bulk test suite deletion API
-Delete multiple test suites in bulk using the API. This streamlines the process of managing test suites, the new bulk deletion API can be accessed and tested directly from the API Integration page within the application as well. 
-
-![genAI650](/assets/images/annotation_lab/6.5.0/18.png)
-
-</div><div class="h3-box" markdown="1">
-
-### Pyspark version displayed on "About" page
-This information is useful when training models or when using specific PySpark features, ensuring compatibility. 
-
-![genAI650](/assets/images/annotation_lab/6.5.0/19.png)
-
-</div><div class="h3-box" markdown="1">
-
+![660image](/assets/images/annotation_lab/6.6.0/15.gif)
+  
 ### Bug Fixes
-- **Bugs Fixes for Testing** 
+- **Search feature on the labeling page does not work for SBA tasks**
+    	Users can once again use the search feature to find SBA tasks on the labeling page.
 
-	Test cases were occasionally failing even when the expected and actual results were identical, tests passing despite a mismatch between expected and actual results, tests incorrectly passing even when expected results were empty and actual results were present. These issues have been resolved in version 6.5.0, ensuring accurate test results and consistent behavior across test cases.
-	
-	**Not able to change the Units on the Speed Test:**
-    This issue has been fixed, allowing users to change the unit of the speed test.
-    
-    **Test Suite Import Failure:**
-    Importing test suites encountered issues and was not functioning as expected. This problem has been resolved in version 6.5.0, and users can now import test suites without any issues.
+- **Page becomes unresponsive when invalid data is entered in color field**
+	Users can no longer create groups with invalid colors through the API.
 
-- **"Emotion Classifier" cannot be deployed in both playground and preannotation server**
+- **Sorting by title is not working as expected**
+  	Tasks are now sorted according to the ASCII values of their titles.
 
-    There was an issue with using the model named "Emotional Classifier" after online download. Users must download and use the updated and supported version classifierdl_use_emotion from the Online Models page.
-	
-- **Duplication check for prompt name should be case-insensitive**
+- **Exported tasks in TSV format are incorrectly exported as CSV**
+  	Tasks are now properly exported as TSV files.
 
-	The prompt name validation has been enhanced to be case insensitive, ensuring that creating duplicate prompt names is no longer possible. 
-	
-- **Error while Importing Tasks in JSON Format using URL**
+- **Bulk annotation and bulk deletion cannot be undone on the labeling page**
+	Users can now reverse bulk annotations and bulk deletions by clicking the undo icon on the labeling page.
 
-    The issue has been fixed, allowing users to import JSON tasks directly from a URL without any errors.
-	
-- **State of the Previously Opened Project is still Available when Opening a New Project**
+- **Train Model button is disabled when transfer learning is first enabled and then disabled**
+  	The button remains functional when you update the training parameters, When it was being disabled when transfer learned is first enabled.
 
-    When navigating to a different project, the state of the previously opened project was still retained, causing issues. This issue has been resolved, the state of the previously opened project is no longer saved.
-	
-- **Improved Pre-Annotation in case of Failure**
+- **Blue dot is visible at the end of each task on the labeling page**
+	The issue of a small blue dot appearing at the end of each task on the labeling page has been resolved. This blue dot is no longer visible at the end of each task moving forward.
 
-	Pre-annotation would fail for non pre-annotated tasks after pre-annotating incomplete tasks. In version 6.5.0, the entire pre-annotation process was improved and the issue above, fixed. 
-	
-- **Tasks cannot be imported for HTML Dialogues and Conversation project type**
+- **External Service Provider can be created without service provider name**
+  The external service provider providing an appropriate toast message when the validate button is clicked.
 
-This issue has been fixed, allowing the import of tasks for these project types.
-	
-- **Empty pre-annotation results when testing Classification models in Playground**
+- **Pipelines page is forbidden for users with Supervisor Role**
+	Users with the supervisor role can now access the pipeline page and view the downloaded pipelines.
 
-Text classification did not function correctly when classification models were tested in the playground. This issue has been fixed, classification models can be tested successfully with pre-annotation results in the Playground.
-	
-- **Annotators can view the unsaved completions of other annotators when "Allow Annotators to view Completion from Reviewers" is enabled**
+- **External Service Provider cannot be integrated when character count exceeds 64 for secret key**
+  	The new maximum allowed length for the secret key has been increased to 256 characters.
 
-In the previous versions, when the "Allow Annotators to View Completions from Reviewers" option was enabled, annotators could view not only their completions but also the unsaved completions by other annotators. This issue has been resolved in version 6.5.0. Now, annotators can only view their completions and the submitted completions from reviewers, specifically if a reviewer has cloned and submitted one of their completions.
+- **Dropdown for ER models/Look-up codes and Assertion are available for visual project types**
+	 The drop downs for ER models, Lookup Codes, and the option to enable/disable assertion will not be available for Visual Projects.
  
 </div><div class="prev_ver h3-box" markdown="1">
 
@@ -228,8 +158,9 @@ In the previous versions, when the "Allow Annotators to View Completions from Re
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li> 

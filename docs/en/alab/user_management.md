@@ -62,7 +62,7 @@ A user with the admin privilege can change the login credentials for another use
 
 ## SAML Integration
 
- supports Security Assertion Markup Language (SAML). To login to Generative AI Lab using SAML, follow the steps below.
+Generative AI Lab supports Security Assertion Markup Language (SAML). To log in using SAML, follow the steps below.
 
 ### SAML Server Setup
 
@@ -78,30 +78,32 @@ docker run --rm --name mysamlserver -p 8081:8080 -p 8443:8443 -e SIMPLESAMLPHP_S
 
 Follow the steps described below to setup a SAML connection.
 
-1. Goto Generative AI Lab Keyclock console and navigate to `Identity Providers` under `Configure` on the left-side menu.
+1. Access the Generative AI Lab Keycloak console by navigating to {ip}/auth or {domain}/auth, and log in with the admin user credentials.
 
-2. Choose `SAML v2.0` from Add Provider drop-down menu and a configuration page should appear.
+2. Navigate to `Identity Providers` under `Configure` on the left-side menu.
+
+3. Choose `SAML v2.0` from Add Provider drop-down menu and a configuration page should appear.
 
    ![Screen Shot 2022-02-16 at 11 52 23 AM](https://user-images.githubusercontent.com/17021686/154219230-726c3787-ce1e-4902-a90e-0228859a71b6.png)
 
-3. Provide values for `Alias`(e.g: saml) and `Display Name`(e.g: SAML). The value for `Display Name` will be seen in the login page.
+4. Provide values for `Alias`(e.g: saml) and `Display Name`(e.g: SAML). The value for `Display Name` will be seen in the login page.
 
-4. Now, set the value of the following attributes as shown below:
+5. Now, set the value of the following attributes as shown below:
 
    - Enabled: On
    - Store Tokens: On
    - First Login Flow : first broker login
    - Sync Mode: force
 
-5. Under SAML Config specify values for the following parameters as provided by SAML sever:
+6. Under SAML Config specify values for the following parameters as provided by SAML sever:
 
    - Service Provider Entity ID
    - Single Sign-On Service URL
    - Single Logout Service URL
 
-6. Choose a `Principal Type`(e.g: Attribute[Name]) and add value to `Principal Attribute`(e.g. email) according to the data provided by SAML server
+7. Choose a `Principal Type`(e.g: Attribute[Name]) and add value to `Principal Attribute`(e.g. email) according to the data provided by SAML server
 
-7. Click on the `Save` button to save the changes.
+8. Click on the `Save` button to save the changes.
 
 <br />
 

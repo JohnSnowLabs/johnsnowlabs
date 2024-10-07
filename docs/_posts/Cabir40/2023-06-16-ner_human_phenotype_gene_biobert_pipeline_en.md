@@ -20,8 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_human_phenotype_gene_biobert](https://nlp.johnsnowlabs.com/2021/04/01/ner_human_phenotype_gene_biobert_en.html) model.
 
+
 ## Predicted Entities
 
+`GENE`, `HP`.
 
 
 {:.btn-box}

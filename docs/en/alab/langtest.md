@@ -282,6 +282,27 @@ Furthermore, users can delete test results from the **"Test Results History"** b
  
 </div><div class="h3-box" markdown="1">
 
+
+## Visualizing Test Reports
+
+Generative AI Lab 6.6 brings enhanced visualization support for test reports, offering users an intuitive way to assess test results at both high-level and granular views. By toggling the "**Show Graph**" option on, users can visualize test outcomes through a weighted bar chart displaying the pass and fail percentages. This graphical representation simplifies the interpretation of the test report, providing a quick overview of overall test performance. Other parameters such as Test Categories, Test Types, Passing Rate, and Failure Rate are available next to the graph. If you want to hide the charts, **Show Graph** option can be toggled off.
+
+![660image](/assets/images/annotation_lab/6.6.0/3.gif)
+
+Once enabled, the graph visualizes data for all test categories and associated test types in the report. The chart's pass and fail percentages and counts are computed based on the number of test types that passed or failed within each test category. Hovering over any segment of the chart allows users to see detailed statistics, including the pass and fail counts and their corresponding percentages.
+
+![660image](/assets/images/annotation_lab/6.6.0/4.gif)
+
+Clicking on a chart bar or a specific test category navigates users to a more detailed view of that category and its test types. This drill-down capability allows users to move from a high-level summary to an in-depth examination of each test category, offering a more comprehensive understanding of where issues lie or where tests are performing well.
+
+![660image](/assets/images/annotation_lab/6.6.0/5.gif)
+
+The users can apply the filters on the graph based on the test category and the test types.
+
+![660image](/assets/images/annotation_lab/6.6.0/6.gif)
+
+This visualization tool streamlines the process of analyzing test results, providing both high-level summaries and detailed breakdowns to assist in better decision-making and problem identification.
+
 ## Data Augmentation for more Robust Model Training
 Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
 
@@ -317,5 +338,36 @@ After the augmented tasks are generated, the user can import the tasks. The augm
 ![genAI650](/assets/images/annotation_lab/6.5.0/5.gif)
 
 Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
+
+## Test Classification models
+Version 6.6 brings support for evaluating and testing classification models, a feature previously available only for Named Entity Recognition (NER) models, enabling users to assess the accuracy and performance of both pre-trained and custom classification models across various test types. 
+
+While the test types from NER model testing—such as Bias, Robustness, Fairness, Representation, and Accuracy—are still supported for classification models, a notable new addition is the "Grammar" test. This test evaluates how well classification models handle grammatically complex or varied sentences, ensuring that the model maintains high accuracy even with challenging grammatical structures. Users need to select the model type as classification from the **Model Type** dropdown while creating the test suite. 
+
+![660image](/assets/images/annotation_lab/6.6.0/1.png)
+
+### Test Setup and Configuration for Classification Models
+
+To set up and configure tests for classification models in version 6.6, follow these steps:
+
+1. **Navigate to the Test Page**: Open the test page within the specific project where the model is used.
+
+2. **Select the Appropriate Test Suite**: From the drop-down menu, choose the test suite for classification models. Test suites are clearly labeled with the model type in brackets, making it easy to identify the correct one.
+
+3. **Choose the Model and Target Choices**: Select the classification model and the appropriate classification choices to test.
+
+4. **Configure Additional Testing Parameters** (optional):
+   - Set the **"Filter Completions By"** option if we need to narrow down specific completions for testing.
+   - Apply the **"Filter Tasks by Tags for Testing"** to run the tests on tasks with specific tags.
+
+5. **Save the Configuration**: Once the settings are complete, save the configuration.
+
+6. **Generate Test Cases**: After configuring the test, we can generate test cases based on the saved settings.
+
+7. **Run the Test**: Execute the tests and evaluate the classification model.
+
+![660image](/assets/images/annotation_lab/6.6.0/2.gif)
+
+While the core workflow of the application and feature remains the same, users now have the ability to test classification models, allowing them to pinpoint potential issues and improve model performance without the need to develop custom testing solutions.
 
 </div>
