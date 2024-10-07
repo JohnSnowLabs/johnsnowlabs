@@ -18,8 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous LOINC resolver models.
-It also provides the official resolution of the codes within the brackets.
+This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous LOINC resolver models. It also provides the official resolution of the codes within the brackets.
+
+## Predicted Entities
+
+`loinc_code`,
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -33,8 +36,8 @@ It also provides the official resolution of the codes within the brackets.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
-
 document_assembler = DocumentAssembler()\
 	.setInputCol("text")\
 	.setOutputCol("document")
@@ -87,10 +90,8 @@ nlpPipeline = Pipeline(stages=[document_assembler,
 data = spark.createDataFrame([["""The patient is a 22-year-old female with a history of obesity. She has a Body mass index (BMI) of 33.5 kg/m2, aspartate aminotransferase 64, and alanine aminotransferase 126."""]]).toDF("text")
 
 result = nlpPipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -144,14 +145,12 @@ val nlpPipeline = new Pipeline().setStages(Array(
 val data = Seq([["""The patient is a 22-year-old female with a history of obesity. She has a Body mass index (BMI) of 33.5 kg/m2, aspartate aminotransferase 64, and alanine aminotransferase 126."""]]).toDF("text")
 
 val result = nlpPipeline.fit(data).transform(data)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
 +--------------------------+-----+---+---------+----------+-------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
 |                     chunk|begin|end|ner_label|loinc_code|                                            description|                                                 resolutions|                                                   all_codes|                                                  aux_labels|
 +--------------------------+-----+---+---------+----------+-------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
@@ -159,7 +158,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |aspartate aminotransferase|  110|135|     Test| LP15426-7|Aspartate aminotransferase [Aspartate aminotransferase]|Aspartate aminotransferase [Aspartate aminotransferase]::...|LP15426-7:::100739-2:::LP307348-5:::LP15333-5:::LP307326-...|Observation:::Observation:::Observation:::Observation:::O...|
 |  alanine aminotransferase|  145|168|     Test| LP15333-5|    Alanine aminotransferase [Alanine aminotransferase]|Alanine aminotransferase [Alanine aminotransferase]:::Ala...|LP15333-5:::LP307326-1:::100738-4:::LP307348-5:::LP15426-...|Observation:::Observation:::Observation:::Observation:::O...|
 +--------------------------+-----+---+---------+----------+-------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-
 ```
 
 {:.model-param}
@@ -176,3 +174,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|1.1 GB|
 |Case sensitive:|false|
+
+## References
+This model is trained with augmented version of the LOINC v2.78 dataset released in 2024-08-06.
