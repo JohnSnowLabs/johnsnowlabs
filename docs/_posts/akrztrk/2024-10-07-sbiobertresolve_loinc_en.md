@@ -33,6 +33,7 @@ It also provides the official resolution of the codes within the brackets.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -186,3 +187,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|666.8 MB|
 |Case sensitive:|false|
+
+## References
+This model is trained with LOINC v2.78 dataset released in 2024-08-06.
