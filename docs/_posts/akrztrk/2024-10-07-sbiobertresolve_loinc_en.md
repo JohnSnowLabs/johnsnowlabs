@@ -23,7 +23,7 @@ It also provides the official resolution of the codes within the brackets.
 
 ## Predicted Entities
 
-`loinc_code`,
+`loinc_code`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
