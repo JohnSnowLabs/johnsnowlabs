@@ -18,8 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC "Document Ontology" codes starting with the letter "L". 
-It also provides the official resolution of the codes within the brackets.
+This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC "Document Ontology" codes starting with the letter "L". It also provides the official resolution of the codes within the brackets.
+
+## Predicted Entities
+
+`loinc_code`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -33,6 +36,7 @@ It also provides the official resolution of the codes within the brackets.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -57,7 +61,8 @@ ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")
 
 ner_converter = NerConverterInternal() \
  	  .setInputCols(["sentence", "token", "ner"]) \
-	  .setOutputCol("ner_chunk")	  .setWhiteList(["Test"])
+	  .setOutputCol("ner_chunk")\
+	  .setWhiteList(["Test"])
 
 chunk2doc = Chunk2Doc()\
   	.setInputCols("ner_chunk")\
@@ -176,3 +181,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|667.3 MB|
 |Case sensitive:|false|
+
+## References
+This model is trained with augmented version of the LOINC v2.78 dataset released in 2024-08-06.
