@@ -22,7 +22,7 @@ This model maps extracted clinical NER entities to Logical Observation Identifie
 
 ## Predicted Entities
 
-`loinc_code`,
+`loinc_code`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
