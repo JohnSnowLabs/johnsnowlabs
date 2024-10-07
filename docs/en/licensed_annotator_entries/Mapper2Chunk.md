@@ -144,11 +144,11 @@ val res = mapperPipeline.fit(test_data).transform(test_data)
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[Mapper2Chunk]()
+[Mapper2Chunk](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/Mapper2Chunk.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[Mapper2Chunk]()
+[Mapper2Chunk](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/mapper2_chunk/index.html#)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
