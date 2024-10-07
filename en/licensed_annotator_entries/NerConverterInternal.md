@@ -11,7 +11,7 @@ Converts a IOB or IOB2 representation of NER to a user-friendly one,
 by associating the tokens of recognized entities and their label.
 Chunks with no associated entity (tagged "O") are filtered out.
 
-Parametres;
+Parameters;
 
 - `setThreshold`: Confidence threshold.
 
@@ -28,6 +28,8 @@ Parametres;
 - `setIgnoreStopWords`: If defined, list of stop words to ignore.
 
 - `setGreedyMode`: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same .
+
+- `resetSentenceIndices`: Whether to reset sentence indices to treat the entire output as if it originates from a single document. Default: False.
 
 This licensed annotator adds extra functionality to the open-source version by adding the following parameters: `blackList`, `greedyMode`,  `threshold`, and `ignoreStopWords` that are not available in the [NerConverter](https://nlp.johnsnowlabs.com/docs/en/annotators#nerconverter) annotator.
 

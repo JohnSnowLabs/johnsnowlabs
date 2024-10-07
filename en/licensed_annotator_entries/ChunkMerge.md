@@ -29,6 +29,7 @@ Parameters:
 - `defaultConfidence`: (Float) Sets when ChunkConfidence ordering feature is included and a given annotation does not have any confidence. The value of this param will be used as a confidence score for annotations without a confidence score.
 - `chunkPrecedence`: (String List) Sets what is the precedence order when a chunk labeled by two models.
 - `chunkPrecedenceValuePrioritization`: (String List) Sets when ChunkPrecedence ordering feature is used. This param contains an Array of comma-separated values representing the desired order of prioritization for the values in the metadata fields included from chunkPrecedence.
+- `resetSentenceIndices`: Whether to reset sentence indices to treat the entire output as if it originates from a single document. Default: False.
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 {%- endcapture -%}

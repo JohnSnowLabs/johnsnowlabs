@@ -10,14 +10,15 @@ model
 The `Flattener` converts annotation results into a format that easier to use. This annotator produces a DataFrame with flattened and exploded columns containing annotation results, making it easier to interpret and analyze the information.
 It is particularly useful for extracting and organizing the results obtained from Spark NLP Pipelines.
 
-Parametres:
+Parameters:
 
 - `inputCols`: Input annotations.
 - `cleanAnnotations`: Whether to remove annotation columns, by default `True`.
 - `explodeSelectedFields`: Dict of input columns to their corresponding selected fields.
 - `flattenExplodedColumns`: Whether to flatten exploded columns(default : `True`).
 - `orderByColumn`: Specify the column by which the DataFrame should be ordered..
-- `orderDescending`: specifying whether to order the DataFrame in descending order.(default : `True`).
+- `orderDescending`: Specifying whether to order the DataFrame in descending order.(default : `True`).
+- `keepOriginalColumns` : Array of column names that should be kept in the DataFrame after the flattening process.
 
 
 See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb) for more examples of usage.
