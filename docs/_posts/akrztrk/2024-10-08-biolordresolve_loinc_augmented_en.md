@@ -73,7 +73,7 @@ biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c"
          .setOutputCol("embeddings")\
          .setCaseSensitive(False)
 
-loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented")\
+loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented","en", "clinical/models")\
 	  .setInputCols(["embeddings"]) \
 	  .setOutputCol("loinc_code")\
 	  .setDistanceFunction("EUCLIDEAN")
@@ -129,7 +129,7 @@ val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_202
           .setOutputCol("embeddings")
           .setCaseSensitive(False)
 
-val loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented")
+val loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented","en", "clinical/models")
 	  .setInputCols(["embeddings"])
 	  .setOutputCol("loinc_code")
 	  .setDistanceFunction("EUCLIDEAN")
