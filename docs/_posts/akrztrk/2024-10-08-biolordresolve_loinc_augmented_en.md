@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 This model maps medical entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `mpnet_embeddings_biolord_2023_c` embeddings.
 It trained on the augmented version of the dataset which is used in previous LOINC resolver models. It also provides the official resolution of the codes within the brackets.
 
+## Predicted Entities
+
+`loinc_code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,8 +37,8 @@ It trained on the augmented version of the dataset which is used in previous LOI
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
-
 document_assembler = DocumentAssembler()\
 	  .setInputCol("text")\
 	  .setOutputCol("document")
@@ -65,9 +69,9 @@ c2doc = Chunk2Doc()\
 	  .setOutputCol("ner_chunk_doc")
 
 biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")\
-    .setInputCols(["ner_chunk_doc"])\
-    .setOutputCol("embeddings")\
-    .setCaseSensitive(False)
+         .setInputCols(["ner_chunk_doc"])\
+         .setOutputCol("embeddings")\
+         .setCaseSensitive(False)
 
 loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented")\
 	  .setInputCols(["embeddings"]) \
@@ -89,10 +93,8 @@ resolver_pipeline = Pipeline(
 data = spark.createDataFrame([["""The patient is a 22-year-old female with a history of obesity. She has a Body mass index (BMI) of 33.5 kg/m2, aspartate aminotransferase 64, and alanine aminotransferase 126."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val document_assembler =  new DocumentAssembler()
 	  .setInputCol("text")
 	  .setOutputCol("document")
@@ -113,13 +115,24 @@ val ner = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")
 	  .setInputCols(Array("sentence", "token", "word_embeddings"))
 	  .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()	  .setInputCols(Array("sentence", "token", "ner"))	  .setOutputCol("ner_chunk")	  .setWhiteList(["Test"])
+val ner_converter = new NerConverterInternal()
+	  .setInputCols(Array("sentence", "token", "ner"))
+	  .setOutputCol("ner_chunk")
+	  .setWhiteList(["Test"])
 
-val c2doc = new Chunk2Doc()	  .setInputCols("ner_chunk")	  .setOutputCol("ner_chunk_doc")
+val c2doc = new Chunk2Doc()
+	  .setInputCols("ner_chunk")
+	  .setOutputCol("ner_chunk_doc")
 
-val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("embeddings")    .setCaseSensitive(False)
+val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")
+          .setInputCols(["ner_chunk_doc"])
+          .setOutputCol("embeddings")
+          .setCaseSensitive(False)
 
-val loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented")	  .setInputCols(["embeddings"]) 	  .setOutputCol("loinc_code")	  .setDistanceFunction("EUCLIDEAN")
+val loinc_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_loinc_augmented")
+	  .setInputCols(["embeddings"])
+	  .setOutputCol("loinc_code")
+	  .setDistanceFunction("EUCLIDEAN")
 
 val resolver_pipeline = new Pipeline(
     stages = [
@@ -137,14 +150,12 @@ val resolver_pipeline = new Pipeline(
 val data = Seq([["""The patient is a 22-year-old female with a history of obesity. She has a Body mass index (BMI) of 33.5 kg/m2, aspartate aminotransferase 64, and alanine aminotransferase 126."""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
 +--------------------------+-----+---+---------+----------+-------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
 |                     chunk|begin|end|ner_label|loinc_code|                                            description|                                                 resolutions|                                                   all_codes|                                                  aux_labels|
 +--------------------------+-----+---+---------+----------+-------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
@@ -152,7 +163,6 @@ val result = resolver_pipeline.fit(data).transform(data)
 |aspartate aminotransferase|  110|135|     Test| LP15426-7|Aspartate aminotransferase [Aspartate aminotransferase]|Aspartate aminotransferase [Aspartate aminotransferase]::...|LP15426-7:::100739-2:::LP307348-5:::LP307326-1:::LP307433...|Observation:::Observation:::Observation:::Observation:::O...|
 |  alanine aminotransferase|  145|168|     Test| LP15333-5|    Alanine aminotransferase [Alanine aminotransferase]|Alanine aminotransferase [Alanine aminotransferase]:::L-a...|LP15333-5:::59245-1:::100738-4:::LP307326-1:::69383-8:::L...|Observation:::Observation:::Observation:::Observation:::O...|
 +--------------------------+-----+---+---------+----------+-------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-
 ```
 
 {:.model-param}
