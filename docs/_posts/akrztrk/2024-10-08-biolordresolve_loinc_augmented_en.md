@@ -179,3 +179,6 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|1.1 GB|
 |Case sensitive:|false|
+
+## References
+This model is trained with augmented version of the LOINC v2.78 dataset released in 2024-08-06.
