@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline extracts `TEST` entities and maps them to their correspondings Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` sentence embeddings. It was prepared with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. It also provides the official resolution of the codes within the brackets.
 
+## Predicted Entities
+
+`TEST`, `Test_Result`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This pipeline extracts `TEST` entities and maps them to their correspondings Log
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
