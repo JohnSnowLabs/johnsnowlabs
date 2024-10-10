@@ -98,6 +98,8 @@ try:
             LargeFewShotClassifierModel,
             Mapper2Chunk,
             DocumentFiltererByNER,
+            REChunkMerger,
+            ContextualEntityFilterer,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.text_to_documents_columns import TextToDocumentsColumns
@@ -130,6 +132,7 @@ try:
             TextMatcherInternalModel as TextMatcherModel,
             RegexMatcherInternal as RegexMatcher,
             RegexMatcherInternalModel as RegexMatcherModel,
+            MedicalLLM as AutoGGUFModel,
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
