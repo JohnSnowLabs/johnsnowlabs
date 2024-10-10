@@ -389,7 +389,7 @@ document.write(`
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter">
-<span class="sig-name descname"><span class="pre">dict_to_annotation_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'document'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chunk'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dict_to_annotation_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'document'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chunk'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_validation_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="Permalink to this definition">#</a></dt>
 <dd><p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p>
 <p>The input data should be a list of dictionaries.
 Each dictionary should have a “text” key and a “chunks” key.
@@ -403,25 +403,71 @@ and the “metadata” key should contain the metadata of the chunk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>(</strong><strong>SparkSession</strong><strong>)</strong> (<em>spark</em>) – </p></li>
-<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>data</em>) – </p></li>
-<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>chunk_col_name</em>) – </p></li>
-<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
-<li><p><strong>(</strong><strong>bool</strong><strong>)</strong> (<em>adjust_end</em>) – </p></li>
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – The Spark session object.</p></li>
+<li><p><strong>data</strong> (<em>list</em>) – A list of dictionaries.</p></li>
+<li><p><strong>document_col_name</strong> (<em>str</em>) – The name of the document column. Default: “document”.</p></li>
+<li><p><strong>chunk_col_name</strong> (<em>str</em>) – The name of the chunk column. Default: “chunk”.</p></li>
+<li><p><strong>adjust_end</strong> (<em>bool</em>) – If True, the end values of the chunks will minus 1. Default: False.</p></li>
+<li><p><strong>chunk_validation_options</strong> (<em>dict</em>) – <p>A dictionary specifying options for chunk validation. Default is None. None means no validation.
+Possible keys include:
+- “validation_mode” (str): Determines what happens if a chunk cannot be validated:</p>
+<blockquote>
+<div><ul>
+<li><p>”filter” (default): Invalid chunks are removed from the chunks.</p></li>
+<li><p>”error”: A ValueError is raised if any chunk cannot be validated.</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl class="simple">
+<dt>”scope_window” (list of int): A list of two integers [before, after] that define the number of characters</dt><dd><p>before and after the chunk’s begin and end index to include in the search window. Default is [0, 0].</p>
+</dd>
+</dl>
+</li>
+<li><p>”case_sensitive” (bool): If False, chunk matching is case-insensitive. Default is True.</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>The provided begin, end, and result values are not validated for accuracy. It is the user’s responsibility to ensure these values are correct.</p></li>
-<li><p>Spark NLP annotators calculate the end index of the annotations by minus 1 from the actual end index. If the end index is not minus 1, the annotators will not be able to calculate the correct end index. Therefore, the end index of the chunks should be minus 1. If the end index is not minus 1 in chunks, the adjust_end parameter should be set to True.</p></li>
-<li><p>document_col_name and chunk_col_name should not be the same as the column names in the input data.</p></li>
-<li><p>The name of ‘document_metadata’ is reserved for the metadata column of the document. ‘document_metadata’ values should be a dictionary. All dictionaries must have a ‘document_metadata’ key if the ‘document_metadata’ is provided in one of the dictionaries.</p></li>
-<li><p>‘text’ and ‘chunks’ keys are reserved for the text and chunks of the document. ‘text’ values should be a string and ‘chunks’ values should be a list of dictionaries.</p></li>
-<li><p>‘begin’, ‘end’, ‘result’, ‘entity’ and ‘metadata’ keys are reserved for the chunk annotations. ‘begin’ and ‘end’ values should be integers, ‘result’ values should be a string, ‘entity’ values should be a string and ‘metadata’ values should be a dictionary.</p></li>
 </ul>
-<section id="example">
-<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<p>The validation can be done by setting the chunk_validation_options parameter.</p>
+<ul class="simple">
+<li><p>Spark NLP annotators calculate the end index of the annotations by minus 1 from the actual end index.</p></li>
+</ul>
+<p>If the end index is not minus 1, the annotators will not be able to calculate the correct end index.
+Therefore, the end index of the chunks should be minus 1.
+If the end index is not minus 1 in chunks, the adjust_end parameter should be set to True.</p>
+<ul class="simple">
+<li><p>document_col_name and chunk_col_name should not be the same as the column names in the input data.</p></li>
+<li><p>The name of ‘document_metadata’ is reserved for the metadata column of the document.</p></li>
+</ul>
+<p>‘document_metadata’ values should be a dictionary.
+All dictionaries must have a ‘document_metadata’ key if the ‘document_metadata’ is provided in one of the dictionaries.</p>
+<ul class="simple">
+<li><p>‘text’ and ‘chunks’ keys are reserved for the text and chunks of the document.</p></li>
+</ul>
+<p>‘text’ values should be a string and ‘chunks’ values should be a list of dictionaries.</p>
+<ul class="simple">
+<li><p>‘begin’, ‘end’, ‘result’, ‘entity’ and ‘metadata’ keys are reserved for the chunk annotations.</p></li>
+</ul>
+<p>‘begin’ and ‘end’ values should be integers, ‘result’ values should be a string, ‘entity’ values should be a string and ‘metadata’ values should be a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>Spark DataFrame</strong> (<em>A Spark DataFrame with the converted columns which are compatible with Spark NLP and is ready to deidentify.</em>)</p></li>
+<li><p><em>The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</em></p></li>
+<li><p><em>Additionally, the returned DataFrame will contain all the columns from the input data except the “chunks” column.</em></p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the validation_mode is set to “error” or the given parameters and options are not valid.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_of_dict</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>       <span class="p">{</span>
 <span class="gp">... </span>           <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs.&quot;</span><span class="p">,</span>
@@ -506,13 +552,6 @@ and the “metadata” key should contain the metadata of the chunk.</p>
 </tbody>
 </table>
 </div></blockquote>
-</section>
-<section id="returns">
-<h4>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h4>
-<p>Spark DataFrame: A Spark DataFrame with the converted columns which are compatible with Spark NLP and is ready to deidentify.
-The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.
-Additionally, the returned DataFrame will contain all the columns from the input data except the “chunks” column.</p>
-</section>
 </dd></dl>
 
 <dl class="py function">
