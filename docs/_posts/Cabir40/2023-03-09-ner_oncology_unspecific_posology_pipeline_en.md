@@ -26,6 +26,11 @@ This pretrained pipeline is built on the top of [ner_oncology_unspecific_posolog
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_oncology_unspecific_posology_pipeline_en_4.3.0_3.2_1678347063020.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_oncology_unspecific_posology_pipeline_en_4.3.0_3.2_1678347063020.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+## Predicted Entities
+
+`Posology_Information`, `Cancer_Therapy`
+
+
 ## How to use
 
 

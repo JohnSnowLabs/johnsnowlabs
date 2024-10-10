@@ -22,6 +22,7 @@ This pretrained pipeline is built on the top of [ner_oncology_unspecific_posolog
 
 ## Predicted Entities
 
+`Posology_Information`, `Cancer_Therapy`
 
 
 {:.btn-box}

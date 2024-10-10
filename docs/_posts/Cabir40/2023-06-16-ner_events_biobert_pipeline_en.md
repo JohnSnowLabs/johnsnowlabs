@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_events_biobert](https://nlp
 
 ## Predicted Entities
 
+`SPECIES`, `HUMAN`
+
 
 
 {:.btn-box}
