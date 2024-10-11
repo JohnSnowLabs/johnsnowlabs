@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_clinical_biobert](https://n
 
 ## Predicted Entities
 
+`TREATMENT`, `PROBLEM`, `TEST`
+
 
 
 {:.btn-box}
