@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_chemprot_biobert](https://n
 
 ## Predicted Entities
 
+`GENE-N`, `CHEMICAL`, `GENE-Y`
+
 
 
 {:.btn-box}
