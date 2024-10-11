@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_bionlp_biobert](https://nlp.johnsnowlabs.com/2021/04/01/ner_bionlp_biobert_en.html) model.
 
+## Predicted Entities
+
+`Gene_or_gene_product`, `Cancer`, `Cell`, `Cellular_component`, `Organism`, `Multi-tissue_structure`, `Developing_anatomical_structure`, `Amino_acid`, `Organ`, `Anatomical_system`, `Tissue`, `Organism_subdivision`, `Simple_chemical`, `Organism_substance`, `Immaterial_anatomical_entity`, `Pathological_formation`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
