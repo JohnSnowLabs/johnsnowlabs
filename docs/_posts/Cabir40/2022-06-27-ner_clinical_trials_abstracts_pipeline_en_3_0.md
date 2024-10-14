@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_clinical_trials_abstracts](https://nlp.johnsnowlabs.com/2022/06/22/ner_clinical_trials_abstracts_en_3_0.html) model.
 
+## Predicted Entities
+
+`TimePoint`, `PublicationYear`, `Drug`, `BioAndMedicalUnit`, `DisorderOrSyndrome`, `Author`, `Journal`, `AllocationRatio`, `Duration`, `PValue`, `PMID`, `Country`, `DrugTime`, `DoseValue`, `CTDesign`, `Age`, `NumberPatients`, `CTAnalysisApproach`, `Value`, `Confidence`, `PercentagePatients`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
