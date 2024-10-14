@@ -79,6 +79,7 @@ It can also return the [ner_cancer_types_wip](https://nlp.johnsnowlabs.com/2024/
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
