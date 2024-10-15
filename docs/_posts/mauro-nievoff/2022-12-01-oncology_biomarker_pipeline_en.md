@@ -20,6 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline includes Named-Entity Recognition, Assertion Status and Relation Extraction models to extract information from oncology texts. This pipeline focuses on entities related to biomarkers.
 
+## Predicted Entities
+`Biomarker_Result`, `Oncogene`, `Biomarker`, `Imaging_Test`, `Pathology_Test`, `PerformanceStatus`, `Drug`, `Test`, `Tumor_Finding`, `TargetedTherapy`, `Biomarker_Measurement`, `Duration`, `Chemotherapy`, `Oncogenes`, `Radiotherapy`, `Date`, `CancerModifier`, `Predictive_Biomarkers`, `HormonalTherapy`, `Staging`, `Age`, `Prognostic_Biomarkers`, `CancerSurgery`, `Immunotherapy`, `Metastasis`, `ResponseToTreatment`, `Radiological_Test`, `CancerDx`, `Radiological_Test_Result`, `UnspecificTherapy`, `Gender`, `Test_Result`, `Ethnicity`, `Dosage`
+
 {:.btn-box}
 
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/){:.button.button-orange}
