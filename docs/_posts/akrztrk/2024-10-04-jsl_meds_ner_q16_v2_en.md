@@ -1,6 +1,6 @@
 ---
 layout: model
-title: JJSL_MedS_NER_v2 (LLM - q16)
+title: JSL_MedS_NER_v2 (LLM - q16)
 author: John Snow Labs
 name: jsl_meds_ner_q16_v2
 date: 2024-10-04
