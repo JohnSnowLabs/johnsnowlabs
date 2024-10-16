@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This pretrained pipeline is built on the top of [ner_healthcare_slim](https://nlp.johnsnowlabs.com/2021/04/01/ner_healthcare_slim_de.html) model.
 
 ## Predicted Entities
+`TREATMENT`, `TIME_INFORMATION`, `PERSON`, `MEDICAL_CONDITION`, `BODY_PART`
 
 
 
