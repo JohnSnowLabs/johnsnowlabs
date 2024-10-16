@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Detect PHI in Text | ner_deid_sd_pipeline | Healthcare NLP 3.4.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_sd model.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_sd_pipeline", "en", "clinical/models")pipeline.annotate("""A. Record date : 20...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_sd model.Predicted EntitiesLOCATION, CONTACT, PROFESSION, NAME, DATE, ID, AGELive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_sd_pipelin...">
 <!-- <link rel="canonical" href="/2022/03/21/ner_deid_sd_pipeline_en_3_0.html"> -->
 <link rel="canonical" href="/2022/03/21/ner_deid_sd_pipeline_en_3_0.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -509,6 +509,9 @@ function wrapWordInSpan(data, wordToWrap) {
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
 <p>This pretrained pipeline is built on the top of <a href="https://nlp.johnsnowlabs.com/2021/04/01/ner_deid_sd_en.html">ner_deid_sd</a> model.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+<p><code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code></p>
 
 <p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/" class="button button-orange">Live Demo</a>
 <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
