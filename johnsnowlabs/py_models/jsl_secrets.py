@@ -62,17 +62,17 @@ class JslSecrets(WritableBaseModel):
     methods for reading/storing found_secrets and managing .jslhome folder
     """
 
-    HC_SECRET: Secret = None
-    HC_LICENSE: Secret = None
+    HC_SECRET: Optional[str] = None
+    HC_LICENSE: Optional[str] = None
     HC_VERSION: Optional[LibVersionIdentifier] = None
-    OCR_SECRET: Secret = None
-    OCR_LICENSE: Secret = None
+    OCR_SECRET: Optional[str] = None
+    OCR_LICENSE: Optional[str] = None
     OCR_VERSION: Optional[LibVersionIdentifier] = None
-    AWS_ACCESS_KEY_ID: Secret = None
-    AWS_SECRET_ACCESS_KEY: Secret = None
+    AWS_ACCESS_KEY_ID: Optional[str] = None
+    AWS_SECRET_ACCESS_KEY: Optional[str] = None
     NLP_VERSION: Optional[LibVersionIdentifier] = None
-    JSL_LEGAL_LICENSE: Secret = None
-    JSL_FINANCE_LICENSE: Secret = None
+    JSL_LEGAL_LICENSE: Optional[str] = None
+    JSL_FINANCE_LICENSE: Optional[str] = None
 
     @staticmethod
     def raise_invalid_version():
@@ -123,6 +123,8 @@ class JslSecrets(WritableBaseModel):
                 and not ocr_validation_logged
             ):
                 ocr_validation_logged = True
+                if not OCR_SECRET:
+                    return OCR_SECRET
                 print(
                     f"🚨 Outdated OCR Secrets in license file. Version={(OCR_SECRET.split('-')[0] if OCR_SECRET else None)} but should be Version={settings.raw_version_ocr}"
                 )
@@ -631,6 +633,13 @@ class JslSecrets(WritableBaseModel):
             secrets["JSL_FINANCE_LICENSE"] if "JSL_FINANCE_LICENSE" in secrets else None
         )
 
+        if isinstance(hc_version,str):
+            hc_version = LibVersionIdentifier(hc_version)
+        if isinstance(ocr_version,str):
+            ocr_version = LibVersionIdentifier(ocr_version)
+        if isinstance(nlp_version,str):
+            nlp_version = LibVersionIdentifier(nlp_version)
+
         return JslSecrets(
             HC_SECRET=hc_secret,
             HC_LICENSE=hc_license,
@@ -659,8 +668,9 @@ class JslSecrets(WritableBaseModel):
             return False
 
         try:
+
             # Try/Catch incase we get validation errors from outdated files
-            license_infos = LicenseInfos.parse_file(settings.creds_info_file)
+            license_infos = LicenseInfos.from_home()
             if log and not already_logged:
                 already_logged = True
                 print(
@@ -692,7 +702,7 @@ class JslSecrets(WritableBaseModel):
         for license in os.listdir(settings.license_dir):
             if license == "info.json":
                 continue
-            secrets = JslSecrets.parse_file(os.path.join(settings.license_dir, license))
+            secrets = JslSecrets.from_json_file_path(os.path.join(settings.license_dir, license))
             if (
                 secrets.HC_SECRET
                 and hc_secrets
@@ -768,7 +778,7 @@ class JslSecrets(WritableBaseModel):
         # Return True, if secrets are already stored in JSL-Home, otherwise False
         Path(settings.py_dir).mkdir(parents=True, exist_ok=True)
         if os.path.exists(settings.creds_info_file):
-            license_infos = LicenseInfos.parse_file(settings.creds_info_file)
+            license_infos = LicenseInfos.from_home()
         else:
             # If license dir did not exist yet, secrets are certainly new
             return False
@@ -786,13 +796,13 @@ class JslSecrets(WritableBaseModel):
         # Return True, if lib are newer than existing ones, if yes upgrade locally stored secrets
         Path(settings.py_dir).mkdir(parents=True, exist_ok=True)
         if os.path.exists(settings.creds_info_file):
-            license_infos = LicenseInfos.parse_file(settings.creds_info_file)
+            license_infos = LicenseInfos.from_home()
         else:
             # If license dir did not exist yet, secrets are certainly new
             return False
 
         # if any stored secrets equal to found_secrets, then we already know them
-        # check OCR secrets
+
         if found_secrets.HC_SECRET:
             if any(
                 map(
@@ -837,7 +847,7 @@ class JslSecrets(WritableBaseModel):
         file_name = file_name + "_".join(products) + f".json"
 
         if os.path.exists(settings.creds_info_file):
-            license_infos = LicenseInfos.parse_file(settings.creds_info_file)
+            license_infos =  LicenseInfos.from_home()
             file_name = file_name.format(number=str(len(license_infos.infos)))
             license_info = LicenseInfo(
                 jsl_secrets=secrets, products=products, id=str(len(license_infos.infos))
@@ -848,13 +858,16 @@ class JslSecrets(WritableBaseModel):
             secrets.write(out_dir)
             print(f"📋 Stored new John Snow Labs License in {out_dir}")
         else:
-            file_name = file_name.format(number="0")
             license_info = LicenseInfo(jsl_secrets=secrets, products=products, id="0")
-            LicenseInfos(infos={file_name: license_info}).write(
-                settings.creds_info_file
-            )
+            license_infos = LicenseInfos(infos={file_name: license_info})
+            with open(settings.creds_info_file, "w") as f:
+                f.write(license_infos.model_dump_json())
+
+            file_name = file_name.format(number="0")
             out_dir = os.path.join(settings.license_dir, file_name)
-            secrets.write(out_dir)
+            with open(out_dir, "w") as f:
+                f.write(secrets.model_dump_json())
+            #secrets.write(out_dir)
             print(f"📋 Stored John Snow Labs License in {out_dir}")
             # We might load again JSL-Secrets from local
             already_logged = True
@@ -877,6 +890,7 @@ class LicenseInfo(WritableBaseModel):
     products: List[ProductName]
 
 
+
 class LicenseInfos(WritableBaseModel):
     """Representation of a LicenseInfo in ~/.johnsnowlabs/licenses/info.json
     Maps file_name to LicenseInfo
@@ -886,6 +900,15 @@ class LicenseInfos(WritableBaseModel):
 
     @staticmethod
     def from_home() -> Optional["LicenseInfos"]:
-        if os.path.exists(settings.creds_info_file):
-            return LicenseInfos.parse_file(settings.creds_info_file)
-        return None
+        if not os.path.exists(settings.creds_info_file):
+            return None
+        data = json.load(open(settings.creds_info_file))
+        infos = {}
+        for info in data['infos']:
+            secret = JslSecrets.from_json_dict(data['infos'][info]['jsl_secrets'])
+            i = LicenseInfo(id=info, jsl_secrets=secret,
+                            products=data['infos'][info]['products'],
+                            )
+            infos[info] = i
+        license_infos = LicenseInfos(infos=infos)
+        return license_infos
