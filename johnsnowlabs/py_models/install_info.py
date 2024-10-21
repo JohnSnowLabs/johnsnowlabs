@@ -9,7 +9,7 @@ from johnsnowlabs.py_models.jsl_secrets import JslSecrets
 from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.utils.enums import JvmHardwareTarget, ProductName, PyInstallTypes
 
-
+import json
 class InstallFileInfoBase(WritableBaseModel):
     file_name: str
     product: ProductName
@@ -71,7 +71,12 @@ class RootInfo(WritableBaseModel):
 
     @staticmethod
     def get_from_jsl_home():
-        return RootInfo.parse_file(settings.root_info_file)
+        import json
+        if os.path.exists(settings.root_info_file):
+            with open(settings.root_info_file, "r") as f:
+                json_data = json.loads(f.read())
+            return RootInfo(run_from=json_data["run_from"],
+                            version=json_data["version"])
 
 
 class InstallFolder(WritableBaseModel):
@@ -93,13 +98,26 @@ class InstallFolder(WritableBaseModel):
     @staticmethod
     def java_folder_from_home():
         if os.path.exists(settings.java_info_file):
-            return InstallFolder.parse_file(settings.java_info_file)
+            with open(settings.java_info_file, "r") as f:
+                json_data = json.loads(f.read())
+            infos = {}
+            for k,v in json_data['infos'].items():
+                if k.endswith(".jar"):
+                    infos[k] = JvmInstallInfo(**v)
+            return InstallFolder(infos=infos)
         return False
 
     @staticmethod
     def py_folder_from_home():
         if os.path.exists(settings.py_info_file):
-            return InstallFolder.parse_file(settings.py_info_file)
+            with open(settings.py_info_file, "r") as f:
+                json_data = json.loads(f.read())
+            infos = {}
+            for k,v in json_data['infos'].items():
+                if k.endswith(".whl") or k.endswith(".tar.gz"):
+                    infos[k] = PyInstallInfo(**v)
+
+            return InstallFolder(infos=infos)
         return False
 
 
