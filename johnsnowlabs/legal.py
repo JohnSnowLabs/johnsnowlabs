@@ -121,6 +121,8 @@ try:
             LargeFewShotClassifierModel,
             Mapper2Chunk,
             DocumentFiltererByNER,
+            REChunkMerger,
+            ContextualEntityFilterer,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
         from sparknlp_jsl.pipeline_tracer import PipelineTracer
