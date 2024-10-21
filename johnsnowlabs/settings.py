@@ -26,7 +26,7 @@ raw_version_secret_medical = "5.5.0"
 raw_version_secret_ocr = "5.4.1"
 raw_version_ocr = "5.4.1"
 
-raw_version_pydantic = "1.10.11"
+raw_version_pydantic = "2"
 
 pypi_page = "https://pypi.org/project/johnsnowlabs"
 json_indent = 4
