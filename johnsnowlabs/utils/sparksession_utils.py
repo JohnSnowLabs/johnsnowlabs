@@ -186,8 +186,10 @@ def start(
         "spark.kryoserializer.buffer.max": "2000M",
         "spark.driver.maxResultSize": "2000M",
         "spark.jars": ",".join(jars),
-        'spark.extraListeners': 'com.johnsnowlabs.license.LicenseLifeCycleManager',
     }
+
+    if suite.hc and suite.hc.get_java_path():
+        default_conf["spark.extraListeners"] = "com.johnsnowlabs.license.LicenseLifeCycleManager"
 
     if suite.ocr and suite.ocr.get_java_path():
         # is_spark_version_env('32')
@@ -195,6 +197,7 @@ def start(
         default_conf["spark.sql.optimizer.nestedSchemaPruning.enabled"] = "false"
         default_conf["spark.sql.legacy.allowUntypedScalaUDF"] = "true"
         default_conf["spark.sql.repl.eagerEval.enabled"] = "true"
+        default_conf["spark.extraListeners"] = "com.johnsnowlabs.license.LicenseLifeCycleManager"
 
     for k, v in default_conf.items():
         builder.config(str(k), str(v))
