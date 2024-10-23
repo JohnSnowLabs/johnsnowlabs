@@ -21,7 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This model, extracts medical record entities from clinical texts.
 
 ## Predicted Entities
-
+`MEDICALRECORD`
 
 
 {:.btn-box}
@@ -36,6 +36,7 @@ This model, extracts medical record entities from clinical texts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler() \
