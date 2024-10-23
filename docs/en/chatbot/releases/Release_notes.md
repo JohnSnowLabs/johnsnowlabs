@@ -18,6 +18,75 @@ We are pleased to announce a significant upgrade to our Literature Review featur
 
 With this release, we have completely overhauled several key components of the Literature Review feature. The new design offers broader search functionalities, more granular control over data point extraction, and a smarter, more intuitive interface. These changes reflect our ongoing commitment to delivering innovative tools that meet the needs of researchers, analysts, and professionals across various fields.
 
+### Key Improvements
+
+**1. Advanced Search Capabilities with the NOT Operator**
+
+Users could create search queries using OR conditions (by separating terms with commas) and combine them with AND logic to filter results. We have now added the NOT operator, giving users the ability to exclude certain keyword results from their search. This enhancement allows for more nuanced searches by letting users define what terms should be left out, thus refining the results more precisely. Switching between the AND and NOT operators is effortless, giving users total control over how their search queries are structured. For example, if a user wants to avoid certain topics while focusing on specific ones, they can easily toggle the NOT operator to exclude irrelevant results.
+
+**2. Enhanced Visualization of Search Keywords**
+
+We have introduced a revamped user interface that visually displays search keywords and their logical relationships, helping users better understand how each keyword and operator relationship(AND/NOT) impacts their search results. This improved visualization provides clarity and ensures users can modify their search terms in real time, without confusion. Users can quickly update or adjust search keywords directly from this visual representation, seeing immediate changes in their search results. The visual enhancements allow users to see the connections between keywords and operators at a glance, streamlining the search refinement process.
+
+**3. Targeted Search by Metadata Fields**
+
+To improve the specificity and accuracy of the search for different available Studies/Articles, a new field has been added that allows users to search within specific metadata fields about the available Studies/Articles. Now, users can direct their searches to focus on the available fields:
+
+- Title of the Study
+- Text Content of the Study
+- Journal Name
+  
+This added flexibility allows for more targeted searches based on the user’s exact needs. Users can select one or more of these metadata fields when crafting their search queries, ensuring that their results align more closely with their research objectives. This new capability enhances precision and reduces the time spent filtering irrelevant results. This also helps the user understand how the search works and use it to their advantage.
+
+**4. Unified Search Filters for Greater Efficiency**
+
+Initially, filters such as Publication Date, Impact Factor, and Article Type were only available at a later stage in the review process (Step 4). To streamline this, we have consolidated all search filters into Step 1, enabling users to apply and view all search parameters from the very beginning. This unified approach allows users to gain a comprehensive overview of their search results early in the process, making real-time adjustments as necessary. By centralizing all filters in one location, users can avoid the need to navigate between steps, significantly enhancing workflow efficiency.
+
+**5.Improved Definition and Accuracy of Data Point Extraction**
+
+To facilitate more precise data extraction, we have overhauled the Data Points UI. Users can now define the exact data points they wish to extract from studies using two distinct fields:
+
+- Name: A short, clear title for the data point (used as the column title in reports and results).
+- Definition: A detailed explanation of the data point so users can precisely define what data they are extracting.
+  (including examples if needed)
+
+This improvement allows users to be very specific in defining their data extraction goals, ensuring that the data captured aligns perfectly with their research objectives. Additionally, the revamped format is fully compatible with existing literature reviews, which will be automatically updated to reflect the new structure.
+  
+**6. Broader Definition of Inclusion and Exclusion Criteria** 
+
+Following the improvements made to data points, we have also refined the Inclusion and Exclusion Criteria section (Step 3). Users can now define their criteria using:
+
+- Name: A concise title describing the criterion.
+- Definition: A detailed explanation of what qualities or attributes a study must have to meet the criterion.
+  
+This broader and more flexible definition format allows users to define their criteria with greater precision, ensuring that only the most relevant studies are included in their literature review. As with data points, this new format will apply to both new and existing reviews, with previous reviews automatically updated to align with the new system.
+
+
+
+**7.Literature Review Time-Based Metrics**
+
+Recognizing that time is a critical factor for our users, we have introduced time-based metrics throughout the Literature Review process. These metrics provide users with key insights, including:
+
+- Queue Time: The time the review spends in queue (e.g., "In queue for less than a minute").
+- Progress Time: The duration the review has been running (e.g., "Running for 3 minutes").
+- Completion Stats: Once the review is complete, users can view the Completion Date, Start Time, End Time, and Total Time Taken for the entire process.
+
+These updates ensure transparency throughout the review process, giving users full visibility over the time taken at each stage. This feature not only improves user experience but also allows users to better manage their workflow and expectations.
+
+### User Benefits
+
+These enhancements work together to offer the following benefits to our users:
+
+**1. Greater Control and Precision in Search Results:** 
+With the introduction of the NOT operator and the enhanced ability to search by specific metadata fields (e.g., title, content, journal name), users can now create more targeted search queries. This enables them to exclude irrelevant results and focus on the most pertinent studies, ensuring a higher level of precision and relevance in their literature reviews. The ability to switch between AND and NOT operators provides flexible control over search behavior, allowing users to tailor their queries to meet specific research needs.
+
+**2. Streamlined and Efficient Workflow:**
+By unifying all search filters, including Publication Date, Impact Factor, and Article Type, into the initial step of the review process, users can now set up their entire search framework from the outset. This centralized approach eliminates the need for users to navigate back and forth between different steps, significantly enhancing workflow efficiency. Real-time updates to search parameters make it easier for users to adjust their queries quickly and effectively, resulting in a smoother, faster review process.
+
+**2. Improved Data Extraction, Study Selection, and Transparency**
+The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer definitions and a more structured approach to data extraction. Users can now be specific about what data points they want to extract and how they define their inclusion/exclusion criteria. This precision ensures that the extracted data aligns perfectly with the user’s research objectives, leading to more accurate and insightful results. Additionally, the inclusion of time-based performance metrics provides users with complete transparency, allowing them to monitor the progress and time efficiency of their literature reviews.
+
+
 ## 09-24-2024 Introducing Literature Review
 
 We are happy to announce a new feature offered by the Medical Chatbot: Literature Review, specifically tailored to streamline the complex process of medical literature research and review. This tool enables researchers, healthcare professionals or clinicians to efficiently sift through vast amounts of published research to support in-depth meta-analyses, clinical decision-making, or evidence-based practices.
