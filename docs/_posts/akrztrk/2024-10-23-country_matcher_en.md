@@ -5,7 +5,7 @@ author: John Snow Labs
 name: country_matcher
 date: 2024-10-23
 tags: [en, licensed, country, clinical, matcher, textmatcher]
-task: Named Entity Recognition
+task: Contextual Parser
 language: en
 edition: Healthcare NLP 5.5.0
 spark_version: 3.0
