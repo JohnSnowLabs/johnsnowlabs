@@ -4,7 +4,7 @@ title: SSN Number Contextual Parser Model
 author: John Snow Labs
 name: ssn_parser
 date: 2024-10-23
-tags: [en, licensed]
+tags: [en, licensed, clinical, contextualparser, ssn]
 task: Contextual Parser
 language: en
 edition: Healthcare NLP 5.5.0
@@ -36,6 +36,7 @@ This model, extracts SSN number entities from clinical texts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler() \
