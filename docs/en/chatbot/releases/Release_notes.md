@@ -12,6 +12,12 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
+## 10-23-2024 Major Enhancements to the Literature Review Feature
+
+We are pleased to announce a significant upgrade to our Literature Review feature, designed to elevate the user experience, enhance search accuracy, and streamline data extraction processes. This update is the result of an in-depth reimagining of the Literature Review tool, which now boasts a range of groundbreaking features aimed at making it more intuitive, efficient, and precise. Our goal has been to provide users with a more comprehensive and flexible tool, empowering them to manage their literature reviews with greater control and clarity. From broader search capabilities to more refined data extraction and filtering options, these enhancements will allow users to conduct research more effectively and achieve superior outcomes.
+
+With this release, we have completely overhauled several key components of the Literature Review feature. The new design offers broader search functionalities, more granular control over data point extraction, and a smarter, more intuitive interface. These changes reflect our ongoing commitment to delivering innovative tools that meet the needs of researchers, analysts, and professionals across various fields.
+
 ## 09-24-2024 Introducing Literature Review
 
 We are happy to announce a new feature offered by the Medical Chatbot: Literature Review, specifically tailored to streamline the complex process of medical literature research and review. This tool enables researchers, healthcare professionals or clinicians to efficiently sift through vast amounts of published research to support in-depth meta-analyses, clinical decision-making, or evidence-based practices.
