@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 
-from pydantic import validator
+from pydantic import field_validator
 
 from johnsnowlabs import settings
 from johnsnowlabs.abstract_base.pydantic_model import WritableBaseModel
@@ -82,7 +82,7 @@ class JslSecrets(WritableBaseModel):
         )
         raise ValueError("Invalid secrets")
 
-    @validator("HC_SECRET")
+    @field_validator("HC_SECRET")
     def hc_version_check(cls, HC_SECRET):
         global hc_validation_logged
         try:
@@ -114,7 +114,7 @@ class JslSecrets(WritableBaseModel):
     def is_hc_secret_correct_version(hc_secret: Optional[str]) -> bool:
         return hc_secret and hc_secret.split("-")[0] == settings.raw_version_medical
 
-    @validator("OCR_SECRET")
+    @field_validator("OCR_SECRET")
     def ocr_version_check(cls, OCR_SECRET):
         global ocr_validation_logged
         try:
