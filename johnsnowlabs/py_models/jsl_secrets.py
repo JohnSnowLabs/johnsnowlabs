@@ -426,6 +426,13 @@ class JslSecrets(WritableBaseModel):
             ]
         ):
             print("👌 License detected in Environment Variables")
+            if isinstance(hc_version,str):
+                hc_version = LibVersionIdentifier(hc_version)
+            if isinstance(ocr_version,str):
+                ocr_version = LibVersionIdentifier(ocr_version)
+            if isinstance(nlp_version,str):
+                nlp_version = LibVersionIdentifier(nlp_version)
+
             return JslSecrets(
                 HC_SECRET=hc_secret,
                 HC_LICENSE=hc_license,
