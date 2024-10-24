@@ -19,11 +19,11 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate: `LOCATION`, `DATE`, `NAME`, `ID`, `AGE`, `PROFESSION`, `CONTACT`, `ORGANIZATION`, `DOCTOR`, `CITY`, `COUNTRY`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `STATE`, `DLN`, `SSN`, `ZIP`, `ACCOUNT`, `LICENSE`, `PLATE`, `VIN`, `MEDICALRECORD`, `EXCLUDED`, `EMAIL`, `URL` entities.
+The pipeline can mask and obfuscate: `NAME`, `DATE`, `ID`, `ZIP`, `SSN`, `ACCOUNT`, `LICENSE`, `AGE`, `PHONE`, `COUNTRY`, `STATE`, `CITY`, `PLATE`, `VIN`, `MEDICALRECORD`, `EMAIL`, `URL`, `LOCATION`, `PROFESSION`, `CONTACT`, `PATIENT`, `HOSPITAL`, `ORGANIZATION`, `STREET`, `DOCTOR` entities.
 
 ## Predicted Entities
 
-`LOCATION`, `DATE`, `NAME`, `ID`, `AGE`, `PROFESSION`, `CONTACT`, `ORGANIZATION`, `DOCTOR`, `CITY`, `COUNTRY`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `STATE`, `DLN`, `SSN`, `ZIP`, `ACCOUNT`, `LICENSE`, `PLATE`, `VIN`, `MEDICALRECORD`, `EXCLUDED`, `EMAIL`, `URL`
+`NAME`, `DATE`, `ID`, `ZIP`, `SSN`, `ACCOUNT`, `LICENSE`, `AGE`, `PHONE`, `COUNTRY`, `STATE`, `CITY`, `PLATE`, `VIN`, `MEDICALRECORD`, `EMAIL`, `URL`, `LOCATION`, `PROFESSION`, `CONTACT`, `PATIENT`, `HOSPITAL`, `ORGANIZATION`, `STREET`, `DOCTOR`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
