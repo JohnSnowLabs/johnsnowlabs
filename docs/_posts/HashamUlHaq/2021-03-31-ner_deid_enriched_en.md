@@ -25,7 +25,7 @@ We sticked to official annotation guideline (AG) for 2014 i2b2 Deid challenge wh
 
 ## Predicted Entities
 
-``Age``, ``City``, ``Country``, ``Date``, ``Doctor``, ``Hospital``, ``Idnum``, ``Medicalrecord``, ``Organization``, ``Patient``, ``Phone``, ``Profession``, ``State``, ``Street``, ``Username``, ``Zip``
+`AGE`, `CITY`, `COUNTRY`, `DATE`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `USERNAME`, `ZIP`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/){:.button.button-orange}

@@ -23,7 +23,7 @@ Named Entity Recognition annotator (NERDLModel) allows for a generic model to be
 
 ## Predicted Entities
 
-`Age`,`BIOID`,`City`,`Country`,`Country`,`Date`,`Device`,`Doctor`,`EMail`,`Hospital`,`Fax`,`Healthplan`,`Hospital`,,`Idnum`,`Location-Other`,`Medicalrecord`,`Organization`,`Patient`,`Phone`,`Profession`,`State`,`Street`,`URL`,`Username`,`Zip`
+`AGE`,`BIOID`,`CITY`,`COUNTRY`,`DATE`,`DEVICE`,`DOCTOR`,`EMAIL`,`HOSPITAL`,`FAX`,`HEALTHPLAN`,`HOSPITAL`,`IDNUM`,`LOCATION-OTHER`,`MEDICALRECORD`,`ORGANIZATION`,`PATIENT`,`PHONE`,`PROFESSION`,`STATE`,`STREET`,`URL`,`USERNAME`,`ZIP`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/){:.button.button-orange}
