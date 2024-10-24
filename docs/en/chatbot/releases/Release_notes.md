@@ -87,7 +87,7 @@ By unifying all search filters, including Publication Date, Impact Factor, and A
 The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer definitions and a more structured approach to data extraction. Users can now be specific about what data points they want to extract and how they define their inclusion/exclusion criteria. This precision ensures that the extracted data aligns perfectly with the user’s research objectives, leading to more accurate and insightful results. Additionally, the inclusion of time-based performance metrics provides users with complete transparency, allowing them to monitor the progress and time efficiency of their literature reviews.
 
 
-## Document Q&A Optimization and Chatbot Bug Fixes
+### Document Q&A Optimization and Chatbot Bug Fixes
 
 In our ongoing commitment to enhancing the performance and usability of the Medical Chatbot, we have introduced major improvements in document handling, specifically within the Document Q&A feature. One of the key upgrades is the significant reduction in document loading times, especially for PDFs. Users can now expect document load times to be less than half of what they were before, greatly enhancing efficiency when querying documents. This also streamlines the process of reviewing the highlighted sections of the document used to generate responses, allowing for a more fluid and productive experience.
 
