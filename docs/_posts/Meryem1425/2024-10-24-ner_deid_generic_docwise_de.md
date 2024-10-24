@@ -36,6 +36,7 @@ Named Entity recognition annotator allows for a generic model to be trained by u
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
