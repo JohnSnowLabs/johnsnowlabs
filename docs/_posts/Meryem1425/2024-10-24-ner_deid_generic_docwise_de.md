@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Named Entity recognition annotator allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM, CNN. Deidentification NER is a Named Entity Recognition model that annotates German text to find protected health information (PHI) that may need to be deidentified. It was trained with in-house annotations and detects 7 entities.
+The Named Entity Recognition (NER) model works at the document level, allowing it to identify and annotate entities throughout the entire document. It leverages a deep learning architecture (Char CNNs - BiLSTM - CRF - word embeddings) inspired by the former state-of-the-art model for NER developed by Chiu & Nichols: “Named Entity Recognition with Bidirectional LSTM-CNN”. Deidentification NER is a Named Entity Recognition model that annotates German text to find protected health information (PHI) that may need to be deidentified. It was trained with in-house annotations and detects 7 entities.
 
 ## Predicted Entities
 
@@ -42,29 +42,24 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetector()\
-    .setInputCols(["document"])\
-    .setOutputCol("sentence")
-
 tokenizer = Tokenizer()\
-    .setInputCols(["sentence"])\
+    .setInputCols(["document"])\
     .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d","de","clinical/models")\
-    .setInputCols(["sentence", "token"])\
+    .setInputCols(["document", "token"])\
     .setOutputCol("embeddings")
 
 deid_ner = MedicalNerModel.pretrained("ner_deid_generic_docwise", "de", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
+    .setInputCols(["document", "token", "embeddings"])\
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
-    .setInputCols(["sentence", "token", "ner"])\
+    .setInputCols(["document", "token", "ner"])\
     .setOutputCol("ner_deid_generic_chunk")
 
 nlpPipeline = Pipeline(stages=[
     document_assembler, 
-    sentence_detector, 
     tokenizer, 
     word_embeddings, 
     deid_ner, 
@@ -80,29 +75,24 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text") 
     .setOutputCol("document")
 
-val sentence_detector = new SentenceDetector()
-    .setInputCols(Array("document"))
-    .setOutputCol("sentence")
-
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("sentence"))
+    .setInputCols(Array("document"))
     .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d", "de", "clinical/models")
-    .setInputCols(Array("sentence", "token"))
+    .setInputCols(Array("document", "token"))
     .setOutputCol("embeddings")
 
 val deid_ner = MedicalNerModel.pretrained("ner_deid_generic_docwise", "de", "clinical/models") 
-    .setInputCols(Array("sentence", "token", "embeddings")) 
+    .setInputCols(Array("document", "token", "embeddings")) 
     .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()
-    .setInputCols(Array("sentence", "token", "ner"))
+    .setInputCols(Array("document", "token", "ner"))
     .setOutputCol("ner_deid_generic_chunk")
 
 val nlpPipeline = new Pipeline().setStages(Array(
-    document_assembler, 
-    sentence_detector, 
+    document_assembler,
     tokenizer,
     word_embeddings, 
     deid_ner, 
