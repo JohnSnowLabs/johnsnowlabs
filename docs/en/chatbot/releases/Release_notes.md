@@ -12,66 +12,56 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
-## 10-24-2024 Major Enhancements to the Literature Review Feature
+## 10-24-2024 Literature Review Enhancements
 
-We are pleased to announce a significant upgrade to our Literature Review feature, designed to elevate the user experience, enhance search accuracy, and streamline data extraction processes. This update is the result of an in-depth reimagining of the Literature Review tool, which now boasts a range of groundbreaking features aimed at making it more intuitive, efficient, and precise. Our goal has been to provide users with a more comprehensive and flexible tool, empowering them to manage their literature reviews with greater control and clarity. From broader search capabilities to more refined data extraction and filtering options, these enhancements will allow users to conduct research more effectively and achieve superior outcomes.
-
-With this release, we have completely overhauled several key components of the Literature Review feature. The new design offers broader search functionalities, more granular control over data point extraction, and a smarter, more intuitive interface. These changes reflect our ongoing commitment to delivering innovative tools that meet the needs of researchers, analysts, and professionals across various fields.
+We are happy to release an enhanced version of the Literature Review feature, aimed at improving user experience, search accuracy, and data extraction. This update includes a redesign of the Literature Review wizard with new, intuitive functionalities. Our goal is to provide users with a more comprehensive and flexible tool for better control over the search, analysis, and extraction steps. The broader search capabilities and refined data extraction options are intended to make research more effective.
 
 ### Key Improvements
 
-**1. Advanced Search Capabilities with the NOT Operator**
+**1. Advanced Search with Logical Operators**
 
-Users could create search queries using OR conditions (by separating terms with commas) and combine them with AND logic to filter results. We have now added the NOT operator, giving users the ability to exclude certain keyword results from their search. This enhancement allows for more nuanced searches by letting users define what terms should be left out, thus refining the results more precisely. Switching between the AND and NOT operators is effortless, giving users total control over how their search queries are structured. For example, if a user wants to avoid certain topics while focusing on specific ones, they can easily toggle the NOT operator to exclude irrelevant results.
+This release adds the NOT operator to the existing AND and OR search functions, allowing for more nuanced searches by excluding specific combinations of keywords. This improvement empowers users to refine their queries and achieve more precise results, giving them total control over how their searches are structured. Switching between the AND and NOT operators is effortless, giving users total control over how their search queries are structured. For example, if a user wants to avoid certain topics, they can easily toggle the NOT operator to exclude irrelevant results.
 
-**2. Enhanced Visualization of Search Keywords**
 
-We have introduced a revamped user interface that visually displays search keywords and their logical relationships, helping users better understand how each keyword and operator relationship(AND/NOT) impacts their search results. This improved visualization provides clarity and ensures users can modify their search terms in real time, without confusion. Users can quickly update or adjust search keywords directly from this visual representation, seeing immediate changes in their search results. The visual enhancements allow users to see the connections between keywords and operators at a glance, streamlining the search refinement process.
+**2. Visualization of Query String**
+
+A redesigned user interface visually displays search keywords and their logical relationships, helping users understand how each keyword and operator (OR/AND/NOT) affects search outcomes. This real-time visual representation makes it easier for users to adjust search terms and immediately see their impact, enhancing the clarity and efficiency of the search process.
+
+<img src= "/assets/images/chatbot/LiteratureReviewQuery.png" alt="Literature Review - Visualization of Query String" style="border: 2px solid grey; width=60%">
 
 **3. Targeted Search by Metadata Fields**
 
-To improve the specificity and accuracy of the search for different available Studies/Articles, a new field has been added that allows users to search within specific metadata fields about the available Studies/Articles. Now, users can direct their searches to focus on the available fields:
+Users can now search within specific metadata fields, including Study Title, Text Content, and Journal Name. This targeted approach makes it easier to focus on particular aspects of studies, ensuring search results align more closely with user research objectives, and reducing the time needed to filter irrelevant content.
 
-- Title of the Study
-- Text Content of the Study
-- Journal Name
+**4. Unified Search Filters for Efficiency**
+
+All search filters, such as Publication Date, Impact Factor, and Article Type, are now consolidated into Step 1 of the review process. This unified approach enables users to configure all search parameters upfront, providing a clear overview of their search results early in the process and enhancing workflow efficiency.
+
+<img src= "/assets/images/chatbot/LiteratureReviewFilters.png" alt="Literature Review - Filter the Target Studies" style="border: 2px solid grey; width=60%">
+
+**5. Enhanced Data Point Extraction**
+
+The Data Points definition UI (step 2) was enhanced to allow users to define more precisely the target information. Users can provide a clear **Name** (maximum 30 characters) and a **Prompt** definition  (maximum 1500 characters) for each data point, ensuring that the extracted data aligns perfectly with the research objectives. Users can also include examples in the prompt description. The new format is fully compatible with existing literature reviews, which will automatically be updated to reflect these enhancements.
+
+<img src= "/assets/images/chatbot/LiteratureReviewDataPoints.png" alt="Literature Review - Definition of Data Points" style="border: 2px solid grey; width=60%">
   
-This added flexibility allows for more targeted searches based on the user’s exact needs. Users can select one or more of these metadata fields when crafting their search queries, ensuring that their results align more closely with their research objectives. This new capability enhances precision and reduces the time spent filtering irrelevant results. This also helps the user understand how the search works and use it to their advantage.
+**6. Enhanced Definition of Inclusion and Exclusion Criteria** 
 
-**4. Unified Search Filters for Greater Efficiency**
+The Inclusion and Exclusion Criteria section (step 3) has also been refined to allow users to provide a concise **Name** (maximum 30 characters) and detailed **Prompt** definition (maximum 1500 characters) for each criterion, offering greater precision in study selection. The updated format is applicable to both new and existing reviews, automatically updating previous reviews to align with the new system.
 
-Initially, filters such as Publication Date, Impact Factor, and Article Type were only available at a later stage in the review process (Step 4). To streamline this, we have consolidated all search filters into Step 1, enabling users to apply and view all search parameters from the very beginning. This unified approach allows users to gain a comprehensive overview of their search results early in the process, making real-time adjustments as necessary. By centralizing all filters in one location, users can avoid the need to navigate between steps, significantly enhancing workflow efficiency.
-
-**5.Improved Definition and Accuracy of Data Point Extraction**
-
-To facilitate more precise data extraction, we have overhauled the Data Points UI. Users can now define the exact data points they wish to extract from studies using two distinct fields:
-
-- Name: A short, clear title for the data point (used as the column title in reports and results).
-- Definition: A detailed explanation of the data point so users can precisely define what data they are extracting.
-  (including examples if needed)
-
-This improvement allows users to be very specific in defining their data extraction goals, ensuring that the data captured aligns perfectly with their research objectives. Additionally, the revamped format is fully compatible with existing literature reviews, which will be automatically updated to reflect the new structure.
-  
-**6. Broader Definition of Inclusion and Exclusion Criteria** 
-
-Following the improvements made to data points, we have also refined the Inclusion and Exclusion Criteria section (Step 3). Users can now define their criteria using:
-
-- Name: A concise title describing the criterion.
-- Definition: A detailed explanation of what qualities or attributes a study must have to meet the criterion.
-  
-This broader and more flexible definition format allows users to define their criteria with greater precision, ensuring that only the most relevant studies are included in their literature review. As with data points, this new format will apply to both new and existing reviews, with previous reviews automatically updated to align with the new system.
+<img src= "/assets/images/chatbot/LiteratureReviewDataPoints.png" alt="Literature Review - Definition of Inclusion and Exclusion Criteria" style="border: 2px solid grey; width=60%">
 
 
+**7. Time-Based Metrics for Literature Review**
 
-**7.Literature Review Time-Based Metrics**
+To provide greater transparency, we have introduced time-based metrics throughout the Literature Review process, including Queue Time, Progress Time, and Completion Stats. These metrics offer insights into each stage of the review process, enabling users to better manage their workflow and set realistic expectations.
 
-Recognizing that time is a critical factor for our users, we have introduced time-based metrics throughout the Literature Review process. These metrics provide users with key insights, including:
-
+These metrics provide users with key insights, including:
 - Queue Time: The time the review spends in queue (e.g., "In queue for less than a minute").
 - Progress Time: The duration the review has been running (e.g., "Running for 3 minutes").
 - Completion Stats: Once the review is complete, users can view the Completion Date, Start Time, End Time, and Total Time Taken for the entire process.
 
-These updates ensure transparency throughout the review process, giving users full visibility over the time taken at each stage. This feature not only improves user experience but also allows users to better manage their workflow and expectations.
+<img src= "/assets/images/chatbot/LiteratureReviewTimeMetrics.png" alt="Literature Review - Time-Based Metrics" style="border: 2px solid grey; width=100%">
 
 ### User Benefits
 
@@ -87,11 +77,7 @@ By unifying all search filters, including Publication Date, Impact Factor, and A
 The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer definitions and a more structured approach to data extraction. Users can now be specific about what data points they want to extract and how they define their inclusion/exclusion criteria. This precision ensures that the extracted data aligns perfectly with the user’s research objectives, leading to more accurate and insightful results. Additionally, the inclusion of time-based performance metrics provides users with complete transparency, allowing them to monitor the progress and time efficiency of their literature reviews.
 
 
-### Document Q&A Optimization and Chatbot Bug Fixes
-
-In our ongoing commitment to enhancing the performance and usability of the Medical Chatbot, we have introduced major improvements in document handling, specifically within the Document Q&A feature. One of the key upgrades is the significant reduction in document loading times, especially for PDFs. Users can now expect document load times to be less than half of what they were before, greatly enhancing efficiency when querying documents. This also streamlines the process of reviewing the highlighted sections of the document used to generate responses, allowing for a more fluid and productive experience.
-
-Moreover, we have implemented optimization fixes and resolved several bugs to ensure a smoother, more reliable interaction across all use cases of the Medical Chatbot. These updates not only improve response accuracy but also elevate the overall user experience, making the chatbot faster and more intuitive to use.
+These upgrades reflect our ongoing commitment to enhancing research tools for a more efficient, precise, and user-friendly experience. We encourage users to explore these new features and see the improvements firsthand.
 
 ## 09-24-2024 Introducing Literature Review
 
