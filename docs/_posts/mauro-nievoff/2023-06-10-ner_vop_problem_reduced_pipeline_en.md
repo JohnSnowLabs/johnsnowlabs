@@ -26,6 +26,10 @@ This pipeline extracts mentions of clinical problems from health-related text in
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_reduced_pipeline_en_4.4.3_3.0_1686420051472.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_reduced_pipeline_en_4.4.3_3.0_1686420051472.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+## Predicted entities
+
+`HealthStatus`, `Problem`, `Modifier`
+
 ## How to use
 
 

@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-yiju64qx2hokm
-  snowflake_link: 
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ64/john-snow-labs-clinical-de-identification-for-french
   databricks_link: https://marketplace.databricks.com/details/eb2042f5-8a50-459c-8884-e11f9573c618/John-Snow-Labs_Clinical-Deidentification-for-French
 
 ---

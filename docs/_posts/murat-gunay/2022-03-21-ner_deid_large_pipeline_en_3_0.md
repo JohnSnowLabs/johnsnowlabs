@@ -21,6 +21,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_deid_large](https://nlp.johnsnowlabs.com/2021/03/31/ner_deid_large_en.html) model.
 
+## Predicted Entities
+`LOCATION`, `CONTACT`, `PROFESSION`, `HEALTHPLAN`, `NAME`, `DATE`, `ID`, `URL`, `NN`, `AGE`
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

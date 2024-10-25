@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-5mzmpbj4igl3s
-  snowflake_link: 
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ5F/john-snow-labs-extract-findings-in-radiology-reports
   databricks_link: https://marketplace.databricks.com/details/a516cbd4-107d-4194-ab02-74095c155f34/John-Snow-Labs_Extract-findings-in-radiology-reports
 
 ---

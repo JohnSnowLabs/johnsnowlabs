@@ -28,6 +28,7 @@ DOCUMENT
 {%- endcapture -%}
 
 
+
 {%- capture model_python_medical -%}
 
 documentAssembler = nlp.DocumentAssembler()\
@@ -193,6 +194,16 @@ result.show(false)
 [DocumentFiltererByNER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb)
 {%- endcapture -%}
 
+{%- capture model_api_link -%}
+[DocumentFiltererByNER](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/DocumentFiltererByNER.html)
+{%- endcapture -%}
+
+{%- capture model_python_api_link -%}
+[DocumentFiltererByNER](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/document_filterer_by_ner/index.html#)
+{%- endcapture -%}
+
+
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -202,4 +213,6 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_notebook_link=model_notebook_link
+model_api_link=model_api_link
+model_python_api_link=model_python_api_link
 %}

@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes
+title: Healthcare NLP Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2024-08-21
+modify_date: 2024-10-07
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,74 +13,137 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.4.1
+## 5.5.0
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with 9 new Large Language Models (LLMs), a brand new LargeFewShotClassifier annotator, and 31 new and updated clinical pretrained models and pipelines**.
+We are delighted to announce remarkable enhancements and updates in our latest release of Healthcare NLP. **This release comes with a brand new LLM Loader module with GPU support, several other new modules (Contextual Entity Filterer, RE Chunk Merger, Replacer) for precise and improved information extraction as well as 71 new clinical pretrained models and pipelines**. 
 
-+ Explore 9 new specialized LLMs at various sizes and quantization levels for healthcare applications (medical note summarization, Q&A, RAG, and Chat)
-+ Introducing 7 new oncological text classification models to detect documents mentioning metastasis, therapy, and other oncology terms.
-+ Introducing a new oncology NER model to detect 6 main cancer types and 5 crucial contexts for cancer diagnosis, treatment, and prognosis.
-+ Introducing a new stigmatization NER model to identify and categorize stigmatizing language in medical records by extracting entities related to patient behavior, demeanor, and healthcare provider attitudes.
-+ New rule-based entity matcher models to customize De-Identification pipelines.
-+ 3 new Entity Resolver models for associate clinical entities with RxNorm codes.
-+ Introducing the new `LargeFewShotClassifierModel` annotator and 2 new classification models (age group detection and drug adverse event classification) that are trained with small datasets while achieving comparable performance to the models trained with larger datasets.
-+ Introducing the `DocumentFiltererByNER` annotator to filter out the documents and sentences having certain types of named entities within the same pipeline.
-+ Introducing a brand new `Mapper2Chunk` annotator to create a new chunk type from any mapper.
-+ Introducing new `setConfidenceCalculationDirection` parameter for `ContextualAssertion` (rule-based context aware assertion status detection) to allow direction-sensitive confidence score calculation 
-+ Introducing a new `dict_to_annotation_converter` module for converting dictionary data to Spark NLP annotations (e.g. allowing deidentification and obfuscation over a list of entities within a JSON format such as GenAI annotations)
-+ New blog posts on identifying named entities in medical text with Zero-Shot learning
++ Introducing a brand new LLM loader called `MedicalLLM` to load and run LLMs in gguf format that could scale within a Spark NLP pipeline. 
++ Explore 6 new specialized LLMs at various sizes and quantization levels for healthcare applications (medical note summarization, Q&A, RAG, and Chat)
++ Clinical document analysis with one-liner pretrained pipelines for specific clinical tasks and concepts
++ Introducing 8 new Named Entity Recognition (NER) Models and pipelines to Detect PHI for Deidentification with minimal customization required
++ Introducing a new mapper model designed to link `ICD-10-CM codes` with their corresponding chronicity indicators
++ Introducing a new Named Entity Recognition (NER) Model and a new binary classification model to detect adverse drug events
++ Introducing the `REChunkMerger` annotator to merge the entities in a relationship as a single entity.
++ Introducing a brand new `ContextualEntityFilter` annotator to filter entities with context-specific rules.
++ Enhanced new sentence detector model for healthcare text segmentation in a corrupted text.
++ Introducing new parameters to `Replacer` for data augmentation.
++ New speed benchmarks for multi-NER pipelines
++ New blog posts on various topics (AI for equity, detecting stigmatizing language from medical texts, subcohort analysis for oncology patients, using small LLMs to extract structured named entities, ...)
 + Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
-    - Enhanced metadata information with the `setMetadataFields` field for `AssertionChunkConverter`
-    - Added new date format for deidentification
-    - Added new parameters for the `Replacer` annotator to allow replacing any type of entities in a text with any other phrase or placeholder (e.g. replace all the drug generic names with drug brand names, etc.)
-    - Added `document_id` info and confidence scores for `resolutions` and `assertions` fields to the `PipelineOutputParser` module
-    - Resolved Flattener NullPointerException; if the column is empty, the Flattener returns empty columns instead of throwing an exception.
-    - Resolved the AssertionMerger loading issue; an exception was thrown when attempting to load the AssertionMerger model.
-+ Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
-    - New [DocumentFiltererByNER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb) MOOC Notebook
-    - New [LargeFewShotClassifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/LargeFewShotClassifierModel.ipynb) MOOC Notebook
-    - New [Mapper2Chunk](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Mapper2Chunk.ipynb) MOOC Notebook
-    - Updated [AssertionChunkConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb) MOOC Notebook
-    - Updated [ContextualAssertion](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualAssertion.ipynb) MOOC Notebook
+    - Using structured entity jsons from various sources (pipeline, NLP Lab, etc) within a new pipeline to merge/ consolidate named entities.
+    - Introducing new `setReturnEntityMappings`, `setMappingsColumn`, `setStaticEntityMappings`, and `setStaticEntityMappingsFallback` parameters for Replacer
+    - Added the `RegexMatcherInternalModel` trait to Scala to match the pretrained method available in Python.
+    - Added a new parameter for the `Flattener` annotator to sets an array of column names that should be kept in the dataframe after the flattening process.
+    - Added `resetSentenceIndices` parameter to `ChunkMerger`, `NerConverterInternal`, and `ChunkConverter` annotators for reset sentence indices to treat the entire output as if it originates from a single document.
+    - Fixed Generative AI Lab API task deletion endpoint: Resolved an issue with the `tasks_delete` endpoint, enabling proper deletion of tasks via the API.
+    - Added `chunk_validation_options` dictionary into the `dict_to_annotation_converter` module for converting dictionary data to Spark NLP annotations.
+    - Added pretrained feature added to `InternalDocumentSplitter`.
+    - Deprecated the `nlp_test` module in `spark-nlp-jsl`; future development is being managed by `LangTest`.
+    - Added support for `ONNX` models in the `ChunkKeyPhraseExtraction` annotator, allowing for compatibility with ONNX-based models.
++ Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
+    - New [REChunkMerger](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/REChunkMerger.ipynb) MOOC Notebook
+    - New [ContextualEntityFilterer](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualEntityFilterer.ipynb) MOOC Notebook
     - Updated [Replacer](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb) MOOC Notebook
-    - Updated [Clinical Entity Resolver](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb) notebook
-    - Updated [Improved Entity Resolution with SentenceChunkEmbeddings](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb) notebook
-    - Updated [Improved Entity Resolvers in SparkNLP with sBert](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb) notebook
-    - Updated [Clinical Medication Use Case](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/43.Clinical_Medication_Use_Case.ipynb) notebook
-    - Updated [Oncology_Model](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb) notebook
-    - New [Text Classification with LargeFewShotClassifier](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.4.Text_Classification_with_LargeFewShotClassifier.ipynb) Notebook
-    - New [NER_STIGMATIZATION](https://demo.johnsnowlabs.com/healthcare/NER_STIGMATIZATION/) demo
-    - Updated [NER_ONCOLOGY_CLINICAL](https://demo.johnsnowlabs.com/healthcare/NER_ONCOLOGY_CLINICAL/) demo
+    - Updated [NerConverterInternal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerConverterInternal.ipynb) MOOC Notebook
+    - Updated [ChunkConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkConverter.ipynb) MOOC Notebook
+    - Updated [ChunkMergeModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMergeModel.ipynb) MOOC Notebook
+    - Updated [Rule Based Entity Matchers](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) notebook
+    - Updated [Clinical DeIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) notebook
+    - Updated [Prepare CoNLL from Annotations for NER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.3.prepare_CoNLL_from_annotations_for_NER.ipynb) notebook
+    - Updated [Contextual Parser Rule Based NER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) notebook
+    - Updated [Loading Medical and Open Souce LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) notebook
+    - Updated [ONCOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/)
 + The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
 These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
+
+</div><div class="h3-box" markdown="1">
+
+####  Introducing a Brand New LLM Loader Called `MedicalLLM` to Load and Aun LLMs in GGUF Format that Could Scale within a Spark NLP Pipeline. 
+
+`MedicalLLM` is a brand new annotator in Spark NLP, designed to load and run large language models (LLMs) in `GGUF` format with scalable performance. Ideal for clinical and healthcare applications, MedicalLLM supports tasks like medical entity extraction, summarization, Q&A, Retrieval Augmented Generation (RAG), and conversational AI. With simple integration into Spark NLP pipelines, it allows for customizable batch sizes, prediction settings, and chat templates. GPU optimization is also available, enhancing its capabilities for high-performance environments. MedicalLLM empowers users to link medical entities and perform complex NLP tasks with efficiency and precision.
+
+{:.table-model-big}
+| Model Name              | Description |
+|-------------------------|-------------|
+|[jsl_meds_ner_q4_v2](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb)   | Extract and link medical named entities  |
+|[jsl_meds_ner_q8_v2](https://nlp.johnsnowlabs.com/2024/10/04/jsl_meds_ner_q8_v2_en.html)   | Extract and link medical named entities  |
+|[jsl_meds_ner_q16_v2](https://nlp.johnsnowlabs.com/2024/10/04/jsl_meds_ner_q16_v2_en.html)  | Extract and link medical named entities  |
+|[jsl_medm_q4_v1](https://nlp.johnsnowlabs.com/2024/10/04/jsl_medm_q4_v1_en.html)       | Summarization and Q&A |
+|[jsl_medm_q8_v1](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb)       | Summarization and Q&A |
+|[jsl_medm_q16_v1](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb)      | Summarization and Q&A |
+|[jsl_medsner_zs_q4_v1](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) | Extract and link medical named entities |
+|[jsl_medsner_zs_q8_v1](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) | Extract and link medical named entities |
+|[jsl_medsner_zs_q16_v1](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb)| Extract and link medical named entities |
+|[jsl_meds_q4_v1](https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q4_v1_en.html)       | Summarization and Q&A |
+|[jsl_meds_q8_v1](https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q8_v1_en.html)       | Summarization and Q&A |
+|[jsl_meds_q16_v1](https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q16_v1_en.html)      | Summarization and Q&A |
+|[jsl_meds_rag_q4_v1](https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q4_v1_en.html)   | LLM component of Retrieval Augmented Generation (RAG) |
+|[jsl_meds_rag_q8_v1](https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q8_v1_en.html)   | LLM component of Retrieval Augmented Generation (RAG) |
+|[jsl_meds_rag_q16_v1](https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q16_v1_en.html)  | LLM component of Retrieval Augmented Generation (RAG) |
+
+
+*Example*:
+
+```python
+medical_llm = MedicalLLM.pretrained("jsl_meds_q16_v1", "en", "clinical/models")\
+    .setInputCols("document")\
+    .setOutputCol("completions")\
+    .setBatchSize(1)\
+    .setNPredict(100)\
+    .setUseChatTemplate(True)\
+    .setTemperature(0)\
+     #.setNGpuLayers(100) # if you have GPU
+
+med_ner_prompt = """
+Based on the following text, what age group is most susceptible to breast cancer?
+
+## Text:
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+"""
+
+data = spark.createDataFrame([[med_ner_prompt]]).toDF("text")
+```
+
+*Result*:
+
+```bash
+The age group most susceptible to breast cancer, as mentioned in the text, is women over the age of 50.
+```
+
+Please check the [Loading Medical and Open Souce LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook for more information
+
+
 </div><div class="h3-box" markdown="1">
  
-#### Explore 9 New Specialized LLMs at Various Sizes and Quantisation Levels for Healthcare Applications (Medical Note Summarization, Q&A, RAG, and Chat)
+#### Explore 6 New Specialized LLMs at Various Sizes and Quantisation Levels for Healthcare Applications (Medical Note Summarization, Q&A, RAG, and Chat)
 
-Discover nine newly released large language models designed to tackle various tasks in the healthcare domain. These models include capabilities for summarization, question answering, retrieval-augmented generation (RAG), chat functionalities, and medical named entity recognition (NER). Each model is optimized with different quantization levels (q16, q8, q4) to balance performance and efficiency, catering to specific needs in medical data processing and analysis. Whether you need detailed summaries, precise Q&A, or accurate entity extraction, these models offer advanced solutions for healthcare professionals and researchers.
+Discover 9 new LLMs designed to tackle various tasks in the healthcare domain. These models include capabilities for summarization, question answering, retrieval-augmented generation (RAG), chat functionalities, and medical named entity recognition (NER). Each model is optimized with different quantization levels (q16, q8, q4) to balance performance and efficiency, catering to specific needs in medical data processing and analysis. Whether you need detailed summaries, precise Q&A, or accurate entity extraction, these models offer advanced solutions for healthcare professionals and researchers.
 
 
 {:.table-model-big}
 | Model Name              | Description |
 |-------------------------|-------------|
-| [JSL_MedM_q16_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q16_v2_en.html)    | Summarization, Q&A, RAG, and Chat |
-| [JSL_MedM_q8_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q8_v2_en.html)      | Summarization, Q&A, RAG, and Chat |
-| [JSL_MedM_q4_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_medm_q4_v2_en.html)      | Summarization, Q&A, RAG, and Chat |
-| [JSL_MedS_RAG_q16_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q16_v1_en.html)| LLM component of Retrieval Augmented Generation (RAG)  |
-| [JSL_MedS_RAG_q8_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q8_v1_en.html)  | LLM component of Retrieval Augmented Generation (RAG)  |
-| [JSL_MedS_RAG_q4_v1](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_rag_q4_v1_en.html)  | LLM component of Retrieval Augmented Generation (RAG)  |
-| [JSL_MedS_NER_q16_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_ner_q16_v2_en.html)| Extract and link medical named entities |
-| [JSL_MedS_NER_q8_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_ner_q8_v2_en.html)  | Extract and link medical named entities |
-| [JSL_MedS_NER_q4_v2](https://nlp.johnsnowlabs.com/2024/08/21/jsl_meds_ner_q4_v2_en.html)  | Extract and link medical named entities |
+| [JSL_MedS_q16_v2](https://nlp.johnsnowlabs.com/2024/09/19/jsl_meds_q16_v2_en.html)    | Summarization, Q&A, RAG |
+| [JSL_MedS_q8_v2](https://nlp.johnsnowlabs.com/2024/09/19/jsl_meds_q8_v2_en.html)      | Summarization, Q&A, RAG |
+| [JSL_MedS_q4_v2](https://nlp.johnsnowlabs.com/2024/09/19/jsl_meds_q4_v2_en.html)      | Summarization, Q&A, RAG |
+| [JSL_MedS_q16_v3](https://nlp.johnsnowlabs.com/2024/09/19/jsl_meds_q16_v3_en.html)    | Summarization, Q&A, RAG |
+| [JSL_MedS_q8_v3](https://nlp.johnsnowlabs.com/2024/09/19/jsl_meds_q8_v3_en.html)      | Summarization, Q&A, RAG |
+| [JSL_MedS_q4_v3](https://nlp.johnsnowlabs.com/2024/09/19/jsl_meds_q4_v3_en.html)      | Summarization, Q&A, RAG |
 
-**We recommend using 8b quantized versions of the models in a GPU-poor environment as the qualitative performance difference between q16 and q8 versions is very negligible.**
 
-Note: Our current LLM loader implementation based on `llama.cpp` may lag behind when it comes to inference speed and output quality on certain use cases. We have other means of serving these models outside of the Healthcare NLP library and users are advised to get in touch with us if there is such a need. 
+**Note**: Our current LLM loader implementation based on `llama.cpp` may lag behind when it comes to inference speed and output quality on certain use cases given your hardware. We have other means of serving these models outside of the Healthcare NLP library and users are advised to get in touch with us if there is such a need. We recommend using 8b quantized versions of the models in a GPU-poor environment as the qualitative performance difference between q16 and q8 versions is very negligible.
 
 *Example*:
 
@@ -88,7 +151,7 @@ Note: Our current LLM loader implementation based on `llama.cpp` may lag behind 
 
 from sparknlp_jsl.llm import LLMLoader
 
-llm_loader_pretrained = LLMLoader(spark).pretrained("jsl_medm_q16_v2", "en", "clinical/models")
+llm_loader_pretrained = LLMLoader(spark).pretrained("jsl_meds_q16_v2", "en", "clinical/models")
 
 prompt = """
 A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
@@ -97,7 +160,8 @@ A: Ampicillin
 B: Ceftriaxone
 C: Ciprofloxacin
 D: Doxycycline
-E: Nitrofurantoin"""
+E: Nitrofurantoin
+"""
 
 llm_loader_pretrained.generate(prompt)
 ```
@@ -105,617 +169,635 @@ llm_loader_pretrained.generate(prompt)
 *Result*:
 
 ```bash
-Answer: E. Nitrofurantoin. This is the best treatment for that patient.
+The best treatment for this patient is E: Nitrofurantoin. This medication is considered safe during pregnancy and is effective for treating urinary tract infections (UTIs). The other options listed are not recommended during pregnancy due to potential risks to the fetus. Ampicillin (A) and Ceftriaxone (B) are generally safe but may not be the first-line treatment for UTIs. Ciprofloxacin (C) and Doxycycline (D) are contraindicated in pregnancy due to potential adverse effects on fetal development. Nitrofurantoin (E) is a commonly used antibiotic for UTIs during pregnancy and has a good safety profile.
 ```
 
-Please check the [LLMLoader](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook for more information
-
-</div><div class="h3-box" markdown="1">
-
-####  Introducing 7 New Oncological Text Classification Models to Detect Documents Mentioning Metastasis, Therapy, and Other Oncology Terms
-
-Explore 7 new state-of-the-art oncological text classification models designed to identify and categorize clinical sentences related to metastasis, oncology, and therapy. Each model is tailored for specific tasks, such as identifying metastasis-related terms or broader oncology and therapy concepts in clinical narratives.
- 
-Predicted Classes:
-- `True`: Contains therapy-related terms.
-- `False`: Doesn’t contain therapy-related terms.
-
-{:.table-model-big}
-| Model Name              | Description | Predicted Classes |
-|-------------------------|-------------|-------------|
-|[bert_sequence_classifier_metastasis](https://nlp.johnsnowlabs.com/2024/08/02/bert_sequence_classifier_metastasis_en.html)      | a metastasis classification model that can determine whether clinical sentences include terms related to metastasis or not. |  `0`, `1` |
-|[classifierdl_metastasis](https://nlp.johnsnowlabs.com/2024/08/09/classifierdl_metastasis_en.html)      | a metastasis classification model that determines whether clinical sentences include terms related to metastasis. |  `True`, `False` |
-|[generic_classifier_metastasis](https://nlp.johnsnowlabs.com/2024/08/09/generic_classifier_metastasis_en.html)      | a metastasis classification model that determines whether clinical sentences include terms related to metastasis. | `True`, `False` |
-|[generic_logreg_classifier_metastasis](https://nlp.johnsnowlabs.com/2024/08/09/generic_logreg_classifier_metastasis_en.html)      | trained with the Generic Classifier annotator and the Logistic Regression algorithm and classifies text/sentence into two categories. | `True`, `False` |
-|[generic_svm_classifier_metastasis](https://nlp.johnsnowlabs.com/2024/08/09/generic_svm_classifier_metastasis_en.html)      | trained with the Generic Classifier annotator and the Support Vector Machine (SVM) algorithm and classifies text/sentence into two categories.| `True`, `False` |
-|[generic_classifier_oncology](https://nlp.johnsnowlabs.com/2024/08/13/generic_classifier_oncology_en.html)      |  an oncology classification model that determines whether clinical sentences include terms related to oncology.| `True`, `False` |
-|[generic_classifier_therapy](https://nlp.johnsnowlabs.com/2024/08/16/generic_classifier_therapy_en.html)      | a therapy classification model that determines whether clinical sentences include terms related to therapy.| `True`, `False` |
-
-*Example*:
-
-```python
-sequenceClassifier = MedicalBertForSequenceClassification\
-    .pretrained("bert_sequence_classifier_metastasis", "en", "clinical/models")\
-    .setInputCols(["sentence", 'token'])\
-    .setOutputCol("prediction")
-
-sample_texts =[
-    ["Contrast MRI confirmed the findings of meningeal carcinomatosis."],
-    ["A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis."],
-    ["The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal involvement (N0), and due to multiple bone and liver lesions, it is classified as M1, reflecting distant metastatic foci."] ,
-    ["After all procedures done and reviewing the findings, biochemical results and screening, the TNM classification is determined."],
-    ["The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer."],
-    ["The patient's care plan is adjusted to focus on symptom management and slowing the progression of the disease."]
-]
-
-# `1`: Contains metastasis-related terms.
-# `0`: Doesn't contain metastasis-related terms.
-```
-
-*Result*:
-
-{:.table-model-big}
-|                                                                                                text|result|
-|----------------------------------------------------------------------------------------------------|------|
-|                                    Contrast MRI confirmed the findings of meningeal carcinomatosis.|   1  |
-|         A 62-year-old male presents with weight loss, persistent cough, and episodes of hemoptysis.|   0  |
-|The primary tumor (T) is staged as T3 due to its size and local invasion, there is no nodal invol...|   1  |
-|After all procedures done and reviewing the findings, biochemical results and screening, the TNM ...|   0  |
-|      The oncologist noted that the tumor had spread to the liver, indicating advanced stage cancer.|   1  |
-|The patient's care plan is adjusted to focus on symptom management and slowing the progression of...|   0  |
-
-Please check the [Oncology_Model](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb) Notebook for more information
+Please check the [Loading Medical and Open Souce LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook for more information
 
 
 
 </div><div class="h3-box" markdown="1">
 
-####  Introducing a New Oncology NER Model to Detect 6 Main Cancer Types and 5 Crucial Contexts for Cancer Diagnosis, Treatment, and Prognosis
+####  Clinical Document Analysis with One-Liner Pretrained Pipelines for Specific Clinical Tasks and Concepts
 
-his Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical and biomedical text related to oncology. The model recognizes 6 main cancer types and 5 crucial contexts for cancer diagnosis, treatment, and prognosis.:
+We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.
 
-- `CNS Tumor Type`: Tumors originating in the central nervous system, including brain and spinal cord tumors.
-- `Carcinoma Type`: Cancers arising from epithelial cells, which are the most common type of cancer, including breast, lung, and colorectal carcinomas.
-- `Leukemia Type`: Cancers of the blood and bone marrow, characterized by the abnormal proliferation of white blood cells.
-- `Lymphoma Type`: Cancers of the lymphatic system, affecting lymphocytes (a type of white blood cell), including Hodgkin and non-Hodgkin lymphomas.
-- `Melanoma`: A type of skin cancer originating from melanocytes, the cells that produce pigment.
-- `Sarcoma Type`: Cancers arising from connective tissues, such as bone, cartilage, fat, muscle, or vascular tissues.
-- `Metastasis`: Recognizes terms related to the spread of cancer to different parts of the body, including mentions of metastatic sites and related clinical descriptions.
-- `Biomarker`: Extracts entities related to cancer biomarkers, including genetic markers, protein levels, and other measurable indicators used for cancer diagnosis, prognosis, and treatment response.
-- `Biomarker_Quant`: Extracts numerical measurements or values associated with the biomarker.
-- `Biomarker_Result`: Extracts descriptive or categorical assessments of the biomarker status.
-- `Body Site`: Knowing the primary site of the tumor is essential for diagnosis and treatment planning. The body site where the cancer originates often determines the type of cancer and influences therapeutic approaches.
-
-{:.table-model-big}
-| Model Name              | Description | Predicted Entities  |
-|-------------------------|-------------|---------------------|
-|[ner_cancer_types_wip](https://nlp.johnsnowlabs.com/2024/08/16/ner_cancer_types_wip_en.html) | This Named Entity Recognition (NER) model is specifically trained to recognize 6 main cancer types, body sites, biomarkers, and their results. | `CNS_Tumor_Type`, `Carcinoma_Type`, `Leukemia_Type`, `Lymphoma_Type`, `Melanoma`, `Sarcoma_Type`, `Metastasis`, `Body_Site`, `Biomarker`, `Biomarker_Quant`, `Biomarker_Result` |
-
-This model achieves 0.92 accuracy and 0.91 macro F1 across 11 entities
-
-*Example*:
-
-```python
-ner_model = MedicalNerModel.pretrained('ner_cancer_types_wip', "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("ner")
-
-sample_texts = """
-Patient A, a 55-year-old female, presented with carcinoma in the left breast. A biopsy revealed an elevated HER2. The patient also showed a slightly elevated CA 15-3 level at 45 U/mL. Follow-up imaging revealed metastasis to the axillary lymph nodes, and further scans indicated small metastatic lesions in the liver.
-Additionally, imaging of the patient's lower back indicated a possible sarcoma. Subsequent tests identified elevated levels of lactate dehydrogenase (LDH), with a result of 580 IU/L (normal range: 140-280 IU/L), and a biopsy confirmed metastasis to the lungs.
-Routine bloodwork revealed a mild increase in B2M (Beta-2 microglobulin), suggestive of possible lymphoma, and a normal range for hemoglobin and white blood cells, ruling out leukemia. CNS involvement was ruled out as imaging did not indicate any anomalies.
-For melanoma screening, a suspicious mole on the patient's arm was biopsied, and tests confirmed a BRAF V600E mutation. Further imaging revealed metastatic spread to the lungs and liver.
-"""
-```
-
-*Result*:
-
-{:.table-model-big}
-| ner_chunk          |begin|end | ner_label      | 
-|--------------------|-----|----|----------------|
-|carcinoma           |49   |57  |Carcinoma_Type  |
-|breast              |71   |76  |Body_Site       |
-|elevated            |100  |107 |Biomarker_Result|
-|HER2                |109  |112 |Biomarker       |
-|elevated            |150  |157 |Biomarker_Result|
-|CA 15-3             |159  |165 |Biomarker       |
-|45 U/mL             |176  |182 |Biomarker_Quant |
-|metastasis          |212  |221 |Metastasis      |
-|axillary lymph nodes|230  |249 |Body_Site       |
-|metastatic          |286  |295 |Metastasis      |
-|liver               |312  |316 |Body_Site       |
-|sarcoma             |391  |397 |Sarcoma_Type    |
-|elevated            |428  |435 |Biomarker_Result|
-|LDH                 |470  |472 |Biomarker       |
-|580 IU/L            |493  |500 |Biomarker_Quant |
-|metastasis          |555  |564 |Metastasis      |
-|lungs               |573  |577 |Body_Site       |
-|B2M                 |627  |629 |Biomarker       |
-|lymphoma            |678  |685 |Lymphoma_Type   |
-|leukemia            |756  |763 |Leukemia_Type   |
-|CNS                 |766  |768 |Body_Site       |
-|melanoma            |844  |851 |Melanoma        |
-|arm                 |899  |901 |Body_Site       |
-|BRAF                |939  |942 |Biomarker       |
-|mutation            |950  |957 |Biomarker_Result|
-|metastatic          |985  |994 |Metastasis      |
-|lungs               |1010 |1014|Body_Site       |
-|liver               |1020 |1024|Body_Site       |
-
-
-Please check the [Oncology_Model](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb) Notebook for more information
-
-
-</div><div class="h3-box" markdown="1">
-
-####  Introducing a New Stigmatization NER Model to Identify and Categorize Stigmatizing Language in Medical Records by Extracting Entities Related to Patient Behavior, Demeanor, and Healthcare Provider Attitudes.
-
-This NER model identifies and categorizes stigmatizing language in medical records by extracting entities related to patient behavior, demeanor, and healthcare provider attitudes, aiming to assess and mitigate the impact of such language on patient care.
-
-{:.table-model-big}
-| Model Name              | Description | Predicted Entities  |
-|-------------------------|-------------|---------------------|
-|[ner_stigmatization_wip](https://nlp.johnsnowlabs.com/2024/08/27/ner_stigmatization_wip_en.html)      | This Named Entity Recognition (NER) model is specifically trained to extract critical information from clinical text related to stigmatization. This model aims to systematically collect and analyze data on stigmatizing language found in patients' medical records. | `Aggressive`, `Argumentative`, `Calm`, `Resistant`, `Credibility_Doubts`, `Suspected_DSB`, `Compliant`, `Noncompliant`, `Collaborative_Decision_Making`, `Neglected_Appearance`, `Paternalistic_Tone`, `Poor_Reasoning`, `Poor_Decision_Making`, `Other_Discriminatory_Language`, `Positive_Descriptors`, `Positive_Assessment`, `Disoriented`, `Test`, `Treatment`, `Problem`|
-
-This model achieves 0.91 accuracy and 0.89 macro F1 across 11 entities
-
-*Example*:
-
-```python
-ner_model = MedicalNerModel.pretrained("ner_stigmatization_wip", "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("ner")
-
-sample_texts = """During his hospital stay, David Brown's reluctance to seek care and resistance to necessary treatments highlighted the significant impact of poor reasoning and judgment on his health outcomes. His confrontational attitude and frequent defensiveness during discussions about his treatment plan revealed the deep-seated anxieties he harbored about his health. Despite these challenges, the healthcare team made concerted efforts to educate him on the importance of adhering to his prescribed regimen and attending regular follow-up appointments. However, Mr. Brown often fixated on incorrect beliefs, insisting that his symptoms were solely due to stress, which further complicated his care."""
-
-```
-
-*Result*:
-
-{:.table-model-big}
-|chunk                      |begin|end|ner_label         |
-|---------------------------|-----|---|------------------|
-|reluctance                 |40   |49 |Resistant         |
-|resistance                 |68   |77 |Resistant         |
-|treatments                 |92   |101|TREATMENT         |
-|poor reasoning and judgment|141  |167|Poor_Reasoning    |
-|confrontational            |197  |211|Argumentative     |
-|defensiveness              |235  |247|Argumentative     |
-|the deep-seated anxieties  |302  |326|PROBLEM           |
-|adhering                   |463  |470|Compliant         |
-|his prescribed regimen     |475  |496|TREATMENT         |
-|insisting                  |599  |607|Credibility_Doubts|
-|his symptoms               |614  |625|PROBLEM           |
-|stress                     |646  |651|PROBLEM           |
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### New Rule-Based Entity Matcher Models to Customize De-Identification Pipelines
-
-We introduce a suite of text and regex matchers, specifically designed to enhance the deidentification and clinical document understanding process with rule-based methods.
-
-
-{:.table-model-big}
-| Model Name              | Description | Predicted Entities  |
-|-------------------------|-------------|---------------------|
-|[email_matcher](https://nlp.johnsnowlabs.com/2024/08/21/email_matcher_en.html)|This model extracts emails in clinical notes using rule-based RegexMatcherInternal annotator. | `EMAIL` |
-|[url_matcher](https://nlp.johnsnowlabs.com/2024/08/21/url_matcher_en.html)     | This model extracts URLs in clinical notes using rule-based RegexMatcherInternal annotator. | `URL` |
-|[ip_matcher](https://nlp.johnsnowlabs.com/2024/08/21/ip_matcher_en.html)       | This model extracts IP Addresses in clinical notes using rule-based RegexMatcherInternal annotator. | `IP` |
-
-*Example*:
-
-```python
-email_regex_matcher = RegexMatcherInternalModel.pretrained("email_matcher", "en", "clinical/models") \
-    .setInputCols(["document"])\
-    .setOutputCol("email_chunk")
-
-url_regex_matcher = RegexMatcherInternalModel.pretrained("url_matcher", "en", "clinical/models") \
-    .setInputCols(["document"])\
-    .setOutputCol("url_chunk") 
-
-ip_regex_matcher = RegexMatcherInternalModel.pretrained("ip_matcher", "en", "clinical/models") \
-    .setInputCols(["document"])\
-    .setOutputCol("ip_chunk")  
-
-text = """
-Name: David Hale, ID: 1231511863, Driver's License No: A334455B, SSN: 324-59-8674. E-mail: hale@gmail.com.
-Access the router at http://192.168.0.1 for configuration. Please connect to 10.0.0.1 to access the database.
-For more details, visit our website at www.johnsnowlabs.com or check out http://www.johnsnowlabs.com/info for general info.
-Visit http://198.51.100.42 for more information. File transfers can be done via ftp://files.example.com.
-"""
-```
-
-*Result*:
-
-{:.table-model-big}
-| chunk                            |begin|end|ner_label|ner_source |
-|----------------------------------|-----|---|---------|-----------|
-| hale@gmail.com                   |92   |105|EMAIL    |email_chunk|
-| 192.168.0.1                      |136  |146|IP       |ip_chunk   |
-| 10.0.0.1                         |185  |192|IP       |ip_chunk   |
-| www.johnsnowlabs.com             |257  |276|URL      |url_chunk  |
-| http://www.johnsnowlabs.com/info |291  |322|URL      |url_chunk  |
-| 198.51.100.42                    |355  |367|IP       |ip_chunk   |
-| ftp://files.example.com          |422  |444|URL      |url_chunk  |
-
-
-
-</div><div class="h3-box" markdown="1">
-    
-####  3 New Sentence Entity Resolver Models for Associate Clinical Entities with RxNorm Codes
-
-Introducing 3 new Sentence Entity Resolver Models `sbiobertresolve_rxnorm_augmented_v2`, `biolordresolve_rxnorm_augmented_v2`, and `biolordresolve_avg_rxnorm_augmented_v2` help to map medical entities to RXNORM codes.
+What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
 
 {:.table-model-big}
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
-| [`sbiobertresolve_rxnorm_augmented_v2`](https://nlp.johnsnowlabs.com/2024/08/14/sbiobertresolve_rxnorm_augmented_v2_en.html) | This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. |
-| [`biolordresolve_rxnorm_augmented_v2`](https://nlp.johnsnowlabs.com/2024/08/19/biolordresolve_rxnorm_augmented_v2_en.html) | This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `mpnet_embeddings_biolord_2023_c` embeddings. |
-| [`biolordresolve_avg_rxnorm_augmented_v2`](https://nlp.johnsnowlabs.com/2024/08/20/biolordresolve_avg_rxnorm_augmented_v2_en.html) | This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `mpnet_embeddings_biolord_2023` embeddings. |
-
-*Example*:
-
-```python
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm_augmented_v2", "en", "clinical/models")\
-    .setInputCols(["sentence_embeddings"]) \
-    .setOutputCol("rxnorm_code")\
-    .setDistanceFunction("EUCLIDEAN")
-
-text= "The patient was prescribed aspirin and an Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 5 mg with meals and metformin 1000 mg two times a day and Lisinopril 10 mg daily"
-```
-
-*Result*:
-
-{:.table-model-big}
-|ner_chunk|entity|RxNormCode| resolutions|all_k_resolutions|all_k_results|all_k_distances|all_k_aux_labels|
-|------|------|----------|-----------|-------|--------|------|------|
-|          aspirin|  DRUG|      1191|                                              aspirin[aspirin]|aspirin[aspirin]:::aspirin Oral Powder Product:::YS...|1191:::1295740:::405403:::218266:...|0.0000:::4.1826:::5.7007:::6.0877:::6....|Ingredient:::Clinical Dose Group:::Brand Name...|
-|Albuterol inhaler|  DRUG|    745678|albuterol Metered Dose Inhaler[albuterol Metered Dose Inhaler]|albuterol Metered Dose Inhaler[albuterol Metered Do...|745678:::2108226:::1154602:::2108...|4.9847:::5.1028:::5.4746:::5.7809:::6....|Clinical Drug Form:::Clinical Drug Form:::Cli...|
-|    Coumadin 5 mg|  DRUG|    855333|                               warfarin sodium 5 MG [Coumadin]|warfarin sodium 5 MG [Coumadin]:::coumarin 5 MG[cou...|855333:::438740:::153692:::352120...|0.0000:::4.0885:::5.3065:::5.5132:::5....|Branded Drug Comp:::Clinical Drug Comp:::Bran...|
-|metformin 1000 mg|  DRUG|    316255|                          metformin 1000 MG[metformin 1000 MG]|metformin 1000 MG[metformin 1000 MG]:::metformin hy...|316255:::860995:::860997:::861014...|0.0000:::5.2988:::5.9071:::6.3066:::6....|Clinical Drug Comp:::Clinical Drug Comp:::Bra...|
-| Lisinopril 10 mg|  DRUG|    316151|                            lisinopril 10 MG[lisinopril 10 MG]|lisinopril 10 MG[lisinopril 10 MG]:::lisinopril 10 ...|316151:::567576:::565846:::393444...|0.0000:::3.6543:::4.2783:::4.2805:::4....|Clinical Drug Comp:::Branded Drug Comp:::Bran...|
-
-
-
-</div><div class="h3-box" markdown="1">
-    
-####  Introducing the New `LargeFewShotClassifierModel` Annotator and 2 New Classification Models (Age Group Detection and Drug Adverse Event Classification) That are Trained with Small Datasets While Achieving Comparable Performance to The Models Trained with Larger Datasets
-
-The new LargeFewShotClassifierModel annotator  is designed to work effectively with minimal labeled data, offering flexibility and adaptability to new, unseen classes. Key parameters include batch size, case sensitivity, and maximum sentence length. The release includes two new classification models:
-
-{:.table-model-big}
-| Model Name              | Description | Predicted Entities  | Benchmarking  |
-|-------------------------|-------------|---------------------|---------------------|
-|[large_fewshot_classifier_age_group](https://nlp.johnsnowlabs.com/2024/08/15/large_fewshot_classifier_age_group_en.html)      | Identifies and classifies tweets reporting Adverse Drug Events (ADEs), learning effectively from minimal labeled examples and adapting to new, unseen classes. | `ADE`, `noADE` | Achieves 0.90 accuracy and 0.81 macro F1 across 3 entities |
-|[large_fewshot_classifier_ade](https://nlp.johnsnowlabs.com/2024/08/12/large_fewshot_classifier_ade_en.html)      | Identifies and classifies the age group of a person mentioned in health documents, learning effectively from minimal labeled examples and adapting to new, unseen classes. |`Adult`, `Child`, `Unknown` | Achieves 0.89 accuracy and 0.81 macro F1 across 3 entities |
+| [`explain_clinical_doc_vop_small`](https://nlp.johnsnowlabs.com/2024/09/09/explain_clinical_doc_vop_small_en.html) | This pipeline is designed to extract all clinical/medical entities, assertion status, and relation informations which may be considered as Voice Of Patient (VOP) entities from text. |
+| [`explain_clinical_doc_cancer_type`](https://nlp.johnsnowlabs.com/2024/09/16/explain_clinical_doc_cancer_type_en.html) | This pipeline is designed to extract all clinical/medical entities, assertion status, and relation informations which may be considered as extract oncological and cancer type entities from text. |
+| [`explain_clinical_doc_sdoh_small`](https://nlp.johnsnowlabs.com/2024/09/27/explain_clinical_doc_sdoh_small_en.html) | This pipeline is designed to extract all social determinants of health (SDOH) entities from text, assign assertion status to the extracted entities, establish relations between the extracted entities. |
 
 
 *Example*:
 
 ```python
+from sparknlp.pretrained import PretrainedPipeline
 
-large_few_shot_classifier = LargeFewShotClassifierModel()\
-    .pretrained('large_fewshot_classifier_ade')\
-    .setInputCols("document")\
-    .setOutputCol("prediction")
+pipeline_sdoh = PretrainedPipeline("explain_clinical_doc_vop_small", "en", "clinical/models")
 
-text_list = [
-    ["The patient developed severe liver toxicity after taking the medication for three weeks"],
-    ["He experienced no complications during the treatment and reported feeling much better."],
-    ["She experienced a sudden drop in blood pressure after the administration of the new drug."],
-    ["The doctor recommended a daily dosage of the vitamin supplement to improve her health."]
-]
+text = """It seems like my health troubles started a few years ago. I had been feeling really tired all the time and was losing weight without even trying. My doctor did some blood work and said my sugar levels were high - he diagnosed me with something called type 2 diabetes. He put me on two medications - I take a pill called metformin 500 mg twice a day, and another one called glipizide 5 mg before breakfast and dinner. Those are supposed to help lower my blood sugar. I also have to watch what I eat and try to exercise more even though it's hard with my energy levels. A couple years after the diabetes, I started having really bad heartburn all the time. I saw a specialist called a gastroenterologist who did an endoscopy procedure where they stick a camera down your throat. That test showed I have chronic acid reflux disease or GERD. Now I take a daily pill called omeprazole 20 mg to control the heartburn symptoms.Most recently, I've had a lot of joint pain in my shoulders and knees. My primary doctor ran some blood tests that showed something called rheumatoid arthritis. He referred me to a rheumatologist who started me on a weekly medication called methotrexate. I have to remember to take folic acid with that to help minimize side effects. It seems to be helping the joint pain so far."""
+
+```
+
+*NER and Assertion Result*:
+
+{:.table-model-big}
+|    | chunks                      |   begin |   end |   sentence | entities   | assertion              |   confidence |
+|---:|:----------------------------|--------:|------:|-----------:|:-----------|:-----------------------|-------------:|
+|  0 | tired                       |      85 |    89 |          1 | Symptom    | Present_Or_Past        |     0.9959   |
+|  1 | losing weight               |     112 |   124 |          1 | Symptom    | Present_Or_Past        |     0.81445  |
+|  2 | doctor                      |     150 |   155 |          2 | Employment | SomeoneElse            |     0.9895   |
+|  3 | blood work                  |     166 |   175 |          2 | Test       | Present_Or_Past        |     0.8835   |
+|  4 | sugar levels                |     189 |   200 |          2 | Test       | Present_Or_Past        |     0.8277   |
+|  5 | high                        |     207 |   210 |          2 | TestResult | SomeoneElse            |     0.9095   |
+|  6 | type 2 diabetes             |     252 |   266 |          2 | Disease    | Hypothetical_Or_Absent |     0.379367 |
+|  7 | metformin                   |     321 |   329 |          3 | Drug       | Hypothetical_Or_Absent |     0.997    |
+|  8 | glipizide                   |     374 |   382 |          3 | Drug       | Hypothetical_Or_Absent |     0.9953   |
+|  9 | blood sugar                 |     454 |   464 |          4 | Test       | Present_Or_Past        |     0.6415   |
+| 10 | diabetes                    |     594 |   601 |          6 | Disease    | Present_Or_Past        |     0.9901   |
+| 11 | heartburn                   |     632 |   640 |          6 | Symptom    | Present_Or_Past        |     0.988    |
+| 12 | specialist                  |     664 |   673 |          7 | Employment | SomeoneElse            |     0.9878   |
+| 13 | gastroenterologist          |     684 |   701 |          7 | Employment | SomeoneElse            |     0.9866   |
+| 14 | endoscopy procedure         |     714 |   732 |          7 | Procedure  | Hypothetical_Or_Absent |     0.75475  |
+| 15 | chronic acid reflux disease |     802 |   828 |          8 | Disease    | Present_Or_Past        |     0.7071   |
+| 16 | GERD                        |     833 |   836 |          8 | Disease    | Hypothetical_Or_Absent |     0.9476   |
+| 17 | omeprazole                  |     870 |   879 |          9 | Drug       | Present_Or_Past        |     0.9987   |
+| 18 | heartburn                   |     902 |   910 |          9 | Symptom    | Present_Or_Past        |     0.9849   |
+| 19 | pain                        |     961 |   964 |         10 | Symptom    | Present_Or_Past        |     0.9923   |
+| 20 | primary doctor              |     996 |  1009 |         11 | Employment | SomeoneElse            |     0.75345  |
+| 21 | blood tests                 |    1020 |  1030 |         11 | Test       | Present_Or_Past        |     0.93715  |
+| 22 | rheumatoid arthritis        |    1061 |  1080 |         11 | Disease    | Hypothetical_Or_Absent |     0.74685  |
+| 23 | rheumatologist              |    1103 |  1116 |         12 | Employment | Present_Or_Past        |     0.9913   |
+| 24 | methotrexate                |    1163 |  1174 |         12 | Drug       | Present_Or_Past        |     0.9995   |
+| 25 | folic acid                  |    1204 |  1213 |         13 | Drug       | Present_Or_Past        |     0.7913   |
+| 26 | pain                        |    1289 |  1292 |         14 | Symptom    | Present_Or_Past        |     0.9837   |
+
+
+*Relation Extraction Result*:
+
+{:.table-model-big}
+|sentence |entity1_begin |entity1_end | chunk1              | entity1   |entity2_begin |entity2_end | chunk2       | entity2    | relation           |confidence |
+|--------:|-------------:|-----------:|:--------------------|:----------|-------------:|-----------:|:-------------|:-----------|:-------------------|----------:|
+|       2 |          166 |        175 | blood work          | Test      |          207 |        210 | high         | TestResult | Test-TestResult    |         1 |
+|       3 |          309 |        312 | pill                | Form      |          321 |        329 | metformin    | Drug       | Form-Drug          |         1 |
+|       3 |          321 |        329 | metformin           | Drug      |          331 |        336 | 500 mg       | Dosage     | Drug-Dosage        |         1 |
+|       3 |          321 |        329 | metformin           | Drug      |          338 |        348 | twice a day  | Frequency  | Drug-Frequency     |         1 |
+|       3 |          374 |        382 | glipizide           | Drug      |          384 |        387 | 5 mg         | Dosage     | Drug-Dosage        |         1 |
+|       6 |          571 |        588 | couple years after  | DateTime  |          594 |        601 | diabetes     | Disease    | DateTime-Disease   |         1 |
+|       6 |          594 |        601 | diabetes            | Disease   |          632 |        640 | heartburn    | Symptom    | Disease-Symptom    |         1 |
+|       7 |          714 |        732 | endoscopy procedure | Procedure |          770 |        775 | throat       | BodyPart   | Procedure-BodyPart |         1 |
+|       9 |          852 |        856 | daily               | Frequency |          870 |        879 | omeprazole   | Drug       | Frequency-Drug     |         1 |
+|       9 |          858 |        861 | pill                | Form      |          870 |        879 | omeprazole   | Drug       | Form-Drug          |         1 |
+|       9 |          870 |        879 | omeprazole          | Drug      |          881 |        885 | 20 mg        | Dosage     | Drug-Dosage        |         1 |
+|      10 |          927 |        934 | recently            | DateTime  |          961 |        964 | pain         | Symptom    | DateTime-Symptom   |         1 |
+|      10 |          955 |        959 | joint               | BodyPart  |          961 |        964 | pain         | Symptom    | BodyPart-Symptom   |         1 |
+|      10 |          961 |        964 | pain                | Symptom   |          972 |        980 | shoulders    | BodyPart   | Symptom-BodyPart   |         1 |
+|      10 |          961 |        964 | pain                | Symptom   |          986 |        990 | knees        | BodyPart   | Symptom-BodyPart   |         1 |
+|      12 |         1138 |       1143 | weekly              | Frequency |         1163 |       1174 | methotrexate | Drug       | Frequency-Drug     |         1 |
+|      14 |         1283 |       1287 | joint               | BodyPart  |         1289 |       1292 | pain         | Symptom    | BodyPart-Symptom   |         1 |
+
+
+Please check the [Task Based Clinical Pretrained Pipelines](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb) model for more information
+
+
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Introducing 8 New Named Entity Recognition (NER) Models and Pipelines to Detect PHI for Deidentification with Minimal Customisation Required
+
+Introducing 8 New Named Entity Recognition (NER) Models: `ner_deid_generic_docwise`, `ner_deid_subentity_docwise`, `ner_deid_subentity_augmented_docwise`, `ner_deid_aipii`, `ner_deid_subentity_augmented_v2`, `clinical_deidentification_docwise_wip`, `clinical_deidentification_nameAugmented_v2` and `clinical_deidentification_v2_wip`. These models work at the document level and are particularly useful for detecting Protected Health Information (PHI) for de-identification.
+
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`ner_deid_generic_docwise`](https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_generic_docwise_en.html) | This document-level model detects PHI entities for de-identification. (Generic) |
+| [`ner_deid_subentity_augmented_docwise`](https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_subentity_augmented_docwise_en.html) | This document-level model detects PHI entities for de-identification. (Subentity_Augmented) |
+| [`ner_deid_subentity_docwise`](https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_subentity_docwise_en.html) | This document-level model detects PHI entities for de-identification. (Subentity) |
+| [`ner_deid_aipii`](https://nlp.johnsnowlabs.com/2024/09/25/ner_deid_aipii_en.html) | This model is particularly effective in identifying and labeling various entities, making it useful for detecting protected health information (PHI) that may need to be masked or de-identified. |
+| [`ner_deid_subentity_augmented_v2`](https://nlp.johnsnowlabs.com/2024/09/20/ner_deid_subentity_augmented_v2_en.html) | This document-level model detects PHI entities for de-identification. (Subentity) |
+| [`clinical_deidentification_docwise_wip`](https://nlp.johnsnowlabs.com/2024/10/03/clinical_deidentification_docwise_wip_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
+| [`clinical_deidentification_nameAugmented_v2`](https://nlp.johnsnowlabs.com/2024/10/03/clinical_deidentification_nameAugmented_v2_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
+| [`clinical_deidentification_v2_wip`](https://nlp.johnsnowlabs.com/2024/10/03/clinical_deidentification_v2_wip_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
+
+*Example*:
+
+```python
+ner_deid_generic = MedicalNerModel.pretrained("ner_deid_generic_docwise", "en", "clinical/models")  \
+      .setInputCols(["document", "token", "embeddings"]) \
+      .setOutputCol("ner_deid_generic_docwise")
+
+text= '''Dr. John Taylor, ID 982345, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old male patient.'''
+```
+
+
+*Result*:
+
+{:.table-model-big}
+|chunk              |begin|end|ner_label |
+|-------------------|-----|---|----------|
+|John Taylor        |5    |15 |NAME      |
+|982345             |21   |26 |CONTACT   |
+|cardiologist       |31   |42 |PROFESSION|
+|St. Mary's Hospital|47   |65 |LOCATION  |
+|Boston             |70   |75 |LOCATION  |
+|05/10/2023         |95   |104|DATE      |
+|45-year-old        |118  |128|AGE       |
+
+
+Please check the [Clinical Deidentification Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.0.Clinical_DeIdentification.ipynb) for more information
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Introducing a New Mapper Model Designed to Link `ICD-10-CM codes` with Their Corresponding Chronicity Indicators
+
+Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks.
+
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+|[`icd10cm_chronic_indicator_mapper`](https://nlp.johnsnowlabs.com/2024/10/02/icd10cm_chronic_indicator_mapper_en.html)  | This mapper model links ICD-10-CM codes to their corresponding chronicity indicators. The `chronic indicator` can have three different values; `0`: "not chronic", `1`: "chronic", `9`: "no determination" |
+
+*Example*:
+
+```python
+mapperModel = ChunkMapperModel.pretrained("icd10cm_chronic_indicator_mapper","en", "clinical/models")\
+    .setInputCols(["chunk"])\
+    .setOutputCol("chronic_indicator_mapping")\
+    .setRels(["chronic_indicator"])
+
+
+data = spark.createDataFrame([["""A 42-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with besity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""]]).toDF("text")
 ```
 
 *Result*:
 
 {:.table-model-big}
-|text                                                                                     |result|
-|-----------------------------------------------------------------------------------------|------|
-|The patient developed severe liver toxicity after taking the medication for three weeks  |ADE   |
-|He experienced no complications during the treatment and reported feeling much better.   |noADE |
-|She experienced a sudden drop in blood pressure after the administration of the new drug.|ADE   |
-|The doctor recommended a daily dosage of the vitamin supplement to improve her health.   |noADE |
-
-
-Please check the [LargeFewShotClassifier](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.4.Text_Classification_with_LargeFewShotClassifier.ipynb) Notebook for more information
-
+|sentence_id|                               entity|begin|end|  label|icd10cm|                                                                                resolution|chronic_indicator|
+|-----------|-------------------------------------|-----|---|-------|-------|------------------------------------------------------------------------------------------|-----------------|
+|          0|        gestational diabetes mellitus|   39| 67|PROBLEM|  O24.4|                             gestational diabetes mellitus [gestational diabetes mellitus]|                0|
+|          0|subsequent type two diabetes mellitus|  117|153|PROBLEM| O24.11|pre-existing type 2 diabetes mellitus [pre-existing type 2 diabetes mellitus, in pregna...|                1|
+|          0|                              obesity|  172|178|PROBLEM|  E66.9|                                                            obesity [obesity, unspecified]|                1|
+|          0|                    a body mass index|  185|201|PROBLEM| Z68.41|                       finding of body mass index [body mass index [bmi] 40.0-44.9, adult]|                9|
+|          0|                             polyuria|  261|268|PROBLEM|    R35|                                                                       polyuria [polyuria]|                0|
+|          0|                           polydipsia|  271|280|PROBLEM|  R63.1|                                                                   polydipsia [polydipsia]|                0|
+|          0|                        poor appetite|  283|295|PROBLEM|  R63.0|                                                                  poor appetite [anorexia]|                0|
+|          0|                             vomiting|  302|309|PROBLEM|  R11.1|                                                                       vomiting [vomiting]|                0|
+|          1|        a respiratory tract infection|  403|431|PROBLEM|  J98.8|                       respiratory tract infection [other specified respiratory disorders]|                0|
 
 
 </div><div class="h3-box" markdown="1">
-    
-#### Introducing `DocumentFiltererByNER` Annotator to Filter Out the Documents and Sentences Having Certain Types of Named Entities within the Same Pipeline
 
-The `DocumentFiltererByNER` annotator returns sentences containing the entity chunks you have filtered, allowing you to see only the sentences with the entities you want. It is particularly useful for extracting and organizing the results obtained from Spark NLP Pipelines.
+#### Introducing a New Named Entity Recognition (NER) Model and a New Binary Classification Model to Detect Adverse Drug Events
+
+- Named Entity Recognition (NER) Model: [ner_ade_clinical_v2](https://nlp.johnsnowlabs.com/2024/09/05/ner_ade_clinical_v2_en.html) to detect adverse reactions of drugs, and problem in reviews, tweets, and medical text using pretrained NER model.
+- Binary Classification Model: [bert_sequence_classifier_ade_augmented_v2](https://nlp.johnsnowlabs.com/2024/09/05/bert_sequence_classifier_ade_augmented_v2_en.html) Classify texts/sentences in two categories: `True`: The sentence is talking about a possible ADE. `False`: The sentence doesn’t have any information about an ADE. 
+
+*Example*:
+
+```python
+ner_model = MedicalNerModel.pretrained("ner_ade_clinical_v2", "en", "clinical/models")\
+    .setInputCols(["sentence", "token","embeddings"])\
+    .setOutputCol("ner")
+
+data = spark.createDataFrame([["""I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums.
+I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."""]]).toDF("sentence")
+```
+
+*Result*:
+
+{:.table-model-big}
+|chunk                      |begin|end|ner_label|
+|---------------------------|-----|---|---------|
+|allergic reaction          |10   |26 |ADE      |
+|vancomycin                 |31   |40 |DRUG     |
+|itchy skin                 |52   |61 |ADE      |
+|sore throat/burning/itching|64   |90 |ADE      |
+|numbness of tongue and gums|93   |119|ADE      |
+|an adverse reaction        |204  |222|PROBLEM  |
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Introducing the `REChunkMerger` Annotator to Merge the Entities in a Relationship as a Single Entity
+
+The `REChunkMerger` annotator merge related chunks of data into a new, single chunk. It specifically merges entities that are identified as being in a relationship by using a separator, which by default is a whitespace (" "). This means when two related entities are found within a text, this annotator combines them into one chunk using the specified separator to see the relationship clear.
 
 Key Parameters:
 
-- `blackList`: If defined, list of entities to ignore. The rest will be processed.
-- `whiteList`: If defined, list of entities to process. The rest will be ignored.
-- `caseSensitive`: Determines whether the definitions of the white-listed and black-listed entities are case sensitive or not.
-- `outputAsDocument`: Whether to return all sentences joined into a single document. (default: `False`).
-- `joinString`: This parameter specifies the string that will be inserted between results of documents when combining them into a single result if outputAsDocument is set to `True` (default is: " ").
-
+- `separator`: Separator to add between the relation chunks. (default is a whitespace: " ").
 
 *Example*:
 
 ```python
-filterer = medical.DocumentFiltererByNER() \
-    .setInputCols(["sentence", "ner_chunk"]) \
-    .setOutputCol("filterer") \
-    .setWhiteList(["Disease_Syndrome_Disorder"])\
-    .setOutputAsDocument(True)\
-    .setJoinString(" ")
+re_chunk_merger = REChunkMerger() \
+     .setInputCols(["re_chunk"]) \
+     .setOutputCol("relation_chunks") \
+     .setSeparator("  ")\
 
-spark_df = spark.createDataFrame([
-    [1,"Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus. Most people infected with the virus will experience mild to moderate respiratory illness and recover without requiring special treatment. However, some will become seriously ill and require medical attention. Older people and those with underlying medical conditions like cardiovascular disease, diabetes, chronic respiratory disease, or cancer are more likely to develop serious illness."],
-    [2,"Anyone can get sick with COVID-19 and become seriously ill or die at any age. The best way to prevent and slow down transmission is to be well informed about the disease and how the virus spreads. Protect yourself and others from infection by staying at least 1 metre apart from others, wearing a properly fitted mask, and washing your hands or using an alcohol-based rub frequently."],
-    [3, "Get vaccinated when it’s your turn and follow local guidance. Stay home if you feel unwell. If you have a fever, cough and difficulty breathing, seek medical attention. The virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe. These particles range from larger respiratory droplets to smaller aerosols. It is important to practice respiratory etiquette, for example by coughing into a flexed elbow, and to stay home and self-isolate until you recover if you feel unwell."]
-    ]).toDF("idx","text")
+data = spark.createDataFrame([["""The patient was prescribed 1 unit of Advil for 5 days after meals. The patient was also
+given 1 unit of Metformin daily.
+He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night ,
+12 units of insulin lispro with meals , and metformin 1000 mg two times a day."""]]).toDF("sentence")
 ```
+
+*Relation Result*:
+
+{:.table-model-big}
+| sentence | chunk1           | entity1 | chunk2           | entity2   | relation       | confidence |
+|----------|------------------|---------|------------------|-----------|----------------|------------|
+| 0        | 1 unit           | DOSAGE  | Advil            | DRUG      | DOSAGE-DRUG    | 1\.0       |
+| 0        | Advil            | DRUG    | for 5 days       | DURATION  | DRUG-DURATION  | 1\.0       |
+| 1        | 1 unit           | DOSAGE  | Metformin        | DRUG      | DOSAGE-DRUG    | 1\.0       |
+| 1        | Metformin        | DRUG    | daily            | FREQUENCY | DRUG-FREQUENCY | 1\.0       |
+| 2        | 40 units         | DOSAGE  | insulin glargine | DRUG      | DOSAGE-DRUG    | 1\.0       |
+| 2        | insulin glargine | DRUG    | at night         | FREQUENCY | DRUG-FREQUENCY | 1\.0       |
+| 2        | 12 units         | DOSAGE  | insulin lispro   | DRUG      | DOSAGE-DRUG    | 1\.0       |
+| 2        | insulin lispro   | DRUG    | with meals       | FREQUENCY | DRUG-FREQUENCY | 1\.0       |
+| 2        | metformin        | DRUG    | 1000 mg          | STRENGTH  | DRUG-STRENGTH  | 1\.0       |
+| 2        | metformin        | DRUG    | two times a day  | FREQUENCY | DRUG-FREQUENCY | 1\.0       |
+
+
+*REChunkMerger Result*:
+
+{:.table-model-big}
+|result                    |
+|--------------------------|
+|1 unit  Advil             |
+|Advil  for 5 days         |
+|1 unit  Metformin         |
+|Metformin  daily          |
+|40 units  insulin glargine|
+|insulin glargine  at night|
+|12 units  insulin lispro  |
+|insulin lispro  with meals|
+|metformin  1000 mg        |
+|metformin  two times a day|
+
+
+Please check the [REChunkMerger Mooc Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/REChunkMerger.ipynb) Notebook for more information
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Introducing a Brand New `ContextualEntityFilter` Annotator to Filter Entities with Context-Specific Rules.
+
+The `ContextualEntityFilterer` filters segments of text—identified by metadata as "CHUNK" annotations that contain specific types of entities. These entities are defined by identifiers or field types detailed in the metadata. 
+
+Key Parameters:
+
+- `ruleScope`: The ruleScope parameter to apply the filter. Options: sentence, document.
+- `caseSensitive`: Whether to use case sensitive when matching words
+- `rules`: The rules parameter to filter chunks based on contextual rules and it is a list of dictionaries. A dictionary should contain the following keys: \
+           - `entity`: The entity field to filter. \
+           - `scopeWindow`: The scope window around the entity, defined as a list of two integers [before, after], specifying how many chunks before and after should be considered.\
+           - `whiteListEntities`: The white list of entities. If an entity from this list appears within the scope window, the chunk will be kept.\
+           - `blackListEntities`: The black list of entities. If an entity from this list appears within the scope window, the chunk will be filtered out.\
+           - `blackListWords`: The black list of words. If a word from this list appears within the scope window, the chunk will be filtered out.\
+           - `whiteListWords`: The white list of words. If a word from this list appears within the scope window, the chunk will be kept.\
+           - `confidenceThreshold`: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.\
+           - `scopeWindowLevel`: The level to apply the scope window. Options: token, chunk.
+
+*Example*:
+
+```python
+rules =[
+    {
+        "entity": "LOCATION",
+        "scopeWindow": [2, 2],
+        "whiteList": ["AGE", "DATE"],
+        "blackList": ["ID", "NAME"],
+        "scopeWindowLevel": "token"
+    },
+    {
+        "entity": "DATE",
+        "scopeWindow": [2, 2],
+        "whiteList": ["AGE", "DATE"],
+        "blackList": ["ID", "NAME"],
+        "scopeWindowLevel": "chunk"
+    }
+]
+
+contextual_entity_filterer = ContextualEntityFilterer() \
+    .setInputCols("sentence", "token", "ner_chunks") \
+    .setOutputCol("filtered_ner_chunks") \
+    .setRules(rules)\
+    .setRuleScope("sentence")
+
+
+text = "California, known for its beautiful beaches,and he is 36 years. " \
+        "The Grand Canyon in Arizona, where the age is 37, is a stunning natural landmark. " \
+        "It was founded on September 9, 1850, and Arizona on February 14, 1912."
+df = spark.createDataFrame([[text]]).toDF("text")
+```
+
 
 *Input DataFrame*:
 
 {:.table-model-big}
-|idx|sent_id| sentence                                                                                                                                 | ner_chunk                                                                          | ner_label                                                                                                       |
-|---|-------|:-----------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|
-|  1|      0| Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus.                                                  | ['Coronavirus disease', 'infectious disease']                                      | ['Disease_Syndrome_Disorder', 'Disease_Syndrome_Disorder']                                                      |
-|  1|      1| Most people infected with the virus will experience mild to moderate respiratory illness and recover without requiring special treatment.| ['infected', 'virus', 'mild', 'moderate', 'respiratory illness']                   | ['Disease_Syndrome_Disorder', 'Disease_Syndrome_Disorder', 'Modifier', 'Modifier', 'Disease_Syndrome_Disorder'] |
-|  1|      2| However, some will become seriously ill and require medical attention.                                                                   | ['ill']                                                                            | ['Symptom']                                                                                                     |
-|  1|      3| Older people and those with underlying medical conditions like cardiovascular disease, diabetes, chronic respiratory disease, or cance...| ['cardiovascular disease', 'diabetes', 'chronic', 'respiratory disease', 'cancer'] | ['Heart_Disease', 'Diabetes', 'Modifier', 'Disease_Syndrome_Disorder', 'Oncological']                           |
-|  2|      0| Anyone can get sick with COVID-19 and become seriously ill or die at any age.                                                            | ['COVID-19', 'ill']                                                                | ['Drug_Ingredient', 'Symptom']                                                                                  |
-|  2|      1| The best way to prevent and slow down transmission is to be well informed about the disease and how the virus spreads.                   | nan                                                                                | nan                                                                                                             |
-|  2|      2| Protect yourself and others from infection by staying at least 1 metre apart from others, wearing a properly fitted mask, and washing ...| ['infection', 'hands', 'alcohol-based rub', 'frequently']                          | ['Disease_Syndrome_Disorder', 'External_body_part_or_region', 'Medical_Device', 'Modifier']                     |
-|  3|      0| Get vaccinated when it’s your turn and follow local guidance.                                                                            | nan                                                                                | nan                                                                                                             |
-|  3|      1| Stay home if you feel unwell.                                                                                                            | ['unwell']                                                                         | ['Symptom']                                                                                                     |
-|  3|      2| If you have a fever, cough and difficulty breathing, seek medical attention.                                                             | ['fever', 'cough', 'difficulty breathing']                                         | ['VS_Finding', 'Symptom', 'Symptom']                                                                            |
-|  3|      3| The virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe.  | ['infected person’s mouth', 'nose', 'cough', 'sneeze', 'sing or breathe']          | ['Disease_Syndrome_Disorder', 'External_body_part_or_region', 'Symptom', 'Symptom', 'Symptom']                  |
-|  3|      4| These particles range from larger respiratory droplets to smaller aerosols.                                                              | nan                                                                                | nan                                                                                                             |
-|  3|      5| It is important to practice respiratory etiquette, for example by coughing into a flexed elbow, and to stay home and self-isolate unti...| ['coughing into a flexed elbow', 'unwell']                                         | ['Symptom', 'Symptom']                                                                                          |
+|            chunk|begin|end|ner_label|
+|-----------------|-----|---|---------|
+|       California|    0|  9| LOCATION|
+|               36|   54| 55|      AGE|
+|     Grand Canyon|   68| 79| LOCATION|
+|          Arizona|   84| 90| LOCATION|
+|               37|  110|111|      AGE|
+|September 9, 1850|  164|180|     DATE|
+|February 14, 1912|  198|214|     DATE|
+
+
 
 *Result after filtering*:
 
 {:.table-model-big}
-|idx | metadata                                                  | result                                                                                                                                      |
-|---:|:----------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------|
-|  1 | [{'sentence': '0'}, {'sentence': '1'}, {'sentence': '3'}] | ['Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus.', 'Most people infected with the virus will exp...|
-|  2 | [{'sentence': '2'}]                                       | ['Protect yourself and others from infection by staying at least 1 metre apart from others, wearing a properly fitted mask, and washing y...|
-|  3 | [{'sentence': '3'}]                                       | ['The virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe.'] |
+|            chunk|begin|end|ner_label|confidence|
+|-----------------|-----|---|---------|----------|
+|               36|   54| 55|      AGE|      0.96|
+|               37|  110|111|      AGE|    0.9921|
+|September 9, 1850|  164|180|     DATE|  0.964375|
+|February 14, 1912|  198|214|     DATE|  0.952525|
 
-Please check the [DocumentFiltererByNER](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb) Notebook for more information
+
+Please check the [ContextualEntityFilter Mooc Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualEntityFilter.ipynb) Notebook for more information
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Introducing a Brand New `Mapper2Chunk` Annotator to Create a New Chunk Type from any Mapper
 
-The `Mapper2Chunk` annotator converts 'LABELED_DEPENDENCY' type annotations coming from ChunkMapper into 'CHUNK' type to create a new chunk-type column, compatible with annotators that use chunk type as input.
+####  Enhanced New Sentence Detector Model for Healthcare Text Segmentation in Corrupted Text
 
-Key Parameter:
-- `FilterNoneValues`: Whether to filter 'NONE' values. The default is `false`.
-
+The new Sentence Detector DL Model  `v2` significantly improves sentence segmentation accuracy compared to its predecessor. Optimized for clinical and healthcare domains, it ensures more precise detection of sentence boundaries, particularly in complex medical texts. The model delivers superior performance across various document formats and medical terminology. The new model offers enhanced support for edge cases, improved handling of abbreviations and punctuation, and better adaptability to diverse linguistic structures, ensuring more reliable results in medical NLP pipelines.
 
 *Example*:
 
 ```python
-ner_converter = NerConverterInternal() \
-    .setInputCols(["sentence", "token", "ner"]) \
-    .setOutputCol("ner_chunk")
+sentence_detector_v1 = SentenceDetectorDLModel\
+    .pretrained("sentence_detector_dl_healthcare", "en", "clinical/models") \
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence_v1")
 
-chunkMapper = ChunkMapperModel.pretrained("drug_action_treatment_mapper", "en", "clinical/models") \
-    .setInputCols(["ner_chunk"]) \
-    .setOutputCol("relations") \
-    .setRels(["action"])
+sentence_detector_v2 = SentenceDetectorDLModel\
+    .pretrained("sentence_detector_dl_healthcare_v2_wip", "en", "clinical/models") \
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence_v2")
 
-mapper2chunk = Mapper2Chunk() \
-    .setInputCols(["relations"]) \
-    .setOutputCol("chunk") \
-    .setFilterNoneValues(True)
+pipeline = Pipeline(
+    stages=[
+        document_assembler, 
+        sentence_detector_v1,
+        sentence_detector_v2])
 
-text = """Patient resting in bed. Patient given azithromycin without any difficulty. Patient denies nausea at this time. Zofran declined. Patient is also having intermittent sweating"""
 ```
 
+*Sentence Detector v1 Result*:
 
-*Input DataFrame*:
-
-{:.table-model-big}
-|result       |annotatorType                |
-|-------------|-----------------------------|
-|[bactericidal, antiemetic, anti-abstinence, NONE, NONE]|[labeled_dependency, labeled_dependency, labeled_dependency, labeled_dependency, labeled_dependency]|
-
-
-*Result after mapper2chunk*:
-
-{:.table-model-big}
-|result                                     |annotatorType        |
-|-------------------------------------------|---------------------|
-|[bactericidal, antiemetic, anti-abstinence]|[chunk, chunk, chunk]|
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Introducing new `setConfidenceCalculationDirection` Parameter for `ContextualAssertion` (Rule Based Context-Aware Assertion Status Detection) to Allow Direction-Sensitive Confidence Score Calculation
-
-
-The `setConfidenceCalculationDirection` parameter in the ContextualAssertion model allows users to specify the direction (left, right, or both) for calculating assertion confidence in clinical text analysis. By default, the direction is set to "left". This feature is easily configurable within the Spark NLP framework, providing more control over assertion confidence calculations.
- 
-*Example*:
-
-```python
-contextual_assertion = ContextualAssertion()\
-            .setInputCols("sentence", "token", "ner_chunk") \
-            .setOutputCol("assertion") \
-            .setConfidenceCalculationDirection("both")
-
-text = """Patient resting in bed. Patient given azithromycin without any difficulty. Patient has audible wheezing, states chest tightness.
-No evidence of hypertension. Patient denies nausea at this time. zofran declined. Patient is also having intermittent sweating
-associated with pneumonia. Patient refused pain but tylenol still given. Neither substance abuse nor alcohol use however cocaine
-once used in the last year. Alcoholism unlikely. Patient has headache and fever. Patient is not diabetic. Not clearly of diarrhea.
-Lab reports confirm lymphocytopenia. Cardaic rhythm is Sinus bradycardia. Patient also has a history of cardiac injury.
-No kidney injury reported. No abnormal rashes or ulcers. Patient might not have liver disease. Confirmed absence of hemoptysis.
-Although patient has severe pneumonia and fever, test reports are negative for COVID-19 infection. COVID-19 viral infection absent.
-"""
-```
-*Result*:
-
-{:.table-model-big}
-|ner_chunk         |begin|end|confidence|result|
-|------------------|-----|---|----------|------|
-|any difficulty    |59   |72 |0.9802    |absent|
-|hypertension      |149  |160|0.7711    |absent|
-|nausea            |178  |183|0.9802    |absent|
-|zofran            |199  |204|0.9802    |absent|
-|pain              |309  |312|0.9802    |absent|
-|tylenol           |318  |324|0.8187    |absent|
-|Alcoholism        |428  |437|0.9802    |absent|
-|diabetic          |496  |503|0.9802    |absent|
-|kidney injury     |664  |676|0.9802    |absent|
-|abnormal rashes   |691  |705|0.9802    |absent|
-|ulcers            |710  |715|0.6703    |absent|
-|liver disease     |741  |753|0.8869    |absent|
-|hemoptysis        |777  |786|0.9802    |absent|
-|COVID-19 infection|873  |890|0.9802    |absent|
-|viral infection   |902  |916|0.9802    |absent|
-
-Please check the [ContextualAssertion](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualAssertion.ipynb) Notebook for more information
+|sent_id|sentence  |
+|-------|----------|
+|0      |He was given boluses of MS04 with some effect, he has since been placed on a PCA - \nhe take 80mg of oxycontin at home, his PCA dose is ~ 2 the morphine dose of the oxycontin, \nhe has also received ativan for anxiety.  |
+|1      |Repleted with 20 meq kcl po, 30 mmol K-phos iv and 2 gms \nmag so4 iv. |
+|2      |Size: Prostate gland measures 10x1.  |
+|3      |1x4.9 cm (LS x AP x TS).      |
+|4      |Estimated volume is 51.9 ml \nand is mildly enlarged in size.  |
+|5      |Normal delineation pattern of the prostate gland is preserved.  |
+|6      |ORs with 95% CI for family - based analyses were calculated in PLINK (http: / / pngu . mgh . \nharvard .    |
+|7      |edu / purcell / plink /) [59].    |
+|8      |Classification and regression based quantitative \nstructure - toxicity relationship (QSTR) as well as toxicophore models were developed for \nthe first time on basal cytotoxicity data (in vitro 3T3 neutral red uptake data) of a diverse \nseries of chemicals (including drugs and environmental pollutants) collected from the ACuteTox \ndatabase (http: / / www . acutetox . eu /).|
+|9      |Here, we created a database, the Worm Developmental \nDynamics Database (http: / / so . qbic . riken . jp / wddd /), which stores a collection of \nquantitative information about cell division dynamics in early Caenorhabditis elegans embryos \nwith single genes silenced by RNA - mediated interference.                 |
+|10     |Worldwide prevalence figures estimate \nthat there are 280 million diabetic patients in 2011 and more than 500 million in 2030 (http: / \n/ www . diabetesatlas .  |
+|11     |org /).                                               |
+|12     |ESTs with homologues / orthologues in C . elegans and other \nnematodes were also subjected to analysis employing the KEGG Orthology - Based Annotation System (KOBAS)      |
+|13     |(www . kobas .                    |
+|14     |cbi . pku . edu . cn), which predicts the biochemical pathways in which \nmolecules are involved.     |
+|15     |We also included the TNF - 308G / A promoter SNP, together with nine \nfurther SNPs in the region of HLA - B and MICA obtained from the database, dbSNP (http: / / \nwww . ncbi . nlm . nih . gov / projects / SNP /).              |
+|16     |Sequences were analyzed using DNASTAR 4 . 0    |
+|17     |(http: / / www . dnastar .  |
+|18     |com), GeneDoc, and GCC (University of Wisconsin). |
+|19     |Peptides inferred \nfrom ESTs were classified functionally using Interproscan (available at http: / / www . ebi . \nac . uk / InterProScan /) employing the default search parameters. |
 
 
+*Sentence Detector v2 Result*:
 
+|sent_id|sentence    |
+|-------|------------|
+|0      |He was given boluses of MS04 with some effect, he has since been placed on a PCA - \nhe take 80mg of oxycontin at home, his PCA dose is ~ 2 the morphine dose of the oxycontin, \nhe has also received ativan for anxiety. |
+|1      |Repleted with 20 meq kcl po, 30 mmol K-phos iv and 2 gms \nmag so4 iv. |
+|2      |Size: Prostate gland measures 10x1.1x4.9 cm (LS x AP x TS). |
+|3      |Estimated volume is 51.9 ml \nand is mildly enlarged in size.     |
+|4      |Normal delineation pattern of the prostate gland is preserved.  |
+|5      |ORs with 95% CI for family - based analyses were calculated in PLINK (http: / / pngu . mgh . \nharvard . edu / purcell / plink /) [59].                                |
+|6      |Classification and regression based quantitative \nstructure - toxicity relationship (QSTR) as well as toxicophore models were developed for \nthe first time on basal cytotoxicity data (in vitro 3T3 neutral red uptake data) of a diverse \nseries of chemicals (including drugs and environmental pollutants) collected from the ACuteTox \ndatabase (http: / / www . acutetox . eu /).|
+|7      |Here, we created a database, the Worm Developmental \nDynamics Database (http: / / so . qbic . riken . jp / wddd /), which stores a collection of \nquantitative information about cell division dynamics in early Caenorhabditis elegans embryos \nwith single genes silenced by RNA - mediated interference.                                                                             |
+|8      |Worldwide prevalence figures estimate \nthat there are 280 million diabetic patients in 2011 and more than 500 million in 2030 (http: / \n/ www . diabetesatlas . org /).     |
+|9      |ESTs with homologues / orthologues in C . elegans and other \nnematodes were also subjected to analysis employing the KEGG Orthology - Based Annotation System (KOBAS)       |
+|10     |(www . kobas . cbi . pku . edu . cn), which predicts the biochemical pathways in which \nmolecules are involved.                                                       |
+|11     |We also included the TNF - 308G / A promoter SNP, together with nine \nfurther SNPs in the region of HLA - B and MICA obtained from the database, dbSNP (http: / / \nwww . ncbi . nlm . nih . gov / projects / SNP /).                                |
+|12     |Sequences were analyzed using DNASTAR 4 . 0 \n(http: / / www . dnastar . com), GeneDoc, and GCC (University of Wisconsin).   |
+|13     |Peptides inferred \nfrom ESTs were classified functionally using Interproscan (available at http: / / www . ebi . \nac . uk / InterProScan /) employing the default search parameters.  |
 
 </div><div class="h3-box" markdown="1">
 
-#### Introducing a New `dict_to_annotation_converter` Module for Converting Dictionary Data to Spark NLP Annotations (e.g. Allowing Deidentification and Obfuscation Over a List of Entities within a JSON Format such as GenAI Annotations)
+#### Introducing New Parameters to `Replacer` for Data Augmentation
 
-This method converts a list of dictionaries into a Spark DataFrame with document and chunk columns compatible with Spark NLP for tasks like deidentification. The input data must include text and chunk information with specific attributes, such as start and end indices, entity types, and metadata. The method also allows customization of column names and an optional adjustment of chunk end indices.
+Added new parameters into `Replacer` to replace identified tokens or patterns with predefined alternatives. Moreover, Added new option to `noneValuesTo`: prioritize_static_entity. If a static entity mapping is available for the entity type, it will use this values for mapping. If not, it will act according to StaticEntityMappingsFallback option.
+
+- `returnEntityMappings`: With this property you select if you want to return mapping column
+- `mappingsColumn`: This column maps the annotations to their corresponding chunks before the entities are replaced.
+- `staticEntityMappings`: A map of entity types to their replacement values
+- `staticEntityMappingsFallback`: Fallback option for static entity mappings. Allowed values: 'entity', 'place_holder', 'skip', 'error', Default; error
 
 *Example*:
 
 ```python
-list_of_dict = [
-    {
-        "text": "My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs.",
-        "chunks": [
-            {
-                "begin": 11,
-                "end": 16,
-                "result": "George",
-                "entity": "PERSON",
-                "metadata": {"confidence": "1", "ner_source": "ner_deid"}
-            },
-            {
-                "begin": 37,
-                "end": 46,
-                "result": "12/11/1995",
-                "entity": "DATE",
-                "metadata": {"confidence": "0.9", "ner_source": "ner_deid"}
-            },
-            {
-                "begin": 83,
-                "end": 96,
-                "result": "John Snow labs",
-                "entity": "ORG",
-                "metadata": {"confidence": "0.87", "ner_source": "ner_deid"}
-            }
-            ],
-        "doc_id": "1",
-        "file_path": "/path/to/file1"
-    }
- ]
-from sparknlp_jsl.annotator import LightDeIdentification
-from sparknlp_jsl.utils import *
+replacer = Replacer() \
+      .setInputCols("chunk", "sentence")\
+      .setOutputCol("doc")\
+      .setUseReplacement(True)\
+      .setNoneValuesTo("prioritize_static_entity") \
+      .setPlaceHolder("******") \
+      .setPlaceHolderDelimiters(["<", ">"]) \
+      .setReturnEntityMappings(True) \
+      .setMappingsColumn("mappings") \
+      .setStaticEntityMappings({"TREATMENT": "MEDICATION", "TEST": "ACTIVITY"}) \
+      .setStaticEntityMappingsFallback("entity")
 
-result_df = dict_to_annotation_converter(spark, list_of_dict)
-result_df.select("doc_id", "text","chunk").show(truncate = 100)
+sample_text = "A 32-year-old woman with a history of type 2 diabetes, previously managed for gestational diabetes. Her treatment regimen included metformin. At her check-up, she was found to be dehydrated, though without abdominal discomfort. Important lab results showed a glucose level of 130 mg/dL, triglycerides at 450 mg/dL, and venous pH of 7.30."
+
+data = spark.createDataFrame([[sample_text]]).toDF("text")
 ```
 
 *Result*:
 
-{:.table-model-big}
-|doc_id|       text|               chunk|
-|------|-----------|--------------------|
-|   1  |My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs.|[{chunk, 11, 16, George, {sentence -> 0, chunk -> 0, ner_source -> llm_output, entity -> PERSON, ...|
+```bash
+A 32-year-old woman with a history of <PROBLEM>, previously managed for <PROBLEM>., MEDICATION included MEDICATION., At ACTIVITY, she was found to be <PROBLEM>, though without <PROBLEM>., Important lab results showed ACTIVITY of 130 mg/dL, ACTIVITY at 450 mg/dL, and ACTIVITY of 7.30.
+```
+
+Please check the [Replacer Mooc Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb) Notebook for more information
+
 
 
 </div><div class="h3-box" markdown="1">
 
-#### New Blogposts: Identifying Named Entities in Medical Text with Zero-Shot Learning
+#### New Speed Benchmarks for Multi-NER Pipelines
+
+- 64 Cores:
+
+Driver: Standard_D4s_v3, 4 core, 16 GB memory, \
+Worker: Standard_D4s_v2, 8 core, 28 GB memory, \
+total worker number: 8 \
+input_data_rows:1000
+
+{:.table-model-big}
+| action          | partition |  NER<br>timing  | 2_NER<br>timing | 4_NER<br>timing | NER+RE<br>timing |
+|-----------------| ---------:|----------------:|----------------:|----------------:|-----------------:|
+| write_parquet   |     4     | 1 min 36 sec    | 3 min 1 sec     | 6 min 32 sec    |  3 min 12 sec    |
+| write_deltalake |     4     | 1 min 38 sec    | 3 min 2 sec     | 6 min 30 sec    |  3 min 18 sec    |
+| write_parquet   |     8     | 48 sec          | 1 min 32 sec    | 3 min 21 sec    |  1 min 38 sec    |
+| write_deltalake |     8     | 51 sec          | 1 min 36 sec    | 3 min 26 sec    |  1 min 43 sec    |
+| write_parquet   |     16    | 28 sec          | 1 min 16 sec    |  2 min 2 sec    |  56 sec          |
+| write_deltalake |     16    | 31 sec          | 57 sec          |  2 min 2 sec    |  58 sec          |
+| write_parquet   |     32    | 20 sec          | 39 sec          | 1 min 22 sec    |  50 sec          |
+| write_deltalake |     32    | 22 sec          | 41 sec          | 1 min 45 sec    |  35 sec          |
+| write_parquet   |     64    | 17 sec          | 31 sec          |  1 min 8 sec    |  27 sec          |
+| write_deltalake |     64    | 17 sec          | 32 sec          | 1 min 11 sec    |  29 sec          |
+| write_parquet   |    100    | 18 sec          | 33 sec          | 1 min 13 sec    |  30 sec          |
+| write_deltalake |    100    | 20 sec          | 33 sec          | 1 min 32 sec    |  32 sec          |
+| write_parquet   |    1000   | 22 sec          | 36 sec          | 1 min 12 sec    |  31 sec          |
+| write_deltalake |    1000   | 23 sec          | 34 sec          | 1 min 33 sec    |  52 sec          |
+
+
+
+Please check [NER (BiLSTM-CNN-Char Architecture) Benchmark Experiment](https://nlp.johnsnowlabs.com/docs/en/benchmark#ner-bilstm-cnn-char-architecture-benchmark-experiment) for more detail
+
+
+
+
+</div><div class="h3-box" markdown="1">
+
+#### New Blog Posts on Various Topics (AI for Equity, Detecting Stigmatizing Language from Medical Texts, Subcohort Analysis for Oncology Patients, Using Small LLMs to Extract Structured Named Entities, ...)
 
 Explore the latest developments in healthcare NLP through our new blog posts, where we take a deep dive into the innovative technologies and methodologies transforming the medical field. These posts offer insights into how the latest tools are being used to analyze large amounts of unstructured data, identify critical medical assets, and extract meaningful patterns and correlations. Learn how these advances are not only improving our understanding of complex health issues but also contributing to more effective prevention, diagnosis, and treatment strategies.
 
-- [Advanced NLP Techniques: Identifying Named Entities in Medical Text with Zero-Shot Learning](https://medium.com/john-snow-labs/advanced-nlp-techniques-identifying-named-entities-in-medical-text-with-zero-shot-learning-d511e0c3c28d) showcases how the RoBERTaForQuestionAnswering model enables versatile Named Entity Recognition (NER) without the need for extensive domain-specific training. This blog post provides an in-depth look at the ZeroShotNerModel, highlighting its ability to swiftly and efficiently adapt to diverse datasets.
+- [AI for Equity: Extracting Stigmatizing Language from Medical Texts for Better Patient Care](https://medium.com/john-snow-labs/ai-for-equity-extracting-stigmatizing-language-from-medical-texts-for-better-patient-care-1fbf2a9abeb4) The primary aim of medicine is to help patients manage and improve their health, but the language used in medical settings can sometimes have unintended negative effects. Stigmatizing language in medical records can reduce patients to their conditions or pass judgment on their illnesses, leading to poorer care and worsening health disparities. This article discusses how such language can be recognized and addressed using a model developed by John Snow Labs.
+  
+- [Refining Entity Detection in Healthcare NLP: Precision Through Entity Filtering](https://medium.com/john-snow-labs/refining-entity-detection-in-healthcare-nlp-precision-through-entity-filtering-84a43afd8733) The blog post discusses the ChunkFilterer annotator in Healthcare NLP, emphasizing its role in refining Named Entity Recognition (NER) for precise healthcare applications. It highlights the annotator's capabilities to filter entities using whitelists, blacklists, regular expressions, and confidence scores, enabling users to focus on relevant information from unstructured clinical texts. By integrating ChunkFilterer into NLP pipelines, healthcare professionals can enhance data accuracy and efficiency, leading to improved patient diagnoses, treatment recommendations, and information retrieval from medical databases.
+
+- [Accurate Extracting of Cancer Biomarkers from Free-Text Clinical Notes](https://medium.com/john-snow-labs/accurate-extracting-of-cancer-biomarkers-from-free-text-clinical-notes-6fcd2e8a5e9a) This blog post examines the role of biomarkers in enhancing cancer diagnosis through their extraction from unstructured clinical notes using advanced NLP techniques. It highlights the challenges posed by the inconsistent and complex nature of clinical documentation and how the Healthcare NLP library, developed by John Snow Labs, addresses these through specialized models for entity extraction, relation extraction, and sequence classification. By accurately identifying and analyzing biomarkers from clinical texts, the library supports personalized cancer treatment, improves diagnosis and prognosis, and accelerates cancer research, ultimately enhancing patient outcomes and advancing our understanding of cancer biology.
+
+- [From Diagnosis to Prognosis: Understanding 6 Common Cancers in Medical Records](https://medium.com/john-snow-labs/from-diagnosis-to-prognosis-understanding-6-common-cancers-in-medical-records-df65ad5b3f87) This blog post details the application of John Snow Labs’ Healthcare NLP and LLM library in revolutionizing cancer care through enhanced analysis of medical records. Concentrating on six prevalent cancer types, it showcases how sophisticated natural language processing aids in refining diagnosis, prognosis, and personalized treatment plans by extracting and interpreting vital data from unstructured clinical texts. This technology is pivotal in tackling the rising global cancer rates and improving the overall efficiency and effectiveness of cancer treatments.
+
+- [Harnessing Healthcare-Specific LLMs for Clinical Entity Extraction](https://medium.com/@cabircelik/harnessing-healthcare-specific-llms-for-clinical-entity-extraction-7e0bf63c9b0f) This blog post focuses on how JSL-MedS-NER models are optimized to extract clinical entities from unstructured medical text. These models identify critical information like drug names, diagnoses, side effects, and protected health information (PHI) using quantization options (q4, q8, q16) that balance speed and accuracy. It highlights the models' application in pharmacovigilance, oncology reporting, and clinical data processing. By enabling the identification of drugs, adverse events, and medical conditions, the models support clinical decision-making and data privacy compliance across healthcare systems.
+
+
+</div><div class="h3-box" markdown="1">
 
 #### Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, and Reliability of Spark NLP for Healthcare
 
-- Enhanced metadata information with the `setMetadataFields` field for `AssertionChunkConverter`
-- Added new date format for deidentification
-- Added new parameters for the `Replacer` annotator
-- Added `document_id` info and confidence scores for `resolutions` and `assertions` fields to the `PipelineOutputParser` module
-- Resolved Flattener NullPointerException; if the column is empty, the Flattener returns empty columns instead of throwing an exception.
-- Resolved the AssertionMerger loading issue; an exception was thrown when attempting to load the AssertionMerger model.
+- Added the `RegexMatcherInternalModel` trait to Scala to match the pretrained method available in Python.
+- Added a new parameter for the `Flattener` annotator to sets an array of column names that should be kept in the dataframe after the flattening process.
+- Added `resetSentenceIndices` parameter to `ChunkMerger`, `NerConverterInternal`, and `ChunkConverter` annotators for reset sentence indices to treat the entire output as if it originates from a single document.
+- Fixed Generative AI Lab API task deletion endpoint: Resolved an issue with the `tasks_delete` endpoint, enabling proper deletion of tasks via the API.
+- Added `chunk_validation_options` dictionary into the `dict_to_annotation_converter` module for converting dictionary data to Spark NLP annotations.
+- Added pretrained feature added to `InternalDocumentSplitter`.
+- Deprecated the `nlp_test` module in `spark-nlp-jsl`; future development will now be managed by `LangTest`. Streamlined the `spark-nlp-jsl` package for improved efficiency.
+- Added support for `ONNX` models in the `ChunkKeyPhraseExtraction` annotator, allowing for compatibility with ONNX-based models.
 
 </div><div class="h3-box" markdown="1">
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
-- New [DocumentFiltererByNER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentFiltererByNER.ipynb) MOOC Notebook
-- New [LargeFewShotClassifier](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/LargeFewShotClassifierModel.ipynb) MOOC Notebook
-- New [Mapper2Chunk](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Mapper2Chunk.ipynb) MOOC Notebook
-- Updated [AssertionChunkConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb) MOOC Notebook
-- Updated [ContextualAssertion](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualAssertion.ipynb) MOOC Notebook
-- Updated [Replacer](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb) MOOC Notebook
-- Updated [Clinical Entity Resolver](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb) notebook
-- Updated [Improved Entity Resolution with SentenceChunkEmbeddings](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb) notebook
-- Updated [Improved Entity Resolvers in SparkNLP with sBert](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb) notebook
-- Updated [Clinical Medication Use Case](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/43.Clinical_Medication_Use_Case.ipynb) notebook
-- Updated [Oncology_Model](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb) notebook
-- New [Text Classification with LargeFewShotClassifier](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.4.Text_Classification_with_LargeFewShotClassifier.ipynb) Notebook
-- New [NER_STIGMATIZATION](https://demo.johnsnowlabs.com/healthcare/NER_STIGMATIZATION/) demo
-- Updated [NER_ONCOLOGY_CLINICAL](https://demo.johnsnowlabs.com/healthcare/NER_ONCOLOGY_CLINICAL/) demo
+- New [REChunkMerger](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/REChunkMerger.ipynb) MOOC Notebook for merging the entities in a relationship.
+- New [ContextualEntityFilterer](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualEntityFilterer.ipynb) MOOC Notebook to filter chunks.
+- Updated [Replacer](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb) MOOC Notebook with new `returnEntityMappings`, `mappingsColumn`, `staticEntityMappings`, and `staticEntityMappingsFallback` parameters.
+- Updated [NerConverterInternal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerConverterInternal.ipynb) MOOC Notebook with `resetSentenceIndices` parameter.
+- Updated [ChunkConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkConverter.ipynb) MOOC Notebook with `resetSentenceIndices` parameter.
+- Updated [ChunkMergeModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMergeModel.ipynb) MOOC Notebook with `resetSentenceIndices` parameter.
+- Updated [Rule Based Entity Matchers](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) notebook with `country_matcher` and `state_matcher` model.
+- Updated [Clinical DeIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) notebook with new models into model list.
+- Updated [Prepare CoNLL from Annotations for NER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.3.prepare_CoNLL_from_annotations_for_NER.ipynb) notebook with alternative method for creating conll file.
+- Updated [Contextual Parser Rule Based NER](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) notebook with `zip_parser` model
+- Updated [Loading Medical and Open Souce LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) notebook with new LLMs models
+- Updated [ONCOLOGY Demo](https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/) with classification models.
 
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-
-
-
-+ `jsl_meds_ner_q16_v2`
-+ `jsl_meds_ner_q8_v2`
-+ `jsl_meds_ner_q4_v2`
-+ `jsl_meds_rag_q16_v1`
-+ `jsl_meds_rag_q8_v1`
-+ `jsl_meds_rag_q4_v1`
-+ `jsl_medm_q16_v2`
-+ `jsl_medm_q8_v2`
-+ `jsl_medm_q4_v2`
-+ `sbiobertresolve_rxnorm_augmented_v2`
-+ `biolordresolve_rxnorm_augmented_v2`
-+ `biolordresolve_avg_rxnorm_augmented_v2`
-+ `bert_sequence_classifier_metastasis`     
-+ `classifierdl_metastasis`
-+ `generic_classifier_metastasis`
-+ `generic_logreg_classifier_metastasis`
-+ `generic_svm_classifier_metastasis`
-+ `generic_classifier_oncology`
-+ `generic_classifier_therapy`
-+ `icd10cm_rxnorm_resolver_pipeline`
-+ `icd10cm_resolver_pipeline`
-+ `medication_resolver_transform_pipeline`
-+ `medication_resolver_pipeline`
++ `biolordresolve_icd10cm_augmented_billable_hcc`            
++ `sbiobertresolve_hcc_augmented`             
++ `sbiobertresolve_meddra_lowest_level_term`            
++ `sbiobertresolve_meddra_preferred_term`   
++ `meddra_llt_pt_mapper`      
++ `meddra_pt_llt_mapper`  
++ `sbertresolve_icd10cm_augmented` 
++ `icd10_meddra_llt_mapper` 
++ `icd10_meddra_pt_mapper`      
++ `meddra_llt_icd10_mapper`  
++ `meddra_pt_icd10_mapper` 
++ `sbertresolve_hcc_augmented` 
++ `sbertresolve_icd10cm_augmented_billable_hcc` 
++ `meddra_hlt_pt_mapper` 
++ `meddra_llt_snomed_mapper` 
++ `meddra_pt_hlt_mapper` 
++ `sbiobertresolve_icd10cm_generalised_augmented` 
++ `snomed_meddra_llt_mapper`
++ `meddra_llt_resolver_pipeline` 
++ `meddra_pt_resolver_pipeline` 
++ `explain_clinical_doc_vop_small`
++ `explain_clinical_doc_cancer_type`
++ `sentence_detector_dl_healthcare_v2_wip`
++ `explain_clinical_doc_oncology`
++ `ndc_resolver_pipeline`
++ `explain_clinical_doc_cancer_type`
++ `sbiobertresolve_ndc`
++ `state_matcher`
++ `country_matcher`
++ `zip_parser`
++ `jsl_meds_q16_v2`
++ `jsl_meds_q8_v2`
++ `jsl_meds_q4_v2`
++ `jsl_meds_q16_v3`
++ `jsl_meds_q8_v3`
++ `jsl_meds_q4_v3`
++ `oncology_biomarker_pipeline`
 + `rxnorm_resolver_pipeline`
-+ `large_fewshot_classifier_ade`
-+ `large_fewshot_classifier_age_group`
-+ `ner_cancer_types_wip`
-+ `ner_stigmatization_wip`
-+ `email_matcher`
-+ `url_matcher`
-+ `ip_matcher`
-
-
-
++ `icd10cm_rxnorm_resolver_pipeline`
++ `medication_resolver_pipeline`
++ `medication_resolver_transform_pipeline`
++ `ner_deid_subentity_augmented_v2` 
++ `ner_deid_generic_docwise`
++ `ner_deid_subentity_augmented_docwise`
++ `ner_deid_subentity_docwise`
++ `ner_deid_aipii`
++ `explain_clinical_doc_sdoh_small`
++ `icd10cm_chronic_indicator_mapper`
++ `jsl_meds_ner_q4_v2`
++ `jsl_meds_ner_q8_v2`
++ `jsl_meds_ner_q16_v2`
++ `jsl_medm_q4_v1`
++ `jsl_medm_q8_v1`
++ `jsl_medm_q16_v1`
++ `jsl_medsner_zs_q4_v1`
++ `jsl_medsner_zs_q8_v1`
++ `jsl_medsner_zs_q16_v1`
++ `jsl_meds_q4_v1`
++ `jsl_meds_q8_v1`
++ `jsl_meds_q16_v1`
++ `jsl_meds_rag_q4_v1`
++ `jsl_meds_rag_q8_v1`
++ `jsl_meds_rag_q16_v1`
++ `clinical_deidentification_docwise_wip`
++ `clinical_deidentification_v2_wip`
++ `clinical_deidentification_nameAugmented_v2`
++ `ner_ade_clinical_v2`
++ `bert_sequence_classifier_ade_augmented_v2`
++ `sbiobertresolve_loinc`
++ `sbiobertresolve_loinc_augmented`
++ `sbiobertresolve_loinc_numeric`
 
 
 </div><div class="h3-box" markdown="1">
