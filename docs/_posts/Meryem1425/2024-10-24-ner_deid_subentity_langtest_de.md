@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect PHI for Deidentification (Sub Entity - Langtest)
+title: Detect PHI for Deidentification (Subentity - Langtest)
 author: John Snow Labs
 name: ner_deid_subentity_langtest
 date: 2024-10-24
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Named Entity recognition annotator allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM, CNN. Deidentification NER is a Named Entity Recognition model that annotates German text to find protected health information (PHI) that may need to be deidentified. It was trained with in-house annotations and detects 12 entities.
+Named Entity Recognition annotator allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM, CNN. Deidentification NER is a Named Entity Recognition model that annotates German text to find protected health information (PHI) that may need to be deidentified. It was trained with in-house annotations and detects 12 entities.
 
 ## Predicted Entities
 
@@ -50,7 +50,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d","de","clinical/models")\
+word_embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d", "de", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
