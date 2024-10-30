@@ -88,4 +88,61 @@ During the export process, de-identification is executed based on the type of an
 
 This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
 
+## Support for De-identification Pipelines
+Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data. 
+
+De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.
+
+### Creating a De-identification Project:
+Users can use the de-identification feature if a valid license is available in the application: 
+1. **Create a New Project**:
+   During the project configuration, select **De-identification** as the project type.
+2. **Automatic Pipeline Download**:
+   A default de-identification pipeline (`clinical_deidentification`) will automatically download if not previously available or it will use the default de-identification project template. All the downloaded pipelines are available on the **Pipeline** page.
+   
+![670image](/assets/images/annotation_lab/6.7.0/1.png)
+
+### New Pipeline Tab and Customization:
+In the **Reuse Resource** page, a new **Pipelines Tab** is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.
+
+![670image](/assets/images/annotation_lab/6.7.0/2.png)
+
+In the **Customize Labels** page, users can configure the type of de-identification. Apart from all the deidentification types that are already supported, in version 6.7.0, users can even configure **different de-identification types for different labels** as well.
+
+![670image](/assets/images/annotation_lab/6.7.0/3.png)
+
+Additionally, users can upload custom obfuscation files in JSON format on the Customize Labels page.
+
+![670image](/assets/images/annotation_lab/6.7.0/4.gif)
+
+### De-identification Process:
+The de-identification process remains similar to the existing pre-annotation workflow:
+
+1. **Import Tasks**:
+   Initially, tasks are imported, and the `NonDeidentified` tag is automatically added to the tasks. It helps users to know which tasks have been deidentified and which are yet to be de-identified.
+
+   ![670image](/assets/images/annotation_lab/6.7.0/5.gif)
+
+3. **Pre-annotate/De-identify**:
+   Click the **De-identification (pre-annotate)** button to deploy the de-identification pipeline and pre-annotate and de-identify tasks. Once the task is pre-annotated and de-identified, the de-identification status changes to either green, red, or grey, just like pre-annotation status. 
+
+   ![670image](/assets/images/annotation_lab/6.7.0/6.gif)
+
+5. **Labeling Page**:
+   On the labeling page, users can either make corrections or accept the predictions made by the pipeline.
+
+   ![670image](/assets/images/annotation_lab/6.7.0/7.gif)
+
+7. **Re-run De-identification**:
+   After saving or submitting the tasks, users can click the de-identify button again to run the process on either manually annotated completions or all completions and can view the de-identification in real-time from the labeling page. Users can click the **De-identification View** button (located next to the Compare Completion button), to view the de-identified tasks in real-time. All de-identified completions will show **(De-identified)** next to the completion ID.
+
+   ![670image](/assets/images/annotation_lab/6.7.0/8.gif)
+
+### Exporting De-identified Tasks:
+Only de-identified completions submitted as **ground truth** are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the **highest priority** will be exported.
+
+![670image](/assets/images/annotation_lab/6.7.0/9.gif)
+
+These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity. 
+
 </div>

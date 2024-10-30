@@ -15,142 +15,184 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Automatic Tests for Classification Models and Results Visualization in Generative AI Lab - 6.6
-Generative AI Labs version 6.6 introduces support for evaluating and testing classification models, a feature previously available only for Named Entity Recognition (NER) models. With this update, users can assess both pre-trained and custom classification models across a variety of dimensions such as Bias, Robustness, Fairness, Representation, Accuracy, and/or Grammar, ensuring their models are fit for the specificities of the target use cases. 
+## De-Identification Pipeline Tools and Entity Level Annotation Instruction in Generative AI Lab - 6.7
+Generative AI Labs version 6.7 introduces improvements to the De-identification feature. With this update, users can choose on a per-entity basis which de-identification method they would like to use. In addition to the de-identification pipeline that is the default, there is now support for custom models, rules, and prompts for identifying sensitive data. 
+ 
+This release also brings the ability for admin users to add annotation instructions to labels from within the project, allowing for improved label accuracy and consistency between annotators. This updated feature is available for NER and VisualNER project types.
 
-This release also brings enhanced visualization features for Test reports. Users can now easily toggle the "Show Graph" option to visualize test outcomes as weighted bar charts that display pass and fail percentages. This feature allows users to quickly interpret test results at both high-level and detailed scales. Key parameters such as Test Categories, Test Types, Passing Rate, and Failure Rate are presented alongside the charts for comprehensive insight. 
+## Support for De-identification Pipelines
+Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data. 
 
-## Test Classification models
-Version 6.6 brings support for evaluating and testing classification models, a feature previously available only for Named Entity Recognition (NER) models, enabling users to assess the accuracy and performance of both pre-trained and custom classification models across various test types. 
+De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.
 
-While the test types from NER model testing—such as Bias, Robustness, Fairness, Representation, and Accuracy—are still supported for classification models, a notable new addition is the "Grammar" test. This test evaluates how well classification models handle grammatically complex or varied sentences, ensuring that the model maintains high accuracy even with challenging grammatical structures. Users need to select the model type as classification from the **Model Type** dropdown while creating the test suite. 
+### Creating a De-identification Project:
+Users can use the de-identification feature if a valid license is available in the application: 
+1. **Create a New Project**:
+   During the project configuration, select **De-identification** as the project type.
+2. **Automatic Pipeline Download**:
+   A default de-identification pipeline (`clinical_deidentification`) will automatically download if not previously available or it will use the default de-identification project template. All the downloaded pipelines are available on the **Pipeline** page.
+   
+![670image](/assets/images/annotation_lab/6.7.0/1.png)
 
-![660image](/assets/images/annotation_lab/6.6.0/1.png)
+### New Pipeline Tab and Customization:
+In the **Reuse Resource** page, a new **Pipelines Tab** is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.
 
-### Test Setup and Configuration for Classification Models
+![670image](/assets/images/annotation_lab/6.7.0/2.png)
 
-To set up and configure tests for classification models in version 6.6, follow these steps:
+In the **Customize Labels** page, users can configure the type of de-identification. Apart from all the deidentification types that are already supported, in version 6.7.0, users can even configure **different de-identification types for different labels** as well.
 
-1. **Navigate to the Test Page**: Open the test page within the specific project where the model is used.
+![670image](/assets/images/annotation_lab/6.7.0/3.png)
 
-2. **Select the Appropriate Test Suite**: From the drop-down menu, choose the test suite for classification models. Test suites are clearly labeled with the model type in brackets, making it easy to identify the correct one.
+Additionally, users can upload custom obfuscation files in JSON format on the Customize Labels page.
 
-3. **Choose the Model and Target Choices**: Select the classification model and the appropriate classification choices to test.
+![670image](/assets/images/annotation_lab/6.7.0/4.gif)
 
-4. **Configure Additional Testing Parameters** (optional):
-   - Set the **"Filter Completions By"** option if we need to narrow down specific completions for testing.
-   - Apply the **"Filter Tasks by Tags for Testing"** to run the tests on tasks with specific tags.
+### De-identification Process:
+The de-identification process remains similar to the existing pre-annotation workflow:
 
-5. **Save the Configuration**: Once the settings are complete, save the configuration.
+1. **Import Tasks**:
+   Initially, tasks are imported, and the `NonDeidentified` tag is automatically added to the tasks. It helps users to know which tasks have been deidentified and which are yet to be de-identified.
 
-6. **Generate Test Cases**: After configuring the test, we can generate test cases based on the saved settings.
+   ![670image](/assets/images/annotation_lab/6.7.0/5.gif)
 
-7. **Run the Test**: Execute the tests and evaluate the classification model.
+3. **Pre-annotate/De-identify**:
+   Click the **De-identification (pre-annotate)** button to deploy the de-identification pipeline and pre-annotate and de-identify tasks. Once the task is pre-annotated and de-identified, the de-identification status changes to either green, red, or grey, just like pre-annotation status. 
 
-![660image](/assets/images/annotation_lab/6.6.0/2.gif)
+   ![670image](/assets/images/annotation_lab/6.7.0/6.gif)
 
-While the core workflow of the application and feature remains the same, users now have the ability to test classification models, allowing them to pinpoint potential issues and improve model performance without the need to develop custom testing solutions.
+5. **Labeling Page**:
+   On the labeling page, users can either make corrections or accept the predictions made by the pipeline.
 
-## Visualizing Test Reports
+   ![670image](/assets/images/annotation_lab/6.7.0/7.gif)
 
-Generative AI Lab 6.6 brings enhanced visualization support for test reports, offering users an intuitive way to assess test results at both high-level and granular views. By toggling the "**Show Graph**" option on, users can visualize test outcomes through a weighted bar chart displaying the pass and fail percentages. This graphical representation simplifies the interpretation of the test report, providing a quick overview of overall test performance. Other parameters such as Test Categories, Test Types, Passing Rate, and Failure Rate are available next to the graph. If you want to hide the charts, **Show Graph** option can be toggled off.
+7. **Re-run De-identification**:
+   After saving or submitting the tasks, users can click the de-identify button again to run the process on either manually annotated completions or all completions and can view the de-identification in real-time from the labeling page. Users can click the **De-identification View** button (located next to the Compare Completion button), to view the de-identified tasks in real-time. All de-identified completions will show **(De-identified)** next to the completion ID.
 
-![660image](/assets/images/annotation_lab/6.6.0/3.gif)
+   ![670image](/assets/images/annotation_lab/6.7.0/8.gif)
 
-Once enabled, the graph visualizes data for all test categories and associated test types in the report. The chart's pass and fail percentages and counts are computed based on the number of test types that passed or failed within each test category. Hovering over any segment of the chart allows users to see detailed statistics, including the pass and fail counts and their corresponding percentages.
+### Exporting De-identified Tasks:
+Only de-identified completions submitted as **ground truth** are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the **highest priority** will be exported.
 
-![660image](/assets/images/annotation_lab/6.6.0/4.gif)
+![670image](/assets/images/annotation_lab/6.7.0/9.gif)
 
-Clicking on a chart bar or a specific test category navigates users to a more detailed view of that category and its test types. This drill-down capability allows users to move from a high-level summary to an in-depth examination of each test category, offering a more comprehensive understanding of where issues lie or where tests are performing well.
+These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity. 
 
-![660image](/assets/images/annotation_lab/6.6.0/5.gif)
+## Annotation Instructions for Labels
+Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
 
-The users can apply the filters on the graph based on the test category and the test types.
+To add annotation instructions to a label, follow these steps:
+ - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
+ - Click on the `Edit` icon next to the label for which you want to add instructions. This action will take you to the `Edit Label` page.
+ - Enter the guidelines under the `Label Instructions` field.
+ - Click on `Save Label` to store the instructions.
+ - Click on `Save Config` to save the configuration.
 
-![660image](/assets/images/annotation_lab/6.6.0/6.gif)
+![670image](/assets/images/annotation_lab/6.7.0/10.gif)
 
-This visualization tool streamlines the process of analyzing test results, providing both high-level summaries and detailed breakdowns to assist in better decision-making and problem identification.
+Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the `Annotation Guidelines` toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the `Annotation Guideline` section. Clicking on the label text will then reveal the annotation instructions for that label. 
+
+![670image](/assets/images/annotation_lab/6.7.0/11.gif)
+
+Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them. 
+
+Remove the annotation instructions from the labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/12.gif)
+
+Edit the annotation instructions from the Labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/13.gif)
+
+When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.
+
+![670image](/assets/images/annotation_lab/6.7.0/14.gif)
+
+Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.
+
+![670image](/assets/images/annotation_lab/6.7.0/15.png)
+
+Additionally, annotation guidelines are available for Assertion Labels as well. 
+
+![670image](/assets/images/annotation_lab/6.7.0/16.gif)
 
 ## Improvements
+### Automatically turn off the "wizard mode" after the user trains the model using wizard mode
 
-### Improvements for Model Testing
+Once the training is completed, the wizard mode is automatically turned off, and users are navigated to the regular **Train** page. Here, all relevant information is displayed along with a message indicating whether the training was successful or not. 
 
-- Clicking on the "**Show Config**" button, users can see the configuration applied to generate the results of the Lang test. The user can filter the test types based on the category as well in the configuration. To hide the configuration, simply click the **X** (close) button.
+![670image](/assets/images/annotation_lab/6.7.0/17.gif)
 
-![660image](/assets/images/annotation_lab/6.6.0/7.gif)
+### Clicking on the direction arrow for a relation should jump to the respective relation in the region panel
+A new improvement has been introduced which allows users to click on any of the relation lines, which will take them directly to the corresponding relation in the **Relation** section.
 
-- Users can filter generated test cases and reports by both test category and test type. By default, all test categories are selected. To customize the view, users first select a test category, which then displays the associated test types, or they can then choose individual test types within a category.
-- 
-  **Filters On Test Cases View:**
-  ![660image](/assets/images/annotation_lab/6.6.0/8.gif)
+![670image](/assets/images/annotation_lab/6.7.0/18.gif)
 
-  **Filter On Test report:**
-  ![660image](/assets/images/annotation_lab/6.6.0/9.gif)
-
-- The speed test type in the performance test category, designed for NER models, now supports positive float values. Previously, it only accepted positive integers.
-![660image](/assets/images/annotation_lab/6.6.0/10.png)
-
-- The **Stop** button has been renamed to **Abort** for both test case generation and model testing.
-  Test case generation:
-  ![660image](/assets/images/annotation_lab/6.6.0/11.png)
-  
-  Model testing:
-  ![660image](/assets/images/annotation_lab/6.6.0/12.png)
-  
-- The custom pagination box has been updated with a blue border to enhance the visibility of the plus icon. This design improvement makes the icon stand out more clearly, helping users easily identify and interact with the pagination controls. The blue border provides a visual cue, making the navigation process more intuitive and user-friendly.
-![660image](/assets/images/annotation_lab/6.6.0/13.png)
-
-- In the **Select Test Suite** drop-down, the model type is now displayed in parentheses after the test suite name. This allows users to easily identify which model type each test suite is designed for.
-![660image](/assets/images/annotation_lab/6.6.0/14.png)
-
-### Support for GPU-enabled Generative AI lab in RedHat OS
-
-Users can now install the GPU-enabled Generative AI Lab on RedHat OS. Utilizing a GPU will significantly reduce training time for Visual projects, providing notable benefits for users on RedHat OS as well.
-
-### Import zipped documents from Cloud storage 
-
-Users can now import these zip files from cloud storage. Supported cloud storage services include S3 buckets and Azure Blob.
-
-### Relation prompt in the edit relation form
-
-A new dropdown has been added to the Relation modal, allowing users to view and select relation prompts from the dropdown menu.
-
-![660image](/assets/images/annotation_lab/6.6.0/15.gif)
-  
-### Bug Fixes
-- **Search feature on the labeling page does not work for SBA tasks**
-    	Users can once again use the search feature to find SBA tasks on the labeling page.
-
-- **Page becomes unresponsive when invalid data is entered in color field**
-	Users can no longer create groups with invalid colors through the API.
-
-- **Sorting by title is not working as expected**
-  	Tasks are now sorted according to the ASCII values of their titles.
-
-- **Exported tasks in TSV format are incorrectly exported as CSV**
-  	Tasks are now properly exported as TSV files.
-
-- **Bulk annotation and bulk deletion cannot be undone on the labeling page**
-	Users can now reverse bulk annotations and bulk deletions by clicking the undo icon on the labeling page.
-
-- **Train Model button is disabled when transfer learning is first enabled and then disabled**
-  	The button remains functional when you update the training parameters, When it was being disabled when transfer learned is first enabled.
-
-- **Blue dot is visible at the end of each task on the labeling page**
-	The issue of a small blue dot appearing at the end of each task on the labeling page has been resolved. This blue dot is no longer visible at the end of each task moving forward.
-
-- **External Service Provider can be created without service provider name**
-  The external service provider providing an appropriate toast message when the validate button is clicked.
-
-- **Pipelines page is forbidden for users with Supervisor Role**
-	Users with the supervisor role can now access the pipeline page and view the downloaded pipelines.
-
-- **External Service Provider cannot be integrated when character count exceeds 64 for secret key**
-  	The new maximum allowed length for the secret key has been increased to 256 characters.
-
-- **Dropdown for ER models/Look-up codes and Assertion are available for visual project types**
-	 The drop downs for ER models, Lookup Codes, and the option to enable/disable assertion will not be available for Visual Projects.
+### Escape key should close the dialog boxes and warnings
+Users can now simply press the **Esc** key to close dialog boxes and warnings that appear in the top banner. Instead of clicking the ‘x’ every time. 
  
+### The name of the model should be shown in the playground heading
+The model names are shown, providing users with a clearer insight into which models are being tested. 
+
+![670image](/assets/images/annotation_lab/6.7.0/19.gif)
+
+### Add Quick Submit button for Visual NER task
+A new ability to "Submit completions without Saving" can be enabled on the **Advanced Configuration** page when setting up Visual NER projects. This feature allows users to see and use the "Submit" button on the labeling page right from the start, enabling them to submit their completions directly without the need to save them first. 
+
+![670image](/assets/images/annotation_lab/6.7.0/20.gif)
+
+### Bug Fixes: 
+- **Unexpected behavior corrected for relations when added in the first line of the tasks**
+
+	Users can again see relations for submitted tasks when added in the first line. 
+
+- **Vague error messages are now replaced with accurate notifications during task import validation**
+
+	Users now receive meaningful error messages in the dialog when task imports fail due to validation issues. 
+
+- **Unclear error message for importing tasks larger than 200MB addressed**
+
+	Users will now see accurate and user-friendly error messages when attempting to import tasks that exceed the 200MB size limit. 
+
+- **Filter Exported Annotations by Task is now disabled for de-identification projects**
+
+	Users can no longer pick and choose labels after de-identification, ensuring consistency in exported annotations. 
+
+- **Multiple individual files can now be uploaded at once for task import**
+
+	Users can efficiently upload multiple files simultaneously within a project. 
+
+- **Synthetic task list now refreshes automatically during CRUD operations**
+
+	The synthetic task list updates in real-time during task creation, update, and deletion. 
+
+- **"Failed to Load PDF File" error resolved for RatePDF projects with hidecontextmenu enabled**
+
+	Users can now view tasks normally even when the hidecontextmenu property is used in RatePDF projects. 
+
+- **Internal server error when creating RatePDF project types has been fixed**
+
+	Users can now create RatePDF projects without encountering internal server errors. 
+
+- **Text enclosed with <> is now visible on the labeling page**
+
+	Users can see text within angle brackets on the labeling page, addressing the previous visibility issue. 
+
+- **Confirmation dialog box no longer overlaps with the Labels section**
+
+	The confirmation dialog box now displays correctly without being obscured when submitting completions from the Comparison and De-identification views. 
+
+- **Special characters are now correctly handled when importing files from Azure SAS URL**
+
+	Tasks can be imported from Azure SAS URLs without issues related to special character permissions. 
+
+- **Internal server error when adding 'Test' or 'Train' tags has been resolved**
+
+	Users can now add 'Test' or 'Train' tags to tasks from the labeling page without encountering errors. 
+ 
+- **Classification models are now visible in the Select Classifier dropdown**
+
+	Classification models are correctly listed for selection in the dropdown menu. 
+
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
@@ -158,7 +200,8 @@ A new dropdown has been added to the Relation modal, allowing users to view and 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
