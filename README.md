@@ -22,7 +22,7 @@ Powered by John Snow Labs Enterprise-Grade Ecosystem:
 - 💲 [Finance NLP](https://www.johnsnowlabs.com/finance-nlp/) : Understand Financial Markets with NLP!
 - 🎨 [NLP-Display](https://github.com/JohnSnowLabs/spark-nlp-display)  Visualize and Explain NLP!
 - 📊 [NLP-Test](https://github.com/JohnSnowLabs/nlptest) : Deliver Reliable, Safe and Effective Models!
-- 🔬 [NLP-Lab](https://www.johnsnowlabs.com/nlp-lab/) : No-Code Tool to Annotate & Train new Models!
+- 🔬 [Gen-AI-lab](https://www.johnsnowlabs.com/generative-ai-healthcare/) : No-Code Tool to Annotate & Train new Models!
 
 ## Installation
 
