@@ -22,6 +22,8 @@ This pipeline extracts mentions of clinical problems from health-related text in
 
 ## Predicted Entities
 
+`HealthStatus`, `Problem`, `Modifier`
+
 
 
 {:.btn-box}

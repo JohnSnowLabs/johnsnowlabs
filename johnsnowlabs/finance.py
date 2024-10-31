@@ -123,6 +123,8 @@ try:
             LargeFewShotClassifierModel,
             Mapper2Chunk,
             DocumentFiltererByNER,
+            REChunkMerger,
+            ContextualEntityFilterer,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer

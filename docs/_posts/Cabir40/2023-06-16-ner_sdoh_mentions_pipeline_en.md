@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This pretrained pipeline is built on the top of [ner_sdoh_mentions](https://nlp.johnsnowlabs.com/2022/12/18/ner_sdoh_mentions_en.html) model.
 
 ## Predicted Entities
+`behavior_alcohol`, `behavior_drug`, `sdoh_education`, `behavior_tobacco`, `sdoh_economics`, `sdoh_environment`, `sdoh_community`
 
 
 

@@ -48,13 +48,15 @@ def download_deps_and_create_info(
     overwrite=False,
 ):
     """Download a list of deps to given lib_dir folder and creates info_file at info_file_path."""
-    info, old_info = {}, {}
+    info, old_info = {}, None
     if os.path.exists(info_file_path):
         #  keep old infos, we assume they are up-to-date and compatible
-        old_info = InstallFolder.parse_file(info_file_path)
+        if os.path.join("java_installs","info.json") in info_file_path:
+            old_info = InstallFolder.java_folder_from_home()
+        elif os.path.join("py_installs","info.json") in info_file_path:
+            old_info = InstallFolder.py_folder_from_home()
 
     for p in deps:
-
         # print_prefix = Software.for_name(p.product_name).logo
         print_prefix = ProductLogo.from_name(p.product_name.name).value
         if p.dependency_type in JvmHardwareTarget:
@@ -88,12 +90,19 @@ Option4: Set {Fore.LIGHTGREEN_EX}nlp.settings.enforce_versions=False{Fore.RESET}
             install_type=p.dependency_type.value,
             product_version=p.dependency_version.as_str(),
         )
+        info[p.file_name].compatible_spark_version = p.spark_version.value.as_str()
+        info[p.file_name].product_version = p.dependency_version.as_str()
+
     if info:
         info = InstallFolder(**{"infos": info})
         if old_info:
             info.infos.update(old_info.infos)
-        info.write(info_file_path, indent=4)
+        with open(info_file_path, "w") as f:
+            for k, v in info.infos.items():
+                v.product_version = str(v.product_version)
+                v.compatible_spark_version = str(v.compatible_spark_version)
 
+            f.write(info.model_dump_json())
 
 def setup_jsl_home(
     secrets: Optional[JslSecrets] = None,
@@ -183,9 +192,10 @@ def setup_jsl_home(
             java_deps, settings.java_dir, settings.java_info_file, overwrite
         )
 
-        RootInfo(version=settings.raw_version_jsl_lib, run_from=sys.executable).write(
-            settings.root_info_file, indent=4
-        )
+        root_info = RootInfo(version=settings.raw_version_jsl_lib, run_from=sys.executable)
+        root_info.version = root_info.version.as_str()
+        with open(settings.root_info_file, "w") as f:
+            f.write(root_info.model_dump_json())
         print(f"🙆 JSL Home setup in {settings.root_dir}")
 
         return
@@ -258,9 +268,8 @@ def get_install_suite_from_jsl_home(
     if os.path.exists(settings.py_info_file):
         py_folder = InstallFolder.py_folder_from_home()
 
-    info = RootInfo.parse_file(settings.root_info_file)
+    info = RootInfo.get_from_jsl_home()
     # Read all dependencies from local ~/.johnsnowlabs folder
-
     suite = InstallSuite(
         nlp=LocalPy4JLib(
             java_lib=java_folder.get_product_entry(ProductName.nlp, jvm_hardware_target)

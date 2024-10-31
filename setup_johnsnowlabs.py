@@ -19,7 +19,7 @@ REQUIRED_PKGS = [
     "dataclasses",
     "requests",
     "databricks-api",
-    f"pydantic=={johnsnowlabs.settings.raw_version_pydantic}",
+    f"pydantic>={johnsnowlabs.settings.raw_version_pydantic}",
     "colorama",
     "boto3",
 ]
