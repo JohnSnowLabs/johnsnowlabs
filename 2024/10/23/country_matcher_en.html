@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Detect PHI for Deidentification (ner_deidentification_dl) | ner_deidentify_dl | Healthcare NLP 3.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Country Text Matcher | country_matcher | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionNamed Entity Recognition annotator (NERDLModel) allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu &amp; Nicols, Named Entity Recognition with Bidirectional LSTM,CNN.Deidenti...">
-<!-- <link rel="canonical" href="/2021/03/31/ner_deidentify_dl_en.html"> -->
-<link rel="canonical" href="/2021/03/31/ner_deidentify_dl_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.Predicted EntitiesCOUNTRYLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")tokenizer = Tokenize...">
+<!-- <link rel="canonical" href="/2024/10/23/country_matcher_en.html"> -->
+<link rel="canonical" href="/2024/10/23/country_matcher_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -393,7 +393,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 </a></div></div><nav class="navigation top_navigation">
-        <ul class="top-menu"><li class="navigation__item "><a href="/">Home</a></li><li class="navigation__item "><a href="/docs">Docs</a></li><li class="navigation__item "><a href="/learn">Learn</a></li><li class="navigation__item navigation__item--active"><a href="/models">Models</a></li><li class="navigation__item "><a href="/demos">Demo</a></li><li class="navigation__item "><a href="/search"><span style="color: #FF8A00;"><i class = "fas fa-search fa-2x"></i></span></a></li><li class="navigation__item "><a href="https://github.com/JohnSnowLabs/spark-nlp"><span style="color: #FF8A00;"><i class = "fab fa-github fa-2x"></i></span></a></li><li class="navigation__item "><a href="https://join.slack.com/t/spark-nlp/shared_invite/zt-198dipu77-L3UWNe_AJ8xqDk0ivmih5Q"><span style="color: #FF8A00;"><i class="fab fa-slack-hash fa-2x"></i></span></a></li></ul>
+        <ul class="top-menu"><li class="navigation__item "><a href="/">Home</a></li><li class="navigation__item "><a href="/docs">Docs</a></li><li class="navigation__item "><a href="/learn">Learn</a></li><li class="navigation__item "><a href="/models">Models</a></li><li class="navigation__item "><a href="/demos">Demo</a></li><li class="navigation__item "><a href="/search"><span style="color: #FF8A00;"><i class = "fas fa-search fa-2x"></i></span></a></li><li class="navigation__item "><a href="https://github.com/JohnSnowLabs/spark-nlp"><span style="color: #FF8A00;"><i class = "fab fa-github fa-2x"></i></span></a></li><li class="navigation__item "><a href="https://join.slack.com/t/spark-nlp/shared_invite/zt-198dipu77-L3UWNe_AJ8xqDk0ivmih5Q"><span style="color: #FF8A00;"><i class="fab fa-slack-hash fa-2x"></i></span></a></li></ul>
       </nav><a class="responsive_btn" href="#" id="aside_menu">          
         <i class="fas fa-bars"></i><i class="fas fa-times"></i>
       </a>
@@ -497,143 +497,114 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/HashamUlHaq/2021-03-31-ner_deidentify_dl_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-10-23-country_matcher_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 31, 2021</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2021-03-31T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Detect PHI for Deidentification (ner_deidentification_dl)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Detect PHI for Deidentification (ner_deidentification_dl)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>ner</li><li>clinical</li><li>licensed</li><li>en</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2021-03-31T00:00:00+00:00">
-    <meta itemprop="keywords" content="ner,clinical,licensed,en"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 23, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-23T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Country Text Matcher</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Country Text Matcher"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>country</li><li>clinical</li><li>matcher</li><li>textmatcher</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-23T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,country,clinical,matcher,textmatcher"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>Named Entity Recognition annotator (NERDLModel) allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu &amp; Nicols, Named Entity Recognition with Bidirectional LSTM,CNN.Deidentification NER (DL) is a Named Entity Recognition model that annotates text to find protected health information that may need to be deidentified.</p>
+<p>This model extracts countries in clinical notes using rule-based TextMatcherInternal annotator.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">AGE</code>,<code class="language-plaintext highlighter-rouge">BIOID</code>,<code class="language-plaintext highlighter-rouge">CITY</code>,<code class="language-plaintext highlighter-rouge">COUNTRY</code>,<code class="language-plaintext highlighter-rouge">DATE</code>,<code class="language-plaintext highlighter-rouge">DEVICE</code>,<code class="language-plaintext highlighter-rouge">DOCTOR</code>,<code class="language-plaintext highlighter-rouge">EMAIL</code>,<code class="language-plaintext highlighter-rouge">HOSPITAL</code>,<code class="language-plaintext highlighter-rouge">FAX</code>,<code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>,<code class="language-plaintext highlighter-rouge">HOSPITAL</code>,<code class="language-plaintext highlighter-rouge">IDNUM</code>,<code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>,<code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>,<code class="language-plaintext highlighter-rouge">ORGANIZATION</code>,<code class="language-plaintext highlighter-rouge">PATIENT</code>,<code class="language-plaintext highlighter-rouge">PHONE</code>,<code class="language-plaintext highlighter-rouge">PROFESSION</code>,<code class="language-plaintext highlighter-rouge">STATE</code>,<code class="language-plaintext highlighter-rouge">STREET</code>,<code class="language-plaintext highlighter-rouge">URL</code>,<code class="language-plaintext highlighter-rouge">USERNAME</code>,<code class="language-plaintext highlighter-rouge">ZIP</code></p>
+<p><code class="language-plaintext highlighter-rouge">COUNTRY</code></p>
 
-<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/" class="button button-orange">Live Demo</a>
-<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deidentify_dl_en_3.0.0_3.0_1617209710705.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_deidentify_dl_en_3.0.0_3.0_1617209710705.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.5.0_3.0_1729683043606.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/country_matcher_en_5.5.0_3.0_1729683043606.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
-         
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+<span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"country_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"country"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deidentify_dl"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+<span class="n">mathcer_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">text_matcher</span><span class="p">])</span>
 
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span>\
- 	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
- 	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Côte d’Ivoire
+São Tomé &amp; Príncipe
+Åland Islands
+This is Bahamas and the USAID in the USA here
+Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
+Dr. Emily Brown, IP 192.168.1.1.
+She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
+Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
+Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
+Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">nlp_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span> 
-    <span class="n">sentence_detector</span><span class="p">,</span> 
-    <span class="n">tokenizer</span><span class="p">,</span> 
-    <span class="n">word_embeddings</span><span class="p">,</span> 
-    <span class="n">ner</span><span class="p">,</span> 
-    <span class="n">ner_converter</span><span class="p">])</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">nlp_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"A . Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR . # 7194334 Date : 01/13/93 PCP : Oliveira , 25 month years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital . 0295 Keats Street"</span><span class="p">]],</span> <span class="p">[</span><span class="s">"text"</span><span class="p">]))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mathcer_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-         
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
 
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">text_matcher</span> <span class="k">=</span> <span class="nv">TextMatcherInternalModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"country_matcher"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"country"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setMergeOverlapping</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_deidentify_dl"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
-	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">matcher_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+		<span class="n">documentAssembler</span><span class="o">,</span>
+		<span class="n">tokenizer</span><span class="o">,</span>
+		<span class="n">text_matcher</span><span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
- 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
- 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""Côte d’Ivoire
+São Tomé &amp; Príncipe
+Åland Islands
+This is Bahamas and the USAID in the USA here
+Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
+Dr. Emily Brown, IP 192.168.1.1.
+She is a 55-year-old female who was admitted to the Global Hospital for hip replacement on 03/22/93.
+Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
+Phone: (212) 555-7890, 4321 Oak Street, New York, USA, E-MAIL: alice.johnson@example.com.
+Patient has traveled to Japan, France, and Australia in the past year."""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">document_assembler</span><span class="o">,</span> 
-    <span class="n">sentence_detector</span><span class="o">,</span> 
-    <span class="n">tokenizer</span><span class="o">,</span>
-     <span class="n">word_embeddings</span><span class="o">,</span> 
-     <span class="n">ner</span><span class="o">,</span> 
-     <span class="n">ner_converter</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""A . Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR . # 7194334 Date : 01/13/93 PCP : Oliveira , 25 month years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital . 0295 Keats Street"""</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">matcher_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
-
-  <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.med_ner.deid"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""A . Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR . # 7194334 Date : 01/13/93 PCP : Oliveira , 25 month years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital . 0295 Keats Street"""</span><span class="p">)</span>
-</code></pre></div>  </div>
-
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------+-----+
-|ner_label      |count|
-+---------------+-----+
-|O              |28   |
-|I-HOSPITAL     |4    |
-|B-DATE         |3    |
-|I-STREET       |3    |
-|I-PATIENT      |2    |
-|B-DOCTOR       |2    |
-|B-AGE          |1    |
-|B-PATIENT      |1    |
-|I-DOCTOR       |1    |
-|B-MEDICALRECORD|1    |
-+---------------+-----+. 
-
-+-----------------------------+-------------+
-|chunk                        |ner_label    |
-+-----------------------------+-------------+
-|2093-01-13                   |DATE         |
-|David Hale                   |DOCTOR       |
-|Hendrickson , Ora            |PATIENT      |
-|7194334                      |MEDICALRECORD|
-|01/13/93                     |DATE         |
-|Oliveira                     |DOCTOR       |
-|25                           |AGE          |
-|2079-11-09                   |DATE         |
-|Cocke County Baptist Hospital|HOSPITAL     |
-|0295 Keats Street            |STREET       |
-+-----------------------------+-------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------+-----+---+-------+
+|chunk              |begin|end|label  |
++-------------------+-----+---+-------+
+|Côte d’Ivoire      |0    |12 |Country|
+|São Tomé &amp; Príncipe|14   |32 |Country|
+|Åland Islands      |34   |46 |Country|
+|Bahamas            |56   |62 |Country|
+|USA                |85   |87 |Country|
+|USA                |420  |422|Country|
+|Japan              |484  |488|Country|
+|France             |491  |496|Country|
+|Australia          |503  |511|Country|
++-------------------+-----+---+-------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -642,11 +613,11 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>ner_deidentify_dl</td>
+      <td>country_matcher</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 3.0.0+</td>
+      <td>Healthcare NLP 5.5.0+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -658,62 +629,27 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[sentence, token, embeddings]</td>
+      <td>[document, token]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[ner]</td>
+      <td>[country]</td>
     </tr>
     <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
+    <tr>
+      <td>Size:</td>
+      <td>10.4 KB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>false</td>
+    </tr>
   </tbody>
 </table>
-
-<h2 id="data-source">Data Source</h2>
-
-<p>Trained on JSL enriched n2c2 2014: De-identification and Heart Disease Risk Factors Challenge datasets with embeddings_clinical https://portal.dbmi.hms.harvard.edu/projects/n2c2-2014/</p>
-
-<h2 id="benchmarking">Benchmarking</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | label            |    tp |   fp |   fn |     prec |      rec |       f1 |
-|---:|:-----------------|------:|-----:|-----:|---------:|---------:|---------:|
-|  1 | I-AGE            |     7 |    3 |    6 | 0.7      | 0.538462 | 0.608696 |
-|  2 | I-DOCTOR         |   800 |   27 |   94 | 0.967352 | 0.894855 | 0.929692 |
-|  3 | I-IDNUM          |     6 |    0 |    2 | 1        | 0.75     | 0.857143 |
-|  4 | B-DATE           |  1883 |   34 |   56 | 0.982264 | 0.971119 | 0.97666  |
-|  5 | I-DATE           |   425 |   28 |   25 | 0.93819  | 0.944444 | 0.941307 |
-|  6 | B-PHONE          |    29 |    7 |    9 | 0.805556 | 0.763158 | 0.783784 |
-|  7 | B-STATE          |    87 |    4 |   11 | 0.956044 | 0.887755 | 0.920635 |
-|  8 | B-CITY           |    35 |   11 |   26 | 0.76087  | 0.57377  | 0.654206 |
-|  9 | I-ORGANIZATION   |    12 |    4 |   15 | 0.75     | 0.444444 | 0.55814  |
-| 10 | B-DOCTOR         |   728 |   75 |   53 | 0.9066   | 0.932138 | 0.919192 |
-| 11 | I-PROFESSION     |    43 |   11 |   13 | 0.796296 | 0.767857 | 0.781818 |
-| 12 | I-PHONE          |    62 |    4 |    4 | 0.939394 | 0.939394 | 0.939394 |
-| 13 | B-AGE            |   234 |   13 |   16 | 0.947368 | 0.936    | 0.94165  |
-| 14 | B-STREET         |    20 |    7 |   16 | 0.740741 | 0.555556 | 0.634921 |
-| 15 | I-ZIP            |    60 |    3 |    2 | 0.952381 | 0.967742 | 0.96     |
-| 16 | I-MEDICALRECORD  |    54 |    5 |    2 | 0.915254 | 0.964286 | 0.93913  |
-| 17 | B-ZIP            |     2 |    1 |    0 | 0.666667 | 1        | 0.8      |
-| 18 | B-HOSPITAL       |   256 |   23 |   66 | 0.917563 | 0.795031 | 0.851913 |
-| 19 | I-STREET         |   150 |   17 |   20 | 0.898204 | 0.882353 | 0.890208 |
-| 20 | B-COUNTRY        |    22 |    2 |    8 | 0.916667 | 0.733333 | 0.814815 |
-| 21 | I-COUNTRY        |     1 |    0 |    0 | 1        | 1        | 1        |
-| 22 | I-STATE          |     6 |    0 |    1 | 1        | 0.857143 | 0.923077 |
-| 23 | B-USERNAME       |    30 |    0 |    4 | 1        | 0.882353 | 0.9375   |
-| 24 | I-HOSPITAL       |   295 |   37 |   64 | 0.888554 | 0.821727 | 0.853835 |
-| 25 | I-PATIENT        |   243 |   26 |   41 | 0.903346 | 0.855634 | 0.878843 |
-| 26 | B-PROFESSION     |    52 |    8 |   17 | 0.866667 | 0.753623 | 0.806202 |
-| 27 | B-IDNUM          |    32 |    3 |   12 | 0.914286 | 0.727273 | 0.810127 |
-| 28 | I-CITY           |    76 |   15 |   13 | 0.835165 | 0.853933 | 0.844444 |
-| 29 | B-PATIENT        |   337 |   29 |   40 | 0.920765 | 0.893899 | 0.907133 |
-| 30 | B-MEDICALRECORD  |    74 |    6 |    4 | 0.925    | 0.948718 | 0.936709 |
-| 31 | B-ORGANIZATION   |    20 |    5 |   13 | 0.8      | 0.606061 | 0.689655 |
-| 32 | Macro-average    | 6083  | 408  |  673 | 0.7976   | 0.697533 | 0.744218 |
-| 33 | Micro-average    | 6083  | 408  |  673 | 0.937144 | 0.900385 | 0.918397 |
-</code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-03-31T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-23T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -898,7 +834,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2021/03/31/ner_deid_synthetic_en.html">Detect PHI for Deidentification (Augmented)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2021/03/31/ner_diag_proc_es.html">Detect Diagnoses and Procedures (Spanish)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/10/23/clinical_deidentification_v2_wip_en.html">Clinical Deidentification Pipeline (Sentence Wise)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/10/23/date_matcher_en.html">Date Regex Matcher</a></div></div></div>
 
 </div>
 </div>
