@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Clinical Deidentification Pipeline (Document Wise)
+title: Clinical Deidentification Pipeline (German, Document Wise)
 author: John Snow Labs
 name: clinical_deidentification_docwise_wip
 date: 2024-11-04
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
+This pipeline can be used to deidentify PHI information from medical texts in German language. The PHI information will be masked and obfuscated in the resulting text.
 The pipeline can mask and obfuscate: `LOCATION`, `DATE`, `NAME`, `ID`, `AGE`, `PROFESSION`, `CONTACT`, `ORGANIZATION`, `DOCTOR`, `CITY`, `COUNTRY`, `STREET`, `PATIENT`, `PHONE`, `HOSPITAL`, `STATE`, `DLN`, `SSN`, `ZIP`, `ACCOUNT`, `LICENSE`, `PLATE`, `VIN`, `MEDICALRECORD`, `EMAIL`, `URL` entities.
 
 ## Predicted Entities
