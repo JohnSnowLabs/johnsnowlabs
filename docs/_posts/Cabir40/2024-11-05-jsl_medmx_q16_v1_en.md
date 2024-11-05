@@ -1,8 +1,8 @@
 ---
 layout: model
-title: JSL_MedL_v1 (LLM - q16)
+title: JSL_MedMX_v1 (LLM - q16)
 author: John Snow Labs
-name: jsl_medl_q16_v1
+name: jsl_medmx_q16_v1
 date: 2024-11-05
 tags: [en, licensed, clinical, medical, llm, ner, tensorflowi medl, rag]
 task: [Summarization, Question Answering, Named Entity Recognition]
@@ -41,7 +41,7 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-medical_llm = MedicalLLM.pretrained("jsl_medl_q16_v1", "en", "clinical/models")\
+medical_llm = MedicalLLM.pretrained("jsl_medmx_q16_v1", "en", "clinical/models")\
     .setInputCols("document")\
     .setOutputCol("completions")\
     .setBatchSize(1)\
@@ -80,7 +80,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val medical_llm = MedicalLLM.pretrained("jsl_medl_q16_v1", "en", "clinical/models")
+val medical_llm = MedicalLLM.pretrained("jsl_medmx_q16_v1", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("completions")
     .setBatchSize(1)
@@ -129,7 +129,7 @@ The patient is presenting with symptoms of urinary tract infection (UTI), which 
 
 {:.table-model}
 |---|---|
-|Model Name:|jsl_medl_q16_v1|
+|Model Name:|jsl_medmx_q16_v1|
 |Compatibility:|Healthcare NLP 5.5.1+|
 |License:|Licensed|
 |Edition:|Official|
