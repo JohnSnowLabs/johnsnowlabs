@@ -1605,32 +1605,32 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
-![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
+![image](/assets/images/installation/355920557-2c5f778c-4c33-4a54-af21-71f4486f5e4b.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
+![image](/assets/images/installation/355920928-697cac4b-29ff-4f23-beaa-5aaa32569ff0.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
-![image](https://github.com/user-attachments/assets/63996c40-4cd6-4aa2-925f-a1ad886914f4)
+![image](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
 
-![image](https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be)
+![image](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
-![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
+![image](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
 
-![image](https://github.com/user-attachments/assets/53bc84ae-40dc-41dc-9522-e87bf70d4fba)
+![image](/assets/images/installation/360943582-53bc84ae-40dc-41dc-9522-e87bf70d4fba.webp)
 
 After uploading is complete, you can configure and run the notebook.
 
@@ -1676,7 +1676,7 @@ Install the required Spark NLP libraries using pip commands:
 
 **Example Usage:**
 
-![Install Spark NLP Libraries](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
+![Install Spark NLP Libraries](/assets/images/installation/355919623-a4db5456-78a5-4d32-a50e-c40650b878f2.webp)
 
 </div><div class="h3-box" markdown="1">
 
@@ -1715,7 +1715,7 @@ with open("models.json", "r", encoding="utf-8") as f:
 
 **Example Usage:**
 
-![Explore Available Licensed Models](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
+![Explore Available Licensed Models](/assets/images/installation/355922456-be36cc00-42eb-4a5e-927e-21ae1106623b.webp)
 
 </div><div class="h3-box" markdown="1">
 
@@ -1762,8 +1762,8 @@ result = pipeline.annotate(text)
 
 **Example Usage:**
 
-![Load the Model and Make Predictions](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
+![Load the Model and Make Predictions](/assets/images/installation/355923149-ce2c07c6-78df-41d4-aa9a-c69b0202a04f.webp)
 
-![Load the Model and Make Predictions](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
+![Load the Model and Make Predictions](/assets/images/installation/355924362-f62b4bc5-96ee-41d5-a80b-887766b252c9.webp)
 
 </div>

@@ -263,6 +263,8 @@ For users having multiple roles (_Annotator/Reviewer/Manager_) the labeling page
 
 ![Switch Role](/assets/images/annotation_lab/4.1.0/switch_role.png "lit_shadow")
 
+</div><div class="h3-box" markdown="1">
+
 ## Annotation Instructions for Labels
 Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
 

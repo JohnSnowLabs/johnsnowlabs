@@ -32,8 +32,6 @@ ImageTextDetector \
 .setScoreThreshold(0.5)
 ```
 
-![5.0.1](/assets/images/ocr/image_text_detector_dit.png)
-
 It is currently the best performing model at the FUNSD dataset, achieving an accuracy of 94% vs Craft detector which achieved 78.7%, and is recommended for De-identification and Text Extraction pipelines.
 
 + Dit based VisualDocumentClassifierV3 now supports fine tuning: check the new tutorial, and notebook, on how to fine-tune Dit-based VisualDocumentClassifierV3 on the RVL-CDIP dataset using a Docker image. 
