@@ -88,10 +88,14 @@ During the export process, de-identification is executed based on the type of an
 
 This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
 
+</div><div class="h3-box" markdown="1">
+
 ## Support for De-identification Pipelines
 Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data. 
 
 De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.
+
+</div><div class="h3-box" markdown="1">
 
 ### Creating a De-identification Project:
 Users can use the de-identification feature if a valid license is available in the application: 
@@ -115,6 +119,8 @@ Additionally, users can upload custom obfuscation files in JSON format on the Cu
 
 ![670image](/assets/images/annotation_lab/6.7.0/4.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### De-identification Process:
 The de-identification process remains similar to the existing pre-annotation workflow:
 
@@ -137,6 +143,8 @@ The de-identification process remains similar to the existing pre-annotation wor
    After saving or submitting the tasks, users can click the de-identify button again to run the process on either manually annotated completions or all completions and can view the de-identification in real-time from the labeling page. Users can click the **De-identification View** button (located next to the Compare Completion button), to view the de-identified tasks in real-time. All de-identified completions will show **(De-identified)** next to the completion ID.
 
    ![670image](/assets/images/annotation_lab/6.7.0/8.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### Exporting De-identified Tasks:
 Only de-identified completions submitted as **ground truth** are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the **highest priority** will be exported.

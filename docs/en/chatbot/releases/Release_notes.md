@@ -10,11 +10,14 @@ show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
+
 <div class="h3-box" markdown="1">
 
 ## 10-24-2024 Literature Review Enhancements
 
 We are happy to release an enhanced version of the Literature Review feature, aimed at improving user experience, search accuracy, and data extraction. This update includes a redesign of the Literature Review wizard with new, intuitive functionalities. Our goal is to provide users with a more comprehensive and flexible tool for better control over the search, analysis, and extraction steps. The broader search capabilities and refined data extraction options are intended to make research more effective.
+
+</div><div class="h3-box" markdown="1">
 
 ### Key Improvements
 
@@ -63,6 +66,8 @@ These metrics provide users with key insights, including:
 
 <img src= "/assets/images/chatbot/LiteratureReviewTimeMetrics.png" alt="Literature Review - Time-Based Metrics" style="border: 2px solid grey; width=100%">
 
+</div><div class="h3-box" markdown="1">
+
 ### User Benefits
 
 These enhancements work together to offer the following benefits to our users:
@@ -79,15 +84,21 @@ The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer
 
 These upgrades reflect our ongoing commitment to enhancing research tools for a more efficient, precise, and user-friendly experience. We encourage users to explore these new features and see the improvements firsthand.
 
+</div><div class="h3-box" markdown="1">
+
 ## 09-24-2024 Introducing Literature Review
 
 We are happy to announce a new feature offered by the Medical Chatbot: Literature Review, specifically tailored to streamline the complex process of medical literature research and review. This tool enables researchers, healthcare professionals or clinicians to efficiently sift through vast amounts of published research to support in-depth meta-analyses, clinical decision-making, or evidence-based practices.
+
+</div><div class="h3-box" markdown="1">
 
 ### Overview
 
 The literature review is a critical and multifaceted process that involves **searching**, **reading**, **analyzing**, and **synthesizing** scholarly materials on a given topic to identify existing knowledge in a particular research area. This process helps map out what is already known and allows for the critical evaluation of prior studies to uncover gaps, inconsistencies, or emerging trends. Navigating through all available literature on a given subject requires specialized skills and highly effective search pathways to achieve both sensitivity and specificity in the results. Even for an experienced team of researchers, the task can become overwhelming, time-consuming, and prone to missed insights or errors.
 
 To address these challenges and improve the efficiency and accuracy of the literature review process, the Medical Chatbot introduces the "Literature Review". This advanced AI agent enables users to intelligently search millions of research papers and articles from prestigious databases such as PubMed, BioRxiv, and MedRxiv (as well as custom knowledge bases), and quickly identify relevant studies. Then, with just the push of a button, the tool allows for automated data extraction, making it easy to gather key data points and insights. Users can also define specific inclusion and exclusion criteria to filter results, honing in on the most pertinent studies for their research. This dramatically reduces the manual effort required for conducting comprehensive reviews, allowing for faster, more informed, and more accurate decision-making in clinical and research environments.
+
+</div><div class="h3-box" markdown="1">
 
 ### Key Features
 
@@ -137,6 +148,8 @@ Once a literature review is completed, users can easily clone the existing revie
 
 These features work together to provide a powerful, efficient, and user-friendly experience, enabling researchers to complete literature reviews on thousands of articles in minutes instead of weeks or months of study and manual text synthesis.
 
+</div><div class="h3-box" markdown="1">
+
 ### User Benefits
 
 In the medical domain, this tool has been designed to make the following impacts:
@@ -153,8 +166,9 @@ Users no longer need to manually comb through articles to extract relevant data 
 **4. Improved Clinical Decision-Making:**
 By providing users with timely and accurate access to relevant studies, the feature directly supports clinical decision-making. With quick and precise data extraction, clinicians and researchers are better equipped to make informed decisions based on the latest and most relevant research. This ensures that decisions are not only quicker but are also grounded in high-quality, peer-reviewed literature, enhancing the overall reliability of the outcomes.
 
-## 08-08-2024 New NLP Tools and Response Styles
+</div><div class="h3-box" markdown="1">
 
+## 08-08-2024 New NLP Tools and Response Styles
 
 We are happy to announce a new release of the Medical Chatbot that includes new NLP Tools, support for response style and an improved chat experience. 
 
@@ -198,7 +212,6 @@ Designed to detect healthcare-related entities from patient-generated content, a
 </div><div class="h3-box" markdown="1">
 
 ### Customizable Response Styles
-
     
 The Medical Chatbot now offers support for Response Styles via an enhanced, intuitive interface that allows users to easily customize their conversation settings. This feature enables dynamic response style selection, improving the personalization of interactions and empowering users to tailor responses to their specific needs. Users can tailor the generated text to their needs and have greater control over the creative process without the need to rephrase their prompts entirely.
 
@@ -247,6 +260,8 @@ The DocQA Feature is continuously refined through ongoing testing, feedback, and
 
 ![Tuned_docQA](https://github.com/user-attachments/assets/e05018fd-2a01-4721-9412-509f91238a18)
 
+</div><div class="h3-box" markdown="1">
+
 ### Document upload - file processing status 
 
 The DocQA Session has an improved UI for file upload and processing designed to make the document interactions and processing status more intuitive. During file upload, users are able to remove the selected files using the cross button provided for each file. Furthermore, as the processing of a file begins, the UI indicates the file's status as follows:
@@ -264,15 +279,21 @@ The DocQA Session has an improved UI for file upload and processing designed to 
 
 After all files are processed, users can set those as target documents for the current session and start asking questions related to their content.
 
+</div><div class="h3-box" markdown="1">
+
 ### Quick access to uploaded documents
 In the DocQA session, you can now easily view the content of uploaded documents (both txt and Pdf) by clicking on their name in the "Target Document" section at the top of your chatbot screen. This action opens the selected document in a new tab. 
 
 ![Quick_Access_Docs](https://github.com/user-attachments/assets/1db16ea3-dbd5-4e79-9534-0b0c4a26169b)
 
+</div><div class="h3-box" markdown="1">
+
 ### More precise references
 Responses generated in the DocQA session include citations pointing to specific sections of the document used as references. These sections can be previewed in the Document Preview UI. Now, to enhance usability, reference numbers have been added to each preview, allowing users to easily track and identify the relevant references while reviewing the content.
 
 ![DocQA Enhancements](https://github.com/user-attachments/assets/f0bc44fb-8972-4cbf-a1ea-5425390dbcb9)
+
+</div><div class="h3-box" markdown="1">
 
 ### Quick load for reference previews
 To improve the efficiency of document previews, the chatbot offers a better pre-loading process. This enhancement reduces the time required for document previews for each reference/citation while ensuring accurate section highlighting for both PDF and TXT files.
@@ -280,10 +301,14 @@ To improve the efficiency of document previews, the chatbot offers a better pre-
 </div><div class="h3-box" markdown="1">
 
 ## Introducing the "Web Search" Tool
+
 ### Overview
+
 We are excited to introduce the Web Search tool, an enhancement of the already available Wikipedia search tool. While the Wikipedia search tool effectively provided information from a vast database of general topics, the new Web Search tool extends its capabilities to the entire web, ensuring you receive the most comprehensive and relevant information available.
    
 <iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</div><div class="h3-box" markdown="1">
 
 ### Key Features
 1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
@@ -293,6 +318,8 @@ We are excited to introduce the Web Search tool, an enhancement of the already a
 
 **Tool Usage and Manual Tool Selection (@ Selector)**
 The Web Search Tool is now available in the Tool Selection menu and can be enabled or disabled as needed. Enabling this tool allows the Medical Chabot to intelligently utilize the Web Search Tool based on your query requirements. Additionally, enabling the tool will make it available in the Manual Tool selection menu, allowing users to manually invoke it by typing "@web_search" at the beginning of a query to receive responses specifically using the Web Search tool. The @ selector menu will automatically auto-fill the keyword for the Web Search while typing and the user can easily use the Web Search tool manually for the response generation.
+
+</div><div class="h3-box" markdown="1">
 
 ### User Benefits
 In the medical domain, this tool can be useful when looking at:
@@ -313,17 +340,23 @@ In the medical domain, this tool can be useful when looking at:
 With the integration of NLP tools, the Medical Chatbot supported Named Entity Recognition specialized for the Clinical, Oncology, and Posology domains. In this release, the NLP tools were enhanced to support assertion labels as well as relation discovery between entities. 
 The generated responses visually highlight the detected entities and assertion statuses. Users also have the option to download the extraction results in structured format (CSV), to access detailed information on the detected relations between entities as well as information on the confidence of each annotation.
 
+</div><div class="h3-box" markdown="1">
+
 ### Updated Tool Names and Descriptions
 
 The tools have been renamed and their descriptions were updated to provide users with a clearer understanding of each tool and its functionalities. These updates are reflected throughout the application, including in key areas such as the Tool section menu and the @ Selector menu. 
 
 ![DocQA Enhancements](https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97)
 
+</div><div class="h3-box" markdown="1">
+
 ### Copy response with references 
 
 All responses have a copy button for ease of use. The copy option now also included the related references, including relevant metadata and hyperlinks to the original articles. This information is now appended at the end of the pasted content. This applies to responses generated using all current knowledge bases, including PubMed, bioRxiv, medRxiv, Web Search results, and even DocQ&A responses.
 
 ![Copy_Response_citations](https://github.com/user-attachments/assets/38612434-152d-4ae2-8b6c-3576d260fa0a)
+
+</div><div class="h3-box" markdown="1">
 
 ### New features for Enterprise Admin Users
 Several new Enterprise features have also been added to the Medical Chatbot, specifically designed to enhance the experience for Admin users. Firstly, a comprehensive API documentation is now accessible, providing detailed guidance on integrating and leveraging the chatbot's capabilities within your systems. Additionally, Admin users have the option to extended the trial period for their users, allowing them more time to explore and evaluate the full potential of the platform before making a commitment. Furthermore, significant improvements have been made to the User Management UI, including new filters and a more intuitive interface, making it easier for Admin users to manage and organize their teams effectively. These enhancements are tailored to streamline administrative tasks and optimize the overall user experience.

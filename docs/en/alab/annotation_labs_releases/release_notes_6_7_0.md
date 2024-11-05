@@ -22,10 +22,14 @@ Generative AI Labs version 6.7 introduces improvements to the De-identification 
  
 This release also brings the ability for admin users to add annotation instructions to labels from within the project, allowing for improved label accuracy and consistency between annotators. This updated feature is available for NER and VisualNER project types.
 
+</div><div class="h3-box" markdown="1">
+
 ## Support for De-identification Pipelines
 Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data. 
 
 De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.
+
+</div><div class="h3-box" markdown="1">
 
 ### Creating a De-identification Project:
 Users can use the de-identification feature if a valid license is available in the application: 
@@ -35,6 +39,8 @@ Users can use the de-identification feature if a valid license is available in t
    A default de-identification pipeline (`clinical_deidentification`) will automatically download if not previously available or it will use the default de-identification project template. All the downloaded pipelines are available on the **Pipeline** page.
    
 ![670image](/assets/images/annotation_lab/6.7.0/1.png)
+
+</div><div class="h3-box" markdown="1">
 
 ### New Pipeline Tab and Customization:
 In the **Reuse Resource** page, a new **Pipelines Tab** is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.
@@ -48,6 +54,8 @@ In the **Customize Labels** page, users can configure the type of de-identificat
 Additionally, users can upload custom obfuscation files in JSON format on the Customize Labels page.
 
 ![670image](/assets/images/annotation_lab/6.7.0/4.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### De-identification Process:
 The de-identification process remains similar to the existing pre-annotation workflow:
@@ -72,12 +80,16 @@ The de-identification process remains similar to the existing pre-annotation wor
 
    ![670image](/assets/images/annotation_lab/6.7.0/8.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Exporting De-identified Tasks:
 Only de-identified completions submitted as **ground truth** are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the **highest priority** will be exported.
 
 ![670image](/assets/images/annotation_lab/6.7.0/9.gif)
 
 These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity. 
+
+</div><div class="h3-box" markdown="1">
 
 ## Annotation Instructions for Labels
 Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
@@ -117,6 +129,8 @@ Additionally, annotation guidelines are available for Assertion Labels as well.
 
 ![670image](/assets/images/annotation_lab/6.7.0/16.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ## Improvements
 ### Automatically turn off the "wizard mode" after the user trains the model using wizard mode
 
@@ -124,23 +138,33 @@ Once the training is completed, the wizard mode is automatically turned off, and
 
 ![670image](/assets/images/annotation_lab/6.7.0/17.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Clicking on the direction arrow for a relation should jump to the respective relation in the region panel
 A new improvement has been introduced which allows users to click on any of the relation lines, which will take them directly to the corresponding relation in the **Relation** section.
 
 ![670image](/assets/images/annotation_lab/6.7.0/18.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Escape key should close the dialog boxes and warnings
 Users can now simply press the **Esc** key to close dialog boxes and warnings that appear in the top banner. Instead of clicking the ‘x’ every time. 
- 
+
+</div><div class="h3-box" markdown="1">
+
 ### The name of the model should be shown in the playground heading
 The model names are shown, providing users with a clearer insight into which models are being tested. 
 
 ![670image](/assets/images/annotation_lab/6.7.0/19.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ### Add Quick Submit button for Visual NER task
 A new ability to "Submit completions without Saving" can be enabled on the **Advanced Configuration** page when setting up Visual NER projects. This feature allows users to see and use the "Submit" button on the labeling page right from the start, enabling them to submit their completions directly without the need to save them first. 
 
 ![670image](/assets/images/annotation_lab/6.7.0/20.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ### Bug Fixes: 
 - **Unexpected behavior corrected for relations when added in the first line of the tasks**
