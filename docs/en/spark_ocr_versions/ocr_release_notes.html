@@ -32,6 +32,12 @@
 <meta name="theme-color" content="#ffffff">
 <!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
 <link rel="stylesheet" href="/static/models.css" /><!-- start custom head snippets -->
+<meta http-equiv="Content-Security-Policy" content="img-src * data: nlp.johnsnowlabs.com; 
+style-src 'self' 'unsafe-inline' buttons.github.io nlp.johnsnowlabs.com sparknlp.org fonts.googleapis.com use.fontawesome.com; 
+script-src 'self' 'unsafe-inline' 'unsafe-eval' search.modelshub.johnsnowlabs.com nlp.johnsnowlabs.com www.googletagmanager.com www.youtube.com ajax.googleapis.com code.jquery.com www.google-analytics.com search.modelshub.johnsnowlabs.com sparknlp.org cdn.bootcss.com buttons.github.io; 
+font-src 'self' data: buttons.github.io fonts.gstatic.com use.fontawesome.com; 
+connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowlabs.com www.google-analytics.com www.youtube.com nlp.johnsnowlabs.com;">
+
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
@@ -642,7 +648,11 @@ This release comes with new models, notebooks, examples, and bug fixes!!! 📢�
     <li>New PDF Deidentification Pipeline, that ingests PDFs and returns a de-identified version of the PDF.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h2 id="other-changes-">Other Changes 🟡</h2>
+
   <ul>
     <li>Memory Improvements for Models that cut memory requirements of most models by half.</li>
     <li>Minor enhancements, changes, and bug fixes that ensure the quality of the library continues to improve over time.</li>
@@ -652,6 +662,7 @@ This release comes with new models, notebooks, examples, and bug fixes!!! 📢�
 <div class="h3-box">
 
   <h3 id="new-models-for-information-extraction-from-scanned-forms">New models for information extraction from Scanned Forms</h3>
+
   <p>This model scores F1 92.86 on the FUNSD Entity Extraction dataset, and 89.23 on FUNSD Relation Extraction task. This significantly outperforms the Form Understanding capabilities of the AWS, Azure, and Google ‘Form AI’ services.</p>
 
   <p>Two new annotators that work together were added:</p>
@@ -675,8 +686,10 @@ pretrained("visual_ner_geo_v1", "en", "clinical/ocr/")
 <div class="h3-box">
 
   <h3 id="new-pdf-deidentification-pipeline">New PDF Deidentification Pipeline</h3>
+
   <p>A new PDF deidentification pipeline, <code class="language-plaintext highlighter-rouge">pdf_deid_subentity_context_augmented_pipeline</code> has been added to the library. This new pipeline has the ability to ingest PDFs, apply PHI masking through bounding boxes, and re-create the input PDF as a new document in which the PHI has been removed. The pipeline is ready to use and requires no configuration to handle most use cases.&lt;/br&gt;
 You can check an example of this pipeline in action in <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb">this notebook</a>.</p>
+
 </div>
 <div class="h3-box">
 
@@ -719,6 +732,7 @@ We have recently released a new <a href="https://medium.com/john-snow-labs/visua
   <p>Key takeaways are that first, Visual NLP’s small models can beat cloud providers while at the same time remaining fast and providing more deployment options. Second, in order to obtain a model to be used in practice, fine tuning is mandatory.</p>
 
   <p>This release is compatible with Spark-NLP 5.4.1, and Spark NLP for Healthcare 5.4.1.</p>
+
 </div>
 <div class="h3-box">
 

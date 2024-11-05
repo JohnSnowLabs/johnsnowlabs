@@ -32,6 +32,12 @@
 <meta name="theme-color" content="#ffffff">
 <!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
 <link rel="stylesheet" href="/static/models.css" /><!-- start custom head snippets -->
+<meta http-equiv="Content-Security-Policy" content="img-src * data: nlp.johnsnowlabs.com; 
+style-src 'self' 'unsafe-inline' buttons.github.io nlp.johnsnowlabs.com sparknlp.org fonts.googleapis.com use.fontawesome.com; 
+script-src 'self' 'unsafe-inline' 'unsafe-eval' search.modelshub.johnsnowlabs.com nlp.johnsnowlabs.com www.googletagmanager.com www.youtube.com ajax.googleapis.com code.jquery.com www.google-analytics.com search.modelshub.johnsnowlabs.com sparknlp.org cdn.bootcss.com buttons.github.io; 
+font-src 'self' data: buttons.github.io fonts.gstatic.com use.fontawesome.com; 
+connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowlabs.com www.google-analytics.com www.youtube.com nlp.johnsnowlabs.com;">
+
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
@@ -916,6 +922,9 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>For users having multiple roles (<em>Annotator/Reviewer/Manager</em>) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting <em>Annotator</em> option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to <em>Reviewer</em> or <em>Manager</em> option. The selection persists even when the tab is closed or refreshed.</p>
 
   <p><img src="/assets/images/annotation_lab/4.1.0/switch_role.png" alt="Switch Role" title="lit_shadow" /></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="annotation-instructions-for-labels">Annotation Instructions for Labels</h2>
   <p>Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the <code class="language-plaintext highlighter-rouge">Customize Labels</code> page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats.</p>

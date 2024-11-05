@@ -32,6 +32,12 @@
 <meta name="theme-color" content="#ffffff">
 <!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
 <link rel="stylesheet" href="/static/models.css" /><!-- start custom head snippets -->
+<meta http-equiv="Content-Security-Policy" content="img-src * data: nlp.johnsnowlabs.com; 
+style-src 'self' 'unsafe-inline' buttons.github.io nlp.johnsnowlabs.com sparknlp.org fonts.googleapis.com use.fontawesome.com; 
+script-src 'self' 'unsafe-inline' 'unsafe-eval' search.modelshub.johnsnowlabs.com nlp.johnsnowlabs.com www.googletagmanager.com www.youtube.com ajax.googleapis.com code.jquery.com www.google-analytics.com search.modelshub.johnsnowlabs.com sparknlp.org cdn.bootcss.com buttons.github.io; 
+font-src 'self' data: buttons.github.io fonts.gstatic.com use.fontawesome.com; 
+connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowlabs.com www.google-analytics.com www.youtube.com nlp.johnsnowlabs.com;">
+
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
@@ -627,10 +633,16 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>This release also brings the ability for admin users to add annotation instructions to labels from within the project, allowing for improved label accuracy and consistency between annotators. This updated feature is available for NER and VisualNER project types.</p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="support-for-de-identification-pipelines">Support for De-identification Pipelines</h2>
   <p>Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data.</p>
 
   <p>De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="creating-a-de-identification-project">Creating a De-identification Project:</h3>
   <p>Users can use the de-identification feature if a valid license is available in the application:</p>
@@ -642,6 +654,9 @@ A default de-identification pipeline (<code class="language-plaintext highlighte
   </ol>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/1.png" alt="670image" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="new-pipeline-tab-and-customization">New Pipeline Tab and Customization:</h3>
   <p>In the <strong>Reuse Resource</strong> page, a new <strong>Pipelines Tab</strong> is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.</p>
@@ -655,6 +670,9 @@ A default de-identification pipeline (<code class="language-plaintext highlighte
   <p>Additionally, users can upload custom obfuscation files in JSON format on the Customize Labels page.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/4.gif" alt="670image" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="de-identification-process">De-identification Process:</h3>
   <p>The de-identification process remains similar to the existing pre-annotation workflow:</p>
@@ -686,12 +704,18 @@ After saving or submitting the tasks, users can click the de-identify button aga
     </li>
   </ol>
 
+</div>
+<div class="h3-box">
+
   <h3 id="exporting-de-identified-tasks">Exporting De-identified Tasks:</h3>
   <p>Only de-identified completions submitted as <strong>ground truth</strong> are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the <strong>highest priority</strong> will be exported.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/9.gif" alt="670image" /></p>
 
   <p>These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity.</p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="annotation-instructions-for-labels">Annotation Instructions for Labels</h2>
   <p>Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the <code class="language-plaintext highlighter-rouge">Customize Labels</code> page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats.</p>
@@ -733,30 +757,49 @@ After saving or submitting the tasks, users can click the de-identify button aga
 
   <p><img src="/assets/images/annotation_lab/6.7.0/16.gif" alt="670image" /></p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="improvements">Improvements</h2>
+
   <h3 id="automatically-turn-off-the-wizard-mode-after-the-user-trains-the-model-using-wizard-mode">Automatically turn off the “wizard mode” after the user trains the model using wizard mode</h3>
 
   <p>Once the training is completed, the wizard mode is automatically turned off, and users are navigated to the regular <strong>Train</strong> page. Here, all relevant information is displayed along with a message indicating whether the training was successful or not.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/17.gif" alt="670image" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="clicking-on-the-direction-arrow-for-a-relation-should-jump-to-the-respective-relation-in-the-region-panel">Clicking on the direction arrow for a relation should jump to the respective relation in the region panel</h3>
   <p>A new improvement has been introduced which allows users to click on any of the relation lines, which will take them directly to the corresponding relation in the <strong>Relation</strong> section.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/18.gif" alt="670image" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="escape-key-should-close-the-dialog-boxes-and-warnings">Escape key should close the dialog boxes and warnings</h3>
   <p>Users can now simply press the <strong>Esc</strong> key to close dialog boxes and warnings that appear in the top banner. Instead of clicking the ‘x’ every time.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="the-name-of-the-model-should-be-shown-in-the-playground-heading">The name of the model should be shown in the playground heading</h3>
   <p>The model names are shown, providing users with a clearer insight into which models are being tested.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/19.gif" alt="670image" /></p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="add-quick-submit-button-for-visual-ner-task">Add Quick Submit button for Visual NER task</h3>
   <p>A new ability to “Submit completions without Saving” can be enabled on the <strong>Advanced Configuration</strong> page when setting up Visual NER projects. This feature allows users to see and use the “Submit” button on the labeling page right from the start, enabling them to submit their completions directly without the need to save them first.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/20.gif" alt="670image" /></p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="bug-fixes">Bug Fixes:</h3>
   <ul>
