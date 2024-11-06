@@ -849,6 +849,53 @@ Outputs:
 </div>
 <div class="h3-box">
 
+  <h3 id="enabling-ssl">Enabling SSL</h3>
+  <h4 id="requirements">Requirements:</h4>
+  <ul>
+    <li>Fullchain certificate</li>
+    <li>Private key used to sign the certificate</li>
+  </ul>
+
+  <p>For ease of documenting the process we are going to use the following notations (please replace with your actual values in the process):</p>
+
+  <ul>
+    <li>fullchain.pem – name of the fullchain certificate file</li>
+    <li>privkey.pem – key used to sign the certificate</li>
+    <li>demo.example.com – the domain used for genailab app</li>
+  </ul>
+
+  <p>For marketplace instance, the installer scripts files have to be downloaded (if installed with the the scripts, the files are already on the server and this step can be skipped):</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-q</span> https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-<span class="s2">"</span><span class="nv">$version</span><span class="s2">"</span>.tar.gz
+</code></pre></div>  </div>
+
+  <p>Extract the archive and copy fullchain.pem and privkey.pem into artifacts directory.</p>
+
+  <p>Create Kubernetes secret to be used by the ingress for SSL termination:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create secret tls demo.example.com <span class="nt">--cert</span><span class="o">=</span>fullchain.pem <span class="nt">--key</span><span class="o">=</span>privkey.pem
+</code></pre></div>  </div>
+
+  <p>Edit the annotationlab-updater.sh in the same directory and add the following lines in the end of the script (helm command extra parameters):</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--set</span> ingress.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+<span class="nt">--set</span> ingress.defaultBackend<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+<span class="nt">--set</span> ingress.hosts[0].host<span class="o">=</span><span class="s1">'demo.example.com'</span> <span class="se">\</span>
+<span class="nt">--set</span> ingress.hosts[0].path<span class="o">=</span><span class="s1">'/'</span> <span class="se">\</span>
+<span class="nt">--set</span> ingress.tls[0].hosts[0]<span class="o">=</span><span class="s1">'demo.example.com'</span> <span class="se">\</span>
+<span class="nt">--set</span> ingress.tls[0].secretName<span class="o">=</span>demo.example.com
+</code></pre></div>  </div>
+
+  <p>Note: If a self-signed certificate or any other type of internal certificates (not signed by any public CA) are used, an extra parameter is required for annotationlab-updater.sh:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--set</span> ingress.sslVerify<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>  </div>
+
+  <p>After editing the script, run it to enable SSL:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash <span class="nt">-x</span> annotationlab-updater.sh
+</code></pre></div>  </div>
+
   <h2 id="azure-marketplace">Azure Marketplace</h2>
 
   <p>Visit the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview">product page on Azure Marketplace</a> and follow these steps. Generative AI Lab offers a one-click deployment within your security perimeter using Azure Kubernetes Service (AKS), a fully managed Kubernetes solution that simplifies the deployment, management, and scaling of containerized applications.</p>

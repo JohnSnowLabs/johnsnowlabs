@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.6.5</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.7.2</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_6_5"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_6_5"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_7_2"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_7_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,28 +616,35 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 4.6.5</li>
+    <li>Generative AI Lab Release Notes 6.7.2</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 4.6.5</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab Release Notes 6.7.2</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_6_5.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.6.5"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_7_2.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.7.2"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.6.5</h2>
+  <h2 id="section">6.7.2</h2>
 
-  <p>Release date: <strong>08-02-2023</strong></p>
+  <p>Release date: <strong>10-04-2024</strong></p>
 
-  <p>NLP Lab v4.6.5, which includes significant optimizations and bugfixes for Project Analytics and the Prompt Engineering feature. The following are some of the key updates included in this release:</p>
-
+  <h3 id="improvements">Improvements:</h3>
   <ul>
-    <li>The issue with the all_extracted_chunks chart not updating in the analytics page has now been resolved.</li>
-    <li>The performance of project analytics operations has been improved, allowing for faster calculation of results.</li>
-    <li>Limits have been added to the prompt description and prompt questions, ensuring that the text does not crash the UI.</li>
+    <li>Annotation Guidelines Display: Now, users can view annotation guidelines by simply clicking on the label, making the annotation process more intuitive and user-friendly.</li>
+    <li>Expanded De-identification Model Support: Added compatibility with additional de-identification models to enhance flexibility in handling sensitive data.</li>
+  </ul>
+
+  <h3 id="bug-fixes">Bug Fixes:</h3>
+  <ul>
+    <li>NER Model Logs: Resolved an issue where error logs from the playground server and dependent embeddings were not automatically downloaded for Named Entity Recognition (NER) models.</li>
+    <li>Completions Auto-Save: Fixed a bug that prevented completions from being auto-saved and submitted during task submission, ensuring no work is lost.</li>
+    <li>Group Name Deletion: The “Esc” key now correctly removes the group name delete confirmation pop-up, providing a smoother user experience.</li>
+    <li>Training Page View History: Addressed an error where users encountered an issue when clicking the “View History” button on the Training Page.</li>
+    <li>Annotation Instruction Edit Time: The editing time for annotation instructions is now accurately reflected in the system, ensuring proper time tracking for changes.</li>
   </ul>
 
 </div>
@@ -697,7 +704,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-02-08T00:00:00+00:00">Feb 08, 2023</time>
+      <time itemprop="dateModified" datetime="2024-08-25T00:00:00+00:00">Aug 25, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
