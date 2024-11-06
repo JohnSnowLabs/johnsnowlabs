@@ -232,6 +232,55 @@ Now, to access the Generative AI Lab, you go to the CloudFront URL and log in wi
 
 </div><div class="h3-box" markdown="1">
 
+
+### Enabling SSL
+#### Requirements:
+- Fullchain certificate
+- Private key used to sign the certificate
+
+For ease of documenting the process we are going to use the following notations (please replace with your actual values in the process):
+
+- fullchain.pem – name of the fullchain certificate file
+- privkey.pem – key used to sign the certificate
+- demo.example.com – the domain used for genailab app
+
+For marketplace instance, the installer scripts files have to be downloaded (if installed with the the scripts, the files are already on the server and this step can be skipped):
+
+```bash
+wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-"$version".tar.gz
+```
+
+Extract the archive and copy fullchain.pem and privkey.pem into artifacts directory.
+
+Create Kubernetes secret to be used by the ingress for SSL termination:
+
+```bash
+kubectl create secret tls demo.example.com --cert=fullchain.pem --key=privkey.pem
+```
+
+Edit the annotationlab-updater.sh in the same directory and add the following lines in the end of the script (helm command extra parameters):
+
+```bash
+--set ingress.enabled=true \
+--set ingress.defaultBackend=false \
+--set ingress.hosts[0].host='demo.example.com' \
+--set ingress.hosts[0].path='/' \
+--set ingress.tls[0].hosts[0]='demo.example.com' \
+--set ingress.tls[0].secretName=demo.example.com
+```
+
+Note: If a self-signed certificate or any other type of internal certificates (not signed by any public CA) are used, an extra parameter is required for annotationlab-updater.sh:
+
+```bash
+--set ingress.sslVerify=false
+```
+
+After editing the script, run it to enable SSL:
+
+```bash
+bash -x annotationlab-updater.sh
+```
+
 ## Azure Marketplace
 
 Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview) and follow these steps. Generative AI Lab offers a one-click deployment within your security perimeter using Azure Kubernetes Service (AKS), a fully managed Kubernetes solution that simplifies the deployment, management, and scaling of containerized applications.

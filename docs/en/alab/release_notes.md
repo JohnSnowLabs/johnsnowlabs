@@ -225,6 +225,7 @@ A new ability to "Submit completions without Saving" can be enabled on the **Adv
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
