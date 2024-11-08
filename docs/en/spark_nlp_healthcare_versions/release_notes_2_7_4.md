@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 2.7.4
+title: Healthcare NLP v2.7.4 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_2_7_4
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -17,6 +17,8 @@ sidebar:
 
 We are glad to announce that Spark NLP for Healthcare 2.7.4 has been released!  
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights:
 
 - Introducing a new annotator to extract chunks with NER tags using regex-like patterns: **NerChunker**.
@@ -25,6 +27,8 @@ We are glad to announce that Spark NLP for Healthcare 2.7.4 has been released!
 - In **DeIdentification** model, ability to use `faker` and static look-up lists at the same time randomly in `Obfuscation` mode.
 - New **De-Identification NER** model, augmented with synthetic datasets to detect uppercased name entities.
 - Bug fixes & general improvements.
+
+</div><div class="h3-box" markdown="1">
 
 #### 1. NerChunker:
 
@@ -46,6 +50,7 @@ Similar to what we used to do in **POSChunker** with POS tags, now we can also e
     >> ner tags: [(cystic, B-IMAGINGFINDINGS), (cyst,I-IMAGINGFINDINGS), (kidney, B-BODYPART)
     >> ner_chunk: ['cystic cyst on her kidney']
 
+</div><div class="h3-box" markdown="1">
 
 #### 2. ChunkFilterer:
 
@@ -72,6 +77,7 @@ Similar to what we used to do in **POSChunker** with POS tags, now we can also e
     >> ner_chunk: ['severe fever','sore throat','stomach pain','headache']
     >> chunk_filtered: ['severe fever','sore throat']
 
+</div><div class="h3-box" markdown="1">
 
 #### 3. AssertionFilterer:
 

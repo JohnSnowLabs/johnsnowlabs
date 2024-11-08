@@ -19,22 +19,17 @@ It is important to note that the obfuscation should be done carefully to ensure 
 
 Parameters:
 
-- `seed`: (IntParam) The seed to select the names on obfuscation. With the seed, you can reply an execution several times with the same output..
+- `seed`:  The seed to select the names on obfuscation. With the seed, you can reply an execution several times with the same output..
 
-- `obfuscateRefSource`: (Param[String])
-Sets mode for select obfuscate source [‘both’|’faker’| ‘file’] Default: ‘both’.
+- `obfuscateRefSource`: Sets mode for select obfuscate source [‘both’, ’faker’, ‘file’] Default: ‘both’.
 
-- `language`: (Param[String])
-The language used to select some faker names. The values are the following: ‘en’(english),’de’(german), ‘es’(Spanish), ‘fr’(french) or ‘ro’(romanian) Default:’en’.
+- `language`: The language used to select some faker names. The values are the following: ‘en’(english),’de’(german), ‘es’(Spanish), ‘fr’(french) or ‘ro’(romanian) Default:’en’.
 
-- `sameLength`: (BooleanParam)
-The sameLength used to select the same length names as original ones during obfuscation. Example: ‘John’ –> ‘Mike’. Default: true.
+- `sameLength`: The sameLength used to select the same length names as original ones during obfuscation. Example: ‘John’ –> ‘Mike’. Default: true.
 
-- `nameEntities`: (List[str])
-The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: 'NAME'
+- `nameEntities`: The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: 'NAME'
 
-- `genderAwareness`: (BooleanParam)
-Whether to use gender-aware names or not during obfuscation. This param effects only names.
+- `genderAwareness`: Whether to use gender-aware names or not during obfuscation. This param effects only names.
 Default: False
 
 {%- endcapture -%}
@@ -48,7 +43,6 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
 from johnsnowlabs import medical, nlp
 
 documentAssembler = nlp.DocumentAssembler()\
@@ -198,14 +192,12 @@ val result = nlpPipeline.fit(data).transfrom(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[NameChunkObfuscatorNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscator.ipynb)
+[NameChunkObfuscatorNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscator.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
 `NameChunkObfuscator` annotator that can be used in deidentification tasks for replacing doctor and patient names with fake names using a reference document.
 {%- endcapture -%}
-
-
 
 {%- capture approach_input_anno -%}
 CHUNK
@@ -406,7 +398,7 @@ val res = nlpPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[NameChunkObfuscatorApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscatorApproach.ipynb)
+[NameChunkObfuscatorApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NameChunkObfuscatorApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

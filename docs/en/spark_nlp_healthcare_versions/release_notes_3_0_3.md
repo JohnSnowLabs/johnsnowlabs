@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.0.3
+title: Healthcare NLP v3.0.3 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_0_3
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -17,6 +17,8 @@ sidebar:
 
 We are glad to announce that Spark NLP for Healthcare 3.0.3 has been released!
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights
 
 + Five new entity resolution models to cover UMLS, HPO and LIONC terminologies.
@@ -24,6 +26,8 @@ We are glad to announce that Spark NLP for Healthcare 3.0.3 has been released!
 + Five new pretrained pipelines to map terminologies across each other (from UMLS to ICD10, from RxNorm to MeSH etc.)
 + AnnotationToolReader support for Spark 2.3. The tool that helps model training on Spark-NLP to leverage data annotated using JSL Annotation Tool now has support for Spark 2.3.
 + Updated documentation (Scaladocs) covering more APIs, and examples.
+
+</div><div class="h3-box" markdown="1">
 
 #### Five new resolver models:
 
@@ -41,9 +45,13 @@ We are glad to announce that Spark NLP for Healthcare 3.0.3 has been released!
 
   *Related Notebook*: [Resolver Models](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### New feature on Deidentification Module
 + isRandomDateDisplacement(True): Be able to apply a random displacement on obfuscation dates. The randomness is based on the seed.
 + Fix random dates when the format is not correct. Now you can repeat an execution using a seed for dates. Random dates will be based on the seed.
+
+</div><div class="h3-box" markdown="1">
 
 #### Five new healthcare code mapping pipelines:
 

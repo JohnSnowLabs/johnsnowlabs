@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.3.2
+title: Healthcare NLP v3.3.2 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_3_2
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -16,7 +16,7 @@ sidebar:
 ## 3.3.2
 We are glad to announce that Spark NLP Healthcare 3.3.2 has been released!.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Highlights
 
@@ -32,6 +32,8 @@ We are glad to announce that Spark NLP Healthcare 3.3.2 has been released!.
 + Updated NER Profiling Pretrained Pipelines
 + New ChunkSentenceSplitter Annotator
 + Updated Spark NLP For Healthcare Notebooks and New Notebooks
+
+</div><div class="h3-box" markdown="1">
 
 #### New Clinical NER Models (including a new Spanish one)
 
@@ -171,6 +173,8 @@ results = chemd_model.transform(spark.createDataFrame(pd.DataFrame({"text": ["""
 +----------------------------------+------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New BERT-Based Clinical NER Models
 
 We have two new BERT-Based token classifier NER models.
@@ -278,6 +282,8 @@ result = p_model.transform(spark.createDataFrame(pd.DataFrame({'text': [test_sen
 +-------------------------------------------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated Clinical NER Model
 
 We have updated `ner_jsl_enriched` model by enriching the training data using clinical trials data to make it more robust. This model is capable of predicting up to `87` different entities and is based on `ner_jsl` model. Here are the entities this model can detect;
@@ -353,9 +359,13 @@ ner_model.getTrainingClassDistribution()
 >> {'B-Disease': 2536, 'O': 31659, 'I-Disease': 2960}
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New RxNorm Sentence Entity Resolver Model
 
 + `sbiobertresolve_rxnorm_augmented` : This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in all_k_aux_labels column.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Spanish SNOMED Sentence Entity Resolver Model
 
@@ -449,6 +459,8 @@ res = p_model.transform(spark.createDataFrame(pd.DataFrame({'text': [test_senten
 +----+-------------------------------+-------------+--------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Clinical Question vs Statement BertForSequenceClassification model
 
 + `bert_sequence_classifier_question_statement_clinical` : This model classifies sentences into one of these two classes: question (interrogative sentence) or statement (declarative sentence) and trained with BertForSequenceClassification. This model is at first trained on SQuAD and SPAADIA dataset and then fine tuned on the clinical visit documents and MIMIC-III dataset annotated in-house. Using this model, you can find the question statements and exclude & utilize in the downstream tasks such as NER and relation extraction models.
@@ -513,6 +525,8 @@ res = p_model.transform(spark.createDataFrame(pd.DataFrame({'text': test_sentenc
 weighted avg       0.98      0.98      0.98       972
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Sentence Entity Resolver Fine-Tune Features (Overwriting and Drop Code)
 
 + `.setOverwriteExistingCode()` : This parameter provides overwriting codes over the existing codes if in pretrained Sentence Entity Resolver Model. For example, you want to add a new term to a pretrained resolver model, and if the code of term already exists in the pretrained model, when you `.setOverwriteExistingCode(True)`, it removes all the same codes and their descriptions from the model, then you will have just the new term with its code in the fine-tuned model.
@@ -521,13 +535,19 @@ weighted avg       0.98      0.98      0.98       972
 
 For more examples, please check [Fine-Tuning Sentence Entity Resolver Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/13.1.Finetuning_Sentence_Entity_Resolver_Model.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated ICD10CM Entity Resolver Models
 
 We have updated `sbiobertresolve_icd10cm_augmented` model with [ICD10CM 2022 Dataset](https://www.cdc.gov/nchs/icd/icd10cm.htm) and `sbiobertresolve_icd10cm_augmented_billable_hcc` model by dropping invalid codes.
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated NER Profiling Pretrained Pipelines
 
 We have updated `ner_profiling_clinical` and `ner_profiling_biobert` pretrained pipelines by adding new clinical NER models and NER model outputs to the previous versions. In this way, you can see all the NER labels of tokens. For examples, please check [NER Profiling Pretrained Pipeline Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.2.Pretrained_NER_Profiling_Pipelines.ipynb).
+
+</div><div class="h3-box" markdown="1">
 
 #### New ChunkSentenceSplitter Annotator
 
@@ -605,6 +625,7 @@ df = paragraphs.selectExpr("explode(paragraphs) as result")\
 +--------------------------------------------------+------+------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Updated Spark NLP For Healthcare Notebooks
 

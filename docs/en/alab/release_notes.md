@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2023-11-28"
+modify_date: "2024-07-26"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,138 +15,208 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.6.0
+## De-Identification Pipeline Tools and Entity Level Annotation Instruction in Generative AI Lab - 6.7
+Generative AI Labs version 6.7 introduces improvements to the De-identification feature. With this update, users can choose on a per-entity basis which de-identification method they would like to use. In addition to the de-identification pipeline that is the default, there is now support for custom models, rules, and prompts for identifying sensitive data. 
+ 
+This release also brings the ability for admin users to add annotation instructions to labels from within the project, allowing for improved label accuracy and consistency between annotators. This updated feature is available for NER and VisualNER project types.
 
-Release date: **10-24-2023**
+</div><div class="h3-box" markdown="1">
 
-## Streamlined Task Classification and Targeted Exports in NLP Lab 5.6 
-NLP Lab 5.6 introduces features that speed up text classification, simplify data exports, and offer more intuitive management of project resources. The Compact View option allows one to classify short tasks from the Tasks page, bypassing the need to open each task individually. Further enhancing this, the Focus View feature aids in managing multiple classification models by allowing users to focus on one at a time. 
-Significant enhancements have also been added to the export process. The new annotator-specific export filters streamline the segregation of annotations by individual annotators, reducing the effort involved in processing exported files. Additionally, a filter for exporting tasks with pre-annotation results has been added for more targeted data export. Improvements extend to user interface enhancements in the "Reuse Resources" settings and the Train page, making project configuration and training more user-friendly and efficient.
+## Support for De-identification Pipelines
+Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data. 
 
-## New: Classify Short Text on the Tasks View 
-In the realm of text classification, particularly for projects involving short content tasks, enhancing productivity becomes crucial. To address this challenge in view of optimizing annotation speed and convenience, NLP Lab 5.6. introduces a new layout of the Tasks screen - the Compact View-  optimizing space and enabling annotators to classify tasks directly from the Task List page. This bypasses the conventional, more time-consuming method of individually opening and submitting completions for each task. 
-First, let us see how one can enable the "Compact View" for NLP Lab Projects.
+De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.
 
-### Activating the Compact View Option 
+</div><div class="h3-box" markdown="1">
 
-Within the Project Configuration screen, under the “Customize Labels” Tab a new checkbox option was added as part of the “Configure Annotation Experience” Section - “Allow compact view for tasks list”. 
+### Creating a De-identification Project:
+Users can use the de-identification feature if a valid license is available in the application: 
+1. **Create a New Project**:
+   During the project configuration, select **De-identification** as the project type.
+2. **Automatic Pipeline Download**:
+   A default de-identification pipeline (`clinical_deidentification`) will automatically download if not previously available or it will use the default de-identification project template. All the downloaded pipelines are available on the **Pipeline** page.
+   
+![670image](/assets/images/annotation_lab/6.7.0/1.png)
 
-![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.6.0/1.gif)
+</div><div class="h3-box" markdown="1">
 
-Once this option is activated by a project owner or manager, annotators can configure and manage the Compact View settings directly on the Task List page.
+### New Pipeline Tab and Customization:
+In the **Reuse Resource** page, a new **Pipelines Tab** is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.
 
-### Compact View
+![670image](/assets/images/annotation_lab/6.7.0/2.png)
 
-A convenient “Show Compact View” checkbox is available on the pop-up activated by the "3-dot Menu". Once the option is activated, a compact view of each task is displayed on the tasks page, allowing annotators to quickly go over the short texts and classify them in place. Despite its compact nature, this view retains all the functionalities of the standard Task List view, offering annotators the flexibility to switch back to the normal view at any time.
+In the **Customize Labels** page, users can configure the type of de-identification. Apart from all the deidentification types that are already supported, in version 6.7.0, users can even configure **different de-identification types for different labels** as well.
 
-![Enable the compact View](/assets/images/annotation_lab/5.6.0/2.gif)
+![670image](/assets/images/annotation_lab/6.7.0/3.png)
 
-### Classify in Place
+Additionally, users can upload custom obfuscation files in JSON format on the Customize Labels page.
 
-Further enhancing the utility of the Compact View is the “Classify in Place” feature. With this option enabled, annotators can classify tasks without leaving the Task List page. The UI allows annotators to focus on each one of the choices presented in the project configuration for each task, thus enabling efficient and rapid task classification. When a user chooses one classification option for a given task, a completion is automatically generated, submitted as Ground Truth (Starred Completion), and the task is marked as "Submitted". This entire process streamlines task handling, eliminating the need to open individual tasks. 
+![670image](/assets/images/annotation_lab/6.7.0/4.gif)
 
-![Classify in Place](/assets/images/annotation_lab/5.6.0/3.gif)
+</div><div class="h3-box" markdown="1">
 
-### Focus on One Classifier at a Time
+### De-identification Process:
+The de-identification process remains similar to the existing pre-annotation workflow:
 
-For projects involving multiple classification options, when showing all choices on the Compact View the page becomes crowded. In this situation, the Focus View feature helps eliminate some of the options and allows users to focus on one classification dimension at a time. This declutters the view and enhances the annotation process's efficiency and effectiveness. Annotators can effortlessly switch between classifiers in the Focus View, adapting to their needs throughout the annotation process.
+1. **Import Tasks**:
+   Initially, tasks are imported, and the `NonDeidentified` tag is automatically added to the tasks. It helps users to know which tasks have been deidentified and which are yet to be de-identified.
 
-![Focus View](/assets/images/annotation_lab/5.6.0/4.gif)
+   ![670image](/assets/images/annotation_lab/6.7.0/5.gif)
 
-## New: Filter Exported Completions by Annotator
-Previously, the task of segregating data annotations made by specific annotators was a laborious process, involving the examination and processing (either manual or via custom code) of the exported JSON files to identify target completions. This method was not only time-consuming but also prone to errors. Addressing this drawback, NLP Lab 5.6 introduced an enhanced export feature that simplifies the process.
+3. **Pre-annotate/De-identify**:
+   Click the **De-identification (pre-annotate)** button to deploy the de-identification pipeline and pre-annotate and de-identify tasks. Once the task is pre-annotated and de-identified, the de-identification status changes to either green, red, or grey, just like pre-annotation status. 
 
-![demoExportByAnnotator](/assets/images/annotation_lab/5.6.0/5.gif)
+   ![670image](/assets/images/annotation_lab/6.7.0/6.gif)
 
-Users can now easily select the data they want to export by applying annotator-based filters as shown in the video above. This is achieved through new selectors added to the Export page, that ensure a more targeted and efficient export experience. Once the desired annotators are selected, the completions they created can be further filtered based on their status for a refined JSON export. Specifically, users can filter out tasks that either lack completions or are marked with a starred completion, thus enabling a targeted export process. This enhancement combines with the task-based filters already in place and saves time but also increases the accuracy and relevance of the exported data, making it a valuable tool for users engaged in extensive data annotation projects. 
+5. **Labeling Page**:
+   On the labeling page, users can either make corrections or accept the predictions made by the pipeline.
 
-## New: Filter Export by Predictions
-This feature empowers users to selectively filter out tasks lacking pre-annotation results when exporting tasks and completions. By integrating this option, NLP Lab further improves the export process, allowing users to focus on tasks with pre-annotation outcomes.
+   ![670image](/assets/images/annotation_lab/6.7.0/7.gif)
+
+7. **Re-run De-identification**:
+   After saving or submitting the tasks, users can click the de-identify button again to run the process on either manually annotated completions or all completions and can view the de-identification in real-time from the labeling page. Users can click the **De-identification View** button (located next to the Compare Completion button), to view the de-identified tasks in real-time. All de-identified completions will show **(De-identified)** next to the completion ID.
+
+   ![670image](/assets/images/annotation_lab/6.7.0/8.gif)
+
+</div><div class="h3-box" markdown="1">
+
+### Exporting De-identified Tasks:
+Only de-identified completions submitted as **ground truth** are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the **highest priority** will be exported.
+
+![670image](/assets/images/annotation_lab/6.7.0/9.gif)
+
+These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity. 
+
+</div><div class="h3-box" markdown="1">
+
+## Annotation Instructions for Labels
+Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
+
+To add annotation instructions to a label, follow these steps:
+ - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
+ - Click on the `Edit` icon next to the label for which you want to add instructions. This action will take you to the `Edit Label` page.
+ - Enter the guidelines under the `Label Instructions` field.
+ - Click on `Save Label` to store the instructions.
+ - Click on `Save Config` to save the configuration.
+
+![670image](/assets/images/annotation_lab/6.7.0/10.gif)
+
+Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the `Annotation Guidelines` toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the `Annotation Guideline` section. Clicking on the label text will then reveal the annotation instructions for that label. 
+
+![670image](/assets/images/annotation_lab/6.7.0/11.gif)
+
+Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them. 
+
+Remove the annotation instructions from the labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/12.gif)
+
+Edit the annotation instructions from the Labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/13.gif)
+
+When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.
+
+![670image](/assets/images/annotation_lab/6.7.0/14.gif)
+
+Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.
+
+![670image](/assets/images/annotation_lab/6.7.0/15.png)
+
+Additionally, annotation guidelines are available for Assertion Labels as well. 
+
+![670image](/assets/images/annotation_lab/6.7.0/16.gif)
+
+</div><div class="h3-box" markdown="1">
 
 ## Improvements
-### Keyboard Shortcut for "Accept Prediction"
-A keyboard shortcut was added for the "Accept prediction" button. This feature, useful for creating and submitting completions based on automatic pre-annotations can now be activated via the keyboard shortcut, allowing users to stay focused and work efficiently without changing their interaction context. Additionally, the "Accept prediction" button, which was previously unavailable in pre-annotated tasks for Visual NER projects, has been made accessible for an enhanced experience of handling pre-annotated tasks in Visual NER projects.
 
-![demoExportByAnnotator](/assets/images/annotation_lab/5.6.0/6.png)
+### Automatically turn off the "wizard mode" after the user trains the model using wizard mode
 
-### Readiness Check for OCR Server on Image and PDF Import
-The process of selecting OCR servers for image and/or PDF-focused projects has been refined for greater efficiency. Previously, when visual documents were imported, the system would automatically select any available OCR server on the import page. This approach, though straightforward, did not consider the specific readiness status of the project's designated OCR server. Recognizing this limitation, NLP Lab 5.6 introduces a more intelligent selection mechanism.
-With the recent enhancement, the user interface is designed to temporarily pause when the project's dedicated OCR server is in the process of deployment. This pause ensures that the OCR integration aligns with the project's readiness, avoiding potential mismatches or delays that could affect the project workflow. Once the deployment of the OCR server is complete, the system automatically sets this newly deployed server as the default OCR server for the project. This ensures that the processing of images is timely for each project, enhancing the overall efficiency and effectiveness of document ingestion.
+Once the training is completed, the wizard mode is automatically turned off, and users are navigated to the regular **Train** page. Here, all relevant information is displayed along with a message indicating whether the training was successful or not. 
 
+![670image](/assets/images/annotation_lab/6.7.0/17.gif)
 
-![rediness](/assets/images/annotation_lab/5.6.0/7.gif)
+</div><div class="h3-box" markdown="1">
 
-### Enhanced Usability of the "Re-use Resources" Settings
-The "Reuse Resources" section – step 3 of the Project Configuration – has now an improved user experience and allows more efficient resource management. Initially, users faced challenges in identifying which resources (Models, Rules, or Prompts) were already incorporated into a project when visiting this section during project configuration. 
+### Clicking on the direction arrow for a relation should jump to the respective relation in the region panel
+A new improvement has been introduced which allows users to click on any of the relation lines, which will take them directly to the corresponding relation in the **Relation** section.
 
-![Marked Resources](/assets/images/annotation_lab/5.6.0/8.gif)
+![670image](/assets/images/annotation_lab/6.7.0/18.gif)
 
-Addressing this issue, the "Reuse Resource" tab now prominently identifies the models, prompts, and rules added to the project. Furthermore, the "Reuse Resources" feature was expanded to provide an in-depth view of specific labels, choices, or relations selected. This detailed visualization ensures users are fully informed about the resources currently in use in the project. Such transparency is crucial in aiding users to make well-informed decisions regarding the addition or removal of resources, thereby streamlining the processes within the Project Configuration Settings.
+</div><div class="h3-box" markdown="1">
 
-### Enhanced UI for Reuse Resource
-The Reuse Resource Page has also undergone a series of enhancements, focusing on improving user navigation and the resource addition process. These updates are designed to augment the user interface while retaining the core functionality of the application, ensuring that users benefit from a more intuitive experience without having to adapt to significant workflow changes.
-One of the improvements is the introduction of tab-based navigation for selecting Models, Prompts, and Rules. This shift from the previous button-based system to tabs enhances both the visual organization and the ease of navigation on the Reuse Resource page. Users can now more intuitively and efficiently locate and manage the resources they need for their projects.
+### Escape key should close the dialog boxes and warnings
+Users can now simply press the **Esc** key to close dialog boxes and warnings that appear in the top banner. Instead of clicking the ‘x’ every time. 
+ 
+</div><div class="h3-box" markdown="1">
 
-Additionally, the process of adding resources to a project has been updated. Users are no longer required to click "Add to Project Configuration" button each time they select a new model, prompt, or rule. Instead, the system automatically incorporates the chosen resource into the project configuration. This refinement eliminates repetitive steps, saving users time and simplifying the process of resource selection.
+### The name of the model should be shown in the playground heading
+The model names are shown, providing users with a clearer insight into which models are being tested. 
 
-These UI updates, implemented to enrich the user experience, ensure that users can manage resources more effectively while following the same workflow. The focus remains on user convenience and efficiency, underscoring the NLP Lab's commitment to continuous improvement in response to user needs and feedback.
+![670image](/assets/images/annotation_lab/6.7.0/19.gif)
 
-![ReuseResourcePageUI](/assets/images/annotation_lab/5.6.0/9.png)
+</div><div class="h3-box" markdown="1">
 
-### Enhanced UI for Model Training
-NLP Lab 5.6. updates to the User Interface of the Traininig & Active Learning page for an improved user experience and streamlined interactions. The buttons located at the top of the page have been redesigned to be more **compact** for optimized screen space, allowing users to focus on the essential elements of the page without distraction.
-Another enhancement is the introduction of **sticky buttons** at the bottom of the Train page. This feature ensures that critical features, such as “Train” and “Save,” remain accessible at all times, regardless of the user’s position on the page. By eliminating the need to scroll, users can enjoy a more convenient and efficient workflow. This thoughtful design change underscores our commitment to continuously improving the user interface to meet the evolving needs of our users in the NLP Lab.
-  
-![img width="1510" alt="TrainingPageUI](/assets/images/annotation_lab/5.6.0/10.png)
+### Add Quick Submit button for Visual NER task
+A new ability to "Submit completions without Saving" can be enabled on the **Advanced Configuration** page when setting up Visual NER projects. This feature allows users to see and use the "Submit" button on the labeling page right from the start, enabling them to submit their completions directly without the need to save them first. 
 
-### Bug Fixes
-- **Grid showing the generated synthetic task is not showing the generated result**
-	
-	In the previous version, providing an incorrect secret key to generate synthetic tasks followed by the generation of synthetic tasks using the correct secret key prevented the display of results in the synthetic tasks grid view, even after providing the correct secret key. Version 5.6.0 addresses this issue, ensuring that tasks are consistently generated, and the grid is populated as intended, irrespective of the sequence of secret key inputs. Users will now experience improved reliability and seamless task generation in all scenarios.
+![670image](/assets/images/annotation_lab/6.7.0/20.gif)
 
-- **Publish Model: "Python Code" Field to be prefilled with the correct embeddings as per the License type used** 
-	
-	The submission form for publishing Trained Models featured the Python Code Field which is prepopulated with a sample value code. In NLP Lab 5.6.0, the prefilled sample code now accurately reflects the embedding value, aligned with the appropriate license type for the model being published.
+</div><div class="h3-box" markdown="1">
 
-  ![Publish Model Embeddings](/assets/images/annotation_lab/5.6.0/11.gif)
+### Bug Fixes: 
+- **Unexpected behavior corrected for relations when added in the first line of the tasks**
 
-- **External Classification Prompt added to Project Config, a \<label\> Tag is added which creates issue while saving the project**
-	
-	In the previous version, a label tag was automatically generated and added to the project configuration when a classification prompt was added to the project configuration, requiring users to manually remove the tag. In this release, this issue has been successfully addressed. Users can now enjoy a smoother experience, as no extra tags are added to the project configuration when utilizing classification prompts. This improvement ensures a more streamlined workflow and reduces the need for manual intervention.
+	Users can again see relations for submitted tasks when added in the first line. 
 
-- **External Classification Prompt: "Pre-annotation Failed" Status is frequently shown for no Prediction cases**
-	
-	In the last version, if tasks didn't give results with a certain external prompt, it wrongly showed "pre-annotation failed.” The issue has been resolved now and in this version, the right pre-annotation status when no predictions are made for a task is shown. This improvement makes it clearer and more accurate, helping users to understand task status better.
+- **Vague error messages are now replaced with accurate notifications during task import validation**
 
+	Users now receive meaningful error messages in the dialog when task imports fail due to validation issues. 
 
-- **External Classification Prompt: "Prediction Generated" state shown even when no predictions can be seen**
-	
-	In the previous version, after pre-annotation, tasks were displayed with a green status, indicating that a prediction had been made. However, upon opening the task, no actual predictions were visible, creating confusion. Upon closer inspection, a phantom option, "None of the above," was inaccurately shown as predicted, even though it wasn't part of the original prompt. In this version, we've successfully addressed this issue. Now, there's no ghost option, ensuring that pre-annotation is accurate and reflective of the actual predictions made. This improvement enhances the clarity and reliability of the pre-annotation process.
+- **Unclear error message for importing tasks larger than 200MB addressed**
 
-- **User is not able to tag a task from the labeling page**
-	
-	In the last version, tagging a task from the labeling page led to an error page, preventing successful tagging. This issue has been fixed in the current version, users can now seamlessly tag tasks directly from the labeling page without encountering any errors, enhancing the overall usability of the feature.
+	Users will now see accurate and user-friendly error messages when attempting to import tasks that exceed the 200MB size limit. 
 
-- **Warning is shown if users attempt to add a reviewer when no reviewers have been assigned to the task**
-	
-	In previous versions, when users attempted to add a reviewer to a task, an unnecessary warning pop-up would appear, cautioning about replacing a reviewer even when no reviewers were initially assigned. We're pleased to share that this issue has been resolved in version 5.6.0. Now, the warning pop-up will only appear if the task already has a reviewer assigned, providing users with more accurate and relevant notifications when attempting to assign a different reviewer to the task. This enhancement ensures a smoother user experience and avoids unnecessary alerts in scenarios where they are not applicable.
+- **Filter Exported Annotations by Task is now disabled for de-identification projects**
 
-- **"Delete Duplicate Tasks" feature shows all tasks as duplicates for Visual NER project**
-	
-	In earlier versions, attempting to delete duplicate tasks in a project using the Delete Duplicate buttons incorrectly identified all tasks as duplicates for Visual New or Image Classification projects. We're happy to let users know that this issue has been resolved in the current version. Now, the Delete Duplicate functionality accurately identifies duplicate tasks specifically for document-related projects, ensuring more precise and effective management of duplicate tasks within the project. This fix enhances the reliability of the duplicate task identification process for Visual New or Image Classification projects.
+	Users can no longer pick and choose labels after de-identification, ensuring consistency in exported annotations. 
 
-- **Removing a project that was allowed to use synthetic task provider giving Internal Server Error when  navigating to Integration Page**
-	
-	In previous versions, if a project initially permitted the use of an external service provider from the Integration page, and the project was later deleted from the project page, users encountered an Internal Server Error when attempting to navigate to the Integration page. This error prevented the display of external providers on the Integration page. This issue has been resolved in the latest version. Now, when a project is deleted from the project page, it is automatically removed from the allowed project list on the Integration page. This ensures a smoother experience, preventing errors and accurately reflecting the project status across pages.
+- **Multiple individual files can now be uploaded at once for task import**
 
-- **User is not able to add "External Service Provider"**
-	
-	In earlier versions, deleting projects that were authorized to use an external service provider resulted in users encountering an Internal Server error. To address this issue, users had to manually delete the project IDs of the deleted projects from the backend. This bug has been resolved in the latest version, now users will no longer encounter an Internal Server error. This improvement streamlines the user experience by eliminating unnecessary errors and manual interventions
+	Users can efficiently upload multiple files simultaneously within a project. 
 
-- **Unable to enable any of the settings for Annotation Experience in Config**
-	
-	In this version due to UI updates, initially, users experienced difficulties in enabling or disabling settings within "Configure Annotation Experience" on the "Customize Labels" page during project configurations, resulting in glitches. This issue has been successfully resolved , users can now enable or disable settings without encountering errors, and the functionality is working as expected. This fix ensures a smoother and more reliable customization experience for project configurations.
+- **Synthetic task list now refreshes automatically during CRUD operations**
 
+	The synthetic task list updates in real-time during task creation, update, and deletion. 
+
+- **"Failed to Load PDF File" error resolved for RatePDF projects with hidecontextmenu enabled**
+
+	Users can now view tasks normally even when the hidecontextmenu property is used in RatePDF projects. 
+
+- **Internal server error when creating RatePDF project types has been fixed**
+
+	Users can now create RatePDF projects without encountering internal server errors. 
+
+- **Text enclosed with <> is now visible on the labeling page**
+
+	Users can see text within angle brackets on the labeling page, addressing the previous visibility issue. 
+
+- **Confirmation dialog box no longer overlaps with the Labels section**
+
+	The confirmation dialog box now displays correctly without being obscured when submitting completions from the Comparison and De-identification views. 
+
+- **Special characters are now correctly handled when importing files from Azure SAS URL**
+
+	Tasks can be imported from Azure SAS URLs without issues related to special character permissions. 
+
+- **Internal server error when adding 'Test' or 'Train' tags has been resolved**
+
+	Users can now add 'Test' or 'Train' tags to tasks from the labeling page without encountering errors. 
+ 
+- **Classification models are now visible in the Select Classifier dropdown**
+
+	Classification models are correctly listed for selection in the dropdown menu. 
 
 </div><div class="prev_ver h3-box" markdown="1">
 
@@ -155,9 +225,33 @@ Another enhancement is the introduction of **sticky buttons** at the bottom of t
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li> 
+    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_7_0">5.7.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_6_1">5.6.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_5_1">5.5.1</a></li>
@@ -168,44 +262,4 @@ Another enhancement is the introduction of **sticky buttons** at the bottom of t
     <li><a href="annotation_labs_releases/release_notes_5_2_2">5.2.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
     <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_1">4.10.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_2">4.8.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_1">4.8.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_7_4">4.7.4</a></li>   
-    <li><a href="annotation_labs_releases/release_notes_4_7_1">4.7.1</a></li>        
-    <li><a href="annotation_labs_releases/release_notes_4_6_5">4.6.5</a></li>    
-    <li><a href="annotation_labs_releases/release_notes_4_6_3">4.6.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_6_2">4.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_1">4.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_0">4.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_1">4.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_0">4.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_5_0">3.5.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_4_0">3.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_1">3.3.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_0">3.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_2_0">3.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_1">3.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_0">3.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_1">3.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_0">3.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_8_0">2.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_2">2.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_1">2.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_0">2.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_6_0">2.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_5_0">2.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_4_0">2.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_3_0">2.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_2_2">2.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_1_0">2.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_0_1">2.0.1</a></li>
 </ul>

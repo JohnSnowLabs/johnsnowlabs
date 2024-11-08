@@ -141,17 +141,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb      
-        - title: Deidentify free text documents
-          id: deidentify_free_text_documents
-          hide: yes
+        - title: Detect PHI for Generic Deidentification (multilingual)
+          id: detect_phi_generic_deidentification_multilingual
           image: 
               src: /assets/images/Deidentify_free_text_documents.svg
-          excerpt: Deidentify free text documents by either masking or obfuscating PHI information using out of the box Spark NLP models that enforce GDPR and HIPPA compliance.
+          excerpt: Deidentification NER is a Named Entity Recognition model that annotates English, German, French, Italian, Spanish, Portuguese, and Romanian text to find protected health information (PHI) that may need to be de-identified. It has been trained with in-house annotated datasets using xlm-roberta-base multilingual embeddings.
           actions:
           - text: Live Demo
             type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT/
+            url: https://demo.johnsnowlabs.com/healthcare/NER_DEID_MULTI/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEID_MULTI.ipynb
 ---

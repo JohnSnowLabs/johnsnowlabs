@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.2.3
+title: Healthcare NLP v4.2.3 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_2_3
 key: docs-licensed-release-notes
 modify_date: 2022-12-02
@@ -27,7 +27,7 @@ sidebar:
 + 3 new clinical models and pipelines added & updated in total
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### 3 New Hhunk Mapper Models to Mapping Drugs and Diseases from the KEGG Database as well as Mapping Abbreviations to Their Categories
@@ -114,7 +114,7 @@ text = ["""Gravid with estimated fetal weight of 6-6/12 pounds.
 | HIV     | medical_condition | Human immunodeficiency virus           |
 ```
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ####  New Utility & Helper Relation Extraction Modules to Handle Preprocess
 
@@ -145,7 +145,7 @@ data = REDatasetHelper(data).create_annotation_column(
 ```
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ####  New Utility & Helper OCR Modules to Handle Annotations
 
@@ -180,22 +180,19 @@ ocr_entity_processor(spark=spark,file_path=path, ner_pipeline = nlp_modelchunk_c
 
 - **Bounding box with labels and black list**
 
-![image](https://user-images.githubusercontent.com/64752006/205349180-8222ec38-8b43-44a2-abf2-def72fd82d68.png)
+![New Utility & Helper OCR Modules to Handle Annotations](https://user-images.githubusercontent.com/64752006/205349180-8222ec38-8b43-44a2-abf2-def72fd82d68.png)
 
 
 - **Highlight with labels and black_list**
 
-![image](https://user-images.githubusercontent.com/64752006/205343977-7f54eb4e-4a3c-4be2-8acf-2f0f3b7dd0f5.png)
+![New Utility & Helper OCR Modules to Handle Annotations](https://user-images.githubusercontent.com/64752006/205343977-7f54eb4e-4a3c-4be2-8acf-2f0f3b7dd0f5.png)
 
 - **black_band with labels**
 
-![image](https://user-images.githubusercontent.com/64752006/205343389-9563a9ce-f971-4865-b94f-4b0cc92e2bcc.png)
+![New Utility & Helper OCR Modules to Handle Annotations](https://user-images.githubusercontent.com/64752006/205343389-9563a9ce-f971-4865-b94f-4b0cc92e2bcc.png)
 
 
-
-
-
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New Utility & Helper NER Log Parser
@@ -255,7 +252,7 @@ loss_plot('./ner_logs/'+log_files[0])
 
 *Results*:
 
-![image](https://user-images.githubusercontent.com/64752006/205368367-f70bb792-b1ff-41cd-8ed5-8dee94f10aa8.png)
+![New Utility & Helper NER Log Parser](https://user-images.githubusercontent.com/64752006/205368367-f70bb792-b1ff-41cd-8ed5-8dee94f10aa8.png)
 
 
 - `get_charts` : Plots the figures of metrics ( precision, recall, f1) vs epochs
@@ -270,13 +267,11 @@ get_charts('./ner_logs/'+log_files[0])
 
 *Results*:
 
-![image](https://user-images.githubusercontent.com/64752006/205368210-f5ffb64c-8a22-4758-8423-ade6ac3ee8cd.png)
+![New Utility & Helper NER Log Parser](https://user-images.githubusercontent.com/64752006/205368210-f5ffb64c-8a22-4758-8423-ade6ac3ee8cd.png)
 
-![image](https://user-images.githubusercontent.com/64752006/205368132-c86e7c2b-555e-4653-a799-c55cc5e9e9a0.png)
+![New Utility & Helper NER Log Parser](https://user-images.githubusercontent.com/64752006/205368132-c86e7c2b-555e-4653-a799-c55cc5e9e9a0.png)
 
-
-
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Adding Flexibility Chunk Merger Prioritization
 
@@ -362,10 +357,7 @@ chunk_merger = ChunkMergeApproach()\
 
 You can check [NER Chunk Merger](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/7.Clinical_NER_Chunk_Merger.ipynb) notebook for more examples.
 
-
-
-
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Core improvements and bug fixes
 
@@ -376,7 +368,7 @@ You can check [NER Chunk Merger](https://github.com/JohnSnowLabs/spark-nlp-works
 - Added overall confidence score to MedicalNerModel when setIncludeAllConfidenceScore is True
 - Fixed in InternalResourceDownloader showAvailableAnnotators
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 #### New and Updated Notebooks
@@ -392,7 +384,7 @@ You can check [NER Chunk Merger](https://github.com/JohnSnowLabs/spark-nlp-works
 + Updated [ALab Module SparkNLP JSL](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb) notebook with new updates.
 
 
-</div><div class="prev_ver h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 3 New Clinical Models and Pipelines Added & Updated in Total
 

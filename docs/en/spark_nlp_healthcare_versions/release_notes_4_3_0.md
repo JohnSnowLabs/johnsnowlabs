@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.3.0
+title: Healthcare NLP v4.3.0 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_3_0
 key: docs-licensed-release-notes
 modify_date: 2023-02-13
@@ -39,13 +39,14 @@ sidebar:
     - [SOCIAL DETERMINANT GENERIC CLASSIFICATION](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_GENERIC_CLASSIFICATION/) demo
 + 13 new clinical models and pipelines added & updated in total
 
+</div><div class="h3-box" markdown="1">
 
 #### 12 New Clinical Models And Pipelines Added & Updated (8 New Clinical Named Entity Recognition Models Including 4 Social Determinants of Health Models)
 
 
 + We are releasing 4 new SDOH NER models that were trained by using `embeddings_clinical` embeddings model.
 
-
+{:.table-model-big.db}
 | model name                                     | description                                                                                         | predicted entities                     |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------|
 | [ner_sdoh_wip](https://nlp.johnsnowlabs.com/2023/02/11/ner_sdoh_wip_en.html) | Extracts terminology related to Social Determinants of Health from various kinds of biomedical documents. | `Other_SDoH_Keywords` `Education` `Population_Group` `Quality_Of_Life` `Housing` `Substance_Frequency` `Smoking` `Eating_Disorder` `Obesity` `Healthcare_Institution` `Financial_Status` `Age` `Chidhood_Event` `Exercise` `Communicable_Disease` `Hypertension` `Other_Disease` `Violence_Or_Abuse` `Spiritual_Beliefs` `Employment` `Social_Exclusion` `Access_To_Care` `Marital_Status` `Diet` `Social_Support` `Disability` `Mental_Health` `Alcohol` `Insurance_Status` `Substance_Quantity` `Hyperlipidemia` `Family_Member` `Legal_Issues` `Race_Ethnicity` `Gender` `Geographic_Entity` `Sexual_Orientation` `Transportation` `Sexual_Activity` `Language` `Substance_Use`|
@@ -111,6 +112,7 @@ sample_texts ="Smith is a 55 years old, divorced Mexcian American woman with fin
 
     - ner_eu_clinical_condition: This model extracts one entity – clinical / medical conditions.
 
+{:.table-model-big}
 | model name                    | lang | predicted entities    |
 |------------------------------ |------|-----------------------|
 | [ner_eu_clinical_case](https://nlp.johnsnowlabs.com/2023/02/01/ner_eu_clinical_case_es.html)      | es   | `clinical_condition` `clinical_event` `bodypart` `units_measurements` `patient` `date_time` |
@@ -168,7 +170,7 @@ sample_text = """Paciente de 59 años que refiere dificultad para caminar desde 
 
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Chunk Mapper Model for Mapping RxNorm Codes to Drug Brand Names
 
@@ -201,7 +203,7 @@ sample_text= ['metformin', 'advil']
 +--------------+-------------+--------------------------------------------------+--------------------------+
  ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Text Classification Annotators (Architectures) For Training Text Classification Models Using SVM and Logistic Regression With Sentence Embeddings
 
@@ -240,6 +242,7 @@ log_reg_approach = sparknlp_jsl.annotators.GenericLogRegClassifierApproach()\
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### One-Liner Clinical Deidentification Module
 
@@ -397,17 +400,20 @@ shift_days=5)
 +----------+------------+--------------------+---+----------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Different Validation Split Per Epoch In `MedicalNerApproach`
 
 The validation splits in `MedicalNerApproach` used to be static and same for every epoch. Now we can control with behaviour with a new parameter called `setRandomValidationSplitPerEpoch(bool)` and allow users  to set random validation splits per epoch.
+
+</div><div class="h3-box" markdown="1">
 
 #### Certification_Training Notebooks (Written In Johnsnowlabs Library) Moved to Parent Workshop Folder
 
 - re-organize and re-locate [open-source-nlp](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/open-source-nlp) folder
 - re-organize and re-locate [healthcare-nlp](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/healthcare-nlp) folder
 
-
-
+</div><div class="h3-box" markdown="1">
 
 #### Core Improvements and Bug Fixes
 
@@ -417,6 +423,7 @@ The validation splits in `MedicalNerApproach` used to be static and same for eve
 - Fixed `RelationExtractionModel` running in LightPipeline
 - Fixed `get_conll_data` method issue
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
 
@@ -424,6 +431,7 @@ The validation splits in `MedicalNerApproach` used to be static and same for eve
 - Updated [Clinical_Named_Entity_Recognition_Model](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb) with `Conll.readDataset` examples.
 - Updated [Clinical Text Classification with Spark NLP](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.Clinical_Text_Classification_with_Spark_NLP.ipynb) with new `GenericLogRegClassifierApproach` and `GenericSVMClassifierApproach` examples.
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Demos
 
@@ -431,6 +439,7 @@ The validation splits in `MedicalNerApproach` used to be static and same for eve
 + [SOCIAL DETERMINANT CLASSIFICATION](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION/) demo
 + [SOCIAL DETERMINANT GENERIC CLASSIFICATION](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_GENERIC_CLASSIFICATION/) demo
 
+</div><div class="h3-box" markdown="1">
 
 #### 12 New Clinical Models and Pipelines Added & Updated in Total
 
@@ -448,11 +457,7 @@ The validation splits in `MedicalNerApproach` used to be static and same for eve
 + `ner_sdoh_wip`
 + `rxnorm_drug_brandname_mapper`
 
-
-
-
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

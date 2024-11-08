@@ -8,7 +8,7 @@ key: docs-ocr-release-notes
 modify_date: "2023-05-30"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -18,6 +18,8 @@ sidebar:
 Release date: 33-06-2023
 
 We are glad to announce that Visual NLP 😎 4.4.3 has been released. 
+
+</div><div class="h3-box" markdown="1">
 
 #### Highlights
 

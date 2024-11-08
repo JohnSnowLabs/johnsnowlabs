@@ -30,6 +30,7 @@ Outputs of running `nlp.start()` tell you which jars are loaded and versions of 
 Most of the authorization Flows and Parameters of `nlp.install()` are supported.                 
 Review detailed [docs here](https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview)  
 
+{:.table-model-big.db}
 | Parameter               | Description                                                                                                                                                                                                          | Example                                          | Default |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|---------|
 | `None`                  | Load license automatically via one of the **Auto-Detection Mechanisms**                                                                                                                                              | `nlp.start()`                                    | `False` |
@@ -45,6 +46,7 @@ Review detailed [docs here](https://nlp.johnsnowlabs.com/docs/en/jsl/install#aut
 ### Manually specify License Parameters 
 These can be omitted according to the [License Variable Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables)
 
+{:.table-model-big}
 | Parameter               | Description                            |
 |-------------------------|----------------------------------------|
 | `aws_access_key`        | Corresponds to `AWS_ACCESS_KEY_ID`     |
@@ -62,6 +64,7 @@ These can be omitted according to the [License Variable Overview](https://nlp.jo
 These parameters configure how your spark Session is started up.        
 See [Spark Configuration](https://spark.apache.org/docs/latest/configuration.html) for a comprehensive overview of all spark settings 
 
+{:.table-model-big.db}
 | Parameter            | Default    | Description                                                                                                                                                        | Example                                                                     |
 |----------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | `spark_conf`         | `None`     | Dictionary Key/Value pairs of [Spark Configurations](https://spark.apache.org/docs/latest/configuration.html) for the Spark Session                                | `nlp.start(spark_conf={'spark.executor.memory':'6g'})`                      |

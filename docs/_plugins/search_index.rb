@@ -319,7 +319,8 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     download_link: extractor.download_link,
     predicted_entities: extractor.predicted_entities || [],
     type: doc_type,
-    annotator: post.data['annotator'] || ""
+    annotator: post.data['annotator'] || "",
+    deprecated: !!post.data['deprecated']
   }
 
   benchmarking_info = extractor.benchmarking_results(post.url)
@@ -375,6 +376,13 @@ Jekyll::Hooks.register :posts, :post_render do |post|
     uniq_key: key,
     origin: post.data["origin"],
   }
+  unless post.data["deploy"].nil?
+    model[:marketplace] = {
+      databricks: post.data["deploy"]["databricks_link"],
+      sagemaker: post.data["deploy"]["sagemaker_link"],
+      snowflake: post.data["deploy"]["snowflake_link"]
+    }
+  end
 
   uniq = "#{post.data['name']}_#{post.data['language']}"
   uniq_to_models_mapping[uniq] = [] unless uniq_to_models_mapping.has_key? uniq
@@ -510,6 +518,13 @@ unless ENV['ELASTICSEARCH_URL'].to_s.empty?
             },
             "origin": {
               "type": "keyword"
+            },
+            "marketplace": {
+              "properties": {
+                "databricks": {"type": "keyword"},
+                "snowflake": {"type": "keyword"},
+                "sagemaker": {"type": "keyword" }
+              }
             }
         }
       }

@@ -14,13 +14,21 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-otbdi7i5fwrsa
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ5R/john-snow-labs-clinical-de-identification-for-spanish
+  databricks_link: https://marketplace.databricks.com/details/bb9e02a3-3926-4125-bfdf-49cdef5d1ca7/John-Snow-Labs_Clinical-Deidentification-for-Spanish
+
 ---
 
 ## Description
 
-This pipeline is trained with sciwiki_300d embeddings and can be used to deidentify PHI information from medical texts in Spanish. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `AGE`, `DATE`, `PROFESSION`, `E-MAIL`, `USERNAME`, `LOCATION`, `DOCTOR`, `HOSPITAL`, `PATIENT`, `URL`, `IP`, `MEDICALRECORD`, `IDNUM`, `ORGANIZATION`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `PLATE`, `SEX` and `IPADDR`
+This pipeline is trained with sciwiki_300d embeddings and can be used to deidentify PHI information from medical texts in Spanish. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `DOCTOR`, `PROFESSION`, `USERNAME`, `DATE`, `ZIP`, `PATIENT`, `PHONE`, `HOSPITAL`, `E-MAIL`, `AGE`, `SSN`, `SEX`
 
 ## Predicted Entities
+
+`LOCATION`, `MEDICALRECORD`, `ORGANIZATION`, `DOCTOR`, `PROFESSION`, `USERNAME`, `DATE`, `ZIP`, `PATIENT`, `PHONE`, `HOSPITAL`, `E-MAIL`, `AGE`, `SSN`, `SEX`
 
 
 
@@ -29,6 +37,13 @@ This pipeline is trained with sciwiki_300d embeddings and can be used to deident
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_es_4.4.4_3.0_1686979448782.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_es_4.4.4_3.0_1686979448782.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

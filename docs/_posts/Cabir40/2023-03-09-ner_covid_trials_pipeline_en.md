@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_covid_trials](https://nlp.johnsnowlabs.com/2022/10/19/ner_covid_trials_en.html) model.
 
+
+## Predicted Entities
+`Physiological_reaction`, `N_Patients`, `Treatment`, `Biological_molecules`, `Death_Entity`, `Route`, `Admission_Discharge`, `Drug_Ingredient`, `Statistical_Indicator`, `Cellular_component`, `Date`, `Heart_Disease`, `Viral_components`, `Virus`, `Respiration`, `VS_Finding`, `Age`, `Vaccine_Name`, `BMI`, `Trial_Design`, `Institution`, `Section_Header`, `Vaccine`, `Disease_Syndrome_Disorder`, `Gender`, `Pulse`, `Total_Cholesterol`, `Cerebrovascular_Disease`, `Diabetes`, `Stage`, `Employment`, `Cell_Type`, `Frequency`, `Time`, `Obesity`, `Dosage`, `Trial_Phase`, `Severity`, `Race_Ethnicity`, `Hypertension`, `Smoking`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

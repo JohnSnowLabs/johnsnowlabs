@@ -16,6 +16,8 @@ sidebar:
 
 Risk Adjustment Score (RAF) implementation uses the Hierarchical Condition Category (HCC) and Prescription Hierarchical Condition Category (RxHCC) Risk Adjustment models from the Centers for Medicare & Medicaid Service (CMS). HCC groups similar conditions in terms of healthcare costs and similarities in the diagnosis, and the model uses any ICD code that has a corresponging HCC and RxHCC category in the computation, discarding other ICD codes.
 
+</div><div class="h3-box" markdown="1">
+
 ## CMS-HCC Risk Score Calculation
 
 This module supports **versions 22, 23, 24, 28 and ESRDV21 of the CMS-HCC** risk adjustment model and needs the following parameters in order to calculate the risk score:
@@ -27,10 +29,13 @@ This module supports **versions 22, 23, 24, 28 and ESRDV21 of the CMS-HCC** risk
 - The original reason for entitlement (information from the health plan provider)
 - If the patient is in Medicaid or not (information from the health plan provider)
 
+</div><div class="h3-box" markdown="1">
+
 ### Available Softwares and Profiles
 
 **CMS-HCC** module supports the following versions and years:
 
+{:.table-model-big}
 | Version 22| Version 23| Version 24| Version 28| ESRD V21|
 |-|-|-|-|-|
 |Year 2017|Year 2018|Year 2019| Year 24| Year 19|
@@ -39,6 +44,8 @@ This module supports **versions 22, 23, 24, 28 and ESRDV21 of the CMS-HCC** risk
 |Year 2020| |Year 2022| | |
 |Year 2021| | | | |
 |Year 2022| | | | |
+
+</div><div class="h3-box" markdown="1">
 
 ### Usage
 
@@ -108,7 +115,9 @@ df.select(
 +--------------+----------+---------------------------------------------+---+------+-----------+----+--------+
 ```
 
-For more details and usage examples, check the [Medicare Risk Adjustment](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) notebook from our Spark NLP Workshop repository.
+For more details and usage examples, check the [Medicare Risk Adjustment](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/05.3.Calculate_Medicare_Risk_Adjustment_Score.ipynb) notebook from our Spark NLP Workshop repository.
+
+</div><div class="h3-box" markdown="1">
 
 ## CMS-RxHCC Risk Score Calculation
 
@@ -121,16 +130,21 @@ This module supports **versions 05 and 08 of CMS-RxHCC** risk adjustment model a
 - The original reason for entitlement (information from the health plan provider)
 - End-stage renal disease indicator (ESRD) of the patient (information from the health plan provider)
 
+</div><div class="h3-box" markdown="1">
+
 ### Available Softwares and Profiles
 
 **CMS-RxHCC** module supports the following versions and years:
 
+{:.table-model-big}
 | Version 05| Version 08|
 |-|-|
 |Year 20|Year 22|
 |Year 21|Year 23|
 |Year 22| |
 |Year 23| |
+
+</div><div class="h3-box" markdown="1">
 
 ### Usage
 

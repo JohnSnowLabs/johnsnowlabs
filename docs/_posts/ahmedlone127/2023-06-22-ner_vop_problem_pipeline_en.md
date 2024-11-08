@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This pipeline extracts mentions of clinical problems from health-related text in colloquial language.
 
 ## Predicted Entities
+`Disease`, `HealthStatus`, `Symptom`, `PsychologicalCondition`, `InjuryOrPoisoning`, `Modifier`
 
 
 

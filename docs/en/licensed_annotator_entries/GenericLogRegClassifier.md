@@ -43,7 +43,7 @@ CATEGORY
 
 {%- capture approach_python_medical -%}
 
-from johnsnowlabs import nlp,  medical
+from johnsnowlabs import nlp, medical
 
 features_asm = medical.FeaturesAssembler()\
     .setInputCols(["sentence_embeddings"])\
@@ -80,7 +80,6 @@ clf_Pipeline = nlp.Pipeline(stages=[
 
 
 {%- capture approach_scala_medical -%}
-
 import spark.implicits._
   
 val features_asm = new FeaturesAssembler()
@@ -119,7 +118,7 @@ val clf_Pipeline = new Pipeline().setStages(Array(features_asm, gc_logreg_graph_
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[GenericLogRegClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericLogRegClassifierModel.ipynb)
+[GenericLogRegClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericLogRegClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

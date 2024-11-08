@@ -1178,9 +1178,6 @@ asr_df
 
 </div><div class="h3-box" markdown="1">
 
-
-
-
 ## Table Question Answering (TAPAS)
 [TAPS Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
 
@@ -1224,6 +1221,7 @@ answers = nlu.load('en.answer_question.tapas.wtq.large_finetuned').predict(tapas
 answers
 ```
 
+{:.table-model-big.db}
 | sentence                         | tapas_qa_UNIQUE_aggregation   | tapas_qa_UNIQUE_answer   | tapas_qa_UNIQUE_cell_positions   |   tapas_qa_UNIQUE_cell_scores | tapas_qa_UNIQUE_origin_question   |
 |:---------------------------------|:------------------------------|:-------------------------|:---------------------------------|------------------------------:|:----------------------------------|
 | Who earns less than 200,000,000? | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns less than 200,000,000?  |
@@ -1254,6 +1252,7 @@ nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 ![vit](/assets/images/nlu/visual/vit_example.png)
 
 ## Image Classification (ConvNext)
+
 [Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/convnext_image_classification_overview.ipynb)        
 Image Classifier Based on [ConvNext](https://arxiv.org/abs/2201.03545)
 Lets download a folder of images and predict on it
@@ -1273,6 +1272,7 @@ nlu.load('en.classify_image.convnext.tiny').predict('/content/images/images')
 ![convnext](/assets/images/nlu/visual/convnext_example.png)
 
 ## Image Classification (SWIN)
+
 [Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)        
 Image Classifier Based on [SWIN](https://arxiv.org/abs/2103.14030)
 Lets download a folder of images and predict on it
@@ -1292,8 +1292,11 @@ nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
 ![swin](/assets/images/nlu/visual/swin_example.png)
 
 ## T5
+
 [Example of every T5 task](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
+
 ### Overview of every task available with T5
+
 [The T5 model](https://arxiv.org/pdf/1910.10683.pdf) is trained on various datasets for 17 different tasks which fall into 8 categories.
 
 1. Text summarization
@@ -1308,7 +1311,6 @@ nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
 </div><div class="h3-box" markdown="1">
 
 ### Every T5 Task with explanation:
-
 
 {:.table-model-big.mb0}
 |Task Name | Explanation |
@@ -1359,7 +1361,6 @@ The belgian duo took to the dance floor on monday night with some friends . manc
 pipe.predict(data)
 ```
 
-
 {:.table-model-big.mb0}
 | Predicted summary| Text |
 |------------------|-------|
@@ -1393,7 +1394,6 @@ sentence2: 	I like to play football.
 t5.predict(data)
 ```
 
-
 {:.table-model-big.mb0}
 | Sentence1 | Sentence2 | prediction|
 |------------|------------|----------|
@@ -1403,6 +1403,7 @@ t5.predict(data)
 </div><div class="h3-box" markdown="1">
 
 ### How to configure T5 task for MRPC and pre-process text
+
 `.setTask('mrpc sentence1:)` and prefix second sentence with `sentence2:`
 
 ### Example pre-processed input for T5 MRPC - Binary Paraphrasing/ sentence similarity
@@ -1418,7 +1419,7 @@ sentence2: Rather , the US acted because the administration saw " existing evide
 ## Regressive Sentence similarity/ Paraphrasing
 
 Measures how similar two sentences are on a scale from 0 to 5 with 21 classes representing a regressive label.     
-This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on[STSB - Regressive semantic sentence similarity](https://www.aclweb.org/anthology/S17-2001/) .
+This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on [STSB - Regressive semantic sentence similarity](https://www.aclweb.org/anthology/S17-2001/).
 
 ```python
 t5 = nlp.load('en.t5.base')

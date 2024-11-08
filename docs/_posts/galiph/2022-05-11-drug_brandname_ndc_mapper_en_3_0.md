@@ -23,12 +23,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps drug brand names to corresponding National Drug Codes (NDC). Product NDCs for each strength are returned in result and metadata.
 
-
 ## Predicted Entities
-
-
-
-
 
 
 {:.btn-box}

@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.3.2
+title: Healthcare NLP v4.3.2 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_3_2
 key: docs-licensed-release-notes
 modify_date: 2023-03-18
@@ -46,8 +46,6 @@ sidebar:
 
 We ported `BioGPT` (`BioGPT-QA-PubMedQA-BioGPT`) into Spark NLP for Healthcare with better inference speed and memory optimization.
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### New `MedicalQuestionAnswering` Annotator Based On BioGPT To Answer Questions From PubMed Abstracts
@@ -89,16 +87,11 @@ Answer ["no"]
 
 You can check the [Medical Question Answering Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/31.Medical_Question_Answering.ipynb) for more examples and see the [Medical Question Answering](https://demo.johnsnowlabs.com/healthcare/BIOGPT_MEDICAL_QUESTION_ANSWERING/) demo.
 
-
-
 </div><div class="h3-box" markdown="1">
 
 #### Crossing 1000+ Healthcare Specific Pretrained Models & Pipelines In Models Hub
 
 We just crossed **1000+ healthcare specific pretrained models & pipelines** in the [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)!
-
-
-
 
 </div><div class="h3-box" markdown="1">
 

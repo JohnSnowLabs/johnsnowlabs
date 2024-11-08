@@ -22,7 +22,7 @@ This pipeline extracts mentions of clinical problems from health-related text in
 
 ## Predicted Entities
 
-
+`HealthStatus`, `Problem`, `Modifier`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}

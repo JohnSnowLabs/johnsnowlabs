@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 2.7.1
+title: Healthcare NLP v2.7.1 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_2_7_1
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -18,6 +18,8 @@ sidebar:
 We are glad to announce that Spark NLP for Healthcare 2.7.1 has been released !
 
 In this release, we introduce the following features:
+
+</div><div class="h3-box" markdown="1">
 
 #### 1. Sentence BioBert and Bluebert Transformers that are fine tuned on [MedNLI](https://physionet.org/content/mednli/) dataset.
 
@@ -36,6 +38,8 @@ sbluebert_embeddins = BertSentenceEmbeddings\
      .setInputCols(["ner_chunk_doc"])\
      .setOutputCol("sbert_embeddings")
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### 2. SentenceEntityResolvers powered by s-Bert embeddings.
 
@@ -73,13 +77,17 @@ snomed_ct_resolver = SentenceEntityResolverModel
 
 Output:
 
+{:.table-model-big}
 |    | chunks                      |   begin |   end |      code | resolutions
+|----|-----------------------------|---------|-------|-----------|------------|
 |  2 | COPD  				 |     113 |   116 |  13645005 | copd - chronic obstructive pulmonary disease
 |  8 | PTCA                        |     324 |   327 | 373108000 | post percutaneous transluminal coronary angioplasty (finding)
 | 16 | close monitoring            |     519 |   534 | 417014005 | on examination - vigilance
 
 
 See the [notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb#scrollTo=VtDWAlnDList) for details.
+
+</div><div class="h3-box" markdown="1">
 
 #### 3. We are releasing the following pretrained clinical NER models:
 

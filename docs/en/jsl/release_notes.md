@@ -13,12 +13,9 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
-
 ## NLU Version 4.2.2
 
-
 - support for Medical Summarizers
-
 
 New Medical Summarizers:
 - 'en.summarize.clinical_jsl'
@@ -81,11 +78,10 @@ asr_df = nlu.load('en.speech2text.wav2vec2.v2_base_960h').predict('ngm_12484_010
 asr_df
 ```
 
-| text                                          |
+{:.table-model-big}
+| text                                         |
 |:---------------------------------------------|
 | PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES |
-
-
 
 To test out **HuBERT** you just need to update the parameter for `load()`
 ```python
@@ -107,7 +103,6 @@ You can check [Scale Vision Transformers (ViT) Beyond Hugging Face](https://hac
 This is Powerd by Spark-NLP's [VitForImageClassification Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#vitforimageclassification)
 
 ![VIT](https://camo.githubusercontent.com/b27f01b616e81636a6135573bbf37a006619ab0853f7dd55ea4fb0e9e89dd33d/68747470733a2f2f692e696d6775722e636f6d2f676e31736369742e706e67)
-
 
 Swin is a hierarchical Transformer whose representation is computed with Shifted windows.
 The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
@@ -139,9 +134,7 @@ and NLU will return a pandas DF with one row per image detected
 nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 ```
 
-
-![image_classification 1.png](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png)
-
+![NLU](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png)
 
 To use **SWIN** we just update the parameter to `load()`
 ```python
@@ -158,6 +151,7 @@ TapasForQuestionAnswering can load TAPAS Models with a cell selection head and o
 [Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
 
 Powered by [TAPAS: Weakly Supervised Table Parsing via Pre-training](https://aclanthology.org/2020.acl-main.398.pdf)
+
 ![TAPAS](https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png)
 
 **Usage:**
@@ -199,6 +193,7 @@ answers = nlu.load('en.answer_question.tapas.wtq.large_finetuned').predict(tapas
 answers
 ```
 
+{:.table-model-big.db}
 | sentence                         | tapas_qa_UNIQUE_aggregation   | tapas_qa_UNIQUE_answer   | tapas_qa_UNIQUE_cell_positions   |   tapas_qa_UNIQUE_cell_scores | tapas_qa_UNIQUE_origin_question   |
 |:---------------------------------|:------------------------------|:-------------------------|:---------------------------------|------------------------------:|:----------------------------------|
 | Who earns less than 200,000,000? | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns less than 200,000,000?  |
@@ -275,6 +270,7 @@ df = enterprise_zero_shot_ner.predict(
 df
 ```
 
+{:.table-model-big.db}
 | document                                                                                                              | entities_zero_shot                               | entities_zero_shot_class   |   entities_zero_shot_confidence |   entities_zero_shot_origin_chunk |   entities_zero_shot_origin_sentence |
 |:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------|:---------------------------|--------------------------------:|----------------------------------:|-------------------------------------:|
 | The doctor pescribed Majezik for my severe headache.                                                                  | Majezik                                          | DRUG                       |                        0.646716 |                                 0 |                                    0 |
@@ -305,7 +301,7 @@ Supported Languages are:
 
 ## Automatic Speech Recognition Models Overview
 
-
+{:.table-model-big.db}
 | Language | NLU Reference                                                                                                                                                           | Spark NLP  Reference                                                                                                                                                     | Annotator Class |
 |:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
 | ab       | [ab.speech2text.wav2vec_xlsr.gpu.by_hf_test](https://sparknlp.org/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html)                                          | [asr_xls_r_ab_test_by_hf_test_gpu](https://sparknlp.org/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html)                                                     | Wav2Vec2ForCTC  |
@@ -317,12 +313,11 @@ Supported Languages are:
 | da       | [da.speech2text.wav2vec2.v2_base](https://sparknlp.org/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html)                                                    | [asr_alvenir_wav2vec2_base_nst_cv9](https://sparknlp.org/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html)                                                   | Wav2Vec2ForCTC  |
 | de       | [de.speech2text.wav2vec_xlsr.v3_large.by_marcel](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html)                                   | [asr_wav2vec2_large_xlsr_german_demo](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html)                                               | Wav2Vec2ForCTC  |
 | el       | [el.speech2text.wav2vec_xlsr.v3_large_gpu.by_skylord](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html)                              | [asr_wav2vec2_large_xlsr_greek_2_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html)                                               | Wav2Vec2ForCTC  |
-| en       | [en.speech2text.wav2vec_xlsr.v2gpu.by_bakhtullah123](https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html)                                             | [asr_xlsr_training_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html)                                                                           | Wav2Vec2ForCTC  |
-| fa       | [fa.speech2text.wav2vec2.v2_gpu_s117_exp](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                           | [asr_exp_w2v2t_pretraining_s117_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                                 | Wav2Vec2ForCTC  |
+| en       | [en.speech2text.wav2vec_xlsr.v2gpu.by_bakhtullah123](https://sparknlp.org/2022/09/25/asr_xlsr_training_gpu_en.html)                                             | [asr_xlsr_training_gpu](https://sparknlp.org/2022/09/25/asr_xlsr_training_gpu_en.html)                                                                           | Wav2Vec2ForCTC  |
+| fa       | [fa.speech2text.wav2vec2.v2_gpu_s117_exp](https://sparknlp.org/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                           | [asr_exp_w2v2t_pretraining_s117_gpu](https://sparknlp.org/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                                 | Wav2Vec2ForCTC  |
 | fa       | [fa.speech2text.wav2vec_xlsr.v2_s44_exp](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html)                                                       | [asr_exp_w2v2t_xls_r_s44](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html)                                                                       | Wav2Vec2ForCTC  |
 | fi       | [fi.speech2text.wav2vec2.voxpopuli.v2_base](https://sparknlp.org/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html)                                            | [asr_wav2vec2_base_10k_voxpopuli](https://sparknlp.org/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html)                                                       | Wav2Vec2ForCTC  |
 | fi       | [fi.speech2text.wav2vec_xlsrby_aapot](https://sparknlp.org/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html)                                         | [asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot](https://sparknlp.org/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html)                                     | Wav2Vec2ForCTC  |
-| fon      | [fon.speech2text.wav2vec_xlsr](https://sparknlp.org/2022/09/24/asrfonxlsr_fon.html)                                                                            | [asr_fonxlsr](https://sparknlp.org/2022/09/24/asrfonxlsr_fon.html)                                                                                              | Wav2Vec2ForCTC  |
 | fr       | [fr.speech2text.wav2vec_xlsr.v2_s800_exp](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html)                                                   | [asr_exp_w2v2t_xlsr_53_s800](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html)                                                                 | Wav2Vec2ForCTC  |
 | gu       | [gu.speech2text.wav2vec_xlsr.v2_large_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html)                                                 | [asr_wav2vec2_large_xlsr_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html)                                                               | Wav2Vec2ForCTC  |
 | hi       | [hi.speech2text.wav2vec2.by_harveenchadha](https://sparknlp.org/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html)                                            | [asr_hindi_model_with_lm_vakyansh](https://sparknlp.org/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html)                                                     | Wav2Vec2ForCTC  |
@@ -330,24 +325,24 @@ Supported Languages are:
 | hu       | [hu.speech2text.wav2vec2.voxpopuli.v2_base_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html)                                    | [asr_wav2vec2_base_10k_voxpopuli_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html)                                               | Wav2Vec2ForCTC  |
 | hu       | [hu.speech2text.wav2vec_xlsr.v2_large_gpu.by_gchhablani](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html)                                   | [asr_wav2vec2_large_xlsr_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html)                                                               | Wav2Vec2ForCTC  |
 | id       | [id.speech2text.wav2vec_xlsr.v2_s449_exp](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html)                                                   | [asr_exp_w2v2t_xlsr_53_s449](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html)                                                                 | Wav2Vec2ForCTC  |
-| it       | [it.speech2text.wav2vec2.v2_gpu_s149_vp_exp](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html)                                            | [asr_exp_w2v2t_vp_100k_s149_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html)                                                         | Wav2Vec2ForCTC  |
+| it       | [it.speech2text.wav2vec2.v2_gpu_s149_vp_exp](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_vp_100k_s149_it.html)                                            | [asr_exp_w2v2t_vp_100k_s149_gpu](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_vp_100k_s149_it.html)                                                         | Wav2Vec2ForCTC  |
 | it       | [it.speech2text.wav2vec_xlsr.v2_s417_exp](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html)                                                     | [asr_exp_w2v2t_xls_r_s417](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html)                                                                     | Wav2Vec2ForCTC  |
 | ja       | [ja.speech2text.wav2vec_xlsr.v2_large](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html)                                       | [asr_wav2vec2_large_xlsr_japanese_hiragana](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html)                                   | Wav2Vec2ForCTC  |
 | ko       | [ko.speech2text.wav2vec_xlsr.v2_large_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html)                                          | [asr_wav2vec2_large_xlsr_korean_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html)                                                 | Wav2Vec2ForCTC  |
 | kr       | [kr.speech2text.wav2vec_xlsr.v2](https://sparknlp.org/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html)                                                       | [asr_wav2vec2_xlsr_korean_senior](https://sparknlp.org/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html)                                                       | Wav2Vec2ForCTC  |
-| kr       | [kr.speech2text.wav2vec_xlsr.v2_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | [asr_wav2vec2_xlsr_korean_senior_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | Wav2Vec2ForCTC  |
-| ku       | [ku.speech2text.wav2vec_xlsr.gpu](https://sparknlp.org/2022/09/24/asrxlsr_kurmanji_kurdish_gpu_ku.html)                                                        | [asr_xlsr_kurmanji_kurdish_gpu](https://sparknlp.org/2022/09/24/asrxlsr_kurmanji_kurdish_gpu_ku.html)                                                           | Wav2Vec2ForCTC  |
+| kr       | [kr.speech2text.wav2vec_xlsr.v2_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | [asr_wav2vec2_xlsr_korean_senior_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | Wav2Vec2ForCTC  |
+| ku       | [ku.speech2text.wav2vec_xlsr.gpu](https://sparknlp.org/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html)                                                        | [asr_xlsr_kurmanji_kurdish_gpu](https://sparknlp.org/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html)                                                           | Wav2Vec2ForCTC  |
 | ky       | [ky.speech2text.wav2vec_xlsr.v2_large](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html)                                               | [asr_wav2vec2_large_xlsr_53_kyrgyz](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html)                                                   | Wav2Vec2ForCTC  |
 | ky       | [ky.speech2text.wav2vec_xlsr.v2_large_gpu.by_iarfmoose](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html)                | [asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html)                       | Wav2Vec2ForCTC  |
-| la       | [la.speech2text.wav2vec2.v2_base](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                              | [asr_wav2vec2_base_latin](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                                       | Wav2Vec2ForCTC  |
+| la       | [la.speech2text.wav2vec2.v2_base](https://sparknlp.org/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                              | [asr_wav2vec2_base_latin](https://sparknlp.org/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                                       | Wav2Vec2ForCTC  |
 | la       | [la.speech2text.wav2vec2.v2_base_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html)                                                      | [asr_wav2vec2_base_latin_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html)                                                               | Wav2Vec2ForCTC  |
-| lg       | [lg.speech2text.wav2vec_xlsr.v2_multilingual_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                | [asr_wav2vec2_xlsr_multilingual_56_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                           | Wav2Vec2ForCTC  |
+| lg       | [lg.speech2text.wav2vec_xlsr.v2_multilingual_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                | [asr_wav2vec2_xlsr_multilingual_56_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                           | Wav2Vec2ForCTC  |
 | lt       | [lt.speech2text.wav2vec_xlsr.v2_large_gpu.by_dundar](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html)               | [asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html)               | Wav2Vec2ForCTC  |
 | lv       | [lv.speech2text.wav2vec_xlsr.v2_large](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html)                                              | [asr_wav2vec2_large_xlsr_53_latvian](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html)                                                 | Wav2Vec2ForCTC  |
 | lv       | [lv.speech2text.wav2vec_xlsr.v2_large_gpu.by_jimregan](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html)                             | [asr_wav2vec2_large_xlsr_latvian_gpu](https://sparknlp.org/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html)                                               | Wav2Vec2ForCTC  |
 | mn       | [mn.speech2text.wav2vec_xlsr.v2_large_gpu.by_manandey](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html)               | [asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu](https://sparknlp.org/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html)                   | Wav2Vec2ForCTC  |
 | nl       | [nl.speech2text.wav2vec_xlsr.v2_s972_exp](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html)                                                   | [asr_exp_w2v2t_xlsr_53_s972](https://sparknlp.org/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html)                                                                 | Wav2Vec2ForCTC  |
-| pt       | [pt.speech2text.wav2vec_xlsr.voxforge1.gpu.by_lgris](https://sparknlp.org/2022/09/24/asrbp_voxforge1_xlsr_gpu_pt.html)                                         | [asr_bp_voxforge1_xlsr_gpu](https://sparknlp.org/2022/09/24/asrbp_voxforge1_xlsr_gpu_pt.html)                                                                   | Wav2Vec2ForCTC  |
+| pt       | [pt.speech2text.wav2vec_xlsr.voxforge1.gpu.by_lgris](https://sparknlp.org/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html)                                         | [asr_bp_voxforge1_xlsr_gpu](https://sparknlp.org/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html)                                                                   | Wav2Vec2ForCTC  |
 | ro       | [ro.speech2text.wav2vec_xlsr.v2_large_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html)                         | [asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html)               | Wav2Vec2ForCTC  |
 | sg       | [sg.speech2text.wav2vec_xlsr.v2_large_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html)                                 | [asr_wav2vec2_large_xlsr_53_swiss_german_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html)                               | Wav2Vec2ForCTC  |
 | su       | [su.speech2text.wav2vec_xlsr.v2_large_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html)                                       | [asr_wav2vec2_large_xlsr_sundanese_gpu](https://sparknlp.org/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html)                                           | Wav2Vec2ForCTC  |
@@ -363,7 +358,7 @@ Supported Languages are:
 
 ## Image Classification Models Overview
 
-
+{:.table-model-big.db}
 | Language | NLU Reference                                                                                                                                                                                                                                             | Spark NLP  Reference                                                                                                                                                                                                                                         | Annotator Class           |
 |:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------|
 | en       | [en.classify_image.Check_GoodBad_Teeth](https://sparknlp.org/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html)                                                                                                                     | [image_classifier_vit_Check_GoodBad_Teeth](https://sparknlp.org/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html)                                                                                                                     | ViTForImageClassification |
@@ -554,7 +549,7 @@ nlu.load("de.embed.electra.base").predict("""Ich liebe Spark NLP""")
 
 ```
 
-
+{:.table-model-big}
 |   token  | word_embedding_electra   |
 |-----------------------------------------:|:--------------------------|
 |      Ich | -0.09518987685441971, -0.016133345663547516                 |
@@ -573,7 +568,7 @@ df
 
 ```
 
-
+{:.table-model-big}
 |   token  | sentence_embedding_bert   |
 |-----------------------------------------:|:--------------------------|
 |      I | -0.06332794576883316, -0.5097940564155579                 |
@@ -589,7 +584,7 @@ nlu.load("ja.embed.bert.base").predict("""私はSpark NLPを愛しています""
 
 ```
 
-
+{:.table-model-big}
 |   token  | word_embedding_bert   |
 |-----------------------------------------:|:--------------------------|
 |      私はSpark | 0.3989057242870331, -0.20664098858833313                 |
@@ -606,7 +601,7 @@ embeddings_df
 
 ```
 
-
+{:.table-model-big}
 |   sentence  | word_embedding_xlmr_roberta  |
 |-----------------------------------------:|:--------------------------|
 |      I love NLP | -0.07450243085622787, 0.022609828040003777                 |
@@ -623,6 +618,7 @@ embeddings_df
 
 ```
 
+{:.table-model-big}
 |   token  | word_embedding_roberta   |
 |-----------------------------------------:|:--------------------------|
 |      I | -0.06406927853822708, 0.16723069548606873                 |
@@ -645,6 +641,7 @@ nlu.load("answer_question.bert.base_uncased.by_ksabeh").predict("""What is my na
 
 ```
 
+{:.table-model-big}
 |   answer_confidence  | context   | question |
 |-----------------------------------------:|:--------------------------:|:---------------------- |
 |      0.3143375 | "My name is Clara and I live in Berkeley.  |    What is my name?       |
@@ -664,6 +661,7 @@ nlu.load("classify.bert.by_mrm8488").predict("""Camera - You are awarded a SiPix
 
 ```
 
+{:.table-model-big}
 |   classified_sequence  | classified_sequence_confidence   | sentence |
 |-----------------------------------------:|:--------------------------:|:---------------------- |
 |      1 | 0.89954  |    Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline.       |
@@ -678,6 +676,7 @@ nlu.load("de.classify.distil_bert.base").predict("Natürlich kann ich von zuwand
 
 ```
 
+{:.table-model-big.db}
 |   classified_sequence  | classified_sequence_confidence   | sentence |
 |-----------------------------------------:|:--------------------------:|:---------------------- |
 |   non_toxic | 0.955292  |    Natürlich kann ich von zuwanderern mehr erwarten.       |
@@ -696,6 +695,7 @@ nlu.load("en.classify.roberta.finetuned").predict("I love you very much!")
 
 ```
 
+{:.table-model-big}
 |   classified_sequence  | classified_sequence_confidence   | sentence |
 |-----------------------------------------:|:--------------------------:|:---------------------- |
 |   LABEL_0 | 0.597792  |    I love you very much!       |
@@ -739,6 +739,7 @@ nlu.load("en.ner.bc5cdr.biobert.disease").predict("I love you very much!")
 
 ```
 
+{:.table-model-big.db}
 |index|document|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|word\_embedding\_glove|
 |---|---|---|---|---|---|---|---|
 |0|I love you very much\!|I love you very much\!|MISC|0\.66433334|0|0|\[ 0\.19410001  0\.22603001 -0\.43764001 \]|
@@ -752,10 +753,10 @@ nlu.load("de.ner.distil_bert.base_cased").predict("Ich liebe Spark NLP")
 
 ```
 
+{:.table-model-big.db}
 |index|classified\_token|document|entities\_distil\_bert|entities\_distil\_bert\_class|entities\_distil\_bert\_origin\_chunk|entities\_distil\_bert\_origin\_sentence|
 |---|---|---|---|---|---|---|
 |0|O,O,B-OTHderiv,O|Ich liebe Spark NLP|Spark|OTHderiv|0|0|
-
 
 
 - XlmRoBertaForTokenClassification Igbo
@@ -766,6 +767,7 @@ nlu.load("ig.ner.xlmr_roberta.base").predict("Ahụrụ m n'anya na-atọ m ụt
 
 ```
 
+{:.table-model-big.db}
 |index|classified\_token|document|entities\_xlmr\_roberta|entities\_xlmr\_roberta\_class|entities\_xlmr\_roberta\_origin\_chunk|entities\_xlmr\_roberta\_origin\_sentence|
 |---|---|---|---|---|---|---|
 |0|B-ORG,I-ORG,I-ORG,I-ORG,I-ORG,I-ORG|Ahụrụ m n'anya na-atọ m ụtọ|Ahụrụ m n'anya na-atọ m ụtọ|ORG|0|0|
@@ -785,6 +787,7 @@ nlu.load('en.ner.ner.crf').predict("Donald Trump and Angela Merkel dont share ma
 
 ```
 
+{:.table-model-big.db}
 |index|document|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|word\_embedding\_glove|
 |---|---|---|---|---|---|---|---|
 |0|Donald Trump and Angela Merkel dont share many oppinions|Donald Trump|PER|0\.78524995|0|0|\[\-0\.074014   -0\.23684999  0\.17772 \]|
@@ -808,6 +811,7 @@ nlu.load('ja.ner.ner.base').predict("宮本茂氏は、日本の任天堂のゲ�
 
 ```
 
+{:.table-model-big}
 |index|document|entities\_xtreme\_glove\_840B\_300|word\_embedding\_glove|
 |---|---|---|---|
 |0|宮本茂氏は、日本の任天堂のゲームプロデューサーです。|NaN|\[0\. 0\. \]|
@@ -823,6 +827,7 @@ nlu.load('en.ner.conll.ner.large').predict(text, output_level='token')
 
 ```
 
+{:.table-model-big.db}
 |index|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|token|word\_embedding\_glove|
 |---|---|---|---|---|---|---|---|
 |0|My name is John\!|MISC|0\.63266003|0|0|My|\[-2\.19990000e-01  2\.57800013e-01 -4\.25859988e-01 ]|
@@ -860,6 +865,7 @@ Checkout the [OCR Tutorial for extracting `Tables` from Image/PDF/DOC(X) files](
 These models grab all Table data from the files detected and return a `list of Pandas DataFrames`,  
 containing Pandas DataFrame for every table detected
 
+{:.table-model-big}
 | NLU Spell            | Transformer Class                                                                       |  
 |----------------------|-----------------------------------------------------------------------------------------|  
 | nlu.load(`pdf2table`) | [PdfToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotexttable) |                
@@ -925,6 +931,7 @@ nlu.load('pdf2table').predict('/path/to/sample.pdf')
 
 **Output of PDF Table OCR :**
 
+{:.table-model-big}
 |   mpg |   cyl |   disp |   hp |   drat |    wt |   qsec |   vs |   am |   gear |  
 |------:|------:|-------:|-----:|-------:|------:|-------:|-----:|-----:|-------:|  
 |  21   |     6 |  160   |  110 |   3.9  | 2.62  |  16.46 |    0 |    1 |      4 |  
@@ -954,6 +961,7 @@ nlu.load('doc2table').predict('/path/to/sample.docx')
 ```     
 **Output of DOCX Table OCR :**
 
+{:.table-model-big}
 | Screen Reader   |   Responses | Share   |  
 |:----------------|------------:|:--------|  
 | JAWS            |         853 | 49%     |  
@@ -967,6 +975,7 @@ nlu.load('doc2table').predict('/path/to/sample.docx')
 #### Extract Tables from PPT files as Pandas DataFrame
 
 Sample PPT with two tables:
+
 ![Sample PPT with two tables](https://github.com/JohnSnowLabs/nlu/blob/4.0.0/docs/assets/images/ocr/nlu_ocr/tables/ppt.png?raw=true)
 
 ```python  
@@ -975,7 +984,7 @@ nlu.load('ppt2table').predict('/path/to/sample.docx')
 
 **Output of PPT Table OCR :**
 
-
+{:.table-model-big}{:.table-model-big}
 |   Sepal.Length |   Sepal.Width |   Petal.Length |   Petal.Width | Species   |  
 |---------------:|--------------:|---------------:|--------------:|:----------|  
 |            5.1 |           3.5 |            1.4 |           0.2 | setosa    |  
@@ -987,6 +996,7 @@ nlu.load('ppt2table').predict('/path/to/sample.docx')
 
 and
 
+{:.table-model-big}
 |   Sepal.Length |   Sepal.Width |   Petal.Length |   Petal.Width | Species   |  
 |---------------:|--------------:|---------------:|--------------:|:----------|  
 |            6.7 |           3.3 |            5.7 |           2.5 | virginica |  
@@ -1080,6 +1090,7 @@ nlu.load("en.answer_question.squadv2.deberta").predict(data)
 
 returns :
 
+{:.table-model-big}
 | answer   |   answer_confidence | context                                | question         |
 |:---------|--------------------:|:---------------------------------------|:-----------------|
 | Clara    |            0.994931 | My name is Clara and I live in Berkely | What is my name? |
@@ -1111,7 +1122,8 @@ nlu.viz(ade_pipeline, text)
 
 ```
 returns:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
+
+![New NLU helper Methods](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png)
 
 If a pipeline has multiple models candidates that can be used for a viz,  
 the first Annotator that is vizzable will be used to create viz.  
@@ -1150,6 +1162,7 @@ nlu_pipe.predict(text)
 
 returns :
 
+{:.table-model-big.db}
 |   relation |   relation_confidence | relation_entity1   | relation_entity2   | relation_entity2_class   |
 |------------------------------------------------:|-----------------------------------------------------------:|:--------------------------------------------------------|:--------------------------------------------------------|:--------------------------------------------------------------|
 |                                               1 |                                                   1        | allergic reaction                                       | vancomycin                                              | Drug_Ingredient                                               |
@@ -1189,6 +1202,7 @@ nlu.to_pretty_df(ade_pipeline,text)
 ```
 returns :
 
+{:.table-model-big}
 | assertion   | asserted_entitiy                    | entitiy_class                             |                           assertion_confidence |
 |:------------|:------------------------------------|:------------------------------------------|-----------------------------------------------:|
 | present     | allergic reaction                   | ADE                                       |                                        0.998   |
@@ -1232,6 +1246,7 @@ nlu_pipe.vanilla_transformer_pipe.transform(spark_df)
 
 returns :
 
+{:.table-model-big}
 | assertion   | asserted_entitiy                    | entitiy_class                             |                           assertion_confidence |
 |:------------|:------------------------------------|:------------------------------------------|-----------------------------------------------:|
 | present     | allergic reaction                   | ADE                                       |                                        0.998   |
@@ -1241,7 +1256,7 @@ returns :
 
 and
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
+![to_nlu_pipe(pipe)](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png)
 
 ---------------
 
@@ -1340,6 +1355,7 @@ nlu.load('en.rxnorm.umls.mapping').predict('1161611 315677')
 
 ```
 
+{:.table-model-big}
 |   mapped_entity_umls_code_origin_entity  | mapped_entity_umls_code   |
 |-----------------------------------------:|:--------------------------|
 |                                  1161611 | C3215948                  |
@@ -1354,6 +1370,7 @@ nlu.load('en.ner.clinical_trials_abstracts').predict('A one-year, randomised, mu
 ```
 Results:
 
+{:.table-model-big.db}
 |    | entities_clinical_trials_abstracts   | entities_clinical_trials_abstracts_class   |   entities_clinical_trials_abstracts_confidence |
 |---:|:-------------------------------------|:-------------------------------------------|------------------------------------------------:|
 |  0 | randomised                           | CTDesign                                   |                                        0.9996   |
@@ -1368,8 +1385,8 @@ nlu.load('en.ner.clinical_trials_abstracts').viz('A one-year, randomised, multic
 
 ```
 Results:
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.ner.clinical_trials_abstracts.png"  />
 
+![en.ner.clinical_trials_abstracts](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.ner.clinical_trials_abstracts.png)
 
 
 #### [en.med_ner.pathogen](https://nlp.johnsnowlabs.com/2022/06/28/ner_pathogen_en_3_0.html)
@@ -1380,7 +1397,7 @@ nlu.load('en.med_ner.pathogen').predict('Racecadotril is an antisecretory medica
 
 Results:
 
-
+{:.table-model-big}
 |    | entities_pathogen   | entities_pathogen_class   |   entities_pathogen_confidence |
 |---:|:--------------------|:--------------------------|-------------------------------:|
 |  0 | Racecadotril        | Medicine                  |                        0.9468  |
@@ -1399,7 +1416,7 @@ nlu.load('en.med_ner.pathogen').viz('Racecadotril is an antisecretory medication
 ```
 Results:
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.med_ner.pathogen.png"  />
+![en.med_ner.pathogen](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/en.med_ner.pathogen.png)
 
 
 #### [es.med_ner.living_species.roberta](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_roberta_es_3_0.html)
@@ -1411,6 +1428,7 @@ nlu.load('es.med_ner.living_species.roberta').predict('Lactante varón de dos a�
 
 Results:
 
+{:.table-model-big.db}
 |    | entities_living_species   | entities_living_species_class   |   entities_living_species_confidence |
 |---:|:--------------------------|:--------------------------------|-------------------------------------:|
 |  0 | Lactante varón            | HUMAN                           |                              0.93175 |
@@ -1434,12 +1452,12 @@ nlu.load('es.med_ner.living_species.roberta').viz('Lactante varón de dos años.
 
 Results:
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/es.med_ner.living_species.roberta.png"  />
-
+![es.med_ner.living_species.roberta](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/es.med_ner.living_species.roberta.png)
 
 
 All healthcare models added in NLU 4.0 :
 
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                                   | Spark NLP  Reference                                                                                                                                           | Task                     | Annotator Class                      | model_id                                                                                                                                                                |
 |:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:-------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | en         | [en.map_entity.abbreviation_to_definition](https://nlp.johnsnowlabs.com/2022/05/11/abbreviation_mapper_en_3_0.html)                             | [abbreviation_mapper](https://nlp.johnsnowlabs.com/2022/05/11/abbreviation_mapper_en_3_0.html)                                                                 | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.abbreviation_to_definition](https://nlp.johnsnowlabs.com/2022/05/11/abbreviation_mapper_en_3_0.html)                                        |
@@ -1536,9 +1554,7 @@ All healthcare models added in NLU 4.0 :
 All core models added in NLU 4.0 :
 Can be found on the [NLU website](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes) because of Github Limitations
 
-
-
-
+{:.table-model-big.db}
 | NLU Reference                                                                                                                                                                                                                                      | Spark NLP  Reference                                                                                                                                                                                                                                                   | Task               | Language Name(s)                                             | Annotator Class                |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------|:-------------------------------------------------------------|:-------------------------------|
 | [bn.answer_question.tydiqa.multi_lingual_bert](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_mbert_bengali_tydiqa_qa_bn_3_0.html)                                                                                                                | [bert_qa_mbert_bengali_tydiqa_qa](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_mbert_bengali_tydiqa_qa_bn_3_0.html)                                                                                                                                                 | Question Answering | [Bengali](https://iso639-3.sil.org/code/ben)                 | BertForQuestionAnswering       |
@@ -2546,6 +2562,7 @@ as well as treatments (e.g. backache, diabetes).
 #### First time language models covered
 The languages for these models are covered for the very first time ever by NLU.
 
+{:.table-model-big.db}
 |   Number | Language Name(s)                                                            | NLU Reference                                                                                                                                       | Spark NLP  Reference                                                                                                                                             | Task                   | Annotator Class      | ISO-639-1                                | ISO-639-2/639-5                                               | ISO-639-3                                | Scope         | Language Type   |
 |---------:|:----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------|:-----------------------------------------|:--------------------------------------------------------------|:-----------------------------------------|:--------------|:----------------|
 |        0 | [Sanskrit](https://iso639-3.sil.org/code/san)                               | [sa.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_sa_3_0.html)                                                             | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_sa_3_0.html)                                                                                   | Embeddings             | WordEmbeddingsModel  | [sa](https://iso639-3.sil.org/code/san)  | [san](https://iso639-3.sil.org/code/san)                      | [san](https://iso639-3.sil.org/code/san) | Individual    | Ancient         |
@@ -2657,6 +2674,7 @@ The languages for these models are covered for the very first time ever by NLU.
 ##### All general NLP models
 Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.4.4) and previous releases.
 
+{:.table-model-big.db}
 |   Number | NLU Reference                                                                                                                                                                                                | Spark NLP  Reference                                                                                                                                                                                                   | Task                     | Language Name(s)                                                                                                      | Annotator Class               | ISO-639-1                                | ISO-639-2/639-5                                               | ISO-639-3                                | Language Type   | Scope         |
 |---------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:----------------------------------------------------------------------------------------------------------------------|:------------------------------|:-----------------------------------------|:--------------------------------------------------------------|:-----------------------------------------|:----------------|:--------------|
 |        0 | [cu.pos](https://nlp.johnsnowlabs.com/2022/05/01/pos_proiel_cu_3_0.html)                                                                                                                                     | [pos_proiel](https://nlp.johnsnowlabs.com/2022/05/01/pos_proiel_cu_3_0.html)                                                                                                                                           | Part of Speech Tagging   | [Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic](https://iso639-3.sil.org/code/chu) | PerceptronModel               | [cu](https://iso639-3.sil.org/code/chu)  | [chu](https://iso639-3.sil.org/code/chu)                      | [chu](https://iso639-3.sil.org/code/chu) | Ancient         | Individual    |
@@ -2701,7 +2719,7 @@ Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spar
 |       39 | [bn.embed.muril_adapted_local](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_muril_adapted_local_bn_3_0.html)                                                                                      | [bert_embeddings_muril_adapted_local](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_muril_adapted_local_bn_3_0.html)                                                                                         | Embeddings               | [Bengali](https://iso639-3.sil.org/code/ben)                                                                          | BertEmbeddings                | [bn](https://iso639-3.sil.org/code/ben)  | [ben](https://iso639-3.sil.org/code/ben)                      | [ben](https://iso639-3.sil.org/code/ben) | Living          | Individual    |
 |       40 | [bn.embed.bangla_bert](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_bangla_bert_bn_3_0.html)                                                                                                      | [bert_embeddings_bangla_bert](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_bangla_bert_bn_3_0.html)                                                                                                         | Embeddings               | [Bengali](https://iso639-3.sil.org/code/ben)                                                                          | BertEmbeddings                | [bn](https://iso639-3.sil.org/code/ben)  | [ben](https://iso639-3.sil.org/code/ben)                      | [ben](https://iso639-3.sil.org/code/ben) | Living          | Individual    |
 |       41 | [bn.stopwords](https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_bn_3_0.html)                                                                                                                            | [stopwords_iso](https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_bn_3_0.html)                                                                                                                                     | Stop Words Removal       | [Bengali](https://iso639-3.sil.org/code/ben)                                                                          | StopWordsCleaner              | [bn](https://iso639-3.sil.org/code/ben)  | [ben](https://iso639-3.sil.org/code/ben)                      | [ben](https://iso639-3.sil.org/code/ben) | Living          | Individual    |
-|       42 | [bh.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bh_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bh_3_0.html)                                                                                                                                         | Embeddings               | [Bihari language group, also known ash bih in ISO 639-2/5](https://iso639-3.sil.org/code/bh)                          | WordEmbeddingsModel           | [bh](https://iso639-3.sil.org/code/bh)   | [nan](https://iso639-3.sil.org/code/bh)                       | [nan](https://iso639-3.sil.org/code/bh)  | Living          | Individual    |
+|       42 | [bh.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bh_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bh_3_0.html)                                                                                                                                         | Embeddings               | [Bihari language group, also known ash bih in ISO 639-2/5](https://www.loc.gov/standards/iso639-2/php/code_list.php)                          | WordEmbeddingsModel           | [bh](https://iso639-3.sil.org/code/bh)   | [nan](https://iso639-3.sil.org/code/bh)                       | [nan](https://iso639-3.sil.org/code/bh)  | Living          | Individual    |
 |       43 | [bpy.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bpy_3_0.html)                                                                                                                    | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bpy_3_0.html)                                                                                                                                        | Embeddings               | [Bishnupriya](https://iso639-3.sil.org/code/bpy)                                                                      | WordEmbeddingsModel           | [nan](https://iso639-3.sil.org/code/bpy) | [nan](https://iso639-3.sil.org/code/bpy)                      | [bpy](https://iso639-3.sil.org/code/bpy) | Living          | Individual    |
 |       44 | [bs.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bs_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_bs_3_0.html)                                                                                                                                         | Embeddings               | [Bosnian](https://iso639-3.sil.org/code/bos)                                                                          | WordEmbeddingsModel           | [bs](https://iso639-3.sil.org/code/bos)  | [bos](https://iso639-3.sil.org/code/bos)                      | [bos](https://iso639-3.sil.org/code/bos) | Living          | Individual    |
 |       45 | [br.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_br_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_br_3_0.html)                                                                                                                                         | Embeddings               | [Breton](https://iso639-3.sil.org/code/bre)                                                                           | WordEmbeddingsModel           | [br](https://iso639-3.sil.org/code/bre)  | [bre](https://iso639-3.sil.org/code/bre)                      | [bre](https://iso639-3.sil.org/code/bre) | Living          | Individual    |
@@ -3308,7 +3326,7 @@ Powered by the amazing
 [Spark NLP for Healthcare 3.5.2](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#352) and
 [Spark NLP for Healthcare 3.5.1](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#351) releases.
 
-
+{:.table-model-big.db}
 |   Number | NLU Reference                                                                                                                     | Spark NLP  Reference                                                                                                                   | Task                     | Language Name(s)                                | Annotator Class               | ISO-639-1                               | ISO-639-2/639-5                          | ISO-639-3                                | Language Type   | Scope      |
 |---------:|:----------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------------------------------------------------|:------------------------------|:----------------------------------------|:-----------------------------------------|:-----------------------------------------|:----------------|:-----------|
 |        0 | [en.med_ner.biomedical_bc2gm](https://nlp.johnsnowlabs.com/2022/05/10/ner_biomedical_bc2gm_en_3_0.html)                           | [ner_biomedical_bc2gm](https://nlp.johnsnowlabs.com/2022/05/10/ner_biomedical_bc2gm_en_3_0.html)                                       | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)    | MedicalNerModel               | [en](https://iso639-3.sil.org/code/eng) | [eng](https://iso639-3.sil.org/code/eng) | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual |
@@ -3338,7 +3356,6 @@ for the first time by NLU, including ancient and exotic languages like `Ancient 
 
 #### NLU for Healthcare
 
-
 On the healthcare NLP side, a new `ZeroShotRelationExtractionModel` is available, which can extract relations between
 clinical entities in an unsupervised fashion, no training required!
 Additionally, New French and Italian Deidentification models are available for clinical and healthcare domains.
@@ -3366,6 +3383,7 @@ df[
 # Results in following table :
 ```
 
+{:.table-model-big.db}
 | relation   |   relation_confidence | relation_entity1   | relation_entity1_class   | relation_entity2   | relation_entity2_class   |
 |:-----------|----------------------:|:-------------------|:-------------------------|:-------------------|:-------------------------|
 | REVEAL     |              0.976004 | An MRI test        | TEST                     | cancer             | PROBLEM                  |
@@ -3374,6 +3392,7 @@ df[
 
 #### New Healthcare Models overview
 
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                           | Spark NLP  Reference                                                                           | Task                     | Annotator Class                 |
 |:-----------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|:-------------------------|:--------------------------------|
 | en         | [en.relation.zeroshot_biobert](https://nlp.johnsnowlabs.com/2022/04/05/re_zeroshot_biobert_en_3_0.html) | [re_zeroshot_biobert](https://nlp.johnsnowlabs.com/2022/04/05/re_zeroshot_biobert_en_3_0.html) | Relation Extraction      | ZeroShotRelationExtractionModel |
@@ -3407,7 +3426,7 @@ and their respective ISO-639-3 and ISO 630-2 codes are :
 
 #### New NLP Models Overview
 
-
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                             | Spark NLP  Reference                                                                                                                               | Task                   | Annotator Class                  |
 |:-----------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|:---------------------------------|
 | en         | [en.classify.sentiment.imdb.deberta](https://nlp.johnsnowlabs.com/2022/04/09/deberta_v3_xsmall_sequence_classifier_imdb_en_3_0.html)      | [deberta_v3_xsmall_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2022/04/09/deberta_v3_xsmall_sequence_classifier_imdb_en_3_0.html)       | Text Classification    | DeBertaForSequenceClassification |
@@ -3639,6 +3658,7 @@ Additionally, new Spanish Deidentification NER models for entities like `STATE`,
 
 Integrates models from [Spark NLP 3.4.2](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.4.2) release
 
+{:.table-model-big}
 | Language   | NLU Reference                                                                                       | Spark NLP  Reference                                                                       | Task       | Annotator Class   |
 |:-----------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|:-----------|:------------------|
 | en         | [en.embed.deberta_v3_xsmall](https://nlp.johnsnowlabs.com/2022/03/10/deberta_v3_xsmall_en_3_0.html) | [deberta_v3_xsmall](https://nlp.johnsnowlabs.com/2022/03/10/deberta_v3_xsmall_en_3_0.html) | Embeddings | DeBertaEmbeddings |
@@ -3653,6 +3673,7 @@ Integrates models from [Spark NLP 3.4.2](https://github.com/JohnSnowLabs/spark-n
 
 Integrates models from [Spark NLP For Healthcare 3.4.2](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#342) release
 
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                             | Spark NLP  Reference                                                                                                             | Task                                              | Annotator Class                      |
 |:-----------|:--------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|:-------------------------------------|
 | en         | [en.med_ner.clinical_trials](https://nlp.johnsnowlabs.com/2022/03/01/bert_sequence_classifier_rct_biobert_en_2_4.html)    | [bert_sequence_classifier_rct_biobert](https://nlp.johnsnowlabs.com/2022/03/01/bert_sequence_classifier_rct_biobert_en_2_4.html) | Text Classification                               | MedicalBertForSequenceClassification |
@@ -3727,7 +3748,7 @@ Additionally new Multilingual NER model for 9 African languages, English 6 Class
 - **English Emotion Classifier for 6 Classes** available with  [en.classify.emotion.bert](https://nlp.johnsnowlabs.com/2022/01/14/bert_sequence_classifier_emotion_en.html)
 - **English Typo Detector **: available with [en.classify.typos.distilbert](https://nlp.johnsnowlabs.com/2022/01/19/distilbert_token_classifier_typo_detector_en.html)
 
-
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                              | Spark NLP  Reference                                                                                                                           | Task                     | Annotator Class                  |
 |:-----------|:---------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:---------------------------------|
 | xx         | [xx.embed.albert.indic](https://nlp.johnsnowlabs.com/2022/01/26/albert_indic_xx.html)                                      | [albert_indic](https://nlp.johnsnowlabs.com/2022/01/26/albert_indic_xx.html)                                                                   | Embeddings               | AlbertEmbeddings                 |
@@ -3754,10 +3775,14 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
 
 #### New Medical Spanish Models
 - **Spanish Word2Vec Embeddings** available with [es.embed.sciwiki_300d](https://nlp.johnsnowlabs.com/2020/05/27/embeddings_sciwiki_300d_es.html)
-- **Spanish PHI Deidentification NER models** with two different subsets of entities extracted, available with [ner_deid_generic](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_generic_es.html)        and [ner_deid_subentity](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_subentity_es.html)
+- **Spanish PHI Deidentification NER models** with two different subsets of entities extracted, available with [ner_deid_generic](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_generic_es.html) and [ner_deid_subentity](https://nlp.johnsnowlabs.com/2022/01/18/ner_deid_subentity_es.html)
+
+</div><div class="h3-box" markdown="1">
 
 #### New Resolvers
 - **RxNorm resolvers** with augmented concept data available with [en.med_ner.supplement_clinical](https://nlp.johnsnowlabs.com/2022/02/01/ner_supplement_clinical_en.html)
+
+</div><div class="h3-box" markdown="1">
 
 #### New Transformer based Sequence Classifiers
 - **Adverse Drug Event Classifier Biobert based**  available with [en.classify.ade.seq_biobert](https://nlp.johnsnowlabs.com/2022/02/08/bert_sequence_classifier_ade_en.html)
@@ -3765,10 +3790,13 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
   and  available with [en.classify.ade.seq_distilbert](https://nlp.johnsnowlabs.com/2022/02/08/distilbert_sequence_classifier_ade_en.html)
 - **PiCO Framework Classifier** available with [en.classify.pico.seq_biobert](https://nlp.johnsnowlabs.com/2022/02/07/bert_sequence_classifier_pico_biobert_en.html)
 
+</div><div class="h3-box" markdown="1">
+
 #### New Relation Extractors
 - **Temporal Relation Extractor** available with [en.relation.temporal_events_clinical](https://nlp.johnsnowlabs.com/2020/09/28/re_temporal_events_clinical_en.html)
 - **Adverse Drug Event Relation Extractors** one version Biobert Embeddings and one non-DL version available with [en.relation.adverse_drug_events.clinical](https://nlp.johnsnowlabs.com/2021/07/12/re_ade_clinical_en.html) available with [en.relation.adverse_drug_events.clinical.biobert](https://nlp.johnsnowlabs.com/2021/07/12/redl_ade_biobert_en.html)
 
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                             | Spark NLP  Reference                                                                                                               | Task                     | Annotator Class                            |
 |:-----------|:--------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:-------------------------------------------|
 | es         | [es.embed.sciwiki_300d](https://nlp.johnsnowlabs.com/2020/05/27/embeddings_sciwiki_300d_es.html)                          | [embeddings_sciwiki_300d](https://nlp.johnsnowlabs.com/2020/05/27/embeddings_sciwiki_300d_es.html)                                 | Embeddings               | WordEmbeddingsModel                        |
@@ -3825,7 +3853,7 @@ Finally, the NLU tutorial page of the [140+ notebooks has been updated](https://
 
 </div><div class="h3-box" markdown="1">
 
-#### **New** NLU OCR Features
+#### New NLU OCR Features
 3 new OCR based spells are supported, which enable extracting `text` from files of type
 `JPEG`, `PNG`, `BMP`, `WBMP`, `GIF`, `JPG`, `TIFF`, `DOCX`, `PDF` in just 1 line of code.
 You need a Spark OCR license for using these, which is available for [free here](https://www.johnsnowlabs.com/spark-nlp-try-free/) and refer to the new
@@ -3835,7 +3863,7 @@ Find more details on the [NLU OCR documentation page](https://nlp.johnsnowlabs.c
 
 </div><div class="h3-box" markdown="1">
 
-#### **New** NLU Healthcare Features
+#### New NLU Healthcare Features
 The healthcare side features a new `MedicalBertForTokenClassifier` annotator which is a Bert based model for token classification problems like `Named Entity Recognition`,           
 `Parts of Speech` and much more.  Overall there are `28` new models which include German De-Identification models,  English NER models for extracting `Drug Development Trials`,           
 `Clinical Abbreviations and Acronyms`, NER models for chemical compounds/drugs and genes/proteins, updated `MedicalBertForTokenClassifier` NER models for the medical domains `Adverse drug Events`,           
@@ -3846,7 +3874,7 @@ For **Entity Resolution** new models for resolving `Clinical Abbreviations and A
 
 </div><div class="h3-box" markdown="1">
 
-#### **New** NLU Open source Features
+#### New NLU Open source Features
 On the open source side we have new support for [Open Ai's `GPT2`](https://openai.com/blog/tags/gpt-2/) for various text sequence to sequence problems and
 additionally the following new Transformer models are supported :
 `RoBertaForSequenceClassification`, `XlmRoBertaForSequenceClassification`, `LongformerForSequenceClassification`,
@@ -3871,6 +3899,7 @@ For `Sequence Classification` new models for classifying `Toxicity in Russian te
 #### New NLU OCR Models
 The following Transformers have been integrated from [Spark OCR](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components)
 
+{:.table-model-big}
 | NLU Spell            | Transformer Class                                                                       |
 |----------------------|-----------------------------------------------------------------------------------------|
 | nlu.load(`img2text`) | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#imagetotext) |
@@ -3883,8 +3912,7 @@ The following Transformers have been integrated from [Spark OCR](https://nlp.joh
 
 Integration for the 49 new models from the colossal [Spark NLP  3.4.0 release](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes#340)
 
-
-
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                     | Spark NLP  Reference                                                                                                                           | Task                     | Annotator Class                     |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------------------------------------|
 | en         | [en.gpt2.distilled](https://nlp.johnsnowlabs.com/2021/12/03/gpt2_distilled_en.html)                                               | [gpt2_distilled](https://nlp.johnsnowlabs.com/2021/12/03/gpt2_distilled_en.html)                                                               | Text Generation          | GPT2Transformer                     |
@@ -3941,7 +3969,7 @@ Integration for the 49 new models from the colossal [Spark NLP  3.4.0 release](h
 #### New Healthcare Models
 Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4.0 release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#340)
 
-
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                             | Spark NLP  Reference                                                                                                                           | Task                     | Annotator Class             |
 |:-----------|:------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:----------------------------|
 | en         | [en.med_ner.chemprot.bert](https://nlp.johnsnowlabs.com/2021/10/19/bert_token_classifier_ner_chemprot_en.html)             | [bert_token_classifier_ner_chemprot](https://nlp.johnsnowlabs.com/2021/10/19/bert_token_classifier_ner_chemprot_en.html)   | Named Entity Recognition | MedicalBertForTokenClassifier |
@@ -4017,7 +4045,6 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 
 #### 48 new Transformer based models in 9 new languages, including NER for Finance, Industry, Politcal Policies, COVID and Chemical Trials, various clinical and medical domains in Spanish and English and much more in NLU 3.3.1
 
-
 We are incredibly excited to announce NLU 3.3.1 has been released with 48 new models in 9 languages!
 
 It comes with 2 new types of state-of-the-art  models,`distilBERT` and `BERT for sequence classification`  with various pre-trained weights,
@@ -4048,14 +4075,16 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 
 </div><div class="h3-box" markdown="1">
 
-#### Complete List of Open Source Models :
+#### Complete List of Open Source Models:
+
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                                          | Spark NLP  Reference                                                                                                                                         | Task                |
 |:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|
 | en         | [en.classify.bert_sequence.imdb_large](https://nlp.johnsnowlabs.com/2021/11/01/bert_large_sequence_classifier_imdb_en.html)                            | [bert_large_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2021/11/01/bert_large_sequence_classifier_imdb_en.html)                                   | Text Classification |
 | en         | [en.classify.bert_sequence.imdb](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_imdb_en.html)                                   | [bert_base_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_imdb_en.html)                                     | Text Classification |
 | en         | [en.classify.bert_sequence.ag_news](https://nlp.johnsnowlabs.com/2021/11/02/bert_base_sequence_classifier_ag_news_en.html)                             | [bert_base_sequence_classifier_ag_news](https://nlp.johnsnowlabs.com/2021/11/02/bert_base_sequence_classifier_ag_news_en.html)                               | Text Classification |
 | en         | [en.classify.bert_sequence.dbpedia_14](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_dbpedia_14_en.html)                       | [bert_base_sequence_classifier_dbpedia_14](https://nlp.johnsnowlabs.com/2021/11/01/bert_base_sequence_classifier_dbpedia_14_en.html)                         | Text Classification |
-| en         | [en.classify.bert_sequence.finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                  | [bert_sequence_classifier_finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                         | Text Classification |
+| en         | [en.classify.bert_sequence.finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                  | [bert_sequence_classifier_finbert](https://sparknlp.org/2022/09/07/bert_classifier_finbert_en.html)                                                                           | Text Classification |
 | en         | [en.classify.bert_sequence.dehatebert_mono](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_dehatebert_mono_en.html)                  | [bert_sequence_classifier_dehatebert_mono](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_dehatebert_mono_en.html)                         | Text Classification |
 | tr         | [tr.classify.bert_sequence.sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_turkish_sentiment_tr.html)                      | [bert_sequence_classifier_turkish_sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_turkish_sentiment_tr.html)                     | Text Classification |
 | de         | [de.classify.bert_sequence.sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_sentiment_de.html)                              | [bert_sequence_classifier_sentiment](https://nlp.johnsnowlabs.com/2021/11/03/bert_sequence_classifier_sentiment_de.html)                                     | Text Classification |
@@ -4068,7 +4097,7 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 | en         | [en.classify.distilbert_sequence.policy](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_policy_en.html)                        | [distilbert_sequence_classifier_policy](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_policy_en.html)                               | Text Classification |
 | en         | [en.classify.distilbert_sequence.industry](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_industry_en.html)                    | [distilbert_sequence_classifier_industry](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_industry_en.html)                           | Text Classification |
 | en         | [en.classify.distilbert_sequence.emotion](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_emotion_en.html)                      | [distilbert_sequence_classifier_emotion](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_sequence_classifier_emotion_en.html)                             | Text Classification |
-| en         | [en.classify.distilbert_sequence.banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                  | [distilbert_sequence_classifier_banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                         | Text Classification |
+| en         | [en.classify.distilbert_sequence.banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                  | [distilbert_sequence_classifier_banking77](https://sparknlp.org/2022/09/09/roberta_classifier_banking77_en.html)                                                                 | Text Classification |
 | en         | [en.classify.distilbert_sequence.imdb](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_imdb_en.html)                       | [distilbert_base_sequence_classifier_imdb](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_imdb_en.html)                         | Text Classification |
 | en         | [en.classify.distilbert_sequence.amazon_polarity](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_amazon_polarity_en.html) | [distilbert_base_sequence_classifier_amazon_polarity](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_amazon_polarity_en.html)   | Text Classification |
 | en         | [en.classify.distilbert_sequence.ag_news](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_ag_news_en.html)                 | [distilbert_base_sequence_classifier_ag_news](https://nlp.johnsnowlabs.com/2021/11/21/distilbert_base_sequence_classifier_ag_news_en.html)                   | Text Classification |
@@ -4104,6 +4133,7 @@ Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.co
 
 #### Complete List of Healthcare Models :
 
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                                                 | Spark NLP  Reference                                                                                                                                               | Task                     |
 |:-----------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|
 | en         | [en.med_ner.deid_subentity_augmented_i2b2](https://nlp.johnsnowlabs.com/2021/11/29/ner_deid_subentity_augmented_i2b2_en.html)                                 | [ner_deid_subentity_augmented_i2b2](https://nlp.johnsnowlabs.com/2021/11/29/ner_deid_subentity_augmented_i2b2_en.html)                                             | Named Entity Recognition |
@@ -4184,6 +4214,7 @@ The following models are available from the amazing Spark NLP
 which includes NLP models for
 Yiddish, Ukrainian, Telugu, Tamil, Somali, Sindhi, Russian, Punjabi, Nepali, Marathi, Malayalam, Kannada, Indonesian, Gujrati, Bosnian, Igbo, Ganda,  Dholuo, Naija, Wolof,Kinyarwanda
 
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                                                                    | Spark NLP  Reference                                                                                                                           | Task                     |
 |:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|
 | ig         | [ig.embed.xlm_roberta](https://nlp.johnsnowlabs.com/2021/09/29/xlm_roberta_base_finetuned_igbo_ig.html)                                                          | [xlm_roberta_base_finetuned_igbo](https://nlp.johnsnowlabs.com/2021/09/29/xlm_roberta_base_finetuned_igbo_ig.html)                             | Embeddings               |
@@ -4242,7 +4273,7 @@ The following models are available from the amazing Spark NLP for Healthcare rel
 which includes 48 Multi-NER tuning pipelines, BERT-based DEidentification, German NER resolvers, Spell Checkers for Drugs,
 5 ner NER models trained via BErtForTokenClassification, NER models for Radiology CID10CM, RxNORM NDC and HCPCSS models and UMLS sentence resolver models
 
-
+{:.table-model-big.db}
 | Language   | NLU Reference                                                                                                              | Spark NLP  Reference                                                                                                           | Task                     |
 |:-----------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|
 | de         | [de.resolve.snomed](https://nlp.johnsnowlabs.com/2021/09/16/sbertresolve_snomed_de.html)                                   | [sbertresolve_snomed](https://nlp.johnsnowlabs.com/2021/09/16/sbertresolve_snomed_de.html)                                     | Entity Resolution        |
@@ -4341,6 +4372,7 @@ for [the over 50 Domains in Healthcare/Clinical/Biomedical/etc..](https://github
 #### New Transformer Models
 Models in Japanese, German, Dutch, Swedish, Spanish, French and English from the great [Spark NLP 3.2.3 release](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.2.3)
 
+{:.table-model-big.db}
 | nlu.load() Refrence                                          | Spark NLP Refrence                                           |Annotater class|Language|
 | ------------------------------------------------------------ | ------------------------------------------------------------ |------------------- |--------------|
 | [en.embed.bert.base_uncased_legal](https://nlp.johnsnowlabs.com/2021/09/07/bert_base_uncased_legal_en.html) | [bert_base_uncased_legal](https://nlp.johnsnowlabs.com/2021/09/07/bert_base_uncased_legal_en.html) |BertEmbeddings|en|
@@ -4369,6 +4401,7 @@ Models in Japanese, German, Dutch, Swedish, Spanish, French and English from the
 #### New Healthcare Transformer Models
 Models for Snomed Conditions, Cpt Measurements, Icd0, Rxnorm Dispositions, Posology and Deidentification from the amazing [Spark NLP 3.2.2  for Healthcare Release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes)
 
+{:.table-model-big.db}
 | nlu.load() Refrences                                         | Spark NLP Refrence                                           |Annotater class|Language|
 | ------------------------------------------------------------ | ------------------------------------------------------------ |------ |------|
 | [en.resolve.snomed_conditions](https://nlp.johnsnowlabs.com/2021/08/28/sbertresolve_snomed_conditions_en.html) | [sbertresolve_snomed_conditions](https://nlp.johnsnowlabs.com/2021/08/28/sbertresolve_snomed_conditions_en.html) |SentenceEntityResolverModel|en|
@@ -4428,10 +4461,11 @@ or just run
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/09_entity_embedding_manifolds.py
 ```
 
-
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true">
+![Streamlit Entity Manifold visualization](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true)
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
+
+{:.table-model-big.db}
 | Argument    | Type        |                                                            Default         |Description |
 |----------------------------|------------|-----------------------------------------------------------|---------------------------------------------------------|
 |`default_texts`|                    `List[str]`  |"Donald Trump likes to visit New York", "Angela Merkel likes to visit Berlin!", 'Peter hates visiting Paris')| List of strings to apply classifiers, embeddings, and manifolds to. |  
@@ -4450,7 +4484,7 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 </div><div class="h3-box" markdown="1">
 
 #### Sentence Entity Resolver Training
-[Sentence Entity Resolver Training Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/sentence_entity_resolution/sentence_entity_resolution_training.ipynb)
+[Sentence Entity Resolver Training Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/entity_resolution/sentence_entity_resolution_training.ipynb)
 Named Entities are sub pieces in textual data which are labeled with classes.    
 These classes and strings are still ambiguous though and it is not possible to group semantically identically entities without any definition of `terminology`.
 With the `Sentence Resolver` you can train a state-of-the-art deep learning architecture to map entities to their unique terminological representation.
@@ -4472,6 +4506,7 @@ res = fitted_pipe.predict(dataset)
 fitted_pipe.predict(["Peter told me to buy Tesla ", 'I have money to loose, is TSLA a good option?'])
 ```
 
+{:.table-model-big.db}
 |    | sentence_resolution_resolve_sentence_confidence   | sentence_resolution_resolve_sentence_code   | sentence_resolution_resolve_sentence   | sentence                                   |
 |---:|:--------------------------------------------------|:--------------------------------------------|:---------------------------------------|:-------------------------------------------|
 |  0 | '1.0000'                                        | '23'                                      | 'TESLA'                              | 'The Tesla company is good to invest is' |
@@ -4493,7 +4528,7 @@ New models from the spectacular  [Spark NLP  3.2.0 +](https://nlp.johnsnowlabs.c
 The supported languages with their ISO 639-1 code are : `af`, `ar`, `bg`, `bn`, `de`, `el`, `en`, `es`, `et`, `eu`, `fa`, `fi`, `fr`, `he`, `hi`, `hu`, `id`, `it`, `ja`, `jv`, `ka`, `kk`, `ko`, `ml`, `mr`, `ms`, `my`, `nl`, `pt`, `ru`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `ur,` `vi`, `yo`, and `zh`
 
 
-
+{:.table-model-big.db}
 | nlu.load() Refrence                                          | Spark NLP Refrence                                           |Annotator Class  |language  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |------------------- |------------------- |
 | [en.embed.longformer](https://nlp.johnsnowlabs.com/2021/08/04/longformer_base_4096_en.html) | [longformer_base_4096](https://nlp.johnsnowlabs.com/2021/08/04/longformer_base_4096_en.html) |LongformerEmbeddings|en|
@@ -4592,6 +4627,7 @@ The supported languages with their ISO 639-1 code are : `af`, `ar`, `bg`, `bn`, 
 12 new models from the amazing  [Spark NLP for Healthcare  3.2.0+](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes) releases, including models for `genetic variants`, `radiology`, `assertion`,
 `rxnorm`, `adverse drugs` and new `clinical tokenbert` models that improves accuracy by 4% compared to the previous models.
 
+{:.table-model-big.db}
 | nlu.load() Refrence                                          | Spark NLP Refrence                                           |Annotator Class  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |------------------- |
 | [en.med_ner.radiology.wip_greedy_biobert](https://nlp.johnsnowlabs.com/2021/07/26/jsl_rd_ner_wip_greedy_biobert_en.html) |  [jsl_rd_ner_wip_greedy_biobert](https://nlp.johnsnowlabs.com/2021/07/26/jsl_rd_ner_wip_greedy_biobert_en.html)  | MedicalNerModel
@@ -4619,7 +4655,7 @@ you have a Pyarrow version installed that works with your Pyspark version.
 </div><div class="h3-box" markdown="1">
 
 #### New Notebooks
-- [Sentence Resolution Training Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/sentence_entity_resolution/sentence_entity_resolution_training.ipynb)
+- [Sentence Resolution Training Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/entity_resolution/sentence_entity_resolution_training.ipynb)
 - [Benchmark Notebook](https://colab.research.google.com/drive/1Ja9_QF9Sm1zhr-tyhFv6z2a3qnNjOaR6?usp=sharing)
 
 </div><div class="h3-box" markdown="1">
@@ -4661,6 +4697,8 @@ Finally, 2 new trainable models for NER and chunk resolution are supported, a ne
 20+ new pre-trained models including Multi-Lingual, German,
 various healthcare models and improved NER defaults when using licensed models that have NER dependencies.
 
+</div><div class="h3-box" markdown="1">
+
 #### Streamlit Sentence Embedding visualization via Manifold and Matrix Decomposition algorithms
 
 #### <kbd>function</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
@@ -4684,9 +4722,13 @@ which can be colored by various classifier labels!
 nlu.load('embed_sentence.bert').viz_streamlit_sentence_embed_manifold(text)
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true">
+![Streamlit Sentence Embedding visualization via Manifold and Matrix Decomposition algorithms](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true)
+
+</div><div class="h3-box" markdown="1">
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
+
+{:.table-model-big.db}
 | Argument    | Type        |                                                            Default         |Description |
 |----------------------------|------------|-----------------------------------------------------------|---------------------------------------------------------|
 |`default_texts`|                    `List[str]`  | ("Donald Trump likes to party!", "Angela Merkel likes to party!", 'Peter HATES TO PARTTY!!!! :(') | List of strings to apply classifiers, embeddings, and manifolds to. |  
@@ -4713,12 +4755,19 @@ nlu.load('embed_sentence.bert').viz_streamlit_sentence_embed_manifold(text)
 
 #### Support for  [Latent Dirichlet Allocation](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html)
 The [Latent Dirichlet Allocation](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html) algorithm is now supported
-for the Word Embedding Visualizations and the Sentence Embedding Visualizations
+for the Word Embedding Visualizations and the Sentence Embedding Visualizations.
+
+</div><div class="h3-box" markdown="1">
+
 #### Normalization of Vectors before calculating sentence similarity.
 WordEmbedding vectors will now be normalized before calculating similarity scores, which bounds each similarity between 0 and 1
 
+</div><div class="h3-box" markdown="1">
+
 #### Control order of plots
 You can now control the order in Which visualizations appear in the main GUI
+
+</div><div class="h3-box" markdown="1">
 
 #### Sentence Embedding Visualization
 
@@ -4746,11 +4795,13 @@ res = fitted_pipe.predict(dataset)
 fitted_pipe.predict(["Peter told me to buy Tesla ", 'I have money to loose, is TSLA a good option?'])
 ```
 
+{:.table-model-big.db}
 | entity_resolution_confidence   | entity_resolution_code   | entity_resolution   | document                                      |
 |:-------------------------------|:-------------------------|:--------------------|:----------------------------------------------|
 | '1.0000'                     | '23'                   | 'TESLA'           | Peter told me to buy Tesla                    |
 | '1.0000'                     | '23'                   | 'TESLA'           | I have money to loose, is TSLA a good option? |
 
+</div><div class="h3-box" markdown="1">
 
 #### Train with default glove embeddings
 ```python
@@ -4759,6 +4810,8 @@ trained_chunk_resolver  =  untrained_chunk_resolver.fit(df)
 trained_chunk_resolver.predict(df)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Train with custom embeddings
 ```python
 # Use BIo GLove
@@ -4766,6 +4819,8 @@ untrained_chunk_resolver = nlu.load('en.embed.glove.biovec train.resolve_chunks'
 trained_chunk_resolver  =  untrained_chunk_resolver.fit(df)
 trained_chunk_resolver.predict(df)
  ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Rule based NER with Context Matcher
 [Rule based NER with context matching tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/rule_based_named_entity_recognition_and_resolution/rule_based_NER_and_resolution_with_context_matching.ipynb)    
@@ -4808,6 +4863,7 @@ gender_NER_pipe['context_matcher'].setDictionary('gender.csv', options={"delimit
 gender_NER_pipe.predict(sample_text)
 ```
 
+{:.table-model-big}
 | context_match | context_match_confidence |
 | :------------ | -----------------------: |
 | female        |                     0.13 |
@@ -4819,9 +4875,12 @@ gender_NER_pipe.predict(sample_text)
 | girl          |                     0.13 |
 | girl          |                     0.13 |
 
+</div><div class="h3-box" markdown="1">
+
 #### Context Matcher Parameters
 You can define the following parameters in your rules.json file to define the entities to be matched
 
+{:.table-model-big.db}
 | Parameter             | Type                    | Description                                                  |
 | --------------------- | ----------------------- | ------------------------------------------------------------ |
 | entity                | `str   `                | The name of this rule                                        |
@@ -4839,6 +4898,8 @@ You can define the following parameters in your rules.json file to define the en
 | completeMatchRegex    | `Optional[str]`         | Wether to use complete or partial matching, either `"true"` or `"false"` |
 | ruleScope             | `str`                   | currently only `sentence` supported                          |
 
+</div><div class="h3-box" markdown="1">
+
 #### Drug Normalizer
 [Drug Normalizer tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/drug_normalization/drug_norm.ipynb)
 
@@ -4854,7 +4915,7 @@ data = ["Agnogenic one half cup","adalimumab 54.5 + 43.2 gm","aspirin 10 meq/ 5 
 nlu.load('norm_drugs').predict(data)
 ```
 
-
+{:.table-model-big}
 | drug_norm                                            | text                                              |
 | :--------------------------------------------------- | :------------------------------------------------ |
 | Agnogenic 0.5 oral solution                          | Agnogenic one half cup                            |
@@ -4863,19 +4924,24 @@ nlu.load('norm_drugs').predict(data)
 | interferon alfa - 2b 10000000 unt ( 1 ml ) injection | interferon alfa-2b 10 million unit ( 1 ml ) injec |
 | Sodium Chloride / Potassium Chloride 13 bag          | Sodium Chloride/Potassium Chloride 13bag          |
 
+</div><div class="h3-box" markdown="1">
+
 #### New NLU Spells
 These new magical 1-liners which get new the folowing models
 
 #### Open Source NLU Spells
 
+{:.table-model-big}
 | NLU Spell                                                    | Spark NLP Model                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [nlu.load('de.ner.wikiner.6B_100')](https://nlp.johnsnowlabs.com/2019/07/13/wikiner_6B_100_de.html) | [wikiner_6B_100](https://nlp.johnsnowlabs.com/2019/07/13/wikiner_6B_100_de.html) |
 | nlu.load('xx.embed.glove.glove_6B_100')                      | glove_6B_100                                                 |
 
+</div><div class="h3-box" markdown="1">
 
 #### Healthcare NLU spells
 
+{:.table-model-big}
 | NLU Spell | Spark NLP Model |
 | --------- | --------------- |
 |[nlu.load('en.resolve.snomed_body_structure_med')](https://nlp.johnsnowlabs.com/2021/06/15/sbertresolve_snomed_bodyStructure_med_en.html)        | [sbertresolve_snomed_bodyStructure_med](https://nlp.johnsnowlabs.com/2021/06/15/sbertresolve_snomed_bodyStructure_med_en.html)
@@ -4900,16 +4966,21 @@ These new magical 1-liners which get new the folowing models
 |[nlu.load('en.recognize_entities.posology')](https://nlp.johnsnowlabs.com/2021/03/29/recognize_entities_posology_en.html)        | [recognize_entities_posology](https://nlp.johnsnowlabs.com/2021/03/29/recognize_entities_posology_en.html)
 |[nlu.load('en.embed_sentence.bluebert_cased_mli')](https://todo.com/)        | [spark_name](https://todo.com/)
 
+</div><div class="h3-box" markdown="1">
+
 #### Improved NER  defaults
 When loading licensed models that require a NER features like  `Assertion`, `Relation`, `Resolution`,
 nlu will now use the `en.med_ner` model which maps to the Spark NLP model `jsl_ner_wip_clinical` as default.
 See [https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html](https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html) for more infos on this model.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 - [Rule based NER with context matching tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/rule_based_named_entity_recognition_and_resolution/rule_based_NER_and_resolution_with_context_matching.ipynb)
 - [Drug Normalizer tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/drug_normalization/drug_norm.ipynb)
 - [Generic Deep Learning Tensorflow Classifier](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/generic_TF_classifier/generic_classifier.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
@@ -4920,6 +4991,7 @@ See [https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html](https
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
+</div><div class="h3-box" markdown="1">
 
 #### Install NLU in 1 line!
 
@@ -4942,6 +5014,8 @@ New Healthcare pipelines for `healthcare code mappings`
 and finally `confidence extraction` for open source NER models.
 Additionally, the NLU Namespace has been renamed to the NLU Spellbook, to reflect the magicalness of each 1-liners represented by them!
 
+</div><div class="h3-box" markdown="1">
+
 #### Streamlit Word Embedding visualization via Manifold and Matrix Decomposition algorithms
 
 #### <kbd>function</kbd> `pipe.viz_streamlit_word_embed_manifold`
@@ -4961,11 +5035,13 @@ Additionally, you can color the lower dimensional points with a label that has b
 nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=THE_MATRIX_ARCHITECT_SCRIPT.split('\n'),default_algos_to_apply=['TSNE'],MAX_DISPLAY_NUM=5)
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true">
+![Streamlit Word Embedding visualization via Manifold and Matrix Decomposition algorithms](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true)
+
+</div><div class="h3-box" markdown="1">
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_word_embed_manifold`
 
-
+{:.table-model-big.db}
 | Argument    | Type        |                                          Default         |Description |
 |-------------| ---------- |-----------------------------------------------------------| ------------------------------------------------------- |
 `default_texts`| `List[str]`  | ("Donald Trump likes to party!", "Angela Merkel likes to party!", 'Peter HATES TO PARTTY!!!! :(') | List of strings to apply classifiers, embeddings, and manifolds to.|
@@ -4988,9 +5064,11 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 | `display_infos` |  `bool` | `False` | Display additonal information about ISO codes and the NLU namespace structure. |
 | `n_jobs`| `Optional[int]` | `False` | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |
 
-#### Larger Example showcasing more dimension reduction techniques on a larger corpus :
+</div><div class="h3-box" markdown="1">
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true">
+#### Larger Example showcasing more dimension reduction techniques on a larger corpus:
+
+![Larger Example showcasing more dimension reduction techniques on a larger corpus](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true)
 
 
 #### [Supported Manifold Algorithms ](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.manifold)
@@ -5000,6 +5078,8 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 - [Spectral Embedding](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding)
 - [MDS](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS)
 
+</div><div class="h3-box" markdown="1">
+
 #### [Supported Matrix Decomposition Algorithms ](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.decomposition)
 - [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA)
 - [Truncated SVD aka LSA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD)
@@ -5007,6 +5087,8 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 - [FactorAnalysis](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html#sklearn.decomposition.FactorAnalysis)
 - [FastICA](https://scikit-learn.org/stable/modules/generated/fastica-function.html#sklearn.decomposition.fastica)
 - [KernelPCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html#sklearn.decomposition.KernelPCA)
+
+</div><div class="h3-box" markdown="1">
 
 #### New Healthcare Pipelines
 Five new healthcare code mapping pipelines:
@@ -5031,6 +5113,7 @@ Five new healthcare code mapping pipelines:
 
 In the following table the NLU and Spark-NLP references are listed:
 
+{:.table-model-big}
 |NLU Reference| Spark NLP Reference  | 
 |---------------|---------------------|
 |[en.resolve.icd10cm.umls](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html) | [icd10cm_umls_mapping](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)  |
@@ -5041,10 +5124,11 @@ In the following table the NLU and Spark-NLP references are listed:
 |[en.explain_doc.carp    ](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_carp_en.html) | [explain_clinical_doc_carp](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_carp_en.html)  |
 |[en.explain_doc.era     ](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_era_en.html) | [explain_clinical_doc_era](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_era_en.html)  |
 
+</div><div class="h3-box" markdown="1">
 
 #### New Open Source Models and Pipelines
 
-
+{:.table-model-big}
 | nlu.load() Refrence                                          | Spark NLP Refrence                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [en.embed.distilbert](https://sparknlp.org/2021/05/20/distilbert_base_cased_en.html) | [distilbert_base_cased](https://sparknlp.org/2021/05/20/distilbert_base_cased_en.html) |
@@ -7077,7 +7161,8 @@ In the following table the NLU and Spark-NLP references are listed:
 </div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.0.2
-<img width="65%" align="right" src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif">
+
+![NLU Version 3.0.2](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif "lit_shadow w_80")
 
 This release contains examples and tutorials on how to visualize the 1000+ state-of-the-art NLP models provided by NLU in *just 1 line of code* in `streamlit`.
 It includes simple `1-liners` you can sprinkle into your Streamlit app to for features like **Dependency Trees, Named Entities (NER), text classification results, semantic simmilarity,
@@ -7087,6 +7172,8 @@ This is the ultimate NLP research tool. You can visualize and compare the result
 and can see with your own eyes how context is encoded by transformer models like `BERT` or `XLNET`and many more !
 Besides that, you can also compare the results of the 200+ NER models John Snow Labs provides and see how peformances changes with varrying ebeddings, like Contextual, Static and Domain Specific Embeddings.
 
+</div><div class="h3-box" markdown="1">
+
 #### Install
 [For detailed instructions refer to the NLU install documentation here](https://nlp.johnsnowlabs.com/docs/en/jsl/install)   
 You need `Open JDK 8` installed and the following python packages
@@ -7095,11 +7182,15 @@ pip install nlu streamlit pyspark==3.0.1 sklearn plotly
 ```
 Problems? [Connect with us on Slack!](https://join.slack.com/t/spark-nlp/shared_invite/zt-lutct9gm-kuUazcyFKhuGY3_0AMkxqA)
 
+</div><div class="h3-box" markdown="1">
+
 #### Impatient and want some action?
 Just run this Streamlit app, you can use it to generate python code for each NLU-Streamlit building block
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Quick Starter cheat sheet - All you need to know in 1 picture for NLU + Streamlit
 For NLU models to load, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py).
@@ -7107,44 +7198,64 @@ For NLU models to load, see [the NLU Namespace](https://nlp.johnsnowlabs.com/doc
 
 
 #### Examples
+
 Just try out any of these.
-You can use the first example to generate python-code snippets which you can
-recycle as building blocks in your streamlit apps!
+You can use the first example to generate python-code snippets which you can recycle as building blocks in your streamlit apps!
+
+</div><div class="h3-box" markdown="1">
+
 #### Example:  [`01_dashboard`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py
 ```
+
+</div><div class="h3-box" markdown="1">
+
 #### Example:  [`02_NER`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py
 ```
+
+</div><div class="h3-box" markdown="1">
+
 #### Example:  [`03_text_similarity_matrix`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/03_text_similarity_matrix.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/03_text_similarity_matrix.py
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Example:  [`04_dependency_tree`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/04_dependency_tree.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/04_dependency_tree.py
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Example:  [`05_classifiers`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/05_classifiers.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/05_classifiers.py
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Example:  [`06_token_features`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/06_token_features.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/06_token_features.py
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### How to use NLU?
 All you need to know about NLU is that there is the [`nlu.load()`](https://nlp.johnsnowlabs.com/docs/en/jsl/load_api) method which returns a `NLUPipeline` object
 which has a [`.predict()`](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) that works on most [common data types in the pydata stack like Pandas dataframes](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) .     
 Ontop of that, there are various visualization methods a NLUPipeline provides easily integrate in Streamlit as re-usable components. [`viz() method`](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples)
 
+</div><div class="h3-box" markdown="1">
+
 #### Overview of NLU + Streamlit buildingblocks
 
+{:.table-model-big.db}
 |Method                                                         |               Description                 |
 |---------------------------------------------------------------|-------------------------------------------|
 | [`nlu.load('<Model>').predict(data)`](https://todo.com/)                                     | Load any of the [1000+ models](https://nlp.johnsnowlabs.com/models) by providing the model name any predict on most Pythontic [data strucutres like Pandas, strings, arrays of strings and more](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) |
@@ -7157,6 +7268,7 @@ Ontop of that, there are various visualization methods a NLUPipeline provides ea
 | [`nlu.load('<Model>').viz(data, write_to_streamlit=True)`](https://todo.com/)                | Display the raw visualization without any UI elements. See [viz docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples). By default all aplicable nlu model references will be shown. |
 | [`nlu.enable_streamlit_caching()`](#test)  | Enable caching the `nlu.load()` call. Once enabled, the `nlu.load()` method will automatically cached. **This is recommended** to run first and for large peformance gans |
 
+</div><div class="h3-box" markdown="1">
 
 #### Detailed visualizer information and API docs
 
@@ -7181,8 +7293,11 @@ nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy softwar
 
 ![NLU Streamlit UI Overview](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/ui.gif)
 
+</div><div class="h3-box" markdown="1">
+
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit`
 
+{:.table-model-big.db}
 | Argument              | Type                                             |                                                            Default                     |Description |
 |-----------------------|--------------------------------------------------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  |  `Union [str, List[str], pd.DataFrame, pd.Series]` | `'NLU and Streamlit go together like peanutbutter and jelly'`                            | Default text for the `Classification`, `Named Entitiy Recognizer`, `Token Information` and `Dependency Tree` visualizations
@@ -7202,6 +7317,8 @@ nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy softwar
 | `show_code_snippets`      |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 |`num_similarity_cols`                               | `int`               |  `2`                            |  How many columns should for the layout in Streamlit when rendering the similarity matrixes.
 
+</div><div class="h3-box" markdown="1">
+
 #### <kbd>function</kbd> `pipe.viz_streamlit_classes`
 
 Visualize the predicted classes and their confidences and additional metadata to streamlit.
@@ -7212,8 +7329,11 @@ nlu.load('sentiment').viz_streamlit_classes(['I love NLU and Streamlit!','I love
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/class.gif)
 
+</div><div class="h3-box" markdown="1">
+
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_classes`
 
+{:.table-model-big.db}
 | Argument    | Type        |                                                            Default         |Description |
 |--------------------------- | ---------- |-----------------------------------------------------------| ------------------------------------------------------- |
 | `text`                    | `Union[str,list,pd.DataFrame, pd.Series, pyspark.sql.DataFrame ]`   |     `'I love NLU and Streamlit and sunny days!'`                  | Text to predict classes for. Will predict on each input of the iteratable or dataframe if type is not str.|
@@ -7251,6 +7371,7 @@ nlu.load('ner').viz_streamlit_ner('Donald Trump from America and Angela Merkel f
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_ner`
 
+{:.table-model-big.db}
 | Argument    | Type        |                                                                                      Default                                        |Description                  |
 |--------------------------- | -----------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------ |
 | `text`                     | `str`                  |     `'Donald Trump from America and Anegela Merkel from Germany do not share many views'`                 | Text to predict classes for.|
@@ -7280,6 +7401,7 @@ nlu.load('dep.typed').viz_streamlit_dep_tree('POS tags define a grammatical labe
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_dep_tree`
 
+{:.table-model-big.db}
 | Argument    | Type        |                                                            Default         |Description |
 |--------------------------- | ---------- |-----------------------------------------------------------| ------------------------------------------------------- |
 | `text`                    | `str`   |     `'Billy likes to swim'`                 | Text to predict classes for.|
@@ -7302,11 +7424,13 @@ You can use this with [any of the 1000+ models](https://nlp.johnsnowlabs.com/mod
 ```python
 nlu.load('stemm pos spell').viz_streamlit_token('I liek pentut buttr and jelly !')
 ```
+
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif)
 
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_token`
 
+{:.table-model-big.db}
 | Argument    | Type        |                                                            Default         |Description |
 |--------------------------- | ---------- |-----------------------------------------------------------| ------------------------------------------------------- |
 | `text`                    | `str`   |     `'NLU and Streamlit are great!'`                 | Text to predict token information for.|
@@ -7341,6 +7465,7 @@ nlu.load('bert').viz_streamlit_word_similarity(['I love love loooove NLU! <3','I
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_similarity`
 
+{:.table-model-big.db}
 | Argument    | Type        |                                                            Default         |Description |
 |--------------------------- | ---------- |-----------------------------------------------------------| ------------------------------------------------------- |
 | `texts`                                 | `str`               |     `'Donald Trump from America and Anegela Merkel from Germany do not share many views.'`                 | Text to predict token information for.|
@@ -7365,10 +7490,7 @@ nlu.load('bert').viz_streamlit_word_similarity(['I love love loooove NLU! <3','I
 
 </div><div class="h3-box" markdown="1">
 
-## 
 In addition have added some new features to our T5 Transformer annotator to help with longer and more accurate text generation, trained some new multi-lingual models and pipelines in `Farsi`, `Hebrew`, `Korean`, and `Turkish`.
-
-
 
 #### T5 Model Improvements
 * Add 6 new features to T5Transformer for longer and better text generation
@@ -7383,12 +7505,14 @@ In addition have added some new features to our T5 Transformer annotator to help
 #### New Open Source Model in NLU 3.0.2
 New multilingual models and pipelines for `Farsi`, `Hebrew`, `Korean`, and `Turkish`
 
+{:.table-model-big}
 | Model       |NLU Reference         | Spark NLP Reference               | Lang |  
 |:----------|:-------------------------------------|:-----------------|:------|
 | ClassifierDLModel       | [`tr.classify.news`](https://nlp.johnsnowlabs.com/2021/05/03/classifierdl_bert_news_tr.html) |        [classifierdl_bert_news](https://nlp.johnsnowlabs.com/2021/05/03/classifierdl_bert_news_tr.html) |  `tr`
 | UniversalSentenceEncoder| [`xx.use.multi`](https://nlp.johnsnowlabs.com/2021/05/06/tfhub_use_multi_xx.html) | [tfhub_use_multi](https://nlp.johnsnowlabs.com/2021/05/06/tfhub_use_multi_xx.html) |  `xx`
 | UniversalSentenceEncoder| [`xx.use.multi_lg`](https://nlp.johnsnowlabs.com/2021/05/06/tfhub_use_multi_lg_xx.html) | [tfhub_use_multi_lg](https://nlp.johnsnowlabs.com/2021/05/06/tfhub_use_multi_lg_xx.html) |  `xx`
 
+{:.table-model-big}
 | Pipeline                  |NLU Reference| Spark NLP Reference               | Lang |  
 |:-----------------------------|:-------------------|:-----------------|:------|
 | PretrainedPipeline | [`fa.ner.dl`](https://nlp.johnsnowlabs.com/2021/04/26/recognize_entities_dl_fa.html) | [recognize_entities_dl](https://nlp.johnsnowlabs.com/2021/04/26/recognize_entities_dl_fa.html) |`fa`
@@ -7406,6 +7530,7 @@ Five new resolver models:
 
 [Related NLU Notebook](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/release_notebooks/NLU_3_0_2_release_notebook.ipynb)
 
+{:.table-model-big}
 |Model| NLU Reference                           | Spark NLP Reference                                 |
 |--------|-----------------------------------|-----------------------------------------|
 |Resolver|[`en.resolve.umls`                    ](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_umls_major_concepts_en.html)| [`sbiobertresolve_umls_major_concepts`](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_umls_major_concepts_en.html)     |
@@ -7415,8 +7540,6 @@ Five new resolver models:
 |Resolver|[`en.resolve.loinc.bluebert`          ](https://nlp.johnsnowlabs.com/2021/04/29/sbluebertresolve_loinc_en.html)| [`sbluebertresolve_loinc`](https://nlp.johnsnowlabs.com/2021/04/29/sbluebertresolve_loinc_en.html)                  |
 |Resolver|[`en.resolve.HPO`                     ](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_HPO_en.html)| [`sbiobertresolve_HPO`](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_HPO_en.html)                     |
 
-
-
 [en.resolve.HPO](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_HPO_en.html)
 
 ```python
@@ -7425,8 +7548,6 @@ nlu.load('med_ner.jsl.wip.clinical en.resolve.HPO').viz("""These disorders inclu
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/HPO.png)
 
-
-
 [en.resolve.loinc.bluebert](https://nlp.johnsnowlabs.com/2021/04/29/sbluebertresolve_loinc_en.html)
 ```python
 nlu.load('med_ner.jsl.wip.clinical en.resolve.loinc.bluebert').viz("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and
@@ -7434,8 +7555,6 @@ subsequent type two diabetes mellitus (TSS2DM), one prior episode of HTG-induced
 hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC_blue.png)
-
-
 
 [en.resolve.umls.findings](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_umls_findings_en.html)
 ```python
@@ -7446,7 +7565,6 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/umls_finding.png)
 
-
 [en.resolve.umls](https://nlp.johnsnowlabs.com/2021/05/16/sbiobertresolve_umls_major_concepts_en.html)
 ```python
 nlu.load('med_ner.jsl.wip.clinical en.resolve.umls').viz("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and
@@ -7454,9 +7572,6 @@ subsequent type two diabetes mellitus (TSS2DM), one prior episode of HTG-induced
 hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/umls.png)
-
-
-
 
 [en.resolve.loinc](https://nlp.johnsnowlabs.com/2021/04/29/sbiobertresolve_loinc_en.html)
 ```python
@@ -7466,8 +7581,6 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC.png)
 
-
-
 [en.resolve.loinc.biobert](https://nlp.johnsnowlabs.com/2021/04/29/sbiobertresolve_loinc_en.html)
 ```python
 nlu.load('med_ner.jsl.wip.clinical en.resolve.loinc.biobert').predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and
@@ -7475,7 +7588,6 @@ subsequent type two diabetes mellitus (TSS2DM), one prior episode of HTG-induced
 hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC_BIOBERT.png)
-
 
 * [140+ tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
 * [New Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
@@ -7646,6 +7758,7 @@ nlu.load('med_ner.jsl.wip.clinical').viz(data,labels_to_viz=labels_to_viz)
 #### New models
 New multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, and`Vietnamese`
 
+{:.table-model-big}
 | nlu.load() Refrence                                          | Spark NLP Refrence                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [vi.lemma](https://sparknlp.org/2021/04/02/lemma_vi.html) | [lemma](https://sparknlp.org/2021/04/02/lemma_vi.html) |
@@ -7721,6 +7834,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### AssertionDLModels
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | [assert](https://nlp.johnsnowlabs.com/2021/01/26/assertion_dl_en.html) | [assertion_dl](https://nlp.johnsnowlabs.com/2021/01/26/assertion_dl_en.html)                   |
@@ -7730,6 +7844,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 ####  New Word Embeddings
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | [embed.glove.clinical](https://nlp.johnsnowlabs.com/2021/03/31/ner_anatomy_coarse_en.html) | [embeddings_clinical](https://nlp.johnsnowlabs.com/2021/03/31/ner_anatomy_coarse_en.html)                   |
@@ -7741,6 +7856,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### Sentence Entity resolvers
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | embed_sentence.biobert.mli | sbiobert_base_cased_mli          |
@@ -7764,6 +7880,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### RelationExtractionModel
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | relation.posology | posology_re          |
@@ -7782,6 +7899,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### NERDLModels
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |English  | [med_ner.ade.clinical](https://nlp.johnsnowlabs.com/2021/04/01/ner_ade_clinical_en.html) | [ner_ade_clinical](https://nlp.johnsnowlabs.com/2021/04/01/ner_ade_clinical_en.html)                   |
@@ -7846,6 +7964,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### De-Identification Models
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | [med_ner.deid.augmented](https://nlp.johnsnowlabs.com/2021/03/31/ner_deid_augmented_en.html) | [ner_deid_augmented](https://nlp.johnsnowlabs.com/2021/03/31/ner_deid_augmented_en.html)           |
@@ -7869,6 +7988,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### Chunk resolvers
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | [resolve_chunk.athena_conditions](https://nlp.johnsnowlabs.com/2020/09/16/chunkresolve_athena_conditions_healthcare_en.html) | [chunkresolve_athena_conditions_healthcare](https://nlp.johnsnowlabs.com/2020/09/16/chunkresolve_athena_conditions_healthcare_en.html)           |
@@ -7898,6 +8018,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### New Classifiers
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference          |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | English  | classify.icd10.clinical | classifier_icd10cm_hcc_clinical          |
@@ -7912,6 +8033,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### German Medical models
 
+{:.table-model-big}
 | nlu.load() reference                                         | Spark NLP Model reference          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [embed]    | w2v_cc_300d|
@@ -7927,6 +8049,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 
 #### Spanish Medical models
 
+{:.table-model-big}
 | nlu.load() reference                                         | Spark NLP Model reference          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [embed.scielo.150d](https://nlp.johnsnowlabs.com/2020/05/26/embeddings_scielo_150d_es.html) | [embeddings_scielo_150d](https://nlp.johnsnowlabs.com/2020/05/26/embeddings_scielo_150d_es.html)| 
@@ -7974,7 +8097,7 @@ This new output level is used for relation extractors and will give you 1 row pe
 
 ## NLU Version 1.1.3
 
-#### Intent and Action Classification,  analyze Chinese News and the Crypto market, train a classifier that understands 100+ languages, translate between 200 + languages, answer questions, summarize text, and much more in NLU 1.1.3
+#### Intent and Action Classification, analyze Chinese News and the Crypto market, train a classifier that understands 100+ languages, translate between 200 + languages, answer questions, summarize text, and much more in NLU 1.1.3
 
 We are very excited to announce that the latest NLU release comes with a new pretrained Intent Classifier and NER Action Extractor for text related to
 music, restaurants, and movies trained on the SNIPS dataset. Make sure to check out the models hub and the easy 1-liners for more info!
@@ -7996,11 +8119,13 @@ Finally, there is a new NLU Webinar with 9 accompanying tutorial notebooks which
 - Part 6: Question answering, Summarization, Squad and more with [Google's T5](https://arxiv.org/abs/1910.10683)
     - T5 Question answering and 18 + other NLP tasks ([SQUAD](https://arxiv.org/abs/1606.05250) / [GLUE](https://arxiv.org/abs/1804.07461) / [SUPER GLUE](https://super.gluebenchmark.com/))
 
+</div><div class="h3-box" markdown="1">
 
 #### New Models
 
 #### NLU 1.1.3 New Non-English Models
 
+{:.table-model-big}
 | Language | nlu.load() reference                                         | Spark NLP Model reference                                    | Type                  |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------- |
 | Bengali  | [bn.ner.cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengali_cc_300d_bn.html) | [ bengaliner_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengali_cc_300d_bn.html) | NerDLModel    |
@@ -8008,12 +8133,17 @@ Finally, there is a new NLU Webinar with 9 accompanying tutorial notebooks which
 | Bengali  | [bn.embed.cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | [bengali_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | Word Embeddings Model (Alias)    |
 | Bengali  | [bn.embed.glove](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | [bengali_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) |  Word Embeddings Model (Alias)|
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.3 New English Models
 
+{:.table-model-big}
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 | English | [en.classify.snips](https://nlp.johnsnowlabs.com/2021/02/15/nerdl_snips_100d_en.html) |[nerdl_snips_100d](https://nlp.johnsnowlabs.com/2021/02/15/nerdl_snips_100d_en.html)     | NerDLModel |
 | English | [en.ner.snips](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html) |[classifierdl_use_snips](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html)|ClassifierDLModel|
+
+</div><div class="h3-box" markdown="1">
 
 #### New NLU Webinar
 #### [State-of-the-art Natural Language Processing for 200+ Languages with 1 Line of code](https://events.johnsnowlabs.com/state-of-the-art-natural-language-processing-for-200-languages-with-1-line-of-code)
@@ -8028,8 +8158,9 @@ This webinar will show you how to leverage the multi-lingual capabilities of Spa
 
 You can watch the [video here,](https://events.johnsnowlabs.com/state-of-the-art-natural-language-processing-for-200-languages-with-1-line-of-code)
 
-#### NLU 1.1.3 New Notebooks and tutorials
+</div><div class="h3-box" markdown="1">
 
+#### NLU 1.1.3 New Notebooks and tutorials
 
 #### New Webinar Notebooks
 
@@ -8043,6 +8174,7 @@ You can watch the [video here,](https://events.johnsnowlabs.com/state-of-the-art
 8. [Solve any task in 1 line from SQUAD, GLUE and SUPER GLUE with T5](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/7_T5_SQUAD_GLUE_SUPER_GLUE_TASKS.ipynb)
 9. [Overview of models for various languages](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/8_Multi_lingual_ner_pos_stop_words_sentiment_pretrained.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 #### New easy NLU 1-liners in NLU 1.1.3
 
@@ -8055,9 +8187,12 @@ nlu.load("en.classify.snips").predict("book a spot for nona gray  myrtle and ali
 
 outputs :
 
+{:.table-model-big.db}
 |                                               ner_confidence | entities                                                     | document                                                     | Entities_Classes                                             |
 | -----------------------------------------------------------: | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [1.0, 1.0, 0.9997000098228455, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9990000128746033, 1.0, 1.0, 1.0, 0.9965000152587891, 0.9998999834060669, 0.9567000269889832, 1.0, 1.0, 1.0, 0.9980000257492065, 0.9991999864578247, 0.9988999962806702, 1.0, 1.0, 0.9998999834060669] | ['nona gray myrtle and alison', 'top-rated', 'brasserie', 'distant', 'wilson av', 'nov the 4th 2030', 'ouzeri'] | book a spot for nona gray myrtle and alison at a top-rated brasserie that is distant from wilson av on nov the 4th 2030 that serves ouzeri | ['party_size_description', 'sort', 'restaurant_type', 'spatial_relation', 'poi', 'timeRange', 'cuisine'] |
+
+</div><div class="h3-box" markdown="1">
 
 ####  [Named Entity Recognition (NER) Model in Bengali (bengaliner_cc_300d)](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html)
 
@@ -8069,9 +8204,12 @@ nlu.load("bn.ner.cc_300d").predict("১৯৪৮ সালে ইয়াজউ
 
 outputs :
 
+{:.table-model-big.db}
 | ner_confidence                                                                                                                                                                                                                                                                                                                                                                                                                       | entities                                                                           | Entities_Classes   | document                                                                                                                         |
 |---------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|:--------------------------------------|
 | [0.9987999796867371, 0.9854000210762024, 0.8604000210762024, 0.6686999797821045, 0.5289999842643738, 0.7009999752044678, 0.7684999704360962, 0.9979000091552734, 0.9976000189781189, 0.9930999875068665, 0.9994000196456909, 0.9879000186920166, 0.7407000064849854, 0.9215999841690063, 0.7657999992370605, 0.39419999718666077, 0.9124000072479248, 0.9932000041007996, 0.9919999837875366, 0.995199978351593, 0.9991999864578247] | ['সালে', 'ইয়াজউদ্দিন আহম্মেদ', 'মুন্সিগঞ্জ উচ্চ বিদ্যালয়', 'সালে', 'মুন্সিগঞ্জ হরগঙ্গা কলেজ'] | ['TIME', 'PER', 'ORG', 'TIME', 'ORG'] | ১৯৪৮ সালে ইয়াজউদ্দিন আহম্মেদ মুন্সিগঞ্জ উচ্চ বিদ্যালয় থেকে মেট্রিক পাশ করেন এবং ১৯৫০ সালে মুন্সিগঞ্জ হরগঙ্গা কলেজ থেকে ইন্টারমেডিয়েট পাশ করেন |
+
+</div><div class="h3-box" markdown="1">
 
 #### [Identify intent in general text - SNIPS dataset](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html)
 
@@ -8082,11 +8220,12 @@ nlu.load("en.ner.snips").predict("I want to bring six of us to a bistro in town 
 
 outputs :
 
-
+{:.table-model-big.db}
 | document | snips | snips_confidence|
 |----------|------|------------------|
 | I want to bring six of us to a bistro in town that serves hot chicken sandwich that is within the same area | BookRestaurant |                  1 |
 
+</div><div class="h3-box" markdown="1">
 
 #### [Word Embeddings for Bengali (bengali_cc_300d)](https://nlp.johnsnowlabs.com/2021/02/10/bengali_cc_300d_bn.html)
 
@@ -8097,19 +8236,25 @@ nlu.load("bn.embed").predict("১৯৪৮ সালে ইয়াজউদ্
 
 outputs :
 
+{:.table-model-big.db}
 |                                                     document | bn_embed_embeddings                                          |
 | -----------------------------------------------------------: | :----------------------------------------------------------- |
 | ১৯৪৮ সালে ইয়াজউদ্দিন আহম্মেদ মুন্সিগঞ্জ উচ্চ বিদ্যালয় থেকে মেট্রিক পাশ করেন এবং ১৯৫০ সালে মুন্সিগঞ্জ হরগঙ্গা কলেজ থেকে ইন্টারমেডিয়েট পাশ করেন | [-0.0828      0.0683      0.0215     ...  0.0679     -0.0484...] |
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.3 Enhancements
 - Added automatic conversion  to Sentence Embeddings of Word Embeddings when there is no Sentence Embedding Avaiable and a model needs the converted version to run.
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.3 Bug Fixes
 - Fixed a bug that caused `ur.sentiment` NLU pipeline to build incorrectly
 - Fixed a bug that caused `sentiment.imdb.glove` NLU pipeline to build incorrectly
 - Fixed a bug that caused `en.sentiment.glove.imdb` NLU pipeline to build incorrectly
 - Fixed a bug that caused Spark 2.3.X environments to crash.
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU Installation
 
@@ -8120,6 +8265,8 @@ outputs :
 # Install NLU from Anaconda/Conda
 conda install -os_components johnsnowlabs nlu
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 
@@ -8139,6 +8286,8 @@ and state-of-the-art transformer based OntoNotes models and pipelines from the [
 In addition to that, there is a [new NLU Webinar video](https://www.youtube.com/watch?t=2141&v=hJR9m3NYnwk&feature=youtu.be) showcasing in detail
 how to use NLU to analyze a crypto news dataset to extract keywords unsupervised and predict sentimential/emotional distributions of the dataset and much more!
 
+</div><div class="h3-box" markdown="1">
+
 #### [Python's NLU library: 1,000+ models, 200+ Languages, State of the Art Accuracy, 1 Line of code - NLU NYC/DC NLP Meetup Webinar](https://www.youtube.com/watch?t=2141&v=hJR9m3NYnwk&feature=youtu.be)
 Using just 1 line of Python code by leveraging the NLU library, which is powered by the award-winning Spark NLP.
 
@@ -8157,6 +8306,7 @@ We'll also cover some of the algorithms and models that are included. The code n
 
 #### NLU 1.1.2 New Non-English Models
 
+{:.table-model-big}
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 |Bengali | [bn.ner](https://nlp.johnsnowlabs.com/2021/01/27/ner_jifs_glove_840B_300d_bn.html) |[ner_jifs_glove_840B_300d](https://nlp.johnsnowlabs.com/2021/01/27/ner_jifs_glove_840B_300d_bn.html) | Word Embeddings Model (Alias) |
@@ -8167,8 +8317,11 @@ We'll also cover some of the algorithms and models that are included. The code n
 |Bihari | [bh.lemma](https://nlp.johnsnowlabs.com/2021/01/18/lemma_bh.html) |[lemma](https://nlp.johnsnowlabs.com/2021/01/18/lemma_bh.html) | Lemma                    |
 |Amharic | [am.lemma](https://nlp.johnsnowlabs.com/2021/01/20/lemma_am.html) |[lemma](https://nlp.johnsnowlabs.com/2021/01/20/lemma_am.html) | Lemma                    |
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.2 New English Models and Pipelines
 
+{:.table-model-big}
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 | English | [en.ner.onto.bert.small_l2_128](https://nlp.johnsnowlabs.com/2020/12/05/onto_small_bert_L2_128_en.html) |[onto_small_bert_L2_128](https://nlp.johnsnowlabs.com/2020/12/05/onto_small_bert_L2_128_en.html)     | NerDLModel |
@@ -8190,7 +8343,7 @@ We'll also cover some of the algorithms and models that are included. The code n
 |English|[en.ner.onto.electra.base](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_base_en.html)|[onto_recognize_entities_electra_base](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_base_en.html)|Pipeline|
 |English|[en.ner.onto.large](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_large_en.html)|[onto_recognize_entities_electra_large](https://nlp.johnsnowlabs.com/2020/12/09/onto_recognize_entities_electra_large_en.html)|Pipeline|
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Tutorials and Notebooks
 
@@ -8208,6 +8361,7 @@ We'll also cover some of the algorithms and models that are included. The code n
 - Fixed a bug that caused nlu.load('spell') to crash
 - Fixed a bug that caused Uralic/Estonian/ET language models not to be loaded properly
 
+</div><div class="h3-box" markdown="1">
 
 #### New  Easy NLU 1-liners in 1.1.2
 
@@ -8221,6 +8375,7 @@ nlu.load("bn.ner").predict("৯০ এর দশকের শুরুর দি
 ```
 output :
 
+{:.table-model-big}
 |   entities             | token     | Entities_classes   |   ner_confidence |
 |:---------------------|:----------|:----------------------|-----------------:|
 | ['মার্কিন যুক্তরাষ্ট্রে'] | ৯০        | ['LOC']               |           1      |
@@ -8239,6 +8394,7 @@ output :
 | ['মার্কিন যুক্তরাষ্ট্রে'] | হয়        | ['LOC']               |           1      |
 | ['মার্কিন যুক্তরাষ্ট্রে'] | '         | ['LOC']               |           1      |
 
+</div><div class="h3-box" markdown="1">
 
 #### [Bengali Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/20/lemma_bn.html)
 
@@ -8250,10 +8406,12 @@ nlu.load("bn.lemma").predict("একদিন প্রাতে বৈদ্য
 ```
 output :
 
+{:.table-model-big.db}
 | lemma                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | document                                                                                                                                                                                                                                                                                                                                          |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ['একদিন', 'প্রাতঃ', 'বৈদ্যনাথ', 'মার্বলমণ্ডিত', 'দালান', 'এক', 'স্থূলউদর', 'সন্ন্যাসী', 'দুইসের', 'মোহনভোগ', 'এবং', 'দেড়সের', 'দুগ্ধ', 'সেবা', 'নিযুক্ত', 'আছে', 'বৈদ্যনাথ', 'গা', 'একখান', 'চাদর', 'দেওয়া', 'জোড়কর', 'একান্ত', 'বিনীতভাব', 'ভূতল', 'বসা', 'ভক্তিভরা', 'পবিত্র', 'ভোজনব্যাপার', 'নিরীক্ষণ', 'করা', 'এমন', 'সময়', 'কোনোমত', 'দ্বারী', 'দৃষ্টি', 'এড়ানো', 'জীর্ণদেহ', 'বালক', 'সহিত', 'এক', 'অতি', 'শীর্ণকায়া', 'রমণী', 'গৃহ', 'প্রবেশ', 'বিশ্বাস', 'ক্ষীণস্বর', 'কহা', 'বাবু', 'দুই', 'খাওয়া', 'দাওয়া'] | একদিন প্রাতে বৈদ্যনাথের মার্বলমণ্ডিত দালানে একটি স্থূলোদর সন্ন্যাসী দুইসের মোহনভোগ এবং দেড়সের দুগ্ধ সেবায় নিযুক্ত আছে বৈদ্যনাথ গায়ে একখানি চাদর দিয়া জোড়করে একান্ত বিনীতভাবে ভূতলে বসিয়া ভক্তিভরে পবিত্র ভোজনব্যাপার নিরীক্ষণ করিতেছিলেন এমন সময় কোনোমতে দ্বারীদের দৃষ্টি এড়াইয়া জীর্ণদেহ বালক সহিত একটি অতি শীর্ণকায়া রমণী গৃহে প্রবেশ করিয়া ক্ষীণস্বরে কহিল বাবু দুটি খেতে দাও |
 
+</div><div class="h3-box" markdown="1">
 
 #### [Japanese Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/15/lemma_ja.html)
 
@@ -8265,9 +8423,12 @@ nlu.load("ja.lemma").predict("これに不快感を示す住民はいました�
 ```
 output :
 
+{:.table-model-big.db}
 | lemma                                                                                                                                                                                                                                                          | document                                                                                         |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
 | ['これ', 'にる', '不快', '感', 'を', '示す', '住民', 'はる', 'いる', 'まする', 'たる', 'がる', ',', '現在', ',', '表立つ', 'てる', '反対', 'やる', '抗議', 'のる', '声', 'を', '挙げる', 'てる', 'いる', '住民', 'はる', 'いる', 'なぐ', 'よう', 'です', '。'] | これに不快感を示す住民はいましたが,現在,表立って反対や抗議の声を挙げている住民はいないようです。 |
+
+</div><div class="h3-box" markdown="1">
 
 #### [Amharic Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/20/lemma_am.html)
 
@@ -8279,9 +8440,12 @@ nlu.load("am.lemma").predict("መጽሐፉን መጽሐፍ ኡ ን አስያዛ�
 ```
 output  :
 
+{:.table-model-big}
 | lemma                                                | document                         |
 |:-----------------------------------------------------|:---------------------------------|
 | ['_', 'መጽሐፍ', 'ኡ', 'ን', '_', 'አስያዝ', 'ኧ', 'ኣት', '።'] | መጽሐፉን መጽሐፍ ኡ ን አስያዛት አስያዝ ኧ ኣት ። |
+
+</div><div class="h3-box" markdown="1">
 
 #### [Bhojpuri Lemmatizer](https://nlp.johnsnowlabs.com/2021/01/18/lemma_bh.html)
 
@@ -8293,9 +8457,12 @@ nlu.load("bh.lemma").predict("एह आयोजन में विश्व �
 
 output :
 
+{:.table-model-big.db}
 | lemma                                                                                                                                                                                                                               | document                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|
 | ['एह', 'आयोजन', 'में', 'विश्व', 'भोजपुरी', 'सम्मेलन', 'COMMA', 'पूर्वांचल', 'एकता', 'मंच', 'COMMA', 'वीर', 'कुँवर', 'सिंह', 'फाउन्डेशन', 'COMMA', 'पूर्वांचल', 'भोजपुरी', 'महासभा', 'COMMA', 'अउर', 'हर्फ', '-', 'मीडिया', 'को', 'सहभागिता', 'बा', '।'] | एह आयोजन में विश्व भोजपुरी सम्मेलन , पूर्वांचल एकता मंच , वीर कुँवर सिंह फाउन्डेशन , पूर्वांचल भोजपुरी महासभा , अउर हर्फ - मीडिया के सहभागिता बा । |
+
+</div><div class="h3-box" markdown="1">
 
 #### [Named Entity Recognition - BERT Tiny (OntoNotes)](https://nlp.johnsnowlabs.com/2020/12/05/onto_small_bert_L2_128_en.html)
 ```python
@@ -8313,6 +8480,7 @@ nlu.load("en.ner.onto.bert.small_l2_128").predict("""William Henry Gates III (bo
 
 output  :
 
+{:.table-model-big.db}
 | ner_confidence | entities | Entities_classes                                          |
 | :------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [0.8536999821662903, 0.7195000052452087, 0.746...] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'DATE', 'GPE', 'GPE', 'PERSON', 'DATE', 'GPE', 'GPE'] | ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', '1970s', '1980s', 'Seattle', 'Washington', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] |
@@ -8333,6 +8501,7 @@ nlu.load("en.ner.onto.bert.small_l4_256").predict("""William Henry Gates III (bo
 
 output :
 
+{:.table-model-big.db}
 |  ner_confidence	  | entities                                                                                                                                                                                                                                           | Entities_classes                                                                                                                     |
 |---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
 |          [0.835099995136261, 0.40450000762939453, 0.331...] | ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', '1970s and 1980s', 'Seattle', 'Washington', 'Gates', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'ORG', 'DATE', 'CARDINAL', 'DATE', 'GPE', 'GPE', 'ORG', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE'] |
@@ -8356,6 +8525,7 @@ nlu.load("en.ner.onto.bert.small_l4_512").predict("""William Henry Gates III (bo
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                                                                                                                                                                               | Entities_classes                                                                                                                           |
 |---------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|
 |              [0.964900016784668, 0.8299000263214111, 0.9607...]| ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', 'the 1970s and 1980s', 'Seattle', 'Washington', 'Gates', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'GPE', 'GPE', 'PERSON', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE'] |
@@ -8377,6 +8547,7 @@ nlu.load("en.ner.onto.bert.small_l8_512").predict("""William Henry Gates III (bo
 ```
 output :
 
+{:.table-model-big.db}
 | ner_confidence   | entities                                                                                                                                                                                                                           | Entities_classes                                                                                                        |
 |---------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|
 |        [0.916700005531311, 0.5873000025749207, 0.8816...] | ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'the 1970s and 1980s', 'Seattle', 'Washington', 'Gates', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'DATE', 'GPE', 'GPE', 'PERSON', 'PERSON', 'DATE', 'GPE', 'GPE'] |
@@ -8399,6 +8570,7 @@ nlu.load("en.ner.onto.bert.cased_base").predict("""William Henry Gates III (born
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                                                                                                                                                                               | Entities_classes                                                                                                                           |
 |---------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|
 |              [0.504800021648407, 0.47290000319480896, 0.462...] | ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', 'the 1970s and 1980s', 'Seattle', 'Washington', 'Gates', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'GPE', 'GPE', 'PERSON', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE'] |
@@ -8420,6 +8592,7 @@ nlu.load("en.ner.onto.electra.uncased_small").predict("""William Henry Gates III
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                                                                                                                                                                          | Entities_classes                                                                                                                                   |
 |---------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
 |            [0.7213000059127808, 0.6384000182151794, 0.731...]  | ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', '1970s', '1980s', 'Seattle', 'Washington', 'Gates', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'DATE', 'GPE', 'GPE', 'PERSON', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE'] |
@@ -8441,6 +8614,7 @@ nlu.load("en.ner.onto.electra.uncased_small").predict("""William Henry Gates III
 
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | Entities_classes                                                                                                                                   | entities                                                                                                                                                                                                                                          |
 |---------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |            [0.8496000170707703, 0.4465999901294708, 0.568...]  | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'DATE', 'GPE', 'GPE', 'PERSON', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE'] | ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', '1970s', '1980s', 'Seattle', 'Washington', 'Gates', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] |
@@ -8465,6 +8639,7 @@ nlu.load("en.ner.onto.electra.uncased_base").predict("""William Henry Gates III 
 
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                                                                                                                                                                              | Entities_classes                                                                                                                                   |
 |---------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
 |              [0.5134000182151794, 0.9419000148773193, 0.802...]| ['William Henry Gates III', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', 'the 1970s', '1980s', 'Seattle', 'Washington', 'Gates', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'DATE', 'GPE', 'GPE', 'PERSON', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE'] |
@@ -8488,6 +8663,7 @@ nlu.load("en.ner.onto.electra.uncased_large").predict("""William Henry Gates III
 
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                                                                                                                                                                                            | Entities_classes                                                                                                                                          |
 |---------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |              [0.8442000150680542, 0.26840001344680786, 0.57...] | ['William Henry Gates', 'October 28, 1955', 'American', 'Microsoft Corporation', 'Microsoft', 'Gates', 'May 2014', 'one', '1970s', '1980s', 'Seattle', 'Washington', 'Gates co-founded', 'Microsoft', 'Paul Allen', '1975', 'Albuquerque', 'New Mexico', 'largest'] | ['PERSON', 'DATE', 'NORP', 'ORG', 'ORG', 'PERSON', 'DATE', 'CARDINAL', 'DATE', 'DATE', 'GPE', 'GPE', 'PERSON', 'ORG', 'PERSON', 'DATE', 'GPE', 'GPE', 'GPE'] |
@@ -8502,6 +8678,7 @@ nlu.load("en.ner.onto.bert.tiny").predict("Johnson first entered politics when e
 
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                            | Entities_classes                                         |
 |---------------:|:------------------------------------------------------------------------------------|:------------------------------------------------------------|
 |              [0.994700014591217, 0.9412999749183655, 0.9685...] | ['Johnson', 'first', '2001', 'Parliament', 'eight years', 'London', '2008 to 2016'] | ['PERSON', 'ORDINAL', 'DATE', 'ORG', 'DATE', 'GPE', 'DATE'] |
@@ -8513,6 +8690,7 @@ nlu.load("en.ner.onto.bert.mini").predict("Johnson first entered politics when e
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                              | Entities_classes                                  |
 |---------------:|:----------------------------------------------------------------------|:-----------------------------------------------------|
 |              [0.996399998664856, 0.9733999967575073, 0.8766...]| ['Johnson', 'first', '2001', 'eight years', 'London', '2008 to 2016'] | ['PERSON', 'ORDINAL', 'DATE', 'DATE', 'GPE', 'DATE'] |
@@ -8525,6 +8703,7 @@ nlu.load("en.ner.onto.bert.small").predict("Johnson first entered politics when 
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                            | Entities_classes                                         |
 |---------------:|:------------------------------------------------------------------------------------|:------------------------------------------------------------|
 |              [0.9987999796867371, 0.9610000252723694, 0.998...]| ['Johnson', 'first', '2001', 'eight years', 'London', '2008 to 2016', 'Parliament'] | ['PERSON', 'ORDINAL', 'DATE', 'DATE', 'GPE', 'DATE', 'ORG'] |
@@ -8537,6 +8716,7 @@ nlu.load("en.ner.onto.bert.medium").predict("Johnson first entered politics when
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                              | Entities_classes                                  |
 |---------------:|:----------------------------------------------------------------------|:-----------------------------------------------------|
 |              [0.9969000220298767, 0.8575999736785889, 0.995...] | ['Johnson', 'first', '2001', 'eight years', 'London', '2008 to 2016'] | ['PERSON', 'ORDINAL', 'DATE', 'DATE', 'GPE', 'DATE'] |
@@ -8550,6 +8730,7 @@ nlu.load("en.ner.onto.bert.base").predict("Johnson first entered politics when e
 
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                          | Entities_classes                                                |
 |---------------:|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|
 |              [0.996999979019165, 0.933899998664856, 0.99930...] | ['Johnson', 'first', '2001', 'Parliament', 'eight years', 'London', '2008 to 2016', 'Parliament'] | ['PERSON', 'ORDINAL', 'DATE', 'ORG', 'DATE', 'GPE', 'DATE', 'ORG'] |
@@ -8563,6 +8744,7 @@ nlu.load("en.ner.onto.bert.large").predict("Johnson first entered politics when 
 
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                                          | Entities_classes                                                |
 |---------------:|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|
 |              [0.9786999821662903, 0.9549000263214111, 0.998...] | ['Johnson', 'first', '2001', 'Parliament', 'eight years', 'London', '2008 to 2016', 'Parliament'] | ['PERSON', 'ORDINAL', 'DATE', 'ORG', 'DATE', 'GPE', 'DATE', 'ORG'] |
@@ -8574,6 +8756,7 @@ nlu.load("en.ner.onto.electra.small").predict("Johnson first entered politics wh
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                              | Entities_classes                                  |
 |---------------:|:----------------------------------------------------------------------|:-----------------------------------------------------|
 |              [0.9952999949455261, 0.8589000105857849, 0.996...] | ['Johnson', 'first', '2001', 'eight years', 'London', '2008 to 2016'] | ['PERSON', 'ORDINAL', 'DATE', 'DATE', 'GPE', 'DATE'] |
@@ -8584,6 +8767,7 @@ nlu.load("en.ner.onto.electra.base").predict("Johnson first entered politics whe
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                                            | Entities_classes                                                 |
 |---------------:|:------------------------------------------------------------------------------------|:--------------------------------------------------------------------|
 |              [0.9987999796867371, 0.9474999904632568, 0.999...] | ['Johnson', 'first', '2001', 'Parliament', 'eight years', 'London', '2008', '2016'] | ['PERSON', 'ORDINAL', 'DATE', 'ORG', 'DATE', 'GPE', 'DATE', 'DATE'] |
@@ -8595,6 +8779,7 @@ nlu.load("en.ner.onto.large").predict("Johnson first entered politics when elect
 ```
 output :
 
+{:.table-model-big.db}
 |   ner_confidence | entities                                                              | Entities_classes                                  |
 |---------------:|:----------------------------------------------------------------------|:-----------------------------------------------------|
 |              [0.9998000264167786, 0.9613999724388123, 0.998...] | ['Johnson', 'first', '2001', 'eight years', 'London', '2008 to 2016'] | ['PERSON', 'ORDINAL', 'DATE', 'DATE', 'GPE', 'DATE'] |
@@ -8624,9 +8809,11 @@ This release features 3 new tutorial notebooks for Open/Closed book question ans
 In Addition NLU 1.1.0 comes with  25+ pretrained models and pipelines in Amharic, Bengali, Bhojpuri, Japanese, and Korean languages from the [amazing Spark2.7.2 release](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.7.2)
 Finally NLU now supports running on Spark 2.3 clusters.
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.1 New Non-English Models
 
+{:.table-model-big}
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 |Arabic | [ar.ner](https://nlp.johnsnowlabs.com/2020/12/05/aner_cc_300d_ar.html) |[arabic_w2v_cc_300d](https://nlp.johnsnowlabs.com/2020/12/05/aner_cc_300d_ar.html) | Named Entity Recognizer                    |
@@ -8643,10 +8830,11 @@ Finally NLU now supports running on Spark 2.3 clusters.
 |Bihari | [bh.pos](https://nlp.johnsnowlabs.com/2021/01/18/pos_ud_bhtb_bh.html) |[pos_ud_bhtb](https://nlp.johnsnowlabs.com/2021/01/18/pos_ud_bhtb_bh.html) | Part of Speech                    |
 |Amharic | [am.pos](https://nlp.johnsnowlabs.com/2021/01/20/pos_ud_att_am.html) |[pos_ud_att](https://nlp.johnsnowlabs.com/2021/01/20/pos_ud_att_am.html) | Part of Speech                    |
 
-
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.1 New English Models and Pipelines
 
+{:.table-model-big}
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 | English | [en.sentiment.glove](https://nlp.johnsnowlabs.com/2021/01/15/analyze_sentimentdl_glove_imdb_en.html) |[analyze_sentimentdl_glove_imdb](https://nlp.johnsnowlabs.com/2021/01/15/analyze_sentimentdl_glove_imdb_en.html)     | Sentiment Classifier |
@@ -8664,6 +8852,8 @@ Finally NLU now supports running on Spark 2.3 clusters.
 | English | [en.ner.aspect.airline](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html) |[nerdl_atis_840b_300d](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html)     | Aspect based NER (Alias) |
 | English | [en.ner.aspect.atis](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html) |[nerdl_atis_840b_300d](https://nlp.johnsnowlabs.com/2021/01/25/nerdl_atis_840b_300d_en.html)     | Aspect based NER (Alias) |
 
+</div><div class="h3-box" markdown="1">
+
 #### New Easy NLU 1-liner Examples :
 
 #### Extract aspects and entities from airline questions (ATIS dataset)
@@ -8674,7 +8864,7 @@ nlu.load("en.ner.atis").predict("i want to fly from baltimore to dallas round tr
 output:  ["baltimore"," dallas", "round trip"]
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Intent Classification for Airline Traffic Information System queries (ATIS dataset)
 
@@ -8684,7 +8874,7 @@ nlu.load("en.classify.questions.atis").predict("what is the price of flight from
 output:  "atis_airfare"	
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Recognize Entities OntoNotes - ELECTRA Large
 
@@ -8720,6 +8910,7 @@ nlu.load("zh.pos.ud_gsd_trad").predict("然而，這樣的處理也衍生了一�
 
 Output:
 
+{:.table-model-big}
 |Token |  POS   |
 | ----- | ----- |
 | 然而  | ADV   |
@@ -8745,6 +8936,7 @@ nlu.loadnlu.load("th.segment_words").predict("Mona Lisa เป็นภาพว
 
 Output:
 
+{:.table-model-big}
 | token |
 | --------- |
 | M         |
@@ -8793,6 +8985,7 @@ nlu.load("bn.pos").predict("বাসস্থান-ঘরগৃহস্থা
 
 Output:
 
+{:.table-model-big}
 | token             | pos  |
 | ----------------- | ---- |
 | বাসস্থান-ঘরগৃহস্থালি | NN   |
@@ -8818,6 +9011,7 @@ df = nlu.load("bn.stopwords").predict("এই ভাষা যথেষ্ট �
 
 Output:
 
+{:.table-model-big}
 | cleanTokens | token |
 | :---------- | :---- |
 | ভাষা        | এই    |
@@ -8835,6 +9029,7 @@ nlu.load('bh.pos').predict("ओहु लोग के मालूम बा �
 
 Output:
 
+{:.table-model-big}
 | pos   | token   |
 | :---- | :------ |
 | DET   | ओहु     |
@@ -8860,6 +9055,7 @@ nlu.load('am.pos').predict('ልጅ ኡ ን ሥራ ው ን አስጨርስ ኧው
 
 Output:
 
+{:.table-model-big}
 | pos   | token   |
 |:------|:--------|
 | NOUN  | ልጅ      |
@@ -8884,6 +9080,7 @@ nlu.load('th.classify.sentiment').predict('ฉันชอบเนยถั่�
 
 Output:
 
+{:.table-model-big}
 | sentiment   |   sentiment_confidence |
 |:------------|-----------------------:|
 | positive    |               0.999998 |
@@ -8897,6 +9094,7 @@ nlu.load('ar.ner').predict('في عام 1918 حررت قوات الثورة ال
 
 Output:
 
+{:.table-model-big.db}
 | entity_class   | ner_confidence                                                                                                                                                                  | entities            |
 |:----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|
 | ORG                   | [1.0, 1.0, 1.0, 0.9997000098228455, 0.9840999841690063, 0.9987999796867371, 0.9990000128746033, 0.9998999834060669, 0.9998999834060669, 0.9993000030517578, 0.9998999834060669] | قوات الثورة العربية |
@@ -8940,7 +9138,7 @@ These new features are possible because of the integration of the [Google's T5 m
 
 NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the support of multi-lingual models to 192+ languages such as Chinese, Japanese, Korean, Arabic, Persian, Urdu, and Hebrew.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.0  New Features
 * **720+** new models you can find an overview of all NLU models [here](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) and further documentation in the [models hub](https://nlp.johnsnowlabs.com/models)
@@ -8950,6 +9148,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 * **NEW:** Introducing WordSegmenter model for word segmentation of languages without any rule-based tokenization such as Chinese, Japanese, or Korean
 * **NEW:** Introducing DocumentNormalizer component for cleaning content from HTML or XML documents, applying either data cleansing using an arbitrary number of custom regular expressions either data extraction following the different parameters
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.0  New Notebooks, Tutorials and Articles
 - [Translate between 192+ languages with marian](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/translation_demo.ipynb)
@@ -8960,6 +9159,8 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [Normalize documents](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/text_pre_processing_and_cleaning/document_normalizer_demo.ipynb)
 - [Aspect based sentiment NER sentiment for restaurants](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/named_entity_recognition_(NER)/aspect_based_ner_sentiment_restaurants.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.1.0 New Training Tutorials
 #### Binary Classifier training Jupyter tutorials
 - [2 class Finance News sentiment classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/binary_text_classification/NLU_training_sentiment_classifier_demo_apple_twitter.ipynb)
@@ -8968,6 +9169,8 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [2 class IMDB Movie sentiment classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/binary_text_classification/NLU_training_sentiment_classifier_demo_IMDB.ipynb)
 - [2 class twitter classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/binary_text_classification/NLU_training_sentiment_classifier_demo_twitter.ipynb)
 
+</div><div class="h3-box" markdown="1">
+
 #### Multi Class text Classifier training Jupyter tutorials
 - [5 class WineEnthusiast Wine review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_wine.ipynb)
 - [3 class Amazon Phone review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_amazon.ipynb)
@@ -8975,6 +9178,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [5 class Tripadvisor Hotel review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_hotel_reviews.ipynb)
 - [5 class Phone review classifier training](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/multi_class_text_classification/NLU_training_multi_class_text_classifier_demo_hotel_reviews.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.0 New Medium Tutorials
 
@@ -8986,7 +9190,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 - [1 line to BioBERT Word Embeddings with NLU   with t-SNE plots](https://medium.com/spark-nlp/1-line-to-biobert-word-embeddings-with-nlu-in-python-7224ab52e131)
 
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Translation
 [Translation example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/translation_demo.ipynb)       
@@ -9012,11 +9216,12 @@ df = translate_pipe.predict('Billy likes to go to the mall every sunday')
 df
 ```
 
+{:.table-model-big}
 |	sentence|	translation|
 |-----------|--------------|
 |Billy likes to go to the mall every sunday	| Billy geht gerne jeden Sonntag ins Einkaufszentrum|
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Overview of every task available with T5
 [The T5 model](https://arxiv.org/pdf/1910.10683.pdf) is trained on various datasets for 17 different tasks which fall into 8 categories.
@@ -9031,8 +9236,11 @@ df
 7. Sentence Completion
 8. Word sense disambiguation
 
+</div><div class="h3-box" markdown="1">
+
 #### Every T5 Task with explanation:
 
+{:.table-model-big}
 |Task Name | Explanation | 
 |----------|--------------|
 |[1.CoLA](https://nyu-mll.github.io/CoLA/)                   | Classify if a sentence is gramaticaly correct|
@@ -9056,6 +9264,7 @@ df
 
 [refer to this notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb) to see how to use every T5 Task.
 
+</div><div class="h3-box" markdown="1">
 
 #### Question Answering
 [Question answering example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9063,7 +9272,7 @@ df
 Predict an `answer` to a `question` based on input `context`.    
 This is based on [SQuAD - Context based question answering](https://arxiv.org/abs/1606.05250)
 
-
+{:.table-model-big.db}
 |Predicted Answer | Question | Context | 
 |-----------------|----------|------|
 |carbon monoxide| What does increased oxygen concentrations in the patient’s lungs displace? | Hyperbaric (high-pressure) medicine uses special oxygen chambers to increase the partial pressure of O 2 around the patient and, when needed, the medical staff. Carbon monoxide poisoning, gas gangrene, and decompression sickness (the ’bends’) are sometimes treated using these devices. Increased O 2 concentration in the lungs helps to displace carbon monoxide from the heme group of hemoglobin. Oxygen gas is poisonous to the anaerobic bacteria that cause gas gangrene, so increasing its partial pressure helps kill them. Decompression sickness occurs in divers who decompress too quickly after a dive, resulting in bubbles of inert gas, mostly nitrogen and helium, forming in their blood. Increasing the pressure of O 2 as soon as possible is part of the treatment.
@@ -9094,7 +9303,7 @@ question: What does increased oxygen concentrations in the patient’s lungs dis
 context: Hyperbaric (high-pressure) medicine uses special oxygen chambers to increase the partial pressure of O 2 around the patient and, when needed, the medical staff. Carbon monoxide poisoning, gas gangrene, and decompression sickness (the ’bends’) are sometimes treated using these devices. Increased O 2 concentration in the lungs helps to displace carbon monoxide from the heme group of hemoglobin. Oxygen gas is poisonous to the anaerobic bacteria that cause gas gangrene, so increasing its partial pressure helps kill them. Decompression sickness occurs in divers who decompress too quickly after a dive, resulting in bubbles of inert gas, mostly nitrogen and helium, forming in their blood. Increasing the pressure of O 2 as soon as possible is part of the treatment.
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Text Summarization
 [Summarization example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9118,10 +9327,12 @@ The belgian duo took to the dance floor on monday night with some friends . manc
 pipe.predict(data)
 ```
 
+{:.table-model-big.db}
 | Predicted summary| Text | 
 |------------------|-------|
 | manchester united face newcastle in the premier league on wednesday . louis van gaal's side currently sit two points clear of liverpool in fourth . the belgian duo took to the dance floor on monday night with some friends .            | the belgian duo took to the dance floor on monday night with some friends . manchester united face newcastle in the premier league on wednesday . red devils will be looking for just their second league away win in seven . louis van gaal’s side currently sit two points clear of liverpool in fourth . | 
 
+</div><div class="h3-box" markdown="1">
 
 #### Binary Sentence similarity/ Paraphrasing
 [Binary sentence similarity example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9148,6 +9359,8 @@ sentence2: 	I like to play football.
 #Predict on text data with T5
 t5.predict(data)
 ```
+
+{:.table-model-big.db}
 | Sentence1 | Sentence2 | prediction|
 |------------|------------|----------|
 |We acted because we saw the existing evidence in a new light , through the prism of our experience on 11 September , " Rumsfeld said .| Rather , the US acted because the administration saw " existing evidence in a new light , through the prism of our experience on September 11 " . | equivalent | 
@@ -9200,6 +9413,7 @@ t5.predict(data)
 
 ```
 
+{:.table-model-big}
 | Question1 | Question2 | prediction|
 |------------|------------|----------|
 |What attributes would have made you highly desirable in ancient Rome?        | How I GET OPPERTINUTY TO JOIN IT COMPANY AS A FRESHER? | 0 | 
@@ -9218,6 +9432,8 @@ sentence1: What attributes would have made you highly desirable in ancient Rome?
 sentence2: How I GET OPPERTINUTY TO JOIN IT COMPANY AS A FRESHER?',
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Grammar Checking
 [Grammar checking with T5 example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
 Judges if a sentence is grammatically acceptable.    
@@ -9232,11 +9448,14 @@ data = ['Anna and Mike is going skiing and they is liked is','Anna and Mike like
 #Predict on text data with T5
 pipe.predict(data)
 ```
+
+{:.table-model-big}
 |sentence  | prediction|
 |------------|------------|
 | Anna and Mike is going skiing and they is liked is | unacceptable |      
 | Anna and Mike like to dance | acceptable | 
 
+</div><div class="h3-box" markdown="1">
 
 #### Document Normalization
 [Document Normalizer example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/text_pre_processing_and_cleaning/document_normalizer_demo.ipynb)     
@@ -9248,9 +9467,14 @@ data = '<!DOCTYPE html> <html> <head> <title>Example</title> </head> <body> <p>T
 df = pipe.predict(data,output_level='document')
 df
 ```
+
+{:.table-model-big.db}
 |text|normalized_text|
 |------|-------------|
 | `<!DOCTYPE html> <html> <head> <title>Example</title> </head> <body> <p>This is an example of a simple HTML page with one paragraph.</p> </body> </html>`       |Example This is an example of a simple HTML page with one paragraph.|
+
+
+</div><div class="h3-box" markdown="1">
 
 #### Word Segmenter
 [Word Segmenter Example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/multilingual/japanese_ner_pos_and_tokenization.ipynb)     
@@ -9264,6 +9488,7 @@ df
 
 ```
 
+{:.table-model-big}
 |	token|
 |--------|
 |	ドナルド|
@@ -9285,6 +9510,7 @@ df
 |	ませ|
 |	ん|
 
+</div><div class="h3-box" markdown="1">
 
 #### Installation
 
@@ -9296,6 +9522,7 @@ df
 conda install -os_components johnsnowlabs nlu
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 - [NLU Website](https://nlp.johnsnowlabs.com/)
@@ -9312,11 +9539,15 @@ We are glad to announce NLU 1.0.6 has been released!
 NLU 1.0.6 comes with the Multi Label classifier, it can learn to map strings to multiple labels.
 The Multi Label Classifier is using Bidirectional GRU and CNNs inside TensorFlow and supports up to 100 classes.
 
+</div><div class="h3-box" markdown="1">
+
 #### NLU 1.0.6 New Features
 - Multi Label Classifier
     - The Multi Label Classifier learns a 1 to many mapping between text and labels. This means it can predict multiple labels at the same time for a given input string. This is very helpful for tasks similar to content tag prediction (HashTags/RedditTags/YoutubeTags/Toxic/E2e etc..)
     - Support up to 100 classes
     - Pre-trained Multi Label Classifiers are already avaiable as [Toxic](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#toxic-classifier) and [E2E](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#e2e-classifier) classifiers
+
+</div><div class="h3-box" markdown="1">
 
 ####  Multi Label Classifier
 - [ Train Multi Label Classifier on E2E dataset Demo](https://colab.research.google.com/drive/15ZqfNUqliRKP4UgaFcRg5KOSTkqrtDXy?usp=sharing)
@@ -9348,17 +9579,21 @@ fitted_pipe = nlu.load('embed_sentence.electra train.multi_classifier').fit(trai
 preds = fitted_pipe.predict(train_df)
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.6 Enhancements
 - Improved outputs for Toxic and E2E Classifier.
     - by default, all predicted classes and their confidences which are above the threshold will be returned inside of a list in the Pandas dataframe
     - by configuring meta=True, the confidences for all classes will be returned.
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU Version 1.0.6
 
 - [ Train Multi Label Classifier on E2E dataset](https://colab.research.google.com/drive/15ZqfNUqliRKP4UgaFcRg5KOSTkqrtDXy?usp=sharing)
 - [Train Multi Label  Classifier on Stack Overflow Question Tags dataset](https://drive.google.com/file/d/1Nmrncn-y559od3AKJglwfJ0VmZKjtMAF/view?usp=sharing)
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.6 Bug-fixes
 - Fixed a bug that caused ```en.ner.dl.bert``` to be inaccessible
@@ -9410,6 +9645,8 @@ fitted_pipe = nlu.load('embed_sentence.electra train.classifier').fit(train_df)
 preds = fitted_pipe.predict(train_df)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Part Of Speech Tagger Training
 [Part Of Speech Tagger Training demo](https://colab.research.google.com/drive/1CZqHQmrxkDf7y3rQHVjO-97tCnpUXu_3?usp=sharing)
 
@@ -9417,6 +9654,8 @@ preds = fitted_pipe.predict(train_df)
 fitted_pipe = nlu.load('train.pos').fit(train_df)
 preds = fitted_pipe.predict(train_df)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.5 Installation changes
 Starting from version 1.0.5 NLU will not automatically install pyspark for users anymore.      
@@ -9545,8 +9784,8 @@ Check it out here :  [https://nlp.johnsnowlabs.com/](https://nlp.johnsnowlabs.co
 - Automatic to Numpy conversion of embeddings
 - Added various testing classes
 - [New 6 embeddings at once notebook with t-SNE and Medium article](https://medium.com/spark-nlp/1-line-of-code-for-bert-albert-elmo-electra-xlnet-glove-part-of-speech-with-nlu-and-t-sne-9ebcd5379cd)
-  <img src="https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png" >
-- Integration of Spark NLP 2.6.2 enhancements and bugfixes https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2
+![NLU Version 1.0.0](https://miro.medium.com/max/1296/1*WI4AJ78hwPpT_2SqpRpolA.png)
+- Integration of Spark NLP 2.6.2 enhancements and bugfixes [https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/2.6.2)
 - Updated old T-SNE notebooks with more elegant and simpler generation of t-SNE embeddings
 
 </div><div class="h3-box" markdown="1">
@@ -9566,7 +9805,8 @@ A picture says more than a 1000 words, so here is a demo clip of the 12 coolest 
 </div><div class="h3-box" markdown="1">
 
 #### NLU in action
-<img src="https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif" width="1800" height="500"/>
+
+![NLU in action](https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif)
 
 </div><div class="h3-box" markdown="1">
 

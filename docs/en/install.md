@@ -11,6 +11,8 @@ sidebar:
     nav: sparknlp
 ---
 
+<div class="h3-box" markdown="1">
+
 ## Spark NLP Cheatsheet
 
 ```bash
@@ -33,9 +35,12 @@ spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.3.2
 spark-shell --jars spark-nlp-assembly-4.3.2.jar
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## Python
 
 Spark NLP supports Python 3.6.x and above depending on your major PySpark version.
+
 #### Quick Install
 
 Let's create a new Conda environment to manage all the dependencies there. You can use Python Virtual Environment if you prefer or not have any environment.
@@ -60,7 +65,6 @@ Now you should be ready to create a jupyter notebook running from terminal:
 jupyter notebook
 ```
 
-
 #### Start Spark NLP Session from python
 
 If you need to manually start SparkSession because you have other configurations and `sparknlp.start()` is not including them, you can manually start the SparkSession:
@@ -75,6 +79,8 @@ spark = SparkSession.builder \
     .config("spark.jars.packages", "com.johnsnowlabs.nlp:spark-nlp_2.12:4.3.2")\
     .getOrCreate()
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## Scala and Java
 
@@ -158,6 +164,8 @@ Maven Central: [https://mvnrepository.com/artifact/com.johnsnowlabs.nlp](https:/
 
 If you are interested, there is a simple SBT project for Spark NLP to guide you on how to use it in your projects [Spark NLP SBT Starter](https://github.com/maziyarpanahi/spark-nlp-starter)
 
+</div><div class="h3-box" markdown="1">
+
 ## Installation for M1 Macs
 
 Starting from version 4.0.0, Spark NLP has experimental support for M1 macs. Note that
@@ -185,6 +193,8 @@ Make sure the following prerequisites are met:
     example `WordEmbeddings`, `TextMatcher` or `explain_document_dl_en` Pipeline
     respectively) with `spark-submit`, then a workaround is required to get it working.
     See [M1 RocksDB workaround for spark-submit with Spark version >= 3.2.0](#m1-rocksdb-workaround-for-spark-submit-with-spark-version--320).
+
+</div><div class="h3-box" markdown="1">
 
 ### M1 RocksDB workaround for spark-submit with Spark version >= 3.2.0
 
@@ -248,6 +258,8 @@ import com.johnsnowlabs.nlp.SparkNLP
 val spark = SparkNLP.start(m1 = true)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Python for M1
 
 First, make sure you have a recent Python 3 installation.
@@ -268,6 +280,8 @@ import sparknlp
 spark = sparknlp.start(m1=True)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## Installation for Linux Aarch64 Systems
 
 Starting from version 4.3.2, Spark NLP supports Linux systems running on an aarch64
@@ -276,6 +290,8 @@ recent system with an environment of at least that will be needed.
 
 Check the [Python section](#python) and the [Scala And Java section](#scala-and-java) on
 to install Spark NLP for your system.
+
+</div><div class="h3-box" markdown="1">
 
 ### Starting Spark NLP
 
@@ -296,6 +312,8 @@ import sparknlp
 
 spark = sparknlp.start(aarch64=True)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## Google Colab Notebook
 
@@ -319,6 +337,7 @@ This script comes with the two options to define `pyspark` and `spark-nlp` versi
 
 [Spark NLP quick start on Google Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/jupyter/quick_start_google_colab.ipynb) is a live demo on Google Colab that performs named entity recognitions and sentiment analysis by using Spark NLP pretrained pipelines.
 
+</div><div class="h3-box" markdown="1">
 
 ## Kaggle Kernel
 
@@ -330,6 +349,8 @@ Run the following code in Kaggle Kernel and start using spark-nlp right away.
 ```
 
 [Spark NLP quick start on Kaggle Kernel](https://www.kaggle.com/mozzie/spark-nlp-named-entity-recognition) is a live demo on Kaggle Kernel that performs named entity recognitions by using Spark NLP pretrained pipeline.
+
+</div><div class="h3-box" markdown="1">
 
 ## Databricks Support
 
@@ -412,6 +433,8 @@ You can view all the Databricks notebooks from this address:
 [https://johnsnowlabs.github.io/spark-nlp-workshop/databricks/index.html](https://johnsnowlabs.github.io/spark-nlp-workshop/databricks/index.html)
 
 Note: You can import these notebooks by using their URLs.
+
+</div><div class="h3-box" markdown="1">
 
 ## EMR Support
 
@@ -496,6 +519,8 @@ aws emr create-cluster \
 --profile <aws_profile_credentials>
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## GCP Dataproc Support
 
 1. Create a cluster if you don't have one already as follows.
@@ -552,6 +577,8 @@ gcloud dataproc clusters create ${CLUSTER_NAME} \
 
 3. Now, you can attach your notebook to the cluster and use the Spark NLP!
 
+</div><div class="h3-box" markdown="1">
+
 ## Amazon Linux 2 Support
 
 ```bash
@@ -577,7 +604,7 @@ sudo alternatives --config java
 
 You can pick the index number (I am using java-8 as default - index 2):
 
-<img class="image image--xl" src="/assets/images/installation/amazon-linux.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Amazon Linux 2 Support](/assets/images/installation/amazon-linux.png "lit_shadow")
 
 
 If you dont have java-11 or java-8 in you system, you can easily install via:
@@ -592,6 +619,8 @@ Now, we can start installing the required libraries:
 pip install pyspark==3.3.1
 pip install spark-nlp
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## Docker Support
 
@@ -684,10 +713,13 @@ Finally, use **jupyter_notebook_config.json** for the password:
 }
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## Windows Support
 
 In order to fully take advantage of Spark NLP on Windows (8 or 10), you need to setup/install Apache Spark, Apache Hadoop, Java and a Pyton environment correctly by following the following instructions: [https://github.com/JohnSnowLabs/spark-nlp/discussions/1022](https://github.com/JohnSnowLabs/spark-nlp/discussions/1022)
 
+</div><div class="h3-box" markdown="1">
 
 ### How to correctly install Spark NLP on Windows
 
@@ -739,13 +771,15 @@ running
 
 Either create a conda env for python 3.6, install *pyspark==3.3.1 spark-nlp numpy* and use Jupyter/python console, or in the same conda env you can go to spark bin for *pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.3.2*.
 
-<img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg "lit_shadow")
+
+</div><div class="h3-box" markdown="1">
 
 ## Offline
 
@@ -789,3 +823,5 @@ PipelineModel.load("/tmp/explain_document_dl_en_2.0.2_2.4_1556530585689/")
 
 - Since you are downloading and loading models/pipelines manually, this means Spark NLP is not downloading the most recent and compatible models/pipelines for you. Choosing the right model/pipeline is on you
 - If you are local, you can load the model/pipeline from your local FileSystem, however, if you are in a cluster setup you need to put the model/pipeline on a distributed FileSystem such as HDFS, DBFS, S3, etc. (i.e., `hdfs:///tmp/explain_document_dl_en_2.0.2_2.4_1556530585689/`)
+
+</div>

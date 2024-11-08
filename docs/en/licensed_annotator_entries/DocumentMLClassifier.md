@@ -109,7 +109,7 @@ val result = clf_Pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[DocumentMLClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentMLClassifierApproach_DocumentMLClassifierModel.ipynb)
+[DocumentMLClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentMLClassifierModel.ipynb)
 {%- endcapture -%}
 
 
@@ -159,7 +159,10 @@ classifier_logreg = medical.DocumentMLClassifierApproach() \
     .setClassificationModelClass("logreg")\
     .setFitIntercept(True)
 
-pipeline = nlp.Pipeline(stages=[document, token, classifier_logreg])
+pipeline = nlp.Pipeline(stages=[
+    document, 
+    token, 
+    classifier_logreg])
 
 result_logreg = pipeline.fit(train_data).transform(test_data).cache()
 
@@ -203,7 +206,7 @@ val result_logreg = pipeline.fit(train_data).transform(test_data).cache()
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[DocumentMLClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentMLClassifierApproach_DocumentMLClassifierModel.ipynb)
+[DocumentMLClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DocumentMLClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

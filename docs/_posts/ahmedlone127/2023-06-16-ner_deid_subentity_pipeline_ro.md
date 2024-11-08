@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity](https://nlp
 
 ## Predicted Entities
 
-
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `LOCATION-OTHER`, `CITY`, `DATE`, `PATIENT`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `FAX`, `AGE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

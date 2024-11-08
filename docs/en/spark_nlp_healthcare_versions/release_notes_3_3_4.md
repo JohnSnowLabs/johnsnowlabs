@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.3.4
+title: Healthcare NLP v3.3.4 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_3_4
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -16,7 +16,7 @@ sidebar:
 ## 3.3.4
 We are glad to announce that Spark NLP Healthcare 3.3.4 has been released!
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Highlights
 
@@ -32,6 +32,8 @@ We are glad to announce that Spark NLP Healthcare 3.3.4 has been released!
 + New setLabelCasing Feature in MedicalNerModel
 + New Update Models Functionality
 + New and Updated Notebooks
+
+</div><div class="h3-box" markdown="1">
 
 #### New Clinical NER Models
 
@@ -168,9 +170,12 @@ result = finder_pipeline.fullAnnotate("psychology")
 
 *Results* :
 
+{:.table-model-big}
 |entity|top models|all models|resolutions|
 |-|-|-|-|
 |psychology|['ner_medmentions_coarse', 'jsl_rd_ner_wip_greedy_clinical', 'ner_jsl_enriched', 'ner_jsl', 'jsl_ner_wip_modifier_clinical', 'ner_jsl_greedy']  |['ner_medmentions_coarse', 'jsl_rd_ner_wip_greedy_clinical', 'ner_jsl_enriched', 'ner_jsl', 'jsl_ner_wip_modifier_clinical', 'ner_jsl_greedy']:::['jsl_rd_ner_wip_greedy_clinical', 'ner_jsl_enriched', 'ner_jsl_slim', 'ner_jsl', 'jsl_ner_wip_modifier_clinical,...|psychological condition:::clinical department::: ... |
+
+</div><div class="h3-box" markdown="1">
 
 #### New Relation Extraction Model
 
@@ -204,6 +209,8 @@ result = re_model.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 | subtle ataxia in her left arm and leg | 7_LimbAtaxia |             149 |           185 | Measurement |        4 |              36 |            36 | 0          |
 | subtle ataxia in her left arm and leg | 7_LimbAtaxia |             149 |           185 | Measurement |        2 |              89 |            89 | 0          |
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New LOINC, MeSH, NDC and SNOMED Entity Resolver Models
 
@@ -334,9 +341,13 @@ result = light_model.fullAnnotate(['coronary calcium score', 'heart surgery', 'c
 |  3 | bp value               |  75367002 | Blood pressure                | ['75367002', '6797001', '723232008', '46973005', '427732000']                   | ['Blood pressure', 'Mean blood pressure', 'Average blood pressure', 'Blood pressure taking', 'Speed of blood pressure response']                                |
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated RxNorm Sentence Entity Resolver Model
 
 We have updated `sbiobertresolve_rxnorm_augmented` model training on an augmented version of the dataset used in previous versions of the model.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Shift Days Feature in StructuredDeid Deidentification Module
 
@@ -372,6 +383,8 @@ result.show(truncate=False)
 |[S2371443]|[16/04/1900]|Calle del Libertador, 7|100|912 345623      |
 +----------+------------+-----------------------+---+----------------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New Multiple Chunks Merge Ability in ChunkMergeApproach
 
@@ -412,6 +425,8 @@ chunk_merge = ChunkMergeApproach() \
 ...
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New setBlackList Feature in ChunkMergeApproach
 
 Now we can filter out the entities in the ChunkMergeApproach using a black list `.setBlackList(["NAME","ID"])`. The entities specified in the blackList will be excluded from the final entity list.
@@ -424,6 +439,8 @@ chunk_merge = ChunkMergeApproach() \
             .setOutputCol("deid_merged_chunk") \
             .setBlackList(["NAME","ID"])
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New setBlackList Feature in NerConverterInternal
 
@@ -441,6 +458,8 @@ converter = NerConverterInternal()\
         .setOutputCol("entities")\
         .setBlackList(["Drug","Treatment"])
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New setLabelCasing Feature in MedicalNerModel
 
@@ -468,6 +487,7 @@ results["ner_tags"]
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-problem', 'I-problem', 'I-problem', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-problem', 'I-problem', 'I-problem', 'I-problem', 'I-problem']
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New Update Models Functionality
 
@@ -524,6 +544,7 @@ ls ~/cache_pretrained
   sbertresolve_ner_model_finder_en_3.3.2_2.4_1637764208798/
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
 

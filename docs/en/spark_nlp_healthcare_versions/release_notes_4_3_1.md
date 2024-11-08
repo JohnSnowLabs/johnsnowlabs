@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.3.1
+title: Healthcare NLP v4.3.1 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_3_1
 key: docs-licensed-release-notes
 modify_date: 2023-03-02
@@ -35,7 +35,7 @@ sidebar:
 
 We are releasing a new VOP NER model that was trained on the conversations gathered from patients forums.
 
-
+{:.table-model-big.db}
 | model name                                     | description                                                                                         | predicted entities                     |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------|
 | [ner_vop_slim_wip](https://nlp.johnsnowlabs.com/2023/02/25/ner_vop_slim_wip_en.html) | This model extracts healthcare-related terms from the documents transferred from the patient's own sentences. | `AdmissionDischarge` `Age` `BodyPart` `ClinicalDept` `DateTime` `Disease` `Dosage_Strength` `Drug` `Duration` `Employment` `Form` `Frequency` `Gender` `Laterality` `Procedure` `PsychologicalCondition` `RelationshipStatus` `Route` `Symptom` `Test` `Vaccine` `VitalTest` |
@@ -58,7 +58,7 @@ sample_texts = ["Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 m
 
 *Result*:
 
-
+{:.table-model-big}
 |chunk               |begin|end |ner_label             |
 |--------------------|-----|----|----------------------|
 |20 year old         |10   |20  |Age                   |
@@ -86,6 +86,7 @@ sample_texts = ["Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 m
 
 We are releasing 4 new SDOH NER models with various entity combinations.
 
+{:.table-model-big.db}
 | model name                                     | description                                                                                         | predicted entities                     |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------|
 | [ner_sdoh_substance_usage_wip](https://nlp.johnsnowlabs.com/2023/02/23/ner_sdoh_substance_usage_wip_en.html)     | This model extracts substance usage information related to Social Determinants of Health from various kinds of biomedical documents.     | `Smoking` `Substance_Duration` `Substance_Use` `Substance_Quantity`   `Substance_Frequency` `Alcohol`    |
@@ -114,6 +115,7 @@ sample_texts = ["He does drink occasional alcohol approximately 5 to 6 alcoholic
 
 *Result*:
 
+{:.table-model-big}
 |chunk           |begin|end|ner_label          |
 |----------------|-----|---|-------------------|
 |drink           |8    |12 |Alcohol            |
@@ -143,6 +145,7 @@ sample_texts = ["She has a pension and private health insurance, she reports fee
 
 *Result*:
 
+{:.table-model-big}
 |chunk                        |begin|end|ner_label             |
 |-----------------------------|-----|---|----------------------|
 |private health insurance     |22   |45 |Insurance_Status      |
@@ -163,6 +166,7 @@ sample_texts = ["He is currently experiencing financial stress due to job insecu
 
 *Result*:
 
+{:.table-model-big}
 |chunk                          |begin|end|ner_label                  |
 |-------------------------------|-----|---|---------------------------|
 |small apartment                |87   |101|Housing                    |
@@ -186,7 +190,7 @@ sample_texts = ["She has not been getting regular exercise and not followed diet
 
 *Result*:
 
-
+{:.table-model-big}
 |chunk               |begin|end|ner_label      |
 |--------------------|-----|---|---------------|
 |regular exercise    |25   |40 |Exercise       |
@@ -251,7 +255,7 @@ text= ["0009-4992", "57894-150"]
 
  *Result:*
 
-
+{:.table-model-big}
 |    | ndc_code   | drug_brand_name   |
 |---:|:-----------|:------------------|
 |  0 | 0009-4992  | ZYVOX             |
@@ -273,6 +277,7 @@ chunkerMapper = ChunkMapperModel\
 
  *Result*:
 
+{:.table-model-big}
 |ner_chunk                |mappings     |relation   |
 |-------------------------|-------------|-----------|
 |Adapin 10 MG Oral Capsule|1911002 (SY) |rxnorm_code|
@@ -307,6 +312,7 @@ Phone: (302) 786-5227"""
 
 *Result*:
 
+{:.table-model-big}
 |                        sentence|                         masking|                   obfuscation|
 |--------------------------------|--------------------------------|------------------------------|
 |         Record date: 2003-01-13|           Record date: \<DATE\>|       Record date: 2003-03-07|
@@ -356,6 +362,7 @@ sample_text = "Mr. ABC is a 25 years old with a nonproductive cough that started
 
 *Result for without `WhiteList`*:
 
+{:.table-model-big}
 | index | ner_chunk               | entity   |
 |-------|-------------------------|----------|
 | 0     | John Smith              | PATIENT  |
@@ -366,6 +373,7 @@ sample_text = "Mr. ABC is a 25 years old with a nonproductive cough that started
 
 *Result for with `WhiteList(["AGE","DATE"])`*:
 
+{:.table-model-big}
 | index | ner_chunk               | entity   |
 |-------|-------------------------|----------|
 | 0     | 25                      | AGE      |

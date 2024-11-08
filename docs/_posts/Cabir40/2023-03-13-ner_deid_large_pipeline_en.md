@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_deid_large](https://nlp.johnsnowlabs.com/2021/03/31/ner_deid_large_en.html) model.
 
+## Predicted Entities
+`LOCATION`, `CONTACT`, `PROFESSION`, `HEALTHPLAN`, `NAME`, `DATE`, `ID`, `URL`, `NN`, `AGE`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -37,27 +37,27 @@ This model maps `DRUG ` entities to RxNorm codes and their [National Drug Codes 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
-.setInputCol("text")\
-.setOutputCol("ner_chunk")
+    .setInputCol("text")\
+    .setOutputCol("ner_chunk")
 
 sbert_embedder = BertSentenceEmbeddings\
-.pretrained('sbiobert_base_cased_mli', 'en','clinical/models')\
-.setInputCols(["ner_chunk"])\
-.setOutputCol("sentence_embeddings")
+    .pretrained('sbiobert_base_cased_mli', 'en','clinical/models')\
+    .setInputCols(["ner_chunk"])\
+    .setOutputCol("sentence_embeddings")
 
 rxnorm_ndc_resolver = SentenceEntityResolverModel\
-.pretrained("sbiobertresolve_rxnorm_ndc", "en", "clinical/models") \
-.setInputCols(["ner_chunk", "sentence_embeddings"]) \
-.setOutputCol("rxnorm_code")\
-.setDistanceFunction("EUCLIDEAN")
+    .pretrained("sbiobertresolve_rxnorm_ndc", "en", "clinical/models") \
+    .setInputCols(["sentence_embeddings"]) \
+    .setOutputCol("rxnorm_code")\
+    .setDistanceFunction("EUCLIDEAN")
 
-rxnorm_ndc_pipeline = Pipeline(
-stages = [
-documentAssembler,
-sbert_embedder,
-rxnorm_ndc_resolver])
+rxnorm_ndc_pipeline = Pipeline(stages = [
+    documentAssembler,
+    sbert_embedder,
+    rxnorm_ndc_resolver])
 
 data = spark.createDataFrame([["activated charcoal 30000 mg powder for oral suspension"]]).toDF("text")
 
@@ -65,21 +65,24 @@ res = rxnorm_ndc_pipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("ner_chunk")
+    .setInputCol("text")
+    .setOutputCol("ner_chunk")
 
 val sbert_embedder = BertSentenceEmbeddings
-.pretrained("sbiobert_base_cased_mli", "en","clinical/models")
-.setInputCols(Array("ner_chunk")
-.setOutputCol("sentence_embeddings")
+    .pretrained("sbiobert_base_cased_mli", "en","clinical/models")
+    .setInputCols(Array("ner_chunk")
+    .setOutputCol("sentence_embeddings")
 
 val rxnorm_ndc_resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_rxnorm_ndc", "en", "clinical/models") 
-.setInputCols(Array("ner_chunk", "sentence_embeddings")) 
-.setOutputCol("rxnorm_code")
-.setDistanceFunction("EUCLIDEAN")
+    .pretrained("sbiobertresolve_rxnorm_ndc", "en", "clinical/models") 
+    .setInputCols(Array("sentence_embeddings")) 
+    .setOutputCol("rxnorm_code")
+    .setDistanceFunction("EUCLIDEAN")
 
-val rxnorm_ndc_pipeline = new Pipeline().setStages(Array(documentAssembler, sbert_embedder, rxnorm_ndc_resolver))
+val rxnorm_ndc_pipeline = new Pipeline().setStages(Array(
+    documentAssembler, 
+    sbert_embedder, 
+    rxnorm_ndc_resolver))
 
 val data = Seq("activated charcoal 30000 mg powder for oral suspension").toDF("text")
 

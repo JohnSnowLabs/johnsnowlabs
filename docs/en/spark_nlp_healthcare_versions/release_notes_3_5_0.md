@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.5.0
+title: Healthcare NLP v3.5.0 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_5_0
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -37,6 +37,8 @@ We are glad to announce that Spark NLP Healthcare 3.5.0 has been released!
   - **Contextual Parser** (our Rule-based NER annotator) is now **much more performant**!
   - **Bug fixing and compatibility additions** affecting and improving some behaviours of _AssertionDL, BertSentenceChunkEmbeddings, AssertionFilterer and EntityRulerApproach_
 + **New notebooks: zero-shot relation extraction and Deidentification benchmark vs Cloud Providers**
+
+</div><div class="h3-box" markdown="1">
 
 #### Zero-shot Relation Extraction to extract relations between clinical entities with no training dataset
 This release includes a zero-shot relation extraction model that leverages `BertForSequenceClassificaiton` to return, based on a predefined set of relation candidates (including no-relation / O), which one has the higher probability to be linking two entities.
@@ -127,6 +129,7 @@ Take a look at the example notebook [here](https://colab.research.google.com/git
 
 Stay tuned for the **few-shot** Annotator to be release soon!
 
+</div><div class="h3-box" markdown="1">
 
 #### New French Deidentification NER models and pipeline
 We trained two new NER models to find PHI data (protected health information) that may need to be deidentified in **French**. `ner_deid_generic` and `ner_deid_subentity` models are trained with in-house annotations.
@@ -184,6 +187,7 @@ Obfuscated
 PRENOM : Mme Olivier NOM : Mme Traore NUMÉRO DE SÉCURITÉ SOCIALE : 164033818514436  ADRESSE : 731, boulevard de Legrand VILLE : Sainte Antoine CODE POSTAL : 37443
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New Italian Deidentification NER models and pipeline
 
@@ -245,6 +249,8 @@ Obfuscated
 NOME: Stefania Gregori CODICE FISCALE: UIWSUS86M04J604B INDIRIZZO: Viale Orlando 808 CODICE POSTALE: 53581
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Check our reference table for **French and Italian deidentification metrics**
 Please find this reference table with metrics comparing F1 score for the available entities in French and Italian clinical pipelines:
 ```
@@ -271,7 +277,7 @@ Please find this reference table with metrics comparing F1 score for the availab
 |IDNUM        |0.9576 |N/A   |
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Added French support in Deidentification Annotator for data obfuscation
 Our `Deidentificator` annotator is now able to obfuscate entities (coming from a deid NER model) with fake data in French language. Example:
@@ -351,6 +357,7 @@ Obfuscated sentence:
 +--------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Deidentification benchmark: Spark NLP vs Cloud Providers (AWS, Azure, GCP)
 We have published a new notebook with a benchmark and the reproduceable code, comparing Spark NLP for Healthcare Deidentification capabilities of one of our English pipelines (`clinical_deidentification_glove_augmented`) versus:
@@ -371,6 +378,8 @@ PATIENT     0.96    0.95    0.78      0.48
 PHONE        1       1      0.8       0.97
 ID          0.93    0.93     -          -
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### ChunkMapperApproach: mapping extracted entities to an ontology (Json dictionary) with relations
 We have released a new annotator, called **ChunkMapperApproach**(), that receives a **ner_chunk** and a Json with a mapping of NER entities and relations, and returns the **ner_chunk** augmented with the relations from the Json ontology.
@@ -445,6 +454,7 @@ Main relation:				hypoglycemic
 Other relations (included in metadata):	Drugs Used In Diabets
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Configuration of case sensitivity in the name of the relations in Relation Extraction Models
 We have added a new parameter, called 'relationPairsCaseSensitive', which affects the way `setRelationPairs` works. If `relationPairsCaseSensitive` is True, then the pairs of entities in the dataset should match the pairs in setRelationPairs in their specific case (case sensitive). By default it's set to False, meaning that the match of those relation names is case insensitive.
@@ -466,6 +476,7 @@ reModel = RelationExtractionModel()\
 
 This will return relations named dosage-drug, DOSAGE-DRUG, etc.
 
+</div><div class="h3-box" markdown="1">
 
 #### We have reached the milestone of 600 clinical models (and 5000+ models overall) ! 🥳
 This release added to Spark NLP Models Hub 100+ pretrained clinical pipelines, available to use as one-liners, including some of the most used NER models, namely:
@@ -537,6 +548,7 @@ Finally, we have added two new **entityMapper** models: **drug_ontology** and **
 
 For all Spark NLP for healthcare models, please check our [Models Hub webpage](https://nlp.johnsnowlabs.com/models?edition=Spark+NLP+for+Healthcare)
 
+</div><div class="h3-box" markdown="1">
 
 #### Have you checked our demo page?
 New several demos were created, available at https://nlp.johnsnowlabs.com/demos
@@ -544,6 +556,8 @@ New several demos were created, available at https://nlp.johnsnowlabs.com/demos
 In this release we feature the **Multilingual deidentification**, showcasing how to deidentify clinical texts in English, Spanish, German, French and Italian. This demo is available [here](https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT_MULTI)
 
 **For the rest of the demos, please visit [Models Hub Demos Page](https://nlp.johnsnowlabs.com/demos)**
+
+</div><div class="h3-box" markdown="1">
 
 #### Generate Dataframes to train Assertion Status Models using JSON files exported from Annotation Lab (ALAB)
 Now we can generate a dataframe that can be used to train an `AssertionDLModel` by using the output of `AnnotationToolJsonReader.generatePlainAssertionTrainSet()`. The dataframe contains all the columns that you need for training.
@@ -567,6 +581,8 @@ reader.generatePlainAssertionTrainSet(df).show(truncate=False)
 +-------+--------------------------------------------+-----+---+-----------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Understand how to scale from a PoC to Production using Spark NLP for Healthcare in our new Medium Article, available here
 
 We receive many questions about how Spark work distribution is carried out, what specially becomes important before making the leap from a PoC to a big scalable, production-ready cluster.
@@ -579,6 +595,7 @@ This article helps you understand:
 
 If you need further assistance, please reach our Support team at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com)
 
+</div><div class="h3-box" markdown="1">
 
 #### Contextual Parser (our Rule-based NER annotator) is now much more performant!
 Contextual Parser has been improved in terms of performance. These are the metrics comparing 3.4.2 and 3.5.0
@@ -597,6 +614,8 @@ Contextual Parser has been improved in terms of performance. These are the metri
 3.5.0   79	136	197	294
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### We have reached the milestone of 600 clinical demos!
 During this release, we included:
 - More than 100+ recently created clinical models and pipelines, including NER, NER+RE, NER+Assertion+RE, etc.
@@ -604,7 +623,7 @@ During this release, we included:
 
 **For all Spark NLP for healthcare models, please check : [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Spark+NLP+for+Healthcare)**
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Bug fixing and compatibility additions
 This is the list of fixed issues and bugs, as well as one compatibility addition between **EntityRuler** and **AssertionFiltered**:
@@ -646,6 +665,7 @@ Result:
 Annotation(chunk, 9, 13, cough, {'entity': 'COUGH', 'id': 'cough', 'sentence': '0'})]
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### **New notebooks: zero-shot relation extraction and Deidentification benchmark (Spark NLP and Cloud Providers)**
 Check these recently notebooks created by our Healthcare team and available in our [Spark NLP Workshop git repo](https://github.com/JohnSnowLabs/spark-nlp-workshop/), where you can find many more.

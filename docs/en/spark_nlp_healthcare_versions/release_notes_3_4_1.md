@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.4.1
+title: Healthcare NLP v3.4.1 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_4_1
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -39,6 +39,8 @@ We are glad to announce that Spark NLP Healthcare 3.4.1 has been released!
 + New speed benchmarks table on databricks
 + New & Updated Notebooks
 + List of recently updated or added models
+
+</div><div class="h3-box" markdown="1">
 
 #### Brand New Spanish Deidentification NER Models
 
@@ -82,6 +84,8 @@ result = model.transform(spark.createDataFrame([[text]], ["text"]))
 | Clínica San Carlos | LOCATION               | HOSPITAL                 |
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Brand New Spanish Deidentification Pretrained Pipeline
 
 We developed a clinical deidentification pretrained pipeline that can be used to deidentify PHI information from **Spanish** medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask, fake or obfuscate the following entities: `AGE`, `DATE`, `PROFESSION`, `E-MAIL`, `USERNAME`, `LOCATION`, `DOCTOR`, `HOSPITAL`, `PATIENT`, `URL`, `IP`, `MEDICALRECORD`, `IDNUM`, `ORGANIZATION`, `PHONE`, `ZIP`, `ACCOUNT`, `SSN`, `PLATE`, `SEX` and `IPADDR`.
@@ -119,10 +123,13 @@ Obfuscated
 Datos del paciente. Nombre:  Sr. Lerma . Apellidos: Aristides Gonzalez Gelabert. NHC: BBBBBBBBQR648597. NASS: 041010000011 RZRM020101906017 04.
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Clinical NER Model to Detect Supplements
 
 We are releasing `ner_supplement_clinical` model that can extract benefits of using drugs for certain conditions. It can label detected entities as `CONDITION` and `BENEFIT`. Also this model is trained on the dataset that is released by Spacy in their HealthSea product. Here is the benchmark comparison of both versions:
 
+{:.table-model-big}
 |Entity|Spark NLP| Spacy-HealthSea|
 |-|-|-|
 |BENEFIT|0.8729641|0.8330684|
@@ -153,6 +160,8 @@ results = ner_model.transform(spark.createDataFrame([["Excellent!. The state of 
 +------------------------+---------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New RxNorm Sentence Entity Resolver Model
 
 `sbiobertresolve_rxnorm_augmented_re` : This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes without specifying the relations between the entities (relations are calculated on the fly inside the annotator) using sbiobert_base_cased_mli Sentence Bert Embeddings (EntityChunkEmbeddings).
@@ -168,6 +177,8 @@ rxnorm_resolver = SentenceEntityResolverModel\
       .setDistanceFunction("EUCLIDEAN")
 ...
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New `EntityChunkEmbeddings` Annotator
 
@@ -233,13 +244,19 @@ The internal relation extraction creates the chunks here, and the embedding is c
 +-----+----------------+--------------------------+--------------------------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New `MedicalBertForSequenceClassification` Annotator
 
 We developed a new annotator called `MedicalBertForSequenceClassification`. It can load BERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.
 
 #### New `MedicalDistilBertForSequenceClassification` Annotator
 
+</div><div class="h3-box" markdown="1">
+
 We developed a new annotator called `MedicalDistilBertForSequenceClassification`. It can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.
+
+</div><div class="h3-box" markdown="1">
 
 #### New `MedicalDistilBertForSequenceClassification` and `MedicalBertForSequenceClassification` Models
 
@@ -303,6 +320,7 @@ result = sequence_clf_model.transform(spark.createDataFrame([[sample_text]]).toD
 +----------------------------------------------------------------+-----+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Redesign of the `ContextualParserApproach` Annotator
 
@@ -313,6 +331,8 @@ result = sequence_clf_model.transform(spark.createDataFrame([[sample_text]]).toD
 - Lastly, there was an improvement made to the confidence value calculation process to better measure successful hits.
 
 For more explanation and examples, please check this [Contextual Parser medium article](https://medium.com/spark-nlp/contextual-parser-increased-flexibility-extracting-entities-in-spark-nlp-123ed58672f0) and [Contextual Parser Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb).
+
+</div><div class="h3-box" markdown="1">
 
 #### `getClasses` Method in `RelationExtractionModel` and `RelationExtractionDLModel` Annotators
 
@@ -332,6 +352,8 @@ clinical_re_Model.getClasses()
 ```output
 ['OVERLAP', 'BEFORE', 'AFTER']
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ####  Label Customization Feature for `RelationExtractionModel` and `RelationExtractionDL` Models
 
@@ -372,6 +394,7 @@ result = model.transform(spark.createDataFrame([[sample_text]]).toDF('text'))
 +-----------+-------+-------------+-------+-------+----------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### `useBestModel` Parameter in `MedicalNerApproach` Annotator
 
@@ -387,6 +410,8 @@ med_ner = MedicalNerApproach()\
     ...
     .setUseBestModel(True)\
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Early Stopping Feature in `MedicalNerApproach` Annotator
 
@@ -410,6 +435,8 @@ med_ner = MedicalNerApproach()\
     .setEarlyStoppingPatience(3)\
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Multi-Language Support for Faker and Regex Lists of `Deidentification` Annotator
 
 We have a new `.setLanguage()` parameter in order to use internal Faker and Regex list for multi-language texts. When you are working with German and Spanish texts for a Deidentification, you can set this parameter to `de` for German and `es` for Spanish. Default value of this parameter is `en`.
@@ -425,6 +452,8 @@ deid_obfuscated = DeIdentification()\
       .setObfuscateRefSource("faker")\
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Spark 3.2.0 Compatibility for the Entire Library
 
 Now we can use the [Spark 3.2.0](https://spark.apache.org/docs/3.2.0/) version for Spark NLP for Healthcare by setting `spark32=True` in `sparknlp_jsl.start()` function.
@@ -438,6 +467,8 @@ import sparknlp_jsl
 
 spark = sparknlp_jsl.start(SECRET, spark32=True)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### Saving Visualization Feature in `spark-nlp-display` Library
 
@@ -453,17 +484,23 @@ visualiser = NerVisualizer()
 visualiser.display(light_result[0], label_col='ner_chunk', document_col='document', save_path="display_result.html")
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Deploying a Custom Spark NLP Image (for opensource, healthcare, and Spark OCR) to an Enterprise Version of Kubernetes: OpenShift
 
 Spark NLP for opensource, healthcare, and SPARK OCR is now available for Openshift - enterprise version of Kubernetes. For deployment, please refer to:
 
-Github Link: https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/openshift
+Github Link: [https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/openshift](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/openshift)
 
-Youtube: https://www.youtube.com/watch?v=FBes-6ylFrM&ab_channel=JohnSnowLabs
+Youtube: [https://www.youtube.com/watch?v=FBes-6ylFrM&ab_channel=JohnSnowLabs](https://www.youtube.com/watch?v=FBes-6ylFrM&ab_channel=JohnSnowLabs)
+
+</div><div class="h3-box" markdown="1">
 
 #### New Speed Benchmarks Table on Databricks
 
 We prepared a speed benchmark table by running a clinical BERT For Token Classification model pipeline on various number of repartitioning and writing the results to parquet or delta formats. You can find the details here : [Clinical Bert For Token Classification Benchmark Experiment](https://nlp.johnsnowlabs.com/docs/en/benchmark#clinical-bert-for-token-classification-benchmark-experiment).
+
+</div><div class="h3-box" markdown="1">
 
 #### New & Updated Notebooks
 
@@ -473,6 +510,8 @@ We prepared a speed benchmark table by running a clinical BERT For Token Classif
 + We have a new [Sentence Entity Resolvers with EntityChunkEmbeddings Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.2.Sentence_Entity_Resolvers_with_EntityChunkEmbeddings.ipynb) for the new `EntityChunkEmbeddings` annotator.
 
 **To see more, please check : [Spark NLP Healthcare Workshop Repo](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare)**
+
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated or Added Models
 

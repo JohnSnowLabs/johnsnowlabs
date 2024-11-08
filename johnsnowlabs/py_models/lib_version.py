@@ -133,3 +133,6 @@ class LibVersion:
         """Return LibVersion object as canonical str representation"""
         # We filter out all values != None soo version checks match up
         return ".".join(filter(lambda x: x, [self.major, self.minor, self.patch]))
+
+    def __str__(self):
+        return self.as_str()

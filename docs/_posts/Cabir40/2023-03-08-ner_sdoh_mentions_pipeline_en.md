@@ -2,7 +2,7 @@
 layout: model
 title: Pipeline to Detect Social Determinants of Health Mentions
 author: John Snow Labs
-name: ner_sdoh_mentions_pipeline
+name: ner_sdoh_mentions_pipeline`
 date: 2023-03-08
 tags: [en, licensed, ner, sdoh, mentions, clinical]
 task: Named Entity Recognition
@@ -19,6 +19,10 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This pretrained pipeline is built on the top of [ner_sdoh_mentions](https://nlp.johnsnowlabs.com/2022/12/18/ner_sdoh_mentions_en.html) model.
+
+## Predicted Entities
+`behavior_alcohol`, `behavior_drug`, `sdoh_education`, `behavior_tobacco`, `sdoh_economics`, `sdoh_environment`, `sdoh_community`
+
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}

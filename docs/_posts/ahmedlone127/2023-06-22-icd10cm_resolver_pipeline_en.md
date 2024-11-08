@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/80b9ec4d-c7b8-401c-b177-aa388259f422/John-Snow-Labs_Extract-Clinical-Findings-and-the-corresponding-ICD10CM-codes
+
 ---
 
 ## Description
@@ -22,6 +28,8 @@ This pretrained pipeline maps entities with their corresponding ICD-10-CM codes.
 
 ## Predicted Entities
 
+`TREATMENT`, `PROBLEM`,`TEST`
+
 
 
 {:.btn-box}
@@ -29,6 +37,13 @@ This pretrained pipeline maps entities with their corresponding ICD-10-CM codes.
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_4.4.4_3.0_1687415557518.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_4.4.4_3.0_1687415557518.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
@@ -66,11 +81,11 @@ nlu.load("en.icd10cm_resolver.pipeline").predict("""A 28-year-old female with a 
 ## Results
 
 ```bash
-|chunk                        |ner_chunk|icd10cm_code|
-+-----------------------------+---------+------------+
-|gestational diabetes mellitus|PROBLEM  |O24.919     |
-|anisakiasis                  |PROBLEM  |B81.0       |
-|fetal and neonatal hemorrhage|PROBLEM  |P545        |
+|   |                        chunks | entities | icd10cm_code |
+|--:|------------------------------:|---------:|-------------:|
+| 0 | gestational diabetes mellitus |  PROBLEM |      O24.919 |
+| 1 |                   anisakiasis |  PROBLEM |        B81.0 |
+| 2 | fetal and neonatal hemorrhage |  PROBLEM |         P549 |
 ```
 
 {:.model-param}

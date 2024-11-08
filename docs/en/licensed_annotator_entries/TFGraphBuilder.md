@@ -74,8 +74,6 @@ ner_graph_builder = legal.TFGraphBuilder()\
 [TFGraphBuilder](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder)
 {%- endcapture -%}
 
-{%- capture model_notebook_link -%}
-{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -87,4 +85,4 @@ model_python_medical=model_python_medical
 model_python_finance=model_python_finance
 model_python_legal=model_python_legal
 model_python_api_link=model_python_api_link
-model_notebook_link=model_notebook_link%}
+%}

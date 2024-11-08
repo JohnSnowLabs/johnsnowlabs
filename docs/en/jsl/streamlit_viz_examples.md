@@ -27,7 +27,8 @@ and can see with your own eyes how context is encoded by transformer models like
 Besides that, you can also compare the results of the 200+ NER models John Snow Labs provides and see how peformances
 changes with varrying ebeddings, like Contextual, Static and Domain Specific Embeddings.
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif">
+
+![Streamlit visualization Examples](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -63,8 +64,9 @@ go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/
 ## Examples
 
 Just try out any of these.
-You can use the first example to generate python-code snippets which you can
-recycle as building blocks in your streamlit apps!
+You can use the first example to generate python-code snippets which you can recycle as building blocks in your streamlit apps!x
+
+</div><div class="h3-box" markdown="1">
 
 ### Example:  [`01_dashboard`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py)
 
@@ -72,11 +74,15 @@ recycle as building blocks in your streamlit apps!
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/01_dashboard.py
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Example:  [`02_NER`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py)
 
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/02_NER.py
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Example:  [`03_text_similarity_matrix`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/03_text_similarity_matrix.py)
 
@@ -92,11 +98,15 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/04_dependency_tree.py
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Example:  [`05_classifiers`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/05_classifiers.py)
 
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/05_classifiers.py
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Example:  [`06_token_features`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/06_token_features.py)
 
@@ -104,17 +114,23 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/06_token_features.py
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Example:  [`07_token_embedding_dimension_reduction`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/07_token_embedding_manifolds.py)
 
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/07_token_embedding_manifolds.py
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Example:  [`08_token_embedding_dimension_reduction`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/08_sentence_embedding_manifolds.py==)
 
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/08_sentence_embedding_manifolds.py
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Example:  [`09_entity_embedding_dimension_reduction`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/09_entity_embedding_manifolds.py)
 
@@ -138,6 +154,7 @@ components. [`viz() method`](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_exampl
 
 ### Overview of NLP + Streamlit buildingblocks
 
+{:.table-model-big.db}
 | Method                                                                         | Description                                                                                                                                                                                                                                                             |
 |--------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [`nlp.load('<Model>').predict(data)`](https://todo.com/)                                | Load any of the [1000+ models](https://nlp.johnsnowlabs.com/models) by providing the model name any predict on most Pythontic [data strucutres like Pandas, strings, arrays of strings and more](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) |
@@ -149,12 +166,10 @@ components. [`viz() method`](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_exampl
 | [`nlp.load('<Model>').viz_streamlit_token(data)`](https://todo.com/)                    | Display all detected token features and informations in Streamlit                                                                                                                                                                                                       |
 | [`nlp.load('<Model>').viz(data, write_to_streamlit=True)`](https://todo.com/)           | Display the raw visualization without any UI elements. See [viz docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples). By default all aplicable nlp model references will be shown.                                                                    |
 | [`nlp.enable_streamlit_caching()`](#test)                                      | Enable caching the `nlp.load()` call. Once enabled, the `nlp.load()` method will automatically cached. **                                                                                                                                                               
-This is
-recommended** to run first and for large peformance gans                                                                                               |
+
+This is recommended** to run first and for large peformance gans                                                                                               |
 
 </div><div class="h3-box" markdown="1">
-
-{:.h2-select}
 
 ## Detailed visualizer information and API docs
 
@@ -181,12 +196,13 @@ Ths includes :
 nlp.load('ner').viz_streamlit(['I love NLP and Streamlit!', 'I hate buggy software'])
 ```
 
-![NLP Streamlit UI Overview](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/ui.gif)
+![NLP Streamlit UI Overview](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/ui.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit`
 
+{:.table-model-big.db}
 | Argument                | Type                                              | Default                                                                             | Description                                                                                                                                                                                                                                                                                                                   |
 |-------------------------|---------------------------------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  | `Union [str, List[str], pd.DataFrame, pd.Series]` | `'NLP and Streamlit go together like peanutbutter and jelly'`                       | Default text for the `Classification`, `Named Entitiy Recognizer`, `Token Information` and `Dependency Tree` visualizations                                                                                                                                                                                                   |
@@ -219,12 +235,13 @@ nlp.load('sentiment').viz_streamlit_classes(
      'I am afraid of Snakes', 'Unicorns have been sighted on Mars!', 'Where is the next bus stop?'])
 ```
 
-![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/class.gif)
+![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/class.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_classes`
 
+{:.table-model-big.db}
 | Argument                | Type                                                              | Default                                      | Description                                                                                                                                                                            |
 |-------------------------|-------------------------------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  | `Union[str,list,pd.DataFrame, pd.Series, pyspark.sql.DataFrame ]` | `'I love NLU and Streamlit and sunny days!'` | Text to predict classes for. Will predict on each input of the iteratable or dataframe if type is not str.                                                                             |
@@ -255,7 +272,7 @@ Basic usage
 nlp.load('ner').viz_streamlit_ner('Donald Trump from America and Angela Merkel from Germany dont share many views')
 ```
 
-![NER visualization](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/NER.gif)
+![NER visualization](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/NER.gif "lit_shadow")
 
 Example for coloring
 
@@ -265,12 +282,13 @@ nlp.load('ner').viz_streamlit_ner('Donald Trump from America and Angela Merkel f
                                   colors={'PERSON': '#6e992e', 'GPE': '#000000'})
 ```
 
-![NER coloring](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/NER_colored.png)
+![NER coloring](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/NER_colored.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_ner`
 
+{:.table-model-big.db}
 | Argument                | Type                  | Default                                                                                                                                                  | Description                                                                                                                                                                                                                                 |
 |-------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  | `str`                 | `'Donald Trump from America and Anegela Merkel from Germany do not share many views'`                                                                    | Text to predict classes for.                                                                                                                                                                                                                |
@@ -302,12 +320,13 @@ nlp.load('dep.typed').viz_streamlit_dep_tree(
     'POS tags define a grammatical label for each token and the Dependency Tree classifies Relations between the tokens')
 ```
 
-![Dependency Tree](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/DEP.png)
+![Dependency Tree](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/DEP.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_dep_tree`
 
+{:.table-model-big.db}
 | Argument                | Type            | Default                                         | Description                                                                                                                                                                            |
 |-------------------------|-----------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  | `str`           | `'Billy likes to swim'`                         | Text to predict classes for.                                                                                                                                                           |
@@ -335,12 +354,13 @@ dropdown.
 nlp.load('stemm pos spell').viz_streamlit_token('I liek pentut buttr and jelly !')
 ```
 
-![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif)
+![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/token.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_token`
 
+{:.table-model-big.db}
 | Argument                | Type                  | Default                          | Description                                                                                                                                                                            |
 |-------------------------|-----------------------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  | `str`                 | `'NLU and Streamlit are great!'` | Text to predict token information for.                                                                                                                                                 |
@@ -379,12 +399,13 @@ nlp.load('bert').viz_streamlit_word_similarity(
     ['I love love loooove NLP! <3', 'I also love love looove  Streamlit! <3'])
 ```
 
-![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/SIM.gif)
+![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/SIM.gif "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_similarity`
 
+{:.table-model-big.db}
 | Argument                      | Type            | Default                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |-------------------------------|-----------------|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `texts`                       | `str`           | `'Donald Trump from America and Anegela Merkel from Germany do not share many views.'` | Text to predict token information for.                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -408,8 +429,6 @@ nlp.load('bert').viz_streamlit_word_similarity(
 | `display_infos`               | `bool`          | `False`                                                                                | Display additional information about ISO codes and the NLP namespace structure.                                                                                                                                                                                                                                                                                                                                              |
 
 </div><div class="h3-box" markdown="1">
-
-{:.h2-select}
 
 ## Embedding visualization via Manifold and Matrix Decomposition algorithms
 
@@ -435,12 +454,13 @@ nlp.load('bert', verbose=True).viz_streamlit_word_embed_manifold(default_texts=[
                                                                  default_algos_to_apply=['TSNE'], MAX_DISPLAY_NUM=5)
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true">
+![Embedding visualization via Manifold and Matrix Decomposition algorithms](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_word_embed_manifold`
 
+{:.table-model-big.db}
 | Argument                              | Type            | Default                                                                                                                                            | Description                                                                                                                                                                                                                             |
 |---------------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `default_texts`                       | `List[str]`     | ("Donald Trump likes to party!", "Angela Merkel likes to party!", 'Peter HATES TO PARTTY!!!! :(')                                                  | List of strings to apply classifiers, embeddings, and manifolds to.                                                                                                                                                                     |  
@@ -465,9 +485,9 @@ nlp.load('bert', verbose=True).viz_streamlit_word_embed_manifold(default_texts=[
 
 </div><div class="h3-box" markdown="1">
 
-### Larger Example showcasing more dimension reduction techniques on a larger corpus :
+### Larger Example showcasing more dimension reduction techniques on a larger corpus:
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true">
+![Embedding visualization via Manifold and Matrix Decomposition algorithms](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/big_example_word_embedding_dimension_reduction.gif?raw=true "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -492,12 +512,13 @@ You can also select additional classifiers via the GUI.
 nlp.load('embed_sentence.bert').viz_streamlit_sentence_embed_manifold(['text1', 'text2tdo'])
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true">
+![Larger Example showcasing more dimension reduction techniques on a larger corpus](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/sentence_embedding_dimension_reduction/sentence_manifold_low_qual.gif?raw=true "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
 
+{:.table-model-big.db}
 | Argument                              | Type            | Default                                                                                                                                                | Description                                                                                                                                                                                                                             |
 |---------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `default_texts`                       | `List[str]`     | ("Donald Trump likes to party!", "Angela Merkel likes to party!", 'Peter HATES TO PARTTY!!!! :(')                                                      | List of strings to apply classifiers, embeddings, and manifolds to.                                                                                                                                                                     |  
@@ -542,12 +563,13 @@ You can pick additional NER models and compare them via the GUI dropdown on the 
 nlp.load('ner').viz_streamlit_sentence_embed_manifold(['Hello From John Snow Labs', 'Peter loves to visit New York'])
 ```
 
-<img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true">
+![Larger Example showcasing more dimension reduction techniques on a larger corpus](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/entity_embedding_dimension_reduction/low_quality.gif?raw=true "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ### <kbd>function parameters</kbd> `pipe.viz_streamlit_sentence_embed_manifold`
 
+{:.table-model-big.db}
 | Argument                 | Type            | Default                                                                                                                                               | Description                                                                                                                                                                                                                             |
 |--------------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `default_texts`          | `List[str]`     | "Donald Trump likes to visit New York", "Angela Merkel likes to visit Berlin!", 'Peter hates visiting Paris')                                         | List of strings to apply classifiers, embeddings, and manifolds to.                                                                                                                                                                     |  
@@ -563,6 +585,8 @@ nlp.load('ner').viz_streamlit_sentence_embed_manifold(['Hello From John Snow Lab
 | `display_infos`          | `bool`          | `False`                                                                                                                                               | Display additional information about ISO codes and the NLP namespace structure.                                                                                                                                                         |  
 | `n_jobs`                 | `Optional[int]` | `3`                                                                                                                                                   | `False`                                                                                                                                                                                                                                 | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |  
 
+</div><div class="h3-box" markdown="1">
+
 ### [Supported Manifold Algorithms for Word, Sentence, and Entity Embeddings](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.manifold)
 
 - [TSNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
@@ -570,6 +594,8 @@ nlp.load('ner').viz_streamlit_sentence_embed_manifold(['Hello From John Snow Lab
 - [LLE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding)
 - [Spectral Embedding](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding)
 - [MDS](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS)
+
+</div><div class="h3-box" markdown="1">
 
 ### [Supported Matrix Decomposition Algorithms for Word, Sentence and Entity Embeddings](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.decomposition)
 

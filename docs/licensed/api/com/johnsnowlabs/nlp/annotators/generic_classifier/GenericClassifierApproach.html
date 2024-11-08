@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.1.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach</title>
-          <meta name="description" content="Spark NLP 5.1.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.generic classifier.GenericClassifierApproach" />
-          <meta name="keywords" content="Spark NLP 5.1.4 ScalaDoc com.johnsnowlabs.nlp.annotators.generic classifier.GenericClassifierApproach" />
+          <title>Spark NLP 5.5.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach</title>
+          <meta name="description" content="Spark NLP 5.5.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.generic classifier.GenericClassifierApproach" />
+          <meta name="keywords" content="Spark NLP 5.5.0 ScalaDoc com.johnsnowlabs.nlp.annotators.generic classifier.GenericClassifierApproach" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.1.4 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -163,6 +163,10 @@
                         <a href="GenericClassifierModel.html" title="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs.">GenericClassifierModel</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
+                        <a class="trait" href="GenericClassifierParams.html" title=""></a>
+                        <a href="GenericClassifierParams.html" title="">GenericClassifierParams</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
                         <a class="trait" href="ReadablePretrainedGenericClassifier.html" title=""></a>
                         <a href="ReadablePretrainedGenericClassifier.html" title="">ReadablePretrainedGenericClassifier</a>
                       </li><li class="current-entities indented5">
@@ -194,7 +198,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">GenericClassifierApproach</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>] with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <span class="name">GenericClassifierApproach</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>] with <a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a> with <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       </h4>
 
@@ -228,12 +232,12 @@ Please see the Parameters section for required training parameters.</p><p>For a 
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="org.apache.spark.ml.Estimator">Estimator</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>], <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a>, <a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="org.apache.spark.ml.Estimator">Estimator</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>], <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="../../../finance/sequence_classification/FinanceFewShotClassifierApproach.html" class="extype" name="com.johnsnowlabs.finance.sequence_classification.FinanceFewShotClassifierApproach">FinanceFewShotClassifierApproach</a>, <a href="../../../finance/sequence_classification/FinanceFewShotClassifierApproach$.html" class="extype" name="com.johnsnowlabs.finance.sequence_classification.FinanceFewShotClassifierApproach">FinanceFewShotClassifierApproach</a>, <a href="../../../legal/sequence_classification/LegalFewShotClassifierApproach.html" class="extype" name="com.johnsnowlabs.legal.sequence_classification.LegalFewShotClassifierApproach">LegalFewShotClassifierApproach</a>, <a href="../../../legal/sequence_classification/LegalFewShotClassifierApproach$.html" class="extype" name="com.johnsnowlabs.legal.sequence_classification.LegalFewShotClassifierApproach">LegalFewShotClassifierApproach</a>, <a href="../classification/FewShotClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.FewShotClassifierApproach">FewShotClassifierApproach</a>, <a href="../classification/FewShotClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.FewShotClassifierApproach">FewShotClassifierApproach</a>, <a href="../classification/GenericLogRegClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericLogRegClassifierApproach">GenericLogRegClassifierApproach</a>, <a href="../classification/GenericLogRegClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericLogRegClassifierApproach">GenericLogRegClassifierApproach</a>, <a href="../classification/GenericSVMClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericSVMClassifierApproach">GenericSVMClassifierApproach</a>, <a href="../classification/GenericSVMClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericSVMClassifierApproach">GenericSVMClassifierApproach</a>, <a href="../re/RelationExtractionApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach">RelationExtractionApproach</a>, <a href="../re/RelationExtractionApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach">RelationExtractionApproach</a></div>
+            <div class="subClasses hiddenContent"><a href="../../../finance/sequence_classification/FinanceFewShotClassifierApproach.html" class="extype" name="com.johnsnowlabs.finance.sequence_classification.FinanceFewShotClassifierApproach">FinanceFewShotClassifierApproach</a>, <a href="../../../finance/sequence_classification/FinanceFewShotClassifierApproach$.html" class="extype" name="com.johnsnowlabs.finance.sequence_classification.FinanceFewShotClassifierApproach">FinanceFewShotClassifierApproach</a>, <a href="../../../legal/sequence_classification/LegalFewShotClassifierApproach.html" class="extype" name="com.johnsnowlabs.legal.sequence_classification.LegalFewShotClassifierApproach">LegalFewShotClassifierApproach</a>, <a href="../../../legal/sequence_classification/LegalFewShotClassifierApproach$.html" class="extype" name="com.johnsnowlabs.legal.sequence_classification.LegalFewShotClassifierApproach">LegalFewShotClassifierApproach</a>, <a href="../classification/FewShotAssertionClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.FewShotAssertionClassifierApproach">FewShotAssertionClassifierApproach</a>, <a href="../classification/FewShotAssertionClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.FewShotAssertionClassifierApproach">FewShotAssertionClassifierApproach</a>, <a href="../classification/FewShotClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.FewShotClassifierApproach">FewShotClassifierApproach</a>, <a href="../classification/FewShotClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.FewShotClassifierApproach">FewShotClassifierApproach</a>, <a href="../classification/GenericLogRegClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericLogRegClassifierApproach">GenericLogRegClassifierApproach</a>, <a href="../classification/GenericLogRegClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericLogRegClassifierApproach">GenericLogRegClassifierApproach</a>, <a href="../classification/GenericSVMClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericSVMClassifierApproach">GenericSVMClassifierApproach</a>, <a href="../classification/GenericSVMClassifierApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.classification.GenericSVMClassifierApproach">GenericSVMClassifierApproach</a>, <a href="../re/RelationExtractionApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach">RelationExtractionApproach</a>, <a href="../re/RelationExtractionApproach$.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach">RelationExtractionApproach</a></div>
           </div></div>
         
 
@@ -259,7 +263,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach"><span>GenericClassifierApproach</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorApproach"><span>AnnotatorApproach</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="org.apache.spark.ml.Estimator"><span>Estimator</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach"><span>GenericClassifierApproach</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams"><span>HandleExceptionParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams"><span>GenericClassifierParams</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorApproach"><span>AnnotatorApproach</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="org.apache.spark.ml.Estimator"><span>Estimator</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -436,7 +440,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#batchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#batchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="batchSize:org.apache.spark.ml.param.IntParam"></a><a id="batchSize:IntParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#batchSize:org.apache.spark.ml.param.IntParam" title="Permalink">
@@ -452,7 +456,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Batch size
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Batch size
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#beforeTraining" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="beforeTraining(spark:org.apache.spark.sql.SparkSession):Unit"></a><a id="beforeTraining(SparkSession):Unit"></a>
       <span class="permalink">
@@ -486,9 +491,9 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
     </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Option[Seq[String]]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Option[Seq[String]]):Unit"></a>
+      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Seq[String]):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Option[Seq[String]]):Unit" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -497,7 +502,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
@@ -545,7 +550,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
@@ -577,7 +582,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -621,6 +626,23 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#datasetInfo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="datasetInfo:org.apache.spark.ml.param.Param[String]"></a><a id="datasetInfo:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#datasetInfo:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">datasetInfo</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Descriptive information about the dataset being used.</p><div class="fullcomment"><div class="comment cmt"><p>Descriptive information about the dataset being used.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#defaultCopy" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="defaultCopy[T&lt;:org.apache.spark.ml.param.Params](extra:org.apache.spark.ml.param.ParamMap):T"></a><a id="defaultCopy[T&lt;:Params](ParamMap):T"></a>
       <span class="permalink">
@@ -653,7 +675,26 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Trains TensorFlow model for multi-class text classification</p><div class="fullcomment"><div class="comment cmt"><p>Trains TensorFlow model for multi-class text classification</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a> → AnnotatorApproach</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#dropout" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams#doExceptionHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="doExceptionHandling:org.apache.spark.ml.param.BooleanParam"></a><a id="doExceptionHandling:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#doExceptionHandling:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">doExceptionHandling</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">If true, exceptions are handled.</p><div class="fullcomment"><div class="comment cmt"><p>If true, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.
+This comes with a performance penalty.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#dropout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="dropout:org.apache.spark.ml.param.FloatParam"></a><a id="dropout:FloatParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#dropout:org.apache.spark.ml.param.FloatParam" title="Permalink">
@@ -669,8 +710,9 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Dropout coefficient
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#epochsN" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+</p><div class="fullcomment"><div class="comment cmt"><p>Dropout coefficient
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#epochsN" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="epochsN:org.apache.spark.ml.param.IntParam"></a><a id="epochsN:IntParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#epochsN:org.apache.spark.ml.param.IntParam" title="Permalink">
@@ -686,7 +728,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Maximum number of epochs to train
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Maximum number of epochs to train
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -699,7 +742,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -783,7 +826,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#featureScaling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#featureScaling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="featureScaling:org.apache.spark.ml.param.Param[String]"></a><a id="featureScaling:Param[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#featureScaling:org.apache.spark.ml.param.Param[String]" title="Permalink">
@@ -799,7 +842,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Feature scaling method.</p><div class="fullcomment"><div class="comment cmt"><p>Feature scaling method. Possible values are 'zscore', 'minmax' or empty (no scaling)
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -850,7 +893,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fit</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>, <span name="paramMaps">paramMaps: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>]</span>
+        <span class="name">fit</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>, <span name="paramMaps">paramMaps: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span>]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Estimator</dd><dt>Annotations</dt><dd>
@@ -906,7 +949,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
                 <span class="name">@varargs</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#fixImbalance" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#fixImbalance" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="fixImbalance:org.apache.spark.ml.param.BooleanParam"></a><a id="fixImbalance:BooleanParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#fixImbalance:org.apache.spark.ml.param.BooleanParam" title="Permalink">
@@ -922,7 +965,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Fix the imbalance in the training set by replicating examples of under represented categories
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Fix the imbalance in the training set by replicating examples of under represented categories
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="get[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="get[T](Param[T]):Option[T]"></a>
       <span class="permalink">
@@ -939,7 +983,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getBatchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getBatchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getBatchSize:Int"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getBatchSize:Int" title="Permalink">
@@ -955,7 +999,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Batch size
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Batch size
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -975,6 +1020,24 @@ Please see the Parameters section for required training parameters.</p><p>For a 
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getDatasetInfo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getDatasetInfo:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getDatasetInfo:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDatasetInfo</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">get descriptive information about the dataset being used
+</p><div class="fullcomment"><div class="comment cmt"><p>get descriptive information about the dataset being used
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#getDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getDefault[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="getDefault[T](Param[T]):Option[T]"></a>
       <span class="permalink">
@@ -991,7 +1054,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getDropout" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getDropout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getDropout:Float"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getDropout:Float" title="Permalink">
@@ -1007,7 +1070,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Dropout coefficient
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Dropout coefficient
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getExistingLabels" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getExistingLabels():Array[String]"></a>
       <span class="permalink">
@@ -1024,7 +1088,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getFeatureScaling" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getFeatureScaling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getFeatureScaling:String"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getFeatureScaling:String" title="Permalink">
@@ -1040,8 +1104,9 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Get feature scaling method
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getFixImbalance" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+</p><div class="fullcomment"><div class="comment cmt"><p>Get feature scaling method
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getFixImbalance" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getFixImbalance:Boolean"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getFixImbalance:Boolean" title="Permalink">
@@ -1057,7 +1122,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Fix imbalance in training set
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Fix imbalance in training set
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#getInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInputCols:Array[String]"></a>
       <span class="permalink">
@@ -1074,7 +1140,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getLabelColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getLabelColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getLabelColumn:String"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getLabelColumn:String" title="Permalink">
@@ -1090,7 +1156,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Column with label per each document
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Column with label per each document
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.CanBeLazy#getLazyAnnotator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLazyAnnotator:Boolean"></a>
       <span class="permalink">
@@ -1107,7 +1174,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getLearningRate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getLearningRate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getLearningRate:Float"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getLearningRate:Float" title="Permalink">
@@ -1123,8 +1190,9 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Learning Rate
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getMaxEpochs" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+</p><div class="fullcomment"><div class="comment cmt"><p>Learning Rate
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getMaxEpochs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getMaxEpochs:Int"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getMaxEpochs:Int" title="Permalink">
@@ -1140,8 +1208,9 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Maximum number of epochs to train
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getModelFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+</p><div class="fullcomment"><div class="comment cmt"><p>Maximum number of epochs to train
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getModelFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getModelFile:String"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getModelFile:String" title="Permalink">
@@ -1157,8 +1226,9 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Model file name
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getMultiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+</p><div class="fullcomment"><div class="comment cmt"><p>Model file name
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getMultiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getMultiClass:Boolean"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getMultiClass:Boolean" title="Permalink">
@@ -1174,7 +1244,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Gets the model multi class prediction mode
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets the model multi class prediction mode
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#getOrDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getOrDefault[T](param:org.apache.spark.ml.param.Param[T]):T"></a><a id="getOrDefault[T](Param[T]):T"></a>
       <span class="permalink">
@@ -1207,7 +1278,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasOutputAnnotationCol</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getOutputLogsPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getOutputLogsPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getOutputLogsPath:String"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getOutputLogsPath:String" title="Permalink">
@@ -1223,7 +1294,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Get output logs path
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Get output logs path
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#getParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getParam(paramName:String):org.apache.spark.ml.param.Param[Any]"></a><a id="getParam(String):Param[Any]"></a>
       <span class="permalink">
@@ -1256,7 +1328,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#getValidationSplit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getValidationSplit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getValidationSplit:Float"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#getValidationSplit:Float" title="Permalink">
@@ -1272,7 +1344,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Choose the proportion of training dataset to be validated against the model on each Epoch.</p><div class="fullcomment"><div class="comment cmt"><p>Choose the proportion of training dataset to be validated against the model on each Epoch. The value should be between 0.0 and 1.0 and by default it is 0.0 and off.
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#hasDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasDefault[T](param:org.apache.spark.ml.param.Param[T]):Boolean"></a><a id="hasDefault[T](Param[T]):Boolean"></a>
       <span class="permalink">
@@ -1454,7 +1526,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#labelColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#labelColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="labelColumn:org.apache.spark.ml.param.Param[String]"></a><a id="labelColumn:Param[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#labelColumn:org.apache.spark.ml.param.Param[String]" title="Permalink">
@@ -1470,7 +1542,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Column with label per each document
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Column with label per each document
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.CanBeLazy#lazyAnnotator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="lazyAnnotator:org.apache.spark.ml.param.BooleanParam"></a><a id="lazyAnnotator:BooleanParam"></a>
       <span class="permalink">
@@ -1487,7 +1560,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#learningRate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#learningRate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="learningRate:org.apache.spark.ml.param.FloatParam"></a><a id="learningRate:FloatParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#learningRate:org.apache.spark.ml.param.FloatParam" title="Permalink">
@@ -1503,7 +1576,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Learning Rate
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Learning Rate
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.internal.Logging#log" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="log:org.slf4j.Logger"></a><a id="log:Logger"></a>
       <span class="permalink">
@@ -1532,7 +1606,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1564,7 +1638,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1596,7 +1670,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1644,7 +1718,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1676,7 +1750,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1696,7 +1770,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#modelFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#modelFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="modelFile:org.apache.spark.ml.param.Param[String]"></a><a id="modelFile:Param[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#modelFile:org.apache.spark.ml.param.Param[String]" title="Permalink">
@@ -1712,7 +1786,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <p class="shortcomment cmt">Location of file of the model used for classification
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Location of file of the model used for classification
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#msgHelper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="msgHelper(schema:org.apache.spark.sql.types.StructType):String"></a><a id="msgHelper(StructType):String"></a>
       <span class="permalink">
@@ -1729,7 +1804,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#multiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#multiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="multiClass:org.apache.spark.ml.param.BooleanParam"></a><a id="multiClass:BooleanParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#multiClass:org.apache.spark.ml.param.BooleanParam" title="Permalink">
@@ -1744,7 +1819,8 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="name">multiClass</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
       </span>
       
-      <p class="shortcomment cmt">If multiClass is set, the model will return all the labels with corresponding scores.</p><div class="fullcomment"><div class="comment cmt"><p>If multiClass is set, the model will return all the labels with corresponding scores. By default, multiClass is false.</p></div></div>
+      <p class="shortcomment cmt">If multiClass is set, the model will return all the labels with corresponding scores.</p><div class="fullcomment"><div class="comment cmt"><p>If multiClass is set, the model will return all the labels with corresponding scores. By default, multiClass is false.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -1757,7 +1833,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -1865,7 +1941,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasOutputAnnotationCol</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#outputLogsPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#outputLogsPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="outputLogsPath:org.apache.spark.ml.param.Param[String]"></a><a id="outputLogsPath:Param[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#outputLogsPath:org.apache.spark.ml.param.Param[String]" title="Permalink">
@@ -1883,7 +1959,7 @@ Please see the Parameters section for required training parameters.</p><p>For a 
       <p class="shortcomment cmt">Folder path to save training logs.</p><div class="fullcomment"><div class="comment cmt"><p>Folder path to save training logs.
 If no path is specified, the logs won't be stored in disk.
 The path can be a local file path, a distributed file path (HDFS, DBFS), or a cloud storage (S3).
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#params" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="params:Array[org.apache.spark.ml.param.Param[_]]"></a><a id="params:Array[Param[_]]"></a>
       <span class="permalink">
@@ -1991,10 +2067,10 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setBatchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setBatchSize(batch:Int):GenericClassifierApproach.this.type"></a><a id="setBatchSize(Int):GenericClassifierApproach.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setBatchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setBatchSize(batch:Int):GenericClassifierParams.this.type"></a><a id="setBatchSize(Int):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setBatchSize(batch:Int):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setBatchSize(batch:Int):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2007,7 +2083,26 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Batch size
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Batch size
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setDatasetInfo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDatasetInfo(value:String):GenericClassifierParams.this.type"></a><a id="setDatasetInfo(String):GenericClassifierApproach.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setDatasetInfo(value:String):GenericClassifierParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDatasetInfo</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">set descriptive information about the dataset being used
+</p><div class="fullcomment"><div class="comment cmt"><p>set descriptive information about the dataset being used
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setDefault(paramPairs:org.apache.spark.ml.param.ParamPair[_]*):Params.this.type"></a><a id="setDefault(ParamPair[_]*):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
@@ -2039,11 +2134,30 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
         <span class="name">setDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.setDefault.T">T</span>]</span>, <span name="value">value: <span class="extype" name="org.apache.spark.ml.param.Params.setDefault.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a>.this.type</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setDropout" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setDropout(dropout:Float):GenericClassifierApproach.this.type"></a><a id="setDropout(Float):GenericClassifierApproach.this.type"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="org.apache.spark.ml">org.apache.spark.ml</span>] </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams#setDoExceptionHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDoExceptionHandling(value:Boolean):HandleExceptionParams.this.type"></a><a id="setDoExceptionHandling(Boolean):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setDropout(dropout:Float):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setDoExceptionHandling(value:Boolean):HandleExceptionParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDoExceptionHandling</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">If true, exceptions are handled.</p><div class="fullcomment"><div class="comment cmt"><p>If true, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.
+This comes with a performance penalty.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setDropout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDropout(dropout:Float):GenericClassifierParams.this.type"></a><a id="setDropout(Float):GenericClassifierApproach.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setDropout(dropout:Float):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2056,11 +2170,12 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Dropout coefficient
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setEpochsNumber" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setEpochsNumber(epochs:Int):GenericClassifierApproach.this.type"></a><a id="setEpochsNumber(Int):GenericClassifierApproach.this.type"></a>
+</p><div class="fullcomment"><div class="comment cmt"><p>Dropout coefficient
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setEpochsNumber" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setEpochsNumber(epochs:Int):GenericClassifierParams.this.type"></a><a id="setEpochsNumber(Int):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setEpochsNumber(epochs:Int):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setEpochsNumber(epochs:Int):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2073,11 +2188,12 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Maximum number of epochs to train
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setFeatureScaling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setFeatureScaling(featureScaling:String):GenericClassifierApproach.this.type"></a><a id="setFeatureScaling(String):GenericClassifierApproach.this.type"></a>
+</p><div class="fullcomment"><div class="comment cmt"><p>Maximum number of epochs to train
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setFeatureScaling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setFeatureScaling(featureScaling:String):GenericClassifierParams.this.type"></a><a id="setFeatureScaling(String):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setFeatureScaling(featureScaling:String):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setFeatureScaling(featureScaling:String):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2090,11 +2206,11 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Set the feature scaling method.</p><div class="fullcomment"><div class="comment cmt"><p>Set the feature scaling method. Possible values are 'zscore', 'minmax' or empty (no scaling)
-</p></div></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setFixImbalance" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setFixImbalance(fix:Boolean):GenericClassifierApproach.this.type"></a><a id="setFixImbalance(Boolean):GenericClassifierApproach.this.type"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setFixImbalance" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setFixImbalance(fix:Boolean):GenericClassifierParams.this.type"></a><a id="setFixImbalance(Boolean):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setFixImbalance(fix:Boolean):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setFixImbalance(fix:Boolean):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2107,7 +2223,8 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Fix imbalance of training set
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Fix imbalance of training set
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#setInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setInputCols(value:String*):HasInputAnnotationCols.this.type"></a><a id="setInputCols(String*):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
@@ -2140,10 +2257,10 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setLabelColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setLabelColumn(column:String):GenericClassifierApproach.this.type"></a><a id="setLabelColumn(String):GenericClassifierApproach.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setLabelColumn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setLabelColumn(column:String):GenericClassifierParams.this.type"></a><a id="setLabelColumn(String):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setLabelColumn(column:String):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setLabelColumn(column:String):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2156,7 +2273,8 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Column with label per each document
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Column with label per each document
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.CanBeLazy#setLazyAnnotator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLazyAnnotator(value:Boolean):com.johnsnowlabs.nlp.CanBeLazy.&lt;refinement&gt;.type"></a><a id="setLazyAnnotator(Boolean):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
@@ -2173,10 +2291,10 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setModelFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setModelFile(modelFile:String):GenericClassifierApproach.this.type"></a><a id="setModelFile(String):GenericClassifierApproach.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setModelFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setModelFile(modelFile:String):GenericClassifierParams.this.type"></a><a id="setModelFile(String):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setModelFile(modelFile:String):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setModelFile(modelFile:String):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2189,11 +2307,12 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Set the model file name
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setMultiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setMultiClass(value:Boolean):GenericClassifierApproach.this.type"></a><a id="setMultiClass(Boolean):GenericClassifierApproach.this.type"></a>
+</p><div class="fullcomment"><div class="comment cmt"><p>Set the model file name
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setMultiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMultiClass(value:Boolean):GenericClassifierParams.this.type"></a><a id="setMultiClass(Boolean):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setMultiClass(value:Boolean):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setMultiClass(value:Boolean):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2206,7 +2325,8 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Sets the model in multi class prediction mode
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Sets the model in multi class prediction mode
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#setOutputCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setOutputCol(value:String):HasOutputAnnotationCol.this.type"></a><a id="setOutputCol(String):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
@@ -2223,10 +2343,10 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasOutputAnnotationCol</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setOutputLogsPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setOutputLogsPath(outputLogsPath:String):GenericClassifierApproach.this.type"></a><a id="setOutputLogsPath(String):GenericClassifierApproach.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setOutputLogsPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setOutputLogsPath(outputLogsPath:String):GenericClassifierParams.this.type"></a><a id="setOutputLogsPath(String):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setOutputLogsPath(outputLogsPath:String):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setOutputLogsPath(outputLogsPath:String):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2239,11 +2359,12 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Set the output log path
-</p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setValidationSplit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setValidationSplit(validationSplit:Float):GenericClassifierApproach.this.type"></a><a id="setValidationSplit(Float):GenericClassifierApproach.this.type"></a>
+</p><div class="fullcomment"><div class="comment cmt"><p>Set the output log path
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setValidationSplit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setValidationSplit(validationSplit:Float):GenericClassifierParams.this.type"></a><a id="setValidationSplit(Float):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setValidationSplit(validationSplit:Float):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setValidationSplit(validationSplit:Float):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2256,11 +2377,11 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Choose the proportion of training dataset to be validated against the model on each Epoch.</p><div class="fullcomment"><div class="comment cmt"><p>Choose the proportion of training dataset to be validated against the model on each Epoch. The value should be between 0.0 and 1.0 and by default it is 0.0 and off.
-</p></div></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#setlearningRate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setlearningRate(lr:Float):GenericClassifierApproach.this.type"></a><a id="setlearningRate(Float):GenericClassifierApproach.this.type"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setlearningRate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setlearningRate(lr:Float):GenericClassifierParams.this.type"></a><a id="setlearningRate(Float):GenericClassifierApproach.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setlearningRate(lr:Float):GenericClassifierApproach.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#setlearningRate(lr:Float):GenericClassifierParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2273,7 +2394,8 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <p class="shortcomment cmt">Learning Rate
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Learning Rate
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -2389,7 +2511,7 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AnnotatorApproach</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#validationSplit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#validationSplit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="validationSplit:org.apache.spark.ml.param.FloatParam"></a><a id="validationSplit:FloatParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html#validationSplit:org.apache.spark.ml.param.FloatParam" title="Permalink">
@@ -2406,7 +2528,7 @@ The path can be a local file path, a distributed file path (HDFS, DBFS), or a cl
       
       <p class="shortcomment cmt">The proportion of training dataset to be used as validation set.</p><div class="fullcomment"><div class="comment cmt"><p>The proportion of training dataset to be used as validation set.</p><p>The model will be validated against this dataset on each Epoch and will not
 be used for training. The value should be between 0.0 and 1.0.
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
@@ -2503,6 +2625,10 @@ be used for training. The value should be between 0.0 and 1.0.
         <div id="inheritedMembers">
         <div class="parent" name="com.johnsnowlabs.license.CheckLicense">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">
+              <h3>Inherited from <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">
+              <h3>Inherited from <a href="GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.AnnotatorApproach">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>]</h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.CanBeLazy">
@@ -2532,7 +2658,7 @@ be used for training. The value should be between 0.0 and 1.0.
             </div><div class="parent" name="org.apache.spark.ml.util.Identifiable">
               <h3>Inherited from <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span></h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

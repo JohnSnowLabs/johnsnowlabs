@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_oncology_tnm](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_tnm_en.html) model.
 
+## Predicted Entities
+
+`Cancer_Dx`, `Lymph_Node`, `Metastasis`, `Tumor_Description`, `Staging`, `Tumor`, `Lymph_Node_Modifier`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

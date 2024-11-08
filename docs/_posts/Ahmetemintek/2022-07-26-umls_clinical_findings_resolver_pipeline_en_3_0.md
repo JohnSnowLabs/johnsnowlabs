@@ -15,6 +15,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/29d9158d-33ed-4805-ad4b-92ff210e808b/John-Snow-Labs_Extract-Clinical-Findings-and-their-UMLS-Codes
+
 ---
 
 ## Description
@@ -27,23 +33,31 @@ This pretrained pipeline maps entities (Clinical Findings) with their correspond
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_clinical_findings_resolver_pipeline_en_4.0.0_3.0_1658822255140.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_clinical_findings_resolver_pipeline_en_4.0.0_3.0_1658822255140.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
+
 ## How to use
 
 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
-pipeline= PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
-pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
+pipeline = PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
+result = pipeline.fullAnnotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity.")
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline= PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
-val pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
+val pipeline = PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
+val result = pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
 ```
 
 

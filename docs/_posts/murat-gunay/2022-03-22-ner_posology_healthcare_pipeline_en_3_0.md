@@ -23,6 +23,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_posology_healthcare](https://nlp.johnsnowlabs.com/2021/04/01/ner_posology_healthcare_en.html) model.
 
+## Predicted Entities
+
+`Drug`, `Strength`, `Route`, `Frequency`, `Dosage`, `Form`, `Duration`
+
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_POSOLOGY/){:.button.button-orange.button-orange-trans.arr.button-icon}

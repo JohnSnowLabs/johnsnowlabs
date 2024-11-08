@@ -179,6 +179,8 @@ This file is the entry point of our Docker container, which carries out the foll
     python3 /content/main.py
     ```
 
+</div><div class="h3-box" markdown="1">
+
 ### *content/main.py*: Serving 2 pipelines in a FastAPI endpoint
 
 To maximize the performance and minimize the latency, we are going to store two Spark NLP pipelines in memory, so that we load only once (at server start) and we just use them everytime we get an API request to infer.
@@ -221,6 +223,8 @@ Finally, let’s run a uvicorn server, listening on port 8515 to the endpoints d
 
     if __name__ == "__main__":
         uvicorn.run('main:app', host='0.0.0.0', port=8515)
+
+</div><div class="h3-box" markdown="1">
 
 ### content/sparknlp_keys.json
 
@@ -314,6 +318,6 @@ You can also prettify the json using the following function with the result of t
 
 * Follow us on Medium: [Spark NLP](https://medium.com/spark-nlp) and [Veysel Kocaman](https://vkocaman.medium.com/)
 
-* Write to support@johnsnowlabs.com for any additional request you may have
+* Write to [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com) for any additional request you may have
 
 </div>

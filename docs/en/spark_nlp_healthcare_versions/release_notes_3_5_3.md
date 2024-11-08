@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.5.3
+title: Healthcare NLP v3.5.3 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_5_3
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -28,6 +28,8 @@ sidebar:
 + Bug fixes
 + Updated notebooks
 + List of recently updated or added models
+
+</div><div class="h3-box" markdown="1">
 
 #### New `rxnorm_mapper` Model
 
@@ -59,6 +61,8 @@ sample_text = "The patient was given Zyrtec 10 MG, Adapin 10 MG Oral Capsule, Se
  +------------------------------+---------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New `ChunkMapperFilterer` Annotator to Filter `ChunkMapperModel` Results
 `ChunkMapperFilterer` annotator allows filtering of the chunks that were passed through the `ChunkMapperModel`.
 If `setReturnCriteria()` is set as `"success"`, only the chunks which are mapped by `ChunkMapperModel` are returned. Otherwise, if `setReturnCriteria()` is set as `"fail"`, only the chunks which are not mapped by ChunkMapperModel are returned.
@@ -74,7 +78,6 @@ cfModel = ChunkMapperFilterer() \
 sample_text = "The patient was given Warfarina Lusa and amlodipine 10 mg. Also, he was given Aspagin, coumadin 5 mg and metformin"
 
 ```
-
 
 
 `.setReturnCriteria("success")` *Results* :
@@ -100,7 +103,7 @@ sample_text = "The patient was given Warfarina Lusa and amlodipine 10 mg. Also, 
 +-----+---+--------+------------+
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Features:
 
@@ -146,6 +149,7 @@ sample_text = "The patient was given Warfarina Lusa and amlodipine 10 mg. Also, 
 +--------------+-----+---+---------------+--------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ##### Case Sensitivity in `ChunkMapperApproach` and `ChunkMapperModel` Through `setLowerCase()` Parameter
 
@@ -195,6 +199,8 @@ sentences = [["""The patient was given Warfarina lusa and amlodipine 10 mg, coum
 +------------------------+-----------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ##### Return Multiple Relations At a Time In ChunkMapper Models Via `setRels()` Parameter
 Multiple relations for the same chunk can be set with the `setRels()` parameter in both `ChunkMapperApproach` and `ChunkMapperModel`.
 
@@ -222,6 +228,8 @@ sample_text = "The patient was given Warfarina Lusa."
 |   22| 35|Warfarina Lusa|Heart Disease|treatment|
 +-----+---+--------------+-------------+---------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ##### Filter the Multi-Token Chunks Separated With Whitespace in `ChunkMapperApproach` and `ChunkMapperModel` by `setAllowMultiTokenChunk()` Parameter
 
@@ -263,13 +271,15 @@ sample_text = "The patient was given Warfarina Lusa"
 +-----+---+--------------+-------------+---------+
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New License Validation Policies in License Validator
 
 A new version of the License Validator has been included in Spark NLP for Healthcare. This License Validator checks the compatibility between the type of your license and the environment you are using, allowing the license to be used only for the environment it was requested (single-node, cluster, databricks, etc) and the number of concurrent sessions (floating or not-floating). You can check which type of license you have in [my.johnsnowlabs.com](https://my.johnsnowlabs.com/) -> My Subscriptions.
 
 If your license stopped working, please contact [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com) so that it can be checked the difference between the environment your license was requested for and the one it's currently being used.
+
+</div><div class="h3-box" markdown="1">
 
 #### Bug Fixes
 
@@ -279,12 +289,16 @@ We fixed some issues in `AnnotationToolJsonReader` tool, `DrugNormalizer` and `C
 + **`ContextualParserApproach`** : Fixed the issue in the computation of indices for documents with more than one sentence while defining the rule-scope field as a document.
 + **`AnnotationToolJsonReader`** : Fixed an issue where relation labels were not being extracted from the Annotation Lab json file export.
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated Notebooks
 
 + [Clinical Named Entity Recognition Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb) <br/>
  `.setReplaceLabels` parameter example was added.
 + [Chunk Mapping Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb) <br/>
  New case sensitivity, selecting multiple relations, filtering multi-token chunks and `ChunkMapperFilterer` features were added.
+
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated Models
 

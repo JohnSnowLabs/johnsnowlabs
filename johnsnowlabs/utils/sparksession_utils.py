@@ -188,12 +188,16 @@ def start(
         "spark.jars": ",".join(jars),
     }
 
-    if suite.ocr and suite.ocr.get_java_path():
+    if suite.hc and suite.hc.get_java_path() and nlp and Software.spark_hc.check_installed(None):
+        default_conf["spark.extraListeners"] = "com.johnsnowlabs.license.LicenseLifeCycleManager"
+
+    if suite.ocr and suite.ocr.get_java_path() and visual and Software.spark_ocr.check_installed(None):
         # is_spark_version_env('32')
         default_conf["spark.sql.optimizer.expression.nestedPruning.enabled"] = "false"
         default_conf["spark.sql.optimizer.nestedSchemaPruning.enabled"] = "false"
         default_conf["spark.sql.legacy.allowUntypedScalaUDF"] = "true"
         default_conf["spark.sql.repl.eagerEval.enabled"] = "true"
+        default_conf["spark.extraListeners"] = "com.johnsnowlabs.license.LicenseLifeCycleManager"
 
     for k, v in default_conf.items():
         builder.config(str(k), str(v))

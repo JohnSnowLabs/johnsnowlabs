@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.2.8
+title: Healthcare NLP v4.2.8 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_2_8
 key: docs-licensed-release-notes
 modify_date: 2023-01-26
@@ -44,11 +44,13 @@ sidebar:
     - [SOCIAL DETERMINANT](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT/) demo
 + 9 new clinical models and pipelines added & updated in total
 
+</div><div class="h3-box" markdown="1">
 
 #### 4 New Clinical Named Entity Recognition Models (3 Oncology, 1 Others)
 
 - We are releasing 3 new oncological NER models that were trained by using `embeddings_healthcare_100d` embeddings model.
 
+{:.table-model-big.db}
 | model name                                     | description                                                                                         | predicted entities                     |
 |----------------------------------------------- |-----------------------------------------------------------------------------------------------------|--------------------------------------- |
 | [ner_oncology_anatomy_general_healthcare](https://nlp.johnsnowlabs.com/2023/01/11/ner_oncology_anatomy_general_healthcare_en.html)    | Extracts anatomical entities using an unspecific label                                              | `Anatomical_Site` `Direction`          |
@@ -114,12 +116,13 @@ text = """A 3-year-old boy with autistic disorder on hospital of pediatric ward 
 +------------------------------+------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### 5 New Social Determinant of Health Text Classification  Models
 
 We are releasing 5 new models that can be used in Social Determinant of Health related classification tasks.
 
-
+{:.table-model-big.db}
 | model name                                           	            | description                                                                                                                         | predicted entities          |
 |------------------------------------------------------------------ |------------------------------------------------------------------------------------------------------------------------------------ |---------------------------- |
 | [genericclassifier_sdoh_alcohol_usage_sbiobert_cased_mli](https://nlp.johnsnowlabs.com/2023/01/14/genericclassifier_sdoh_alcohol_usage_sbiobert_cased_mli_en.html)       | This model is intended for detecting alcohol use in clinical notes and trained by using GenericClassifierApproach annotator. | `Present` `Past` `Never` `None`  |
@@ -164,6 +167,7 @@ text = ["Retired schoolteacher, now substitutes. Lives with wife in location 143
 +----------------------------------------------------------------------------------------------------+---------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New `DocumentMLClassifierApproach` Annotator For Training Text Classification Models Using SVM And Logistic Regression Using TfIdf
 
@@ -172,7 +176,7 @@ We have a new `DocumentMLClassifierApproach` that can be used for training text 
 Input types: `TOKEN`                  
 Output type: `CATEGORY`
 
-
+{:.table-model-big}
 | Parameters               | Description                                                      |
 |--------------------------|------------------------------------------------------------------|
 | labels                   | array to output the label in the original form.                  |
@@ -223,6 +227,8 @@ text = [
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ####  Option To Return `Deidentification` Output As a Single Document 
 
 We can return `Deidentification()` output as a single document by setting new `setOutputAsDocument` as `True`. If it is `False`, the outputs will be list of sentences as it is used to be.
@@ -265,6 +271,8 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 71
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New `Resolution2Chunk` Annotator To Map Entity Resolver Outputs (terminology codes) To Other Clinical Terminologies
 
 We have a new `Resolution2Chunk` annotator that maps the entity resolver outputs to other clinical terminologies.
@@ -299,6 +307,7 @@ sample_text = """Diabetes Mellitus"""
 +-----------------+-----------------+------------+-----------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### New `DocMapperModel` Annotator Allows To Use With Any Mapper Model In `DOCUMENT` Type
 
@@ -327,6 +336,7 @@ sample_text = "ZYVOX"
 | ZYVOX        | 600 mg/300mL | 0009-4992 |
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Inter-Annotator Agreement (IAA) metrics module that works with NLP Lab seamlessly          
 
@@ -348,6 +358,7 @@ For more details and examples, please check [ALAB Notebook](https://github.com/J
 alab.get_IAA_metrics(spark, conll_dir = path_to_conll_folder, annotator_names = ["annotator_1","annotator_2","annotator_3","annotator_4"], set_ref_annotator = "annotator_1", return_NerDLMetrics = False, save_dir = "./token_based_results")
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Assertion dataset preparation module now supports chunk start and end indices, rather than token indices.
 
@@ -359,7 +370,7 @@ Here are the new features in `get_assertion_data()`;
 
 For more details and examples, please check [ALAB Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb).
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Added `ner_source` in the `ChunkConverter` Metadata
 
@@ -391,6 +402,7 @@ sample_text = """The patient is a 28 years old female with a history of gestatio
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Core Improvements and Bug Fixes
 
@@ -404,6 +416,7 @@ sample_text = """The patient is a 28 years old female with a history of gestatio
 - Fixed LightPipeline validation parameter for internal annotators
 - LightPipeline support for `GenericClassifier` (`FeatureAssembler`)
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Notebooks
 
@@ -411,11 +424,13 @@ sample_text = """The patient is a 28 years old female with a history of gestatio
 + New [Clinical Text Classification with DocumentMLClassifier Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.1.Text_Classification_with_DocumentMLClassifier.ipynb) show how can use medical text with DocumentMLClassifier
 + Updated [ALAB Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb) with the changes in `get_assertion_data()` and the new `get_IAA_metrics()` method.
 
+</div><div class="h3-box" markdown="1">
 
 #### New and Updated Demos
 
 + [SOCIAL DETERMINANT](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT/) demo
 
+</div><div class="h3-box" markdown="1">
 
 #### 9 New Clinical Models and Pipelines Added & Updated in Total
 
@@ -430,7 +445,6 @@ sample_text = """The patient is a 28 years old female with a history of gestatio
 + `genericclassifier_sdoh_alcohol_usage_binary_sbiobert_cased_mli`
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

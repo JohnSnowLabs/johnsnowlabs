@@ -37,20 +37,21 @@ This pretrained pipeline maps RxNorm codes to MeSH codes without using any text 
 
 ```python
 from sparknlp.pretrained import PretrainedPipeline 
+
 pipeline = PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
-pipeline.annotate("1191 6809 47613")
+result = pipeline.annotate(["1191", "6809", "47613"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val pipeline = new PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
-val result = pipeline.annotate("1191 6809 47613")
+val result = pipeline.annotate(["1191", "6809", "47613"])
 ```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.rxnorm.mesh").predict("""1191 6809 47613""")
+nlu.load("en.resolve.rxnorm.mesh").predict("""["1191", "6809", "47613"]""")
 ```
 
 </div>
@@ -60,15 +61,18 @@ nlu.load("en.resolve.rxnorm.mesh").predict("""1191 6809 47613""")
 ## Results
 
 ```bash
-{'rxnorm': ['1191', '6809', '47613'],
-'mesh': ['D001241', 'D008687', 'D019355']}
+|   | rxnorm | mesh_code |
+|--:|-------:|----------:|
+| 0 |   1191 |   D001241 |
+| 1 |   6809 |   D008687 |
+| 2 |  47613 |   D019355 |
 
 
 Note: 
 
 | RxNorm     | Details             | 
 | ---------- | -------------------:|
-| 1191       |  aspirin            |
+| 1191       | aspirin             |
 | 6809       | metformin           |
 | 47613      | calcium citrate     |
 

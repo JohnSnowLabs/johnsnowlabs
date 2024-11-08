@@ -8,7 +8,7 @@ key: docs-ocr-release-notes
 modify_date: "2023-09-21"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -31,8 +31,6 @@ ImageTextDetector \
 .setOutputCol("region")
 .setScoreThreshold(0.5)
 ```
-
-![image](/assets/images/ocr/image_text_detector_dit.png)
 
 It is currently the best performing model at the FUNSD dataset, achieving an accuracy of 94% vs Craft detector which achieved 78.7%, and is recommended for De-identification and Text Extraction pipelines.
 

@@ -153,7 +153,7 @@ def run_local_py_script_as_task(
             raise Exception("dst_path must be provided for notebook tasks")
         file_name = os.path.split(task_definition)[-1]
         run_id = submit_notebook_to_databricks(
-            db, task_definition, cluster_id, dst_path, parameters
+            db, task_definition, cluster_id, dst_path, parameters, run_name=run_name
         )
 
     else:
@@ -205,11 +205,8 @@ def executable_as_script(py_executable: Union[str, ModuleType, Callable]):
 
 def executable_to_str(executable_to_convert: Union[str, ModuleType, Callable]):
     # write a python code-string/module/function into a temp file and return resulting python file
-    import johnsnowlabs.utils.testing.test_settings
 
-    Path(johnsnowlabs.utils.testing.test_settings.tmp_notebook_dir).mkdir(
-        parents=True, exist_ok=True
-    )
+    Path(settings.tmp).mkdir(parents=True, exist_ok=True)
     from random import randrange
 
     if isinstance(executable_to_convert, str) and not os.path.exists(
@@ -225,10 +222,7 @@ def executable_to_str(executable_to_convert: Union[str, ModuleType, Callable]):
         except:
             # Within a Python shell, we cannot getFile(), so we have this fallback name
             file_name = f"{randrange(1333777)}tmp.py"
-
-    out_path = (
-        f"{johnsnowlabs.utils.testing.test_settings.tmp_notebook_dir}/{file_name}"
-    )
+    out_path = f"{settings.tmp}/{file_name}"
 
     if isinstance(executable_to_convert, str):
         print(f"Detected Python Code String")
@@ -360,7 +354,12 @@ def run_in_databricks(
 
 
 def submit_notebook_to_databricks(
-    db: DatabricksAPI, local_nb_path, cluster_id, remote_path, parameters=None
+    db: DatabricksAPI,
+    local_nb_path,
+    cluster_id,
+    remote_path,
+    parameters=None,
+    run_name=None,
 ):
     # Instantiate the DatabricksAPI client
     # Read the local notebook content
@@ -388,8 +387,9 @@ def submit_notebook_to_databricks(
         notebook_task["base_parameters"] = parameters
 
     # Submit the job to run the notebook
+    run_name = run_name or f"Notebook Run"
     response = db.jobs.submit_run(
-        run_name="Notebook_Run",
+        run_name=run_name,
         existing_cluster_id=cluster_id,
         notebook_task=notebook_task,
     )

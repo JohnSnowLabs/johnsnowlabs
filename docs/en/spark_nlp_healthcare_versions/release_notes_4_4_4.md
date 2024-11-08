@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.4.4
+title: Healthcare NLP v4.4.4 Release Notes 
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_4_4
 key: docs-licensed-release-notes
 modify_date: 2023-06-15
@@ -83,8 +83,6 @@ Overall, residual disease was the only independent predictor of survival. Minimi
 
 See [Extractive Summarization Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.2.ExtractiveSummarization.ipynb) for examples.
 
-
-
 </div><div class="h3-box" markdown="1">
 
 ####  Customized Prompts in `TextGenerator` Annotator
@@ -119,10 +117,6 @@ answer: Hello, There are two types of medications to treat emphysema: 1. Alpha a
 ```
 
 See [Medical Text Generation Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Biogpt_Chat_JSL.ipynb) for examples.
-
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -178,6 +172,7 @@ text = '''
 
 *Result*:
 
+{:.table-model-big.db}
 |    | original sentence                          | Masked                                        | Masked with Chars                          | Masked with Fixed Chars               | Obfuscated                                                 |
 |---:|:-------------------------------------------|:----------------------------------------------|:-------------------------------------------|:--------------------------------------|:-----------------------------------------------------------|
 |  0 | الملاحظات السريرية - مريض السكري           | الملاحظات السريرية - مريض السكري              | الملاحظات السريرية - مريض السكري           | الملاحظات السريرية - مريض السكري      | الملاحظات السريرية - مريض السكري                           |
@@ -190,10 +185,6 @@ text = '''
 
 
 See [Clinincal Multi Language Deidentification Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb) for examples.
-
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -220,10 +211,9 @@ text = """
 """
 ```
 
-
-
 *Result*:
 
+{:.table-model-big.db}
 |   |                                                              Sentence |                                                  masked_with_entity |                                                     Masked with Chars |                                       Masked with Fixed Chars |                                                            Obfuscated |
 |--:|----------------------------------------------------------------------:|--------------------------------------------------------------------:|----------------------------------------------------------------------:|--------------------------------------------------------------:|----------------------------------------------------------------------:|
 | 0 |                   ملاحظات سريرية - مريض الربو:\nالتاريخ: 30 مايو 2023 |              ملاحظات سريرية - مريض الربو:\nالتاريخ: [تاريخ] [تاريخ] |                   ملاحظات سريرية - مريض الربو:\nالتاريخ: [٭٭٭٭٭] [٭٭] |              ملاحظات سريرية - مريض الربو:\nالتاريخ: ٭٭٭٭ ٭٭٭٭ |                  ملاحظات سريرية - مريض الربو:\nالتاريخ: 30 يونيو 2024 |
@@ -238,16 +228,13 @@ text = """
 
 See [Clinincal Multi Language Deidentification Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb) for examples.
 
-
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### 36 New Voice Of Patient (VOP) NER Models And Pipelines For Entity Extraction From Patient's Own Words
 
 We are excited to introduce our new NER models which extract clinical entities from the documents that are shared by patients in their own words.
 
+{:.table-model-big.db}
 | model_name      | description   | predicted_entity   |
 |-----------------|---------------|--------------------|
 | [ner_vop_anatomy_emb](https://nlp.johnsnowlabs.com/2023/06/06/ner_vop_clinical_dept_en.html) <br /> [ner_vop_anatomy_emb_clinical_medium](https://nlp.johnsnowlabs.com/2023/06/07/ner_vop_anatomy_emb_clinical_medium_en.html)  <br /> [ner_vop_anatomy_emb_clinical_large](https://nlp.johnsnowlabs.com/2023/06/06/ner_vop_anatomy_emb_clinical_large_en.html)   <br /> [ner_vop_anatomy_pipeline](https://nlp.johnsnowlabs.com/2023/06/09/ner_vop_anatomy_pipeline_en.html)                            | Extracts anatomical terms from the documents transferred from the patient’s own sentences.                                                                 | `BodyPart`, `Laterality`     |
@@ -274,6 +261,7 @@ sample_text = """Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 m
 
 *Result*:
 
+{:.table-model-big}
 | chunk                | ner_label              |
 |:---------------------|:-----------------------|
 | 20 year old          | Age                    |
@@ -305,6 +293,7 @@ For all Voice of Patient models, please check: [Models Hub Page](https://nlp.joh
 
 We are excited to introduce a new Bert-based Voice of Patient classifier models which are a collection of BioBERT-based classifiers designed for various text classification tasks in the biomedical domain. These models leverage the power of BERT, a transformer-based language model, to analyze and classify different types of textual data. They are trained to understand the nuances of medical language and concepts to make accurate predictions.
 
+{:.table-model-big.db}
 | modelname                                     | description                                                                                                                                                                                      | pred_entity                 |
 |-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
 | [bert_sequence_classifier_vop_drug_side_effect](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_drug_side_effect_en.html) <br /> [bert_sequence_classifier_vop_drug_side_effect_pipeline](https://nlp.johnsnowlabs.com/2023/06/14/bert_sequence_classifier_vop_drug_side_effect_pipeline_en.html)| Classify informal texts (such as tweets or forum posts) according to the presence of drug side effects. | `Drug_AE`, `Other`          |
@@ -328,7 +317,7 @@ sample_texts = ["I had a lung surgery for emphyema and after surgery my xray sho
 *Result*:
 
 
-
+{:.table-model-big}
 |text                                                                                                               |result      |
 |-------------------------------------------------------------------------------------------------------------------|------------|
 |My friend was treated for her skin cancer two years ago.                                                           |3rd_Person|
@@ -356,7 +345,7 @@ sample_texts = """Smith is living in New York, a divorced Mexcian American woman
 
 *Result*:
 
-
+{:.table-model-big}
 |    | chunks             |   begin |   end | entities            |
 |---:|:-------------------|--------:|------:|:--------------------|
 |  0 | New York           |      20 |    27 | Geographic_Entity   |
@@ -382,16 +371,11 @@ sample_texts = """Smith is living in New York, a divorced Mexcian American woman
 
 See [Models Hub Page](https://nlp.johnsnowlabs.com/2023/06/13/ner_sdoh_en.html) for more details.
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### New NER Model For Precise Detection Of Demographic Characteristics In Clinical Notes
 
 This new model identifies healthcare mentions that refer to a situation where a patient's demographic characteristics, such as `race`, `ethnicity`, `gender`, `age`, `socioeconomic` `status`, or `geographic location`.
-
-
 
 *Example*:
 
@@ -422,6 +406,7 @@ The patient presented to the emergency department with complaint of severe chest
 
 *Result*:
 
+{:.table-model-big}
 |chunk        |ner_label         |confidence|
 |-------------|------------------|----------|
 |Non-binary   |Gender            |0.9987    |
@@ -435,8 +420,6 @@ The patient presented to the emergency department with complaint of severe chest
 
 
 See [Models Hub Page](https://nlp.johnsnowlabs.com/2023/06/08/ner_demographic_extended_healthcare_en.html) for more details.
-
-
 
 
 </div><div class="h3-box" markdown="1">
@@ -457,14 +440,13 @@ For example, `ESRDV21Y19` (ESRD version 21 year 19) refers to the 21st version o
 
 - New modules added to Spark-NLP for Healthcare:
 
+{:.table-model-big}
 | Version    | Year     | Module Name        |
 |------------|----------|--------------------|
 | 28         | Combined | `profileV28`       |
 | 28         | 2024     | `profileV28Y24`    |
 | 24         | Combined | `profileV24`       |
 | ESRDV21    | 2019     | `profileESRDV21Y19`|
-
-
 
 - A new feature has been introduced in this release that enhances the risk score calculation process. With this update, the risk score calculation now incorporates the coding pattern (intensity) adjustment and normalization factor for all versions and years.
 
@@ -511,6 +493,7 @@ df.show(5)
 
 ```
 
+{:.table-model-big}
 |      ICD10CM_CODES|GENDER|OREC|AGE|MEDICAID|ELIGIBILITY|
 |-------------------|------|----|---|--------|-----------|
 |M86622, M0549, I...|     M|   0| 32|    true|        CFD|
@@ -518,9 +501,6 @@ df.show(5)
 |C179, I70348, C8...|     M|   0| 32|    true|        CFD|
 |S72463A, C37, E1...|     M|   0| 32|    true|        CFD|
 |S1224XB, S72115B...|     M|   0| 32|    true|        CFD|
-
-
-
 
 Applying `profileV28Y24` module over the sample data:
 
@@ -532,7 +512,7 @@ df = df.withColumn("hcc_profile", profileV28Y24(df.ICD10CM_CODES, df.AGE, df.GEN
 
 *Result*:
 
-
+{:.table-model-big.db}
 |      ICD10CM_CODES|GENDER|OREC|AGE|MEDICAID|ELIGIBILITY|       hcc_profile|risk_score|            hcc_lst|risk_score_adj|risk_score_age_adj|           hcc_map|         parameters|            details|
 |-------------------|------|----|---|--------|-----------|------------------|----------|-------------------|--------------|------------------|------------------|-------------------|-------------------|
 |M86622, M0549, I...|     M|   0| 32|    true|        CFD|10.022, "HCC401...|    10.022|"HCC401","HCC21"...|        9.2913|            0.1771|"L97214":"HCC38...|"elig":"CFD","ag...|"CFD_HCC267":0.5...|
@@ -540,8 +520,6 @@ df = df.withColumn("hcc_profile", profileV28Y24(df.ICD10CM_CODES, df.AGE, df.GEN
 |C179, I70348, C8...|     M|   0| 32|    true|        CFD|12.988, "HCC17"...|    12.988|"HCC17","HCC401"...|       12.0411|            0.1771|"C4A20":"HCC21"...|"elig":"CFD","ag...|"CFD_HCC280":0.2...|
 |S72463A, C37, E1...|     M|   0| 32|    true|        CFD|17.034, "HF_CHR...|    17.034|"HF_CHR_LUNG","H...|       15.7921|            0.1771|"C8296":"HCC21"...|"elig":"CFD","ag...|"CFD_HCC267":0.5...|
 |S1224XB, S72115B...|     M|   0| 32|    true|        CFD|7.99, "HCC401",...|      7.99|"HCC401","HCC51"...|        7.4075|            0.1771|"D57818":"HCC10...|"elig":"CFD","ag...|"CFD_HCC267":0.5...|
-
-
 
 For the detailed usage of the module, please visit [Calculate Medicare Risk Adjustment Score notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb).
 
@@ -583,14 +561,9 @@ ls ~/cache_pretrained
 
 ```
 
-
-
 #### Pretrained Pipelines Now Compatible With All PySpark Versions
 
 We are thrilled to announce the release of our new PretrainedPipeline, specifically designed to be compatible with all versions of PySpark. This groundbreaking update ensures seamless integration and effortless deployment of Spark NLP's powerful pretrained models across different PySpark environments.
-
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -603,8 +576,6 @@ We are thrilled to announce the release of our new PretrainedPipeline, specifica
 - The default `scopeWindow` parameter on `AssertionDLApproach` has been updated to (9,15), enhancing its effectiveness in processing textual assertions.
 - Compilation issues related to SparkNLP v443 have been resolved, resulting in smoother operation.
 - We have improved the documentation, providing clearer instructions and explanations for easier usage.
-
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -623,7 +594,6 @@ We are thrilled to announce the release of our new PretrainedPipeline, specifica
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
-
 
 + `clinical_deidentification` -> `ar`
 + `summarizer_clinical_laymen_pipeline`
@@ -674,13 +644,9 @@ We are thrilled to announce the release of our new PretrainedPipeline, specifica
 + `bert_sequence_classifier_vop_sound_medical`
 + `bert_sequence_classifier_vop_sound_medical_pipeline`
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
-
 
 </div><div class="h3-box" markdown="1">
 

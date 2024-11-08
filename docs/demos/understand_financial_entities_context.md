@@ -81,4 +81,16 @@ data:
           - text: Colab
             type: blue_btn
             url: 
+        - title: Financial NER on Aspect-Based Sentiment Analysis
+          id: financial_ner_aspect_based_sentiment_analysis     
+          image: 
+              src: /assets/images/Financial_NER_on_AspectBased_Sentiment_Analysis.svg
+          excerpt: This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/ASPECT_BASED_SENTIMENT/
+          - text: Colab
+            type: blue_btn
+            url: 
 ---

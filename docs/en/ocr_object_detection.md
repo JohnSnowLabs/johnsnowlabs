@@ -9,8 +9,10 @@ modify_date: "2020-04-08"
 use_language_switcher: "Python-Scala-Java"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
+
+<div class="h3-box" markdown="1">
 
 ## ImageHandwrittenDetector
 
@@ -52,7 +54,7 @@ Detector support following labels:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -129,12 +131,11 @@ val data = pipeline.transform(df)
 data.storeImage("image_with_regions")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 **Output:**
 
-![image](/assets/images/ocr/signature.png)
-
+![Object detection](/assets/images/ocr/signature.png)
 
 
 ## ImageTextDetector
@@ -172,7 +173,7 @@ It's based on CRAFT network architecture.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -261,12 +262,13 @@ val data = pipeline.transform(df)
 data.storeImage("image_with_regions")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 **Output:**
 
-![image](/assets/images/ocr/text_detection.png)
+![Object detection](/assets/images/ocr/text_detection.png)
 
+</div><div class="h3-box" markdown="1">
 
 ## ImageTextDetectorV2
 
@@ -305,7 +307,7 @@ Currently, it's available only on Python side.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -355,6 +357,8 @@ display_images(data, "image_with_regions")
 not implemented
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
-![image](/assets/images/ocr/text_detection1.png)
+![Object detection](/assets/images/ocr/text_detection1.png)
+
+</div>

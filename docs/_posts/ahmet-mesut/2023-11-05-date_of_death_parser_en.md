@@ -5,7 +5,7 @@ author: John Snow Labs
 name: date_of_death_parser
 date: 2023-11-05
 tags: [en, clinical, date_of_death, contextual_parser, dod, licensed]
-task: Contextual Parser
+task: [Contextual Parser, Named Entity Recognition]
 language: en
 edition: Healthcare NLP 5.1.2
 spark_version: 3.0

@@ -11,7 +11,7 @@ sidebar:
   nav: jsl
 ---
 
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 ## AWS EMR Cluster Creation
 
@@ -28,8 +28,11 @@ nlp.install_to_emr()
 
 `nlp.install_to_emr` has the following parameters:
 
+</div><div class="h3-box" markdown="1">
+
 ### AWS specific parameters
 
+{:.table-model-big.db}
 | Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `boto_session`         | The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer [this](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html) for more information                                                                                                            |
@@ -41,8 +44,11 @@ nlp.install_to_emr()
 | `ec2_key_name`         | The key pair name to ssh into your EMR cluster                                                                                                                                                                                                                                                                                                                             |
 | `auto_terminate_hours` | The idle hours to wait before the cluster teminated. Default: 1 hour                                                                                                                                                                                                                                                                                                       |
 
+</div><div class="h3-box" markdown="1">
+
 ### License Retrieval Parameters
 
+{:.table-model-big.db}
 | Parameter           | Description                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `browser_login`     | Enable or disable browser based login and pop up if no license is provided or automatically detected. Defaults to True.                                             |
@@ -55,4 +61,4 @@ nlp.install_to_emr()
 
 Refer [this](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced) for more information
 
-</div>
+</div></div>

@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 2.7.5
+title: Healthcare NLP v2.7.5 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_2_7_5
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -17,6 +17,8 @@ sidebar:
 
 We are glad to announce that Spark NLP for Healthcare 2.7.5 has been released!  
 
+</div><div class="h3-box" markdown="1">
+
 #### Highlights:
 
 - New pretrained **Relation Extraction** model to link clinical tests to test results and dates to clinical entities: `re_test_result_date`
@@ -24,10 +26,13 @@ We are glad to announce that Spark NLP for Healthcare 2.7.5 has been released!
 - Improving `ner_deid_enriched` NER model to cover `Doctor` and `Patient` name entities in various context and notations.
 - Bug fixes & general improvements.
 
+</div><div class="h3-box" markdown="1">
+
 #### 1. re_test_result_date :
 
 text = "Hospitalized with pneumonia in June, confirmed by a positive PCR of any specimen, evidenced by SPO2 </= 93% or PaO2/FiO2 < 300 mmHg"
 
+{:.table-model-big}
 |    | Chunk-1   | Entity-1   | Chunk-2   | Entity-2    | Relation     |
 |---:|:----------|:-----------|:----------|:------------|:-------------|
 |  0 | pneumonia | Problem    | june      | Date        | is_date_of   |
@@ -35,12 +40,15 @@ text = "Hospitalized with pneumonia in June, confirmed by a positive PCR of any 
 |  2 | SPO2      | Test       | 93%       | Test_Result | is_result_of |
 |  3 | PaO2/FiO2 | Test       | 300 mmHg  | Test_Result | is_result_of |
 
+</div><div class="h3-box" markdown="1">
+
 #### 2. `ner_events_admission_clinical` :
 
 `ner_events_clinical` NER model is updated & improved to include `Admission` and `Discharge` entities.
 
 text ="She is diagnosed as cancer in 1991. Then she was admitted to Mayo Clinic in May 2000 and discharged in October 2001"
 
+{:.table-model-big}
 |    | chunk        | entity        |
 |---:|:-------------|:--------------|
 |  0 | diagnosed    | OCCURRENCE    |
@@ -52,6 +60,7 @@ text ="She is diagnosed as cancer in 1991. Then she was admitted to Mayo Clinic 
 |  6 | discharged   | DISCHARGE     |
 |  7 | October 2001 | DATE          |
 
+</div><div class="h3-box" markdown="1">
 
 #### 3. Improved `ner_deid_enriched` :
 
@@ -59,6 +68,7 @@ PHI NER model is retrained to cover `Doctor` and `Patient` name entities even th
 
 text ="A . Record date : 2093-01-13 , DAVID HALE , M.D . , Name : Hendrickson , Ora MR . # 7194334 Date : 01/13/93 PCP : Oliveira , 25 month years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital . 0295 Keats Street"
 
+{:.table-model-big}
 |    | chunk                         | entity        |
 |---:|:------------------------------|:--------------|
 |  0 | 2093-01-13                    | MEDICALRECORD |

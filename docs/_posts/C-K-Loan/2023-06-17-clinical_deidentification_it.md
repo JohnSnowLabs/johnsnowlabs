@@ -14,21 +14,34 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-p3syjgme2b6w4
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ5N/john-snow-labs-clinical-de-identification-for-italian
+  databricks_link: https://marketplace.databricks.com/details/ac413121-3018-4a1f-95c1-fadbbf321708/John-Snow-Labs_Clinical-Deidentification-for-Italian
+
 ---
 
 ## Description
 
-This pipeline can be used to deidentify PHI information from medical texts in Italian. The pipeline can mask and obfuscate the following entities: `DATE`, `AGE`, `SEX`, `PROFESSION`, `ORGANIZATION`, `PHONE`, `E-MAIL`, `ZIP`, `STREET`, `CITY`, `COUNTRY`, `PATIENT`, `DOCTOR`, `HOSPITAL`, `MEDICALRECORD`, `SSN`, `IDNUM`, `ACCOUNT`, `PLATE`, `USERNAME`, `URL`, and `IPADDR`.
+This pipeline can be used to deidentify PHI information from medical texts in Italian. The pipeline can mask and obfuscate the following entities: `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `CITY`, `DATE`, `SEX`, `PATIENT`, `SSN`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`, `E-MAIL`, `ID`, `ACCOUNT`, `PLATE`, `IPADDR`
 
 ## Predicted Entities
 
-
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `CITY`, `DATE`, `SEX`, `PATIENT`, `SSN`, `COUNTRY`, `ZIP`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`, `E-MAIL`, `ID`, `ACCOUNT`, `PLATE`, `IPADDR`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_it_4.4.4_3.0_1686988618439.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_it_4.4.4_3.0_1686988618439.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps drugs with their corresponding `action` and `treatment`. `action` refers to the function of the drug in various body systems, `treatment` refers to which disease the drug is used to treat
+This pretrained model maps drugs with their corresponding `action` and `treatment`. `action` refers to the function of the drug in various body systems, `treatment` refers to which disease the drug is used to treat.
 
 ## Predicted Entities
 

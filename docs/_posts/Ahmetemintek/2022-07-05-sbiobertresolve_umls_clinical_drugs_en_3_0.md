@@ -37,6 +37,7 @@ This model maps clinical entities to UMLS CUI codes. It is trained on 2022AA UML
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 ...
 document_assembler = DocumentAssembler()\
@@ -55,16 +56,18 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "c
       .setInputCols(["sentence", "token"])\
       .setOutputCol("embeddings")
 
-ner_model = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("clinical_ner")
+ner_model = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
+      .setInputCols(["sentence", "token", "embeddings"])\
+      .setOutputCol("posology_ner")
 
 ner_model_converter = NerConverterInternal()\
-    .setInputCols(["sentence", "token", "clinical_ner"])\
-    .setOutputCol("ner_chunk")
+      .setInputCols(["sentence", "token", "posology_ner"])\
+      .setOutputCol("posology_ner_chunk")\
+      .setWhiteList(["DRUG"])
 
-
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+      .setInputCols("posology_ner_chunk")\
+      .setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings\
      .pretrained("sbiobert_base_cased_mli","en","clinical/models")\
@@ -77,7 +80,17 @@ resolver = SentenceEntityResolverModel\
      .setOutputCol("resolution")\
      .setDistanceFunction("EUCLIDEAN")
 
-pipeline = Pipeline(stages = [document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver])
+pipeline = Pipeline(stages = [
+      document_assembler, 
+      sentence_detector, 
+      tokenizer, 
+      word_embeddings, 
+      ner_model, 
+      ner_model_converter, 
+      chunk2doc, 
+      sbert_embedder, 
+      resolver
+])
 
 data = spark.createDataFrame([["""She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."""]]).toDF("text")
 
@@ -102,16 +115,18 @@ val word_embeddings = WordEmbeddingsModel
       .setInputCols(Array("sentence", "token"))
       .setOutputCol("embeddings")
 
-val ner_model = MedicalNerModel
-      .pretrained("ner_clinical", "en", "clinical/models")
-      .setInputCols(Array("sentence", "token", "embeddings"))
-      .setOutputCol("clinical_ner")
+val ner_model = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")
+      .setInputCols(["sentence", "token", "embeddings"])
+      .setOutputCol("posology_ner")
 
 val ner_model_converter = new NerConverterInternal()
-      .setInputCols(Array("sentence", "token", "clinical_ner"))
-      .setOutputCol("ner_chunk")
+      .setInputCols(["sentence", "token", "posology_ner"])
+      .setOutputCol("posology_ner_chunk")
+      .setWhiteList(["DRUG"])
 
-val chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = new Chunk2Doc()
+      .setInputCols("posology_ner_chunk")
+      .setOutputCol("ner_chunk_doc")
 
 val sbert_embedder = BertSentenceEmbeddings
       .pretrained("sbiobert_base_cased_mli", "en","clinical/models")
@@ -125,7 +140,17 @@ val resolver = SentenceEntityResolverModel
       .setOutputCol("resolution")
       .setDistanceFunction("EUCLIDEAN")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver))
+val pipeline = new Pipeline().setStages(Array(
+      document_assembler, 
+      sentence_detector, 
+      tokenizer, 
+      word_embeddings, 
+      ner_model, 
+      ner_model_converter, 
+      chunk2doc, 
+      sbert_embedder, 
+      resolver
+))
     
 val data = Seq("She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.").toDF("text") 
 

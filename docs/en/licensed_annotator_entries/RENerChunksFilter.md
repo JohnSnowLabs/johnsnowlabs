@@ -17,6 +17,10 @@ Parameters:
 
 - `relationPairsCaseSensitive` *(Boolean)*: Determines whether relation pairs are case sensitive.
 
+- `directionSensitive` *(Boolean)*: Specify direction sensitivity in processing relation pairs Default is 'False'.
+
+- `filterByTokenDistance` *(Int)*: Filtering criterion based on number of token between entities (Default: 0)
+
 For example, the [ner_clinical](https://nlp.johnsnowlabs.com/2021/03/31/ner_clinical_en.html) NER model can identify `PROBLEM`, `TEST`, and `TREATMENT` entities. By using the `RENerChunksFilter`, one can filter only the relations between `PROBLEM` and `TREATMENT`  entities only, removing any relation between the other entities, to further analyze the  associations between clinical problems and treatments.
 
 {%- endcapture -%}
@@ -327,6 +331,8 @@ result.select(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val documenter = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -347,7 +353,7 @@ val posTagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/model
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("pos_tags")
 
-val nerTagger = NerModel.pretrained("ner_ade_clinical", "en", "clinical/models")
+val nerTagger = MedicalNerModel.pretrained("ner_ade_clinical", "en", "clinical/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_tags")
 
@@ -390,20 +396,6 @@ val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(false)
-
 +--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
 |sentence|entity1_begin|entity1_end|   chunk1|entity1|entity2_begin|entity2_end|                                                   chunk2|entity2|relation|confidence|
 +--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
@@ -415,6 +407,8 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -432,7 +426,7 @@ val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_
   .setOutputCol("embeddings")
   .setMaxSentenceLength(512)
 
-val ner_model = NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
+val ner_model = LegalNerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -480,20 +474,6 @@ val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(false)
-
 +--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
 |sentence|entity1_begin|entity1_end|                         chunk1|entity1|entity2_begin|entity2_end|           chunk2|entity2| relation|confidence|
 +--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
@@ -503,6 +483,8 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -519,7 +501,7 @@ val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en"
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val ner_model_date = NerModel.pretrained("finner_sec_dates", "en", "finance/models")
+val ner_model_date = FinanceNerModel.pretrained("finner_sec_dates", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_dates")
 
@@ -527,7 +509,7 @@ val ner_converter_date = new NerConverterInternal()
   .setInputCols(Array("sentence", "token", "ner_dates"))
   .setOutputCol("ner_chunk_date")
 
-val ner_model_org = NerModel.pretrained("finner_orgs_prods_alias", "en", "finance/models")
+val ner_model_org = FinanceNerModel.pretrained("finner_orgs_prods_alias", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_orgs")
 
@@ -580,20 +562,6 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(false)
-
 +--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
 |sentence|entity1_begin|entity1_end|                 chunk1|entity1|entity2_begin|entity2_end|         chunk2|entity2|            relation|confidence|
 +--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
@@ -615,7 +583,7 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[RENerChunksFilter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RENerChunksFilter.ipynb)
+[RENerChunksFilter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RENerChunksFilter.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

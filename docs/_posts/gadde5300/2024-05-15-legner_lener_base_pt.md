@@ -64,7 +64,7 @@ tokenizer = nlp.Tokenizer()\
   .setInputCols("sentence")\
   .setOutputCol("token")
 
-tokenClassifier = legal.BertForTokenClassification.load("legner_lener_base","pt", "legal/models")\
+tokenClassifier = legal.BertForTokenClassification.pretrained("legner_lener_base","pt", "legal/models")\
   .setInputCols("token", "sentence")\
   .setOutputCol("label")\
   .setCaseSensitive(True)
@@ -226,4 +226,4 @@ result = pipeline.fit(example).transform(example)
 
 ## References
 
-Original texts available in https://paperswithcode.com/sota?task=Token+Classification&dataset=lener_br and in-house data augmentation with weak labelling
+Original texts available in https://paperswithcode.com/sota?task=Token+Classification&dataset=lener_br and in-house data augmentation with weak labelling.

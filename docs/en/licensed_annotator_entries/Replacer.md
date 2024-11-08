@@ -19,9 +19,18 @@ In the **deidentification** process, the `Replacer` annotator is used to replace
 
 The `NameChunkObfuscatorApproach` annotator is used to identify and obfuscate sensitive named entities in the text, such as people's names, addresses, dates of birth, SSNs etc.
 
-Parametres:
+Parameter:
 
-- `setUseReplacement`: (Boolean) Select what output format should be used. By default it will use the current day.   
+- `setUseReplacement`: (Boolean) Select what output format should be used. By default it will use the current day.
+- `setPlaceHolderDelimiters`: (String) Sets the placeholder string to use when noneValuesTo is set to "place_holder". This placeholder string will be wrapped by the delimiters defined in placeHolderDelimiters.
+- `setPlaceHolder`: (String) Determines the action to take when encountering a value of 'NONE' in the annotation. This parameter can take one of the following three string values:
+   * "entity": Replaces 'NONE' values with the entity field extracted from the annotation, if available. If the entity field is not available, it uses the string "NONE" wrapped by the specified delimiters.
+   * "place_holder": Replaces 'NONE' values with a placeholder string wrapped by the specified delimiters.
+   * "skip": Retains the original target_text from the annotation's metadata if available. If not available, it retains the original annotation result.
+- `mappingsColumn`: (String) Column name for mapping. This column maps the annotations to their corresponding chunks before the entities are replaced.
+- `returnEntityMappings`: (Boolean) With this property you select if you want to return mapping column.
+- `staticEntityMappingsFallback`: (String) Fallback option for static entity mappings. Allowed values: 'entity', 'place_holder', 'skip', 'error'.
+- `staticEntityMappings`: (dict)  Static entity mappings. A dictionary with entity types as keys and replacement values as values.
 
 {%- endcapture -%}
 
@@ -34,7 +43,6 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
 from johnsnowlabs import nlp, medical
 
 names = """Mitchell#NAME
@@ -116,7 +124,10 @@ nameChunkObfuscator = medical.NameChunkObfuscatorApproach()\
 replacer_name = medical.Replacer()\
   .setInputCols("replacement","sentence")\
   .setOutputCol("obfuscated_document_name")\
-  .setUseReplacement(True)
+  .setUseReplacement(False) \
+  .setNoneValuesTo("entity") \
+  .setPlaceHolder("******") \
+  .setPlaceHolderDelimiters(["<", ">"])
 
 nlpPipeline = nlp.Pipeline(stages=[
     documentAssembler, 
@@ -143,7 +154,6 @@ Obfuscated text :  Joseeduardo is a 62 y.o. patient admitted. Mr. Teigan was see
 
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 /* names.txt file
@@ -221,6 +231,9 @@ val replacer_name = new Replacer()
     .setInputCols("replacement","sentence")
     .setOutputCol("obfuscated_document_name")
     .setUseReplacement(true)
+    .setNoneValuesTo("entity")
+    .setPlaceHolder("******")
+    .setPlaceHolderDelimiters(["<", ">"])
 
 val nlpPipeline = new Pipeline().setStages(Array(
     documentAssembler, 
@@ -236,7 +249,7 @@ val test_data = Seq("""John Davies is a 62 y.o. patient admitted. Mr. Davies was
 
 val res = mapperPipeline.fit(test_data).transform(test_data)
 
-// Show results
+# Result
 
 Original text.  :  John Davies is a 62 y.o. patient admitted. Mr. Davies was seen by attending physician Dr. Lorand and was scheduled for emergency assessment.
 
@@ -253,7 +266,7 @@ Obfuscated text :  Joseeduardo is a 62 y.o. patient admitted. Mr. Teigan was see
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ReplacerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb)
+[ReplacerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Replacer.ipynb)
 {%- endcapture -%}
 
 

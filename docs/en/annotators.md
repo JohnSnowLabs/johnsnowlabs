@@ -42,6 +42,7 @@ There are two types of Annotators:
 
 - `pretrained(name, language, extra_location)` -> by default, pre-trained will bring a default model, sometimes we offer more than one model, in this case, you may have to use name, language or extra location to download them.
 
+</div><div class="h3-box" markdown="1">
 
 ## Available Annotators
 
@@ -64,6 +65,7 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="EntityRuler" summary="Fits an Annotator to match exact strings or regex patterns provided in a file against a Document and assigns them an named entity."%}
 {% include templates/anno_table_entry.md path="" name="EmbeddingsFinisher" summary="Extracts embeddings from Annotations into a more easily usable form."%}
 {% include templates/anno_table_entry.md path="" name="Finisher" summary="Converts annotation results into a format that easier to use. It is useful to extract the results from Spark NLP Pipelines."%}
+{% include templates/anno_table_entry.md path="" name="GenericRE" summary="Instantiated RelationExtractionModel for extracting relationships between any entities."%}
 {% include templates/anno_table_entry.md path="" name="GraphExtraction" summary="Extracts a dependency graph between entities."%}
 {% include templates/anno_table_entry.md path="" name="GraphFinisher" summary="Helper class to convert the knowledge graph from GraphExtraction into a generic format, such as RDF."%}
 {% include templates/anno_table_entry.md path="" name="ImageAssembler" summary="Prepares images read by Spark into a format that is processable by Spark NLP."%}
@@ -101,6 +103,8 @@ There are two types of Annotators:
 {% include templates/anno_table_entry.md path="" name="Word2Vec" summary="Word2Vec model that creates vector representations of words in a text corpus."%}
 {% include templates/anno_table_entry.md path="" name="WordSegmenter" summary="Tokenizes non-english or non-whitespace separated texts."%}
 {% include templates/anno_table_entry.md path="" name="YakeKeywordExtraction" summary="Unsupervised, Corpus-Independent, Domain and Language-Independent and Single-Document keyword extraction."%}
+
+</div><div class="h3-box" markdown="1">
 
 ## Available Transformers
 Additionally, these transformers are available to generate embeddings.

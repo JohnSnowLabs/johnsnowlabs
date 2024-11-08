@@ -5,45 +5,61 @@ from typing import List, Callable
 
 import colorama
 import pandas as pd
-from sparknlp.pretrained import PretrainedPipeline
 
 import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.utils.file_utils import str_to_file
 
-Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(
-    exist_ok=True, parents=True
-)
-
-
 def run_cmd_and_check_succ(
-    args: List[str],
-    log=True,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    return_pipes=False,
+        args: List[str],
+        log=True,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        return_pipes=False,
+        shell=False,
+        raise_on_fail=False,
+        use_code=False,
 ) -> bool:
-    print(f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args}{colorama.Fore.RESET}")
-    r = subprocess.run(args, capture_output=True)
-    was_suc = process_was_suc(r)
-    if was_suc:
-        print(
-            f"{colorama.Fore.LIGHTGREEN_EX}✅ Success running {args}{colorama.Fore.RESET}"
-        )
-    else:
-        print(
-            f"{colorama.Fore.LIGHTRED_EX}❌ Failure running {args}{colorama.Fore.LIGHTGREEN_EX}"
-        )
+    if log:
+        if len(args) == 1:
+            print(
+                f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args[0]}{colorama.Fore.RESET}"
+            )
+        else:
+            print(
+                f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args}{colorama.Fore.RESET}"
+            )
+
+    r = subprocess.run(args, capture_output=True, shell=shell)
+    was_suc = process_was_suc(r, suc_print=suc_print, use_code=use_code)
+    if log:
+        if was_suc:
+            print(
+                f"{colorama.Fore.LIGHTGREEN_EX}✅ Success running {args}{colorama.Fore.RESET}"
+            )
+        else:
+            print(
+                f"{colorama.Fore.LIGHTRED_EX}❌ Failure running {args}{colorama.Fore.LIGHTGREEN_EX}"
+            )
+
     if log:
         log_process(r)
+    if raise_on_fail and not was_suc:
+        raise ValueError(f"Failed running {args}")
     if return_pipes:
         return was_suc, r
     return was_suc
 
 
 def process_was_suc(
-    result: subprocess.CompletedProcess,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        result: subprocess.CompletedProcess,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        use_code=False,
 ) -> bool:
-    return suc_print in result.stdout.decode()
+    if use_code and result.returncode != 0:
+        return False
+    elif use_code and result.returncode == 0:
+        return True
+    else:
+        return suc_print in result.stdout.decode()
 
 
 def log_process(result: subprocess.CompletedProcess):
@@ -53,34 +69,20 @@ def log_process(result: subprocess.CompletedProcess):
     print(result.stderr.decode())
 
 
-# def execute_slave_test(py_cmd):
-#     prefix = 'from johnsnowlabs import * \n'
-#     postfix = f"\neval_class('{py_cmd}') \n"
-#     script_file_name = 'test_script.py'
-#     script = inspect.getsource(eval_class)
-#     script = f'{prefix}{script}{postfix}'
-#     print(script)
-#     str_to_file(script, script_file_name)
-#     return run_cmd_and_check_succ(['python', script_file_name])
-#
-
-
-def execute_function_as_new_proc(
-    function: Callable,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-):
-    pass
-
 
 def execute_py_script_string_as_new_proc(
-    py_script,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    py_exec_path=sys.executable,
-    log=True,
-    file_name=None,  # Optional metadata
-    use_i_py=False,
-    add_prefix=True,
+        py_script,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        py_exec_path=sys.executable,
+        log=True,
+        file_name=None,  # Optional metadata
+        use_i_py=False,
+        add_prefix=True,
 ):
+    Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(
+        exist_ok=True, parents=True
+    )
+
     if file_name:
         out_path = f"{johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir}/{file_name}_MD_TEST.py"
     else:
@@ -106,11 +108,11 @@ print('{suc_print}')
 
 
 def execute_py_script_as_new_proc(
-    py_script_path: str,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    py_exec_path=sys.executable,
-    log=True,
-    use_i_py=True,
+        py_script_path: str,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        py_exec_path=sys.executable,
+        log=True,
+        use_i_py=True,
 ):
     # requires ipython installed
     if use_i_py:

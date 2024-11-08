@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_chemd_clinical](https://nlp.johnsnowlabs.com/2021/11/04/ner_chemd_clinical_en.html) model.
 
+## Predicted Entities
+
+`MULTIPLE`, `TRIVIAL`, `SYSTEMATIC`, `FORMULA`, `FAMILY`, `IDENTIFIER`, `ABBREVIATION`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

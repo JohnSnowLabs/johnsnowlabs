@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 3.5.1
+title: Healthcare NLP v3.5.1 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_3_5_1
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -31,6 +31,8 @@ We are glad to announce that 3.5.1 version of Spark NLP for Healthcare has been 
   - Graph_builder `relation_extraction` model file name extension problem with `auto` parameter.
 
 - **List of recently updated or added models**
+
+</div><div class="h3-box" markdown="1">
 
 #### Portuguese Deidentification Models
 
@@ -162,10 +164,11 @@ Results:
 |  7 | DOUTORA: Eva Andrade           | DOUTORA: <DOCTOR>          | DOUTORA: [*********]           | DOUTORA: ****             | DOUTORA: Isabel Magalhães         |
 ```
 
- See [Model Hub Page](https://nlp.johnsnowlabs.com/2022/04/14/clinical_deidentification_pt_3_0.html) for details.
+See [Model Hub Page](https://nlp.johnsnowlabs.com/2022/04/14/clinical_deidentification_pt_3_0.html) for details.
 
+Check Spark NLP Portuguese capabilities in [4.1.Clinical_Multi_Language_Deidentification.ipynb notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.1.Clinical_Multi_Language_Deidentification.ipynb) we have prepared for you.
 
-Check Spark NLP Portuguese capabilities in [4.7.Clinical_Deidentification_in_Portuguese.ipynb notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.7.Clinical_Deidentification_in_Portuguese.ipynb) we have prepared for you.
+</div><div class="h3-box" markdown="1">
 
 #### New RxNorm Sentence Entity Resolver Model (`sbiobertresolve_rxnorm_action_treatment`)
 
@@ -210,6 +213,8 @@ Results* :
 |  1 | coumadin 5 mg |        855333 | ['Anticoagulant']                       | ['Cerebrovascular Accident']       |
 |  2 | avandia 4 mg  |        261242 | ['Drugs Used In Diabets','Hypoglycemic']| ['Diabetes Mellitus', ...]         |                                                                                              |
 ```
+
+</div><div class="h3-box" markdown="1">
 
 #### New RCT Classification Models and Pretrained Pipelines
 
@@ -275,6 +280,8 @@ result = pipeline.annotate(text)
 >> class: True
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features
 ##### Add `getClasses()` attribute to `MedicalBertForTokenClassifier` and `MedicalBertForSequenceClassification`
 Now you can use `getClasses()` method for checking the entity labels of  `MedicalBertForTokenClassifier` and `MedicalBertForSequenceClassification` like `MedicalNerModel`.
@@ -295,6 +302,8 @@ Now you can use `getClasses()` method for checking the entity labels of  `Medica
 
 ##### Download the AnnotatorModels from the healthcare library using the Healthcare version instead of the open source version
 
+</div><div class="h3-box" markdown="1">
+
 Now we download the private models using the Healthcare version instead of the open source version (the pretrained models were used to be dependent on open source Spark NLP version before).
 
 ##### New functionality to download and extract clinical models from S3 via direct link.
@@ -307,15 +316,21 @@ Now, you can download clinical models from S3 via direct link directly by `downl
   ResourceDownloader.downloadModelDirectly("clinical/models/assertion_dl_en_2.0.2_2.4_1556655581078.zip", "clinical/models")  
   ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Core improvements:
 
 ##### Fix `MedicalNerModel` confidence scores when `setIncludeAllConfidenceScores` is `True`
 
 A mismatch problem between the tag with the highest confidence score and the predicted tag in `MedicalNerModel` is resolved.
 
+</div><div class="h3-box" markdown="1">
+
 ##### Graph_builder `relation_extraction` model file name extension problem with `auto` param
 
 A naming problem which occurs while generating a graph for Relation Extraction via graph builder was resolved. Now, the TF graph is generated with the correct extension (`.pb`).
+
+</div><div class="h3-box" markdown="1">
 
 #### List of Recently Updated or Added Models
 

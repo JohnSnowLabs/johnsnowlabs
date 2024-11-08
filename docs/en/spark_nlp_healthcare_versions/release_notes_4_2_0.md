@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 4.2.0
+title: Healthcare NLP v4.2.0 Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_2_0
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -44,6 +44,7 @@ See [Oncology Model Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop
 
 We have 12 new oncological NER and their BERT-based token classification models.
 
+{:.table-model-big.db}
 |NER model name (MedicalNerModel)|BERT-Based model name (MedicalBertForTokenClassifier)| description|predicted entities|
 |-|-|-|-|
 | [ner_oncology_therapy_wip](https://nlp.johnsnowlabs.com/2022/09/30/ner_oncology_therapy_wip_en.html)  |bert_token_classifier_ner_oncology_therapy_wip |This model extracts entities related to cancer therapies, including posology entities and response to treatment, using granular labels.  | `Response_To_Treatment`, `Line_Of_Therapy`, `Cancer_Surgery`, `Radiotherapy`, `Immunotherapy`, `Targeted_Therapy`, `Hormonal_Therapy`, `Chemotherapy`, `Unspecific_Therapy`, `Route`, `Duration`, `Cycle_Count`, `Dosage`, `Frequency`, `Cycle_Number`, `Cycle_Day`, `Radiation_Dose`  |
@@ -61,6 +62,7 @@ We have 12 new oncological NER and their BERT-based token classification models.
 
 **F1 Scores:**
 
+{:.table-model-big.db}
 |label|f1|label|f1|label|f1|label|f1|label|f1|
 |---|---|---|---|---|---|---|---|---|---|
 |Adenopathy|0\.73|Cycle\_Day|0\.83|Histological\_Type|0\.71|Posology\_Information|0\.88|Site\_Lymph\_Node|0\.91|
@@ -128,6 +130,7 @@ sample_text = "The had previously undergone a left mastectomy and an axillary ly
 
 We have 8 new oncological assertion status detection models.
 
+{:.table-model-big.db}
 |model name|description|predicted entities|
 |-|-|-|
 |assertion_oncology_wip   | This model identifies the assertion status of different oncology-related entities.  | `Medical_History`, `Family_History`, `Possible`, `Hypothetical_Or_Absent`  |
@@ -168,6 +171,7 @@ sample_text = "Considering the findings, the patient may have a breast cancer. T
 ##### New Oncological Relation Extraction Models
 We are releasing 7 new `RelationExtractionModel` and 7 new `RelationExtractionDLModel` models to extract relations between various oncological concepts.
 
+{:.table-model-big.db}
 | model name                                          	| description                                                                	| predicted entities          	|
 |-------------------------------------------------------|-----------------------------------------------------------------------------|-------------------------------|
 | [re_oncology_size_wip](https://nlp.johnsnowlabs.com/2022/09/26/re_oncology_size_wip_en.html)                          | This model links Tumor_Size extractions to their corresponding Tumor_Finding extractions.   	          | `is_size_of`, `O`   	|
@@ -187,6 +191,7 @@ We are releasing 7 new `RelationExtractionModel` and 7 new `RelationExtractionDL
 
 **F1 Scores and Samples:**
 
+{:.table-model-big.db}
 |label|F1 Score|sample_text|results|
 |-|-|-|-|
 |is_finding_of   | 0.95  |"Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A."|`negative - thyroid transcription factor-1`, `negative - napsin`|
@@ -357,6 +362,7 @@ Results:
 
 We are releasing 4 new chunk mapper models that can map entities to their corresponding ICD-9, ICD-10-CM and RxNorm codes.
 
+{:.table-model-big.db}
 |model name|description|
 |-|-|
 | [rxnorm_normalized_mapper](https://nlp.johnsnowlabs.com/2022/09/29/rxnorm_normalized_mapper_en.html)  |  Mapping drug entities (phrases) with the corresponding **RxNorm codes and normalized resolutions**.  |

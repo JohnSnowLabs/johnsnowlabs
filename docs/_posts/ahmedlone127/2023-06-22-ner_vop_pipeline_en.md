@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-fy6n2ebwakpqy
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/685dab5c-03cb-4545-9a71-e08ae72946e6/John-Snow-Labs_Extract-patient-information-from-patient-narratives
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This pipeline includes the full taxonomy Named-Entity Recognition model to extra
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_pipeline_en_4.4.4_3.0_1687435356556.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_pipeline_en_4.4.4_3.0_1687435356556.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

@@ -8,7 +8,7 @@ key: docs-release-notes
 modify_date: "2022-11-28"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -19,7 +19,8 @@ Release date: 11-28-2022
 
  
 We're glad to announce that Spark-OCR 4.2.1 has been released! This release is almost completely about LightPipelines.
- 
+
+</div><div class="h3-box" markdown="1">
 
 #### LightPipeline added to Spark-OCR
 Originally introduced by Spark-NLP, this has been one of the most celebrated features by our users. In a nutshell, LightPipelines allow you switching your pipeline from distributed processing to local mode, in a single line of code. Also, results are much easier to post-process as they come in plain Python data structures. 
@@ -31,9 +32,11 @@ Now, LightPipelines are available in Spark-OCR as well! This is an initial imple
 
 Following is a chart comparing performance of different techniques on batches of different page counts: 8, 16, 24, 32, 40, 48, and 80 pages.
 
-![image](/assets/images/ocr/light_pipelines.png)
+![LightPipeline added to Spark-OCR](/assets/images/ocr/light_pipelines.png)
 
 For the 8 pages case, on the left side of the chart, LightPipelines average 1.25s per page vs. 4s per page that were scored by a similar Pytesseract implementation. That makes LightPipelines a great candidate to achieve low latency on small sized batches, while still leveraging parallelism.
+
+</div><div class="h3-box" markdown="1">
 
 #### Korean Support
 You can start using Korean language by just passing the 'KOR' option to ImageToText,
@@ -47,8 +50,12 @@ You can start using Korean language by just passing the 'KOR' option to ImageToT
     ocr.setDownloadModelData(True)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 #### Bug Fixes
 * AlabReader has been updated to handle the new structure present in Annotation Lab's exported annotations.
+
+</div><div class="h3-box" markdown="1">
 
 #### New Notebooks
 * Check how to use LightPipelines in this notebook: [SparkOcrLightPipelines.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/4.2.1-release-candidate/jupyter/SparkOcrLightPipelines.ipynb)

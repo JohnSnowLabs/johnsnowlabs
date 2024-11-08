@@ -12,6 +12,7 @@ sidebar:
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
+
 You can create [Medical Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/concepts) using all the classes 
 attached to the `Medical` & `nlp` module after [installing the licensed libraries](/docs/en/jsl/install_licensed_quick).
 
@@ -38,6 +39,7 @@ nlp.load('med_ner.jsl.wip.clinical').predict(medical_text)
 
 ```
 
+{:.table-model-big}
 | entity      | entity_class | entity_confidence |
 |:------------|:-------------|------------------:|
 | 5-month-old | Age          |            0.9982 |
@@ -72,6 +74,7 @@ Licensed Component Types :
 | Drug Normalizers                                                   | `nlp.load('norm_drugs')`                           |
 | Rule based NER with Context Matcher                                | `nlp.load('match.context')`                        |
 
+</div><div class="h3-box" markdown="1">
 
 ## Annotator & PretrainedPipeline based pipelines
 You can create [Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/concepts) using all the classes 
@@ -137,7 +140,7 @@ Phone 74 617 042, 1407 west stassney lane, Edmonton, E-MAIL: Carliss@hotmail.com
 
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ### Custom Pipes
 Alternatively you can compose [Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) into a pipeline which offers the highest degree of customization 

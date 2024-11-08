@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ppumqtrzdjfmu
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/cf968e18-d8d8-4b9f-b79a-fc4e4a3337a7/John-Snow-Labs_Extract-Disease-and-Syndrom-entities-and-their-UMLS-Codes
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ This pretrained pipeline maps entities (Diseases and Syndromes) with their corre
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_disease_syndrome_resolver_pipeline_en_4.4.4_3.0_1687523927214.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_disease_syndrome_resolver_pipeline_en_4.4.4_3.0_1687523927214.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
+
 ## How to use
 
 <div class="tabs-box" markdown="1">
@@ -39,15 +52,14 @@ This pretrained pipeline maps entities (Diseases and Syndromes) with their corre
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
-pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
-
+text = "A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria."
+result = pipeline.annotate(text)
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
-val pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
-
+val pipeline = PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
+val result = pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
 ```
 
 

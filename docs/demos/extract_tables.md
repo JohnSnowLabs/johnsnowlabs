@@ -69,4 +69,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTableAndFormDetection.ipynb
+        - title: Image Region Cell Detection
+          id: image_region_cell_detection  
+          image: 
+              src: /assets/images/Image_Region_Cell_Detection.svg
+          excerpt: This demo includes details about how to detect the table cells of document images using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/IMAGE_REGION_CELL_DETECTION/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb
 ---

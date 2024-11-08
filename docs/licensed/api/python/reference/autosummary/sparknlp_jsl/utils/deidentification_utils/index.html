@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>sparknlp_jsl.utils.deidentification_utils &#8212; Spark NLP  documentation</title>
   
@@ -19,33 +18,34 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../../../static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css?v=e1fb877f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../static/documentation_options.js"></script>
-    <script src="../../../../../static/jquery.js"></script>
-    <script src="../../../../../static/underscore.js"></script>
-    <script src="../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../../static/doctools.js"></script>
-    <script src="../../../../../static/sphinx_highlight.js"></script>
-    <script src="../../../../../static/toggleprompt.js"></script>
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../static/copybutton.js?v=6dbb43f8"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/deidentification_utils/index';</script>
-    <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
+    <link rel="icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -58,6 +58,15 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -82,8 +91,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -98,9 +107,11 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
+
   
 
 <a class="navbar-brand logo" href="../../../../../index.html">
@@ -108,25 +119,26 @@
   
   
   
+  
     
     
       
     
     
-    <img src="../../../../../static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../../../static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
     
   </div>
   
-  
   <div class="col-lg-9 navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
-        <div class="navbar-item"><nav class="navbar-nav">
+        <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -148,6 +160,13 @@
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
       
@@ -158,23 +177,27 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -185,18 +208,21 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
       <span class="fa-solid fa-outdent"></span>
     </label>
   
@@ -216,7 +242,8 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item"><nav class="navbar-nav">
+          <div class="navbar-item">
+<nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
@@ -238,6 +265,13 @@ document.write(`
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
         
@@ -248,12 +282,13 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -263,7 +298,8 @@ document.write(`
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
@@ -278,7 +314,9 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../ocr_nlp_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_nlp_processor</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ocr_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.ocr_utils</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../risk_adjustment_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.risk_adjustment_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../run_transpiled_code/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.run_transpiled_code</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training_log_parser_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.training_log_parser_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualner_annotations_parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.visualner_annotations_parser</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -308,15 +346,15 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_utils</span></code></li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
   </ul>
 </nav>
 </div>
@@ -341,33 +379,206 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_deidentifier</span></code></a>(spark[, input_file_path, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict_to_annotation_converter</span></code></a>(spark, data[, ...])</p></td>
+<td><p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_deidentifier</span></code></a>(spark[, input_file_path, ...])</p></td>
 <td><p>This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter">
+<span class="sig-name descname"><span class="pre">dict_to_annotation_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'document'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'chunk'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_validation_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="Permalink to this definition">#</a></dt>
+<dd><p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p>
+<p>The input data should be a list of dictionaries.
+Each dictionary should have a “text” key and a “chunks” key.
+The “text” key should contain the text of the document and the “chunks” key should contain a list of dictionaries.</p>
+<p>Each dictionary in the “chunks” list should have “begin”, “end”, “result”, “entity” and “metadata” keys.</p>
+<p>The “begin” key should contain the start index of the chunk,
+the “end” key should contain the end index of the chunk,
+the “result” key should contain the text of the chunk,
+the “entity” key should contain the entity type of the chunk
+and the “metadata” key should contain the metadata of the chunk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – The Spark session object.</p></li>
+<li><p><strong>data</strong> (<em>list</em>) – A list of dictionaries.</p></li>
+<li><p><strong>document_col_name</strong> (<em>str</em>) – The name of the document column. Default: “document”.</p></li>
+<li><p><strong>chunk_col_name</strong> (<em>str</em>) – The name of the chunk column. Default: “chunk”.</p></li>
+<li><p><strong>adjust_end</strong> (<em>bool</em>) – If True, the end values of the chunks will minus 1. Default: False.</p></li>
+<li><p><strong>chunk_validation_options</strong> (<em>dict</em>) – <p>A dictionary specifying options for chunk validation. Default is None. None means no validation.
+Possible keys include:
+- “validation_mode” (str): Determines what happens if a chunk cannot be validated:</p>
+<blockquote>
+<div><ul>
+<li><p>”filter” (default): Invalid chunks are removed from the chunks.</p></li>
+<li><p>”error”: A ValueError is raised if any chunk cannot be validated.</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl class="simple">
+<dt>”scope_window” (list of int): A list of two integers [before, after] that define the number of characters</dt><dd><p>before and after the chunk’s begin and end index to include in the search window. Default is [0, 0].</p>
+</dd>
+</dl>
+</li>
+<li><p>”case_sensitive” (bool): If False, chunk matching is case-insensitive. Default is True.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The provided begin, end, and result values are not validated for accuracy. It is the user’s responsibility to ensure these values are correct.</p></li>
+</ul>
+<p>The validation can be done by setting the chunk_validation_options parameter.</p>
+<ul class="simple">
+<li><p>Spark NLP annotators calculate the end index of the annotations by minus 1 from the actual end index.</p></li>
+</ul>
+<p>If the end index is not minus 1, the annotators will not be able to calculate the correct end index.
+Therefore, the end index of the chunks should be minus 1.
+If the end index is not minus 1 in chunks, the adjust_end parameter should be set to True.</p>
+<ul class="simple">
+<li><p>document_col_name and chunk_col_name should not be the same as the column names in the input data.</p></li>
+<li><p>The name of ‘document_metadata’ is reserved for the metadata column of the document.</p></li>
+</ul>
+<p>‘document_metadata’ values should be a dictionary.
+All dictionaries must have a ‘document_metadata’ key if the ‘document_metadata’ is provided in one of the dictionaries.</p>
+<ul class="simple">
+<li><p>‘text’ and ‘chunks’ keys are reserved for the text and chunks of the document.</p></li>
+</ul>
+<p>‘text’ values should be a string and ‘chunks’ values should be a list of dictionaries.</p>
+<ul class="simple">
+<li><p>‘begin’, ‘end’, ‘result’, ‘entity’ and ‘metadata’ keys are reserved for the chunk annotations.</p></li>
+</ul>
+<p>‘begin’ and ‘end’ values should be integers, ‘result’ values should be a string, ‘entity’ values should be a string and ‘metadata’ values should be a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>Spark DataFrame</strong> (<em>A Spark DataFrame with the converted columns which are compatible with Spark NLP and is ready to deidentify.</em>)</p></li>
+<li><p><em>The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</em></p></li>
+<li><p><em>Additionally, the returned DataFrame will contain all the columns from the input data except the “chunks” column.</em></p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the validation_mode is set to “error” or the given parameters and options are not valid.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_of_dict</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>       <span class="p">{</span>
+<span class="gp">... </span>           <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;chunks&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;llm_output&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;12/11/1995&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.9&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;llm_output&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">96</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;John Snow labs&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;ORG&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.87&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;llm_output&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">}</span>
+<span class="gp">... </span>               <span class="p">],</span>
+<span class="gp">... </span>           <span class="s2">&quot;doc_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;document_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dateshift&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">},</span>
+<span class="gp">... </span>           <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/file1&quot;</span>
+<span class="gp">... </span>       <span class="p">},</span>
+<span class="gp">... </span>       <span class="p">{</span>
+<span class="gp">... </span>           <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;I am Bush, and English is my native language. You can reach me at my email: bush@example.com.&quot;</span><span class="p">,</span>
+<span class="gp">...</span>
+<span class="gp">... </span>           <span class="s2">&quot;chunks&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;Bush&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_dl&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;LANGUAGE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.98&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_dl&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span>
+<span class="gp">... </span>                   <span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">76</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;bush@example.com&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;EMAIL&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="s2">&quot;0.87&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_source&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_dl&quot;</span><span class="p">}</span>
+<span class="gp">... </span>               <span class="p">}</span>
+<span class="gp">... </span>           <span class="p">],</span>
+<span class="gp">... </span>           <span class="s2">&quot;doc_id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s2">&quot;document_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dateshift&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">},</span>
+<span class="gp">... </span>           <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/file2&quot;</span>
+<span class="gp">... </span>       <span class="p">}</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result_df</span> <span class="o">=</span> <span class="n">dict_to_annotation_converter</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">list_of_dict</span><span class="p">,</span> <span class="n">document_col_name</span><span class="o">=</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="n">chunk_col_name</span><span class="o">=</span><span class="s2">&quot;chunk&quot;</span><span class="p">,</span> <span class="n">adjust_end</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">light_deIdentification</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>       <span class="n">LightDeIdentification</span><span class="p">()</span>
+<span class="gp">... </span>       <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;chunk&quot;</span><span class="p">])</span> <span class="c1"># The document and chunk columns created by the dict_to_annotation_converter function.</span>
+<span class="gp">... </span>       <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;deidentified&quot;</span><span class="p">)</span>
+<span class="gp">... </span>       <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">light_deIdentification</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;deidentified.result&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><table class="table">
+<tbody>
+<tr class="row-odd"><td><p>result</p></td>
+</tr>
+<tr class="row-even"><td><p>[My name is &lt;PERSON&gt;, and I was born on &lt;DATE&gt;. I have the pleasure of working at &lt;ORG&gt;.]
+[I am &lt;PERSON&gt;, and &lt;LANGUAGE&gt; is my native language. You can reach me at my email: &lt;EMAIL&gt;.]</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier">
-<span class="sig-name descname"><span class="pre">structured_deidentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentified.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'faker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">structured_deidentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentified.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'faker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="Permalink to this definition">#</a></dt>
 <dd><p>This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</p>
-<section id="parameters">
-<h4>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h4>
-<p>input_file_path (str): The path of the input file.
-output_file_path (str): The path of the output file.
-separator (str): The seperator of the input csv file.
-columns_dict (dict): A dictionary that contains the column names and the tags that should be used for deidentification.
-ref_source (str): The source of the reference file. It can be “faker” or “file”.
-obfuscateRefFile (str): The path of the reference file for obfuscation.
-columns_seed (int): The seed value for the random number generator.
-shift_days (int): The number of days to be shifted.
-date_formats (list): A list of date formats.
-language (str): The language used to select faker entities. Options: ‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
-</section>
-<section id="returns">
-<h4>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h4>
-<p>Spark DataFrame: A deidentified dataframe.
-csv/json file: A deidentified file.</p>
-</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>idColumn</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>dict</strong><strong>)</strong> (<em>columns_dict</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>int</strong><strong>)</strong> (<em>shift_days</em>) – </p></li>
+<li><p><strong>(</strong><strong>int</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>date_formats</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>Returns</strong> – </p></li>
+<li><p><strong>-------</strong> – </p></li>
+<li><p><strong>DataFrame</strong> (<em>Spark</em>) – </p></li>
+<li><p><strong>file</strong> (<em>csv/json</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -379,16 +590,12 @@ csv/json file: A deidentified file.</p>
               
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -398,6 +605,7 @@ csv/json file: A deidentified file.</p>
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
+
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
@@ -405,6 +613,7 @@ csv/json file: A deidentified file.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter"><code class="docutils literal notranslate"><span class="pre">dict_to_annotation_converter()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="docutils literal notranslate"><span class="pre">structured_deidentifier()</span></code></a></li>
 </ul>
 </li>
@@ -426,8 +635,8 @@ csv/json file: A deidentified file.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -435,6 +644,7 @@ csv/json file: A deidentified file.</p>
     <div class="footer-items__start">
       
         <div class="footer-item">
+
   <p class="copyright">
     
       © Copyright 2022, John Snow Labs.
@@ -444,8 +654,9 @@ csv/json file: A deidentified file.</p>
 </div>
       
         <div class="footer-item">
+
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     <br/>
   </p>
 </div>
@@ -453,10 +664,12 @@ csv/json file: A deidentified file.</p>
     </div>
   
   
+  
     <div class="footer-items__end">
       
-        <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
 </p></div>
       
     </div>

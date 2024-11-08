@@ -43,7 +43,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_ONCOLOGY_CLINICAL/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Identify Tests, Biomarkers, and their Results
           id: extract_biomarker_information 
           image: 
@@ -55,7 +55,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_BIOMARKER/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Identify Demographic Information from Oncology Texts
           id: identify_demographic_information_from_oncology_texts   
           image: 
@@ -67,7 +67,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_ONCOLOGY_DEMOGRAPHICS/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Detect Assertion Status from Clinics Entities
           id: detect_assertion_status_clinics_entities   
           image: 
@@ -79,7 +79,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ASSERTION_ONCOLOGY/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb
         - title: Detect Relation Extraction between different Oncological entity types
           id: detect_relation_extraction_different_oncological_entity_types   
           image: 
@@ -91,7 +91,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/RE_ONCOLOGY/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb       
         - title: Resolve Oncology terminology using the ICD-O taxonomy
           id: resolve_oncology_terminology_using_icdo_taxonomy
           image: 
@@ -104,6 +104,30 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_ICDO.ipynb
+        - title: Bert For Sequence Classification (Biomarker) 
+          id: bert_sequence_classification_biomarker 
+          image: 
+              src: /assets/images/Bert_For_Sequence_Classification_Biomarker.svg
+          excerpt: This model is a sentence classification system based on BioBERT that is capable of identifying if clinical sentences contain terms associated with biomarkers.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_BIOMARKER/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLASSIFICATION_BIOMARKER.ipynb
+        - title: Oncological Response to Treatment for Classification
+          id: oncological_response_treatment_classification 
+          image: 
+              src: /assets/images/Oncological_Response_to_Treatment_for_Classification.svg
+          excerpt: This model is intended to detect oncological responses to treatments in clinical notes.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT.ipynb
         - title: Classify Complaints about Healthcare Facilities 
           id: classify_complaints_healthcare_facilities 
           image: 

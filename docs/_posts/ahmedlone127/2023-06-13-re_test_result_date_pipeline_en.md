@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [re_test_result_date](https://nl
 
 ## Predicted Entities
 
+`Injury_or_Poisoning`, `Direction`, `Test`, `Route`, `Admission_Discharge`, `Death_Entity`, `Triglycerides`, `Oxygen_Therapy`, `Relationship_Status`, `Duration`, `Alcohol`, `Date`, `Drug`, `Hyperlipidemia`, `Respiration`, `Birth_Entity`, `VS_Finding`, `Age`, `Social_History_Header`, `Family_History_Header`, `Medical_Device`, `Labour_Delivery`, `BMI`, `Fetus_NewBorn`, `Temperature`, `Section_Header`, `Communicable_Disease`, `ImagingFindings`, `Psychological_Condition`, `Obesity`, `Sexually_Active_or_Sexual_Orientation`, `Modifier`, `Vaccine`, `Symptom`, `Pulse`, `Kidney_Disease`, `Oncological`, `EKG_Findings`, `Medical_History_Header`, `Cerebrovascular_Disease`, `Blood_Pressure`, `Diabetes`, `O2_Saturation`, `Heart_Disease`, `Employment`, `Frequency`, `Disease_Syndrome_Disorder`, `Pregnancy`, `RelativeDate`, `Procedure`, `Overweight`, `Race_Ethnicity`, `Hypertension`, `External_body_part_or_region`, `Imaging_Technique`, `Test_Result`, `Treatment`, `Substance`, `Clinical_Dept`, `LDL`, `Diet`, `Substance_Quantity`, `Allergen`, `Gender`, `RelativeTime`, `Total_Cholesterol`, `Internal_organ_or_component`, `Smoking`, `Vital_Signs_Header`, `Height`, `Form`, `Strength`, `Weight`, `Time`, `Dosage`, `HDL`
+
 
 
 {:.btn-box}
@@ -63,11 +65,16 @@ nlu.load("en.relation.date_test_result.pipeline").predict("""He was advised ches
 ## Results
 
 ```bash
-| index | relations    | entity1      | chunk1              | entity2      |  chunk2 |
-|-------|--------------|--------------|---------------------|--------------|---------|
-| 0     | O            | TEST         | chest X-ray         | MEASUREMENTS |  93%    | 
-| 1     | O            | TEST         | CT scan             | MEASUREMENTS |  93%    |
-| 2     | is_result_of | TEST         | SpO2                | MEASUREMENTS |  93%    |
+|   | sentence | entity1_begin | entity1_end |      chunk1 | entity1 | entity2_begin | entity2_end |      chunk2 |     entity2 |      relation | confidence |
+|--:|---------:|--------------:|------------:|------------:|--------:|--------------:|------------:|------------:|------------:|--------------:|-----------:|
+| 0 |        0 |             0 |           1 |          He |  Gender |            15 |          25 | chest X-ray |        Test | is_finding_of |  0.9991597 |
+| 1 |        0 |             0 |           1 |          He |  Gender |            30 |          36 |     CT scan |        Test | is_finding_of |        1.0 |
+| 2 |        0 |            15 |          25 | chest X-ray |    Test |            30 |          36 |     CT scan |        Test | is_finding_of |        1.0 |
+| 3 |        0 |            30 |          36 |     CT scan |    Test |            53 |          55 |         his |      Gender | is_finding_of |        1.0 |
+| 4 |        0 |            30 |          36 |     CT scan |    Test |            57 |          60 |        SpO2 |        Test | is_finding_of |        1.0 |
+| 5 |        0 |            53 |          55 |         his |  Gender |            57 |          60 |        SpO2 |        Test |    is_date_of |    0.98956 |
+| 6 |        0 |            53 |          55 |         his |  Gender |            75 |          77 |         93% | Test_Result |    is_date_of |  0.9999974 |
+| 7 |        0 |            57 |          60 |        SpO2 |    Test |            75 |          77 |         93% | Test_Result |  is_result_of | 0.92868817 |
 ```
 
 {:.model-param}

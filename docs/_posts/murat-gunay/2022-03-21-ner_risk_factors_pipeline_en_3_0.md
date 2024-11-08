@@ -23,6 +23,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_risk_factors](https://nlp.johnsnowlabs.com/2021/03/31/ner_risk_factors_en.html) model.
 
+## Predicted Entities
+
+`SMOKER`, `PHI`, `CAD`, `HYPERTENSION`, `HYPERLIPIDEMIA`, `MEDICATION`, `DIABETES`, `OBESE`, `FAMILY_HIST`
+
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_RISK_FACTORS/){:.button.button-orange.button-orange-trans.arr.button-icon}

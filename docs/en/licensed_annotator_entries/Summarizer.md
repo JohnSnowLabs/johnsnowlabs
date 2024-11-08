@@ -49,6 +49,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol('text')\
     .setOutputCol('document')
@@ -57,12 +59,7 @@ summarizer = medical.Summarizer.pretrained("summarizer_clinical_jsl", "en", "cli
     .setInputCols(["document"])\
     .setOutputCol("summary")\
     .setMaxTextLength(512)\
-    .setMaxNewTokens(512)\
-    .setDoSample(True)\
-    .setRefineSummary(True)\
-    .setRefineSummaryTargetLength(100)\
-    .setRefineMaxAttempts(3)\
-    .setRefineChunkSize(512)
+    .setMaxNewTokens(512)
 
 pipeline = nlp.Pipeline(
     stages=[
@@ -82,14 +79,16 @@ result = pipeline.fit(data).transform(data)
 
 result.select("summary.result").show(truncate=False)
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| An x-ray showed spondylolisis of the ankle in a 17, 17, and 17-months old man who was playing basketball in the gym after slipping. He has no other injury notes, but an x-ray revealed small fracture of the ankle. He requested Motrin for pain and he was discharged with crutches and Motrin. The physician gave his sprates & tuxet for resting. He also gave him Motrin, if pain worsens and advised him on returning for followup. |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[A 17-year-old man fell and twisted his right ankle, causing pain to move or bear weight. An x-ray showed a small ossicle or avulsion fracture of the talonavicular joint on the lateral view, which may be a fracture based upon his exam. He was given Motrin and discharged home with crutches and a prescription for Motrin and Darvocet. He was advised to follow up with his doctor if pain worsens and return if any worsening problems worsen.]|
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -99,11 +98,7 @@ val summarizer = Summarizer.pretrained("summarizer_clinical_jsl", "en", "clinica
   .setOutputCol("summary")
   .setMaxTextLength(512)
   .setMaxNewTokens(512)
-  .setDoSample(true)
-  .setRefineSummary(true)
-  .setRefineSummaryTargetLength(100)
-  .setRefineMaxAttempts(3)
-  .setRefineChunkSize(512)
+
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, summarizer))
 
@@ -117,11 +112,10 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("summary.result").show(false)
-
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -167,6 +161,8 @@ result.select("summary.result").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -202,8 +198,6 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.select("summary.result").show(false)
-
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -213,6 +207,7 @@ result.select("summary.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -236,6 +231,7 @@ result.select("summary.result").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
@@ -256,7 +252,6 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.select("summary.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
@@ -265,9 +260,6 @@ result.select("summary.result").show(false)
 
 {%- capture model_python_api_link -%}
 [MedicalSummarizer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_summarizer/index.html#sparknlp_jsl.annotator.seq2seq.medical_summarizer.MedicalSummarizer)
-{%- endcapture -%}
-
-{%- capture model_notebook_link -%}
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -284,4 +276,4 @@ model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
-model_notebook_link=model_notebook_link%}
+%}
