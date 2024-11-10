@@ -1,7 +1,7 @@
 import subprocess
 import sys
 from pathlib import Path
-from typing import List, Callable
+from typing import List, Callable, Union
 
 import colorama
 import pandas as pd
@@ -10,13 +10,15 @@ import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.utils.file_utils import str_to_file
 
 def run_cmd_and_check_succ(
-        args: List[str],
+        args: Union[List[str],str],
         log=True,
         suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
         return_pipes=False,
         shell=False,
         raise_on_fail=False,
         use_code=False,
+        text=False,
+        log_outputs=True,
 ) -> bool:
     if log:
         if len(args) == 1:
@@ -28,7 +30,7 @@ def run_cmd_and_check_succ(
                 f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args}{colorama.Fore.RESET}"
             )
 
-    r = subprocess.run(args, capture_output=True, shell=shell)
+    r = subprocess.run(args, capture_output=True, shell=shell, text=text)
     was_suc = process_was_suc(r, suc_print=suc_print, use_code=use_code)
     if log:
         if was_suc:
@@ -40,7 +42,7 @@ def run_cmd_and_check_succ(
                 f"{colorama.Fore.LIGHTRED_EX}❌ Failure running {args}{colorama.Fore.LIGHTGREEN_EX}"
             )
 
-    if log:
+    if log_outputs:
         log_process(r)
     if raise_on_fail and not was_suc:
         raise ValueError(f"Failed running {args}")
@@ -59,14 +61,25 @@ def process_was_suc(
     elif use_code and result.returncode == 0:
         return True
     else:
-        return suc_print in result.stdout.decode()
+        try:
+            return suc_print in result.stdout.decode()
+        except Exception as err:
+            return suc_print in result.stdout
 
 
 def log_process(result: subprocess.CompletedProcess):
     print("______________STDOUT:")
-    print(result.stdout.decode())
+    if hasattr(result.stdout, "decode"):
+        print(result.stdout.decode())
+    else:
+        print(result.stdout)
+
     print("______________STDERR:")
-    print(result.stderr.decode())
+    if hasattr(result.stderr, "decode"):    
+        print(result.stderr.decode())
+    else:
+        print(result.stderr)
+    
 
 
 
