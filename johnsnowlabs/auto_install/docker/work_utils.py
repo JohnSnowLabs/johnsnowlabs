@@ -239,7 +239,7 @@ def build_image(
         nlp=nlp,
         hardware_platform=hardware_platform,
     )
-    run_cmd_and_check_succ([cmd], shell=True, raise_on_fail=True, use_code=True)
+    run_cmd_and_check_succ([cmd], shell=True, raise_on_fail=True, use_code=True, log_outputs=False)
 
 
 def run_container_cmd(container_name=None, image_name=None, destroy_container=False):
