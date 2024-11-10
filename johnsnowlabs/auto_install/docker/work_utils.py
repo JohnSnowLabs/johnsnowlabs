@@ -16,14 +16,14 @@ from johnsnowlabs.utils.py_process import run_cmd_and_check_succ
 def check_image_exist(image_name: str) -> bool:
     cmd = f"docker image inspect {image_name}"
     return run_cmd_and_check_succ(
-        [cmd], shell=True, raise_on_fail=False, use_code=True, log=False
+        [cmd], shell=True, raise_on_fail=False, use_code=True, log=False, log_outputs=False
     )
 
 
 def check_container_exist(container_name: str) -> bool:
     cmd = f"docker container inspect {container_name}"
     return run_cmd_and_check_succ(
-        [cmd], shell=True, raise_on_fail=False, use_code=True, log=False
+        [cmd], shell=True, raise_on_fail=False, use_code=True, log=False, log_outputs=False
     )
 
 
@@ -36,9 +36,9 @@ def _destroy_container(container_name: str = None):
         stop_cmd = f"docker container stop {container_name}"
         rm_cmd = f"docker container rm -f {container_name}"
         run_cmd_and_check_succ(
-            [stop_cmd], shell=True, raise_on_fail=False, use_code=True
+            [stop_cmd], shell=True, raise_on_fail=False, use_code=True,log_outputs=False
         )
-        run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True)
+        run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True,log_outputs=False)
         print(f"Container '{container_name}' destroyed.")
     else:
         print(f"Container '{container_name}' does not exist.")
@@ -48,7 +48,7 @@ def _destroy_image(image_name: str = None):
     image_name = settings.docker_image_name if image_name is None else image_name
     if check_image_exist(image_name):
         rm_cmd = f"docker image rm -f {image_name}"
-        run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True)
+        run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True, log_outputs=False)
         print(f"Image '{image_name}' destroyed.")
     else:
         print(f"Tried to destroy image '{image_name}', but does not exist.")

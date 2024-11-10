@@ -68,18 +68,13 @@ def process_was_suc(
 
 
 def log_process(result: subprocess.CompletedProcess):
-    print("______________STDOUT:")
-    if hasattr(result.stdout, "decode"):
-        print(result.stdout.decode())
-    else:
-        print(result.stdout)
+    stdout = result.stdout.decode() if hasattr(result.stdout, "decode") else result.stdout
+    stderr = result.stderr.decode() if hasattr(result.stderr, "decode") else result.stderr
+    if stdout:
+        print(f"STDOUT: {stdout}")
+    if stderr:
+        print(f"STDERR: {stderr}")
 
-    print("______________STDERR:")
-    if hasattr(result.stderr, "decode"):    
-        print(result.stderr.decode())
-    else:
-        print(result.stderr)
-    
 
 
 

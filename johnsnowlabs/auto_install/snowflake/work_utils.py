@@ -264,11 +264,10 @@ GRANT ROLE {role_name} TO USER {snowflake_user};
     r = cur.execute(base_cmd, num_statements=base_cmd.count(';'))
     succ = r.fetchall()[0][0] == 'Statement executed successfully.'
     if succ:
-        print(f'Role {role_name} created and access granted to {snowflake_user}')
-        print(f'Database {db_name} created')
-        print(f'Warehouse {warehouse_name} crated')
-        print(f'Warehouse {warehouse_name} crated')
-        print(f'Compute Pool {compute_pool_name} crated')
+        print(f'Created Role {role_name} and access granted to {snowflake_user}')
+        print(f'Created Database {db_name}')
+        print(f'Created Warehouse {warehouse_name}')
+        print(f'Created Compute Pool {compute_pool_name}')
 
     create_db_objects_cmd = f"""
 USE ROLE {role_name};
@@ -285,9 +284,11 @@ CREATE STAGE IF NOT EXISTS {stage_name} DIRECTORY = ( ENABLE = true );
 
     succ = r.fetchall()[0][0] == 'Statement executed successfully.'
     if succ:
-        print(f'Schema {schema_name} crated')
-        print(f'Repository {repo_name} crated')
-        print(f'Stage {stage_name} crated')
+        print(f'Created Schema {schema_name}')
+        print(f'Created Repository {repo_name}')
+        print(f'Created Stage {stage_name}')
+
+
     else:
         print('Failure creating Schema, Repository and Stage!')
 
@@ -312,8 +313,7 @@ USE WAREHOUSE {warehouse_name};
                 return response_repo_url
 
     repo_url = verify_image_repo(verify_prefix)
-
-    print(f'Remote repo URL is {repo_url}')
+    print(f'Created Snowflake Container Repository {repo_url}')
     return role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url
 
 
@@ -360,11 +360,11 @@ def deploy_as_snowflake_udf(nlu_ref,
     print(f'Starting Snowflake Procedure')
     create_service(client, service_name, compute_pool_name, remote_image, role_name, database_name, warehouse_name,
                    schema_name)
-    print(f'Service {service_name} created')
+    print(f'Created Service {service_name}')
     wait_until_service_created(client, service_name, service_creation_timeout)
     # time.sleep(1 * 60)  # wait ~ n seconds for container sto spin up, expo backup..!
     create_udf(client, service_name, udf_name, role_name, database_name, warehouse_name, schema_name)
-    print(f'UDF {udf_name} created')
+    print(f'Created UDF {udf_name}')
 
     print('testing UDF...')
     test_udf(client, udf_name)
