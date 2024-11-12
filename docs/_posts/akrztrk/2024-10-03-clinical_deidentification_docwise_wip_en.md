@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ghf7wfm7o2wva
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ4Y/john-snow-labs-clinical-deidentification
+  databricks_link: https://marketplace.databricks.com/details/facfaf55-00f6-496c-a8db-a395631130ec/John-Snow-Labs_Clinical-Deidentification
+
 ---
 
 ## Description
@@ -33,6 +39,13 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.0_1727968790363.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.0_1727968790363.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
