@@ -18,12 +18,12 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps drugs with their corresponding actions and treatments. actions refers to the function of the drug in various body systems, treatments refers to which disease the drug is used to treat.
+This pretrained model maps drugs with their corresponding actions and treatments. action to the function of the drug in various body systems, treatment which disease the drug is used to treat.
 
 ## Predicted Entities
 
 `action`, `treatment`
-
+ 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
