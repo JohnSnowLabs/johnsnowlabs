@@ -2,7 +2,7 @@
 layout: model
 title: Relation Extraction optimized with GeoLayoutLM
 author: John Snow Labs
-name: visual_re_geo_v2
+name: visual_re_geo_v1
 date: 2024-09-30
 tags: [en, licensed]
 task: Relation Extraction
@@ -28,8 +28,8 @@ GeoLayoutLM is designed as a multi-modal framework that handles tasks like Seman
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/RELATION_EXTRACTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/FormRecognition/FormRecognitionGeo.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/mixed_scanned_digital_pdf_en_4.3.4_3.0_1679597686000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} -->
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/visual_re_geo_v2_en_5.0.0_3.0_1726641880301.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/visual_re_geo_v1_en_5.0.0_3.0_1726037999844.zip){:.button.button-orange.button-orange-trans.arr.button-icon} -->
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/visual_re_geo_v1_en_5.0.0_3.0_1726037999844.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use
@@ -56,7 +56,7 @@ hocr_to_features = HocrToFeatures() \
     .setInputCols(["tokens", "image"]) \
     .setOutputCol("features")
 
-ner = VisualDocumentNerGeo().pretrained("visual_ner_geo_v1", "en", "clinical/ocr/") \
+ner = VisualDocumentNerGeo().pretrained("visual_ner_geo_v2", "en", "clinical/ocr/") \
     .setInputCols(["features", "tokens", "image"]) \
     .setWhiteList(["other", "i-header", "b-header", "i-question", "b-question", "i-answer", "b-answer"]) \
     .setLabels(["other", "i-header", "b-header", "i-question", "b-question", "i-answer", "b-answer"]) \
@@ -130,7 +130,7 @@ val hocr_to_features1 = new HocrToFeatures()
     .setInputCols(Array("entities", "image")) 
     .setOutputCol("features1")
 
-val re = new GeoRelationExtractor.pretrained("visual_re_geo_v2", "en", "clinical/ocr/") 
+val re = new GeoRelationExtractor.pretrained("visual_re_geo_v1", "en", "clinical/ocr/") 
     .setInputCols(("features1", "entities", "image")) 
     .setLabels(("other", "b-header", "i-header", "b-question", "b-question", "b-answer", "i-answer")) 
     .setOutputCol("relations") 
@@ -187,7 +187,7 @@ Result:
 
 {:.table-model}
 |---|---|
-|Model Name:|visual_re_geo_v2|
+|Model Name:|visual_re_geo_v1|
 |Type:|ocr|
 |Compatibility:|Visual NLP 5.4.1+|
 |License:|Licensed|

@@ -1356,6 +1356,189 @@ data.select("dicom").show()
 
 </div></div><div class="h3-box" markdown="1">
 
+
+
+### DicomToImageV2
+
+Used to convert the dicom frames into images.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content | Specifies the column containing the DICOM file path or buffer input |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False |  Indicates whether input columns should be retained in the resulting DataFrame |
+| PageNumCol | string | - | Specifies the column containing the page number in the resulting DataFrame |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | image | Specifies the column containing the images in the resulting DataFrame |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomToImageV2
+from sparkocr.utils import display_images
+
+df = spark.read.format("binaryFile").load(path_to_dicom_file)
+
+dicom_to_image_v2 = DicomToImageV2() \
+    .setInputCols(["path"]) \
+    .setKeepInput(True) \
+    .setOutputCol("image_raw") \
+    .setPageNumCol("pagenum")
+
+result = dicom_to_image_v2.transform(df).cache()
+
+display_images(result, "image_raw")
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomToImageV2
+import com.johnsnowlabs.ocr.utils.display_images
+
+val df = spark.read.format("binaryFile").load(path_to_dicom_file)
+
+val dicom_to_image_v2 = DicomToImageV2()
+    .setInputCols(["path"])
+    .setKeepInput(True)
+    .setOutputCol("image_raw")
+    .setPageNumCol("pagenum")
+
+val result = dicom_to_image_v2.transform(df).cache()
+val display_images(result, "image_raw")
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
+### DicomToImageV3
+
+Used to convert the dicom frames into images. Faster than DicomToImageV2.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCols | list[string] | list[content] | Specifies the input columns. If the DICOM splitter is used upstream, provide both the DICOM path and frames; otherwise, provide either the file path or binary content. |
+| originCol | string | - |  Specifies the column containing the path of the original DICOM file. |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False |  Indicates whether input columns should be retained in the resulting DataFrame |
+| PageNumCol | string | - | Specifies the column containing the page number in the resulting DataFrame |
+| Scale | boolean | 0 | The desired width of the input image, to which the image will be resized |
+| FrameLimit | int | 0 | Limits the number of frames extracted; set to 0 to extract all frames. |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Specifies the column in the output DataFrame that contains the raw images |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomSplitter, DicomToImageV3
+from sparkocr.enums import SplittingStrategy
+from pyspark.ml import PipelineModel
+
+df = spark.read.format("binaryFile").load(dicom_file_path).drop("content")
+
+dicom_splitter = DicomSplitter() \
+    .setInputCol("path") \
+    .setOutputCol("frames") \
+    .setKeepInput(True) \
+    .setSplitNumBatch(2) \
+    .setPartitionNum(10) \
+    .setSplittingStategy(SplittingStrategy.FIXED_SIZE_OF_PARTITION)
+
+dicom_to_image = DicomToImageV3() \
+    .setInputCols(["path", "frames"]) \
+    .setOutputCol("image_raw") \
+    .setKeepInput(False) \
+    .setPageNumCol("page_number") \
+    .setScale(1) \
+    .setFrameLimit(0)
+
+pipeline = PipelineModel(stages=[
+  dicom_splitter,
+  dicom_to_image
+])
+
+result = pipeline.transform(df).cache()
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomSplitter
+import com.johnsnowlabs.ocr.transformers.DicomToImageV3
+import com.johnsnowlabs.ocr.enums.SplittingStrategy
+import com.pyspark.ml.PipelineModel
+
+val df = spark.read.format("binaryFile").load(dicom_file_path).drop("content")
+
+val dicom_splitter = DicomSplitter()
+    .setInputCol("path")
+    .setOutputCol("frames")
+    .setKeepInput(True)
+    .setSplitNumBatch(2)
+    .setPartitionNum(10)
+    .setSplittingStategy(SplittingStrategy.FIXED_SIZE_OF_PARTITION)
+
+val dicom_to_image = DicomToImageV3()
+    .setInputCols(Array("path", "frames"))
+    .setOutputCol("image_raw")
+    .setKeepInput(False)
+    .setPageNumCol("page_number")
+    .setScale(1)
+    .setFrameLimit(0)
+
+val pipeline = new PipelineModel().setStages(Array(
+  dicom_splitter,
+  dicom_to_image
+))
+
+val result = pipeline.transform(df).cache()
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
 ### DicomDrawRegions
 
 `DicomDrawRegions` draw regions to Dicom Image.
@@ -1383,6 +1566,7 @@ data.select("dicom").show()
 | compression | string | RLELossless | Compression type |
 | forceCompress | boolean | False | True - Force compress image. False - compress only if original image was compressed | 
 | aggCols | Array[string] | ['path'] | Sets the columns to be included in aggregation. These columns are preserved in the output DataFrame after transformations |
+| forceOutput | boolean | False | Enables decompressed output for DICOM files when compression is unsupported or format constraints prevent re-compression |
 
 </div><div class="h3-box" markdown="1">
 
@@ -1438,6 +1622,642 @@ data.select("content", "dicom").show()
 ```
 
 </div></div><div class="h3-box" markdown="1">
+
+### DicomSplitter
+
+`DicomSplitter` splits the dicom file into several frames.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content | Binary dicom object |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| PartitionNum | Int | 5 | The number of partitions in the output DataFrame |
+| SplitNumBatch | Int | 2 | The number of frames per row for the input DICOM file |
+| KeepInput | boolean | False |  Indicates whether the input columns should be included in the result DataFrame |
+| SplittingStrategy | enum | FixedSizePartition | Defines the partitioning strategy, either a fixed number of partitions (evenly dividing data across a set number of partitions) or a fixed size of partitions (each partition containing a specified number of elements) |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | image | The output column name containing the DICOM file's image frames |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomSplitter
+from sparkocr.enums import SplittingStrategy
+
+df = spark.read.format("binaryFile").load(dicom_file_path).drop("content")
+
+dicom_splitter = DicomSplitter() \
+    .setInputCol("path") \
+    .setOutputCol("frames") \
+    .setKeepInput(True) \
+    .setSplitNumBatch(2) \
+    .setPartitionNum(10) \
+    .setSplittingStategy(SplittingStrategy.FIXED_SIZE_OF_PARTITION)
+
+result = dicom_splitter.transform(df).cache()
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomSplitter
+import com.johnsnowlabs.ocr.enums.SplittingStrategy
+
+val df = spark.read.format("binaryFile").load(dicom_file_path).drop("content")
+
+val dicom_splitter = DicomSplitter()
+    .setInputCol("path")
+    .setOutputCol("frames")
+    .setKeepInput(True)
+    .setSplitNumBatch(2)
+    .setPartitionNum(10)
+    .setSplittingStategy(SplittingStrategy.FIXED_SIZE_OF_PARTITION)
+
+val result = dicom_splitter.transform(df).cache()
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
+### DicomMetadataDeidentifier
+
+Remove Protected Health Information from dicom tags.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCols | array[string] | array[content] |  Expects the path or buffer for the DICOM file, along with optional metadata. |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False |  Indicates whether the input columns should be included in the result DataFrame |
+| PlaceHolderText | string | anonymous | Specifies the placeholder text used to deidentify sensitive PHI (Protected Health Information) in DICOM tags |
+| RemovePrivateTags | boolean | False |  Indicates whether private tags should be removed from the DICOM file |
+| BlackList | array[string] | -  |  Contains a list of specific DICOM tags to be deidentified; only tags in this list will be processed for deidentification if provided |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Column that stores the final DICOM file after de-identifying DICOM tags |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomMetadataDeidentifier
+
+df = spark.read.format("binaryFile").load(dicom_file_path)
+
+dicom_deidentifier = DicomMetadataDeidentifier() \
+    .setInputCols(["path"]) \
+    .setOutputCol("dicom_deidentified") \
+    .setKeepInput(True) \
+    .setPlaceholderText("***") \
+    .setRemovePrivateTags(True)
+
+result = dicom_deidentifier.transform(df).cache()
+result.write.format("binaryFormat") \
+    .option("type", "dicom") \
+    .option("field", "dicom_deidentified") \
+    .option("extension", "dcm") \
+    .option("prefix", "de-id-ybr") \
+    .mode("overwrite") \
+    .save("/content/dicom")
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomMetadataDeidentifier
+
+val df = spark.read.format("binaryFile").load(dicom_file_path)
+
+val dicom_deidentifier = DicomMetadataDeidentifier()
+    .setInputCols(Array("path"))
+    .setOutputCol("dicom_deidentified")
+    .setKeepInput(True)
+    .setPlaceholderText("***")
+    .setRemovePrivateTags(True)
+
+val result = dicom_deidentifier.transform(df).cache()
+val result.write.format("binaryFormat")
+    .option("type", "dicom")
+    .option("field", "dicom_deidentified")
+    .option("extension", "dcm")
+    .option("prefix", "de-id-ybr")
+    .mode("overwrite")
+    .save("/content/dicom")
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
+### DicomDeidentifier
+
+Uses metadata and detected text positions to locate and de-identify sensitive information in both pixel data and metadata.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCols | array[string] | array[content] | Accepts the positions and dicom metadata as input.
+|
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False |  Indicates whether the input columns should be included in the result DataFrame |
+| BlackList | array[string] | anonymous |  Specifies a list of words to be removed from pixels. |
+| BlackListFile | string | False |  Path to CSV file containing a list of words to be removed from pixels. |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Specifies the column containing the dicom in the resulting DataFrame. |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomToMetadata, DicomSplitter, DicomToImageV3, ImageTextDetector, ImageToTextV3, DicomDeidentifier
+from sparkocr.enums import OcrOutputFormat, SplittingStrategy
+from pyspark.ml import PipelineModel
+
+df = spark.read.format("binaryFile").load(path_to_dicom_file).drop("content")
+
+dicom_to_meta = DicomToMetadata() \
+    .setInputCol("path") \
+    .setOutputCol("metadata") \
+    .setKeepInput(True) 
+
+dicom_splitter = DicomSplitter() \
+    .setInputCol("path") \
+    .setOutputCol("frames") \
+    .setKeepInput(True) \
+    .setSplitNumBatch(2) \
+    .setPartitionNum(10) \
+    .setSplittingStategy(SplittingStrategy.FIXED_SIZE_OF_PARTITION)
+
+dicom_to_image = DicomToImageV3() \
+    .setInputCols(["path", "frames"]) \
+    .setOutputCol("image_raw") \
+    .setKeepInput(True)
+
+text_detector = ImageTextDetector.pretrained("image_text_detector_opt", "en", "clinical/ocr") \
+    .setInputCol("image_raw") \
+    .setOutputCol("text_regions") \
+    .setSizeThreshold(10) \
+    .setScoreThreshold(0.9) \
+    .setLinkThreshold(0.4) \
+    .setTextThreshold(0.2)
+
+ocr = ImageToTextV3() \
+    .setInputCols(["image_raw", "text_regions"]) \
+    .setOutputCol("text")
+
+dicom_deidentifier = DicomDeidentifier() \
+    .setInputCols(["positions","metadata"]) \
+    .setKeepInput(True) \
+    .setOutputCol("entity") \
+    .setBlackList(["acc"])
+
+pipeline = PipelineModel(stages=[
+  dicom_to_meta,
+  dicom_splitter,
+  dicom_to_image,
+  text_detector,
+  ocr,
+  dicom_deidentifier
+])
+
+result = pipeline.transform(df).cache()
+```
+
+```scala
+import org.apache.spark.ml.Pipeline
+import com.johnsnowlabs.ocr.transformers.DicomToMetadata
+import com.johnsnowlabs.ocr.transformers.DicomSplitter
+import com.johnsnowlabs.ocr.transformers.DicomToImageV3
+import com.johnsnowlabs.ocr.transformers.ImageTextDetector
+import com.johnsnowlabs.ocr.transformers.ImageToTextV3
+import com.johnsnowlabs.ocr.transformers.DicomDeidentifier
+import com.johnsnowlabs.ocr.enums.OcrOutputFormat
+import com.johnsnowlabs.ocr.enums.SplittingStrategy
+
+val df = spark.read.format("binaryFile").load(path_to_dicom_file).drop("content")
+
+val dicom_to_meta = DicomToMetadata() 
+    .setInputCol("path") 
+    .setOutputCol("metadata") 
+    .setKeepInput(True) 
+
+val dicom_splitter = DicomSplitter() 
+    .setInputCol("path") 
+    .setOutputCol("frames") 
+    .setKeepInput(True) 
+    .setSplitNumBatch(2) 
+    .setPartitionNum(10) 
+    .setSplittingStategy(SplittingStrategy.FIXED_SIZE_OF_PARTITION)
+
+val dicom_to_image = DicomToImageV3() 
+    .setInputCols(Array("path", "frames")) 
+    .setOutputCol("image_raw") 
+    .setKeepInput(True)
+
+val text_detector = ImageTextDetector.pretrained("image_text_detector_opt", "en", "clinical/ocr") 
+    .setInputCol(Array("image_raw"))
+    .setOutputCol("text_regions") 
+    .setSizeThreshold(10) 
+    .setScoreThreshold(0.9) 
+    .setLinkThreshold(0.4) 
+    .setTextThreshold(0.2)
+
+val ocr = ImageToTextV3() 
+    .setInputCols(Array("image_raw", "text_regions")) 
+    .setOutputCol("text")
+
+val dicom_deidentifier = DicomDeidentifier() 
+    .setInputCols(Array("positions","metadata")) 
+    .setKeepInput(True) 
+    .setOutputCol("entity") 
+    .setBlackList(Array("acc"))
+
+pipeline = new PipelineModel().setStages(Array(
+  dicom_to_meta,
+  dicom_splitter,
+  dicom_to_image,
+  text_detector,
+  ocr,
+  dicom_deidentifier
+))
+
+val result = pipeline.transform(df).cache()
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+### DicomToMetadata
+
+Extract metadata from Dicom files.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content |  Specifies the path or buffer for the DICOM file. |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False |  Indicates if the DICOM input columns should remain in the final result DataFrame. |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Specify the column name to contain the dicom metadata as output |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomToMetadata
+
+dicom_to_meta = DicomToMetadata() \
+    .setInputCol("path") \
+    .setOutputCol("metadata") \
+    .setKeepInput(True)
+
+df_dicom = spark.read.format("binaryFile").load(dicom_file_path)
+
+result = dicom_to_meta.transform(df_dicom).cache()
+dicom_metadata = result.select("metadata").collect()[0].asDict()["metadata"]
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomToMetadata
+
+val dicom_to_meta = DicomToMetadata()
+    .setInputCol("path")
+    .setOutputCol("metadata")
+    .setKeepInput(True)
+
+val df_dicom = spark.read.format("binaryFile").load(dicom_file_path)
+
+val result = dicom_to_meta.transform(df_dicom).cache()
+val dicom_metadata = result.select("metadata").collect()[0].asDict()Array("metadata")
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
+### DicomToPDF
+
+Convert Dicom Files to PDF files.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCols | array[string] | - |  Specifies the input path or buffer for the DICOM file. |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False |  Determines if the original input should be retained in the resulting DataFrame. |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Specifies the column name containing the final PDF file resulting from the conversion. |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomToPdf, PdfToImage
+from pyspark.ml import PipelineModel
+
+df_dicom = spark.read.format("binaryFile").load(dicom_file_path)
+
+dicom_to_pdf = DicomToPdf() \
+    .setInputCols(["path"]) \
+    .setOutputCol("dicom_pdf") \
+    .setKeepInput(True)
+
+pdf_to_image = PdfToImage() \
+    .setInputCol("dicom_pdf") \
+    .setOutputCol("image")
+
+pipeline = PipelineModel(stages=[
+   dicom_to_pdf,
+   pdf_to_image
+])
+
+result = pipeline.transform(df_dicom).cache()
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomToPdf
+import com.johnsnowlabs.ocr.transformers.PdfToImage
+import com.pyspark.ml.PipelineModel
+
+df_dicom = spark.read.format("binaryFile").load(dicom_file_path)
+
+val dicom_to_pdf = DicomToPdf()
+    .setInputCols(Array("path"))
+    .setOutputCol("dicom_pdf")
+    .setKeepInput(True)
+
+val pdf_to_image = PdfToImage()
+    .setInputCol("dicom_pdf")
+    .setOutputCol("image")
+
+val pipeline = new PipelineModel().setStages(Array(
+   dicom_to_pdf,
+   pdf_to_image
+))
+
+val result = pipeline.transform(df_dicom).cache()
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
+### DicomUpdatePDF
+
+Converts pdf file into dicom as a last step for de-identification process.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content |  Specifies the column containing the DICOM file path or buffer input |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False | Indicates whether input columns should be retained in the resulting DataFrame |
+| InputPdfCol | string | - | Specifies the column containing the pdf object in the resulting DataFrame. |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Specifies the column containing the dicom in the resulting DataFrame. |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomUpdatePdf
+
+dciom_update_pdf = DicomUpdatePdf() \
+    .setInputCol("path") \
+    .setInputPdfCol("pdf") \
+    .setOutputCol("dicom") \
+    .setKeepInput(True)
+
+result = dciom_update_pdf.transform(df).cache()
+result.write.format("binaryFormat") \
+     .option("type", "dicom") \
+     .option("field", "dicom") \
+     .option("extension", "dcm") \
+     .option("prefix", "de-id-ybr") \
+     .mode("overwrite") \
+     .save("/content/dicom")
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomUpdatePdf
+
+val dciom_update_pdf = DicomUpdatePdf()
+    .setInputCol("path")
+    .setInputPdfCol("pdf")
+    .setOutputCol("dicom")
+    .setKeepInput(True)
+
+val result = dciom_update_pdf.transform(df).cache()
+val result.write.format("binaryFormat")
+     .option("type", "dicom")
+     .option("field", "dicom")
+     .option("extension", "dcm")
+     .option("prefix", "de-id-ybr")
+     .mode("overwrite")
+     .save("/content/dicom")
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
+### DicomUpdatePDF
+
+Converts pdf file into dicom as a last step for de-identification process.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content |  Specifies the column containing the DICOM file path or buffer input |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KeepInput | boolean | False | Indicates whether input columns should be retained in the resulting DataFrame |
+| InputPdfCol | string | - | Specifies the column containing the pdf object in the resulting DataFrame. |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | - | Specifies the column containing the dicom in the resulting DataFrame. |
+
+**Example:**
+
+<div class="tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import DicomUpdatePdf
+
+dciom_update_pdf = DicomUpdatePdf() \
+    .setInputCol("path") \
+    .setInputPdfCol("pdf") \
+    .setOutputCol("dicom") \
+    .setKeepInput(True)
+
+result = dciom_update_pdf.transform(df).cache()
+result.write.format("binaryFormat") \
+     .option("type", "dicom") \
+     .option("field", "dicom") \
+     .option("extension", "dcm") \
+     .option("prefix", "de-id-ybr") \
+     .mode("overwrite") \
+     .save("/content/dicom")
+```
+
+```scala
+import com.johnsnowlabs.ocr.transformers.DicomUpdatePdf
+
+val dciom_update_pdf = DicomUpdatePdf()
+    .setInputCol("path")
+    .setInputPdfCol("pdf")
+    .setOutputCol("dicom")
+    .setKeepInput(True)
+
+val result = dciom_update_pdf.transform(df).cache()
+val result.write.format("binaryFormat")
+     .option("type", "dicom")
+     .option("field", "dicom")
+     .option("extension", "dcm")
+     .option("prefix", "de-id-ybr")
+     .mode("overwrite")
+     .save("/content/dicom")
+```
+
+</div></div><div class="h3-box" markdown="1">
+
+
 
 ## Image pre-processing
 

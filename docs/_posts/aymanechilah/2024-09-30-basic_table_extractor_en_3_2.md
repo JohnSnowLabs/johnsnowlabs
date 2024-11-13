@@ -26,7 +26,8 @@ Pretrained pipeline for conducting Table Structure Extraction on mixed scanned a
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PP_BASIC_TABLE_EXTRACTOR/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesBasicTableExtractor.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-<!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/mixed_scanned_digital_pdf_en_4.3.4_3.0_1679597686000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} -->
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/basic_table_extractor_en_5.3.2_3.0_1715800396000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/basic_table_extractor_en_5.3.2_3.0_1715800396000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use
