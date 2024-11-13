@@ -2646,6 +2646,300 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 </div>
 <div class="h3-box">
 
+  <h3 id="dicomtoimagev2">DicomToImageV2</h3>
+
+  <p>Used to convert the dicom frames into images.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-14">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>content</td>
+        <td>Specifies the column containing the DICOM file path or buffer input</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-4">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether input columns should be retained in the resulting DataFrame</td>
+      </tr>
+      <tr>
+        <td>PageNumCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the page number in the resulting DataFrame</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-14">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>Specifies the column containing the images in the resulting DataFrame</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomToImageV2</span>
+<span class="kn">from</span> <span class="nn">sparkocr.utils</span> <span class="kn">import</span> <span class="n">display_images</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">path_to_dicom_file</span><span class="p">)</span>
+
+<span class="n">dicom_to_image_v2</span> <span class="o">=</span> <span class="n">DicomToImageV2</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"path"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_raw"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPageNumCol</span><span class="p">(</span><span class="s">"pagenum"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">dicom_to_image_v2</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+
+<span class="n">display_images</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s">"image_raw"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomToImageV2</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.utils.display_images</span>
+
+<span class="k">val</span> <span class="nv">df</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">path_to_dicom_file</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_to_image_v2</span> <span class="k">=</span> <span class="nc">DicomToImageV2</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">path</span><span class="err">"</span><span class="o">])</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_raw"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPageNumCol</span><span class="o">(</span><span class="s">"pagenum"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">dicom_to_image_v2</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">display_images</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="s">"image_raw"</span><span class="o">)</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicomtoimagev3">DicomToImageV3</h3>
+
+  <p>Used to convert the dicom frames into images. Faster than DicomToImageV2.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-15">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCols</td>
+        <td>list[string]</td>
+        <td>list[content]</td>
+        <td>Specifies the input columns. If the DICOM splitter is used upstream, provide both the DICOM path and frames; otherwise, provide either the file path or binary content.</td>
+      </tr>
+      <tr>
+        <td>originCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the path of the original DICOM file.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-5">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether input columns should be retained in the resulting DataFrame</td>
+      </tr>
+      <tr>
+        <td>PageNumCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the page number in the resulting DataFrame</td>
+      </tr>
+      <tr>
+        <td>Scale</td>
+        <td>boolean</td>
+        <td>0</td>
+        <td>The desired width of the input image, to which the image will be resized</td>
+      </tr>
+      <tr>
+        <td>FrameLimit</td>
+        <td>int</td>
+        <td>0</td>
+        <td>Limits the number of frames extracted; set to 0 to extract all frames.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-15">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column in the output DataFrame that contains the raw images</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomSplitter</span><span class="p">,</span> <span class="n">DicomToImageV3</span>
+<span class="kn">from</span> <span class="nn">sparkocr.enums</span> <span class="kn">import</span> <span class="n">SplittingStrategy</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">dicom_file_path</span><span class="p">).</span><span class="n">drop</span><span class="p">(</span><span class="s">"content"</span><span class="p">)</span>
+
+<span class="n">dicom_splitter</span> <span class="o">=</span> <span class="n">DicomSplitter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"frames"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplitNumBatch</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPartitionNum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplittingStategy</span><span class="p">(</span><span class="n">SplittingStrategy</span><span class="p">.</span><span class="n">FIXED_SIZE_OF_PARTITION</span><span class="p">)</span>
+
+<span class="n">dicom_to_image</span> <span class="o">=</span> <span class="n">DicomToImageV3</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"path"</span><span class="p">,</span> <span class="s">"frames"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_raw"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPageNumCol</span><span class="p">(</span><span class="s">"page_number"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setScale</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setFrameLimit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+  <span class="n">dicom_splitter</span><span class="p">,</span>
+  <span class="n">dicom_to_image</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomSplitter</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomToImageV3</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.enums.SplittingStrategy</span>
+<span class="k">import</span> <span class="nn">com.pyspark.ml.PipelineModel</span>
+
+<span class="k">val</span> <span class="nv">df</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">dicom_file_path</span><span class="o">).</span><span class="py">drop</span><span class="o">(</span><span class="s">"content"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_splitter</span> <span class="k">=</span> <span class="nc">DicomSplitter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"frames"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setSplitNumBatch</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPartitionNum</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setSplittingStategy</span><span class="o">(</span><span class="nv">SplittingStrategy</span><span class="o">.</span><span class="py">FIXED_SIZE_OF_PARTITION</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_to_image</span> <span class="k">=</span> <span class="nc">DicomToImageV3</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"path"</span><span class="o">,</span> <span class="s">"frames"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_raw"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPageNumCol</span><span class="o">(</span><span class="s">"page_number"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setScale</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setFrameLimit</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">dicom_splitter</span><span class="o">,</span>
+  <span class="n">dicom_to_image</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
   <h3 id="dicomdrawregions">DicomDrawRegions</h3>
 
   <p><code class="language-plaintext highlighter-rouge">DicomDrawRegions</code> draw regions to Dicom Image.</p>
@@ -2653,7 +2947,7 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 </div>
 <div class="h3-box">
 
-  <h5 id="input-columns-14">Input Columns</h5>
+  <h5 id="input-columns-16">Input Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -2683,7 +2977,7 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-4">Parameters</h4>
+  <h4 id="parameters-6">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -2731,13 +3025,19 @@ As output generate column with tables and tables text chunks coordinates (rows/c
         <td>[‘path’]</td>
         <td>Sets the columns to be included in aggregation. These columns are preserved in the output DataFrame after transformations</td>
       </tr>
+      <tr>
+        <td>forceOutput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Enables decompressed output for DICOM files when compression is unsupported or format constraints prevent re-compression</td>
+      </tr>
     </tbody>
   </table>
 
 </div>
 <div class="h3-box">
 
-  <h5 id="output-columns-14">Output Columns</h5>
+  <h5 id="output-columns-16">Output Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -2804,6 +3104,1005 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 </div>
 <div class="h3-box">
 
+  <h3 id="dicomsplitter">DicomSplitter</h3>
+
+  <p><code class="language-plaintext highlighter-rouge">DicomSplitter</code> splits the dicom file into several frames.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-17">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>content</td>
+        <td>Binary dicom object</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-7">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PartitionNum</td>
+        <td>Int</td>
+        <td>5</td>
+        <td>The number of partitions in the output DataFrame</td>
+      </tr>
+      <tr>
+        <td>SplitNumBatch</td>
+        <td>Int</td>
+        <td>2</td>
+        <td>The number of frames per row for the input DICOM file</td>
+      </tr>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether the input columns should be included in the result DataFrame</td>
+      </tr>
+      <tr>
+        <td>SplittingStrategy</td>
+        <td>enum</td>
+        <td>FixedSizePartition</td>
+        <td>Defines the partitioning strategy, either a fixed number of partitions (evenly dividing data across a set number of partitions) or a fixed size of partitions (each partition containing a specified number of elements)</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-17">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>image</td>
+        <td>The output column name containing the DICOM file’s image frames</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomSplitter</span>
+<span class="kn">from</span> <span class="nn">sparkocr.enums</span> <span class="kn">import</span> <span class="n">SplittingStrategy</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">dicom_file_path</span><span class="p">).</span><span class="n">drop</span><span class="p">(</span><span class="s">"content"</span><span class="p">)</span>
+
+<span class="n">dicom_splitter</span> <span class="o">=</span> <span class="n">DicomSplitter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"frames"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplitNumBatch</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPartitionNum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplittingStategy</span><span class="p">(</span><span class="n">SplittingStrategy</span><span class="p">.</span><span class="n">FIXED_SIZE_OF_PARTITION</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">dicom_splitter</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomSplitter</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.enums.SplittingStrategy</span>
+
+<span class="k">val</span> <span class="nv">df</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">dicom_file_path</span><span class="o">).</span><span class="py">drop</span><span class="o">(</span><span class="s">"content"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_splitter</span> <span class="k">=</span> <span class="nc">DicomSplitter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"frames"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setSplitNumBatch</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPartitionNum</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setSplittingStategy</span><span class="o">(</span><span class="nv">SplittingStrategy</span><span class="o">.</span><span class="py">FIXED_SIZE_OF_PARTITION</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">dicom_splitter</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicommetadatadeidentifier">DicomMetadataDeidentifier</h3>
+
+  <p>Remove Protected Health Information from dicom tags.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-18">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCols</td>
+        <td>array[string]</td>
+        <td>array[content]</td>
+        <td>Expects the path or buffer for the DICOM file, along with optional metadata.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-8">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether the input columns should be included in the result DataFrame</td>
+      </tr>
+      <tr>
+        <td>PlaceHolderText</td>
+        <td>string</td>
+        <td>anonymous</td>
+        <td>Specifies the placeholder text used to deidentify sensitive PHI (Protected Health Information) in DICOM tags</td>
+      </tr>
+      <tr>
+        <td>RemovePrivateTags</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether private tags should be removed from the DICOM file</td>
+      </tr>
+      <tr>
+        <td>BlackList</td>
+        <td>array[string]</td>
+        <td>-</td>
+        <td>Contains a list of specific DICOM tags to be deidentified; only tags in this list will be processed for deidentification if provided</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-18">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Column that stores the final DICOM file after de-identifying DICOM tags</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomMetadataDeidentifier</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">dicom_file_path</span><span class="p">)</span>
+
+<span class="n">dicom_deidentifier</span> <span class="o">=</span> <span class="n">DicomMetadataDeidentifier</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"path"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dicom_deidentified"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPlaceholderText</span><span class="p">(</span><span class="s">"***"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setRemovePrivateTags</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">dicom_deidentifier</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">result</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFormat"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"type"</span><span class="p">,</span> <span class="s">"dicom"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"field"</span><span class="p">,</span> <span class="s">"dicom_deidentified"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"extension"</span><span class="p">,</span> <span class="s">"dcm"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"prefix"</span><span class="p">,</span> <span class="s">"de-id-ybr"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">"overwrite"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"/content/dicom"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomMetadataDeidentifier</span>
+
+<span class="k">val</span> <span class="nv">df</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">dicom_file_path</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_deidentifier</span> <span class="k">=</span> <span class="nc">DicomMetadataDeidentifier</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"path"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dicom_deidentified"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPlaceholderText</span><span class="o">(</span><span class="s">"***"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRemovePrivateTags</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">dicom_deidentifier</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">result</span><span class="o">.</span><span class="py">write</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFormat"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"dicom"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"field"</span><span class="o">,</span> <span class="s">"dicom_deidentified"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"extension"</span><span class="o">,</span> <span class="s">"dcm"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"prefix"</span><span class="o">,</span> <span class="s">"de-id-ybr"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">mode</span><span class="o">(</span><span class="s">"overwrite"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">save</span><span class="o">(</span><span class="s">"/content/dicom"</span><span class="o">)</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicomdeidentifier">DicomDeidentifier</h3>
+
+  <p>Uses metadata and detected text positions to locate and de-identify sensitive information in both pixel data and metadata.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-19">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCols</td>
+        <td>array[string]</td>
+        <td>array[content]</td>
+        <td>Accepts the positions and dicom metadata as input.</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-9">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether the input columns should be included in the result DataFrame</td>
+      </tr>
+      <tr>
+        <td>BlackList</td>
+        <td>array[string]</td>
+        <td>anonymous</td>
+        <td>Specifies a list of words to be removed from pixels.</td>
+      </tr>
+      <tr>
+        <td>BlackListFile</td>
+        <td>string</td>
+        <td>False</td>
+        <td>Path to CSV file containing a list of words to be removed from pixels.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-19">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the dicom in the resulting DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomToMetadata</span><span class="p">,</span> <span class="n">DicomSplitter</span><span class="p">,</span> <span class="n">DicomToImageV3</span><span class="p">,</span> <span class="n">ImageTextDetector</span><span class="p">,</span> <span class="n">ImageToTextV3</span><span class="p">,</span> <span class="n">DicomDeidentifier</span>
+<span class="kn">from</span> <span class="nn">sparkocr.enums</span> <span class="kn">import</span> <span class="n">OcrOutputFormat</span><span class="p">,</span> <span class="n">SplittingStrategy</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">path_to_dicom_file</span><span class="p">).</span><span class="n">drop</span><span class="p">(</span><span class="s">"content"</span><span class="p">)</span>
+
+<span class="n">dicom_to_meta</span> <span class="o">=</span> <span class="n">DicomToMetadata</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"metadata"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> 
+
+<span class="n">dicom_splitter</span> <span class="o">=</span> <span class="n">DicomSplitter</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"frames"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplitNumBatch</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPartitionNum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSplittingStategy</span><span class="p">(</span><span class="n">SplittingStrategy</span><span class="p">.</span><span class="n">FIXED_SIZE_OF_PARTITION</span><span class="p">)</span>
+
+<span class="n">dicom_to_image</span> <span class="o">=</span> <span class="n">DicomToImageV3</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"path"</span><span class="p">,</span> <span class="s">"frames"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_raw"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">text_detector</span> <span class="o">=</span> <span class="n">ImageTextDetector</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"image_text_detector_opt"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image_raw"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"text_regions"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSizeThreshold</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setScoreThreshold</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setLinkThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setTextThreshold</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ocr</span> <span class="o">=</span> <span class="n">ImageToTextV3</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"image_raw"</span><span class="p">,</span> <span class="s">"text_regions"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">dicom_deidentifier</span> <span class="o">=</span> <span class="n">DicomDeidentifier</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"positions"</span><span class="p">,</span><span class="s">"metadata"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"entity"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setBlackList</span><span class="p">([</span><span class="s">"acc"</span><span class="p">])</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+  <span class="n">dicom_to_meta</span><span class="p">,</span>
+  <span class="n">dicom_splitter</span><span class="p">,</span>
+  <span class="n">dicom_to_image</span><span class="p">,</span>
+  <span class="n">text_detector</span><span class="p">,</span>
+  <span class="n">ocr</span><span class="p">,</span>
+  <span class="n">dicom_deidentifier</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomToMetadata</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomSplitter</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomToImageV3</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.ImageTextDetector</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.ImageToTextV3</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomDeidentifier</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.enums.OcrOutputFormat</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.enums.SplittingStrategy</span>
+
+<span class="k">val</span> <span class="nv">df</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">path_to_dicom_file</span><span class="o">).</span><span class="py">drop</span><span class="o">(</span><span class="s">"content"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_to_meta</span> <span class="k">=</span> <span class="nc">DicomToMetadata</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"metadata"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span> 
+
+<span class="k">val</span> <span class="nv">dicom_splitter</span> <span class="k">=</span> <span class="nc">DicomSplitter</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"frames"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setSplitNumBatch</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setPartitionNum</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setSplittingStategy</span><span class="o">(</span><span class="nv">SplittingStrategy</span><span class="o">.</span><span class="py">FIXED_SIZE_OF_PARTITION</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_to_image</span> <span class="k">=</span> <span class="nc">DicomToImageV3</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"path"</span><span class="o">,</span> <span class="s">"frames"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_raw"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">text_detector</span> <span class="k">=</span> <span class="nv">ImageTextDetector</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"image_text_detector_opt"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"image_raw"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"text_regions"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setSizeThreshold</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setScoreThreshold</span><span class="o">(</span><span class="mf">0.9</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setLinkThreshold</span><span class="o">(</span><span class="mf">0.4</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setTextThreshold</span><span class="o">(</span><span class="mf">0.2</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ocr</span> <span class="k">=</span> <span class="nc">ImageToTextV3</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"image_raw"</span><span class="o">,</span> <span class="s">"text_regions"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_deidentifier</span> <span class="k">=</span> <span class="nc">DicomDeidentifier</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"positions"</span><span class="o">,</span><span class="s">"metadata"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"entity"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setBlackList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"acc"</span><span class="o">))</span>
+
+<span class="n">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+  <span class="n">dicom_to_meta</span><span class="o">,</span>
+  <span class="n">dicom_splitter</span><span class="o">,</span>
+  <span class="n">dicom_to_image</span><span class="o">,</span>
+  <span class="n">text_detector</span><span class="o">,</span>
+  <span class="n">ocr</span><span class="o">,</span>
+  <span class="n">dicom_deidentifier</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicomtometadata">DicomToMetadata</h3>
+
+  <p>Extract metadata from Dicom files.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-20">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>content</td>
+        <td>Specifies the path or buffer for the DICOM file.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-10">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates if the DICOM input columns should remain in the final result DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-20">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specify the column name to contain the dicom metadata as output</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomToMetadata</span>
+
+<span class="n">dicom_to_meta</span> <span class="o">=</span> <span class="n">DicomToMetadata</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"metadata"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">df_dicom</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">dicom_file_path</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">dicom_to_meta</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_dicom</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">dicom_metadata</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"metadata"</span><span class="p">).</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">asDict</span><span class="p">()[</span><span class="s">"metadata"</span><span class="p">]</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomToMetadata</span>
+
+<span class="k">val</span> <span class="nv">dicom_to_meta</span> <span class="k">=</span> <span class="nc">DicomToMetadata</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"metadata"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">df_dicom</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">dicom_file_path</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">dicom_to_meta</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df_dicom</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">dicom_metadata</span> <span class="k">=</span> <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"metadata"</span><span class="o">).</span><span class="py">collect</span><span class="o">()[</span><span class="err">0</span><span class="o">].</span><span class="py">asDict</span><span class="o">()</span><span class="nc">Array</span><span class="o">(</span><span class="s">"metadata"</span><span class="o">)</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicomtopdf">DicomToPDF</h3>
+
+  <p>Convert Dicom Files to PDF files.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-21">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCols</td>
+        <td>array[string]</td>
+        <td>-</td>
+        <td>Specifies the input path or buffer for the DICOM file.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-11">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Determines if the original input should be retained in the resulting DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-21">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column name containing the final PDF file resulting from the conversion.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomToPdf</span><span class="p">,</span> <span class="n">PdfToImage</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">PipelineModel</span>
+
+<span class="n">df_dicom</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">dicom_file_path</span><span class="p">)</span>
+
+<span class="n">dicom_to_pdf</span> <span class="o">=</span> <span class="n">DicomToPdf</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"path"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dicom_pdf"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">pdf_to_image</span> <span class="o">=</span> <span class="n">PdfToImage</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"dicom_pdf"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+   <span class="n">dicom_to_pdf</span><span class="p">,</span>
+   <span class="n">pdf_to_image</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_dicom</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomToPdf</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.PdfToImage</span>
+<span class="k">import</span> <span class="nn">com.pyspark.ml.PipelineModel</span>
+
+<span class="n">df_dicom</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">dicom_file_path</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">dicom_to_pdf</span> <span class="k">=</span> <span class="nc">DicomToPdf</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"path"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dicom_pdf"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pdf_to_image</span> <span class="k">=</span> <span class="nc">PdfToImage</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"dicom_pdf"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+   <span class="n">dicom_to_pdf</span><span class="o">,</span>
+   <span class="n">pdf_to_image</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df_dicom</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicomupdatepdf">DicomUpdatePDF</h3>
+
+  <p>Converts pdf file into dicom as a last step for de-identification process.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-22">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>content</td>
+        <td>Specifies the column containing the DICOM file path or buffer input</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-12">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether input columns should be retained in the resulting DataFrame</td>
+      </tr>
+      <tr>
+        <td>InputPdfCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the pdf object in the resulting DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-22">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the dicom in the resulting DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomUpdatePdf</span>
+
+<span class="n">dciom_update_pdf</span> <span class="o">=</span> <span class="n">DicomUpdatePdf</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputPdfCol</span><span class="p">(</span><span class="s">"pdf"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dicom"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">dciom_update_pdf</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">result</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFormat"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"type"</span><span class="p">,</span> <span class="s">"dicom"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"field"</span><span class="p">,</span> <span class="s">"dicom"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"extension"</span><span class="p">,</span> <span class="s">"dcm"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"prefix"</span><span class="p">,</span> <span class="s">"de-id-ybr"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">"overwrite"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"/content/dicom"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomUpdatePdf</span>
+
+<span class="k">val</span> <span class="nv">dciom_update_pdf</span> <span class="k">=</span> <span class="nc">DicomUpdatePdf</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputPdfCol</span><span class="o">(</span><span class="s">"pdf"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dicom"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">dciom_update_pdf</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">result</span><span class="o">.</span><span class="py">write</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFormat"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"dicom"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"field"</span><span class="o">,</span> <span class="s">"dicom"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"extension"</span><span class="o">,</span> <span class="s">"dcm"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"prefix"</span><span class="o">,</span> <span class="s">"de-id-ybr"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">mode</span><span class="o">(</span><span class="s">"overwrite"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">save</span><span class="o">(</span><span class="s">"/content/dicom"</span><span class="o">)</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
+  <h3 id="dicomupdatepdf-1">DicomUpdatePDF</h3>
+
+  <p>Converts pdf file into dicom as a last step for de-identification process.</p>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="input-columns-23">Input Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>inputCol</td>
+        <td>string</td>
+        <td>content</td>
+        <td>Specifies the column containing the DICOM file path or buffer input</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="parameters-13">Parameters</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KeepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether input columns should be retained in the resulting DataFrame</td>
+      </tr>
+      <tr>
+        <td>InputPdfCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the pdf object in the resulting DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h5 id="output-columns-23">Output Columns</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Param name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Column Data Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>outputCol</td>
+        <td>string</td>
+        <td>-</td>
+        <td>Specifies the column containing the dicom in the resulting DataFrame.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Example:</strong></p>
+
+  <div class="tabs-new pt0">
+
+    <div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.transformers</span> <span class="kn">import</span> <span class="n">DicomUpdatePdf</span>
+
+<span class="n">dciom_update_pdf</span> <span class="o">=</span> <span class="n">DicomUpdatePdf</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"path"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputPdfCol</span><span class="p">(</span><span class="s">"pdf"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dicom"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setKeepInput</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">dciom_update_pdf</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
+<span class="n">result</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFormat"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"type"</span><span class="p">,</span> <span class="s">"dicom"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"field"</span><span class="p">,</span> <span class="s">"dicom"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"extension"</span><span class="p">,</span> <span class="s">"dcm"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"prefix"</span><span class="p">,</span> <span class="s">"de-id-ybr"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">"overwrite"</span><span class="p">)</span> \
+     <span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"/content/dicom"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.transformers.DicomUpdatePdf</span>
+
+<span class="k">val</span> <span class="nv">dciom_update_pdf</span> <span class="k">=</span> <span class="nc">DicomUpdatePdf</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"path"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputPdfCol</span><span class="o">(</span><span class="s">"pdf"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dicom"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setKeepInput</span><span class="o">(</span><span class="nc">True</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">dciom_update_pdf</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">result</span><span class="o">.</span><span class="py">write</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFormat"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"dicom"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"field"</span><span class="o">,</span> <span class="s">"dicom"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"extension"</span><span class="o">,</span> <span class="s">"dcm"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">option</span><span class="o">(</span><span class="s">"prefix"</span><span class="o">,</span> <span class="s">"de-id-ybr"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">mode</span><span class="o">(</span><span class="s">"overwrite"</span><span class="o">)</span>
+     <span class="o">.</span><span class="py">save</span><span class="o">(</span><span class="s">"/content/dicom"</span><span class="o">)</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+<div class="h3-box">
+
   <h2 id="image-pre-processing">Image pre-processing</h2>
 
   <p>Next section describes the transformers for image pre-processing: scaling, binarization, skew correction, etc.</p>
@@ -2818,7 +4117,7 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 </div>
 <div class="h3-box">
 
-  <h5 id="input-columns-15">Input Columns</h5>
+  <h5 id="input-columns-24">Input Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -2848,7 +4147,7 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 </div>
 <div class="h3-box">
 
-  <h5 id="output-columns-15">Output Columns</h5>
+  <h5 id="output-columns-24">Output Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -2965,7 +4264,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h5 id="input-columns-16">Input Columns</h5>
+  <h5 id="input-columns-25">Input Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -2989,7 +4288,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h5 id="parameters-5">Parameters</h5>
+  <h5 id="parameters-14">Parameters</h5>
 
   <table class="table-model-big">
     <thead>
@@ -3019,7 +4318,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h5 id="output-columns-16">Output Columns</h5>
+  <h5 id="output-columns-25">Output Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -3114,7 +4413,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h5 id="input-columns-17">Input Columns</h5>
+  <h5 id="input-columns-26">Input Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -3138,7 +4437,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h5 id="parameters-6">Parameters</h5>
+  <h5 id="parameters-15">Parameters</h5>
 
   <table class="table-model-big">
     <thead>
@@ -3162,7 +4461,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h5 id="output-columns-17">Output Columns</h5>
+  <h5 id="output-columns-26">Output Columns</h5>
 
   <table class="table-model-big">
     <thead>
@@ -3259,7 +4558,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-18">Input Columns</h4>
+  <h4 id="input-columns-27">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3283,7 +4582,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-7">Parameters</h4>
+  <h4 id="parameters-16">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3325,7 +4624,7 @@ one of the methods with params:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-18">Output Columns</h4>
+  <h4 id="output-columns-27">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3431,7 +4730,7 @@ the weighted mean for the local neighborhood of a pixel subtracted by a constant
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-19">Input Columns</h4>
+  <h4 id="input-columns-28">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3455,7 +4754,7 @@ the weighted mean for the local neighborhood of a pixel subtracted by a constant
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-8">Parameters</h4>
+  <h4 id="parameters-17">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3503,7 +4802,7 @@ the weighted mean for the local neighborhood of a pixel subtracted by a constant
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-19">Output Columns</h4>
+  <h4 id="output-columns-28">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3590,7 +4889,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-20">Input Columns</h4>
+  <h4 id="input-columns-29">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3614,7 +4913,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-9">Parameters</h4>
+  <h4 id="parameters-18">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3656,7 +4955,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-20">Output Columns</h4>
+  <h4 id="output-columns-29">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3733,7 +5032,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-21">Input Columns</h4>
+  <h4 id="input-columns-30">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3757,7 +5056,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-10">Parameters</h4>
+  <h4 id="parameters-19">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3781,7 +5080,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-21">Output Columns</h4>
+  <h4 id="output-columns-30">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3858,7 +5157,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-22">Input Columns</h4>
+  <h4 id="input-columns-31">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3882,7 +5181,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-11">Parameters</h4>
+  <h4 id="parameters-20">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -3924,7 +5223,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-22">Output Columns</h4>
+  <h4 id="output-columns-31">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4022,7 +5321,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-23">Input Columns</h4>
+  <h4 id="input-columns-32">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4052,7 +5351,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-12">Parameters</h4>
+  <h4 id="parameters-21">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4076,7 +5375,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-23">Output Columns</h4>
+  <h4 id="output-columns-32">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4213,7 +5512,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-24">Input Columns</h4>
+  <h4 id="input-columns-33">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4237,7 +5536,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-13">Parameters</h4>
+  <h4 id="parameters-22">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4299,7 +5598,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-24">Output Columns</h4>
+  <h4 id="output-columns-33">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4377,7 +5676,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-25">Input Columns</h4>
+  <h4 id="input-columns-34">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4401,7 +5700,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-14">Parameters</h4>
+  <h4 id="parameters-23">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4437,7 +5736,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-25">Output Columns</h4>
+  <h4 id="output-columns-34">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4528,7 +5827,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-26">Input Columns</h4>
+  <h4 id="input-columns-35">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4552,7 +5851,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-15">Parameters</h4>
+  <h4 id="parameters-24">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4582,7 +5881,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-26">Output Columns</h4>
+  <h4 id="output-columns-35">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4676,7 +5975,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-27">Input Columns</h4>
+  <h4 id="input-columns-36">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4700,7 +5999,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-16">Parameters</h4>
+  <h4 id="parameters-25">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4736,7 +6035,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-27">Output Columns</h4>
+  <h4 id="output-columns-36">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4825,7 +6124,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-28">Input Columns</h4>
+  <h4 id="input-columns-37">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4855,7 +6154,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-17">Parameters</h4>
+  <h4 id="parameters-26">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4885,7 +6184,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-28">Output Columns</h4>
+  <h4 id="output-columns-37">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -4995,7 +6294,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-29">Input Columns</h4>
+  <h4 id="input-columns-38">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5025,7 +6324,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-18">Parameters</h4>
+  <h4 id="parameters-27">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5061,7 +6360,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-29">Output Columns</h4>
+  <h4 id="output-columns-38">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5181,7 +6480,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-30">Input Columns</h4>
+  <h4 id="input-columns-39">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5211,7 +6510,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-19">Parameters</h4>
+  <h4 id="parameters-28">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5277,7 +6576,7 @@ It supports removing:</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-30">Output Columns</h4>
+  <h4 id="output-columns-39">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5394,7 +6693,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-31">Input Columns</h4>
+  <h4 id="input-columns-40">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5418,7 +6717,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-20">Parameters</h4>
+  <h4 id="parameters-29">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5520,7 +6819,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-31">Output Columns</h4>
+  <h4 id="output-columns-40">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5636,7 +6935,7 @@ others. One could almost say they feed on and grow on ideas.
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-32">Input Columns</h4>
+  <h4 id="input-columns-41">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5660,7 +6959,7 @@ others. One could almost say they feed on and grow on ideas.
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-21">Parameters</h4>
+  <h4 id="parameters-30">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5696,7 +6995,7 @@ others. One could almost say they feed on and grow on ideas.
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-32">Output Columns</h4>
+  <h4 id="output-columns-41">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5801,7 +7100,7 @@ the PDF as an invisible text layout with an original image.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-33">Input Columns</h4>
+  <h4 id="input-columns-42">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5837,7 +7136,7 @@ the PDF as an invisible text layout with an original image.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-22">Parameters</h4>
+  <h4 id="parameters-31">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5861,7 +7160,7 @@ the PDF as an invisible text layout with an original image.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-33">Output Columns</h4>
+  <h4 id="output-columns-42">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5945,7 +7244,7 @@ to <em>outputCol</em> column in HOCR format.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-34">Input Columns</h4>
+  <h4 id="input-columns-43">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -5969,7 +7268,7 @@ to <em>outputCol</em> column in HOCR format.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-23">Parameters</h4>
+  <h4 id="parameters-32">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6023,7 +7322,7 @@ to <em>outputCol</em> column in HOCR format.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-34">Output Columns</h4>
+  <h4 id="output-columns-43">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6188,7 +7487,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-35">Input Columns</h4>
+  <h4 id="input-columns-44">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6212,7 +7511,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-24">Parameters</h4>
+  <h4 id="parameters-33">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6278,7 +7577,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-35">Output Columns</h4>
+  <h4 id="output-columns-44">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6425,7 +7724,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-36">Input Columns</h4>
+  <h4 id="input-columns-45">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6455,7 +7754,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="parameters-25">Parameters</h4>
+  <h4 id="parameters-34">Parameters</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6491,7 +7790,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-36">Output Columns</h4>
+  <h4 id="output-columns-45">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6638,7 +7937,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-37">Input Columns</h4>
+  <h4 id="input-columns-46">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6668,7 +7967,7 @@ to <em>outputCol</em> and positions with font size to ‘positionsCol’ column.
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-37">Output Columns</h4>
+  <h4 id="output-columns-46">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6820,7 +8119,7 @@ Output format is json.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-38">Input Columns</h4>
+  <h4 id="input-columns-47">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6850,7 +8149,7 @@ Output format is json.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-38">Output Columns</h4>
+  <h4 id="output-columns-47">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -6989,7 +8288,7 @@ Output format is json.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-39">Input Columns</h4>
+  <h4 id="input-columns-48">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -7013,7 +8312,7 @@ Output format is json.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-39">Output Columns</h4>
+  <h4 id="output-columns-48">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -7131,7 +8430,7 @@ HocrTokenizer puts to metadata coordinates and ocr confidence.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="input-columns-40">Input Columns</h4>
+  <h4 id="input-columns-49">Input Columns</h4>
 
   <table class="table-model-big">
     <thead>
@@ -7155,7 +8454,7 @@ HocrTokenizer puts to metadata coordinates and ocr confidence.</p>
 </div>
 <div class="h3-box">
 
-  <h4 id="output-columns-40">Output Columns</h4>
+  <h4 id="output-columns-49">Output Columns</h4>
 
   <table class="table-model-big">
     <thead>
