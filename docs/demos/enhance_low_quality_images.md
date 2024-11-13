@@ -118,7 +118,7 @@ data:
             type: blue_btn
             url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesMixedScannedDigitalPdfImageCleaner.ipynb
         - title: Pretrained pipeline for reading and skewing correction on mixed scanned and digital documents
-          id: Pretrained pipeline for reading and skewing correction on mixed scanned and digital documents  
+          id: Pretrained_pipeline_for_reading_skewing_correction_mixed_scanned_digital_documents  
           image: 
               src: /assets/images/Pretrained_pipeline_for_reading_on_mixed_scanned_and_digital_PDF_documents.svg
           excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, for conducting Optical Character Recognition (OCR) on mixed scanned and digital PDF documents with page rotation correction. It ensures precise and efficient text extraction from PDFs of various origins and formats, improving the overall OCR accuracy.
