@@ -81,5 +81,52 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRGPUOperations.ipynb
-        
+        - title: Image Cleaner to Improve Quality of Document Images
+          id: image_cleaner_improve_quality_document_images
+          image: 
+              src: /assets/images/Image_Cleaner_to_Improve_Quality_of_Document_Images.svg
+          excerpt: This model improves the quality of document images using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/IMAGE_CLEANER/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrImageCleaner.ipynb
+        - title: Image Processing to Improve Quality of Document Images
+          id: image_processing_improve_quality_document_images
+          image: 
+              src: /assets/images/Image_Processing_to_Improve_Quality_of_Document_Images.svg
+          excerpt: This model improves the quality of documents using different image processing algorithms from our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/IMAGE_PROCESSING/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImagePreprocessing.ipynb
+        - title: Pretrained pipeline for reading and removing noise on mixed scanned and digital PDF documents
+          id: Pretrained_pipeline_noise_mixed_scanned_digital_documents  
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_mixed_scanned_and_digital_PDF_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on printed texts. It ensures precise and efficient text extraction from printed images of various origins and formats, improving the overall OCR accuracy.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_IMAGE_PRINTED_TRANSFORMER_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesMixedScannedDigitalPdfImageCleaner.ipynb
+        - title: Pretrained pipeline for reading and skewing correction on mixed scanned and digital documents
+          id: Pretrained pipeline for reading and skewing correction on mixed scanned and digital documents  
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_mixed_scanned_and_digital_PDF_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, for conducting Optical Character Recognition (OCR) on mixed scanned and digital PDF documents with page rotation correction. It ensures precise and efficient text extraction from PDFs of various origins and formats, improving the overall OCR accuracy.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_MIXED_SCANNED_DIGITAL_PDF_SKEW_CORRECTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesMixedScannedDigitalPdfSkewCorrection.ipynb
 ---
