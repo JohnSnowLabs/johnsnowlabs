@@ -106,7 +106,7 @@ data:
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImagePreprocessing.ipynb
         - title: Pretrained pipeline for reading and removing noise on mixed scanned and digital PDF documents
-          id: Pretrained_pipeline_noise_mixed_scanned_digital_documents  
+          id: Pretrained_pipeline_noise_mixed_scanned_digital_pdf_documents  
           image: 
               src: /assets/images/Pretrained_pipeline_for_reading_on_mixed_scanned_and_digital_PDF_documents.svg
           excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on printed texts. It ensures precise and efficient text extraction from printed images of various origins and formats, improving the overall OCR accuracy.
