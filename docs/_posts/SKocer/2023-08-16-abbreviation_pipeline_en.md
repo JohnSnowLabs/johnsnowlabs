@@ -20,6 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 A pretrained pipeline to detect abbreviations and acronyms of medical regulatory activities as well as map them with their definitions and categories.
 
+## Predicted Entities
+`ABBR`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

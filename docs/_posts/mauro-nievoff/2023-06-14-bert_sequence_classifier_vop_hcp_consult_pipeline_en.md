@@ -20,6 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify texts that mention a HCP consult. The pipeline is built on the top of  [bert_sequence_classifier_vop_hcp_consult](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_hcp_consult_en.html) model.
 
+## Predicted Entities
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
