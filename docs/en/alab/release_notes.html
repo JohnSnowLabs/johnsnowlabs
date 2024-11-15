@@ -628,245 +628,114 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="de-identification-pipeline-tools-and-entity-level-annotation-instruction-in-generative-ai-lab---67">De-Identification Pipeline Tools and Entity Level Annotation Instruction in Generative AI Lab - 6.7</h2>
-  <p>Generative AI Labs version 6.7 introduces improvements to the De-identification feature. With this update, users can choose on a per-entity basis which de-identification method they would like to use. In addition to the de-identification pipeline that is the default, there is now support for custom models, rules, and prompts for identifying sensitive data.</p>
+  <h2 id="easy-migration-to-generative-ai-lab---68">Easy Migration to Generative AI Lab - 6.8</h2>
+  <p>Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.</p>
 
-  <p>This release also brings the ability for admin users to add annotation instructions to labels from within the project, allowing for improved label accuracy and consistency between annotators. This updated feature is available for NER and VisualNER project types.</p>
+  <p>This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color.</p>
 
-</div>
-<div class="h3-box">
+  <h2 id="migrate-your-nlp-lab-backup-to-generative-ai-lab">Migrate your NLP Lab Backup to Generative AI Lab</h2>
+  <p>Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:</p>
 
-  <h2 id="support-for-de-identification-pipelines">Support for De-identification Pipelines</h2>
-  <p>Version 6.7.0 updates the existing de-identification feature, which has been significantly expanded to give more control over how de-identification is applied, how different entities are treated, and how to integrate pre-trained de-identification pipelines, models, rules, and zero-shot prompts to help identify and anonymize sensitive data.</p>
-
-  <p>De-identification has now moved from the Project Details page to the Content Type page during Project Configuration, where it is a separate project type.</p>
-
-</div>
-<div class="h3-box">
-
-  <h3 id="creating-a-de-identification-project">Creating a De-identification Project:</h3>
-  <p>Users can use the de-identification feature if a valid license is available in the application:</p>
+  <h3 id="steps-to-backup-data-from-nlp-lab">Steps to Backup Data from NLP Lab</h3>
   <ol>
-    <li><strong>Create a New Project</strong>:
-During the project configuration, select <strong>De-identification</strong> as the project type.</li>
-    <li><strong>Automatic Pipeline Download</strong>:
-A default de-identification pipeline (<code class="language-plaintext highlighter-rouge">clinical_deidentification</code>) will automatically download if not previously available or it will use the default de-identification project template. All the downloaded pipelines are available on the <strong>Pipeline</strong> page.</li>
-  </ol>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/1.png" alt="670image" /></p>
-
-</div>
-<div class="h3-box">
-
-  <h3 id="new-pipeline-tab-and-customization">New Pipeline Tab and Customization:</h3>
-  <p>In the <strong>Reuse Resource</strong> page, a new <strong>Pipelines Tab</strong> is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/2.png" alt="670image" /></p>
-
-  <p>In the <strong>Customize Labels</strong> page, users can configure the type of de-identification. Apart from all the deidentification types that are already supported, in version 6.7.0, users can even configure <strong>different de-identification types for different labels</strong> as well.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/3.png" alt="670image" /></p>
-
-  <p>Additionally, users can upload custom obfuscation files in JSON format on the Customize Labels page.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/4.gif" alt="670image" /></p>
-
-</div>
-<div class="h3-box">
-
-  <h3 id="de-identification-process">De-identification Process:</h3>
-  <p>The de-identification process remains similar to the existing pre-annotation workflow:</p>
-
-  <ol>
-    <li>
-      <p><strong>Import Tasks</strong>:
-Initially, tasks are imported, and the <code class="language-plaintext highlighter-rouge">NonDeidentified</code> tag is automatically added to the tasks. It helps users to know which tasks have been deidentified and which are yet to be de-identified.</p>
-
-      <p><img src="/assets/images/annotation_lab/6.7.0/5.gif" alt="670image" /></p>
-    </li>
-    <li>
-      <p><strong>Pre-annotate/De-identify</strong>:
-Click the <strong>De-identification (pre-annotate)</strong> button to deploy the de-identification pipeline and pre-annotate and de-identify tasks. Once the task is pre-annotated and de-identified, the de-identification status changes to either green, red, or grey, just like pre-annotation status.</p>
-
-      <p><img src="/assets/images/annotation_lab/6.7.0/6.gif" alt="670image" /></p>
-    </li>
-    <li>
-      <p><strong>Labeling Page</strong>:
-On the labeling page, users can either make corrections or accept the predictions made by the pipeline.</p>
-
-      <p><img src="/assets/images/annotation_lab/6.7.0/7.gif" alt="670image" /></p>
-    </li>
-    <li>
-      <p><strong>Re-run De-identification</strong>:
-After saving or submitting the tasks, users can click the de-identify button again to run the process on either manually annotated completions or all completions and can view the de-identification in real-time from the labeling page. Users can click the <strong>De-identification View</strong> button (located next to the Compare Completion button), to view the de-identified tasks in real-time. All de-identified completions will show <strong>(De-identified)</strong> next to the completion ID.</p>
-
-      <p><img src="/assets/images/annotation_lab/6.7.0/8.gif" alt="670image" /></p>
+    <li><strong>Login</strong> to your current NLP Lab deployment as the admin user.</li>
+    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+    <li>Navigate to the <strong><code class="language-plaintext highlighter-rouge">Backup</code></strong> tab.</li>
+    <li>Enter the required <strong>backup details</strong>.</li>
+    <li>Schedule an immediate backup using the <strong><code class="language-plaintext highlighter-rouge">Backup now</code></strong> feature.</li>
+    <li>Monitor the <strong>backup pod status</strong> to ensure the process completes successfully.
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>      </div>
+      <p><strong>Verify Backup:</strong> Upon completion, your backed-up database and files will be visible in cloud storage.</p>
     </li>
   </ol>
 
-</div>
-<div class="h3-box">
+  <iframe src="/assets/images/annotation_lab/6.8.0/1.mp4" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
 
-  <h3 id="exporting-de-identified-tasks">Exporting De-identified Tasks:</h3>
-  <p>Only de-identified completions submitted as <strong>ground truth</strong> are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the <strong>highest priority</strong> will be exported.</p>
+  <h3 id="steps-to-restore-data">Steps to Restore Data</h3>
 
-  <p><img src="/assets/images/annotation_lab/6.7.0/9.gif" alt="670image" /></p>
+  <ol>
+    <li><strong>Deploy</strong> a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.</li>
+    <li><strong>Login</strong> to the UI as the admin user.</li>
+    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+    <li>Click on the <strong><code class="language-plaintext highlighter-rouge">Restore</code></strong> tab and fill in the necessary details.</li>
+    <li>Click on <strong><code class="language-plaintext highlighter-rouge">Restore Now</code></strong> to initiate the process.</li>
+    <li>Monitor the <strong>restore pod status</strong> to ensure successful completion.
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>      </div>
+    </li>
+  </ol>
 
-  <p>These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity.</p>
+  <p><strong>Verify Restoration:</strong> Access the UI, all projects, models, data and files should now be successfully restored.</p>
 
-</div>
-<div class="h3-box">
-
-  <h2 id="annotation-instructions-for-labels">Annotation Instructions for Labels</h2>
-  <p>Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the <code class="language-plaintext highlighter-rouge">Customize Labels</code> page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats.</p>
-
-  <p>To add annotation instructions to a label, follow these steps:</p>
-  <ul>
-    <li>Navigate to the <code class="language-plaintext highlighter-rouge">Customize Labels</code> section, where all your project’s labels are listed.</li>
-    <li>Click on the <code class="language-plaintext highlighter-rouge">Edit</code> icon next to the label for which you want to add instructions. This action will take you to the <code class="language-plaintext highlighter-rouge">Edit Label</code> page.</li>
-    <li>Enter the guidelines under the <code class="language-plaintext highlighter-rouge">Label Instructions</code> field.</li>
-    <li>Click on <code class="language-plaintext highlighter-rouge">Save Label</code> to store the instructions.</li>
-    <li>Click on <code class="language-plaintext highlighter-rouge">Save Config</code> to save the configuration.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/10.gif" alt="670image" /></p>
-
-  <p>Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the <code class="language-plaintext highlighter-rouge">Annotation Guidelines</code> toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the <code class="language-plaintext highlighter-rouge">Annotation Guideline</code> section. Clicking on the label text will then reveal the annotation instructions for that label.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/11.gif" alt="670image" /></p>
-
-  <p>Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them.</p>
-
-  <p>Remove the annotation instructions from the labeling page:</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/12.gif" alt="670image" /></p>
-
-  <p>Edit the annotation instructions from the Labeling page:</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/13.gif" alt="670image" /></p>
-
-  <p>When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/14.gif" alt="670image" /></p>
-
-  <p>Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/15.png" alt="670image" /></p>
-
-  <p>Additionally, annotation guidelines are available for Assertion Labels as well.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/16.gif" alt="670image" /></p>
-
-</div>
-<div class="h3-box">
+  <iframe src="/assets/images/annotation_lab/6.8.0/2.mp4" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
 
   <h2 id="improvements">Improvements</h2>
+  <h3 id="exclude-labels-from-de-identification">Exclude Labels from De-identification</h3>
+  <p>Generative AI Lab 6.8 introduces a  <code class="language-plaintext highlighter-rouge">None**</code> option in the de-identification selection dropdown. When selected, this option will only label the text without performing any de-identification. This provides users with greater flexibility by allowing them to annotate the text while leaving the original content intact.</p>
 
-  <h3 id="automatically-turn-off-the-wizard-mode-after-the-user-trains-the-model-using-wizard-mode">Automatically turn off the “wizard mode” after the user trains the model using wizard mode</h3>
+  <p><img src="/assets/images/annotation_lab/6.8.0/3.png" alt="680image" /></p>
 
-  <p>Once the training is completed, the wizard mode is automatically turned off, and users are navigated to the regular <strong>Train</strong> page. Here, all relevant information is displayed along with a message indicating whether the training was successful or not.</p>
+  <h3 id="mark-the-labels-with-annotation-guideline">Mark the labels with annotation guideline</h3>
+  <p>A new enhancement has been introduced to easily distinguish labels with annotation guidelines. Labels that have associated annotation guidelines are now marked with a colored dot at the top-right corner. This feature applies to both NER and VisualNER projects. If the annotation guidelines are deleted for a label, the dot will be automatically removed.</p>
 
-  <p><img src="/assets/images/annotation_lab/6.7.0/17.gif" alt="670image" /></p>
+  <p><img src="/assets/images/annotation_lab/6.8.0/4.png" alt="680image" /></p>
 
-</div>
-<div class="h3-box">
+  <h3 id="change-the-pop-up-message-when-the-model-downloading-is-canceled">Change the pop-up message when the model downloading is canceled</h3>
+  <p>The pop-up message that appears when a model download is canceled has been updated for better clarity. Previously, the message displayed the title <code class="language-plaintext highlighter-rouge">Warning: Delete Model?</code>, which could confuse. It has now been changed to <code class="language-plaintext highlighter-rouge">Warning: Cancel Model Download?</code> with a more accurate description. This update provides clearer communication to users when they choose to stop a model download in progress, improving the overall user experience.</p>
 
-  <h3 id="clicking-on-the-direction-arrow-for-a-relation-should-jump-to-the-respective-relation-in-the-region-panel">Clicking on the direction arrow for a relation should jump to the respective relation in the region panel</h3>
-  <p>A new improvement has been introduced which allows users to click on any of the relation lines, which will take them directly to the corresponding relation in the <strong>Relation</strong> section.</p>
+  <p><img src="/assets/images/annotation_lab/6.8.0/5.png" alt="680image" /></p>
 
-  <p><img src="/assets/images/annotation_lab/6.7.0/18.gif" alt="670image" /></p>
+  <h3 id="improvements-in-xml-editor">Improvements in XML editor</h3>
+  <p>The issue of overlapping parent option buttons and top child option buttons when hovered, specifically when the <code class="language-plaintext highlighter-rouge">Show parent action buttons on hover</code> option was enabled, has been resolved. This fix provides a more polished user experience by ensuring the buttons are properly aligned. Now, the buttons no longer interfere with each other, offering smoother interaction with the interface.</p>
 
-</div>
-<div class="h3-box">
+  <p><img src="/assets/images/annotation_lab/6.8.0/6.png" alt="680image" /></p>
 
-  <h3 id="escape-key-should-close-the-dialog-boxes-and-warnings">Escape key should close the dialog boxes and warnings</h3>
-  <p>Users can now simply press the <strong>Esc</strong> key to close dialog boxes and warnings that appear in the top banner. Instead of clicking the ‘x’ every time.</p>
+  <p>Tooltips have been enhanced to display the correct tag name for each section, improving the usability of the XML editor. Previously, the tooltip and the menu name that appeared on hover were identical for each container, making it difficult to distinguish between them. With this update, each container now has a unique tooltip, ensuring that users can easily identify where they clicked. For example, <code class="language-plaintext highlighter-rouge">Edit Tag</code> has been updated to <code class="language-plaintext highlighter-rouge">Edit Text Tag</code> to provide clearer context and improve navigation within the editor.</p>
 
-</div>
-<div class="h3-box">
+  <p><img src="/assets/images/annotation_lab/6.8.0/7.gif" alt="680image" /></p>
 
-  <h3 id="the-name-of-the-model-should-be-shown-in-the-playground-heading">The name of the model should be shown in the playground heading</h3>
-  <p>The model names are shown, providing users with a clearer insight into which models are being tested.</p>
+  <p>A validation error is now triggered when quick filters are incorrectly attached to elements other than labels or ellipse labels.</p>
 
-  <p><img src="/assets/images/annotation_lab/6.7.0/19.gif" alt="670image" /></p>
+  <p><img src="/assets/images/annotation_lab/6.8.0/8.png" alt="680image" /></p>
 
-</div>
-<div class="h3-box">
+  <p>The <code class="language-plaintext highlighter-rouge">Maximum rating value</code> of the <code class="language-plaintext highlighter-rouge">Rating</code> element now includes validation. A red color warning is displayed when an invalid value is entered. Only positive numbers are allowed, ensuring that users input appropriate values and improving the overall accuracy of ratings.</p>
 
-  <h3 id="add-quick-submit-button-for-visual-ner-task">Add Quick Submit button for Visual NER task</h3>
-  <p>A new ability to “Submit completions without Saving” can be enabled on the <strong>Advanced Configuration</strong> page when setting up Visual NER projects. This feature allows users to see and use the “Submit” button on the labeling page right from the start, enabling them to submit their completions directly without the need to save them first.</p>
+  <p><img src="/assets/images/annotation_lab/6.8.0/9.png" alt="680image" /></p>
 
-  <p><img src="/assets/images/annotation_lab/6.7.0/20.gif" alt="670image" /></p>
+  <h3 id="increased-readability-for-test-cases-view">Increased readability for test cases view</h3>
 
-</div>
-<div class="h3-box">
+  <p>Users can now read the test cases better with two-tone text distinguished between test types.</p>
 
-  <h3 id="bug-fixes">Bug Fixes:</h3>
+  <p><img src="/assets/images/annotation_lab/6.8.0/10.png" alt="680image" /></p>
+
+  <h3 id="bug-fixes">Bug Fixes</h3>
+  <ul>
+    <li><strong>Annotation guidelines now visible in the horizontal layout</strong></li>
+  </ul>
+
+  <p>Users can now see Annotation guidelines in the horizontal layout.</p>
+
+  <p><img src="/assets/images/annotation_lab/6.8.0/11.png" alt="680image" /></p>
+
+  <ul>
+    <li><strong>Confidence score of classifier is only shown for the first section in SBA text task</strong></li>
+  </ul>
+
+  <p>The confidence score is now correctly displayed for predictions across all sections, ensuring consistent feedback throughout the entire task.</p>
+
+  <p><img src="/assets/images/annotation_lab/6.8.0/12.gif" alt="680image" /></p>
+
   <ul>
     <li>
-      <p><strong>Unexpected behavior corrected for relations when added in the first line of the tasks</strong></p>
+      <p><strong>Toast Message-warning users of Expiring License with each API call</strong></p>
 
-      <p>Users can again see relations for submitted tasks when added in the first line.</p>
+      <p>The issue with frequent toast message pop-ups has been largely resolved. However, the message may still reappear when the user refreshes the page or navigates to different sections. While the message is now less intrusive, it is still visible during certain actions such as page reloads or navigation.</p>
     </li>
     <li>
-      <p><strong>Vague error messages are now replaced with accurate notifications during task import validation</strong></p>
+      <p><strong>File Backup is uploaded to the DB file backup path</strong></p>
 
-      <p>Users now receive meaningful error messages in the dialog when task imports fail due to validation issues.</p>
-    </li>
-    <li>
-      <p><strong>Unclear error message for importing tasks larger than 200MB addressed</strong></p>
-
-      <p>Users will now see accurate and user-friendly error messages when attempting to import tasks that exceed the 200MB size limit.</p>
-    </li>
-    <li>
-      <p><strong>Filter Exported Annotations by Task is now disabled for de-identification projects</strong></p>
-
-      <p>Users can no longer pick and choose labels after de-identification, ensuring consistency in exported annotations.</p>
-    </li>
-    <li>
-      <p><strong>Multiple individual files can now be uploaded at once for task import</strong></p>
-
-      <p>Users can efficiently upload multiple files simultaneously within a project.</p>
-    </li>
-    <li>
-      <p><strong>Synthetic task list now refreshes automatically during CRUD operations</strong></p>
-
-      <p>The synthetic task list updates in real-time during task creation, update, and deletion.</p>
-    </li>
-    <li>
-      <p><strong>“Failed to Load PDF File” error resolved for RatePDF projects with hidecontextmenu enabled</strong></p>
-
-      <p>Users can now view tasks normally even when the hidecontextmenu property is used in RatePDF projects.</p>
-    </li>
-    <li>
-      <p><strong>Internal server error when creating RatePDF project types has been fixed</strong></p>
-
-      <p>Users can now create RatePDF projects without encountering internal server errors.</p>
-    </li>
-    <li>
-      <p><strong>Text enclosed with &lt;&gt; is now visible on the labeling page</strong></p>
-
-      <p>Users can see text within angle brackets on the labeling page, addressing the previous visibility issue.</p>
-    </li>
-    <li>
-      <p><strong>Confirmation dialog box no longer overlaps with the Labels section</strong></p>
-
-      <p>The confirmation dialog box now displays correctly without being obscured when submitting completions from the Comparison and De-identification views.</p>
-    </li>
-    <li>
-      <p><strong>Special characters are now correctly handled when importing files from Azure SAS URL</strong></p>
-
-      <p>Tasks can be imported from Azure SAS URLs without issues related to special character permissions.</p>
-    </li>
-    <li>
-      <p><strong>Internal server error when adding ‘Test’ or ‘Train’ tags has been resolved</strong></p>
-
-      <p>Users can now add ‘Test’ or ‘Train’ tags to tasks from the labeling page without encountering errors.</p>
-    </li>
-    <li>
-      <p><strong>Classification models are now visible in the Select Classifier dropdown</strong></p>
-
-      <p>Classification models are correctly listed for selection in the dropdown menu.</p>
+      <p>Users can now successfully designate different paths for ad-hoc backing up databases and files. The system will correctly store database ad-hoc backups in the specified database path, while file ad-hoc backups will be saved in their intended separate location.</p>
     </li>
   </ul>
 
@@ -878,8 +747,9 @@ After saving or submitting the tasks, users can click the de-identify button aga
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
@@ -917,7 +787,7 @@ After saving or submitting the tasks, users can click the de-identify button aga
     <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-07-26T00:00:00+00:00">Jul 26, 2024</time>
+      <time itemprop="dateModified" datetime="2024-11-15T00:00:00+00:00">Nov 15, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

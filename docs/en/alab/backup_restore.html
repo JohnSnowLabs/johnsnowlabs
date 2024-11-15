@@ -626,133 +626,47 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Backup and Restore"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="backup">Backup</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.</p>
 
-<p>You can enable daily backups by adding several variables with <code class="language-plaintext highlighter-rouge">--set</code> option to helm command in <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code>:</p>
+<p>This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>backup.enable<span class="o">=</span><span class="nb">true
-</span>backup.files<span class="o">=</span><span class="nb">true
-</span>backup.s3_access_key<span class="o">=</span><span class="s2">"&lt;ACCESS_KEY&gt;"</span>
-backup.s3_secret_key<span class="o">=</span><span class="s2">"&lt;SECRET_KEY&gt;"</span>
-backup.s3_bucket_fullpath<span class="o">=</span><span class="s2">"&lt;FULL_PATH&gt;"</span>
-</code></pre></div></div>
+<h2 id="migrate-your-nlp-lab-backup-to-generative-ai-lab">Migrate your NLP Lab Backup to Generative AI Lab</h2>
+<p>Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:</p>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;ACCESS_KEY&gt;</code> - your access key for AWS S3 access</p>
-
-<p><code class="language-plaintext highlighter-rouge">&lt;SECRET_KEY&gt;</code> - your secret key for AWS S3 access</p>
-
-<p><code class="language-plaintext highlighter-rouge">&lt;FULL_PATH&gt;</code> - full path to your backup in s3 bucket (f.e. <code class="language-plaintext highlighter-rouge">s3://example.com/path/to/my/backup/dir</code>)</p>
-
-<p><strong>Note:</strong> File backup is enabled by default. If you don’t need to backup files, you have to change</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>backup.files<span class="o">=</span><span class="nb">true</span>
-</code></pre></div></div>
-
-<p>to</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>backup.files<span class="o">=</span><span class="nb">false</span>
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h4 id="configure-backup-from-the-ui">Configure Backup from the UI</h4>
-
-<p>In 2.8.0 release, Generative AI Lab added support for defining database and files backups via the UI. An <em>admin</em> user can view and edit the backup settings under the <strong>Settings</strong> menu. Users can select different backup periods and can specify a target S3 bucket for storing the backup files. New backups will be automatically generated and saved to the S3 bucket following the defined schedule.</p>
-
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/backupRestoreUI.png" style="width:100%;" /></p>
-
-<h3 id="migrate-your-nlp-lab-backup-to-generative-ai-lab-6">Migrate your NLP Lab Backup to Generative AI Lab 6</h3>
-
-<p>Migrating to the new version is easy! Users who are using an older version of the NLP Lab can migrate their annotated data and configured settings to the new Generative AI Lab 6 through our Backup and Restore feature. This process enables users to back up their data and files from a CPU-based instance to the cloud of their choice (Azure Blob/AWS S3) and then restore the configurations to a GPU-based instance. You must follow the steps outlined below to seamlessly back up and restore all your data from an old instance to the new Generative AI Lab 6.</p>
-
-<iframe src="/assets/images/annotation_lab/6.0.0/BackupAndRestore.mp4" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
-
-<p><strong>Follow these steps to migrate your data</strong>:</p>
-<h4 id="1-backup-data">1. Backup Data:</h4>
-<ul>
-  <li>Navigate to the Backup page of your CPU-based instance.</li>
-  <li>Enter backup details.</li>
-  <li>Schedule an immediate backup via backend modification:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl edit cronjob
-</code></pre></div>    </div>
-  </li>
-  <li>Monitor the backup pod status:
+<h3 id="steps-to-backup-data-from-nlp-lab">Steps to Backup Data from NLP Lab</h3>
+<ol>
+  <li><strong>Login</strong> to your current NLP Lab deployment as the admin user.</li>
+  <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+  <li>Navigate to the <strong><code class="language-plaintext highlighter-rouge">Backup</code></strong> tab.</li>
+  <li>Enter the required <strong>backup details</strong>.</li>
+  <li>Schedule an immediate backup using the <strong><code class="language-plaintext highlighter-rouge">Backup now</code></strong> feature.</li>
+  <li>Monitor the <strong>backup pod status</strong> to ensure the process completes successfully.
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
 </code></pre></div>    </div>
-    <h4 id="2-verify-backup">2. Verify Backup:</h4>
+    <p><strong>Verify Backup:</strong> Upon completion, your backed-up database and files will be visible in cloud storage.</p>
   </li>
-  <li>Upon completion, your backed-up database and files will be visible in cloud storage.</li>
-</ul>
+</ol>
 
-<h4 id="3-restore-data">3. Restore Data:</h4>
-<ul>
-  <li>Access the backend of your target GPU-based instance.</li>
-  <li>Transfer backed-up data from cloud storage to artifacts/restore/database.</li>
-  <li>Perform database restoration:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./restore_all_databases.sh &lt;backed-up_database_name&gt;
+<iframe src="/assets/images/annotation_lab/6.8.0/1.mp4" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
+
+<h3 id="steps-to-restore-data">Steps to Restore Data</h3>
+
+<ol>
+  <li><strong>Deploy</strong> a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.</li>
+  <li><strong>Login</strong> to the UI as the admin user.</li>
+  <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+  <li>Click on the <strong><code class="language-plaintext highlighter-rouge">Restore</code></strong> tab and fill in the necessary details.</li>
+  <li>Click on <strong><code class="language-plaintext highlighter-rouge">Restore Now</code></strong> to initiate the process.</li>
+  <li>Monitor the <strong>restore pod status</strong> to ensure successful completion.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
 </code></pre></div>    </div>
   </li>
-  <li>Copy backed-up files from cloud storage to artifacts/restore/files.</li>
-  <li>Execute file restoration:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./restore_files.sh &lt;backed-up_files_name&gt;
-</code></pre></div>    </div>
-    <h4 id="4-verify-restoration">4. Verify Restoration:</h4>
-  </li>
-  <li>Access the UI, all data and files should now be successfully restored.</li>
-</ul>
+</ol>
 
-<h2 id="restore">Restore</h2>
+<p><strong>Verify Restoration:</strong> Access the UI, all projects, models, data and files should now be successfully restored.</p>
 
-<h4 id="database">Database</h4>
+<iframe src="/assets/images/annotation_lab/6.8.0/2.mp4" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
 
-<p>To restore Generative AI Lab from a backup you need a fresh installation of Generative AI Lab. Install it using <code class="language-plaintext highlighter-rouge">annotationlab-install.sh</code>. Now, download the latest backup from your S3 bucket and move the archive to <code class="language-plaintext highlighter-rouge">restore/database/</code> directory. Next, go to the <code class="language-plaintext highlighter-rouge">restore/database/</code> directory and execute script <code class="language-plaintext highlighter-rouge">restore_all_databases.sh</code> with the name of your backup archive as the argument.</p>
-
-<p>For example:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd restore/database/
-sudo ./restore_all_databases.sh 2022-04-14-annotationlab-all-databases.tar.xz
-</code></pre></div></div>
-
-<blockquote>
-  <p><strong>Note:</strong> <br /></p>
-
-  <ol>
-    <li>You need <code class="language-plaintext highlighter-rouge">xz</code> and <code class="language-plaintext highlighter-rouge">bash</code> installed to execute this script. <br /></li>
-    <li>This script works only with backups created by Generative AI Lab backup system. <br /></li>
-    <li>Run this script with <code class="language-plaintext highlighter-rouge">sudo</code> command</li>
-  </ol>
-</blockquote>
-
-<p>After database restore complete you can check logs in <code class="language-plaintext highlighter-rouge">restore_log</code> directory created by restore script.</p>
-
-<p><br /></p>
-
-<h4 id="files">Files</h4>
-
-<p>Download your files backup and move it to <code class="language-plaintext highlighter-rouge">restore/files/</code> directory. Go to <code class="language-plaintext highlighter-rouge">restore/files/</code> directory and execute script <code class="language-plaintext highlighter-rouge">restore_files.sh</code> with the name of your backup archive as the argument. For example:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd restore/files/
-sudo ./restore_files.sh 2022-04-14-annotationlab-files.tar
-</code></pre></div></div>
-
-<blockquote>
-  <p><strong>Note:</strong> <br /></p>
-
-  <ol>
-    <li>You need <code class="language-plaintext highlighter-rouge">bash</code> installed to execute this script. <br /></li>
-    <li>This script works only with backups created by Generative AI Lab backup system. <br /></li>
-    <li>Run this script with <code class="language-plaintext highlighter-rouge">sudo</code> command</li>
-  </ol>
-</blockquote>
-
-<p><br /></p>
-
-<h4 id="reboot">Reboot</h4>
-
-<p>After restoring database and files, reboot Generative AI Lab:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo reboot
-</code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-10-14T00:00:00+00:00">Oct 14, 2022</time>
     </span><!-- start custom article footer snippet -->

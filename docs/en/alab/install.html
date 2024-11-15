@@ -622,7 +622,7 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Installation</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/install.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/install_all_options.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Installation"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
@@ -639,12 +639,13 @@ th {
 
   <h2 id="type-of-installation">Type of installation</h2>
 
-  <p class="btn-box-install"><a href="#dedicated-server" class="button button-blue">Dedicated Server</a>
-<a href="#aws-marketplace" class="button button-blue">AWS Marketplace</a>
+  <p class="btn-box-install"><a href="#aws-marketplace" class="button button-blue">AWS Marketplace</a>
 <a href="#azure-marketplace" class="button button-blue">Azure Marketplace</a>
+<a href="#migration-from-nlp-lab-to-generative-ai-lab" class="button button-blue">Migration from NLP Lab</a>
+<a href="#airgap-environment" class="button button-blue">AirGap Environment</a>
 <a href="#eks-deployment" class="button button-blue">EKS deployment</a>
 <a href="#aks-deployment" class="button button-blue">AKS deployment</a>
-<a href="#airgap-environment" class="button button-blue">AirGap Environment</a></p>
+<a href="#dedicated-server" class="button button-blue">Dedicated Server</a></p>
 
 </div>
 <div class="h3-box">
@@ -685,7 +686,7 @@ th {
 
   <h2 id="dedicated-server">Dedicated Server</h2>
 
-  <p>Install Generative AI Lab (NLP Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.</p>
+  <p>Install Generative AI Lab on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.</p>
 
   <h3 id="fresh-install">Fresh install</h3>
 
@@ -1120,6 +1121,48 @@ EOF
 </span></code></pre></div>      </div>
     </li>
   </ol>
+
+  <h2 id="migration-from-nlp-lab-to-generative-ai-lab">Migration from NLP Lab to Generative AI Lab</h2>
+  <p>At the end of 2024, NLP Lab will officially retire, and no longer be available. We advise anyone wishing to continue using this tool to migrate to Generative AI Lab.</p>
+
+  <p>For on-premise deployments, please contact us for the newest artifacts.​</p>
+
+  <p>For all Cloud deployments, please purchase and Install Generative AI Lab on a new server before migration, and then follow the steps below:​</p>
+
+  <h3 id="steps-to-backup-data-from-nlp-lab">Steps to Backup Data from NLP Lab</h3>
+  <ol>
+    <li><strong>Login</strong> to your current NLP Lab deployment as the admin user.</li>
+    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+    <li>Navigate to the <strong><code class="language-plaintext highlighter-rouge">Backup</code></strong> tab.</li>
+    <li>Enter the required <strong>backup details</strong>.</li>
+    <li>Schedule an immediate backup using the <strong><code class="language-plaintext highlighter-rouge">Backup now</code></strong> feature.</li>
+    <li>Monitor the <strong>backup pod status</strong> to ensure the process completes successfully.</li>
+  </ol>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>  </div>
+
+  <p><strong>Verify Backup:</strong> Upon completion, your backed-up database and files will be visible in cloud storage.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <h3 id="steps-to-restore-data">Steps to Restore Data</h3>
+
+  <ol>
+    <li><strong>Deploy</strong> a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.</li>
+    <li><strong>Login</strong> to the UI as the admin user.</li>
+    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+    <li>Click on the <strong><code class="language-plaintext highlighter-rouge">Restore</code></strong> tab and fill in the necessary details.</li>
+    <li>Click on <strong><code class="language-plaintext highlighter-rouge">Restore Now</code></strong> to initiate the process.</li>
+    <li>Monitor the <strong>restore pod status</strong> to ensure successful completion.</li>
+  </ol>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>  </div>
+
+  <p><strong>Verify Restoration:</strong> Access the UI, all projects, models, data and files should now be successfully restored.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 
 </div>
 <div class="h3-box">
