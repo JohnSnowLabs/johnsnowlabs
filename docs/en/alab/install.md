@@ -24,6 +24,41 @@ th {
 
 <div class="h3-box" markdown="1">
 
+## Migration from NLP Lab to Generative AI Lab
+At the end of 2024, NLP Lab will officially retire, and no longer be available. We advise anyone wishing to continue using this tool to migrate to Generative AI Lab.
+For on-premise deployments, please contact us for the newest artifacts.​
+For all Cloud deployments, please purchase and Install Generative AI Lab on a new server before migration, and then follow the steps below:​
+
+### Steps to Backup Data from NLP Lab
+1. **Login** to your current NLP Lab deployment as the admin user.
+2. Go to the **`System Settings`** page.
+3. Navigate to the **`Backup`** tab.
+4. Enter the required **backup details**.
+5. Schedule an immediate backup using the **`Backup now`** feature.
+6. Monitor the **backup pod status** to ensure the process completes successfully.
+```bash
+kubectl get pods
+```
+**Verify Backup:** Upon completion, your backed-up database and files will be visible in cloud storage.
+
+<iframe src="/assets/images/annotation_lab/6.8.0/1.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+### Steps to Restore Data
+
+1. **Deploy** a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.
+2. **Login** to the UI as the admin user.
+3. Go to the **`System Settings`** page.
+4. Click on the **`Restore`** tab and fill in the necessary details.
+5. Click on **`Restore Now`** to initiate the process.
+6. Monitor the **restore pod status** to ensure successful completion.
+```bash
+kubectl get pods
+```
+
+**Verify Restoration:** Access the UI, all projects, models, data and files should now be successfully restored.
+
+<iframe src="/assets/images/annotation_lab/6.8.0/2.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
 ## Type of installation
 
 {:.btn-box-install}
