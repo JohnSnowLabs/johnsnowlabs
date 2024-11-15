@@ -22,6 +22,8 @@ This pretrained pipeline maps entities (Clinical Findings) with their correspond
 
 ## Predicted Entities
 
+`TREATMENT`, `PROBLEM`, `TEST`
+
 
 
 {:.btn-box}
