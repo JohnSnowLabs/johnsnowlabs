@@ -22,6 +22,8 @@ A pipeline for detecting posology entities with the `ner_posology_large` NER mod
 
 ## Predicted Entities
 
+`DRUG`, `STRENGTH`, `ROUTE`, `FREQUENCY`, `DOSAGE`, `FORM`, `DURATION`
+
 
 
 {:.btn-box}
