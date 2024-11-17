@@ -27,6 +27,10 @@ from clinical texts. In this pipeline, 4 NER models, one assertion model, and on
                       - Assertion Status Labels: `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypotetical`, `SomeoneElse`
                       - Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
 
+## Predicted Entities
+
+`TREATMENT`, `PROBLEM`, `TEST`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

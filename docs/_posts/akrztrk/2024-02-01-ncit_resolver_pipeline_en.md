@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This advanced pipeline extracts oncological entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding National Cancer Institute Thesaurus (NCIt) codes.
 
+## Predicted Entities
+
+`Cycle_Number`, `Direction`, `Histological_Type`, `Biomarker_Result`, `Site_Other_Body_Part`, `Hormonal_Therapy`, `Targeted_Therapy`, `Route`, `Tumor_Finding`, `Duration`, `Pathology_Result`, `Chemotherapy`, `Radiotherapy`, `Radiation_Dose`, `Oncogene`, `Cancer_Surgery`, `Staging`, `Pathology_Test`, `Cancer_Dx`, `Site_Lung`, `Site_Breast`, `Site_Liver`, `Site_Lymph_Node`, `Response_To_Treatment`, `Site_Brain`, `Immunotherapy`, `Metastasis`, `Imaging_Test`, `Line_Of_Therapy`, `Unspecific_Therapy`, `Site_Bone`, `Cycle_Count`, `Cancer_Score`, `Adenopathy`, `Grade`, `Biomarker`, `Invasion`, `Frequency`, `Performance_Status`, `Cycle_Day`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
