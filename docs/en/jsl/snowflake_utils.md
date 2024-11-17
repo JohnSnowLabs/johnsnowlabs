@@ -12,7 +12,8 @@ sidebar:
 ---
 <div class="main-docs" markdown="1">
 
-You can easily deploy any John Snow Labs models within the Snowpark Container Services Ecosystem via `nlp.deploy_as_snowflake_udf()`
+You can easily deploy any John Snow Labs models within the Snowpark Container Services Ecosystem via `nlp.deploy_as_snowflake_udf()`     
+The [Create Snowflake Endpoint Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/notebooks/create_snowflake_endpoint.ipynb) and this documentation page showcase how you can create a containerized Snowflake UDF from any Johnsnowlabs and how to query it.   
 
 
 ## Setup Snowflake Resources 

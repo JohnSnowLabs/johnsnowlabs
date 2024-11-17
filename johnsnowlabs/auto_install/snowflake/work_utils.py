@@ -2,7 +2,7 @@ import json
 import time
 
 from johnsnowlabs import nlp
-from johnsnowlabs.auto_install.docker.work_utils import check_local_endpoint_health, _destroy_container
+from johnsnowlabs.auto_install.docker.work_utils import check_local_endpoint_health, _destroy_container, _destroy_image
 from johnsnowlabs.utils.py_process import run_cmd_and_check_succ
 
 
@@ -99,10 +99,40 @@ def push_snowflake_image(remote_repo, image_name):
     )
 
 
+def wait_until_service_created(client, service, timeout=60*20):
+    cur = client.cursor()
+    start_time = time.time()  # Start time tracking
+
+    while True:
+        elapsed_time = time.time() - start_time  # Calculate elapsed time
+        if elapsed_time > timeout:
+            raise TimeoutError(f"Timeout reached: Service {service} did not reach RUNNING state within {timeout} seconds.")
+
+        res = cur.execute(f'DESCRIBE SERVICE {service};').fetchone()
+        state = res[1]
+
+        if state == 'RUNNING':
+            return True
+        elif state == 'PENDING':
+            pass
+        elif state in ['FAILED', 'DONE', 'SUSPENDING', 'SUSPENDED', 'DELETING', 'DELETED', 'INTERNAL_ERROR']:
+            raise Exception(f"State of service {service} is {state}; cannot continue.")
+
+        print(f"State of {service} is {state}. Waiting for service creation...")
+        time.sleep(60)
+
+
+
 def create_service(client, service_name, compute_pool_name, image_path, role, database, warehouse, schema):
     cur = client.cursor()
     cmd = get_service_create_cmd(service_name, compute_pool_name, image_path, role, database, warehouse, schema)
-    cur.execute(cmd, num_statements=cmd.count(';'))
+    try:
+        cur.execute(cmd, num_statements=cmd.count(';'))
+    except Exception as e:
+        if 'already exist' in e.raw_msg:
+            print(f'A resource already exists, see error message for more details')
+            print(e.raw_msg)
+        raise Exception("Snowflake Service creation failed see error message for more details")
     for row in cur:
         print(row)
     cur.close()
@@ -146,17 +176,28 @@ def tag_image(image_name, remote_repo):
 
 
 def build_test_and_push_image(nlu_ref, license_path, image_name, local_test_container_name, local_test_port,
-                              remote_repo):
-    # build image, test it locally, tag it, push it and destroy the local image
-    # TODO check while pushing if not authorized/logged in fail or not
-    login_cmd = f'docker login {remote_repo}'
+                              remote_repo, user, password, destroy_image=False):
+    login_cmd = f"echo {password} | docker login {remote_repo} -u {user} --password-stdin"
 
+    # 1. build image,
     build_snowflake_image(nlu_ref, image_name, license_path)
+
+    # 2. test it locally
     test_snowflake_image_local(image_name, local_test_container_name, local_test_port)
+
+    # 3. tag it
     tag_image(image_name, remote_repo)
-    # TODO TEST IF ACTUALLY LOGGED IN !!
+
+    # 4. login to docker repo,
+    print(f'Logging into repo {remote_repo} with user {user}')
+    run_cmd_and_check_succ(login_cmd, text=True, shell=True, use_code=True, log=False)
+
+    # 5. push image
     push_snowflake_image(remote_repo, image_name)
-    # _destroy_image(image_name)
+
+    # 6. destroy the local image
+    if destroy_image:
+        _destroy_image(image_name)
 
 
 def get_service_logs(snowflake_user, snowflake_password, snowflake_account, warehouse_name, database_name,
@@ -192,7 +233,7 @@ def snowflake_common_setup(snowflake_user, snowflake_account, snowflake_password
     # todo params for warehouse_name size and compute-pool
     base_cmd = f"""
 USE ROLE ACCOUNTADMIN;
-
+USE WAREHOUSE {warehouse_name};
 CREATE ROLE IF NOT EXISTS {role_name};
 
 CREATE DATABASE IF NOT EXISTS {db_name};
@@ -201,10 +242,6 @@ GRANT OWNERSHIP ON DATABASE {db_name} TO ROLE {role_name} COPY CURRENT GRANTS;
 CREATE OR REPLACE WAREHOUSE {warehouse_name} WITH WAREHOUSE_SIZE='X-SMALL';
 GRANT USAGE ON WAREHOUSE {warehouse_name} TO ROLE {role_name};
 
-CREATE SECURITY INTEGRATION IF NOT EXISTS snowservices_ingress_oauth
-  TYPE=oauth
-  OAUTH_CLIENT=snowservices_ingress
-  ENABLED=true;
 
 GRANT BIND SERVICE ENDPOINT ON ACCOUNT TO ROLE {role_name};
 
@@ -221,16 +258,16 @@ GRANT ROLE {role_name} TO USER {snowflake_user};
 
     is_snowflake_installed()
     import snowflake.connector
-    c = snowflake.connector.connect(user=snowflake_user, password=snowflake_password, account=snowflake_account)
+    c = snowflake.connector.connect(user=snowflake_user, password=snowflake_password, account=snowflake_account, role='ACCOUNTADMIN')
     cur = c.cursor()
+
     r = cur.execute(base_cmd, num_statements=base_cmd.count(';'))
     succ = r.fetchall()[0][0] == 'Statement executed successfully.'
     if succ:
-        print(f'Role {role_name} created and access granted to {snowflake_user}')
-        print(f'Database {db_name} created')
-        print(f'Warehouse {warehouse_name} crated')
-        print(f'Warehouse {warehouse_name} crated')
-        print(f'Compute Pool {compute_pool_name} crated')
+        print(f'Created Role {role_name} and access granted to {snowflake_user}')
+        print(f'Created Database {db_name}')
+        print(f'Created Warehouse {warehouse_name}')
+        print(f'Created Compute Pool {compute_pool_name}')
 
     create_db_objects_cmd = f"""
 USE ROLE {role_name};
@@ -247,9 +284,11 @@ CREATE STAGE IF NOT EXISTS {stage_name} DIRECTORY = ( ENABLE = true );
 
     succ = r.fetchall()[0][0] == 'Statement executed successfully.'
     if succ:
-        print(f'Schema {schema_name} crated')
-        print(f'Repository {repo_name} crated')
-        print(f'Stage {stage_name} crated')
+        print(f'Created Schema {schema_name}')
+        print(f'Created Repository {repo_name}')
+        print(f'Created Stage {stage_name}')
+
+
     else:
         print('Failure creating Schema, Repository and Stage!')
 
@@ -274,8 +313,7 @@ USE WAREHOUSE {warehouse_name};
                 return response_repo_url
 
     repo_url = verify_image_repo(verify_prefix)
-
-    print(f'Remote repo URL is {repo_url}')
+    print(f'Created Snowflake Container Repository {repo_url}')
     return role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url
 
 
@@ -292,7 +330,8 @@ def deploy_as_snowflake_udf(nlu_ref,
                             license_path=None,
                             udf_name=None,
                             service_name=None,
-
+                            service_creation_timeout = 60*20,
+                            destroy_image=False,
                             ):
     client = get_client(snowflake_user, snowflake_password, snowflake_account, warehouse_name, database_name,
                         schema_name, role_name)
@@ -311,23 +350,25 @@ def deploy_as_snowflake_udf(nlu_ref,
     if not udf_name:
         udf_name = f'{clean_nlu_ref}_udf'.replace('-', '_')
 
-    # TODO block while status pending optinally
     # r = get_service_logs(snowflake_user, snowflake_password, snowflake_account, warehouse_name, database_name,
     #              schema_name, role_name, service_name)
     # print(r)
     # 2.  Local Docker Setup, Tests and Push to Snowflake
-    build_test_and_push_image(nlu_ref, license_path, image_name, container_name, port, repo_url)
+    build_test_and_push_image(nlu_ref, license_path, image_name, container_name, port, repo_url, snowflake_user, snowflake_password, destroy_image)
 
     # 3. Snowflake: Create service, create udf and test udf
     print(f'Starting Snowflake Procedure')
     create_service(client, service_name, compute_pool_name, remote_image, role_name, database_name, warehouse_name,
                    schema_name)
-    print(f'Service {service_name} created')
-    time.sleep(1 * 60)  # wait ~ n seconds for container sto spin up, expo backup..!
+    print(f'Created Service {service_name}')
+    wait_until_service_created(client, service_name, service_creation_timeout)
+    # time.sleep(1 * 60)  # wait ~ n seconds for container sto spin up, expo backup..!
     create_udf(client, service_name, udf_name, role_name, database_name, warehouse_name, schema_name)
-    print(f'UDF {udf_name} created')
+    print(f'Created UDF {udf_name}')
 
     print('testing UDF...')
     test_udf(client, udf_name)
 
     return udf_name
+
+
