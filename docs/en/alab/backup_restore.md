@@ -32,7 +32,7 @@ kubectl get pods
 ```
 **Verify Backup:** Upon completion, your backed-up database and files will be visible in cloud storage.
 
-<iframe src="/assets/images/annotation_lab/6.8.0/1.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Steps to Restore Data
 
@@ -48,6 +48,6 @@ kubectl get pods
 
 **Verify Restoration:** Access the UI, all projects, models, data and files should now be successfully restored.
 
-<iframe src="/assets/images/annotation_lab/6.8.0/2.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
     
