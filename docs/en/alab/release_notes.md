@@ -15,6 +15,10 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
+## 6.8.0
+
+Release date: **11-15-2024**
+
 ## Easy Migration to Generative AI Lab - 6.8 
 Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.
 
@@ -35,7 +39,7 @@ kubectl get pods
 ```
 **Verify Backup:** Upon completion, your backed-up database and files will be visible in cloud storage.
 
-<iframe src="/assets/images/annotation_lab/6.8.0/1.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Steps to Restore Data
 
@@ -51,7 +55,7 @@ kubectl get pods
 
 **Verify Restoration:** Access the UI, all projects, models, data and files should now be successfully restored.
 
-<iframe src="/assets/images/annotation_lab/6.8.0/2.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Improvements
 ### Exclude Labels from De-identification 
