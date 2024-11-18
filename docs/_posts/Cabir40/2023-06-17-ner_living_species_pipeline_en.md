@@ -27,6 +27,7 @@ deploy:
 This pretrained pipeline is built on the top of [ner_living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_en_3_0.html) model.
 
 ## Predicted Entities
+`SPECIES`, `HUMAN`
 
 
 

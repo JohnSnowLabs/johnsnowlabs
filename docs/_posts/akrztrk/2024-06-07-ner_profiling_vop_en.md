@@ -22,6 +22,10 @@ This pipeline can be used to simultaneously evaluate various pre-trained named e
 
 `ner_vop`, `ner_vop_langtest`, `ner_vop_anatomy`, `ner_vop_anatomy_langtest`, `ner_vop_clinical_dept`, `ner_vop_clinical_dept_langtest`, `ner_vop_demographic`, `ner_vop_demographic_langtest`, `ner_vop_problem`, `ner_vop_problem_langtest`, `ner_vop_problem_reduced`, `ner_vop_problem_reduced_langtest`, `ner_vop_temporal`, `ner_vop_temporal_langtest`, `ner_vop_test`, `ner_vop_test_langtest`, `ner_vop_treatment`, `ner_vop_treatment_langtest`, `ner_jsl`, `ner_jsl_langtest`, `ner_jsl_greedy`, `ner_jsl_enriched`, `ner_jsl_slim`
 
+## Predicted Entities
+
+`HealthStatus`, `Drug`, `Symptom`, `Treatment`, `Substance`, `Test`, `ClinicalDept`, `Route`, `InjuryOrPoisoning`, `Duration`, `Laterality`, `MedicalDevice`, `BodyPart`, `DateTime`, `Age`, `Disease`, `SubstanceQuantity`, `Allergen`, `Gender`, `Modifier`, `Vaccine`, `TestResult`, `AdmissionDischarge`, `PsychologicalCondition`, `VitalTest`, `Form`, `Employment`, `RelationshipStatus`, `Frequency`, `Dosage`, `Procedure`, `RaceEthnicity`, `Problem`, `Measurements`, `Injury_or_Poisoning`, `Direction`, `Admission_Discharge`, `Relationship_Status`, `Drug_BrandName`, `Date`, `Hyperlipidemia`, `VS_Finding`, `Vaccine_Name`, `Medical_Device`, `Communicable_Disease`, `Psychological_Condition`, `Obesity`, `Kidney_Disease`, `Oncological`, `Cerebrovascular_Disease`, `Diabetes`, `Heart_Disease`, `Disease_Syndrome_Disorder`, `RelativeDate`, `Hypertension`, `External_body_part_or_region`, `Test_Result`, `Clinical_Dept`, `Drug_Ingredient`, `Substance_Quantity`, `Internal_organ_or_component`, `Cancer_Modifier`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

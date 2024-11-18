@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This pretrained pipeline is built on the top of [ner_drugs_greedy](https://nlp.johnsnowlabs.com/2021/03/31/ner_drugs_greedy_en.html) model.
 
 ## Predicted Entities
+`DRUG`
 
 
 
