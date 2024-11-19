@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `[bge_medembed_large_v0_1](https://sparknlp.org/2024/10/21/bge_medembed_large_v0_1_en.html)` embeddings.
 Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column.
 
+## Predicted Entities
+
+`RxNorm Codes`, `Concept Classes`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,9 +37,8 @@ Additionally, this model returns concept classes of the drugs in the `all_k_aux_
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
-
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -87,10 +90,8 @@ resolver_pipeline = Pipeline(stages = [document_assembler,
 data = spark.createDataFrame([["""The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily"""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -145,7 +146,6 @@ val resolver_pipeline = new PipelineModel().setStages(Array(
 val data = Seq([["""The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily"""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
-
 ```
 </div>
 
