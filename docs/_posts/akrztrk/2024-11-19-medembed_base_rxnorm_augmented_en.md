@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `[bge_medembed_base_v0_1](https://sparknlp.org/2024/10/21/bge_medembed_base_v0_1_en.html)` embeddings.
 Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column.
 
+## Predicted Entities
+
+`RxNorm Codes`, `Concept Classes`,
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,6 +37,7 @@ Additionally, this model returns concept classes of the drugs in the `all_k_aux_
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 
