@@ -23,7 +23,7 @@ Additionally, this model returns concept classes of the drugs in the `all_k_aux_
 
 ## Predicted Entities
 
-`RxNorm Codes`, `Concept Classes`,
+`RxNorm Codes`, `Concept Classes`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
