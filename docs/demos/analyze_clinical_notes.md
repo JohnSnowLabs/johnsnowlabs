@@ -189,5 +189,17 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb      
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb  
+        - title: Gene-Phenotype Extraction
+          id: gene_phenotype_extraction 
+          image: 
+              src: /assets/images/The_ability_to_identify_and_annotate_genes.svg
+          excerpt: This demo showcases the ability to identify and label genes, mutations, phenotypes, and related genetic information within text.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_GENE_PHENOTYPES/
+          - text: Colab
+            type: blue_btn
+            url:  
 ---
