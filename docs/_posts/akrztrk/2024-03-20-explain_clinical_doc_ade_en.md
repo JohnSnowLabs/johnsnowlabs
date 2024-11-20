@@ -38,7 +38,7 @@ In this pipeline, two NER, one text matcher, one sentence classifier, one assert
 
 ## Predicted Entities
 
-`ADE`, `DRUG`, `DRUGG`
+`ADE`, `DRUG`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
