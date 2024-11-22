@@ -24,6 +24,11 @@ Here are the NER models that this pretrained pipeline includes:
 
 `ner_vop_clinical_dept`, `ner_vop_temporal`, `ner_vop_test`, `ner_vop`, `ner_vop_problem`, `ner_vop_problem_reduced`, `ner_vop_treatment`, `ner_vop_demographic`, `ner_vop_anatomy`
 
+## Predicted Entities
+
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `Measurements`, `MedicalDevice`, `Modifier`, `Problem`, `Procedure`, `PsychologicalCondition`, `RaceEthnicity`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

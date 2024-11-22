@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This advanced pipeline extracts clinical conditions from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding SNOMED codes.
 
+## Predicted Entities
+
+`Cerebrovascular_Disease`, `Communicable_Disease`, `Diabetes`, `Disease_Syndrome_Disorder`, `EKG_Findings`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `ImagingFindings`, `Injury_or_Poisoning`, `Kidney_Disease`, `Obesity`, `Oncological`, `Overweight`, `PROBLEM`, `Pregnancy`, `Psychological_Condition`, `Symptom`, `Triglycerides`, `VS_Finding`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
