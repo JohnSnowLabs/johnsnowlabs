@@ -22,6 +22,8 @@ Object detection model trained to detect tables leverages one of the foremost ar
 
 ## Predicted Entities
 
+``table``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_DETECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

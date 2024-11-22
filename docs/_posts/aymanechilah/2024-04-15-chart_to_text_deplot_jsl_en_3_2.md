@@ -24,6 +24,7 @@ DePlot, as outlined in the paper "DePlot: One-shot visual language reasoning by 
 
 ## Predicted Entities
 
+``answers``.
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PDF_CHART_TO_TEXT/){:.button.button-orange.button-orange-trans.co.button-icon}

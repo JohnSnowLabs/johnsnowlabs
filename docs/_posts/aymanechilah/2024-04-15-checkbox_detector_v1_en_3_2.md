@@ -22,6 +22,8 @@ Object detection model trained to detect document checkboxes one of the foremost
 
 ## Predicted Entities
 
+``Unchecked``, ``Checked``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/CHECKBOX_DETECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrCheckBoxDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

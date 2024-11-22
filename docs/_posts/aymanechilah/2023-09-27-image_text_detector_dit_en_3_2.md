@@ -25,6 +25,8 @@ The abstract from the paper is the following: Image Transformer has recently ach
 
 ## Predicted Entities
 
+``text_regions``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/TEXT_DETECTION_DIT/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon} 
