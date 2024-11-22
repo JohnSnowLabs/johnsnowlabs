@@ -26,6 +26,8 @@ The abstract from the paper is the following: Image Transformer has recently ach
 
 ## Predicted Entities
 
+``label``.
+
 
 
 {:.btn-box}

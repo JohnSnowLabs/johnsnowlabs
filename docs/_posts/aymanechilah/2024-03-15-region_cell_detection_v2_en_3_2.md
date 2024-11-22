@@ -23,6 +23,8 @@ Object detection model trained to detect table cells one of the foremost archite
 
 ## Predicted Entities
 
+``cells``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_REGION_CELL_DETECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

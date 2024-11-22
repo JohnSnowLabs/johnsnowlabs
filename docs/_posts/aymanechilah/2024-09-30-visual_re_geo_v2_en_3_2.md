@@ -25,6 +25,8 @@ GeoLayoutLM is designed as a multi-modal framework that handles tasks like Seman
 
 ## Predicted Entities
 
+``other``, ``b-header``, ``i-header``, ``b-question``, ``i-question``, ``b-answer``, ``i-answer``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/RELATION_EXTRACTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/FormRecognition/FormRecognitionGeo.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

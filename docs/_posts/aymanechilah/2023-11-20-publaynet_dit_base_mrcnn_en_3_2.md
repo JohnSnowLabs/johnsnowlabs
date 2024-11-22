@@ -23,9 +23,11 @@ DiT, as proposed in the paper "DiT: Self-supervised Pre-training for Document Im
 
 ## Predicted Entities
 
+``text``, ``title``, ``list``, ``table``, ``figure``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/LAYOUT_ANALYSIS/){:.button.button-orange.button-orange-trans.co.button-icon}
-[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDitLayoutAnalyze.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/publaynet_dit_base_mrcnn_jsl_en_5.0.0_3.0_1698062080337.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 ## How to use
 

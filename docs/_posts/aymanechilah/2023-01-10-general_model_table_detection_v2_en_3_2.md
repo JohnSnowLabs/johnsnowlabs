@@ -24,6 +24,8 @@ Here it is used the CascadeTabNet general model for table detection inspired by 
 
 ## Predicted Entities
 
+``table``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_DETECTION_ONLY/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTableDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
