@@ -24,7 +24,7 @@ Here it is used the CascadeTabNet general model for table detection inspired by 
 
 ## Predicted Entities
 
-``table``.
+``[table]``.
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_DETECTION_ONLY/){:.button.button-orange.button-orange-trans.co.button-icon}
