@@ -628,6 +628,56 @@ Hello! I am JSL Medical LLM, an artificial intelligence language model specializ
     </tr>
   </tbody>
 </table>
+
+<h2 id="benchmarking">Benchmarking</h2>
+
+<p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.24         | 0.25                 | 0.38          |
+| GPT4o      | 0.19         | 0.26                 | 0.27          |
+| Neutral    | 0.43         | 0.36                 | 0.18          |
+| None       | 0.14         | 0.13                 | 0.17          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+<span class="c">## Summary </span>
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.47         | 0.48                 | 0.42          |
+| GPT4o      | 0.25         | 0.25                 | 0.25          |
+| Neutral    | 0.22         | 0.22                 | 0.25          |
+| None       | 0.07         | 0.05                 | 0.08          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+<span class="c">## QA</span>
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.35         | 0.36                 | 0.42          |
+| GPT4o      | 0.24         | 0.24                 | 0.29          |
+| Neutral    | 0.33         | 0.33                 | 0.18          |
+| None       | 0.09         | 0.07                 | 0.11          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+<span class="c">## BioMedical</span>
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.33         | 0.24                 | 0.57          |
+| GPT4o      | 0.12         | 0.08                 | 0.16          |
+| Neutral    | 0.45         | 0.57                 | 0.16          |
+| None       | 0.10         | 0.10                 | 0.10          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+<span class="c">## OpenEnded</span>
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.35         | 0.30                 | 0.39          |
+| GPT4o      | 0.30         | 0.33                 | 0.41          |
+| Neutral    | 0.19         | 0.20                 | 0.02          |
+| None       | 0.17         | 0.17                 | 0.19          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+</code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-05T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
