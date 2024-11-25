@@ -724,6 +724,31 @@ KISUNLA is an amyloid beta-directed antibody indicated <span class="k">for </spa
     </tr>
   </tbody>
 </table>
+
+<h2 id="benchmarking">Benchmarking</h2>
+
+<p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.29         | 0.25                 | 0.50          |
+| ChatGPT  | 0.21         | 0.30                 | 0.26          |
+| Neutral  | 0.43         | 0.38                 | 0.17          |
+| None     | 0.07         | 0.07                 | 0.08          |
+| total    | 1.00         | 1.00                 | 1.00          |
+
+<span class="c">## Summary </span>
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.42         | 0.42                 | 0.50          |
+| GPT4o    | 0.33         | 0.33                 | 0.28          |
+| Neutral  | 0.17         | 0.17                 | 0.12          |
+| None     | 0.08         | 0.08                 | 0.10          |
+| Total    | 1.00         | 1.00                 | 1.00          |
+
+...
+</code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-04T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
