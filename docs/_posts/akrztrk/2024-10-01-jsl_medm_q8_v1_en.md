@@ -215,3 +215,31 @@ KISUNLA is an amyloid beta-directed antibody indicated for the treatment of Alzh
 |Edition:|Official|
 |Language:|en|
 |Size:|8.2 GB|
+
+
+
+## Benchmarking
+
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+
+```bash
+## Overall
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.29         | 0.25                 | 0.50          |
+| ChatGPT  | 0.21         | 0.30                 | 0.26          |
+| Neutral  | 0.43         | 0.38                 | 0.17          |
+| None     | 0.07         | 0.07                 | 0.08          |
+| total    | 1.00         | 1.00                 | 1.00          |
+
+## Summary 
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.42         | 0.42                 | 0.50          |
+| GPT4o    | 0.33         | 0.33                 | 0.28          |
+| Neutral  | 0.17         | 0.17                 | 0.12          |
+| None     | 0.08         | 0.08                 | 0.10          |
+| Total    | 1.00         | 1.00                 | 1.00          |
+
+...
+```
