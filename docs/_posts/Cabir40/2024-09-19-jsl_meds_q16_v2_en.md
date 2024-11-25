@@ -100,3 +100,53 @@ The best treatment for this patient is E: Nitrofurantoin. This medication is con
 
 
 
+## Benchmarking
+
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+
+```bash
+## Overall
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.24         | 0.25                 | 0.38          |
+| GPT4o      | 0.19         | 0.26                 | 0.27          |
+| Neutral    | 0.43         | 0.36                 | 0.18          |
+| None       | 0.14         | 0.13                 | 0.17          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+## Summary 
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.47         | 0.48                 | 0.42          |
+| GPT4o      | 0.25         | 0.25                 | 0.25          |
+| Neutral    | 0.22         | 0.22                 | 0.25          |
+| None       | 0.07         | 0.05                 | 0.08          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+## QA
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.35         | 0.36                 | 0.42          |
+| GPT4o      | 0.24         | 0.24                 | 0.29          |
+| Neutral    | 0.33         | 0.33                 | 0.18          |
+| None       | 0.09         | 0.07                 | 0.11          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+## BioMedical
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.33         | 0.24                 | 0.57          |
+| GPT4o      | 0.12         | 0.08                 | 0.16          |
+| Neutral    | 0.45         | 0.57                 | 0.16          |
+| None       | 0.10         | 0.10                 | 0.10          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+
+## OpenEnded
+| Model      | Factuality % | Clinical Relevancy % | Conciseness % |
+|------------|--------------|----------------------|---------------|
+| JSL-MedS   | 0.35         | 0.30                 | 0.39          |
+| GPT4o      | 0.30         | 0.33                 | 0.41          |
+| Neutral    | 0.19         | 0.20                 | 0.02          |
+| None       | 0.17         | 0.17                 | 0.19          |
+| Total      | 1.00         | 1.00                 | 1.00          |
+```
