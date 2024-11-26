@@ -34,6 +34,15 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 
 - Relation Extraction Labels: `is_related`,`not_related`
 
+## Predicted Entities
+
+`BodyPart`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Duration`, `Form`, `Frequency`, `Gender`, `ImagingFindings`, `Imaging_Technique`, `Imaging_Test`, `Invasion`, `ManualFix`, `Measurements`, `Medical_Device`, `Metastasis`, `OtherFindings`, `Procedure`, `RelativeDate`, `Route`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Units`
+
+`BodyPart`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Duration`, `Form`, `Frequency`, `Gender`, `ImagingFindings`, `Imaging_Technique`, `Imaging_Test`, `Invasion`, `ManualFix`, `Measurements`, `Medical_Device`, `Metastasis`, `OtherFindings`, `Procedure`, `RelativeDate`, `Route`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Units`
+
+`BodyPart`, `Direction`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `ImagingTest`, `Imaging_Technique`, `ManualFix`, `Measurements`, `Medical_Device`, `OtherFindings`, `Procedure`, `Symptom`, `Test`, `Test_Result`, `Units`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

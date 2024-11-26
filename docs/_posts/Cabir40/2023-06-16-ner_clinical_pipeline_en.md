@@ -22,6 +22,26 @@ This pretrained pipeline is built on the top of [ner_clinical](https://nlp.johns
 
 ## Predicted Entities
 
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`Body_Part`, `Clinical_Dept`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug_Brand_Name`, `Drug_Ingredient`, `Form`, `Frequency`, `Imaging_Findings`, `Imaging_Technique`, `Imaging_Test`, `Measurements`, `Medical_Device`, `Procedure`, `Pulse`, `Route`, `Score`, `Symptom`, `Test`, `Test_Result`, `Time`, `Units`, `Weight`
+
+`Body_Part`, `Clinical_Dept`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug_Brand_Name`, `Drug_Ingredient`, `Form`, `Frequency`, `Imaging_Findings`, `Imaging_Technique`, `Imaging_Test`, `Measurements`, `Medical_Device`, `Procedure`, `Pulse`, `Route`, `Score`, `Symptom`, `Test`, `Test_Result`, `Time`, `Units`, `Weight`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
 
 
 {:.btn-box}

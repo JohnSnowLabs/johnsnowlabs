@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_anatomy_coarse](https://nlp
 
 ## Predicted Entities
 
+`Anatomy`
+
 
 
 {:.btn-box}

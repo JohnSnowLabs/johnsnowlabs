@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 A pipeline with `ner_clinical`, `assertion_dl`, `re_clinical` and `ner_posology`. It will extract clinical and medication entities, assign assertion status and find relationships between clinical entities.
 
+## Predicted Entities
+
+`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `PROBLEM`, `ROUTE`, `STRENGTH`, `TEST`, `TREATMENT`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

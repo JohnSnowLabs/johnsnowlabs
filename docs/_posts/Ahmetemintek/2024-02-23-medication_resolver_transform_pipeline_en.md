@@ -24,6 +24,19 @@ Action/treatments are available for branded medication, and SNOMED codes are ava
 
 This pipeline can be used with Spark transform. You can use `medication_resolver_pipeline` as Lightpipeline (with `annotate/fullAnnotate`).
 
+## Predicted Entities
+
+`DRUG`, `DRUGG`
+
+`DRUG`, `DRUGG`
+
+`DRUG`, `DRUGG`
+
+`DRUG`, `DRUGG`
+
+`DRUG`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

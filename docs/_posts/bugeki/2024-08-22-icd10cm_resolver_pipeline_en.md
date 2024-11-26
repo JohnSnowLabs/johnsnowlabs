@@ -21,6 +21,11 @@ use_language_switcher: "Python-Scala-Java"
 This pipeline can extract clinical conditions, and map the clinical conditions to their respective ICD-10-CM codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts:
 ICD-10-CM entities: `PROBLEM`, `CEREBROVASCULAR_DISEASE`, `COMMUNICABLE_DISEASE`, `DIABETES`, `DISEASE_SYNDROME_DISORDER`, `EKG_FINDINGS`, `HEART_DISEASE`, `HYPERLIPIDEMIA`, `HYPERTENSION`, `IMAGINGFINDINGS`, `INJURY_OR_POISONING`, `KIDNEY_DISEASE`, `OBESITY`, `ONCOLOGICAL`, `OVERWEIGHT`, `PREGNANCY`, `PSYCHOLOGICAL_CONDITION`, `SYMPTOM`, `VS_FINDING`
 
+## Predicted Entities
+
+`Cerebrovascular_Disease`, `Communicable_Disease`, `Diabetes`, `Disease_Syndrome_Disorder`, `EKG_Findings`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `ImagingFindings`, `Injury_or_Poisoning`, `Kidney_Disease`, `Obesity`, `Oncological`, `Overweight`, `PROBLEM`, `Pregnancy`, `Psychological_Condition`, `Symptom`, `VS_Finding`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

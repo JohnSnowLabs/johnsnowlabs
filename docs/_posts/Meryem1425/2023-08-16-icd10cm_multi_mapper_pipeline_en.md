@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline maps ICD-10-CM codes to their corresponding billable mappings, hcc codes, cause mappings, claim mappings, SNOMED codes, UMLS codes and ICD-9 codes without using any text data. You’ll just feed white space-delimited ICD-10-CM codes and get the result.
 
+## Predicted Entities
+
+
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

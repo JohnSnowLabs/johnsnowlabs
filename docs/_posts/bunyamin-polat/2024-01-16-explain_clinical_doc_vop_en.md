@@ -34,6 +34,11 @@ from the documents transferred from the patient’s sentences. In this pipeline,
 
 - Relation Extraction Labels: `Drug-Dosage`, `Drug-Frequency`, `Drug-Duration`, `Drug-Strength`, `Drug-Drug`, `Test-TestResult`, `Disease_Syndrome_Disorder-Treatment`, `Disease_Syndrome_Disorder-Symptom`, `Disease_Syndrome_Disorder-Modifier`, `Symptom-Modifier`, `Disease_Syndrome_Disorder-BodyPart`, `Symptom-BodyPart`,  `Procedure-DateTime`, `Test-DateTime`, `VitalTest-TestResult`,  `Disease_Syndrome_Disorder-Drug`, `Treatment-Drug`, `Disease_Syndrome_Disorder-Procedure`, `Procedure-Drug`, `Procedure-BodyPart`, `Treatment-BodyPart`, `BodyPart-Procedure`, `MedicalDevice-Procedure`
 
+## Predicted Entities
+
+`AdmissionDischarge`, `Admission_Discharge`, `Age`, `Alcohol`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `ImagingTest`, `InjuryOrPoisoning`, `Laterality`, `ManualFix`, `MedicalDevice`, `Modifier`, `Procedure`, `PsychologicalCondition`, `RelationshipStatus`, `Route`, `Smoking`, `Strength`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Test_Result`, `Treatment`, `Units`, `Vaccine`, `Vaccine_Name`, `VitalTest`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

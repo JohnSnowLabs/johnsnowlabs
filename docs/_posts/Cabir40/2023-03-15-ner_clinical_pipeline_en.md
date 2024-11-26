@@ -20,6 +20,19 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_clinical](https://nlp.johnsnowlabs.com/2021/03/31/ner_clinical_en.html) model.
 
+## Predicted Entities
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+`Body_Part`, `Clinical_Dept`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug_Brand_Name`, `Drug_Ingredient`, `Form`, `Frequency`, `Imaging_Findings`, `Imaging_Technique`, `Imaging_Test`, `Measurements`, `Medical_Device`, `Procedure`, `Pulse`, `Route`, `Score`, `Symptom`, `Test`, `Test_Result`, `Time`, `Units`, `Weight`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

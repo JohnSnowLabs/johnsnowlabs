@@ -22,6 +22,8 @@ This pretrained pipeline maps entities with their corresponding CVX codes. Youâ€
 
 ## Predicted Entities
 
+`Vaccine`
+
 
 
 {:.btn-box}

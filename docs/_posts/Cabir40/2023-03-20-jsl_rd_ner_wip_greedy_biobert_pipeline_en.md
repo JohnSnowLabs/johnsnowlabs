@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [jsl_rd_ner_wip_greedy_biobert](https://nlp.johnsnowlabs.com/2021/07/26/jsl_rd_ner_wip_greedy_biobert_en.html) model.
 
+## Predicted Entities
+
+`BodyPart`, `Direction`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `ImagingTest`, `Imaging_Technique`, `ManualFix`, `Measurements`, `Medical_Device`, `OtherFindings`, `Procedure`, `Score`, `Symptom`, `Test`, `Test_Result`, `Units`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

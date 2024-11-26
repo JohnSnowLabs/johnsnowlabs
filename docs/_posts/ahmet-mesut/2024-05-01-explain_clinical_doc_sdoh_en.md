@@ -43,6 +43,11 @@ Relation Extraction Labels:
 
 
 
+## Predicted Entities
+
+`Access_To_Care`, `Age`, `Alcohol`, `Cancer_Diagnosis`, `Cancer_Surgery`, `Cerebrovascular_Disease`, `Childhood_Event`, `Communicable_Disease`, `Community_Safety`, `Diabetes`, `Diet`, `Disability`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Eating_Disorder`, `Education`, `Employment`, `Environmental_Condition`, `Exercise`, `Family_Member`, `Financial_Status`, `Food_Insecurity`, `Geographic_Entity`, `Healthcare_Institution`, `Heart_Disease`, `Housing`, `Hyperlipidemia`, `Hypertension`, `Income`, `Insurance_Status`, `Kidney_Disease`, `Legal_Issues`, `Marital_Status`, `Mental_Health`, `Metastasis`, `Obesity`, `Other_SDoH_Keywords`, `Population_Group`, `Quality_Of_Life`, `Race_Ethnicity`, `Relationship_Status`, `Sexual_Activity`, `Sexual_Orientation`, `Smoking`, `Social_Exclusion`, `Social_Support`, `Spiritual_Beliefs`, `SubstanceQuantity`, `Substance_Duration`, `Substance_Frequency`, `Substance_Quantity`, `Substance_Use`, `Symptom`, `Transportation`, `Tumor_Finding`, `Violence_Or_Abuse`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline extracts `GENE` entities and maps them to their corresponding [HUGO Gene Nomenclature Committee (HGNC)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HGNC/index.html) codes using `sbiobert_base_cased_mli` sentence embeddings.
 
+## Predicted Entities
+
+`GENE`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [clinical_notes_qa_large_onnx](https://nlp.johnsnowlabs.com/2023/08/17/clinical_notes_qa_large_onnx_en.html) model.
 
+## Predicted Entities
+
+
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
