@@ -241,5 +241,35 @@ We have generated a total of 400 questions, 100 from each category. These questi
 | None     | 0.08         | 0.08                 | 0.10          |
 | Total    | 1.00         | 1.00                 | 1.00          |
 
-...
+## QA
+
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.40         | 0.36                 | 0.60          |
+| GPT4o    | 0.15         | 0.19                 | 0.19          |
+| Neutral  | 0.38         | 0.38                 | 0.11          |
+| None     | 0.08         | 0.08                 | 0.09          |
+| Total    | 1.00         | 1.00                 | 1.00          |
+
+
+## BioMedical
+
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.22         | 0.14                 | 0.55          |
+| GPT4o    | 0.21         | 0.36                 | 0.23          |
+| Neutral  | 0.49         | 0.44                 | 0.14          |
+| None     | 0.07         | 0.06                 | 0.07          |
+| Total    | 1.00         | 1.00                 | 1.00          |
+
+## OpenEnded
+
+| Model    | Factuality % | Clinical Relevancy % | Conciseness % |
+|----------|--------------|----------------------|---------------|
+| JSL-MedM | 0.21         | 0.19                 | 0.38          |
+| GPT4o    | 0.18         | 0.30                 | 0.31          |
+| Neutral  | 0.55         | 0.46                 | 0.26          |
+| None     | 0.05         | 0.05                 | 0.06          |
+| Total    | 1.00         | 1.00                 | 1.00          |
+
 ```
