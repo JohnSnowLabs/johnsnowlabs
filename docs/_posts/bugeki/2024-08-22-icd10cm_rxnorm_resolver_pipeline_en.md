@@ -27,10 +27,6 @@ RxNorm entities: `DRUG`
 
 `Cerebrovascular_Disease`, `Communicable_Disease`, `DRUG`, `DRUGG`, `Diabetes`, `Disease_Syndrome_Disorder`, `EKG_Findings`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `ImagingFindings`, `Injury_or_Poisoning`, `Kidney_Disease`, `Obesity`, `Oncological`, `Overweight`, `PROBLEM`, `Pregnancy`, `Psychological_Condition`, `Symptom`, `VS_Finding`
 
-`Cerebrovascular_Disease`, `Communicable_Disease`, `DRUG`, `DRUGG`, `Diabetes`, `Disease_Syndrome_Disorder`, `EKG_Findings`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `ImagingFindings`, `Injury_or_Poisoning`, `Kidney_Disease`, `Obesity`, `Oncological`, `Overweight`, `PROBLEM`, `Pregnancy`, `Psychological_Condition`, `Symptom`, `VS_Finding`
-
-`Cerebrovascular_Disease`, `Communicable_Disease`, `DRUG`, `Diabetes`, `Disease_Syndrome_Disorder`, `EKG_Findings`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `ImagingFindings`, `Injury_or_Poisoning`, `Kidney_Disease`, `Obesity`, `Oncological`, `Overweight`, `PROBLEM`, `Pregnancy`, `Psychological_Condition`, `Symptom`, `VS_Finding`
-
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

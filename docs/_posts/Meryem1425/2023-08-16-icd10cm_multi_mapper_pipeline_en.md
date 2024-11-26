@@ -23,8 +23,6 @@ This pretrained pipeline maps ICD-10-CM codes to their corresponding billable ma
 ## Predicted Entities
 
 
-
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

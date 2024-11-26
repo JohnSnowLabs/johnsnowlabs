@@ -31,14 +31,6 @@ This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can
 
 ## Predicted Entities
 
-`DRUG`, `DRUGG`
-
-`DRUG`, `DRUGG`
-
-`DRUG`, `DRUGG`
-
-`DRUG`, `DRUGG`
-
 `DRUG`
 
 

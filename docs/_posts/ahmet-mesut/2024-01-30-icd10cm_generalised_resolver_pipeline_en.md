@@ -42,7 +42,6 @@ Predicted Entities:
 
 
 
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

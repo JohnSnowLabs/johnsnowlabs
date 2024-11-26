@@ -38,8 +38,6 @@ In this pipeline, two NER, one text matcher, one sentence classifier, one assert
 
 ## Predicted Entities
 
-`ADE`, `DRUG`, `DRUGG`
-
 `ADE`, `DRUG`
 
 

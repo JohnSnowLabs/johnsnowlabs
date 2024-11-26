@@ -22,7 +22,7 @@ This pipeline extracts `PROCEDURE` entities and maps them to their corresponding
 
 ## Predicted Entities
 
-`PROCEDURE`, `Procedure`
+`PROCEDURE`
 
 
 {:.btn-box}

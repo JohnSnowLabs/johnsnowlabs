@@ -24,10 +24,6 @@ A pipeline for detecting posology entities with the `ner_radiology` NER model, a
 
 `BodyPart`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Duration`, `Form`, `Frequency`, `Gender`, `ImagingFindings`, `Imaging_Technique`, `Imaging_Test`, `Invasion`, `ManualFix`, `Measurements`, `Medical_Device`, `Metastasis`, `OtherFindings`, `Procedure`, `RelativeDate`, `Route`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Units`
 
-`BodyPart`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Duration`, `Form`, `Frequency`, `Gender`, `ImagingFindings`, `Imaging_Technique`, `Imaging_Test`, `Invasion`, `ManualFix`, `Measurements`, `Medical_Device`, `Metastasis`, `OtherFindings`, `Procedure`, `RelativeDate`, `Route`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Units`
-
-`BodyPart`, `Direction`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `ImagingTest`, `Imaging_Technique`, `ManualFix`, `Measurements`, `Medical_Device`, `OtherFindings`, `Procedure`, `Symptom`, `Test`, `Test_Result`, `Units`
-
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

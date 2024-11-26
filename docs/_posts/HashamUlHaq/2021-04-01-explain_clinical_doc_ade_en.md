@@ -23,8 +23,6 @@ A pipeline for Adverse Drug Events (ADE) with `ner_ade_biobert`, `assertiondl_bi
 
 ## Predicted Entities
 
-`ADE`, `DRUG`, `DRUGG`
-
 `ADE`, `DRUG`
 
 

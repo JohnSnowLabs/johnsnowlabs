@@ -24,7 +24,6 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_jsl](
 
 
 
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

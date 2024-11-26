@@ -24,7 +24,6 @@ This pretrained pipeline is built on the top of [clinical_notes_qa_large_onnx](h
 
 
 
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
