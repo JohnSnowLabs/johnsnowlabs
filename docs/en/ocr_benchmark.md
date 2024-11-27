@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Visual NLP | John Snow Labs
-title: Speed Bencmarks
+title: Speed Benchmarks
 permalink: /docs/en/ocr_benchmark
 key: docs-benchmark
 modify_date: "2024-06-24"
