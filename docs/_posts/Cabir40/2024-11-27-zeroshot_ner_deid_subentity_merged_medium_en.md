@@ -22,7 +22,7 @@ Zero-shot Named Entity Recognition (NER) enables the identification of entities 
 
 ## Predicted Entities
 
-`'DOCTOR'`, `'PATIENT'`, `'AGE'`, `'DATE'`, `'HOSPITAL'`, `'CITY'`, `'STREET'`, `'STATE'`, `'COUNTRY'`, `'PHONE'`, `'IDNUM'`, `'EMAIL'`, `'ZIP'`, `'ORGANIZATION'`, `'PROFESSION'`, `'USERNAME'`
+`DOCTOR`, `PATIENT`, `AGE`, `DATE`, `HOSPITAL`, `CITY`, `STREET`, `STATE`, `COUNTRY`, `PHONE`, `IDNUM`, `EMAIL`, `ZIP`, `ORGANIZATION`, `PROFESSION`, `USERNAME`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -36,6 +36,7 @@ Zero-shot Named Entity Recognition (NER) enables the identification of entities 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -127,7 +128,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
  
-labels = ['DOCTOR', 'PATIENT', 'AGE', 'DATE', 'HOSPITAL', 'CITY', 'STREET', 'STATE', 'COUNTRY', 'PHONE', 'IDNUM', 'EMAIL','ZIP', 'ORGANIZATION', 'PROFESSION', 'USERNAME']
+labels = ["DOCTOR", "PATIENT", "AGE", "DATE", "HOSPITAL", "CITY", "STREET", "STATE", "COUNTRY", "PHONE", "IDNUM", "EMAIL", "ZIP", "ORGANIZATION", "PROFESSION", "USERNAME"]
  
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_subentity_merged_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
