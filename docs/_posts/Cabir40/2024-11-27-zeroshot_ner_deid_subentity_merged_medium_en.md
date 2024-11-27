@@ -56,15 +56,14 @@ labels = ['DOCTOR', 'PATIENT', 'AGE', 'DATE', 'HOSPITAL', 'CITY', 'STREET', 'STA
  
 pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_subentity_merged_medium", "en", "clinical/models")\
     .setInputCols("sentence", "token")\
-    .setOutputCol("entities")\
+    .setOutputCol("ner")\
     .setPredictionThreshold(0.5)\
     .setLabels(labels)
  
 ner_converter = NerConverterInternal()\
-    .setInputCols("sentence", "token", "entities")\
-    .setOutputCol("ner_chunks_internal")
- 
- 
+    .setInputCols("sentence", "token", "ner")\
+    .setOutputCol("ner_chunk")
+
 pipeline = Pipeline().setStages([
     document_assembler,
     sentence_detector,
@@ -92,17 +91,17 @@ tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
  
-labels = ['DOCTOR', 'PATIENT', 'AGE', 'DATE', 'HOSPITAL', 'CITY', 'STREET', 'STATE', 'COUNTRY', 'PHONE', 'IDNUM', 'EMAIL','ZIP', 'ORGANIZATION', 'PROFESSION', 'USERNAME']
+labels = ['DOCTOR', 'PATIENT', 'AGE', 'DATE', 'HOSPITAL', 'CITY', 'STREET', 'STATE', 'COUNTRY', 'PHONE', 'IDNUM', 'EMAIL', 'ZIP', 'ORGANIZATION', 'PROFESSION', 'USERNAME']
  
 pretrained_zero_shot_ner = medical.PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_subentity_merged_medium", "en", "clinical/models")\
     .setInputCols("sentence", "token")\
-    .setOutputCol("entities")\
+    .setOutputCol("ner")\
     .setPredictionThreshold(0.5)\
     .setLabels(labels)
  
 ner_converter = medical.NerConverterInternal()\
-    .setInputCols("sentence", "token", "entities")\
-    .setOutputCol("ner_chunks_internal")
+    .setInputCols("sentence", "token", "ner")\
+    .setOutputCol("ner_chunk")
  
  
 pipeline = nlp.Pipeline().setStages([
@@ -134,12 +133,13 @@ labels = ["DOCTOR", "PATIENT", "AGE", "DATE", "HOSPITAL", "CITY", "STREET", "STA
  
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_subentity_merged_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
-    .setOutputCol("entities")
+    .setOutputCol("ner")
     .setPredictionThreshold(0.5)
     .setLabels(labels)
  
-val ner_converter = new NerConverterInternal()    .setInputCols(Array("sentence", "token", "entities"))
-    .setOutputCol("ner_chunks_internal")
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
  
  
 val pipeline = new Pipeline().setStages(Array(
@@ -150,9 +150,9 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter
 ))
 
-val data = Seq([["""Dr. John Taylor, ID: 982345, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old."""]]).toDF("text")
+val data = Seq("""Dr. John Taylor, ID: 982345, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old.""").toDF("text")
 
-val result = resolver_pipeline.fit(data).transform(data)
+val result = pipeline.fit(data).transform(data)
 ```
 </div>
 
