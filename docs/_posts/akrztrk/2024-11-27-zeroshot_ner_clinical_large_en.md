@@ -149,3 +149,19 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.6 GB|
+
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+   B-PROBLEM      0.870     0.916     0.892      4460
+      B-TEST      0.851     0.920     0.884      2946
+ B-TREATMENT      0.886     0.905     0.895      3447
+   I-PROBLEM      0.873     0.899     0.886      6312
+      I-TEST      0.855     0.877     0.866      2610
+ I-TREATMENT      0.905     0.847     0.875      2941
+    accuracy           -        -     0.947     86628
+   macro-avg      0.888     0.904     0.895     86628
+weighted-avg      0.948     0.947     0.947     86628
+```
