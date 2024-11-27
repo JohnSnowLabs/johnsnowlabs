@@ -33,6 +33,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -86,14 +87,15 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = ['PROBLEM', 'TREATMENT','TEST']
+labels = ["PROBLEM", "TREATMENT","TEST"]
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_clinical_large", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("entities")
     .setPredictionThreshold(0.5)
     .setLabels(labels)
 
-val ner_converter = new NerConverterInternal()    .setInputCols(Array("sentence", "token", "entities"))
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "entities"))
     .setOutputCol("ner_chunks_internal")
 
 
