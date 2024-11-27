@@ -18,7 +18,9 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Zero-shot Named Entity Recognition (NER) enables the identification of entities in text . With minimal effort, leveraging pre-trained language models and contextual understanding, zero-shot NER expands entity recognition capabilities to new domains and languages, driving advancements in natural language processing and AI applications.
+Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
+ 
+While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
 
 ## Predicted Entities
 
@@ -50,7 +52,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
  
-labels = ['DOCTOR', 'PATIENT', 'AGE', 'DATE', 'HOSPITAL', 'CITY', 'STREET', 'STATE', 'COUNTRY', 'PHONE', 'IDNUM', 'EMAIL','ZIP', 'ORGANIZATION', 'PROFESSION', 'USERNAME']
+labels = ['DOCTOR', 'PATIENT', 'AGE', 'DATE', 'HOSPITAL', 'CITY', 'STREET', 'STATE', 'COUNTRY', 'PHONE', 'IDNUM', 'EMAIL', 'ZIP', 'ORGANIZATION', 'PROFESSION', 'USERNAME'] # You can change the entities
  
 pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_subentity_merged_medium", "en", "clinical/models")\
     .setInputCols("sentence", "token")\
