@@ -55,13 +55,13 @@ tokenizer = Tokenizer()\
 labels = ['PROBLEM', 'TREATMENT','TEST'] # You can change the entities
 pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_clinical_large", "en", "clinical/models")\
     .setInputCols("sentence", "token")\
-    .setOutputCol("entities")\
+    .setOutputCol("ner")\
     .setPredictionThreshold(0.5)\
     .setLabels(labels)
 
 ner_converter = NerConverterInternal()\
-    .setInputCols("sentence", "token", "entities")\
-    .setOutputCol("ner_chunks_internal")
+    .setInputCols("sentence", "token", "ner")\
+    .setOutputCol("ner_chunk")
 
 
 pipeline = Pipeline().setStages([
@@ -94,13 +94,13 @@ val tokenizer = new Tokenizer()
 labels = ["PROBLEM", "TREATMENT","TEST"] # You can change the entities
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_clinical_large", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
-    .setOutputCol("entities")
+    .setOutputCol("ner")
     .setPredictionThreshold(0.5)
     .setLabels(labels)
 
 val ner_converter = new NerConverterInternal()
-    .setInputCols(Array("sentence", "token", "entities"))
-    .setOutputCol("ner_chunks_internal")
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 
 val pipeline = new Pipeline().setStages(Array(
@@ -113,7 +113,7 @@ val pipeline = new Pipeline().setStages(Array(
 
 val data = Seq([["""Mr. ABC is a 60-year-old gentleman who had stress test earlier today in my office with severe chest pain after 5 minutes of exercise on the standard Bruce with horizontal ST depressions and moderate apical ischemia on stress imaging only. He required 3 sublingual nitroglycerin in total. The patient underwent cardiac catheterization with myself today which showed mild-to-moderate left main distal disease of 30%, a severe mid-LAD lesion of 99%, and a mid-left circumflex lesion of 80% with normal LV function and some mild luminal irregularities in the right coronary artery with some moderate stenosis seen in the mid to distal right PDA."""]]).toDF("text")
 
-val result = resolver_pipeline.fit(data).transform(data)
+val result = pipeline.fit(data).transform(data)
 
 ```
 </div>
