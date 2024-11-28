@@ -159,7 +159,7 @@ val result = resolver_pipeline.fit(data).transform(data)
           ID    0.8330    0.8621    0.8475       29
     LOCATION    0.8438     0.924     0.882      263
         NAME    0.9742    0.9326    0.9529      445
-  PROFESSION    0.6552    0.9383    0.7716        81
+  PROFESSION    0.6552    0.9383    0.7716       81
 
     accuracy                        0.9841     10352
    macro avg    0.8766    0.9327    0.9010     10352
