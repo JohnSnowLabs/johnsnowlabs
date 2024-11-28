@@ -169,3 +169,47 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|711.2 MB|
+
+
+## Benchmarking
+
+```bash
+                label  precision    recall  f1-score   support
+           Adenopathy     0.4527    0.7283    0.5583        92
+                  Age     0.9583    0.9851    0.9715      1074
+            Biomarker     0.6589    0.8191    0.7303      1752
+     Biomarker_Result     0.4782    0.8450    0.6107      1632
+            Body_Part     0.6761    0.8969    0.7710      3540
+            Cancer_Dx     0.8778    0.7397    0.8029      1360
+       Cancer_Surgery     0.6859    0.7143    0.6998       749
+          Cycle_Count     0.8182    0.8229    0.8205       350
+            Cycle_Day     0.6464    0.7126    0.6779       254
+                 Date     0.9743    0.9870    0.9806       921
+         Death_Entity     0.9189    0.9444    0.9315        36
+            Direction     0.7552    0.8412    0.7958       957
+               Dosage     0.7772    0.8164    0.7963      1111
+             Duration     0.6831    0.8566    0.7601       760
+            Frequency     0.7599    0.7310    0.7451       394
+               Gender     0.9807    0.9876    0.9841      1286
+                Grade     0.5390    0.6434    0.5866       258
+    Histological_Type     0.5192    0.6239    0.5668       476
+         Imaging_Test     0.8460    0.8503    0.8482      2145
+             Invasion     0.4538    0.8674    0.5958       181
+           Metastasis     0.9441    0.8579    0.8989       394
+                    O     0.9502    0.8926    0.9205     66650
+             Oncogene     0.6986    0.5322    0.6041       466
+       Pathology_Test     0.7308    0.7082    0.7193      1100
+       Race_Ethnicity     0.8889    0.9492    0.9180        59
+       Radiation_Dose     0.5897    0.8156    0.6845       141
+        Relative_Date     0.8698    0.6558    0.7478      1284
+Response_To_Treatment     0.4634    0.6412    0.5380       641
+                Route     0.5722    0.7055    0.6319       146
+       Smoking_Status     0.9200    0.8070    0.8598        57
+              Staging     0.5579    0.7130    0.6260       223
+              Therapy     0.7379    0.8733    0.7999      2012
+        Tumor_Finding     0.8662    0.8634    0.8648      1252
+           Tumor_Size     0.7529    0.9859    0.8538      1066
+             accuracy          -         -    0.8744     94819
+            macro avg     0.7354    0.8063    0.7618     94819
+         weighted avg     0.8907    0.8744    0.8792     94819
+```
