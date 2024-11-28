@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
 
+## Predicted Entities
+
+`AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION', `NAME`, `PROFESSION`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,6 +37,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -87,7 +92,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = ['AGE', 'CONTACT', 'DATE', 'ID', 'LOCATION', 'NAME', 'PROFESSION']
+labels = ["AGE", "CONTACT", "DATE", "ID", "LOCATION", "NAME", "PROFESSION"]
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_generic_docwise_large", "de", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("entities")
@@ -142,3 +147,21 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|de|
 |Size:|1.6 GB|
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+
+         AGE	   0.9567	   0.9918	   0.9739	      245
+     CONTACT	   0.7778	   0.8235 	    0.8	       17
+        DATE	   0.9767	        1	   0.9882	      126
+          ID	   0.8333	   0.8621	   0.8475	       29
+    LOCATION	   0.8438	    0.924	    0.882	      263
+        NAME     0.9742	   0.9326	   0.9529     	445
+  PROFESSION     0.6552    0.9383	   0.7716        81
+
+    accuracy                         0.9841     10352
+   macro avg     0.8766    0.9327    0.9010     10352
+weighted avg	   0.9856    0.9841    0.9846     10352
+```
