@@ -33,6 +33,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -50,13 +51,13 @@ tokenizer = Tokenizer()\
 labels = ['AGE', 'CONTACT', 'DATE', 'ID', 'LOCATION', 'NAME', 'PROFESSION']
 pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_generic_docwise_medium", "en", "clinical/models")\
     .setInputCols("sentence", "token")\
-    .setOutputCol("entities")\
+    .setOutputCol("ner")\
     .setPredictionThreshold(0.5)\
     .setLabels(labels)
 
 ner_converter = NerConverterInternal()\
-    .setInputCols("sentence", "token", "entities")\
-    .setOutputCol("ner_chunks_internal")
+    .setInputCols("sentence", "token", "ner")\
+    .setOutputCol("ner_chunk")
 
 
 pipeline = Pipeline().setStages([
@@ -89,12 +90,13 @@ val tokenizer = new Tokenizer()
 labels = ["AGE", "CONTACT", "DATE", "ID", "LOCATION", "NAME", "PROFESSION"]
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_generic_docwise_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
-    .setOutputCol("entities")
+    .setOutputCol("ner")
     .setPredictionThreshold(0.5)
     .setLabels(labels)
 
-val ner_converter = new NerConverterInternal()    .setInputCols(Array("sentence", "token", "entities"))
-    .setOutputCol("ner_chunks_internal")
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 
 val pipeline = new Pipeline().setStages(Array(
@@ -107,7 +109,7 @@ val pipeline = new Pipeline().setStages(Array(
 
 val data = Seq([["""Dr. John Taylor, ID 982345, a cardiologist at St. Mary's Hospital in Boston, was contacted on 05/10/2023 regarding a 45-year-old male patient."""]]).toDF("text")
 
-val result = resolver_pipeline.fit(data).transform(data)
+val result = pipeline.fit(data).transform(data)
 
 ```
 </div>
