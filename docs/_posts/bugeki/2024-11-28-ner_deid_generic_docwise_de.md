@@ -36,6 +36,7 @@ The Named Entity Recognition (NER) model works at the document level, allowing i
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
