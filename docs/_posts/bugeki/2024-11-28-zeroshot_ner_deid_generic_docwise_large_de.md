@@ -23,7 +23,7 @@ While the model card includes default labels as examples, it is important to hig
 
 ## Predicted Entities
 
-`AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION', `NAME`, `PROFESSION`
+`DATE`, `NAME`, `LOCATION`, `PROFESSION`, `AGE`, `ID`, `CONTACT`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
