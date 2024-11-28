@@ -86,7 +86,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = ['AGE', 'CONTACT', 'DATE', 'ID', 'LOCATION', 'NAME', 'PROFESSION']
+labels = ["AGE", "CONTACT", "DATE", "ID", "LOCATION", "NAME", "PROFESSION"]
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_generic_docwise_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("entities")
