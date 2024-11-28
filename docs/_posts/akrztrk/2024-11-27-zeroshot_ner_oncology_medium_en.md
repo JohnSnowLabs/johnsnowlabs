@@ -128,7 +128,7 @@ val pipeline = new Pipeline().setStages(Array(
 
 val data = Seq([["""Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma. Last week she was also found to have a lung metastasis."""]]).toDF("text")
 
-val result = resolver_pipeline.fit(data).transform(data)
+val result = pipeline.fit(data).transform(data)
 
 ```
 </div>
