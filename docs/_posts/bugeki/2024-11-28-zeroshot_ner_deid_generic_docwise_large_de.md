@@ -153,13 +153,13 @@ val result = resolver_pipeline.fit(data).transform(data)
 ```bash
        label  precision    recall  f1-score   support
 
-         AGE    0.9567	   0.9918	   0.9739	      245
-     CONTACT    0.7778	   0.8235 	    0.8	       17
-        DATE    0.9767	        1	   0.9882	      126
-          ID    0.8333	   0.8621	   0.8475	       29
-    LOCATION    0.8438	    0.924	    0.882	      263
-        NAME    0.9742	   0.9326	   0.9529     	445
-  PROFESSION    0.6552    0.9383	   0.7716        81
+         AGE    0.9567    0.9918    0.9739      245
+     CONTACT    0.7778    0.8235       0.8       17
+        DATE    0.9767         1    0.9882      126
+          ID    0.8330    0.8621    0.8475       29
+    LOCATION    0.8438     0.924     0.882      263
+        NAME    0.9742    0.9326    0.9529      445
+  PROFESSION    0.6552    0.9383    0.7716        81
 
     accuracy                        0.9841     10352
    macro avg    0.8766    0.9327    0.9010     10352
