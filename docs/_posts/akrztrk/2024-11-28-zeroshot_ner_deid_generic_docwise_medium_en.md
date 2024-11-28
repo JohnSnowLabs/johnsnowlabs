@@ -7,7 +7,7 @@ date: 2024-11-28
 tags: [licensed, en, ner, deid, zeroshot]
 task: Named Entity Recognition
 language: en
-edition: Healthcare NLP 5.5.0
+edition: Healthcare NLP 5.5.1
 spark_version: 3.0
 supported: true
 annotator: PretrainedZeroShotNER
@@ -24,8 +24,8 @@ While the model card includes default labels as examples, it is important to hig
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_generic_docwise_medium_en_5.5.0_3.0_1732752295973.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_generic_docwise_medium_en_5.5.0_3.0_1732752295973.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_generic_docwise_medium_en_5.5.1_3.0_1732752295973.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_generic_docwise_medium_en_5.5.1_3.0_1732752295973.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -138,7 +138,7 @@ val result = pipeline.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|zeroshot_ner_deid_generic_docwise_medium|
-|Compatibility:|Healthcare NLP 5.5.0+|
+|Compatibility:|Healthcare NLP 5.5.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
