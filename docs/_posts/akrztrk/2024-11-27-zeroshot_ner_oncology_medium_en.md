@@ -196,7 +196,6 @@ val result = pipeline.fit(data).transform(data)
          Imaging_Test     0.8460    0.8503    0.8482      2145
              Invasion     0.4538    0.8674    0.5958       181
            Metastasis     0.9441    0.8579    0.8989       394
-                    O     0.9502    0.8926    0.9205     66650
              Oncogene     0.6986    0.5322    0.6041       466
        Pathology_Test     0.7308    0.7082    0.7193      1100
        Race_Ethnicity     0.8889    0.9492    0.9180        59
