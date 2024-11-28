@@ -21,6 +21,13 @@ use_language_switcher: "Python-Scala-Java"
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
 
+## Predicted Entities
+`Adenopathy`, `Age`, `Biomarker`, `Biomarker_Result`, `Body_Part`, `Cancer_Dx`, `Cancer_Surgery`,  
+`Cycle_Count`, `Cycle_Day`, `Date`, `Death_Entit`, `Directio`, `Dosage`, `Duration`, `Frequency`,  
+`Gender`, `Grade`, `Histological_Type`, `Imaging_Test`, `Invasion`, `Metastasis`, `Oncogene`, `Pathology_Test`,  
+`Race_Ethnicity`, `Radiation_Dose`, `Relative_Date`, `Response_To_Treatment`, `Route`, `Smoking_Status`,  
+`Staging`, `Therapy`, `Tumor_Finding`, `Tumor_Size` 
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,8 +40,8 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -79,7 +86,45 @@ result = pipeline.fit(data).transform(data)
 
 {:.jsl-block}
 ```python
-test
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+sentence_detector = nlp.SentenceDetector()\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+labels = ["Adenopathy", "Age","Biomarker","Biomarker_Result","Body_Part","Cancer_Dx","Cancer_Surgery",
+    "Cycle_Count","Cycle_Day","Date","Death_Entit","Directio","Dosage","Duration","Frequency",
+    "Gender","Grade","Histological_Type","Imaging_Test","Invasion","Metastasis","Oncogene","Pathology_Test",
+    "Race_Ethnicity","Radiation_Dose","Relative_Date","Response_To_Treatment","Route","Smoking_Status",
+    "Staging","Therapy","Tumor_Finding","Tumor_Size"]
+
+pretrained_zero_shot_ner = medical.PretrainedZeroShotNER().pretrained("zeroshot_ner_oncology_large", "en", "clinical/models")\
+    .setInputCols("sentence", "token")\
+    .setOutputCol("ner")\
+    .setPredictionThreshold(0.5)\
+    .setLabels(labels)
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols("sentence", "token", "ner")\
+    .setOutputCol("ner_chunk")
+
+pipeline = nlp.Pipeline().setStages([
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    pretrained_zero_shot_ner,
+    ner_converter
+])
+
+data = spark.createDataFrame([["""Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma. Last week she was also found to have a lung metastasis."""]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
 ```
 ```scala
 
@@ -163,3 +208,45 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.6 GB|
+
+
+```bash
+                label  precision    recall  f1-score   support
+           Adenopathy     0.6077    0.8587    0.7117        92
+                  Age     0.9561    0.9944    0.9749      1074
+            Biomarker     0.7034    0.8744    0.7796      1752
+     Biomarker_Result     0.5618    0.9026    0.6925      1632
+            Body_Part     0.7044    0.9203    0.7980      3540
+            Cancer_Dx     0.8526    0.8125    0.8321      1360
+       Cancer_Surgery     0.7790    0.7437    0.7609       749
+          Cycle_Count     0.7750    0.8857    0.8267       350
+            Cycle_Day     0.6928    0.8346    0.7571       254
+                 Date     0.9469    0.9881    0.9671       921
+         Death_Entity     0.8293    0.9444    0.8831        36
+            Direction     0.7025    0.9279    0.7996       957
+               Dosage     0.8776    0.8389    0.8578      1111
+             Duration     0.6605    0.8855    0.7566       760
+            Frequency     0.7386    0.8604    0.7948       394
+               Gender     0.9802    0.9984    0.9892      1286
+                Grade     0.6317    0.8178    0.7128       258
+    Histological_Type     0.5459    0.7878    0.6449       476
+         Imaging_Test     0.8467    0.8653    0.8559      2145
+             Invasion     0.5461    0.8177    0.6549       181
+           Metastasis     0.9530    0.8756    0.9127       394
+                    O     0.9709    0.8980    0.9330     66650
+             Oncogene     0.6892    0.6996    0.6944       466
+       Pathology_Test     0.6896    0.8382    0.7567      1100
+       Race_Ethnicity     0.8657    0.9831    0.9206        59
+       Radiation_Dose     0.8077    0.8936    0.8485       141
+        Relative_Date     0.7965    0.7710    0.7835      1284
+Response_To_Treatment     0.5100    0.7988    0.6225       641
+                Route     0.6359    0.8493    0.7273       146
+       Smoking_Status     0.8983    0.9298    0.9138        57
+              Staging     0.5738    0.7848    0.6629       223
+              Therapy     0.7295    0.9021    0.8067      2012
+        Tumor_Finding     0.8879    0.8474    0.8672      1252
+           Tumor_Size     0.8069    0.9803    0.8852      1066
+             accuracy          -         -    0.8928     94819
+            macro avg     0.7575    0.8709    0.8054     94819
+         weighted avg     0.9096    0.8928    0.8975     94819
+```
