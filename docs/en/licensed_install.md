@@ -20,9 +20,7 @@ The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Azure Marketplace
 John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go product on Azure Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the Azure product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on Azure Marketplace navigate to the [product page](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.johnsnowlabs_nlp?tab=Overview) and follow the instructions in the video below. 
@@ -31,10 +29,7 @@ John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go 
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
-</div>
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Private Endpoints - SageMaker, Snowflake, Databricks 
 
@@ -47,7 +42,6 @@ Deploying these models as private endpoints offers several advantages. First, it
 Working with John Snow Labs API endpoints is straightforward. You get rapid access to advanced language models with minimal setup, while eliminating the limitations of relying on specific programming languages. This flexibility allows you to work across different platforms and languages, unlocking valuable insights, automating text processing tasks, and driving innovation—all while maintaining high standards of security and operational efficiency.
 
 Subscribing, deploying, and managing these API endpoints is also effortless.  You can easily adjust resources according to your processing needs. With just a few clicks, you can subscribe to the desired Language Models, deploy them as private endpoints on your preferred cloud platform, and easily scale or stop them as your workloads demand. This flexibility ensures optimal resource utilization while keeping costs in check, without the hassle of long-term commitments, complex configurations, and without compromising on speed or reliability.
-
 
 
 ### AWS SageMaker
@@ -75,13 +69,7 @@ The following video illustrates the steps to discover the language models availa
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='C3RMZWP5LFg' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Databricks Marketplace</div></div></div>
 
-</div>
-
-
-
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Installation with johnsnowlabs
 On Oct 4th, 2022 we released `johnsnowlabs` library, which eases the installation and session starting processes in an 
