@@ -90,7 +90,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = ["PROBLEM", "TREATMENT","TEST"] # You can change the entities
+labels = Array("PROBLEM", "TREATMENT","TEST") # You can change the entities
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_clinical_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("ner")
