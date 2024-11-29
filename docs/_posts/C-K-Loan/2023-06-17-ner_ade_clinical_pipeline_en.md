@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_ade_clinical](https://nlp.j
 
 ## Predicted Entities
 
+`ADE`, `DRUG`
+
 
 
 {:.btn-box}

@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_clinical_large](https://nlp
 
 ## Predicted Entities
 
+`PROBLEM`, `TEST`, `TREATMENT`
+
 
 
 {:.btn-box}

@@ -23,6 +23,11 @@ The pipeline can mask and obfuscate `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION
 `COUNTRY`, `STREET`, `PHONE`, `LOCATION`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `AGE`, `LOCATION_OTHER`, `DLN`, `CONTACT`, `ID`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`,
 `IP` entities.
 
+## Predicted Entities
+
+`ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `City`, `Country`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `ID`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `LOCATION-OTHER`, `LOCATION_OTHER`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `VIN`, `ZIP`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

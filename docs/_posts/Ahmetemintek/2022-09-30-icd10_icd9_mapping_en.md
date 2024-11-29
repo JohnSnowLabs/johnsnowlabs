@@ -21,6 +21,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of icd10_icd9_mapper model.
 
+## Predicted Entities
+
+
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

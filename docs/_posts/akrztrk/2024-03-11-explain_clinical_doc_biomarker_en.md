@@ -34,6 +34,11 @@ In this pipeline, two NER, one text matcher, one sentence classifier, and one re
   
 - Classification Model Labels:  `1`, `0`
   
+## Predicted Entities
+
+`Biomarker`, `Biomarker_Result`, `Predictive_Biomarkers`, `Prognostic_Biomarkers`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

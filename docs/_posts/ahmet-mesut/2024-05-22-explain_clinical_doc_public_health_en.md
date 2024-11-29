@@ -36,6 +36,11 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 
 - **Relation Extraction Labels:** Given Relation Pairs : `Disease_Syndrome_Disorder-Drug`, `Drug-Disease_Syndrome_Disorder`, `Drug-Mental_Healt`,`Mental_Health-Drug`, `Allergen-Drug`, `Drug-Allergen`,  `Psychological_Condition-Drug`, `Drug-Psychological_Condition`, `BMI-Obesity`, `Obesity-BMI` , `Alcohol-Substance_Quantity`, `Substance_Quantity-Alcohol`, `Smoking-Substance_Quantity`, `Substance_Quantity-Smoking`, `Substance-Substance_Quantity`, `Substance_Quantity-Substance`])
 
+## Predicted Entities
+
+`Access_To_Care`, `Alcohol`, `BMI`, `Blood_Pressure`, `Community_Safety`, `Diet`, `Disease_Syndrome_Disorder`, `Drug`, `Education`, `Employment`, `Environmental_Condition`, `Financial_Status`, `Food_Insecurity`, `Geographic_Entity`, `HDL`, `Healthcare_Institution`, `Housing`, `Injury_or_Poisoning`, `Insurance_Status`, `Legal_Issues`, `Mental_Health`, `Obesity`, `Overweight`, `Population_Group`, `Pregnancy`, `Psychological_Condition`, `Quality_Of_Life`, `Race_Ethnicity`, `Relationship_Status`, `Sexually_Active_or_Sexual_Orientation`, `Smoking`, `Social_Exclusion`, `Social_Support`, `Spiritual_Beliefs`, `Substance`, `Substance_Quantity`, `Violence_Or_Abuse`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

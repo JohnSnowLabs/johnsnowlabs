@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_cancer_genetics](https://nl
 
 ## Predicted Entities
 
+`DNA`, `RNA`, `cell_line`, `cell_type`, `protein`
+
 
 
 {:.btn-box}

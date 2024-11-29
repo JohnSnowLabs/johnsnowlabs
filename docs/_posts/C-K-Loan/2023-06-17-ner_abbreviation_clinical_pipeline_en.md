@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_abbreviation_clinical](http
 
 ## Predicted Entities
 
+`ABBR`
+
 
 
 {:.btn-box}

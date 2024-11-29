@@ -22,6 +22,9 @@ A pipeline for detecting posology entities with the `ner_radiology` NER model, a
 
 ## Predicted Entities
 
+`BodyPart`, `Date`, `Direction`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Duration`, `Form`, `Frequency`, `Gender`, `ImagingFindings`, `Imaging_Technique`, `Imaging_Test`, `Invasion`, `ManualFix`, `Measurements`, `Medical_Device`, `Metastasis`, `OtherFindings`, `Procedure`, `RelativeDate`, `Route`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Units`
+
+
 
 
 {:.btn-box}

@@ -20,6 +20,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [bert_token_classifier_ade_tweet_binary](https://nlp.johnsnowlabs.com/2022/07/29/bert_token_classifier_ade_tweet_binary_en_3_0.html) model.
 
+## Predicted Entities
+
+`ADE`
+
+
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

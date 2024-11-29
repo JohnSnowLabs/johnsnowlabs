@@ -29,6 +29,11 @@ This pipeline can be used as LightPipeline (with annotate/fullAnnotate). You can
 
 `RxNorm Code` `UMLS Code` `NDC Code` `SNOMED CT codes`
 
+## Predicted Entities
+
+`DRUG`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

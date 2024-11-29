@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_biomarker](https://nlp.johnsnowlabs.com/2021/11/26/ner_biomarker_en.html) model.
 
+## Predicted Entities
+
+`Age`, `Biomarker`, `Biomarker_Measurement`, `CancerDx`, `CancerModifier`, `CancerSurgery`, `Chemotherapy`, `Date`, `Dosage`, `Drug`, `Duration`, `Ethnicity`, `Gender`, `HormonalTherapy`, `Immunotherapy`, `Metastasis`, `Oncogenes`, `PerformanceStatus`, `Predictive_Biomarkers`, `Prognostic_Biomarkers`, `Radiological_Test`, `Radiological_Test_Result`, `Radiotherapy`, `ResponseToTreatment`, `Staging`, `TargetedTherapy`, `Test`, `Test_Result`, `Tumor_Finding`, `UnspecificTherapy`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

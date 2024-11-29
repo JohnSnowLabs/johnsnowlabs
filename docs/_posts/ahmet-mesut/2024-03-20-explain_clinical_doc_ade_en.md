@@ -36,6 +36,11 @@ In this pipeline, two NER, one text matcher, one sentence classifier, one assert
 
 - Classification Model Labels:  `ADE`, `noADE`
 
+## Predicted Entities
+
+`ADE`, `DRUG`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

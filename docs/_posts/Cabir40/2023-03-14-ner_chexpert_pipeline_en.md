@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_chexpert](https://nlp.johnsnowlabs.com/2021/09/30/ner_chexpert_en.html) model.
 
+## Predicted Entities
+
+`ANAT`, `OBS`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
