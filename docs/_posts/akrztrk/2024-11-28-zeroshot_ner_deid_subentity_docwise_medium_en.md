@@ -153,9 +153,10 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|711.7 MB|
 
+## Benchmarking
+
 ```bash
        label  precision    recall  f1-score   support
-
          AGE     0.8287    0.9367    0.8794      1074
         CITY     0.7973    0.9067    0.8485       525
      COUNTRY     0.8430    0.8146    0.8286       178
@@ -171,7 +172,6 @@ ORGANIZATION     0.5846    0.6032    0.5938       189
        STATE     0.6954    0.9073    0.7874       302
       STREET     0.8969    0.9636    0.9291       605
          ZIP     0.8879    1.0000    0.9406       198
-
     accuracy                         0.9903    337866
    macro avg     0.8267    0.8751    0.8452    337866
 weighted avg     0.9908    0.9903    0.9904    337866
