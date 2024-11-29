@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
 
+## Predicted Entities
+
+`DATE`, `PATIENT`, `COUNTRY`, `PROFESSION`, `AGE`, `CITY`, `STATE`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `ORGANIZATION`, `PHONE`, `STREET`, `ZIP`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,6 +37,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -147,3 +152,25 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.6 GB|
+
+       label  precision    recall  f1-score   support
+
+         AGE     0.9392    0.9348    0.9370      1074
+        CITY     0.8367    0.9467    0.8883       525
+     COUNTRY     0.8750    0.8652    0.8701       178
+        DATE     0.9895    0.9811    0.9853      7995
+      DOCTOR     0.9766    0.9513    0.9638      5134
+    HOSPITAL     0.8680    0.9130    0.8899      2276
+       IDNUM     0.9322    0.8785    0.9046       955
+           O     0.9980    0.9977    0.9978    315085
+ORGANIZATION     0.7696    0.7778    0.7737       189
+     PATIENT     0.8996    0.9590    0.9283      2364
+       PHONE     0.9375    0.9146    0.9259       492
+  PROFESSION     0.9213    0.9474    0.9341       494
+       STATE     0.8671    0.9503    0.9068       302
+      STREET     0.9882    0.9653    0.9766       605
+         ZIP     0.8874    0.9949    0.9381       198
+
+    accuracy                         0.9946    337866
+   macro avg     0.9124    0.9318    0.9214    337866
+weighted avg     0.9947    0.9946    0.9946    337866
