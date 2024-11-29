@@ -162,7 +162,6 @@ val result = pipeline.fit(data).transform(data)
       DOCTOR     0.9766    0.9513    0.9638      5134
     HOSPITAL     0.8680    0.9130    0.8899      2276
        IDNUM     0.9322    0.8785    0.9046       955
-           O     0.9980    0.9977    0.9978    315085
 ORGANIZATION     0.7696    0.7778    0.7737       189
      PATIENT     0.8996    0.9590    0.9283      2364
        PHONE     0.9375    0.9146    0.9259       492
