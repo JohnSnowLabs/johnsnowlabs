@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to find clinical events and find temporal relations (ERA) | explain_clinical_doc_era | Healthcare NLP 3.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionA pipeline with ner_clinical_events, assertion_dl and re_temporal_events_clinical. It will extract clinical entities, assign assertion status and find temporal relationships between clinical entities.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  era_pipeline = PretrainedPipeline(...">
+<meta name="description" content="DescriptionA pipeline with ner_clinical_events, assertion_dl and re_temporal_events_clinical. It will extract clinical entities, assign assertion status and find temporal relationships between clinical entities.Predicted EntitiesCLINICAL_DEPT, DATE, DURATION, EVIDENTIAL, FREQUENCY, OCCURRENCE, PROBLEM, TEST, TIME, T...">
 <!-- <link rel="canonical" href="/2021/04/01/explain_clinical_doc_era_en.html"> -->
 <link rel="canonical" href="/2021/04/01/explain_clinical_doc_era_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -515,6 +515,10 @@ function wrapWordInSpan(data, wordToWrap) {
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
 <p>A pipeline with <code class="language-plaintext highlighter-rouge">ner_clinical_events</code>, <code class="language-plaintext highlighter-rouge">assertion_dl</code> and <code class="language-plaintext highlighter-rouge">re_temporal_events_clinical</code>. It will extract clinical entities, assign assertion status and find temporal relationships between clinical entities.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">CLINICAL_DEPT</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DURATION</code>, <code class="language-plaintext highlighter-rouge">EVIDENTIAL</code>, <code class="language-plaintext highlighter-rouge">FREQUENCY</code>, <code class="language-plaintext highlighter-rouge">OCCURRENCE</code>, <code class="language-plaintext highlighter-rouge">PROBLEM</code>, <code class="language-plaintext highlighter-rouge">TEST</code>, <code class="language-plaintext highlighter-rouge">TIME</code>, <code class="language-plaintext highlighter-rouge">TREATMENT</code></p>
 
 <p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL/" class="button button-orange">Live Demo</a>
 <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>

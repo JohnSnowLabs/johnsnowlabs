@@ -503,7 +503,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bugeki/2024-06-24-medication_resolver_transform_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-06-24-medication_resolver_transform_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
@@ -522,12 +522,12 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">DRUG</code>, <code class="language-plaintext highlighter-rouge">DOSAGE</code>, <code class="language-plaintext highlighter-rouge">FREQUENCY</code>, <code class="language-plaintext highlighter-rouge">ROUTE</code>, <code class="language-plaintext highlighter-rouge">STRENGTH</code></p>
+<p><code class="language-plaintext highlighter-rouge">DRUG</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.3.3_3.0_1719228294429.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.3.3_3.0_1719228294429.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.3.3_3.4_1719244035418.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_transform_pipeline_en_5.3.3_3.4_1719244035418.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -545,6 +545,7 @@ The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet."""</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">medication_resolver_pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
@@ -555,6 +556,7 @@ The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet."""</span>
 The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet."""</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">medication_resolver_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
 </code></pre></div>  </div>
 </div>
 
@@ -822,7 +824,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/06/24/medication_resolver_pipeline_en.html">Pipeline to Resolve Medication Codes</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/06/25/explain_clinical_doc_radiology_en.html">Explain Clinical Document - Radiology</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/06/24/medication_resolver_pipeline_en.html">Pipeline to Resolve Medication Codes</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/06/24/rxnorm_resolver_pipeline_en.html">Pipeline to Resolve RxNorm Codes</a></div></div></div>
 
 </div>
 </div>
