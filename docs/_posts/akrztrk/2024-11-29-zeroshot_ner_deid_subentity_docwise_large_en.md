@@ -39,7 +39,6 @@ While the model card includes default labels as examples, it is important to hig
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -65,7 +64,6 @@ ner_converter = NerConverterInternal()\
     .setInputCols("sentence", "token", "ner")\
     .setOutputCol("ner_chunk")
 
-
 pipeline = Pipeline().setStages([
     document_assembler,
     sentence_detector,
@@ -80,7 +78,6 @@ result = pipeline.fit(data).transform(data)
 
 ```
 ```scala
-
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -93,8 +90,8 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = ["AGE", "CITY", "COUNTRY", "DATE", "DOCTOR", "HOSPITAL", "IDNUM", "ORGANIZATION",
-          "PATIENT", "PHONE", "PROFESSION", "STATE", "STREET", "ZIP"]
+labels = Array("AGE", "CITY", "COUNTRY", "DATE", "DOCTOR", "HOSPITAL", "IDNUM", "ORGANIZATION",
+          "PATIENT", "PHONE", "PROFESSION", "STATE", "STREET", "ZIP")
 
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_subentity_docwise_large", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
@@ -106,7 +103,6 @@ val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
 
-
 val pipeline = new Pipeline().setStages(Array(
     document_assembler,
     sentence_detector,
@@ -115,7 +111,7 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter
 ))
 
-val data = Seq([["""Emily Davis, a 34-year-old woman, Dr. Michael Johnson cares wit her, at CarePlus Clinic, located at 456 Elm Street, NewYork, NY has recommended starting insulin therapy. She has an appointment scheduled for March 15, 2024."""]]).toDF("text")
+val data = Seq("""Emily Davis, a 34-year-old woman, Dr. Michael Johnson cares wit her, at CarePlus Clinic, located at 456 Elm Street, NewYork, NY has recommended starting insulin therapy. She has an appointment scheduled for March 15, 2024.""").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -154,7 +150,6 @@ val result = pipeline.fit(data).transform(data)
 |Size:|1.6 GB|
 
        label  precision    recall  f1-score   support
-
          AGE     0.9392    0.9348    0.9370      1074
         CITY     0.8367    0.9467    0.8883       525
      COUNTRY     0.8750    0.8652    0.8701       178
@@ -169,7 +164,6 @@ ORGANIZATION     0.7696    0.7778    0.7737       189
        STATE     0.8671    0.9503    0.9068       302
       STREET     0.9882    0.9653    0.9766       605
          ZIP     0.8874    0.9949    0.9381       198
-
     accuracy                         0.9946    337866
    macro avg     0.9124    0.9318    0.9214    337866
 weighted avg     0.9947    0.9946    0.9946    337866
