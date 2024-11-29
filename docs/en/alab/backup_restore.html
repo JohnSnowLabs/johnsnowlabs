@@ -626,47 +626,53 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Backup and Restore"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color.</p>
+  <p>Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.</p>
 
-<h2 id="migrate-your-nlp-lab-backup-to-generative-ai-lab">Migrate your NLP Lab Backup to Generative AI Lab</h2>
-<p>Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:</p>
+  <p>This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color.</p>
 
-<h3 id="steps-to-backup-data-from-nlp-lab">Steps to Backup Data from NLP Lab</h3>
-<ol>
-  <li><strong>Login</strong> to your current NLP Lab deployment as the admin user.</li>
-  <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
-  <li>Navigate to the <strong><code class="language-plaintext highlighter-rouge">Backup</code></strong> tab.</li>
-  <li>Enter the required <strong>backup details</strong>.</li>
-  <li>Schedule an immediate backup using the <strong><code class="language-plaintext highlighter-rouge">Backup now</code></strong> feature.</li>
-  <li>Monitor the <strong>backup pod status</strong> to ensure the process completes successfully.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
-</code></pre></div>    </div>
-    <p><strong>Verify Backup:</strong> Upon completion, your backed-up database and files will be visible in cloud storage.</p>
-  </li>
-</ol>
+</div>
+<div class="h3-box">
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+  <h2 id="migrate-your-nlp-lab-backup-to-generative-ai-lab">Migrate your NLP Lab Backup to Generative AI Lab</h2>
+  <p>Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:</p>
 
-<h3 id="steps-to-restore-data">Steps to Restore Data</h3>
+  <h3 id="steps-to-backup-data-from-nlp-lab">Steps to Backup Data from NLP Lab</h3>
+  <ol>
+    <li><strong>Login</strong> to your current NLP Lab deployment as the admin user.</li>
+    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+    <li>Navigate to the <strong><code class="language-plaintext highlighter-rouge">Backup</code></strong> tab.</li>
+    <li>Enter the required <strong>backup details</strong>.</li>
+    <li>Schedule an immediate backup using the <strong><code class="language-plaintext highlighter-rouge">Backup now</code></strong> feature.</li>
+    <li>Monitor the <strong>backup pod status</strong> to ensure the process completes successfully.
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>      </div>
+      <p><strong>Verify Backup:</strong> Upon completion, your backed-up database and files will be visible in cloud storage.</p>
+    </li>
+  </ol>
 
-<ol>
-  <li><strong>Deploy</strong> a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.</li>
-  <li><strong>Login</strong> to the UI as the admin user.</li>
-  <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
-  <li>Click on the <strong><code class="language-plaintext highlighter-rouge">Restore</code></strong> tab and fill in the necessary details.</li>
-  <li>Click on <strong><code class="language-plaintext highlighter-rouge">Restore Now</code></strong> to initiate the process.</li>
-  <li>Monitor the <strong>restore pod status</strong> to ensure successful completion.
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
-</code></pre></div>    </div>
-  </li>
-</ol>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 
-<p><strong>Verify Restoration:</strong> Access the UI, all projects, models, data and files should now be successfully restored.</p>
+  <h3 id="steps-to-restore-data">Steps to Restore Data</h3>
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+  <ol>
+    <li><strong>Deploy</strong> a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.</li>
+    <li><strong>Login</strong> to the UI as the admin user.</li>
+    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
+    <li>Click on the <strong><code class="language-plaintext highlighter-rouge">Restore</code></strong> tab and fill in the necessary details.</li>
+    <li>Click on <strong><code class="language-plaintext highlighter-rouge">Restore Now</code></strong> to initiate the process.</li>
+    <li>Monitor the <strong>restore pod status</strong> to ensure successful completion.
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>      </div>
+    </li>
+  </ol>
 
+  <p><strong>Verify Restoration:</strong> Access the UI, all projects, models, data and files should now be successfully restored.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-10-14T00:00:00+00:00">Oct 14, 2022</time>
     </span><!-- start custom article footer snippet -->
