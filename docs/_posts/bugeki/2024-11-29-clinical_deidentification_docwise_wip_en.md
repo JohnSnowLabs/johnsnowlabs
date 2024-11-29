@@ -44,7 +44,7 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip_v2", "en", "clinical/models")
+deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
 
 text = """Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -63,7 +63,7 @@ print(''.join([i.result for i in deid_result['obfuscated']]))
 
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = nlp.PretrainedPipeline("clinical_deidentification_docwise_wip_v2", "en", "clinical/models")
+deid_pipeline = nlp.PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
 
 text = """Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -80,7 +80,7 @@ print(''.join([i.result for i in deid_result['obfuscated']]))
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip_v2", "en", "clinical/models")
+val deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
 
 val text = """Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
