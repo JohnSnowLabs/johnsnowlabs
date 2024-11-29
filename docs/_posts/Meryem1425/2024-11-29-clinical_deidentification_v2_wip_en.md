@@ -23,6 +23,12 @@ The pipeline can mask and obfuscate `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION
 `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `AGE`, `LOCATION`, `LOCATION_OTHER`, `DLN`, `CONTACT`, `NAME`,
 `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities.
 
+## Predicted Entities
+
+`MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`, `DATE`,
+`ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `AGE`, `LOCATION`, `LOCATION_OTHER`, `DLN`, `CONTACT`, `NAME`,
+`SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -35,6 +41,7 @@ The pipeline can mask and obfuscate `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
