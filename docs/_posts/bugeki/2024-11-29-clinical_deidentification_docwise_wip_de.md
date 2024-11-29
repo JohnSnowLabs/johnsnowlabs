@@ -77,7 +77,8 @@ Sehr geehrter Herr Schmidt, bezüglich Ihrer Anfrage vom 15.03.2024 für Ihre Kr
 -------------MASKED------------
 Sehr geehrter Herr <NAME>, bezüglich Ihrer Anfrage vom <DATE> für Ihre Krankenakte <MEDICALRECORD> möchte ich bestätigen, dass Ihre Sozialversicherungsnummer <SSN> und Ihre Versichertennummer <ID> korrekt in unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen <PLATE> ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter <PHONE> oder schreiben Sie an <EMAIL>. Unsere Details finden Sie auch unter <URL>. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto <ACCOUNT>.
 -------------OBFUSCATED-----------
-Sehr geehrter Herr Ralf Krebs, bezüglich Ihrer Anfrage vom 08.04.2024 für Ihre Krankenakte 579038 möchte ich bestätigen, dass Ihre Sozialversicherungsnummer 33383291B166 und Ihre Versichertennummer M6004599H7S korrekt in unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen F-SE 3953 ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter +20 23 34356861 oder schreiben Sie an Adair@yahoo.com. Unsere Details finden Sie auch unter ScrapbookLive.si. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto UO37 2902 1115 5208 0223 36.
+Sehr geehrter Herr Johan, bezüglich Ihrer Anfrage vom 14.05.2024 für Ihre Krankenakte 149921 möchte ich bestätigen, dass Ihre Sozialversicherungsnummer 68667052J030und Ihre Versichertennummer C1001142Q4S korrekt in unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen L-PM 6981 ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter +81 21 36587092 oder schreiben Sie an Aeron@google.com. Unsere Details finden Sie auch unter PoliticalMakeover.com.ee. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto IJ32 6059 5599 5867 5465 55.
+
 
 
 ```
