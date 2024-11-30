@@ -21,6 +21,13 @@ use_language_switcher: "Python-Scala-Java"
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
 
+## Predicted Entities
+
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`,  
+`Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `Laterality`, `MedicalDevice`,  
+`Modifier`, `Procedure`, `PsychologicalCondition`, `RaceEthnicity`, `Substance`, `Symptom`, `Test`,  
+`Treatment`, `Vaccine`  
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,6 +40,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -236,3 +244,38 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.6 GB|
+
+## Benchmarking
+
+```bash
+                 label  precision    recall  f1-score   support
+    AdmissionDischarge     0.4507    0.9697    0.6154        33
+                   Age     0.8991    0.9635    0.9302       657
+              Allergen     0.3717    0.9130    0.5283        46
+              BodyPart     0.8916    0.9583    0.9238      2953
+          ClinicalDept     0.7534    0.9424    0.8373       295
+              DateTime     0.8348    0.8969    0.8648      4395
+               Disease     0.8917    0.7993    0.8430      2277
+                Dosage     0.6617    0.8898    0.7590       499
+                  Drug     0.8271    0.9246    0.8732      1340
+              Duration     0.7676    0.8581    0.8103      2255
+            Employment     0.9338    0.9522    0.9429      1214
+                  Form     0.6627    0.9621    0.7848       290
+             Frequency     0.6645    0.9149    0.7698      1093
+                Gender     0.9564    0.9675    0.9619      1293
+            Laterality     0.6961    0.9548    0.8052       619
+         MedicalDevice     0.5978    0.6781    0.6354       320
+              Modifier     0.3887    0.9112    0.5449      1092
+                     O     0.9849    0.9468    0.9655    114576
+             Procedure     0.6593    0.7295    0.6926       573
+PsychologicalCondition     0.8029    0.9236    0.8590       419
+         RaceEthnicity     0.8810    1.0000    0.9367        37
+             Substance     0.8292    0.9618    0.8906       419
+               Symptom     0.7636    0.8518    0.8053      4501
+                  Test     0.8112    0.8481    0.8292      1560
+             Treatment     0.3214    0.6562    0.5315       192
+               Vaccine     0.9444    0.7391    0.8293        46
+              accuracy          -         -    0.9352    142994
+             macro avg     0.7403    0.8890    0.7950    142994
+          weighted avg     0.9471    0.9352    0.9393    142994
+```
