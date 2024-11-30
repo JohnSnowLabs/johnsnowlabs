@@ -107,6 +107,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="ResolverMerger" summary="This annotator is provide the ability to merge sentence enitity resolver and chunk mapper model output columns."%}
 {% include templates/licensed_table_entry.md  name="Router" summary="This annotator is provide the ability to split an output of an annotator for a selected metadata field and the value for that field."%}
 {% include templates/licensed_table_entry.md  name="SentenceEntityResolver" summary="Returns the normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC's EDGAR database,  etc) based on sentence embeddings."%}
+{% include templates/licensed_table_entry.md  name="StructuredJsonConverter" summary="StructuredJsonConverter is a transformer that converts the output of the pipeline into a structured JSON format."%}
 {% include templates/licensed_table_entry.md  name="Summarizer" summary="Helps to quickly summarize complex medical information."%}
 {% include templates/licensed_table_entry.md  name="TextGenerator" summary="Uses the basic BioGPT model to perform various tasks related to medical text abstraction."%}
 {% include templates/licensed_table_entry.md  name="TextMatcherInternal" summary="This annotator match exact phrases provided in a file against a Document."%}
