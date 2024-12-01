@@ -105,4 +105,64 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageToTextPrinted_V2_opt.ipynb
+        - title: Detect Text in Document Images
+          id: detect_text_document_images 
+          image: 
+              src: /assets/images/Detect_Text_in_Document_Images_1.svg
+          excerpt: This model detects text in documents using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/TEXT_DETECTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb
+        - title: Pretrained pipeline for reading on printed documents
+          id: pretrained_pipeline_reading_printed_documents 
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_printed_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on printed texts. It ensures precise and efficient text extraction from printed images of various origins and formats, improving the overall OCR accuracy. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_IMAGE_PRINTED_TRANSFORMER_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesImagePrintedTransformerExtraction.ipynb
+        - title: Pretrained pipeline for reading and removing noise on mixed scanned and digital PDF documents
+          id: Pretrained_pipeline_noise_mixed_scanned_digital_documents  
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_mixed_scanned_and_digital_PDF_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on printed texts. It ensures precise and efficient text extraction from printed images of various origins and formats, improving the overall OCR accuracy.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_IMAGE_PRINTED_TRANSFORMER_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesMixedScannedDigitalPdfImageCleaner.ipynb
+        - title: Pretrained pipeline for reading on printed PDF documents
+          id: pretrained_pipeline_reading_printed_documents  
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_printed_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on printed texts. It ensures precise and efficient text extraction from printed pdfs of various origins and formats, improving the overall OCR accuracy.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_PDF_PRINTED_TRANSFORMER_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesPdfPrintedTransformerExtraction.ipynb
+        - title: Pretrained pipeline for reading on mixed scanned and digital PDF documents
+          id: pretrained_pipeline_reading_mixed_scanned_digital_pdf_documents  
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_printed_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, for conducting Optical Character Recognition (OCR) on mixed scanned and digital PDF documents. It ensures precise and efficient text extraction from PDFs of various origins and formats, improving the overall OCR accuracy.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_MIXED_SCANNED_DIGITAL_PDF/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesMixedScannedDigitalPdf.ipynb
 ---

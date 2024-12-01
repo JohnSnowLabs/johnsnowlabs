@@ -32,6 +32,11 @@ from clinical texts. In this pipeline, 4 NER models, one assertion model, and on
 
 - Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
 
+## Predicted Entities
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -25,6 +25,8 @@ It protects specific health information that could identify living or deceased i
 
 ## Predicted Entities
 
+``NAME``, ``AGE``, ``CONTACT``, ``LOCATION``, ``PROFESSION``, ``PERSON``, ``DATE``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/DEID_IMAGE/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/3.1.SparkOcrImageDeIdentification.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

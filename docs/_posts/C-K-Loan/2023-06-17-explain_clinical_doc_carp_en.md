@@ -22,6 +22,8 @@ A pipeline with `ner_clinical`, `assertion_dl`, `re_clinical` and `ner_posology`
 
 ## Predicted Entities
 
+`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `PROBLEM`, `ROUTE`, `STRENGTH`, `TEST`, `TREATMENT`
+
 
 
 {:.btn-box}

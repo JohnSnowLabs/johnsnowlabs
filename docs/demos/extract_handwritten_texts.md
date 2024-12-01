@@ -68,4 +68,28 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/3.6.0/jupyter/SparkOcrImageHandwrittenDetection.ipynb
+        - title: Pretrained pipeline for reading on handwritten PDF documents
+          id: pretrained_pipeline_reading_handwritten_pdf_documents 
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_handwritten_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on handwritten texts. It ensures precise and efficient text extraction from handwritten pdfs of various origins and formats, improving the overall OCR accuracy.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_PDF_HANDWRITTEN_TRANSFORMER_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesPdfHandwrittenTransformerExtraction.ipynb
+        - title: Pretrained pipeline for reading on handwritten documents 
+          id: pretrained_pipeline_reading_handwritten_documents 
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_reading_on_handwritten_documents.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for doing transformer based OCR on handwritten texts. It ensures precise and efficient text extraction from handwritten images of various origins and formats, improving the overall OCR accuracy. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_IMAGE_HANDWRITTEN_TRANSFORMER_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesImageHandwrittenTransformerExtraction.ipynb
 ---

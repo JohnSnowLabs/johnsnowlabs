@@ -26,6 +26,9 @@ In the LiLT paper's abstract, the authors emphasize the importance of structured
 
 ## Predicted Entities
 
+``label``.
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_CLASSIFIER/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentClassifierLiLT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

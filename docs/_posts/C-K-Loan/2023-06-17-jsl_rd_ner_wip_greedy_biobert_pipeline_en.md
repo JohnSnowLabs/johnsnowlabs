@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [jsl_rd_ner_wip_greedy_biobert](
 
 ## Predicted Entities
 
+`BodyPart`, `Direction`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `ImagingTest`, `Imaging_Technique`, `ManualFix`, `Measurements`, `Medical_Device`, `OtherFindings`, `Procedure`, `Score`, `Symptom`, `Test`, `Test_Result`, `Units`
+
 
 
 {:.btn-box}

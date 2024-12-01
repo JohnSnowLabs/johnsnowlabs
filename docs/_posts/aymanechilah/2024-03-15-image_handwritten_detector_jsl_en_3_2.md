@@ -22,6 +22,8 @@ Object detection model trained to detect handwritten text one of the foremost ar
 
 ## Predicted Entities
 
+``hw``, ``signature``.
+
 [Live Demo](https://demo.johnsnowlabs.com/ocr/DETECT_HANDWRITTEN/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOCRHandwrittenAndSignatureDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_handwritten_detector_jsl_en_5.1.2_3.0_1703781670000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}

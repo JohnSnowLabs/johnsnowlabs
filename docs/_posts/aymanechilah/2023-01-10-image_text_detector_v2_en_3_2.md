@@ -22,6 +22,8 @@ CRAFT: Character-Region Awareness For Text detection, is designed with a convolu
 
 ## Predicted Entities
 
+``text``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/TEXT_DETECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

@@ -25,6 +25,8 @@ In this context, the Pix2Struct model, originally conceived as an image-to-text 
 
 ## Predicted Entities
 
+``answers``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_QUESTION_ANSWERING/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnsweringJsl.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

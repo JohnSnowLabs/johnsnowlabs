@@ -21,6 +21,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline maps entities with their corresponding CVX codes. You’ll just feed your text and it will return the corresponding CVX codes.
 
+## Predicted Entities
+
+`Vaccine`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

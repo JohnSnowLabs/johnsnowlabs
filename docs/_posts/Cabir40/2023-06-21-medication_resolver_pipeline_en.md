@@ -26,6 +26,8 @@ This pipeline can be used as Lightpipeline (with `annotate/fullAnnotate`). You c
 
 ## Predicted Entities
 
+`DRUG`
+
 
 
 {:.btn-box}

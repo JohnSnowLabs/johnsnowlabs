@@ -26,6 +26,9 @@ In the abstract of the LiLT paper, the authors emphasize the growing importance 
 
 ## Predicted Entities
 
+``other``, ``b-header``, ``i-header``, ``b-question``, ``i-question``, ``b-answer``, ``i-answer``.
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_DOCUMENT_KEYVALUES_NER_LILT/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentNer-FormParsing.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

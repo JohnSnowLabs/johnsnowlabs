@@ -10,10 +10,12 @@ show_nav: true
 sidebar:
     nav: jsl
 ---
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
-You can easily deploy any John Snow Labs models within the Snowpark Container Services Ecosystem via `nlp.deploy_as_snowflake_udf()`
+You can easily deploy any John Snow Labs models within the Snowpark Container Services Ecosystem via `nlp.deploy_as_snowflake_udf()`     
+The [Create Snowflake Endpoint Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/notebooks/create_snowflake_endpoint.ipynb) and this documentation page showcase how you can create a containerized Snowflake UDF from any Johnsnowlabs and how to query it.   
 
+</div><div class="h3-box" markdown="1">
 
 ## Setup Snowflake Resources 
 
@@ -58,6 +60,8 @@ role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = n
 )
 
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## Deploy Model as Snowflake Container Services UDF
 
@@ -157,10 +161,9 @@ CALL SYSTEM$GET_SERVICE_LOGS('en_de_identify_clinical_pipeline_service', '0', 'j
 
 -- Call UDF
 SELECT en_de_identify_clinical_pipeline_udf('The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.');
-
-
-
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## Streamlit Example with Snowpark services
 
@@ -183,6 +186,4 @@ st.write(udf_response.collect()[0].as_dict())
 
 For a more advanced streamlit example, see [here](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/streamlits/advanced_snowflake.py)
 
-
-
-</div>
+</div></div>

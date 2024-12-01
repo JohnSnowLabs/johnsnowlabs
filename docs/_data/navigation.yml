@@ -234,7 +234,9 @@ sparknlp-healthcare:
       - title: Wiki
         url: /docs/en/wiki
       - title: Benchmarks
-        url: /docs/en/benchmark      
+        url: /docs/en/benchmark   
+      - title: Benchmarks LLM
+        url: /docs/en/benchmark-llm 
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
       - title: Release Notes 

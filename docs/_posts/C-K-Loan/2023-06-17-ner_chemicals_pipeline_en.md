@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_chemicals](https://nlp.john
 
 ## Predicted Entities
 
+`CHEM`
+
 
 
 {:.btn-box}

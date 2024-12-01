@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_biomarker](https://nlp.john
 
 ## Predicted Entities
 
+`Age`, `Biomarker`, `Biomarker_Measurement`, `CancerDx`, `CancerModifier`, `CancerSurgery`, `Chemotherapy`, `Date`, `Dosage`, `Drug`, `Duration`, `Ethnicity`, `Gender`, `HormonalTherapy`, `Immunotherapy`, `Metastasis`, `Oncogenes`, `PerformanceStatus`, `Predictive_Biomarkers`, `Prognostic_Biomarkers`, `Radiological_Test`, `Radiological_Test_Result`, `Radiotherapy`, `ResponseToTreatment`, `Staging`, `TargetedTherapy`, `Test`, `Test_Result`, `Tumor_Finding`, `UnspecificTherapy`
+
 
 
 {:.btn-box}

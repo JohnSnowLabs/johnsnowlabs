@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 A pipeline for detecting posology entities with the `ner_posology_large` NER model, assigning their assertion status with `assertion_jsl` model, and extracting relations between posology-related terminology with `posology_re` relation extraction model.
 
+## Predicted Entities
+
+`DRUG`, `DOSAGE`, `DURATION`, `FORM`, `FREQUENCY`, `ROUTE`, `STRENGTH`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

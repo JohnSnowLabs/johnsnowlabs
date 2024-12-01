@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_biomedical_bc2gm](https://n
 
 ## Predicted Entities
 
+`GENE_PROTEIN`
+
 
 
 {:.btn-box}

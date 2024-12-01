@@ -28,6 +28,8 @@ A pipeline with `ner_clinical_events`, `assertion_dl` and `re_temporal_events_cl
 
 ## Predicted Entities
 
+`CLINICAL_DEPT`, `DATE`, `DURATION`, `EVIDENTIAL`, `FREQUENCY`, `OCCURRENCE`, `PROBLEM`, `TEST`, `TIME`, `TREATMENT`
+
 
 
 {:.btn-box}

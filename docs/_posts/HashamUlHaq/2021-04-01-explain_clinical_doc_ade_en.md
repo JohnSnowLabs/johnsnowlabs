@@ -21,6 +21,11 @@ use_language_switcher: "Python-Scala-Java"
 
 A pipeline for Adverse Drug Events (ADE) with `ner_ade_biobert`, `assertiondl_biobert` and `classifierdl_ade_conversational_biobert`. It will extract ADE and DRUG clinical entities, assign assertion status to ADE entities, and then assign ADE status to a text (True means ADE, False means not related to ADE).
 
+## Predicted Entities
+
+`ADE`, `DRUG`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/ADE/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

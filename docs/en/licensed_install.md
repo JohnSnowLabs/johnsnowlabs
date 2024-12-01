@@ -20,9 +20,7 @@ The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Azure Marketplace
 John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go product on Azure Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the Azure product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on Azure Marketplace navigate to the [product page](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.johnsnowlabs_nlp?tab=Overview) and follow the instructions in the video below. 
@@ -31,10 +29,7 @@ John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go 
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
 
-</div>
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Private Endpoints - SageMaker, Snowflake, Databricks 
 
@@ -47,7 +42,6 @@ Deploying these models as private endpoints offers several advantages. First, it
 Working with John Snow Labs API endpoints is straightforward. You get rapid access to advanced language models with minimal setup, while eliminating the limitations of relying on specific programming languages. This flexibility allows you to work across different platforms and languages, unlocking valuable insights, automating text processing tasks, and driving innovation—all while maintaining high standards of security and operational efficiency.
 
 Subscribing, deploying, and managing these API endpoints is also effortless.  You can easily adjust resources according to your processing needs. With just a few clicks, you can subscribe to the desired Language Models, deploy them as private endpoints on your preferred cloud platform, and easily scale or stop them as your workloads demand. This flexibility ensures optimal resource utilization while keeping costs in check, without the hassle of long-term commitments, complex configurations, and without compromising on speed or reliability.
-
 
 
 ### AWS SageMaker
@@ -75,13 +69,7 @@ The following video illustrates the steps to discover the language models availa
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='C3RMZWP5LFg' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Databricks Marketplace</div></div></div>
 
-</div>
-
-
-
-
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Installation with johnsnowlabs
 On Oct 4th, 2022 we released `johnsnowlabs` library, which eases the installation and session starting processes in an 
@@ -1605,32 +1593,32 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
-![image](https://github.com/user-attachments/assets/2c5f778c-4c33-4a54-af21-71f4486f5e4b)
+![image](/assets/images/installation/355920557-2c5f778c-4c33-4a54-af21-71f4486f5e4b.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-![image](https://github.com/user-attachments/assets/697cac4b-29ff-4f23-beaa-5aaa32569ff0)
+![image](/assets/images/installation/355920928-697cac4b-29ff-4f23-beaa-5aaa32569ff0.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
-![image](https://github.com/user-attachments/assets/63996c40-4cd6-4aa2-925f-a1ad886914f4)
+![image](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
 
-![image](https://github.com/user-attachments/assets/b711eef6-55ed-4073-b974-14b565cd40be)
+![image](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
-![image](https://github.com/user-attachments/assets/a275d80d-768f-4402-bdab-d95864e73690)
+![image](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
 
-![image](https://github.com/user-attachments/assets/53bc84ae-40dc-41dc-9522-e87bf70d4fba)
+![image](/assets/images/installation/360943582-53bc84ae-40dc-41dc-9522-e87bf70d4fba.webp)
 
 After uploading is complete, you can configure and run the notebook.
 
@@ -1676,7 +1664,7 @@ Install the required Spark NLP libraries using pip commands:
 
 **Example Usage:**
 
-![Install Spark NLP Libraries](https://github.com/user-attachments/assets/a4db5456-78a5-4d32-a50e-c40650b878f2)
+![Install Spark NLP Libraries](/assets/images/installation/355919623-a4db5456-78a5-4d32-a50e-c40650b878f2.webp)
 
 </div><div class="h3-box" markdown="1">
 
@@ -1715,7 +1703,7 @@ with open("models.json", "r", encoding="utf-8") as f:
 
 **Example Usage:**
 
-![Explore Available Licensed Models](https://github.com/user-attachments/assets/be36cc00-42eb-4a5e-927e-21ae1106623b)
+![Explore Available Licensed Models](/assets/images/installation/355922456-be36cc00-42eb-4a5e-927e-21ae1106623b.webp)
 
 </div><div class="h3-box" markdown="1">
 
@@ -1762,8 +1750,8 @@ result = pipeline.annotate(text)
 
 **Example Usage:**
 
-![Load the Model and Make Predictions](https://github.com/user-attachments/assets/ce2c07c6-78df-41d4-aa9a-c69b0202a04f)
+![Load the Model and Make Predictions](/assets/images/installation/355923149-ce2c07c6-78df-41d4-aa9a-c69b0202a04f.webp)
 
-![Load the Model and Make Predictions](https://github.com/user-attachments/assets/f62b4bc5-96ee-41d5-a80b-887766b252c9)
+![Load the Model and Make Predictions](/assets/images/installation/355924362-f62b4bc5-96ee-41d5-a80b-887766b252c9.webp)
 
 </div>

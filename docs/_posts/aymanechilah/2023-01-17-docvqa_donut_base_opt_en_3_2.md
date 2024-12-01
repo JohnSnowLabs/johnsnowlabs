@@ -24,6 +24,8 @@ DocVQA seeks to inspire a “purpose-driven” point of view in Document Analysi
 
 ## Predicted Entities
 
+``answers``.
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_QUESTION_ANSWERING/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrVisualQuestionAnswering_opt.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

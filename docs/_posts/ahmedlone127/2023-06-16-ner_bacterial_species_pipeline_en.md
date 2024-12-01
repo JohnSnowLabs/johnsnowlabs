@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_bacterial_species](https://
 
 ## Predicted Entities
 
+`SPECIES`
+
 
 
 {:.btn-box}

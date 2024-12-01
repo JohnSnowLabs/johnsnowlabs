@@ -30,15 +30,17 @@ This release comes with new models, notebooks, examples, and bug fixes!!! 📢�
 * New blogpost on Form Extraction in which we deep dive into the advantages of the models released today against different cloud providers.
 * New PDF Deidentification Pipeline, that ingests PDFs and returns a de-identified version of the PDF.
 
+</div><div class="h3-box" markdown="1">
+
 ## Other Changes 🟡
+
 * Memory Improvements for Models that cut memory requirements of most models by half.
 * Minor enhancements, changes, and bug fixes that ensure the quality of the library continues to improve over time.
-
-
 
 </div><div class="h3-box" markdown="1">
 
 ### New models for information extraction from Scanned Forms
+
 This model scores F1 92.86 on the FUNSD Entity Extraction dataset, and 89.23 on FUNSD Relation Extraction task. This significantly outperforms the Form Understanding capabilities of the AWS, Azure, and Google ‘Form AI’ services.
 
 Two new annotators that work together were added:
@@ -59,13 +61,13 @@ re = GeoRelationExtractor().
 
 To see these two models combined on a real example, please check this [sample notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/FormRecognition/FormRecognitionGeo.ipynb).
 
-
-
 </div><div class="h3-box" markdown="1">
 
 ### New PDF Deidentification Pipeline
+
 A new PDF deidentification pipeline, `pdf_deid_subentity_context_augmented_pipeline` has been added to the library. This new pipeline has the ability to ingest PDFs, apply PHI masking through bounding boxes, and re-create the input PDF as a new document in which the PHI has been removed. The pipeline is ready to use and requires no configuration to handle most use cases.</br>
 You can check an example of this pipeline in action in [this notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrPdfDeidSubentityContextAugmentedPipeline.ipynb).
+
 </div><div class="h3-box" markdown="1">
 
 ###  Memory Improvements for Models
@@ -97,8 +99,8 @@ Key takeaways are that first, Visual NLP's small models can beat cloud providers
  
 
 This release is compatible with Spark-NLP 5.4.1, and Spark NLP for Healthcare 5.4.1.
-</div><div class="h3-box" markdown="1">
 
+</div><div class="h3-box" markdown="1">
 
 ## Previous versions
 
