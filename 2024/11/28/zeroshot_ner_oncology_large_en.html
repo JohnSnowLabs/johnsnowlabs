@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (Document Wise) | clinical_deidentification_docwise_wip | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_oncology_large) | zeroshot_ner_oncology_large | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.The pipeline can mask and obfuscate LOCATION, CONTACT, PROFESSION, NAME, DATE, ID, AGE, MEDICALRECORD, ORGANIZATION, HEALTHPLAN, DOCTOR, USERNAME,LOCATION-OTH...">
-<!-- <link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"> -->
-<link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionZero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.While the model card includes default labe...">
+<!-- <link rel="canonical" href="/2024/11/28/zeroshot_ner_oncology_large_en.html"> -->
+<link rel="canonical" href="/2024/11/28/zeroshot_ner_oncology_large_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,65 +503,160 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2024-10-18-clinical_deidentification_docwise_wip_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-11-28-zeroshot_ner_oncology_large_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 18, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Clinical Deidentification Pipeline (Document Wise)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (Document Wise)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>deid</li><li>en</li><li>licensed</li><li>clinical</li><li>pipeline</li><li>docwise</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="deidentification,deid,en,licensed,clinical,pipeline,docwise"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 28, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-28T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_oncology_large)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_oncology_large)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>ner</li><li>oncology</li><li>zeroshot</li><li>clinical</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-28T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,ner,oncology,zeroshot,clinical"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>,
-<code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">DLN</code>,
-<code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</p>
+<p>Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
+While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
-
-<p><code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">City</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">ZIP</code></p>
+<p><code class="language-plaintext highlighter-rouge">Adenopathy</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Biomarker</code>, <code class="language-plaintext highlighter-rouge">Biomarker_Result</code>, <code class="language-plaintext highlighter-rouge">Body_Part</code>, <code class="language-plaintext highlighter-rouge">Cancer_Dx</code>, <code class="language-plaintext highlighter-rouge">Cancer_Surgery</code>,<br />
+<code class="language-plaintext highlighter-rouge">Cycle_Count</code>, <code class="language-plaintext highlighter-rouge">Cycle_Day</code>, <code class="language-plaintext highlighter-rouge">Date</code>, <code class="language-plaintext highlighter-rouge">Death_Entit</code>, <code class="language-plaintext highlighter-rouge">Directio</code>, <code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>,<br />
+<code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Grade</code>, <code class="language-plaintext highlighter-rouge">Histological_Type</code>, <code class="language-plaintext highlighter-rouge">Imaging_Test</code>, <code class="language-plaintext highlighter-rouge">Invasion</code>, <code class="language-plaintext highlighter-rouge">Metastasis</code>, <code class="language-plaintext highlighter-rouge">Oncogene</code>, <code class="language-plaintext highlighter-rouge">Pathology_Test</code>,<br />
+<code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Radiation_Dose</code>, <code class="language-plaintext highlighter-rouge">Relative_Date</code>, <code class="language-plaintext highlighter-rouge">Response_To_Treatment</code>, <code class="language-plaintext highlighter-rouge">Route</code>, <code class="language-plaintext highlighter-rouge">Smoking_Status</code>,<br />
+<code class="language-plaintext highlighter-rouge">Staging</code>, <code class="language-plaintext highlighter-rouge">Therapy</code>, <code class="language-plaintext highlighter-rouge">Tumor_Finding</code>, <code class="language-plaintext highlighter-rouge">Tumor_Size</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_oncology_large_en_5.5.1_3.0_1732825527391.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_oncology_large_en_5.5.1_3.0_1732825527391.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'mask_entity'</span><span class="p">]]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]]))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Adenopathy"</span><span class="p">,</span> <span class="s">"Age"</span><span class="p">,</span><span class="s">"Biomarker"</span><span class="p">,</span><span class="s">"Biomarker_Result"</span><span class="p">,</span><span class="s">"Body_Part"</span><span class="p">,</span><span class="s">"Cancer_Dx"</span><span class="p">,</span><span class="s">"Cancer_Surgery"</span><span class="p">,</span>
+    <span class="s">"Cycle_Count"</span><span class="p">,</span><span class="s">"Cycle_Day"</span><span class="p">,</span><span class="s">"Date"</span><span class="p">,</span><span class="s">"Death_Entit"</span><span class="p">,</span><span class="s">"Directio"</span><span class="p">,</span><span class="s">"Dosage"</span><span class="p">,</span><span class="s">"Duration"</span><span class="p">,</span><span class="s">"Frequency"</span><span class="p">,</span>
+    <span class="s">"Gender"</span><span class="p">,</span><span class="s">"Grade"</span><span class="p">,</span><span class="s">"Histological_Type"</span><span class="p">,</span><span class="s">"Imaging_Test"</span><span class="p">,</span><span class="s">"Invasion"</span><span class="p">,</span><span class="s">"Metastasis"</span><span class="p">,</span><span class="s">"Oncogene"</span><span class="p">,</span><span class="s">"Pathology_Test"</span><span class="p">,</span>
+    <span class="s">"Race_Ethnicity"</span><span class="p">,</span><span class="s">"Radiation_Dose"</span><span class="p">,</span><span class="s">"Relative_Date"</span><span class="p">,</span><span class="s">"Response_To_Treatment"</span><span class="p">,</span><span class="s">"Route"</span><span class="p">,</span><span class="s">"Smoking_Status"</span><span class="p">,</span>
+    <span class="s">"Staging"</span><span class="p">,</span><span class="s">"Therapy"</span><span class="p">,</span><span class="s">"Tumor_Finding"</span><span class="p">,</span><span class="s">"Tumor_Size"</span><span class="p">]</span>
 
+<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_oncology_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma. Last week she was also found to have a lung metastasis."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
+
+  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Adenopathy"</span><span class="p">,</span> <span class="s">"Age"</span><span class="p">,</span><span class="s">"Biomarker"</span><span class="p">,</span><span class="s">"Biomarker_Result"</span><span class="p">,</span><span class="s">"Body_Part"</span><span class="p">,</span><span class="s">"Cancer_Dx"</span><span class="p">,</span><span class="s">"Cancer_Surgery"</span><span class="p">,</span>
+    <span class="s">"Cycle_Count"</span><span class="p">,</span><span class="s">"Cycle_Day"</span><span class="p">,</span><span class="s">"Date"</span><span class="p">,</span><span class="s">"Death_Entit"</span><span class="p">,</span><span class="s">"Directio"</span><span class="p">,</span><span class="s">"Dosage"</span><span class="p">,</span><span class="s">"Duration"</span><span class="p">,</span><span class="s">"Frequency"</span><span class="p">,</span>
+    <span class="s">"Gender"</span><span class="p">,</span><span class="s">"Grade"</span><span class="p">,</span><span class="s">"Histological_Type"</span><span class="p">,</span><span class="s">"Imaging_Test"</span><span class="p">,</span><span class="s">"Invasion"</span><span class="p">,</span><span class="s">"Metastasis"</span><span class="p">,</span><span class="s">"Oncogene"</span><span class="p">,</span><span class="s">"Pathology_Test"</span><span class="p">,</span>
+    <span class="s">"Race_Ethnicity"</span><span class="p">,</span><span class="s">"Radiation_Dose"</span><span class="p">,</span><span class="s">"Relative_Date"</span><span class="p">,</span><span class="s">"Response_To_Treatment"</span><span class="p">,</span><span class="s">"Route"</span><span class="p">,</span><span class="s">"Smoking_Status"</span><span class="p">,</span>
+    <span class="s">"Staging"</span><span class="p">,</span><span class="s">"Therapy"</span><span class="p">,</span><span class="s">"Tumor_Finding"</span><span class="p">,</span><span class="s">"Tumor_Size"</span><span class="p">]</span>
+
+<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_oncology_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma. Last week she was also found to have a lung metastasis."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deid_result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+<span class="n">labels</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Adenopathy"</span><span class="o">,</span> <span class="s">"Age"</span><span class="o">,</span><span class="s">"Biomarker"</span><span class="o">,</span><span class="s">"Biomarker_Result"</span><span class="o">,</span><span class="s">"Body_Part"</span><span class="o">,</span><span class="s">"Cancer_Dx"</span><span class="o">,</span><span class="s">"Cancer_Surgery"</span><span class="o">,</span>
+    <span class="s">"Cycle_Count"</span><span class="o">,</span><span class="s">"Cycle_Day"</span><span class="o">,</span><span class="s">"Date"</span><span class="o">,</span><span class="s">"Death_Entit"</span><span class="o">,</span><span class="s">"Directio"</span><span class="o">,</span><span class="s">"Dosage"</span><span class="o">,</span><span class="s">"Duration"</span><span class="o">,</span><span class="s">"Frequency"</span><span class="o">,</span>
+    <span class="s">"Gender"</span><span class="o">,</span><span class="s">"Grade"</span><span class="o">,</span><span class="s">"Histological_Type"</span><span class="o">,</span><span class="s">"Imaging_Test"</span><span class="o">,</span><span class="s">"Invasion"</span><span class="o">,</span><span class="s">"Metastasis"</span><span class="o">,</span><span class="s">"Oncogene"</span><span class="o">,</span><span class="s">"Pathology_Test"</span><span class="o">,</span>
+    <span class="s">"Race_Ethnicity"</span><span class="o">,</span><span class="s">"Radiation_Dose"</span><span class="o">,</span><span class="s">"Relative_Date"</span><span class="o">,</span><span class="s">"Response_To_Treatment"</span><span class="o">,</span><span class="s">"Route"</span><span class="o">,</span><span class="s">"Smoking_Status"</span><span class="o">,</span>
+    <span class="s">"Staging"</span><span class="o">,</span><span class="s">"Therapy"</span><span class="o">,</span><span class="s">"Tumor_Finding"</span><span class="o">,</span><span class="s">"Tumor_Size"</span><span class="o">)</span>
 
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"mask_entity"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"obfuscated"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">pretrained_zero_shot_ner</span> <span class="k">=</span> <span class="nc">PretrainedZeroShotNER</span><span class="o">().</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"zeroshot_ner_oncology_large"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPredictionThreshold</span><span class="o">(</span><span class="mf">0.5</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setLabels</span><span class="o">(</span><span class="n">labels</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_detector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">pretrained_zero_shot_ner</span><span class="o">,</span>
+    <span class="n">ner_converter</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">Two</span> <span class="kt">years</span> <span class="kt">ago</span>, <span class="kt">the</span> <span class="kt">patient</span> <span class="kt">presented</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">tumor</span> <span class="kt">in</span> <span class="kt">her</span> <span class="kt">left</span> <span class="kt">breast</span> <span class="kt">and</span> <span class="kt">adenopathies.</span> <span class="kt">She</span> <span class="kt">was</span> <span class="kt">diagnosed</span> <span class="kt">with</span> <span class="kt">invasive</span> <span class="kt">ductal</span> <span class="kt">carcinoma.</span> <span class="kt">Last</span> <span class="kt">week</span> <span class="kt">she</span> <span class="kt">was</span> <span class="kt">also</span> <span class="kt">found</span> <span class="kt">to</span> <span class="kt">have</span> <span class="kt">a</span> <span class="kt">lung</span> <span class="kt">metastasis.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
@@ -569,17 +664,24 @@ The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 .""
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Masked with entity labels
-<span class="nt">------------------------------</span>
-Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; <span class="k">in</span> &lt;CITY&gt;,  attended to the patient on &lt;DATE&gt;.
-The patient’s medical record number is &lt;MEDICALRECORD&gt;
-patient, &lt;PATIENT&gt;, is &lt;AGE&gt; years old,  her Contact number: &lt;PHONE&gt; <span class="nb">.</span>
-
-Obfuscated
-<span class="nt">------------------------------</span>
-Dr. Edwardo Graft, from MCBRIDE ORTHOPEDIC HOSPITAL <span class="k">in </span>CLAMART,  attended to the patient on 14/06/2024.
-The patient’s medical record number is 78295621.
-The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469 <span class="nb">.</span>
++-------------+-----+---+-----------------+----------+
+|chunk        |begin|end|ner_label        |confidence|
++-------------+-----+---+-----------------+----------+
+|Two years ago|1    |13 |Relative_Date    |0.9848315 |
+|tumor        |45   |49 |Tumor_Finding    |0.99484324|
+|her          |54   |56 |Gender           |0.99652606|
+|left         |58   |61 |Direction        |0.99791497|
+|breast       |63   |68 |Body_Part        |0.9953009 |
+|adenopathies |74   |85 |Adenopathy       |0.9020297 |
+|She          |88   |90 |Gender           |0.99673635|
+|invasive     |111  |118|Histological_Type|0.90829986|
+|ductal       |120  |125|Histological_Type|0.8250756 |
+|carcinoma    |127  |135|Cancer_Dx        |0.97008   |
+|Last week    |138  |146|Date             |0.9312243 |
+|she          |148  |150|Gender           |0.9977864 |
+|lung         |177  |180|Body_Part        |0.9972607 |
+|metastasis   |182  |191|Metastasis       |0.9868492 |
++-------------+-----+---+-----------------+----------+
 
 </code></pre></div></div>
 
@@ -589,15 +691,11 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>clinical_deidentification_docwise_wip</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>zeroshot_ner_oncology_large</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.5.0+</td>
+      <td>Healthcare NLP 5.5.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -613,50 +711,51 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.8 GB</td>
+      <td>1.6 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
-
-<ul>
-  <li>DocumentAssembler</li>
-  <li>InternalDocumentSplitter</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>LightDeIdentification</li>
-  <li>LightDeIdentification</li>
-</ul>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-18T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                label  precision    recall  f1-score   support
+           Adenopathy     0.6077    0.8587    0.7117        92
+                  Age     0.9561    0.9944    0.9749      1074
+            Biomarker     0.7034    0.8744    0.7796      1752
+     Biomarker_Result     0.5618    0.9026    0.6925      1632
+            Body_Part     0.7044    0.9203    0.7980      3540
+            Cancer_Dx     0.8526    0.8125    0.8321      1360
+       Cancer_Surgery     0.7790    0.7437    0.7609       749
+          Cycle_Count     0.7750    0.8857    0.8267       350
+            Cycle_Day     0.6928    0.8346    0.7571       254
+                 Date     0.9469    0.9881    0.9671       921
+         Death_Entity     0.8293    0.9444    0.8831        36
+            Direction     0.7025    0.9279    0.7996       957
+               Dosage     0.8776    0.8389    0.8578      1111
+             Duration     0.6605    0.8855    0.7566       760
+            Frequency     0.7386    0.8604    0.7948       394
+               Gender     0.9802    0.9984    0.9892      1286
+                Grade     0.6317    0.8178    0.7128       258
+    Histological_Type     0.5459    0.7878    0.6449       476
+         Imaging_Test     0.8467    0.8653    0.8559      2145
+             Invasion     0.5461    0.8177    0.6549       181
+           Metastasis     0.9530    0.8756    0.9127       394
+                    O     0.9709    0.8980    0.9330     66650
+             Oncogene     0.6892    0.6996    0.6944       466
+       Pathology_Test     0.6896    0.8382    0.7567      1100
+       Race_Ethnicity     0.8657    0.9831    0.9206        59
+       Radiation_Dose     0.8077    0.8936    0.8485       141
+        Relative_Date     0.7965    0.7710    0.7835      1284
+Response_To_Treatment     0.5100    0.7988    0.6225       641
+                Route     0.6359    0.8493    0.7273       146
+       Smoking_Status     0.8983    0.9298    0.9138        57
+              Staging     0.5738    0.7848    0.6629       223
+              Therapy     0.7295    0.9021    0.8067      2012
+        Tumor_Finding     0.8879    0.8474    0.8672      1252
+           Tumor_Size     0.8069    0.9803    0.8852      1066
+             accuracy          -         -    0.8928     94819
+            macro avg     0.7575    0.8709    0.8054     94819
+         weighted avg     0.9096    0.8928    0.8975     94819
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-11-28T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +940,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/10/18/age_parser_en.html">Age Contextual Parser Model</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/10/18/date_matcher_en.html">Date Regex Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/11/28/zeroshot_ner_generic_medium_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_generic_medium)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/11/28/ner_deid_generic_docwise_de.html">Detect PHI for Deidentification (Generic - Docwise)</a></div></div></div>
 
 </div>
 </div>

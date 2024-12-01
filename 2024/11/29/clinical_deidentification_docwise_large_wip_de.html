@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (Document Wise) | clinical_deidentification_docwise_wip | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (German, Document Wise) | clinical_deidentification_docwise_large_wip | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.The pipeline can mask and obfuscate LOCATION, CONTACT, PROFESSION, NAME, DATE, ID, AGE, MEDICALRECORD, ORGANIZATION, HEALTHPLAN, DOCTOR, USERNAME,LOCATION-OTH...">
-<!-- <link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"> -->
-<link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from medical texts in German language. The PHI information will be masked and obfuscated in the resulting text.The pipeline can mask and obfuscate: LOCATION, DATE, NAME, ID, AGE, PROFESSION, CONTACT, ORGANIZATION, DOCTOR, CITY, COUNTRY, STREET, PATIE...">
+<!-- <link rel="canonical" href="/2024/11/29/clinical_deidentification_docwise_large_wip_de.html"> -->
+<link rel="canonical" href="/2024/11/29/clinical_deidentification_docwise_large_wip_de.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,64 +503,58 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2024-10-18-clinical_deidentification_docwise_wip_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bugeki/2024-11-29-clinical_deidentification_docwise_large_wip_de.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 18, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Clinical Deidentification Pipeline (Document Wise)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (Document Wise)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>deid</li><li>en</li><li>licensed</li><li>clinical</li><li>pipeline</li><li>docwise</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="deidentification,deid,en,licensed,clinical,pipeline,docwise"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 29, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-29T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Clinical Deidentification Pipeline (German, Document Wise)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (German, Document Wise)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>deid</li><li>de</li><li>licensed</li><li>clinical</li><li>pipeline</li><li>docwise</li><li>zero_shot</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-29T00:00:00+00:00">
+    <meta itemprop="keywords" content="deidentification,deid,de,licensed,clinical,pipeline,docwise,zero_shot"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>,
-<code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">DLN</code>,
-<code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
-
-<p><code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">City</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">ZIP</code></p>
+<p>This pipeline can be used to deidentify PHI information from medical texts in German language. The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate: <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">URL</code> entities.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_large_wip_de_5.5.1_3.4_1732872498598.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_large_wip_de_5.5.1_3.4_1732872498598.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
 <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_large_wip"</span><span class="p">,</span> <span class="s">"de"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Sehr geehrter Herr Schmidt, bezüglich Ihrer Anfrage vom 15.03.2024 für Ihre Krankenakte 341123 möchte ich bestätigen, dass Ihre Sozialversicherungsnummer 13110587M565 und Ihre Versichertennummer T0110053F5D korrekt in unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen M-AB 1234 ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter +49 89 12345678 oder schreiben Sie an support@beispiel.de. Unsere Details finden Sie auch unter https://www.beispiel-behoerde.de. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto DE89 3704 0044 0532 0130 00."""</span>
 
 <span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'mask_entity'</span><span class="p">]]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'document'</span><span class="p">]]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'masked'</span><span class="p">]]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'obfuscated'</span><span class="p">]]))</span>
 
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_docwise_large_wip"</span><span class="o">,</span> <span class="s">"de"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Sehr geehrter Herr Schmidt, bezüglich Ihrer Anfrage vom 15.03.2024 für Ihre Krankenakte 341123 möchte ich bestätigen, dass Ihre Sozialversicherungsnummer 13110587M565 und Ihre Versichertennummer T0110053F5D korrekt in unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen M-AB 1234 ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter +49 89 12345678 oder schreiben Sie an support@beispiel.de. Unsere Details finden Sie auch unter https://www.beispiel-behoerde.de. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto DE89 3704 0044 0532 0130 00."""</span>
 
 <span class="k">val</span> <span class="nv">deid_result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
 
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"mask_entity"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"obfuscated"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="mi">0</span><span class="o">)(</span><span class="s">"document"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="mi">0</span><span class="o">)(</span><span class="s">"masked"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="mi">0</span><span class="o">)(</span><span class="s">"obfuscated"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
 
 
 </code></pre></div>  </div>
@@ -569,17 +563,12 @@ The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 .""
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Masked with entity labels
-<span class="nt">------------------------------</span>
-Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; <span class="k">in</span> &lt;CITY&gt;,  attended to the patient on &lt;DATE&gt;.
-The patient’s medical record number is &lt;MEDICALRECORD&gt;
-patient, &lt;PATIENT&gt;, is &lt;AGE&gt; years old,  her Contact number: &lt;PHONE&gt; <span class="nb">.</span>
+Sehr geehrter Herr Schmidt, bezüglich Ihrer Anfrage vom 15.03.2024 für Ihre Krankenakte 341123 möchte ich bestätigen, dass Ihre Sozialversicherungsnummer 13110587M565 und Ihre Versichertennummer T0110053F5D korrekt <span class="k">in </span>unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen M-AB 1234 ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter +49 89 12345678 oder schreiben Sie an support@beispiel.de. Unsere Details finden Sie auch unter https://www.beispiel-behoerde.de. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto DE89 3704 0044 0532 0130 00.
+<span class="nt">-------------MASKED------------</span>
+Sehr geehrter Herr &lt;NAME&gt;, bezüglich Ihrer Anfrage vom &lt;DATE&gt; für Ihre Krankenakte &lt;MEDICALRECORD&gt; möchte ich bestätigen, dass Ihre Sozialversicherungsnummer &lt;SSN&gt; und Ihre Versichertennummer &lt;ID&gt; korrekt <span class="k">in </span>unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen &lt;PLATE&gt; ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter &lt;PHONE&gt; oder schreiben Sie an &lt;EMAIL&gt;. Unsere Details finden Sie auch unter &lt;URL&gt;. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto &lt;ACCOUNT&gt;.
+<span class="nt">-------------OBFUSCATED-----------</span>
+SSehr geehrter Herr Berta, bezüglich Ihrer Anfrage vom 22.03.2024 für Ihre Krankenakte 816698 möchte ich bestätigen, dass Ihre Sozialversicherungsnummer 91990385M363und Ihre Versichertennummer B6556697P9R korrekt <span class="k">in </span>unserem System hinterlegt sind. Ihr Fahrzeug mit dem Kennzeichen N-RO 4769 ist bereits registriert. Falls Sie Fragen haben, erreichen Sie uns unter +70 10 25476981 oder schreiben Sie an Flaminia@google.com. Unsere Details finden Sie auch unter http://www.duran-brown.com/. Für Ihre Bankgeschäfte nutzen Sie weiterhin das Konto XY21 5948 4488 4756 4354 44.
 
-Obfuscated
-<span class="nt">------------------------------</span>
-Dr. Edwardo Graft, from MCBRIDE ORTHOPEDIC HOSPITAL <span class="k">in </span>CLAMART,  attended to the patient on 14/06/2024.
-The patient’s medical record number is 78295621.
-The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469 <span class="nb">.</span>
 
 </code></pre></div></div>
 
@@ -589,7 +578,7 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>clinical_deidentification_docwise_wip</td>
+      <td>clinical_deidentification_docwise_large_wip</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -597,7 +586,7 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.5.0+</td>
+      <td>Healthcare NLP 5.5.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -609,11 +598,11 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
     </tr>
     <tr>
       <td>Language:</td>
-      <td>en</td>
+      <td>de</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.8 GB</td>
+      <td>2.9 GB</td>
     </tr>
   </tbody>
 </table>
@@ -625,38 +614,50 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
   <li>InternalDocumentSplitter</li>
   <li>TokenizerModel</li>
   <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
+  <li>PretrainedZeroShotNER</li>
+  <li>NerConverterInternalModel</li>
   <li>MedicalNerModel</li>
   <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
   <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
+  <li>RegexMatcherInternalModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>RegexMatcherInternalModel</li>
+  <li>RegexMatcherInternalModel</li>
+  <li>TextMatcherInternalModel</li>
+  <li>TextMatcherInternalModel</li>
+  <li>TextMatcherInternalModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>RegexMatcherModel</li>
+  <li>RegexMatcherModel</li>
+  <li>RegexMatcherModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
   <li>ChunkMergeModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
   <li>ChunkMergeModel</li>
   <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkFilterer</li>
   <li>LightDeIdentification</li>
   <li>LightDeIdentification</li>
 </ul>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-18T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-11-29T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +842,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/10/18/age_parser_en.html">Age Contextual Parser Model</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/10/18/date_matcher_en.html">Date Regex Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/11/29/zeroshot_ner_vop_medium_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_medium)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/11/29/clinical_deidentification_docwise_wip_de.html">Clinical Deidentification Pipeline (German, Document Wise)</a></div></div></div>
 
 </div>
 </div>

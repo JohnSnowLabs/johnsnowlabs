@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (Document Wise) | clinical_deidentification_docwise_wip | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Sentence Entity Resolver for RxNorm (bge_medembed_large_v0_1 embeddings) | medmebed_large_rxnorm_augmented | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.The pipeline can mask and obfuscate LOCATION, CONTACT, PROFESSION, NAME, DATE, ID, AGE, MEDICALRECORD, ORGANIZATION, HEALTHPLAN, DOCTOR, USERNAME,LOCATION-OTH...">
-<!-- <link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"> -->
-<link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using [bge_medembed_large_v0_1](https://sparknlp.org/2024/10/21/bge_medembed_large_v0_1_en.html) embeddings.Additionally, this model returns concept classes of the drugs in the all_k_aux_labels column.Predicted Entitie...">
+<!-- <link rel="canonical" href="/2024/11/19/medmebed_large_rxnorm_augmented_en.html"> -->
+<link rel="canonical" href="/2024/11/19/medmebed_large_rxnorm_augmented_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,83 +503,155 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2024-10-18-clinical_deidentification_docwise_wip_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-11-19-medmebed_large_rxnorm_augmented_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 18, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Clinical Deidentification Pipeline (Document Wise)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (Document Wise)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>deid</li><li>en</li><li>licensed</li><li>clinical</li><li>pipeline</li><li>docwise</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="deidentification,deid,en,licensed,clinical,pipeline,docwise"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 19, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-19T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Sentence Entity Resolver for RxNorm (bge_medembed_large_v0_1 embeddings)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Sentence Entity Resolver for RxNorm (bge_medembed_large_v0_1 embeddings)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>medembed</li><li>rxnorm</li><li>entity_resolution</li><li>clinical</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-19T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,medembed,rxnorm,entity_resolution,clinical"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>,
-<code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">DLN</code>,
-<code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</p>
+<p>This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using <code class="language-plaintext highlighter-rouge">[bge_medembed_large_v0_1](https://sparknlp.org/2024/10/21/bge_medembed_large_v0_1_en.html)</code> embeddings.
+Additionally, this model returns concept classes of the drugs in the <code class="language-plaintext highlighter-rouge">all_k_aux_labels</code> column.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">City</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">ZIP</code></p>
+<p><code class="language-plaintext highlighter-rouge">RxNorm Codes</code>, <code class="language-plaintext highlighter-rouge">Concept Classes</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medmebed_large_rxnorm_augmented_en_5.5.0_3.4_1732046847333.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/medmebed_large_rxnorm_augmented_en_5.5.0_3.4_1732046847333.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="n">sentenceDetectorDL</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'mask_entity'</span><span class="p">]]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]]))</span>
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
 
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_posology_greedy"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"DRUG"</span><span class="p">])</span>
+
+<span class="n">c2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">bge_embedding</span> <span class="o">=</span> <span class="n">BGEEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bge_medembed_large_v0_1"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">rxnorm_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"medmebed_large_rxnorm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"embeddings"</span><span class="p">])</span>\
+     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"rxnorm_code"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                                       <span class="n">sentenceDetectorDL</span><span class="p">,</span>
+                                       <span class="n">tokenizer</span><span class="p">,</span>
+                                       <span class="n">word_embeddings</span><span class="p">,</span>
+                                       <span class="n">ner</span><span class="p">,</span>
+                                       <span class="n">ner_converter</span><span class="p">,</span>
+                                       <span class="n">c2doc</span><span class="p">,</span>
+                                       <span class="n">bge_embedding</span><span class="p">,</span>
+                                       <span class="n">rxnorm_resolver</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. He was seen by the endocrinology service and she was discharged on Coumadin 5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily"""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">resolver_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentenceDetectorDL</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">document</span><span class="err">"</span><span class="o">])</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">sentence</span><span class="err">"</span><span class="o">])</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deid_result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"word_embeddings"</span><span class="o">)</span>
 
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"mask_entity"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"obfuscated"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_posology_greedy"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"word_embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setWhiteList</span><span class="o">([</span><span class="err">"</span><span class="kt">DRUG</span><span class="err">"</span><span class="o">])</span>
+
+<span class="k">val</span> <span class="nv">c2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">bge_embedding</span> <span class="k">=</span> <span class="nv">BGEEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"bge_medembed_large_v0_1"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">ner_chunk_doc</span><span class="err">"</span><span class="o">])</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">rxnorm_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"medmebed_large_rxnorm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">embeddings</span><span class="err">"</span><span class="o">])</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"rxnorm_code"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">resolver_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+          <span class="n">document_assembler</span><span class="o">,</span>
+          <span class="n">sentenceDetectorDL</span><span class="o">,</span>
+          <span class="n">tokenizer</span><span class="o">,</span>
+          <span class="n">word_embeddings</span><span class="o">,</span>
+          <span class="n">ner</span><span class="o">,</span>
+          <span class="n">ner_converter</span><span class="o">,</span>
+          <span class="n">c2doc</span><span class="o">,</span>
+          <span class="n">biolord_embedding</span><span class="o">,</span>
+          <span class="n">rxnorm_resolver</span><span class="o">))</span>
 
 
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">The</span> <span class="kt">patient</span> <span class="kt">was</span> <span class="kt">prescribed</span> <span class="kt">aspirin</span> <span class="kt">and</span> <span class="kt">and</span> <span class="kt">Albuterol</span> <span class="kt">inhaler</span>, <span class="kt">two</span> <span class="kt">puffs</span> <span class="kt">every</span> <span class="err">4</span> <span class="kt">hours</span> <span class="kt">as</span> <span class="kt">needed</span> <span class="kt">for</span> <span class="kt">asthma.</span> <span class="kt">He</span> <span class="kt">was</span> <span class="kt">seen</span> <span class="kt">by</span> <span class="kt">the</span> <span class="kt">endocrinology</span> <span class="kt">service</span> <span class="kt">and</span> <span class="kt">she</span> <span class="kt">was</span> <span class="kt">discharged</span> <span class="kt">on</span> <span class="kt">Coumadin</span> <span class="err">5</span> <span class="kt">mg</span> <span class="kt">with</span> <span class="kt">meals</span> , <span class="kt">and</span> <span class="kt">metformin</span> <span class="err">1000</span> <span class="kt">mg</span> <span class="kt">two</span> <span class="kt">times</span> <span class="kt">a</span> <span class="kt">day</span> <span class="kt">and</span> <span class="kt">Lisinopril</span> <span class="err">10</span> <span class="kt">mg</span> <span class="kt">daily</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">resolver_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Masked with entity labels
-<span class="nt">------------------------------</span>
-Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; <span class="k">in</span> &lt;CITY&gt;,  attended to the patient on &lt;DATE&gt;.
-The patient’s medical record number is &lt;MEDICALRECORD&gt;
-patient, &lt;PATIENT&gt;, is &lt;AGE&gt; years old,  her Contact number: &lt;PHONE&gt; <span class="nb">.</span>
-
-Obfuscated
-<span class="nt">------------------------------</span>
-Dr. Edwardo Graft, from MCBRIDE ORTHOPEDIC HOSPITAL <span class="k">in </span>CLAMART,  attended to the patient on 14/06/2024.
-The patient’s medical record number is 78295621.
-The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469 <span class="nb">.</span>
++-----------------+------+-----------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+|        ner_chunk|entity|rxnorm_code|                                                               all_k_resolutions|                                                                   all_k_results|                                                                 all_k_distances|                                                          all_k_cosine_distances|                                                                all_k_aux_labels|
++-----------------+------+-----------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+|          aspirin|  DRUG|       1191|aspirin[aspirin]:::Empirin[Empirin]:::aluminum aspirin[aluminum aspirin]:::as...|1191:::202547:::611:::329295:::335953:::218266:::317299:::1295740:::437699:::...|0.4045:::0.4813:::0.4893:::0.4898:::0.4922:::0.4936:::0.4995:::0.5047:::0.508...|0.0818:::0.1158:::0.1197:::0.1200:::0.1211:::0.1218:::0.1247:::0.1274:::0.129...|Ingredient:::Brand Name:::Ingredient:::Clinical Drug Comp:::Clinical Drug Com...|
+|Albuterol inhaler|  DRUG|    1649559|albuterol Dry Powder Inhaler[albuterol Dry Powder Inhaler]:::albuterol[albute...|1649559:::435:::307779:::104514:::2108233:::1154602:::745678:::252298:::11546...|0.4190:::0.4468:::0.4481:::0.4511:::0.4546:::0.4591:::0.4687:::0.4738:::0.480...|0.0878:::0.0998:::0.1004:::0.1017:::0.1033:::0.1054:::0.1099:::0.1122:::0.115...|Clinical Drug Form:::Ingredient:::Clinical Drug:::Clinical Drug:::Clinical Dr...|
+|    Coumadin 5 mg|  DRUG|     855333|warfarin sodium 5 MG <span class="o">[</span>Coumadin]:::warfarin sodium 7.5 MG <span class="o">[</span>Coumadin]:::Warfari...|855333:::855345:::330536:::855313:::855334:::855314:::438740:::855339:::85532...|0.2281:::0.3900:::0.4020:::0.4085:::0.4208:::0.4322:::0.4334:::0.4401:::0.455...|0.0260:::0.0760:::0.0808:::0.0834:::0.0885:::0.0934:::0.0939:::0.0968:::0.103...|Branded Drug Comp:::Branded Drug Comp:::Clinical Drug Comp:::Branded Drug Com...|
+|metformin 1000 mg|  DRUG|     316255|metformin 1000 MG[metformin 1000 MG]:::metformin hydrochloride 1000 MG[metfor...|316255:::860995:::332809:::316256:::861004:::330861:::316257:::860999:::43850...|0.0933:::0.3953:::0.4180:::0.4216:::0.4262:::0.4406:::0.4515:::0.4518:::0.465...|0.0044:::0.0781:::0.0873:::0.0889:::0.0908:::0.0971:::0.1019:::0.1020:::0.108...|Clinical Drug Comp:::Clinical Drug Comp:::Clinical Drug Comp:::Clinical Drug ...|
+| Lisinopril 10 mg|  DRUG|     316151|lisinopril 10 MG[lisinopril 10 MG]:::lisinopril 10 MG Oral Tablet:::lisinopri...|316151:::314076:::563611:::567576:::316156:::197885:::316153:::104377:::31615...|0.1448:::0.2378:::0.3672:::0.3938:::0.4047:::0.4163:::0.4367:::0.4398:::0.441...|0.0105:::0.0283:::0.0674:::0.0775:::0.0819:::0.0867:::0.0954:::0.0967:::0.097...|Clinical Drug Comp:::Clinical Drug:::Branded Drug Comp:::Branded Drug Comp:::...|
++-----------------+------+-----------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 </code></pre></div></div>
 
@@ -589,11 +661,7 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>clinical_deidentification_docwise_wip</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>medmebed_large_rxnorm_augmented</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -608,55 +676,28 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[BGE]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[rxnorm_code]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.8 GB</td>
+      <td>1.5 GB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="included-models">Included Models</h2>
-
-<ul>
-  <li>DocumentAssembler</li>
-  <li>InternalDocumentSplitter</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>LightDeIdentification</li>
-  <li>LightDeIdentification</li>
-</ul>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-18T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-11-19T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +882,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/10/18/age_parser_en.html">Age Contextual Parser Model</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/10/18/date_matcher_en.html">Date Regex Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/11/19/medembed_base_rxnorm_augmented_en.html">Sentence Entity Resolver for RxNorm (bge_medembed_base_v0_1 embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/11/27/zeroshot_ner_deid_subentity_merged_medium_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_deid_subentity_merged_medium)</a></div></div></div>
 
 </div>
 </div>

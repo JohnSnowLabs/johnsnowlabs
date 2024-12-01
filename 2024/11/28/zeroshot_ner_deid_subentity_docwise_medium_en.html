@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (Document Wise) | clinical_deidentification_docwise_wip | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pretrained Zero-Shot PHI Detection for Deidentification (Zero-shot - Medium - Subentity - Docwise) | zeroshot_ner_deid_subentity_docwise_medium | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.The pipeline can mask and obfuscate LOCATION, CONTACT, PROFESSION, NAME, DATE, ID, AGE, MEDICALRECORD, ORGANIZATION, HEALTHPLAN, DOCTOR, USERNAME,LOCATION-OTH...">
-<!-- <link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"> -->
-<link rel="canonical" href="/2024/10/18/clinical_deidentification_docwise_wip_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionZero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.While the model card includes default labe...">
+<!-- <link rel="canonical" href="/2024/11/28/zeroshot_ner_deid_subentity_docwise_medium_en.html"> -->
+<link rel="canonical" href="/2024/11/28/zeroshot_ner_deid_subentity_docwise_medium_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,65 +503,112 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2024-10-18-clinical_deidentification_docwise_wip_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-11-28-zeroshot_ner_deid_subentity_docwise_medium_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 18, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Clinical Deidentification Pipeline (Document Wise)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (Document Wise)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>deid</li><li>en</li><li>licensed</li><li>clinical</li><li>pipeline</li><li>docwise</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-10-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="deidentification,deid,en,licensed,clinical,pipeline,docwise"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 28, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-28T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pretrained Zero-Shot PHI Detection for Deidentification (Zero-shot - Medium - Subentity - Docwise)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pretrained Zero-Shot PHI Detection for Deidentification (Zero-shot - Medium - Subentity - Docwise)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>ner</li><li>deid</li><li>zeroshot</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-28T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,ner,deid,zeroshot"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>,
-<code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">DLN</code>,
-<code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</p>
+<p>Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
+While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">City</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DEVICE</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">HEALTHPLAN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">LOCATION-OTHER</code>, <code class="language-plaintext highlighter-rouge">LOCATION_OTHER</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">ZIP</code></p>
+<p><code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.2_1729263875298.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_subentity_docwise_medium_en_5.5.1_3.0_1732834164971.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_subentity_docwise_medium_en_5.5.1_3.0_1732834164971.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">"AGE"</span><span class="p">,</span> <span class="s">"CITY"</span><span class="p">,</span> <span class="s">"COUNTRY"</span><span class="p">,</span> <span class="s">"DATE"</span><span class="p">,</span> <span class="s">"DOCTOR"</span><span class="p">,</span> <span class="s">"HOSPITAL"</span><span class="p">,</span> <span class="s">"IDNUM"</span><span class="p">,</span> <span class="s">"ORGANIZATION"</span><span class="p">,</span> 
+          <span class="s">"PATIENT"</span><span class="p">,</span> <span class="s">"PHONE"</span><span class="p">,</span> <span class="s">"PROFESSION"</span><span class="p">,</span> <span class="s">"STATE"</span><span class="p">,</span> <span class="s">"STREET"</span><span class="p">,</span> <span class="s">"ZIP"</span><span class="p">]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'mask_entity'</span><span class="p">]]))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span><span class="p">.</span><span class="n">result</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">deid_result</span><span class="p">[</span><span class="s">'obfuscated'</span><span class="p">]]))</span>
+<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_deid_subentity_docwise_medium"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Emily Davis, a 34-year-old woman, Dr. Michael Johnson cares wit her, at CarePlus Clinic, located at 456 Elm Street, NewYork, NY has recommended starting insulin therapy. She has an appointment scheduled for March 15, 2024."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_docwise_wip"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 ."""</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deid_result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+<span class="n">labels</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"AGE"</span><span class="o">,</span> <span class="s">"CITY"</span><span class="o">,</span> <span class="s">"COUNTRY"</span><span class="o">,</span> <span class="s">"DATE"</span><span class="o">,</span> <span class="s">"DOCTOR"</span><span class="o">,</span> <span class="s">"HOSPITAL"</span><span class="o">,</span> <span class="s">"IDNUM"</span><span class="o">,</span> <span class="s">"ORGANIZATION"</span><span class="o">,</span> 
+          <span class="s">"PATIENT"</span><span class="o">,</span> <span class="s">"PHONE"</span><span class="o">,</span> <span class="s">"PROFESSION"</span><span class="o">,</span> <span class="s">"STATE"</span><span class="o">,</span> <span class="s">"STREET"</span><span class="o">,</span> <span class="s">"ZIP"</span><span class="o">)</span>
 
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"mask_entity"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
-<span class="nf">println</span><span class="o">(</span><span class="nf">deid_result</span><span class="o">(</span><span class="s">"obfuscated"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nf">_</span><span class="o">(</span><span class="s">"result"</span><span class="o">).</span><span class="py">toString</span><span class="o">).</span><span class="py">mkString</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">pretrained_zero_shot_ner</span> <span class="k">=</span> <span class="nc">PretrainedZeroShotNER</span><span class="o">().</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"zeroshot_ner_deid_subentity_docwise_medium"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setPredictionThreshold</span><span class="o">(</span><span class="mf">0.5</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setLabels</span><span class="o">(</span><span class="n">labels</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_detector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">pretrained_zero_shot_ner</span><span class="o">,</span>
+    <span class="n">ner_converter</span>
+<span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">Emily</span> <span class="kt">Davis</span>, <span class="kt">a</span> <span class="err">34</span><span class="kt">-year-old</span> <span class="kt">woman</span>, <span class="kt">Dr.</span> <span class="kt">Michael</span> <span class="kt">Johnson</span> <span class="kt">cares</span> <span class="kt">wit</span> <span class="kt">her</span>, <span class="kt">at</span> <span class="kt">CarePlus</span> <span class="kt">Clinic</span>, <span class="kt">located</span> <span class="kt">at</span> <span class="err">456</span> <span class="kt">Elm</span> <span class="kt">Street</span>, <span class="kt">NewYork</span>, <span class="kt">NY</span> <span class="kt">has</span> <span class="kt">recommended</span> <span class="kt">starting</span> <span class="kt">insulin</span> <span class="kt">therapy.</span> <span class="kt">She</span> <span class="kt">has</span> <span class="kt">an</span> <span class="kt">appointment</span> <span class="kt">scheduled</span> <span class="kt">for</span> <span class="kt">March</span> <span class="err">15</span>, <span class="err">2024</span><span class="kt">.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
@@ -569,17 +616,18 @@ The patient, Emma Wilson, is 50 years old,  her Contact number: 444-456-7890 .""
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Masked with entity labels
-<span class="nt">------------------------------</span>
-Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; <span class="k">in</span> &lt;CITY&gt;,  attended to the patient on &lt;DATE&gt;.
-The patient’s medical record number is &lt;MEDICALRECORD&gt;
-patient, &lt;PATIENT&gt;, is &lt;AGE&gt; years old,  her Contact number: &lt;PHONE&gt; <span class="nb">.</span>
-
-Obfuscated
-<span class="nt">------------------------------</span>
-Dr. Edwardo Graft, from MCBRIDE ORTHOPEDIC HOSPITAL <span class="k">in </span>CLAMART,  attended to the patient on 14/06/2024.
-The patient’s medical record number is 78295621.
-The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469 <span class="nb">.</span>
++---------------+-----+---+---------+----------+
+|chunk          |begin|end|ner_label|confidence|
++---------------+-----+---+---------+----------+
+|Emily Davis    |1    |11 |PATIENT  |0.99571335|
+|34-year-old    |16   |26 |AGE      |0.99942374|
+|Michael Johnson|39   |53 |DOCTOR   |0.99911386|
+|CarePlus Clinic|73   |87 |HOSPITAL |0.87801534|
+|456 Elm Street |101  |114|STREET   |0.99828523|
+|NewYork        |117  |123|CITY     |0.9850912 |
+|NY             |126  |127|STATE    |0.9824218 |
+|March 15, 2024 |208  |221|DATE     |0.9994097 |
++---------------+-----+---+---------+----------+
 
 </code></pre></div></div>
 
@@ -589,15 +637,11 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>clinical_deidentification_docwise_wip</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>zeroshot_ner_deid_subentity_docwise_medium</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.5.0+</td>
+      <td>Healthcare NLP 5.5.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -613,50 +657,34 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.8 GB</td>
+      <td>711.7 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<ul>
-  <li>DocumentAssembler</li>
-  <li>InternalDocumentSplitter</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>RegexMatcherInternalModel</li>
-  <li>TextMatcherInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
-  <li>LightDeIdentification</li>
-  <li>LightDeIdentification</li>
-</ul>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-10-18T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       label  precision    recall  f1-score   support
+         AGE     0.8287    0.9367    0.8794      1074
+        CITY     0.7973    0.9067    0.8485       525
+     COUNTRY     0.8430    0.8146    0.8286       178
+        DATE     0.9867    0.9675    0.9770      7995
+      DOCTOR     0.9698    0.9125    0.9403      5134
+    HOSPITAL     0.8397    0.8379    0.8388      2276
+       IDNUM     0.8720    0.5780    0.6952       955
+           O     0.9965    0.9959    0.9962    315085
+ORGANIZATION     0.5846    0.6032    0.5938       189
+     PATIENT     0.8419    0.9547    0.8947      2364
+       PHONE     0.6293    0.8455    0.7216       492
+  PROFESSION     0.7300    0.9028    0.8072       494
+       STATE     0.6954    0.9073    0.7874       302
+      STREET     0.8969    0.9636    0.9291       605
+         ZIP     0.8879    1.0000    0.9406       198
+    accuracy                         0.9903    337866
+   macro avg     0.8267    0.8751    0.8452    337866
+weighted avg     0.9908    0.9903    0.9904    337866
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-11-28T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -841,7 +869,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/10/18/age_parser_en.html">Age Contextual Parser Model</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/10/18/date_matcher_en.html">Date Regex Matcher</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/11/28/zeroshot_ner_deid_generic_docwise_medium_en.html">Pretrained Zero-Shot PHI Detection for Deidentification (Zero-shot - Medium - Generic - Docwise)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/11/28/zeroshot_ner_generic_large_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_generic_large)</a></div></div></div>
 
 </div>
 </div>
