@@ -19,14 +19,14 @@ sidebar:
 
 We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with brand new `PretrainedZeroShotNER`, `ContextualEntityRuler`, and `StructuredJsonConverter` annotators, 39 new and updated clinical pretrained models, and pipelines**.
 
-+ Introducing a brand new `PretrainedZeroShotNER` annotator to extract named entities with no annotation or additional training, for any arbitrary label. 
-+ New `ContextualEntityRuler` annotator customizing named entities based on contextual rules (modifying chunks via inclusion and exclusion criteria).
++ Introducing a brand new `PretrainedZeroShotNER` annotator to extract named entities with no annotation or additional training, for any arbitrary label (coming with 12 zero shot models that are already finetuned on in-house annotations)
++ New `ContextualEntityRuler` annotator customizing named entities based on contextual rules (modifying chunks via inclusion and exclusion criteria)
 + New `StructuredJsonConverter` annotator for prettified annotation results and enhanced data processing (returning structured JSON outputs from Spark NLP pipelines)
 + Majority voting for overlapping annotations in `AssertionMerger` (picking the optimal assertion status coming from multiple models)
 + New rule-based contextual parser and entity matcher models to customize De-Identification pipelines
 + Introducing 5 new named entity recognition (NER) models and pipelines to detect German PHI data for deidentification with minimal customization
 + Introducing 2 new RxNorm resolution models for mapping the medication entities to RxNorm terminology, using SOTA `MedEmbed` sentence embeddings
-+ Optimizing Spark Driver memory allocation to utilize all the available resources by default.
++ Optimizing Spark Driver memory allocation to utilize all the available resources by default
 + `Databricks` support for `MedicalLLM` and `LLMLoader` to load/ run finetuned medical LLMs 
 + New blog posts on various topics
 + Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
