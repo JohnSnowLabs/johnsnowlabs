@@ -1,4 +1,4 @@
- n{%- capture title -%}
+{%- capture title -%}
 ContextualEntityFilterer
 {%- endcapture -%}
 
