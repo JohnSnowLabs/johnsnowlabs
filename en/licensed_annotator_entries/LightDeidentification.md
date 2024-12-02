@@ -83,6 +83,15 @@ Parameters:
 - `customFakers` *(dict[str, dict[str]])*:   The dictionary of custom fakers to specify the obfuscation terms for the entities.
   You can specify the entity and the terms to be used for obfuscation.
 
+- `keepYear`: (BooleanParam) Whether to keep the year intact when obfuscating date entities.
+  If True, the year will remain unchanged during the obfuscation process.
+  If False, the year will be modified along with the month and day.
+  Default: False.
+
+- `keepMonth` : Whether to keep the month intact when obfuscating date entities.
+  If True, the month will remain unchanged during the obfuscation process.
+  If False, the month will be modified along with the year and day.
+  Default: False.
 
 
 {%- endcapture -%}
