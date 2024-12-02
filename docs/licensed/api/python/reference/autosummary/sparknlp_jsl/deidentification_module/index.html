@@ -364,127 +364,127 @@ document.write(`
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Deidentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_pipeline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ner_chunk'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sentence'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'token'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'document'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masking_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'entity_labels'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_mask_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscate_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscate_ref_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'faker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscate_ref_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_group_obfuscation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">documenthashcoder_col_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'documentHash'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DATE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'us'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unnormalized_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unnormalized_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mask'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_shift_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dateshift'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_mode_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentified.csv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.age_group_obfuscation">
-<span class="sig-name descname"><span class="pre">age_group_obfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.age_group_obfuscation" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">age_group_obfuscation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.age_group_obfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.age_ranges">
-<span class="sig-name descname"><span class="pre">age_ranges</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.age_ranges" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">age_ranges</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.age_ranges" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.custom_pipeline">
-<span class="sig-name descname"><span class="pre">custom_pipeline</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.custom_pipeline" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">custom_pipeline</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.custom_pipeline" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.date_shift_column_name">
-<span class="sig-name descname"><span class="pre">date_shift_column_name</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.date_shift_column_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">date_shift_column_name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'dateshift'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.date_shift_column_name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.date_tag">
-<span class="sig-name descname"><span class="pre">date_tag</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.date_tag" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">date_tag</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'DATE'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.date_tag" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.document">
-<span class="sig-name descname"><span class="pre">document</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.document" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">document</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'document'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.document" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.documenthashcoder_col_name">
-<span class="sig-name descname"><span class="pre">documenthashcoder_col_name</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.documenthashcoder_col_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">documenthashcoder_col_name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'documentHash'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.documenthashcoder_col_name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.domain">
-<span class="sig-name descname"><span class="pre">domain</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.domain" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">domain</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.domain" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.fields">
-<span class="sig-name descname"><span class="pre">fields</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.fields" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.fields" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.fixed_mask_length">
-<span class="sig-name descname"><span class="pre">fixed_mask_length</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.fixed_mask_length" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fixed_mask_length</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.fixed_mask_length" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.id_column_name">
-<span class="sig-name descname"><span class="pre">id_column_name</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.id_column_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">id_column_name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'id'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.id_column_name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.input_file_path">
-<span class="sig-name descname"><span class="pre">input_file_path</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.input_file_path" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">input_file_path</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.input_file_path" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.language">
-<span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.language" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">language</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'en'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.language" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.masking_policy">
-<span class="sig-name descname"><span class="pre">masking_policy</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.masking_policy" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">masking_policy</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'entity_labels'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.masking_policy" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.multi_mode_file_path">
-<span class="sig-name descname"><span class="pre">multi_mode_file_path</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.multi_mode_file_path" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">multi_mode_file_path</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.multi_mode_file_path" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.ner_chunk">
-<span class="sig-name descname"><span class="pre">ner_chunk</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.ner_chunk" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ner_chunk</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'ner_chunk'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.ner_chunk" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.number_of_days">
-<span class="sig-name descname"><span class="pre">number_of_days</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.number_of_days" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">number_of_days</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.number_of_days" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_date">
-<span class="sig-name descname"><span class="pre">obfuscate_date</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_date" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">obfuscate_date</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_date" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_ref_file_path">
-<span class="sig-name descname"><span class="pre">obfuscate_ref_file_path</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_ref_file_path" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">obfuscate_ref_file_path</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_ref_file_path" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_ref_source">
-<span class="sig-name descname"><span class="pre">obfuscate_ref_source</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_ref_source" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">obfuscate_ref_source</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'faker'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.obfuscate_ref_source" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.output_file_path">
-<span class="sig-name descname"><span class="pre">output_file_path</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.output_file_path" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">output_file_path</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'deidentified.csv'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.output_file_path" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.region">
-<span class="sig-name descname"><span class="pre">region</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.region" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">region</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'us'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.region" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.sentence">
-<span class="sig-name descname"><span class="pre">sentence</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.sentence" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sentence</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'sentence'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.sentence" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.separator">
-<span class="sig-name descname"><span class="pre">separator</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.separator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">separator</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'\t'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.separator" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.shift_days">
-<span class="sig-name descname"><span class="pre">shift_days</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.shift_days" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">shift_days</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.shift_days" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -494,17 +494,17 @@ document.write(`
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.token">
-<span class="sig-name descname"><span class="pre">token</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.token" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">token</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'token'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.token" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.unnormalized_date">
-<span class="sig-name descname"><span class="pre">unnormalized_date</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.unnormalized_date" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">unnormalized_date</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.unnormalized_date" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.deidentification_module.Deidentifier.unnormalized_mode">
-<span class="sig-name descname"><span class="pre">unnormalized_mode</span></span><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.unnormalized_mode" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">unnormalized_mode</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'mask'</span></em><a class="headerlink" href="#sparknlp_jsl.deidentification_module.Deidentifier.unnormalized_mode" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
