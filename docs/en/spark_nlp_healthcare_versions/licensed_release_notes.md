@@ -19,14 +19,14 @@ sidebar:
 
 We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with brand new `PretrainedZeroShotNER`, `ContextualEntityRuler`, and `StructuredJsonConverter` annotators, 39 new and updated clinical pretrained models, and pipelines**.
 
-+ Introducing a brand new `PretrainedZeroShotNER` annotator to extract named entities with no annotation or additional training, for any arbitrary label. 
-+ New `ContextualEntityRuler` annotator customizing named entities based on contextual rules (modifying chunks via inclusion and exclusion criteria).
++ Introducing a brand new `PretrainedZeroShotNER` annotator to extract named entities with no annotation or additional training, for any arbitrary label (coming with 12 zero shot models that are already finetuned on in-house annotations)
++ New `ContextualEntityRuler` annotator customizing named entities based on contextual rules (modifying chunks via inclusion and exclusion criteria)
 + New `StructuredJsonConverter` annotator for prettified annotation results and enhanced data processing (returning structured JSON outputs from Spark NLP pipelines)
 + Majority voting for overlapping annotations in `AssertionMerger` (picking the optimal assertion status coming from multiple models)
 + New rule-based contextual parser and entity matcher models to customize De-Identification pipelines
 + Introducing 5 new named entity recognition (NER) models and pipelines to detect German PHI data for deidentification with minimal customization
 + Introducing 2 new RxNorm resolution models for mapping the medication entities to RxNorm terminology, using SOTA `MedEmbed` sentence embeddings
-+ Optimizing Spark Driver memory allocation to utilize all the available resources by default.
++ Optimizing Spark Driver memory allocation to utilize all the available resources by default
 + `Databricks` support for `MedicalLLM` and `LLMLoader` to load/ run finetuned medical LLMs 
 + New blog posts on various topics
 + Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
@@ -53,7 +53,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 </div><div class="h3-box" markdown="1">
 
 
-#### `PretrainedZeroShotNER` Annotator to Extract Named Entities with No Annotation or Additional Training, for any Arbitrary Label.
+#### `PretrainedZeroShotNER` Annotator to Extract Named Entities with No Annotation or Additional Training, for any Arbitrary Label (coming with 12 zero shot models that are already finetuned on in-house annotations).
 
 Pretrained-Zero-Shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
