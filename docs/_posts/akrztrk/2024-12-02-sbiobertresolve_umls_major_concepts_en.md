@@ -36,6 +36,7 @@ This model maps clinical entities and concepts to 4 major categories of UMLS CUI
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
