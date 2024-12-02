@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Healthcare NLP Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Healthcare NLP v5.5.1 Release Notes
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_5_1
 key: docs-licensed-release-notes
 modify_date: 2024-12-02
 show_nav: true
@@ -53,7 +53,7 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 </div><div class="h3-box" markdown="1">
 
 
-#### `PretrainedZeroShotNER` Annotator to Extract Named Entities with No Annotation or Additional Training, for any Arbitrary Label (coming with 12 zero shot models that are already finetuned on in-house annotations).
+#### `PretrainedZeroShotNER` Annotator to Extract Named Entities with No Annotation or Additional Training, for any Arbitrary Label.
 
 Pretrained-Zero-Shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
@@ -640,7 +640,8 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 
-## Previous versions
+
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
