@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger</title>
-          <meta name="description" content="Spark NLP 5.5.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger" />
-          <meta name="keywords" content="Spark NLP 5.5.0 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger" />
+          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger</title>
+          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger" />
+          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -1327,6 +1327,22 @@ It filters by annotation.result
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger#getMajorityVoting" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getMajorityVoting:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/merger/AssertionMerger.html#getMajorityVoting:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMajorityVoting</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the value of the majorityVoting parameter.</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger#getMergeOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
       <a id="getMergeOverlapping:Boolean"></a>
       <span class="permalink">
@@ -1891,6 +1907,24 @@ It filters by annotation.result
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger#majorityVoting" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="majorityVoting:org.apache.spark.ml.param.BooleanParam"></a><a id="majorityVoting:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/merger/AssertionMerger.html#majorityVoting:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">majorityVoting</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use majority voting to resolve conflicts.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use majority voting to resolve conflicts. Default is false.
+It is used to resolve conflicts when there are more than 2 annotations in the same overlapping group.
+When  confidence is used for ordering features, confidence values sum is used for majority voting.</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger#mergeOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="mergeOverlapping:org.apache.spark.ml.param.BooleanParam"></a><a id="mergeOverlapping:BooleanParam"></a>
       <span class="permalink">
@@ -2615,6 +2649,24 @@ The default value is 0f.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger#setMajorityVoting" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMajorityVoting(value:Boolean):AssertionMerger.this.type"></a><a id="setMajorityVoting(Boolean):AssertionMerger.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/merger/AssertionMerger.html#setMajorityVoting(value:Boolean):AssertionMerger.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMajorityVoting</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger">AssertionMerger</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the value of the majorityVoting parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of the majorityVoting parameter.
+It is used to resolve conflicts when there are more than 2 annotations in the same overlapping group.
+When  confidence is used for ordering features, confidence values sum is used for majority voting.</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger#setMergeOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setMergeOverlapping(v:Boolean):AssertionMerger.this.type"></a><a id="setMergeOverlapping(Boolean):AssertionMerger.this.type"></a>
       <span class="permalink">

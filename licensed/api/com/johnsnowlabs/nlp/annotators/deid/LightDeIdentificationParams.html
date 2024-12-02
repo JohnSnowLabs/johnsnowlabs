@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams</title>
-          <meta name="description" content="Spark NLP 5.5.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams" />
-          <meta name="keywords" content="Spark NLP 5.5.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams" />
+          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams</title>
+          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams" />
+          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -819,6 +819,40 @@ when the 'fixed_length_chars' masking policy is selected.</p>
       </span>
       
       <p class="shortcomment cmt">Gets <a href="#fixedMaskLength:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#fixedMaskLength">fixedMaskLength</a> param.</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#getKeepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getKeepMonth:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html#getKeepMonth:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getKeepMonth</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="#keepMonth:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#keepMonth">keepMonth</a> param
+</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#getKeepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getKeepYear:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html#getKeepYear:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getKeepYear</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="#keepYear:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#keepYear">keepYear</a> param
+</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#getMaskingPolicy" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
       <a id="getMaskingPolicy:String"></a>
       <span class="permalink">
@@ -1062,6 +1096,46 @@ when the 'fixed_length_chars' masking policy is selected.</p>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#keepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="keepMonth:org.apache.spark.ml.param.BooleanParam"></a><a id="keepMonth:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html#keepMonth:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keepMonth</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to keep the month intact when obfuscating date entities.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to keep the month intact when obfuscating date entities.
+If true, the month will remain unchanged during the obfuscation process.
+If false, the month will be modified along with the year and day.
+Default: false.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#keepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="keepYear:org.apache.spark.ml.param.BooleanParam"></a><a id="keepYear:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html#keepYear:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keepYear</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to keep the year intact when obfuscating date entities.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to keep the year intact when obfuscating date entities.
+If true, the year will remain unchanged during the obfuscation process.
+If false, the year will be modified along with the month and day.
+Default: false.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#maskingPolicy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="maskingPolicy:org.apache.spark.ml.param.Param[String]"></a><a id="maskingPolicy:Param[String]"></a>
       <span class="permalink">
@@ -1386,6 +1460,46 @@ obfuscation.</p><p>Example:</p><pre><span class="kw">new</span> LightDeIdentific
       
       <p class="shortcomment cmt">Sets the value of <a href="#fixedMaskLength:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#fixedMaskLength">fixedMaskLength</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="#fixedMaskLength:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#fixedMaskLength">fixedMaskLength</a>. This is the length of the masking sequence that will
 be used when the 'fixed_length_chars' masking policy is selected.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setKeepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setKeepMonth(value:Boolean):com.johnsnowlabs.nlp.&lt;refinement&gt;.type"></a><a id="setKeepMonth(Boolean):LightDeIdentificationParams.this"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html#setKeepMonth(value:Boolean):com.johnsnowlabs.nlp.&lt;refinement&gt;.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setKeepMonth</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a>.this</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether to keep the month intact when obfuscating date entities.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to keep the month intact when obfuscating date entities.
+If true, the month will remain unchanged during the obfuscation process.
+If false, the month will be modified along with the year and day.
+Default: false.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setKeepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setKeepYear(value:Boolean):com.johnsnowlabs.nlp.&lt;refinement&gt;.type"></a><a id="setKeepYear(Boolean):LightDeIdentificationParams.this"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html#setKeepYear(value:Boolean):com.johnsnowlabs.nlp.&lt;refinement&gt;.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setKeepYear</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a>.this</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether to keep the year intact when obfuscating date entities.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to keep the year intact when obfuscating date entities.
+If true, the year will remain unchanged during the obfuscation process.
+If false, the year will be modified along with the month and day.
+Default: false.
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setMaskingPolicy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setMaskingPolicy(value:String):com.johnsnowlabs.nlp.&lt;refinement&gt;.type"></a><a id="setMaskingPolicy(String):LightDeIdentificationParams.this"></a>

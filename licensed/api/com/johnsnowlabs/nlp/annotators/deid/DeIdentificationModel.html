@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
-          <meta name="description" content="Spark NLP 5.5.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
-          <meta name="keywords" content="Spark NLP 5.5.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
+          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -305,7 +305,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains all the parameters to transform a dataset with three Input Annotations
 of types DOCUMENT, TOKEN and CHUNK, into its DeIdentified version of by either
-masking or obfuscating the given CHUNKS.</p><p>Additionally, an optional DOCUMENT column can be given to calculate join sentences boundaries if outputAsDocument is true.</p><p>To create an configured DeIdentificationModel, please see the example of <a href="DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.
+masking or obfuscating the given CHUNKS.</p><p>To create an configured DeIdentificationModel, please see the example of <a href="DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.
 </p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> to see params</p></span><span class="cmt"><p><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a> to see params</p></span><span class="cmt"><p><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> to see params</p></span><span class="cmt"><p><a href="DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a> to train your own model</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
@@ -988,9 +988,9 @@ The similarity is based on the Levenshtein Distance between the words.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#createAnonymizeAnnotation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="createAnonymizeAnnotation(anonymizeSentence:(com.johnsnowlabs.nlp.annotators.common.Sentence,Seq[com.johnsnowlabs.nlp.Annotation]),offset:Int,idx:Int,spacesLength:Int,optionalDocument:Option[com.johnsnowlabs.nlp.Annotation]):com.johnsnowlabs.nlp.Annotation"></a><a id="createAnonymizeAnnotation((Sentence,Seq[Annotation]),Int,Int,Int,Option[Annotation]):Annotation"></a>
+      <a id="createAnonymizeAnnotation(anonymizeSentence:(com.johnsnowlabs.nlp.annotators.common.Sentence,Seq[com.johnsnowlabs.nlp.Annotation]),offset:Int,idx:Int,spacesLength:Int):com.johnsnowlabs.nlp.Annotation"></a><a id="createAnonymizeAnnotation((Sentence,Seq[Annotation]),Int,Int,Int):Annotation"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#createAnonymizeAnnotation(anonymizeSentence:(com.johnsnowlabs.nlp.annotators.common.Sentence,Seq[com.johnsnowlabs.nlp.Annotation]),offset:Int,idx:Int,spacesLength:Int,optionalDocument:Option[com.johnsnowlabs.nlp.Annotation]):com.johnsnowlabs.nlp.Annotation" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#createAnonymizeAnnotation(anonymizeSentence:(com.johnsnowlabs.nlp.annotators.common.Sentence,Seq[com.johnsnowlabs.nlp.Annotation]),offset:Int,idx:Int,spacesLength:Int):com.johnsnowlabs.nlp.Annotation" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -999,7 +999,7 @@ The similarity is based on the Levenshtein Distance between the words.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">createAnonymizeAnnotation</span><span class="params">(<span name="anonymizeSentence">anonymizeSentence: (<span class="extype" name="com.johnsnowlabs.nlp.annotators.common.Sentence">Sentence</span>, <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>])</span>, <span name="offset">offset: <span class="extype" name="scala.Int">Int</span></span>, <span name="idx">idx: <span class="extype" name="scala.Int">Int</span></span>, <span name="spacesLength">spacesLength: <span class="extype" name="scala.Int">Int</span></span>, <span name="optionalDocument">optionalDocument: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>
+        <span class="name">createAnonymizeAnnotation</span><span class="params">(<span name="anonymizeSentence">anonymizeSentence: (<span class="extype" name="com.johnsnowlabs.nlp.annotators.common.Sentence">Sentence</span>, <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>])</span>, <span name="offset">offset: <span class="extype" name="scala.Int">Int</span></span>, <span name="idx">idx: <span class="extype" name="scala.Int">Int</span></span>, <span name="spacesLength">spacesLength: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>
       </span>
       
       <p class="shortcomment cmt">The method that takes anonymized sentence to create proper Annotation
@@ -1728,6 +1728,24 @@ This method is called for each sentence in the input collection of Annotations
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getKeepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getKeepMonth:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#getKeepMonth:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getKeepMonth</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="DeIdentificationParams.html#keepMonth:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#keepMonth">keepMonth</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="DeIdentificationParams.html#keepMonth:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#keepMonth">keepMonth</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getKeepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getKeepYear:Boolean"></a>
       <span class="permalink">
@@ -2237,6 +2255,22 @@ This method is called for each sentence in the input collection of Annotations
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#handleCasing" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handleCasing(originalFake:String,wordToReplace:String):String"></a><a id="handleCasing(String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#handleCasing(originalFake:String,wordToReplace:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handleCasing</span><span class="params">(<span name="originalFake">originalFake: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#handleEntitiesDifferences" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handleEntitiesDifferences(AEntities:Seq[com.johnsnowlabs.nlp.Annotation],BEntities:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="handleEntitiesDifferences(Seq[Annotation],Seq[Annotation]):Seq[Annotation]"></a>
       <span class="permalink">
@@ -2526,6 +2560,26 @@ The default value is false.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#keepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="keepMonth:org.apache.spark.ml.param.BooleanParam"></a><a id="keepMonth:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#keepMonth:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keepMonth</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to keep the month intact when obfuscating date entities.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to keep the month intact when obfuscating date entities.
+If true, the month will remain unchanged during the obfuscation process.
+If false, the month will be modified along with the year and day.
+Default: false.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#keepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="keepYear:org.apache.spark.ml.param.BooleanParam"></a><a id="keepYear:BooleanParam"></a>
       <span class="permalink">
@@ -3046,7 +3100,7 @@ Four possible values are supported:</p><ul><li>&quot;mask&quot;: The original ch
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>ParamsAndFeaturesWritable</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#optionalInputAnnotatorTypes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="anno">
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#optionalInputAnnotatorTypes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="optionalInputAnnotatorTypes:Array[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#optionalInputAnnotatorTypes:Array[String]" title="Permalink">
@@ -3061,9 +3115,7 @@ Four possible values are supported:</p><ul><li>&quot;mask&quot;: The original ch
         <span class="name">optionalInputAnnotatorTypes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Optional input annotator type: DOCUMENT
-</p><div class="fullcomment"><div class="comment cmt"><p>Optional input annotator type: DOCUMENT
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a> → HasInputAnnotationCols</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#outputAnnotatorType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="anno">
       <a id="outputAnnotatorType:DeIdentificationModel.this.AnnotatorType"></a><a id="outputAnnotatorType:AnnotatorType"></a>
       <span class="permalink">
@@ -3978,6 +4030,26 @@ The default value is false.</p><div class="fullcomment"><div class="comment cmt"
 If true use random displacement days in dates entities, if false use the <a href="DeIdentificationParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#days">DeIdentificationParams.days</a>
 The default value is false.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setKeepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setKeepMonth(value:Boolean):DeIdentificationParams.this.type"></a><a id="setKeepMonth(Boolean):DeIdentificationModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#setKeepMonth(value:Boolean):DeIdentificationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setKeepMonth</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether to keep the month intact when obfuscating date entities.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to keep the month intact when obfuscating date entities.
+If true, the month will remain unchanged during the obfuscation process.
+If false, the month will be modified along with the year and day.
+Default: false.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setKeepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setKeepYear(value:Boolean):DeIdentificationParams.this.type"></a><a id="setKeepYear(Boolean):DeIdentificationModel.this.type"></a>
       <span class="permalink">
@@ -4455,22 +4527,6 @@ Default: obfuscate
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#supportedFormattedEntities" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="supportedFormattedEntities:Array[String]"></a>
-      <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#supportedFormattedEntities:Array[String]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">supportedFormattedEntities</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
