@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 3.5.0</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.8.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_3_5_0"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_3_5_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_8_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_8_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,35 +616,34 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 3.5.0</li>
+    <li>Generative AI Lab Release Notes 6.8.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 3.5.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab Release Notes 6.8.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_3_5_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 3.5.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_8_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.8.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.5.0</h2>
+  <h2 id="section">6.8.1</h2>
 
-  <p>Release date: <strong>25-08-2022</strong></p>
+  <p>Release date: <strong>11-26-2024</strong></p>
 
-  <p>Annotation Lab 3.5.0 add support for out-of-the-box usage of Multilingual Models as well as support for some of the European Language Models: Romanian, Portuguese, Danish and Italian. It also provides support for split dataset using Test/Train tags in classification project and allows NER pretrained models evaluation with floating license. The release also includes fixes for known security vulnerabilities and for some bug reported by our user community.</p>
+  <p>This hotfix addresses critical bugs and improves functionality for a smoother user experience.</p>
 
-  <p>Here are the highlights of this release:</p>
-
-  <h3 id="highlights">Highlights</h3>
+  <h3 id="bug-fixes">Bug Fixes</h3>
   <ul>
-    <li>Support for Multilingual Models. Previously, only multilingual embeddings were available in Models Hub page. A new language filter has been added to the Models hub page to make searching for all available multilingual models and embeddings more efficient. User can select the target language and then explore the set of relevant multilingual models and embeddings.</li>
-    <li>Expended Support for European Language Models. Annotation Lab now offers support for four new European languages Romanian, Portuguese, Italian, and Danish, on top of English, Spanish, and German, already supported in previous versions. Many pretrained models in those languages are now available to download from the NLP Models Hub and easily use to preannotate documents on the Annotation Lab.</li>
-    <li>Use Test/Train Tags for Classification Training Experiments. The Test/Train split of annotated tasks can be used when training classification models. When this option is checked on the Training Settings, all tasks that have the Test tag are used as test datasets. All tasks tagged as Train together with all other non Test tasks will be used as a training dataset.</li>
-    <li>NER Model Evaluation available for Floating License. Project Owner and/or Manager can evaluate pretrained NER models against a set of annotated tasks in the presence of floating licenses. Earlier, this feature was only available in the presence of airgap licenses.</li>
-    <li>Chunks preannotation in VisualNER. Annotation Lab 3.4.0 which first published the visual NER preannotation and visual NER model training could only create token level preannotations. With version 3.5.0, individual tokens are combined into one chunk entity and shown as merged to the user.</li>
-    <li>Benchmarking Information for Models Trained with Annotation Lab. With version 3.5.0 benchmarking information is available for models trained within Annotation Lab. User can go to the Available Models Tab of the Models Hub page and view the benchmarking data by clicking the small graph icon next to the model.</li>
-    <li>Configuration for Annotation Lab Deployment. The resources allocated to Annotation Lab deployment can be configured via the resource values in the annotationlab-updater.sh. The instruction to change the parameters are available in the instruction.md file.</li>
+    <li>[ALAB-5891] Resolved an issue where users were unable to import zipped tasks exceeding 200 MB after implementing bulk file import functionality.</li>
+    <li>[ALAB-5912] Corrected label misalignment caused by incorrect indexing during pre-annotation.</li>
+    <li>[ALAB-5917] Fixed the “Access Denied” error encountered when navigating to the About Page.</li>
+  </ul>
+
+  <h3 id="task">Task</h3>
+  <ul>
+    <li>[ALAB-5894] Updated the compatibility check logic to use editions instead of compatible_editions for verifying model compatibility with current Spark versions.</li>
   </ul>
 
 </div>
@@ -706,7 +705,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-08-25T00:00:00+00:00">Aug 25, 2022</time>
+      <time itemprop="dateModified" datetime="2024-11-26T00:00:00+00:00">Nov 26, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
