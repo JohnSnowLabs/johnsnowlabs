@@ -39,7 +39,10 @@ from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("snomed_term_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""[['The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.'], ['His hypertension is currently managed with a combination of lifestyle modifications and medication.'], ['Laboratory tests indicate the individual has hyperthyroidism requiring further endocrinological assessment.'], ['The patient exhibited recurrent upper respiratory tract infections and presented with symptoms such as nasal congestion which persisted despite previous courses of symptomatic treatment.']]""")
+result = ner_pipeline.annotate("""[['The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.'],
+                                  ['His hypertension is currently managed with a combination of lifestyle modifications and medication.'],
+                                  ['Laboratory tests indicate the individual has hyperthyroidism requiring further endocrinological assessment.'],
+                                  ['The patient exhibited recurrent upper respiratory tract infections and presented with symptoms such as nasal congestion which persisted despite previous courses of symptomatic treatment.']]""")
 
 ```
 ```scala
@@ -48,7 +51,10 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("snomed_term_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""[['The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.'], ['His hypertension is currently managed with a combination of lifestyle modifications and medication.'], ['Laboratory tests indicate the individual has hyperthyroidism requiring further endocrinological assessment.'], ['The patient exhibited recurrent upper respiratory tract infections and presented with symptoms such as nasal congestion which persisted despite previous courses of symptomatic treatment.']]""")
+val result = ner_pipeline.annotate("""(('The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.'),
+                                      ('His hypertension is currently managed with a combination of lifestyle modifications and medication.'),
+                                      ('Laboratory tests indicate the individual has hyperthyroidism requiring further endocrinological assessment.'),
+                                      ('The patient exhibited recurrent upper respiratory tract infections and presented with symptoms such as nasal congestion which persisted despite previous courses of symptomatic treatment.'))""")
 
 ```
 </div>
