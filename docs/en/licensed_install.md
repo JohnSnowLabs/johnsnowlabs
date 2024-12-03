@@ -1589,11 +1589,11 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 </div><div class="h3-box" markdown="1">
 
 ### Step 2: Create a Lakehouse
-- Go to the **Synapse Data Science** section.
+- Go to the **Data Science** section.
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
-![image](/assets/images/installation/355920557-2c5f778c-4c33-4a54-af21-71f4486f5e4b.webp)
+![image](/assets/images/installation/Fabric_1.png)
 
 </div><div class="h3-box" markdown="1">
 
