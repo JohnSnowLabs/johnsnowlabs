@@ -129,7 +129,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = Array("DRUG", "ADE","PROBLEM") # You can change the entities
+labels = Array("DRUG", "ADE","PROBLEM") // You can change the entities
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_ade_clinical_large", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("ner")
@@ -148,7 +148,7 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter
 ))
 
-val data = Seq([["""To alleviate severe seasonal allergies that included symptoms such as sneezing, watery eyes, and nasal congestion, the doctor recommended a combination of antihistamines and nasal corticosteroids, which collectively provided the patient with substantial symptomatic relief and improved quality of life. However, the patient reported experiencing side effects such as drowsiness from the antihistamines and occasional nosebleeds due to the nasal corticosteroids."""]]).toDF("text")
+val data = Seq(("""To alleviate severe seasonal allergies that included symptoms such as sneezing, watery eyes, and nasal congestion, the doctor recommended a combination of antihistamines and nasal corticosteroids, which collectively provided the patient with substantial symptomatic relief and improved quality of life. However, the patient reported experiencing side effects such as drowsiness from the antihistamines and occasional nosebleeds due to the nasal corticosteroids.""")).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
