@@ -124,6 +124,7 @@ Users can now see Annotation guidelines in the horizontal layout.
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>

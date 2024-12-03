@@ -187,7 +187,9 @@ val result = pipelineModel.transform(data)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
+
 [PretrainedZeroShotNER](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/pretrained_zero_shot_ner/index.html)
+
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}

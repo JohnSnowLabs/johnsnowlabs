@@ -19,7 +19,9 @@ Parameters:
 - `returnRelationEntities`: Whether to return the entities in the relations or not, by default False.
 - `outputAsStr`:  Whether to output the result as a string or as a structured json, by default True.
 
+
 ```
+
 When set to `True`, the output column will be a string:
 
 |-- column_name: string (nullable = true)
@@ -57,7 +59,9 @@ When set to False, the output column will be a struct with the following schema:
       |        |-- key: string
       |        |-- value: string (valueContainsNull = true)
 
+
 ```
+
 
 - `converterSchema` and `converterSchemaAsStr`: The schema for converting the output of the pipeline into a structured JSON format. Fields in the schema:
   - `document_identifier`: The identifier of the document. This column must be of type `StringType`.
