@@ -10139,7 +10139,7 @@ The filter can be applied to the scope of the sentence or the document.</p>
     <table>
       <tbody>
         <tr>
-          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/ContextualEntityFilterer/index.html">ContextualEntityFilterer</a></td>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_entity_filterer/index.html">ContextualEntityFilterer</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualEntityFilterer.html">ContextualEntityFilterer</a></td>
           <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualEntityFilterer.ipynb">ContextualEntityFilterer</a></td>
         </tr>
@@ -10378,7 +10378,7 @@ It is particularly useful for refining entity recognition results according to s
     <table>
       <tbody>
         <tr>
-          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/ContextualEntityRuler/index.html">ContextualEntityRuler</a></td>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_entity_ruler/index.html">ContextualEntityRuler</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html">ContextualEntityRuler</a></td>
           <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualEntityRuler.ipynb">ContextualEntityRuler</a></td>
         </tr>
@@ -23841,7 +23841,7 @@ For the best results, it’s helpful to choose labels similar to the provided ex
     <table>
       <tbody>
         <tr>
-          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/PretrainedZeroShotNER/index.html">PretrainedZeroShotNER</a></td>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/pretrained_zero_shot_ner/index.html">PretrainedZeroShotNER</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/PretrainedZeroShotNER.html">PretrainedZeroShotNER</a></td>
           <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/PretrainedZeroShotNER.ipynb">PretrainedZeroShotNER</a></td>
         </tr>
@@ -29118,141 +29118,144 @@ It produces well-structured, easy-to-read results ideal for API consumption and 
     <ul>
       <li><code class="language-plaintext highlighter-rouge">cleanAnnotations</code>: Whether to remove annotation columns, by default False.</li>
       <li><code class="language-plaintext highlighter-rouge">returnRelationEntities</code>: Whether to return the entities in the relations or not, by default False.</li>
-      <li><code class="language-plaintext highlighter-rouge">outputAsStr</code>:  Whether to output the result as a string or as a structured json, by default True.
-```plaintext
-When set to <code class="language-plaintext highlighter-rouge">True</code>, the output column will be a string:</li>
+      <li><code class="language-plaintext highlighter-rouge">outputAsStr</code>:  Whether to output the result as a string or as a structured json, by default True.</li>
     </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+When set to `True`, the output column will be a string:
+
+|-- column_name: string (nullable = true)
+
+When set to False, the output column will be a struct with the following schema:
+
+|-- column_name: struct (nullable = true)
+      |-- document_identifier: string (nullable = true)
+      |-- document_text: array (nullable = true)
+      |    |-- element: string (containsNull = true)
+      |-- entities: array (nullable = true)
+      |    |-- element: map (containsNull = true)
+      |        |-- key: string
+      |        |-- value: string (valueContainsNull = true)
+      |-- assertions: array (nullable = true)
+      |    |-- element: map (containsNull = true)
+      |        |-- key: string
+      |        |-- value: string (valueContainsNull = true)
+      |-- resolutions: array (nullable = true)
+      |    |-- element: map (containsNull = true)
+      |        |-- key: string
+      |        |-- value: string (valueContainsNull = true)
+      |-- relations: array (nullable = true)
+      |    |-- element: map (containsNull = true)
+      |        |-- key: string
+      |        |-- value: string (valueContainsNull = true)
+      |-- summaries: array (nullable = true)
+      |    |-- element: string (containsNull = true)
+      |-- deidentifications: array (nullable = true)
+      |    |-- element: map (containsNull = true)
+      |        |-- key: string
+      |        |-- value: string (valueContainsNull = true)
+      |-- classifications: array (nullable = true)
+      |    |-- element: map (containsNull = true)
+      |        |-- key: string
+      |        |-- value: string (valueContainsNull = true)
+
+
+</code></pre></div>    </div>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">converterSchema</code> and <code class="language-plaintext highlighter-rouge">converterSchemaAsStr</code>: The schema for converting the output of the pipeline into a structured JSON format. Fields in the schema:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">document_identifier</code>: The identifier of the document. This column must be of type <code class="language-plaintext highlighter-rouge">StringType</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">document_text</code>: The text of the document, typically created by the <code class="language-plaintext highlighter-rouge">DocumentAssembler</code> annotator.</li>
+          <li><code class="language-plaintext highlighter-rouge">entities</code>: Chunk columns generated by various annotators, such as the <code class="language-plaintext highlighter-rouge">ChunkMergeModel</code> annotator.</li>
+          <li><code class="language-plaintext highlighter-rouge">assertions</code>: Assertion columns produced by annotators like the <code class="language-plaintext highlighter-rouge">AssertionDLModel</code> annotator.</li>
+          <li><code class="language-plaintext highlighter-rouge">resolutions</code>: The schema for resolutions. See <code class="language-plaintext highlighter-rouge">ResolutionSchema</code> for details.</li>
+          <li><code class="language-plaintext highlighter-rouge">relations</code>: Relation columns created by annotators such as the <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> annotator.</li>
+          <li><code class="language-plaintext highlighter-rouge">summaries</code>: Summary columns generated by annotators like the <code class="language-plaintext highlighter-rouge">MedicalSummarizer</code> annotator.</li>
+          <li><code class="language-plaintext highlighter-rouge">deidentifications</code>: The schema for deidentifications.</li>
+          <li><code class="language-plaintext highlighter-rouge">classifications</code>: The schema for classifications.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">ANY</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">JSON</code></p>
 
     <table>
       <tbody>
         <tr>
-          <td>– column_name: string (nullable = true)</td>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/parser/StructuredJsonConverter/index.html">StructuredJsonConverter</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/parser/StructuredJsonConverter.html">StructuredJsonConverter</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/StructuredJsonConverter.ipynb">StructuredJsonConverter</a></td>
         </tr>
       </tbody>
     </table>
 
-    <p>When set to False, the output column will be a struct with the following schema:</p>
+    <details>
 
-    <p>|– column_name: struct (nullable = true)
-      |– document_identifier: string (nullable = true)
-      |– document_text: array (nullable = true)
-      |    |– element: string (containsNull = true)
-      |– entities: array (nullable = true)
-      |    |– element: map (containsNull = true)
-      |        |– key: string
-      |        |– value: string (valueContainsNull = true)
-      |– assertions: array (nullable = true)
-      |    |– element: map (containsNull = true)
-      |        |– key: string
-      |        |– value: string (valueContainsNull = true)
-      |– resolutions: array (nullable = true)
-      |    |– element: map (containsNull = true)
-      |        |– key: string
-      |        |– value: string (valueContainsNull = true)
-      |– relations: array (nullable = true)
-      |    |– element: map (containsNull = true)
-      |        |– key: string
-      |        |– value: string (valueContainsNull = true)
-      |– summaries: array (nullable = true)
-      |    |– element: string (containsNull = true)
-      |– deidentifications: array (nullable = true)
-      |    |– element: map (containsNull = true)
-      |        |– key: string
-      |        |– value: string (valueContainsNull = true)
-      |– classifications: array (nullable = true)
-      |    |– element: map (containsNull = true)
-      |        |– key: string
-      |        |– value: string (valueContainsNull = true)</p>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- `converterSchema` and `converterSchemaAsStr`: The schema for converting the output of the pipeline into a structured JSON format. Fields in the schema:
-  - `document_identifier`: The identifier of the document. This column must be of type `StringType`.
-  - `document_text`: The text of the document, typically created by the `DocumentAssembler` annotator.
-  - `entities`: Chunk columns generated by various annotators, such as the `ChunkMergeModel` annotator.
-  - `assertions`: Assertion columns produced by annotators like the `AssertionDLModel` annotator.
-  - `resolutions`: The schema for resolutions. See `ResolutionSchema` for details.
-  - `relations`: Relation columns created by annotators such as the `RelationExtractionModel` annotator.
-  - `summaries`: Summary columns generated by annotators like the `MedicalSummarizer` annotator.
-  - `deidentifications`: The schema for deidentifications.
-  - `classifications`: The schema for classifications.
+<summary class="button"><b>Show Example</b></summary>
 
-**Input Annotator Types:** `ANY`
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
 
-**Output Annotator Type:** `JSON`
-
-
-
-
-| **Python API:** [StructuredJsonConverter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/parser/StructuredJsonConverter/index.html)| **Scala API:** [StructuredJsonConverter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/parser/StructuredJsonConverter.html)| **Notebook:** [StructuredJsonConverter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/StructuredJsonConverter.ipynb)|
-
-
-
-
-&lt;details&gt;
-
-&lt;summary class="button"&gt;&lt;b&gt;Show Example&lt;/b&gt;&lt;/summary&gt;
-
-&lt;div class="tabs-python-scala-head"&gt;&lt;button class="tab-python-scala-li tabheader_active"&gt;Python&lt;/button&gt;&lt;button class="tab-python-scala-li"&gt;Scala&lt;/button&gt;&lt;/div&gt;
-
-&lt;!--Python--&gt;
-&lt;div class="tabs-mfl-box" markdown="1"&gt;
-
-&lt;div class="tabs-mfl-head" markdown="1"&gt;
-&lt;button class="tab-mfl-li" markdown="1"&gt;Medical&lt;/button&gt;
-&lt;/div&gt;
-
-
-
-&lt;div class="tab-mfl-content" markdown="1"&gt;
-
-```python
-from johnsnowlabs import nlp, medical
-from sparknlp_jsl.pipeline_tracer import PipelineTracer
-
-oncology_pipeline = nlp.PretrainedPipeline("explain_clinical_doc_oncology", "en", "clinical/models")
-
-text = """The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response"""
-
-data = spark.createDataFrame([[text]]).toDF("text")
-
-result_df = oncology_pipeline.transform(data)
-
-pipeline_tracer = PipelineTracer(oncology_pipeline)
-
-column_maps = pipeline_tracer.createParserDictionary()
-
-output_converter = StructuredJsonConverter()\
-    .setOutputCol("result")\
-    .setConverterSchema(column_maps)\
-    .setCleanAnnotations(False)\
-    .setReturnRelationEntities(True)\
-    .setOutputAsStr(True)
-
-json_output = output_converter.transform(result_df).select("result")
-
-json_output.show(truncate=200)
-
-# result
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|result                                                                                                                                                                                                  |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|{"result":{"document_identifier":"fc43295f-cbbe-4ca9-b842-abb1c2fc017e","document_text":["The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ova...|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre></div>    </div>
-
-  </div>
-
-</div>
-<!--END Python-->
-<!--Scala-->
+<!--Python-->
 <div class="tabs-mfl-box">
 
-  <div class="tabs-mfl-head">
-    <p><button class="tab-mfl-li">Medical</button></p>
-  </div>
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
 
-  <div class="tab-mfl-content">
+        <div class="tab-mfl-content">
 
-    <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
+
+<span class="n">oncology_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response"""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">oncology_pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">pipeline_tracer</span> <span class="o">=</span> <span class="n">PipelineTracer</span><span class="p">(</span><span class="n">oncology_pipeline</span><span class="p">)</span>
+
+<span class="n">column_maps</span> <span class="o">=</span> <span class="n">pipeline_tracer</span><span class="p">.</span><span class="n">createParserDictionary</span><span class="p">()</span>
+
+<span class="n">output_converter</span> <span class="o">=</span> <span class="n">StructuredJsonConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"result"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setConverterSchema</span><span class="p">(</span><span class="n">column_maps</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCleanAnnotations</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setReturnRelationEntities</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputAsStr</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">json_output</span> <span class="o">=</span> <span class="n">output_converter</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">result_df</span><span class="p">).</span><span class="n">select</span><span class="p">(</span><span class="s">"result"</span><span class="p">)</span>
+
+<span class="n">json_output</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># result
+</span>
+<span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="n">result</span>                                                                                                                                                                                                  <span class="o">|</span>
+<span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="o">|</span><span class="p">{</span><span class="s">"result"</span><span class="p">:{</span><span class="s">"document_identifier"</span><span class="p">:</span><span class="s">"fc43295f-cbbe-4ca9-b842-abb1c2fc017e"</span><span class="p">,</span><span class="s">"document_text"</span><span class="p">:[</span><span class="s">"The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ova...|
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.util.tracer.PipelineTracer</span>
 
@@ -29285,19 +29288,19 @@ json_output.show(truncate=200)
 <span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
 <span class="o">|{</span><span class="s">"result"</span><span class="k">:</span><span class="o">{</span><span class="err">"</span><span class="kt">document_identifier</span><span class="err">"</span><span class="kt">:</span><span class="err">"</span><span class="kt">fc43295f-cbbe-</span><span class="err">4</span><span class="kt">ca9-b842-abb1c2fc017e</span><span class="err">"</span><span class="o">,</span><span class="err">"</span><span class="kt">document_text</span><span class="err">"</span><span class="kt">:</span><span class="err">["</span><span class="kt">The</span> <span class="kt">Patient</span> <span class="kt">underwent</span> <span class="kt">a</span> <span class="kt">computed</span> <span class="kt">tomography</span> <span class="o">(</span><span class="kt">CT</span><span class="o">)</span> <span class="kt">scan</span> <span class="kt">of</span> <span class="kt">the</span> <span class="kt">abdomen</span> <span class="kt">and</span> <span class="kt">pelvis</span><span class="o">,</span> <span class="n">which</span> <span class="n">showed</span> <span class="n">a</span> <span class="n">complex</span> <span class="n">ova</span><span class="o">...|</span>
 <span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-</code></pre></div>    </div>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
 
   </div>
+  <!--END Model-->
 
 </div>
-<!--END Scala-->
-
-<p>&lt;/details&gt;</p>
-
-<p>&lt;/div&gt;
-<!--END Model--></p>
-
-<p>&lt;/div&gt;</p>
 
 <div class="tabs-model-aproach">
 

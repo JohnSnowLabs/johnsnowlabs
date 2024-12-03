@@ -186,7 +186,7 @@ val result = nlpPipeline.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[ContextualEntityFilterer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/ContextualEntityFilterer/index.html)
+[ContextualEntityFilterer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_entity_filterer/index.html)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}

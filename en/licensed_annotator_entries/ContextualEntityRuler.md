@@ -239,7 +239,10 @@ val result = nlpPipeline.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[ContextualEntityRuler](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/ContextualEntityRuler/index.html)
+
+[ContextualEntityRuler](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_entity_ruler/index.html)
+
+
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
