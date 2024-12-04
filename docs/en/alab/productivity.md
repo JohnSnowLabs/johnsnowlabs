@@ -169,7 +169,7 @@ CSV file for specific charts can be downloaded using the new download button whi
 ![Screen Recording 2022-03-08 at 3 47 49 PM](https://user-images.githubusercontent.com/17021686/158564836-691a2b79-f3ca-4317-ad31-51cfbc9d71df.gif)
 
 ## Annotation Instructions for Labels
-Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page found during project setup.
+Admin users can add annotation instructions to labels directly from the `Customize Labels` page during project setup.
 
 To add annotation instructions to a label, follow these steps:
  - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
@@ -206,4 +206,3 @@ Additionally, annotation guidelines are available for Assertion Labels as well.
 
 ![670image](/assets/images/annotation_lab/6.7.0/16.gif)
 
-</div>
