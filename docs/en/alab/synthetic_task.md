@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Synthetic task generation
 permalink: /docs/en/alab/synthetic_task
 key: docs-training
-modify_date: "2024-03-19"
+modify_date: "2024-11-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -50,5 +50,42 @@ In previous versions, users had to manually add tags to synthetically generated 
 ![genAI650](/assets/images/annotation_lab/6.5.0/14.gif)
 
 This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
+
+</div>
+
+### Augmented Data
+
+The new tab called "**Generate Augmented Data**" on the import page will make it easier for you to create augmented tasks. By clicking on the "**Improve Test Results**" option, you'll be redirected to the "**Generate Augmented Data**" page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under "**Proportional Augmentation**".
+
+![genAI650](/assets/images/annotation_lab/6.5.0/1.gif)
+
+####  Proportional Augmentaiton
+
+This method enhances data quality by using various testing techniques to generate new data based on an existing dataset. Proportional Augmentation is particularly effective in improving model performance by addressing specific weaknesses, such as the inability to recognize lowercase text, uppercase text, typos, and more. It is especially beneficial for bias and robustness testing, ensuring that the model produces high-quality and accurate results for machine learning, predictive modeling, and decision-making tasks. After setting the test types and max_proportion, click on "**Generate Results**" to create augmented tasks. Based on your configuration, data augmentation will enhance the existing tasks and generate new ones.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/2.gif)
+
+Another way to generate augmented tasks is through "**Templatic augmentation**".
+
+####  Templatic Augementation
+Templatic Augmentation creates new data by using templates or patterns that are similar in structure and context to the original input. This method depends a lot on the templates provided by the user. There are two options for using this approach:
+ 
+ **A. Manually Add Templates**
+ Users can manually choose templates along with the available labels. They can choose how many results to generate for each template using a scroll bar, which can be set from 1 to 50.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/3.gif)
+
+ **B. Generate Templates with OpenAI**
+
+ Users can create more templates using OpenAI, which must be integrated into the project for this feature to work. After choosing how many extra templates to generate for each existing one (from 1 to 10), users can select how many results they want for each template by adjusting a scroll bar from 1 to 50. The total expected number of results will also be shown.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/4.gif)
+
+**Note:** **Automatic tags in import augmented tasks** 
+After the augmented tasks are generated, the user can import the tasks. The augmented tasks are imported with the "**Augmented**" default tag.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/5.gif)
+
+Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
 
 </div>

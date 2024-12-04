@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
-modify_date: "2022-12-13"
+modify_date: "2024-11-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -23,7 +23,7 @@ es {
   font-style: italic;
 }
 </style>
-
+<div class="h3-box" markdown="1">
 ## Analytics Charts
 
 By default, the Analytics page is disabled for every project because computing the analytical charts is a resource-intensive task and might temporarily influence the responsiveness of the application, especially when triggered in parallel with other training/preannotation jobs. However, users can file a request to enable the Analytics page which can be approved by any [admin user](/docs/en/alab/user_management#user-groups). The request is published on the [Analytics Requests](/docs/en/alab/analytics_permission) page, visible to any <es>admin</es> user. Once the <es>admin</es> user approves the request, any team member can access the Analytics page.
@@ -33,7 +33,7 @@ By default, the Analytics page is disabled for every project because computing t
 A refresh button is present on the top-right corner of the Analytics page. The Analytics charts doesn't automatically reflect the changes made by the annotators (like creating tasks, adding new completion, etc.). Updating the analytics to reflect the latest changes can be done using the refresh button.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/refresh.png" style="width:100%;"/>
-
+</div><div class="h3-box" markdown="1">
 ### Task Analytics
 
 To access Task Analytics, navigate on the first tab of the <es>Analytics</es> Dashboard, called <bl>Tasks</bl>. The following blog post explains how to [Improve Annotation Quality using Task Analytics in the Generative AI Lab](https://www.johnsnowlabs.com/improving-annotation-quality-using-analytics-in-the-annotation-lab/).
@@ -85,7 +85,7 @@ Below are the charts included in the Tasks section.
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/numeric_values_across_labels.png" style="width:100%;"/>
 
 <br />
-
+</div><div class="h3-box" markdown="1">
 ### Team Productivity
 
 To access Team Productivity charts, navigate on the second tab of the <es>Analytics</es> Dashboard, called <bl>Team Productivity</bl>. The following blog post explains how to [Keep Track of Your Team Productivity in the Generative AI Lab](https://www.johnsnowlabs.com/keep-track-of-your-team-productivity-in-the-annotation-lab/).
@@ -117,7 +117,7 @@ Below are the charts included in the Team Productivity section.
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/submitted_completions_over_time.png" style="width:100%;"/>
 
 <br />
-
+</div><div class="h3-box" markdown="1">
 ### Inter-Annotator Agreement (IAA)
 
 Starting from version 2.8.0, Inter Annotator Agreement(IAA) charts allow the comparison between annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.
@@ -167,3 +167,43 @@ Below are the charts included in the Inter-Annotator Agreement section.
 CSV file for specific charts can be downloaded using the new download button which will call specific API endpoints: /api/projects/{project_name}/charts/{chart_type}/download_csv
 
 ![Screen Recording 2022-03-08 at 3 47 49 PM](https://user-images.githubusercontent.com/17021686/158564836-691a2b79-f3ca-4317-ad31-51cfbc9d71df.gif)
+
+## Annotation Instructions for Labels
+Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
+
+To add annotation instructions to a label, follow these steps:
+ - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
+ - Click on the `Edit` icon next to the label for which you want to add instructions. This action will take you to the `Edit Label` page.
+ - Enter the guidelines under the `Label Instructions` field.
+ - Click on `Save Label` to store the instructions.
+ - Click on `Save Config` to save the configuration.
+
+![670image](/assets/images/annotation_lab/6.7.0/10.gif)
+
+Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the `Annotation Guidelines` toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the `Annotation Guideline` section. Clicking on the label text will then reveal the annotation instructions for that label. 
+
+![670image](/assets/images/annotation_lab/6.7.0/11.gif)
+
+Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them. 
+
+Remove the annotation instructions from the labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/12.gif)
+
+Edit the annotation instructions from the Labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/13.gif)
+
+When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.
+
+![670image](/assets/images/annotation_lab/6.7.0/14.gif)
+
+Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.
+
+![670image](/assets/images/annotation_lab/6.7.0/15.png)
+
+Additionally, annotation guidelines are available for Assertion Labels as well. 
+
+![670image](/assets/images/annotation_lab/6.7.0/16.gif)
+
+</div>
