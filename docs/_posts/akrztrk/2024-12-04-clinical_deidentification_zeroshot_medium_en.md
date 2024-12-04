@@ -4,7 +4,7 @@ title: Clinical Deidentification Pipeline (clinical_deidentification_zeroshot_me
 author: John Snow Labs
 name: clinical_deidentification_zeroshot_medium
 date: 2024-12-04
-tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise]
+tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise, zeroshot]
 task: [De-identification, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.5.0
@@ -23,6 +23,10 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `LOCATION_OTHER`, `DLN`,
 `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities.
 
+## Predicted Entities
+
+`NAME`, `DATE`, `IDNUM`, `ZIP`, `SSN`, `ACCOUNT`, `LICENSE`, `AGE`, `PHONE`, `COUNTRY`, `STATE`, `CITY`, `PLATE`, `VIN`, `MEDICALRECORD`, `EMAIL`, `URL`, `LOCATION`, `PROFESSION`, `CONTACT`, `PATIENT`, `HOSPITAL`, `ORGANIZATION`, `STREET`, `DOCTOR`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -35,6 +39,7 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
