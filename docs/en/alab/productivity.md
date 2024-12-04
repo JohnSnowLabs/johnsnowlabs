@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
-modify_date: "2022-12-13"
+modify_date: "2024-12-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -167,3 +167,43 @@ Below are the charts included in the Inter-Annotator Agreement section.
 CSV file for specific charts can be downloaded using the new download button which will call specific API endpoints: /api/projects/{project_name}/charts/{chart_type}/download_csv
 
 ![Screen Recording 2022-03-08 at 3 47 49 PM](https://user-images.githubusercontent.com/17021686/158564836-691a2b79-f3ca-4317-ad31-51cfbc9d71df.gif)
+
+## Annotation Instructions for Labels
+Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page found during project setup.
+
+To add annotation instructions to a label, follow these steps:
+ - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
+ - Click on the `Edit` icon next to the label for which you want to add instructions. This action will take you to the `Edit Label` page.
+ - Enter the guidelines under the `Label Instructions` field.
+ - Click on `Save Label` to store the instructions.
+ - Click on `Save Config` to save the configuration.
+
+![670image](/assets/images/annotation_lab/6.7.0/10.gif)
+
+Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the `Annotation Guidelines` toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the `Annotation Guideline` section. Clicking on the label text will then reveal the annotation instructions for that label. 
+
+![670image](/assets/images/annotation_lab/6.7.0/11.gif)
+
+Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them. 
+
+Remove the annotation instructions from the labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/12.gif)
+
+Edit the annotation instructions from the Labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/13.gif)
+
+When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.
+
+![670image](/assets/images/annotation_lab/6.7.0/14.gif)
+
+Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.
+
+![670image](/assets/images/annotation_lab/6.7.0/15.png)
+
+Additionally, annotation guidelines are available for Assertion Labels as well. 
+
+![670image](/assets/images/annotation_lab/6.7.0/16.gif)
+
+</div>
