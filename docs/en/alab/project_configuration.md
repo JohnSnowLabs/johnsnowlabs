@@ -163,3 +163,119 @@ Below you can find a sample Project Configuration with constraints for Relation 
 ```
 
 </div>
+
+## Annotation Instructions for Labels
+From Generative AI Version 6.7.0 onwards, a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
+
+To add annotation instructions to a label, follow these steps:
+ - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
+ - Click on the `Edit` icon next to the label for which you want to add instructions. This action will take you to the `Edit Label` page.
+ - Enter the guidelines under the `Label Instructions` field.
+ - Click on `Save Label` to store the instructions.
+ - Click on `Save Config` to save the configuration.
+
+![670image](/assets/images/annotation_lab/6.7.0/10.gif)
+
+Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the `Annotation Guidelines` toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the `Annotation Guideline` section. Clicking on the label text will then reveal the annotation instructions for that label. 
+
+![670image](/assets/images/annotation_lab/6.7.0/11.gif)
+
+Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them. 
+
+Remove the annotation instructions from the labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/12.gif)
+
+Edit the annotation instructions from the Labeling page: 
+
+![670image](/assets/images/annotation_lab/6.7.0/13.gif)
+
+When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.
+
+![670image](/assets/images/annotation_lab/6.7.0/14.gif)
+
+Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.
+
+![670image](/assets/images/annotation_lab/6.7.0/15.png)
+
+Additionally, annotation guidelines are available for Assertion Labels as well. 
+
+![670image](/assets/images/annotation_lab/6.7.0/16.gif)
+
+</div><div class="h3-box" markdown="1">
+
+  ## Configure project using Visual Menu Builder
+
+Instead of using  XML to configure a project, it can now be down visually. 
+
+To see the structure of a project configuration XML file and the definitions of the supported tag types and various parameters and variables, and to better understand how Visual Menu Builder maps and creates these elements when configuring your project, see [Project Configuration Overview](https://nlp.johnsnowlabs.com/docs/en/alab/tags_overview).
+
+**Key Features:**
+
+**Add New Element**
+
+The new menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon ("+") within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/6.gif)
+
+**Edit an Element**
+
+Users can modify the properties and configurations of existing elements within the project. By clicking on the edit icon (a pencil icon), users can access the settings for an existing element. This opens an editable interface where users can adjust the element's parameters to suit the evolving needs of the project.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/7.gif)
+
+**Delete an Element**
+
+Users can remove unwanted elements from the project configuration. Users can click on the cross button ("x") associated with a specific element to remove it from the project. This feature helps in keeping the project configuration clean and relevant by allowing users to easily remove elements that are no longer needed.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/8.gif)
+
+**Drag and Move Element**
+
+The new visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the "Handle" icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/9.gif)
+
+**Show Element Boundaries**
+
+The **Show element Boundaries** button in the visual menu builder highlights the borders of each element within the project configuration, making it easier to visualize and distinguish the different components. By clicking on the "**Show element Boundaries**" button, users can toggle the visibility of the boundaries for all elements in the configuration. When enabled, a visible border will appear around each element, clearly outlining its scope and separation from other elements. This feature is particularly helpful when working with complex configurations where multiple elements are closely positioned. By showing the boundaries, users can easily identify and select the correct element they want to edit, move, or delete.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/10.gif)
+
+**Show Parent Action Buttons on Hover**
+
+The **Show parent action buttons on hover** button in the Visual Menu Builder allows users to quickly access action buttons (such as edit, delete, or add) for parent elements by hovering over them. By hiding the action buttons until needed, it reduces visual clutter and allows users to concentrate on their current tasks. The ability to quickly access these buttons by hovering ensures that they remain easily accessible without overwhelming the interface.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/11.gif)
+
+**Fullscreen Mode**
+
+The "**Fullscreen**" button in the visual menu builder allows users to expand the workspace to occupy the entire screen, providing a larger and more focused view of the project configuration. Clicking on the "**Fullscreen**" button maximizes the Visual Menu Builder, hiding other UI elements so the entire screen is dedicated to the project configuration. To exit fullscreen mode, users can click the "**Fullscreen**" button again or use the Esc key to return to the normal view with all standard UI elements visible.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/12.gif)
+
+</div><div class="h3-box" markdown="1">
+
+## Pair Entity resolver models with rules and zero-shot prompts
+Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
+
+**How to Use**:
+  - **Step 1**: Add a rule or prompt from the Re-use Resource page.
+  - **Step 2**: Edit the label in the Customize Labels page and select the appropriate ER model to associate with the labels.
+  - **Step 3**: Import tasks and Pre-annotate the task.
+    
+![genAI650](/assets/images/annotation_lab/6.5.0/13.gif)
+
+This update broadens the capabilities of ER models, making them more versatile in annotation projects.
+
+</div><div class="h3-box" markdown="1">
+
+### Improvements
+### By default "synthetic" tag is added for imported synthetic tasks
+In previous versions, users had to manually add tags to synthetically generated tasks or else tasks imported into the task page lacked any associated tags. Starting with version 6.5.0, when tasks are imported, they now come with synthetic tags already associated with them during import in the task page.
+
+![genAI650](/assets/images/annotation_lab/6.5.0/14.gif)
+
+This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
+
+</div><div class="h3-box" markdown="1">
