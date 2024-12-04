@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Synthetic task generation
 permalink: /docs/en/alab/synthetic_task
 key: docs-training
-modify_date: "2024-03-19"
+modify_date: "2024-11-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -52,8 +52,8 @@ In previous versions, users had to manually add tags to synthetically generated 
 This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
 
 </div>
-# Data Augmentation for more Robust Model Training
-Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
+
+### Augmented Data
 
 The new tab called "**Generate Augmented Data**" on the import page will make it easier for you to create augmented tasks. By clicking on the "**Improve Test Results**" option, you'll be redirected to the "**Generate Augmented Data**" page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under "**Proportional Augmentation**".
 
@@ -88,4 +88,4 @@ After the augmented tasks are generated, the user can import the tasks. The augm
 
 Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
 
-</div><div class="h3-box" markdown="1">
+</div>

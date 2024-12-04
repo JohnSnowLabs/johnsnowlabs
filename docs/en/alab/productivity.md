@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
-modify_date: "2022-12-13"
+modify_date: "2024-11-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -23,7 +23,7 @@ es {
   font-style: italic;
 }
 </style>
-
+<div class="h3-box" markdown="1">
 ## Analytics Charts
 
 By default, the Analytics page is disabled for every project because computing the analytical charts is a resource-intensive task and might temporarily influence the responsiveness of the application, especially when triggered in parallel with other training/preannotation jobs. However, users can file a request to enable the Analytics page which can be approved by any [admin user](/docs/en/alab/user_management#user-groups). The request is published on the [Analytics Requests](/docs/en/alab/analytics_permission) page, visible to any <es>admin</es> user. Once the <es>admin</es> user approves the request, any team member can access the Analytics page.
@@ -33,7 +33,7 @@ By default, the Analytics page is disabled for every project because computing t
 A refresh button is present on the top-right corner of the Analytics page. The Analytics charts doesn't automatically reflect the changes made by the annotators (like creating tasks, adding new completion, etc.). Updating the analytics to reflect the latest changes can be done using the refresh button.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/refresh.png" style="width:100%;"/>
-
+</div><div class="h3-box" markdown="1">
 ### Task Analytics
 
 To access Task Analytics, navigate on the first tab of the <es>Analytics</es> Dashboard, called <bl>Tasks</bl>. The following blog post explains how to [Improve Annotation Quality using Task Analytics in the Generative AI Lab](https://www.johnsnowlabs.com/improving-annotation-quality-using-analytics-in-the-annotation-lab/).
@@ -85,7 +85,7 @@ Below are the charts included in the Tasks section.
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/numeric_values_across_labels.png" style="width:100%;"/>
 
 <br />
-
+</div><div class="h3-box" markdown="1">
 ### Team Productivity
 
 To access Team Productivity charts, navigate on the second tab of the <es>Analytics</es> Dashboard, called <bl>Team Productivity</bl>. The following blog post explains how to [Keep Track of Your Team Productivity in the Generative AI Lab](https://www.johnsnowlabs.com/keep-track-of-your-team-productivity-in-the-annotation-lab/).
@@ -117,7 +117,7 @@ Below are the charts included in the Team Productivity section.
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/submitted_completions_over_time.png" style="width:100%;"/>
 
 <br />
-
+</div><div class="h3-box" markdown="1">
 ### Inter-Annotator Agreement (IAA)
 
 Starting from version 2.8.0, Inter Annotator Agreement(IAA) charts allow the comparison between annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.
@@ -206,4 +206,4 @@ Additionally, annotation guidelines are available for Assertion Labels as well.
 
 ![670image](/assets/images/annotation_lab/6.7.0/16.gif)
 
-</div><div class="h3-box" markdown="1">
+</div>

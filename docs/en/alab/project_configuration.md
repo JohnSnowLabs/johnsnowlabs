@@ -278,4 +278,4 @@ In previous versions, users had to manually add tags to synthetically generated 
 
 This improvement saves time by eliminating the need for manual tag assignment and ensures that imported tasks are accurately tagged from the start, improving organization and searchability. Also, this enhancement streamlines the workflow for managing and organizing synthetic tasks, making it easier to work with large datasets as well.
 
-</div><div class="h3-box" markdown="1">
+</div>
