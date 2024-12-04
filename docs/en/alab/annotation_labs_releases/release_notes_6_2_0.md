@@ -362,7 +362,7 @@ Users can confidently upload and import files, knowing that the system will enfo
 
 
 ### There should be a way to "batch" clear predicted labels in a Section after pre-annotation 
-Version 6.2 of Generative AI Lab introduces a significant enhancement improving the application's security and robustness by restricting the types of files that can be uploaded or imported. This change ensures that only supported and safe file types are processed, providing a more secure and efficient user experience, maintaining the platform's integrity and reliability while enhancing its security. 
+Version 6.2 of Generative AI Lab introduces a tool to allow annotators to remove large sections of pre-annotated labels in bulk instead of removing them individually. 
 
 **Key Features of This Improvement:**
 
