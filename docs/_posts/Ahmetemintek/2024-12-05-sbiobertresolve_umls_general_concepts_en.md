@@ -87,7 +87,7 @@ sbert_embedder = BertSentenceEmbeddings\
 resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_general_concepts", "en", "clinical/models") \
     .setInputCols(["sbert_embeddings"]) \
     .setOutputCol("resolution")\
-    .setDistanceFunction("EUCLIDEAN")
+    .setDistanceFunction("EUCLIDEAN")\
 
 umls_lp = Pipeline(stages=[
     documentAssembler,
@@ -100,6 +100,71 @@ umls_lp = Pipeline(stages=[
     sbert_embedder,
     resolver
 ])
+
+data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
+
+result = umls_lp.fit(data).transform(data)
+```
+
+{:.jsl-block}
+```python
+documentAssembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
+    .setInputCols(["sentence","token"])\
+    .setOutputCol("embeddings")
+
+ner_model = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner_jsl")
+
+ner_model_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner_jsl"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(['Injury_or_Poisoning','Hyperlipidemia','Kidney_Disease','Oncological','Cerebrovascular_Disease'
+                  ,'Oxygen_Therapy','Heart_Disease','Obesity','Disease_Syndrome_Disorder','Symptom','Treatment','Diabetes','Injury_or_Poisoning'
+                  ,'Procedure','Symptom','Treatment','Drug_Ingredient','VS_Finding','Communicable_Disease'
+                  ,'Drug_BrandName','Hypertension','Imaging_Technique'
+                  ])
+
+chunk2doc = medical.Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
+
+sbert_embedder = nlp.BertSentenceEmbeddings\
+    .pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_general_concepts", "en", "clinical/models") \
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")\
+    .setCaseSensitive(False)
+
+
+umls_lp = nlp.Pipeline(stages=[
+     documentAssembler,
+     sentenceDetector,
+     tokenizer,
+     word_embeddings,
+     ner_model,
+     ner_model_converter,
+     chunk2doc,
+     sbert_embedder,
+     resolver
+ ])
 
 data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
 
