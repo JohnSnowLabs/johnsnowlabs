@@ -79,6 +79,52 @@ data = spark.createDataFrame([["""A 28-year-old female with a history of gestati
 
 results = pipeline.fit(data).transform(data)
 ```
+
+{:.jsl-block}
+```python
+document_assembler = nlp.DocumentAssembler()\
+      .setInputCol('text')\
+      .setOutputCol('document')
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", 'clinical/models') \
+    .setInputCols("document") \
+    .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+      .setInputCols("sentence")\
+      .setOutputCol("token")
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+      .setInputCols(["sentence", "token"])\
+      .setOutputCol("embeddings")
+
+ner_model = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("clinical_ner")
+
+ner_model_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "clinical_ner"])\
+    .setOutputCol("ner_chunk")
+
+chunk2doc = medical.Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+
+sbert_embedder = nlp.BertSentenceEmbeddings\
+     .pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
+     .setInputCols(["ner_chunk_doc"])\
+     .setOutputCol("sbert_embeddings")\
+     .setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_findings","en", "clinical/models") \
+     .setInputCols(["sbert_embeddings"]) \
+     .setOutputCol("resolution")\
+     .setDistanceFunction("EUCLIDEAN")
+
+pipeline = nlp.Pipeline(stages = [document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver])
+
+data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
+
+results = pipeline.fit(data).transform(data)
+```
 ```scala
 val document_assembler = new DocumentAssembler()
       .setInputCol("text")
