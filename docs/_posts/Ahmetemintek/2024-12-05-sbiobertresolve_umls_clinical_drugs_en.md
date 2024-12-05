@@ -80,6 +80,52 @@ data = spark.createDataFrame([["""She was immediately given hydrogen peroxide 30
 
 results = pipeline.fit(data).transform(data)
 ```
+
+{:.jsl-block}
+```python
+document_assembler = nlp.DocumentAssembler()\
+      .setInputCol('text')\
+      .setOutputCol('document')
+
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+     .setInputCols(["document"])\
+     .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+      .setInputCols("sentence")\
+      .setOutputCol("token")
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+      .setInputCols(["sentence", "token"])\
+      .setOutputCol("embeddings")
+
+ner_model = medical.NerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("posology_ner")
+
+ner_model_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "posology_ner"])\
+    .setOutputCol("posology_ner_chunk")\
+    .setWhiteList(["DRUG"])
+
+chunk2doc = medical.Chunk2Doc().setInputCols("posology_ner_chunk").setOutputCol("ner_chunk_doc")
+
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+     .setInputCols(["ner_chunk_doc"])\
+     .setOutputCol("sbert_embeddings")\
+     .setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs","en", "clinical/models") \
+     .setInputCols(["sbert_embeddings"]) \
+     .setOutputCol("resolution")\
+     .setDistanceFunction("EUCLIDEAN")
+
+pipeline = nlp.Pipeline(stages = [document_assembler, sentenceDetector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver])
+
+data = spark.createDataFrame([["""She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."""]]).toDF("text")
+
+results = pipeline.fit(data).transform(data)
+```
 ```scala
 val document_assembler = new DocumentAssembler()
       .setInputCol("text")
