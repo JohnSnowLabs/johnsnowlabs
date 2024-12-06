@@ -28,9 +28,7 @@ This pretrained pipeline maps entities with their corresponding RxNorm codes. Yo
 
 ## Predicted Entities
 
-`DRUG`, `DRUGG`, `Drug`
-
-`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `ROUTE`, `STRENGTH`
+`DRUG`
 
 
 {:.btn-box}

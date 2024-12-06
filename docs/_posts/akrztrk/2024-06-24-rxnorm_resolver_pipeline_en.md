@@ -22,9 +22,7 @@ This pretrained pipeline extracts medication entities and maps them to their cor
 
 ## Predicted Entities
 
-`DRUG`, `DRUGG`, `Drug`
-
-`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `ROUTE`, `STRENGTH`
+`DRUG`
 
 
 {:.btn-box}

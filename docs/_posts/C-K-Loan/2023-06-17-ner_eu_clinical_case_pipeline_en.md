@@ -24,36 +24,6 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://n
 
 `bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
 
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
-`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
-
 
 
 {:.btn-box}

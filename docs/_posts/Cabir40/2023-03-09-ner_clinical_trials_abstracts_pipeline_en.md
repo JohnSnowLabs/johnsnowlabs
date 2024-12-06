@@ -24,12 +24,6 @@ This pretrained pipeline is built on the top of [ner_clinical_trials_abstracts](
 
 `Age`, `AllocationRatio`, `Author`, `BioAndMedicalUnit`, `CTAnalysisApproach`, `CTDesign`, `Confidence`, `Country`, `DisorderOrSyndrome`, `DoseValue`, `Drug`, `DrugTime`, `Duration`, `Journal`, `NumberPatients`, `PMID`, `PValue`, `PercentagePatients`, `PublicationYear`, `TimePoint`, `Value`
 
-`Age`, `AllocationRatio`, `Author`, `BioAndMedicalUnit`, `CTAnalysisApproach`, `CTDesign`, `Confidence`, `Country`, `DisorderOrSyndrome`, `DoseValue`, `Drug`, `DrugTime`, `Duration`, `Journal`, `NumberPatients`, `PMID`, `PValue`, `PercentagePatients`, `PublicationYear`, `TimePoint`, `Value`
-
-`CHEM`, `DISO`, `PROC`
-
-`CHEM`, `DISO`, `PROC`
-
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

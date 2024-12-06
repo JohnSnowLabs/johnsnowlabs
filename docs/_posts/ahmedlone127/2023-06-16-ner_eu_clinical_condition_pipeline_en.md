@@ -24,54 +24,6 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 `clinical_condition`
 
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
-`clinical_condition`
-
 
 
 {:.btn-box}

@@ -22,9 +22,7 @@ This pretrained pipeline maps medication entities with their corresponding RxNor
 
 ## Predicted Entities
 
-`DRUG`, `DRUGG`, `Drug`
-
-`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `ROUTE`, `STRENGTH`
+`DRUG`
 
 
 {:.btn-box}

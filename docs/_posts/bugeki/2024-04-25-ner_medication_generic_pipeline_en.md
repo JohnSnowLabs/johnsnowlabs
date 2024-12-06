@@ -25,7 +25,7 @@ Predicted entities: `DRUG`
 
 ## Predicted Entities
 
-`DRUG`, `DRUGG`
+`DRUG`
 
 
 {:.btn-box}

@@ -26,8 +26,6 @@ This pipeline can be used to simultaneously evaluate various pre-trained named e
 
 `AdmissionDischarge`, `Admission_Discharge`, `Age`, `Allergen`, `BodyPart`, `Cancer_Modifier`, `Cerebrovascular_Disease`, `ClinicalDept`, `Clinical_Dept`, `Communicable_Disease`, `Date`, `DateTime`, `Diabetes`, `Direction`, `Disease`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Drug_BrandName`, `Drug_Ingredient`, `Duration`, `Employment`, `External_body_part_or_region`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `InjuryOrPoisoning`, `Injury_or_Poisoning`, `Internal_organ_or_component`, `Kidney_Disease`, `Laterality`, `Measurements`, `MedicalDevice`, `Medical_Device`, `Modifier`, `Obesity`, `Oncological`, `Problem`, `Procedure`, `PsychologicalCondition`, `Psychological_Condition`, `RaceEthnicity`, `RelationshipStatus`, `Relationship_Status`, `RelativeDate`, `Route`, `Substance`, `SubstanceQuantity`, `Substance_Quantity`, `Symptom`, `Test`, `TestResult`, `Test_Result`, `Treatment`, `VS_Finding`, `Vaccine`, `Vaccine_Name`, `VitalTest`
 
-`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `Measurements`, `MedicalDevice`, `Modifier`, `Problem`, `Procedure`, `PsychologicalCondition`, `RaceEthnicity`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
-
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
