@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline includes Named-Entity Recognition, Assertion Status, Relation Extraction and Entity Resolution models to extract information from oncology texts. This pipeline focuses on entities related to oncological diagnosis.
 
+## Predicted Entities
+
+`Adenopathy`, `Cancer_Dx`, `Cancer_Score`, `Direction`, `Grade`, `Histological_Type`, `Invasion`, `Lymph_Node`, `Lymph_Node_Modifier`, `Metastasis`, `Pathology_Result`, `Performance_Status`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`, `Staging`, `Tumor`, `Tumor_Description`, `Tumor_Finding`, `Tumor_Size`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_genetic_variants](https://n
 
 ## Predicted Entities
 
+`DNAMutation`, `ProteinMutation`, `SNP`
+
 
 
 {:.btn-box}

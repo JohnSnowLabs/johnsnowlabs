@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [nerdl_tumour_demo](https://nlp.
 
 ## Predicted Entities
 
+`Grading`, `Laterality`, `Localization`, `Size`, `Staging`, `X`
+
 
 
 {:.btn-box}

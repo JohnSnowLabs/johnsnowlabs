@@ -22,6 +22,38 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_livin
 
 ## Predicted Entities
 
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
+`HUMAN`, `PAD`, `SPECIES`
+
 
 
 

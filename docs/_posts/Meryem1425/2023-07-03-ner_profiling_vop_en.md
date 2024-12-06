@@ -24,6 +24,13 @@ Here are the NER models that this pretrained pipeline includes:
 
 `ner_vop_clinical_dept`, `ner_vop_temporal`, `ner_vop_test`, `ner_vop`, `ner_vop_problem`, `ner_vop_problem_reduced`, `ner_vop_treatment`, `ner_vop_demographic`, `ner_vop_anatomy`
 
+## Predicted Entities
+
+`AdmissionDischarge`, `Admission_Discharge`, `Age`, `Allergen`, `BodyPart`, `Cancer_Modifier`, `Cerebrovascular_Disease`, `ClinicalDept`, `Clinical_Dept`, `Communicable_Disease`, `Date`, `DateTime`, `Diabetes`, `Direction`, `Disease`, `Disease_Syndrome_Disorder`, `Dosage`, `Drug`, `Drug_BrandName`, `Drug_Ingredient`, `Duration`, `Employment`, `External_body_part_or_region`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `Heart_Disease`, `Hyperlipidemia`, `Hypertension`, `InjuryOrPoisoning`, `Injury_or_Poisoning`, `Internal_organ_or_component`, `Kidney_Disease`, `Laterality`, `Measurements`, `MedicalDevice`, `Medical_Device`, `Modifier`, `Obesity`, `Oncological`, `Problem`, `Procedure`, `PsychologicalCondition`, `Psychological_Condition`, `RaceEthnicity`, `RelationshipStatus`, `Relationship_Status`, `RelativeDate`, `Route`, `Substance`, `SubstanceQuantity`, `Substance_Quantity`, `Symptom`, `Test`, `TestResult`, `Test_Result`, `Treatment`, `VS_Finding`, `Vaccine`, `Vaccine_Name`, `VitalTest`
+
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `Measurements`, `MedicalDevice`, `Modifier`, `Problem`, `Procedure`, `PsychologicalCondition`, `RaceEthnicity`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

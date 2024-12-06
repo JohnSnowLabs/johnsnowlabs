@@ -23,6 +23,11 @@ The main distinction from the `medication_ner_pipeline` is that it chunks these 
 
 Predicted entities: `DRUG`
 
+## Predicted Entities
+
+`DRUG`, `DRUGG`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

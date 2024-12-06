@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_pathogen](https://nlp.johnsnowlabs.com/2022/06/28/ner_pathogen_en_3_0.html) model.
 
+## Predicted Entities
+
+`MedicalCondition`, `Medicine`, `Pathogen`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

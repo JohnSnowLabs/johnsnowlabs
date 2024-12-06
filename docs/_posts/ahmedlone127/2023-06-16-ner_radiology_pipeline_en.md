@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_radiology](https://nlp.john
 
 ## Predicted Entities
 
+`BodyPart`, `Direction`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `ImagingTest`, `Imaging_Technique`, `ManualFix`, `Measurements`, `Medical_Device`, `OtherFindings`, `Procedure`, `Symptom`, `Test`, `Test_Result`, `Units`
+
 
 
 {:.btn-box}

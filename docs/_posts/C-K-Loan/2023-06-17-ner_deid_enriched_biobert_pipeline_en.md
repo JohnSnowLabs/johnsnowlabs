@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_deid_enriched_biobert](http
 
 ## Predicted Entities
 
+`AGE`, `BIOID`, `CITY`, `COUNTRY`, `DATE`, `DEVICE`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `IDNUM`, `LOCATION-OTHER`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`
+
 
 
 {:.btn-box}

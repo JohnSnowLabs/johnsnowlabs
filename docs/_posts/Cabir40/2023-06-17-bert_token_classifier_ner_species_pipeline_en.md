@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_speci
 
 ## Predicted Entities
 
+`PAD`, `SPECIES`
+
 
 
 {:.btn-box}

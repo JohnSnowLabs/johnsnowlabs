@@ -20,6 +20,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline includes the full taxonomy Named-Entity Recognition model to extract information from health-related text in colloquial language. This pipeline extracts diagnoses, treatments, tests, anatomical references and demographic entities.
 
+## Predicted Entities
+
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `MedicalDevice`, `Modifier`, `Procedure`, `PsychologicalCondition`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
+
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `MedicalDevice`, `Modifier`, `Procedure`, `PsychologicalCondition`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

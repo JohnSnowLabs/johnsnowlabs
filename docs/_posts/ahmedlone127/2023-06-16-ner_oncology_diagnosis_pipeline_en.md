@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_diagnosis](https:/
 
 ## Predicted Entities
 
+`Adenopathy`, `Cancer_Dx`, `Cancer_Score`, `Grade`, `Histological_Type`, `Invasion`, `Metastasis`, `Pathology_Result`, `Performance_Status`, `Staging`, `Tumor_Finding`, `Tumor_Size`
+
 
 
 {:.btn-box}

@@ -28,6 +28,104 @@ This pretrained pipeline is built on the top of [ner_living_species](https://nlp
 
 ## Predicted Entities
 
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
 
 
 {:.btn-box}

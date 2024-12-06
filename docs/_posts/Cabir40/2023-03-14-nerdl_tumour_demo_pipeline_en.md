@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [nerdl_tumour_demo](https://nlp.johnsnowlabs.com/2021/04/01/nerdl_tumour_demo_en.html) model.
 
+## Predicted Entities
+
+`Grading`, `Laterality`, `Localization`, `Size`, `Staging`, `X`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

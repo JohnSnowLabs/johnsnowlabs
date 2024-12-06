@@ -20,6 +20,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_healthcare](https://nlp.johnsnowlabs.com/2021/04/21/ner_healthcare_en.html) model.
 
+## Predicted Entities
+
+`BIOLOGICAL_CHEMISTRY`, `BIOLOGICAL_PARAMETER`, `BODY_FLUID`, `BODY_PART`, `DEGREE`, `DIAGLAB_PROCEDURE`, `DOSING`, `LOCAL_SPECIFICATION`, `MEASUREMENT`, `MEDICAL_CONDITION`, `MEDICAL_DEVICE`, `MEDICAL_SPECIFICATION`, `MEDICATION`, `PERSON`, `PROCESS`, `STATE_OF_HEALTH`, `TIME_INFORMATION`, `TISSUE`, `TREATMENT`
+
+`PROBLEM`, `TEST`, `TREATMENT`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

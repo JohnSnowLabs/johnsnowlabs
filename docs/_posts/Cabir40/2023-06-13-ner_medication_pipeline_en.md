@@ -22,6 +22,8 @@ A pretrained pipeline to detect medication entities. It was built on the top of 
 
 ## Predicted Entities
 
+`DRUG`
+
 
 
 {:.btn-box}

@@ -20,6 +20,107 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_en_3_0.html) model.
 
+## Predicted Entities
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+`HUMAN`, `SPECIES`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_response_to_treatm
 
 ## Predicted Entities
 
+`Line_Of_Therapy`, `Response_To_Treatment`, `Size_Trend`
+
 
 
 {:.btn-box}

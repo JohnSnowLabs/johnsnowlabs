@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_deid]
 
 ## Predicted Entities
 
+`AGE`, `BIOID`, `CITY`, `COUNTRY`, `DATE`, `DEVICE`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `IDNUM`, `LOCATION-OTHER`, `MEDICALRECORD`, `ORGANIZATION`, `PAD`, `PATIENT`, `PHONE`, `PROFESSION`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`
+
 
 
 

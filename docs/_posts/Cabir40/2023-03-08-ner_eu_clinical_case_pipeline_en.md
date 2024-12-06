@@ -20,6 +20,41 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://nlp.johnsnowlabs.com/2023/01/25/ner_eu_clinical_case_en.html) model.
 
+## Predicted Entities
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

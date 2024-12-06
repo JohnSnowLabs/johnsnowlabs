@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_jsl_slim](https://nlp.johnsnowlabs.com/2021/08/13/ner_jsl_slim_en.html) model.
 
+## Predicted Entities
+
+`Admission_Discharge`, `Age`, `Alergen`, `Birth_Entity`, `Body_Part`, `Clinical_Dept`, `Date_Time`, `Death_Entity`, `Demographics`, `Disease_Syndrome_Disorder`, `Drug`, `Header`, `Lifestyle`, `Medical_Device`, `Oncological`, `Physical_Measurement`, `Pregnancy_Newborn`, `Procedure`, `Substance_Quantity`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Vital_Sign`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

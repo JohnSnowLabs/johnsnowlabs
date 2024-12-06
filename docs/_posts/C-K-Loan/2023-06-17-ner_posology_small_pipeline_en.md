@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_posology_small](https://nlp
 
 ## Predicted Entities
 
+`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `ROUTE`, `STRENGTH`
+
 
 
 {:.btn-box}

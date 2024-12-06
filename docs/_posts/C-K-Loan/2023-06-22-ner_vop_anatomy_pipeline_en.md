@@ -22,6 +22,8 @@ This pipeline extracts mentions of anatomical sites from health-related text in 
 
 ## Predicted Entities
 
+`BodyPart`, `Laterality`
+
 
 
 {:.btn-box}
