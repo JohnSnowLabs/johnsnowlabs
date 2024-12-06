@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps entities (Clinical Drugs) with their corresponding UMLS CUI codes.
 
+## Predicted Entities
+
+`umls_code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This pretrained model maps entities (Clinical Drugs) with their corresponding UM
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -203,3 +208,7 @@ val result = mapper_pipeline.fit(data).transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|31.1 MB|
+
+## References
+
+Trained on concepts from clinical major concepts for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
