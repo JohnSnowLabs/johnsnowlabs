@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_nihss](https://nlp.johnsnow
 
 ## Predicted Entities
 
+`10_Dysarthria`, `11_ExtinctionInattention`, `1a_LOC`, `1b_LOCQuestions`, `1c_LOCCommands`, `2_BestGaze`, `3_Visual`, `4_FacialPalsy`, `5_Motor`, `5a_LeftArm`, `5b_RightArm`, `6_Motor`, `6a_LeftLeg`, `6b_RightLeg`, `7_LimbAtaxia`, `8_Sensory`, `9_BestLanguage`, `Measurement`, `NIHSS`
+
 
 
 {:.btn-box}

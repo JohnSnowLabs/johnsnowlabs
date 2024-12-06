@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline maps medication entities with their corresponding RxNorm codes. You’ll just feed your text and it will return the corresponding RxNorm codes.
 
+## Predicted Entities
+
+`DRUG`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

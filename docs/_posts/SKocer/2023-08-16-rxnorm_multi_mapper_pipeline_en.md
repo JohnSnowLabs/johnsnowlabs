@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline maps RxNorm codes to their corresponding drug brand names, rxnorm extension brand names, action mappings, treatment mappings, UMLS codes, NDC product codes and NDC package codes. You’ll just feed white space-delimited RxNorm codes and get the result.
 
+## Predicted Entities
+
+
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

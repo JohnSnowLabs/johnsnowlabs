@@ -22,6 +22,8 @@ This pipeline extracts mentions of tests and their results from health-related t
 
 ## Predicted Entities
 
+`Measurements`, `Test`, `TestResult`, `VitalTest`
+
 
 
 {:.btn-box}

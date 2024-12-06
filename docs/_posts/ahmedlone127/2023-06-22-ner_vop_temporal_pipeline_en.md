@@ -22,6 +22,8 @@ This pipeline extracts mentions of temporal entities from health-related text in
 
 ## Predicted Entities
 
+`DateTime`, `Duration`, `Frequency`
+
 
 
 {:.btn-box}

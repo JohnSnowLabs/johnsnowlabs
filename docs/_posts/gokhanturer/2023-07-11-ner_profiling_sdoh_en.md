@@ -24,6 +24,11 @@ Here are the NER models that this pretrained pipeline includes:
 
 `ner_sdoh`, `ner_sdoh_social_environment_wip`, `ner_sdoh_mentions`, `ner_sdoh_demographics_wip`, `ner_sdoh_community_condition_wip`, `ner_sdoh_substance_usage_wip`, `ner_sdoh_access_to_healthcare_wip`, `ner_sdoh_health_behaviours_problems_wip`, `ner_sdoh_income_social_status_wip`
 
+## Predicted Entities
+
+`Access_To_Care`, `Age`, `Alcohol`, `Cerebrovascular_Disease`, `Chidhood_Event`, `Childhood_Development`, `Childhood_Event`, `Communicable_Disease`, `Community_Safety`, `Diabetes`, `Diet`, `Disability`, `Disease_Syndrome_Disorder`, `Dosage`, `Eating_Disorder`, `Education`, `Employment`, `Environmental_Condition`, `Exercise`, `Family_Member`, `Financial_Status`, `Food_Insecurity`, `Gender`, `Geographic_Entity`, `Healthcare_Institution`, `Heart_Disease`, `Housing`, `Hyperlipidemia`, `Hypertension`, `Income`, `Insurance_Status`, `Kidney_Disease`, `Language`, `Legal_Issues`, `Marital_Status`, `Mental_Health`, `Obesity`, `Other_Disease`, `Other_SDoH_Keywords`, `Population_Group`, `Psychological_Condition`, `Quality_Of_Life`, `Race_Ethnicity`, `Relationship_Status`, `Sexual_Activity`, `Sexual_Orientation`, `Smoking`, `Social_Exclusion`, `Social_Support`, `Spiritual_Beliefs`, `Substance`, `Substance_Duration`, `Substance_Frequency`, `Substance_Quantity`, `Substance_Use`, `Symptom`, `Transportation`, `Violence_Abuse_Legal`, `Violence_Or_Abuse`, `behavior_alcohol`, `behavior_drug`, `behavior_tobacco`, `sdoh_community`, `sdoh_economics`, `sdoh_education`, `sdoh_environment`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

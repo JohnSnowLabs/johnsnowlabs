@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology](https://nlp.johns
 
 ## Predicted Entities
 
+`Adenopathy`, `Age`, `Biomarker`, `Biomarker_Result`, `Cancer_Dx`, `Cancer_Score`, `Cancer_Surgery`, `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Date`, `Death_Entity`, `Direction`, `Dosage`, `Duration`, `Frequency`, `Gender`, `Grade`, `Histological_Type`, `Hormonal_Therapy`, `Imaging_Test`, `Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Metastasis`, `Oncogene`, `Pathology_Result`, `Pathology_Test`, `Performance_Status`, `Race_Ethnicity`, `Radiation_Dose`, `Radiotherapy`, `Relative_Date`, `Response_To_Treatment`, `Route`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`, `Smoking_Status`, `Staging`, `Targeted_Therapy`, `Tumor_Finding`, `Tumor_Size`, `Unspecific_Therapy`
+
 
 
 {:.btn-box}

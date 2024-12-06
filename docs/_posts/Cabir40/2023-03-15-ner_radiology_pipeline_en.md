@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_radiology](https://nlp.johnsnowlabs.com/2021/03/31/ner_radiology_en.html) model.
 
+## Predicted Entities
+
+`BodyPart`, `Direction`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `ImagingTest`, `Imaging_Technique`, `ManualFix`, `Measurements`, `Medical_Device`, `OtherFindings`, `Procedure`, `Symptom`, `Test`, `Test_Result`, `Units`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

@@ -22,6 +22,11 @@ This pipeline can be used to simultaneously evaluate various pre-trained named e
 
 `ner_sdoh`, `ner_sdoh_wip`, `ner_sdoh_langtest`, `ner_sdoh_core`, `ner_sdoh_demographics`, `ner_sdoh_demographics_wip`, `ner_sdoh_mentions`, `ner_sdoh_community_condition`,`ner_sdoh_community_condition_wip`, `ner_sdoh_social_environment`, `ner_sdoh_social_environment_wip`, `ner_sdoh_substance_usage`, `ner_sdoh_substance_usage_wip`, `ner_sdoh_slim_wip`, `ner_sdoh_access_to_healthcare`, `ner_sdoh_access_to_healthcare_wip`, `ner_sdoh_health_behaviours_problems`, `ner_sdoh_health_behaviours_problems_wip`, `ner_sdoh_income_social_status`, `ner_sdoh_income_social_status_wip`, `ner_jsl`, `ner_jsl_langtest`, `ner_jsl_greedy`, `ner_jsl_enriched`, `ner_jsl_slim`
 
+## Predicted Entities
+
+`Access_To_Care`, `Age`, `Alcohol`, `Cerebrovascular_Disease`, `Chidhood_Event`, `Childhood_Development`, `Childhood_Event`, `Communicable_Disease`, `Community_Safety`, `Diabetes`, `Diet`, `Disability`, `Disease_Syndrome_Disorder`, `Dosage`, `Eating_Disorder`, `Education`, `Employment`, `Environmental_Condition`, `Exercise`, `Family_Member`, `Financial_Status`, `Food_Insecurity`, `Gender`, `Geographic_Entity`, `Healthcare_Institution`, `Heart_Disease`, `Housing`, `Hyperlipidemia`, `Hypertension`, `Income`, `Insurance_Status`, `Kidney_Disease`, `Language`, `Legal_Issues`, `Marital_Status`, `Mental_Health`, `Obesity`, `Other_Disease`, `Other_SDoH_Keywords`, `Population_Group`, `Psychological_Condition`, `Quality_Of_Life`, `Race_Ethnicity`, `Relationship_Status`, `Sexual_Activity`, `Sexual_Orientation`, `Smoking`, `Social_Exclusion`, `Social_Support`, `Spiritual_Beliefs`, `Substance`, `Substance_Duration`, `Substance_Frequency`, `Substance_Quantity`, `Substance_Use`, `Symptom`, `Transportation`, `Violence_Abuse_Legal`, `Violence_Or_Abuse`, `behavior_alcohol`, `behavior_drug`, `behavior_tobacco`, `sdoh_community`, `sdoh_economics`, `sdoh_education`, `sdoh_environment`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

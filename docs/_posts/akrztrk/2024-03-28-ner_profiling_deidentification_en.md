@@ -26,6 +26,11 @@ The pipeline employs `embeddings_clinical` for contextual understanding and incl
 
 Each model addresses a unique aspect of deidentification, making this pipeline an all-encompassing tool for securing clinical narratives.
 
+## Predicted Entities
+
+`AGE`, `Age`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DOCTOR`, `Date`, `Dosage`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `ID`, `IDNUM`, `LOCATION`, `LOCATION-OTHER`, `MEDICALRECORD`, `NAME`, `NN`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `RelativeDate`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

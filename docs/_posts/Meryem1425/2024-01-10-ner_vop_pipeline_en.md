@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline includes the full taxonomy Named-Entity Recognition model to extract information from health-related text in colloquial language. This pipeline extracts diagnoses, treatments, tests, anatomical references and demographic entities.
 
+## Predicted Entities
+
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `MedicalDevice`, `Modifier`, `Procedure`, `PsychologicalCondition`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

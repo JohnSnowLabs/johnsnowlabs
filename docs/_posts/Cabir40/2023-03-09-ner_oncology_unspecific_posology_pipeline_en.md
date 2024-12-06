@@ -28,7 +28,8 @@ This pretrained pipeline is built on the top of [ner_oncology_unspecific_posolog
 
 ## Predicted Entities
 
-`Posology_Information`, `Cancer_Therapy`
+`Cancer_Therapy`, `Posology_Information`
+
 
 
 ## How to use

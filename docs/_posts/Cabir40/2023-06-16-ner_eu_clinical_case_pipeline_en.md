@@ -22,6 +22,9 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://n
 
 ## Predicted Entities
 
+`bodypart`, `clinical_condition`, `clinical_event`, `date_time`, `patient`, `units_measurements`
+
+
 
 
 {:.btn-box}
