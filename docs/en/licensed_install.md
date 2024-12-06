@@ -1593,32 +1593,32 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
-![image](/assets/images/installation/Fabric_1.png)
+![Create a Lakehouse](/assets/images/installation/Fabric_1.png)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-![image](/assets/images/installation/Fabric_2.png)
+![Create a Notebook in Fabric](/assets/images/installation/Fabric_2.png)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
-![image](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
+![Attach the Lakehouse](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
 
-![image](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
+![Attach the Lakehouse](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
-![image](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
+![Upload Files to Fabric](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
 
-![image](/assets/images/installation/Fabric_3.png)
+![Upload Files to Fabric](/assets/images/installation/Fabric_3.png)
 
 After uploading is complete, you can configure and run the notebook.
 
@@ -1767,6 +1767,6 @@ result = pipeline.annotate(text)
 ### Step 12: Run the pipeline with `.pretrained()` method
 You can also run the pipelines without using the `.load()` or `.from_disk()` methods
 
-![image](/assets/images/installation/Fabric_4.png)
-![image](/assets/images/installation/Fabric_5.png)
+![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_4.png)
+![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_5.png)
 </div>
