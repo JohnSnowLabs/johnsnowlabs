@@ -2411,12 +2411,12 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
 
   <h3 id="step-2-create-a-lakehouse">Step 2: Create a Lakehouse</h3>
   <ul>
-    <li>Go to the <strong>Synapse Data Science</strong> section.</li>
+    <li>Go to the <strong>Data Science</strong> section.</li>
     <li>Navigate to the <strong>Create</strong> section.</li>
     <li>Create a new lakehouse, (for instance let us name it <code class="language-plaintext highlighter-rouge">jsl_workspace</code>.)</li>
   </ul>
 
-  <p><img src="/assets/images/installation/355920557-2c5f778c-4c33-4a54-af21-71f4486f5e4b.webp" alt="image" /></p>
+  <p><img src="/assets/images/installation/Fabric_1.png" alt="Create a Lakehouse" /></p>
 
 </div>
 <div class="h3-box">
@@ -2426,7 +2426,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     <li>Similarly, create a new notebook ( for instance let us name it <code class="language-plaintext highlighter-rouge">JSL_Notebook</code>.)</li>
   </ul>
 
-  <p><img src="/assets/images/installation/355920928-697cac4b-29ff-4f23-beaa-5aaa32569ff0.webp" alt="image" /></p>
+  <p><img src="/assets/images/installation/Fabric_2.png" alt="Create a Notebook in Fabric" /></p>
 
 </div>
 <div class="h3-box">
@@ -2434,9 +2434,9 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <h3 id="step-4-attach-the-lakehouse">Step 4: Attach the Lakehouse</h3>
   <p>Attach the newly created lakehouse (<code class="language-plaintext highlighter-rouge">jsl_workspace</code>) to your notebook.</p>
 
-  <p><img src="/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp" alt="image" /></p>
+  <p><img src="/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp" alt="Attach the Lakehouse" /></p>
 
-  <p><img src="/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp" alt="image" /></p>
+  <p><img src="/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp" alt="Attach the Lakehouse" /></p>
 
 </div>
 <div class="h3-box">
@@ -2444,9 +2444,9 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <h3 id="step-5-upload-files">Step 5: Upload Files</h3>
   <p>Upload the necessary <code class="language-plaintext highlighter-rouge">.jar</code> and <code class="language-plaintext highlighter-rouge">.whl</code> files to the attached lakehouse.</p>
 
-  <p><img src="/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp" alt="image" /></p>
+  <p><img src="/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp" alt="Upload Files to Fabric" /></p>
 
-  <p><img src="/assets/images/installation/360943582-53bc84ae-40dc-41dc-9522-e87bf70d4fba.webp" alt="image" /></p>
+  <p><img src="/assets/images/installation/Fabric_3.png" alt="Upload Files to Fabric" /></p>
 
   <p>After uploading is complete, you can configure and run the notebook.</p>
 
@@ -2459,21 +2459,30 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">%%configure</span><span class="w"> </span><span class="err">-f</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"conf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"spark.hadoop.fs.s3a.access.key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"spark.jsl.settings.aws.credentials.access_key_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awsAccessKey"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS-ACCESS-KEY&gt;"</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS_ACCESS_KEY_ID&gt;"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"spark.hadoop.fs.s3a.secret.key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"spark.jsl.settings.aws.credentials.secret_access_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awsSecretKey"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS-SECRET-KEY&gt;"</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS_SECRET_ACCESS_KEY&gt;"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+
     </span><span class="nl">"spark.yarn.appMasterEnv.SPARK_NLP_LICENSE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sparkNlpLicense"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;LICENSE-KEY&gt;"</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;SPARK_NLP_LICENSE&gt;"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"spark.jars"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sparkJars"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;abfs-path-spark-nlp-assembly-jar&gt;,&lt;abfs-path-spark-nlp-jsl-jar&gt;"</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abfss://&amp;&amp;&amp;&amp;&amp;&amp;/Files/spark-nlp-assembly-5.5.0.jar, abfss://&amp;&amp;&amp;&amp;&amp;&amp;/Files/spark-nlp-jsl-5.5.0.jar"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"spark.jsl.settings.pretrained.cache_folder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cacheFolder"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abfss://&amp;&amp;&amp;&amp;&amp;&amp;/Files/unzip_files"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"spark.extraListeners"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"parameterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extraListener"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultvalue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.johnsnowlabs.license.LicenseLifeCycleManager"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2486,7 +2495,8 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <h3 id="step-7-install-spark-nlp-libraries">Step 7: Install Spark NLP Libraries</h3>
 
   <p>Install the required Spark NLP libraries using pip commands:</p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pip <span class="nb">install</span> &lt;spark-nlp whl File API path&gt;
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pip <span class="nb">install</span> &lt;johnsnowlabs whl File API path&gt;
+%pip <span class="nb">install</span> &lt;spark-nlp whl File API path&gt;
 %pip <span class="nb">install</span> &lt;spark-nlp-jsl whl File API path&gt;
 </code></pre></div>  </div>
 
@@ -2582,6 +2592,11 @@ with open<span class="o">(</span><span class="s2">"models.json"</span>, <span cl
 
   <p><img src="/assets/images/installation/355924362-f62b4bc5-96ee-41d5-a80b-887766b252c9.webp" alt="Load the Model and Make Predictions" /></p>
 
+  <h3 id="step-12-run-the-pipeline-with-pretrained-method">Step 12: Run the pipeline with <code class="language-plaintext highlighter-rouge">.pretrained()</code> method</h3>
+  <p>You can also run the pipelines without using the <code class="language-plaintext highlighter-rouge">.load()</code> or <code class="language-plaintext highlighter-rouge">.from_disk()</code> methods</p>
+
+  <p><img src="/assets/images/installation/Fabric_4.png" alt="Run the pipeline with `.pretrained()` method" />
+<img src="/assets/images/installation/Fabric_5.png" alt="Run the pipeline with `.pretrained()` method" /></p>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-03-09T00:00:00+00:00">Mar 09, 2021</time>
