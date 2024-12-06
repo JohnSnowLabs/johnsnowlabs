@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts to the following 4 UMLS CUI code categories using ´mpnet_embeddings_biolord_2023_c´ Sentence Embeddings:
+This model maps clinical entities and concepts to the following 4 UMLS CUI code categories using ´(mpnet_embeddings_biolord_2023_c)[https://sparknlp.org/2024/04/04/mpnet_embeddings_biolord_2023_c_en.html]´ Sentence Embeddings:
 
 Disease:
 Unique Identifier: T047
@@ -50,6 +50,7 @@ Tree Number: B1.3.1.3
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -291,3 +292,8 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|4.0 GB|
 |Case sensitive:|false|
+
+
+## References
+
+Trained on concepts from clinical major concepts for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
