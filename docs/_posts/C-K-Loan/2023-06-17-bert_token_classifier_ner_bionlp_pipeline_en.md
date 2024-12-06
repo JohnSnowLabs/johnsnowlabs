@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_bionl
 
 ## Predicted Entities
 
-`Amino_acid`, `Anatomical_system`, `Cancer`, `Cell`, `Cellular_component`, `Developing_anatomical_structure`, `Gene_or_gene_product`, `Immaterial_anatomical_entity`, `Multi-tissue_structure`, `Organ`, `Organism`, `Organism_subdivision`, `Organism_substance`, `PAD`, `Pathological_formation`, `Simple_chemical`, `Tissue`
+`Amino_acid`, `Anatomical_system`, `Cancer`, `Cell`, `Cellular_component`, `Developing_anatomical_structure`, `Gene_or_gene_product`, `Immaterial_anatomical_entity`, `Multi-tissue_structure`, `Organ`, `Organism`, `Organism_subdivision`, `Organism_substance`, `Pathological_formation`, `Simple_chemical`, `Tissue`
 
 
 

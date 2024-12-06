@@ -30,7 +30,6 @@ This pretrained pipeline is built on the top of [ner_oncology_unspecific_posolog
 
 `Cancer_Therapy`, `Posology_Information`
 
-`Posology_Information`, `Cancer_Therapy`
 
 
 ## How to use

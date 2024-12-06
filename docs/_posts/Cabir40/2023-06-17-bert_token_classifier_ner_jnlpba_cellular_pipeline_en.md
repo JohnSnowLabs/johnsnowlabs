@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_jnlpb
 
 ## Predicted Entities
 
-`DNA`, `PAD`, `RNA`, `cell_line`, `cell_type`, `protein`
+`DNA`, `RNA`, `cell_line`, `cell_type`, `protein`
 
 
 

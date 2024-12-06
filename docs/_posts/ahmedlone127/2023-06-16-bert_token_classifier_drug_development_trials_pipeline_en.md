@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_drug_deve
 
 ## Predicted Entities
 
-`ADE`, `Confidence_Interval`, `Confidence_Range`, `Confidence_level`, `DATE`, `Duration`, `End_Point`, `Follow_Up`, `Hazard_Ratio`, `PAD`, `P_Value`, `Patient_Count`, `Patient_Group`, `Trial_Group`, `Value`
+`ADE`, `Confidence_Interval`, `Confidence_Range`, `Confidence_level`, `DATE`, `Duration`, `End_Point`, `Follow_Up`, `Hazard_Ratio`,  `P_Value`, `Patient_Count`, `Patient_Group`, `Trial_Group`, `Value`
 
 
 

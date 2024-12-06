@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ade_tweet
 
 ## Predicted Entities
 
-`ADE`, `PAD`
+`ADE`
 
 
 

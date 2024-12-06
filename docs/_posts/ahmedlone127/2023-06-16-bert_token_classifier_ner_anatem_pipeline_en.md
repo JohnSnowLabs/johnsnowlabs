@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_anate
 
 ## Predicted Entities
 
-`Anatomy`, `PAD`
+`Anatomy`
 
 
 

@@ -22,7 +22,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_ncbi_
 
 ## Predicted Entities
 
-`Disease`, `PAD`
+`Disease`
 
 
 
