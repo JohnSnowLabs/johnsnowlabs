@@ -174,7 +174,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
                                                   ner_model_converter, 
                                                   chunkerMapper))
 
-val data = Seq([["""The patient was prescribed Neosporin Cream to be applied externally to the infected area, metformin 1000 mg for diabetes management, and acetaminophen 500 mg oral capsule for pain relief."""]]).toDF("text")
+val data = Seq("""The patient was prescribed Neosporin Cream to be applied externally to the infected area, metformin 1000 mg for diabetes management, and acetaminophen 500 mg oral capsule for pain relief.""").toDF("text")
 
 val result = mapper_pipeline.fit(data).transform(data)
 
