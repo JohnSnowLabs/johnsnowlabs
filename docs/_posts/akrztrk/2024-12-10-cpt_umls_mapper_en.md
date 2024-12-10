@@ -20,11 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps CPT codes to corresponding UMLS codes.
 
-{:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_umls_mapper_en_5.5.1_3.0_1733860299620.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/cpt_umls_mapper_en_5.5.1_3.0_1733860299620.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+## Predicted Entities
+
+`umls_code`
+
 
 ## How to use
 
@@ -32,6 +31,7 @@ This pretrained model maps CPT codes to corresponding UMLS codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -45,7 +45,6 @@ chunk_assembler = Doc2Chunk()\
 mapperModel = ChunkMapperModel.load("cpt_umls_mapper")\
     .setInputCols(["cpt_code"])\
     .setOutputCol("mappings")
-
 
 mapper_pipeline = Pipeline(stages=[
     document_assembler,
@@ -105,7 +104,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
                                                   chunk_assembler,
                                                   chunkerMapper))
 
-val data = Seq(["2016F"],["48155"],["64823"],["4500F"]).toDF("text")
+val data = Seq("2016F","48155","64823","4500F").toDF("text")
 
 val result = mapper_pipeline.fit(data).transform(data)
 
@@ -140,3 +139,9 @@ val result = mapper_pipeline.fit(data).transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|324.5 KB|
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
+
+Trained on concepts from CPT for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
