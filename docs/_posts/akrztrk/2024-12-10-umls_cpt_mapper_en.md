@@ -18,13 +18,12 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps UMLS codes to corresponding CPT codes
+This pretrained model maps UMLS codes to corresponding CPT codes.
 
-{:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_cpt_mapper_en_5.5.1_3.0_1733857365743.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_cpt_mapper_en_5.5.1_3.0_1733857365743.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+## Predicted Entities
+
+`cpt_code`
+
 
 ## How to use
 
@@ -32,6 +31,7 @@ This pretrained model maps UMLS codes to corresponding CPT codes
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -105,7 +105,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
                                                   chunk_assembler,
                                                   chunkerMapper))
 
-val data = Seq(["C3248275"],["C3496535"],["C0973430"],["C3248301"]).toDF("text")
+val data = Seq("C3248275","C3496535","C0973430","C3248301").toDF("text")
 
 val result = mapper_pipeline.fit(data).transform(data)
 
@@ -140,3 +140,9 @@ val result = mapper_pipeline.fit(data).transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|617.4 KB|
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
+
+Trained on concepts from clinical major concepts for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
