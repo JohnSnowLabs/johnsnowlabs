@@ -1306,7 +1306,22 @@ code.language-plaintext {
 		color: #fff;
 		border-color: $color-lightblue;
 	}
+}
 
+.tabs-model-aproach-head {
+	display: flex;
+}
+
+.tab-li-model-aproach {
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
+    flex-direction: column;
+	strong {
+		display: block;
+		font-size: 15px;
+		font-weight: 500;
+	}
 }
 
 .tabs-python-scala-head {
