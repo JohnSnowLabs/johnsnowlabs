@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Loinc Sentence Entity Resolver | sbluebertresolve_loinc | Healthcare NLP 3.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionMap clinical NER entities to LOINC codes.Predicted EntitiesLOINC codes - per input NER entityLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")sbert_embedder = BertSentenceEmbeddings\     .pretrained("sblu...">
+<meta name="description" content="DescriptionMap clinical NER entities to LOINC codes.Predicted EntitiesLOINC codes - per input NER entityLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")sbert_embedder = BertSentenceEmbe...">
 <!-- <link rel="canonical" href="/2021/04/29/sbluebertresolve_loinc_en.html"> -->
 <link rel="canonical" href="/2021/04/29/sbluebertresolve_loinc_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -528,7 +528,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
 
 <span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span>\

@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Deidentify RB | deidentify_rb | Healthcare NLP 2.0.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionAnonymization and DeIdentification model based on outputs from DeId NERs and Replacement Dictionaries.Predicted EntitiesPersonal Information in order to deidentify.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  ...nlpPipeline = Pipeline(stages=[documentAssembler, sentenceDetector,...">
+<meta name="description" content="DescriptionAnonymization and DeIdentification model based on outputs from DeId NERs and Replacement Dictionaries.Predicted EntitiesPersonal Information in order to deidentify.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  ...nlpPipeline = Pipeline(stages=[documen...">
 <!-- <link rel="canonical" href="/2019/06/04/deidentify_rb_en.html"> -->
 <link rel="canonical" href="/2019/06/04/deidentify_rb_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -525,7 +525,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="how-to-use">How to use</h2>
 <div class="tabs-box">
 
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
 <span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">documentAssembler</span><span class="p">,</span> <span class="n">sentenceDetector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">word_embeddings</span><span class="p">,</span> <span class="n">clinical_ner</span><span class="p">,</span> <span class="n">ner_converter</span><span class="p">])</span>

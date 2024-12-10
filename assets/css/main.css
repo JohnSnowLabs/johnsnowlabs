@@ -6189,6 +6189,19 @@ code.language-plaintext {
     color: #fff;
     border-color: #0098DA; }
 
+.tabs-model-aproach-head {
+  display: flex; }
+
+.tab-li-model-aproach {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column; }
+  .tab-li-model-aproach strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 500; }
+
 .tabs-python-scala-head {
   padding: 30px 0; }
 

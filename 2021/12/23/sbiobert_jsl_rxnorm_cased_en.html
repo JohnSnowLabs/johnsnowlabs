@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Sentence Embeddings - sbert medium (tuned) | sbiobert_jsl_rxnorm_cased | Healthcare NLP 3.3.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model maps sentences &amp; documents to a 768 dimensional dense vector space by using average pooling on top of BioBert model. It’s also fine-tuned on RxNorm dataset to help generalization over medication-related datasets.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJS...">
+<meta name="description" content="DescriptionThis model maps sentences &amp; documents to a 768 dimensional dense vector space by using average pooling on top of BioBert model. It’s also fine-tuned on RxNorm dataset to help generalization over medication-related datasets.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHe...">
 <!-- <link rel="canonical" href="/2021/12/23/sbiobert_jsl_rxnorm_cased_en.html"> -->
 <link rel="canonical" href="/2021/12/23/sbiobert_jsl_rxnorm_cased_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_jsl_rxnorm_cased"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\

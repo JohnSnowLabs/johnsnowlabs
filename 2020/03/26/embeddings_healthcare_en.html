@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Embeddings Healthcare | embeddings_healthcare | Healthcare NLP 2.4.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionWord Embeddings lookup annotator that maps tokens to vectors.Data SourceTrained on PubMed + ICD10 + UMLS + MIMIC III corporahttps://www.nlm.nih.gov/databases/download/pubmed_medline.htmlLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  model = WordEmbeddingsModel.pretrained("embeddin...">
+<meta name="description" content="DescriptionWord Embeddings lookup annotator that maps tokens to vectors.Data SourceTrained on PubMed + ICD10 + UMLS + MIMIC III corporahttps://www.nlm.nih.gov/databases/download/pubmed_medline.htmlLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  model = WordEmbeddi...">
 <!-- <link rel="canonical" href="/2020/03/26/embeddings_healthcare_en.html"> -->
 <link rel="canonical" href="/2020/03/26/embeddings_healthcare_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -527,7 +527,7 @@ https://www.nlm.nih.gov/databases/download/pubmed_medline.html</p>
 <h2 class="h2_title" id="how-to-use">How to use</h2>
 <div class="tabs-box">
 
-  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
 	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
