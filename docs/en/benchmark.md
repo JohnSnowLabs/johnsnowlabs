@@ -622,7 +622,8 @@ deid_pipeline = Pipeline().setStages([
             |    100000 |      512 | 1h 42m 55s|
     
         - AWS EC2 instance Config:
-                - 32 CPU cores, 64GiB RAM (c6a.8xlarge $1.224/h)
+            - 32 CPU cores, 64GiB RAM (c6a.8xlarge $1.224/h)
+
             {:.table-model-big}
             |data_count |partition |   AWS   |
             |----------:|---------:|--------:|
