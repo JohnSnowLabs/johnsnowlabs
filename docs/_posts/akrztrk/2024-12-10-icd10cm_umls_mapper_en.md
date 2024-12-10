@@ -112,7 +112,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
                                                   chunk_assembler,
                                                   chunkerMapper))
 
-val data = Seq([["A01.2"], ["A01.00"]]).toDF("text")
+val data = Seq("A01.2", "A01.00").toDF("text")
 
 val result = mapper_pipeline.fit(data).transform(data)
 
