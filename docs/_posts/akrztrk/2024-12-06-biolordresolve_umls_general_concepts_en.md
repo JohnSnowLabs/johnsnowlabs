@@ -206,11 +206,11 @@ val ner_model = MedicalNerModel
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner_jsl"))
       .setOutputCol("ner_chunk")
-      .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
+      .setWhiteList(Array("Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
                     "Oxygen_Therapy", "Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes",
                     "Injury_or_Poisoning", "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
                     "Drug_BrandName","Hypertension","Imaging_Technique"
-                  ])
+                  ))
 
 val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_chunk")
@@ -250,7 +250,7 @@ val resolver_pipeline = new Pipeline().setStages(Array(
     embeddings,
     umls_resolver))
 
-val data = Seq([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
+val data = Seq("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""").toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
 
