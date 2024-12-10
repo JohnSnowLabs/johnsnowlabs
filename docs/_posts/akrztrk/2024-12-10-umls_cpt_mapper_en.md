@@ -74,7 +74,7 @@ mapperModel = medical.ChunkMapperModel.load("umls_cpt_mapper")\
     .setInputCols(["umls_code"])\
     .setOutputCol("mappings")
 
-mapper_pipeline = Pipeline(stages=[
+mapper_pipeline = nlp.Pipeline(stages=[
     document_assembler,
     chunk_assembler,
     mapperModel
