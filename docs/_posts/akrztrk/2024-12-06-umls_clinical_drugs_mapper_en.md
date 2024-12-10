@@ -211,4 +211,4 @@ val result = mapper_pipeline.fit(data).transform(data)
 
 ## References
 
-Trained on concepts from clinical major concepts for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
+Trained on concepts from clinical drugs for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
