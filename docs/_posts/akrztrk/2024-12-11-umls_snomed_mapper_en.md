@@ -137,7 +137,7 @@ val chunkerMapper = ChunkMapperModel.pretrained("umls_snomed_mapper","en","clini
     .setOutputCol("mappings")
     .setRels(["snomed_code"])
 	
-val mapper_pipeline = Pipeline(stages = Array(
+val mapper_pipeline = new Pipeline().setStages(Array(
   documentAssembler,
   sbert_embedder, 
   umls_resolver,
