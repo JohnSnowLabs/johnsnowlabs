@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps UMLS codes to corresponding RxNorm codes.
 
+
+## Predicted Entities
+`rxnorm_code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This pretrained model maps UMLS codes to corresponding RxNorm codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -176,3 +181,7 @@ val result = mapper_pipeline.fit(data).transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|3.0 MB|
+
+## References
+
+Trained on concepts from RXNORM for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
