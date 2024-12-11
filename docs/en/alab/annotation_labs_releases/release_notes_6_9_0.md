@@ -1,19 +1,21 @@
 ---
 layout: docs
-comment: no
 header: true
-seotitle: Release Notes | John Snow Labs
-title: Release Notes
-permalink: /docs/en/alab/release_notes
-key: docs-training
-modify_date: "2024-11-15"
-use_language_switcher: "Python-Scala"
+seotitle: Generative AI Lab | John Snow Labs
+title: Generative AI Lab Release Notes 6.9.0
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_9_0
+key: docs-licensed-release-notes
+modify_date: 2024-08-25
 show_nav: true
 sidebar:
   nav: annotation-lab
 ---
 
 <div class="h3-box" markdown="1">
+
+## 6.9.0
+
+Release date: **12-11-2024**
 
 ## Automatic Tests for Classification Models and Results Visualization in Generative AI Lab - 6.9
 We are excited to introduce Generative AI Lab version 6.9.0, a feature-packed update that enhances your AI-powered project workflows with innovative capabilities and improved functionality. This release introduces new project types, advanced detection features, and model versioning, empowering users with greater flexibility and control over their projects.
@@ -121,49 +123,10 @@ Previously, labels with instructions could not be added to or deleted from the p
 - **Active learning is not triggered for the second trigger**
 If there is only one floating license, and it is being used by another server, the system previously failed to trigger training or wait for the license to become available when the active learning condition was met. This issue has now been resolved. Active learning will now wait for the license to be free before triggering training, ensuring a smoother and more reliable process. Additionally, when the active learning condition is met and the system is waiting for the license, this status will be displayed on the training page.
 
+</div><div class="prev_ver h3-box" markdown="1">
+
 ## Versions
 
 </div>
 
-<ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_7_0">5.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_1">5.6.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_1">5.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_0">5.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_3_2">5.3.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_3">5.2.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_2">5.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
-</ul>
+{%- include docs-annotation-pagination.html -%}
