@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Spark NLP release notes 3.8.0</title><meta property="og:title" content="Spark NLP"/>
+<!-- End Google Tag Manager --><title>Spark OCR release notes</title><meta property="og:title" content="Spark OCR | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_8_0"> -->
-<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_3_8_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_2"> -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_5_4_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark NLP</li><li class="toc-h2"><a href="/docs/en/quickstart">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/install">Install Spark NLP</a></li><li class="toc-h2"><a href="/docs/en/concepts">General Concepts</a></li><li class="toc-h2"><a href="/docs/en/annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/transformers">Transformers</a></li><li class="toc-h2"><a href="/docs/en/training">Training</a></li><li class="toc-h2"><a href="/docs/en/display">Spark NLP Display</a></li><li class="toc-h2"><a href="/docs/en/mlflow">Experiment Tracking</a></li><li class="toc-h2"><a href="/docs/en/serving_spark_nlp_via_api_databricks_mlflow">Serving Spark NLP&#58 MLFlow on Databricks</a></li><li class="toc-h2"><a href="/docs/en/hardware_acceleration">Hardware Acceleration</a></li><li class="toc-h2"><a href="/docs/en/CPUvsGPUbenchmark">GPU vs CPU Training</a></li><li class="toc-h2"><a href="/docs/en/auxiliary">Helpers</a></li><li class="toc-h2"><a href="/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/api/python/">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/developers">Developers</a></li><li class="toc-h2"><a href="/docs/en/third-party-projects">Third Party Projects</a></li><li class="toc-h2"><a href="/docs/en/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">All Enterprise libraries</li><li class="toc-h2"><a href="/docs/en/license_getting_started">Getting Started</a></li><li class="toc-h1">Healthcare NLP</li><li class="toc-h2"><a href="/docs/en/licensed_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/licensed_annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/licensed_training">Training</a></li><li class="toc-h2"><a href="/docs/en/evaluation">Evaluation</a></li><li class="toc-h2"><a href="/docs/en/healthcare_risk_adjustments_score_calculation">Risk Adjustments Score Calculation</a></li><li class="toc-h2"><a href="/docs/en/utility_helper_modules">Utility & Helper Modules</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_synapseml">Serving Spark NLP&#58 SynapseML</a></li><li class="toc-h2"><a href="/docs/en/licensed_serving_spark_nlp_via_api_fastapi">Serving Spark NLP&#58 FastAPI</a></li><li class="toc-h2"><a href="/licensed/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/licensed/api/python">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/wiki">Wiki</a></li><li class="toc-h2"><a href="/docs/en/benchmark">Benchmarks</a></li><li class="toc-h2"><a href="/docs/en/benchmark-llm">Benchmarks LLM</a></li><li class="toc-h2"><a href="/docs/en/best_practices_pretrained_models">Best Practices Using Pretrained Models Together</a></li><li class="toc-h2"><a href="/docs/en/spark_nlp_healthcare_versions/licensed_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Healthcare">Healthcare Models</a></li><li class="toc-h2"><a href="/docs/en/licensed_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Visual NLP</li><li class="toc-h2"><a href="/docs/en/ocr">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/ocr_install">Installation</a></li><li class="toc-h2"><a href="/docs/en/version_compatibility">Version Compatibility</a></li><li class="toc-h2"><a href="/docs/en/ocr_pipeline_components">Pipeline components</a></li><li class="toc-h2"><a href="/docs/en/ocr_table_recognition">Table recognition</a></li><li class="toc-h2"><a href="/docs/en/ocr_visual_document_understanding">Visual document understanding</a></li><li class="toc-h2"><a href="/docs/en/ocr_object_detection">Object detection</a></li><li class="toc-h2"><a href="/docs/en/ocr_structures">Structures and helpers</a></li><li class="toc-h2"><a href="/docs/en/ocr_benchmark">Speed benchmarks</a></li><li class="toc-h2"><a href="/docs/en/spark_ocr_versions/ocr_release_notes">Release notes</a></li><li class="toc-h1">Finance NLP</li><li class="toc-h2"><a href="/docs/en/financial_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Finance">Financial Models</a></li><li class="toc-h2"><a href="/docs/en/financial_version_compatibility">Version Compatibility</a></li><li class="toc-h1">Legal NLP</li><li class="toc-h2"><a href="/docs/en/legal_release_notes">Release Notes</a></li><li class="toc-h2"><a href="/models?edition=Spark+NLP+for+Legal">Legal Models</a></li><li class="toc-h2"><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -616,50 +616,101 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Spark NLP release notes 3.8.0</li>
+    <li>Spark OCR release notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Spark NLP release notes 3.8.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_3_8_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP release notes 3.8.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_ocr_versions/release_notes_5_4_2.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.8.0</h2>
+  <h2 id="section">5.4.2</h2>
 
-  <p>Release date: 14-09-2021</p>
+  <p>Release date: 12-11-2024</p>
 
-  <h4 id="overview">Overview</h4>
+  <h2 id="visual-nlp-542-release-notes-">Visual NLP 5.4.2 Release Notes 🕶️</h2>
 
-  <p>Support Microsoft PPT and PPTX documents.</p>
+  <p><strong>We are glad to announce that Visual NLP 5.4.2 has been released!. This is a small release with improvements in Dicom Processing, and some bug fixes. 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-features">New Features</h4>
+  <h2 id="highlights-">Highlights 🔴</h2>
 
   <ul>
-    <li>Added <a href="/docs/en/ocr_pipeline_components#ppttopdf">PptToPdf</a> transformer for converting PPT and PPTX slides to the PDF document.</li>
-    <li>Added <a href="/docs/en/ocr_pipeline_components#ppttotexttable">PptToTextTable</a> transformer for extracting tables from PPT and PPTX slides.</li>
+    <li>Dicom Improvements: better general support for Dicom files, improved dependency resolution in Dicom Transformers, and other minor changes.</li>
+    <li>Other Changes: GPU support in ImageTextDetector, and new SVS de-identification tool.</li>
+  </ul>
+
+  <h2 id="dicom-improvements">Dicom Improvements</h2>
+  <ul>
+    <li>
+      <p>Improved support for different Transfer Syntaxes, now all transfer syntaxes as stated by the Dicom Standard are supported.</p>
+    </li>
+    <li>
+      <p>Dependency resolution of external packages improved, Dicom dependencies will be pulled into the environment only when the user requires Dicom functionalities. Also, the support for different environments and different Python versions has been improved.</p>
+    </li>
+    <li>Support for a placeholder text in DicomMetadataDeidentifier to mark metadata values that have been removed. 
+Example,
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Text to be used to replace values of blacklisted tags.
+DicomMetadataDeidentifier.setPlaceholderText("anonymous")
+</code></pre></div>      </div>
+    </li>
+    <li>display_dicom() function now displays overlay data properly.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-and-updated-notebooks">New and updated notebooks</h4>
-
+  <h2 id="other-changes">Other Changes</h2>
   <ul>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/3.8.0/jupyter/SparkOcrPptToPdf.ipynb">Convert PPT to PDF</a> (New)</li>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/3.8.0/jupyter/SparkOcrPptToTextTable.ipynb">Extract tables from PPT</a> (New)</li>
+    <li>ImageTextDetector now supports GPU, to enable it, call</li>
   </ul>
 
-</div>
-<div class="prev_ver h3-box">
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ImageTextDetector.setUseGPU(True)
+</code></pre></div>  </div>
 
-  <h2 id="versions">Versions</h2>
+  <ul>
+    <li>New PHI removal tool: this is a new functionality to process SVS files and remove sensitive metadata and associated images. By default, macro images, label images, and specific metadata tags: “ImageDescription.Filename”, “ImageDescription.Date”, “ImageDescription.Time”, and “ImageDescription.User” are removed.
+Tags to be removed can be customized.</li>
+  </ul>
+
+  <p>Example,</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sparkocr.utils.svs.deidentifier import remove_phi
+ 
+input_path = "./inputs"
+output_path = "./outputs"
+remove_phi(input, output)
+
+
+# with customized tags
+remove_phi(input, output, tags=["ImageDescription.ScannerSerialId"])
+</code></pre></div>  </div>
+
+  <p>For more details check this <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/misc/svs-deidentification.ipynb">sample notebook</a>.</p>
+
+  <ul>
+    <li>Dicom Documentation has been extended to cover every Dicom Transformer in the library. Take a look <a href="https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#dicom-processing">here</a>.</li>
+  </ul>
+
+  <h2 id="bug-fixes">Bug Fixes</h2>
+
+  <ul>
+    <li>Python Transformers now can work in PretrainedPipelines.</li>
+    <li>Model Downloader errors on newer Spark versions are now solved.</li>
+  </ul>
+
+  <p>This release is compatible with Spark-NLP 5.4.1, and Spark NLP for Healthcare 5.4.1.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="previous-versions">Previous versions</h2>
 
 </div>
 <ul class="pagination">
@@ -731,7 +782,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-01-06T00:00:00+00:00">Jan 06, 2022</time>
+      <time itemprop="dateModified" datetime="2024-11-12T00:00:00+00:00">Nov 12, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -917,7 +968,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/release_notes">Release Notes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/legal_version_compatibility">Version Compatibility</a></div></div></div>
 
 </div>
 </div>
