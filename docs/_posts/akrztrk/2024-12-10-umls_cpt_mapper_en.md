@@ -100,7 +100,7 @@ val chunkerMapper = ChunkMapperModel
       .setInputCols(Array("umls_code"))
       .setOutputCol("mappings")
       
-val mapper_pipeline = new Pipeline().setStages(Array(
+val mapper_pipeline = Pipeline().setStages(Array(
                                                   document_assembler,
                                                   chunk_assembler,
                                                   chunkerMapper))
