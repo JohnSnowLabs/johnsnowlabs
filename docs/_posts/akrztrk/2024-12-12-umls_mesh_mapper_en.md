@@ -22,6 +22,10 @@ This pretrained model maps UMLS codes to corresponding MESH codes.
 
 `Important Note`: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains 'Mapper', it is necessary to use the ChunkMapperModel after an EntityResolverModel.
 
+## Predicted Entities
+
+`mesh_code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -34,6 +38,7 @@ This pretrained model maps UMLS codes to corresponding MESH codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -142,3 +147,7 @@ val result = mapper_pipeline.fit(data).transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|6.2 MB|
+
+## References
+
+Trained on concepts from MESH for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
