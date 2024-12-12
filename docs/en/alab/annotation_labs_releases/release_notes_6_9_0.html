@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 5.3.2</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.9.0</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_3_2"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_3_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_9_0"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_9_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,238 +616,154 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 5.3.2</li>
+    <li>Generative AI Lab Release Notes 6.9.0</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 5.3.2</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab Release Notes 6.9.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_5_3_2.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 5.3.2"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_9_0.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.9.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.3.2</h2>
+  <h2 id="section">6.9.0</h2>
 
-  <p>Release date: <strong>30-08-2023</strong></p>
+  <p>Release date: <strong>12-11-2024</strong></p>
 
-  <h2 id="nlp-lab-53---a-leap-forward-in-pre-annotation-through-chatgpt-powered-entity-recognition">NLP Lab 5.3 - A Leap Forward in Pre-Annotation through ChatGPT-Powered Entity Recognition</h2>
-  <p>We’re excited to present NLP Lab 5.3, an exciting update that marks our foray into integrating Large Language Models (LLMs) into our platform. Leading the charge is the integration with ChatGPT family of models, the first in a series of LLM integrations we have planned for the future. This not only sets the stage for a new era of enhanced pre-annotation capabilities but also underscores our commitment to staying at the forefront of NLP innovation. By weaving ChatGPT’s prowess into our ecosystem, we’re offering users an expanded range of prompt possibilities and a refined entity extraction process.
-But that’s not all! Beyond the ChatGPT integration, we’ve made a series of enhancements across the board. From a revamped taxonomy customization experience for section-based projects to thoughtful improvements in OCR text formatting, every change in this release is designed to improve your annotation experience. Whether you’re a seasoned NLP Lab user or just getting started, we believe this update will offer you a blend of familiarity and fresh innovation, ensuring a smoother, more productive annotation journey. Dive into the details below to discover all that NLP Lab 5.3 has in store for you.</p>
+  <h2 id="model-versioning-during-training-and-visual-model-updates-in-690">Model Versioning during Training and Visual Model Updates in 6.9.0</h2>
+  <p>Generative AI Lab version 6.9.0, introduces new features designed to improve visual projects as well as model training. This release introduces model versioning as well as new project types, expanding the use cases for our product. With this update, you can streamline tasks such as checkbox identification, handwritten text detection, and model management.</p>
 
-  <h2 id="entity-extraction-and-pre-annotation-via-gpt-prompting">Entity Extraction and Pre-Annotation via GPT Prompting</h2>
+  <p>Other small improvements have been made to Generative AI Lab including to the updater script, and ensuring the default colors on labels remain high contrast.</p>
 
-  <p>The highlight of this release is the integration with an external service provider, Open AI, to expand and deepen the range of prompts available for pre-annotation (in addition to the Zero Shot entity and relation prompts already supported). This feature:.</p>
+  <h2 id="model-versioning-when-training-models">Model Versioning when Training Models</h2>
+  <p>Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the <strong>TRAINING SETTINGS</strong> section of the <strong>Train</strong> page, a toggle labeled <strong>Enable Versioning</strong> is now available. By default, model versioning is disabled. To enable it, toggle <strong>Enable Versioning</strong> to <strong>on</strong>.</p>
 
-  <ul>
-    <li>
-      <p><strong>Broadens Prompt Possibilities</strong>: By integrating with Open AI LLM models, users can tap into a more diverse set of prompts, leveraging external expertise to craft pre-annotations, as an alternative pre-annotation solution or when pre-trained models are not available.</p>
-    </li>
-    <li>
-      <p><strong>Efficient Entity Extraction</strong>: As current LLMs, GPT family included, are not very good at entity recognition tasks, NLP Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with NLP Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.</p>
-    </li>
-  </ul>
+  <p><img src="/assets/images/annotation_lab/6.9.0/5.png" alt="690image" /></p>
 
-  <p>The following sections explain in detail how to define and use GPT prompts.</p>
+  <p>When enabled, models are saved with versioned names following the format <strong>projecttype_projectname_v1</strong>, <strong>projecttype_projectname_v2</strong>, and so on. If model deployment is enabled after training is complete, the most recently trained model is automatically applied to the project configuration. If model deployment after training is not enabled, the project configuration remains unchanged. All versions of trained models are accessible on the Reuse Resource page, allowing users to browse and select specific model versions for reuse in other projects.</p>
 
-  <h3 id="setting-up-the-integration-with-open-ai-service">Setting Up the Integration with Open AI service</h3>
-  <p>Integrating “ChatGPT” into the NLP Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:</p>
+  <p><img src="/assets/images/annotation_lab/6.9.0/6.png" alt="690image" /></p>
 
-  <p><strong>Integrations Page</strong>: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.</p>
+  <p>Model versioning is also supported for previously created projects. If versioning is disabled, subsequent training overwrites the most recent model without creating a new version. When re-enabled, versioning resumes from the latest version rather than starting over from v1. This feature simplifies model management by enabling version tracking and reusability, offering seamless integration for new and existing projects.</p>
 
-  <p><img src="/assets/images/annotation_lab/5.3.0/1.gif" alt="Integration" /></p>
+  <p>Note: The <strong>Enable Versioning</strong> toggle is disabled during training.</p>
 
-  <p><strong>Define the Service Provider</strong>: To initiate the integration, users are required to provide specific details:</p>
-  <ul>
-    <li><strong>Service Provider Name</strong>: This is the identifier for the external service, which in this case would be “ChatGPT” or any other name you prefer to use.</li>
-    <li><strong>Secret Key</strong>: Every external service comes with a unique Secret Key that ensures secure communication between the platforms. Enter the Secret Key associated with your Open AI subscription here. To ensure the integration process is error-free, users can validate the provided Secret Key directly within the form. This validation step ensures that the connection is secure and that the key is correct.</li>
-  </ul>
+  <h2 id="identify-and-validate-checkboxes-with-precision">Identify and Validate Checkboxes with Precision</h2>
+  <p>Version 6.9.0 introduces a new project type called <strong>Checkbox Detection</strong>. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the <strong>checked</strong> and <strong>unchecked</strong> status in the respective tasks.</p>
 
-  <p><strong>Project Association</strong>: Once a successful connection with “ChatGPT” (or any external LLM service provider) is established, it doesn’t end there. The integrated service will now be available for association with selected projects. This means users can decide which projects will benefit from the “ChatGPT” integration and enable it accordingly.
-The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We’ve ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.</p>
+  <p>This project type can be selected from the <strong>Content Type</strong> page under the <strong>Image</strong> tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the <strong>Models Hub</strong> page and added to the project configuration.</p>
 
-  <h3 id="chatgpt-prompt-definition-and-testing">ChatGPT Prompt Definition and Testing</h3>
-  <p>Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT Prompts, NLP Lab offers a dedicated definition interface. Here’s what to expect when creating a new LLM prompt:</p>
+  <p><img src="/assets/images/annotation_lab/6.9.0/1.png" alt="690image" /></p>
 
-  <ul>
-    <li>
-      <p><strong>Name the Prompt</strong>: Within this new tab, users will first be asked to provide a name for their prompt. This name will be used for pre-annotating identified entities. At this point, we recommend creating one prompt per target entity.</p>
-    </li>
-    <li>
-      <p><strong>Select the Service Provider</strong>: Next, users can choose the specific service provider they’ve previously set up via the Integrations Page.</p>
-    </li>
-    <li>
-      <p><strong>Test in Real-time</strong>: A standout feature is the ability to test ChatGPT prompts at creation time. As you craft your prompt, you can immediately see how it performs on some test data. This not only allows for immediate feedback but also ensures that the final prompt aligns perfectly with the user’s objectives.</p>
-    </li>
-  </ul>
+  <p>After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.</p>
 
-  <p>This streamlined approach ensures that integrating and testing external prompts is as intuitive and efficient as possible.</p>
+  <p><img src="/assets/images/annotation_lab/6.9.0/2.png" alt="690image" /></p>
 
-  <p><img src="/assets/images/annotation_lab/5.3.0/2.gif" alt="TestingPrompt" /></p>
+  <p>This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.</p>
 
-  <h3 id="consistent-workflow-with-llm-prompts">Consistent Workflow with LLM Prompts</h3>
-  <p>Even with the introduction of new features in NLP Lab’s 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you’re familiar with stays the same.</p>
+  <p>This model can not currently be combined with other models.</p>
 
-  <ul>
-    <li>
-      <p><strong>Familiarity Amidst Innovation</strong>: Despite the new integrations, the process of using available prompts remains as straightforward as ever. Whether you’re working with traditional prompts or the newly introduced ones, the experience is smooth and consistent.</p>
-    </li>
-    <li>
-      <p><strong>Seamless Transition</strong>: Our commitment to user-centric design means that even as we innovate, we prioritize the ease of use you’ve come to expect. Transitioning to or incorporating external prompts is made effortless, with the interface and steps for prompt creation, selection, and integration remaining intuitive and unchanged.</p>
-    </li>
-  </ul>
+  <h2 id="detect-and-validate-handwritten-text-and-signatures">Detect and Validate Handwritten Text and Signatures</h2>
+  <p>This update continues with the <strong>Handwritten Text and Signature Detection</strong> project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab’s Visual NLP Library. The new project type can be selected from the <strong>Content Type</strong> page under <strong>Image</strong> tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the <strong>Models Hub</strong> and integrated into the project configuration.</p>
 
-  <p>With NLP Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.</p>
+  <p><img src="/assets/images/annotation_lab/6.9.0/3.png" alt="690image" /></p>
 
-  <p><img src="/assets/images/annotation_lab/5.3.0/3.gif" alt="featureDis" /></p>
+  <p>Users can then add relevant tasks to the project and use the model to identify and annotate handwritten content and signatures in documents efficiently.</p>
 
-  <blockquote>
-    <p><strong>Note:</strong> Pre-annotation of tasks using LLM Prompts does not require the deployment of the pre-annotation server. The pop-up to deploy the pre-annotation server is only shown if the project configuration consists of both LLM prompts and spark NLP models.</p>
-  </blockquote>
+  <p><img src="/assets/images/annotation_lab/6.9.0/4.png" alt="690image" /></p>
+
+  <p>This feature doesn’t change the existing application workflow, and can not be combined with other models at this time.</p>
 
   <h2 id="improvements">Improvements</h2>
-  <h3 id="enhanced-taxonomy-to-section-mapping">Enhanced Taxonomy to Section Mapping</h3>
+  <h3 id="enhanced-label-readability-by-using-high-contrast-default-colors">Enhanced label readability by using high-contrast default colors.</h3>
+  <p>To improve readability and accessibility, randomly assigned colors will now meet a minimum contrast standard by default, ensuring they are easy to read. This new default simplifies the project creation experience.</p>
 
-  <p>NLP Labs 5.3.0 brings significant upgrades to the taxonomy customization experience when dealing with Section-based projects.</p>
+  <p><img src="/assets/images/annotation_lab/6.9.0/7.png" alt="690image" /></p>
 
-  <p><strong><em>Revamped Viewing Experience for Taxonomy Elements</em></strong>:</p>
+  <h3 id="improvements-to-the-updater-script">Improvements to the updater script</h3>
+  <p>First, a retry mechanism has been implemented to pull images during updates and installations. Each image will now be attempted up to three times to ensure successful retrieval.</p>
 
-  <p>We’ve reimagined the way users view “Labels to Sections” associations:</p>
+  <p>When training or pre-annotation servers are running during an upgrade, a prompt appears:
+“<strong>Do you want to proceed with deleting these pods? (y/N):</strong>”</p>
+
   <ul>
-    <li><strong>At-a-Glance Overview</strong>: Gone are the days of manually selecting each label to view its associations. Now, users can instantly see the complete mapping of Labels to Sections, providing a holistic view of the project’s current configuration.</li>
-    <li><strong>Efficient Updates</strong>: This consolidated view enables users to quickly grasp their current setup and make any necessary adjustments with ease, making the entire process more user-centric.</li>
+    <li>If “<strong>No</strong>” is selected, the upgrade process is exited.</li>
+    <li>If “<strong>Yes</strong>” is selected, the running training/pre-annotation pods are deleted, and the upgrade continues.</li>
+    <li>If no matching training or pre-annotation pods are running, the message “<strong>No preannotator/training pods matching criteria found.</strong>” is displayed, and the upgrade proceeds.</li>
   </ul>
 
-  <p><strong><em>Bulk Association of “Labels/Choices to Section</em></strong>:</p>
+  <p>A new “<strong>silent</strong>” flag can now be passed while executing the upgrade script.</p>
 
-  <p>A standout enhancement is the ability to associate “Labels/Choices” to sections in bulk. Unlike the previous version, where users could only associate one label at a time, this update allows for simultaneous selection and association of multiple labels to various sections. This enhancement not only streamlines the project configuration and annotation process but also offers a more intuitive user experience, saving valuable time and effort.</p>
+  <p><code class="language-plaintext highlighter-rouge">./annotationlab-updater.sh --silent</code></p>
 
-  <p>To facilitate these new features, we have made minor adjustments to the project configuration page in NLP Labs. Under the “Customize Labels” tab, you can now find a new button named “Associate Sections”. Clicking on this button allows users to quickly access the tabular form of the mapping, making it easier to manage Labels/Choices linkage with specific sections. For both “Labels” and “Choices”, we have provided the dedicated “Associate Sections” button on their respective configuration tabs. These new improvements are supported in all section-based annotation-enabled projects, including Visual NER projects.</p>
-
-  <p><img src="/assets/images/annotation_lab/5.3.0/4.gif" alt="GIF Release note Section association" /></p>
-
-  <h3 id="section-based-annotation-automatically-disregard-empty-sections">Section-Based Annotation: automatically disregard empty sections</h3>
-  <p>In earlier iterations of the section-based annotation project feature, users noticed that some empty sections were marked as relevant when automatically splitting content into paragraphs. Recognizing this issue, version 5.3.0 brings a thoughtful enhancement: sections without any textual content are now automatically disregarded. This ensures a more streamlined annotation process, omitting empty sections like the examples provided below.</p>
-
-  <p><img src="/assets/images/annotation_lab/5.3.0/5.png" alt="GIF Release note Section association" /></p>
-
-  <h3 id="updated-pre-annotation-status-indicator-on-task-page">Updated Pre-annotation Status indicator on task page</h3>
-  <p>In the past, the pre-annotate status exclusively indicated whether a prediction was marked as “generated,” “not generated,” or if the pre-annotation process had encountered a failure.</p>
-
-  <p>With the integration of pre-annotations derived from ChatGPT, the updated approach to preannotation status will encompass statuses for both SparkNLP predictions and ChatGPT predictions. Specifically, for projects involving both SparkNLP models and prompts generated through ChatGPT as an external provider, a revamped pre-annotation circle has been reimagined as a ring divided into two halves. The first half of the ring will showcase the pre-annotation status derived from SparkNLP, while the second half will depict the status of predictions stemming from ChatGPT.</p>
-
-  <p><img src="/assets/images/annotation_lab/5.3.0/6.png" alt="imagePreannotation" /></p>
-
-  <h3 id="enhanced-formatting-for-ocr-text">Enhanced Formatting for OCR Text</h3>
-  <p>For text projects using PDF/Image processing via Visual NLP, we’re excited to introduce an enhanced format feature.</p>
-
-  <p><img src="/assets/images/annotation_lab/5.3.0/7.png" alt="settings" /></p>
-
-  <p>Once this feature is activated, the imported text is reformatted to offer better clarity and spacing within the annotation interface. Our goal with this enhancement is to foster a clearer, more spacious workspace, ensuring precision and ease during text annotation.</p>
-
-  <p><img src="/assets/images/annotation_lab/5.3.0/8.png" alt="imagePreannotation" /></p>
-
-  <h3 id="tags-definition-button-was-moved-on-the-tasks-page">Tags Definition Button was moved on the Tasks Page</h3>
-  <p>In version 5.3.0, the “Add More” option for task tags was moved. Based on user feedback, we’ve moved the “Add More” button to a more accessible location at the top of the Tags dropdown list. Along with its new position, the button now sports a “+” icon and a refreshed design, while retaining its original functionality. Importantly, the button’s functionality remains consistent with its previous purpose.</p>
-
-  <p><img src="/assets/images/annotation_lab/5.3.0/9.png" alt="imagePreannotation" /></p>
+  <p>When “<strong>silent</strong>” flag is used:</p>
+  <ul>
+    <li>It automatically deletes running training/pre-annotation servers without prompting.</li>
+    <li>It uses the default admin password for the upgrade procedure.</li>
+  </ul>
 
   <h2 id="bug-fixes">Bug Fixes</h2>
   <ul>
-    <li>
-      <p><strong>For HTML sources projects replace the dialogue in PREVIEWS with the JSL link</strong></p>
-
-      <p>The preview format for HTML Dialogues &amp; Conversations projects has been enhanced to feature a JSL link in place of the traditional ‘Dialogues’.</p>
-    </li>
-    <li>
-      <p><strong>Tags are not consistently assigned to Tasks</strong></p>
-
-      <p>Previously, tasks generated from external providers lacked assigned tags, posing challenges for users in distinguishing imported tasks’ sources. To address this, tags are now consistently assigned when clicking on the edges of tag options or the color indicators instead of only being assigned when clicking directly on the tag name.</p>
-    </li>
-    <li>
-      <p><strong>Model evaluation starts before the required resources are available when the maximum server count is reached</strong></p>
-
-      <p>In the previous version, model evaluations would commence even if the necessary resources were unavailable or if the maximum server count had been reached. To address this, a new approach has been implemented. When a model evaluation is in progress, a dedicated server is generated on the cluster page. This server is designed to be automatically removed once the evaluation concludes. Furthermore, should the maximum server count be reached and a user initiates an evaluation, an error message indicating “Maximum Model Server Limit Reached” will be displayed.</p>
-
-      <p>Additionally, users have the option to delete an evaluation server from the cluster page. This action results in the evaluation being aborted on the Train page, accompanied by a notification banner indicating the aborted evaluation.</p>
-
-      <p><img src="/assets/images/annotation_lab/5.3.0/10.png" alt="Screenshot 2023-08-17 at 9 28 03 AM" /></p>
-    </li>
-    <li>
-      <p><strong>For all Search Fields, White Space before/after the “search keyword” causes the search action to return no results</strong></p>
-
-      <p>Previously, in all Search Fields, having white space before or after the “search keyword” resulted in the search action yielding no results. Consequently, a change has been implemented to ensure that search results are displayed accurately regardless of any leading/trailing whitespace around the search keyword. This enhancement is universally applicable to all search fields within the application.</p>
-    </li>
-    <li>
-      <p><strong>The duplication error for Section Field does not resolve if the user changes/deletes the value of the other duplicate field</strong></p>
-
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Previously, if a Section-based Rule with a duplicate name was added, the error would still show as if the first originally named rule was edited to a different name. With Version 5.3.0, the duplication error will now be resolved if any of the rules that fall under the duplication case are edited to be unique.
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <p><strong>Incorrect active section name is shown in the top bar for pages without relevant section</strong></p>
-
-      <p>In the case of a multi-page task that does not have relevant sections, the previously active section will no longer appear at the page’s top. Additionally, if a page contains no pertinent sections, the Active tab on the task’s upper part will be displayed in a subdued manner.</p>
-    </li>
-    <li>
-      <p><strong>Tasks imported in Visual NER Project are not visible until the tasks page is refreshed</strong></p>
-
-      <p>The issue of the OCR task imported in Visual NER projects not appearing on the Tasks page and the Import button staying disabled until manually refreshed has been resolved in this version.</p>
-    </li>
-    <li>
-      <p><strong>Clicking on undo button in the playground resets every detail of the rule deployed</strong></p>
-
-      <p>Previously, using the Undo button in the playground didn’t restore rules to their original state after modifications. The Undo action cleared all aspects (suffix, rule type, content length) from deployed playground rules. This problem has now been addressed.</p>
-    </li>
-    <li>
-      <p><strong>Section Based Annotation: Merger of consecutive sections of the same name</strong></p>
-
-      <p>Previously, when the option “Merge Consecutive sections of the same type” was chosen, any two sections created by the rule that appeared consecutively were combined into a single section. This approach posed a challenge as it could result in an elongated chain of sections if all sections were consecutive.</p>
-
-      <p>With the recent improvement, only the relevant sections with matching section names are merged. For instance, if there are sections named S1, S1, S3, S1, S2, S2 created consecutively, only the first occurrence of S1 and the final instance of S2 will be merged into a single section, while S3 will remain unaffected.</p>
-    </li>
+    <li><strong>Prediction results are missing in Section Based Classification Projects when exported tasks are re-imported</strong></li>
   </ul>
 
- 	<img src="/assets/images/annotation_lab/5.3.0/11.gif" alt="sbamerge" />
+  <p>Previously, in Section-Based Classification projects, prediction results were missing when exported tasks were re-imported back to Generative AI Lab project. This issue has been resolved. Prediction results now remain intact when tasks are re-imported for SBA-enabled projects, ensuring data consistency.</p>
 
   <ul>
-    <li>
-      <p><strong>Section Based Annotation: Model is redeployed if the same classifier is modified for the same project</strong></p>
-
-      <p>The sections classifier no longer undergoes redeployment each time classifier options are modified for the same model. Additionally, the section classifier remains unaffected when an additional classifier rule using the same classifier is introduced. Consequently, in scenarios involving task importation, newly added classifier rules are integrated into the new tasks.</p>
-
-      <p>However, the section classifier is automatically deployed in situations where a new classifier server is added and the previous one is subsequently removed.</p>
-    </li>
-    <li>
-      <p><strong>“Filter pre-annotations according to my latest completion” shows predictions for deleted sections in SBA-enabled project</strong></p>
-
-      <p>There was an inconsistency when applying “Filter pre-annotations according to my latest completion” for SBA enabled task. The problem of the filter not functioning correctly, resulting in predictions for deleted sections, has been resolved in version 5.3.0.</p>
-    </li>
-    <li>
-      <p><strong>RE prompts using NER Prompts cannot be deployed in the playground</strong></p>
-
-      <p>Previously, errors were encountered in the playground when deploying the Relation prompt using the NER prompt in the playground. With this update, these issues have been resolved.</p>
-    </li>
-    <li>
-      <p><strong>Generate Synthetic Text: Unable to import generated text if the SBA project has Classification Rules</strong></p>
-
-      <p>There was a singular case for Section-based Projects, where adding classification section-based rules to create sections prevented the import of the generated synthetic text. In version 5.3.0, this has been fixed and now users can import the synthetic tasks after or even while the classification model for the section rules is being deployed.</p>
-    </li>
-    <li>
-      <p><strong>Validation missing when deleting section rule which is already associated with label/choice in the Configuration &gt; Customize Labels page</strong> 
-  Previously, when a user tried to delete the section rule that was associated with label/choice, there was no warning suggesting user that the section is linked to labels/choices in the configuration. The issue has now been resolved and users are given a warning dialog box about the link between the section and the labels/choices and he/she can either proceed and delete the section or cancel it and make necessary changes in configuration.</p>
-    </li>
-    <li>
-      <p><strong>Filter XML code does not filter labels for the NER project</strong></p>
-
-      <p>Before, the Filter XML function failed to filter the label/assertion list effectively. This issue has now been resolved. When a project’s taxonomy contains a substantial number of NER/Assertion labels, the display of the taxonomy consumes significant screen space, impeding annotators’ navigation through the labels. To address this, Annotation Lab has introduced a search feature for labels within NER projects, offering an autocomplete search option.</p>
-
-      <p>For incorporating the search bar targeting NER Labels or Choices, utilize the Filter tag as exemplified in the subsequent XML configuration. This filtering mechanism is also applicable to Visual NER filters.</p>
-    </li>
+    <li><strong>Multiple API calls are made during pre-annotation on the task page</strong></li>
   </ul>
 
-  <p><img src="/assets/images/annotation_lab/5.3.0/12.gif" alt="ner_label_search" /></p>
+  <p>The <strong>Task</strong> page now operates efficiently without making multiple API calls or unexpected refreshes.</p>
+
+  <ul>
+    <li><strong>De-identify dialog box is not updated after the server is ready with the de-identification pipeline</strong></li>
+  </ul>
+
+  <p>The De-Identification pop-up now auto-refreshes and appears as expected once the de-identification pipeline is ready for deployment.</p>
+
+  <ul>
+    <li><strong>Rule for section classifier is set to default value when the user navigates back to Relevant Page</strong></li>
+  </ul>
+
+  <p>For SBA-enabled projects, the selected classifier model is now correctly displayed in the dropdown when users return to the page for reconfiguration or confirmation.</p>
+
+  <ul>
+    <li><strong>Training status still showing as ‘Running’ when the user checks the training history after aborting the training</strong></li>
+  </ul>
+
+  <p>The training history now accurately reflects the correct training status with the appropriate status color.</p>
+
+  <ul>
+    <li><strong>When de-identification pipeline is deployed glove_100 is shown as deployed embeddings</strong></li>
+  </ul>
+
+  <p>In earlier versions, the default embedding glove_100 was incorrectly displayed as deployed when the de-identification pipeline was deployed, even if no embeddings were available. This issue has been resolved. The correct embedding is now displayed when an embedding is used. An empty embedding is shown when no embedding is used. This ensures an accurate representation of the deployed embeddings in the pipeline.</p>
+
+  <ul>
+    <li><strong>“Model type not available “ error is seen frequently while navigating to the Train page</strong></li>
+  </ul>
+
+  <p>Previously, users frequently encountered the “<strong>Model type not available</strong>” error when navigating to the <strong>Train</strong> page. This issue has been resolved, and the error no longer appears while accessing the <strong>Train</strong> page from different locations within the project.</p>
+
+  <ul>
+    <li><strong>Backup fails for Azure Blob Storage</strong></li>
+  </ul>
+
+  <p>An issue affecting backups to Azure Blob Storage has been resolved. Backups now function correctly, ensuring reliable data storage and recovery.</p>
+
+  <ul>
+    <li><strong>Labels with instructions cannot be deleted and added from the project configuration</strong></li>
+  </ul>
+
+  <p>We now allow users to seamlessly add labels with instructions or delete labels that contain instructions as needed.</p>
+
+  <ul>
+    <li><strong>Active learning is not triggered for the second trigger</strong></li>
+  </ul>
+
+  <p>Active learning will now wait for the license to be free before triggering training, ensuring a smoother and more reliable process. Additionally, when the active learning condition is met and the system is waiting for the license, this status will be displayed on the training page.</p>
 
 </div>
 <div class="prev_ver h3-box">
@@ -909,7 +825,7 @@ The Open AI integration allows users to tap into a vast reservoir of external ex
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-08-30T00:00:00+00:00">Aug 30, 2023</time>
+      <time itemprop="dateModified" datetime="2024-08-25T00:00:00+00:00">Aug 25, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
