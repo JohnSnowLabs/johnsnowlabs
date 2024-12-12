@@ -97,11 +97,11 @@ val document_assembler = new DocumentAssembler()
 
 val chunk_assembler = new Doc2Chunk()
       .setInputCols("document")
-      .setOutputCol("umls_code")
+      .setOutputCol("loinc_code")
 
 val chunkerMapper = ChunkMapperModel
       .pretrained("loinc_umls_mapper", "en", "clinical/models")
-      .setInputCols(Array("umls_code"))
+      .setInputCols(Array("loinc_code"))
       .setOutputCol("mappings")
 
 val mapper_pipeline = Pipeline().setStages(Array(
