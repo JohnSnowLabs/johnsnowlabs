@@ -125,6 +125,9 @@ try:
             DocumentFiltererByNER,
             REChunkMerger,
             ContextualEntityFilterer,
+            ContextualEntityRuler,
+            PretrainedZeroShotNER,
+            StructuredJsonConverter,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer
