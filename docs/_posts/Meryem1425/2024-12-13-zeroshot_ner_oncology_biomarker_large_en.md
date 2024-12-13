@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
 
+## Predicted Entities
+
+`Biomarker`, `Biomarker_Result`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,6 +37,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -191,3 +196,14 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.6 GB|
+
+## Benchmarking
+
+```bash
+           label  precision    recall  f1-score   support
+       Biomarker     0.9056    0.9210    0.9133      2178
+Biomarker_Result     0.8310    0.8969    0.8627      1464
+        accuracy          -         -    0.9436     13697
+       macro avg     0.9022    0.9244    0.9128     13697
+    weighted avg     0.9449    0.9436    0.9441     13697
+```
