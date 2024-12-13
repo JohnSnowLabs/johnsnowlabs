@@ -199,6 +199,19 @@ When triggering the training, users can choose to immediately deploy the model o
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/train_model_deployment.png" style="width:100%;"/>
 
+## Model Versioning when Training Models
+Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the **TRAINING SETTINGS** section of the **Train** page, a toggle labeled **Enable Versioning** is now available. By default, model versioning is disabled. To enable it, toggle **Enable Versioning** to **on**. 
+
+![690image](/assets/images/annotation_lab/6.9.0/5.png)
+
+When enabled, models are saved with versioned names following the format **projecttype_projectname_v1**, **projecttype_projectname_v2**, and so on. If model deployment is enabled after training is complete, the most recently trained model is automatically applied to the project configuration. If model deployment after training is not enabled, the project configuration remains unchanged. All versions of trained models are accessible on the Reuse Resource page, allowing users to browse and select specific model versions for reuse in other projects.
+
+![690image](/assets/images/annotation_lab/6.9.0/6.png)
+
+Model versioning is also supported for previously created projects. If versioning is disabled, subsequent training overwrites the most recent model without creating a new version. When re-enabled, versioning resumes from the latest version rather than starting over from v1. This feature simplifies model management by enabling version tracking and reusability, offering seamless integration for new and existing projects.
+
+Note: The **Enable Versioning** toggle is disabled during training. 
+
 #### License Requirements
 
 Visual NER annotation, training and preannotation features are dependent on the presence of a [Visual NLP](/docs/en/ocr) license. Licenses with scope ocr: inference and ocr: training are required for preannotation and training respectively.
