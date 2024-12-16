@@ -237,4 +237,28 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb
+        - title: Pretrained pipeline for table structure recognition 
+          id: pretrained_pipeline_table_structure_recognition
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_table_structure_recognition.svg
+          excerpt: Pretrained pipeline for conducting Table Structure Extraction on mixed scanned and digital PDF documents. It ensures precise and efficient table structure extraction from PDFs of various origins and formats.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_BASIC_TABLE_EXTRACTOR/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesBasicTableExtractor.ipynb
+        - title: Relation Extraction 
+          id: relation_extraction
+          image: 
+              src: /assets/images/Relation_Extraction.svg
+          excerpt: This model detects key-value pairs in documents using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/RELATION_EXTRACTION/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/FormRecognition/FormRecognitionGeo.ipynb
 ---
