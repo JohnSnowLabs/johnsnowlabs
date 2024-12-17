@@ -659,6 +659,34 @@ deid_pipeline = Pipeline().setStages([
 
 PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.
 
+
+- ZeroShot Deidentification Pipelines Speed Comparison
+  
+    - **[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)** 2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger 
+
+    - **[clinical_deidentification_zeroshot_medium](https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_medium_en.html)** 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger 
+
+    - **[clinical_deidentification_docwise_medium_wip](https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_medium_wip_en.html)** 1 NER, 3 Deidentification, 18 Rule-based NER, 1 clinical embedding, 3 chunk merger, 1 ZeroShotNER
+
+    - **[clinical_deidentification_zeroshot_large](https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_large_en.html)** 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger 
+
+    - **[clinical_deidentification_docwise_large_wip](https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_large_wip_en.html)** 1 NER, 3 Deidentification, 18 Rule-based NER, 1 clinical embedding, 3 chunk merger, 1 ZeroShotNER
+
+- GPU Testing:
+
+{:.table-model-big.db}
+
+| partition | clinical deidendification | clinical deidendification <br> zeroshot_medium | clinical deidendification  <br> docwise_medium_wip | clinical deidendification  <br>  zeroshot_large | clinical deidendification  <br> docwise_large_wip |
+|-----------|---------------------------|-------------------------------------------|----------------------------------------------|------------------------------------------|---------------------------------------------|
+|         4 |                     295.8 |                                     520.8 |                                        862.7 |                                   1537.9 |                                      1832.4 |
+|         8 |                     195.0 |                                     345.6 |                                        577.0 |                                   1013.9 |                                      1228.3 |
+|        16 |                     133.3 |                                     227.2 |                                        401.8 |                                    666.2 |                                       835.2 |
+|        32 |                     109.5 |                                     160.9 |                                        305.3 |                                    456.9 |                                       614.7 |
+|        64 |                      92.0 |                                     166.8 |                                        291.5 |                                    465.0 |                                       584.9 |
+|       100 |                      79.3 |                                     174.1 |                                        274.8 |                                    495.3 |                                       587.8 |
+|      1000 |                      56.3 |                                     181.4 |                                        270.7 |                                    502.4 |                                       556.4 |
+    
+
 </div><div class="h3-box" markdown="1">
 
 ### Deidentification Pipelines Cost Benchmarks 
