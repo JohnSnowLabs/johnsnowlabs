@@ -12,7 +12,7 @@ sidebar:
 ---
 <div class="h3-box" markdown="1">
 
-##  Medical Benhmarks
+##  Medical Benchmarks
 
 ### Benchmarking
 
