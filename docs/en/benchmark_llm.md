@@ -10,6 +10,31 @@ show_nav: true
 sidebar:
     nav: sparknlp-healthcare
 ---
+<div class="h3-box" markdown="1">
+
+##  Medical Benhmarks
+
+### Benchmarking
+
+{:.table-model-big.db}
+
+| Model           | Avarega | MedMCQA | MedQA  | MMLU <br>anotomy | MMLU<br>clinical<br>knowledge | MMLU<br>college<br>biology | MMLU<br>college<br>medicine  | MMLU<br>medical<br>genetics  | MMLU<br>professional<br>medicine  | PubMedQA |
+|-----------------|---------|---------|--------|------------------|-------------------------------|----------------------------|------------------------------|------------------------------|-----------------------------------|----------|
+| jsl_medm_q4_v3  | 0.6884  | 0.6421  | 0.6889 | 0.7333           | 0.834                         | 0.8681                     | 0.7514                       | 0.9                          | 0.8493                            | 0.782    |
+| jsl_medm_q8_v3  | 0.6947  | 0.6416  | 0.707  | 0.7556           | 0.8377                        | 0.9097                     | 0.7688                       | 0.9                          | 0.8713                            | 0.79     |
+| jsl_medm_q16_v3 | 0.6964  | 0.6436  | 0.7117 | 0.7481           | 0.8453                        | 0.9028                     | 0.7688                       | 0.87                         | 0.8676                            | 0.794    |
+| jsl_meds_q4_v3  | 0.5522  | 0.5104  | 0.48   | 0.6444           | 0.7472                        | 0.8333                     | 0.6532                       | 0.68                         | 0.6691                            | 0.752    |
+| jsl_meds_q8_v3  | 0.5727  | 0.53    | 0.4933 | 0.6593           | 0.7623                        | 0.8681                     | 0.6301                       | 0.76                         | 0.7647                            | 0.762    |
+| jsl_meds_q16_v3 | 0.5793  | 0.5482  | 0.4839 | 0.637            | 0.7585                        | 0.8403                     | 0.6532                       | 0.77                         | 0.7022                            | 0.766    |
+</div><div class="h3-box" markdown="1">
+
+### Benchmark Summary
+
+We evaluated six Johnsnow Lab LLM models across ten task categories: MedMCQA, MedQA, MMLU Anatomy, MMLU Clinical Knowledge, MMLU College Biology, MMLU College Medicine, MMLU Medical Genetics, MMLU Professional Medicine, and PubMedQA.
+
+Each model's performance was measured based on accuracy, reflecting how well it handled medical reasoning, clinical knowledge, and biomedical question answering. 
+
+</div><div class="h3-box" markdown="1">
 
 <div class="h3-box" markdown="1">
 
