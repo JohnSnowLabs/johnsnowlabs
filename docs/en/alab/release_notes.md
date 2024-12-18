@@ -129,6 +129,7 @@ Active learning will now wait for the license to be free before triggering train
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
