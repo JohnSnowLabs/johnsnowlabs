@@ -24,7 +24,7 @@ This pretrained model maps entities (Drug Substances) with their corresponding U
 
 ## Predicted Entities
 
-
+`umls_code`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -38,6 +38,7 @@ This pretrained model maps entities (Drug Substances) with their corresponding U
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
