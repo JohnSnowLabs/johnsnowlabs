@@ -662,17 +662,17 @@ PS: The reason why pipelines with the same stages have different costs is due to
 
 - ZeroShot Deidentification Pipelines Speed Comparison
   
-    - **[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)** 2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger 
+    - **[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)** 2 NER, 1 clinical embedding, 13 Rule-based NER, 3 chunk merger, 1 Deidentification
 
     - **[clinical_deidentification_zeroshot_medium](https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_medium_en.html)** 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger 
 
-    - **[clinical_deidentification_docwise_medium_wip](https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_medium_wip_en.html)** 1 NER, 3 Deidentification, 18 Rule-based NER, 1 clinical embedding, 3 chunk merger, 1 ZeroShotNER
+    - **[clinical_deidentification_docwise_medium_wip](https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_medium_wip_en.html)** 1 ZeroShotNER, 4 NER, 1 clinical embedding, 18 Rule-based NER,  3 chunk merger, 1 Deidentification
 
     - **[clinical_deidentification_zeroshot_large](https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_large_en.html)** 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger 
 
-    - **[clinical_deidentification_docwise_large_wip](https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_large_wip_en.html)** 1 NER, 3 Deidentification, 18 Rule-based NER, 1 clinical embedding, 3 chunk merger, 1 ZeroShotNER
+    - **[clinical_deidentification_docwise_large_wip](https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_large_wip_en.html)** 1 ZeroShotNER, 4 NER, 1 clinical embedding, 18 Rule-based NER, 3 chunk merger, 1 Deidentification
 
-- GPU Testing:
+- CPU Testing:
 
 {:.table-model-big.db}
 
