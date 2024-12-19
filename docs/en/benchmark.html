@@ -2388,6 +2388,104 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <p>PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.</p>
 
+  <ul>
+    <li>
+      <p>ZeroShot Deidentification Pipelines Speed Comparison</p>
+
+      <ul>
+        <li>
+          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html">clinical_deidentification</a></strong> 2 NER, 1 clinical embedding, 13 Rule-based NER, 3 chunk merger, 1 Deidentification</p>
+        </li>
+        <li>
+          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_medium_en.html">clinical_deidentification_zeroshot_medium</a></strong> 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger</p>
+        </li>
+        <li>
+          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_medium_wip_en.html">clinical_deidentification_docwise_medium_wip</a></strong> 1 ZeroShotNER, 4 NER, 1 clinical embedding, 18 Rule-based NER,  3 chunk merger, 1 Deidentification</p>
+        </li>
+        <li>
+          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_large_en.html">clinical_deidentification_zeroshot_large</a></strong> 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger</p>
+        </li>
+        <li>
+          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_large_wip_en.html">clinical_deidentification_docwise_large_wip</a></strong> 1 ZeroShotNER, 4 NER, 1 clinical embedding, 18 Rule-based NER, 3 chunk merger, 1 Deidentification</p>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <p>CPU Testing:</p>
+    </li>
+  </ul>
+
+  <table class="table-model-big db">
+    <thead>
+      <tr>
+        <th>partition</th>
+        <th>clinical deidendification</th>
+        <th>clinical deidendification <br /> zeroshot_medium</th>
+        <th>clinical deidendification  <br /> docwise_medium_wip</th>
+        <th>clinical deidendification  <br />  zeroshot_large</th>
+        <th>clinical deidendification  <br /> docwise_large_wip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>295.8</td>
+        <td>520.8</td>
+        <td>862.7</td>
+        <td>1537.9</td>
+        <td>1832.4</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>195.0</td>
+        <td>345.6</td>
+        <td>577.0</td>
+        <td>1013.9</td>
+        <td>1228.3</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>133.3</td>
+        <td>227.2</td>
+        <td>401.8</td>
+        <td>666.2</td>
+        <td>835.2</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>109.5</td>
+        <td>160.9</td>
+        <td>305.3</td>
+        <td>456.9</td>
+        <td>614.7</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>92.0</td>
+        <td>166.8</td>
+        <td>291.5</td>
+        <td>465.0</td>
+        <td>584.9</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>79.3</td>
+        <td>174.1</td>
+        <td>274.8</td>
+        <td>495.3</td>
+        <td>587.8</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>56.3</td>
+        <td>181.4</td>
+        <td>270.7</td>
+        <td>502.4</td>
+        <td>556.4</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 <div class="h3-box">
 
