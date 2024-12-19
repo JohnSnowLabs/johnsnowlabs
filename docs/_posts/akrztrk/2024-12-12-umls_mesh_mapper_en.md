@@ -124,7 +124,7 @@ val result = mapper_pipeline.fit(data).transform(data)
 ```bash
 
 +---------+----------+
-|umls_code|loinc_code|
+|umls_code|mesh_code|
 +---------+----------+
 |C0000530 |D015720   |
 |C0000726 |D000005   |
