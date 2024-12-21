@@ -192,7 +192,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-labels = ('AGE', 'CONTACT', 'DATE', 'ID', 'LOCATION', 'NAME', 'PROFESSION') # You can change the entities
+labels = ("AGE", "CONTACT", "DATE", "ID", "LOCATION", "NAME", "PROFESSION") # You can change the entities
 val pretrained_zero_shot_ner = PretrainedZeroShotNER().pretrained("zeroshot_ner_deid_generic_multi_large", "xx", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("ner")
@@ -211,7 +211,7 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter
 ))
 
-val text_list = Seq(
+val text_list = Seq(Array(
 """Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",
 
 """J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
@@ -240,7 +240,7 @@ Data setului de analize: 25 May 2022 15:36:00
 Nume si Prenume : BUREAN MARIA, Varsta: 77
 Medic : Agota Evelyn Tımar
 C.N.P : 2450502264401"""
-)
+))
 
 val data = Seq(text_list).toDF("text")
 
