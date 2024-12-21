@@ -37,6 +37,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -69,6 +70,37 @@ pipeline = Pipeline().setStages([
     pretrained_zero_shot_ner,
     ner_converter
 ])
+
+text_list = [
+"""Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",
+
+"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
+
+"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""",
+
+"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
+
+"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.""",
+
+"""Detalhes do paciente.
+Nome do paciente:  Pedro Gonçalves
+NHC: 2569870.
+Endereço: Rua Das Flores 23.
+Cidade/ Província: Porto.
+Código Postal: 21754-987.
+Dados de cuidados.
+Data de nascimento: 10/10/1963.
+Idade: 53 anos Sexo: Homen
+Data de admissão: 17/06/2016.
+Doutora: Maria Santos""",
+
+"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
+Tel: +40(235)413773
+Data setului de analize: 25 May 2022 15:36:00
+Nume si Prenume : BUREAN MARIA, Varsta: 77
+Medic : Agota Evelyn Tımar
+C.N.P : 2450502264401"""
+]
 
 data = spark.createDataFrame(pd.DataFrame({"text": text_list}))
 
@@ -110,6 +142,37 @@ pipeline = nlp.Pipeline().setStages([
     ner_converter
 ])
 
+text_list = [
+"""Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",
+
+"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
+
+"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""",
+
+"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
+
+"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.""",
+
+"""Detalhes do paciente.
+Nome do paciente:  Pedro Gonçalves
+NHC: 2569870.
+Endereço: Rua Das Flores 23.
+Cidade/ Província: Porto.
+Código Postal: 21754-987.
+Dados de cuidados.
+Data de nascimento: 10/10/1963.
+Idade: 53 anos Sexo: Homen
+Data de admissão: 17/06/2016.
+Doutora: Maria Santos""",
+
+"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
+Tel: +40(235)413773
+Data setului de analize: 25 May 2022 15:36:00
+Nume si Prenume : BUREAN MARIA, Varsta: 77
+Medic : Agota Evelyn Tımar
+C.N.P : 2450502264401"""
+]
+
 data = spark.createDataFrame(pd.DataFrame({"text": text_list}))
 
 result = pipeline.fit(data).transform(data)
@@ -146,6 +209,37 @@ val pipeline = new Pipeline().setStages(Array(
     tokenizer,
     pretrained_zero_shot_ner,
     ner_converter
+))
+
+val text_list = Seq(Array(
+"""Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",
+
+"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
+
+"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""",
+
+"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
+
+"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.""",
+
+"""Detalhes do paciente.
+Nome do paciente:  Pedro Gonçalves
+NHC: 2569870.
+Endereço: Rua Das Flores 23.
+Cidade/ Província: Porto.
+Código Postal: 21754-987.
+Dados de cuidados.
+Data de nascimento: 10/10/1963.
+Idade: 53 anos Sexo: Homen
+Data de admissão: 17/06/2016.
+Doutora: Maria Santos""",
+
+"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
+Tel: +40(235)413773
+Data setului de analize: 25 May 2022 15:36:00
+Nume si Prenume : BUREAN MARIA, Varsta: 77
+Medic : Agota Evelyn Tımar
+C.N.P : 2450502264401"""
 ))
 
 val data = Seq(text_list).toDF("text")
