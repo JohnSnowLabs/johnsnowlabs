@@ -16,8 +16,7 @@ sidebar:
 
 ### Benchmarking
 
-{:.table-model-big.db}
-
+{:.table-model-big}
 | Model           | Avarega | MedMCQA | MedQA  | MMLU <br>anotomy | MMLU<br>clinical<br>knowledge | MMLU<br>college<br>biology | MMLU<br>college<br>medicine  | MMLU<br>medical<br>genetics  | MMLU<br>professional<br>medicine  | PubMedQA |
 |-----------------|---------|---------|--------|------------------|-------------------------------|----------------------------|------------------------------|------------------------------|-----------------------------------|----------|
 | jsl_medm_q4_v3  | 0.6884  | 0.6421  | 0.6889 | 0.7333           | 0.834                         | 0.8681                     | 0.7514                       | 0.9                          | 0.8493                            | 0.782    |
@@ -26,6 +25,7 @@ sidebar:
 | jsl_meds_q4_v3  | 0.5522  | 0.5104  | 0.48   | 0.6444           | 0.7472                        | 0.8333                     | 0.6532                       | 0.68                         | 0.6691                            | 0.752    |
 | jsl_meds_q8_v3  | 0.5727  | 0.53    | 0.4933 | 0.6593           | 0.7623                        | 0.8681                     | 0.6301                       | 0.76                         | 0.7647                            | 0.762    |
 | jsl_meds_q16_v3 | 0.5793  | 0.5482  | 0.4839 | 0.637            | 0.7585                        | 0.8403                     | 0.6532                       | 0.77                         | 0.7022                            | 0.766    |
+
 </div><div class="h3-box" markdown="1">
 
 ### Benchmark Summary
