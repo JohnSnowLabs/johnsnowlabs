@@ -20,6 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This LLM model is trained to perform Summarization and Q&A based on a given context.
+Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
