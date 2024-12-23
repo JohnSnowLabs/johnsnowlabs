@@ -15,6 +15,14 @@ sidebar:
 
 ## 12-24-2024 Release
 
+### US Healthcare Providers 
+### Drug Insights Tool
+### Citation Order
+### Follow-up Question available for Document Q&A 
+### Sort Results
+### Search by Date 
+
+
 <div class="h3-box" markdown="1">
 
 ## 10-24-2024 Literature Review Enhancements
