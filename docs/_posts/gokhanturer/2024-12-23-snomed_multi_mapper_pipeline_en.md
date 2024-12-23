@@ -36,6 +36,7 @@ This pretrained pipeline maps SNOMED codes to their corresponding ICD-10, ICD-O,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
