@@ -13,6 +13,10 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
+## 12-24-2024 Release
+
+<div class="h3-box" markdown="1">
+
 ## 10-24-2024 Literature Review Enhancements
 
 We are happy to release an enhanced version of the Literature Review feature, aimed at improving user experience, search accuracy, and data extraction. This update includes a redesign of the Literature Review wizard with new, intuitive functionalities. Our goal is to provide users with a more comprehensive and flexible tool for better control over the search, analysis, and extraction steps. The broader search capabilities and refined data extraction options are intended to make research more effective.
