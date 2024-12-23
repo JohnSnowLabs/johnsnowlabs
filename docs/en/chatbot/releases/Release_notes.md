@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 12-24-2024 Introducing Two New Features for Your Medical Chatbot: "US Healthcare Providers" and "Drug Insights"
+## 12-24-2024 Introducing Two New Features: "US Healthcare Providers" and "Drug Insights"
 
 We are thrilled to announce the addition of two powerful tools to enhance your Medical Chatbot experience: US Healthcare Providers and Drug Insights. These tools are designed to provide precise, comprehensive, and user-friendly solutions for healthcare and medication-related queries.
 
