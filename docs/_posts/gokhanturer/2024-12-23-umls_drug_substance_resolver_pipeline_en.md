@@ -41,27 +41,27 @@ This pretrained pipeline maps entities (Drug Substances) with their correspondin
 
 from sparknlp.pretrained import PretrainedPipeline
 
-resolver_pipeline = PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
+mapper_pipeline = PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
 
-result = resolver_pipeline.annotate("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
+result = mapper_pipeline.annotate("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
 
 ```
 
 {:.jsl-block}
 ```python
 
-resolver_pipeline = nlp.PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
+mapper_pipeline = nlp.PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
 
-result = resolver_pipeline.annotate("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
+result = mapper_pipeline.annotate("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
 
 ```
 ```scala
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val resolver_pipeline = PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
+val mapper_pipeline = PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
 
-val result = resolver_pipeline.annotate("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
+val result = mapper_pipeline.annotate("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
 
 ```
 </div>
