@@ -19,7 +19,8 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This LLM model is trained to perform Q&A, Summarization, RAG, and Chat
+This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
+
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -33,6 +34,7 @@ This LLM model is trained to perform Q&A, Summarization, RAG, and Chat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -220,7 +222,8 @@ KISUNLA is an amyloid beta-directed antibody indicated for the treatment of Alzh
 
 ## Benchmarking
 
-We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate.
+Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
 
 ```bash
 ## Overall
