@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>JSL_MedM (LLM - q8) | jsl_medm_q8_v1 | Healthcare NLP 5.5.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis LLM model is trained to perform Q&amp;A, Summarization, RAG, and ChatLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  document_assembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")medical_llm = MedicalLLM.pretrained(...">
+<meta name="description" content="DescriptionThis LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  document_assembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")medical_llm = MedicalLLM.pretrained...">
 <!-- <link rel="canonical" href="/2024/10/01/jsl_medm_q8_v1_en.html"> -->
 <link rel="canonical" href="/2024/10/01/jsl_medm_q8_v1_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,7 +514,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat</p>
+<p>This LLM model is trained to perform Q&amp;A, Summarization, RAG, and Chat.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
@@ -525,6 +525,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
@@ -726,7 +727,8 @@ KISUNLA is an amyloid beta-directed antibody indicated <span class="k">for </spa
 
 <h2 id="benchmarking">Benchmarking</h2>
 
-<p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+<p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate.
+Please see the more benchmark information <a href="https://nlp.johnsnowlabs.com/docs/en/benchmark-llm">here</a>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
