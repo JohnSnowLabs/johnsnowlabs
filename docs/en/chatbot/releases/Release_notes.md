@@ -13,17 +13,185 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 12-24-2024 Release
+## 12-24-2024 Introducing Two New Features for Your Medical Chatbot: "US Healthcare Providers" and "Drug Insights"
 
-### US Healthcare Providers 
-### Drug Insights Tool
-### Citation Order
-### Follow-up Question available for Document Q&A 
-### Sort Results
-### Search by Date 
+We are thrilled to announce the addition of two powerful tools to enhance your Medical Chatbot experience: US Healthcare Providers and Drug Insights. These tools are designed to provide precise, comprehensive, and user-friendly solutions for healthcare and medication-related queries.
 
+</div><div class="h3-box" markdown="1">
+
+## "US Healthcare Providers" Tool
+
+Our "US Healthcare Providers" tool empowers users to efficiently search for detailed information about medical doctors and healthcare providers across the United States. By converting text queries into logical searches, we tap into the comprehensive National Plan and Provider Enumeration System (NPPES) database, managed by the U.S. Centers for Medicare & Medicaid Services (CMS).
 
 <div class="h3-box" markdown="1">
+
+### Key Features:
+
+**1. NPPES Database Integration:** 
+
+This tool leverages the National Plan and Provider Enumeration System (NPPES), managed by the U.S. Centers for Medicare & Medicaid Services (CMS). The database contains critical details about healthcare providers and organizations, including their National Provider Identifier (NPI).
+
+**2.Intelligent Query Processing:**
+
+The tool employs advanced algorithms to transform user queries into structured searches, enabling precise retrieval of data from the NPPES database. Users can search by criteria such as name, location, taxonomy (specialty), and other relevant parameters to identify healthcare providers that align with their requirements. Additionally, users can delve deeper into more detailed provider information as needed.
+
+**3.Data Output:**
+
+Results are presented in a clean, tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing intelligent insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively. 
+
+### User Benefits:
+
+**1. Streamlined Healthcare Provider Search**
+
+The tool enables users to locate healthcare providers or facilities quickly by utilizing search parameters such as geographic area or specialty. By providing access to essential details such as contact information, provider credentials, and specialty, it simplifies the decision-making process. Furthermore, the integration of the National Provider Identifier (NPI) verification ensures that users can confirm the legitimacy and qualifications of healthcare providers with confidence.
+
+**2. Research Purposes**
+
+For researchers and analysts, the tool offers the ability to extract structured data from the NPPES database, which is invaluable for studying trends in provider distribution or specialty concentration. By presenting organized and exportable data, it streamlines healthcare workforce analysis and facilitates deeper insights into underserved areas or specialty gaps, aiding policy-making and resource allocation efforts.
+
+**3. Tailored Data Presentation**
+
+The results are displayed in a clean, tabular format that users can customize to fit their specific needs. This flexibility enhances usability, enabling users to focus on the most relevant data for their purposes. The ability to export this data as CSV files allows seamless integration into research workflows, reporting, or other professional documentation, ensuring efficiency and convenience.
+
+**4. Compliance and Reliability**
+
+Data provided by the tool is sourced directly from the NPPES database, maintained by the Centers for Medicare & Medicaid Services (CMS). This ensures that the information is both accurate and compliant with federal standards. Regular updates to the database further enhance reliability, allowing users to make decisions based on the most current and trustworthy information available.
+
+</div><div class="h3-box" markdown="1">
+
+## Drug Insights Tool
+The Drug Insights tool is designed to address a wide array of medication-related queries, powered by the FDA-maintained drug leaflets database.
+This powerful tool enables users to explore detailed information about medications and address pressing concerns by integrating the FDA’s reliable and detailed drug database.
+
+<div class="h3-box" markdown="1">
+
+### Key Features:
+
+**1.Comprehensive Drug Information** 
+
+The Drug Insights tool provides users with a wealth of information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
+
+**2. Contextual Query Handling**
+
+One of the standout features of the Drug Insights tool is its ability to process complex, situational queries. Users can pose questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the tool empowers users to make well-informed decisions about their healthcare.
+
+**3.Citations and Documentation Access**
+
+To ensure accuracy and credibility, the tool references FDA-approved drug leaflets and related documentation in its responses. These citations are not only included in the generated answers but are also made accessible to users via an intuitive user interface. This allows users to explore the source material in greater depth, gaining a more comprehensive understanding of the medications. The documentation is organized into easily navigable sections, making it simple to find detailed information relevant to the user's query.
+
+<div class="h3-box" markdown="1">
+
+### User Benefits:
+
+**1. Reliable Medication Guidance**
+
+The Drug Insights tool provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.
+
+**2. Personalized and Context-Aware Responses**
+
+By leveraging advanced natural language processing, the tool can respond to complex queries tailored to individual circumstances. Whether addressing medication use for specific age groups, interactions with other drugs, or compatibility with certain foods, the Drug Insights tool delivers contextually relevant answers. This personalized approach helps users navigate complex medical scenarios with clarity and confidence.
+
+**3. Enhanced Access to Authoritative Resources**
+
+Each response provided by the tool includes direct citations from FDA-approved drug leaflets, ensuring that users have access to credible and up-to-date information. The ability to explore these resources further empowers users to deepen their understanding of medications, fostering a sense of trust and transparency. The intuitive organization of documentation ensures that even detailed information is easily accessible and comprehensible.
+
+</div><div class="h3-box" markdown="1">
+
+## Chatbot Enhancements
+
+TBA
+
+### Sorting for Response Citations
+
+TBA
+
+### Follow-up Question available for Document Q&A 
+
+TBA
+
+### Literature Review: Sort Results
+
+TBA
+
+### Improvement in medical query responses focused on date-based citations 
+
+TBA
+
+</div><div class="h3-box" markdown="1">
+
+
+## 10-24-2024 Literature Review Enhancements
+
+We are happy to release an enhanced version of the Literature Review feature, aimed at improving user experience, search accuracy, and data extraction. This update includes a redesign of the Literature Review wizard with new, intuitive functionalities. Our goal is to provide users with a more comprehensive and flexible tool for better control over the search, analysis, and extraction steps. The broader search capabilities and refined data extraction options are intended to make research more effective.
+
+</div><div class="h3-box" markdown="1">
+
+### Key Improvements
+
+**1. Advanced Search with Logical Operators**
+
+This release adds the NOT operator to the existing AND and OR search functions, allowing for more nuanced searches by excluding specific combinations of keywords. This improvement empowers users to refine their queries and achieve more precise results, giving them total control over how their searches are structured. Switching between the AND and NOT operators is effortless, giving users total control over how their search queries are structured. For example, if a user wants to avoid certain topics, they can easily toggle the NOT operator to exclude irrelevant results.
+
+
+**2. Visualization of Query String**
+
+A redesigned user interface visually displays search keywords and their logical relationships, helping users understand how each keyword and operator (OR/AND/NOT) affects search outcomes. This real-time visual representation makes it easier for users to adjust search terms and immediately see their impact, enhancing the clarity and efficiency of the search process.
+
+<img src= "/assets/images/chatbot/LiteratureReviewQuery.png" alt="Literature Review - Visualization of Query String" style="border: 2px solid grey; width=60%">
+
+**3. Targeted Search by Metadata Fields**
+
+Users can now search within specific metadata fields, including Study Title, Text Content, and Journal Name. This targeted approach makes it easier to focus on particular aspects of studies, ensuring search results align more closely with user research objectives, and reducing the time needed to filter irrelevant content.
+
+**4. Unified Search Filters for Efficiency**
+
+All search filters, such as Publication Date, Impact Factor, and Article Type, are now consolidated into Step 1 of the review process. This unified approach enables users to configure all search parameters upfront, providing a clear overview of their search results early in the process and enhancing workflow efficiency.
+
+<img src= "/assets/images/chatbot/LiteratureReviewFilters.png" alt="Literature Review - Filter the Target Studies" style="border: 2px solid grey; width=60%">
+
+**5. Enhanced Data Point Extraction**
+
+The Data Points definition UI (step 2) was enhanced to allow users to define more precisely the target information. Users can provide a clear **Name** (maximum 30 characters) and a **Prompt** definition  (maximum 1500 characters) for each data point, ensuring that the extracted data aligns perfectly with the research objectives. Users can also include examples in the prompt description. The new format is fully compatible with existing literature reviews, which will automatically be updated to reflect these enhancements.
+
+<img src= "/assets/images/chatbot/LiteratureReviewDataPoints.png" alt="Literature Review - Definition of Data Points" style="border: 2px solid grey; width=60%">
+  
+**6. Enhanced Definition of Inclusion and Exclusion Criteria** 
+
+The Inclusion and Exclusion Criteria section (step 3) has also been refined to allow users to provide a concise **Name** (maximum 30 characters) and detailed **Prompt** definition (maximum 1500 characters) for each criterion, offering greater precision in study selection. The updated format is applicable to both new and existing reviews, automatically updating previous reviews to align with the new system.
+
+<img src= "/assets/images/chatbot/LiteratureReviewDataPoints.png" alt="Literature Review - Definition of Inclusion and Exclusion Criteria" style="border: 2px solid grey; width=60%">
+
+
+**7. Time-Based Metrics for Literature Review**
+
+To provide greater transparency, we have introduced time-based metrics throughout the Literature Review process, including Queue Time, Progress Time, and Completion Stats. These metrics offer insights into each stage of the review process, enabling users to better manage their workflow and set realistic expectations.
+
+These metrics provide users with key insights, including:
+- Queue Time: The time the review spends in queue (e.g., "In queue for less than a minute").
+- Progress Time: The duration the review has been running (e.g., "Running for 3 minutes").
+- Completion Stats: Once the review is complete, users can view the Completion Date, Start Time, End Time, and Total Time Taken for the entire process.
+
+<img src= "/assets/images/chatbot/LiteratureReviewTimeMetrics.png" alt="Literature Review - Time-Based Metrics" style="border: 2px solid grey; width=100%">
+
+</div><div class="h3-box" markdown="1">
+
+### User Benefits
+
+These enhancements work together to offer the following benefits to our users:
+
+**1. Greater Control and Precision in Search Results:** 
+With the introduction of the NOT operator and the enhanced ability to search by specific metadata fields (e.g., title, content, journal name), users can now create more targeted search queries. This enables them to exclude irrelevant results and focus on the most pertinent studies, ensuring a higher level of precision and relevance in their literature reviews. The ability to switch between AND and NOT operators provides flexible control over search behavior, allowing users to tailor their queries to meet specific research needs.
+
+**2. Streamlined and Efficient Workflow:**
+By unifying all search filters, including Publication Date, Impact Factor, and Article Type, into the initial step of the review process, users can now set up their entire search framework from the outset. This centralized approach eliminates the need for users to navigate back and forth between different steps, significantly enhancing workflow efficiency. Real-time updates to search parameters make it easier for users to adjust their queries quickly and effectively, resulting in a smoother, faster review process.
+
+**2. Improved Data Extraction, Study Selection, and Transparency**
+The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer definitions and a more structured approach to data extraction. Users can now be specific about what data points they want to extract and how they define their inclusion/exclusion criteria. This precision ensures that the extracted data aligns perfectly with the user’s research objectives, leading to more accurate and insightful results. Additionally, the inclusion of time-based performance metrics provides users with complete transparency, allowing them to monitor the progress and time efficiency of their literature reviews.
+
+
+These upgrades reflect our ongoing commitment to enhancing research tools for a more efficient, precise, and user-friendly experience. We encourage users to explore these new features and see the improvements firsthand.
+
+</div><div class="h3-box" markdown="1">
 
 ## 10-24-2024 Literature Review Enhancements
 
