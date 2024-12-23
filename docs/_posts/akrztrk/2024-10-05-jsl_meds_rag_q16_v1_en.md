@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
-Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
+
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -146,7 +146,8 @@ Additionally, obesity can also contribute to the development of type 1 diabetes 
 
 ## Benchmarking
 
-We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate.
+Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
 
 ```bash
 ## Overall
