@@ -36,6 +36,7 @@ This pretrained pipeline maps entities (Diseases and Syndromes) with their corre
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
