@@ -25,7 +25,8 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 ## Predicted Entities
 
-`NAME`, `DATE`, `IDNUM`, `ZIP`, `SSN`, `ACCOUNT`, `LICENSE`, `AGE`, `PHONE`, `COUNTRY`, `STATE`, `CITY`, `PLATE`, `VIN`, `MEDICALRECORD`, `EMAIL`, `URL`, `LOCATION`, `PROFESSION`, `CONTACT`, `PATIENT`, `HOSPITAL`, `ORGANIZATION`, `STREET`, `DOCTOR`
+`ACCOUNT`, `AGE`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DLN`, `DOCTOR`, `EMAIL`, `EXCLUDED`, `HOSPITAL`, `ID`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `USERNAME`, `VIN`, `ZIP`
+
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_nature_nero_clinical](https
 
 ## Predicted Entities
 
+`Abstractconcept`, `Aminoacid`, `Aminoacidpeptide`, `Anatomicalpart`, `Atom`, `Biologicalprocess`, `Bodypart`, `Cell`, `Cellcomponent`, `Cells`, `Chemical`, `Chromosome`, `Citation`, `Disease`, `Dr`, `Drug`, `Duration`, `Environmentalfactor`, `Experimentalfactor`, `Facility`, `Food`, `G`, `Gen`, `Gene`, `Geneorprotein`, `Geneorproteingroup`, `Geographicallocation`, `Geographiclocation`, `Geographicnotproper`, `Gp`, `Groupofpeople`, `Intellectualproduct`, `Ion`, `Journal`, `Laboratoryexperimentalfactor`, `Language`, `Machineactivity`, `Meas`, `Measurement`, `Medicaldevice`, `Medicalfinding`, `Medicalprocedure`, `Medicalprocedureordevice`, `Mentalprocess`, `Molecularprocess`, `Molecule`, `N`, `Namedentity`, `Nonproteinornucleicacidchemical`, `Nucleicacid`, `Nucleicacidsubstance`, `Organism`, `Organismpart`, `P`, `Partofprotein`, `Person`, `Persongroup`, `Physicalphenomenon`, `Process`, `Propernamedgeographicallocation`, `Protein`, `Publicationorcitation`, `Publishedsourceofinformation`, `Quantity`, `Quantityormeasure`, `Quantityormeasurement`, `R`, `Relationship`, `Relationshipphrase`, `Researchactivity`, `Researchactivty`, `Smallmolecule`, `Thing`, `Time`, `Timepoint`, `Tissue`, `Unconjugated`, `Unit`, `Unpropernamedgeographicallocation`, `Warfarin`
+
 
 
 {:.btn-box}

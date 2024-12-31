@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_oncology_therapy](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_therapy_en.html) model.
 
+## Predicted Entities
+
+`Cancer_Surgery`, `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Dosage`, `Duration`, `Frequency`, `Hormonal_Therapy`, `Immunotherapy`, `Line_Of_Therapy`, `Radiation_Dose`, `Radiotherapy`, `Response_To_Treatment`, `Route`, `Targeted_Therapy`, `Unspecific_Therapy`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

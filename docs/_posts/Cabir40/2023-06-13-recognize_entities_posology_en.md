@@ -22,6 +22,8 @@ A pipeline with `ner_posology`. It will only extract medication entities.
 
 ## Predicted Entities
 
+`DOSAGE`, `DRUG`, `DURATION`, `FORM`, `FREQUENCY`, `ROUTE`, `STRENGTH`
+
 
 
 {:.btn-box}

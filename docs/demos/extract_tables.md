@@ -81,4 +81,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb
+        - title: Pretrained pipeline for table extraction
+          id: pretrained_pipeline_table_extraction  
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_table_extraction.svg
+          excerpt: Pretrained pipeline based on our pre-trained Spark OCR models, pipeline for conducting Table Extraction on mixed scanned and digital PDF documents.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_DIGITAL_PDF_TABLE_EXTRACTOR/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesDigitalPdfTableExtractor.ipynb
 ---

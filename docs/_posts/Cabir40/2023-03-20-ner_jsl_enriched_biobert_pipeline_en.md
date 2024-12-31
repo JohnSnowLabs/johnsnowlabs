@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_jsl_enriched_biobert](https://nlp.johnsnowlabs.com/2021/04/01/ner_jsl_enriched_biobert_en.html) model.
 
+## Predicted Entities
+
+`Age`, `Allergenic_substance`, `Blood_Pressure`, `Causative_Agents_(Virus_and_Bacteria)`, `Diagnosis`, `Dosage`, `Drug_Name`, `Frequency`, `Gender`, `Lab_Name`, `Lab_Result`, `Maybe`, `Modifier`, `Name`, `Negation`, `O2_Saturation`, `Procedure`, `Procedure_Name`, `Pulse_Rate`, `Respiratory_Rate`, `Route`, `Section_Name`, `Substance_Name`, `Symptom_Name`, `Temperature`, `Weight`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

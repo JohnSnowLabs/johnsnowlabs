@@ -173,8 +173,6 @@ annotation-lab:
             url: /docs/en/alab/transfer_learning
           - title: Test Project Configuration
             url: /docs/en/alab/test_project_configuration
-          - title: LangTest
-            url: /docs/en/alab/langtest
       - subtitle: Administration
         children:
           - title: User Management

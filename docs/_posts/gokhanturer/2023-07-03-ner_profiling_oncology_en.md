@@ -24,6 +24,11 @@ Here are the NER models that this pretrained pipeline includes:
 
 `ner_oncology_unspecific_posology`, `ner_oncology_tnm`, `ner_oncology_therapy`, `ner_oncology_test`, `ner_oncology_response_to_treatment`, `ner_oncology_posology`, `ner_oncology`, `ner_oncology_limited_80p_for_benchmarks`, `ner_oncology_diagnosis`, `ner_oncology_demographics`, `ner_oncology_biomarker`, `ner_oncology_anatomy_granular`, `ner_oncology_anatomy_general`
 
+## Predicted Entities
+
+`Adenopathy`, `Age`, `Alcohol`, `Anatomical_Site`, `BMI`, `Biomarker`, `Biomarker_Result`, `Cancer_Dx`, `Cancer_Score`, `Cancer_Surgery`, `Cancer_Therapy`, `Chemotherapy`, `Communicable_Disease`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Date`, `Death_Entity`, `Diabetes`, `Direction`, `Dosage`, `Duration`, `Frequency`, `Gender`, `Grade`, `Histological_Type`, `Hormonal_Therapy`, `Imaging_Test`, `Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Lymph_Node`, `Lymph_Node_Modifier`, `Metastasis`, `Obesity`, `Oncogene`, `Oncological`, `Overweight`, `Pathology_Result`, `Pathology_Test`, `Performance_Status`, `Posology_Information`, `Race_Ethnicity`, `Radiation_Dose`, `Radiotherapy`, `Relative_Date`, `Response_To_Treatment`, `Route`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`, `Size_Trend`, `Smoking`, `Smoking_Status`, `Staging`, `Targeted_Therapy`, `Tumor`, `Tumor_Description`, `Tumor_Finding`, `Tumor_Size`, `Unspecific_Therapy`, `Weight`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

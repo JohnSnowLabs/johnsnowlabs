@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_drugs](https://nlp.johnsnowlabs.com/2021/03/31/ner_drugs_en.html) model.
 
+## Predicted Entities
+
+`DrugChem`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

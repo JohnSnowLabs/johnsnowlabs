@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline extracts mentions of demographic information from health-related text in colloquial language.
 
+## Predicted Entities
+
+`Age`, `Employment`, `Gender`, `RaceEthnicity`, `RelationshipStatus`, `Substance`, `SubstanceQuantity`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

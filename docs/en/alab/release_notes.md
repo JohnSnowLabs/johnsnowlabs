@@ -15,117 +15,124 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Easy Migration to Generative AI Lab - 6.8 
-Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.
+## Model Versioning during Training and Visual Model Updates in 6.9.0
+Generative AI Lab version 6.9.0, introduces new features designed to improve visual projects as well as model training. This release introduces model versioning as well as new project types, expanding the use cases for our product. With this update, you can streamline tasks such as checkbox identification, handwritten text detection, and model management.
 
-This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color. 
+Other small improvements have been made to Generative AI Lab including to the updater script, and ensuring the default colors on labels remain high contrast. 
 
-</div><div class="h3-box" markdown="1">
+## Model Versioning when Training Models
+Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the **TRAINING SETTINGS** section of the **Train** page, a toggle labeled **Enable Versioning** is now available. By default, model versioning is disabled. To enable it, toggle **Enable Versioning** to **on**. 
 
-## Migrate your NLP Lab Backup to Generative AI Lab
-Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:
+![690image](/assets/images/annotation_lab/6.9.0/5.png)
 
-### Steps to Backup Data from NLP Lab
-1. **Login** to your current NLP Lab deployment as the admin user.
-2. Go to the **`System Settings`** page.
-3. Navigate to the **`Backup`** tab.
-4. Enter the required **backup details**.
-5. Schedule an immediate backup using the **`Backup now`** feature.
-6. Monitor the **backup pod status** to ensure the process completes successfully.
-```bash
-kubectl get pods
-```
-**Verify Backup:** Upon completion, your backed-up database and files will be visible in cloud storage.
+When enabled, models are saved with versioned names following the format **projecttype_projectname_v1**, **projecttype_projectname_v2**, and so on. If model deployment is enabled after training is complete, the most recently trained model is automatically applied to the project configuration. If model deployment after training is not enabled, the project configuration remains unchanged. All versions of trained models are accessible on the Reuse Resource page, allowing users to browse and select specific model versions for reuse in other projects.
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+![690image](/assets/images/annotation_lab/6.9.0/6.png)
 
-### Steps to Restore Data
+Model versioning is also supported for previously created projects. If versioning is disabled, subsequent training overwrites the most recent model without creating a new version. When re-enabled, versioning resumes from the latest version rather than starting over from v1. This feature simplifies model management by enabling version tracking and reusability, offering seamless integration for new and existing projects.
 
-1. **Deploy** a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.
-2. **Login** to the UI as the admin user.
-3. Go to the **`System Settings`** page.
-4. Click on the **`Restore`** tab and fill in the necessary details.
-5. Click on **`Restore Now`** to initiate the process.
-6. Monitor the **restore pod status** to ensure successful completion.
-```bash
-kubectl get pods
-```
+Note: The **Enable Versioning** toggle is disabled during training. 
 
-**Verify Restoration:** Access the UI, all projects, models, data and files should now be successfully restored.
+## Identify and Validate Checkboxes with Precision
+Version 6.9.0 introduces a new project type called **Checkbox Detection**. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the **checked** and **unchecked** status in the respective tasks.
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+This project type can be selected from the **Content Type** page under the **Image** tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the **Models Hub** page and added to the project configuration.
 
-</div><div class="h3-box" markdown="1">
+![690image](/assets/images/annotation_lab/6.9.0/1.png)
+
+After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.
+
+![690image](/assets/images/annotation_lab/6.9.0/2.png)
+
+This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.
+
+This model can not currently be combined with other models.
+
+## Detect and Validate Handwritten Text and Signatures
+This update continues with the **Handwritten Text and Signature Detection** project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab's Visual NLP Library. The new project type can be selected from the **Content Type** page under **Image** tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and integrated into the project configuration.
+
+![690image](/assets/images/annotation_lab/6.9.0/3.png)
+
+Users can then add relevant tasks to the project and use the model to identify and annotate handwritten content and signatures in documents efficiently.
+
+![690image](/assets/images/annotation_lab/6.9.0/4.png)
+
+This feature doesn't change the existing application workflow, and can not be combined with other models at this time.
 
 ## Improvements
-### Exclude Labels from De-identification 
-Generative AI Lab 6.8 introduces a  `None**` option in the de-identification selection dropdown. When selected, this option will only label the text without performing any de-identification. This provides users with greater flexibility by allowing them to annotate the text while leaving the original content intact. 
+### Enhanced label readability by using high-contrast default colors.
+To improve readability and accessibility, randomly assigned colors will now meet a minimum contrast standard by default, ensuring they are easy to read. This new default simplifies the project creation experience.
 
-![680image](/assets/images/annotation_lab/6.8.0/3.png)
+![690image](/assets/images/annotation_lab/6.9.0/7.png)
 
-### Mark the labels with annotation guideline
-A new enhancement has been introduced to easily distinguish labels with annotation guidelines. Labels that have associated annotation guidelines are now marked with a colored dot at the top-right corner. This feature applies to both NER and VisualNER projects. If the annotation guidelines are deleted for a label, the dot will be automatically removed.
+### Improvements to the updater script
+First, a retry mechanism has been implemented to pull images during updates and installations. Each image will now be attempted up to three times to ensure successful retrieval.
 
-![680image](/assets/images/annotation_lab/6.8.0/4.png)
+When training or pre-annotation servers are running during an upgrade, a prompt appears:
+"**Do you want to proceed with deleting these pods? (y/N):**"
 
-### Change the pop-up message when the model downloading is canceled
-The pop-up message that appears when a model download is canceled has been updated for better clarity. Previously, the message displayed the title `Warning: Delete Model?`, which could confuse. It has now been changed to `Warning: Cancel Model Download?` with a more accurate description. This update provides clearer communication to users when they choose to stop a model download in progress, improving the overall user experience.
+- If "**No**" is selected, the upgrade process is exited.
+- If "**Yes**" is selected, the running training/pre-annotation pods are deleted, and the upgrade continues.
+- If no matching training or pre-annotation pods are running, the message "**No preannotator/training pods matching criteria found.**" is displayed, and the upgrade proceeds.
 
-![680image](/assets/images/annotation_lab/6.8.0/5.png)
+A new "**silent**" flag can now be passed while executing the upgrade script. 
 
-### Improvements in XML editor
-The issue of overlapping parent option buttons and top child option buttons when hovered, specifically when the `Show parent action buttons on hover` option was enabled, has been resolved. This fix provides a more polished user experience by ensuring the buttons are properly aligned. Now, the buttons no longer interfere with each other, offering smoother interaction with the interface.
+``./annotationlab-updater.sh --silent``
 
-![680image](/assets/images/annotation_lab/6.8.0/6.png)
+When "**silent**" flag is used:
+- It automatically deletes running training/pre-annotation servers without prompting.
+- It uses the default admin password for the upgrade procedure.
 
-Tooltips have been enhanced to display the correct tag name for each section, improving the usability of the XML editor. Previously, the tooltip and the menu name that appeared on hover were identical for each container, making it difficult to distinguish between them. With this update, each container now has a unique tooltip, ensuring that users can easily identify where they clicked. For example, `Edit Tag` has been updated to `Edit Text Tag` to provide clearer context and improve navigation within the editor.
+## Bug Fixes
+- **Prediction results are missing in Section Based Classification Projects when exported tasks are re-imported** 
 
-![680image](/assets/images/annotation_lab/6.8.0/7.gif)
+Previously, in Section-Based Classification projects, prediction results were missing when exported tasks were re-imported back to Generative AI Lab project. This issue has been resolved. Prediction results now remain intact when tasks are re-imported for SBA-enabled projects, ensuring data consistency.
 
-A validation error is now triggered when quick filters are incorrectly attached to elements other than labels or ellipse labels.
+- **Multiple API calls are made during pre-annotation on the task page**
 
-![680image](/assets/images/annotation_lab/6.8.0/8.png)
+ The **Task** page now operates efficiently without making multiple API calls or unexpected refreshes.
 
-The `Maximum rating value` of the `Rating` element now includes validation. A red color warning is displayed when an invalid value is entered. Only positive numbers are allowed, ensuring that users input appropriate values and improving the overall accuracy of ratings.
+- **De-identify dialog box is not updated after the server is ready with the de-identification pipeline**
 
-![680image](/assets/images/annotation_lab/6.8.0/9.png)
+The De-Identification pop-up now auto-refreshes and appears as expected once the de-identification pipeline is ready for deployment.
 
-### Increased readability for test cases view
- 
-Users can now read the test cases better with two-tone text distinguished between test types.
+- **Rule for section classifier is set to default value when the user navigates back to Relevant Page**
 
-![680image](/assets/images/annotation_lab/6.8.0/10.png)
+ For SBA-enabled projects, the selected classifier model is now correctly displayed in the dropdown when users return to the page for reconfiguration or confirmation.
 
-### Bug Fixes
-- **Annotation guidelines now visible in the horizontal layout**
-  
-Users can now see Annotation guidelines in the horizontal layout.
+- **Training status still showing as 'Running' when the user checks the training history after aborting the training**
 
-![680image](/assets/images/annotation_lab/6.8.0/11.png)
+The training history now accurately reflects the correct training status with the appropriate status color.
 
-- **Confidence score of classifier is only shown for the first section in SBA text task**
-  
- The confidence score is now correctly displayed for predictions across all sections, ensuring consistent feedback throughout the entire task.
+- **When de-identification pipeline is deployed glove_100 is shown as deployed embeddings**
 
-![680image](/assets/images/annotation_lab/6.8.0/12.gif)
+In earlier versions, the default embedding glove_100 was incorrectly displayed as deployed when the de-identification pipeline was deployed, even if no embeddings were available. This issue has been resolved. The correct embedding is now displayed when an embedding is used. An empty embedding is shown when no embedding is used. This ensures an accurate representation of the deployed embeddings in the pipeline.
 
-- **Toast Message-warning users of Expiring License with each API call**
-  
-    The issue with frequent toast message pop-ups has been largely resolved. However, the message may still reappear when the user refreshes the page or navigates to different sections. While the message is now less intrusive, it is still visible during certain actions such as page reloads or navigation.
+- **"Model type not available " error is seen frequently while navigating to the Train page**
 
-- **File Backup is uploaded to the DB file backup path**
-  
-    Users can now successfully designate different paths for ad-hoc backing up databases and files. The system will correctly store database ad-hoc backups in the specified database path, while file ad-hoc backups will be saved in their intended separate location.
-    
-</div><div class="prev_ver h3-box" markdown="1">
+Previously, users frequently encountered the "**Model type not available**" error when navigating to the **Train** page. This issue has been resolved, and the error no longer appears while accessing the **Train** page from different locations within the project.
+
+- **Backup fails for Azure Blob Storage**
+
+An issue affecting backups to Azure Blob Storage has been resolved. Backups now function correctly, ensuring reliable data storage and recovery.
+
+- **Labels with instructions cannot be deleted and added from the project configuration**
+
+We now allow users to seamlessly add labels with instructions or delete labels that contain instructions as needed.
+
+- **Active learning is not triggered for the second trigger**
+
+Active learning will now wait for the license to be free before triggering training, ensuring a smoother and more reliable process. Additionally, when the active learning condition is met and the system is waiting for the license, this status will be displayed on the training page.
 
 ## Versions
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>

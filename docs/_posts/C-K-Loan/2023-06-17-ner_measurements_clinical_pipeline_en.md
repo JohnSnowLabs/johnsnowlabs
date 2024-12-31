@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_measurements_clinical](http
 
 ## Predicted Entities
 
+`Measurements`, `Units`
+
 
 
 {:.btn-box}

@@ -1589,36 +1589,36 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 </div><div class="h3-box" markdown="1">
 
 ### Step 2: Create a Lakehouse
-- Go to the **Synapse Data Science** section.
+- Go to the **Data Science** section.
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
-![image](/assets/images/installation/355920557-2c5f778c-4c33-4a54-af21-71f4486f5e4b.webp)
+![Create a Lakehouse](/assets/images/installation/Fabric_1.png)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 3: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-![image](/assets/images/installation/355920928-697cac4b-29ff-4f23-beaa-5aaa32569ff0.webp)
+![Create a Notebook in Fabric](/assets/images/installation/Fabric_2.png)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 4: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
-![image](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
+![Attach the Lakehouse](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
 
-![image](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
+![Attach the Lakehouse](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
-![image](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
+![Upload Files to Fabric](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
 
-![image](/assets/images/installation/360943582-53bc84ae-40dc-41dc-9522-e87bf70d4fba.webp)
+![Upload Files to Fabric](/assets/images/installation/Fabric_3.png)
 
 After uploading is complete, you can configure and run the notebook.
 
@@ -1631,21 +1631,30 @@ Configure the session within the notebook as follows:
 %%configure -f
 {
   "conf": {
-    "spark.hadoop.fs.s3a.access.key": {
+    "spark.jsl.settings.aws.credentials.access_key_id": {
       "parameterName": "awsAccessKey",
-      "defaultValue": "<AWS-ACCESS-KEY>"
+      "defaultValue": "<AWS_ACCESS_KEY_ID>"
     },
-    "spark.hadoop.fs.s3a.secret.key": {
+    "spark.jsl.settings.aws.credentials.secret_access_key": {
       "parameterName": "awsSecretKey",
-      "defaultValue": "<AWS-SECRET-KEY>"
+      "defaultValue": "<AWS_SECRET_ACCESS_KEY>"
     },
+
     "spark.yarn.appMasterEnv.SPARK_NLP_LICENSE": {
       "parameterName": "sparkNlpLicense",
-      "defaultValue": "<LICENSE-KEY>"
+      "defaultValue": "<SPARK_NLP_LICENSE>"
     },
     "spark.jars": {
       "parameterName": "sparkJars",
-      "defaultValue": "<abfs-path-spark-nlp-assembly-jar>,<abfs-path-spark-nlp-jsl-jar>"
+      "defaultValue": "abfss://&&&&&&/Files/spark-nlp-assembly-5.5.0.jar, abfss://&&&&&&/Files/spark-nlp-jsl-5.5.0.jar"
+    },
+    "spark.jsl.settings.pretrained.cache_folder": {
+      "parameterName": "cacheFolder",
+      "defaultValue": "abfss://&&&&&&/Files/unzip_files"
+    },
+    "spark.extraListeners": {
+      "parameterName": "extraListener",
+      "defaultvalue": "com.johnsnowlabs.license.LicenseLifeCycleManager"
     }
   }
 }
@@ -1658,6 +1667,7 @@ Configure the session within the notebook as follows:
 
 Install the required Spark NLP libraries using pip commands:
 ```bash
+%pip install <johnsnowlabs whl File API path>
 %pip install <spark-nlp whl File API path>
 %pip install <spark-nlp-jsl whl File API path>
 ```
@@ -1754,4 +1764,9 @@ result = pipeline.annotate(text)
 
 ![Load the Model and Make Predictions](/assets/images/installation/355924362-f62b4bc5-96ee-41d5-a80b-887766b252c9.webp)
 
+### Step 12: Run the pipeline with `.pretrained()` method
+You can also run the pipelines without using the `.load()` or `.from_disk()` methods
+
+![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_4.png)
+![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_5.png)
 </div>

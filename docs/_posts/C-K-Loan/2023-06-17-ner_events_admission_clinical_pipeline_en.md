@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_events_admission_clinical](
 
 ## Predicted Entities
 
+`ADMISSION`, `CLINICAL_DEPT`, `DATE`, `DISCHARGE`, `DURATION`, `EVIDENTIAL`, `FREQUENCY`, `OCCURRENCE`, `PROBLEM`, `TEST`, `TIME`, `TREATMENT`
+
 
 
 {:.btn-box}

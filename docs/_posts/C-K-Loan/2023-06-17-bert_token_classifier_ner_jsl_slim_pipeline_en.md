@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_jsl_s
 
 ## Predicted Entities
 
+`Admission_Discharge`, `Age`, `Alergen`, `Birth_Entity`, `Body_Part`, `Clinical_Dept`, `Date_Time`, `Death_Entity`, `Demographics`, `Disease_Syndrome_Disorder`, `Drug`, `Header`, `Lifestyle`, `Medical_Device`, `Oncological`,`Physical_Measurement`, `Pregnancy_Newborn`, `Procedure`, `Substance_Quantity`, `Symptom`, `Test`, `Test_Result`, `Treatment`, `Vital_Sign`
+
 
 
 {:.btn-box}

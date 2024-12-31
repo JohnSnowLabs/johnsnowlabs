@@ -22,6 +22,8 @@ This pipeline extracts mentions of demographic information from health-related t
 
 ## Predicted Entities
 
+`Age`, `Employment`, `Gender`, `RaceEthnicity`, `RelationshipStatus`, `Substance`, `SubstanceQuantity`
+
 
 
 {:.btn-box}

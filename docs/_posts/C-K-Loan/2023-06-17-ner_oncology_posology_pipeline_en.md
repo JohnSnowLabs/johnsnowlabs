@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_posology](https://
 
 ## Predicted Entities
 
+`Cancer_Surgery`, `Cancer_Therapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Dosage`, `Duration`, `Frequency`, `Radiation_Dose`, `Radiotherapy`, `Route`
+
 
 
 {:.btn-box}

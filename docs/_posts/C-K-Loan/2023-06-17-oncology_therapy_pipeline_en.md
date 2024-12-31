@@ -22,6 +22,8 @@ This pipeline includes Named-Entity Recognition and Assertion Status models to e
 
 ## Predicted Entities
 
+`Cancer_Surgery`, `Cancer_Therapy`, `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Dosage`, `Duration`, `Frequency`, `Hormonal_Therapy`, `Immunotherapy`, `Line_Of_Therapy`, `Posology_Information`, `Radiation_Dose`, `Radiotherapy`, `Response_To_Treatment`, `Route`, `Targeted_Therapy`, `Unspecific_Therapy`
+
 
 
 {:.btn-box}

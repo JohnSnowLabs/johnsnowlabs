@@ -28,6 +28,9 @@ This pipeline includes the full taxonomy Named-Entity Recognition model to extra
 
 ## Predicted Entities
 
+`AdmissionDischarge`, `Age`, `Allergen`, `BodyPart`, `ClinicalDept`, `DateTime`, `Disease`, `Dosage`, `Drug`, `Duration`, `Employment`, `Form`, `Frequency`, `Gender`, `HealthStatus`, `InjuryOrPoisoning`, `Laterality`, `MedicalDevice`, `Modifier`, `Procedure`, `PsychologicalCondition`, `RelationshipStatus`, `Route`, `Substance`, `SubstanceQuantity`, `Symptom`, `Test`, `TestResult`, `Treatment`, `Vaccine`, `VitalTest`
+
+
 
 
 {:.btn-box}
