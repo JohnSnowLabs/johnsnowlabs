@@ -242,7 +242,6 @@ Disease_Syndrome_Disorder     0.8196    0.5202    0.6365      5267
       Injury_or_Poisoning     0.5355    0.7298    0.6177       992
            Medical_Device     0.8728    0.8439    0.8581      5610
                  Modifier     0.5662    0.8365    0.6753      2929
-                        O     0.9364    0.9250    0.9307    159014
               Oncological     0.7531    0.8243    0.7871       740
                 Procedure     0.7582    0.7840    0.7709      6509
            Race_Ethnicity     0.9752    1.0000    0.9874       118
