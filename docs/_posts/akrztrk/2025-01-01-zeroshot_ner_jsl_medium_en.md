@@ -18,8 +18,8 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
-While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels. 
+Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages. While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels.
+
 **The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.**
 
 {:.btn-box}
@@ -34,6 +34,7 @@ While the model card includes default labels as examples, it is important to hig
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -219,3 +220,42 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|711.8 MB|
+
+## Benchmarking
+
+```bash
+                    label  precision    recall  f1-score   support
+      Admission_Discharge     0.7925    0.9845    0.8781       322
+                      Age     0.7951    0.9273    0.8562       812
+                  Alcohol     0.8058    0.8737    0.8384        95
+                Body_Part     0.8432    0.6978    0.7636     10493
+            Clinical_Dept     0.7952    0.9431    0.8628      1704
+                Direction     0.7929    0.9279    0.8551      4316
+Disease_Syndrome_Disorder     0.8196    0.5202    0.6365      5267
+          Dosage_Strength     0.5673    0.8025    0.6647      1266
+                     Drug     0.7994    0.7653    0.7820      2723
+                 Duration     0.4339    0.9325    0.5922       918
+               Employment     0.7213    0.8213    0.7681       375
+                     Form     0.3865    0.8610    0.5335       259
+                Frequency     0.6404    0.6712    0.6555      1019
+                   Gender     0.9768    0.9891    0.9829      5612
+      Injury_or_Poisoning     0.5355    0.7298    0.6177       992
+           Medical_Device     0.8728    0.8439    0.8581      5610
+                 Modifier     0.5662    0.8365    0.6753      2929
+                        O     0.9364    0.9250    0.9307    159014
+              Oncological     0.7531    0.8243    0.7871       740
+                Procedure     0.7582    0.7840    0.7709      6509
+           Race_Ethnicity     0.9752    1.0000    0.9874       118
+      Relationship_Status     0.5625    0.8824    0.6870        51
+                    Route     0.7211    0.7218    0.7214       967
+           Section_Header     0.8873    0.9750    0.9291     10262
+                  Smoking     0.9537    0.9537    0.9537       108
+                  Symptom     0.7911    0.7154    0.7513     11590
+                     Test     0.7530    0.6348    0.6888      6117
+              Test_Result     0.3906    0.7561    0.5151      1398
+                Treatment     0.3524    0.5811    0.4387       456
+                  Vaccine     0.8182    0.4286    0.5625        21
+                 accuracy          -         -    0.8788    242063
+                macro avg     0.7266    0.8103    0.7515    242063
+             weighted avg     0.8871    0.8788    0.8801    242063
+```
