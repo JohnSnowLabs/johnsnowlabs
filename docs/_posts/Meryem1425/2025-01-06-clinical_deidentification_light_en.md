@@ -37,6 +37,7 @@ The pipeline can mask and obfuscate `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -51,10 +52,8 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith
 
 deid_result = deid_pipeline.fullAnnotate(text)
 
-print('
-'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
-print('
-'.join([i.result for i in deid_result[0]['obfuscated']]))
+print('\n'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
+print('\n'.join([i.result for i in deid_result[0]['obfuscated']]))
 
 
 ```
@@ -72,10 +71,8 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith
 
 deid_result = deid_pipeline.fullAnnotate(text)
 
-print('
-'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
-print('
-'.join([i.result for i in deid_result[0]['obfuscated']]))
+print('\n'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
+print('\n'.join([i.result for i in deid_result[0]['obfuscated']]))
 
 
 ```
@@ -93,10 +90,8 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco,  CA 94108. E-MAIL: smith
 
 val deid_result = deid_pipeline.fullAnnotate(text)
 
-println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkString("
-"))
-println(deid_result(0)("obfuscated").map(_("result").toString).mkString("
-"))
+println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkString("\n"))
+println(deid_result(0)("obfuscated").map(_("result").toString).mkString("\n"))
 
 
 ```
