@@ -75,9 +75,11 @@ When the “**Go Back**” button is clicked, users are redirected to the previo
 As part of our continuous efforts to improve the user experience, the Completions section has been updated to ensure consistent capitalization throughout the interface. Additionally, the text color for these messages has been changed to orange to enhance visibility and emphasis.
 
 Message in the Completion Tab When a Draft Is Saved:
-![6100image](/assets/images/annotation_lab/6.10.0/7.png)>
+
+![6100image](/assets/images/annotation_lab/6.10.0/7.png)
 
 Message in the Completion Tab When Viewing the Last Saved Annotation:
+
 ![6100image](/assets/images/annotation_lab/6.10.0/8.png)
 
 ### Bug Fixes
