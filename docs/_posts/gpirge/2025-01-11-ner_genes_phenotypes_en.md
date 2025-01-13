@@ -56,6 +56,7 @@ The model recognizes the following entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -82,6 +83,70 @@ ner_converter = NerConverterInternal()\
     .setOutputCol('ner_chunk')
 
 pipeline = Pipeline(stages=[
+    document_assembler, 
+    sentence_detector,
+    tokenizer,
+    clinical_embeddings,
+    ner_model,
+    ner_converter   
+    ])
+
+sample_texts = ["""
+The G6PD gene provides instructions for glucose-6-phosphate dehydrogenase, crucial for protecting cells from oxidative stress. 
+
+Mutations in the G6PD gene cause G6PD deficiency, an X-linked recessive disorder affecting red blood cells. 
+
+Over 400 variants have been identified, with the G6PD A- variant common in African populations. 
+
+The variant G6PD protein results in reduced enzyme activity. 
+
+Clinical presentations of G6PD deficiency include hemolytic anemia triggered by certain medications, foods (e.g., fava beans), or infections. 
+
+Symptoms during hemolytic episodes include jaundice, fatigue, and dark urine. 
+
+Gene-environment interactions are significant, with G6PD deficiency conferring some protection against malaria. 
+
+Diagnosis involves enzyme activity assays and genetic testing. Management focuses on avoiding triggers and providing supportive care during hemolytic episodes. 
+
+In severe cases, blood transfusions may be necessary. Patient education about trigger avoidance is crucial for preventing complications. 
+
+The global prevalence of G6PD deficiency is estimated at 4.9%, with higher rates in malaria-endemic regions.
+
+"""]
+
+data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+
+```
+
+{:.jsl-block}
+```python
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl", "en")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+clinical_embeddings = nlp.WordEmbeddingsModel.pretrained('embeddings_clinical', "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
+
+ner_model = medical.NerModel.pretrained('ner_genes_phenotypes', "en", "clinical/models")\
+    .setInputCols(["sentence", "token","embeddings"])\
+    .setOutputCol("ner")
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(['sentence', 'token', 'ner'])\
+    .setOutputCol('ner_chunk')
+
+pipeline = nlp.Pipeline(stages=[
     document_assembler, 
     sentence_detector,
     tokenizer,
@@ -229,8 +294,7 @@ In-house annotated case reports.
 ## Benchmarking
 
 ```bash
-                       precision    recall  f1-score   support
-
+                label  precision    recall  f1-score   support
 Clinical_Presentation       0.78      0.70      0.74       286
       Diagnostic_Test       1.00      0.59      0.74        34
                  Gene       0.78      1.00      0.88        42
@@ -248,8 +312,7 @@ Clinical_Presentation       0.78      0.70      0.74       286
                  Site       0.99      0.93      0.96       106
             Treatment       0.83      0.73      0.77       124
      Type_Of_Mutation       0.95      0.95      0.95       137
-
-            micro avg       0.89      0.88      0.89      3130
-            macro avg       0.91      0.89      0.89      3130
-         weighted avg       0.89      0.88      0.89      3130
+            micro-avg       0.89      0.88      0.89      3130
+            macro-avg       0.91      0.89      0.89      3130
+         weighted-avg       0.89      0.88      0.89      3130
 ```
