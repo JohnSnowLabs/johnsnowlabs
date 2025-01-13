@@ -8,7 +8,7 @@ tags: [en, clinical, licensed, ner, gene, phenotype, human_phenotype]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.5.1
-spark_version: 3.4
+spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
 article_header:
@@ -47,8 +47,8 @@ The model recognizes the following entities:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_genes_phenotypes_en_5.5.1_3.4_1736595330406.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_genes_phenotypes_en_5.5.1_3.4_1736595330406.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_genes_phenotypes_en_5.5.1_3.0_1736595330406.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_genes_phenotypes_en_5.5.1_3.0_1736595330406.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
