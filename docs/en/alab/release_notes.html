@@ -628,146 +628,119 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="model-versioning-during-training-and-visual-model-updates-in-690">Model Versioning during Training and Visual Model Updates in 6.9.0</h2>
-  <p>Generative AI Lab version 6.9.0, introduces new features designed to improve visual projects as well as model training. This release introduces model versioning as well as new project types, expanding the use cases for our product. With this update, you can streamline tasks such as checkbox identification, handwritten text detection, and model management.</p>
+  <h2 id="generative-ai-lab-6100-faster-preannotation-along-with-de-identification-and-improved-non-overlapping-relations">Generative AI Lab 6.10.0: Faster Preannotation along with De-identification, and Improved Non-Overlapping Relations</h2>
+  <p>Generative AI Lab 6.10 brings an update that makes marked improvements to the speed of our Pre-annotation function, and De-identification projects. Additionally, we’ve made usability improvements to relation visualizations, allowing for a clearer view of projects.</p>
 
-  <p>Other small improvements have been made to Generative AI Lab including to the updater script, and ensuring the default colors on labels remain high contrast.</p>
+  <p>Additional features include the ability to use annotation guidelines in HTML projects, a UI improvement to the analytics request page, and other small improvements.</p>
 
-  <h2 id="model-versioning-when-training-models">Model Versioning when Training Models</h2>
-  <p>Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the <strong>TRAINING SETTINGS</strong> section of the <strong>Train</strong> page, a toggle labeled <strong>Enable Versioning</strong> is now available. By default, model versioning is disabled. To enable it, toggle <strong>Enable Versioning</strong> to <strong>on</strong>.</p>
+  <h2 id="enhanced-ner-pre-annotation-and-de-identification">Enhanced NER Pre-annotation and De-identification</h2>
+  <p>Version 6.10.0 focused on an upgrade to the Pre-annotation and De-identification processes, combining speed, efficiency, and reliability. Pre-annotation processes have been fine-tuned, dramatically reducing processing time. De-identification workflows now leverage advanced pipelines for faster and more accurate results.</p>
 
-  <p><img src="/assets/images/annotation_lab/6.9.0/5.png" alt="690image" /></p>
+  <p>Redesigning our workflow for these processes allows for an increase in performance of up to <strong>3x</strong>. Our benchmark data showed consistently that for datasets that were routinely being pre-annotated at a rate of 300 tasks per hour, we are now able to pre-annotate at a rate of 1100 tasks per hour. This was a necessary feature to support our customers who rely on this feature for their teams of annotators.</p>
 
-  <p>When enabled, models are saved with versioned names following the format <strong>projecttype_projectname_v1</strong>, <strong>projecttype_projectname_v2</strong>, and so on. If model deployment is enabled after training is complete, the most recently trained model is automatically applied to the project configuration. If model deployment after training is not enabled, the project configuration remains unchanged. All versions of trained models are accessible on the Reuse Resource page, allowing users to browse and select specific model versions for reuse in other projects.</p>
+  <p>Users can seamlessly transition to this version without requiring additional training or adjustments to their workflow.</p>
 
-  <p><img src="/assets/images/annotation_lab/6.9.0/6.png" alt="690image" /></p>
+  <h2 id="improved-non-overlapping-relations">Improved Non-Overlapping Relations</h2>
+  <p>In earlier versions, when multiple relations were defined between text chunks positioned close to each other, the arrows and labels representing these relations would often overlap. This overlap created visual clutter, making it difficult for users to accurately distinguish and interpret the relations.</p>
 
-  <p>Model versioning is also supported for previously created projects. If versioning is disabled, subsequent training overwrites the most recent model without creating a new version. When re-enabled, versioning resumes from the latest version rather than starting over from v1. This feature simplifies model management by enabling version tracking and reusability, offering seamless integration for new and existing projects.</p>
+  <p><strong>Before:</strong>
+<img src="/assets/images/annotation_lab/6.10.0/1.png" alt="6100image" /></p>
 
-  <p>Note: The <strong>Enable Versioning</strong> toggle is disabled during training.</p>
+  <p>The display logic for relation lines has been refined to prevent overlapping. Relation arrows and labels are now strategically spaced and arranged into tiers based on the number of overlaps for each line, providing a clean and organized visual presentation. This improvement significantly enhances readability and reduces confusion when analyzing complex relationships between text chunks.</p>
 
-  <h2 id="identify-and-validate-checkboxes-with-precision">Identify and Validate Checkboxes with Precision</h2>
-  <p>Version 6.9.0 introduces a new project type called <strong>Checkbox Detection</strong>. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the <strong>checked</strong> and <strong>unchecked</strong> status in the respective tasks.</p>
+  <p><strong>After:</strong>
+<img src="/assets/images/annotation_lab/6.10.0/2.png" alt="6100image" /></p>
 
-  <p>This project type can be selected from the <strong>Content Type</strong> page under the <strong>Image</strong> tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the <strong>Models Hub</strong> page and added to the project configuration.</p>
+  <p>The improved relation visualization feature, “<strong>Accommodate Relation Overlap</strong>” is now enabled by default, though it can be disabled for instances where overlapping of many relationships makes the text difficult to read. The goal of this feature is to decrease ambiguity in relations.</p>
 
-  <p><img src="/assets/images/annotation_lab/6.9.0/1.png" alt="690image" /></p>
-
-  <p>After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.9.0/2.png" alt="690image" /></p>
-
-  <p>This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.</p>
-
-  <p>This model can not currently be combined with other models.</p>
-
-  <h2 id="detect-and-validate-handwritten-text-and-signatures">Detect and Validate Handwritten Text and Signatures</h2>
-  <p>This update continues with the <strong>Handwritten Text and Signature Detection</strong> project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab’s Visual NLP Library. The new project type can be selected from the <strong>Content Type</strong> page under <strong>Image</strong> tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the <strong>Models Hub</strong> and integrated into the project configuration.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.9.0/3.png" alt="690image" /></p>
-
-  <p>Users can then add relevant tasks to the project and use the model to identify and annotate handwritten content and signatures in documents efficiently.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.9.0/4.png" alt="690image" /></p>
-
-  <p>This feature doesn’t change the existing application workflow, and can not be combined with other models at this time.</p>
+  <p><img src="/assets/images/annotation_lab/6.10.0/3.png" alt="6100image" /></p>
 
   <h2 id="improvements">Improvements</h2>
-  <h3 id="enhanced-label-readability-by-using-high-contrast-default-colors">Enhanced label readability by using high-contrast default colors.</h3>
-  <p>To improve readability and accessibility, randomly assigned colors will now meet a minimum contrast standard by default, ensuring they are easy to read. This new default simplifies the project creation experience.</p>
+  <h3 id="highlighted-model-versioning-option">Highlighted Model Versioning Option</h3>
 
-  <p><img src="/assets/images/annotation_lab/6.9.0/7.png" alt="690image" /></p>
+  <p>The model versioning option is now highlighted in the training page, to avoid confusion and promote the use of this pivotal feature.</p>
 
-  <h3 id="improvements-to-the-updater-script">Improvements to the updater script</h3>
-  <p>First, a retry mechanism has been implemented to pull images during updates and installations. Each image will now be attempted up to three times to ensure successful retrieval.</p>
+  <p><img src="/assets/images/annotation_lab/6.10.0/4.png" alt="6100image" /></p>
 
-  <p>When training or pre-annotation servers are running during an upgrade, a prompt appears:
-“<strong>Do you want to proceed with deleting these pods? (y/N):</strong>”</p>
+  <h3 id="redesigned-analytics-permission-request-page">Redesigned Analytics Permission Request Page</h3>
+  <p>To enhance user experience and clarity, the Analytics Dashboard activation process has been updated with the following improvements:</p>
 
+  <p>When navigating to the <strong>Analytics</strong> page for a project where the dashboard is not enabled, users are presented with:</p>
   <ul>
-    <li>If “<strong>No</strong>” is selected, the upgrade process is exited.</li>
-    <li>If “<strong>Yes</strong>” is selected, the running training/pre-annotation pods are deleted, and the upgrade continues.</li>
-    <li>If no matching training or pre-annotation pods are running, the message “<strong>No preannotator/training pods matching criteria found.</strong>” is displayed, and the upgrade proceeds.</li>
+    <li>Two buttons: “<strong>Go Back</strong>” and “<strong>Send Request</strong>”</li>
+    <li>A clear informational message:
+“<strong>Analytics Dashboard Not Enabled for This Project</strong>
+<code class="language-plaintext highlighter-rouge">Request the Generative AI Lab administrator to enable the Analytics Dashboard for this project.</code>”</li>
   </ul>
 
-  <p>A new “<strong>silent</strong>” flag can now be passed while executing the upgrade script.</p>
+  <p><img src="/assets/images/annotation_lab/6.10.0/5.png" alt="6100image" /></p>
 
-  <p><code class="language-plaintext highlighter-rouge">./annotationlab-updater.sh --silent</code></p>
+  <p>Upon clicking the “<strong>Send Request</strong>” button, the message updates to:</p>
 
-  <p>When “<strong>silent</strong>” flag is used:</p>
-  <ul>
-    <li>It automatically deletes running training/pre-annotation servers without prompting.</li>
-    <li>It uses the default admin password for the upgrade procedure.</li>
-  </ul>
+  <p>“<strong>Analytics Dashboard Request Sent.</strong>
+<code class="language-plaintext highlighter-rouge">Once the request is approved by the admin, the dashboard will be available for use.</code>”.</p>
 
-  <h2 id="bug-fixes">Bug Fixes</h2>
-  <ul>
-    <li><strong>Prediction results are missing in Section Based Classification Projects when exported tasks are re-imported</strong></li>
-  </ul>
+  <p>Also, the “<strong>Send Request</strong>” button becomes disabled, preventing duplicate submissions.</p>
 
-  <p>Previously, in Section-Based Classification projects, prediction results were missing when exported tasks were re-imported back to Generative AI Lab project. This issue has been resolved. Prediction results now remain intact when tasks are re-imported for SBA-enabled projects, ensuring data consistency.</p>
+  <p><img src="/assets/images/annotation_lab/6.10.0/6.png" alt="6100image" /></p>
 
-  <ul>
-    <li><strong>Multiple API calls are made during pre-annotation on the task page</strong></li>
-  </ul>
+  <p>When the “<strong>Go Back</strong>” button is clicked, users are redirected to the previous page allowing them to continue with other tasks while awaiting approval for the Analytics Dashboard or without submitting a request. These updates deliver a clean UI for users to request dashboard access, ensuring clarity and transparency in the activation process.</p>
 
-  <p>The <strong>Task</strong> page now operates efficiently without making multiple API calls or unexpected refreshes.</p>
+  <h3 id="highlight-drafts-on-annotation-page">Highlight Drafts on Annotation page</h3>
+  <p>As part of our continuous efforts to improve the user experience, the Completions section has been updated to ensure consistent capitalization throughout the interface. Additionally, the text color for these messages has been changed to orange to enhance visibility and emphasis.</p>
 
-  <ul>
-    <li><strong>De-identify dialog box is not updated after the server is ready with the de-identification pipeline</strong></li>
-  </ul>
+  <p>Message in the Completion Tab When a Draft Is Saved:</p>
 
-  <p>The De-Identification pop-up now auto-refreshes and appears as expected once the de-identification pipeline is ready for deployment.</p>
+  <p><img src="/assets/images/annotation_lab/6.10.0/7.png" alt="6100image" /></p>
+
+  <p>Message in the Completion Tab When Viewing the Last Saved Annotation:</p>
+
+  <p><img src="/assets/images/annotation_lab/6.10.0/8.png" alt="6100image" /></p>
+
+  <h3 id="bug-fixes">Bug Fixes</h3>
 
   <ul>
-    <li><strong>Rule for section classifier is set to default value when the user navigates back to Relevant Page</strong></li>
+    <li>
+      <p><strong>De-identification not working in Section Based Annotation-enabled project</strong></p>
+
+      <p>Section-based annotation filters tasks by relevant sections. When such tasks are pre-annotated using models and then de-identified, the de-identified text was previously not visible in these sections, as shown in the comparison screenshot below. This issue has now been resolved, and users can view the de-identified text by clicking the <strong>Compare De-identified Data</strong> button and then be exported as needed.</p>
+
+      <p><strong>Before:</strong>
+<img src="/assets/images/annotation_lab/6.10.0/9.png" alt="6100image" /></p>
+
+      <p><strong>After:</strong>
+<img src="/assets/images/annotation_lab/6.10.0/10.png" alt="6100image" />&gt;</p>
+    </li>
+    <li>
+      <p><strong>Model Publishing Fails with Error</strong></p>
+
+      <p>Users can once again publish their models to the models hub.</p>
+    </li>
+    <li>
+      <p><strong>Users attempting External Prompts in Visual NER projects</strong></p>
+
+      <p>Visual NER Projects now have validation to prevent relation prompts and external prompts from being attempted, as this feature is not currently available.</p>
+    </li>
+    <li>
+      <p><strong>Users can combine Visual NER model with Rules during project configuration</strong></p>
+
+      <p>Rules are not supported for Visual NER projects, so a validation error is now displayed when users attempt to add rules alongside a Visual NER model.</p>
+    </li>
+    <li>
+      <p><strong>“Define What to Annotate” tab is hidden if the user tries to add/remove the External Classification Prompt</strong></p>
+
+      <p>The issue has been resolved now and users can no longer add classification prompts to the visual project hence the behaviour will no longer be an issue.</p>
+    </li>
   </ul>
-
-  <p>For SBA-enabled projects, the selected classifier model is now correctly displayed in the dropdown when users return to the page for reconfiguration or confirmation.</p>
-
-  <ul>
-    <li><strong>Training status still showing as ‘Running’ when the user checks the training history after aborting the training</strong></li>
-  </ul>
-
-  <p>The training history now accurately reflects the correct training status with the appropriate status color.</p>
-
-  <ul>
-    <li><strong>When de-identification pipeline is deployed glove_100 is shown as deployed embeddings</strong></li>
-  </ul>
-
-  <p>In earlier versions, the default embedding glove_100 was incorrectly displayed as deployed when the de-identification pipeline was deployed, even if no embeddings were available. This issue has been resolved. The correct embedding is now displayed when an embedding is used. An empty embedding is shown when no embedding is used. This ensures an accurate representation of the deployed embeddings in the pipeline.</p>
-
-  <ul>
-    <li><strong>“Model type not available “ error is seen frequently while navigating to the Train page</strong></li>
-  </ul>
-
-  <p>Previously, users frequently encountered the “<strong>Model type not available</strong>” error when navigating to the <strong>Train</strong> page. This issue has been resolved, and the error no longer appears while accessing the <strong>Train</strong> page from different locations within the project.</p>
-
-  <ul>
-    <li><strong>Backup fails for Azure Blob Storage</strong></li>
-  </ul>
-
-  <p>An issue affecting backups to Azure Blob Storage has been resolved. Backups now function correctly, ensuring reliable data storage and recovery.</p>
-
-  <ul>
-    <li><strong>Labels with instructions cannot be deleted and added from the project configuration</strong></li>
-  </ul>
-
-  <p>We now allow users to seamlessly add labels with instructions or delete labels that contain instructions as needed.</p>
-
-  <ul>
-    <li><strong>Active learning is not triggered for the second trigger</strong></li>
-  </ul>
-
-  <p>Active learning will now wait for the license to be free before triggering training, ensuring a smoother and more reliable process. Additionally, when the active learning condition is met and the system is waiting for the license, this status will be displayed on the training page.</p>
 
   <h2 id="versions">Versions</h2>
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
