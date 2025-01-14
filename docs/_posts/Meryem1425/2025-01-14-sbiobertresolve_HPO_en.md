@@ -36,6 +36,7 @@ This model maps phenotypic abnormalities, medical terms associated with heredita
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
