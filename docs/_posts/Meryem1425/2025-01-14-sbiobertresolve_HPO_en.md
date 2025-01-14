@@ -39,22 +39,44 @@ This model maps phenotypic abnormalities, medical terms associated with heredita
   
 ```python
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "clinical/models") 	  .setInputCols(["sentence", "token", "word_embeddings"]) 	  .setOutputCol("ner")
-ner_converter = NerConverterInternal()	  .setInputCols(["sentence", "token", "ner"])	  .setOutputCol("ner_chunk")  	.setWhiteList(["HP"])
+ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "clinical/models") \
+	  .setInputCols(["sentence", "token", "word_embeddings"]) \
+	  .setOutputCol("ner")\
 
-c2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+ner_converter = NerConverterInternal()\
+	  .setInputCols(["sentence", "token", "ner"])\
+	  .setOutputCol("ner_chunk")\
+  	.setWhiteList(["HP"])
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("sentence_embeddings")    .setCaseSensitive(False)
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO", "en", "clinical/models")     .setInputCols(["sentence_embeddings"])     .setOutputCol("hpo")    .setDistanceFunction("EUCLIDEAN")
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sentence_embeddings")\
+    .setCaseSensitive(False)
+
+resolver = SentenceEntityResolverModel.pretrained("{name}", "en", "clinical/models") \
+    .setInputCols(["sentence_embeddings"]) \
+    .setOutputCol("hpo")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sentenceDetectorDL,
@@ -68,29 +90,51 @@ resolver_pipeline = Pipeline(stages = [document_assembler,
 
 data = spark.createDataFrame([["""She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""]]).toDF("text")
 
-result = pipeline.fit(data).transform(data)
+result = resolver_pipeline.fit(data).transform(data)
 
 ```
 
 {:.jsl-block}
 ```python
 
-document_assembler = nlp.DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentenceDetectorDL = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentenceDetectorDL = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = nlp.Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-ner = medical.NerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "clinical/models")     .setInputCols(["sentence", "token", "word_embeddings"])     .setOutputCol("ner")
-ner_converter = medical.NerConverterInternal()    .setInputCols(["sentence", "token", "ner"])    .setOutputCol("ner_chunk")    .setWhiteList(["HP"])
+ner = medical.NerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "word_embeddings"]) \
+    .setOutputCol("ner")\
 
-c2doc = nlp.Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["HP"])
 
-sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("sentence_embeddings")    .setCaseSensitive(False)
+c2doc = nlp.Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO", "en", "clinical/models")     .setInputCols(["sentence_embeddings"])     .setOutputCol("hpo")    .setDistanceFunction("EUCLIDEAN")
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sentence_embeddings")\
+    .setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained("{name}", "en", "clinical/models") \
+    .setInputCols(["sentence_embeddings"]) \
+    .setOutputCol("hpo")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = nlp.Pipeline().setStages([document_assembler,
                                        sentenceDetectorDL,
@@ -105,7 +149,7 @@ resolver_pipeline = nlp.Pipeline().setStages([document_assembler,
 
 data = spark.createDataFrame([["""She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""]]).toDF("text")
 
-result = pipeline.fit(data).transform(data)
+result = resolver_pipeline.fit(data).transform(data)
 
 ```
 ```scala
@@ -149,7 +193,7 @@ val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO","en"
   .setOutputCol("resolution") 
   .setDistanceFunction("EUCLIDEAN") 
 
-val pipeline = new Pipeline().setStages(Array(
+val resolver_pipeline = new Pipeline().setStages(Array(
   document_assembler, 
   sentenceDetectorDL, 
   tokenizer, 
@@ -162,7 +206,7 @@ val pipeline = new Pipeline().setStages(Array(
 
 val data = Seq([["""She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""]]).toDF("text")
 
-val result = pipeline.fit(data).transform(data)
+val result = resolver_pipeline.fit(data).transform(data)
 
 ```
 </div>
