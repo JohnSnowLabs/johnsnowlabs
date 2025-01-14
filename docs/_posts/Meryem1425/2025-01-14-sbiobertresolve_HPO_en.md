@@ -56,13 +56,13 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "c
     .setOutputCol("word_embeddings")
 
 ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "clinical/models") \
-	  .setInputCols(["sentence", "token", "word_embeddings"]) \
-	  .setOutputCol("ner")\
+    .setInputCols(["sentence", "token", "word_embeddings"]) \
+    .setOutputCol("ner")\
 
 ner_converter = NerConverterInternal()\
-	  .setInputCols(["sentence", "token", "ner"])\
-	  .setOutputCol("ner_chunk")\
-  	.setWhiteList(["HP"])
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["HP"])
 
 c2doc = Chunk2Doc()\
     .setInputCols("ner_chunk")\
