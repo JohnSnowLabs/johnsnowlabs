@@ -213,7 +213,7 @@ In-house annotated case reports.
 ## Benchmarking
 
 ```bash
-                  precision    recall  f1-score   support
+           label  precision    recall  f1-score   support
 
        Biomarker       0.89      0.89      0.89      1676
  Biomarker_Quant       0.69      0.89      0.78       162
@@ -227,7 +227,6 @@ Biomarker_Result       0.85      0.87      0.86       537
       Metastasis       0.98      0.98      0.98       289
     Other_Tumors       0.81      0.84      0.82       439
     Sarcoma_Type       0.94      0.87      0.90       344
-
        micro avg       0.89      0.92      0.90      8794
        macro avg       0.87      0.89      0.88      8794
     weighted avg       0.89      0.92      0.90      8794
