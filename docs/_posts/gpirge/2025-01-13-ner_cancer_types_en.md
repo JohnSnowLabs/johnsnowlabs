@@ -54,6 +54,7 @@ The model also extracts the following items, which provide crucial context for c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -104,6 +105,58 @@ data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 ```
+{:.jsl-block}
+```python
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl", "en")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+clinical_embeddings = nlp.WordEmbeddingsModel.pretrained('embeddings_clinical', "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
+
+ner_model = medical.NerModel.pretrained('ner_cancer_types', "en", "clinical/models")\
+    .setInputCols(["sentence", "token","embeddings"])\
+    .setOutputCol("ner")
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(['sentence', 'token', 'ner'])\
+    .setOutputCol('ner_chunk')
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler, 
+    sentence_detector,
+    tokenizer,
+    clinical_embeddings,
+    ner_model,
+    ner_converter   
+    ])
+
+sample_texts = ["""
+We report a case of CD3 negative, CD20 positive T-cell prolymphocytic leukemia (T-PLL). The leukemic cells were negative for surface CD3, CD2, and CD7 and strongly positive for CD20. 
+
+T-cell lineage markers such as CD4, CD5, and cytoplasmic CD3 were also positive. A monoclonal rearrangement of the T-cell receptor (TCR) β chain gene was detected. 
+
+CD3 negative T-PLL has been reported often, but CD20 positive T-PLL has not. We reviewed seven cases of CD20 positive immature and mature T-cell leukemias, including the present case. 
+
+Three were immature T-cell leukemias (acute lymphoblastic leukemia), and four were mature T-cell leukemias (granular lymphocytic leukemia, small lymphocytic lymphoma/chronic lymphocytic leukemia, 
+adult T-cell leukemia, and the present case). 
+
+"""]
+
+data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+```
+
 ```scala
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
@@ -214,7 +267,6 @@ In-house annotated case reports.
 
 ```bash
            label  precision    recall  f1-score   support
-
        Biomarker       0.89      0.89      0.89      1676
  Biomarker_Quant       0.69      0.89      0.78       162
 Biomarker_Result       0.85      0.87      0.86       537
@@ -227,9 +279,7 @@ Biomarker_Result       0.85      0.87      0.86       537
       Metastasis       0.98      0.98      0.98       289
     Other_Tumors       0.81      0.84      0.82       439
     Sarcoma_Type       0.94      0.87      0.90       344
-       micro avg       0.89      0.92      0.90      8794
-       macro avg       0.87      0.89      0.88      8794
-    weighted avg       0.89      0.92      0.90      8794
-
-
+       micro-avg       0.89      0.92      0.90      8794
+       macro-avg       0.87      0.89      0.88      8794
+    weighted-avg       0.89      0.92      0.90      8794
 ```
