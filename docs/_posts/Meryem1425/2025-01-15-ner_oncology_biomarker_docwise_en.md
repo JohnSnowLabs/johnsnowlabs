@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Extract Biomarkers and their Results
+title: Extract Biomarkers and Their Results (Docwise)
 author: John Snow Labs
 name: ner_oncology_biomarker_docwise
 date: 2025-01-15
-tags: [licensed, en, ner, oncology, biomarker, clinical]
+tags: [licensed, en, ner, oncology, biomarker, clinical, docwise]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.5.1
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model extracts mentions of biomarkers and biomarker results from oncology texts.
+This model extracts mentions of biomarkers and biomarker results from oncology texts. During training, a doc-wise method was used. This method processes a CoNLL-formatted dataset into structured sections designed for enhanced contextual analysis in tasks like Named Entity Recognition.
 
 Definitions of Predicted Entities:
 
