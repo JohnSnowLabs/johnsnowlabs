@@ -73,7 +73,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
     .setOutputCol("sentence_embeddings")\
     .setCaseSensitive(False)
 
-resolver = SentenceEntityResolverModel.pretrained("{name}", "en", "clinical/models") \
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO", "en", "clinical/models") \
     .setInputCols(["sentence_embeddings"]) \
     .setOutputCol("hpo")\
     .setDistanceFunction("EUCLIDEAN")
@@ -131,7 +131,7 @@ sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
     .setOutputCol("sentence_embeddings")\
     .setCaseSensitive(False)
 
-resolver = medical.SentenceEntityResolverModel.pretrained("{name}", "en", "clinical/models") \
+resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO", "en", "clinical/models") \
     .setInputCols(["sentence_embeddings"]) \
     .setOutputCol("hpo")\
     .setDistanceFunction("EUCLIDEAN")
