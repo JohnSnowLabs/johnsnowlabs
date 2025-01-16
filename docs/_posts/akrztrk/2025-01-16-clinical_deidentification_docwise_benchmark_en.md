@@ -37,17 +37,18 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_benchmark", "en", "clinical/models")               
 
-deid_result = deid_pipeline.fullAnnotate("Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+deid_result = deid_pipeline.fullAnnotate("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.")
+Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
 print(''.join([i.result for i in deid_result['mask_entity']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
@@ -59,11 +60,11 @@ print(''.join([i.result for i in deid_result['obfuscated']]))
 
 deid_pipeline = nlp.PretrainedPipeline("clinical_deidentification_docwise_benchmark", "en", "clinical/models")               
 
-deid_result = deid_pipeline.fullAnnotate("Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+deid_result = deid_pipeline.fullAnnotate("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.")
+Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
 print(''.join([i.result for i in deid_result['mask_entity']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
@@ -75,11 +76,11 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_benchmark", "en", "clinical/models")               
 
-val deid_result = deid_pipeline.fullAnnotate("Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+val deid_result = deid_pipeline.fullAnnotate("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.")
+Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
 println(deid_result("mask_entity").map(_("result").toString).mkString(""))
 println(deid_result("obfuscated").map(_("result").toString).mkString(""))
