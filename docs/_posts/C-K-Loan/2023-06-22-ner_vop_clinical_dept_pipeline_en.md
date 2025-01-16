@@ -22,6 +22,8 @@ This pipeline extracts mentions of clinical departments and medical devices from
 
 ## Predicted Entities
 
+`AdmissionDischarge`, `ClinicalDept`, `MedicalDevice`
+
 
 
 {:.btn-box}

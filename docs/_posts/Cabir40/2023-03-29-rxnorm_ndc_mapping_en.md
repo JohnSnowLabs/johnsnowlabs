@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline maps RXNORM codes to NDC codes without using any text data. You’ll just feed white space-delimited RXNORM codes and it will return the corresponding two different types of ndc codes which are called `package ndc` and `product ndc`.
 
+## Predicted Entities
+
+
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

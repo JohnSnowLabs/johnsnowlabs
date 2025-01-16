@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_biomarker_healthca
 
 ## Predicted Entities
 
+`Biomarker`, `Biomarker_Result`
+
 
 
 {:.btn-box}

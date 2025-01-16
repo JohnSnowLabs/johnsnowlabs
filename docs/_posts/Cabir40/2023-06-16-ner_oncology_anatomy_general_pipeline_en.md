@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_anatomy_general](h
 
 ## Predicted Entities
 
+`Anatomical_Site`, `Direction`
+
 
 
 {:.btn-box}

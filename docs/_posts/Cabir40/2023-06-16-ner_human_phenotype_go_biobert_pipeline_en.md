@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_human_phenotype_go_biobert]
 
 ## Predicted Entities
 
+`GO`, `HP`
+
 
 
 {:.btn-box}

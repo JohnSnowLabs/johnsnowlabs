@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_drugprot_clinical](https://
 
 ## Predicted Entities
 
+`CHEMICAL`, `GENE`, `GENE_AND_CHEMICAL`
+
 
 
 {:.btn-box}

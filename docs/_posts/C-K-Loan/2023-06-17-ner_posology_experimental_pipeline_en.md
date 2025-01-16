@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_posology_experimental](http
 
 ## Predicted Entities
 
+`Administration`, `Cyclecount`, `Cycleday`, `Cyclelength`, `Cyclenumber`, `Dosage`, `Drug`, `Duration`, `Form`, `Frequency`, `Route`, `Strength`
+
 
 
 {:.btn-box}

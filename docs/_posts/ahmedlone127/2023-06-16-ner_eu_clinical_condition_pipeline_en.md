@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 ## Predicted Entities
 
+`clinical_condition`
+
 
 
 {:.btn-box}

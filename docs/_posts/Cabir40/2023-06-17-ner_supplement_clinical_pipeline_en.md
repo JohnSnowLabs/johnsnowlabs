@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_supplement_clinical](https:
 
 ## Predicted Entities
 
+`BENEFIT`, `CONDITION`
+
 
 
 {:.btn-box}

@@ -45,3 +45,29 @@ To label entities in an image, you need to create rectangular labels spanning ac
 The **zoom** and **zoomControl** parameters in the `Image` tag enable you too zoom in or out the image.
 
 </div>
+
+### Identify and Validate Checkboxes with Precision
+Version 6.9.0 introduces a new project type called **Checkbox Detection**. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the **checked** and **unchecked** status in the respective tasks.
+
+This project type can be selected from the **Content Type** page under the **Image** tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the **Models Hub** page and added to the project configuration.
+
+![690image](/assets/images/annotation_lab/6.9.0/1.png)
+
+After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.
+
+![690image](/assets/images/annotation_lab/6.9.0/2.png)
+
+This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.
+
+This model can not currently be combined with other models.
+
+### Detect and Validate Handwritten Text and Signatures
+This update continues with the **Handwritten Text and Signature Detection** project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab's Visual NLP Library. The new project type can be selected from the **Content Type** page under **Image** tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and integrated into the project configuration.
+
+![690image](/assets/images/annotation_lab/6.9.0/3.png)
+
+Users can then add relevant tasks to the project and use the model to identify and annotate handwritten content and signatures in documents efficiently.
+
+![690image](/assets/images/annotation_lab/6.9.0/4.png)
+
+This feature doesn't change the existing application workflow, and can not be combined with other models at this time.

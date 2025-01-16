@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained pipeline is built on the top of [ner_oncology_response_to_treatment](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_response_to_treatment_en.html) model.
 
+## Predicted Entities
+
+`Line_Of_Therapy`, `Response_To_Treatment`, `Size_Trend`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>

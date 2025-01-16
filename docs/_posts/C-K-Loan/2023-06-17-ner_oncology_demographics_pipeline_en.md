@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_demographics](http
 
 ## Predicted Entities
 
+`Age`, `Gender`, `Race_Ethnicity`, `Smoking_Status`
+
 
 
 {:.btn-box}

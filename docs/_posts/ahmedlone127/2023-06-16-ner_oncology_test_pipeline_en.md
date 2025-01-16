@@ -22,6 +22,8 @@ This pretrained pipeline is built on the top of [ner_oncology_test](https://nlp.
 
 ## Predicted Entities
 
+`Biomarker`, `Biomarker_Result`, `Imaging_Test`, `Oncogene`, `Pathology_Test`
+
 
 
 {:.btn-box}

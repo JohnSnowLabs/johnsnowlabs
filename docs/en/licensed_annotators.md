@@ -56,6 +56,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="ChunkSentenceSplitter" summary="Annotator can split the documents into chunks according to separators given as `CHUNK` columns. It is useful when you need to perform different models or analysis in different sections of your document"%}
 {% include templates/licensed_table_entry.md  name="ContextualAssertion" summary="This model identifies  contextual cues within text data, such as negation, uncertainty etc.It annotates text chunks with assertions based on configurable rules, prefix and suffix patterns, and exception patterns."%}
 {% include templates/licensed_table_entry.md  name="ContextualEntityFilterer" summary="ContextualEntityFilterer can filter chunks coming from CHUNK annotations based on entity(identifier,field) info in metadata and contextual cues."%}
+{% include templates/licensed_table_entry.md  name="ContextualEntityRuler" summary="ContextualEntityRuler is an annotator that updates chunks based on contextual rules."%}
 {% include templates/licensed_table_entry.md  name="ContextualParser" summary="Extracts entity from a document based on user defined rules."%}
 {% include templates/licensed_table_entry.md  name="ContextSplitAssembler" summary="Converts and assembles `VECTOR_SIMILARITY_RANKINGS` type annotations into `DOCUMENT` type."%}
 {% include templates/licensed_table_entry.md  name="DateNormalizer" summary="This annotator transforms date mentions to a common standard format: YYYY/MM/DD. It is useful when using data from different sources, some times from different countries that has different formats to represent dates."%}
@@ -94,6 +95,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="NerModel" summary="This Named Entity recognition annotator is a generic NER model based on Neural Networks."%}
 {% include templates/licensed_table_entry.md  name="NerQuestionGenerator" summary="This annotator takes an NER chunk (obtained by, e.g., `NerConverterInternal`) and generates a questions based on two entity types, a pronoun and a strategy."%}
 {% include templates/licensed_table_entry.md  name="QuestionAnswering" summary="GPT-based model for answering questions given a context."%}
+{% include templates/licensed_table_entry.md  name="PretrainedZeroShotNER" summary="it makes easy to identify specific entities in text without needing pre-labeled datasets."%}
 {% include templates/licensed_table_entry.md  name="RegexMatcherInternal" summary="`RegexMatcherInternal` matches predefined regex patterns with entities in text, allowing for flexible entity recognition based on user-defined rules."%}
 {% include templates/licensed_table_entry.md  name="ReIdentification" summary="Reidentifies obfuscated entities by DeIdentification."%}
 {% include templates/licensed_table_entry.md  name="RelationExtraction" summary="Extracts and classifies instances of relations between named entities."%}
@@ -105,6 +107,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="ResolverMerger" summary="This annotator is provide the ability to merge sentence enitity resolver and chunk mapper model output columns."%}
 {% include templates/licensed_table_entry.md  name="Router" summary="This annotator is provide the ability to split an output of an annotator for a selected metadata field and the value for that field."%}
 {% include templates/licensed_table_entry.md  name="SentenceEntityResolver" summary="Returns the normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC's EDGAR database,  etc) based on sentence embeddings."%}
+{% include templates/licensed_table_entry.md  name="StructuredJsonConverter" summary="StructuredJsonConverter is a transformer that converts the output of the pipeline into a structured JSON format."%}
 {% include templates/licensed_table_entry.md  name="Summarizer" summary="Helps to quickly summarize complex medical information."%}
 {% include templates/licensed_table_entry.md  name="TextGenerator" summary="Uses the basic BioGPT model to perform various tasks related to medical text abstraction."%}
 {% include templates/licensed_table_entry.md  name="TextMatcherInternal" summary="This annotator match exact phrases provided in a file against a Document."%}

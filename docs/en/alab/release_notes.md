@@ -15,116 +15,112 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Easy Migration to Generative AI Lab - 6.8 
-Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.
+## Generative AI Lab 6.10.0: Faster Preannotation along with De-identification, and Improved Non-Overlapping Relations
+Generative AI Lab 6.10 brings an update that makes marked improvements to the speed of our Pre-annotation function, and De-identification projects. Additionally, we’ve made usability improvements to relation visualizations, allowing for a clearer view of projects. 
 
-This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color. 
+Additional features include the ability to use annotation guidelines in HTML projects, a UI improvement to the analytics request page, and other small improvements. 
 
-</div><div class="h3-box" markdown="1">
+## Enhanced NER Pre-annotation and De-identification
+Version 6.10.0 focused on an upgrade to the Pre-annotation and De-identification processes, combining speed, efficiency, and reliability. Pre-annotation processes have been fine-tuned, dramatically reducing processing time. De-identification workflows now leverage advanced pipelines for faster and more accurate results.
 
-## Migrate your NLP Lab Backup to Generative AI Lab
-Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:
+Redesigning our workflow for these processes allows for an increase in performance of up to **3x**. Our benchmark data showed consistently that for datasets that were routinely being pre-annotated at a rate of 300 tasks per hour, we are now able to pre-annotate at a rate of 1100 tasks per hour. This was a necessary feature to support our customers who rely on this feature for their teams of annotators.
 
-### Steps to Backup Data from NLP Lab
-1. **Login** to your current NLP Lab deployment as the admin user.
-2. Go to the **`System Settings`** page.
-3. Navigate to the **`Backup`** tab.
-4. Enter the required **backup details**.
-5. Schedule an immediate backup using the **`Backup now`** feature.
-6. Monitor the **backup pod status** to ensure the process completes successfully.
-```bash
-kubectl get pods
-```
-**Verify Backup:** Upon completion, your backed-up database and files will be visible in cloud storage.
+Users can seamlessly transition to this version without requiring additional training or adjustments to their workflow.
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+## Improved Non-Overlapping Relations
+In earlier versions, when multiple relations were defined between text chunks positioned close to each other, the arrows and labels representing these relations would often overlap. This overlap created visual clutter, making it difficult for users to accurately distinguish and interpret the relations.
 
-### Steps to Restore Data
+**Before:**
+![6100image](/assets/images/annotation_lab/6.10.0/1.png)
 
-1. **Deploy** a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.
-2. **Login** to the UI as the admin user.
-3. Go to the **`System Settings`** page.
-4. Click on the **`Restore`** tab and fill in the necessary details.
-5. Click on **`Restore Now`** to initiate the process.
-6. Monitor the **restore pod status** to ensure successful completion.
-```bash
-kubectl get pods
-```
+The display logic for relation lines has been refined to prevent overlapping. Relation arrows and labels are now strategically spaced and arranged into tiers based on the number of overlaps for each line, providing a clean and organized visual presentation. This improvement significantly enhances readability and reduces confusion when analyzing complex relationships between text chunks.
 
-**Verify Restoration:** Access the UI, all projects, models, data and files should now be successfully restored.
+**After:**
+![6100image](/assets/images/annotation_lab/6.10.0/2.png)
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+The improved relation visualization feature, "**Accommodate Relation Overlap**" is now enabled by default, though it can be disabled for instances where overlapping of many relationships makes the text difficult to read. The goal of this feature is to decrease ambiguity in relations.
 
-</div><div class="h3-box" markdown="1">
+![6100image](/assets/images/annotation_lab/6.10.0/3.png)
 
 ## Improvements
-### Exclude Labels from De-identification 
-Generative AI Lab 6.8 introduces a  `None**` option in the de-identification selection dropdown. When selected, this option will only label the text without performing any de-identification. This provides users with greater flexibility by allowing them to annotate the text while leaving the original content intact. 
+### Highlighted Model Versioning Option
 
-![680image](/assets/images/annotation_lab/6.8.0/3.png)
+The model versioning option is now highlighted in the training page, to avoid confusion and promote the use of this pivotal feature.
 
-### Mark the labels with annotation guideline
-A new enhancement has been introduced to easily distinguish labels with annotation guidelines. Labels that have associated annotation guidelines are now marked with a colored dot at the top-right corner. This feature applies to both NER and VisualNER projects. If the annotation guidelines are deleted for a label, the dot will be automatically removed.
+![6100image](/assets/images/annotation_lab/6.10.0/4.png)
 
-![680image](/assets/images/annotation_lab/6.8.0/4.png)
+### Redesigned Analytics Permission Request Page
+To enhance user experience and clarity, the Analytics Dashboard activation process has been updated with the following improvements:
 
-### Change the pop-up message when the model downloading is canceled
-The pop-up message that appears when a model download is canceled has been updated for better clarity. Previously, the message displayed the title `Warning: Delete Model?`, which could confuse. It has now been changed to `Warning: Cancel Model Download?` with a more accurate description. This update provides clearer communication to users when they choose to stop a model download in progress, improving the overall user experience.
+When navigating to the **Analytics** page for a project where the dashboard is not enabled, users are presented with:
+- Two buttons: “**Go Back**” and “**Send Request**”
+- A clear informational message:
+"**Analytics Dashboard Not Enabled for This Project**
+`Request the Generative AI Lab administrator to enable the Analytics Dashboard for this project.`"
 
-![680image](/assets/images/annotation_lab/6.8.0/5.png)
+![6100image](/assets/images/annotation_lab/6.10.0/5.png)
 
-### Improvements in XML editor
-The issue of overlapping parent option buttons and top child option buttons when hovered, specifically when the `Show parent action buttons on hover` option was enabled, has been resolved. This fix provides a more polished user experience by ensuring the buttons are properly aligned. Now, the buttons no longer interfere with each other, offering smoother interaction with the interface.
+Upon clicking the “**Send Request**” button, the message updates to:
 
-![680image](/assets/images/annotation_lab/6.8.0/6.png)
+"**Analytics Dashboard Request Sent.**
+`Once the request is approved by the admin, the dashboard will be available for use.`".
 
-Tooltips have been enhanced to display the correct tag name for each section, improving the usability of the XML editor. Previously, the tooltip and the menu name that appeared on hover were identical for each container, making it difficult to distinguish between them. With this update, each container now has a unique tooltip, ensuring that users can easily identify where they clicked. For example, `Edit Tag` has been updated to `Edit Text Tag` to provide clearer context and improve navigation within the editor.
+Also, the “**Send Request**” button becomes disabled, preventing duplicate submissions.
 
-![680image](/assets/images/annotation_lab/6.8.0/7.gif)
+![6100image](/assets/images/annotation_lab/6.10.0/6.png)
 
-A validation error is now triggered when quick filters are incorrectly attached to elements other than labels or ellipse labels.
+When the “**Go Back**” button is clicked, users are redirected to the previous page allowing them to continue with other tasks while awaiting approval for the Analytics Dashboard or without submitting a request. These updates deliver a clean UI for users to request dashboard access, ensuring clarity and transparency in the activation process.
 
-![680image](/assets/images/annotation_lab/6.8.0/8.png)
+### Highlight Drafts on Annotation page 
+As part of our continuous efforts to improve the user experience, the Completions section has been updated to ensure consistent capitalization throughout the interface. Additionally, the text color for these messages has been changed to orange to enhance visibility and emphasis.
 
-The `Maximum rating value` of the `Rating` element now includes validation. A red color warning is displayed when an invalid value is entered. Only positive numbers are allowed, ensuring that users input appropriate values and improving the overall accuracy of ratings.
+Message in the Completion Tab When a Draft Is Saved:
 
-![680image](/assets/images/annotation_lab/6.8.0/9.png)
+![6100image](/assets/images/annotation_lab/6.10.0/7.png)
 
-### Increased readability for test cases view
- 
-Users can now read the test cases better with two-tone text distinguished between test types.
+Message in the Completion Tab When Viewing the Last Saved Annotation:
 
-![680image](/assets/images/annotation_lab/6.8.0/10.png)
+![6100image](/assets/images/annotation_lab/6.10.0/8.png)
 
 ### Bug Fixes
-- **Annotation guidelines now visible in the horizontal layout**
+
+- **De-identification not working in Section Based Annotation-enabled project**
+
+  Section-based annotation filters tasks by relevant sections. When such tasks are pre-annotated using models and then de-identified, the de-identified text was previously not visible in these sections, as shown in the comparison screenshot below. This issue has now been resolved, and users can view the de-identified text by clicking the **Compare De-identified Data** button and then be exported as needed.
   
-Users can now see Annotation guidelines in the horizontal layout.
+  **Before:**
+  ![6100image](/assets/images/annotation_lab/6.10.0/9.png)
 
-![680image](/assets/images/annotation_lab/6.8.0/11.png)
+  **After:**
+  ![6100image](/assets/images/annotation_lab/6.10.0/10.png)>
 
-- **Confidence score of classifier is only shown for the first section in SBA text task**
+- **Model Publishing Fails with Error**
+
+  Users can once again publish their models to the models hub.
   
- The confidence score is now correctly displayed for predictions across all sections, ensuring consistent feedback throughout the entire task.
+- **Users attempting External Prompts in Visual NER projects**
 
-![680image](/assets/images/annotation_lab/6.8.0/12.gif)
+  Visual NER Projects now have validation to prevent relation prompts and external prompts from being attempted, as this feature is not currently available.
 
-- **Toast Message-warning users of Expiring License with each API call**
-  
-    The issue with frequent toast message pop-ups has been largely resolved. However, the message may still reappear when the user refreshes the page or navigates to different sections. While the message is now less intrusive, it is still visible during certain actions such as page reloads or navigation.
+- **Users can combine Visual NER model with Rules during project configuration**
 
-- **File Backup is uploaded to the DB file backup path**
-  
-    Users can now successfully designate different paths for ad-hoc backing up databases and files. The system will correctly store database ad-hoc backups in the specified database path, while file ad-hoc backups will be saved in their intended separate location.
-    
-</div><div class="prev_ver h3-box" markdown="1">
+  Rules are not supported for Visual NER projects, so a validation error is now displayed when users attempt to add rules alongside a Visual NER model.
+
+- **"Define What to Annotate" tab is hidden if the user tries to add/remove the External Classification Prompt**
+
+  The issue has been resolved now and users can no longer add classification prompts to the visual project hence the behaviour will no longer be an issue.
+
 
 ## Versions
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>

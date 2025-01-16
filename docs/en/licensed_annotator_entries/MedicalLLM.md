@@ -224,4 +224,6 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
+
 %}

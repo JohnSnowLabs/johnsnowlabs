@@ -368,6 +368,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="annotator/ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotator/parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.parser</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/rag/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a></li>
@@ -433,6 +434,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="utils/alab_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.alab_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/conll_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.conll_parse</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/database_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.database_deidentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/deidentification_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/imports/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.imports</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/java_helper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.java_helper</span></code></a></li>
@@ -581,7 +583,7 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
     <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Spark NLP Licensed&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.memory&quot;</span><span class="p">,</span> <span class="s2">&quot;32G&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.memory&quot;</span><span class="p">,</span> <span class="s2">&quot;{{available memory}}&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryoserializer.buffer.max&quot;</span><span class="p">,</span> <span class="s2">&quot;2000M&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.maxResultSize&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> \
@@ -603,11 +605,17 @@ document.write(`
 <li><p><strong>params</strong> (<em>dict</em>) – SparkSession params</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>SparkSession with Spark NLP Licensed</p>
+</dl>
+<dl class="simple">
+<dt>Notes :</dt><dd><p>spark.driver.memory is set to the available memory.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SparkSession</p>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SparkSession with Spark NLP Licensed</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>SparkSession</p>
 </dd>
 </dl>
 </dd></dl>

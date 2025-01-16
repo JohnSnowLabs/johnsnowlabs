@@ -67,6 +67,20 @@ It is also possible to train a model by using a sublist of tasks with predefined
 
 Generative AI Lab also includes additional filtering options for the training dataset based on the status of completions, either all submitted completions can be used for training or only the reviewed ones.
 
+### Model Versioning when Training Models
+Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the **TRAINING SETTINGS** section of the **Train** page, a toggle labeled **Enable Versioning** is now available. By default, model versioning is disabled. To enable it, toggle **Enable Versioning** to **on**. 
+
+![690image](/assets/images/annotation_lab/6.9.0/5.png)
+
+When enabled, models are saved with versioned names following the format **projecttype_projectname_v1**, **projecttype_projectname_v2**, and so on. If model deployment is enabled after training is complete, the most recently trained model is automatically applied to the project configuration. If model deployment after training is not enabled, the project configuration remains unchanged. All versions of trained models are accessible on the Reuse Resource page, allowing users to browse and select specific model versions for reuse in other projects.
+
+![690image](/assets/images/annotation_lab/6.9.0/6.png)
+
+Model versioning is also supported for previously created projects. If versioning is disabled, subsequent training overwrites the most recent model without creating a new version. When re-enabled, versioning resumes from the latest version rather than starting over from v1. This feature simplifies model management by enabling version tracking and reusability, offering seamless integration for new and existing projects.
+
+Note: The **Enable Versioning** toggle is disabled during training. 
+
+
 ### Custom Training Script
 
 If users want to change the default Training script present within the Generative AI Lab, they can upload their own training pipeline. In the Train Page, project owners can upload the training scripts. At the moment we are supporting custom training script just for NER projects.

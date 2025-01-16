@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline includes Named-Entity Recognition and Assertion Status models to extract information from oncology texts. This pipeline focuses on entities related to therapies.
 
+## Predicted Entities
+
+`Cancer_Surgery`, `Cancer_Therapy`, `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Dosage`, `Duration`, `Frequency`, `Hormonal_Therapy`, `Immunotherapy`, `Line_Of_Therapy`, `Posology_Information`, `Radiation_Dose`, `Radiotherapy`, `Response_To_Treatment`, `Route`, `Targeted_Therapy`, `Unspecific_Therapy`
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}

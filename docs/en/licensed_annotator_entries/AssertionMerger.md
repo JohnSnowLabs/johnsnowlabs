@@ -43,6 +43,8 @@ Parameters:
 
 - `caseSensitive` *(Bool)*: Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.
 
+- `majorityVoting` *(Bool)*: Whether to use majority voting to resolve conflicts. Default: False.
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

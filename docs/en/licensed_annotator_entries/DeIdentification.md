@@ -118,6 +118,11 @@ If True, the year will remain unchanged during the obfuscation process.
 If False, the year will be modified along with the month and day.
 Default: False.
 
+- `keepMonth` : Whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.
+
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
 {%- endcapture -%}

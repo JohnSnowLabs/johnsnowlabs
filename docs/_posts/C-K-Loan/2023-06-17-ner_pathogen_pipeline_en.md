@@ -28,6 +28,8 @@ This pretrained pipeline is built on the top of [ner_pathogen](https://nlp.johns
 
 ## Predicted Entities
 
+`MedicalCondition`, `Medicine`, `Pathogen`
+
 
 
 {:.btn-box}

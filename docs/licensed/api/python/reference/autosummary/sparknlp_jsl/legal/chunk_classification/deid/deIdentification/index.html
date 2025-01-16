@@ -502,6 +502,14 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 </p></li>
 <li><p><strong>genderAwareness</strong> – Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If value is true, it might decrease performance. Default: False</p></li>
+<li><p><strong>keepYear</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p></li>
+<li><p><strong>keepMonth</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -675,6 +683,11 @@ If value is true, it might decrease performance. Default: False</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.keepMonth">
+<span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.keepYear">
 <span class="sig-name descname"><span class="pre">keepYear</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.keepYear" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -746,12 +759,12 @@ If value is true, it might decrease performance. Default: False</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.optionalInputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'document'</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -826,7 +839,7 @@ If value is true, it might decrease performance. Default: False</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.uid">
-<span class="sig-name descname"><span class="pre">uid</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.uid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.uid" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1331,6 +1344,20 @@ it can increase performance but might decrease accuracy. Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setKeepMonth">
+<span class="sig-name descname"><span class="pre">setKeepMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setKeepMonth" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setKeepYear">
 <span class="sig-name descname"><span class="pre">setKeepYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setKeepYear" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to keep the year intact when obfuscating date entities.
@@ -1790,6 +1817,14 @@ The default value is false.</p></li>
 If value is true, it might decrease performance. Default: False</p></li>
 <li><p><strong>sameLengthFormattedEntities</strong> – List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE</p></li>
+<li><p><strong>keepYear</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p></li>
+<li><p><strong>keepMonth</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1947,6 +1982,11 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.keepMonth">
+<span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.keepYear">
 <span class="sig-name descname"><span class="pre">keepYear</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.keepYear" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2013,12 +2053,12 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.optionalInputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'document'</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2073,7 +2113,7 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.uid">
-<span class="sig-name descname"><span class="pre">uid</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.uid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.uid" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2525,6 +2565,20 @@ it can increase performance but might decrease accuracy. Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setKeepMonth">
+<span class="sig-name descname"><span class="pre">setKeepMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setKeepMonth" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setKeepYear">
 <span class="sig-name descname"><span class="pre">setKeepYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setKeepYear" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to keep the year intact when obfuscating date entities.
@@ -2928,6 +2982,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.inputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentification.isRandomDateDisplacement</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.keepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentification.keepMonth</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.keepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.language"><code class="docutils literal notranslate"><span class="pre">DeIdentification.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.lazyAnnotator</span></code></a></li>
@@ -3006,6 +3061,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setIsRandomDateDisplacement()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setKeepMonth()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setKeepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setLazyAnnotator()</span></code></a></li>
@@ -3058,6 +3114,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.inputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.isRandomDateDisplacement</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.keepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.keepMonth</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.keepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.language"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.lazyAnnotator</span></code></a></li>
@@ -3129,6 +3186,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setIsRandomDateDisplacement()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setKeepMonth()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setKeepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setLazyAnnotator()</span></code></a></li>
