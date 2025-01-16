@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_large) | zeroshot_ner_vop_large | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Detect Genes, Human Phenotypes and Related Entities | ner_genes_phenotypes | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionZero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.While the model card includes default labe...">
-<!-- <link rel="canonical" href="/2024/11/30/zeroshot_ner_vop_large_en.html"> -->
-<link rel="canonical" href="/2024/11/30/zeroshot_ner_vop_large_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis Named Entity Recognition (NER) model is specifically trained to extract critical information related to genetics, their phenotypes and associated information contained within any medical document.The model recognizes the following entities:Clinical_Presentation: All the medical conditions such as the...">
+<!-- <link rel="canonical" href="/2025/01/11/ner_genes_phenotypes_en.html"> -->
+<link rel="canonical" href="/2025/01/11/ner_genes_phenotypes_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,44 +503,58 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-11-30-zeroshot_ner_vop_large_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gpirge/2025-01-11-ner_genes_phenotypes_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 30, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-30T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_large)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_large)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>ner</li><li>vop</li><li>zeroshot</li><li>clinical</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-30T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,ner,vop,zeroshot,clinical"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 11, 2025</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2025-01-11T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Detect Genes, Human Phenotypes and Related Entities</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Detect Genes, Human Phenotypes and Related Entities"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>clinical</li><li>licensed</li><li>ner</li><li>gene</li><li>phenotype</li><li>human_phenotype</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2025-01-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,clinical,licensed,ner,gene,phenotype,human_phenotype"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels.</p>
+<p>This Named Entity Recognition (NER) model is specifically trained to extract critical information related to genetics, their phenotypes and associated information contained within any medical document.</p>
 
-<p><strong>The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.</strong></p>
+<p>The model recognizes the following entities:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Clinical_Presentation</code>: All the medical conditions such as the signs and symptoms.
+<code class="language-plaintext highlighter-rouge">Diagnostic_Test</code>: Medical procedures or tools used to determine the presence, absence, or extent of the genetic disease or condition in an individual.medical procedure or tool used to determine the presence, absence, or extent of the genetic disease or condition in an individual.
+<code class="language-plaintext highlighter-rouge">Gene</code>: Genetic codes and base sequences present such as F508del, or rs1805007 along their normal or pathological variants.
+<code class="language-plaintext highlighter-rouge">Gene_Diversity</code>: Variability of genes within a population.
+<code class="language-plaintext highlighter-rouge">Gene_Function</code>: Function of the normal gene or an Allele.
+<code class="language-plaintext highlighter-rouge">Gene_Interaction</code>: The interplay between different genes and/or between genes and environment that influences the expression of different traits.
+<code class="language-plaintext highlighter-rouge">Gene_Penetrance</code>: Proportion of individuals with a specific genetic mutation or variant who exhibit the associated trait, condition, or disease.
+<code class="language-plaintext highlighter-rouge">Incidence</code>: Number of new cases of a particular disease that occur in a specific population during a defined period.
+<code class="language-plaintext highlighter-rouge">Inheritance_Pattern</code>: The pattern by which a genetic trait or disorder is passed down from one generation to the next.
+<code class="language-plaintext highlighter-rouge">MPG</code>: Names of the genes and molecules, along with the abbreviations, including all the proteins, glycoproteins, polypeptides, or polymers.
+<code class="language-plaintext highlighter-rouge">OMIM</code>: Online Mendelian Inheritance in Man (OMIM® Or MIM) database consist of a list of entries, that catalog human genes and genetic disorders.<br />
+<code class="language-plaintext highlighter-rouge">Other_Disease</code>: Diseases without apparent genetic causes, such as infectious diseases, traumatic disease/injuries, etc.
+<code class="language-plaintext highlighter-rouge">Phenotype_Disease</code>: Specific disease conditions or manifestations of a disease in an individual, influenced by the underlying genetic causes.
+<code class="language-plaintext highlighter-rouge">Prevalence</code>: Population groups associated with the disease.
+<code class="language-plaintext highlighter-rouge">Site</code>: Site of the genetic mutation or abnormality on the Genome.
+<code class="language-plaintext highlighter-rouge">Treatment</code>: Gene-specific medical strategies, interventions, or therapies used to manage, cure or improve the quality of life in individuals with genetic disorders.
+<code class="language-plaintext highlighter-rouge">Type_Of_Mutation</code>: Type of mutation that occurred in the genome.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">AdmissionDischarge</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">BodyPart</code>, <code class="language-plaintext highlighter-rouge">ClinicalDept</code>, <code class="language-plaintext highlighter-rouge">DateTime</code>, <code class="language-plaintext highlighter-rouge">Disease</code>,<br />
-<code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Drug</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Laterality</code>, <code class="language-plaintext highlighter-rouge">MedicalDevice</code>,<br />
-<code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">PsychologicalCondition</code>, <code class="language-plaintext highlighter-rouge">RaceEthnicity</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Test</code>,<br />
-<code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code></p>
+<p><code class="language-plaintext highlighter-rouge">Clinical_Presentation</code>, <code class="language-plaintext highlighter-rouge">Diagnostic_Test</code>, <code class="language-plaintext highlighter-rouge">Gene</code>, <code class="language-plaintext highlighter-rouge">Gene_Diversity</code>, <code class="language-plaintext highlighter-rouge">Gene_Function</code>, <code class="language-plaintext highlighter-rouge">Gene_Interaction</code>, <code class="language-plaintext highlighter-rouge">Gene_Penetrance</code>, <code class="language-plaintext highlighter-rouge">Incidence</code>, <code class="language-plaintext highlighter-rouge">Inheritance_Pattern</code>, <code class="language-plaintext highlighter-rouge">MPG</code>, <code class="language-plaintext highlighter-rouge">OMIM</code>, <code class="language-plaintext highlighter-rouge">Other_Disease</code>, <code class="language-plaintext highlighter-rouge">Phenotype_Disease</code>, <code class="language-plaintext highlighter-rouge">Prevalence</code>, <code class="language-plaintext highlighter-rouge">Site</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Type_Of_Mutation</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_vop_large_en_5.5.1_3.0_1732980381062.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_vop_large_en_5.5.1_3.0_1732980381062.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_genes_phenotypes_en_5.5.1_3.0_1736595330406.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_genes_phenotypes_en_5.5.1_3.0_1736595330406.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
@@ -548,42 +562,61 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'AdmissionDischarge'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'Allergen'</span><span class="p">,</span><span class="s">'BodyPart'</span><span class="p">,</span><span class="s">'ClinicalDept'</span><span class="p">,</span><span class="s">'DateTime'</span><span class="p">,</span><span class="s">'Disease'</span><span class="p">,</span>
-    <span class="s">'Dosage'</span><span class="p">,</span><span class="s">'Drug'</span><span class="p">,</span><span class="s">'Duration'</span><span class="p">,</span><span class="s">'Employment'</span><span class="p">,</span><span class="s">'Form'</span><span class="p">,</span><span class="s">'Frequency'</span><span class="p">,</span><span class="s">'Gender'</span><span class="p">,</span><span class="s">'Laterality'</span><span class="p">,</span><span class="s">'MedicalDevice'</span><span class="p">,</span>
-    <span class="s">'Modifier'</span><span class="p">,</span><span class="s">'Procedure'</span><span class="p">,</span><span class="s">'PsychologicalCondition'</span><span class="p">,</span><span class="s">'RaceEthnicity'</span><span class="p">,</span><span class="s">'Substance'</span><span class="p">,</span><span class="s">'Symptom'</span><span class="p">,</span><span class="s">'Test'</span><span class="p">,</span>
-    <span class="s">'Treatment'</span><span class="p">,</span><span class="s">'Vaccine'</span><span class="p">]</span>
+<span class="n">clinical_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'embeddings_clinical'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_vop_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'ner_genes_phenotypes'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
 <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'sentence'</span><span class="p">,</span> <span class="s">'token'</span><span class="p">,</span> <span class="s">'ner'</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'ner_chunk'</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> 
     <span class="n">sentence_detector</span><span class="p">,</span>
     <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
-    <span class="n">ner_converter</span>
-<span class="p">])</span>
+    <span class="n">clinical_embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span>   
+    <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""
+The G6PD gene provides instructions for glucose-6-phosphate dehydrogenase, crucial for protecting cells from oxidative stress. 
+
+Mutations in the G6PD gene cause G6PD deficiency, an X-linked recessive disorder affecting red blood cells. 
+
+Over 400 variants have been identified, with the G6PD A- variant common in African populations. 
+
+The variant G6PD protein results in reduced enzyme activity. 
+
+Clinical presentations of G6PD deficiency include hemolytic anemia triggered by certain medications, foods (e.g., fava beans), or infections. 
+
+Symptoms during hemolytic episodes include jaundice, fatigue, and dark urine. 
+
+Gene-environment interactions are significant, with G6PD deficiency conferring some protection against malaria. 
+
+Diagnosis involves enzyme activity assays and genetic testing. Management focuses on avoiding triggers and providing supportive care during hemolytic episodes. 
+
+In severe cases, blood transfusions may be necessary. Patient education about trigger avoidance is crucial for preventing complications. 
+
+The global prevalence of G6PD deficiency is estimated at 4.9%, with higher rates in malaria-endemic regions.
+
+"""</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
 
-  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
@@ -591,41 +624,60 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'AdmissionDischarge'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'Allergen'</span><span class="p">,</span><span class="s">'BodyPart'</span><span class="p">,</span><span class="s">'ClinicalDept'</span><span class="p">,</span><span class="s">'DateTime'</span><span class="p">,</span><span class="s">'Disease'</span><span class="p">,</span>
-    <span class="s">'Dosage'</span><span class="p">,</span><span class="s">'Drug'</span><span class="p">,</span><span class="s">'Duration'</span><span class="p">,</span><span class="s">'Employment'</span><span class="p">,</span><span class="s">'Form'</span><span class="p">,</span><span class="s">'Frequency'</span><span class="p">,</span><span class="s">'Gender'</span><span class="p">,</span><span class="s">'Laterality'</span><span class="p">,</span><span class="s">'MedicalDevice'</span><span class="p">,</span>
-    <span class="s">'Modifier'</span><span class="p">,</span><span class="s">'Procedure'</span><span class="p">,</span><span class="s">'PsychologicalCondition'</span><span class="p">,</span><span class="s">'RaceEthnicity'</span><span class="p">,</span><span class="s">'Substance'</span><span class="p">,</span><span class="s">'Symptom'</span><span class="p">,</span><span class="s">'Test'</span><span class="p">,</span>
-    <span class="s">'Treatment'</span><span class="p">,</span><span class="s">'Vaccine'</span><span class="p">]</span>
+<span class="n">clinical_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'embeddings_clinical'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_vop_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'ner_genes_phenotypes'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
 
 <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'sentence'</span><span class="p">,</span> <span class="s">'token'</span><span class="p">,</span> <span class="s">'ner'</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'ner_chunk'</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> 
     <span class="n">sentence_detector</span><span class="p">,</span>
     <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
-    <span class="n">ner_converter</span>
-<span class="p">])</span>
+    <span class="n">clinical_embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span>   
+    <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""
+The G6PD gene provides instructions for glucose-6-phosphate dehydrogenase, crucial for protecting cells from oxidative stress. 
+
+Mutations in the G6PD gene cause G6PD deficiency, an X-linked recessive disorder affecting red blood cells. 
+
+Over 400 variants have been identified, with the G6PD A- variant common in African populations. 
+
+The variant G6PD protein results in reduced enzyme activity. 
+
+Clinical presentations of G6PD deficiency include hemolytic anemia triggered by certain medications, foods (e.g., fava beans), or infections. 
+
+Symptoms during hemolytic episodes include jaundice, fatigue, and dark urine. 
+
+Gene-environment interactions are significant, with G6PD deficiency conferring some protection against malaria. 
+
+Diagnosis involves enzyme activity assays and genetic testing. Management focuses on avoiding triggers and providing supportive care during hemolytic episodes. 
+
+In severe cases, blood transfusions may be necessary. Patient education about trigger avoidance is crucial for preventing complications. 
+
+The global prevalence of G6PD deficiency is estimated at 4.9%, with higher rates in malaria-endemic regions.
+
+"""</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
@@ -633,93 +685,80 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="n">labels</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span>
-    <span class="s">"AdmissionDischarge"</span><span class="o">,</span> <span class="s">"Age"</span><span class="o">,</span> <span class="s">"Allergen"</span><span class="o">,</span> <span class="s">"BodyPart"</span><span class="o">,</span> <span class="s">"ClinicalDept"</span><span class="o">,</span> <span class="s">"DateTime"</span><span class="o">,</span> <span class="s">"Disease"</span><span class="o">,</span>
-    <span class="s">"Dosage"</span><span class="o">,</span> <span class="s">"Drug"</span><span class="o">,</span> <span class="s">"Duration"</span><span class="o">,</span> <span class="s">"Employment"</span><span class="o">,</span> <span class="s">"Form"</span><span class="o">,</span> <span class="s">"Frequency"</span><span class="o">,</span> <span class="s">"Gender"</span><span class="o">,</span> <span class="s">"Laterality"</span><span class="o">,</span> <span class="s">"MedicalDevice"</span><span class="o">,</span>
-    <span class="s">"Modifier"</span><span class="o">,</span> <span class="s">"Procedure"</span><span class="o">,</span> <span class="s">"PsychologicalCondition"</span><span class="o">,</span> <span class="s">"RaceEthnicity"</span><span class="o">,</span> <span class="s">"Substance"</span><span class="o">,</span> <span class="s">"Symptom"</span><span class="o">,</span> <span class="s">"Test"</span><span class="o">,</span>
-    <span class="s">"Treatment"</span><span class="o">,</span> <span class="s">"Vaccine"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pretrained_zero_shot_ner</span> <span class="k">=</span> <span class="nc">PretrainedZeroShotNER</span><span class="o">().</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"zeroshot_ner_vop_large"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">clinical_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_genes_phenotypes"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setPredictionThreshold</span><span class="o">(</span><span class="mf">0.5</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setLabels</span><span class="o">(</span><span class="n">labels</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">document_assembler</span><span class="o">,</span>
-    <span class="n">sentence_detector</span><span class="o">,</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentenceDetector</span><span class="o">,</span>
     <span class="n">tokenizer</span><span class="o">,</span>
-    <span class="n">pretrained_zero_shot_ner</span><span class="o">,</span>
-    <span class="n">ner_converter</span>
+    <span class="n">clinical_embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span>   
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">Hello</span>,<span class="kt">I'm</span> <span class="err">20</span> <span class="kt">year</span> <span class="kt">old</span> <span class="kt">girl.</span> <span class="kt">I'm</span> <span class="kt">diagnosed</span> <span class="kt">with</span> <span class="kt">hyperthyroid</span> <span class="err">1</span> <span class="kt">month</span> <span class="kt">ago.</span> <span class="kt">I</span> <span class="kt">was</span> <span class="kt">feeling</span> <span class="kt">weak</span>, <span class="kt">light</span> <span class="kt">headed</span>,<span class="kt">poor</span> <span class="kt">digestion</span>, <span class="kt">panic</span> <span class="kt">attacks</span>, <span class="kt">depression</span>, <span class="kt">left</span> <span class="kt">chest</span> <span class="kt">pain</span>, <span class="kt">increased</span> <span class="kt">heart</span> <span class="kt">rate</span>, <span class="kt">rapidly</span> <span class="kt">weight</span> <span class="kt">loss</span>,  <span class="kt">from</span> <span class="err">4</span> <span class="kt">months.</span> <span class="kt">Because</span> <span class="kt">of</span> <span class="kt">this</span>, <span class="kt">I</span> <span class="kt">stayed</span> <span class="kt">in</span> <span class="kt">the</span> <span class="kt">hospital</span> <span class="kt">and</span> <span class="kt">just</span> <span class="kt">discharged</span> <span class="kt">from</span> <span class="kt">hospital.</span> <span class="kt">I</span> <span class="kt">had</span> <span class="kt">many</span> <span class="kt">other</span> <span class="kt">blood</span> <span class="kt">tests</span>, <span class="kt">brain</span> <span class="kt">mri</span>, <span class="kt">ultrasound</span> <span class="kt">scan</span>, <span class="kt">endoscopy</span> <span class="kt">because</span> <span class="kt">of</span> <span class="kt">some</span> <span class="kt">dumb</span> <span class="kt">doctors</span> <span class="kt">bcs</span> <span class="kt">they</span> <span class="kt">were</span> <span class="kt">not</span> <span class="kt">able</span> <span class="kt">to</span> <span class="kt">diagnose</span> <span class="kt">actual</span> <span class="kt">problem.</span> <span class="kt">Finally</span> <span class="kt">I</span> <span class="kt">got</span> <span class="kt">an</span> <span class="kt">appointment</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">homeopathy</span> <span class="kt">doctor</span> <span class="kt">finally</span> <span class="kt">he</span> <span class="kt">find</span> <span class="kt">that</span> <span class="kt">i</span> <span class="kt">was</span> <span class="kt">suffering</span> <span class="kt">from</span> <span class="kt">hyperthyroid</span> <span class="kt">and</span> <span class="kt">my</span> <span class="kt">TSH</span> <span class="kt">was</span> <span class="err">0</span><span class="kt">.</span><span class="err">15</span> <span class="kt">T3</span> <span class="kt">and</span> <span class="kt">T4</span> <span class="kt">is</span> <span class="kt">normal</span> <span class="kt">.</span> <span class="kt">Also</span> <span class="kt">i</span> <span class="kt">have</span> <span class="kt">b12</span> <span class="kt">deficiency</span> <span class="kt">and</span> <span class="kt">vitamin</span> <span class="kt">D</span> <span class="kt">deficiency</span> <span class="kt">so</span> <span class="kt">I'm</span> <span class="kt">taking</span> <span class="kt">weekly</span> <span class="kt">supplement</span> <span class="kt">of</span> <span class="kt">vitamin</span> <span class="kt">D</span> <span class="kt">and</span> <span class="err">1000</span> <span class="kt">mcg</span> <span class="kt">b12</span> <span class="kt">daily.</span> <span class="kt">I'm</span> <span class="kt">taking</span> <span class="kt">homeopathy</span> <span class="kt">medicine</span> <span class="kt">for</span> <span class="err">40</span> <span class="kt">days</span> <span class="kt">and</span> <span class="kt">took</span> <span class="err">2</span><span class="kt">nd</span> <span class="kt">test</span> <span class="kt">after</span> <span class="err">30</span> <span class="kt">days.</span> <span class="kt">My</span> <span class="kt">TSH</span> <span class="kt">is</span> <span class="err">0</span><span class="kt">.</span><span class="err">5</span> <span class="kt">now.</span> <span class="kt">I</span> <span class="kt">feel</span> <span class="kt">a</span> <span class="kt">little</span> <span class="kt">bit</span> <span class="kt">relief</span> <span class="kt">from</span> <span class="kt">weakness</span> <span class="kt">and</span> <span class="kt">depression</span> <span class="kt">but</span> <span class="kt">I'm</span> <span class="kt">facing</span> <span class="kt">with</span> <span class="err">2</span> <span class="kt">new</span> <span class="kt">problem</span> <span class="kt">from</span> <span class="kt">last</span> <span class="kt">week</span> <span class="kt">that</span> <span class="kt">is</span> <span class="kt">breathtaking</span> <span class="kt">problem</span> <span class="kt">and</span> <span class="kt">very</span> <span class="kt">rapid</span> <span class="kt">heartrate.</span> <span class="kt">I</span> <span class="kt">just</span> <span class="kt">want</span> <span class="kt">to</span> <span class="kt">know</span> <span class="kt">if</span> <span class="kt">i</span> <span class="kt">should</span> <span class="kt">start</span> <span class="kt">allopathy</span> <span class="kt">medicine</span> <span class="kt">or</span> <span class="kt">homeopathy</span> <span class="kt">is</span> <span class="kt">okay?</span> <span class="kt">Bcs</span> <span class="kt">i</span> <span class="kt">heard</span> <span class="kt">that</span> <span class="kt">thyroid</span> <span class="kt">take</span> <span class="kt">time</span> <span class="kt">to</span> <span class="kt">start</span> <span class="kt">recover.</span> <span class="kt">So</span> <span class="kt">please</span> <span class="kt">let</span> <span class="kt">me</span> <span class="kt">know</span> <span class="kt">if</span> <span class="kt">both</span> <span class="kt">of</span> <span class="kt">medicines</span> <span class="kt">take</span> <span class="kt">same</span> <span class="kt">time.</span> <span class="kt">Because</span> <span class="kt">some</span> <span class="kt">of</span> <span class="kt">my</span> <span class="kt">friends</span> <span class="kt">advising</span> <span class="kt">me</span> <span class="kt">to</span> <span class="kt">start</span> <span class="kt">allopathy</span> <span class="kt">and</span> <span class="kt">never</span> <span class="kt">take</span> <span class="kt">a</span> <span class="kt">chance</span> <span class="kt">as</span> <span class="kt">i</span> <span class="kt">can</span> <span class="kt">develop</span> <span class="kt">some</span> <span class="kt">serious</span> <span class="kt">problems.Sorry</span> <span class="kt">for</span> <span class="kt">my</span> <span class="kt">poor</span> <span class="kt">english😐Thank</span> <span class="kt">you.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sample_texts</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""The G6PD gene provides instructions for glucose-6-phosphate dehydrogenase, crucial for protecting cells from oxidative stress. 
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+Mutations in the G6PD gene cause G6PD deficiency, an X-linked recessive disorder affecting red blood cells. 
 
+Over 400 variants have been identified, with the G6PD A- variant common in African populations. 
+
+The variant G6PD protein results in reduced enzyme activity. 
+
+Clinical presentations of G6PD deficiency include hemolytic anemia triggered by certain medications, foods (e.g., fava beans), or infections. 
+
+Symptoms during hemolytic episodes include jaundice, fatigue, and dark urine. 
+
+Gene-environment interactions are significant, with G6PD deficiency conferring some protection against malaria. 
+
+Diagnosis involves enzyme activity assays and genetic testing. Management focuses on avoiding triggers and providing supportive care during hemolytic episodes. 
+
+In severe cases, blood transfusions may be necessary. Patient education about trigger avoidance is crucial for preventing complications. 
+
+The global prevalence of G6PD deficiency is estimated at 4.9%, with higher rates in malaria-endemic regions.
+"""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+--------------------+-----+----+----------------------+----------+
-|chunk               |begin|end |ner_label             |confidence|
-+--------------------+-----+----+----------------------+----------+
-|20 year old         |11   |21  |Age                   |0.99549705|
-|girl                |23   |26  |Gender                |0.99473166|
-|hyperthyroid        |48   |59  |Disease               |0.72869056|
-|1 month ago         |61   |71  |DateTime              |0.93013126|
-|weak                |88   |91  |Symptom               |0.98246646|
-|light               |94   |98  |Symptom               |0.914502  |
-|digestion           |112  |120 |Symptom               |0.7636672 |
-|panic attacks       |123  |135 |PsychologicalCondition|0.7021233 |
-|depression          |138  |147 |PsychologicalCondition|0.88090825|
-|left                |150  |153 |Laterality            |0.9534648 |
-|chest               |155  |159 |BodyPart              |0.90008795|
-|pain                |161  |164 |Symptom               |0.96790904|
-|heart rate          |177  |186 |Test                  |0.86297375|
-|weight loss         |197  |207 |Symptom               |0.96102   |
-|4 months            |216  |223 |Duration              |0.9639058 |
-|hospital            |259  |266 |ClinicalDept          |0.93731934|
-|discharged          |277  |286 |AdmissionDischarge    |0.9054539 |
-|hospital            |293  |300 |ClinicalDept          |0.93180996|
-|blood tests         |320  |330 |Test                  |0.94237006|
-|brain               |333  |337 |BodyPart              |0.7430142 |
-|mri                 |339  |341 |Test                  |0.93738127|
-|ultrasound scan     |344  |358 |Test                  |0.94679016|
-|endoscopy           |361  |369 |Test                  |0.5370005 |
-|doctors             |392  |398 |Employment            |0.7688288 |
-|homeopathy doctor   |487  |503 |Employment            |0.93872774|
-|he                  |513  |514 |Gender                |0.974668  |
-|hyperthyroid        |547  |558 |Disease               |0.71458954|
-|TSH                 |567  |569 |Test                  |0.9895893 |
-|T3                  |580  |581 |Test                  |0.9048731 |
-|T4                  |587  |588 |Test                  |0.9588674 |
-|b12 deficiency      |614  |627 |Disease               |0.55843806|
-|vitamin D deficiency|633  |652 |Disease               |0.5240673 |
-|weekly              |668  |673 |Frequency             |0.66599834|
-|supplement          |675  |684 |Drug                  |0.5972447 |
-|vitamin D           |689  |697 |Drug                  |0.86098486|
-|1000 mcg            |703  |710 |Dosage                |0.9711681 |
-|b12                 |712  |714 |Drug                  |0.83438593|
-|daily               |716  |720 |Frequency             |0.93205667|
-|homeopathy medicine |734  |752 |Drug                  |0.5354072 |
-|40 days             |758  |764 |Duration              |0.9758632 |
-|after 30 days       |784  |796 |DateTime              |0.8755744 |
-|TSH                 |802  |804 |Test                  |0.98604935|
-|now                 |813  |815 |DateTime              |0.8677737 |
-|weakness            |850  |857 |Symptom               |0.9838275 |
-|depression          |863  |872 |PsychologicalCondition|0.89689744|
-|last week           |913  |921 |DateTime              |0.8067833 |
-|thyroid             |1075 |1081|BodyPart              |0.8369291 |
-+--------------------+-----+----+----------------------+----------+
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------------+-----+----+---------------------+
+|chunk                                 |begin|end |ner_label            |
++--------------------------------------+-----+----+---------------------+
+|G6PD gene                             |5    |13  |MPG                  |
+|glucose-6-phosphate dehydrogenase     |41   |73  |MPG                  |
+|protecting cells from oxidative stress|88   |125 |Gene_Function        |
+|G6PD gene                             |145  |153 |MPG                  |
+|G6PD deficiency                       |161  |175 |Phenotype_Disease    |
+|X-linked recessive                    |181  |198 |Inheritance_Pattern  |
+|G6PD A                                |285  |290 |Phenotype_Disease    |
+|African populations                   |311  |329 |Prevalence           |
+|G6PD protein                          |344  |355 |MPG                  |
+|G6PD deficiency                       |419  |433 |Phenotype_Disease    |
+|hemolytic anemia                      |443  |458 |Other_Disease        |
+|fava beans                            |507  |516 |Gene_Interaction     |
+|infections                            |523  |532 |Other_Disease        |
+|hemolytic episodes                    |551  |568 |Clinical_Presentation|
+|jaundice                              |578  |585 |Clinical_Presentation|
+|fatigue                               |588  |594 |Clinical_Presentation|
+|dark urine                            |601  |610 |Clinical_Presentation|
+|G6PD deficiency                       |665  |679 |Phenotype_Disease    |
+|malaria                               |716  |722 |Other_Disease        |
+|hemolytic episodes                    |865  |882 |Clinical_Presentation|
+|blood transfusions                    |902  |919 |Treatment            |
+|G6PD deficiency                       |1047 |1061|Phenotype_Disease    |
++--------------------------------------+-----+----+---------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -728,7 +767,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>zeroshot_ner_vop_large</td>
+      <td>ner_genes_phenotypes</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -743,50 +782,53 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[sentence, token, embeddings]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[ner]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.6 GB</td>
+      <td>4.9 MB</td>
     </tr>
   </tbody>
 </table>
 
+<h2 id="references">References</h2>
+
+<p>In-house annotated case reports.</p>
+
 <h2 id="benchmarking">Benchmarking</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 label  precision    recall  f1-score   support
-    AdmissionDischarge     0.4507    0.9697    0.6154        33
-                   Age     0.8991    0.9635    0.9302       657
-              Allergen     0.3717    0.9130    0.5283        46
-              BodyPart     0.8916    0.9583    0.9238      2953
-          ClinicalDept     0.7534    0.9424    0.8373       295
-              DateTime     0.8348    0.8969    0.8648      4395
-               Disease     0.8917    0.7993    0.8430      2277
-                Dosage     0.6617    0.8898    0.7590       499
-                  Drug     0.8271    0.9246    0.8732      1340
-              Duration     0.7676    0.8581    0.8103      2255
-            Employment     0.9338    0.9522    0.9429      1214
-                  Form     0.6627    0.9621    0.7848       290
-             Frequency     0.6645    0.9149    0.7698      1093
-                Gender     0.9564    0.9675    0.9619      1293
-            Laterality     0.6961    0.9548    0.8052       619
-         MedicalDevice     0.5978    0.6781    0.6354       320
-              Modifier     0.3887    0.9112    0.5449      1092
-                     O     0.9849    0.9468    0.9655    114576
-             Procedure     0.6593    0.7295    0.6926       573
-PsychologicalCondition     0.8029    0.9236    0.8590       419
-         RaceEthnicity     0.8810    1.0000    0.9367        37
-             Substance     0.8292    0.9618    0.8906       419
-               Symptom     0.7636    0.8518    0.8053      4501
-                  Test     0.8112    0.8481    0.8292      1560
-             Treatment     0.3214    0.6562    0.5315       192
-               Vaccine     0.9444    0.7391    0.8293        46
-              accuracy          -         -    0.9352    142994
-             macro avg     0.7403    0.8890    0.7950    142994
-          weighted avg     0.9471    0.9352    0.9393    142994
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                label  precision    recall  f1-score   support
+Clinical_Presentation       0.78      0.70      0.74       286
+      Diagnostic_Test       1.00      0.59      0.74        34
+                 Gene       0.78      1.00      0.88        42
+       Gene_Diversity       1.00      1.00      1.00        39
+        Gene_Function       0.71      0.93      0.80       183
+     Gene_Interaction       0.86      0.79      0.82        47
+      Gene_Penetrance       0.92      0.92      0.92        64
+            Incidence       0.99      0.92      0.95       193
+  Inheritance_Pattern       1.00      0.99      0.99       157
+                  MPG       0.94      0.91      0.92       667
+                 OMIM       1.00      1.00      1.00        18
+        Other_Disease       0.77      0.87      0.82       406
+    Phenotype_Disease       0.96      0.91      0.93       524
+           Prevalence       0.94      0.92      0.93       103
+                 Site       0.99      0.93      0.96       106
+            Treatment       0.83      0.73      0.77       124
+     Type_Of_Mutation       0.95      0.95      0.95       137
+            micro-avg       0.89      0.88      0.89      3130
+            macro-avg       0.91      0.89      0.89      3130
+         weighted-avg       0.89      0.88      0.89      3130
 </code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-11-30T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-01-11T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -971,7 +1013,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/11/29/clinical_deidentification_v2_wip_en.html">Clinical Deidentification Pipeline (Sentence Wise)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/12/02/zeroshot_ner_ade_clinical_large_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_ade_clinical_large)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2025/01/07/zeroshot_ner_sdoh_large_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_sdoh_large)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2025/01/13/ner_cancer_types_en.html">Detect Cancer Types</a></div></div></div>
 
 </div>
 </div>

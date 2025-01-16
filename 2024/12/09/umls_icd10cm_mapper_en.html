@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_large) | zeroshot_ner_vop_large | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Mapping UMLS Codes with Their Corresponding ICD10CM Codes | umls_icd10cm_mapper | Healthcare NLP 5.5.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionZero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.While the model card includes default labe...">
-<!-- <link rel="canonical" href="/2024/11/30/zeroshot_ner_vop_large_en.html"> -->
-<link rel="canonical" href="/2024/11/30/zeroshot_ner_vop_large_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained model maps UMLS codes to corresponding ICD10CM codes.Important Note: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of...">
+<!-- <link rel="canonical" href="/2024/12/09/umls_icd10cm_mapper_en.html"> -->
+<link rel="canonical" href="/2024/12/09/umls_icd10cm_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,32 +503,29 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-11-30-zeroshot_ner_vop_large_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-12-09-umls_icd10cm_mapper_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 30, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-30T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_large)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_vop_large)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>ner</li><li>vop</li><li>zeroshot</li><li>clinical</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-11-30T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,ner,vop,zeroshot,clinical"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Dec 09, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-12-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Mapping UMLS Codes with Their Corresponding ICD10CM Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping UMLS Codes with Their Corresponding ICD10CM Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>umls</li><li>chunk_mapper</li><li>clinical</li><li>icd10cm</li><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-12-09T00:00:00+00:00">
+    <meta itemprop="keywords" content="umls,chunk_mapper,clinical,icd10cm,en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels.</p>
+<p>This pretrained model maps UMLS codes to corresponding ICD10CM codes.</p>
 
-<p><strong>The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.</strong></p>
+<p><code class="language-plaintext highlighter-rouge">Important Note</code>: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains ‘Mapper’, it is necessary to use the ChunkMapperModel after an EntityResolverModel.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p><code class="language-plaintext highlighter-rouge">AdmissionDischarge</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Allergen</code>, <code class="language-plaintext highlighter-rouge">BodyPart</code>, <code class="language-plaintext highlighter-rouge">ClinicalDept</code>, <code class="language-plaintext highlighter-rouge">DateTime</code>, <code class="language-plaintext highlighter-rouge">Disease</code>,<br />
-<code class="language-plaintext highlighter-rouge">Dosage</code>, <code class="language-plaintext highlighter-rouge">Drug</code>, <code class="language-plaintext highlighter-rouge">Duration</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Form</code>, <code class="language-plaintext highlighter-rouge">Frequency</code>, <code class="language-plaintext highlighter-rouge">Gender</code>, <code class="language-plaintext highlighter-rouge">Laterality</code>, <code class="language-plaintext highlighter-rouge">MedicalDevice</code>,<br />
-<code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">PsychologicalCondition</code>, <code class="language-plaintext highlighter-rouge">RaceEthnicity</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Test</code>,<br />
-<code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Vaccine</code></p>
+<p><code class="language-plaintext highlighter-rouge">icd10cm_code</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_vop_large_en_5.5.1_3.0_1732980381062.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_vop_large_en_5.5.1_3.0_1732980381062.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_icd10cm_mapper_en_5.5.1_3.0_1733775658462.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/umls_icd10cm_mapper_en_5.5.1_3.0_1733775658462.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -537,130 +534,78 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
 
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+<span class="n">chunk_assembler</span> <span class="o">=</span> <span class="n">Doc2Chunk</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'document'</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'ner_chunk'</span><span class="p">)</span>
+ 
+<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"umls_icd10cm_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"icd10cm_code"</span><span class="p">])</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'AdmissionDischarge'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'Allergen'</span><span class="p">,</span><span class="s">'BodyPart'</span><span class="p">,</span><span class="s">'ClinicalDept'</span><span class="p">,</span><span class="s">'DateTime'</span><span class="p">,</span><span class="s">'Disease'</span><span class="p">,</span>
-    <span class="s">'Dosage'</span><span class="p">,</span><span class="s">'Drug'</span><span class="p">,</span><span class="s">'Duration'</span><span class="p">,</span><span class="s">'Employment'</span><span class="p">,</span><span class="s">'Form'</span><span class="p">,</span><span class="s">'Frequency'</span><span class="p">,</span><span class="s">'Gender'</span><span class="p">,</span><span class="s">'Laterality'</span><span class="p">,</span><span class="s">'MedicalDevice'</span><span class="p">,</span>
-    <span class="s">'Modifier'</span><span class="p">,</span><span class="s">'Procedure'</span><span class="p">,</span><span class="s">'PsychologicalCondition'</span><span class="p">,</span><span class="s">'RaceEthnicity'</span><span class="p">,</span><span class="s">'Substance'</span><span class="p">,</span><span class="s">'Symptom'</span><span class="p">,</span><span class="s">'Test'</span><span class="p">,</span>
-    <span class="s">'Treatment'</span><span class="p">,</span><span class="s">'Vaccine'</span><span class="p">]</span>
-
-<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_vop_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
     <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">sentence_detector</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
-    <span class="n">ner_converter</span>
+    <span class="n">chunk_assembler</span><span class="p">,</span>
+    <span class="n">mapperModel</span>
 <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"C0000744"</span><span class="p">],</span> <span class="p">[</span><span class="s">"C2875181"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
 
   <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
 
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+<span class="n">chunk_assembler</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Doc2Chunk</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'document'</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'ner_chunk'</span><span class="p">)</span>
+ 
+<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"umls_icd10cm_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"icd10cm_code"</span><span class="p">])</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'AdmissionDischarge'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'Allergen'</span><span class="p">,</span><span class="s">'BodyPart'</span><span class="p">,</span><span class="s">'ClinicalDept'</span><span class="p">,</span><span class="s">'DateTime'</span><span class="p">,</span><span class="s">'Disease'</span><span class="p">,</span>
-    <span class="s">'Dosage'</span><span class="p">,</span><span class="s">'Drug'</span><span class="p">,</span><span class="s">'Duration'</span><span class="p">,</span><span class="s">'Employment'</span><span class="p">,</span><span class="s">'Form'</span><span class="p">,</span><span class="s">'Frequency'</span><span class="p">,</span><span class="s">'Gender'</span><span class="p">,</span><span class="s">'Laterality'</span><span class="p">,</span><span class="s">'MedicalDevice'</span><span class="p">,</span>
-    <span class="s">'Modifier'</span><span class="p">,</span><span class="s">'Procedure'</span><span class="p">,</span><span class="s">'PsychologicalCondition'</span><span class="p">,</span><span class="s">'RaceEthnicity'</span><span class="p">,</span><span class="s">'Substance'</span><span class="p">,</span><span class="s">'Symptom'</span><span class="p">,</span><span class="s">'Test'</span><span class="p">,</span>
-    <span class="s">'Treatment'</span><span class="p">,</span><span class="s">'Vaccine'</span><span class="p">]</span>
-
-<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_vop_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
     <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">sentence_detector</span><span class="p">,</span>
-    <span class="n">tokenizer</span><span class="p">,</span>
-    <span class="n">pretrained_zero_shot_ner</span><span class="p">,</span>
-    <span class="n">ner_converter</span>
+    <span class="n">chunk_assembler</span><span class="p">,</span>
+    <span class="n">mapperModel</span>
 <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"C0000744"</span><span class="p">],</span> <span class="p">[</span><span class="s">"C2875181"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+      <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">chunk_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
+      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nc">ChunkMapperModel</span>
+      <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"umls_icd10cm_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
+      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
+      <span class="o">.</span><span class="py">setRels</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10cm_code"</span><span class="o">))</span>
 
-<span class="n">labels</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span>
-    <span class="s">"AdmissionDischarge"</span><span class="o">,</span> <span class="s">"Age"</span><span class="o">,</span> <span class="s">"Allergen"</span><span class="o">,</span> <span class="s">"BodyPart"</span><span class="o">,</span> <span class="s">"ClinicalDept"</span><span class="o">,</span> <span class="s">"DateTime"</span><span class="o">,</span> <span class="s">"Disease"</span><span class="o">,</span>
-    <span class="s">"Dosage"</span><span class="o">,</span> <span class="s">"Drug"</span><span class="o">,</span> <span class="s">"Duration"</span><span class="o">,</span> <span class="s">"Employment"</span><span class="o">,</span> <span class="s">"Form"</span><span class="o">,</span> <span class="s">"Frequency"</span><span class="o">,</span> <span class="s">"Gender"</span><span class="o">,</span> <span class="s">"Laterality"</span><span class="o">,</span> <span class="s">"MedicalDevice"</span><span class="o">,</span>
-    <span class="s">"Modifier"</span><span class="o">,</span> <span class="s">"Procedure"</span><span class="o">,</span> <span class="s">"PsychologicalCondition"</span><span class="o">,</span> <span class="s">"RaceEthnicity"</span><span class="o">,</span> <span class="s">"Substance"</span><span class="o">,</span> <span class="s">"Symptom"</span><span class="o">,</span> <span class="s">"Test"</span><span class="o">,</span>
-    <span class="s">"Treatment"</span><span class="o">,</span> <span class="s">"Vaccine"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">mapper_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+                                                  <span class="n">document_assembler</span><span class="o">,</span>
+                                                  <span class="n">chunk_assembler</span><span class="o">,</span>
+                                                  <span class="n">chunkerMapper</span><span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">pretrained_zero_shot_ner</span> <span class="k">=</span> <span class="nc">PretrainedZeroShotNER</span><span class="o">().</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"zeroshot_ner_vop_large"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setPredictionThreshold</span><span class="o">(</span><span class="mf">0.5</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setLabels</span><span class="o">(</span><span class="n">labels</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"C0000744"</span><span class="o">,</span> <span class="s">"C2875181"</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
-
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">document_assembler</span><span class="o">,</span>
-    <span class="n">sentence_detector</span><span class="o">,</span>
-    <span class="n">tokenizer</span><span class="o">,</span>
-    <span class="n">pretrained_zero_shot_ner</span><span class="o">,</span>
-    <span class="n">ner_converter</span>
-<span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">Hello</span>,<span class="kt">I'm</span> <span class="err">20</span> <span class="kt">year</span> <span class="kt">old</span> <span class="kt">girl.</span> <span class="kt">I'm</span> <span class="kt">diagnosed</span> <span class="kt">with</span> <span class="kt">hyperthyroid</span> <span class="err">1</span> <span class="kt">month</span> <span class="kt">ago.</span> <span class="kt">I</span> <span class="kt">was</span> <span class="kt">feeling</span> <span class="kt">weak</span>, <span class="kt">light</span> <span class="kt">headed</span>,<span class="kt">poor</span> <span class="kt">digestion</span>, <span class="kt">panic</span> <span class="kt">attacks</span>, <span class="kt">depression</span>, <span class="kt">left</span> <span class="kt">chest</span> <span class="kt">pain</span>, <span class="kt">increased</span> <span class="kt">heart</span> <span class="kt">rate</span>, <span class="kt">rapidly</span> <span class="kt">weight</span> <span class="kt">loss</span>,  <span class="kt">from</span> <span class="err">4</span> <span class="kt">months.</span> <span class="kt">Because</span> <span class="kt">of</span> <span class="kt">this</span>, <span class="kt">I</span> <span class="kt">stayed</span> <span class="kt">in</span> <span class="kt">the</span> <span class="kt">hospital</span> <span class="kt">and</span> <span class="kt">just</span> <span class="kt">discharged</span> <span class="kt">from</span> <span class="kt">hospital.</span> <span class="kt">I</span> <span class="kt">had</span> <span class="kt">many</span> <span class="kt">other</span> <span class="kt">blood</span> <span class="kt">tests</span>, <span class="kt">brain</span> <span class="kt">mri</span>, <span class="kt">ultrasound</span> <span class="kt">scan</span>, <span class="kt">endoscopy</span> <span class="kt">because</span> <span class="kt">of</span> <span class="kt">some</span> <span class="kt">dumb</span> <span class="kt">doctors</span> <span class="kt">bcs</span> <span class="kt">they</span> <span class="kt">were</span> <span class="kt">not</span> <span class="kt">able</span> <span class="kt">to</span> <span class="kt">diagnose</span> <span class="kt">actual</span> <span class="kt">problem.</span> <span class="kt">Finally</span> <span class="kt">I</span> <span class="kt">got</span> <span class="kt">an</span> <span class="kt">appointment</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">homeopathy</span> <span class="kt">doctor</span> <span class="kt">finally</span> <span class="kt">he</span> <span class="kt">find</span> <span class="kt">that</span> <span class="kt">i</span> <span class="kt">was</span> <span class="kt">suffering</span> <span class="kt">from</span> <span class="kt">hyperthyroid</span> <span class="kt">and</span> <span class="kt">my</span> <span class="kt">TSH</span> <span class="kt">was</span> <span class="err">0</span><span class="kt">.</span><span class="err">15</span> <span class="kt">T3</span> <span class="kt">and</span> <span class="kt">T4</span> <span class="kt">is</span> <span class="kt">normal</span> <span class="kt">.</span> <span class="kt">Also</span> <span class="kt">i</span> <span class="kt">have</span> <span class="kt">b12</span> <span class="kt">deficiency</span> <span class="kt">and</span> <span class="kt">vitamin</span> <span class="kt">D</span> <span class="kt">deficiency</span> <span class="kt">so</span> <span class="kt">I'm</span> <span class="kt">taking</span> <span class="kt">weekly</span> <span class="kt">supplement</span> <span class="kt">of</span> <span class="kt">vitamin</span> <span class="kt">D</span> <span class="kt">and</span> <span class="err">1000</span> <span class="kt">mcg</span> <span class="kt">b12</span> <span class="kt">daily.</span> <span class="kt">I'm</span> <span class="kt">taking</span> <span class="kt">homeopathy</span> <span class="kt">medicine</span> <span class="kt">for</span> <span class="err">40</span> <span class="kt">days</span> <span class="kt">and</span> <span class="kt">took</span> <span class="err">2</span><span class="kt">nd</span> <span class="kt">test</span> <span class="kt">after</span> <span class="err">30</span> <span class="kt">days.</span> <span class="kt">My</span> <span class="kt">TSH</span> <span class="kt">is</span> <span class="err">0</span><span class="kt">.</span><span class="err">5</span> <span class="kt">now.</span> <span class="kt">I</span> <span class="kt">feel</span> <span class="kt">a</span> <span class="kt">little</span> <span class="kt">bit</span> <span class="kt">relief</span> <span class="kt">from</span> <span class="kt">weakness</span> <span class="kt">and</span> <span class="kt">depression</span> <span class="kt">but</span> <span class="kt">I'm</span> <span class="kt">facing</span> <span class="kt">with</span> <span class="err">2</span> <span class="kt">new</span> <span class="kt">problem</span> <span class="kt">from</span> <span class="kt">last</span> <span class="kt">week</span> <span class="kt">that</span> <span class="kt">is</span> <span class="kt">breathtaking</span> <span class="kt">problem</span> <span class="kt">and</span> <span class="kt">very</span> <span class="kt">rapid</span> <span class="kt">heartrate.</span> <span class="kt">I</span> <span class="kt">just</span> <span class="kt">want</span> <span class="kt">to</span> <span class="kt">know</span> <span class="kt">if</span> <span class="kt">i</span> <span class="kt">should</span> <span class="kt">start</span> <span class="kt">allopathy</span> <span class="kt">medicine</span> <span class="kt">or</span> <span class="kt">homeopathy</span> <span class="kt">is</span> <span class="kt">okay?</span> <span class="kt">Bcs</span> <span class="kt">i</span> <span class="kt">heard</span> <span class="kt">that</span> <span class="kt">thyroid</span> <span class="kt">take</span> <span class="kt">time</span> <span class="kt">to</span> <span class="kt">start</span> <span class="kt">recover.</span> <span class="kt">So</span> <span class="kt">please</span> <span class="kt">let</span> <span class="kt">me</span> <span class="kt">know</span> <span class="kt">if</span> <span class="kt">both</span> <span class="kt">of</span> <span class="kt">medicines</span> <span class="kt">take</span> <span class="kt">same</span> <span class="kt">time.</span> <span class="kt">Because</span> <span class="kt">some</span> <span class="kt">of</span> <span class="kt">my</span> <span class="kt">friends</span> <span class="kt">advising</span> <span class="kt">me</span> <span class="kt">to</span> <span class="kt">start</span> <span class="kt">allopathy</span> <span class="kt">and</span> <span class="kt">never</span> <span class="kt">take</span> <span class="kt">a</span> <span class="kt">chance</span> <span class="kt">as</span> <span class="kt">i</span> <span class="kt">can</span> <span class="kt">develop</span> <span class="kt">some</span> <span class="kt">serious</span> <span class="kt">problems.Sorry</span> <span class="kt">for</span> <span class="kt">my</span> <span class="kt">poor</span> <span class="kt">english😐Thank</span> <span class="kt">you.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
@@ -668,57 +613,12 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+--------------------+-----+----+----------------------+----------+
-|chunk               |begin|end |ner_label             |confidence|
-+--------------------+-----+----+----------------------+----------+
-|20 year old         |11   |21  |Age                   |0.99549705|
-|girl                |23   |26  |Gender                |0.99473166|
-|hyperthyroid        |48   |59  |Disease               |0.72869056|
-|1 month ago         |61   |71  |DateTime              |0.93013126|
-|weak                |88   |91  |Symptom               |0.98246646|
-|light               |94   |98  |Symptom               |0.914502  |
-|digestion           |112  |120 |Symptom               |0.7636672 |
-|panic attacks       |123  |135 |PsychologicalCondition|0.7021233 |
-|depression          |138  |147 |PsychologicalCondition|0.88090825|
-|left                |150  |153 |Laterality            |0.9534648 |
-|chest               |155  |159 |BodyPart              |0.90008795|
-|pain                |161  |164 |Symptom               |0.96790904|
-|heart rate          |177  |186 |Test                  |0.86297375|
-|weight loss         |197  |207 |Symptom               |0.96102   |
-|4 months            |216  |223 |Duration              |0.9639058 |
-|hospital            |259  |266 |ClinicalDept          |0.93731934|
-|discharged          |277  |286 |AdmissionDischarge    |0.9054539 |
-|hospital            |293  |300 |ClinicalDept          |0.93180996|
-|blood tests         |320  |330 |Test                  |0.94237006|
-|brain               |333  |337 |BodyPart              |0.7430142 |
-|mri                 |339  |341 |Test                  |0.93738127|
-|ultrasound scan     |344  |358 |Test                  |0.94679016|
-|endoscopy           |361  |369 |Test                  |0.5370005 |
-|doctors             |392  |398 |Employment            |0.7688288 |
-|homeopathy doctor   |487  |503 |Employment            |0.93872774|
-|he                  |513  |514 |Gender                |0.974668  |
-|hyperthyroid        |547  |558 |Disease               |0.71458954|
-|TSH                 |567  |569 |Test                  |0.9895893 |
-|T3                  |580  |581 |Test                  |0.9048731 |
-|T4                  |587  |588 |Test                  |0.9588674 |
-|b12 deficiency      |614  |627 |Disease               |0.55843806|
-|vitamin D deficiency|633  |652 |Disease               |0.5240673 |
-|weekly              |668  |673 |Frequency             |0.66599834|
-|supplement          |675  |684 |Drug                  |0.5972447 |
-|vitamin D           |689  |697 |Drug                  |0.86098486|
-|1000 mcg            |703  |710 |Dosage                |0.9711681 |
-|b12                 |712  |714 |Drug                  |0.83438593|
-|daily               |716  |720 |Frequency             |0.93205667|
-|homeopathy medicine |734  |752 |Drug                  |0.5354072 |
-|40 days             |758  |764 |Duration              |0.9758632 |
-|after 30 days       |784  |796 |DateTime              |0.8755744 |
-|TSH                 |802  |804 |Test                  |0.98604935|
-|now                 |813  |815 |DateTime              |0.8677737 |
-|weakness            |850  |857 |Symptom               |0.9838275 |
-|depression          |863  |872 |PsychologicalCondition|0.89689744|
-|last week           |913  |921 |DateTime              |0.8067833 |
-|thyroid             |1075 |1081|BodyPart              |0.8369291 |
-+--------------------+-----+----+----------------------+----------+
++---------+------------+------------+
+|umls_code|icd10cm_code|    relation|
++---------+------------+------------+
+| C0000744|       E78.6|icd10cm_code|
+| C2875181|      G43.81|icd10cm_code|
++---------+------------+------------+
 
 </code></pre></div></div>
 
@@ -728,7 +628,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>zeroshot_ner_vop_large</td>
+      <td>umls_icd10cm_mapper</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -743,50 +643,28 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[ner_chunk]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[mappings]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>1.6 GB</td>
+      <td>1.5 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="benchmarking">Benchmarking</h2>
+<h2 id="references">References</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 label  precision    recall  f1-score   support
-    AdmissionDischarge     0.4507    0.9697    0.6154        33
-                   Age     0.8991    0.9635    0.9302       657
-              Allergen     0.3717    0.9130    0.5283        46
-              BodyPart     0.8916    0.9583    0.9238      2953
-          ClinicalDept     0.7534    0.9424    0.8373       295
-              DateTime     0.8348    0.8969    0.8648      4395
-               Disease     0.8917    0.7993    0.8430      2277
-                Dosage     0.6617    0.8898    0.7590       499
-                  Drug     0.8271    0.9246    0.8732      1340
-              Duration     0.7676    0.8581    0.8103      2255
-            Employment     0.9338    0.9522    0.9429      1214
-                  Form     0.6627    0.9621    0.7848       290
-             Frequency     0.6645    0.9149    0.7698      1093
-                Gender     0.9564    0.9675    0.9619      1293
-            Laterality     0.6961    0.9548    0.8052       619
-         MedicalDevice     0.5978    0.6781    0.6354       320
-              Modifier     0.3887    0.9112    0.5449      1092
-                     O     0.9849    0.9468    0.9655    114576
-             Procedure     0.6593    0.7295    0.6926       573
-PsychologicalCondition     0.8029    0.9236    0.8590       419
-         RaceEthnicity     0.8810    1.0000    0.9367        37
-             Substance     0.8292    0.9618    0.8906       419
-               Symptom     0.7636    0.8518    0.8053      4501
-                  Test     0.8112    0.8481    0.8292      1560
-             Treatment     0.3214    0.6562    0.5315       192
-               Vaccine     0.9444    0.7391    0.8293        46
-              accuracy          -         -    0.9352    142994
-             macro avg     0.7403    0.8890    0.7950    142994
-          weighted avg     0.9471    0.9352    0.9393    142994
-</code></pre></div></div>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-11-30T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>Trained on concepts from ICD10CM for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-12-09T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -971,7 +849,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/11/29/clinical_deidentification_v2_wip_en.html">Clinical Deidentification Pipeline (Sentence Wise)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/12/02/zeroshot_ner_ade_clinical_large_en.html">Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_ade_clinical_large)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/12/06/umls_clinical_drugs_mapper_en.html">Mapping Entities (Clinical Drugs) with Corresponding UMLS CUI Codes</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/12/10/cpt_umls_mapper_en.html">Mapping CPT Codes with Their Corresponding UMLS Codes</a></div></div></div>
 
 </div>
 </div>
