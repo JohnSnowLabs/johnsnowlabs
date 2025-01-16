@@ -22,6 +22,7 @@ Zero-shot Named Entity Recognition (NER) enables the identification of entities 
 
 **The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.**
 
+
 ## Predicted Entities
 
 `PROBLEM`, `TREATMENT`, `TEST`

@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Clinical Deidentification Pipeline (Document Wise)
+title: Clinical Deidentification Pipeline (clinical_deidentification_zeroshot_medium)
 author: John Snow Labs
-name: clinical_deidentification_docwise_wip
-date: 2024-11-29
-tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise]
+name: clinical_deidentification_zeroshot_medium
+date: 2024-12-04
+tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise, zeroshot]
 task: [De-identification, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.5.0
@@ -25,15 +25,13 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 ## Predicted Entities
 
-`ACCOUNT`, `AGE`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DLN`, `DOCTOR`, `EMAIL`, `EXCLUDED`, `HOSPITAL`, `ID`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `USERNAME`, `VIN`, `ZIP`
-
-
+`NAME`, `DATE`, `IDNUM`, `ZIP`, `SSN`, `ACCOUNT`, `LICENSE`, `AGE`, `PHONE`, `COUNTRY`, `STATE`, `CITY`, `PLATE`, `VIN`, `MEDICALRECORD`, `EMAIL`, `URL`, `LOCATION`, `PROFESSION`, `CONTACT`, `PATIENT`, `HOSPITAL`, `ORGANIZATION`, `STREET`, `DOCTOR`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.4_1732870705943.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_wip_en_5.5.0_3.4_1732870705943.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_zeroshot_medium_en_5.5.0_3.4_1733327877661.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_zeroshot_medium_en_5.5.0_3.4_1733327877661.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -46,7 +44,7 @@ The pipeline can mask and obfuscate `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`,
 
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
+deid_pipeline = PretrainedPipeline("clinical_deidentification_zeroshot_medium", "en", "clinical/models")
 
 text = """Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -65,7 +63,7 @@ print(''.join([i.result for i in deid_result['obfuscated']]))
 
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = nlp.PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
+deid_pipeline = nlp.PretrainedPipeline("clinical_deidentification_zeroshot_medium", "en", "clinical/models")
 
 text = """Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -82,7 +80,7 @@ print(''.join([i.result for i in deid_result['obfuscated']]))
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_wip", "en", "clinical/models")
+val deid_pipeline = PretrainedPipeline("clinical_deidentification_zeroshot_medium", "en", "clinical/models")
 
 val text = """Dr. John Lee, from Royal Medical Clinic in Chicago,  attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -120,29 +118,21 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
 
 {:.table-model}
 |---|---|
-|Model Name:|clinical_deidentification_docwise_wip|
+|Model Name:|clinical_deidentification_zeroshot_medium|
 |Type:|pipeline|
 |Compatibility:|Healthcare NLP 5.5.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|1.8 GB|
+|Size:|712.3 MB|
 
 ## Included Models
 
 - DocumentAssembler
 - InternalDocumentSplitter
 - TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
+- PretrainedZeroShotNER
 - NerConverterInternalModel
-- MedicalNerModel
-- MedicalNerModel
-- MedicalNerModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- ChunkMergeModel
 - ContextualParserModel
 - ContextualParserModel
 - ContextualParserModel
