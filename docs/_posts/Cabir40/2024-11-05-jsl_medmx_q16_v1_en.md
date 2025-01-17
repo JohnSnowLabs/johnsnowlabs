@@ -15,6 +15,12 @@ annotator: MedicalLLM
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby
+  snowflake_link: 
+  databricks_link: 
+
 ---
 
 ## Description
@@ -27,6 +33,13 @@ This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
