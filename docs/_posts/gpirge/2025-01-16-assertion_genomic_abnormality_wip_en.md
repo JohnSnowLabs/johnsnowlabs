@@ -176,7 +176,7 @@ val ner_model = MedicalNerModel.pretrained("ner_genes_phenotypes", "en", "clinic
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
-    .setWhiteList(['Gene', 'MPG'])
+    .setWhiteList(["Gene", "MPG"])
     
 val assertion = AssertionDLModel.pretrained("assertion_genomic_abnormality_wip", "en", "clinical/models")
     .setInputCols(Array("sentence", "ner_chunk", "embeddings"))
@@ -244,7 +244,7 @@ In-house annotated case reports.
     Affected       0.84      0.82      0.83       342
       Normal       0.82      0.86      0.84       315
      Variant       0.88      0.84      0.86        94
-    accuracy                           0.84       751
+    accuracy          -         -      0.84       751
    macro-avg       0.85      0.84      0.84       751
 weighted-avg       0.84      0.84      0.84       751
 ```
