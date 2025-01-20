@@ -533,6 +533,16 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.blackList">
+<span class="sig-name descname"><span class="pre">blackList</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.blackList" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.configProtoBytes">
 <span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.configProtoBytes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -675,6 +685,11 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.verbose">
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.verbose" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.whiteList">
+<span class="sig-name descname"><span class="pre">whiteList</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.whiteList" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -916,6 +931,28 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setBlackList">
+<span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setBlackList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether white listed and black listed entities are case sensitive or not. Default: True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setConfigProtoBytes">
 <span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the ConfigProto from tensorflow, serialized into byte array.</p>
@@ -934,6 +971,17 @@ a default value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setDenyList">
+<span class="sig-name descname"><span class="pre">setDenyList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setDenyList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1183,6 +1231,17 @@ it during training.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Level of verbosity during training.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setWhiteList">
+<span class="sig-name descname"><span class="pre">setWhiteList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setWhiteList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1695,7 +1754,7 @@ RecursivePipeline</p>
 <span class="sig-name descname"><span class="pre">setReplaceLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">replaceLabels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLModel.setReplaceLabels" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the assertion labels to be replaced for the specified new labels.</p>
 <p class="rubric">Notes</p>
-<p><code class="docutils literal notranslate"><span class="pre">replaceLabels</span></code> functionality is processed later than <code class="docutils literal notranslate"><span class="pre">entityAssertion</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">replaceLabels</span></code> functionality is processed later than <code class="docutils literal notranslate"><span class="pre">entityAssertion</span></code> and filtering parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>replaceLabels</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – The assertion labels to be replaced for the specified new labels.</p>
@@ -1790,6 +1849,8 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.blackList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.caseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.configProtoBytes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.doExceptionHandling</span></code></a></li>
@@ -1819,6 +1880,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.uid"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.validationSplit"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.validationSplit</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.verbose"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.verbose</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.whiteList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.whiteList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.clear"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.copy"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.explainParam()</span></code></a></li>
@@ -1843,8 +1905,11 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.save"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.set"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setBlackList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDatasetInfo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setDenyList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDenyList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDropout()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setEnableOutputLogs"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setEnableOutputLogs()</span></code></a></li>
@@ -1867,6 +1932,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setTestDataset"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setTestDataset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setValidationSplit"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setValidationSplit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setVerbose"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setVerbose()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.setWhiteList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setWhiteList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.assertion.assertionDL.AssertionDLApproach.write"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.write()</span></code></a></li>
 </ul>
 </li>

@@ -367,57 +367,70 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>columns</strong> (<em>dict</em>) – <dl>
-<dt>Is a map that allows to select the name of the column with the entity.</dt><dd><p>The key of the map is the column in the dataframe and the value of the map is the entity for that column.</p>
-<p>The default entities are:
-“location” A general location.
-“location-other” A location that is not country, street,hospital,city or state
-“street” A street
-“hospital” The name of a hospital.
-“city” A city
-“state” A state
-“zip” The zip code
-“country” A country
-“contact” The contact of one person
-“username” A username
-“phone” A number phone.
-“fax” The number fax
-“url” A url for internet
-“email” The email of one person
-“profession” A profession of one person
-“name” The name opf one person
-“doctor” The name of a doctor
-“patient” The name of the patient
-“id” A general ID number
-“bioid” Is a system to screen for protein interactions as they occur in living cells
-“age” The age of something or someone
-“organization” Name of one organization o company
-“healthplan” The id that identify the healthplan
-“medicalrecord” The identification of a medical record
-“device” The id that identified a device
-“date” A general date
-“ssn” A Social Security Number
-“ip” A Internet Protocol
-“passport” A random passport
-“dln” A Driver’s License Number
-“npi” A National Provider Identifier
-“c_card” A credit card number
-“iban” A International Bank Account Number
-“dea” A Drug Enforcement Administration</p>
-</dd>
-</dl>
+<li><p><strong>columns</strong> (<em>dict</em>) – <p>It is a dictionary that allows to select the name of the column with the entity.
+The key of the dictionary is the column in the dataframe and the value of the dictionary is the entity for that column.
+The default entities are:</p>
+<blockquote>
+<div><ul>
+<li><p>”location” A general location.</p></li>
+<li><p>”location-other” A location that is not country, street,hospital,city or state</p></li>
+<li><p>”street” A street</p></li>
+<li><p>”hospital” The name of a hospital.</p></li>
+<li><p>”city” A city</p></li>
+<li><p>”state” A state</p></li>
+<li><p>”zip” The zip code</p></li>
+<li><p>”country” A country</p></li>
+<li><p>”contact” The contact of one person</p></li>
+<li><p>”username” A username</p></li>
+<li><p>”phone” A number phone.</p></li>
+<li><p>”fax” The number fax</p></li>
+<li><p>”url” A url for internet</p></li>
+<li><p>”email” The email of one person</p></li>
+<li><p>”profession” A profession of one person</p></li>
+<li><p>”name” The name opf one person</p></li>
+<li><p>”doctor” The name of a doctor</p></li>
+<li><p>”patient” The name of the patient</p></li>
+<li><p>”id” A general ID number</p></li>
+<li><p>”bioid” It is a system to screen for protein interactions as they occur in living cells</p></li>
+<li><p>”age” The age of something or someone</p></li>
+<li><p>”organization” Name of one organization or company</p></li>
+<li><p>”healthplan” The id that identify the health plan</p></li>
+<li><p>”medicalrecord” The identification of a medical record</p></li>
+<li><p>”device” The id that identified a device</p></li>
+<li><p>”date” A general date</p></li>
+<li><p>”ssn” A Social Security Number</p></li>
+<li><p>”ip” A Internet Protocol</p></li>
+<li><p>”passport” A random passport</p></li>
+<li><p>”dln” A Driver’s License Number</p></li>
+<li><p>”npi” A National Provider Identifier</p></li>
+<li><p>”c_card” A credit card number</p></li>
+<li><p>”iban” A International Bank Account Number</p></li>
+<li><p>”dea” A Drug Enforcement Administration</p></li>
+</ul>
+</div></blockquote>
 </p></li>
-<li><p><strong>columnsSeed</strong> (<em>int</em>) – Allow to add a seed to the column that you want to obfuscate.The seed used to randomly select the entities used
+<li><p><strong>columnsSeed</strong> (<em>dict</em>) – Allow to add a seed to the column that you want to obfuscate.The seed used to randomly select the entities used
 during obfuscation mode.</p></li>
-<li><p><strong>obfuscateRefFile</strong> (<em>bool</em>) – This is an optional parameter that allows to add your own terms to be used for obfuscation.
+<li><p><strong>obfuscateRefFile</strong> (<em>str</em>) – This is an optional parameter that allows to add your own terms to be used for obfuscation.
 The file contains as a key the entity and as the value the terms that will be used in the obfuscation.</p></li>
 <li><p><strong>days</strong> (<em>int</em>) – Number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will
 be used</p></li>
-<li><p><strong>useRandomDateDisplacement</strong> (<em>bool</em>) – Use a random displacement days in dates entities.If true use random displacement days in dates entities,if false use the days.</p></li>
-<li><p><strong>dateFormats</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of date formats.example [“dd-MM-yyyy”, “dd/MM/yyyy”, “d/M/yyyy”, “dd-MM-yyyy”, “d-M-yyyy”]</p></li>
-<li><p><strong>language</strong> – The language used to select faker entities.
-The values are the following:
-‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p></li>
+<li><p><strong>useRandomDateDisplacement</strong> (<em>bool</em>) – Use a random displacement days in dates entities. If true, use a random displacement days in dates entities, otherwise use the days parameter.</p></li>
+<li><p><strong>dateFormats</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of date formats. Example: [“dd-MM-yyyy”, “dd/MM/yyyy”, “d/M/yyyy”, “dd-MM-yyyy”, “d-M-yyyy”]</p></li>
+<li><p><strong>language</strong> (<em>str</em>) – <p>The language used to select faker entities.
+The values are the following:</p>
+<blockquote>
+<div><ul>
+<li><p>’en’ (English)</p></li>
+<li><p>’de’ (German)</p></li>
+<li><p>’es’ (Spanish)</p></li>
+<li><p>’fr’ (French)</p></li>
+<li><p>’ar’ (Arabic)</p></li>
+<li><p>’ro’ (Romanian)</p></li>
+</ul>
+</div></blockquote>
+<p>Default:’en’.</p>
+</p></li>
 <li><p><strong>idColumn</strong> (<em>str</em>) – The column that contains the id of the row. If provided, data will obfuscate consistently by idColumn, especially date entities.</p></li>
 </ul>
 </dd>

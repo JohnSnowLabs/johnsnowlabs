@@ -681,6 +681,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fakerLengthOffset">
+<span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fixedMaskLength">
 <span class="sig-name descname"><span class="pre">fixedMaskLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fixedMaskLength" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -703,6 +708,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepMonth">
 <span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">keepTextSizeForObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -887,19 +897,12 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setBlackList" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.
-:param s: List of entities that will be ignored in the regex file. The rest will be processed.
-:type s: list
-:param The default values are “IBAN”:
-:param “ZIP”:
-:param “NPI”:
-:param “DLN”:
-:param “PASSPORT”:
-:param “C_CARD”:
-:param “DEA”:
-:param “SSN”:
-:param “IP”:
-:param “DEA”.:</p>
+The default values are: “IBAN”, “ZIP”, “NPI”, “DLN”, “PASSPORT”, “C_CARD”, “DEA”, “SSN”, “IP”, “DEA”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>list</em>) – List of entities that will be ignored in the regex file. The rest will be processed.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -972,6 +975,18 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFakerLengthOffset">
+<span class="sig-name descname"><span class="pre">setFakerLengthOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Must be greater than 0.
+Default: 3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Integer value to specify length deviation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFixedMaskLength">
 <span class="sig-name descname"><span class="pre">setFixedMaskLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFixedMaskLength" title="Permalink to this definition">#</a></dt>
 <dd><p>Fixed mask length: this is the length of the masking sequence that will be used when the ‘fixed_length_chars’
@@ -1034,6 +1049,20 @@ Default: False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">setKeepTextSizeForObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies whether the output should maintain the same character length as the input text.
+If True, the output text will remain the same if same length is available, else length might vary.
+If False, the output will be completely random.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the text length same obfuscating entities.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1363,11 +1392,13 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.days</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ignoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.ignoreRegex</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.isRandomDateDisplacement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.keepMonth</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.keepTextSizeForObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.keepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.language"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.mappingsColumn"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.mappingsColumn</span></code></a></li>
@@ -1402,11 +1433,13 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDateTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDateToYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setIsRandomDateDisplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setKeepMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setKeepTextSizeForObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setKeepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMappingsColumn"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMappingsColumn()</span></code></a></li>
