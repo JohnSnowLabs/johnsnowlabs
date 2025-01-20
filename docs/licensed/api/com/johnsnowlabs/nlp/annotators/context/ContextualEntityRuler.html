@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler</title>
-          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
-          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
+          <title>Spark NLP 5.5.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler</title>
+          <meta name="description" content="Spark NLP 5.5.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
+          <meta name="keywords" content="Spark NLP 5.5.2 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -622,6 +622,22 @@ in domain-specific text processing.</p><h4>Example</h4><p>Define pipeline stages
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#allowTokensInBetween" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="allowTokensInBetween:org.apache.spark.ml.param.BooleanParam"></a><a id="allowTokensInBetween:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html#allowTokensInBetween:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allowTokensInBetween</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#annotate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="annotate(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="annotate(Seq[Annotation]):Seq[Annotation]"></a>
       <span class="permalink">
@@ -1171,6 +1187,22 @@ content is empty, or keep it unchanged.
       </span>
       <span class="symbol">
         <span class="name">getAllowPunctuationInBetween</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#getAllowTokensInBetween" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getAllowTokensInBetween:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html#getAllowTokensInBetween:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getAllowTokensInBetween</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       
@@ -2131,6 +2163,28 @@ The rules is an array of <a href="ContextualEntityRulerRules.html" class="extype
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#setAllowTokensInBetween" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setAllowTokensInBetween(value:Boolean):ContextualEntityRuler.this.type"></a><a id="setAllowTokensInBetween(Boolean):ContextualEntityRuler.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html#setAllowTokensInBetween(value:Boolean):ContextualEntityRuler.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setAllowTokensInBetween</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler">ContextualEntityRuler</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to allow tokens in between the prefix and suffix patterns.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to allow tokens in between the prefix and suffix patterns. Default false.
+Example:
+  For the phrase &quot;diabetes mellitus with complications&quot;:
+   Original Chunk: &quot;diabetes mellitus&quot;
+   Suffix Pattern: &quot;complications&quot;
+   Updated Chunk: &quot;diabetes mellitus with complications&quot;
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#setCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setCaseSensitive(value:Boolean):ContextualEntityRuler.this.type"></a><a id="setCaseSensitive(Boolean):ContextualEntityRuler.this.type"></a>
       <span class="permalink">
