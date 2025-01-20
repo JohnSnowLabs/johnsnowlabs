@@ -14,11 +14,11 @@ It is particularly useful for refining entity recognition results according to s
 
 Parameters:
 
-- `setCaseSensitive`: Whether to perform case-sensitive matching. Default is False.
-- `setAllowPunctuationInBetween`: Whether to allow punctuation between prefix/suffix patterns and the entity. Default is True.
-- `setDropEmptyChunks`: If True, removes chunks with empty content after applying rules. Default is False.
-- `setCaseSensitive`: If True, it is case sensitive while checking the context. Default is False.
-- `setMergeOverlapping`: If False, it returns both modified entities and the original entities at the same time. Default is True.
+- `caseSensitive`: Whether to perform case-sensitive matching. Default is False.
+- `allowPunctuationInBetween`: Whether to allow punctuation between prefix/suffix patterns and the entity. Default is True.
+- `allowTokensInBetween`: Whether to allow tokens between prefix/suffix patterns and the entity. Default is False.
+- `dropEmptyChunks`: If True, removes chunks with empty content after applying rules. Default is False.
+- `mergeOverlapping`: If False, it returns both modified entities and the original entities at the same time. Default is True.
 - `rules`: The updating rules. Each rule is a dictionary with the following keys:
   - `entity`: The target entity label to modify.  
         Example: `"AGE"`.
@@ -38,9 +38,8 @@ Parameters:
         Example: `["\\b(old|young)\\b"]` matches words like "old" or "young" as suffixes.
   - `replaceEntity`: Optional string specifying the new entity label to replace with the target entity label.  
         Example: `"MODIFIED_AGE"` replaces `"AGE"` with `"MODIFIED_AGE"` in matching cases.
-  - `mode`: Specifies the operational mode for the rules.  
-        Possible values depend on the use case (e.g., `"include"`, `"exclude"`).
-        Default: `"include"` 
+  - `mode`: Specifies the operational mode for the rules. Options: `include`, `exclude`, or `replace_label_only`. Default is `include`.
+
   {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -101,7 +100,6 @@ rules = [   {
                 "replaceEntity" : "Modified_Date",
                 "mode" : "include"
             }
-    
         ]
 
 contextual_entity_ruler = medical.ContextualEntityRuler() \
