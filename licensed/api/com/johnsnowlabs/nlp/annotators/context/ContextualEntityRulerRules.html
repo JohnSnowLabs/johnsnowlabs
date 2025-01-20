@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRulerRules</title>
-          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRulerRules" />
-          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualEntityRulerRules" />
+          <title>Spark NLP 5.5.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRulerRules</title>
+          <meta name="description" content="Spark NLP 5.5.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRulerRules" />
+          <meta name="keywords" content="Spark NLP 5.5.2 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualEntityRulerRules" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -254,8 +254,8 @@
                      Example: <code>[&quot;\\b(years|months)\\b&quot;]</code> matches words like &quot;years&quot; or &quot;months&quot; as prefixes.</p></dd><dt class="param">suffixRegexes</dt><dd class="cmt"><p>Array of regular expressions to search **after the entity**.
                      These regexes define more complex matching patterns for suffixes.
                      Example: <code>[&quot;\\b(old|young)\\b&quot;]</code> matches words like &quot;old&quot; or &quot;young&quot; as suffixes.</p></dd><dt class="param">replaceEntity</dt><dd class="cmt"><p>Optional string specifying the new entity to replace the target entity with.
-                     Example: <code>&quot;AGE_RANGE&quot;</code> replaces <code>&quot;AGE&quot;</code> with <code>&quot;AGE_RANGE&quot;</code> in matching cases.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>Specifies the operational mode for the rules.
-            Possible values depend on the use case (e.g., <code>&quot;filter&quot;</code>, <code>&quot;replace&quot;</code>).</p></dd></dl><div class="toggleContainer block">
+                     Example: <code>&quot;AGE_RANGE&quot;</code> replaces <code>&quot;AGE&quot;</code> with <code>&quot;AGE_RANGE&quot;</code> in matching cases.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>The mode of the rule. Options: <code>include</code>, <code>exclude</code>, or <code>replace_label_only</code>.</p><ul><li><code>include</code>: Include given patterns to chunk.</li><li><code>exclude</code>: Exclude given patterns from chunk.</li><li><code>replace_label_only</code>: Replace the label of the chunk with the given label. Intact the text.
+            Default: <code>include</code>.</li></ul></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -334,8 +334,8 @@
                      Example: <code>[&quot;\\b(years|months)\\b&quot;]</code> matches words like &quot;years&quot; or &quot;months&quot; as prefixes.</p></dd><dt class="param">suffixRegexes</dt><dd class="cmt"><p>Array of regular expressions to search **after the entity**.
                      These regexes define more complex matching patterns for suffixes.
                      Example: <code>[&quot;\\b(old|young)\\b&quot;]</code> matches words like &quot;old&quot; or &quot;young&quot; as suffixes.</p></dd><dt class="param">replaceEntity</dt><dd class="cmt"><p>Optional string specifying the new entity to replace the target entity with.
-                     Example: <code>&quot;AGE_RANGE&quot;</code> replaces <code>&quot;AGE&quot;</code> with <code>&quot;AGE_RANGE&quot;</code> in matching cases.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>Specifies the operational mode for the rules.
-            Possible values depend on the use case (e.g., <code>&quot;filter&quot;</code>, <code>&quot;replace&quot;</code>).</p></dd></dl></div>
+                     Example: <code>&quot;AGE_RANGE&quot;</code> replaces <code>&quot;AGE&quot;</code> with <code>&quot;AGE_RANGE&quot;</code> in matching cases.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>The mode of the rule. Options: <code>include</code>, <code>exclude</code>, or <code>replace_label_only</code>.</p><ul><li><code>include</code>: Include given patterns to chunk.</li><li><code>exclude</code>: Exclude given patterns from chunk.</li><li><code>replace_label_only</code>: Replace the label of the chunk with the given label. Intact the text.
+            Default: <code>include</code>.</li></ul></dd></dl></div>
     </li></ol>
             </div>
 

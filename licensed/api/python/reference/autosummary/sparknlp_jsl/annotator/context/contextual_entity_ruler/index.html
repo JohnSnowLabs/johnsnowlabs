@@ -561,6 +561,7 @@ in domain-specific text processing.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>caseSensitive</strong> (<em>bool</em>) – Whether to perform case-sensitive matching. Default is False.</p></li>
 <li><p><strong>allowPunctuationInBetween</strong> (<em>bool</em>) – Whether to allow punctuation between prefix/suffix patterns and the entity. Default is True.</p></li>
+<li><p><strong>allowTokensInBetween</strong> (<em>bool</em>) – Whether to allow tokens between prefix/suffix patterns and the entity. Default is False.</p></li>
 <li><p><strong>dropEmptyChunks</strong> (<em>bool</em>) – If True, removes chunks with empty content after applying rules. Default is False.</p></li>
 <li><p><strong>rules</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – The contextual rules as a list of dictionaries. Each rule includes:
 - <cite>entity</cite> (str): The target entity to match.
@@ -571,14 +572,14 @@ in domain-specific text processing.</p>
 - <cite>prefixRegexes</cite> (list[str]): Regular expressions to match before the entity.
 - <cite>suffixRegexes</cite> (list[str]): Regular expressions to match after the entity.
 - <cite>replaceEntity</cite> (str): Replacement value for the matched entity.
-- <cite>mode</cite> (str): The mode of the rule. Options: <cite>“include”</cite>, <cite>“exclude”</cite>.</p></li>
+- <cite>mode</cite> (str): The mode of the rule. Options: <cite>“include”</cite>, <cite>“exclude”</cite>, or <cite>“replace_label_only”</cite>. Default is <cite>“include”</cite>.</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="n">DocumentAssembler</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">ContextualEntityRuler</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="n">SentenceDetector</span><span class="p">,</span> <span class="n">Tokenizer</span><span class="p">,</span> <span class="n">WordEmbeddingsModel</span><span class="p">,</span> <span class="n">MedicalNerModel</span><span class="p">,</span> <span class="n">NerConverterInternal</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 </pre></div>
 </div>
@@ -657,6 +658,11 @@ in domain-specific text processing.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.allowPunctuationInBetween">
 <span class="sig-name descname"><span class="pre">allowPunctuationInBetween</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.allowPunctuationInBetween" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.allowTokensInBetween">
+<span class="sig-name descname"><span class="pre">allowTokensInBetween</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.allowTokensInBetween" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -905,6 +911,26 @@ If <cite>False</cite>, punctuation will prevent a match.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setAllowTokensInBetween">
+<span class="sig-name descname"><span class="pre">setAllowTokensInBetween</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setAllowTokensInBetween" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether tokens are allowed between prefix/suffix patterns and the entity.</p>
+<p>If <cite>True</cite>, tokens can exist between patterns and entities without breaking the match.
+If <cite>False</cite>, tokens will prevent a match.</p>
+<p class="rubric">Example</p>
+<dl class="simple">
+<dt>For the phrase “diabetes mellitus with complications”:</dt><dd><p>Original Chunk: “diabetes mellitus”
+Suffix Pattern: “complications”
+Updated Chunk: “diabetes mellitus with complications”</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to allow tokens between matched patterns and entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setCaseSensitive">
 <span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setCaseSensitive" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the caseSensitive parameter to use case sensitive when matching words.</p>
@@ -1014,7 +1040,7 @@ The rules parameter is a list of dictionaries.
 A dictionary should contain the following keys:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><cite>entity</cite>: The target entity field for update.</p></li>
+<li><p><cite>entity</cite>: The target entity field for update. Required.</p></li>
 <li><p><cite>scopeWindow</cite>: A list of two integers [before, after], specifying how many tokens/chars before and after the target to consider.</p></li>
 <li><p><cite>scopeWindowLevel</cite>: Determines whether the <cite>scopeWindow</cite> is applied at the token or chunk level. Options: <cite>token</cite>, <cite>char</cite>.</p></li>
 <li><p><cite>prefixPatterns</cite>: A list of prefix patterns to add the target chunk.</p></li>
@@ -1022,7 +1048,7 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>prefixRegexes</cite>: A list of prefix regexes to add the target chunk.</p></li>
 <li><p><cite>suffixRegexes</cite>: A list of suffix regexes to add the target chunk.</p></li>
 <li><p><cite>replaceEntity</cite>: The entity to replace the target entity.</p></li>
-<li><p><cite>mode</cite>: The mode of the rule. Options: <cite>include</cite>, <cite>exclude</cite>.</p></li>
+<li><p><cite>mode</cite>: The mode of the rule. Options: <cite>include</cite>, <cite>exclude</cite>, or <cite>replace_label_only</cite>. Default is <cite>include</cite>.</p></li>
 </ul>
 </div></blockquote>
 <section id="notes">
@@ -1042,7 +1068,8 @@ A dictionary should contain the following keys:</p>
 <span class="go"> ...         &quot;scopeWindowLevel&quot;: &quot;token&quot;,</span>
 <span class="go"> ...         &quot;prefixPatterns&quot;: [&quot;is&quot;],</span>
 <span class="go"> ...         &quot;suffixPatterns&quot;: [&quot;years&quot;],</span>
-<span class="go"> ...         &quot;replaceEntity&quot;: &quot;REPLACED_AGE&quot;</span>
+<span class="go"> ...         &quot;replaceEntity&quot;: &quot;REPLACED_AGE&quot;,</span>
+<span class="go"> ...         &quot;mode&quot;: &quot;include&quot;</span>
 <span class="go"> ...     }</span>
 <span class="go"> ... ]</span>
 </pre></div>
@@ -1074,41 +1101,18 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>prefixRegexes</cite>: A list of prefix regexes to add the target chunk.</p></li>
 <li><p><cite>suffixRegexes</cite>: A list of suffix regexes to add the target chunk.</p></li>
 <li><p><cite>replaceEntity</cite>: The entity to replace the target entity.</p></li>
+<li><p><cite>mode</cite>: The mode of the rule. Options: <cite>include</cite>, <cite>exclude</cite>, or <cite>replace_label_only</cite>. Default is <cite>include</cite>.</p></li>
 </ul>
 </div></blockquote>
 <section id="id1">
 <h4>Notes:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p><cite>entity</cite>, <cite>scopeWindow</cite>, and <cite>scopeWindowLevel</cite> are required. Other keys are optional.</p></li>
 <li><p><cite>scopeWindowLevel</cite> defines whether the window is applied at the token or char level.</p></li>
-<li><dl class="simple">
-<dt><cite>scopeWindow</cite> is defined as [before, after], representing how many chars or tokens to check around the target entity.</dt><dd><p>Scope can be calculated looking at tokens or chars. Decision of char or token can be defined by scopeWindowLevel.</p>
-</dd>
-</dl>
-</li>
+<li><p><cite>scopeWindow</cite> is defined as [before, after], representing how many chars or tokens to check around the target entity.</p></li>
 </ul>
-<blockquote>
-<div><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">contextual_entity_filterer</span> <span class="o">=</span> <span class="n">ContextualEntityFilterer</span><span class="p">()</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">setRules</span><span class="p">(</span> \
-<span class="gp">... </span>        <span class="p">[{</span> \
-<span class="gp">... </span>            <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> \
-<span class="gp">... </span>            <span class="s2">&quot;scopeWindow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> \
-<span class="gp">... </span>            <span class="s2">&quot;whiteListEntities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;DATE&quot;</span><span class="p">],</span> \
-<span class="gp">... </span>            <span class="s2">&quot;blackListEntities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">],</span> \
-<span class="gp">... </span>            <span class="s2">&quot;scopeWindowLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> \
-<span class="gp">... </span>            <span class="s2">&quot;blackListWords&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;known&quot;</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">],</span> \
-<span class="gp">... </span>        <span class="p">},</span> \
-<span class="gp">... </span>        <span class="p">{</span> \
-<span class="gp">... </span>            <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span><span class="p">,</span> \
-<span class="gp">... </span>            <span class="s2">&quot;scopeWindow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> \
-<span class="gp">... </span>            <span class="s2">&quot;whiteListEntities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;DATE&quot;</span><span class="p">],</span> \
-<span class="gp">... </span>            <span class="s2">&quot;blackListEntities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">],</span> \
-<span class="gp">... </span>            <span class="s2">&quot;scopeWindowLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;chunk&quot;</span><span class="p">,</span> \
-<span class="gp">... </span>            <span class="s2">&quot;confidenceThreshold&quot;</span><span class="p">:</span> <span class="mf">0.5</span> \
-<span class="gp">... </span>        <span class="p">}]</span> \
-<span class="gp">... </span>    <span class="p">)</span>
-</pre></div>
-</div>
+<p>Scope can be calculated looking at tokens or chars. Decision of char or token can be defined by scopeWindowLevel.</p>
 </div></blockquote>
 </section>
 </dd></dl>
@@ -1178,6 +1182,7 @@ A dictionary should contain the following keys:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.allowPunctuationInBetween"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.allowPunctuationInBetween</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.allowTokensInBetween"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.allowTokensInBetween</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.dropEmptyChunks"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.dropEmptyChunks</span></code></a></li>
@@ -1213,6 +1218,7 @@ A dictionary should contain the following keys:</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.save"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.set"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setAllowPunctuationInBetween"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.setAllowPunctuationInBetween()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setAllowTokensInBetween"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.setAllowTokensInBetween()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_entity_ruler.ContextualEntityRuler.setDropEmptyEntities"><code class="docutils literal notranslate"><span class="pre">ContextualEntityRuler.setDropEmptyEntities()</span></code></a></li>
