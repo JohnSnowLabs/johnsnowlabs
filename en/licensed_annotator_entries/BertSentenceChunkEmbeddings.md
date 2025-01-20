@@ -21,7 +21,11 @@ Parameters:
 
 - `caseSensitive`: Determines whether the definitions of the white listed entities are case sensitive.
 
-All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
+- `strategy`: Strategy for computing embeddings. Supported strategies are: `sentence_average`, `scope_average`, `chunk_only`, `scope_only`. The default is `sentence_average`.
+
+- `scopeWindow`: cope window to calculate scope embeddings. The scope window is defined by two non-negative integers. The default is [0, 0], which means only the chunk embeddings are used. The first integer defines the number of tokens before the chunk and the second integer defines the number of tokens after the chunk.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputCols()`.
 
 > For more information and examples of `BertSentenceChunkEmbeddings` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb).
 

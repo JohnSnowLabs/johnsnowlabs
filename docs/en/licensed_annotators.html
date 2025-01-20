@@ -2289,6 +2289,15 @@ Possible values include <code class="language-plaintext highlighter-rouge">“pr
       <li>
         <p><code class="language-plaintext highlighter-rouge">datasetInfo</code> <em>(Str)</em>: Descriptive information about the dataset being used.</p>
       </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">blackList</code> <em>(list[str])</em>: If defined, list of entities to ignore. The rest will be processed.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">whiteList</code> <em>(list[str])</em>:  If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">caseSensitive</code> <em>(Bool)</em>: Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.</p>
+      </li>
     </ul>
 
     <p>For pretrained models please see the
@@ -4981,9 +4990,15 @@ It was determined that all SGLT2 inhibitors should be discontinued indefinitely 
       <li>
         <p><code class="language-plaintext highlighter-rouge">caseSensitive</code>: Determines whether the definitions of the white listed entities are case sensitive.</p>
       </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">strategy</code>: Strategy for computing embeddings. Supported strategies are: <code class="language-plaintext highlighter-rouge">sentence_average</code>, <code class="language-plaintext highlighter-rouge">scope_average</code>, <code class="language-plaintext highlighter-rouge">chunk_only</code>, <code class="language-plaintext highlighter-rouge">scope_only</code>. The default is <code class="language-plaintext highlighter-rouge">sentence_average</code>.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">scopeWindow</code>: cope window to calculate scope embeddings. The scope window is defined by two non-negative integers. The default is [0, 0], which means only the chunk embeddings are used. The first integer defines the number of tokens before the chunk and the second integer defines the number of tokens after the chunk.</p>
+      </li>
     </ul>
 
-    <p>All the parameters can be set using the corresponding set method in camel case. For example, <code class="language-plaintext highlighter-rouge">.setInputcols()</code>.</p>
+    <p>All the parameters can be set using the corresponding set method in camel case. For example, <code class="language-plaintext highlighter-rouge">.setInputCols()</code>.</p>
 
     <blockquote>
       <p>For more information and examples of <code class="language-plaintext highlighter-rouge">BertSentenceChunkEmbeddings</code> annotator, you can check the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop">Spark NLP Workshop</a>, and in special, the notebook <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb">24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb</a>.</p>
@@ -10128,6 +10143,8 @@ The filter can be applied to the scope of the sentence or the document.</p>
           <li><code class="language-plaintext highlighter-rouge">blackListWords</code>: The black list of words. If a word from this list appears within the scope window, the chunk will be filtered out.</li>
           <li><code class="language-plaintext highlighter-rouge">whiteListWords</code>: The white list of words. If a word from this list appears within the scope window, the chunk will be kept.</li>
           <li><code class="language-plaintext highlighter-rouge">confidenceThreshold</code>: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</li>
+          <li><code class="language-plaintext highlighter-rouge">possibleRegexContext</code> : The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.</li>
+          <li><code class="language-plaintext highlighter-rouge">impossibleRegexContext</code> : The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.</li>
         </ul>
       </li>
     </ul>
@@ -10339,11 +10356,11 @@ It is particularly useful for refining entity recognition results according to s
     <p>Parameters:</p>
 
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">setCaseSensitive</code>: Whether to perform case-sensitive matching. Default is False.</li>
-      <li><code class="language-plaintext highlighter-rouge">setAllowPunctuationInBetween</code>: Whether to allow punctuation between prefix/suffix patterns and the entity. Default is True.</li>
-      <li><code class="language-plaintext highlighter-rouge">setDropEmptyChunks</code>: If True, removes chunks with empty content after applying rules. Default is False.</li>
-      <li><code class="language-plaintext highlighter-rouge">setCaseSensitive</code>: If True, it is case sensitive while checking the context. Default is False.</li>
-      <li><code class="language-plaintext highlighter-rouge">setMergeOverlapping</code>: If False, it returns both modified entities and the original entities at the same time. Default is True.</li>
+      <li><code class="language-plaintext highlighter-rouge">caseSensitive</code>: Whether to perform case-sensitive matching. Default is False.</li>
+      <li><code class="language-plaintext highlighter-rouge">allowPunctuationInBetween</code>: Whether to allow punctuation between prefix/suffix patterns and the entity. Default is True.</li>
+      <li><code class="language-plaintext highlighter-rouge">allowTokensInBetween</code>: Whether to allow tokens between prefix/suffix patterns and the entity. Default is False.</li>
+      <li><code class="language-plaintext highlighter-rouge">dropEmptyChunks</code>: If True, removes chunks with empty content after applying rules. Default is False.</li>
+      <li><code class="language-plaintext highlighter-rouge">mergeOverlapping</code>: If False, it returns both modified entities and the original entities at the same time. Default is True.</li>
       <li><code class="language-plaintext highlighter-rouge">rules</code>: The updating rules. Each rule is a dictionary with the following keys:
         <ul>
           <li><code class="language-plaintext highlighter-rouge">entity</code>: The target entity label to modify.<br />
@@ -10364,9 +10381,7 @@ It is particularly useful for refining entity recognition results according to s
     Example: <code class="language-plaintext highlighter-rouge">["\\b(old|young)\\b"]</code> matches words like “old” or “young” as suffixes.</li>
           <li><code class="language-plaintext highlighter-rouge">replaceEntity</code>: Optional string specifying the new entity label to replace with the target entity label.<br />
     Example: <code class="language-plaintext highlighter-rouge">"MODIFIED_AGE"</code> replaces <code class="language-plaintext highlighter-rouge">"AGE"</code> with <code class="language-plaintext highlighter-rouge">"MODIFIED_AGE"</code> in matching cases.</li>
-          <li><code class="language-plaintext highlighter-rouge">mode</code>: Specifies the operational mode for the rules.<br />
-    Possible values depend on the use case (e.g., <code class="language-plaintext highlighter-rouge">"include"</code>, <code class="language-plaintext highlighter-rouge">"exclude"</code>).
-    Default: <code class="language-plaintext highlighter-rouge">"include"</code></li>
+          <li><code class="language-plaintext highlighter-rouge">mode</code>: Specifies the operational mode for the rules. Options: <code class="language-plaintext highlighter-rouge">include</code>, <code class="language-plaintext highlighter-rouge">exclude</code>, or <code class="language-plaintext highlighter-rouge">replace_label_only</code>. Default is <code class="language-plaintext highlighter-rouge">include</code>.</li>
         </ul>
       </li>
     </ul>
@@ -10444,7 +10459,6 @@ It is particularly useful for refining entity recognition results according to s
                 <span class="s">"replaceEntity"</span> <span class="p">:</span> <span class="s">"Modified_Date"</span><span class="p">,</span>
                 <span class="s">"mode"</span> <span class="p">:</span> <span class="s">"include"</span>
             <span class="p">}</span>
-    
         <span class="p">]</span>
 
 <span class="n">contextual_entity_ruler</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ContextualEntityRuler</span><span class="p">()</span> \
@@ -11594,6 +11608,12 @@ Default: False.</p>
 If True, the month will remain unchanged during the obfuscation process.
 If False, the month will be modified along with the year and day.
 Default: False.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">keepTextSizeForObfuscation</code> : Whether to keep the text length same obfuscating entities. If <code class="language-plaintext highlighter-rouge">True</code>, the output text will remain the same if a same length fake is available, otherwise length might vary.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">fakerLengthOffset</code> : It specifies how much length deviation is accepted in obfuscation, with <code class="language-plaintext highlighter-rouge">keepTextSizeForObfuscation</code> enabled. It must be greater than 0.</p>
       </li>
     </ul>
 
@@ -16215,6 +16235,9 @@ few shot classifiers based on the SetFit approach.</p>
       <li><code class="language-plaintext highlighter-rouge">batchSize</code> <em>(Int)</em>: Batch size</li>
       <li><code class="language-plaintext highlighter-rouge">caseSensitive</code> <em>(Bool)</em>: Whether the classifier is sensitive to text casing</li>
       <li><code class="language-plaintext highlighter-rouge">maxSentenceLength</code> <em>(Int)</em>: The maximum length of the input text</li>
+      <li><code class="language-plaintext highlighter-rouge">blackList</code> <em>(list[str])</em>: If defined, list of entities to ignore. The rest will be processed.</li>
+      <li><code class="language-plaintext highlighter-rouge">whiteList</code> <em>(list[str])</em>:  If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels.</li>
+      <li><code class="language-plaintext highlighter-rouge">caseSensitive</code> <em>(Bool)</em>: Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.</li>
     </ul>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>

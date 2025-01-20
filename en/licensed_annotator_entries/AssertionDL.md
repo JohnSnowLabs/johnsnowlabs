@@ -33,6 +33,12 @@ Parameters:
 
 - `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
 
+- `blackList` *(list[str])*: If defined, list of entities to ignore. The rest will be processed.
+
+- `whiteList` *(list[str])*:  If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels.
+
+- `caseSensitive` *(Bool)*: Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
 {%- endcapture -%}

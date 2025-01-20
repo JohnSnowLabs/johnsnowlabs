@@ -123,6 +123,10 @@ If True, the month will remain unchanged during the obfuscation process.
 If False, the month will be modified along with the year and day.
 Default: False.
 
+- `keepTextSizeForObfuscation` : Whether to keep the text length same obfuscating entities. If `True`, the output text will remain the same if a same length fake is available, otherwise length might vary.
+
+- `fakerLengthOffset` : It specifies how much length deviation is accepted in obfuscation, with `keepTextSizeForObfuscation` enabled. It must be greater than 0.
+
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
 {%- endcapture -%}

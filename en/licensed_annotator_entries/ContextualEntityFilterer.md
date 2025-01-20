@@ -24,6 +24,8 @@ Parameters:
   - `blackListWords`: The black list of words. If a word from this list appears within the scope window, the chunk will be filtered out.
   - `whiteListWords`: The white list of words. If a word from this list appears within the scope window, the chunk will be kept.
   - `confidenceThreshold`: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.
+  - `possibleRegexContext` : The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.
+  - `impossibleRegexContext` : The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.
   
 {%- endcapture -%}
 

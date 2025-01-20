@@ -16,6 +16,9 @@ Parameters:
 - `batchSize` *(Int)*: Batch size
 - `caseSensitive` *(Bool)*: Whether the classifier is sensitive to text casing
 - `maxSentenceLength` *(Int)*: The maximum length of the input text
+- `blackList` *(list[str])*: If defined, list of entities to ignore. The rest will be processed.
+- `whiteList` *(list[str])*:  If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels.
+- `caseSensitive` *(Bool)*: Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.
 
 
 {%- endcapture -%}
