@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_5_5_0
 key: docs-ocr-release-notes
 modify_date: "2024-01-23"
 show_nav: true
