@@ -21,11 +21,15 @@ use_language_switcher: "Python-Scala-Java"
 This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `NAME`, `IDNUM`, `CONTACT`, `LOCATION`, `AGE`, `DATE` entities.
 **This pipeline is prepared for benchmarking with cloud providers.**
 
+## Predicted Entities
+
+`NAME`, `IDNUM`, `CONTACT`, `LOCATION`, `AGE`, `DATE`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.2_3.2_1737751091108.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.2_3.2_1737751091108.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.2_3.2_1737745200885.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.2_3.2_1737745200885.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -33,8 +37,8 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
+
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_benchmark", "en", "clinical/models")               
@@ -47,6 +51,7 @@ Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
 print(''.join([i.result for i in deid_result['mask_entity']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
+
 ```
 
 {:.jsl-block}
@@ -62,8 +67,10 @@ Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
 print(''.join([i.result for i in deid_result['mask_entity']]))
 print(''.join([i.result for i in deid_result['obfuscated']]))
+
 ```
 ```scala
+
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_benchmark", "en", "clinical/models")               
@@ -76,12 +83,14 @@ Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
 println(deid_result("mask_entity").map(_("result").toString).mkString(""))
 println(deid_result("obfuscated").map(_("result").toString).mkString(""))
+
 ```
 </div>
 
 ## Results
 
 ```bash
+
 Masked with entity labels
 ------------------------------
 Name : <NAME>, Record date: <DATE>, # <IDNUM>.
@@ -98,6 +107,7 @@ Dr. May Sparks, ID: 6986066538, IP 089.708.009.79.
 He is a 70-year-old male was admitted to the 2190 Hwy 85 N for cystectomy on 02/13/93.
 Patient's VIN : 9LWRL49JVQN907286, SSN #222-55-7777, Driver's license YZ:Z447766W.
 Phone (091) 475-2114, 506 Lenox Avenue, 13111 N Port Washington Rd, E-MAIL: KYUPT@EYCUX.AWY.
+
 ```
 
 {:.model-param}
