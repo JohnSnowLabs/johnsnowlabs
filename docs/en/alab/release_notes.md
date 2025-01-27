@@ -116,6 +116,7 @@ Message in the Completion Tab When Viewing the Last Saved Annotation:
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_10_1">6.10.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
