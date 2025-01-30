@@ -166,7 +166,7 @@ def get_user_lib_secrets(access_token):
 
 def get_user_licenses(access_token):
     licenses_query = """query LicensesQuery {
-  licenses(isValid: true, platforms: ["Airgap", "Floating"]) {
+  licenses(isValid: true, platforms: ["Airgap", "Floating", "PAYG"]) {
     edges {
       node {
         id
