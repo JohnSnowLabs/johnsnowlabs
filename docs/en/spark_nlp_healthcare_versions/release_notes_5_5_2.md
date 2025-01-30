@@ -547,7 +547,7 @@ Liver transplantation may be necessary in severe cases. The worldwide prevalence
 
 </div><div class="h3-box" markdown="1">
 
-####  Introducing 2 New Eamed Entity Recognition Models for Extracts Mentions of Cancer Types and Biomarker
+####  Introducing 2 New Named Entity Recognition Models for Extracts Mentions of Cancer Types and Biomarker
 
 Explore two advanced NER models specifically trained to extract critical oncology-related information from clinical and biomedical texts. The ner_cancer_types model identifies mentions of six primary cancer types and Tumors. Meanwhile, the ner_oncology_biomarker_docwise model focuses on extracting biomarkers and biomarker results.
 
