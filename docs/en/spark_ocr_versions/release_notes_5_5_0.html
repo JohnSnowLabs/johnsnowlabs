@@ -648,15 +648,21 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New VisualDocumentProcessor.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h2 id="new-obfuscation-features-in-imagedrawregions">New Obfuscation Features in ImageDrawRegions</h2>
   <p>ImageDrawRegions’ main purpose is to draw solid rectangles on top of regions that typically come from NER or some other similar model. Many times, it is interesting not to only draw solid rectangles on top of detected entities, but some other values, like obfuscated values. For example, with the purpose of protecting patient’s privacy, you may want to replace a name with another name, or a date with a modified date.</p>
 
   <p>This feature, together with the Deidentification transformer from Spark NLP for Healthcare can be combined to create a ‘rendering aware’ obfuscation pipeline capable of rendering obfuscated values back to the source location where the original entities were present. The replacement must be ‘rendering aware’ because not every example of an entity requires the same space on the page to be rendered. So for example, ‘Bob Smith’ would be a good replacement for ‘Rod Adams’, but not for ‘Alessandro Rocatagliata’, simply because they render differently on the page. Let’s take a look at a quick example,</p>
 
-  <p><img src="/assets/images/ocr/obfuscation_impainting.png" alt="image" /></p>
+  <p><img src="/assets/images/ocr/obfuscation_impainting.png" alt="New Obfuscation Features in ImageDrawRegions" /></p>
 
   <p>to the left we see a portion of a document in which we want to apply obfuscation. We want to focus on the entities representing PHI, like patient name or phone number. On the right side, after applying the transformation, we have an image containing fake values.
 You can see that the PHI in the source document has been replaced by similar entities, and these entities not only are of a similar category, but are also of a similar length.</p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="new-obfuscation-features-in-dicommetadatadeidentifier">New obfuscation features in DicomMetadataDeidentifier</h2>
   <p>Now you can customize the way metadata is de-identified in DicomMetadataDeidentifier. Customization happens through a number of different actions you can apply to each tag, for example, replacing a specific tag with a literal, or shifting a date by a number of days randomly.
@@ -722,6 +728,9 @@ Here is a more exhaustive list of actions, datatypes and parameters, you can use
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h3 id="new-dicom-pretrained-pipelines">New Dicom Pretrained Pipelines</h3>
   <p>We are releasing three new Dicom Pretrained Pipelines:</p>
   <ul>
@@ -731,6 +740,9 @@ Here is a more exhaustive list of actions, datatypes and parameters, you can use
   </ul>
 
   <p>Check notebook <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb">here</a> for examples on how to use this.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="new-visual-document-processor">New Visual Document Processor</h3>
   <p>New VisualDocumentProcessor that produces OCR text and tables on a single pass!,
@@ -745,6 +757,9 @@ result = proc.transform(df)
 
   <p>Check this <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrVisualDocumentProcessor.ipynb">sample notebook</a> for an example on how to use it.</p>
 
+</div>
+<div class="h3-box">
+
   <h3 id="other-dicom-changes">Other Dicom Changes</h3>
   <ul>
     <li>DicomDrawRegions support for setting compression quality, now you can pick different compression qualities for each of the different compression algorithms supported. The API receives an array with each element specifying the compression type like a key/value,
@@ -754,6 +769,9 @@ Example,
 </code></pre></div>      </div>
     </li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h3 id="enhancements--bug-fixes">Enhancements &amp; Bug Fixes</h3>
   <ul>

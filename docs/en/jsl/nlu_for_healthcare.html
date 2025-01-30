@@ -643,7 +643,7 @@ and the accompanying video below for an introduction to every healthcare domain.
     <p><strong>Named entities</strong> are sub-strings in a text that can be classified into catogires of a domain. For example, in the String <br />
 <code class="language-plaintext highlighter-rouge">"Tesla is a great stock to invest  in "</code> , the sub-string <code class="language-plaintext highlighter-rouge">"Tesla"</code> is a named entity, it can be classified with the label <code class="language-plaintext highlighter-rouge">company</code> by an ML algorithm.<br />
 <strong>Named entities</strong> can easily be extracted by the various pre-trained Deep Learning based NER algorithms provided by NLU.
-NER models can be trained for many different domains and aquire expert domain knowledge in each of them. JSL provides a wide array of experts for various Medical, Helathcare and Clinical domains</p>
+NER models can be trained for many different domains and aquire expert domain knowledge in each of them. JSL provides a wide array of experts for various Medical, Healthcare and Clinical domains</p>
 
     <p>This algorithm is provided by <strong>Spark NLP for Healthcare’s</strong>  <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators">MedicalNerModel</a></p>
 
@@ -860,7 +860,7 @@ NER models can be trained for many different domains and aquire expert domain kn
     <p>All sentences have the entity <code class="language-plaintext highlighter-rouge">headache</code> which is of class <code class="language-plaintext highlighter-rouge">disease</code>.
 But there is a semantic difference on what the actual status of the disease mentioned in text is. In the first and third sentence, <code class="language-plaintext highlighter-rouge">Billy has no headache</code>, but in the second sentence <code class="language-plaintext highlighter-rouge">Billy actually has a sentence</code>.    <br />
 The <code class="language-plaintext highlighter-rouge">Entity Assertion</code> Algorithms provided by JSL solve this problem. The <code class="language-plaintext highlighter-rouge">disease</code> entity can be classified into <code class="language-plaintext highlighter-rouge">ABSENT</code> for the first case and into <code class="language-plaintext highlighter-rouge">PRESENT</code> for the second case.  The third case can be classified into <code class="language-plaintext highlighter-rouge">PRESENT IN FAMILY</code>.  <br />
-This has immense implications for various data analytical approaches in the helathcare domain.</p>
+This has immense implications for various data analytical approaches in the healthcare domain.</p>
 
     <p>I.e. imagine you want you want to make a study about hearth attacks and survival rate of potential procedures. You can process all your digital patient notes with an Medical NER model and filter for documents that have the <code class="language-plaintext highlighter-rouge">Hearth Attack</code> entity.   <br />
 But your collected data will have wrong data entries because of the above mentioned Entity status problem. You cannot deduct that a document is talking about a patient having a hearth attack, unless you <strong>assert</strong>  that the problem is actually there which is what the Resolutions algorithms do for you.</p>
