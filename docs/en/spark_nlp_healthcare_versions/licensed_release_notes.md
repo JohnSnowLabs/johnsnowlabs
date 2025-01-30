@@ -97,9 +97,6 @@ text = """he patient is a 42-year-old female and has diabetes mellitus with diab
 | scope_average  | diabetes mellitus  | E11.40         | nervous system disorder due to diabetes mellitus [type 2 diabetes mellitus with diabetic neuropathy, unspecified] |
 
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### De-identifying Sensitive Data in Relational Databases with a Few Lines of Codes

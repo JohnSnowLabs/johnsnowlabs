@@ -27,7 +27,7 @@ and the accompanying video below for an introduction to every healthcare domain.
 **Named entities** are sub-strings in a text that can be classified into catogires of a domain. For example, in the String   
 `"Tesla is a great stock to invest  in "` , the sub-string `"Tesla"` is a named entity, it can be classified with the label `company` by an ML algorithm.  
 **Named entities** can easily be extracted by the various pre-trained Deep Learning based NER algorithms provided by NLU.
-NER models can be trained for many different domains and aquire expert domain knowledge in each of them. JSL provides a wide array of experts for various Medical, Helathcare and Clinical domains
+NER models can be trained for many different domains and aquire expert domain knowledge in each of them. JSL provides a wide array of experts for various Medical, Healthcare and Clinical domains
 
 This algorithm is provided by **Spark NLP for Healthcare's**  [MedicalNerModel](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)
 
@@ -70,7 +70,7 @@ Named Entities extracted by an NER model can be further classified into sub-clas
 All sentences have the entity `headache` which is of class `disease`.
 But there is a semantic difference on what the actual status of the disease mentioned in text is. In the first and third sentence, `Billy has no headache`, but in the second sentence `Billy actually has a sentence`.      
 The `Entity Assertion` Algorithms provided by JSL solve this problem. The `disease` entity can be classified into `ABSENT` for the first case and into `PRESENT` for the second case.  The third case can be classified into `PRESENT IN FAMILY`.    
-This has immense implications for various data analytical approaches in the helathcare domain.
+This has immense implications for various data analytical approaches in the healthcare domain.
 
 I.e. imagine you want you want to make a study about hearth attacks and survival rate of potential procedures. You can process all your digital patient notes with an Medical NER model and filter for documents that have the `Hearth Attack` entity.     
 But your collected data will have wrong data entries because of the above mentioned Entity status problem. You cannot deduct that a document is talking about a patient having a hearth attack, unless you **assert**  that the problem is actually there which is what the Resolutions algorithms do for you.

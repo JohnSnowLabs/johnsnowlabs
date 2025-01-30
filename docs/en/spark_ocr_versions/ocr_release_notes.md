@@ -30,16 +30,19 @@ Release date: 23-01-2024
 * New Dicom Pretrained Pipelines.
 * New VisualDocumentProcessor.
 
+</div><div class="h3-box" markdown="1">
+
 ## New Obfuscation Features in ImageDrawRegions
 ImageDrawRegions' main purpose is to draw solid rectangles on top of regions that typically come from NER or some other similar model. Many times, it is interesting not to only draw solid rectangles on top of detected entities, but some other values, like obfuscated values. For example, with the purpose of protecting patient's privacy, you may want to replace a name with another name, or a date with a modified date.
 
 This feature, together with the Deidentification transformer from Spark NLP for Healthcare can be combined to create a 'rendering aware' obfuscation pipeline capable of rendering obfuscated values back to the source location where the original entities were present. The replacement must be 'rendering aware' because not every example of an entity requires the same space on the page to be rendered. So for example, 'Bob Smith' would be a good replacement for 'Rod Adams', but not for 'Alessandro Rocatagliata', simply because they render differently on the page. Let's take a look at a quick example,
 
-![image](/assets/images/ocr/obfuscation_impainting.png)
+![New Obfuscation Features in ImageDrawRegions](/assets/images/ocr/obfuscation_impainting.png)
 
 to the left we see a portion of a document in which we want to apply obfuscation. We want to focus on the entities representing PHI, like patient name or phone number. On the right side, after applying the transformation, we have an image containing fake values.
 You can see that the PHI in the source document has been replaced by similar entities, and these entities not only are of a similar category, but are also of a similar length.
 
+</div><div class="h3-box" markdown="1">
 
 ## New obfuscation features in DicomMetadataDeidentifier
 Now you can customize the way metadata is de-identified in DicomMetadataDeidentifier. Customization happens through a number of different actions you can apply to each tag, for example, replacing a specific tag with a literal, or shifting a date by a number of days randomly.
@@ -70,6 +73,7 @@ ShiftTimeByRandomNbOfSecs | DT | coherent
 replaceWithRandomName | PN, LO | coherent
 shiftDateByFixedNbOfDays | DA | 112
 
+</div><div class="h3-box" markdown="1">
 
 ### New Dicom Pretrained Pipelines
 We are releasing three new Dicom Pretrained Pipelines:
@@ -78,6 +82,8 @@ We are releasing three new Dicom Pretrained Pipelines:
 * `dicom_deid_generic_augmented_pseudonym`: this pipeline will try to remove PHI from images, and will obfuscate most tags in metadata.
 
 Check notebook [here](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb) for examples on how to use this.
+
+</div><div class="h3-box" markdown="1">
 
 ### New Visual Document Processor
 New VisualDocumentProcessor that produces OCR text and tables on a single pass!,
@@ -93,6 +99,8 @@ result = proc.transform(df)
 
 Check this [sample notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrVisualDocumentProcessor.ipynb) for an example on how to use it.
 
+</div><div class="h3-box" markdown="1">
+
 ### Other Dicom Changes
 * DicomDrawRegions support for setting compression quality, now you can pick different compression qualities for each of the different compression algorithms supported. The API receives an array with each element specifying the compression type like a key/value,
 Example,
@@ -100,6 +108,8 @@ Example,
 DicomDrawRegions()\
 .setCompressionQuality(["8Bit=90","LSNearLossless=2"])
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Enhancements & Bug Fixes
 * New parameter in SVS tool that specifies whether to rename output file or not,

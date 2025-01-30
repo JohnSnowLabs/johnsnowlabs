@@ -97,9 +97,6 @@ text = """he patient is a 42-year-old female and has diabetes mellitus with diab
 | scope_average  | diabetes mellitus  | E11.40         | nervous system disorder due to diabetes mellitus [type 2 diabetes mellitus with diabetic neuropathy, unspecified] |
 
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 #### De-identifying Sensitive Data in Relational Databases with a Few Lines of Codes
@@ -395,8 +392,6 @@ Muc5AC, human epidermal growth factor receptor-2 (HER2), and Muc6; positive for 
 
 Please check the [ZeroShot Clinical NER](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.6.ZeroShot_Clinical_NER.ipynb) Notebook for more information
 
-
-
 </div><div class="h3-box" markdown="1">
 
 ####  Introducing Clinical Document Analysis with One-Liner Pretrained Pipelines for Specific Clinical Tasks and Concepts
@@ -449,8 +444,6 @@ The patient, Nathaneil Bakes, is 43 years old,  her Contact number: 308-657-8469
 ```
 
 Please check the [Task Based Clinical Pretrained Pipelines](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb) model for more information
-
-
 
 </div><div class="h3-box" markdown="1">
 

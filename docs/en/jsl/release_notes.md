@@ -3359,7 +3359,7 @@ for the first time by NLU, including ancient and exotic languages like `Ancient 
 On the healthcare NLP side, a new `ZeroShotRelationExtractionModel` is available, which can extract relations between
 clinical entities in an unsupervised fashion, no training required!
 Additionally, New French and Italian Deidentification models are available for clinical and healthcare domains.
-Powerd by the fantastic [ Spark NLP for helathcare 3.5.0 release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes)
+Powerd by the fantastic [ Spark NLP for healthcare 3.5.0 release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes)
 
 </div><div class="h3-box" markdown="1">
 
@@ -4163,7 +4163,7 @@ Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.co
 
 ## NLU Version 3.3.0
 
-#### 2000%+ Speedup on small data, 63 new models for 100+ Languages with 6 new supported Transformer classes including BERT, XLM-RoBERTa, alBERT, Longformer, XLnet based models, 48 NER profiling helathcare pipelines and much more in John Snow Labs NLU 3.3.0
+#### 2000%+ Speedup on small data, 63 new models for 100+ Languages with 6 new supported Transformer classes including BERT, XLM-RoBERTa, alBERT, Longformer, XLnet based models, 48 NER profiling healthcare pipelines and much more in John Snow Labs NLU 3.3.0
 
 We are incredibly excited to announce NLU 3.3.0 has been released!
 It comes with a up to 2000%+ speedup on small datasets, 6 new Types of Deep Learning transformer models, including
