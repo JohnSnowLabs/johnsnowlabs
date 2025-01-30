@@ -17,7 +17,7 @@ class WritableBaseModel(BaseModel):
         with open(path, "w", encoding="utf8") as json_file:
             if "indent" not in kwargs:
                 kwargs["indent"] = settings.json_indent
-            json_file.write(self.json(*args, **kwargs))
+            json_file.write(self.model_dump_json(*args, **kwargs))
 
     class Config:
         arbitrary_types_allowed = True
