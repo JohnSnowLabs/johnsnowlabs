@@ -33,14 +33,15 @@ Assign assertion status to clinical entities.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 # Test classifier in Spark NLP pipeline
 document_assembler = DocumentAssembler()\
     .setInputCol("text") \
     .setOutputCol("document")
 
-tokenizer = Tokenizer()     .setInputCols(["document"]) \
+tokenizer = Tokenizer()\
+    .setInputCols(["document"]) \
     .setOutputCol("token")
 
 # Load newly trained classifier
