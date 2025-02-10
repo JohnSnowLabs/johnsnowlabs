@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Explain Clinical Document - Cancer Type (Slim)
+title: Explain Clinical Document - Oncology (Slim)
 author: John Snow Labs
 name: explain_clinical_doc_oncology_slim
 date: 2025-02-06
