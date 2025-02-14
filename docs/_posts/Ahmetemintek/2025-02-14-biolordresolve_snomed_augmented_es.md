@@ -37,6 +37,65 @@ This model maps Spanish medical entities and concepts to SNOMED codes using the 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
+document_assembler = DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
+
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
+
+tokenizer = Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")\
+
+word_embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d","es")\
+  .setInputCols(["sentence","token"])\
+  .setOutputCol("embeddings")
+
+ner_eu = MedicalNerModel.pretrained("ner_eu_clinical_condition", "es", "clinical/models") \
+  .setInputCols(["sentence", "token", "embeddings"]) \
+  .setOutputCol("ner_eu")
+
+ner_eu_converter = NerConverterInternal() \
+  .setInputCols(["sentence", "token", "ner_eu"]) \
+  .setOutputCol("ner_eu_chunk")
+
+chunk2doc = Chunk2Doc()\
+  .setInputCols("ner_eu_chunk")\
+  .setOutputCol("ner_chunk_doc")
+
+biolord_embeddings = XlmRoBertaSentenceEmbeddings.pretrained("sent_xlm_roberta_biolord_2023_m","xx")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("biolord_embeddings")
+
+snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_augmented","es", "clinical/models") \
+      .setInputCols(["biolord_embeddings"]) \
+      .setOutputCol("snomed_code")\
+      .setDistanceFunction("EUCLIDEAN")
+
+snomed_pipeline = Pipeline(stages = [
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner_eu,
+    ner_eu_converter,
+    chunk2doc,
+    biolord_embeddings,
+    snomed_resolver
+])
+
+
+clinical_note = ("La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.")
+
+data = spark.createDataFrame([[clinical_note]]).toDF("text")
+
+snomed_result = snomed_pipeline.fit(data).transform(data)
+```
+
+{:.jsl-block}
+```python
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
   .setOutputCol("document")
@@ -50,8 +109,8 @@ tokenizer = nlp.Tokenizer()\
   .setOutputCol("token")\
 
 word_embeddings = nlp.WordEmbeddingsModel.pretrained("w2v_cc_300d","es")\
-	  .setInputCols(["sentence","token"])\
-	  .setOutputCol("embeddings")
+  .setInputCols(["sentence","token"])\
+  .setOutputCol("embeddings")
 
 ner_eu = medical.NerModel.pretrained("ner_eu_clinical_condition", "es", "clinical/models") \
   .setInputCols(["sentence", "token", "embeddings"]) \
@@ -74,7 +133,7 @@ snomed_resolver = medical.SentenceEntityResolverModel.pretrained("biolordresolve
       .setOutputCol("snomed_code")\
       .setDistanceFunction("EUCLIDEAN")
 
-snomed_pipeline = Pipeline(stages = [
+snomed_pipeline = nlp.Pipeline(stages = [
     document_assembler,
     sentence_detector,
     tokenizer,
