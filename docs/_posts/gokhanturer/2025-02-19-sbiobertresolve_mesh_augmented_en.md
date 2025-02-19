@@ -80,7 +80,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en
 resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_mesh_augmented","en","clinical/models") \
         .setInputCols(["sbert_embeddings"]) \
         .setOutputCol("mesh_code")\
-       . setDistanceFunction("EUCLIDEAN")
+        .setDistanceFunction("EUCLIDEAN")
 
 pipeline = Pipeline(stages = [
        document_assembler,
