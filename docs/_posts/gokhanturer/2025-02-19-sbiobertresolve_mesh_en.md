@@ -40,6 +40,7 @@ Supplementary Concepts: Additional terms, including chemicals and drugs, mapped 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 document_assembler = DocumentAssembler()\
 	.setInputCol("text")\
@@ -64,7 +65,7 @@ ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") \
 ner_converter = NerConverterInternal()\
 	.setInputCols(["sentence", "token", "ner"])\
 	.setOutputCol("ner_chunk")\
-  .setBlackList(["TREATMENT"])
+        .setBlackList(["TREATMENT"])
 
 chunk2doc = Chunk2Doc()\
 	.setInputCols("ner_chunk")\
@@ -123,7 +124,7 @@ ner = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models") \
 ner_converter = medical.NerConverterInternal()\
 	.setInputCols(["sentence", "token", "ner"])\
 	.setOutputCol("ner_chunk")\
-  .setBlackList(["TREATMENT"])
+        .setBlackList(["TREATMENT"])
 
 chunk2doc = nlp.Chunk2Doc()\
 	.setInputCols("ner_chunk")\
