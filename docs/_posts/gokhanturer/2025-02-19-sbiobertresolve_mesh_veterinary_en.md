@@ -126,14 +126,14 @@ chunk2doc = nlp.Chunk2Doc()\
 	.setOutputCol("ner_chunk_doc")
 
 sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
- 	 .setInputCols(["ner_chunk_doc"])\
+	.setInputCols(["ner_chunk_doc"])\
   	.setOutputCol("sbert_embeddings")\
   	.setCaseSensitive(False)
 
 resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_mesh_veterinary","en","clinical/models") \
- 	 .setInputCols(["sbert_embeddings"]) \
- 	 .setOutputCol("mesh_code")\
-  	.setDistanceFunction("EUCLIDEAN")
+	.setInputCols(["sbert_embeddings"]) \
+	.setOutputCol("mesh_code")\
+	.setDistanceFunction("EUCLIDEAN")
 
 pipeline = nlp.Pipeline(stages = [
 	document_assembler,
