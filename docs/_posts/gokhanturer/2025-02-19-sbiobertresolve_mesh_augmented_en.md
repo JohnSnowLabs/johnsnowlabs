@@ -138,7 +138,7 @@ sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_mesh_augmented","en","clinical/models") \
       .setInputCols(["sbert_embeddings"]) \
       .setOutputCol("mesh_code")\
-     . setDistanceFunction("EUCLIDEAN")
+      .setDistanceFunction("EUCLIDEAN")
 
 pipeline = nlp.Pipeline(stages = [
       document_assembler,
