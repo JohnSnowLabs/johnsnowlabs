@@ -11,6 +11,8 @@ nav_key: models
 edition: Visual NLP 5.5.0
 spark_version: 3.4.1
 supported: true
+recommended: true
+annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
@@ -25,7 +27,7 @@ Pretrained pipeline for doing Dicom De-identification in which all texts in the 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PP_DICOM_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-<!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/....zip){:.button.button-orange.button-orange-trans.arr.button-icon} -->
+<!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dicom_deid_full_anonymization_en_5.5.0_3.0_1737198071000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} -->
 
 
 ## How to use
