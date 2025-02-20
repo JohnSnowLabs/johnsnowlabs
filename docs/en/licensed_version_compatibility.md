@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Version Compatibility
 permalink: /docs/en/licensed_version_compatibility
 key: docs-licensed-version-compatibility
-modify_date: 2025-01-17
+modify_date: 2025-02-20
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -16,6 +16,7 @@ sidebar:
 {:.table-model-big}
 | Spark NLP for Healthcare	| Spark NLP (Public) |
 |---------------------------|--------------------|
+| 5.5.3                     | 5.5.3              |
 | 5.5.2                     | 5.5.2              |
 | 5.5.1                     | 5.5.1              |
 | 5.5.0                     | 5.5.0              |
