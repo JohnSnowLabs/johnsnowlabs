@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Dicom de-identification
+title: Pseudonym Dicom de-identification
 author: John Snow Labs
 name: dicom_deid_generic_augmented_pseudonym
 date: 2025-02-19
@@ -67,7 +67,7 @@ val result = pipeline.transform(dicom_df).cache()
 {:.table-model}
 |---|---|
 |Model Name:|dicom_deid_generic_augmented_pseudonym|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.5.0+|
 |License:|Licensed|
 |Edition:|Official|
