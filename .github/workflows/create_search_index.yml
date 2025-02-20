@@ -95,7 +95,7 @@ jobs:
             ./docs/backup-references.json
           dest: jekyll-content.zip
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jekyll-build
           path: |
