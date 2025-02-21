@@ -36,6 +36,11 @@ Parameters:
         Example: `["\\b(years|months)\\b"]` matches words like "years" or "months" as prefixes.
   - `suffixRegexes`: Array of regular expressions to match **after the entity**.  
         Example: `["\\b(old|young)\\b"]` matches words like "old" or "young" as suffixes.
+  - `prefixEntites`: Array of entity labels to match **before the entity**.  
+        Example: `["DATE"]` matches entities of type "DATE" as prefixes.
+  - `suffixEntities`: Array of entity labels to match **after the entity**.  
+        Example: `["DATE"]` matches entities of type "DATE" as suffixes.
+  - `regexInBetween`: Regular expression to match text between the entity and prefix/suffix. If matched, the prefix/suffix entities will be included with the target entity.
   - `replaceEntity`: Optional string specifying the new entity label to replace with the target entity label.  
         Example: `"MODIFIED_AGE"` replaces `"AGE"` with `"MODIFIED_AGE"` in matching cases.
   - `mode`: Specifies the operational mode for the rules. Options: `include`, `exclude`, or `replace_label_only`. Default is `include`.

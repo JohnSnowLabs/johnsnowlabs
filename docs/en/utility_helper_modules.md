@@ -536,52 +536,69 @@ res= deid_implementor.deidentify()
 
 ### Apply Structured Deidentification
 
+StructuredDeidentification is a helper class that allow to obfuscate a structured dataframe. 
+
+Parameters:
+
+- `columns`: A dictionary mapping DataFrame columns to entity names. The keys represent column names, and the values define the corresponding entity.
+- `columnsSeed`: A dictionary specifying a seed for obfuscating particular columns. The seed is used to randomly select entities during obfuscation.
+- `obfuscateRefFile`: (Optional) A file containing custom terms for obfuscation. The file should have entity names as keys and obfuscation terms as values.
+- `days`: The number of days to shift date entities. If not provided, a random integer between 1 and 60 is used.
+- `useRandomDateDisplacement`: If True, applies a random displacement to date entities. If False, uses the `days` parameter. Default is False.
+- `dateFormats`: A list of date formats to consider, e.g., `["dd-MM-yyyy", "dd/MM/yyyy", "d/M/yyyy"]`.
+- `language`: The language for selecting faker entities. Options: `'en'`, `'de'`, `'es'`, `'fr'`, `'ar'`, `'ro'`. Default is `'en'`.
+- `idColumn`: The column containing unique row IDs. If provided, ensures consistent obfuscation per ID, particularly for date entities.
+- `region`: Specifies regional date formats. Options: `'eu'` (European Union), `'us'` (USA). Default is an empty string (`''`), meaning `dateFormats` are used.
+- `keepYear`: If True, retains the original year in date obfuscation. Default is False.
+- `keepMonth`: If True, retains the original month in date obfuscation. Default is False.
+- `unnormalizedDateMode`: Defines behavior for unformatted dates. Options: `'mask'`, `'obfuscate'`, `'skip'`. Default is `'obfuscate'`.
+- `keepTextSizeForObfuscation`: If True, maintains the same character length in obfuscation output. Default is False.
+- `fakerLengthOffset`: Defines acceptable length deviation in obfuscation when `keepTextSizeForObfuscation` is enabled. Must be greater than 0. Default is 3.
+- `genderAwareness`: If True, applies gender-aware name obfuscation. May reduce performance. Default is False.
+- `ageRangesByHipaa`: If True, obfuscates ages based on HIPAA Privacy Rule. Default is False.
+
+Functions :
+
+- `obfuscateColumns`**(self, df: DataFrame, outputAsArray: bool = True, overwrite: bool = True, suffix: str = "_obfuscated")**:  
+  Obfuscate the columns of a dataframe.
+
+    - `df`: The input DataFrame to be obfuscated.
+    - `outputAsArray`: If True, the output will be an array of strings, otherwise will be a string. Default: True.
+    - `overwrite`: If True, the columns will be overwritten, otherwise will be added to the dataframe. Default: True.
+    - `suffix`: The suffix to add to the obfuscated columns if `overwrite` is False. Default: "_obfuscated".
+
+
 ```python
 
-from sparknlp_jsl.utils.deidentification_utils import structured_deidentifier
+from sparknlp_jsl.structured_deidentification import StructuredDeidentification
 
-res= structured_deidentifier(
-# required: Spark session with spark-nlp-jsl jar
-spark
-
-#required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
-input_file_path="data.csv",
-
-#optional:  The path of the output file. Default is 'deidentified.csv'. File type must be 'csv' or 'json'.
-output_file_path="deidentified.csv",
-
-#optional: The separator of the input csv file. Default is "\t".
-separator=",",
-
-#optional: A dictionary that contains the column names and the tags that should be used for deidentification. Default is {"NAME":"PATIENT","AGE":"AGE"}
-columns_dict= {"NAME": "ID", "DOB": "DATE"},
-
-#optional: The seed value for the random number generator. Default is {"NAME": 23, "AGE": 23}
-columns_seed= {"NAME": 23, "DOB": 23},
-
-#optional: The source of the reference file. Default is faker.
-ref_source="faker",
-
-#optional: The number of days to be shifted. Default is None
-shift_days=5,
-
-#optional: The path of the reference file for obfuscation. Default is None.
-#obfuscateRefFile: "obfuscator_unique_ref_test.txt",
-
-#optional: A list of date formats. Default is ["dd/MM/yyyy", "dd-MM-yyyy", "d/M/yyyy", "dd-MM-yyyy", "d-M-yyyy"]
-#date_formats=["dd/MM/yyyy", "dd-MM-yyyy"]
-)
+obfuscator = StructuredDeidentification(spark,
+                                        columns={"PATIENT":"PATIENT","DOB":"DATE","TEL":"PHONE"},
+                                        columnsSeed={"PATIENT": 23, "DOB": 23, "TEL": 23},
+                                        obfuscateRefSource = "faker",
+                                        days=60,
+                                        region="eu",
+                                        keepYear=True,
+                                        keepTextSizeForObfuscation=True
+                                        )
+obfuscator_df = obfuscator.obfuscateColumns(df, outputAsArray=False, overwrite=False, suffix="_obfuscated")
+obfuscator_df.show(truncate=False)
 
 ```
 
+# result
+
 ```
-+----------+------------+--------------------+---+----------------+
-|      NAME|         DOB|             ADDRESS|SBP|             TEL|
-+----------+------------+--------------------+---+----------------+
-|[N2649912]|[18/02/1977]|       711 Nulla St.|140|      673 431234|
-| [W466004]|[28/02/1977]|     1 Green Avenue.|140|+23 (673) 431234|
-| [M403810]|[16/04/1900]|Calle del Liberta...|100|      912 345623|
-+----------+------------+--------------------+---+----------------+
++---------------+----------+---+--------------+--------------+------------------+--------------+
+|PATIENT        |DOB       |AGE|TEL           |DOB_obfuscated|PATIENT_obfuscated|TEL_obfuscated|
++---------------+----------+---+--------------+--------------+------------------+--------------+
+|Cecilia Chapman|04/02/1935|83 |(257) 563-7401|05/04/1935    |Madlyn Schirmer   |(013) 149-3287|
+|Iris Watson    |03/10/2009|9  |(372) 587-2335|02/12/2009    |Linard Reno       |(607) 830-7668|
+|Bryar Pitts    |11/01/1921|98 |(717) 450-4729|12/03/1921    |Vila Grayer       |(606) 541-5638|
+|Theodore Lowe  |13/02/2002|16 |(793) 151-6230|14/04/2002    |Simone Dubois     |(804) 262-9543|
+|Calista Wise   |20/08/1942|76 |(492) 709-6392|19/10/1942    |Arne Langdon      |(250) 385-4950|
++---------------+----------+---+--------------+--------------+------------------+--------------+
+
 ```
 
 </div><div class="h3-box" markdown="1">
@@ -609,7 +626,8 @@ To tabulate and visualize all retrieved models, you can:
 ```python
 import pandas as pd
 
-models_df = pd.
+models_df = pd.DataFrame([dict(x) for x in list(models)])
+models_df
 
 ```
 
