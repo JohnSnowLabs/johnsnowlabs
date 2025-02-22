@@ -654,25 +654,113 @@ cd artifacts
 Replace `$VERSION` with the version you want to download and install.
 
 
-### Fresh Install
+### Installation in Airgapped Environments for On-Prem Deployments
 
-Run the installer script `annotationlab-installer.sh` with `sudo` privileges.
+With **Version 6.11.0**, Generative AI can now be installed in air-gapped environments, removing the need for internet access to pull images and artifacts. Previously, users required internet connectivity to access these resources, but with this update, the installation can now be performed entirely offline.
 
-```bash
-$ sudo su
-$ ./annotationlab-installer.sh
+To install the **Generative AI Lab** in an air-gapped environment, two instances are required:
+- **Instance 1:** With internet access and the **Annotation Lab** pre-installed, this instance will download the necessary artifacts and images.
+- **Instance 2:** The air-gapped instance where the **Generative AI Lab** is installed.
+
+The installation process consists of three steps:
+
+### Step 1: Compress Images and Artifacts in the Online Instance
+#### Define the Version:
+SSH into the instance with the pre-installed application and define the version
+   For example:
+   `Version="6.11.0"`
+
+#### Gather Files on an Online System:
+In the internet-enabled instance, download all the necessary images, tools, and dependencies. Bundle them into a single archive using the following commands:
+   ```
+   ctr -n k8s.io images export all-images.tar \
+           --platform linux/amd64 \
+           docker.io/library/redis:7-bullseye \
+           docker.io/bitnami/postgresql:11.20.0-debian-11-r12 \
+           docker.io/bitnami/kubectl:1.27.12 \
+           docker.io/library/busybox:1.36.0 \
+           docker.io/keycloak/keycloak:20.0.3 \
+           docker.io/johnsnowlabs/annotationlab:$VERSION \
+           docker.io/johnsnowlabs/annotationlab:active-learning-$VERSION \
+           docker.io/johnsnowlabs/annotationlab:auth-theme-$VERSION \
+           docker.io/johnsnowlabs/annotationlab:backup-$VERSION \
+           docker.io/johnsnowlabs/annotationlab:dataflows-$VERSION
+  ```
+#### Fix Download Issues if Needed**:
+If any images fail to export properly in the previous step, use the following commands to pull the images manually. Run the code mentioned in Step 2:
+   ```
+    ctr -n k8s.io images pull docker.io/library/redis:7-bullseye
+    ctr -n k8s.io images pull docker.io/library/busybox:1.36.0
+    ctr -n k8s.io images pull docker.io/keycloak/keycloak:20.0.3
+    ctr -n k8s.io images pull docker.io/bitnami/kubectl:1.27.12
+    ctr -n k8s.io images pull docker.io/bitnami/postgresql:11.20.0-debian-11-r12
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:active-learning-$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:auth-theme-$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:backup-$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:dataflows-$VERSION
+   ```
+### Step 2: Download and Install Dependencies
+#### Download k3s Installer and Images
+From the K3s [releases](https://github.com/k3s-io/k3s/releases) page, search for the desired version and download the `k3s` and `k3s-airgap-images-amd64.tar.zst` files (assets). We are currently using the [v1.27.4+k3s1](https://github.com/k3s-io/k3s/releases/tag/v1.27.4%2Bk3s1) version.
+
+#### Download and Unpack Helm Executable
+Download [helm](https://github.com/helm/helm/releases). Any version should work (latest stable recommended). For example, [Linux amd64 v3.17.0](https://get.helm.sh/helm-v3.17.0-linux-amd64.tar.gz). After downloading, extract the archive. We will only need the `helm` executable from the *linux-amd64* directory.
+
+### Step 3: Prepare and Proceed with Installation in the Air-Gapped Instance
+
+#### Copy All the Required Files to the Air-Gapped Instance
+Copy the following files that were downloaded in step 2 to the Air-Gapped instance:
+- `k3s-airgap-images-amd64.tar.zst`
+- `k3s`
+- `helm`
+
+#### Prepare the Air-Gapped System
+Place the files in their correct directories and make the binaries executable:
+
 ```
+mkdir -p /var/lib/rancher/k3s/agent/images/
+mv k3s-airgap-images-amd64.tar.zst /var/lib/rancher/k3s/agent/images/
 
-### Upgrade
-
-Run the upgrade script `annotationlab-updater.sh` with `sudo` privileges.
-
-```bash
-$ sudo su
-$ ./annotationlab-updater.sh
+mv k3s /usr/local/bin/
+mv helm /usr/local/bin/
+chmod a+x /usr/local/bin/k3s
+chmod a+x /usr/local/bin/helm
 ```
+#### Install System Components
+Create an [installer.sh](https://get.k3s.io/) file in the air-gapped instance and run the following installer script for K3s in offline mode:
 
-</div><div class="h3-box" markdown="1">
+```
+chmod a+x install.sh
+INSTALL_K3S_SKIP_DOWNLOAD=true ./install.sh
+```
+### Load Images and Dependencies
+Import the downloaded images into the system that were packed in Step 1, along with the tar file of the application required for installation:
+
+- `all-images.tar`
+- `annotationlab-$VERSION.tar.gz`
+### Import and Install Generative AI Lab
+Unpack the Generative AI Lab package by importing the images using the following command:
+
+```
+ctr -n k8s.io images import --platform linux/amd64 all-images.tar
+```
+Once the images are unpacked, proceed to run the installer in air-gapped mode using the following commands:
+
+```
+tar -zxf annotationlab-$VERSION.tar.gz
+cd artifacts
+./annotationlab-installer.sh airgap
+```
+### Airgap Environment Upgrade Steps
+
+To upgrade the application in an air-gapped environment, most of the steps from the installation process are reused. However, we only need to follow steps 1 and 3(installing system Components can be skipped from this step), as k3s and helm will already be installed and running. Step 2 can be skipped.
+
+The main difference during the upgrade process is the script used from the `artifacts` directory. Instead of the installation script, use the following command:
+
+```
+./annotationlab-updater.sh --airgap
+```
 
 ## Work over proxy
 

@@ -86,3 +86,12 @@ By presenting this message, users are reminded to monitor their server usage and
 It's important to note that there is no change in the existing functionality of Generative AI Lab. Users can continue to access and use all features and functionalities as before.
 
 This introduction of the PAYG (Pay-As-You-Go) license option reflects our commitment to providing users with flexible licensing options that best suit their needs and usage patterns.
+
+### Application License Requirement for On-Prem Deployments
+With the latest version, Generative AI Lab now requires an application license for on-premises installations. This change brings on-prem licensing in line with our cloud deployments via AWS Marketplace AMI and Azure Marketplace, where usage has been metered.
+
+On-prem users will now need to import an application license on the same License page where other library licenses are managed. This ensures a smooth experience while maintaining flexibility across different deployment environments.
+
+Our commitment remains to provide a powerful and efficient annotation tool while supporting ongoing innovation and improvements. We appreciate your continued support and look forward to introducing more enhancements to Generative AI Lab.
+
+![6110image](/assets/images/annotation_lab/6.11.0/5.png)

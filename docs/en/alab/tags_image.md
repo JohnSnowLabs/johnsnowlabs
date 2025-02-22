@@ -71,3 +71,76 @@ Users can then add relevant tasks to the project and use the model to identify a
 ![690image](/assets/images/annotation_lab/6.9.0/4.png)
 
 This feature doesn't change the existing application workflow, and can not be combined with other models at this time.
+
+## View Text alongside images, and Optimized Image Loading in Visual NER
+Generative AI Lab 6.11 brings an Image-Text Side-by-Side Annotation project, allowing users to view the original image or PDF alongside its OCR-extracted text for easier annotation. It also includes optimized Visual NER for faster PDF processing, enhanced zoom functionality, and a new licensing model for on-premises deployments. 
+
+Other minor improvements have been made to Generative AI Lab, specifically to model training and de-identification.
+
+## Annotate while referencing Orginal Documents
+This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can now annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.
+
+**Image on the Left, OCR Text on the Right**: By Selecting this project type, users can now view the image/PDF document on the left side of the interface and its corresponding OCR-extracted text on the right side.  
+
+ **Paginated Documents**: All document pages are paginated, allowing users to navigate the document effortlessly. 
+
+Image and PDF documents now support all text-based annotation features—including NER, assertion, relations, resolvers, and lookup code annotation—and allow OCR text annotation.
+### Key Features  
+
+### How to Configure the Project  
+1. **Select the Project Template**:  
+   - Navigate to the **Image** tab and choose the **Image & Text Side-By-Side Annotation** template.  
+   - Save the configuration to proceed.  
+
+2. **Add Models to the Reuse Resource Page**:  
+   - Click **Next** to move to the Reuse Resource page.  
+   - Add the required models, such as NER, relation, and assertion models, to the project.  
+
+3. **Configure Individual Labels**:  
+   - Click **Next** again to access the label configuration page.  
+   - Click on individual labels to add lookup data or resolver models.  
+
+4. **Save and Deploy the Preannotation Server**:  
+   - Once all configurations are complete, save the project.  
+   - Deploy the preannotation server to start using the project.  
+
+For a visual guide, refer to the GIF below that demonstrates the configuration process step-by-step:  
+
+![6110image](/assets/images/annotation_lab/6.11.0/1.gif)
+
+
+### How to Use Preannotation  
+
+After deploying the preannotation server, follow these steps to preannotate your documents:  
+
+1. **Import a PDF or Image**:  
+   - Go to the **Task Page** and navigate to the **Import Page**.  
+   - Import the PDF or image you wish to annotate.  
+
+2. **Automatic OCR Processing**:  
+   - The imported document will automatically pass through our OCR process.  
+   - Once OCR is complete, a task will be generated for the document.  
+
+3. **Preannotate the Task**:  
+   - Use the deployed preannotation server to preannotate the task.  
+   - Alternatively, click on the task to annotate it manually.  
+
+4. **Automatic NER Label Projection**:  
+   - As you annotate the text side, NER labels are automatically projected onto the image side for visual reference.  
+   - This ensures a seamless and intuitive annotation experience.  
+
+For a visual guide, refer to the GIF below that demonstrates the pre-annotation/annotation process step-by-step:  
+
+![6110image](/assets/images/annotation_lab/6.11.0/2.gif)
+
+
+#### **Image with Text Annotation (Performance-Optimized)**
+
+The second project template is similar to the first but is optimized for speed and larger multi-page PDFs. It maintains the side-by-side view found in the above project without the NER labels appearing on the image. This is to improve annotation speed and reduce server resources. This will work better for high-volume document processing. 
+
+![6110image](/assets/images/annotation_lab/6.11.0/3.png)
+
+### Advanced Capabilities
+- **Model Training:** Train NER, assertion, and relation models seamlessly in both project types.
+- **Rule-Based & Prompt-Based Annotation:** Utilize rules and prompts for efficient labeling.
+- **Support for Resolvers & ICD-10 Coding:** Ensures compatibility with all text-based annotation features.
