@@ -102,3 +102,33 @@ Known Limitations:
 #### Preannotation Server Specification
 
 The minimal required training configuration is 32 GB RAM, 2 Core CPU for Visual NER Model.
+
+### Optimized Visual NER loading for Large PDF Tasks
+We’ve made improvements to how JSON data is loaded when working with PDF tasks. Previously, every time you opened a new page in a PDF, the system would load JSON data for all pages, which could slow down performance, especially with larger documents.
+
+With this update, JSON data is now loaded more efficiently:
+
+- **Initial Load:** JSON data is fetched and loaded only once when the task is first opened (i.e., when the first page is accessed).
+
+- **Dynamic Loading:** When navigating to other pages, JSON data is loaded only for the page you’re viewing, rather than loading data for the entire PDF.
+
+This update brings significant performance improvements, especially when working with larger PDFs. For example, with a 3785-page PDF, the first page now loads about 1.2 times faster, Before, moving to the second page or jumping to the 50th page would often result in an empty screen. Now, these actions are 8 times faster, taking just under 2 seconds each.
+
+**Key Benefits:**
+- Faster navigation between pages.
+- Reduced memory usage by loading only the required data.
+- Resolved issues with empty screens when navigating large PDFs.
+
+This update ensures a smoother and more responsive experience when working with PDF tasks, especially for larger documents.
+
+**Improved Zooming in Visual NER**
+
+We've made significant improvements to the zooming functionality in Visual NER to enhance usability and give you better control over how documents are displayed.
+
+- **More Efficient Zooming Out**
+  Previously, when zooming out, both the horizontal and vertical dimensions shrank, often leaving a lot of empty white space at the top. This made it frustrating to position the page properly, requiring extra scrolling. With this update, zooming out now happens only horizontally, ensuring a better fit without unnecessary space. Now, you can get a proper view of your document without extra scrolling.
+
+- **Better Scaling for Larger Screens**
+  On larger screens, PDFs and images used to be displayed at full width (100%), making them too large and hard to view in their entirety. With this fix, documents are now automatically zoomed out so that you can see more of the page at once, making it easier to work with your data.
+
+![6110image](/assets/images/annotation_lab/6.11.0/4.gif)
