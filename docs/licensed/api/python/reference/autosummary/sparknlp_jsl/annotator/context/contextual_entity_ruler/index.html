@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -571,6 +572,9 @@ in domain-specific text processing.</p>
 - <cite>suffixPatterns</cite> (list[str]): Patterns to match after the entity.
 - <cite>prefixRegexes</cite> (list[str]): Regular expressions to match before the entity.
 - <cite>suffixRegexes</cite> (list[str]): Regular expressions to match after the entity.
+- <cite>prefixEntities</cite> (list[str]): Entities to match before the entity.
+- <cite>suffixEntities</cite> (list[str]): Entities to match after the entity.
+- <cite>regexInBetween</cite> (str): Regular expression to match text between the entity and prefix/suffix. If matched, the prefix/suffix entities will be included with the target entity.
 - <cite>replaceEntity</cite> (str): Replacement value for the matched entity.
 - <cite>mode</cite> (str): The mode of the rule. Options: <cite>“include”</cite>, <cite>“exclude”</cite>, or <cite>“replace_label_only”</cite>. Default is <cite>“include”</cite>.</p></li>
 </ul>
@@ -1047,6 +1051,9 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>suffixPatterns</cite>: A list of suffix patterns to add the target chunk.</p></li>
 <li><p><cite>prefixRegexes</cite>: A list of prefix regexes to add the target chunk.</p></li>
 <li><p><cite>suffixRegexes</cite>: A list of suffix regexes to add the target chunk.</p></li>
+<li><p><cite>prefixEntities</cite>: A list of prefix entities to add the target chunk.</p></li>
+<li><p><cite>suffixEntities</cite>: A list of suffix entities to add the target chunk.</p></li>
+<li><p><cite>regexInBetween</cite>: A regex pattern to match text between the entity and prefix/suffix. If matched, the prefix/suffix entities will be included with the target entity.</p></li>
 <li><p><cite>replaceEntity</cite>: The entity to replace the target entity.</p></li>
 <li><p><cite>mode</cite>: The mode of the rule. Options: <cite>include</cite>, <cite>exclude</cite>, or <cite>replace_label_only</cite>. Default is <cite>include</cite>.</p></li>
 </ul>
@@ -1100,6 +1107,9 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>suffixPatterns</cite>: A list of suffix patterns to add the target chunk.</p></li>
 <li><p><cite>prefixRegexes</cite>: A list of prefix regexes to add the target chunk.</p></li>
 <li><p><cite>suffixRegexes</cite>: A list of suffix regexes to add the target chunk.</p></li>
+<li><p><cite>prefixEntities</cite>: A list of prefix entities to add the target chunk.</p></li>
+<li><p><cite>suffixEntities</cite>: A list of suffix entities to add the target chunk.</p></li>
+<li><p><cite>regexInBetween</cite>: A regex pattern to match text between the entity and prefix/suffix. If matched, the prefix/suffix entities will be included with the target entity.</p></li>
 <li><p><cite>replaceEntity</cite>: The entity to replace the target entity.</p></li>
 <li><p><cite>mode</cite>: The mode of the rule. Options: <cite>include</cite>, <cite>exclude</cite>, or <cite>replace_label_only</cite>. Default is <cite>include</cite>.</p></li>
 </ul>

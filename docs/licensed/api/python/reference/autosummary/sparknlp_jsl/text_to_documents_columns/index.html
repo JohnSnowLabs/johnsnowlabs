@@ -361,7 +361,7 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TextToDocumentsColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TextToDocumentsColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns" title="Permalink to this definition">#</a></dt>
 <dd><p>Converts a DataFrame with columns of string texts into a DataFrame with columns of Document annotations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -384,6 +384,11 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.spark">
 <span class="sig-name descname"><span class="pre">spark</span></span><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.spark" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.suffix">
+<span class="sig-name descname"><span class="pre">suffix</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.suffix" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -437,6 +442,7 @@ into a DataFrame with columns of Document annotations having id in the metadata.
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.columns"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.columns</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.instance"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.instance</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.spark"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.spark</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.suffix"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.suffix</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumns"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.toDocumentsColumns()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.text_to_documents_columns.TextToDocumentsColumns.toDocumentsColumnsWithId"><code class="docutils literal notranslate"><span class="pre">TextToDocumentsColumns.toDocumentsColumnsWithId()</span></code></a></li>
 </ul>

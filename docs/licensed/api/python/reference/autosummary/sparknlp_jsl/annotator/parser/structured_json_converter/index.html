@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -609,8 +610,18 @@ If the <cite>document_identifier</cite> field is found in the input schema and I
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.parentSource">
+<span class="sig-name descname"><span class="pre">parentSource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.parentSource" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.returnRelationEntities">
 <span class="sig-name descname"><span class="pre">returnRelationEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.returnRelationEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.sentenceColumn">
+<span class="sig-name descname"><span class="pre">sentenceColumn</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.sentenceColumn" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -901,12 +912,55 @@ a default value.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setParentSource">
+<span class="sig-name descname"><span class="pre">setParentSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setParentSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the parent source of the output.
+Available options: <cite>chunk</cite> and <a href="#id1"><span class="problematic" id="id2">``</span></a>.
+When set to <cite>chunk</cite>, the output will be designed as a chunk-based struct with the following schema:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|--</span> <span class="n">json_output</span><span class="p">:</span> <span class="n">array</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|--</span> <span class="n">element</span><span class="p">:</span> <span class="n">struct</span> <span class="p">(</span><span class="n">containsNull</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">chunk_id</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">chunk</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">begin</span><span class="p">:</span> <span class="n">integer</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">end</span><span class="p">:</span> <span class="n">integer</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">sentence_id</span><span class="p">:</span> <span class="n">integer</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">sentence</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">ner_label</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">ner_source</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">ner_confidence</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">assertion</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">assertion_confidence</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">relations</span><span class="p">:</span> <span class="n">array</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">element</span><span class="p">:</span> <span class="nb">map</span> <span class="p">(</span><span class="n">containsNull</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">key</span><span class="p">:</span> <span class="n">string</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span> <span class="n">value</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">valueContainsNull</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The parent source of the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setReturnRelationEntities">
 <span class="sig-name descname"><span class="pre">setReturnRelationEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setReturnRelationEntities" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to return the entities in the relations or not, by default False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to return the entities in the relations or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setSentenceColumn">
+<span class="sig-name descname"><span class="pre">setSentenceColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setSentenceColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the sentence column name. The sentence column is used to extract sentence of the chunk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of the Sentence Column</p>
 </dd>
 </dl>
 </dd></dl>
@@ -981,7 +1035,9 @@ a default value.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.outputAsStr"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.outputAsStr</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.outputCol"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.parentSource"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.parentSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.returnRelationEntities"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.returnRelationEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.sentenceColumn"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.sentenceColumn</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.uid"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.clear"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.copy"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.copy()</span></code></a></li>
@@ -1006,7 +1062,9 @@ a default value.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setOutputCol"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setParamValue"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setParams"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setParentSource"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.setParentSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setReturnRelationEntities"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.setReturnRelationEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.setSentenceColumn"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.setSentenceColumn()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.transform"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.parser.structured_json_converter.StructuredJsonConverter.write"><code class="docutils literal notranslate"><span class="pre">StructuredJsonConverter.write()</span></code></a></li>
 </ul>
