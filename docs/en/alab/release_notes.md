@@ -293,6 +293,7 @@ Users no longer encounter errors related to missing completions.
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_11_1">6.11.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_11_0">6.11.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_10_1">6.10.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
