@@ -36,6 +36,7 @@ This model maps Spanish medical entities and concepts to ICD10GM codes using the
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
