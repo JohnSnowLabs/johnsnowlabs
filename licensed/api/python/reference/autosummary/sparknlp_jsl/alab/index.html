@@ -1,0 +1,955 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparknlp_jsl.alab &#8212; Spark NLP  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/alab/index';</script>
+    <link rel="icon" href="../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-sparknlp_jsl.alab">
+<span id="sparknlp-jsl-alab"></span><h1><a class="reference internal" href="#module-sparknlp_jsl.alab" title="sparknlp_jsl.alab"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.alab</span></code></a><a class="headerlink" href="#module-sparknlp_jsl.alab" title="Permalink to this heading">#</a></h1>
+<p>Functions to manipulate an NLP Lab JSON export into an appropriate layout for training
+assertion, relation extraction and NER models</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.alab.AnnotationLab" title="sparknlp_jsl.alab.AnnotationLab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnotationLab</span></code></a></p></td>
+<td><p>Interface to John Snow Labs's NLP Lab.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnnotationLab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl_verification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab" title="Permalink to this definition">#</a></dt>
+<dd><p>Interface to John Snow Labs’s NLP Lab.</p>
+<p>NLP Lab is a tool for multi-modal data annotation. It allows annotation teams
+to efficiently collaborate to generate training data for ML models and/or to
+validate automatic annotations generated by those.</p>
+<p>This module provides programmatically access to NLP Lab through the Healthcare NLP
+library. It allows users to:
+- Generating a CoNLL formatted file from the annotation JSON for training an NER model.
+- Generating a csv/excel formatted file from the annotation JSON for training
+classification, assertion, and relation extraction models.
+- Build preannotation JSON file using Spark NLP pipelines, saving it as a JSON and
+uploading preannotations to a project.
+- Interacting with the ALAB instance, and setting up projects of ALAB.
+- Getting the list of all projects in the ALAB instance.
+- Creating New Projects.
+- Deleting Projects.
+- Setting &amp; editing configuration of projects.
+- Accessing/getting configuration of any existing project.
+- Upload tasks to a project.
+- Deleting tasks of a project.</p>
+<p>For usage details and examples, please check the
+[NLP Lab tutorial](<a class="github reference external" href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb">JohnSnowLabs/spark-nlp-workshop</a>).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.base_url">
+<span class="sig-name descname"><span class="pre">base_url</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.base_url" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.client_id">
+<span class="sig-name descname"><span class="pre">client_id</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.client_id" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.client_secret">
+<span class="sig-name descname"><span class="pre">client_secret</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.client_secret" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.cookies">
+<span class="sig-name descname"><span class="pre">cookies</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.cookies" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.http_success_codes">
+<span class="sig-name descname"><span class="pre">http_success_codes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[200,</span> <span class="pre">201,</span> <span class="pre">203]</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.http_success_codes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.password" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.ssl_verification">
+<span class="sig-name descname"><span class="pre">ssl_verification</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.ssl_verification" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.username">
+<span class="sig-name descname"><span class="pre">username</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.username" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.check_preannotations_summary">
+<span class="sig-name descname"><span class="pre">check_preannotations_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.check_preannotations_summary" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks if the preannotations match the project’s configured labels. Returns True if they match, False otherwise.
+Additionally, prints the labels in the preannotations and the project’s configured labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>summary</strong> (<em>dict</em>) – preannotation summary generated by ‘generate_preannotations’ function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.create_project">
+<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_instruction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.create_project" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a new project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>project_description</strong> (<em>str</em>) – Project Description</p></li>
+<li><p><strong>project_sampling</strong> (<em>str</em>) – Random or Sequential sampling while showing tasks to annotators</p></li>
+<li><p><strong>project_instruction</strong> (<em>str</em>) – Annotation Guidelines</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>project</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.delete_project">
+<span class="sig-name descname"><span class="pre">delete_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.delete_project" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes an existing project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>confirm</strong> (<em>boolean</em>) – If set to True, no input required for confirmation. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.delete_tasks">
+<span class="sig-name descname"><span class="pre">delete_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.delete_tasks" title="Permalink to this definition">#</a></dt>
+<dd><p>Deletes tasks of a project in NLP Lab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>task_id</strong> – List of tasks ids</p></li>
+<li><p><strong>confirm</strong> (<em>boolean</em>) – If set to True, no input required for confirmation. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>content</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.generate_preannotations">
+<span class="sig-name descname"><span class="pre">generate_preannotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relations_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'model'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.generate_preannotations" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a JSON that can be imported directly into NLP Lab as pre-annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_results</strong> (<em>list</em><em>[</em><em>objects</em><em>]</em>) – list of annotations on documents using light_pipeline.fullAnnotate or full_pipeline.transform(df).collect()</p></li>
+<li><p><strong>document_column</strong> (<em>str</em>) – output column name of DocumentAssembler stage</p></li>
+<li><p><strong>ner_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – list of column names of ner chunks</p></li>
+<li><p><strong>assertion_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – list of column names of ner chunks</p></li>
+<li><p><strong>assertion_columns</strong> – list of column names of assertion models</p></li>
+<li><p><strong>relations_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – list of column names of relation models</p></li>
+<li><p><strong>user_name</strong> (<em>str</em>) – name of model(s). default: model</p></li>
+<li><p><strong>titles_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – custom list of titles of tasks in NLP Lab. Default: task_ID</p></li>
+<li><p><strong>id_offset</strong> (<em>int</em>) – When older tasks are already in NLP Lab, define the ID offeset to avoid overriting existing tasks. Default: 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_IAA_metrics">
+<span class="sig-name descname"><span class="pre">get_IAA_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">conll_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotator_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_ref_annotator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_NerDLMetrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'results_token_based'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_IAA_metrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets IAA metrics for the annotator annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>spark</strong> – Spark session</p>
+</dd>
+</dl>
+<p>:param conll_dir:path to the conll files
+:param annotator_names: list of annotator names
+:param set_ref_annotator: reference annotator name, Default is None. If present, all comparisons made with respect to it.
+:param return_NerDLMetrics: By default return_NerDLMetrics = False. If True, we get the full chunk and partial chunk per token IAA dataframes by using NerDLMetrics. If False, we get the evaluate method for chunk based and classification reports for token based comparisons.
+:param save_dir: path to save token based results, default = “results_token_based”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_all_projects">
+<span class="sig-name descname"><span class="pre">get_all_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_all_projects" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a JSON object containing details of all visible projects in NLP Lab.
+:rtype dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_annotations">
+<span class="sig-name descname"><span class="pre">get_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_annotations" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets / Exports annotations of a project in NLP Lab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>output_name</strong> (<em>str</em>) – file name where to write the result as json.</p></li>
+<li><p><strong>save_dir</strong> (<em>str</em>) – directory location where to save output json.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>content</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_assertion_data">
+<span class="sig-name descname"><span class="pre">get_assertion_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relevant_ner_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unannotated_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unannotated_label_strategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unannotated_label_strategy_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">included_task_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_assertion_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a dataframe to train assertion models in Spark NLP from an NLP Lab JSON export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – Spark session with spark-nlp-jsl jar</p></li>
+<li><p><strong>input_json_path</strong> (<em>str</em>) – path to NLP Lab JSON export</p></li>
+<li><p><strong>assertion_labels</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – annotated assertion labels to train on</p></li>
+<li><p><strong>relevant_ner_labels</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – relevant NER labels that are assigned assertion labels</p></li>
+<li><p><strong>ground_truth</strong> (<em>bool</em>) – set to True to select ground truth completions, False to select latest completions, defaults to False</p></li>
+<li><p><strong>unannotated_label</strong> (<em>str</em>) – assertion label to assign to entities that have no assertion, defaults to None</p></li>
+<li><p><strong>regex_pattern</strong> (<em>str</em>) – set a pattern to use regex tokenizer, defaults to regular tokenizer if pattern not defined</p></li>
+<li><p><strong>unannotated_label_strategy</strong> (<em>str</em>) – set the strategy to control the number of occurrences of the unannotated
+assertion label in the output dataframe, options are ‘weighted’ or ‘counts’, ‘weighted’ allows to sample using a
+fraction, ‘counts’ allows to sample using absolute counts, defaults to None</p></li>
+<li><p><strong>unannotated_label_strategy_dict</strong> (<em>dict</em>) – dictionary in the format {‘ENTITY_LABEL’: sample_weight_or_counts} to
+control the number of occurrences of the unannotated assertion label in the output dataframe, where ‘ENTITY_LABEL’
+are the NER labels that are assigned the unannotated assertion label, and sample_weight_or_counts should be between
+0 and 1 if <cite>unannotated_label_strategy</cite> is ‘weighted’ or between 0 and the max number of occurrences of that NER
+label if <cite>unannotated_label_strategy</cite> is ‘counts’</p></li>
+<li><p><strong>excluded_task_ids</strong> (<em>list</em>) – list of NLP Lab task IDs to exclude from output dataframe, defaults to None</p></li>
+<li><p><strong>excluded_task_titles</strong> (<em>list</em>) – list of NLP Lab task titles to exclude from output dataframe, defaults to None</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Makes sure we get the same data every time we execute the code. Defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe in appropriate layout for training assertion models</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_classification_data">
+<span class="sig-name descname"><span class="pre">get_classification_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_classification_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a dataframe to train classification models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_json_path</strong> (<em>str</em>) – path of NLP Lab exported JSON</p></li>
+<li><p><strong>ground_truth</strong> (<em>boolean</em>) – set to True to select ground truth completions, False to select latest completions,
+defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_conll_data">
+<span class="sig-name descname"><span class="pre">get_conll_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'exported_conll'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">IO</span></span></span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_conll_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a CoNLL file from an NLP Lab JSON export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – Spark session with spark-nlp-jsl jar</p></li>
+<li><p><strong>input_json_path</strong> (<em>str</em>) – path to NLP Lab JSON export</p></li>
+<li><p><strong>output_name</strong> (<em>str</em>) – name of the CoNLL file to save</p></li>
+<li><p><strong>save_dir</strong> (<em>str</em>) – path for CoNLL file saving directory, defaults to ‘exported_conll’</p></li>
+<li><p><strong>ground_truth</strong> (<em>bool</em>) – set to True to select ground truth completions, False to select latest completions, defaults to False</p></li>
+<li><p><strong>excluded_labels</strong> (<em>list</em>) – labels to exclude from CoNLL; these are all assertion labels and irrelevant NER labels, defaults to None</p></li>
+<li><p><strong>excluded_task_ids</strong> (<em>list</em>) – list of NLP Lab task IDs to exclude from CoNLL, defaults to None</p></li>
+<li><p><strong>excluded_task_titles</strong> (<em>list</em>) – list of NLP Lab task titles to exclude from CoNLL, defaults to None</p></li>
+<li><p><strong>regex_pattern</strong> (<em>str</em>) – set a pattern to use regex tokenizer, defaults to regular tokenizer if pattern not defined</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>CoNLL file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IO</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_conll_data_from_visualner">
+<span class="sig-name descname"><span class="pre">get_conll_data_from_visualner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'visualner'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'exported_conll'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">IO</span></span></span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_conll_data_from_visualner" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a CoNLL file from an NLP Lab JSON export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_json_path</strong> (<em>str</em>) – path to NLP Lab JSON export</p></li>
+<li><p><strong>output_name</strong> (<em>str</em>) – name of the CoNLL file to save</p></li>
+<li><p><strong>save_dir</strong> (<em>str</em>) – path for CoNLL file saving directory, defaults to ‘exported_conll’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>CoNLL file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IO</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_project_config">
+<span class="sig-name descname"><span class="pre">get_project_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_project_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets configuration details of a project as JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>project_name</strong> (<em>str</em>) – Project Name</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Project Configuration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.get_relation_extraction_data">
+<span class="sig-name descname"><span class="pre">get_relation_extraction_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative_relations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relation_pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative_relation_strategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative_relation_strategy_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_task_titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.get_relation_extraction_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a dataframe to train relation extraction models in Spark NLP from an NLP Lab JSON export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – Spark session with spark-nlp-jsl jar</p></li>
+<li><p><strong>input_json_path</strong> (<em>str</em>) – path to NLP Lab JSON export</p></li>
+<li><p><strong>ground_truth</strong> (<em>bool</em>) – set to True to select ground truth completions, False to select latest completions,
+defaults to False</p></li>
+<li><p><strong>negative_relations</strong> (<em>bool</em>) – set to True to assign a relation label between entities where no relation was
+annotated, defaults to False</p></li>
+<li><p><strong>assertion_labels</strong> (<em>list</em>) – all assertion labels that were annotated, defaults to None</p></li>
+<li><p><strong>relations</strong> (<em>list</em>) – Name of the relations you want to include. It will discard the rest</p></li>
+<li><p><strong>relation_pairs</strong> (<em>list</em>) – plausible pairs of entities for relations, separated by a <cite>-</cite>, use the same casing as
+the annotations, include only one relation direction, defaults to all possible pairs of annotated entities</p></li>
+<li><p><strong>negative_relation_strategy</strong> (<em>str</em>) – set the strategy to control the number of occurrences of the negative relation
+label in the output dataframe, options are ‘weighted’ or ‘counts’, ‘weighted’ allows to sample using a
+fraction, ‘counts’ allows to sample using absolute counts, defaults to None</p></li>
+<li><p><strong>negative_relation_strategy_dict</strong> (<em>dict</em>) – dictionary in the format {‘ENTITY1-ENTITY2’: sample_weight_or_counts} to
+control the number of occurrences of negative relations in the output dataframe for each entity pair, where
+‘ENTITY1-ENTITY2’ represent the pairs of entities for relations separated by a <cite>-</cite> (include only one relation
+direction), and sample_weight_or_counts should be between 0 and 1 if <cite>negative_relation_strategy</cite> is ‘weighted’ or
+between 0 and the max number of occurrences of negative relations if <cite>negative_relation_strategy</cite> is ‘counts’,
+defaults to None</p></li>
+<li><p><strong>excluded_task_ids</strong> (<em>list</em>) – list of NLP Lab task IDs to exclude from output dataframe, defaults to None</p></li>
+<li><p><strong>excluded_task_titles</strong> (<em>list</em>) – list of NLP Lab task titles to exclude from output dataframe, defaults to None</p></li>
+<li><p><strong>doc_wise_annot</strong> (<em>bool</em>) – returns the dataframe with document wise annotations that were done cross sentences, defaults to False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe in appropriate layout for training relation extraction models</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.review_annotations">
+<span class="sig-name descname"><span class="pre">review_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">conll_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_model_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.review_annotations" title="Permalink to this definition">#</a></dt>
+<dd><p>This function is used to get the review files from a conll file.
+It predicts the ner tags for the conll file and compares the predicted tags with the
+original conll tags and generates a review files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>SparkSession</em>) – spark session</p></li>
+<li><p><strong>conll_path</strong> (<em>str</em>) – path to conll file</p></li>
+<li><p><strong>ner_model_path</strong> (<em>str</em>) – path to ner model</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple containing chunk_based_comparison_df (DataFrame), token_based_comparision_df (DataFrame), chunk_frequency_df (DataFrame), metrics_result (Dict)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.set_credentials">
+<span class="sig-name descname"><span class="pre">set_credentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotationlab_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://annotationlab.johnsnowlabs.com'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.set_credentials" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets credentials to connect to your NLP Lab instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – Username</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – Password</p></li>
+<li><p><strong>client_secret</strong> (<em>str</em>) – Client Secret for your installation (Every installation of NLP Lab has a secret code).</p></li>
+<li><p><strong>annotationlab_url</strong> (<em>str</em>) – URL of NLP Lab. Default: JSL’s NLP Lab (<a class="reference external" href="https://annotationlab.johnsnowlabs.com">https://annotationlab.johnsnowlabs.com</a>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.set_project_config">
+<span class="sig-name descname"><span class="pre">set_project_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classification_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relations_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.set_project_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configuration of a project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>classification_labels</strong> (<em>List</em>) – List of document classification classes. By default, it’d be multiclass classification.</p></li>
+<li><p><strong>ner_labels</strong> (<em>List</em>) – List of NER classes</p></li>
+<li><p><strong>assertion_labels</strong> (<em>List</em>) – List of assertion classes</p></li>
+<li><p><strong>relations_labels</strong> (<em>List</em>) – List of different types of relations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>content</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.upload_preannotations">
+<span class="sig-name descname"><span class="pre">upload_preannotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preannotations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.upload_preannotations" title="Permalink to this definition">#</a></dt>
+<dd><p>Uploads preannotations to a project in NLP Lab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>preannotations</strong> (<em>List</em>) – preannotation JSON generated by ‘generate_preannotations’ function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.alab.AnnotationLab.upload_tasks">
+<span class="sig-name descname"><span class="pre">upload_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.alab.AnnotationLab.upload_tasks" title="Permalink to this definition">#</a></dt>
+<dd><p>Uploads tasks to a project in NLP Lab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_name</strong> (<em>str</em>) – Project Name</p></li>
+<li><p><strong>task_list</strong> (<em>List</em>) – List of documents (text).</p></li>
+<li><p><strong>title_list</strong> (<em>List</em>) – Option for providing custom titles for each task. If defined, it’s length should be equal to number of tasks</p></li>
+<li><p><strong>id_offset</strong> (<em>int</em>) – Increment offset for document ID. Useful when uploading in batches. Default: 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>content</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab"><code class="docutils literal notranslate"><span class="pre">AnnotationLab</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.base_url"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.base_url</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.client_id"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.client_id</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.client_secret"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.client_secret</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.cookies"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.cookies</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.http_success_codes"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.http_success_codes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.password"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.password</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.ssl_verification"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.ssl_verification</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.username"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.username</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.check_preannotations_summary"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.check_preannotations_summary()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.create_project"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.create_project()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.delete_project"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.delete_project()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.delete_tasks"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.delete_tasks()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.generate_preannotations"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.generate_preannotations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_IAA_metrics"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_IAA_metrics()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_all_projects"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_all_projects()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_annotations"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_annotations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_assertion_data"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_assertion_data()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_classification_data"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_classification_data()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_conll_data"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_conll_data()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_conll_data_from_visualner"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_conll_data_from_visualner()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_project_config"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_project_config()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.get_relation_extraction_data"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.get_relation_extraction_data()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.review_annotations"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.review_annotations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.set_credentials"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.set_credentials()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.set_project_config"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.set_project_config()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.upload_preannotations"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.upload_preannotations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.alab.AnnotationLab.upload_tasks"><code class="docutils literal notranslate"><span class="pre">AnnotationLab.upload_tasks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

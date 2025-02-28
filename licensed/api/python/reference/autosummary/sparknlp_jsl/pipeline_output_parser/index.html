@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparknlp_jsl.pipeline_output_parser &#8212; Spark NLP  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/pipeline_output_parser/index';</script>
+    <link rel="icon" href="../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-sparknlp_jsl.pipeline_output_parser">
+<span id="sparknlp-jsl-pipeline-output-parser"></span><h1><a class="reference internal" href="#module-sparknlp_jsl.pipeline_output_parser" title="sparknlp_jsl.pipeline_output_parser"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.pipeline_output_parser</span></code></a><a class="headerlink" href="#module-sparknlp_jsl.pipeline_output_parser" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser" title="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineOutputParser</span></code></a></p></td>
+<td><p>This class is used to parse the output of a Spark NLP pipeline.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PipelineOutputParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_maps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser" title="Permalink to this definition">#</a></dt>
+<dd><p>This class is used to parse the output of a Spark NLP pipeline.</p>
+<p>It provides methods for extracting named entities, assertions, code mapping, relations, summaries, and deidentification from the output.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_output_parser</span> <span class="kn">import</span> <span class="n">PipelineOutputParser</span>
+</pre></div>
+</div>
+<p>Load the pipeline and the text</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s2">&quot;Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.&quot;</span> <span class="o">+</span>
+<span class="gp">... </span>    <span class="s2">&quot;The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast. The cancer recurred as a right lung metastasis 13 years later.&quot;</span> <span class="o">+</span>
+<span class="gp">... </span>    <span class="s2">&quot;He underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.&quot;</span>
+<span class="gp">... </span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oncology_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s2">&quot;oncology_biomarker_pipeline&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotations</span> <span class="o">=</span> <span class="n">oncology_pipeline</span><span class="o">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define the column_maps dictionary</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">column_maps</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;document_identifier&#39;</span><span class="p">:</span> <span class="s1">&#39;XYZ_123&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;document_text&#39;</span><span class="p">:</span> <span class="s1">&#39;document&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;entities&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;merged_chunk&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;assertions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;assertion_chunk&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;resolver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;icd10_code&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="s1">&#39;relations&#39;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="gp">... </span>    <span class="s1">&#39;summaries&#39;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="gp">... </span>    <span class="s2">&quot;deidentifications&quot;</span> <span class="p">:</span> <span class="p">[],</span>
+<span class="gp">... </span>    <span class="s2">&quot;classifications&quot;</span><span class="p">:[]</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Initialized parser from the dictionary</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline_parser</span> <span class="o">=</span> <span class="n">PipelineOutputParser</span><span class="p">(</span><span class="n">column_maps</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run the parser on the output of a Spark NLP pipeline</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parsed_result</span> <span class="o">=</span> <span class="n">pipeline_parser</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">parsed_result</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict">
+<span class="sig-name descname"><span class="pre">check_column_mapping_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>This function is used to check if the column mapping dictionary is valid.
+It checks if the following keys are present in the dictionary: document_text, entities, relations, and summary.
+It also checks if the values of the entities, relations, and summary keys are also dictionaries, and if the keys ner_chunk_column_name, resolver_column_name, and assertion_column_name are present in these dictionaries.
+:param result: The output of the pipeline.
+:type result: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – If a key is missing from the column mapping dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_unique_id">
+<span class="sig-name descname"><span class="pre">check_unique_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_chunk_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_chunk_begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_chunk_end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_unique_id" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_assertions">
+<span class="sig-name descname"><span class="pre">get_assertions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_assertions" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts assertions from the pipeline output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>assertion_result</strong> (<em>list</em>) – The output of the assertion column.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>chunk_id (str): The unique identifier for the chunk of text that the assertion applies to.</p></li>
+<li><p>chunk (str): The text of the chunk.</p></li>
+<li><p>assertion (str): The assertion status.</p></li>
+<li><p>assertion_confidence (str): The confidence score of the assertion model in identifying assertion status.</p></li>
+<li><p>assertion_source (str): The source of the assertion information</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of dictionaries, where each dictionary represents an assertion, containing the following keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_classification">
+<span class="sig-name descname"><span class="pre">get_classification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_classification" title="Permalink to this definition">#</a></dt>
+<dd><p>This function retrieves classification results from the pipeline output.</p>
+<p>Parameters:
+result (list): The output of the pipeline from fullAnnotate. This list contains annotations for each document.</p>
+<p>Returns:
+list: A list of dictionaries, where each dictionary represents a classification result.</p>
+<blockquote>
+<div><p>Each dictionary contains the following keys:
+- category (str): The category of the classification.
+- sentence (str): The sentence from which the classification was made.
+- sentence_id (int): The ID of the sentence.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification">
+<span class="sig-name descname"><span class="pre">get_deidentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract deidentification text from the pipeline output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<em>list</em>) – The output of the pipeline.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>original (list): A list of original text.</p></li>
+<li><p>obfuscated (list): A list of deidentified text.</p></li>
+<li><p>masked (list):  A list of masked text.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of dictionaries, where each dictionary represents a deidentification containing the following keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents">
+<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieves the document text from the pipeline output.</p>
+<p>Arg:
+result (list): The output of the pipeline from fullAnnotate. This list contains annotations for each document.</p>
+<p>Returns:
+list: A list of strings, where each string represents the text of a document.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_entities">
+<span class="sig-name descname"><span class="pre">get_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_entities" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract named entities from the pipeline output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<em>list</em>) – The output of the pipeline.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A list of dictionaries, where each dictionary represents a named entity.
+Each dictionary contains the following keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>chunk_id (str): The unique identifier for the entity.</p></li>
+<li><p>chunk (str): The text of the entity.</p></li>
+<li><p>begin (int): The index of the beginning of the entity in the text.</p></li>
+<li><p>end (int): The index of the end of the entity in the text.</p></li>
+<li><p>ner_label (str): The label of the entity, as determined by the NER model.</p></li>
+<li><p>ner_source (str): The source of the NER model that generated this entity.</p></li>
+<li><p>ner_confidence (float): The confidence score of the NER model in identifying this entity.</p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>entity_results (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_relations">
+<span class="sig-name descname"><span class="pre">get_relations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_relation_entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_relations" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract relations from the pipeline output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<em>list</em>) – The output of the pipeline.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>relation (str): The type of relation.</p></li>
+<li><p>entity1 (str): The first entity envolved in the relation.</p></li>
+<li><p>chunk1_id (str): The unique identifier for the first chunk.</p></li>
+<li><p>entity1_begin (int): The index of the beginning of the first chunk.</p></li>
+<li><p>entity1_end (int): The index of the end of the first chunk.</p></li>
+<li><p>chunk1 (str): The text of the first chunk.</p></li>
+<li><p>entity2 (str): The second entity envolved in the relation.</p></li>
+<li><p>chunk2_id (str): The unique identifier for the second chunk.</p></li>
+<li><p>entity2_begin (int): The index of the beginning of the second chunk.</p></li>
+<li><p>entity2_end (int): The index of the end of the second chunk.</p></li>
+<li><p>chunk2 (str): The text of the second chunk.</p></li>
+<li><p>confidence (float): The confidence score of the relation.</p></li>
+<li><p>direction (str): The direction of the relation.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of dictionaries, where each dictionary represents a relation, containing the following keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_resolutions">
+<span class="sig-name descname"><span class="pre">get_resolutions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_resolutions" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts terminology codes from the pipeline output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>vocab (str): The vocablary information about teminology codes.</p></li>
+<li><p>chunk_id (str): The unique identifier for entity.</p></li>
+<li><p>chunk (str): The text of the chunk.</p></li>
+<li><p>term_code (str): The code of the term.</p></li>
+<li><p>resolutions (str): The resolved text of the term.</p></li>
+<li><p>all_k_codes (list): A list of all k results.</p></li>
+<li><p>all_k_resolutions (list): A list of all k resolutions.</p></li>
+<li><p>all_k_aux_labels (list): A list of all k aux labels.</p></li>
+<li><p>all_k_distances (list): A list of all k distances.</p></li>
+<li><p>confidence (float): The confidence score of the resolutions.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of dictionaries, where each dictionary represents a named entity, containing the following keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_summary">
+<span class="sig-name descname"><span class="pre">get_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_summary" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates summary from the provided text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Summarized text</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_unique_id">
+<span class="sig-name descname"><span class="pre">get_unique_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner_chunk_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_chunk_begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_chunk_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_unique_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a unique identifier for a named entity chunk.</p>
+<p>Returns:
+str: A unique identifier for the named entity chunk, encoded in base64. The identifier is truncated to the first 8 characters.</p>
+<p>Note:
+This method uses the uuid3 function from the uuid module to generate a unique identifier based on the provided parameters.
+The identifier is then encoded in base64 and truncated to the first 8 characters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_relation_entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.run" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse the pipeline output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>list</em>) – The output of the pipeline from fullAnnotate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>document_identifier (str): The informations of the document.</p></li>
+<li><p>document_id (str): The ID of the document.</p></li>
+<li><p>document_text (str): The text of the document.</p></li>
+<li><dl class="simple">
+<dt>entities (list): A list of dictionaries, where each dictionary represents a named entity, containing the following keys:</dt><dd><ul>
+<li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
+<li><p>chunk (str): The text of the entity.</p></li>
+<li><p>begin (int): The index of the beginning of the entity in the text.</p></li>
+<li><p>end (int): The index of the end of the entity in the text.</p></li>
+<li><p>ner_label (str): The label of the entity, as determined by the NER model.</p></li>
+<li><p>ner_source (str): The source of the NER model that generated this entity.</p></li>
+<li><p>ner_confidence (float): The confidence score of the NER model in identifying this entity.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>assertions (list): A list of dictionaries, where each dictionary represents a assertion, containing the following keys:</dt><dd><ul>
+<li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
+<li><p>chunk (str): The text of the chunk.</p></li>
+<li><p>assertion (str): The assertion status.</p></li>
+<li><p>assertion_confidence (str): The confidence score of the assertion model in identifying assertion status.</p></li>
+<li><p>assertion_source (str): The source of the assertion information</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>resolutions (list): A list of dictionaries, where each dictionary represents a resolutions, containing the following keys:</dt><dd><ul>
+<li><p>vocab (str): The vocablary information about teminology codes.</p></li>
+<li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
+<li><p>chunk (str): The text of the chunk.</p></li>
+<li><p>term_code (str): The code of the term.</p></li>
+<li><p>resolutions (str): The resolved text of the term.</p></li>
+<li><p>all_k_codes (list): A list of all k results.</p></li>
+<li><p>all_k_resolutions (list): A list of all k resolutions.</p></li>
+<li><p>all_k_aux_labels (list): A list of all k aux labels.</p></li>
+<li><p>all_k_distances (list): A list of all k distances.</p></li>
+<li><p>confidence (float): The confidence score of the resolutions.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>relations (list): A list of dictionaries, where each dictionary represents a relation, containing the following keys:</dt><dd><ul>
+<li><p>relation (str): The type of relation.</p></li>
+<li><p>entity1 (str): The first entity envolved in the relation.</p></li>
+<li><p>chunk1_id (str): The unique identifier for the first chunk.</p></li>
+<li><p>entity1_begin (int): The index of the beginning of the first chunk.</p></li>
+<li><p>entity1_end (int): The index of the end of the first chunk.</p></li>
+<li><p>chunk1 (str): The text of the first chunk.</p></li>
+<li><p>entity2 (str): The second entity envolved in the relation.</p></li>
+<li><p>chunk2_id (str): The unique identifier for the second chunk.</p></li>
+<li><p>entity2_begin (int): The index of the beginning of the second chunk.</p></li>
+<li><p>entity2_end (int): The index of the end of the second chunk.</p></li>
+<li><p>chunk2 (str): The text of the second chunk.</p></li>
+<li><p>confidence (float): The confidence score of the relation.</p></li>
+<li><p>direction (str): The direction of the relation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>deidentifications: (list) A list of dictionaries, where each dictionary represents a deidentification, containing the following keys:</dt><dd><ul>
+<li><p>original (list): A list of original text.</p></li>
+<li><p>obfuscated (list): A list of deidentified text.</p></li>
+<li><p>masked (list):  A list of masked text.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>classifications (list):  A list of dictionaries, where each dictionary represents a classification result.</dt><dd><ul>
+<li><p>category (str): The category of the classification.</p></li>
+<li><p>sentence (str): The sentence from which the classification was made.</p></li>
+<li><p>sentence_id (int): The ID of the sentence.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the parsed results, where the key is “result” and the value is a list of dictionaries, where each dictionary represents a document, containing the following keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.update_columns_maps">
+<span class="sig-name descname"><span class="pre">update_columns_maps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_maps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.update_columns_maps" title="Permalink to this definition">#</a></dt>
+<dd><p>Update the column mapping dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>columns_maps</strong> (<em>dict</em>) – A dictionary containing the column mappings.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_column_mapping_dict"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.check_column_mapping_dict()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.check_unique_id"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.check_unique_id()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_assertions"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_assertions()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_classification"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_classification()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_deidentification()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_documents()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_entities"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_entities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_relations"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_relations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_resolutions"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_resolutions()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_summary"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_summary()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_unique_id"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.get_unique_id()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.run"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.run()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.update_columns_maps"><code class="docutils literal notranslate"><span class="pre">PipelineOutputParser.update_columns_maps()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

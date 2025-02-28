@@ -1,0 +1,1713 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-02-28T15:47:00+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Full Dicom de-identification</title><link href="/2025/02/19/dicom_deid_full_anonymization_en_3_4.html" rel="alternate" type="text/html" title="Full Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_full_anonymization_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_full_anonymization_en_3_4.html">## Description
+
+Pretrained pipeline for doing Dicom De-identification in which all texts in the images are removed together with most of the tags in the metadata.
+
+## Predicted Entities
+
+{:.btn-box}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_DICOM_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+&lt;!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dicom_deid_full_anonymization_en_5.5.0_3.0_1737198071000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} --&gt;
+
+
+## How to use
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+
+```python
+dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+
+pipeline = PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+
+result = pipeline.transform(dicom_df).cache()
+```
+```scala
+val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+
+val pipeline = new PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+
+val result = pipeline.transform(dicom_df).cache()
+```
+&lt;/div&gt;
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/pp_deid_metadata.png)
+![Screenshot](/assets/images/examples_ocr/pp_deid_image.png)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pp2_metadata.png)
+![Screenshot](/assets/images/examples_ocr/pp2_deid.png)
+
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|dicom_deid_full_anonymization|
+|Type:|pipeline|
+|Compatibility:|Visual NLP 5.5.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description Pretrained pipeline for doing Dicom De-identification in which all texts in the images are removed together with most of the tags in the metadata. Predicted Entities Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) pipeline = PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) result = pipeline.transform(dicom_df).cache() val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) val pipeline = new PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) val result = pipeline.transform(dicom_df).cache() Example Input: Output: Model Information Model Name: dicom_deid_full_anonymization Type: pipeline Compatibility: Visual NLP 5.5.0+ License: Licensed Edition: Official Language: en</summary></entry><entry><title type="html">Minimal Dicom de-identification</title><link href="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html" rel="alternate" type="text/html" title="Minimal Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html">## Description
+
+Pretrained pipeline for doing Dicom De-identification, attempting to remove the least possible amount of tags and image texts.
+
+
+## Predicted Entities
+
+{:.btn-box}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_DICOM_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+&lt;!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dicom_deid_generic_augmented_minimal_en_5.5.0_3.0_1737198071000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} --&gt;
+
+
+## How to use
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+
+```python
+dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+
+pipeline = PretrainedPipeline(&quot;dicom_deid_generic_augmented_minimal&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+
+result = pipeline.transform(dicom_df).cache()
+```
+```scala
+val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+
+val pipeline = new PretrainedPipeline(&quot;dicom_deid_generic_augmented_minimal&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+
+val result = pipeline.transform(dicom_df).cache()
+```
+&lt;/div&gt;
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/pp_deid_metadata.png)
+![Screenshot](/assets/images/examples_ocr/pp_deid_image.png)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pp1_metadata.png)
+![Screenshot](/assets/images/examples_ocr/pp1_deid.png)
+
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|dicom_deid_generic_augmented_minimal|
+|Type:|pipeline|
+|Compatibility:|Visual NLP 5.5.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description Pretrained pipeline for doing Dicom De-identification, attempting to remove the least possible amount of tags and image texts. Predicted Entities Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) pipeline = PretrainedPipeline(&quot;dicom_deid_generic_augmented_minimal&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) result = pipeline.transform(dicom_df).cache() val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) val pipeline = new PretrainedPipeline(&quot;dicom_deid_generic_augmented_minimal&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) val result = pipeline.transform(dicom_df).cache() Example Input: Output: Model Information Model Name: dicom_deid_generic_augmented_minimal Type: pipeline Compatibility: Visual NLP 5.5.0+ License: Licensed Edition: Official Language: en</summary></entry><entry><title type="html">Pseudonym Dicom de-identification</title><link href="/2025/02/19/dicom_deid_generic_augmented_pseudonym_en_3_4.html" rel="alternate" type="text/html" title="Pseudonym Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_generic_augmented_pseudonym_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_generic_augmented_pseudonym_en_3_4.html">## Description
+
+Pretrained pipeline for doing Dicom De-identification, attempting to replaces values in metadata with pseudonyms. Images will be de-identified for PHI.
+
+
+## Predicted Entities
+
+{:.btn-box}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_DICOM_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+&lt;!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dicom_deid_generic_augmented_pseudonym_en_5.5.0_3.0_1737198071000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} --&gt;
+
+
+## How to use
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+
+```python
+dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+
+pipeline = PretrainedPipeline(&quot;dicom_deid_generic_augmented_pseudonym&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+
+result = pipeline.transform(dicom_df).cache()
+```
+```scala
+val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+
+val pipeline = new PretrainedPipeline(&quot;dicom_deid_generic_augmented_pseudonym&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+
+val result = pipeline.transform(dicom_df).cache()
+```
+&lt;/div&gt;
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/pp_deid_metadata.png)
+![Screenshot](/assets/images/examples_ocr/pp_deid_image.png)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pp3_metadata.png)
+![Screenshot](/assets/images/examples_ocr/pp3_deid.png)
+
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|dicom_deid_generic_augmented_pseudonym|
+|Type:|pipeline|
+|Compatibility:|Visual NLP 5.5.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description Pretrained pipeline for doing Dicom De-identification, attempting to replaces values in metadata with pseudonyms. Images will be de-identified for PHI. Predicted Entities Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) pipeline = PretrainedPipeline(&quot;dicom_deid_generic_augmented_pseudonym&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) result = pipeline.transform(dicom_df).cache() val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) val pipeline = new PretrainedPipeline(&quot;dicom_deid_generic_augmented_pseudonym&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) val result = pipeline.transform(dicom_df).cache() Example Input: Output: Model Information Model Name: dicom_deid_generic_augmented_pseudonym Type: pipeline Compatibility: Visual NLP 5.5.0+ License: Licensed Edition: Official Language: en</summary></entry><entry><title type="html">Sentence Entity Resolver for MeSH (sbiobert_base_cased_mli embeddings) - Augmented</title><link href="/2025/02/19/sbiobertresolve_mesh_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for MeSH (sbiobert_base_cased_mli embeddings) - Augmented" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/sbiobertresolve_mesh_augmented_en</id><content type="html" xml:base="/2025/02/19/sbiobertresolve_mesh_augmented_en.html">## Description
+
+This model maps clinical entities to Medical Subject Heading (MeSH) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. In this model, MeSH descriptors, supplementary concepts, and pharmacologic actions datasets were used. 
+ 
+Descriptors: Main subject headings representing biomedical concepts (e.g., &quot;Diabetes Mellitus&quot;).
+ 
+Supplementary Concepts: Additional terms, including chemicals and drugs, mapped to existing descriptors.
+ 
+Pharmacologic Actions: Terms describing the biological effects of drugs and chemicals (e.g., &quot;Anti-Inflammatory Agents&quot;)
+
+## Predicted Entities
+
+`mesh_code`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_mesh_augmented_en_5.5.2_3.0_1739977582730.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_mesh_augmented_en_5.5.2_3.0_1739977582730.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+	
+```python
+document_assembler = DocumentAssembler()\
+	.setInputCol(&quot;text&quot;)\
+	.setOutputCol(&quot;document&quot;)
+
+sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;document&quot;])\
+	.setOutputCol(&quot;sentence&quot;)
+
+tokenizer = Tokenizer()\
+	.setInputCols([&quot;sentence&quot;])\
+	.setOutputCol(&quot;token&quot;)
+
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+	.setOutputCol(&quot;word_embeddings&quot;)
+
+ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \
+	.setOutputCol(&quot;ner&quot;)\
+
+ner_converter = NerConverterInternal()\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+	.setOutputCol(&quot;ner_chunk&quot;)
+
+chunk2doc = Chunk2Doc()\
+	.setInputCols(&quot;ner_chunk&quot;)\
+	.setOutputCol(&quot;ner_chunk_doc&quot;)
+
+sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\
+        .setInputCols([&quot;ner_chunk_doc&quot;])\
+        .setOutputCol(&quot;sbert_embeddings&quot;)\
+        .setCaseSensitive(False)
+
+resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_augmented&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+        .setInputCols([&quot;sbert_embeddings&quot;]) \
+        .setOutputCol(&quot;mesh_code&quot;)\
+        .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+pipeline = Pipeline(stages = [
+       document_assembler,
+       sentence_detector,
+       tokenizer,
+       word_embeddings,
+       ner,
+       ner_converter,
+       chunk2doc,
+       sbert_embedder,
+       resolver])
+
+text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement occurred and thoracoscopy with fluid biopsies, which were performed, revealed malignant mesothelioma.&quot;&quot;&quot;
+
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+```
+
+{:.jsl-block}
+```python
+document_assembler =nlp.DocumentAssembler()\
+	.setInputCol(&quot;text&quot;)\
+	.setOutputCol(&quot;document&quot;)
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;document&quot;])\
+	.setOutputCol(&quot;sentence&quot;)
+
+tokenizer = nlp.Tokenizer()\
+	.setInputCols([&quot;sentence&quot;])\
+	.setOutputCol(&quot;token&quot;)
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+	.setOutputCol(&quot;word_embeddings&quot;)
+
+ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \
+	.setOutputCol(&quot;ner&quot;)\
+
+ner_converter = medical.NerConverterInternal()\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+	.setOutputCol(&quot;ner_chunk&quot;)
+
+chunk2doc = nlp.Chunk2Doc()\
+	.setInputCols(&quot;ner_chunk&quot;)\
+	.setOutputCol(&quot;ner_chunk_doc&quot;)
+
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\
+       .setInputCols([&quot;ner_chunk_doc&quot;])\
+       .setOutputCol(&quot;sbert_embeddings&quot;)\
+       .setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_augmented&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+      .setInputCols([&quot;sbert_embeddings&quot;]) \
+      .setOutputCol(&quot;mesh_code&quot;)\
+      .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+pipeline = nlp.Pipeline(stages = [
+      document_assembler,
+      sentence_detector,
+      tokenizer,
+      word_embeddings,
+      ner,
+      ner_converter,
+      chunk2doc,
+      sbert_embedder,
+      resolver])
+
+text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement occurred and thoracoscopy with fluid biopsies, which were performed, revealed malignant mesothelioma.&quot;&quot;&quot;
+
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+```
+```scala
+val document_assembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
+
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;document&quot;))
+  .setOutputCol(&quot;sentence&quot;)
+
+val tokenizer = new Tokenizer()
+  .setInputCols(Array(&quot;sentence&quot;))
+  .setOutputCol(&quot;token&quot;)
+
+val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;))
+  .setOutputCol(&quot;word_embeddings&quot;)
+
+val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;word_embeddings&quot;))
+  .setOutputCol(&quot;ner&quot;)
+
+val ner_converter = new NerConverterInternal()
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;))
+  .setOutputCol(&quot;ner_chunk&quot;)
+
+val c2doc = new Chunk2Doc()
+  .setInputCols(&quot;ner_chunk&quot;)
+  .setOutputCol(&quot;ner_chunk_doc&quot;)
+
+val sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;ner_chunk_doc&quot;))
+  .setOutputCol(&quot;sbert_embeddings&quot;)
+  .setCaseSensitive(false)
+
+val resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_augmented&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sbert_embeddings&quot;))
+  .setOutputCol(&quot;mesh_code&quot;)
+  .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+val pipeline = new Pipeline().setStages(Array(
+  document_assembler,
+  sentenceDetectorDL,
+  tokenizer,
+  word_embeddings,
+  ner,
+  ner_converter,
+  c2doc,
+  sbert_embedder,
+  resolver))
+
+val data = Seq(&quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement occurred and thoracoscopy with fluid biopsies, which were performed, revealed malignant mesothelioma.&quot;&quot;&quot;).toDF(&quot;text&quot;)
+
+val result = pipeline.fit(data).transform(data)
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
++--------------------------+-----+---+---------+----------+----------------------+--------------------------------------------------------------------------------+
+|                     chunk|begin|end|ner_label|resolution|           description|                                                                       all_codes|
++--------------------------+-----+---+---------+----------+----------------------+--------------------------------------------------------------------------------+
+|                chest pain|   38| 47|  PROBLEM|   D002637|            chest pain|D002637:::D005157:::D059350:::D019547:::D015746:::D059226:::D020069:::D010146...|
+|bilateral pleural effusion|   67| 92|  PROBLEM|   D010996|      pleural effusion|D010996:::D000069258:::D010490:::D016066:::D010995:::D011654:::D010998:::D016...|
+|             the pathology|  140|152|     TEST|   D010336|             pathology|D010336:::D062528:::D037521:::D010335:::D002828:::D014774:::D020763:::C000630...|
+|        the pericardectomy|  168|185|TREATMENT|   D010492|        pericardectomy|D010492:::D010491:::D011670:::D061645:::D002387:::D018700:::D064727:::D000069...|
+|              mesothelioma|  226|237|  PROBLEM|   D008654|          mesothelioma|                              D008654:::D054363:::D000086002:::D018261:::D018301|
+|      chest tube placement|  254|273|TREATMENT|   D015505|            chest tube|D015505:::D000069258:::D019616:::D013907:::D035441:::D013896:::D012121:::D002...|
+|     drainage of the fluid|  279|299|  PROBLEM|   C026239|         bouin's fluid|C026239:::D019152:::D005440:::D004322:::D014882:::D013396:::D015916:::D014906...|
+|              thoracoscopy|  314|325|TREATMENT|   D013906|          thoracoscopy|D013906:::D020708:::D035423:::D013907:::D000069258:::D013905:::D013897:::D035...|
+|            fluid biopsies|  332|345|     TEST|D000073890|       liquid biopsies|D000073890:::D001706:::D005440:::D001707:::D001992:::C026239:::D010533:::D001...|
+|    malignant mesothelioma|  385|406|  PROBLEM|D000086002|malignant mesothelioma|                              D000086002:::D008654:::D054363:::D018261:::C535700|
++--------------------------+-----+---+---------+----------+----------------------+--------------------------------------------------------------------------------+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|sbiobertresolve_mesh_augmented|
+|Compatibility:|Healthcare NLP 5.5.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[mesh_code]|
+|Language:|en|
+|Size:|2.9 GB|
+|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="entity_resolution" /><category term="mesh" /><summary type="html">Description This model maps clinical entities to Medical Subject Heading (MeSH) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. In this model, MeSH descriptors, supplementary concepts, and pharmacologic actions datasets were used. Descriptors: Main subject headings representing biomedical concepts (e.g., “Diabetes Mellitus”). Supplementary Concepts: Additional terms, including chemicals and drugs, mapped to existing descriptors. Pharmacologic Actions: Terms describing the biological effects of drugs and chemicals (e.g., “Anti-Inflammatory Agents”) Predicted Entities mesh_code Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;)\ ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) chunk2doc = Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;sbert_embeddings&quot;)\ .setCaseSensitive(False) resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_augmented&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;sbert_embeddings&quot;]) \ .setOutputCol(&quot;mesh_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) pipeline = Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver]) text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement occurred and thoracoscopy with fluid biopsies, which were performed, revealed malignant mesothelioma.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) document_assembler =nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;)\ ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) chunk2doc = nlp.Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) sbert_embedder = nlp.BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;sbert_embeddings&quot;)\ .setCaseSensitive(False) resolver = medical.SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_augmented&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;sbert_embeddings&quot;]) \ .setOutputCol(&quot;mesh_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) pipeline = nlp.Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver]) text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement occurred and thoracoscopy with fluid biopsies, which were performed, revealed malignant mesothelioma.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetectorDL = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;)) .setOutputCol(&quot;word_embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;word_embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val c2doc = new Chunk2Doc() .setInputCols(&quot;ner_chunk&quot;) .setOutputCol(&quot;ner_chunk_doc&quot;) val sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;sbert_embeddings&quot;) .setCaseSensitive(false) val resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_augmented&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sbert_embeddings&quot;)) .setOutputCol(&quot;mesh_code&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentenceDetectorDL, tokenizer, word_embeddings, ner, ner_converter, c2doc, sbert_embedder, resolver)) val data = Seq(&quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement occurred and thoracoscopy with fluid biopsies, which were performed, revealed malignant mesothelioma.&quot;&quot;&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------------------------+-----+---+---------+----------+----------------------+--------------------------------------------------------------------------------+ | chunk|begin|end|ner_label|resolution| description| all_codes| +--------------------------+-----+---+---------+----------+----------------------+--------------------------------------------------------------------------------+ | chest pain| 38| 47| PROBLEM| D002637| chest pain|D002637:::D005157:::D059350:::D019547:::D015746:::D059226:::D020069:::D010146...| |bilateral pleural effusion| 67| 92| PROBLEM| D010996| pleural effusion|D010996:::D000069258:::D010490:::D016066:::D010995:::D011654:::D010998:::D016...| | the pathology| 140|152| TEST| D010336| pathology|D010336:::D062528:::D037521:::D010335:::D002828:::D014774:::D020763:::C000630...| | the pericardectomy| 168|185|TREATMENT| D010492| pericardectomy|D010492:::D010491:::D011670:::D061645:::D002387:::D018700:::D064727:::D000069...| | mesothelioma| 226|237| PROBLEM| D008654| mesothelioma| D008654:::D054363:::D000086002:::D018261:::D018301| | chest tube placement| 254|273|TREATMENT| D015505| chest tube|D015505:::D000069258:::D019616:::D013907:::D035441:::D013896:::D012121:::D002...| | drainage of the fluid| 279|299| PROBLEM| C026239| bouin's fluid|C026239:::D019152:::D005440:::D004322:::D014882:::D013396:::D015916:::D014906...| | thoracoscopy| 314|325|TREATMENT| D013906| thoracoscopy|D013906:::D020708:::D035423:::D013907:::D000069258:::D013905:::D013897:::D035...| | fluid biopsies| 332|345| TEST|D000073890| liquid biopsies|D000073890:::D001706:::D005440:::D001707:::D001992:::C026239:::D010533:::D001...| | malignant mesothelioma| 385|406| PROBLEM|D000086002|malignant mesothelioma| D000086002:::D008654:::D054363:::D018261:::C535700| +--------------------------+-----+---+---------+----------+----------------------+--------------------------------------------------------------------------------+ Model Information Model Name: sbiobertresolve_mesh_augmented Compatibility: Healthcare NLP 5.5.2+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [mesh_code] Language: en Size: 2.9 GB Case sensitive: false</summary></entry><entry><title type="html">Sentence Entity Resolver for MeSH (sbiobert_base_cased_mli embeddings)</title><link href="/2025/02/19/sbiobertresolve_mesh_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for MeSH (sbiobert_base_cased_mli embeddings)" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/sbiobertresolve_mesh_en</id><content type="html" xml:base="/2025/02/19/sbiobertresolve_mesh_en.html">## Description
+
+This model maps clinical entities to Medical Subject Heading (MeSH) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. In this model, MeSH descriptors, and supplementary concepts actions datasets were used. 
+ 
+Descriptors: Main subject headings representing biomedical concepts (e.g., &quot;Diabetes Mellitus&quot;).
+ 
+Supplementary Concepts: Additional terms, including chemicals and drugs, mapped to existing descriptors.
+
+## Predicted Entities
+
+`mesh_code`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_mesh_en_5.5.2_3.0_1739990736648.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_mesh_en_5.5.2_3.0_1739990736648.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+	
+```python
+document_assembler = DocumentAssembler()\
+	.setInputCol(&quot;text&quot;)\
+	.setOutputCol(&quot;document&quot;)
+
+sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;document&quot;])\
+	.setOutputCol(&quot;sentence&quot;)
+
+tokenizer = Tokenizer()\
+	.setInputCols([&quot;sentence&quot;])\
+	.setOutputCol(&quot;token&quot;)
+
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+	.setOutputCol(&quot;word_embeddings&quot;)
+
+ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \
+	.setOutputCol(&quot;ner&quot;)\
+
+ner_converter = NerConverterInternal()\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+	.setOutputCol(&quot;ner_chunk&quot;)\
+        .setBlackList([&quot;TREATMENT&quot;])
+
+chunk2doc = Chunk2Doc()\
+	.setInputCols(&quot;ner_chunk&quot;)\
+	.setOutputCol(&quot;ner_chunk_doc&quot;)
+
+sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\
+  	.setInputCols([&quot;ner_chunk_doc&quot;])\
+  	.setOutputCol(&quot;sbert_embeddings&quot;)\
+  	.setCaseSensitive(False)
+
+resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+  	.setInputCols([&quot;sbert_embeddings&quot;]) \
+  	.setOutputCol(&quot;mesh_code&quot;)\
+  	.setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+pipeline = Pipeline(stages = [
+  	document_assembler,
+  	sentence_detector,
+  	tokenizer,
+  	word_embeddings,
+  	ner,
+  	ner_converter,
+  	chunk2doc,
+  	sbert_embedder,
+  	resolver])
+
+text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy with fluid biopsies, which were performed, which revealed malignant mesothelioma.&quot;&quot;&quot;
+
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+```
+
+{:.jsl-block}
+```python
+document_assembler =nlp.DocumentAssembler()\
+	.setInputCol(&quot;text&quot;)\
+	.setOutputCol(&quot;document&quot;)
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;document&quot;])\
+	.setOutputCol(&quot;sentence&quot;)
+
+tokenizer = nlp.Tokenizer()\
+	.setInputCols([&quot;sentence&quot;])\
+	.setOutputCol(&quot;token&quot;)
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+	.setOutputCol(&quot;word_embeddings&quot;)
+
+ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \
+	.setOutputCol(&quot;ner&quot;)\
+
+ner_converter = medical.NerConverterInternal()\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+	.setOutputCol(&quot;ner_chunk&quot;)\
+        .setBlackList([&quot;TREATMENT&quot;])
+
+chunk2doc = nlp.Chunk2Doc()\
+	.setInputCols(&quot;ner_chunk&quot;)\
+	.setOutputCol(&quot;ner_chunk_doc&quot;)
+
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\
+  	.setInputCols([&quot;ner_chunk_doc&quot;])\
+  	.setOutputCol(&quot;sbert_embeddings&quot;)\
+  	.setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+  	.setInputCols([&quot;sbert_embeddings&quot;]) \
+  	.setOutputCol(&quot;mesh_code&quot;)\
+  	.setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+pipeline = nlp.Pipeline(stages = [
+   	document_assembler,
+   	sentence_detector,
+   	tokenizer,
+	word_embeddings,
+   	ner,
+   	ner_converter,
+	chunk2doc,
+   	sbert_embedder,
+   	resolver])
+
+text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy with fluid biopsies, which were performed, which revealed malignant mesothelioma.&quot;&quot;&quot;
+
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+```
+```scala
+val document_assembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
+
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;document&quot;))
+  .setOutputCol(&quot;sentence&quot;)
+
+val tokenizer = new Tokenizer()
+  .setInputCols(Array(&quot;sentence&quot;))
+  .setOutputCol(&quot;token&quot;)
+
+val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;))
+  .setOutputCol(&quot;word_embeddings&quot;)
+
+val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;word_embeddings&quot;))
+  .setOutputCol(&quot;ner&quot;)
+
+val ner_converter = new NerConverterInternal()
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;))
+  .setOutputCol(&quot;ner_chunk&quot;)
+  .setBlackList(Array(&quot;TREATMENT&quot;))
+
+val c2doc = new Chunk2Doc()
+  .setInputCols(&quot;ner_chunk&quot;)
+  .setOutputCol(&quot;ner_chunk_doc&quot;)
+
+val sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;ner_chunk_doc&quot;))
+  .setOutputCol(&quot;sbert_embeddings&quot;)
+  .setCaseSensitive(false)
+
+val resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sbert_embeddings&quot;))
+  .setOutputCol(&quot;mesh_code&quot;)
+  .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+val pipeline = new Pipeline().setStages(Array(
+  document_assembler,
+  sentenceDetectorDL,
+  tokenizer,
+  word_embeddings,
+  ner,
+  ner_converter,
+  c2doc,
+  sbert_embedder,
+  resolver))
+
+val data = Seq(&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy with fluid biopsies, which were performed, which revealed malignant mesothelioma.&quot;).toDF(&quot;text&quot;)
+
+val result = pipeline.fit(data).transform(data)
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
++--------------------------+-----+---+---------+----------+----------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                     chunk|begin|end|ner_label|resolution|           description|                                               all_k_results|                                           all_k_resolutions|
++--------------------------+-----+---+---------+----------+----------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                chest pain|   38| 47|  PROBLEM|   D002637|            chest pain|D002637:::D005157:::D059350:::D019547:::D015746:::D059226...|chest pain:::myofacial pain:::chronic pain:::neck pain:::...|
+|bilateral pleural effusion|   67| 92|  PROBLEM|   D010996|      pleural effusion|D010996:::D000069258:::D010490:::D016066:::D010995:::D011...|pleural effusion:::pleural aspiration:::pericardial effus...|
+|             the pathology|  140|152|     TEST|   D010336|             pathology|D010336:::D062528:::D037521:::D010335:::D002828:::D014774...|pathology:::pathologization:::pathogenicity factors:::pat...|
+|              mesothelioma|  226|237|  PROBLEM|   D008654|          mesothelioma|          D008654:::D054363:::D000086002:::D018261:::D018301|mesothelioma:::mesothelioma, localized:::malignant mesoth...|
+|     drainage of the fluid|  279|299|  PROBLEM|   D019152| puncture and drainage| D019152:::D005440:::D004322:::D014882:::D013396:::D015916..| puncture and drainage:::fluid therapies:::drainage:::bala..|
+|            fluid biopsies|  332|345|     TEST|D000073890|       liquid biopsies| D000073890:::D001706:::D005440:::D001707:::D001992:::D010..| liquid biopsies:::biopsies:::fluid therapies:::aspiration..|
+|    malignant mesothelioma|  385|406|  PROBLEM|D000086002|malignant mesothelioma|          D000086002:::D008654:::D054363:::D018261:::C535700| malignant mesothelioma:::mesothelioma:::fibrous mesotheli..|
++--------------------------+-----+---+---------+----------+----------------------+------------------------------------------------------------+------------------------------------------------------------+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|sbiobertresolve_mesh|
+|Compatibility:|Healthcare NLP 5.5.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[mesh_code]|
+|Language:|en|
+|Size:|2.7 GB|
+|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="clinical" /><category term="licensed" /><category term="entity_resolution" /><category term="mesh" /><summary type="html">Description This model maps clinical entities to Medical Subject Heading (MeSH) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. In this model, MeSH descriptors, and supplementary concepts actions datasets were used. Descriptors: Main subject headings representing biomedical concepts (e.g., “Diabetes Mellitus”). Supplementary Concepts: Additional terms, including chemicals and drugs, mapped to existing descriptors. Predicted Entities mesh_code Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;)\ ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setBlackList([&quot;TREATMENT&quot;]) chunk2doc = Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;sbert_embeddings&quot;)\ .setCaseSensitive(False) resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;sbert_embeddings&quot;]) \ .setOutputCol(&quot;mesh_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) pipeline = Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver]) text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy with fluid biopsies, which were performed, which revealed malignant mesothelioma.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) document_assembler =nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;)\ ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setBlackList([&quot;TREATMENT&quot;]) chunk2doc = nlp.Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) sbert_embedder = nlp.BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;sbert_embeddings&quot;)\ .setCaseSensitive(False) resolver = medical.SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;sbert_embeddings&quot;]) \ .setOutputCol(&quot;mesh_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) pipeline = nlp.Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver]) text = &quot;&quot;&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy with fluid biopsies, which were performed, which revealed malignant mesothelioma.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetectorDL = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;)) .setOutputCol(&quot;word_embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;word_embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) .setBlackList(Array(&quot;TREATMENT&quot;)) val c2doc = new Chunk2Doc() .setInputCols(&quot;ner_chunk&quot;) .setOutputCol(&quot;ner_chunk_doc&quot;) val sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;sbert_embeddings&quot;) .setCaseSensitive(false) val resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sbert_embeddings&quot;)) .setOutputCol(&quot;mesh_code&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentenceDetectorDL, tokenizer, word_embeddings, ner, ner_converter, c2doc, sbert_embedder, resolver)) val data = Seq(&quot;She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy with fluid biopsies, which were performed, which revealed malignant mesothelioma.&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +--------------------------+-----+---+---------+----------+----------------------+------------------------------------------------------------+------------------------------------------------------------+ | chunk|begin|end|ner_label|resolution| description| all_k_results| all_k_resolutions| +--------------------------+-----+---+---------+----------+----------------------+------------------------------------------------------------+------------------------------------------------------------+ | chest pain| 38| 47| PROBLEM| D002637| chest pain|D002637:::D005157:::D059350:::D019547:::D015746:::D059226...|chest pain:::myofacial pain:::chronic pain:::neck pain:::...| |bilateral pleural effusion| 67| 92| PROBLEM| D010996| pleural effusion|D010996:::D000069258:::D010490:::D016066:::D010995:::D011...|pleural effusion:::pleural aspiration:::pericardial effus...| | the pathology| 140|152| TEST| D010336| pathology|D010336:::D062528:::D037521:::D010335:::D002828:::D014774...|pathology:::pathologization:::pathogenicity factors:::pat...| | mesothelioma| 226|237| PROBLEM| D008654| mesothelioma| D008654:::D054363:::D000086002:::D018261:::D018301|mesothelioma:::mesothelioma, localized:::malignant mesoth...| | drainage of the fluid| 279|299| PROBLEM| D019152| puncture and drainage| D019152:::D005440:::D004322:::D014882:::D013396:::D015916..| puncture and drainage:::fluid therapies:::drainage:::bala..| | fluid biopsies| 332|345| TEST|D000073890| liquid biopsies| D000073890:::D001706:::D005440:::D001707:::D001992:::D010..| liquid biopsies:::biopsies:::fluid therapies:::aspiration..| | malignant mesothelioma| 385|406| PROBLEM|D000086002|malignant mesothelioma| D000086002:::D008654:::D054363:::D018261:::C535700| malignant mesothelioma:::mesothelioma:::fibrous mesotheli..| +--------------------------+-----+---+---------+----------+----------------------+------------------------------------------------------------+------------------------------------------------------------+ Model Information Model Name: sbiobertresolve_mesh Compatibility: Healthcare NLP 5.5.2+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [mesh_code] Language: en Size: 2.7 GB Case sensitive: false</summary></entry><entry><title type="html">Sentence Entity Resolver for MeSH Veterinary (sbiobert_base_cased_mli embeddings)</title><link href="/2025/02/19/sbiobertresolve_mesh_veterinary_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for MeSH Veterinary (sbiobert_base_cased_mli embeddings)" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/sbiobertresolve_mesh_veterinary_en</id><content type="html" xml:base="/2025/02/19/sbiobertresolve_mesh_veterinary_en.html">## Description
+
+This model maps clinical entities in the veterinary notes to Medical Subject Heading (MeSH) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. In this model, MeSH veterinary-related descriptors, and supplementary concept datasets were used.
+
+## Predicted Entities
+
+`mesh_code`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_mesh_veterinary_en_5.5.2_3.0_1739988813875.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_mesh_veterinary_en_5.5.2_3.0_1739988813875.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+	
+```python
+document_assembler = DocumentAssembler()\
+	.setInputCol(&quot;text&quot;)\
+	.setOutputCol(&quot;document&quot;)
+
+sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;document&quot;])\
+	.setOutputCol(&quot;sentence&quot;)
+
+tokenizer = Tokenizer()\
+	.setInputCols([&quot;sentence&quot;])\
+	.setOutputCol(&quot;token&quot;)
+
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+	.setOutputCol(&quot;word_embeddings&quot;)
+
+ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \
+	.setOutputCol(&quot;ner&quot;)\
+
+ner_converter = NerConverterInternal()\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+	.setOutputCol(&quot;ner_chunk&quot;)\
+	.setBlackList([&quot;TREATMENT&quot;, &quot;TEST&quot;])
+
+chunk2doc = Chunk2Doc()\
+	.setInputCols(&quot;ner_chunk&quot;)\
+	.setOutputCol(&quot;ner_chunk_doc&quot;)
+
+sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\
+  	.setInputCols([&quot;ner_chunk_doc&quot;])\
+  	.setOutputCol(&quot;sbert_embeddings&quot;)\
+  	.setCaseSensitive(False)
+
+resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_veterinary&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+	.setInputCols([&quot;sbert_embeddings&quot;]) \
+	.setOutputCol(&quot;mesh_code&quot;)\
+	.setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+pipeline = Pipeline(stages = [
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner,
+    ner_converter,
+    chunk2doc,
+    sbert_embedder,
+    resolver])
+
+text = &quot;The dog is a labrador retriever, 4-year-old, it was brought in with vomiting and diarrhea for the past 2 days. A preliminary diagnosis of canine parvovirus infection was made, and supportive care was recommended. The owner was advised on isolation precautions to prevent the spread of the virus.&quot;
+
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+```
+
+{:.jsl-block}
+```python
+document_assembler =nlp.DocumentAssembler()\
+	.setInputCol(&quot;text&quot;)\
+	.setOutputCol(&quot;document&quot;)
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;document&quot;])\
+	.setOutputCol(&quot;sentence&quot;)
+
+tokenizer = nlp.Tokenizer()\
+	.setInputCols([&quot;sentence&quot;])\
+	.setOutputCol(&quot;token&quot;)
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
+	.setOutputCol(&quot;word_embeddings&quot;)
+
+ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \
+	.setOutputCol(&quot;ner&quot;)\
+
+ner_converter = medical.NerConverterInternal()\
+	.setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
+	.setOutputCol(&quot;ner_chunk&quot;)
+
+chunk2doc = nlp.Chunk2Doc()\
+	.setInputCols(&quot;ner_chunk&quot;)\
+	.setOutputCol(&quot;ner_chunk_doc&quot;)
+
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\
+	.setInputCols([&quot;ner_chunk_doc&quot;])\
+  	.setOutputCol(&quot;sbert_embeddings&quot;)\
+  	.setCaseSensitive(False)
+
+resolver = medical.SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_veterinary&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+	.setInputCols([&quot;sbert_embeddings&quot;]) \
+	.setOutputCol(&quot;mesh_code&quot;)\
+	.setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+pipeline = nlp.Pipeline(stages = [
+	document_assembler,
+	sentence_detector,
+	tokenizer,
+	word_embeddings,
+	ner,
+	ner_converter,
+	chunk2doc,
+	sbert_embedder,
+	resolver])
+
+text = &quot;&quot;&quot;The dog is a labrador retriever, 4-year-old, it was brought in with vomiting and diarrhea for the past 2 days. A preliminary diagnosis of canine parvovirus infection was made, and supportive care was recommended. The owner was advised on isolation precautions to prevent the spread of the virus.&quot;&quot;&quot;
+
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+
+result = pipeline.fit(data).transform(data)
+```
+```scala
+val document_assembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
+
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;document&quot;))
+  .setOutputCol(&quot;sentence&quot;)
+
+val tokenizer = new Tokenizer()
+  .setInputCols(Array(&quot;sentence&quot;))
+  .setOutputCol(&quot;token&quot;)
+
+val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;))
+  .setOutputCol(&quot;word_embeddings&quot;)
+
+val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;word_embeddings&quot;))
+  .setOutputCol(&quot;ner&quot;)
+
+val ner_converter = new NerConverterInternal()
+  .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;))
+  .setOutputCol(&quot;ner_chunk&quot;)
+
+val c2doc = new Chunk2Doc()
+  .setInputCols(&quot;ner_chunk&quot;)
+  .setOutputCol(&quot;ner_chunk_doc&quot;)
+
+val sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;ner_chunk_doc&quot;))
+  .setOutputCol(&quot;sbert_embeddings&quot;)
+  .setCaseSensitive(false)
+
+val resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_veterinary&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sbert_embeddings&quot;))
+  .setOutputCol(&quot;mesh_code&quot;)
+  .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+val pipeline = new Pipeline().setStages(Array(
+  document_assembler,
+  sentenceDetectorDL,
+  tokenizer,
+  word_embeddings,
+  ner,
+  ner_converter,
+  c2doc,
+  sbert_embedder,
+  resolver))
+
+val data = Seq(&quot;The dog is a labrador retriever, 4-year-old, it was brought in with vomiting and diarrhea for the past 2 days. A preliminary diagnosis of canine parvovirus infection was made, and supportive care was recommended. The owner was advised on isolation precautions to prevent the spread of the virus.&quot;).toDF(&quot;text&quot;)
+
+val result = pipeline.fit(data).transform(data)
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
++---------------------------+-----+---+---------+----------+-------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                      chunk|begin|end|ner_label|resolution|        description|                                               all_k_results|                                           all_k_resolutions|
++---------------------------+-----+---+---------+----------+-------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                   vomiting|   68| 75|  PROBLEM|   C536228|  periodic vomiting|C536228:::C007262:::C080875:::C002771:::C000626292:::C076...|periodic vomiting:::vomitoxin:::mirage:::propargite:::ena...|
+|                   diarrhea|   81| 88|  PROBLEM|   C565627|diarrhea, syndromic|C565627:::C564019:::C531700:::C580192:::C537470:::C000702...|diarrhea, syndromic:::diarrhea, chronic, with villous atr...|
+|canine parvovirus infection|  138|164|  PROBLEM|   D017993|  canine parvovirus|D017993:::D052660:::D028323:::D017939:::D017992:::C528774...|canine parvovirus:::bovine parvovirus:::porcine parvoviru...|
+|                  the virus|  285|293|  PROBLEM|   D014780|              virus|D014780:::D006678:::D006476:::D012526:::C000623864:::D014...|virus:::aids virus:::andes virus:::virus, associated:::pr...|
++---------------------------+-----+---+---------+----------+-------------------+------------------------------------------------------------+------------------------------------------------------------+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|sbiobertresolve_mesh_veterinary|
+|Compatibility:|Healthcare NLP 5.5.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[mesh_code]|
+|Language:|en|
+|Size:|2.2 GB|
+|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="entity_resolution" /><category term="mesh" /><category term="veterinary" /><summary type="html">Description This model maps clinical entities in the veterinary notes to Medical Subject Heading (MeSH) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. In this model, MeSH veterinary-related descriptors, and supplementary concept datasets were used. Predicted Entities mesh_code Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;)\ ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setBlackList([&quot;TREATMENT&quot;, &quot;TEST&quot;]) chunk2doc = Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;sbert_embeddings&quot;)\ .setCaseSensitive(False) resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_veterinary&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;sbert_embeddings&quot;]) \ .setOutputCol(&quot;mesh_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) pipeline = Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver]) text = &quot;The dog is a labrador retriever, 4-year-old, it was brought in with vomiting and diarrhea for the past 2 days. A preliminary diagnosis of canine parvovirus infection was made, and supportive care was recommended. The owner was advised on isolation precautions to prevent the spread of the virus.&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) document_assembler =nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;word_embeddings&quot;) ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;word_embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;)\ ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) chunk2doc = nlp.Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) sbert_embedder = nlp.BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,'en','clinical/models')\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;sbert_embeddings&quot;)\ .setCaseSensitive(False) resolver = medical.SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_veterinary&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;sbert_embeddings&quot;]) \ .setOutputCol(&quot;mesh_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) pipeline = nlp.Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver]) text = &quot;&quot;&quot;The dog is a labrador retriever, 4-year-old, it was brought in with vomiting and diarrhea for the past 2 days. A preliminary diagnosis of canine parvovirus infection was made, and supportive care was recommended. The owner was advised on isolation precautions to prevent the spread of the virus.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetectorDL = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;)) .setOutputCol(&quot;word_embeddings&quot;) val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;word_embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;,&quot;token&quot;,&quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val c2doc = new Chunk2Doc() .setInputCols(&quot;ner_chunk&quot;) .setOutputCol(&quot;ner_chunk_doc&quot;) val sbert_embedder = BertSentenceEmbeddings.pretrained(&quot;sbiobert_base_cased_mli&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;sbert_embeddings&quot;) .setCaseSensitive(false) val resolver = SentenceEntityResolverModel.pretrained(&quot;sbiobertresolve_mesh_veterinary&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;sbert_embeddings&quot;)) .setOutputCol(&quot;mesh_code&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentenceDetectorDL, tokenizer, word_embeddings, ner, ner_converter, c2doc, sbert_embedder, resolver)) val data = Seq(&quot;The dog is a labrador retriever, 4-year-old, it was brought in with vomiting and diarrhea for the past 2 days. A preliminary diagnosis of canine parvovirus infection was made, and supportive care was recommended. The owner was advised on isolation precautions to prevent the spread of the virus.&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results +---------------------------+-----+---+---------+----------+-------------------+------------------------------------------------------------+------------------------------------------------------------+ | chunk|begin|end|ner_label|resolution| description| all_k_results| all_k_resolutions| +---------------------------+-----+---+---------+----------+-------------------+------------------------------------------------------------+------------------------------------------------------------+ | vomiting| 68| 75| PROBLEM| C536228| periodic vomiting|C536228:::C007262:::C080875:::C002771:::C000626292:::C076...|periodic vomiting:::vomitoxin:::mirage:::propargite:::ena...| | diarrhea| 81| 88| PROBLEM| C565627|diarrhea, syndromic|C565627:::C564019:::C531700:::C580192:::C537470:::C000702...|diarrhea, syndromic:::diarrhea, chronic, with villous atr...| |canine parvovirus infection| 138|164| PROBLEM| D017993| canine parvovirus|D017993:::D052660:::D028323:::D017939:::D017992:::C528774...|canine parvovirus:::bovine parvovirus:::porcine parvoviru...| | the virus| 285|293| PROBLEM| D014780| virus|D014780:::D006678:::D006476:::D012526:::C000623864:::D014...|virus:::aids virus:::andes virus:::virus, associated:::pr...| +---------------------------+-----+---+---------+----------+-------------------+------------------------------------------------------------+------------------------------------------------------------+ Model Information Model Name: sbiobertresolve_mesh_veterinary Compatibility: Healthcare NLP 5.5.2+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [mesh_code] Language: en Size: 2.2 GB Case sensitive: false</summary></entry><entry><title type="html">Sentence Entity Resolver for SNOMED Codes (Spanish) - Augmented (sent_xlm_roberta_biolord_2023_m embeddings)</title><link href="/2025/02/14/biolordresolve_snomed_augmented_es.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for SNOMED Codes (Spanish) - Augmented (sent_xlm_roberta_biolord_2023_m embeddings)" /><published>2025-02-14T00:00:00+00:00</published><updated>2025-02-14T00:00:00+00:00</updated><id>/2025/02/14/biolordresolve_snomed_augmented_es</id><content type="html" xml:base="/2025/02/14/biolordresolve_snomed_augmented_es.html">## Description
+
+This model maps Spanish medical entities and concepts to SNOMED codes using the `sent_xlm_roberta_biolord_2023_m` Sentence Embeddings.
+
+## Predicted Entities
+
+`SNOMED codes`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biolordresolve_snomed_augmented_es_5.5.2_3.0_1739549427571.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/biolordresolve_snomed_augmented_es_5.5.2_3.0_1739549427571.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = DocumentAssembler()\
+  .setInputCol(&quot;text&quot;)\
+  .setOutputCol(&quot;document&quot;)
+
+sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\
+  .setInputCols([&quot;document&quot;])\
+  .setOutputCol(&quot;sentence&quot;)
+
+tokenizer = Tokenizer()\
+  .setInputCols([&quot;sentence&quot;])\
+  .setOutputCol(&quot;token&quot;)\
+
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;w2v_cc_300d&quot;,&quot;es&quot;)\
+  .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\
+  .setOutputCol(&quot;embeddings&quot;)
+
+ner_eu = MedicalNerModel.pretrained(&quot;ner_eu_clinical_condition&quot;, &quot;es&quot;, &quot;clinical/models&quot;) \
+  .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
+  .setOutputCol(&quot;ner_eu&quot;)
+
+ner_eu_converter = NerConverterInternal() \
+  .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_eu&quot;]) \
+  .setOutputCol(&quot;ner_eu_chunk&quot;)
+
+chunk2doc = Chunk2Doc()\
+  .setInputCols(&quot;ner_eu_chunk&quot;)\
+  .setOutputCol(&quot;ner_chunk_doc&quot;)
+
+biolord_embeddings = XlmRoBertaSentenceEmbeddings.pretrained(&quot;sent_xlm_roberta_biolord_2023_m&quot;,&quot;xx&quot;)\
+    .setInputCols([&quot;ner_chunk_doc&quot;])\
+    .setOutputCol(&quot;biolord_embeddings&quot;)
+
+snomed_resolver = SentenceEntityResolverModel.pretrained(&quot;biolordresolve_snomed_augmented&quot;,&quot;es&quot;, &quot;clinical/models&quot;) \
+      .setInputCols([&quot;biolord_embeddings&quot;]) \
+      .setOutputCol(&quot;snomed_code&quot;)\
+      .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+snomed_pipeline = Pipeline(stages = [
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner_eu,
+    ner_eu_converter,
+    chunk2doc,
+    biolord_embeddings,
+    snomed_resolver
+])
+
+
+clinical_note = (&quot;La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.&quot;)
+
+data = spark.createDataFrame([[clinical_note]]).toDF(&quot;text&quot;)
+
+snomed_result = snomed_pipeline.fit(data).transform(data)
+```
+
+{:.jsl-block}
+```python
+document_assembler = nlp.DocumentAssembler()\
+  .setInputCol(&quot;text&quot;)\
+  .setOutputCol(&quot;document&quot;)
+
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\
+  .setInputCols([&quot;document&quot;])\
+  .setOutputCol(&quot;sentence&quot;)
+
+tokenizer = nlp.Tokenizer()\
+  .setInputCols([&quot;sentence&quot;])\
+  .setOutputCol(&quot;token&quot;)\
+
+word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;w2v_cc_300d&quot;,&quot;es&quot;)\
+  .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\
+  .setOutputCol(&quot;embeddings&quot;)
+
+ner_eu = medical.NerModel.pretrained(&quot;ner_eu_clinical_condition&quot;, &quot;es&quot;, &quot;clinical/models&quot;) \
+  .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
+  .setOutputCol(&quot;ner_eu&quot;)
+
+ner_eu_converter = medical.NerConverterInternal() \
+  .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_eu&quot;]) \
+  .setOutputCol(&quot;ner_eu_chunk&quot;)
+
+chunk2doc = nlp.Chunk2Doc()\
+  .setInputCols(&quot;ner_eu_chunk&quot;)\
+  .setOutputCol(&quot;ner_chunk_doc&quot;)
+
+biolord_embeddings = nlp.XlmRoBertaSentenceEmbeddings.pretrained(&quot;sent_xlm_roberta_biolord_2023_m&quot;,&quot;xx&quot;)\
+    .setInputCols([&quot;ner_chunk_doc&quot;])\
+    .setOutputCol(&quot;biolord_embeddings&quot;)
+
+snomed_resolver = medical.SentenceEntityResolverModel.pretrained(&quot;biolordresolve_snomed_augmented&quot;,&quot;es&quot;, &quot;clinical/models&quot;) \
+      .setInputCols([&quot;biolord_embeddings&quot;]) \
+      .setOutputCol(&quot;snomed_code&quot;)\
+      .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+snomed_pipeline = nlp.Pipeline(stages = [
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner_eu,
+    ner_eu_converter,
+    chunk2doc,
+    biolord_embeddings,
+    snomed_resolver
+])
+
+
+clinical_note = (&quot;La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.&quot;)
+
+data = spark.createDataFrame([[clinical_note]]).toDF(&quot;text&quot;)
+
+snomed_result = snomed_pipeline.fit(data).transform(data)
+```
+```scala
+val documentAssembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
+
+val sentenceDetector = SentenceDetectorDLModel
+  .pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)
+  .setInputCols(Array(&quot;document&quot;))
+  .setOutputCol(&quot;sentence&quot;)
+
+val tokenizer = new Tokenizer()
+  .setInputCols(Array(&quot;sentence&quot;))
+  .setOutputCol(&quot;token&quot;)
+
+val wordEmbeddings = WordEmbeddingsModel
+  .pretrained(&quot;w2v_cc_300d&quot;, &quot;es&quot;)
+  .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;))
+  .setOutputCol(&quot;embeddings&quot;)
+
+val nerEu = MedicalNerModel
+  .pretrained(&quot;ner_eu_clinical_condition&quot;, &quot;es&quot;, &quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;))
+  .setOutputCol(&quot;ner_eu&quot;)
+
+val nerEuConverter = new NerConverterInternal()
+  .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_eu&quot;))
+  .setOutputCol(&quot;ner_eu_chunk&quot;)
+
+val chunk2doc = new Chunk2Doc()
+  .setInputCols(Array(&quot;ner_eu_chunk&quot;))
+  .setOutputCol(&quot;ner_chunk_doc&quot;)
+
+val biolordEmbeddings = XlmRoBertaSentenceEmbeddings
+  .pretrained(&quot;sent_xlm_roberta_biolord_2023_m&quot;, &quot;xx&quot;)
+  .setInputCols(Array(&quot;ner_chunk_doc&quot;))
+  .setOutputCol(&quot;biolord_embeddings&quot;)
+
+val snomedResolver = SentenceEntityResolverModel
+  .pretrained(&quot;biolordresolve_snomed_augmented&quot;, &quot;es&quot;, &quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;biolord_embeddings&quot;))
+  .setOutputCol(&quot;snomed_code&quot;)
+  .setDistanceFunction(&quot;EUCLIDEAN&quot;)
+
+val snomedPipeline = new Pipeline().setStages(Array(
+  documentAssembler,
+  sentenceDetector,
+  tokenizer,
+  wordEmbeddings,
+  nerEu,
+  nerEuConverter,
+  chunk2doc,
+  biolordEmbeddings,
+  snomedResolver
+))
+
+
+val clinicalNote = Seq(&quot;La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.&quot;).toDF(&quot;text&quot;)
+val snomedResult = snomedPipeline.fit(clinicalNote).transform(clinicalNote)
+
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
+|    | ner_chunk                     | entity             |   snomed_code | resolutions                                                   | all_codes                                                                             | all_resolutions                                                                                                                                                                  |
+|---:|:------------------------------|:-------------------|--------------:|:--------------------------------------------------------------|:--------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  0 | diabetes mellitus gestacional | clinical_condition |      11687002 | diabetes mellitus gestacional [diabetes mellitus gestacional] | ['11687002', '40801000119106', '16896421000119107', '721151003', '10753491000119101...| ['diabetes mellitus gestacional [diabetes mellitus gestacional]', 'diabetes mellitus gestacional que complica el embarazo [diabetes mellitus gestacional que complica el embar...|
+|  1 | obesidad                      | clinical_condition |     414916001 | obesidad [obesidad]                                           | ['414916001', '414915002', '271590003', '414919008', '363247006', '238136002', '238...| ['obesidad [obesidad]', 'obeso [obeso]', 'constitución obesa [constitución obesa]', 'obesidad según factores contribuyentes [obesidad según factores contribuyentes]', 'enferm...|
+|  2 | vómitos                       | clinical_condition |     422400008 | vómitos [vómitos]                                             | ['422400008', '249497008', '23971007', '16932000', '8579004', '300359004', '4225870...| ['vómitos [vómitos]', 'síntoma de vómito [síntoma de vómito]', 'vómito agudo [vómito agudo]', 'náuseas y vómitos [náuseas y vómitos]', 'vómito en chorro [vómito en chorro]', ...|
+|  3 | dolorosa                      | clinical_condition |      71393004 | dolorimiento [dolorimiento]                                   | ['71393004', '22253000', '301371003', '102498003', '67849003', '6617009', '27909700...| ['dolorimiento [dolorimiento]', 'dolor [dolor]', 'dolor que corroe [dolor que corroe]', 'agonía [agonía]', 'dolor atroz (hallazgo) [dolor atroz]', 'sinalgia [sinalgia]', 'dol...|
+|  4 | inflamación                   | clinical_condition |     128139000 | enfermedad inflamatoria [enfermedad inflamatoria]             | ['128139000', '409774005', '4532008', '733935006', '708039003', '363170005', '65761...| ['enfermedad inflamatoria [enfermedad inflamatoria]', 'morfología inflamatoria [morfología inflamatoria]', 'inflamación activa [inflamación activa]', 'parainflamación [parain...|
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|biolordresolve_snomed_augmented|
+|Compatibility:|Healthcare NLP 5.5.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence_embeddings]|
+|Output Labels:|[umls_code]|
+|Language:|es|
+|Size:|2.4 GB|
+|Case sensitive:|true|
+
+## References
+
+This model is trained with the National Library of Medicine (NLM), September 2024 SNOMED CT Spanish Edition.</content><author><name>John Snow Labs</name></author><category term="es" /><category term="licensed" /><category term="biolord" /><category term="xlm_roberta" /><category term="snomed" /><category term="enetity_resolution" /><category term="clinical" /><summary type="html">Description This model maps Spanish medical entities and concepts to SNOMED codes using the sent_xlm_roberta_biolord_2023_m Sentence Embeddings. Predicted Entities SNOMED codes Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;)\ word_embeddings = WordEmbeddingsModel.pretrained(&quot;w2v_cc_300d&quot;,&quot;es&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner_eu = MedicalNerModel.pretrained(&quot;ner_eu_clinical_condition&quot;, &quot;es&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner_eu&quot;) ner_eu_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_eu&quot;]) \ .setOutputCol(&quot;ner_eu_chunk&quot;) chunk2doc = Chunk2Doc()\ .setInputCols(&quot;ner_eu_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) biolord_embeddings = XlmRoBertaSentenceEmbeddings.pretrained(&quot;sent_xlm_roberta_biolord_2023_m&quot;,&quot;xx&quot;)\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;biolord_embeddings&quot;) snomed_resolver = SentenceEntityResolverModel.pretrained(&quot;biolordresolve_snomed_augmented&quot;,&quot;es&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;biolord_embeddings&quot;]) \ .setOutputCol(&quot;snomed_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) snomed_pipeline = Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner_eu, ner_eu_converter, chunk2doc, biolord_embeddings, snomed_resolver ]) clinical_note = (&quot;La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.&quot;) data = spark.createDataFrame([[clinical_note]]).toDF(&quot;text&quot;) snomed_result = snomed_pipeline.fit(data).transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;)\ word_embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;w2v_cc_300d&quot;,&quot;es&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner_eu = medical.NerModel.pretrained(&quot;ner_eu_clinical_condition&quot;, &quot;es&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner_eu&quot;) ner_eu_converter = medical.NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_eu&quot;]) \ .setOutputCol(&quot;ner_eu_chunk&quot;) chunk2doc = nlp.Chunk2Doc()\ .setInputCols(&quot;ner_eu_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) biolord_embeddings = nlp.XlmRoBertaSentenceEmbeddings.pretrained(&quot;sent_xlm_roberta_biolord_2023_m&quot;,&quot;xx&quot;)\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;biolord_embeddings&quot;) snomed_resolver = medical.SentenceEntityResolverModel.pretrained(&quot;biolordresolve_snomed_augmented&quot;,&quot;es&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;biolord_embeddings&quot;]) \ .setOutputCol(&quot;snomed_code&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;) snomed_pipeline = nlp.Pipeline(stages = [ document_assembler, sentence_detector, tokenizer, word_embeddings, ner_eu, ner_eu_converter, chunk2doc, biolord_embeddings, snomed_resolver ]) clinical_note = (&quot;La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.&quot;) data = spark.createDataFrame([[clinical_note]]).toDF(&quot;text&quot;) snomed_result = snomed_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = SentenceDetectorDLModel .pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;) .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentence&quot;)) .setOutputCol(&quot;token&quot;) val wordEmbeddings = WordEmbeddingsModel .pretrained(&quot;w2v_cc_300d&quot;, &quot;es&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerEu = MedicalNerModel .pretrained(&quot;ner_eu_clinical_condition&quot;, &quot;es&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner_eu&quot;) val nerEuConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_eu&quot;)) .setOutputCol(&quot;ner_eu_chunk&quot;) val chunk2doc = new Chunk2Doc() .setInputCols(Array(&quot;ner_eu_chunk&quot;)) .setOutputCol(&quot;ner_chunk_doc&quot;) val biolordEmbeddings = XlmRoBertaSentenceEmbeddings .pretrained(&quot;sent_xlm_roberta_biolord_2023_m&quot;, &quot;xx&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;biolord_embeddings&quot;) val snomedResolver = SentenceEntityResolverModel .pretrained(&quot;biolordresolve_snomed_augmented&quot;, &quot;es&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;biolord_embeddings&quot;)) .setOutputCol(&quot;snomed_code&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) val snomedPipeline = new Pipeline().setStages(Array( documentAssembler, sentenceDetector, tokenizer, wordEmbeddings, nerEu, nerEuConverter, chunk2doc, biolordEmbeddings, snomedResolver )) val clinicalNote = Seq(&quot;La paciente, con antecedente de diabetes mellitus gestacional evolucionada a tipo 2 y obesidad, presenta vómitos de una semana de evolución junto con dolorosa inflamación de sínfisis de pubis que dificulta la deambulación.&quot;).toDF(&quot;text&quot;) val snomedResult = snomedPipeline.fit(clinicalNote).transform(clinicalNote) Results | | ner_chunk | entity | snomed_code | resolutions | all_codes | all_resolutions | |---:|:------------------------------|:-------------------|--------------:|:--------------------------------------------------------------|:--------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | diabetes mellitus gestacional | clinical_condition | 11687002 | diabetes mellitus gestacional [diabetes mellitus gestacional] | ['11687002', '40801000119106', '16896421000119107', '721151003', '10753491000119101...| ['diabetes mellitus gestacional [diabetes mellitus gestacional]', 'diabetes mellitus gestacional que complica el embarazo [diabetes mellitus gestacional que complica el embar...| | 1 | obesidad | clinical_condition | 414916001 | obesidad [obesidad] | ['414916001', '414915002', '271590003', '414919008', '363247006', '238136002', '238...| ['obesidad [obesidad]', 'obeso [obeso]', 'constitución obesa [constitución obesa]', 'obesidad según factores contribuyentes [obesidad según factores contribuyentes]', 'enferm...| | 2 | vómitos | clinical_condition | 422400008 | vómitos [vómitos] | ['422400008', '249497008', '23971007', '16932000', '8579004', '300359004', '4225870...| ['vómitos [vómitos]', 'síntoma de vómito [síntoma de vómito]', 'vómito agudo [vómito agudo]', 'náuseas y vómitos [náuseas y vómitos]', 'vómito en chorro [vómito en chorro]', ...| | 3 | dolorosa | clinical_condition | 71393004 | dolorimiento [dolorimiento] | ['71393004', '22253000', '301371003', '102498003', '67849003', '6617009', '27909700...| ['dolorimiento [dolorimiento]', 'dolor [dolor]', 'dolor que corroe [dolor que corroe]', 'agonía [agonía]', 'dolor atroz (hallazgo) [dolor atroz]', 'sinalgia [sinalgia]', 'dol...| | 4 | inflamación | clinical_condition | 128139000 | enfermedad inflamatoria [enfermedad inflamatoria] | ['128139000', '409774005', '4532008', '733935006', '708039003', '363170005', '65761...| ['enfermedad inflamatoria [enfermedad inflamatoria]', 'morfología inflamatoria [morfología inflamatoria]', 'inflamación activa [inflamación activa]', 'parainflamación [parain...| Model Information Model Name: biolordresolve_snomed_augmented Compatibility: Healthcare NLP 5.5.2+ License: Licensed Edition: Official Input Labels: [sentence_embeddings] Output Labels: [umls_code] Language: es Size: 2.4 GB Case sensitive: true References This model is trained with the National Library of Medicine (NLM), September 2024 SNOMED CT Spanish Edition.</summary></entry><entry><title type="html">Detect Assertion Status (assertion_bert_classifier_jsl_slim)</title><link href="/2025/02/13/assertion_bert_classifier_jsl_slim_en.html" rel="alternate" type="text/html" title="Detect Assertion Status (assertion_bert_classifier_jsl_slim)" /><published>2025-02-13T00:00:00+00:00</published><updated>2025-02-13T00:00:00+00:00</updated><id>/2025/02/13/assertion_bert_classifier_jsl_slim_en</id><content type="html" xml:base="/2025/02/13/assertion_bert_classifier_jsl_slim_en.html">## Description
+
+Assign assertion status to clinical entities.
+
+## Predicted Entities
+
+`present`, `absent`, `possible`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/assertion_bert_classifier_jsl_slim_en_5.5.3_3.0_1739484033697.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/assertion_bert_classifier_jsl_slim_en_5.5.3_3.0_1739484033697.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = DocumentAssembler() \
+     .setInputCol(&quot;text&quot;) \
+     .setOutputCol(&quot;document&quot;)
+sentence_detector = SentenceDetector() \
+     .setInputCols([&quot;document&quot;]) \
+     .setOutputCol(&quot;sentence&quot;)
+tokenizer = Tokenizer() \
+     .setInputCols([&quot;sentence&quot;]) \
+     .setOutputCol(&quot;token&quot;)
+word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \
+     .setOutputCol(&quot;embeddings&quot;)
+clinical_ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+     .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \
+     .setOutputCol(&quot;ner&quot;)
+ner_converter = NerConverterInternal() \
+     .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \
+     .setOutputCol(&quot;ner_chunk&quot;)
+clinical_assertion = BertAssertionClassifier.pretrained(&quot;assertion_bert_classifier_jsl_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+     .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;]) \
+     .setOutputCol(&quot;assertion&quot;)
+pipeline = Pipeline().setStages([
+     document_assembler,
+     sentence_detector,
+     tokenizer,
+     word_embeddings,
+     clinical_ner,
+     ner_converter,
+     clinical_assertion
+ ])
+text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural.
+and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT,
+lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
+result_df = pipeline.fit(data).transform(data)
+result_df.selectExpr(&quot;explode(assertion) as result&quot;)\
+    .select(&quot;result.metadata.ner_chunk&quot;, &quot;result.begin&quot;, &quot;result.end&quot;,&quot;result.metadata.ner_label&quot;, &quot;result.result&quot;)\
+    .show(100, False)
+```
+```scala
+val document_assembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
+val sentence_detector = new SentenceDetector()
+  .setInputCols(&quot;document&quot;)
+  .setOutputCol(&quot;sentence&quot;)
+val tokenizer = new Tokenizer()
+  .setInputCols(&quot;sentence&quot;)
+  .setOutputCol(&quot;token&quot;)
+val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+  .setInputCols(&quot;sentence&quot;, &quot;token&quot;)
+  .setOutputCol(&quot;embeddings&quot;)
+val clinical_ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+  .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)
+  .setOutputCol(&quot;ner&quot;)
+val ner_converter = new NerConverterInternal()
+  .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)
+  .setOutputCol(&quot;ner_chunk&quot;)
+val clinical_assertion = BertAssertionClassifier.pretrained(&quot;assertion_bert_classifier_jsl_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+  .setInputCols(&quot;sentence&quot;, &quot;ner_chunk&quot;)
+  .setOutputCol(&quot;assertion&quot;)
+val pipeline = new Pipeline().setStages(Array(
+  document_assembler,
+  sentence_detector,
+  tokenizer,
+  word_embeddings,
+  clinical_ner,
+  ner_converter,
+  clinical_assertion
+))
+val text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural.
+           |and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT,
+           |lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;.stripMargin
+val data = Seq(text).toDF(&quot;text&quot;)
+val result_df = pipeline.fit(data).transform(data)
+result_df.selectExpr(&quot;explode(assertion) as result&quot;)
+  .select(&quot;result.metadata.ner_chunk&quot;, &quot;result.begin&quot;, &quot;result.end&quot;,&quot;result.metadata.ner_label&quot;, &quot;result.result&quot;)
+  .show(100, false)
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
++---------------+-----+---+---------+-------+
+|ner_chunk      |begin|end|ner_label|result |
++---------------+-----+---+---------+-------+
+|severe fever   |13   |24 |PROBLEM  |present|
+|sore throat    |30   |40 |PROBLEM  |present|
+|stomach pain   |55   |66 |PROBLEM  |absent |
+|an epidural    |89   |99 |TREATMENT|present|
+|PCA            |106  |108|TREATMENT|present|
+|pain control   |114  |125|TREATMENT|present|
+|short of breath|143  |157|PROBLEM  |present|
+|CT             |199  |200|TEST     |present|
+|lung tumor     |203  |212|PROBLEM  |present|
+|Alzheimer      |259  |267|PROBLEM  |present|
++---------------+-----+---+---------+-------+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|assertion_bert_classifier_jsl_slim|
+|Compatibility:|Healthcare NLP 5.5.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, ner_chunk]|
+|Output Labels:|[assertion]|
+|Language:|en|
+|Size:|406.3 MB|
+|Case sensitive:|false|
+
+## Benchmarking
+
+```bash
+               label         precision     recall       f1-score         support
+            absent              0.988      0.931           0.959             2594
+         possible              0.730      0.755           0.742               652
+          present               0.964      0.979           0.971            8622
+       accuracy                    -              -                0.956          11868
+     macro avg              0.894       0.888          0.891           11868
+weighted avg              0.957       0.956          0.956           11868
+```</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="clinical" /><category term="en" /><category term="assertion" /><category term="tensorflow" /><category term="classification" /><summary type="html">Description Assign assertion status to clinical entities. Predicted Entities present, absent, possible Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;]) \ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal() \ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) clinical_assertion = BertAssertionClassifier.pretrained(&quot;assertion_bert_classifier_jsl_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;]) \ .setOutputCol(&quot;assertion&quot;) pipeline = Pipeline().setStages([ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, clinical_assertion ]) text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural. and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result_df = pipeline.fit(data).transform(data) result_df.selectExpr(&quot;explode(assertion) as result&quot;)\ .select(&quot;result.metadata.ner_chunk&quot;, &quot;result.begin&quot;, &quot;result.end&quot;,&quot;result.metadata.ner_label&quot;, &quot;result.result&quot;)\ .show(100, False) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = new SentenceDetector() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentence&quot;, &quot;token&quot;) .setOutputCol(&quot;embeddings&quot;) val clinical_ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;) .setOutputCol(&quot;ner_chunk&quot;) val clinical_assertion = BertAssertionClassifier.pretrained(&quot;assertion_bert_classifier_jsl_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentence&quot;, &quot;ner_chunk&quot;) .setOutputCol(&quot;assertion&quot;) val pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, clinical_assertion )) val text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural. |and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, |lung tumor located at the right lower lobe. Father with Alzheimer.&quot;&quot;&quot;.stripMargin val data = Seq(text).toDF(&quot;text&quot;) val result_df = pipeline.fit(data).transform(data) result_df.selectExpr(&quot;explode(assertion) as result&quot;) .select(&quot;result.metadata.ner_chunk&quot;, &quot;result.begin&quot;, &quot;result.end&quot;,&quot;result.metadata.ner_label&quot;, &quot;result.result&quot;) .show(100, false) Results +---------------+-----+---+---------+-------+ |ner_chunk |begin|end|ner_label|result | +---------------+-----+---+---------+-------+ |severe fever |13 |24 |PROBLEM |present| |sore throat |30 |40 |PROBLEM |present| |stomach pain |55 |66 |PROBLEM |absent | |an epidural |89 |99 |TREATMENT|present| |PCA |106 |108|TREATMENT|present| |pain control |114 |125|TREATMENT|present| |short of breath|143 |157|PROBLEM |present| |CT |199 |200|TEST |present| |lung tumor |203 |212|PROBLEM |present| |Alzheimer |259 |267|PROBLEM |present| +---------------+-----+---+---------+-------+ Model Information Model Name: assertion_bert_classifier_jsl_slim Compatibility: Healthcare NLP 5.5.3+ License: Licensed Edition: Official Input Labels: [document, ner_chunk] Output Labels: [assertion] Language: en Size: 406.3 MB Case sensitive: false Benchmarking label precision recall f1-score support absent 0.988 0.931 0.959 2594 possible 0.730 0.755 0.742 652 present 0.964 0.979 0.971 8622 accuracy - - 0.956 11868 macro avg 0.894 0.888 0.891 11868 weighted avg 0.957 0.956 0.956 11868</summary></entry><entry><title type="html">Explain Clinical Document - Oncology (Slim)</title><link href="/2025/02/06/explain_clinical_doc_oncology_slim_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Oncology (Slim)" /><published>2025-02-06T00:00:00+00:00</published><updated>2025-02-06T00:00:00+00:00</updated><id>/2025/02/06/explain_clinical_doc_oncology_slim_en</id><content type="html" xml:base="/2025/02/06/explain_clinical_doc_oncology_slim_en.html">## Description
+
+This specialized oncology pipeline can;
+
+- extract oncological and cancer type entities,
+
+- assign assertion status to the extracted entities,
+
+- establish relations between the extracted entities from the clinical documents.
+
+In this pipeline, [ner_oncology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_en.html), [ner_oncology_biomarker_docwise](https://nlp.johnsnowlabs.com/2025/01/15/ner_oncology_biomarker_docwise_en.html) and [ner_cancer_types_wip](https://nlp.johnsnowlabs.com/2024/08/16/ner_cancer_types_wip_en.html)
+NER models, [assertion_oncology](https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_en.html) assertion model and [re_oncology_granular](https://nlp.johnsnowlabs.com/2024/07/03/re_oncology_granular_en.html)
+and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html)  relation extraction models were used to achieve those tasks.
+
+- Clinical Entity Labels: `Adenopathy`, `Age`, `Biomarker`, `Biomarker_Result`, `Cancer_Dx`, `Cancer_Score`, `Cancer_Surgery`,
+                          `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Date`, `Death_Entity`, `Direction`, `Dosage`,
+                          `Duration`, `Frequency`, `Gender`, `Grade`, `Histological_Type`, `Hormonal_Therapy`, `Imaging_Test`,
+                          `Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Metastasis`,`Oncogene`, `Pathology_Result`, `Pathology_Test`,
+                          `Performance_Status`, `Race_Ethnicity`, `Radiation_Dose`, `Radiotherapy`, `Relative_Date`, `Response_To_Treatment`,
+                          `Route`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`,
+                          `Smoking_Status`, `Staging`, `Targeted_Therapy`, `Tumor_Finding`, `Tumor_Size`, `Unspecific_Therapy`,`Biomarker_Quant`,
+                          `Body_Site`, `CNS_Tumor_Type`, `Carcinoma_Type`, `Leukemia_Type`, `Lymphoma_Type`, `Melanoma`,`Sarcoma_Type`
+
+- Assertion Status Labels: `Present`, `Absent`, `Possible`, `Past`, `Family`, `Hypotetical`
+
+- Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`, `Date-Cancer_Dx`, `Tumor_Finding-Site_Breast`, `Tumor_Finding-Site_Bone`,
+                              `Tumor_Finding-Site_Liver`, `Tumor_Finding-Site_Lung`, `Tumor_Finding-Site_Lymph_Node`, `Tumor_Finding-Site_Other_Body_Part`,
+                              `Tumor_Fiding-Relative_Date`, `Tumor_Finding-Tumor_Size`, `Pathology_Test-Cancer_Dx`, `Pathology_Test-Pathology_Result`,
+                              `Biomarker_Result-Biomarker`, `Biomarker-Biomarker_Quant`, `Cancer_Dx-Hormonal_Therapy`, `Cancer_Dx-Immunotherapy`,
+                              `Cancer_Dx-Radiotherapy`, `Cancer_Dx-Chemotherapy`, `Cancer_Dx-Targeted_Therapy`, `Cancer_Dx-Cancer_Surgery`,
+                              `Cancer_Dx-Unspecific_Therapy`, `Cancer_Dx-Invasion`, `Cancer_Dx-Site_Bone`, `Cancer_Dx-Site_Brain`, `Cancer_Dx-Site_Breast`,
+                              `Cancer_Dx-Site_Liver`, `Cancer_Dx-Site_Lymph_Node`, `Cancer_Dx-Site_Other_Body_Part`, `Cancer_Dx-Imaging_Test`, `Invasion-Site_Bone`,
+                              `Invasion-Site_Brain`, `Invasion-Site_Breast`, `Invasion-Site_Liver`, `Invasion-Site_Lymph_Node`, `Invasion-Site_Other_Body_Part`,
+                              `Invasion-Metastasis`, `Invasion-Cancer_Surgery`, `Response_To_Treatment-Chemotherapy`, `Response_To_Treatment-Hormonal_Therapy`,
+                              `Response_To_Treatment-Immunotherapy`, `Response_To_Treatment-Radiotherapy`, `Response_To_Treatment-Targeted_Therapy`,
+                              `Response_To_Treatment-Unspecific_Therapy`, `Response_To_Treatment-Line_Of_Therapy`, `Chemotherapy-Dosage`, `Chemotherapy-Cycle_Count`,
+                              `Chemotherapy-Cycle_Day`, `Chemotherapy-Cycle_Number`, `Cancer_Therapy-Dosage`, `Cancer_Therapy-Duration`, `Cancer_Therapy-Frequency`,
+                              `Hormonal_Therapy-Dosage`, `Hormonal_Therapy-Duration`, `Hormonal_Therapy-Frequency`, `Immunotherapy-Dosage`, `Immunotherapy-Duration`,
+                              `Immunotherapy-Frequency`, `Radiotherapy-Radiation_Dose`, `Radiotherapy-Duration`, `Radiotherapy-Frequency`, `Posology_Information-Dosage`,
+                              `Posology_Information-Duration`, `Posology_Information-Frequency`, `Posology_Information-Route`, `Unspecific_Therapy-Dosage`,
+                              `Unspecific_Therapy-Duration`, `Unspecific_Therapy-Frequency`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_slim_en_5.5.2_3.4_1738878873620.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_slim_en_5.5.2_3.4_1738878873620.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
+Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
+with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
+a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;)
+
+```
+
+{:.jsl-block}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+oncology_pipeline = nlp.PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
+Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
+with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
+a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;)
+
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
+Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
+with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
+a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;)
+
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
+
+# NER Oncology Results
+
+|    |   sentence_id | chunks                          |   begin |   end | entities              |
+|---:|--------------:|:--------------------------------|--------:|------:|:----------------------|
+|  0 |             0 | man                             |      14 |    16 | Gender                |
+|  1 |             0 | 45 mm                           |     119 |   123 | Tumor_Size            |
+|  2 |             0 | anterior                        |     125 |   132 | Direction             |
+|  3 |             0 | mediastinal                     |     134 |   144 | Site_Other_Body_Part  |
+|  4 |             0 | mass                            |     146 |   149 | Tumor_Finding         |
+|  5 |             0 | chest CT                        |     164 |   171 | Imaging_Test          |
+|  6 |             1 | electromyography                |     203 |   218 | Imaging_Test          |
+|  7 |             2 | cisplatin                       |     363 |   371 | Chemotherapy          |
+|  8 |             2 | 75 mg/m²                        |     373 |   380 | Dosage                |
+|  9 |             2 | day 1                           |     385 |   389 | Cycle_Day             |
+| 10 |             2 | etoposide                       |     406 |   414 | Chemotherapy          |
+| 11 |             2 | 100 mg/m²                       |     416 |   424 | Dosage                |
+| 12 |             2 | days 1-3                        |     429 |   436 | Cycle_Day             |
+| 13 |             2 | every 3 weeks                   |     448 |   460 | Frequency             |
+| 14 |             2 | for four cycles                 |     462 |   476 | Duration              |
+| 15 |             3 | video-assisted thoracic surgery |     481 |   511 | Cancer_Surgery        |
+| 16 |             3 | histopathological               |     522 |   538 | Pathology_Test        |
+| 17 |             3 | small cell                      |     565 |   574 | Histological_Type     |
+| 18 |             3 | lung cancer                     |     576 |   586 | Cancer_Dx             |
+| 19 |             3 | SCLC                            |     589 |   592 | Cancer_Dx             |
+| 20 |             3 | lymph node                      |     600 |   609 | Site_Lymph_Node       |
+| 21 |             3 | metastases                      |     611 |   620 | Metastasis            |
+| 22 |             4 | immunohistochemical analysis    |     627 |   654 | Pathology_Test        |
+| 23 |             4 | positive                        |     663 |   670 | Biomarker_Result      |
+| 24 |             4 | AE1/AE3                         |     684 |   690 | Biomarker             |
+| 25 |             4 | TTF-1                           |     693 |   697 | Biomarker             |
+| 26 |             4 | chromogranin A                  |     700 |   713 | Biomarker             |
+| 27 |             4 | synaptophysin                   |     720 |   732 | Biomarker             |
+| 28 |             5 | pulmonary                       |     746 |   754 | Site_Lung             |
+| 29 |             5 | nodule                          |     756 |   761 | Tumor_Finding         |
+| 30 |             5 | left                            |     770 |   773 | Direction             |
+| 31 |             5 | upper lobe                      |     775 |   784 | Site_Lung             |
+| 32 |             5 | disappeared                     |     786 |   796 | Response_To_Treatment |
+| 33 |             5 | FDG-PET/CT                      |     803 |   812 | Imaging_Test          |
+| 34 |             5 | primary lesions                 |     839 |   853 | Tumor_Finding         |
+| 35 |             5 | metastases                      |     858 |   867 | Metastasis            |
+
+# NER Biomarker Results
+
+|   |     chunks     | begin | end |     entities     | confidence |
+|--:|:--------------:|:-----:|:---:|:----------------:|:----------:|
+| 0 |    positive    |  663  | 670 | Biomarker_Result |   0.9875   |
+| 1 |     AE1/AE3    |  684  | 690 |     Biomarker    |   0.9985   |
+| 2 |      TTF-1     |  693  | 697 |     Biomarker    |   0.9992   |
+| 3 | chromogranin A |  700  | 713 |     Biomarker    |    0.924   |
+| 4 |  synaptophysin |  720  | 732 |     Biomarker    |   0.9978   |
+
+# NER Cancer Types Results
+
+|    |   sentence_id | chunks                 |   begin |   end | entities             |
+|---:|--------------:|:-----------------------|--------:|------:|:---------------------|
+|  0 |             0 | mediastinal            |     134 |   144 | Site_Other_Body_Part |
+|  1 |             0 | chest                  |     164 |   168 | Site_Other_Body_Part |
+|  2 |             1 | VGCC                   |     317 |   320 | Biomarker            |
+|  3 |             3 | thoracic               |     496 |   503 | Site_Other_Body_Part |
+|  4 |             3 | small cell lung cancer |     565 |   586 | Carcinoma_Type       |
+|  5 |             3 | SCLC                   |     589 |   592 | Carcinoma_Type       |
+|  6 |             3 | lymph node             |     600 |   609 | Site_Other_Body_Part |
+|  7 |             3 | metastases             |     611 |   620 | Metastasis           |
+|  8 |             4 | positive               |     663 |   670 | Biomarker_Result     |
+|  9 |             4 | AE1/AE3                |     684 |   690 | Biomarker            |
+| 10 |             4 | TTF-1                  |     693 |   697 | Biomarker            |
+| 11 |             4 | chromogranin A         |     700 |   713 | Biomarker            |
+| 12 |             4 | synaptophysin          |     720 |   732 | Biomarker            |
+| 13 |             5 | pulmonary              |     746 |   754 | Site_Other_Body_Part |
+| 14 |             5 | lobe                   |     781 |   784 | Site_Other_Body_Part |
+| 15 |             5 | metastases             |     858 |   867 | Metastasis           |
+
+# Assertion Result
+
+|    |   sentence_id | chunks                          |   begin |   end | entities              | assertion   |
+|---:|--------------:|:--------------------------------|--------:|------:|:----------------------|:------------|
+|  0 |             0 | mass                            |     146 |   149 | Tumor_Finding         | Present     |
+|  1 |             1 | VGCC                            |     317 |   320 | Biomarker             | Present     |
+|  2 |             2 | cisplatin                       |     363 |   371 | Chemotherapy          | Past        |
+|  3 |             2 | etoposide                       |     406 |   414 | Chemotherapy          | Present     |
+|  4 |             2 | for four cycles                 |     462 |   476 | Duration              | Present     |
+|  5 |             3 | video-assisted thoracic surgery |     481 |   511 | Cancer_Surgery        | Past        |
+|  6 |             3 | small cell lung cancer          |     565 |   586 | Carcinoma_Type        | Present     |
+|  7 |             3 | SCLC                            |     589 |   592 | Carcinoma_Type        | Present     |
+|  8 |             3 | metastases                      |     611 |   620 | Metastasis            | Present     |
+|  9 |             4 | AE1/AE3                         |     684 |   690 | Biomarker             | Present     |
+| 10 |             4 | TTF-1                           |     693 |   697 | Biomarker             | Present     |
+| 11 |             4 | chromogranin A                  |     700 |   713 | Biomarker             | Present     |
+| 12 |             4 | synaptophysin                   |     720 |   732 | Biomarker             | Present     |
+| 13 |             5 | nodule                          |     756 |   761 | Tumor_Finding         | Present     |
+| 14 |             5 | disappeared                     |     786 |   796 | Response_To_Treatment | Present     |
+| 15 |             5 | primary lesions                 |     839 |   853 | Tumor_Finding         | Absent      |
+| 16 |             5 | metastases                      |     858 |   867 | Metastasis            | Absent      |
+
+
+# Relation Extraction Result
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1            | entity1              |   entity2_begin |   entity2_end | chunk2         | entity2       | relation               |   confidence |
+|---:|-----------:|----------------:|--------------:|:------------------|:---------------------|----------------:|--------------:|:---------------|:--------------|:-----------------------|-------------:|
+|  0 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             373 |           380 | 75 mg/m²       | Dosage        | Chemotherapy-Dosage    |     1        |
+|  1 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             385 |           389 | day 1          | Cycle_Day     | Chemotherapy-Cycle_Day |     1        |
+|  2 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             416 |           424 | 100 mg/m²      | Dosage        | Chemotherapy-Dosage    |     1        |
+|  3 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             429 |           436 | days 1-3       | Cycle_Day     | Chemotherapy-Cycle_Day |     1        |
+|  4 |          2 |             373 |           380 | 75 mg/m²          | Dosage               |             406 |           414 | etoposide      | Chemotherapy  | Dosage-Chemotherapy    |     1        |
+|  5 |          2 |             385 |           389 | day 1             | Cycle_Day            |             406 |           414 | etoposide      | Chemotherapy  | Cycle_Day-Chemotherapy |     1        |
+|  6 |          2 |             406 |           414 | etoposide         | Chemotherapy         |             416 |           424 | 100 mg/m²      | Dosage        | Chemotherapy-Dosage    |     1        |
+|  7 |          2 |             406 |           414 | etoposide         | Chemotherapy         |             429 |           436 | days 1-3       | Cycle_Day     | Chemotherapy-Cycle_Day |     1        |
+|  8 |          0 |             119 |           123 | 45 mm             | Tumor_Size           |             146 |           149 | mass           | Tumor_Finding | is_size_of             |     0.968412 |
+|  9 |          0 |             134 |           144 | mediastinal       | Site_Other_Body_Part |             146 |           149 | mass           | Tumor_Finding | is_location_of         |     0.929259 |
+| 11 |          3 |             522 |           538 | histopathological | Pathology_Test       |             589 |           592 | SCLC           | Cancer_Dx     | is_finding_of          |     0.738208 |
+| 13 |          4 |             663 |           670 | positive          | Biomarker_Result     |             684 |           690 | AE1/AE3        | Biomarker     | is_finding_of          |     0.911877 |
+| 14 |          4 |             663 |           670 | positive          | Biomarker_Result     |             693 |           697 | TTF-1          | Biomarker     | is_finding_of          |     0.903363 |
+| 15 |          4 |             663 |           670 | positive          | Biomarker_Result     |             700 |           713 | chromogranin A | Biomarker     | is_finding_of          |     0.885989 |
+| 16 |          4 |             663 |           670 | positive          | Biomarker_Result     |             720 |           732 | synaptophysin  | Biomarker     | is_finding_of          |     0.720167 |
+| 17 |          5 |             746 |           754 | pulmonary         | Site_Lung            |             756 |           761 | nodule         | Tumor_Finding | is_location_of         |     0.932414 |
+| 19 |          5 |             756 |           761 | nodule            | Tumor_Finding        |             775 |           784 | upper lobe     | Site_Lung     | is_location_of         |     0.932624 |
+
+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|explain_clinical_doc_oncology_slim|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.5.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.8 GB|
+
+## Included Models
+
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- ChunkMergeModel
+- ChunkMergeModel
+- AssertionDLModel
+- PerceptronModel
+- DependencyParserModel
+- RelationExtractionModel
+- PosologyREModel
+- AnnotationMerger</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><category term="cancer_type" /><category term="cancer" /><summary type="html">Description This specialized oncology pipeline can; extract oncological and cancer type entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, ner_oncology, ner_oncology_biomarker_docwise and ner_cancer_types_wip NER models, assertion_oncology assertion model and re_oncology_granular and posology_re relation extraction models were used to achieve those tasks. Clinical Entity Labels: Adenopathy, Age, Biomarker, Biomarker_Result, Cancer_Dx, Cancer_Score, Cancer_Surgery, Chemotherapy, Cycle_Count, Cycle_Day, Cycle_Number, Date, Death_Entity, Direction, Dosage, Duration, Frequency, Gender, Grade, Histological_Type, Hormonal_Therapy, Imaging_Test, Immunotherapy, Invasion, Line_Of_Therapy, Metastasis,Oncogene, Pathology_Result, Pathology_Test, Performance_Status, Race_Ethnicity, Radiation_Dose, Radiotherapy, Relative_Date, Response_To_Treatment, Route, Site_Bone, Site_Brain, Site_Breast, Site_Liver, Site_Lung, Site_Lymph_Node, Site_Other_Body_Part, Smoking_Status, Staging, Targeted_Therapy, Tumor_Finding, Tumor_Size, Unspecific_Therapy,Biomarker_Quant, Body_Site, CNS_Tumor_Type, Carcinoma_Type, Leukemia_Type, Lymphoma_Type, Melanoma,Sarcoma_Type Assertion Status Labels: Present, Absent, Possible, Past, Family, Hypotetical Relation Extraction Labels: is_size_of, is_finding_of, is_date_of, Date-Cancer_Dx, Tumor_Finding-Site_Breast, Tumor_Finding-Site_Bone, Tumor_Finding-Site_Liver, Tumor_Finding-Site_Lung, Tumor_Finding-Site_Lymph_Node, Tumor_Finding-Site_Other_Body_Part, Tumor_Fiding-Relative_Date, Tumor_Finding-Tumor_Size, Pathology_Test-Cancer_Dx, Pathology_Test-Pathology_Result, Biomarker_Result-Biomarker, Biomarker-Biomarker_Quant, Cancer_Dx-Hormonal_Therapy, Cancer_Dx-Immunotherapy, Cancer_Dx-Radiotherapy, Cancer_Dx-Chemotherapy, Cancer_Dx-Targeted_Therapy, Cancer_Dx-Cancer_Surgery, Cancer_Dx-Unspecific_Therapy, Cancer_Dx-Invasion, Cancer_Dx-Site_Bone, Cancer_Dx-Site_Brain, Cancer_Dx-Site_Breast, Cancer_Dx-Site_Liver, Cancer_Dx-Site_Lymph_Node, Cancer_Dx-Site_Other_Body_Part, Cancer_Dx-Imaging_Test, Invasion-Site_Bone, Invasion-Site_Brain, Invasion-Site_Breast, Invasion-Site_Liver, Invasion-Site_Lymph_Node, Invasion-Site_Other_Body_Part, Invasion-Metastasis, Invasion-Cancer_Surgery, Response_To_Treatment-Chemotherapy, Response_To_Treatment-Hormonal_Therapy, Response_To_Treatment-Immunotherapy, Response_To_Treatment-Radiotherapy, Response_To_Treatment-Targeted_Therapy, Response_To_Treatment-Unspecific_Therapy, Response_To_Treatment-Line_Of_Therapy, Chemotherapy-Dosage, Chemotherapy-Cycle_Count, Chemotherapy-Cycle_Day, Chemotherapy-Cycle_Number, Cancer_Therapy-Dosage, Cancer_Therapy-Duration, Cancer_Therapy-Frequency, Hormonal_Therapy-Dosage, Hormonal_Therapy-Duration, Hormonal_Therapy-Frequency, Immunotherapy-Dosage, Immunotherapy-Duration, Immunotherapy-Frequency, Radiotherapy-Radiation_Dose, Radiotherapy-Duration, Radiotherapy-Frequency, Posology_Information-Dosage, Posology_Information-Duration, Posology_Information-Frequency, Posology_Information-Route, Unspecific_Therapy-Dosage, Unspecific_Therapy-Duration, Unspecific_Therapy-Frequency Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably, a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;) from sparknlp.pretrained import PretrainedPipeline oncology_pipeline = nlp.PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably, a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably, a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;) Results # NER Oncology Results | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:--------------------------------|--------:|------:|:----------------------| | 0 | 0 | man | 14 | 16 | Gender | | 1 | 0 | 45 mm | 119 | 123 | Tumor_Size | | 2 | 0 | anterior | 125 | 132 | Direction | | 3 | 0 | mediastinal | 134 | 144 | Site_Other_Body_Part | | 4 | 0 | mass | 146 | 149 | Tumor_Finding | | 5 | 0 | chest CT | 164 | 171 | Imaging_Test | | 6 | 1 | electromyography | 203 | 218 | Imaging_Test | | 7 | 2 | cisplatin | 363 | 371 | Chemotherapy | | 8 | 2 | 75 mg/m² | 373 | 380 | Dosage | | 9 | 2 | day 1 | 385 | 389 | Cycle_Day | | 10 | 2 | etoposide | 406 | 414 | Chemotherapy | | 11 | 2 | 100 mg/m² | 416 | 424 | Dosage | | 12 | 2 | days 1-3 | 429 | 436 | Cycle_Day | | 13 | 2 | every 3 weeks | 448 | 460 | Frequency | | 14 | 2 | for four cycles | 462 | 476 | Duration | | 15 | 3 | video-assisted thoracic surgery | 481 | 511 | Cancer_Surgery | | 16 | 3 | histopathological | 522 | 538 | Pathology_Test | | 17 | 3 | small cell | 565 | 574 | Histological_Type | | 18 | 3 | lung cancer | 576 | 586 | Cancer_Dx | | 19 | 3 | SCLC | 589 | 592 | Cancer_Dx | | 20 | 3 | lymph node | 600 | 609 | Site_Lymph_Node | | 21 | 3 | metastases | 611 | 620 | Metastasis | | 22 | 4 | immunohistochemical analysis | 627 | 654 | Pathology_Test | | 23 | 4 | positive | 663 | 670 | Biomarker_Result | | 24 | 4 | AE1/AE3 | 684 | 690 | Biomarker | | 25 | 4 | TTF-1 | 693 | 697 | Biomarker | | 26 | 4 | chromogranin A | 700 | 713 | Biomarker | | 27 | 4 | synaptophysin | 720 | 732 | Biomarker | | 28 | 5 | pulmonary | 746 | 754 | Site_Lung | | 29 | 5 | nodule | 756 | 761 | Tumor_Finding | | 30 | 5 | left | 770 | 773 | Direction | | 31 | 5 | upper lobe | 775 | 784 | Site_Lung | | 32 | 5 | disappeared | 786 | 796 | Response_To_Treatment | | 33 | 5 | FDG-PET/CT | 803 | 812 | Imaging_Test | | 34 | 5 | primary lesions | 839 | 853 | Tumor_Finding | | 35 | 5 | metastases | 858 | 867 | Metastasis | # NER Biomarker Results | | chunks | begin | end | entities | confidence | |--:|:--------------:|:-----:|:---:|:----------------:|:----------:| | 0 | positive | 663 | 670 | Biomarker_Result | 0.9875 | | 1 | AE1/AE3 | 684 | 690 | Biomarker | 0.9985 | | 2 | TTF-1 | 693 | 697 | Biomarker | 0.9992 | | 3 | chromogranin A | 700 | 713 | Biomarker | 0.924 | | 4 | synaptophysin | 720 | 732 | Biomarker | 0.9978 | # NER Cancer Types Results | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:-----------------------|--------:|------:|:---------------------| | 0 | 0 | mediastinal | 134 | 144 | Site_Other_Body_Part | | 1 | 0 | chest | 164 | 168 | Site_Other_Body_Part | | 2 | 1 | VGCC | 317 | 320 | Biomarker | | 3 | 3 | thoracic | 496 | 503 | Site_Other_Body_Part | | 4 | 3 | small cell lung cancer | 565 | 586 | Carcinoma_Type | | 5 | 3 | SCLC | 589 | 592 | Carcinoma_Type | | 6 | 3 | lymph node | 600 | 609 | Site_Other_Body_Part | | 7 | 3 | metastases | 611 | 620 | Metastasis | | 8 | 4 | positive | 663 | 670 | Biomarker_Result | | 9 | 4 | AE1/AE3 | 684 | 690 | Biomarker | | 10 | 4 | TTF-1 | 693 | 697 | Biomarker | | 11 | 4 | chromogranin A | 700 | 713 | Biomarker | | 12 | 4 | synaptophysin | 720 | 732 | Biomarker | | 13 | 5 | pulmonary | 746 | 754 | Site_Other_Body_Part | | 14 | 5 | lobe | 781 | 784 | Site_Other_Body_Part | | 15 | 5 | metastases | 858 | 867 | Metastasis | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |---:|--------------:|:--------------------------------|--------:|------:|:----------------------|:------------| | 0 | 0 | mass | 146 | 149 | Tumor_Finding | Present | | 1 | 1 | VGCC | 317 | 320 | Biomarker | Present | | 2 | 2 | cisplatin | 363 | 371 | Chemotherapy | Past | | 3 | 2 | etoposide | 406 | 414 | Chemotherapy | Present | | 4 | 2 | for four cycles | 462 | 476 | Duration | Present | | 5 | 3 | video-assisted thoracic surgery | 481 | 511 | Cancer_Surgery | Past | | 6 | 3 | small cell lung cancer | 565 | 586 | Carcinoma_Type | Present | | 7 | 3 | SCLC | 589 | 592 | Carcinoma_Type | Present | | 8 | 3 | metastases | 611 | 620 | Metastasis | Present | | 9 | 4 | AE1/AE3 | 684 | 690 | Biomarker | Present | | 10 | 4 | TTF-1 | 693 | 697 | Biomarker | Present | | 11 | 4 | chromogranin A | 700 | 713 | Biomarker | Present | | 12 | 4 | synaptophysin | 720 | 732 | Biomarker | Present | | 13 | 5 | nodule | 756 | 761 | Tumor_Finding | Present | | 14 | 5 | disappeared | 786 | 796 | Response_To_Treatment | Present | | 15 | 5 | primary lesions | 839 | 853 | Tumor_Finding | Absent | | 16 | 5 | metastases | 858 | 867 | Metastasis | Absent | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |---:|-----------:|----------------:|--------------:|:------------------|:---------------------|----------------:|--------------:|:---------------|:--------------|:-----------------------|-------------:| | 0 | 2 | 363 | 371 | cisplatin | Chemotherapy | 373 | 380 | 75 mg/m² | Dosage | Chemotherapy-Dosage | 1 | | 1 | 2 | 363 | 371 | cisplatin | Chemotherapy | 385 | 389 | day 1 | Cycle_Day | Chemotherapy-Cycle_Day | 1 | | 2 | 2 | 363 | 371 | cisplatin | Chemotherapy | 416 | 424 | 100 mg/m² | Dosage | Chemotherapy-Dosage | 1 | | 3 | 2 | 363 | 371 | cisplatin | Chemotherapy | 429 | 436 | days 1-3 | Cycle_Day | Chemotherapy-Cycle_Day | 1 | | 4 | 2 | 373 | 380 | 75 mg/m² | Dosage | 406 | 414 | etoposide | Chemotherapy | Dosage-Chemotherapy | 1 | | 5 | 2 | 385 | 389 | day 1 | Cycle_Day | 406 | 414 | etoposide | Chemotherapy | Cycle_Day-Chemotherapy | 1 | | 6 | 2 | 406 | 414 | etoposide | Chemotherapy | 416 | 424 | 100 mg/m² | Dosage | Chemotherapy-Dosage | 1 | | 7 | 2 | 406 | 414 | etoposide | Chemotherapy | 429 | 436 | days 1-3 | Cycle_Day | Chemotherapy-Cycle_Day | 1 | | 8 | 0 | 119 | 123 | 45 mm | Tumor_Size | 146 | 149 | mass | Tumor_Finding | is_size_of | 0.968412 | | 9 | 0 | 134 | 144 | mediastinal | Site_Other_Body_Part | 146 | 149 | mass | Tumor_Finding | is_location_of | 0.929259 | | 11 | 3 | 522 | 538 | histopathological | Pathology_Test | 589 | 592 | SCLC | Cancer_Dx | is_finding_of | 0.738208 | | 13 | 4 | 663 | 670 | positive | Biomarker_Result | 684 | 690 | AE1/AE3 | Biomarker | is_finding_of | 0.911877 | | 14 | 4 | 663 | 670 | positive | Biomarker_Result | 693 | 697 | TTF-1 | Biomarker | is_finding_of | 0.903363 | | 15 | 4 | 663 | 670 | positive | Biomarker_Result | 700 | 713 | chromogranin A | Biomarker | is_finding_of | 0.885989 | | 16 | 4 | 663 | 670 | positive | Biomarker_Result | 720 | 732 | synaptophysin | Biomarker | is_finding_of | 0.720167 | | 17 | 5 | 746 | 754 | pulmonary | Site_Lung | 756 | 761 | nodule | Tumor_Finding | is_location_of | 0.932414 | | 19 | 5 | 756 | 761 | nodule | Tumor_Finding | 775 | 784 | upper lobe | Site_Lung | is_location_of | 0.932624 | Model Information Model Name: explain_clinical_doc_oncology_slim Type: pipeline Compatibility: Healthcare NLP 5.5.2+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel PosologyREModel AnnotationMerger</summary></entry><entry><title type="html">Explain Clinical Document - Oncology (Slim)</title><link href="/2025/02/06/explain_clinical_doc_oncology_slim_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Oncology (Slim)" /><published>2025-02-06T00:00:00+00:00</published><updated>2025-02-06T00:00:00+00:00</updated><id>/2025/02/06/explain_clinical_doc_oncology_slim_en</id><content type="html" xml:base="/2025/02/06/explain_clinical_doc_oncology_slim_en.html">## Description
+
+This specialized oncology pipeline can;
+
+- extract oncological and cancer type entities,
+
+- assign assertion status to the extracted entities,
+
+- establish relations between the extracted entities from the clinical documents.
+
+In this pipeline, [ner_oncology](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_en.html), [ner_oncology_biomarker_docwise](https://nlp.johnsnowlabs.com/2025/01/15/ner_oncology_biomarker_docwise_en.html) and [ner_cancer_types_wip](https://nlp.johnsnowlabs.com/2024/08/16/ner_cancer_types_wip_en.html)
+NER models, [assertion_oncology](https://nlp.johnsnowlabs.com/2024/07/03/assertion_oncology_en.html) assertion model and [re_oncology_granular](https://nlp.johnsnowlabs.com/2024/07/03/re_oncology_granular_en.html)
+and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html)  relation extraction models were used to achieve those tasks.
+
+- Clinical Entity Labels: `Adenopathy`, `Age`, `Biomarker`, `Biomarker_Result`, `Cancer_Dx`, `Cancer_Score`, `Cancer_Surgery`,
+                          `Chemotherapy`, `Cycle_Count`, `Cycle_Day`, `Cycle_Number`, `Date`, `Death_Entity`, `Direction`, `Dosage`,
+                          `Duration`, `Frequency`, `Gender`, `Grade`, `Histological_Type`, `Hormonal_Therapy`, `Imaging_Test`,
+                          `Immunotherapy`, `Invasion`, `Line_Of_Therapy`, `Metastasis`,`Oncogene`, `Pathology_Result`, `Pathology_Test`,
+                          `Performance_Status`, `Race_Ethnicity`, `Radiation_Dose`, `Radiotherapy`, `Relative_Date`, `Response_To_Treatment`,
+                          `Route`, `Site_Bone`, `Site_Brain`, `Site_Breast`, `Site_Liver`, `Site_Lung`, `Site_Lymph_Node`, `Site_Other_Body_Part`,
+                          `Smoking_Status`, `Staging`, `Targeted_Therapy`, `Tumor_Finding`, `Tumor_Size`, `Unspecific_Therapy`,`Biomarker_Quant`,
+                          `Body_Site`, `CNS_Tumor_Type`, `Carcinoma_Type`, `Leukemia_Type`, `Lymphoma_Type`, `Melanoma`,`Sarcoma_Type`
+
+- Assertion Status Labels: `Present`, `Absent`, `Possible`, `Past`, `Family`, `Hypotetical`
+
+- Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`, `Date-Cancer_Dx`, `Tumor_Finding-Site_Breast`, `Tumor_Finding-Site_Bone`,
+                              `Tumor_Finding-Site_Liver`, `Tumor_Finding-Site_Lung`, `Tumor_Finding-Site_Lymph_Node`, `Tumor_Finding-Site_Other_Body_Part`,
+                              `Tumor_Fiding-Relative_Date`, `Tumor_Finding-Tumor_Size`, `Pathology_Test-Cancer_Dx`, `Pathology_Test-Pathology_Result`,
+                              `Biomarker_Result-Biomarker`, `Biomarker-Biomarker_Quant`, `Cancer_Dx-Hormonal_Therapy`, `Cancer_Dx-Immunotherapy`,
+                              `Cancer_Dx-Radiotherapy`, `Cancer_Dx-Chemotherapy`, `Cancer_Dx-Targeted_Therapy`, `Cancer_Dx-Cancer_Surgery`,
+                              `Cancer_Dx-Unspecific_Therapy`, `Cancer_Dx-Invasion`, `Cancer_Dx-Site_Bone`, `Cancer_Dx-Site_Brain`, `Cancer_Dx-Site_Breast`,
+                              `Cancer_Dx-Site_Liver`, `Cancer_Dx-Site_Lymph_Node`, `Cancer_Dx-Site_Other_Body_Part`, `Cancer_Dx-Imaging_Test`, `Invasion-Site_Bone`,
+                              `Invasion-Site_Brain`, `Invasion-Site_Breast`, `Invasion-Site_Liver`, `Invasion-Site_Lymph_Node`, `Invasion-Site_Other_Body_Part`,
+                              `Invasion-Metastasis`, `Invasion-Cancer_Surgery`, `Response_To_Treatment-Chemotherapy`, `Response_To_Treatment-Hormonal_Therapy`,
+                              `Response_To_Treatment-Immunotherapy`, `Response_To_Treatment-Radiotherapy`, `Response_To_Treatment-Targeted_Therapy`,
+                              `Response_To_Treatment-Unspecific_Therapy`, `Response_To_Treatment-Line_Of_Therapy`, `Chemotherapy-Dosage`, `Chemotherapy-Cycle_Count`,
+                              `Chemotherapy-Cycle_Day`, `Chemotherapy-Cycle_Number`, `Cancer_Therapy-Dosage`, `Cancer_Therapy-Duration`, `Cancer_Therapy-Frequency`,
+                              `Hormonal_Therapy-Dosage`, `Hormonal_Therapy-Duration`, `Hormonal_Therapy-Frequency`, `Immunotherapy-Dosage`, `Immunotherapy-Duration`,
+                              `Immunotherapy-Frequency`, `Radiotherapy-Radiation_Dose`, `Radiotherapy-Duration`, `Radiotherapy-Frequency`, `Posology_Information-Dosage`,
+                              `Posology_Information-Duration`, `Posology_Information-Frequency`, `Posology_Information-Route`, `Unspecific_Therapy-Dosage`,
+                              `Unspecific_Therapy-Duration`, `Unspecific_Therapy-Frequency`
+
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_slim_en_5.5.2_3.0_1738877699609.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_slim_en_5.5.2_3.0_1738877699609.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
+Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
+with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
+a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;)
+
+```
+
+{:.jsl-block}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+oncology_pipeline = nlp.PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
+Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
+with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
+a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;)
+
+```
+```scala
+
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
+
+val oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT.
+Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with
+cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent
+with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably,
+a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;)
+
+```
+&lt;/div&gt;
+
+## Results
+
+```bash
+
+# NER Oncology Results
+
+|    |   sentence_id | chunks                          |   begin |   end | entities              |
+|---:|--------------:|:--------------------------------|--------:|------:|:----------------------|
+|  0 |             0 | man                             |      14 |    16 | Gender                |
+|  1 |             0 | 45 mm                           |     119 |   123 | Tumor_Size            |
+|  2 |             0 | anterior                        |     125 |   132 | Direction             |
+|  3 |             0 | mediastinal                     |     134 |   144 | Site_Other_Body_Part  |
+|  4 |             0 | mass                            |     146 |   149 | Tumor_Finding         |
+|  5 |             0 | chest CT                        |     164 |   171 | Imaging_Test          |
+|  6 |             1 | electromyography                |     203 |   218 | Imaging_Test          |
+|  7 |             2 | cisplatin                       |     363 |   371 | Chemotherapy          |
+|  8 |             2 | 75 mg/m²                        |     373 |   380 | Dosage                |
+|  9 |             2 | day 1                           |     385 |   389 | Cycle_Day             |
+| 10 |             2 | etoposide                       |     406 |   414 | Chemotherapy          |
+| 11 |             2 | 100 mg/m²                       |     416 |   424 | Dosage                |
+| 12 |             2 | days 1-3                        |     429 |   436 | Cycle_Day             |
+| 13 |             2 | every 3 weeks                   |     448 |   460 | Frequency             |
+| 14 |             2 | for four cycles                 |     462 |   476 | Duration              |
+| 15 |             3 | video-assisted thoracic surgery |     481 |   511 | Cancer_Surgery        |
+| 16 |             3 | histopathological               |     522 |   538 | Pathology_Test        |
+| 17 |             3 | small cell                      |     565 |   574 | Histological_Type     |
+| 18 |             3 | lung cancer                     |     576 |   586 | Cancer_Dx             |
+| 19 |             3 | SCLC                            |     589 |   592 | Cancer_Dx             |
+| 20 |             3 | lymph node                      |     600 |   609 | Site_Lymph_Node       |
+| 21 |             3 | metastases                      |     611 |   620 | Metastasis            |
+| 22 |             4 | immunohistochemical analysis    |     627 |   654 | Pathology_Test        |
+| 23 |             4 | positive                        |     663 |   670 | Biomarker_Result      |
+| 24 |             4 | AE1/AE3                         |     684 |   690 | Biomarker             |
+| 25 |             4 | TTF-1                           |     693 |   697 | Biomarker             |
+| 26 |             4 | chromogranin A                  |     700 |   713 | Biomarker             |
+| 27 |             4 | synaptophysin                   |     720 |   732 | Biomarker             |
+| 28 |             5 | pulmonary                       |     746 |   754 | Site_Lung             |
+| 29 |             5 | nodule                          |     756 |   761 | Tumor_Finding         |
+| 30 |             5 | left                            |     770 |   773 | Direction             |
+| 31 |             5 | upper lobe                      |     775 |   784 | Site_Lung             |
+| 32 |             5 | disappeared                     |     786 |   796 | Response_To_Treatment |
+| 33 |             5 | FDG-PET/CT                      |     803 |   812 | Imaging_Test          |
+| 34 |             5 | primary lesions                 |     839 |   853 | Tumor_Finding         |
+| 35 |             5 | metastases                      |     858 |   867 | Metastasis            |
+
+# NER Biomarker Results
+
+|   |     chunks     | begin | end |     entities     | confidence |
+|--:|:--------------:|:-----:|:---:|:----------------:|:----------:|
+| 0 |    positive    |  663  | 670 | Biomarker_Result |   0.9875   |
+| 1 |     AE1/AE3    |  684  | 690 |     Biomarker    |   0.9985   |
+| 2 |      TTF-1     |  693  | 697 |     Biomarker    |   0.9992   |
+| 3 | chromogranin A |  700  | 713 |     Biomarker    |    0.924   |
+| 4 |  synaptophysin |  720  | 732 |     Biomarker    |   0.9978   |
+
+# NER Cancer Types Results
+
+|    |   sentence_id | chunks                 |   begin |   end | entities             |
+|---:|--------------:|:-----------------------|--------:|------:|:---------------------|
+|  0 |             0 | mediastinal            |     134 |   144 | Site_Other_Body_Part |
+|  1 |             0 | chest                  |     164 |   168 | Site_Other_Body_Part |
+|  2 |             1 | VGCC                   |     317 |   320 | Biomarker            |
+|  3 |             3 | thoracic               |     496 |   503 | Site_Other_Body_Part |
+|  4 |             3 | small cell lung cancer |     565 |   586 | Carcinoma_Type       |
+|  5 |             3 | SCLC                   |     589 |   592 | Carcinoma_Type       |
+|  6 |             3 | lymph node             |     600 |   609 | Site_Other_Body_Part |
+|  7 |             3 | metastases             |     611 |   620 | Metastasis           |
+|  8 |             4 | positive               |     663 |   670 | Biomarker_Result     |
+|  9 |             4 | AE1/AE3                |     684 |   690 | Biomarker            |
+| 10 |             4 | TTF-1                  |     693 |   697 | Biomarker            |
+| 11 |             4 | chromogranin A         |     700 |   713 | Biomarker            |
+| 12 |             4 | synaptophysin          |     720 |   732 | Biomarker            |
+| 13 |             5 | pulmonary              |     746 |   754 | Site_Other_Body_Part |
+| 14 |             5 | lobe                   |     781 |   784 | Site_Other_Body_Part |
+| 15 |             5 | metastases             |     858 |   867 | Metastasis           |
+
+# Assertion Result
+
+|    |   sentence_id | chunks                          |   begin |   end | entities              | assertion   |
+|---:|--------------:|:--------------------------------|--------:|------:|:----------------------|:------------|
+|  0 |             0 | mass                            |     146 |   149 | Tumor_Finding         | Present     |
+|  1 |             1 | VGCC                            |     317 |   320 | Biomarker             | Present     |
+|  2 |             2 | cisplatin                       |     363 |   371 | Chemotherapy          | Past        |
+|  3 |             2 | etoposide                       |     406 |   414 | Chemotherapy          | Present     |
+|  4 |             2 | for four cycles                 |     462 |   476 | Duration              | Present     |
+|  5 |             3 | video-assisted thoracic surgery |     481 |   511 | Cancer_Surgery        | Past        |
+|  6 |             3 | small cell lung cancer          |     565 |   586 | Carcinoma_Type        | Present     |
+|  7 |             3 | SCLC                            |     589 |   592 | Carcinoma_Type        | Present     |
+|  8 |             3 | metastases                      |     611 |   620 | Metastasis            | Present     |
+|  9 |             4 | AE1/AE3                         |     684 |   690 | Biomarker             | Present     |
+| 10 |             4 | TTF-1                           |     693 |   697 | Biomarker             | Present     |
+| 11 |             4 | chromogranin A                  |     700 |   713 | Biomarker             | Present     |
+| 12 |             4 | synaptophysin                   |     720 |   732 | Biomarker             | Present     |
+| 13 |             5 | nodule                          |     756 |   761 | Tumor_Finding         | Present     |
+| 14 |             5 | disappeared                     |     786 |   796 | Response_To_Treatment | Present     |
+| 15 |             5 | primary lesions                 |     839 |   853 | Tumor_Finding         | Absent      |
+| 16 |             5 | metastases                      |     858 |   867 | Metastasis            | Absent      |
+
+
+# Relation Extraction Result
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1            | entity1              |   entity2_begin |   entity2_end | chunk2         | entity2       | relation               |   confidence |
+|---:|-----------:|----------------:|--------------:|:------------------|:---------------------|----------------:|--------------:|:---------------|:--------------|:-----------------------|-------------:|
+|  0 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             373 |           380 | 75 mg/m²       | Dosage        | Chemotherapy-Dosage    |     1        |
+|  1 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             385 |           389 | day 1          | Cycle_Day     | Chemotherapy-Cycle_Day |     1        |
+|  2 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             416 |           424 | 100 mg/m²      | Dosage        | Chemotherapy-Dosage    |     1        |
+|  3 |          2 |             363 |           371 | cisplatin         | Chemotherapy         |             429 |           436 | days 1-3       | Cycle_Day     | Chemotherapy-Cycle_Day |     1        |
+|  4 |          2 |             373 |           380 | 75 mg/m²          | Dosage               |             406 |           414 | etoposide      | Chemotherapy  | Dosage-Chemotherapy    |     1        |
+|  5 |          2 |             385 |           389 | day 1             | Cycle_Day            |             406 |           414 | etoposide      | Chemotherapy  | Cycle_Day-Chemotherapy |     1        |
+|  6 |          2 |             406 |           414 | etoposide         | Chemotherapy         |             416 |           424 | 100 mg/m²      | Dosage        | Chemotherapy-Dosage    |     1        |
+|  7 |          2 |             406 |           414 | etoposide         | Chemotherapy         |             429 |           436 | days 1-3       | Cycle_Day     | Chemotherapy-Cycle_Day |     1        |
+|  8 |          0 |             119 |           123 | 45 mm             | Tumor_Size           |             146 |           149 | mass           | Tumor_Finding | is_size_of             |     0.968412 |
+|  9 |          0 |             134 |           144 | mediastinal       | Site_Other_Body_Part |             146 |           149 | mass           | Tumor_Finding | is_location_of         |     0.929259 |
+| 11 |          3 |             522 |           538 | histopathological | Pathology_Test       |             589 |           592 | SCLC           | Cancer_Dx     | is_finding_of          |     0.738208 |
+| 13 |          4 |             663 |           670 | positive          | Biomarker_Result     |             684 |           690 | AE1/AE3        | Biomarker     | is_finding_of          |     0.911877 |
+| 14 |          4 |             663 |           670 | positive          | Biomarker_Result     |             693 |           697 | TTF-1          | Biomarker     | is_finding_of          |     0.903363 |
+| 15 |          4 |             663 |           670 | positive          | Biomarker_Result     |             700 |           713 | chromogranin A | Biomarker     | is_finding_of          |     0.885989 |
+| 16 |          4 |             663 |           670 | positive          | Biomarker_Result     |             720 |           732 | synaptophysin  | Biomarker     | is_finding_of          |     0.720167 |
+| 17 |          5 |             746 |           754 | pulmonary         | Site_Lung            |             756 |           761 | nodule         | Tumor_Finding | is_location_of         |     0.932414 |
+| 19 |          5 |             756 |           761 | nodule            | Tumor_Finding        |             775 |           784 | upper lobe     | Site_Lung     | is_location_of         |     0.932624 |
+
+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|explain_clinical_doc_oncology_slim|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 5.5.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.8 GB|
+
+## Included Models
+
+- DocumentAssembler
+- SentenceDetectorDLModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- ChunkMergeModel
+- ChunkMergeModel
+- AssertionDLModel
+- PerceptronModel
+- DependencyParserModel
+- RelationExtractionModel
+- PosologyREModel
+- AnnotationMerger</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><category term="cancer_type" /><category term="cancer" /><summary type="html">Description This specialized oncology pipeline can; extract oncological and cancer type entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, ner_oncology, ner_oncology_biomarker_docwise and ner_cancer_types_wip NER models, assertion_oncology assertion model and re_oncology_granular and posology_re relation extraction models were used to achieve those tasks. Clinical Entity Labels: Adenopathy, Age, Biomarker, Biomarker_Result, Cancer_Dx, Cancer_Score, Cancer_Surgery, Chemotherapy, Cycle_Count, Cycle_Day, Cycle_Number, Date, Death_Entity, Direction, Dosage, Duration, Frequency, Gender, Grade, Histological_Type, Hormonal_Therapy, Imaging_Test, Immunotherapy, Invasion, Line_Of_Therapy, Metastasis,Oncogene, Pathology_Result, Pathology_Test, Performance_Status, Race_Ethnicity, Radiation_Dose, Radiotherapy, Relative_Date, Response_To_Treatment, Route, Site_Bone, Site_Brain, Site_Breast, Site_Liver, Site_Lung, Site_Lymph_Node, Site_Other_Body_Part, Smoking_Status, Staging, Targeted_Therapy, Tumor_Finding, Tumor_Size, Unspecific_Therapy,Biomarker_Quant, Body_Site, CNS_Tumor_Type, Carcinoma_Type, Leukemia_Type, Lymphoma_Type, Melanoma,Sarcoma_Type Assertion Status Labels: Present, Absent, Possible, Past, Family, Hypotetical Relation Extraction Labels: is_size_of, is_finding_of, is_date_of, Date-Cancer_Dx, Tumor_Finding-Site_Breast, Tumor_Finding-Site_Bone, Tumor_Finding-Site_Liver, Tumor_Finding-Site_Lung, Tumor_Finding-Site_Lymph_Node, Tumor_Finding-Site_Other_Body_Part, Tumor_Fiding-Relative_Date, Tumor_Finding-Tumor_Size, Pathology_Test-Cancer_Dx, Pathology_Test-Pathology_Result, Biomarker_Result-Biomarker, Biomarker-Biomarker_Quant, Cancer_Dx-Hormonal_Therapy, Cancer_Dx-Immunotherapy, Cancer_Dx-Radiotherapy, Cancer_Dx-Chemotherapy, Cancer_Dx-Targeted_Therapy, Cancer_Dx-Cancer_Surgery, Cancer_Dx-Unspecific_Therapy, Cancer_Dx-Invasion, Cancer_Dx-Site_Bone, Cancer_Dx-Site_Brain, Cancer_Dx-Site_Breast, Cancer_Dx-Site_Liver, Cancer_Dx-Site_Lymph_Node, Cancer_Dx-Site_Other_Body_Part, Cancer_Dx-Imaging_Test, Invasion-Site_Bone, Invasion-Site_Brain, Invasion-Site_Breast, Invasion-Site_Liver, Invasion-Site_Lymph_Node, Invasion-Site_Other_Body_Part, Invasion-Metastasis, Invasion-Cancer_Surgery, Response_To_Treatment-Chemotherapy, Response_To_Treatment-Hormonal_Therapy, Response_To_Treatment-Immunotherapy, Response_To_Treatment-Radiotherapy, Response_To_Treatment-Targeted_Therapy, Response_To_Treatment-Unspecific_Therapy, Response_To_Treatment-Line_Of_Therapy, Chemotherapy-Dosage, Chemotherapy-Cycle_Count, Chemotherapy-Cycle_Day, Chemotherapy-Cycle_Number, Cancer_Therapy-Dosage, Cancer_Therapy-Duration, Cancer_Therapy-Frequency, Hormonal_Therapy-Dosage, Hormonal_Therapy-Duration, Hormonal_Therapy-Frequency, Immunotherapy-Dosage, Immunotherapy-Duration, Immunotherapy-Frequency, Radiotherapy-Radiation_Dose, Radiotherapy-Duration, Radiotherapy-Frequency, Posology_Information-Dosage, Posology_Information-Duration, Posology_Information-Frequency, Posology_Information-Route, Unspecific_Therapy-Dosage, Unspecific_Therapy-Duration, Unspecific_Therapy-Frequency Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably, a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;) from sparknlp.pretrained import PretrainedPipeline oncology_pipeline = nlp.PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably, a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology_slim&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = oncology_pipeline.fullAnnotate(&quot;&quot;&quot;A 56-year-old man presented with a 2-month history of whole-body weakness, double vision, difficulty swallowing, and a 45 mm anterior mediastinal mass detected via chest CT. Neurological examination and electromyography confirmed a diagnosis of Lambert-Eaton Myasthenic Syndrome (LEMS), associated with anti-P/Q-type VGCC antibodies. The patient was treated with cisplatin 75 mg/m² on day 1, combined with etoposide 100 mg/m² on days 1-3, repeated every 3 weeks for four cycles. A video-assisted thoracic surgery revealed histopathological features consistent with small cell lung cancer (SCLC) with lymph node metastases. The immunohistochemical analysis showed positive markers for AE1/AE3, TTF-1, chromogranin A, and synaptophysin. Notably, a pulmonary nodule in the left upper lobe disappeared, and FDG-PET/CT post-surgery revealed no primary lesions or metastases.&quot;&quot;&quot;) Results # NER Oncology Results | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:--------------------------------|--------:|------:|:----------------------| | 0 | 0 | man | 14 | 16 | Gender | | 1 | 0 | 45 mm | 119 | 123 | Tumor_Size | | 2 | 0 | anterior | 125 | 132 | Direction | | 3 | 0 | mediastinal | 134 | 144 | Site_Other_Body_Part | | 4 | 0 | mass | 146 | 149 | Tumor_Finding | | 5 | 0 | chest CT | 164 | 171 | Imaging_Test | | 6 | 1 | electromyography | 203 | 218 | Imaging_Test | | 7 | 2 | cisplatin | 363 | 371 | Chemotherapy | | 8 | 2 | 75 mg/m² | 373 | 380 | Dosage | | 9 | 2 | day 1 | 385 | 389 | Cycle_Day | | 10 | 2 | etoposide | 406 | 414 | Chemotherapy | | 11 | 2 | 100 mg/m² | 416 | 424 | Dosage | | 12 | 2 | days 1-3 | 429 | 436 | Cycle_Day | | 13 | 2 | every 3 weeks | 448 | 460 | Frequency | | 14 | 2 | for four cycles | 462 | 476 | Duration | | 15 | 3 | video-assisted thoracic surgery | 481 | 511 | Cancer_Surgery | | 16 | 3 | histopathological | 522 | 538 | Pathology_Test | | 17 | 3 | small cell | 565 | 574 | Histological_Type | | 18 | 3 | lung cancer | 576 | 586 | Cancer_Dx | | 19 | 3 | SCLC | 589 | 592 | Cancer_Dx | | 20 | 3 | lymph node | 600 | 609 | Site_Lymph_Node | | 21 | 3 | metastases | 611 | 620 | Metastasis | | 22 | 4 | immunohistochemical analysis | 627 | 654 | Pathology_Test | | 23 | 4 | positive | 663 | 670 | Biomarker_Result | | 24 | 4 | AE1/AE3 | 684 | 690 | Biomarker | | 25 | 4 | TTF-1 | 693 | 697 | Biomarker | | 26 | 4 | chromogranin A | 700 | 713 | Biomarker | | 27 | 4 | synaptophysin | 720 | 732 | Biomarker | | 28 | 5 | pulmonary | 746 | 754 | Site_Lung | | 29 | 5 | nodule | 756 | 761 | Tumor_Finding | | 30 | 5 | left | 770 | 773 | Direction | | 31 | 5 | upper lobe | 775 | 784 | Site_Lung | | 32 | 5 | disappeared | 786 | 796 | Response_To_Treatment | | 33 | 5 | FDG-PET/CT | 803 | 812 | Imaging_Test | | 34 | 5 | primary lesions | 839 | 853 | Tumor_Finding | | 35 | 5 | metastases | 858 | 867 | Metastasis | # NER Biomarker Results | | chunks | begin | end | entities | confidence | |--:|:--------------:|:-----:|:---:|:----------------:|:----------:| | 0 | positive | 663 | 670 | Biomarker_Result | 0.9875 | | 1 | AE1/AE3 | 684 | 690 | Biomarker | 0.9985 | | 2 | TTF-1 | 693 | 697 | Biomarker | 0.9992 | | 3 | chromogranin A | 700 | 713 | Biomarker | 0.924 | | 4 | synaptophysin | 720 | 732 | Biomarker | 0.9978 | # NER Cancer Types Results | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:-----------------------|--------:|------:|:---------------------| | 0 | 0 | mediastinal | 134 | 144 | Site_Other_Body_Part | | 1 | 0 | chest | 164 | 168 | Site_Other_Body_Part | | 2 | 1 | VGCC | 317 | 320 | Biomarker | | 3 | 3 | thoracic | 496 | 503 | Site_Other_Body_Part | | 4 | 3 | small cell lung cancer | 565 | 586 | Carcinoma_Type | | 5 | 3 | SCLC | 589 | 592 | Carcinoma_Type | | 6 | 3 | lymph node | 600 | 609 | Site_Other_Body_Part | | 7 | 3 | metastases | 611 | 620 | Metastasis | | 8 | 4 | positive | 663 | 670 | Biomarker_Result | | 9 | 4 | AE1/AE3 | 684 | 690 | Biomarker | | 10 | 4 | TTF-1 | 693 | 697 | Biomarker | | 11 | 4 | chromogranin A | 700 | 713 | Biomarker | | 12 | 4 | synaptophysin | 720 | 732 | Biomarker | | 13 | 5 | pulmonary | 746 | 754 | Site_Other_Body_Part | | 14 | 5 | lobe | 781 | 784 | Site_Other_Body_Part | | 15 | 5 | metastases | 858 | 867 | Metastasis | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |---:|--------------:|:--------------------------------|--------:|------:|:----------------------|:------------| | 0 | 0 | mass | 146 | 149 | Tumor_Finding | Present | | 1 | 1 | VGCC | 317 | 320 | Biomarker | Present | | 2 | 2 | cisplatin | 363 | 371 | Chemotherapy | Past | | 3 | 2 | etoposide | 406 | 414 | Chemotherapy | Present | | 4 | 2 | for four cycles | 462 | 476 | Duration | Present | | 5 | 3 | video-assisted thoracic surgery | 481 | 511 | Cancer_Surgery | Past | | 6 | 3 | small cell lung cancer | 565 | 586 | Carcinoma_Type | Present | | 7 | 3 | SCLC | 589 | 592 | Carcinoma_Type | Present | | 8 | 3 | metastases | 611 | 620 | Metastasis | Present | | 9 | 4 | AE1/AE3 | 684 | 690 | Biomarker | Present | | 10 | 4 | TTF-1 | 693 | 697 | Biomarker | Present | | 11 | 4 | chromogranin A | 700 | 713 | Biomarker | Present | | 12 | 4 | synaptophysin | 720 | 732 | Biomarker | Present | | 13 | 5 | nodule | 756 | 761 | Tumor_Finding | Present | | 14 | 5 | disappeared | 786 | 796 | Response_To_Treatment | Present | | 15 | 5 | primary lesions | 839 | 853 | Tumor_Finding | Absent | | 16 | 5 | metastases | 858 | 867 | Metastasis | Absent | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | confidence | |---:|-----------:|----------------:|--------------:|:------------------|:---------------------|----------------:|--------------:|:---------------|:--------------|:-----------------------|-------------:| | 0 | 2 | 363 | 371 | cisplatin | Chemotherapy | 373 | 380 | 75 mg/m² | Dosage | Chemotherapy-Dosage | 1 | | 1 | 2 | 363 | 371 | cisplatin | Chemotherapy | 385 | 389 | day 1 | Cycle_Day | Chemotherapy-Cycle_Day | 1 | | 2 | 2 | 363 | 371 | cisplatin | Chemotherapy | 416 | 424 | 100 mg/m² | Dosage | Chemotherapy-Dosage | 1 | | 3 | 2 | 363 | 371 | cisplatin | Chemotherapy | 429 | 436 | days 1-3 | Cycle_Day | Chemotherapy-Cycle_Day | 1 | | 4 | 2 | 373 | 380 | 75 mg/m² | Dosage | 406 | 414 | etoposide | Chemotherapy | Dosage-Chemotherapy | 1 | | 5 | 2 | 385 | 389 | day 1 | Cycle_Day | 406 | 414 | etoposide | Chemotherapy | Cycle_Day-Chemotherapy | 1 | | 6 | 2 | 406 | 414 | etoposide | Chemotherapy | 416 | 424 | 100 mg/m² | Dosage | Chemotherapy-Dosage | 1 | | 7 | 2 | 406 | 414 | etoposide | Chemotherapy | 429 | 436 | days 1-3 | Cycle_Day | Chemotherapy-Cycle_Day | 1 | | 8 | 0 | 119 | 123 | 45 mm | Tumor_Size | 146 | 149 | mass | Tumor_Finding | is_size_of | 0.968412 | | 9 | 0 | 134 | 144 | mediastinal | Site_Other_Body_Part | 146 | 149 | mass | Tumor_Finding | is_location_of | 0.929259 | | 11 | 3 | 522 | 538 | histopathological | Pathology_Test | 589 | 592 | SCLC | Cancer_Dx | is_finding_of | 0.738208 | | 13 | 4 | 663 | 670 | positive | Biomarker_Result | 684 | 690 | AE1/AE3 | Biomarker | is_finding_of | 0.911877 | | 14 | 4 | 663 | 670 | positive | Biomarker_Result | 693 | 697 | TTF-1 | Biomarker | is_finding_of | 0.903363 | | 15 | 4 | 663 | 670 | positive | Biomarker_Result | 700 | 713 | chromogranin A | Biomarker | is_finding_of | 0.885989 | | 16 | 4 | 663 | 670 | positive | Biomarker_Result | 720 | 732 | synaptophysin | Biomarker | is_finding_of | 0.720167 | | 17 | 5 | 746 | 754 | pulmonary | Site_Lung | 756 | 761 | nodule | Tumor_Finding | is_location_of | 0.932414 | | 19 | 5 | 756 | 761 | nodule | Tumor_Finding | 775 | 784 | upper lobe | Site_Lung | is_location_of | 0.932624 | Model Information Model Name: explain_clinical_doc_oncology_slim Type: pipeline Compatibility: Healthcare NLP 5.5.2+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel PosologyREModel AnnotationMerger</summary></entry></feed>
