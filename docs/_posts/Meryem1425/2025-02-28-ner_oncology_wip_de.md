@@ -4,7 +4,7 @@ title: Detect Oncology-Specific Entities (German)
 author: John Snow Labs
 name: ner_oncology_wip
 date: 2025-02-28
-tags: [de, licensed]
+tags: [de, licensed, clinical, ner, oncology]
 task: Named Entity Recognition
 language: de
 edition: Healthcare NLP 5.5.2
@@ -87,6 +87,7 @@ Definitions of Predicted Entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
