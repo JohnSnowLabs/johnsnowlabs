@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Sentence Entity Resolver for ICD10GM Codes (German) - Augmented (sent_xlm_roberta_biolord_2023_m embeddings)
+title: Sentence Entity Resolver for ICD-10-GM Codes (German) - Augmented (sent_xlm_roberta_biolord_2023_m embeddings)
 author: John Snow Labs
 name: biolordresolve_icd10gm_augmented
 date: 2025-02-28
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps Spanish medical entities and concepts to ICD10GM codes using the `sent_xlm_roberta_biolord_2023_m` Sentence Embeddings.
+This model maps German medical entities and concepts to ICD-10-GM codes using the `sent_xlm_roberta_biolord_2023_m` Sentence Embeddings.  It also returns the official resolution text within the brackets inside the metadata.
 
 ## Predicted Entities
 
