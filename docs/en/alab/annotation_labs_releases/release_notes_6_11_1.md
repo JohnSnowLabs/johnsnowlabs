@@ -5,7 +5,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Generative AI Lab Release Notes 6.11.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_11_1
 key: docs-licensed-release-notes
-modify_date: 2025-02-26
+modify_date: 2025-02-27
 show_nav: true
 sidebar:
   nav: annotation-lab
