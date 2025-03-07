@@ -1624,19 +1624,29 @@ Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
 </div><div class="h3-box" markdown="1">
 
-### Step 5: Upload Files
+### Step 6: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 (Please reach out to support@johnsnowlabs.com for the compatible jar and whl files)
 
 ![Upload Files to Fabric](/assets/images/installation/FabricUploadFiles1.png)
 
-![Upload Files to Fabric](/assets/images/installation/Fabric_3.png)
+![Upload Files to Fabric](/assets/images/installation/FabricUploadFiles2.png)
 
-After uploading is complete, you can configure and run the notebook.
 
 </div><div class="h3-box" markdown="1">
 
-### Step 6: Configure the Notebook Session
+### Step 7: Create the unzip_files
+
+Create a folder in the Lakehouse to define the cache_folder.
+
+![Upload Files to Fabric](/assets/images/installation/FabricCacheFolder1.png)
+
+![Upload Files to Fabric](/assets/images/installation/FabricCacheFolder2.png)
+
+
+</div><div class="h3-box" markdown="1">
+
+### Step 8: Configure the Notebook Session
 Configure the session within the notebook as follows:
 
 ```json
@@ -1658,7 +1668,7 @@ Configure the session within the notebook as follows:
     },
     "spark.jars": {
       "parameterName": "sparkJars",
-      "defaultValue": "abfss://&&&&&&/Files/spark-nlp-assembly-5.5.0.jar, abfss://&&&&&&/Files/spark-nlp-jsl-5.5.0.jar"
+      "defaultValue": "abfss://&&&&&&/Files/spark-nlp-assembly-5.5.2.jar, abfss://&&&&&&/Files/spark-nlp-jsl-5.5.2.jar"
     },
     "spark.jsl.settings.pretrained.cache_folder": {
       "parameterName": "cacheFolder",
@@ -1675,7 +1685,7 @@ Configure the session within the notebook as follows:
 
 </div><div class="h3-box" markdown="1">
 
-### Step 7: Install Spark NLP Libraries
+### Step 9: Install Johnsowlabs, Spark NLP and Healthcare NLP
 
 Install the required Spark NLP libraries using pip commands:
 ```bash
@@ -1686,11 +1696,11 @@ Install the required Spark NLP libraries using pip commands:
 
 **Example Usage:**
 
-![Install Spark NLP Libraries](/assets/images/installation/355919623-a4db5456-78a5-4d32-a50e-c40650b878f2.webp)
+![Upload Files to Fabric](/assets/images/installation/FabricWHL1.png)
 
 </div><div class="h3-box" markdown="1">
 
-### Step 8: Make Necessary Imports
+### Step 10: Make Necessary Imports
 Import the necessary Python and Spark libraries:
 ```python
 import functools
