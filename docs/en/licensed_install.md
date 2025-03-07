@@ -1588,35 +1588,47 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 
 </div><div class="h3-box" markdown="1">
 
-### Step 2: Create a Lakehouse
-- Go to the **Data Science** section.
-- Navigate to the **Create** section.
+### Step 2: Create a new workspace
+- Go to the **Home** section.
+- Navigate to the **New workspace** button.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
 
-![Create a Lakehouse](/assets/images/installation/Fabric_1.png)
+![Create a Lakehouse](/assets/images/installation/FabricWorkspace1.png)
 
 </div><div class="h3-box" markdown="1">
 
-### Step 3: Create a Notebook
+### Step 3: Create a new Lakehouse
+- Go to the new created workspace.
+- Navigate to the **New item** button.
+- Create a new lakehouse, (for instance let us name it `JSL_Lakehouse`.)
+
+![Create a Lakehouse](/assets/images/installation/FabricLakehouse1.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Step 4: Create a Notebook
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
-![Create a Notebook in Fabric](/assets/images/installation/Fabric_2.png)
+![Create a Notebook in Fabric](/assets/images/installation/FabricNotebook1.png)
 
 </div><div class="h3-box" markdown="1">
 
-### Step 4: Attach the Lakehouse
+### Step 5: Attach the Lakehouse
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
-![Attach the Lakehouse](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
+![Attach the Lakehouse](/assets/images/installation/FabricNBattach1.png)
 
-![Attach the Lakehouse](/assets/images/installation/355921392-b711eef6-55ed-4073-b974-14b565cd40be.webp)
+![Attach the Lakehouse](/assets/images/installation/FabricNBattach2.png)
+
+![Attach the Lakehouse](/assets/images/installation/FabricNBattach3.png)
 
 </div><div class="h3-box" markdown="1">
 
 ### Step 5: Upload Files
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
+(Please reach out to support@johnsnowlabs.com for the compatible jar and whl files)
 
-![Upload Files to Fabric](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
+![Upload Files to Fabric](/assets/images/installation/FabricUploadFiles1.png)
 
 ![Upload Files to Fabric](/assets/images/installation/Fabric_3.png)
 
