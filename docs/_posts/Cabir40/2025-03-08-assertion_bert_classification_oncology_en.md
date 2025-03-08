@@ -37,8 +37,8 @@ Assign assertion status to clinical entities.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
 
+```python
 # Test classifier in Spark NLP pipeline
 document_assembler = DocumentAssembler()\
     .setInputCol("text") \
@@ -88,20 +88,18 @@ result = pipeline.fit(data).transform(data)
 
 # Checking results
 result.select("text", "assertion_class.result").show(truncate=False)
-
-
 ```
 
 {:.jsl-block}
 ```python
-
 # Test classifier in Spark NLP pipeline
 document_assembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
 
 sentence_detector = nlp.SentenceDetector()\
-    .setInputCols("document")    .setOutputCol("sentence")
+    .setInputCols("document")\
+    .setOutputCol("sentence")
     
 tokenizer = nlp.Tokenizer() \
     .setInputCols(["sentence"]) \
@@ -140,7 +138,6 @@ data = spark.createDataFrame(["he was begun on physical therapy but remained agi
                               "there were no meatal blood ."], StringType()).toDF("text")
                               
 result = pipeline.fit(data).transform(data)
-
 ```
 ```scala
 
@@ -166,12 +163,12 @@ val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
     .setOutputCol("ner")
 
 val ner_converter = NerConverterInternal()
-    .setInputCols(array("sentence", "token", "ner"))
+    .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
     .setWhiteList(Array("PROBLEM"))
         
 val assertion_classifier = BertForAssertionClassification.pretrained("assertion_bert_classification_oncology", "en", "clinical/models")
-    .setInputCols(array("document", "ner_chunk"))
+    .setInputCols(Array("document", "ner_chunk"))
     .setOutputCol("assertion_class")
     .setCaseSensitive(False)
 
@@ -190,8 +187,6 @@ val data = Seq(Array("he was begun on physical therapy but remained agitated .",
                     "there were no meatal blood .")).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
-
 ```
 </div>
 
