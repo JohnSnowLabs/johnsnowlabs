@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 12-24-2024 Introducing Two New Features: "US Healthcare Providers" and "Drug Insights"
+## XX-XX-2025 Introducing Two New Features: "US Healthcare Providers" and "Drug Insights"
 
 We are thrilled to announce the addition of two powerful tools to enhance your Medical Chatbot experience: US Healthcare Providers and Drug Insights. These tools are designed to provide precise, comprehensive, and user-friendly solutions for healthcare and medication-related queries.
 
@@ -97,25 +97,45 @@ Each response provided by the tool includes direct citations from FDA-approved d
 
 </div><div class="h3-box" markdown="1">
 
-## Chatbot Enhancements
+## Medical Chatbot Enhancements
 
-TBA
+### Literature Review Improvements
 
-### Sorting for Response Citations
+**1. Enhanced Sorting for Search and Extracted Results:**
 
-TBA
+To improve organization and relevance, literature review results can now be sorted by publication date. Users have the flexibility to arrange results in both ascending and descending order. This sorting feature is available for real-time search results on the results screen and can also be applied after the literature review process is completed. Additionally, the applied sorting order will be reflected in the downloadable CSV file, ensuring consistency and convenience in data analysis.
+
+**2. Improved Literature Review Search and Data Point Extraction:** 
+
+Enhancements have been made to the literature review search functionality to ensure more precise and accurate article retrieval. The system now optimizes real-time results, offering faster and more relevant findings. Our intelligent query expansion capabilities refine search keywords, yielding high-quality articles and research papers that best align with the user’s research needs. These improvements significantly enhance the accuracy and depth of literature review searches.
+
+Furthermore, enhancements to data point extraction ensure that critical information is identified with greater accuracy. The system now better understands user-defined data point prompts, allowing it to extract key insights with supporting evidence from articles. This refinement enables the extraction of complex data, aligning with user expectations and improving the overall quality of literature review analysis.
+
+**3. Inclusion/Exclusion Criteria Rules:**
+
+Previously, an article was accepted or excluded from the literature review if it met at least one of the specified inclusion or exclusion criteria. Now, users have greater control over how articles are selected or filtered. They can configure the criteria to require that either all or just one of the specified conditions be met for an article to be included or excluded. This rule-based approach ensures more precise literature review selection, with the system automatically marking articles as included or excluded based on the defined criteria.
+
+### Smarter, Faster, and More Reliable Responses
+
+We’ve supercharged our Medical Chatbot’s response quality to be sharper, more accurate, and backed by stronger citations! A brand-new unified schema for Knowledge Bases now ensures reference retrieval is more stable and precise. We’ve also fine-tuned all the Medical Knowledge Bases, improving accuracy, speed, and scalability—so you get the right information, faster.
+
+To keep things running smoothly, we’ve optimized caching mechanisms for Knowledge Base metadata, reducing retrieval times and boosting efficiency. Plus, with our improved post-processing deduplication, you won’t have to worry about seeing the same article pop up multiple times in your search results.
+
+Our chatbot agents have leveled up their planning skills, making responses more tailored and reducing those overly generic answers. The Medical Research agent has also been fine-tuned to deliver more contextually relevant and insightful responses.
+
+Our research paper selection logic now prioritizes the most up-to-date studies. By default, we focus on research from the last five years (unless you tell the Medical Chatbot otherwise), ensuring that every answer is built on the latest and greatest knowledge available.
 
 ### Follow-up Question available for Document Q&A 
 
-TBA
+Previously, follow-up questions were only available for the Medical Chat. With this enhancement, the Document Q&A feature now supports follow-up questions, making it easier for users to refine their queries and explore deeper insights.
 
-### Literature Review: Sort Results
+Based on the ongoing conversation and the questions asked, the chatbot will intelligently suggest relevant follow-up questions that users can select to receive more targeted responses. This improvement streamlines the user experience, making document analysis more interactive, intuitive, and efficient.
 
-TBA
+### UI Enhancements to Chat Processing Statuses
 
-### Improvement in medical query responses focused on date-based citations 
+When users posed questions to the medical chatbot, the UI displayed real-time processing steps, providing visibility into the chatbot’s thought process, the tools being utilized, and the Knowledge Bases consulted. However, because the chatbot processes information at lightning speed, users often missed these steps as they disappeared almost instantly.
 
-TBA
+To address this, we have introduced a persistent display of these processing steps even after the response has been generated. Users can now access a new "More Insights" option, which expands to reveal the entire sequence of steps involved in generating the response, along with details about the tools and Knowledge Bases used. This enhancement provides greater transparency into the chatbot's reasoning and ensures users can review the methodology behind the responses at their convenience.
 
 </div><div class="h3-box" markdown="1">
 
