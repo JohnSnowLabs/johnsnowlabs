@@ -96,7 +96,7 @@ annotation-lab:
       - title: Getting Started
         url: /docs/en/alab/quickstart
       - title: Installation
-        url: /docs/en/alab/install_all_options
+        url: /docs/en/alab/install
       - subtitle: Resources Hub
         children:
           - title: Models Hub

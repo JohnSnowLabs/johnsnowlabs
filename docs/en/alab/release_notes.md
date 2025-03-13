@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2024-11-15"
+modify_date: "2024-03-13"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -20,7 +20,7 @@ Generative AI Lab 6.11 brings an Image-Text Side-by-Side Annotation project, all
 
 Other minor improvements have been made to Generative AI Lab, specifically to model training and de-identification.
 
-## Annotate while referencing Orginal Documents
+## Annotate while referencing Original Documents
 This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can now annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.
 
 **Image on the Left, OCR Text on the Right**: By Selecting this project type, users can now view the image/PDF document on the left side of the interface and its corresponding OCR-extracted text on the right side.  
@@ -293,6 +293,7 @@ Users no longer encounter errors related to missing completions.
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_11_3">6.11.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_11_2">6.11.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_11_1">6.11.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_11_0">6.11.0</a></li>

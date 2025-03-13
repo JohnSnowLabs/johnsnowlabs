@@ -25,7 +25,7 @@ This hotfix addresses critical bugs and improves functionality for a smoother us
 - Fixed the "Access Denied" error encountered when navigating to the About Page.
 
 ### Task
-- [ALAB-5894] Updated the compatibility check logic to use editions instead of compatible_editions for verifying model compatibility with current Spark versions.
+- Updated the compatibility check logic to use editions instead of compatible_editions for verifying model compatibility with current Spark versions.
 
 </div><div class="prev_ver h3-box" markdown="1">
 
