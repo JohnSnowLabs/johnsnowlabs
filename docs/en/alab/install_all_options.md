@@ -4,7 +4,6 @@ comment: no
 header: true
 seotitle: Generative AI Lab | John Snow Labs
 title: Installation
-permalink: /docs/en/alab/install_all_options
 key: docs-training
 modify_date: "2024-04-22"
 use_language_switcher: "Python-Scala"

@@ -5,7 +5,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Generative AI Lab Release Notes 6.8.0
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_8_0
 key: docs-licensed-release-notes
-modify_date: 2024-08-25
+modify_date: 2024-11-15
 show_nav: true
 sidebar:
   nav: annotation-lab
@@ -16,6 +16,8 @@ sidebar:
 ## 6.8.0
 
 Release date: **11-15-2024**
+
+## Easy Migration to Generative AI Lab
 
 Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.
 
@@ -88,7 +90,7 @@ The `Maximum rating value` of the `Rating` element now includes validation. A re
 
 ![680image](/assets/images/annotation_lab/6.8.0/9.png)
 
- ### Increased readability for test cases view
+### Increased readability for test cases view
   
 Users can now read the test cases better with two-tone text distinguished between test types.
 

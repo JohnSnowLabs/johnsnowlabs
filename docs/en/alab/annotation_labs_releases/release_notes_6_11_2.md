@@ -1,11 +1,11 @@
 ---
 layout: docs
 header: true
-seotitle: NLP Lab | John Snow Labs
-title: NLP Lab Release Notes 6.11.2
+seotitle: Generative AI Lab | John Snow Labs
+title: Generative AI Lab Release Notes 6.11.2
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_11_2
 key: docs-licensed-release-notes
-modify_date: 2025-02-19
+modify_date: 2025-03-06
 show_nav: true
 sidebar:
     nav: annotation-lab
@@ -14,6 +14,9 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 ## 6.11.2
+
+Release date: **03-06-2024**
+
 
 ### Bug Fixes
  
