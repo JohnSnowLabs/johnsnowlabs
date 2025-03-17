@@ -122,27 +122,30 @@ nlpPipeline = Pipeline(stages=[
     ner_converter])
 
 
-data = spark.createDataFrame([["""Patient: 67-jährige weibliche Patientin
-Diagnose: Invasives duktales Karzinom der linken Brust
-Klinische Präsentation:
-Die Patientin stellte sich mit einer schmerzlosen, palpablen Verhärtung im oberen äußeren Quadranten der linken Brust vor. Zudem berichtete sie über eine leichte Rötung der Haut sowie eine eingezogene Mamille. Axilläre Lymphknoten waren bei der klinischen Untersuchung tastbar vergrößert.
+data = spark.createDataFrame([["""Patientin: 67 Jahre, weiblich
 
-Histopathologie:
-Die Biopsie ergab ein invasives duktales Karzinom (G3) mit positiven Hormonrezeptoren (ER+, PR+). HER2/neu-Expression war negativ. Der Ki-67-Proliferationsindex lag bei 35 %.
+Diagnose: Invasives duktales Mammakarzinom links (G3)
 
+Befunde:
+
+Schmerzloser, tastbarer Knoten im oberen äußeren Quadranten links
+Hautrötung, eingezogene Mamille, tastbare axilläre Lymphknoten
+Histologie:
+
+ER + , PR + , HER2-negativ, Ki-67 bei 35 %
 Bildgebung:
 
-Mammographie: 2,8 cm große suspekte Läsion in der linken Brust mit Mikroverkalkungen
-MRT: Tumorausdehnung 3,1 cm mit Infiltration des Drüsengewebes
-PET-CT: Kein Anhalt für Fernmetastasen
-Therapieempfehlung:
+Mammographie: Tumor 2,8 cm, Mikroverkalkungen
+MRT: Tumorgröße 3,1 cm mit Drüseninfiltration
+PET-CT: Keine Fernmetastasen
+Therapie:
 
-Neoadjuvante Chemotherapie (EC-T Schema)
-Anschließend brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
+Neoadjuvante Chemotherapie
+Brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
 Adjuvante Strahlentherapie
-Hormontherapie mit Letrozol für 5 Jahre
+Hormontherapie mit Letrozol (5 Jahre)
 Beurteilung:
-Fortgeschrittenes, aber lokalisierbares Mammakarzinom mit günstigem Hormonrezeptorstatus. Therapie gemäß interdisziplinärer Tumorkonferenz empfohlen."""]]).toDF("text")
+Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatus. Therapie gemäß Tumorkonferenz empfohlen."""]]).toDF("text")
 
 
 result = nlpPipeline.fit(data).transform(data)
@@ -184,27 +187,30 @@ nlpPipeline = nlp.Pipeline(stages=[
     ner_converter])
 
 
-data = spark.createDataFrame([["""Patient: 67-jährige weibliche Patientin
-Diagnose: Invasives duktales Karzinom der linken Brust
-Klinische Präsentation:
-Die Patientin stellte sich mit einer schmerzlosen, palpablen Verhärtung im oberen äußeren Quadranten der linken Brust vor. Zudem berichtete sie über eine leichte Rötung der Haut sowie eine eingezogene Mamille. Axilläre Lymphknoten waren bei der klinischen Untersuchung tastbar vergrößert.
+data = spark.createDataFrame([["""Patientin: 67 Jahre, weiblich
 
-Histopathologie:
-Die Biopsie ergab ein invasives duktales Karzinom (G3) mit positiven Hormonrezeptoren (ER+, PR+). HER2/neu-Expression war negativ. Der Ki-67-Proliferationsindex lag bei 35 %.
+Diagnose: Invasives duktales Mammakarzinom links (G3)
 
+Befunde:
+
+Schmerzloser, tastbarer Knoten im oberen äußeren Quadranten links
+Hautrötung, eingezogene Mamille, tastbare axilläre Lymphknoten
+Histologie:
+
+ER + , PR + , HER2-negativ, Ki-67 bei 35 %
 Bildgebung:
 
-Mammographie: 2,8 cm große suspekte Läsion in der linken Brust mit Mikroverkalkungen
-MRT: Tumorausdehnung 3,1 cm mit Infiltration des Drüsengewebes
-PET-CT: Kein Anhalt für Fernmetastasen
-Therapieempfehlung:
+Mammographie: Tumor 2,8 cm, Mikroverkalkungen
+MRT: Tumorgröße 3,1 cm mit Drüseninfiltration
+PET-CT: Keine Fernmetastasen
+Therapie:
 
-Neoadjuvante Chemotherapie (EC-T Schema)
-Anschließend brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
+Neoadjuvante Chemotherapie
+Brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
 Adjuvante Strahlentherapie
-Hormontherapie mit Letrozol für 5 Jahre
+Hormontherapie mit Letrozol (5 Jahre)
 Beurteilung:
-Fortgeschrittenes, aber lokalisierbares Mammakarzinom mit günstigem Hormonrezeptorstatus. Therapie gemäß interdisziplinärer Tumorkonferenz empfohlen."""]]).toDF("text")
+Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatus. Therapie gemäß Tumorkonferenz empfohlen."""]]).toDF("text")
 
 
 result = nlpPipeline.fit(data).transform(data)
@@ -243,27 +249,30 @@ val pipeline = new Pipeline().setStages(Array(
     ner_model,
     ner_converter))    
 
-val data = Seq("""Patient: 67-jährige weibliche Patientin
-Diagnose: Invasives duktales Karzinom der linken Brust
-Klinische Präsentation:
-Die Patientin stellte sich mit einer schmerzlosen, palpablen Verhärtung im oberen äußeren Quadranten der linken Brust vor. Zudem berichtete sie über eine leichte Rötung der Haut sowie eine eingezogene Mamille. Axilläre Lymphknoten waren bei der klinischen Untersuchung tastbar vergrößert.
+val data = Seq("""Patientin: 67 Jahre, weiblich
 
-Histopathologie:
-Die Biopsie ergab ein invasives duktales Karzinom (G3) mit positiven Hormonrezeptoren (ER+, PR+). HER2/neu-Expression war negativ. Der Ki-67-Proliferationsindex lag bei 35 %.
+Diagnose: Invasives duktales Mammakarzinom links (G3)
 
+Befunde:
+
+Schmerzloser, tastbarer Knoten im oberen äußeren Quadranten links
+Hautrötung, eingezogene Mamille, tastbare axilläre Lymphknoten
+Histologie:
+
+ER + , PR + , HER2-negativ, Ki-67 bei 35 %
 Bildgebung:
 
-Mammographie: 2,8 cm große suspekte Läsion in der linken Brust mit Mikroverkalkungen
-MRT: Tumorausdehnung 3,1 cm mit Infiltration des Drüsengewebes
-PET-CT: Kein Anhalt für Fernmetastasen
-Therapieempfehlung:
+Mammographie: Tumor 2,8 cm, Mikroverkalkungen
+MRT: Tumorgröße 3,1 cm mit Drüseninfiltration
+PET-CT: Keine Fernmetastasen
+Therapie:
 
-Neoadjuvante Chemotherapie (EC-T Schema)
-Anschließend brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
+Neoadjuvante Chemotherapie
+Brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
 Adjuvante Strahlentherapie
-Hormontherapie mit Letrozol für 5 Jahre
+Hormontherapie mit Letrozol (5 Jahre)
 Beurteilung:
-Fortgeschrittenes, aber lokalisierbares Mammakarzinom mit günstigem Hormonrezeptorstatus. Therapie gemäß interdisziplinärer Tumorkonferenz empfohlen.""").toDS.toDF("text")
+Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatus. Therapie gemäß Tumorkonferenz empfohlen.""").toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -272,54 +281,44 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+------------------------------+-----+----+--------------------+
-|chunk                         |begin|end |ner_label           |
-+------------------------------+-----+----+--------------------+
-|67-jährige                    |9    |18  |Age                 |
-|weibliche                     |20   |28  |Gender              |
-|Invasives                     |50   |58  |Histological_Type   |
-|duktales                      |60   |67  |Histological_Type   |
-|Karzinom der linken Brust     |69   |93  |Cancer_Dx           |
-|oberen äußeren Quadranten     |194  |218 |Direction           |
-|linken                        |224  |229 |Direction           |
-|Brust                         |231  |235 |Site_Breast         |
-|sie                           |259  |261 |Gender              |
-|Haut                          |292  |295 |Site_Other_Body_Part|
-|Axilläre Lymphknoten          |329  |348 |Site_Lymph_Node     |
-|Histopathologie               |409  |423 |Pathology_Test      |
-|Biopsie                       |430  |436 |Pathology_Test      |
-|invasives                     |448  |456 |Histological_Type   |
-|duktales                      |458  |465 |Histological_Type   |
-|Karzinom                      |467  |474 |Cancer_Dx           |
-|positiven                     |485  |493 |Biomarker_Result    |
-|Hormonrezeptoren              |495  |510 |Biomarker           |
-|HER2/neu-Expression           |524  |542 |Oncogene            |
-|negativ                       |548  |554 |Biomarker_Result    |
-|Ki-67-Proliferationsindex     |561  |585 |Biomarker           |
-|35 %                          |595  |598 |Biomarker_Result    |
-|Bildgebung                    |602  |611 |Imaging_Test        |
-|Mammographie                  |615  |626 |Imaging_Test        |
-|2,8 cm                        |629  |634 |Tumor_Size          |
-|Läsion                        |651  |656 |Tumor_Finding       |
-|linken                        |665  |670 |Direction           |
-|Brust                         |672  |676 |Site_Breast         |
-|MRT                           |700  |702 |Imaging_Test        |
-|Tumorausdehnung               |705  |719 |Tumor_Finding       |
-|3,1 cm                        |721  |726 |Tumor_Size          |
-|Infiltration                  |732  |743 |Invasion            |
-|Drüsengewebes                 |749  |761 |Site_Other_Body_Part|
-|PET-CT                        |763  |768 |Imaging_Test        |
-|Neoadjuvante Chemotherapie    |823  |848 |Chemotherapy        |
-|brusterhaltende Operation     |877  |901 |Cancer_Surgery      |
-|Sentinel-Lymphknotenbiopsie   |907  |933 |Pathology_Test      |
-|Adjuvante Strahlentherapie    |935  |960 |Radiotherapy        |
-|Hormontherapie                |962  |975 |Hormonal_Therapy    |
-|Letrozol                      |981  |988 |Hormonal_Therapy    |
-|für 5 Jahre                   |990  |1000|Duration            |
-|lokalisierbares               |1039 |1053|Histological_Type   |
-|Mammakarzinom                 |1055 |1067|Cancer_Dx           |
-|günstigem Hormonrezeptorstatus|1073 |1102|Biomarker_Result    |
-+------------------------------+-----+----+--------------------+
++-------------------------------+-----+---+--------------------+
+|chunk                          |begin|end|ner_label           |
++-------------------------------+-----+---+--------------------+
+|67 Jahre                       |11   |18 |Age                 |
+|weiblich                       |21   |28 |Gender              |
+|Invasives                      |41   |49 |Histological_Type   |
+|duktales                       |51   |58 |Histological_Type   |
+|Mammakarzinom links            |60   |78 |Cancer_Dx           |
+|Knoten                         |120  |125|Tumor_Finding       |
+|oberen äußeren Quadranten links|130  |160|Direction           |
+|Mamille                        |186  |192|Site_Other_Body_Part|
+|axilläre Lymphknoten           |204  |223|Site_Lymph_Node     |
+|Histologie                     |225  |234|Pathology_Test      |
+|ER                             |238  |239|Biomarker           |
+|+                              |241  |241|Biomarker_Result    |
+|PR                             |245  |246|Biomarker           |
+|+                              |248  |248|Biomarker_Result    |
+|HER2-negativ                   |252  |263|Biomarker           |
+|Ki-67                          |266  |270|Biomarker           |
+|35 %                           |276  |279|Biomarker_Result    |
+|Bildgebung                     |281  |290|Imaging_Test        |
+|Mammographie                   |294  |305|Imaging_Test        |
+|Tumor                          |308  |312|Tumor_Finding       |
+|2,8 cm                         |314  |319|Tumor_Size          |
+|MRT                            |340  |342|Imaging_Test        |
+|Tumorgröße                     |345  |354|Tumor_Finding       |
+|3,1 cm                         |356  |361|Tumor_Size          |
+|Drüseninfiltration             |367  |384|Histological_Type   |
+|PET-CT                         |386  |391|Imaging_Test        |
+|Neoadjuvante Chemotherapie     |426  |451|Chemotherapy        |
+|Brusterhaltende Operation      |453  |477|Cancer_Surgery      |
+|Sentinel-Lymphknotenbiopsie    |483  |509|Pathology_Test      |
+|Adjuvante Strahlentherapie     |511  |536|Radiotherapy        |
+|Hormontherapie                 |538  |551|Hormonal_Therapy    |
+|Letrozol                       |557  |564|Hormonal_Therapy    |
+|Fortgeschrittenes lokal        |589  |611|Staging             |
+|Mammakarzinom                  |624  |636|Cancer_Dx           |
++-------------------------------+-----+---+--------------------+
 ```
 
 {:.model-param}
