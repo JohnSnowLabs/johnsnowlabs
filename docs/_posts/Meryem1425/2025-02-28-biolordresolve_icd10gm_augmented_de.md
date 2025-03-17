@@ -87,28 +87,25 @@ icd_pipeline = Pipeline(stages=[
     biolord_embeddings,
     icd_resolver])
 
-text = """Patient: 67-jährige weibliche Patientin
-Diagnose: Invasives duktales Karzinom der linken Brust
-Klinische Präsentation:
-Die Patientin stellte sich mit einer schmerzlosen, palpablen Verhärtung im oberen äußeren Quadranten der linken Brust vor. Zudem berichtete sie über eine leichte Rötung der Haut sowie eine eingezogene Mamille. Axilläre Lymphknoten waren bei der klinischen Untersuchung tastbar vergrößert.
+text = """Patientin: 67 Jahre, weiblich
 
-Histopathologie:
-Die Biopsie ergab ein invasives duktales Karzinom (G3) mit positiven Hormonrezeptoren (ER+, PR+). HER2/neu-Expression war negativ. Der Ki-67-Proliferationsindex lag bei 35 %.
+Diagnose: Invasives duktales Mammakarzinom links (G3)
 
+Histologie:
+
+ER + , PR + , HER2-negativ, Ki-67 bei 35 %
 Bildgebung:
 
-Mammographie: 2,8 cm große suspekte Läsion in der linken Brust mit Mikroverkalkungen
-MRT: Tumorausdehnung 3,1 cm mit Infiltration des Drüsengewebes
-PET-CT: Kein Anhalt für Fernmetastasen
-Therapieempfehlung:
+Mammographie: Tumor 2,8 cm, Mikroverkalkungen
+PET-CT: Keine Fernmetastasen
+Therapie:
 
-Neoadjuvante Chemotherapie (EC-T Schema)
-Anschließend brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
+Neoadjuvante Chemotherapie
+Brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
 Adjuvante Strahlentherapie
-Hormontherapie mit Letrozol für 5 Jahre
+Hormontherapie mit Letrozol (5 Jahre)
 Beurteilung:
-Fortgeschrittenes, aber lokalisierbares Mammakarzinom mit günstigem Hormonrezeptorstatus. Therapie gemäß interdisziplinärer Tumorkonferenz empfohlen.
-"""
+Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatus. Therapie gemäß Tumorkonferenz empfohlen."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -166,28 +163,25 @@ icd_pipeline = nlp.Pipeline(stages=[
     biolord_embeddings,
     icd_resolver])
 
-text = """Patient: 67-jährige weibliche Patientin
-Diagnose: Invasives duktales Karzinom der linken Brust
-Klinische Präsentation:
-Die Patientin stellte sich mit einer schmerzlosen, palpablen Verhärtung im oberen äußeren Quadranten der linken Brust vor. Zudem berichtete sie über eine leichte Rötung der Haut sowie eine eingezogene Mamille. Axilläre Lymphknoten waren bei der klinischen Untersuchung tastbar vergrößert.
+text = """Patientin: 67 Jahre, weiblich
 
-Histopathologie:
-Die Biopsie ergab ein invasives duktales Karzinom (G3) mit positiven Hormonrezeptoren (ER+, PR+). HER2/neu-Expression war negativ. Der Ki-67-Proliferationsindex lag bei 35 %.
+Diagnose: Invasives duktales Mammakarzinom links (G3)
 
+Histologie:
+
+ER + , PR + , HER2-negativ, Ki-67 bei 35 %
 Bildgebung:
 
-Mammographie: 2,8 cm große suspekte Läsion in der linken Brust mit Mikroverkalkungen
-MRT: Tumorausdehnung 3,1 cm mit Infiltration des Drüsengewebes
-PET-CT: Kein Anhalt für Fernmetastasen
-Therapieempfehlung:
+Mammographie: Tumor 2,8 cm, Mikroverkalkungen
+PET-CT: Keine Fernmetastasen
+Therapie:
 
-Neoadjuvante Chemotherapie (EC-T Schema)
-Anschließend brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
+Neoadjuvante Chemotherapie
+Brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
 Adjuvante Strahlentherapie
-Hormontherapie mit Letrozol für 5 Jahre
+Hormontherapie mit Letrozol (5 Jahre)
 Beurteilung:
-Fortgeschrittenes, aber lokalisierbares Mammakarzinom mit günstigem Hormonrezeptorstatus. Therapie gemäß interdisziplinärer Tumorkonferenz empfohlen.
-"""
+Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatus. Therapie gemäß Tumorkonferenz empfohlen."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -243,28 +237,25 @@ val icd_pipeline = new Pipeline().setStages(Array(
     biolord_embeddings,
     icd_resolver))
 
-val data = Seq("""Patient: 67-jährige weibliche Patientin
-Diagnose: Invasives duktales Karzinom der linken Brust
-Klinische Präsentation:
-Die Patientin stellte sich mit einer schmerzlosen, palpablen Verhärtung im oberen äußeren Quadranten der linken Brust vor. Zudem berichtete sie über eine leichte Rötung der Haut sowie eine eingezogene Mamille. Axilläre Lymphknoten waren bei der klinischen Untersuchung tastbar vergrößert.
+val data = Seq("""Patientin: 67 Jahre, weiblich
 
-Histopathologie:
-Die Biopsie ergab ein invasives duktales Karzinom (G3) mit positiven Hormonrezeptoren (ER+, PR+). HER2/neu-Expression war negativ. Der Ki-67-Proliferationsindex lag bei 35 %.
+Diagnose: Invasives duktales Mammakarzinom links (G3)
 
+Histologie:
+
+ER + , PR + , HER2-negativ, Ki-67 bei 35 %
 Bildgebung:
 
-Mammographie: 2,8 cm große suspekte Läsion in der linken Brust mit Mikroverkalkungen
-MRT: Tumorausdehnung 3,1 cm mit Infiltration des Drüsengewebes
-PET-CT: Kein Anhalt für Fernmetastasen
-Therapieempfehlung:
+Mammographie: Tumor 2,8 cm, Mikroverkalkungen
+PET-CT: Keine Fernmetastasen
+Therapie:
 
-Neoadjuvante Chemotherapie (EC-T Schema)
-Anschließend brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
+Neoadjuvante Chemotherapie
+Brusterhaltende Operation mit Sentinel-Lymphknotenbiopsie
 Adjuvante Strahlentherapie
-Hormontherapie mit Letrozol für 5 Jahre
+Hormontherapie mit Letrozol (5 Jahre)
 Beurteilung:
-Fortgeschrittenes, aber lokalisierbares Mammakarzinom mit günstigem Hormonrezeptorstatus. Therapie gemäß interdisziplinärer Tumorkonferenz empfohlen.
-""").toDF("text")
+Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatus. Therapie gemäß Tumorkonferenz empfohlen.""").toDF("text")
 
 val result_resolver = icd_pipeline.fit(data).transform(data)
 ```
@@ -273,14 +264,12 @@ val result_resolver = icd_pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-| chunk                      | begin | end   | ner_label     | icd       | resolution                                                                                                              | all_resolution                                                                                                                                                                                          | all_result                                                                            |
-| -------------------------- | ----- | ----- | ------------- | --------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Karzinom der linken Brust  | 69    | 93    | Cancer_Dx     | C50       | Karzinom der Brustdrüse [Bösartige Neubildung der Brustdrüse [Mamma]]                                                   | Karzinom der Brustdrüse [Bösartige Neubildung der Brustdrüse [Mamma]]:::Krebs in der Brustdrüse, nicht näher klassifiziert [Brustdrüse, nicht näher bezeichnet]:::Mammakarzinom [Brustdrüse [Mamma]]... | C50:::C50.9:::D48.6:::C50.5:::Z80.3:::C76.1                                           |
-| Karzinom                   | 467   | 474   | Cancer_Dx     | C80.9     | Bösartige Geschwulst, nicht näher klassifiziert [Bösartige Neubildung, nicht näher bezeichnet]                          | Bösartige Geschwulst, nicht näher klassifiziert [Bösartige Neubildung, nicht näher bezeichnet]:::Bösartige Neubildung, Ort nicht angegeben [Bösartige Neubildung ohne Angabe der Lokalisation]:::Mal... | C80.9:::C80:::C76:::C80.0:::Z85.8:::C76.7                                             |
-| Läsion                     | 651   | 656   | Tumor_Finding | T14.9     | Verletzung, ohne genaue Bezeichnung [Verletzung, nicht näher bezeichnet]                                                | Verletzung, ohne genaue Bezeichnung [Verletzung, nicht näher bezeichnet]:::offene Läsion [offen]:::Näher bezeichnete Verletzungen [Sonstige näher bezeichnete Verletzungen mit Beteiligung mehrerer ... | T14.9:::T08.1:::T06.8:::N00.9:::N00.8:::N02.1:::D36.7:::T07:::D36.9:::D36:::T14.01    |
-| Tumorausdehnung            | 705   | 719   | Tumor_Finding | C76       | Krebsartige Veränderungen an ungenauen Stellen [Bösartige Neubildung sonstiger und ungenau bezeichneter Lokalisationen] | Krebsartige Veränderungen an ungenauen Stellen [Bösartige Neubildung sonstiger und ungenau bezeichneter Lokalisationen]:::Maligne Tumoren: Unpräzise Lokalisationen [Sonstige ungenau bezeichnete Lo... | C76:::C76.7:::C80.9:::C79:::C79.9:::C80.0:::C79.8:::D36.7:::D09.7:::Z12:::U62.0:::D09 |
-| Adjuvante Strahlentherapie | 935   | 960   | Radiotherapy  | Z51.0     | Radiotherapie-Sitzung [Strahlentherapie-Sitzung]                                                                        | Radiotherapie-Sitzung [Strahlentherapie-Sitzung]:::Nachsorge nach Radiotherapie [Nachuntersuchung nach Strahlentherapie wegen anderer Krankheitszustände]:::Nachsorge nach Strahlentherapie bei mali... | Z51.0:::Z09.1:::Z08.1:::Z54.1:::Z51.82                                                |
-| Mammakarzinom              | 1055  | 1067  | Cancer_Dx     | D48.6     | Mammakarzinom [Brustdrüse [Mamma]]                                                                                      | Mammakarzinom [Brustdrüse [Mamma]]:::Mamma-Karzinom [Bösartige Neubildung der Brustdrüse [Mamma]]:::Bösartige Mammaerkrankung [Bösartige Neubildung der Brustdrüse [Mamma] in der Familienanamnese]:... | D48.6:::C50:::Z80.3:::C50.9:::C76.1:::C50.5                                           |
+|chunk                     |begin|end|ner_label    |icd  |resolution                                                                                              |all_resolution                                                                                                                                                                                                                                                                                                                                                                                                                         |all_result                                             |
+|--------------------------|-----|---|-------------|-----|--------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
+|Mammakarzinom links       |60   |78 |Cancer_Dx    |C50  |Brustdrüsenkarzinom [Bösartige Neubildung der Brustdrüse [Mamma]]                                       |Brustdrüsenkarzinom [Bösartige Neubildung der Brustdrüse [Mamma]]:::Krebs in der Brustdrüse, nicht näher klassifiziert [Brustdrüse, nicht näher bezeichnet]:::Mammakarzinom [Brustdrüse [Mamma]]:::Neoplasma malignum: UQ der Brustdrüse [Unterer äußerer Quadrant der Brustdrüse]:::Bösartige Mammaerkrankung [Bösartige Neubildung der Brustdrüse [Mamma] in der Familienanamnese]:::Bösartige Tumoren der Brustregion [Thorax]      |C50:::C50.9:::D48.6:::C50.5:::Z80.3:::C76.1            |
+|Tumor                     |169  |173|Tumor_Finding|D36.9|Neubildung ohne spezifische Lokalisation [Gutartige Neubildung an nicht näher bezeichneter Lokalisation]|Neubildung ohne spezifische Lokalisation [Gutartige Neubildung an nicht näher bezeichneter Lokalisation]:::Neubildung ohne spezifische Angaben zu Lokalisationen [Neubildung unsicheren oder unbekannten Verhaltens an sonstigen und nicht näher bezeichneten Lokalisationen]:::Neubildung unspezifischen Verhaltens, ohne weitere Angaben [Neubildung unsicheren oder unbekannten Verhaltens, nicht näher bezeichnet]:::Neubildung... |D36.9:::D48:::D48.9:::D48.7:::D36.7:::C80:::C80.9:::D36|
+|Adjuvante Strahlentherapie|326  |351|Radiotherapy |Z51.0|Radiotherapie-Sitzung [Strahlentherapie-Sitzung]                                                        |Radiotherapie-Sitzung [Strahlentherapie-Sitzung]:::Nachsorge nach Radiotherapie [Nachuntersuchung nach Strahlentherapie wegen anderer Krankheitszustände]:::Nachsorge nach Strahlentherapie bei malignen Tumoren [Nachuntersuchung nach Strahlentherapie wegen bösartiger Neubildung]:::Rehabilitation nach Strahlentherapie [Rekonvaleszenz nach Strahlentherapie]:::Strahlen- und Chemotherapie bei bösartigen Tumoren...            |Z51.0:::Z09.1:::Z08.1:::Z54.1:::Z51.82                 |
+|Mammakarzinom             |439  |451|Cancer_Dx    |D48.6|Mammakarzinom [Brustdrüse [Mamma]]                                                                      |Mammakarzinom [Brustdrüse [Mamma]]:::Mamma-Karzinom [Bösartige Neubildung der Brustdrüse [Mamma]]:::Bösartige Mammaerkrankung [Bösartige Neubildung der Brustdrüse [Mamma] in der Familienanamnese]:::Krebs in der Brustdrüse, nicht näher klassifiziert [Brustdrüse, nicht näher bezeichnet]:::Bösartige Tumoren der Brustregion [Thorax]:::Neoplasma malignum: UQ der Brustdrüse [Unterer äußerer Quadrant der Brustdrüse]           |D48.6:::C50:::Z80.3:::C50.9:::C76.1:::C50.5            |
 ```
 
 {:.model-param}
