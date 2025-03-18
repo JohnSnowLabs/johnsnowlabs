@@ -20,7 +20,8 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline for conducting Optical Character Recognition (OCR) on mixed scanned and digital PDF documents. It ensures precise and efficient text extraction from PDFs of various origins and formats, improving the overall OCR accuracy.
+This is a pretrained pipeline designed for conducting Optical Character Recognition (OCR) on mixed scanned and digital PDF documents. The model ensures precise and efficient text extraction, effectively handling PDFs of various origins, formats, and quality levels. By processing both scanned images and digitally generated text, the pipeline guarantees high accuracy in converting the content into machine-readable text.
+
 
 ## Predicted Entities
 

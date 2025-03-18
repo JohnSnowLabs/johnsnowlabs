@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline for conducting Table Extraction on mixed scanned and digital PDF documents. It ensures precise and efficient table extraction from PDFs of various origins and formats by first detecting tables in the input documents and then extracting the table structure.
+This is a pretrained pipeline designed for Table Extraction in mixed scanned and digital PDF documents. The model first detects tables within the input documents and then extracts the table structure, including rows, columns, and individual cells. It is optimized to work across various PDF formats, whether scanned or digitally generated, ensuring precise and efficient extraction of tabular data from diverse document types.
 
 
 ## Predicted Entities
