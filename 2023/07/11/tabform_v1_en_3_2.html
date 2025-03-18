@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Table and Form Detection | tabform_v1 | Visual NLP 4.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionModel for table and form detection in documents. It is based on text detection model with extra post-processing.Predicted Entitiestable, form.Live DemoOpen in ColabDownloadHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  binary_to_image = BinaryToImage() \    .setImageType(ImageType.TYPE_3BYTE_...">
+<meta name="description" content="DescriptionThis model is designed for detecting tables and forms within documents. It utilizes an object detection approach specifically tailored for document structures, combining robust text detection with additional post-processing techniques to enhance accuracy and precision.The model identifies and locates tabl...">
 <!-- <link rel="canonical" href="/2023/07/11/tabform_v1_en_3_2.html"> -->
 <link rel="canonical" href="/2023/07/11/tabform_v1_en_3_2.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,7 +514,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>Model for table and form detection in documents. It is based on text detection model with extra post-processing.</p>
+<p>This model is designed for detecting tables and forms within documents. It utilizes an object detection approach specifically tailored for document structures, combining robust text detection with additional post-processing techniques to enhance accuracy and precision.</p>
+
+<p>The model identifies and locates tables and forms by analyzing the layout of the document, even in cases where the formatting is complex or inconsistent. By refining the initial detections through post-processing, it ensures that the detected regions are accurately classified and aligned, providing a reliable solution for automating the extraction of tabular and form-based data from scanned documents.</p>
+
+<p>This approach significantly improves the efficiency of tasks such as document analysis, data extraction, and automated processing, making it ideal for use in industries dealing with large volumes of structured documents.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 

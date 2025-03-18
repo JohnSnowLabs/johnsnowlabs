@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Key Value Recognition on 10K filings | visualner_keyvalue_10kfilings | Visual NLP 4.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis is a Form Recognition / Key Value extraction model, trained on the summary page of SEC 10K filings. It extracts KEY, VALUE or HEADER as entities, being HEADER the title on the filing.Predicted EntitiesKEY, VALUE, HEADERLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJoh...">
+<meta name="description" content="DescriptionThis model is designed for form recognition and key-value extraction, specifically trained on the summary pages of SEC 10-K filings (annual financial reports). It identifies and extracts structured information by categorizing detected entities into KEY, VALUE, or HEADER.  KEY represents the label or descr...">
 <!-- <link rel="canonical" href="/2023/01/10/visualner_keyvalue_10kfilings_en_3_2.html"> -->
 <link rel="canonical" href="/2023/01/10/visualner_keyvalue_10kfilings_en_3_2.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,7 +514,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This is a Form Recognition / Key Value extraction model, trained on the summary page of SEC 10K filings. It extracts KEY, VALUE or HEADER as entities, being HEADER the title on the filing.</p>
+<p>This model is designed for form recognition and key-value extraction, specifically trained on the summary pages of SEC 10-K filings (annual financial reports). It identifies and extracts structured information by categorizing detected entities into KEY, VALUE, or HEADER.</p>
+<ul>
+  <li>KEY represents the label or descriptor of a data point.</li>
+  <li>VALUE corresponds to the associated information or numerical data linked to the key.</li>
+  <li>HEADER refers to section titles or headings within the filing, providing context for the extracted information.
+By leveraging both text recognition and document structure analysis, the model ensures accurate extraction of financial and regulatory details, enabling automated processing of structured data. This approach enhances efficiency in document analysis, reducing manual effort while improving consistency and accuracy in financial reporting workflows.</li>
+</ul>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 

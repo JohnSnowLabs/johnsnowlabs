@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Visual NER on 10K Filings (SEC) | visualner_10kfilings | Visual NLP 4.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model is a Visual NER team aimed to extract the main key points in the summary page of SEC 10 K filings (Annual reports).Predicted EntitiesREGISTRANT, ADDRESS, PHONE, DATE, EMPLOYERIDNB, EXCHANGE, STATE, STOCKCLASS, STOCKVALUE, TRADINGSYMBOL, FILENUMBERLive DemoOpen in ColabDownloadCopy S3 URIHow to ...">
+<meta name="description" content="DescriptionThis model is designed to extract key information from the summary pages of SEC 10-K filings (annual financial reports) using a visual Named Entity Recognition (NER) approach. It combines text recognition with spatial layout analysis to accurately identify and categorize important elements such as dates, ...">
 <!-- <link rel="canonical" href="/2023/01/10/visualner_10kfilings_en_3_2.html"> -->
 <link rel="canonical" href="/2023/01/10/visualner_10kfilings_en_3_2.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,7 +514,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model is a Visual NER team aimed to extract the main key points in the summary page of SEC 10 K filings (Annual reports).</p>
+<p>This model is designed to extract key information from the summary pages of SEC 10-K filings (annual financial reports) using a visual Named Entity Recognition (NER) approach. It combines text recognition with spatial layout analysis to accurately identify and categorize important elements such as dates, company names, commission file numbers, and other critical financial details.</p>
+
+<p>By analyzing both the textual content and its position within the document, the model can distinguish between different types of entities and provide structured output with confidence scores, bounding box coordinates, and word-token associations. This allows for precise data extraction, reducing the need for manual review and ensuring consistency across large-scale document processing tasks.</p>
+
+<p>This approach is particularly useful for financial analysts, compliance officers, and businesses that require automated extraction and analysis of regulatory filings. By converting unstructured financial reports into structured data, the model facilitates efficient information retrieval, trend analysis, and compliance monitoring.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
