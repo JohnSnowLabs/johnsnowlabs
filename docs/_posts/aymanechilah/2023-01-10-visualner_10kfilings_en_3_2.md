@@ -19,7 +19,12 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a Visual NER team aimed to extract the main key points in the summary page of SEC 10 K filings (Annual reports).
+This model is designed to extract key information from the summary pages of SEC 10-K filings (annual financial reports) using a visual Named Entity Recognition (NER) approach. It combines text recognition with spatial layout analysis to accurately identify and categorize important elements such as dates, company names, commission file numbers, and other critical financial details.
+
+By analyzing both the textual content and its position within the document, the model can distinguish between different types of entities and provide structured output with confidence scores, bounding box coordinates, and word-token associations. This allows for precise data extraction, reducing the need for manual review and ensuring consistency across large-scale document processing tasks.
+
+This approach is particularly useful for financial analysts, compliance officers, and businesses that require automated extraction and analysis of regulatory filings. By converting unstructured financial reports into structured data, the model facilitates efficient information retrieval, trend analysis, and compliance monitoring.
+
 
 ## Predicted Entities
 

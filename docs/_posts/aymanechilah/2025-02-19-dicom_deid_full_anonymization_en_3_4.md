@@ -20,7 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline for doing Dicom De-identification in which all texts in the images are removed together with most of the tags in the metadata.
+This is a pretrained pipeline designed for DICOM De-identification, aimed at removing all text within the images as well as most of the sensitive metadata tags. The model effectively identifies and eliminates personal identifiers and other confidential information, ensuring the privacy and security of medical images.
+
+In addition to removing visible text within the image itself, the pipeline also processes and anonymizes the DICOM metadata, stripping out sensitive tags such as patient identifiers, physician information, and hospital details. This makes the pipeline an essential tool for preparing DICOM images for public sharing, research, or collaboration.
+
 
 ## Predicted Entities
 

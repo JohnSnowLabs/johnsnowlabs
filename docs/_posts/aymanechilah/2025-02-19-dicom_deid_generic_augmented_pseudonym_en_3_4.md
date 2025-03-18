@@ -20,8 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline for doing Dicom De-identification, attempting to replaces values in metadata with pseudonyms. Images will be de-identified for PHI.
-
+This is a pretrained pipeline designed for DICOM De-identification, focused on replacing sensitive metadata values with pseudonyms while ensuring the privacy of Protected Health Information (PHI). The model carefully anonymizes the metadata by replacing personal identifiers, such as patient names, IDs, and other sensitive details, with pseudonyms.
 
 ## Predicted Entities
 

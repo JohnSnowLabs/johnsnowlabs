@@ -19,7 +19,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a Form Recognition / Key Value extraction model, trained on the summary page of SEC 10K filings. It extracts KEY, VALUE or HEADER as entities, being HEADER the title on the filing.
+This model is designed for form recognition and key-value extraction, specifically trained on the summary pages of SEC 10-K filings (annual financial reports). It identifies and extracts structured information by categorizing detected entities into KEY, VALUE, or HEADER.
+- KEY represents the label or descriptor of a data point.
+- VALUE corresponds to the associated information or numerical data linked to the key.
+- HEADER refers to section titles or headings within the filing, providing context for the extracted information.
+By leveraging both text recognition and document structure analysis, the model ensures accurate extraction of financial and regulatory details, enabling automated processing of structured data. This approach enhances efficiency in document analysis, reducing manual effort while improving consistency and accuracy in financial reporting workflows.
 
 ## Predicted Entities
 

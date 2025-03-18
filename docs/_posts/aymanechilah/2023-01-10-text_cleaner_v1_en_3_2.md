@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Model for cleaning image with text. It is based on text detection model with extra post-processing.
+This model is designed to enhance image quality by reducing noise and imperfections while preserving the original content. It is based on a text detection framework but incorporates additional post-processing techniques to refine and clean the image. By effectively identifying and minimizing distortions, the model improves clarity and ensures a more visually accurate representation of the original image.
 
 ## Predicted Entities
 
