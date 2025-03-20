@@ -15,7 +15,7 @@ sidebar:
 
 ## Speed Benchmarks
 
-### PDF De-identification Benchmark Experiment
+### PDF De-identification Benchmark
 
 - **Dataset:** 1000 scanned PDF pages.
 - **Instance :** 
@@ -38,5 +38,34 @@ sidebar:
 | ------------- | ------ | ----- | ----------------- | ------------- | --------------- | ------- |
 | m5n.4xlarge   | 64 GB  | 16    | 1000              | 10            | 0.24            | 4 mins  |
 | m5n.8xlarge   | 128 GB | 32    | 1000              | 32            | 0.15            | 2.5 mins|
+
+
+### Dicom De-identification Benchmark
+This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU. 
+Note: file sizes are included as reference, but *they are not* the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
+In this test we used 17 files, with an average size of XYZ, and using XYZ compression which is very popular in dicom. The average image dimensions are XYZ, and every dicom file contained a single frame.
+
+
+| **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks Cluster** |
+|------------------------------------------------------------|----------------|------------------------|------------------------|
+| **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**              | **4.66**     | **2.76**  |
+| **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**               | **5.39**     | **3.2**   |
+| **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**         | **0.68**               | **1.15**     | **1.0**   |
+| **ImageToText (Python)**                                   | **0.31**               | **1.21**     | **0.89**  |
+
+
+| **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks Cluster** |
+|------------------------------------------------------------|----------------|------------------------|------------------------|
+| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**              | **4.66**     | **2.76**  |
+| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**               | **5.39**     | **3.2**   |
+| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**         | **0.68**               | **1.15**     | **1.0**   |
+| 🐍 **ImageToText (Python)**                                   | **0.31**               | **1.21**     | **0.89**  |
+
+
+
+
+
+
+
 
 </div>
