@@ -58,11 +58,11 @@ sidebar:
 
 #### Benchmark Table
 
-| Test                  | memory  | cores | files | frames | sec/frame | sec/frame 1 cpu |
-| --------------------- | ------  | ----- | ----- | ------ | --------- | --------------- |
-| 1 frame, uncompressed | 64 GB   | 16    | 15    | 1      | 11.6      | 185.6           |
-| 1 frame, compressed   | 64 GB   | 16    | 15    | 1      | 11.6      | 185.6           |
-| 160 frames            | 128 GB  | 32    | 1     | 160    | 0.925     | 29,6            |
+| Test                      | memory  | cores | files | frames | sec/frame | sec/frame 1 cpu |
+| ------------------------- | ------  | ----- | ----- | ------ | --------- | --------------- |
+| 1 frame, uncompressed     | 64 GB   | 16    | 15    | 1      | 11.6      | 185.6           |
+| 1 frame, compressed       | 64 GB   | 16    | 15    | 1      | 11.6      | 185.6           |
+| 160 frames, lossy compres | 128 GB  | 32    | 1     | 160    | 0.925     | 29,6            |
 
 **"sec/frame 1 cpu"** column is rough estimation how much it'd take on 1 cpu machine. For your environment you may divide it on number of available cpus to get rough estimation.
 
