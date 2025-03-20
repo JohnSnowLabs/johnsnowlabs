@@ -47,7 +47,8 @@ In this test we used 17 files, with an average size of XYZ, and using XYZ compre
 The numbers reported are average *time per file*.
 
 
-| **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks Cluster** |
+| **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks CPU Cluster** | **Databricks GPU Cluster** |
+|                                                             | CPU | GPU | CPU | GPU | | |
 |------------------------------------------------------------|----------------|------------------------|------------------------|
 | **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**              | **4.66**     | **2.76**  |
 | **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**               | **5.39**     | **3.2**   |
@@ -64,7 +65,7 @@ The numbers reported are average *time per file*.
 
 
 
-Google Colab Notebook utilized a single A100 GPU ( 40 GB ) - 7.62 Credits/hr
+* Google Colab Notebook utilized a single A100 GPU ( 40 GB ) - 7.62 Credits/hr
 Databricks Standalone Driver 64 GB Single GPU g4dn.4xLarge[T4] - 2.85 dbu/h
 Databricks Cluster Driver 64 GB Single GPU g4dn.4xLarge[T4], with minimum & maximum 2 Executors 16GB Single GPU g4dn.xLarge[T4] - 4.27 dbu/h
 
