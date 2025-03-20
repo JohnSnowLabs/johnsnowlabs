@@ -64,17 +64,24 @@ The numbers reported are average *time per file*.
 
 
 #### How to use this data
+##### GPU vs. CPU
 These are the models you want to use for a serious project:
 * **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**
 * **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**
 
 Don't be confused by the average times between GPU and CPU, for example for Databricks Standalone, the cost per dicom file is what matters. Let's take 1000 studies to make numbers more easy to digest,
 
-Cost Per 1K doc(DB/CPU) = 1000 * (6.11/3600) * 3 DBU/h = 5.09 DBU
 
-Cost Per 1K doc(DB/GPU) = 1000 * (4.66/3600) * 2.85 DBU/h = 3.68 DBU
+**Cost Per 1K doc(DB/CPU)**:
+1000 * (6.11/3600) * 3 DBU/h = **5.09 DBU**
+
+**Cost Per 1K doc(DB/GPU)**:
+1000 * (4.66/3600) * 2.85 DBU/h = **3.68 DBU**
 
 Here we see that for this workload the cheaper option is to go with GPU.
+
+##### Using the data as a proxy for estimation
+What governs the processing time is image size. Let's take a look at some figures for this dataset.
 
 
 </div>
