@@ -63,7 +63,20 @@ The numbers reported are average *time per file*.
 * **Databricks Standalone CPU**: Driver with 64 GB [16 Cores] (m4.4xlarge) – 3 DBU/h.
 
 
+#### How to use this data
+These are the models you want to use for a serious project:
+* **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**
+* **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**
 
+Don't be confused by the average times between GPU and CPU, for example for Databricks Standalone, the cost per dicom file is what matters. Let's take 1000 studies to make numbers more easy to digest,
+
+* **Cost Per 1K Documents (DB/CPU)**:  
+  \( 1000 \times \left( \frac{6.11}{3600} \right) \times 3 \text{ DBU/h} = 9.89 \text{ DBU} \)
+
+* **Cost Per 1K Documents (DB/GPU)**:  
+  \( 1000 \times \left( \frac{4.66}{3600} \right) \times 2.85 \text{ DBU/h} = 3.68 \text{ DBU} \)
+
+Here we see that for this workload
 
 
 
