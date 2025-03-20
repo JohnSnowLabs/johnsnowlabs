@@ -48,7 +48,6 @@ The numbers reported are average *time per file*.
 
 
 | **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks CPU Cluster** | **Databricks GPU Cluster** |
-|                                                             | CPU | GPU | CPU | GPU | | |
 |------------------------------------------------------------|----------------|------------------------|------------------------|
 | **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**              | **4.66**     | **2.76**  |
 | **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**               | **5.39**     | **3.2**   |
