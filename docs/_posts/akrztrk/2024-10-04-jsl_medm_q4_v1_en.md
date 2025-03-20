@@ -1,8 +1,8 @@
 ---
 layout: model
-title: JSL_MedM (LLM - q4)
+title: JSL_ (LLM - q4)
 author: John Snow Labs
-name: jsl_medm_q4_v1
+name: jsl__q4_v1
 date: 2024-10-04
 tags: [licensed, clinical, en, llm, rag, qa, chat, tensorflow]
 task: [Summarization, Question Answering]
@@ -21,12 +21,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
 
+NOTE: "This model's size is 8B and is available to Healthcare NLP license owners for free. However, this is not the model most capable medical LLM that John Snow has to Labs offer. For the larger and better versions, please try out the models we have in [marketplaces](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)."
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_medm_q4_v1_en_5.5.0_3.0_1728059101782.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_medm_q4_v1_en_5.5.0_3.0_1728059101782.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl__q4_v1_en_5.5.0_3.0_1728059101782.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl__q4_v1_en_5.5.0_3.0_1728059101782.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -41,7 +42,7 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-medical_llm = MedicalLLM.pretrained("jsl_medm_q4_v1", "en", "clinical/models")\
+medical_llm = MedicalLLM.pretrained("jsl__q4_v1", "en", "clinical/models")\
     .setInputCols("document")\
     .setOutputCol("completions")\
     .setBatchSize(1)\
@@ -56,7 +57,7 @@ pipeline = Pipeline(
         medical_llm
 ])
 
-medm_prompt = """
+_prompt = """
 summarize the following content.
 
  content:
@@ -109,7 +110,7 @@ summarize the following content.
  superficial siderosis, and headache. (6.1)
 """
 
-data = spark.createDataFrame([[medm_prompt]]).toDF("text")
+data = spark.createDataFrame([[_prompt]]).toDF("text")
 
 results = pipeline.fit(data).transform(data)
 
@@ -122,7 +123,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val medical_llm = MedicalLLM.pretrained("jsl_medm_q4_v1", "en", "clinical/models")
+val medical_llm = MedicalLLM.pretrained("jsl__q4_v1", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("completions")
     .setBatchSize(1)
@@ -136,7 +137,7 @@ val pipeline = new Pipeline().setStages(Array(
     medical_llm
 ))
 
-val  medm_prompt = """
+val  _prompt = """
 summarize the following content.
 
  content:
@@ -189,7 +190,7 @@ summarize the following content.
  superficial siderosis, and headache. (6.1)
 """
 
-val data = Seq(medm_prompt).toDF("text")
+val data = Seq(_prompt).toDF("text")
 
 val results = pipeline.fit(data).transform(data)
 
@@ -211,7 +212,7 @@ KISUNLA is an amyloid beta-directed antibody indicated for the treatment of Alzh
 
 {:.table-model}
 |---|---|
-|Model Name:|jsl_medm_q4_v1|
+|Model Name:|jsl__q4_v1|
 |Compatibility:|Healthcare NLP 5.5.0+|
 |License:|Licensed|
 |Edition:|Official|
@@ -228,7 +229,7 @@ Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/do
 ## Overall
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
-| JSL-MedM | 0.29         | 0.25                 | 0.50          |
+| JSL- | 0.29         | 0.25                 | 0.50          |
 | ChatGPT  | 0.21         | 0.30                 | 0.26          |
 | Neutral  | 0.43         | 0.38                 | 0.17          |
 | None     | 0.07         | 0.07                 | 0.08          |
@@ -237,7 +238,7 @@ Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/do
 ## Summary 
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
-| JSL-MedM | 0.42         | 0.42                 | 0.50          |
+| JSL- | 0.42         | 0.42                 | 0.50          |
 | GPT4o    | 0.33         | 0.33                 | 0.28          |
 | Neutral  | 0.17         | 0.17                 | 0.12          |
 | None     | 0.08         | 0.08                 | 0.10          |
@@ -247,7 +248,7 @@ Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/do
 
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
-| JSL-MedM | 0.40         | 0.36                 | 0.60          |
+| JSL- | 0.40         | 0.36                 | 0.60          |
 | GPT4o    | 0.15         | 0.19                 | 0.19          |
 | Neutral  | 0.38         | 0.38                 | 0.11          |
 | None     | 0.08         | 0.08                 | 0.09          |
@@ -258,7 +259,7 @@ Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/do
 
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
-| JSL-MedM | 0.22         | 0.14                 | 0.55          |
+| JSL- | 0.22         | 0.14                 | 0.55          |
 | GPT4o    | 0.21         | 0.36                 | 0.23          |
 | Neutral  | 0.49         | 0.44                 | 0.14          |
 | None     | 0.07         | 0.06                 | 0.07          |
@@ -268,7 +269,7 @@ Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/do
 
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
-| JSL-MedM | 0.21         | 0.19                 | 0.38          |
+| JSL- | 0.21         | 0.19                 | 0.38          |
 | GPT4o    | 0.18         | 0.30                 | 0.31          |
 | Neutral  | 0.55         | 0.46                 | 0.26          |
 | None     | 0.05         | 0.05                 | 0.06          |
