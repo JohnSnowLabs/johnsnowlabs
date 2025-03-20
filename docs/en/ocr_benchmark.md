@@ -44,6 +44,7 @@ sidebar:
 This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU. 
 Note: file sizes are included as reference, but *they are not* the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
 In this test we used 17 files, with an average size of XYZ, and using XYZ compression which is very popular in dicom. The average image dimensions are XYZ, and every dicom file contained a single frame.
+The numbers reported are average *time per file*.
 
 
 | **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks Cluster** |
@@ -63,6 +64,9 @@ In this test we used 17 files, with an average size of XYZ, and using XYZ compre
 
 
 
+Google Colab Notebook utilized a single A100 GPU ( 40 GB ) - 7.62 Credits/hr
+Databricks Standalone Driver 64 GB Single GPU g4dn.4xLarge[T4] - 2.85 dbu/h
+Databricks Cluster Driver 64 GB Single GPU g4dn.4xLarge[T4], with minimum & maximum 2 Executors 16GB Single GPU g4dn.xLarge[T4] - 4.27 dbu/h
 
 
 
