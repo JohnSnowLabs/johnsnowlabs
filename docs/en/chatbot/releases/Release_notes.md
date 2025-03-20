@@ -103,15 +103,26 @@ Each response provided by the tool includes direct citations from FDA-approved d
 
 **1. Enhanced Sorting for Search and Extracted Results:**
 
+We have introduced an Editable Query Box to enhance flexibility in crafting search queries for Literature Review.
+
+- **Direct Query Editing:** Users can now manually modify search queries in the query box without relying solely on the visual query editor.
+- **Real-Time Synchronization:** Any changes made in the query box are instantly reflected in the Visual Query Editor, ensuring seamless bidirectional synchronization.
+- **Enhanced Usability:** Copying and pasting old or new queries is now more convenient, enabling faster creation of Literature Review searches.
+- **Better Search Control:** Users can now fine-tune search conditions directly, improving precision and efficiency in research.
+
+This update makes query customization more intuitive and efficient, allowing users to tailor their searches with ease while maintaining real-time consistency between textual and visual query representations.
+
+**2. Enhanced Sorting for Search and Extracted Results:**
+
 To improve organization and relevance, literature review results can now be sorted by publication date. Users have the flexibility to arrange results in both ascending and descending order. This sorting feature is available for real-time search results on the results screen and can also be applied after the literature review process is completed. Additionally, the applied sorting order will be reflected in the downloadable CSV file, ensuring consistency and convenience in data analysis.
 
-**2. Improved Literature Review Search and Data Point Extraction:** 
+**3. Improved Literature Review Search and Data Point Extraction:** 
 
 Enhancements have been made to the literature review search functionality to ensure more precise and accurate article retrieval. The system now optimizes real-time results, offering faster and more relevant findings. Our intelligent query expansion capabilities refine search keywords, yielding high-quality articles and research papers that best align with the user’s research needs. These improvements significantly enhance the accuracy and depth of literature review searches.
 
 Furthermore, enhancements to data point extraction ensure that critical information is identified with greater accuracy. The system now better understands user-defined data point prompts, allowing it to extract key insights with supporting evidence from articles. This refinement enables the extraction of complex data, aligning with user expectations and improving the overall quality of literature review analysis.
 
-**3. Inclusion/Exclusion Criteria Rules:**
+**4. Inclusion/Exclusion Criteria Rules:**
 
 Previously, an article was accepted or excluded from the literature review if it met at least one of the specified inclusion or exclusion criteria. Now, users have greater control over how articles are selected or filtered. They can configure the criteria to require that either all or just one of the specified conditions be met for an article to be included or excluded. This rule-based approach ensures more precise literature review selection, with the system automatically marking articles as included or excluded based on the defined criteria.
 
@@ -125,7 +136,15 @@ Our chatbot agents have leveled up their planning skills, making responses more 
 
 Our research paper selection logic now prioritizes the most up-to-date studies. By default, we focus on research from the last five years (unless you tell the Medical Chatbot otherwise), ensuring that every answer is built on the latest and greatest knowledge available.
 
-### Follow-up Question available for Document Q&A 
+### Document Q&A Model Upgrade
+
+We have upgraded the Document Q&A with a more advanced and powerful model, enhancing its ability to answer complex queries based on uploaded documents. This improvement ensures better comprehension of the content, allowing the model to extract more precise and relevant information from lengthy or technical documents.
+
+The upgraded model provides enhanced document processing capabilities, enabling it to scan, analyze, and deliver well-structured responses. It can now generate organized answers, ensuring clarity and accuracy in the output. Users can expect more contextual and detailed responses, improving the overall document analysis experience.
+
+Additionally, the model can automatically group answers based on relevance or follow user-defined prompts for structured outputs. It also introduces the ability to display results in tabular form, making it easier to interpret and compare extracted information. These improvements bring greater efficiency and flexibility to document-based queries, empowering users with smarter and more dynamic insights.
+
+### Follow-up Questions available for Document Q&A 
 
 Previously, follow-up questions were only available for the Medical Chat. With this enhancement, the Document Q&A feature now supports follow-up questions, making it easier for users to refine their queries and explore deeper insights.
 
@@ -133,7 +152,7 @@ Based on the ongoing conversation and the questions asked, the chatbot will inte
 
 ### UI Enhancements to Chat Processing Statuses
 
-When users posed questions to the medical chatbot, the UI displayed real-time processing steps, providing visibility into the chatbot’s thought process, the tools being utilized, and the Knowledge Bases consulted. However, because the chatbot processes information at lightning speed, users often missed these steps as they disappeared almost instantly.
+When users posed questions to the medical chatbot, the UI displayed real-time processing steps, providing visibility into the chatbot’s thought process, the tools being utilized, and the Knowledge Bases consulted. However, because the chatbot processes information at lightning speed, users often miss these steps as they disappear almost instantly.
 
 To address this, we have introduced a persistent display of these processing steps even after the response has been generated. Users can now access a new "More Insights" option, which expands to reveal the entire sequence of steps involved in generating the response, along with details about the tools and Knowledge Bases used. This enhancement provides greater transparency into the chatbot's reasoning and ensures users can review the methodology behind the responses at their convenience.
 
