@@ -43,7 +43,6 @@ sidebar:
 ### Dicom De-identification Benchmark
 This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU. 
 Note: file sizes are included as reference, but *they are not* the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
-In this test we used 17 files, with an average size of XYZ, and using XYZ compression which is very popular in dicom. The average image dimensions are XYZ, and every dicom file contained a single frame.
 The numbers reported are average *time per file*.
 
 
@@ -94,7 +93,8 @@ _Your linear projections should be based on that value_.
 Note: don't forget to count multi-frame images.
 
 #### I don't know the dimensions of my images
-s
+If you don't know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy. 
+_Keep in mind that if you actually have compressed images you will be underestimating the processing time_.
 
 
 
