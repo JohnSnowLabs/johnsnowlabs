@@ -56,10 +56,10 @@ In this test we used 17 files, with an average size of XYZ, and using XYZ compre
 
 | **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks Cluster** |
 |------------------------------------------------------------|----------------|------------------------|------------------------|
-| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**              | **4.66**     | **2.76**  |
-| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**               | **5.39**     | **3.2**   |
-| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**         | **0.68**               | **1.15**     | **1.0**   |
-| 🐍 **ImageToText (Python)**                                   | **0.31**               | **1.21**     | **0.89**  |
+| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **11.87**              | **6.11**     | **2.94**  |
+| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **22.85**               | **19.48**     | **3.59**   |
+| 🚀 **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**         | **2.73**               | **1.64**     | **1.83**   |
+| 🐍 **ImageToText (Python)**                                   | **1.12**               | **0.3**     | **0.85**  |
 
 
 
