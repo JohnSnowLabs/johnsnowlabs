@@ -47,12 +47,13 @@ In this test we used 17 files, with an average size of XYZ, and using XYZ compre
 The numbers reported are average *time per file*.
 
 
-| **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks CPU Cluster** | **Databricks GPU Cluster** |
-|------------------------------------------------------------|----------------|------------------------|------------------------|
-| **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**              | **4.66**     | **2.76**  |
-| **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**               | **5.39**     | **3.2**   |
-| **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**         | **0.68**               | **1.15**     | **1.0**   |
-| **ImageToText (Python)**                                   | **0.31**               | **1.21**     | **0.89**  |
+| **Model**                                                   | **Google Colab CPU/GPU** | **Databricks Standalone CPU** |
+|------------------------------------------------------------|------------------|--------------------------|----------------------------|----------------------------|
+| **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**         | **4.66**                 | 
+| **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Large (Scala)** | **4.06**         | **5.39**                 |
+| **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**         | **0.68**         | **1.15**                 |
+| **ImageToText (Python)**                                   | **0.31**         | **1.21**                 | **0.89**                   |
+
 
 
 | **Model**                                                   | **Google Colab** | **Databricks Standalone** | **Databricks Cluster** |
