@@ -80,7 +80,7 @@ Don't be confused by the average times between GPU and CPU, for example for Data
 
 Here we see that for this workload the cheaper option is to go with GPU.
 
-##### Using the data as a proxy for estimation
+#### Using the data as a proxy for estimation
 What governs the processing time is image size. Let's take a look at some figures for this dataset,
 * *Transfer Syntax:* 1.2.840.10008.1.2.1(Uncompressed).
 * *Average Width:* 558.20 pixels
@@ -89,8 +89,12 @@ What governs the processing time is image size. Let's take a look at some figure
 
 You need to compute the *average number of pixels per image* in your dataset. For us: 334361.</br>
 _Your linear projections should be based on that value_.
+*Example:* I have 100 single frame 1024x1024 images, we have 1048576 pixels per image, and you will need, (1048576/334361)*3.63 seconds on average on Google Colab GPU per image. And you can do the remaining math for dollar figures.
+
+Note: don't forget to count multi-frame images.
 
 #### I don't know the dimensions of my images
+s
 
 
 
