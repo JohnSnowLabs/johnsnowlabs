@@ -782,6 +782,20 @@ The numbers reported are average <em>time per file</em>.</p>
   <p>If you don’t know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy. 
 <em>Keep in mind that if you actually have compressed images you will be underestimating the processing time</em>.</p>
 
+  <h4 id="why-the-numbers-are-related-to-uncompressed-images">Why the numbers are related to uncompressed images</h4>
+  <p>The variation of the effective compression levels in real datasets makes it impractical to use such a metric in an estimation. Some datasets with low density of information can get compression levels up to 30X, while some others can have lower compressions, so picking a reference dataset is very difficult for the general case. &lt;/br&gt;
+But not all hope is lost, you can work with frames!.</p>
+
+  <h4 id="using-total-frame-count-as-a-proxy-for-estimation">Using total frame count as a proxy for estimation</h4>
+  <p>If you don’t know the size of the images, or the compression, you can estimate the number of frames and use the time it takes for a single frame(like the numbers we’ve shared in this document) as a proxy. 
+&lt;/br&gt;
+Reasons for doing this:</p>
+  <ul>
+    <li>You can compute frame count and sizes very efficiently using Visual NLP.</li>
+    <li>Even if not all frames are of the same dimensions, you can resize them prior to feeding them to the ML models in the pipeline.</li>
+    <li>This way, each frame will have a fixed size processing time.</li>
+  </ul>
+
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2024-06-24T00:00:00+00:00">Jun 24, 2024</time>
