@@ -13,69 +13,29 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## XX-XX-2025 Introducing Two New Features: "US Healthcare Providers" and "Drug Insights"
+## 23-04-2025 New Features and Enhancements
 
-We are thrilled to announce the addition of two powerful tools to enhance your Medical Chatbot experience: US Healthcare Providers and Drug Insights. These tools are designed to provide precise, comprehensive, and user-friendly solutions for healthcare and medication-related queries.
-
-</div><div class="h3-box" markdown="1">
-
-## "US Healthcare Providers" Tool
-
-Our "US Healthcare Providers" tool empowers users to efficiently search for detailed information about medical doctors and healthcare providers across the United States. By converting text queries into logical searches, we tap into the comprehensive National Plan and Provider Enumeration System (NPPES) database, managed by the U.S. Centers for Medicare & Medicaid Services (CMS).
-
-<div class="h3-box" markdown="1">
-
-### Key Features:
-
-**1. NPPES Database Integration:** 
-
-This tool leverages the National Plan and Provider Enumeration System (NPPES), managed by the U.S. Centers for Medicare & Medicaid Services (CMS). The database contains critical details about healthcare providers and organizations, including their National Provider Identifier (NPI).
-
-**2.Intelligent Query Processing:**
-
-The tool employs advanced algorithms to transform user queries into structured searches, enabling precise retrieval of data from the NPPES database. Users can search by criteria such as name, location, taxonomy (specialty), and other relevant parameters to identify healthcare providers that align with their requirements. Additionally, users can delve deeper into more detailed provider information as needed.
-
-**3.Data Output:**
-
-Results are presented in a clean, tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing intelligent insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively. 
-
-### User Benefits:
-
-**1. Streamlined Healthcare Provider Search**
-
-The tool enables users to locate healthcare providers or facilities quickly by utilizing search parameters such as geographic area or specialty. By providing access to essential details such as contact information, provider credentials, and specialty, it simplifies the decision-making process. Furthermore, the integration of the National Provider Identifier (NPI) verification ensures that users can confirm the legitimacy and qualifications of healthcare providers with confidence.
-
-**2. Research Purposes**
-
-For researchers and analysts, the tool offers the ability to extract structured data from the NPPES database, which is invaluable for studying trends in provider distribution or specialty concentration. By presenting organized and exportable data, it streamlines healthcare workforce analysis and facilitates deeper insights into underserved areas or specialty gaps, aiding policy-making and resource allocation efforts.
-
-**3. Tailored Data Presentation**
-
-The results are displayed in a clean, tabular format that users can customize to fit their specific needs. This flexibility enhances usability, enabling users to focus on the most relevant data for their purposes. The ability to export this data as CSV files allows seamless integration into research workflows, reporting, or other professional documentation, ensuring efficiency and convenience.
-
-**4. Compliance and Reliability**
-
-Data provided by the tool is sourced directly from the NPPES database, maintained by the Centers for Medicare & Medicaid Services (CMS). This ensures that the information is both accurate and compliant with federal standards. Regular updates to the database further enhance reliability, allowing users to make decisions based on the most current and trustworthy information available.
 
 </div><div class="h3-box" markdown="1">
 
-## Drug Insights Tool
-The Drug Insights tool is designed to address a wide array of medication-related queries, powered by the FDA-maintained drug leaflets database.
-This powerful tool enables users to explore detailed information about medications and address pressing concerns by integrating the FDA’s reliable and detailed drug database.
+## Get Precise Drug Insights 
+
+Drug Insights, a newly introduced feature within the Medical Chatbot, provides detailed, FDA-sourced information on medications to support safe and informed usage
+
 
 <div class="h3-box" markdown="1">
 
-### Key Features:
+### Key Capabilities:   
 
 **1.Comprehensive Drug Information** 
 
 The Drug Insights tool provides users with a wealth of information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
 
-**2. Contextual Query Handling**
+**2. Context-Aware Responses**
 
-One of the standout features of the Drug Insights tool is its ability to process complex, situational queries. Users can pose questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the tool empowers users to make well-informed decisions about their healthcare.
+One of the standout features of the Drug Insights tool is its ability to process complex, situational queries. Users can ask questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the tool empowers users to make well-informed decisions about their healthcare.
 
-**3.Citations and Documentation Access**
+**3.Direct Citations**
 
 To ensure accuracy and credibility, the tool references FDA-approved drug leaflets and related documentation in its responses. These citations are not only included in the generated answers but are also made accessible to users via an intuitive user interface. This allows users to explore the source material in greater depth, gaining a more comprehensive understanding of the medications. The documentation is organized into easily navigable sections, making it simple to find detailed information relevant to the user's query.
 
@@ -87,74 +47,128 @@ To ensure accuracy and credibility, the tool references FDA-approved drug leafle
 
 The Drug Insights tool provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.
 
-**2. Personalized and Context-Aware Responses**
+**2. Tailored Information**
 
 By leveraging advanced natural language processing, the tool can respond to complex queries tailored to individual circumstances. Whether addressing medication use for specific age groups, interactions with other drugs, or compatibility with certain foods, the Drug Insights tool delivers contextually relevant answers. This personalized approach helps users navigate complex medical scenarios with clarity and confidence.
 
-**3. Enhanced Access to Authoritative Resources**
+**3. Transparency & Trust**
 
 Each response provided by the tool includes direct citations from FDA-approved drug leaflets, ensuring that users have access to credible and up-to-date information. The ability to explore these resources further empowers users to deepen their understanding of medications, fostering a sense of trust and transparency. The intuitive organization of documentation ensures that even detailed information is easily accessible and comprehensible.
 
 </div><div class="h3-box" markdown="1">
 
-## Medical Chatbot Enhancements
+## "Search for US Healthcare Providers"
+
+Search for US Healthcare Providers, a newly introduced feature within the Medical Chatbot, allows users to efficiently locate detailed information on healthcare professionals across the United States. It leverages the National Plan and Provider Enumeration System (NPPES) database, maintained by the Centers for Medicare & Medicaid Services (CMS).
+
+<div class="h3-box" markdown="1">
+
+### Key Capabilities:
+
+**1. NPPES Database Integration** 
+
+This tool leverages the National Plan and Provider Enumeration System (NPPES), managed by the U.S. Centers for Medicare & Medicaid Services (CMS). The database contains details about healthcare providers and organizations, including their National Provider Identifier (NPI).
+
+**2. DB Query via Natural Language Prompts**
+
+The Medical Chatbot transforms user queries into structured searches, enabling precise retrieval of data from the NPPES database. Users can search by criteria such as name, location, taxonomy (specialty), and other relevant parameters to identify healthcare providers that align with their requirements. 
+
+**3.Data Output**
+
+Results are presented in tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing  insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively. 
+
+### User Benefits:
+**Fast Provider Discovery**: Quickly identify and assess healthcare providers by specialty or geography.
+
+**Research Utility**: Ideal for analyzing provider distribution trends and gaps in healthcare services.
+
+**Custom Data Exports**: Tailor data presentation and integrate seamlessly into research or reporting workflows.
+
+**Trusted Source**: Uses regularly updated, federally maintained data for accuracy and compliance.
+
+</div><div class="h3-box" markdown="1">
+
+
+
+## Enhancements to Existing Capabilities
 
 ### Literature Review Improvements
 
-**1. Enhanced Sorting for Search and Extracted Results:**
+**1. Query Definition:**
 
-We have introduced an Editable Query Box to enhance flexibility in crafting search queries for Literature Review.
+Literature Review mode now offers an Editable Query Box to enhance flexibility in crafting search queries for Literature Review.
 
-- **Direct Query Editing:** Users can now manually modify search queries in the query box without relying solely on the visual query editor.
-- **Real-Time Synchronization:** Any changes made in the query box are instantly reflected in the Visual Query Editor, ensuring seamless bidirectional synchronization.
-- **Enhanced Usability:** Copying and pasting old or new queries is now more convenient, enabling faster creation of Literature Review searches.
-- **Better Search Control:** Users can now fine-tune search conditions directly, improving precision and efficiency in research.
+- **Direct Query Editing:** Users can manually modify search queries in the query box without relying solely on the visual query editor.
+- **Real-Time Synchronization:** Any changes made in the query box are reflected in the Visual Query Editor, ensuring seamless bidirectional synchronization.
+- **Enhanced Usability:** Copying and pasting old or new queries is more convenient, enabling faster creation of Literature Review searches.
+- **Better Search Control:** Users can fine-tune search conditions directly, improving precision and efficiency in research.
 
 This update makes query customization more intuitive and efficient, allowing users to tailor their searches with ease while maintaining real-time consistency between textual and visual query representations.
 
-**2. Enhanced Sorting for Search and Extracted Results:**
+**2. Sorting Criteria for Results:**
 
 To improve organization and relevance, literature review results can now be sorted by publication date. Users have the flexibility to arrange results in both ascending and descending order. This sorting feature is available for real-time search results on the results screen and can also be applied after the literature review process is completed. Additionally, the applied sorting order will be reflected in the downloadable CSV file, ensuring consistency and convenience in data analysis.
 
-**3. Improved Literature Review Search and Data Point Extraction:** 
+**3. Search:** 
 
 Enhancements have been made to the literature review search functionality to ensure more precise and accurate article retrieval. The system now optimizes real-time results, offering faster and more relevant findings. Our intelligent query expansion capabilities refine search keywords, yielding high-quality articles and research papers that best align with the user’s research needs. These improvements significantly enhance the accuracy and depth of literature review searches.
 
-Furthermore, enhancements to data point extraction ensure that critical information is identified with greater accuracy. The system now better understands user-defined data point prompts, allowing it to extract key insights with supporting evidence from articles. This refinement enables the extraction of complex data, aligning with user expectations and improving the overall quality of literature review analysis.
+**4. Data Point Extraction**
 
-**4. Inclusion/Exclusion Criteria Rules:**
+Enhancements to data point extraction ensure that critical information is identified with greater accuracy. The system now better understands user-defined data point prompts, allowing it to extract key insights with supporting evidence from articles. This refinement enables the extraction of complex data, aligning with user expectations and improving the overall quality of literature review analysis.
+
+
+**5. Inclusion/Exclusion Criteria Rules:**
 
 Previously, an article was accepted or excluded from the literature review if it met at least one of the specified inclusion or exclusion criteria. Now, users have greater control over how articles are selected or filtered. They can configure the criteria to require that either all or just one of the specified conditions be met for an article to be included or excluded. This rule-based approach ensures more precise literature review selection, with the system automatically marking articles as included or excluded based on the defined criteria.
 
-### Smarter, Faster, and More Reliable Responses
 
-We’ve supercharged our Medical Chatbot’s response quality to be sharper, more accurate, and backed by stronger citations! A brand-new unified schema for Knowledge Bases now ensures reference retrieval is more stable and precise. We’ve also fine-tuned all the Medical Knowledge Bases, improving accuracy, speed, and scalability—so you get the right information, faster.
+### Enhanced Response Quality and Reliability in the Medical Chatbot
 
-To keep things running smoothly, we’ve optimized caching mechanisms for Knowledge Base metadata, reducing retrieval times and boosting efficiency. Plus, with our improved post-processing deduplication, you won’t have to worry about seeing the same article pop up multiple times in your search results.
+The Medical Chatbot now delivers sharper, more accurate responses, supported by improved citation quality. A newly implemented unified schema for all Medical Knowledge Bases ensures more stable and precise reference retrieval.
 
-Our chatbot agents have leveled up their planning skills, making responses more tailored and reducing those overly generic answers. The Medical Research agent has also been fine-tuned to deliver more contextually relevant and insightful responses.
+All Medical Knowledge Bases have been fine-tuned to enhance accuracy, speed, and scalability—enabling faster access to high-quality information. Caching mechanisms for Knowledge Base metadata have been optimized, significantly reducing retrieval times and improving overall system efficiency.
 
-Our research paper selection logic now prioritizes the most up-to-date studies. By default, we focus on research from the last five years (unless you tell the Medical Chatbot otherwise), ensuring that every answer is built on the latest and greatest knowledge available.
+To minimize redundancy, an improved post-processing deduplication system has been introduced, ensuring that duplicate articles no longer appear in search results.
 
-### Document Q&A Model Upgrade
+Chatbot agents have been upgraded with enhanced planning capabilities, leading to more tailored and context-aware responses while reducing overly generic outputs. The Medical Research agent, in particular, has been refined to provide deeper insights and more relevant contextual information.
 
-We have upgraded the Document Q&A with a more advanced and powerful model, enhancing its ability to answer complex queries based on uploaded documents. This improvement ensures better comprehension of the content, allowing the model to extract more precise and relevant information from lengthy or technical documents.
+Research paper selection now prioritizes the most recent and reliable studies. By default, the system references research published within the last five years—unless directed otherwise—ensuring answers are grounded in the most current scientific evidence available.
 
-The upgraded model provides enhanced document processing capabilities, enabling it to scan, analyze, and deliver well-structured responses. It can now generate organized answers, ensuring clarity and accuracy in the output. Users can expect more contextual and detailed responses, improving the overall document analysis experience.
 
-Additionally, the model can automatically group answers based on relevance or follow user-defined prompts for structured outputs. It also introduces the ability to display results in tabular form, making it easier to interpret and compare extracted information. These improvements bring greater efficiency and flexibility to document-based queries, empowering users with smarter and more dynamic insights.
+### Document Q&A Enhancements
+
+Document Q&A now utilizes a more powerful model designed to handle complex queries with greater precision. This upgrade significantly improves comprehension of uploaded content, enabling more accurate extraction of relevant information from lengthy or highly technical documents.
+
+The enhanced model supports advanced document processing, delivering well-structured and organized responses. It offers improved clarity and contextual depth, making responses more informative and tailored to user queries.
+
+New functionality includes automatic grouping of answers by relevance and support for structured outputs based on user-defined prompts. Additionally, responses can now be displayed in tabular format, simplifying interpretation and comparison of extracted data.
+
+These enhancements provide greater efficiency, flexibility, and analytical depth in document-based interactions, delivering a more intelligent and responsive experience for users working with complex documents.
+
 
 ### Follow-up Questions available for Document Q&A 
 
-Previously, follow-up questions were only available for the Medical Chat. With this enhancement, the Document Q&A feature now supports follow-up questions, making it easier for users to refine their queries and explore deeper insights.
+Document Q&A now includes support for follow-up questions, expanding interactive capabilities previously available only in Medical Chat. This enhancement allows users to refine their queries and explore deeper insights within their uploaded documents.
 
-Based on the ongoing conversation and the questions asked, the chatbot will intelligently suggest relevant follow-up questions that users can select to receive more targeted responses. This improvement streamlines the user experience, making document analysis more interactive, intuitive, and efficient.
+The chatbot intelligently generates context-aware follow-up questions based on the ongoing conversation and user inputs. These suggestions help guide users toward more specific and targeted responses, enhancing the relevance and depth of the analysis.
 
-### UI Enhancements to Chat Processing Statuses
+This update makes document-based interactions more intuitive, efficient, and conversational—streamlining the overall user experience and enabling a more dynamic exploration of complex content.
 
-When users posed questions to the medical chatbot, the UI displayed real-time processing steps, providing visibility into the chatbot’s thought process, the tools being utilized, and the Knowledge Bases consulted. However, because the chatbot processes information at lightning speed, users often miss these steps as they disappear almost instantly.
+### Improved Visibility into Agents Processing Steps
 
-To address this, we have introduced a persistent display of these processing steps even after the response has been generated. Users can now access a new "More Insights" option, which expands to reveal the entire sequence of steps involved in generating the response, along with details about the tools and Knowledge Bases used. This enhancement provides greater transparency into the chatbot's reasoning and ensures users can review the methodology behind the responses at their convenience.
+The Medical Chatbot interface now offers enhanced transparency into how responses are generated. Previously, real-time indicators displayed the processing steps of the agents — such as the tools the agents activated and target Knowledge Bases consulted — but these updates often disappeared too quickly due to the chatbot’s rapid response speed.
+
+To improve clarity and user awareness, a persistent processing summary has been introduced. A new "More Insights" option allows users to expand and view the full sequence of steps taken to generate a response, including detailed information about the tools used and sources referenced.
+
+This UI enhancement offers a clearer view into the chatbot’s reasoning process, enabling users to better understand, trust, and verify the methodology behind each response at their own pace.
+
+### UI Enhancements for Task Selection
+
+When users select a task using the @ operator, the name of the task is now displayed above the chatbox for added clarity. Users can remove the selection at any time and choose a different task as needed, improving flexibility and control over the chatbot interaction.
+
+
+This release introduces powerful new features and targeted enhancements that significantly improve the Medical Chatbot experience. From streamlined access to healthcare provider information and comprehensive drug insights, to advanced literature review capabilities and smarter document processing, users benefit from greater accuracy, transparency, and control. These updates are designed to enhance usability across all touchpoints, empowering users to engage with healthcare data and resources more efficiently and effectively than ever before.
 
 </div><div class="h3-box" markdown="1">
 
