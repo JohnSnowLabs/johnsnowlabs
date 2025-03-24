@@ -5,7 +5,7 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-07-30"
+modify_date: "2025-03-24"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
@@ -13,12 +13,9 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 23-04-2025 New Features and Enhancements
-
-
-</div><div class="h3-box" markdown="1">
-
-## Get Precise Drug Insights 
+## 24-04-2025 New Features and Enhancements
+<!-- </div><div class="h3-box" markdown="1"> -->
+### Get Precise Drug Insights 
 
 Drug Insights, a newly introduced feature within the Medical Chatbot, provides detailed, FDA-sourced information on medications to support safe and informed usage
 
@@ -26,8 +23,7 @@ Drug Insights, a newly introduced feature within the Medical Chatbot, provides d
 
 <div class="h3-box" markdown="1">
 
-### Key Capabilities:   
-
+#### Key Capabilities
 **1.Comprehensive Drug Information** 
 
 The Drug Insights agent provides users with information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
@@ -42,8 +38,7 @@ To ensure accuracy and credibility, the agent references FDA-approved drug leafl
 
 <div class="h3-box" markdown="1">
 
-### User Benefits:
-
+#### User Benefits
 **1. Reliable Medication Guidance**
 
 The Drug Insights agent provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.
@@ -58,7 +53,7 @@ Each response provided by the agent includes direct citations from FDA-approved 
 
 </div><div class="h3-box" markdown="1">
 
-## Search for US Healthcare Providers
+### Search for US Healthcare Providers
 
 The Medical Chatbot now allows users to search for US Healthcare Providers, by leveraging the National Plan and Provider Enumeration System (NPPES) database, maintained by the Centers for Medicare & Medicaid Services (CMS).
 
@@ -67,8 +62,7 @@ The Medical Chatbot now allows users to search for US Healthcare Providers, by l
 
 <div class="h3-box" markdown="1">
 
-### Key Capabilities:
-
+#### Key Capabilities
 **1. NPPES Database Integration** 
 
 This tool leverages the National Plan and Provider Enumeration System (NPPES), managed by the U.S. Centers for Medicare & Medicaid Services (CMS). The database contains details about healthcare providers and organizations, including their National Provider Identifier (NPI).
@@ -81,7 +75,7 @@ The Medical Chatbot transforms user queries into structured searches, enabling p
 
 Results are presented in tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing  insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively. 
 
-### User Benefits:
+#### User Benefits
 **Fast Provider Discovery**: Quickly identify and assess healthcare providers by specialty or geography.
 
 **Research Utility**: Ideal for analyzing provider distribution trends and gaps in healthcare services.
@@ -92,15 +86,13 @@ Results are presented in tabular format, allowing users to specify the details t
 
 </div><div class="h3-box" markdown="1">
 
-
-
-## Enhancements to Existing Capabilities
-
-### Literature Review Improvements
-
-**1. Query Definition:**
+### Enhancements to Existing Capabilities
+#### Literature Review Improvements
+**1. Query Definition**
 
 Literature Review mode now offers an Editable Query Box to enhance flexibility in crafting search queries for Literature Review.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/gz9gZ5m1JDE?si=iGVOaKD8QcFHE5Xv&hd=1" title="Literature Review - Query Editing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Direct Query Editing:** Users can manually modify search queries in the query box without relying solely on the visual query editor.
 - **Real-Time Synchronization:** Any changes made in the query box are reflected in the Visual Query Editor, ensuring seamless bidirectional synchronization.
@@ -109,11 +101,13 @@ Literature Review mode now offers an Editable Query Box to enhance flexibility i
 
 This update makes query customization more intuitive and efficient, allowing users to tailor their searches with ease while maintaining real-time consistency between textual and visual query representations.
 
-**2. Sorting Criteria for Results:**
+**2. Sorting Criteria for Results**
 
 To improve organization and relevance, literature review results can now be sorted by publication date. Users have the flexibility to arrange results in both ascending and descending order. This sorting feature is available for real-time search results on the results screen and can also be applied after the literature review process is completed. Additionally, the applied sorting order will be reflected in the downloadable CSV file, ensuring consistency and convenience in data analysis.
 
-**3. Search:** 
+<img src= "/assets/images/chatbot/LiteratureReview - ResultsSorting.png" alt="Literature Review - Sorting Criteria for Results" style="border: 2px solid grey; width=60%">
+
+**3. Search** 
 
 Enhancements have been made to the literature review search functionality to ensure more precise and accurate article retrieval. The system now optimizes real-time results, offering faster and more relevant findings. Our intelligent query expansion capabilities refine search keywords, yielding high-quality articles and research papers that best align with the user’s research needs. These improvements significantly enhance the accuracy and depth of literature review searches.
 
@@ -122,12 +116,13 @@ Enhancements have been made to the literature review search functionality to ens
 Enhancements to data point extraction ensure that critical information is identified with greater accuracy. The system now better understands user-defined data point prompts, allowing it to extract key insights with supporting evidence from articles. This refinement enables the extraction of complex data, aligning with user expectations and improving the overall quality of literature review analysis.
 
 
-**5. Inclusion/Exclusion Criteria Rules:**
+**5. Inclusion/Exclusion Criteria Rules**
 
 Previously, an article was accepted or excluded from the literature review if it met at least one of the specified inclusion or exclusion criteria. Now, users have greater control over how articles are selected or filtered. They can configure the criteria to require that either all or just one of the specified conditions be met for an article to be included or excluded. This rule-based approach ensures more precise literature review selection, with the system automatically marking articles as included or excluded based on the defined criteria.
 
+<img src= "/assets/images/chatbot/LiteratureReview - Screening.png" alt="Literature Review - Applying the Screening Rules" style="border: 2px solid grey; width=60%">
 
-### Enhanced Response Quality and Reliability in the Medical Chatbot
+#### Enhanced Response Quality and Reliability in the Medical Chatbot
 
 The Medical Chatbot now delivers sharper, more accurate responses, supported by improved citation quality. A newly implemented unified schema for all Medical Knowledge Bases ensures more stable and precise reference retrieval.
 
@@ -140,7 +135,7 @@ Chatbot agents have been upgraded with enhanced planning capabilities, leading t
 Research paper selection now prioritizes the most recent and reliable studies. By default, the system references research published within the last five years—unless directed otherwise—ensuring answers are grounded in the most current scientific evidence available.
 
 
-### Document Q&A Enhancements
+#### Document Q&A Enhancements
 
 Document Q&A now utilizes a more powerful model designed to handle complex queries with greater precision. This upgrade significantly improves comprehension of uploaded content, enabling more accurate extraction of relevant information from lengthy or highly technical documents.
 
@@ -151,7 +146,7 @@ New functionality includes automatic grouping of answers by relevance and suppor
 These enhancements provide greater efficiency, flexibility, and analytical depth in document-based interactions, delivering a more intelligent and responsive experience for users working with complex documents.
 
 
-### Follow-up Questions available for Document Q&A 
+#### Follow-up Questions available for Document Q&A 
 
 Document Q&A now includes support for follow-up questions, expanding interactive capabilities previously available only in Medical Chat. This enhancement allows users to refine their queries and explore deeper insights within their uploaded documents.
 
@@ -159,7 +154,7 @@ The chatbot intelligently generates context-aware follow-up questions based on t
 
 This update makes document-based interactions more intuitive, efficient, and conversational—streamlining the overall user experience and enabling a more dynamic exploration of complex content.
 
-### Improved Visibility into Agents Processing Steps
+#### Improved Visibility into Agents Processing Steps
 
 The Medical Chatbot interface now offers enhanced transparency into how responses are generated. Previously, real-time indicators displayed the processing steps of the agents — such as the tools the agents activated and target Knowledge Bases consulted — but these updates often disappeared too quickly due to the chatbot’s rapid response speed.
 
@@ -167,10 +162,11 @@ To improve clarity and user awareness, a persistent processing summary has been 
 
 This UI enhancement offers a clearer view into the chatbot’s reasoning process, enabling users to better understand, trust, and verify the methodology behind each response at their own pace.
 
-### UI Enhancements for Task Selection
+#### UI Enhancements for Task Selection
 
 When users select a task using the @ operator, the name of the task is now displayed above the chatbox for added clarity. Users can remove the selection at any time and choose a different task as needed, improving flexibility and control over the chatbot interaction.
 
+<img src= "/assets/images/chatbot/TaskSelection.png" alt="Task Selection" style="border: 2px solid grey; width=60%">
 
 This release introduces powerful new features and targeted enhancements that significantly improve the Medical Chatbot experience. From streamlined access to healthcare provider information and comprehensive drug insights, to advanced literature review capabilities and smarter document processing, users benefit from greater accuracy, transparency, and control. These updates are designed to enhance usability across all touchpoints, empowering users to engage with healthcare data and resources more efficiently and effectively than ever before.
 
