@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This LLM model is trained to perform Summarization and Q&A based on a given context.
 
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -142,7 +143,8 @@ The age group most susceptible to breast cancer, as mentioned in the text, is wo
 
 ## Benchmarking
 
-We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate.
+Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
 
 ```bash
 ## Overall

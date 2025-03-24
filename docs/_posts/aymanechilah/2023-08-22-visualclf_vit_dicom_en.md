@@ -19,12 +19,12 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a ViT (Visual Transformer) model, which can be used to carry out Classification on Dicom images. This model has been trained in-house with different corpora, including:
+This model is based on a Visual Transformer (ViT) architecture, specifically designed to perform classification tasks on DICOM images. Trained in-house with a diverse range of corpora, including DICOM data, COCO images, and in-house annotated documents, the model is capable of accurately classifying medical images and associated document notes.
 
-DICOM
-COCO
-In-house annotated documents
-You can use this model to classify images and document notes , and then use Visual NLP to extract information using the layout and the text features.
+By leveraging the power of Visual Transformers, the model captures complex relationships between image content and textual information, making it highly effective for analyzing both visual features and document annotations. Once images are classified, you can further integrate Visual NLP techniques to extract meaningful information, utilizing both the layout and textual features present in the document.
+
+This model provides a comprehensive solution for tasks involving medical image classification, document analysis, and structured information extraction, making it ideal for healthcare applications, research, and document management systems.
+
 
 ## Predicted Entities
 

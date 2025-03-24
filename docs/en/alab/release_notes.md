@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2024-11-15"
+modify_date: "2024-03-13"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,122 +15,292 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Model Versioning during Training and Visual Model Updates in 6.9.0
-Generative AI Lab version 6.9.0, introduces new features designed to improve visual projects as well as model training. This release introduces model versioning as well as new project types, expanding the use cases for our product. With this update, you can streamline tasks such as checkbox identification, handwritten text detection, and model management.
+## View Text alongside images, and Optimized Image Loading in Visual NER – Generative AI Lab 6.11.0 
+Generative AI Lab 6.11 brings an Image-Text Side-by-Side Annotation project, allowing users to view the original image or PDF alongside its OCR-extracted text for easier annotation. It also includes optimized Visual NER for faster PDF processing, enhanced zoom functionality, and a new licensing model for on-premises deployments. 
 
-Other small improvements have been made to Generative AI Lab including to the updater script, and ensuring the default colors on labels remain high contrast. 
+Other minor improvements have been made to Generative AI Lab, specifically to model training and de-identification.
 
-## Model Versioning when Training Models
-Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the **TRAINING SETTINGS** section of the **Train** page, a toggle labeled **Enable Versioning** is now available. By default, model versioning is disabled. To enable it, toggle **Enable Versioning** to **on**. 
+## Annotate while referencing Original Documents
+This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can now annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.
 
-![690image](/assets/images/annotation_lab/6.9.0/5.png)
+**Image on the Left, OCR Text on the Right**: By Selecting this project type, users can now view the image/PDF document on the left side of the interface and its corresponding OCR-extracted text on the right side.  
 
-When enabled, models are saved with versioned names following the format **projecttype_projectname_v1**, **projecttype_projectname_v2**, and so on. If model deployment is enabled after training is complete, the most recently trained model is automatically applied to the project configuration. If model deployment after training is not enabled, the project configuration remains unchanged. All versions of trained models are accessible on the Reuse Resource page, allowing users to browse and select specific model versions for reuse in other projects.
+ **Paginated Documents**: All document pages are paginated, allowing users to navigate the document effortlessly. 
 
-![690image](/assets/images/annotation_lab/6.9.0/6.png)
+Image and PDF documents now support all text-based annotation features—including NER, assertion, relations, resolvers, and lookup code annotation—and allow OCR text annotation.
+### Key Features  
 
-Model versioning is also supported for previously created projects. If versioning is disabled, subsequent training overwrites the most recent model without creating a new version. When re-enabled, versioning resumes from the latest version rather than starting over from v1. This feature simplifies model management by enabling version tracking and reusability, offering seamless integration for new and existing projects.
+### How to Configure the Project  
+1. **Select the Project Template**:  
+   - Navigate to the **Image** tab and choose the **Image & Text Side-By-Side Annotation** template.  
+   - Save the configuration to proceed.  
 
-Note: The **Enable Versioning** toggle is disabled during training. 
+2. **Add Models to the Reuse Resource Page**:  
+   - Click **Next** to move to the Reuse Resource page.  
+   - Add the required models, such as NER, relation, and assertion models, to the project.  
 
-## Identify and Validate Checkboxes with Precision
-Version 6.9.0 introduces a new project type called **Checkbox Detection**. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the **checked** and **unchecked** status in the respective tasks.
+3. **Configure Individual Labels**:  
+   - Click **Next** again to access the label configuration page.  
+   - Click on individual labels to add lookup data or resolver models.  
 
-This project type can be selected from the **Content Type** page under the **Image** tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the **Models Hub** page and added to the project configuration.
+4. **Save and Deploy the Preannotation Server**:  
+   - Once all configurations are complete, save the project.  
+   - Deploy the preannotation server to start using the project.  
 
-![690image](/assets/images/annotation_lab/6.9.0/1.png)
+For a visual guide, refer to the GIF below that demonstrates the configuration process step-by-step:  
 
-After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.
+![6110image](/assets/images/annotation_lab/6.11.0/1.gif)
 
-![690image](/assets/images/annotation_lab/6.9.0/2.png)
 
-This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.
+### How to Use Preannotation  
 
-This model can not currently be combined with other models.
+After deploying the preannotation server, follow these steps to preannotate your documents:  
 
-## Detect and Validate Handwritten Text and Signatures
-This update continues with the **Handwritten Text and Signature Detection** project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab's Visual NLP Library. The new project type can be selected from the **Content Type** page under **Image** tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and integrated into the project configuration.
+1. **Import a PDF or Image**:  
+   - Go to the **Task Page** and navigate to the **Import Page**.  
+   - Import the PDF or image you wish to annotate.  
 
-![690image](/assets/images/annotation_lab/6.9.0/3.png)
+2. **Automatic OCR Processing**:  
+   - The imported document will automatically pass through our OCR process.  
+   - Once OCR is complete, a task will be generated for the document.  
 
-Users can then add relevant tasks to the project and use the model to identify and annotate handwritten content and signatures in documents efficiently.
+3. **Preannotate the Task**:  
+   - Use the deployed preannotation server to preannotate the task.  
+   - Alternatively, click on the task to annotate it manually.  
 
-![690image](/assets/images/annotation_lab/6.9.0/4.png)
+4. **Automatic NER Label Projection**:  
+   - As you annotate the text side, NER labels are automatically projected onto the image side for visual reference.  
+   - This ensures a seamless and intuitive annotation experience.  
 
-This feature doesn't change the existing application workflow, and can not be combined with other models at this time.
+For a visual guide, refer to the GIF below that demonstrates the pre-annotation/annotation process step-by-step:  
+
+![6110image](/assets/images/annotation_lab/6.11.0/2.gif)
+
+
+#### **Image with Text Annotation (Performance-Optimized)**
+
+The second project template is similar to the first but is optimized for speed and larger multi-page PDFs. It maintains the side-by-side view found in the above project without the NER labels appearing on the image. This is to improve annotation speed and reduce server resources. This will work better for high-volume document processing. 
+
+![6110image](/assets/images/annotation_lab/6.11.0/3.png)
+
+### Advanced Capabilities
+- **Model Training:** Train NER, assertion, and relation models seamlessly in both project types.
+- **Rule-Based & Prompt-Based Annotation:** Utilize rules and prompts for efficient labeling.
+- **Support for Resolvers & ICD-10 Coding:** Ensures compatibility with all text-based annotation features.
 
 ## Improvements
-### Enhanced label readability by using high-contrast default colors.
-To improve readability and accessibility, randomly assigned colors will now meet a minimum contrast standard by default, ensuring they are easy to read. This new default simplifies the project creation experience.
+### Optimized Visual NER loading for Large PDF Tasks
+We’ve made improvements to how JSON data is loaded when working with PDF tasks. Previously, every time you opened a new page in a PDF, the system would load JSON data for all pages, which could slow down performance, especially with larger documents.
 
-![690image](/assets/images/annotation_lab/6.9.0/7.png)
+With this update, JSON data is now loaded more efficiently:
 
-### Improvements to the updater script
-First, a retry mechanism has been implemented to pull images during updates and installations. Each image will now be attempted up to three times to ensure successful retrieval.
+- **Initial Load:** JSON data is fetched and loaded only once when the task is first opened (i.e., when the first page is accessed).
 
-When training or pre-annotation servers are running during an upgrade, a prompt appears:
-"**Do you want to proceed with deleting these pods? (y/N):**"
+- **Dynamic Loading:** When navigating to other pages, JSON data is loaded only for the page you’re viewing, rather than loading data for the entire PDF.
 
-- If "**No**" is selected, the upgrade process is exited.
-- If "**Yes**" is selected, the running training/pre-annotation pods are deleted, and the upgrade continues.
-- If no matching training or pre-annotation pods are running, the message "**No preannotator/training pods matching criteria found.**" is displayed, and the upgrade proceeds.
+This update brings significant performance improvements, especially when working with larger PDFs. For example, with a 3785-page PDF, the first page now loads about 1.2 times faster, Before, moving to the second page or jumping to the 50th page would often result in an empty screen. Now, these actions are 8 times faster, taking just under 2 seconds each.
 
-A new "**silent**" flag can now be passed while executing the upgrade script. 
+**Key Benefits:**
+- Faster navigation between pages.
+- Reduced memory usage by loading only the required data.
+- Resolved issues with empty screens when navigating large PDFs.
 
-``./annotationlab-updater.sh --silent``
+This update ensures a smoother and more responsive experience when working with PDF tasks, especially for larger documents.
 
-When "**silent**" flag is used:
-- It automatically deletes running training/pre-annotation servers without prompting.
-- It uses the default admin password for the upgrade procedure.
+**Improved Zooming in Visual NER**
 
-## Bug Fixes
-- **Prediction results are missing in Section Based Classification Projects when exported tasks are re-imported** 
+We've made significant improvements to the zooming functionality in Visual NER to enhance usability and give you better control over how documents are displayed.
 
-Previously, in Section-Based Classification projects, prediction results were missing when exported tasks were re-imported back to Generative AI Lab project. This issue has been resolved. Prediction results now remain intact when tasks are re-imported for SBA-enabled projects, ensuring data consistency.
+- **More Efficient Zooming Out**
+  Previously, when zooming out, both the horizontal and vertical dimensions shrank, often leaving a lot of empty white space at the top. This made it frustrating to position the page properly, requiring extra scrolling. With this update, zooming out now happens only horizontally, ensuring a better fit without unnecessary space. Now, you can get a proper view of your document without extra scrolling.
 
-- **Multiple API calls are made during pre-annotation on the task page**
+- **Better Scaling for Larger Screens**
+  On larger screens, PDFs and images used to be displayed at full width (100%), making them too large and hard to view in their entirety. With this fix, documents are now automatically zoomed out so that you can see more of the page at once, making it easier to work with your data.
 
- The **Task** page now operates efficiently without making multiple API calls or unexpected refreshes.
+![6110image](/assets/images/annotation_lab/6.11.0/4.gif)
 
-- **De-identify dialog box is not updated after the server is ready with the de-identification pipeline**
+### New Application License Requirement for On-Prem Deployments
+With the latest version, Generative AI Lab now requires an application license for on-premises installations. This change brings on-prem licensing in line with our cloud deployments via AWS Marketplace AMI and Azure Marketplace, where usage has been metered.
 
-The De-Identification pop-up now auto-refreshes and appears as expected once the de-identification pipeline is ready for deployment.
+On-prem users will now need to import an application license on the same License page where other library licenses are managed. This ensures a smooth experience while maintaining flexibility across different deployment environments.
 
-- **Rule for section classifier is set to default value when the user navigates back to Relevant Page**
+Our commitment remains to provide a powerful and efficient annotation tool while supporting ongoing innovation and improvements. We appreciate your continued support and look forward to introducing more enhancements to Generative AI Lab.
 
- For SBA-enabled projects, the selected classifier model is now correctly displayed in the dropdown when users return to the page for reconfiguration or confirmation.
+![6110image](/assets/images/annotation_lab/6.11.0/5.png)
 
-- **Training status still showing as 'Running' when the user checks the training history after aborting the training**
+### Installation in Airgapped Environments for On-Prem Deployments
 
-The training history now accurately reflects the correct training status with the appropriate status color.
+With **Version 6.11.0**, Generative AI can now be installed in air-gapped environments, removing the need for internet access to pull images and artifacts. Previously, users required internet connectivity to access these resources, but with this update, the installation can now be performed entirely offline.
 
-- **When de-identification pipeline is deployed glove_100 is shown as deployed embeddings**
+To install the **Generative AI Lab** in an air-gapped environment, two instances are required:
+- **Instance 1:** With internet access and the **Annotation Lab** pre-installed, this instance will download the necessary artifacts and images.
+- **Instance 2:** The air-gapped instance where the **Generative AI Lab** is installed.
 
-In earlier versions, the default embedding glove_100 was incorrectly displayed as deployed when the de-identification pipeline was deployed, even if no embeddings were available. This issue has been resolved. The correct embedding is now displayed when an embedding is used. An empty embedding is shown when no embedding is used. This ensures an accurate representation of the deployed embeddings in the pipeline.
+The installation process consists of three steps:
 
-- **"Model type not available " error is seen frequently while navigating to the Train page**
+### Step 1: Compress Images and Artifacts in the Online Instance
+#### Define the Version:
+SSH into the instance with the pre-installed application and define the version
+   For example:
+   `Version="6.11.0"`
 
-Previously, users frequently encountered the "**Model type not available**" error when navigating to the **Train** page. This issue has been resolved, and the error no longer appears while accessing the **Train** page from different locations within the project.
+#### Gather Files on an Online System:
+In the internet-enabled instance, download all the necessary images, tools, and dependencies. Bundle them into a single archive using the following commands:
+   ```
+   ctr -n k8s.io images export all-images.tar \
+           --platform linux/amd64 \
+           docker.io/library/redis:7-bullseye \
+           docker.io/bitnami/postgresql:11.20.0-debian-11-r12 \
+           docker.io/bitnami/kubectl:1.27.12 \
+           docker.io/library/busybox:1.36.0 \
+           docker.io/keycloak/keycloak:20.0.3 \
+           docker.io/johnsnowlabs/annotationlab:$VERSION \
+           docker.io/johnsnowlabs/annotationlab:active-learning-$VERSION \
+           docker.io/johnsnowlabs/annotationlab:auth-theme-$VERSION \
+           docker.io/johnsnowlabs/annotationlab:backup-$VERSION \
+           docker.io/johnsnowlabs/annotationlab:dataflows-$VERSION
+  ```
+#### Fix Download Issues if Needed**:
+If any images fail to export properly in the previous step, use the following commands to pull the images manually. Run the code mentioned in Step 2:
+   ```
+    ctr -n k8s.io images pull docker.io/library/redis:7-bullseye
+    ctr -n k8s.io images pull docker.io/library/busybox:1.36.0
+    ctr -n k8s.io images pull docker.io/keycloak/keycloak:20.0.3
+    ctr -n k8s.io images pull docker.io/bitnami/kubectl:1.27.12
+    ctr -n k8s.io images pull docker.io/bitnami/postgresql:11.20.0-debian-11-r12
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:active-learning-$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:auth-theme-$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:backup-$VERSION
+    ctr -n k8s.io images pull docker.io/johnsnowlabs/annotationlab:dataflows-$VERSION
+   ```
+### Step 2: Download and Install Dependencies
+#### Download k3s Installer and Images
+From the K3s [releases](https://github.com/k3s-io/k3s/releases) page, search for the desired version and download the `k3s` and `k3s-airgap-images-amd64.tar.zst` files (assets). We are currently using the [v1.27.4+k3s1](https://github.com/k3s-io/k3s/releases/tag/v1.27.4%2Bk3s1) version.
 
-- **Backup fails for Azure Blob Storage**
+#### Download and Unpack Helm Executable
+Download [helm](https://github.com/helm/helm/releases). Any version should work (latest stable recommended). For example, [Linux amd64 v3.17.0](https://get.helm.sh/helm-v3.17.0-linux-amd64.tar.gz). After downloading, extract the archive. We will only need the `helm` executable from the *linux-amd64* directory.
 
-An issue affecting backups to Azure Blob Storage has been resolved. Backups now function correctly, ensuring reliable data storage and recovery.
+### Step 3: Prepare and Proceed with Installation in the Air-Gapped Instance
 
-- **Labels with instructions cannot be deleted and added from the project configuration**
+#### Copy All the Required Files to the Air-Gapped Instance
+Copy the following files that were downloaded in step 2 to the Air-Gapped instance:
+- `k3s-airgap-images-amd64.tar.zst`
+- `k3s`
+- `helm`
 
-We now allow users to seamlessly add labels with instructions or delete labels that contain instructions as needed.
+#### Prepare the Air-Gapped System
+Place the files in their correct directories and make the binaries executable:
 
-- **Active learning is not triggered for the second trigger**
+```
+mkdir -p /var/lib/rancher/k3s/agent/images/
+mv k3s-airgap-images-amd64.tar.zst /var/lib/rancher/k3s/agent/images/
 
-Active learning will now wait for the license to be free before triggering training, ensuring a smoother and more reliable process. Additionally, when the active learning condition is met and the system is waiting for the license, this status will be displayed on the training page.
+mv k3s /usr/local/bin/
+mv helm /usr/local/bin/
+chmod a+x /usr/local/bin/k3s
+chmod a+x /usr/local/bin/helm
+```
+#### Install System Components
+Create an [installer.sh](https://get.k3s.io/) file in the air-gapped instance and run the following installer script for K3s in offline mode:
+
+```
+chmod a+x install.sh
+INSTALL_K3S_SKIP_DOWNLOAD=true ./install.sh
+```
+### Load Images and Dependencies
+Import the downloaded images into the system that were packed in Step 1, along with the tar file of the application required for installation:
+
+- `all-images.tar`
+- `annotationlab-$VERSION.tar.gz`
+### Import and Install Generative AI Lab
+Unpack the Generative AI Lab package by importing the images using the following command:
+
+```
+ctr -n k8s.io images import --platform linux/amd64 all-images.tar
+```
+Once the images are unpacked, proceed to run the installer in air-gapped mode using the following commands:
+
+```
+tar -zxf annotationlab-$VERSION.tar.gz
+cd artifacts
+./annotationlab-installer.sh airgap
+```
+### Airgap Environment Upgrade Steps
+
+To upgrade the application in an air-gapped environment, most of the steps from the installation process are reused. However, we only need to follow steps 1 and 3(installing system Components can be skipped from this step), as k3s and helm will already be installed and running. Step 2 can be skipped.
+
+The main difference during the upgrade process is the script used from the `artifacts` directory. Instead of the installation script, use the following command:
+
+```
+./annotationlab-updater.sh --airgap
+```
+
+### De-Identification Improvements
+
+#### Add demo test project for De-identification project**
+
+With Version 6.11, we have created a **Demo De-identification Project**. This is designed to help users familiarize themselves with de-identification workflows without the need for manual project setup.
+
+Now, users can click the **Import** button and select **Import Demo Projects**, which will automatically add a pre-configured de-identification project to their workspace. This feature provides a practical example, enabling users to explore how de-identification pipelines work, understand labeling structures, and experiment with different de-identification settings before working on actual datasets. Please note that the project will only be imported if a **valid license** is available within the application.
+
+![6110image](/assets/images/annotation_lab/6.11.0/6.gif)
+
+#### Simplified Export of De-identified tasks**
+
+With Version 6.11, manually completing de-identifications before export is no longer necessary. Now, when exporting de-identified tasks, the system automatically determines what to export:
+- If **de-identified submitted completions** are available, they are prioritized for export.
+- If no submitted completions exist, the **de-identified predictions** generated by the model are exported instead.
+
+![6110image](/assets/images/annotation_lab/6.11.0/7.gif)
+
+#### Increased Consistency in the De-Identification Process Across De-identification Projects
+
+With Version 6.11, the **De-identify** button now functions uniformly across all de-identification projects, whether using models or pipelines. It seamlessly **pre-annotates and de-identifies predictions** in a single step, ensuring a smoother and more predictable workflow.
+
+Users can now rely on a standardized approach, reducing confusion and making the de-identification workflow more intuitive.
+
+### Bug Fixes
+
+- **Empty annotation instructions are seen when annotation instructions are removed from the customize Labels page**
+
+When instructions are removed, the empty field and its marker are also removed, ensuring a cleaner and more intuitive interface.
+
+- **Imported projects are not transferred or shared when the user is deleted**
+
+Projects are now correctly transferred when a user is removed, ensuring seamless project management. Additionally, the deleted user is automatically removed from all associated projects, maintaining a clean and organized system.
+
+- **Users aren't able to add assertion labels by clicking on the tokens**
+
+Users can seamlessly add assertion labels by directly clicking on tokens, improving ease of use.
+
+- **Server fails to deploy successfully for Checkbox Detection and Handwriting and Signature Detection Project Type**
+
+Users can now deploy these project types/models without any issues and use them seamlessly for pre-annotation.
+
+- **Error observed in Pre-annotation server log when users try to de-identify tasks without completions or there is 
+no pre-annotation result**
+
+Users no longer encounter errors related to missing completions.
+
+- **Error Generating Predictions in De-Identification**
+
+**Generating predictions** and **De-identifying completions** are handled as separate processes now, eliminating errors when attempting to do both at the same time.
+
 
 ## Versions
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_11_3">6.11.3</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_11_2">6.11.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_11_1">6.11.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_11_0">6.11.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_10_1">6.10.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>

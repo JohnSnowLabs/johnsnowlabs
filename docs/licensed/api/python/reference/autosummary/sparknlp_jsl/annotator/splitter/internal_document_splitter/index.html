@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -574,7 +575,7 @@ splits subtexts if they are over the chunk length, considering optional overlap 
 <dl class="simple">
 <dt>chunkSize</dt><dd><p>Size of each chunk of text. This param is applicable only for “recursive” splitMode.</p>
 </dd>
-<dt>chunkOverlap</dt><dd><p>Length of the overlap between text chunks, by default <cite>0</cite>. This param is applicable only for “recursive” splitMode.</p>
+<dt>chunkOverlap</dt><dd><p>Length of the overlap between text chunks, by default <cite>0</cite>. This param is applicable for “recursive” and “sentence” splitMode.</p>
 </dd>
 <dt>splitPatterns</dt><dd><p>Patterns to split the document. Default for recursive mode [”</p>
 </dd>
@@ -994,7 +995,8 @@ open-source location. Other values are “clinical/models”,
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setChunkOverlap">
 <span class="sig-name descname"><span class="pre">setChunkOverlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setChunkOverlap" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets length of the overlap between text chunks , by default <cite>0</cite>.</p>
+<dd><p>Sets length of the overlap between text chunks , by default <cite>0</cite>.
+This param is applicable for “recursive” and “sentence” splitMode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Length of the overlap between text chunks</p>

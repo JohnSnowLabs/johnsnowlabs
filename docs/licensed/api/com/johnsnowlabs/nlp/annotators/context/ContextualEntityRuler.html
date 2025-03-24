@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler</title>
-          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
-          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
+          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler</title>
+          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
+          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -317,7 +317,7 @@ in domain-specific text processing.</p><h4>Example</h4><p>Define pipeline stages
   |is, <span class="num">37</span>           |<span class="num">112</span>  |<span class="num">117</span>|AGE     |
   |September <span class="num">9</span>, <span class="num">1850</span>|<span class="num">170</span>  |<span class="num">186</span>|DATE    |
   |February <span class="num">14</span>, <span class="num">1912</span>|<span class="num">204</span>  |<span class="num">220</span>|DATE    |
-  +-----------------+-----+---+--------+</pre><h4>Key Concepts</h4><ul><li>**Rules**: Define the contextual rules in JSON format, specifying:<ul><li><code>entity</code>: The target entity to match (e.g., AGE).</li><li><code>scopeWindow</code>: A range <code>[x, y]</code> defining the number of tokens around the entity to consider.</li><li><code>scopeWindowLevel</code>: The level of the scope window (token or char).</li><li><code>prefixPatterns</code>: Patterns to match before the entity (e.g., &quot;is&quot;).</li><li><code>suffixPatterns</code>: Patterns to match after the entity (e.g., &quot;years&quot;).</li><li><code>prefixRegexes</code>: Regular expressions to match before the entity.</li><li><code>suffixRegexes</code>: Regular expressions to match after the entity.</li><li><code>replaceEntity</code>: The value to replace the matched entity with.</li><li><code>mode</code>: The mode of the rule. It can be either &quot;include&quot; or &quot;exclude&quot;.</li></ul></li><li>**Parameters**:<ul><li><code>setCaseSensitive</code>: Enables case sensitivity in pattern matching.</li><li><code>setAllowPunctuationInBetween</code>: Allows punctuation to appear between matched patterns and entities.
+  +-----------------+-----+---+--------+</pre><h4>Key Concepts</h4><ul><li>**Rules**: Define the contextual rules in JSON format, specifying:<ul><li><code>entity</code>: The target entity to match (e.g., AGE).</li><li><code>scopeWindow</code>: A range <code>[x, y]</code> defining the number of tokens around the entity to consider.</li><li><code>scopeWindowLevel</code>: The level of the scope window (token or char).</li><li><code>prefixPatterns</code>: Patterns to match before the entity (e.g., &quot;is&quot;).</li><li><code>suffixPatterns</code>: Patterns to match after the entity (e.g., &quot;years&quot;).</li><li><code>prefixRegexes</code>: Regular expressions to match before the entity.</li><li><code>suffixRegexes</code>: Regular expressions to match after the entity.</li><li><code>prefixEntities</code>: Entities to match before the entity.</li><li><code>suffixEntities</code>: Entities to match after the entity.</li><li><code>regexInBetween</code>: Regular expression to match text between the entity and prefix/suffix. If matched, the prefix/suffix entities will be included with the target entity.</li><li><code>replaceEntity</code>: The value to replace the matched entity with.</li><li><code>mode</code>: The mode of the rule. It can be either &quot;include&quot; or &quot;exclude&quot;.</li></ul></li><li>**Parameters**:<ul><li><code>setCaseSensitive</code>: Enables case sensitivity in pattern matching.</li><li><code>setAllowPunctuationInBetween</code>: Allows punctuation to appear between matched patterns and entities.
    -
 </li></ul></li></ul></div><div class="toggleContainer block">
           <span class="toggle">
@@ -619,6 +619,22 @@ in domain-specific text processing.</p><h4>Example</h4><p>Define pipeline stages
       </span>
       <span class="symbol">
         <span class="name">allowPunctuationInBetween</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#allowTokensInBetween" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="allowTokensInBetween:org.apache.spark.ml.param.BooleanParam"></a><a id="allowTokensInBetween:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html#allowTokensInBetween:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allowTokensInBetween</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
       </span>
       
       
@@ -1171,6 +1187,22 @@ content is empty, or keep it unchanged.
       </span>
       <span class="symbol">
         <span class="name">getAllowPunctuationInBetween</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#getAllowTokensInBetween" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getAllowTokensInBetween:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html#getAllowTokensInBetween:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getAllowTokensInBetween</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       
@@ -2131,6 +2163,28 @@ The rules is an array of <a href="ContextualEntityRulerRules.html" class="extype
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#setAllowTokensInBetween" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setAllowTokensInBetween(value:Boolean):ContextualEntityRuler.this.type"></a><a id="setAllowTokensInBetween(Boolean):ContextualEntityRuler.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualEntityRuler.html#setAllowTokensInBetween(value:Boolean):ContextualEntityRuler.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setAllowTokensInBetween</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler">ContextualEntityRuler</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to allow tokens in between the prefix and suffix patterns.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to allow tokens in between the prefix and suffix patterns. Default false.
+Example:
+  For the phrase &quot;diabetes mellitus with complications&quot;:
+   Original Chunk: &quot;diabetes mellitus&quot;
+   Suffix Pattern: &quot;complications&quot;
+   Updated Chunk: &quot;diabetes mellitus with complications&quot;
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualEntityRuler#setCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setCaseSensitive(value:Boolean):ContextualEntityRuler.this.type"></a><a id="setCaseSensitive(Boolean):ContextualEntityRuler.this.type"></a>
       <span class="permalink">

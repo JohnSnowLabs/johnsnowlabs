@@ -271,7 +271,7 @@ kubectl get pods
 
 ## Dedicated Server
 
-For installing Generative AI Lab on a dedicated server please contact us at support@johnsnowlabs.com.
+For installing Generative AI Lab on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
 
 ### Recommended Configurations
 

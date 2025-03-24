@@ -20,7 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline designed to remove noise in input printed documents, enhancing OCR readability for more accurate text extraction.
+This is a pretrained pipeline designed to remove noise from printed documents, improving the clarity and readability of the text for more accurate Optical Character Recognition (OCR). The model effectively filters out background noise, smudges, and other visual distortions commonly found in scanned or photographed documents, ensuring that the text is clean and well-defined for optimal OCR performance.
+
+By preprocessing the document images to reduce noise, this pipeline significantly enhances the accuracy of text extraction, reducing the likelihood of errors caused by imperfections in the original document. It is an essential tool for improving OCR reliability in environments where document quality may vary, making it invaluable for tasks such as document digitization, automated content extraction, and data analysis.
+
 
 ## Predicted Entities
 

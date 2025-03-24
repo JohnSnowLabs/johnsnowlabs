@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion</title>
-          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion" />
-          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion" />
+          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion</title>
+          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion" />
+          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -218,6 +218,10 @@
                         <a class="class" href="AssertionChunkConverter.html" title="Creates a chunk column with metadata for training assertion status detection models."></a>
                         <a href="AssertionChunkConverter.html" title="Creates a chunk column with metadata for training assertion status detection models.">AssertionChunkConverter</a>
                       </li><li class="current-entities indented5">
+                        <a class="object" href="BertAssertionClassifier$.html" title=""></a>
+                        <a class="class" href="BertAssertionClassifier.html" title="BertAssertionClassifier extracts the assertion status from text by analyzing both the extracted entities and their surrounding context."></a>
+                        <a href="BertAssertionClassifier.html" title="BertAssertionClassifier extracts the assertion status from text by analyzing both the extracted entities and their surrounding context.">BertAssertionClassifier</a>
+                      </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="class" href="Datapoint.html" title="Created by jose on 19/03/18."></a>
                         <a href="Datapoint.html" title="Created by jose on 19/03/18.">Datapoint</a>
@@ -225,6 +229,14 @@
                         <a class="object" href="FewShotAssertionSentenceConverter$.html" title=""></a>
                         <a class="class" href="FewShotAssertionSentenceConverter.html" title=""></a>
                         <a href="FewShotAssertionSentenceConverter.html" title="">FewShotAssertionSentenceConverter</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="ReadBertAssertionClassifier.html" title=""></a>
+                        <a href="ReadBertAssertionClassifier.html" title="">ReadBertAssertionClassifier</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="ReadablePretrainedBertAssertionClassifier.html" title=""></a>
+                        <a href="ReadablePretrainedBertAssertionClassifier.html" title="">ReadablePretrainedBertAssertionClassifier</a>
                       </li><li name="com.johnsnowlabs.nlp.annotators.chunker" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="chunker"></a><a id="chunker:chunker"></a>
       <span class="permalink">
@@ -716,6 +728,80 @@ dataframe can be populated using the new version of ALAB module.</p><h4>Example<
 ))
 
 results = pipeline.fit(data).transform(data)</pre></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BertAssertionClassifierextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier]withWhiteAndBlackListParamswithHasEnginewithWriteTensorflowModelwithWriteOnnxModelwithHasFeatureswithCheckLicense"></a><a id="BertAssertionClassifier:BertAssertionClassifier"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertAssertionClassifier.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="BertAssertionClassifier extracts the assertion status from text by analyzing both the extracted entities and their surrounding context." href="BertAssertionClassifier.html"><span class="name">BertAssertionClassifier</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="BertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier">BertAssertionClassifier</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="BertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier">BertAssertionClassifier</a>] with <a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel">WriteOnnxModel</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">BertAssertionClassifier extracts the assertion status from text by analyzing both the extracted entities and their surrounding context.</p><div class="fullcomment"><div class="comment cmt"><p>BertAssertionClassifier extracts the assertion status from text by analyzing both the extracted entities and their surrounding context.</p><p>This classifier leverages pre-trained BERT models fine-tuned on biomedical text (e.g., BioBERT) and applies a
+sequence classification/regression head (a linear layer on the pooled output) to support multi-class document classification.</p><p><b>Key features:</b></p><ul><li>Accepts DOCUMENT and CHUNK type inputs and produces ASSERTION type annotations.</li><li>Emphasizes entity context by marking target entities with special tokens (e.g., [entity]), allowing the model to better focus on them.</li><li>Utilizes a transformer-based architecture (BERT for Sequence Classification) to achieve accurate assertion status prediction.</li></ul><p><b>Input Example:</b>
+<pre>
+This annotator preprocesses the input text to emphasize the target entities as follows:
+   [CLS] Patient with [entity] severe fever [entity].
+</pre></p><p>Pretrained models can be loaded with <code>pretrained</code> of the companion object:</p><pre><span class="kw">val</span> assertion = BertAssertionClassifier.pretrained()
+  .setInputCols(<span class="lit">"sentence"</span>, <span class="lit">"chunk"</span>)
+  .setOutputCol(<span class="lit">"assertion"</span>)</pre><p>Models from the HuggingFace 🤗 Transformers library are also compatible with Spark NLP 🚀. The Spark NLP Workshop
+example shows how to import them <a href="https://github.com/JohnSnowLabs/spark-nlp/discussions/5669" target="_blank">https://github.com/JohnSnowLabs/spark-nlp/discussions/5669</a>.</p><h4>Example</h4><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+  .setInputCol(<span class="lit">"text"</span>)
+  .setOutputCol(<span class="lit">"document"</span>)
+
+<span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
+  .setInputCols(<span class="lit">"document"</span>)
+  .setOutputCol(<span class="lit">"sentence"</span>)
+
+<span class="kw">val</span> tokenizer = <span class="kw">new</span> Tokenizer()
+  .setInputCols(<span class="lit">"sentence"</span>)
+  .setOutputCol(<span class="lit">"token"</span>)
+
+<span class="kw">val</span> wordEmbeddings = WordEmbeddingsModel.pretrained(<span class="lit">"embeddings_clinical"</span>, <span class="lit">"en"</span>, <span class="lit">"clinical/models"</span>)
+  .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence"</span>, <span class="lit">"token"</span>))
+  .setOutputCol(<span class="lit">"embeddings"</span>)
+
+<span class="kw">val</span> clinicalNer = MedicalNerModel.pretrained(<span class="lit">"ner_clinical"</span>, <span class="lit">"en"</span>, <span class="lit">"clinical/models"</span>)
+  .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence"</span>, <span class="lit">"token"</span>, <span class="lit">"embeddings"</span>))
+  .setOutputCol(<span class="lit">"ner"</span>)
+
+<span class="kw">val</span> nerConverter = <span class="kw">new</span> NerConverterInternal()
+  .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence"</span>, <span class="lit">"token"</span>, <span class="lit">"ner"</span>))
+  .setOutputCol(<span class="lit">"ner_chunk"</span>)
+
+<span class="kw">val</span> assertion = BertAssertionClassifier.pretrained()
+  .setInputCols(<span class="lit">"sentence"</span>, <span class="lit">"ner_chunk"</span>)
+  .setOutputCol(<span class="lit">"assertion"</span>)
+
+<span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(
+  documentAssembler, sentenceDetector, tokenizer, wordEmbeddings, clinicalNer, nerConverter, assertion
+))
+<span class="kw">val</span> text =<span class="lit">""</span><span class="lit">"Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural
+|and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor
+|located at the right lower lobe. Father with Alzheimer."</span><span class="lit">""</span>.stripMargin
+
+<span class="kw">val</span> data = <span class="std">Seq</span>(text).toDF(<span class="lit">"text"</span>)
+<span class="kw">val</span> result = pipeline.fit(data).transform(data)
+result.selectExpr(<span class="lit">"explode(assertion) as assertion"</span>).show(<span class="kw">false</span>)</pre><p>Results:</p><pre>+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|assertion                                                                                                                                                                  |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|{assertion, <span class="num">13</span>, <span class="num">24</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">0</span>, ner_chunk -&gt; severe fever, confidence -&gt; <span class="num">0.9996883</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">0</span>}, []}     |
+|{assertion, <span class="num">30</span>, <span class="num">40</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">1</span>, ner_chunk -&gt; sore throat, confidence -&gt; <span class="num">0.999676</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">0</span>}, []}       |
+|{assertion, <span class="num">55</span>, <span class="num">66</span>, absent, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">2</span>, ner_chunk -&gt; stomach pain, confidence -&gt; <span class="num">0.9989444</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">1</span>}, []}      |
+|{assertion, <span class="num">89</span>, <span class="num">99</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">3</span>, ner_chunk -&gt; an epidural, confidence -&gt; <span class="num">0.99903834</span>, ner_label -&gt; TREATMENT, sentence -&gt; <span class="num">1</span>}, []}   |
+|{assertion, <span class="num">106</span>, <span class="num">108</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">4</span>, ner_chunk -&gt; PCA, confidence -&gt; <span class="num">0.99900436</span>, ner_label -&gt; TREATMENT, sentence -&gt; <span class="num">1</span>}, []}         |
+|{assertion, <span class="num">114</span>, <span class="num">125</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">5</span>, ner_chunk -&gt; pain control, confidence -&gt; <span class="num">0.9993321</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">1</span>}, []}   |
+|{assertion, <span class="num">143</span>, <span class="num">157</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">6</span>, ner_chunk -&gt; short of breath, confidence -&gt; <span class="num">0.9997882</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">2</span>}, []}|
+|{assertion, <span class="num">199</span>, <span class="num">200</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">7</span>, ner_chunk -&gt; CT, confidence -&gt; <span class="num">0.9996158</span>, ner_label -&gt; TEST, sentence -&gt; <span class="num">3</span>}, []}                |
+|{assertion, <span class="num">203</span>, <span class="num">212</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">8</span>, ner_chunk -&gt; lung tumor, confidence -&gt; <span class="num">0.9997308</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">3</span>}, []}     |
+|{assertion, <span class="num">260</span>, <span class="num">268</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">9</span>, ner_chunk -&gt; Alzheimer, confidence -&gt; <span class="num">0.98367596</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">4</span>}, []}     |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="BertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier">BertAssertionClassifier</a></p></span><span class="cmt"><p><a href="dl/AssertionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel</a></p></span><span class="cmt"><p><span class="extype" name="MedicalBertForSequenceClassification">MedicalBertForSequenceClassification</span></p></span><span class="cmt"><p><a href="https://nlp.johnsnowlabs.com/docs/en/annotators" target="_blank">Annotators Main Page</a> for a list of transformer based classifiers and assertion annotators</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.Datapoint" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DatapointextendsProductwithSerializable"></a><a id="Datapoint:Datapoint"></a>
       <span class="permalink">
@@ -748,6 +834,38 @@ results = pipeline.fit(data).transform(data)</pre></div></div>
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.ReadBertAssertionClassifier" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReadBertAssertionClassifierextendsReadTensorflowModelwithReadOnnxModel"></a><a id="ReadBertAssertionClassifier:ReadBertAssertionClassifier"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/ReadBertAssertionClassifier.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ReadBertAssertionClassifier.html"><span class="name">ReadBertAssertionClassifier</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.ml.tensorflow.ReadTensorflowModel">ReadTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.ml.onnx.ReadOnnxModel">ReadOnnxModel</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.ReadablePretrainedBertAssertionClassifier" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReadablePretrainedBertAssertionClassifierextendsParamsAndFeaturesReadable[com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier]withHasPretrained[com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier]"></a><a id="ReadablePretrainedBertAssertionClassifier:ReadablePretrainedBertAssertionClassifier"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/ReadablePretrainedBertAssertionClassifier.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ReadablePretrainedBertAssertionClassifier.html"><span class="name">ReadablePretrainedBertAssertionClassifier</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable">ParamsAndFeaturesReadable</span>[<a href="BertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier">BertAssertionClassifier</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasPretrained">HasPretrained</span>[<a href="BertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier">BertAssertionClassifier</a>]</span>
+      </span>
+      
+      
     </li></ol>
             </div>
 
@@ -772,6 +890,22 @@ results = pipeline.fit(data).transform(data)</pre></div></div>
       </span>
       
       <p class="shortcomment cmt">This is the companion object of <a href="AssertionChunkConverter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.AssertionChunkConverter">AssertionChunkConverter</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="AssertionChunkConverter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.AssertionChunkConverter">AssertionChunkConverter</a>. Please refer to that class for the documentation.</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.BertAssertionClassifier" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BertAssertionClassifier"></a><a id="BertAssertionClassifier:BertAssertionClassifier"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertAssertionClassifier$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="BertAssertionClassifier$.html"><span class="name">BertAssertionClassifier</span></a><span class="result"> extends <a href="ReadablePretrainedBertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.ReadablePretrainedBertAssertionClassifier">ReadablePretrainedBertAssertionClassifier</a> with <a href="ReadBertAssertionClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.ReadBertAssertionClassifier">ReadBertAssertionClassifier</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.FewShotAssertionSentenceConverter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FewShotAssertionSentenceConverter"></a><a id="FewShotAssertionSentenceConverter:FewShotAssertionSentenceConverter"></a>
       <span class="permalink">

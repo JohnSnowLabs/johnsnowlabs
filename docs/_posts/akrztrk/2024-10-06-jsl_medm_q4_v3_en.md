@@ -21,6 +21,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
+NOTE: "This model's size is 8B and is available to Healthcare NLP license owners for free. However, this is not the most capable medical LLM that John Snow has to Labs offer. For the larger and better versions, please try out the models we have in [marketplaces](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)."
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -141,7 +144,8 @@ Here's the rationale:
 
 ## Benchmarking
 
-We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate.
+Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
 
 ```bash
 ## Overall

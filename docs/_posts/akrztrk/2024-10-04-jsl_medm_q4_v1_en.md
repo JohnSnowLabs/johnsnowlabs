@@ -19,7 +19,9 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This LLM model is trained to perform Q&A, Summarization, RAG, and Chat
+This LLM model is trained to perform Q&A, Summarization, RAG, and Chat.
+
+NOTE: "This model's size is 8B and is available to Healthcare NLP license owners for free. However, this is not the most capable medical LLM that John Snow has to Labs offer. For the larger and better versions, please try out the models we have in [marketplaces](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)."
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -220,7 +222,8 @@ KISUNLA is an amyloid beta-directed antibody indicated for the treatment of Alzh
 
 ## Benchmarking
 
-We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate
+We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. `%` indicates the preference rate.
+Please see the more benchmark information [here](https://nlp.johnsnowlabs.com/docs/en/benchmark-llm).
 
 ```bash
 ## Overall

@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -548,20 +549,40 @@ the context it appears in.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
 <th class="head"><p>Output Annotation type</p></th>
+<th class="head"><p>Optional Input Annotation types</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DOCUMENT,</span> <span class="pre">CHUNK</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">SENTENCE_EMBEDDINGS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOKEN</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>chunkWeight</strong> – Relative weight of chunk embeddings in comparison to sentence embeddings. The value should between 0 and 1.
-The default is 0.5, which means the chunk and sentence embeddings are given equal weight.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunkWeight</strong> – Relative weight of chunk embeddings in comparison to sentence embeddings. The value should between 0 and 1.
+The default is 0.5, which means the chunk and sentence embeddings are given equal weight.</p></li>
+<li><p><strong>strategy</strong> – Strategy for computing embeddings. Supported strategies are:
+- “sentence_average”: Average of sentence and chunk embeddings.
+- “scope_average”: Average of scope and chunk embeddings. The scope is defined by the scope window.
+- “chunk_only”: Only chunk embeddings are used.
+- “scope_only”: Only scope embeddings are used. The scope is defined by the scope window.
+Default is “sentence_average”.</p></li>
+<li><p><strong>scopeWindow</strong> – Scope window to calculate scope embeddings. The scope window is defined by two non-negative integers.
+The default is (0, 0), which means only the chunk embeddings are used.
+The first integer defines the number of tokens before the chunk and the second integer defines the number of tokens after the chunk.</p></li>
+</ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p><cite>strategy</cite> parameter defines the strategy for computing embeddings. Supported strategies are:
+- “sentence_average”: Average of sentence and chunk embeddings.
+- “scope_average”: Average of scope and chunk embeddings. The scope is defined by the scope window.
+- “chunk_only”: Only chunk embeddings are used.
+- “scope_only”: Only scope embeddings are used. The scope is defined by the scope window.
+The token column is optional and should be provided if “scope_only” or “scope_average” strategy is used.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
@@ -587,10 +608,10 @@ The default is 0.5, which means the chunk and sentence embeddings are given equa
 <span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;bert&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nerTagger</span> <span class="o">=</span> <span class="n">MedicalNerDLModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">()</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nerTagger</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;bert&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span><span class="s2">&quot;ner&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">BertSentenceChunkEmbeddings</span><span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;sbluebert_base_uncased_mli&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
@@ -678,7 +699,7 @@ The default is 0.5, which means the chunk and sentence embeddings are given equa
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.optionalInputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -692,8 +713,18 @@ The default is 0.5, which means the chunk and sentence embeddings are given equa
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.scopeWindow">
+<span class="sig-name descname"><span class="pre">scopeWindow</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.scopeWindow" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.storageRef">
 <span class="sig-name descname"><span class="pre">storageRef</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.storageRef" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.strategy">
+<span class="sig-name descname"><span class="pre">strategy</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.strategy" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1088,12 +1119,41 @@ RecursivePipeline</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setScopeWindow">
+<span class="sig-name descname"><span class="pre">setScopeWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setScopeWindow" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the scope window for the calculation of scope embeddings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>Tuple</em><em>[</em><em>int</em><em>,</em><em>int</em><em>]</em>) – Scope window for the calculation of scope embeddings.
+Left and right offset if the scope window. Offsets must be non-negative values. Default is (0, 0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setStorageRef">
 <span class="sig-name descname"><span class="pre">setStorageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setStorageRef" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets unique reference name for identification.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Unique reference name for identification</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setStrategy">
+<span class="sig-name descname"><span class="pre">setStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setStrategy" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the strategy for computing embeddings.
+Supported strategies are:
+- “sentence_average”: Average of sentence and chunk embeddings.
+- “scope_average”: Average of scope and chunk embeddings. The scope is defined by the scope window.
+- “chunk_only”: Only chunk embeddings are used.
+- “scope_only”: Only scope embeddings are used. The scope is defined by the scope window.
+Default is “sentence_average”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Strategy for computing embeddings.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1176,7 +1236,9 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.outputCol"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.scopeWindow"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.scopeWindow</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.storageRef"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.storageRef</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.strategy"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.strategy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.uid"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.clear"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.copy"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.copy()</span></code></a></li>
@@ -1215,7 +1277,9 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setOutputCol"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setParamValue"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setParams"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setScopeWindow"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.setScopeWindow()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setStorageRef"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.setStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setStrategy"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.setStrategy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.transform"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.write"><code class="docutils literal notranslate"><span class="pre">BertSentenceChunkEmbeddings.write()</span></code></a></li>
 </ul>

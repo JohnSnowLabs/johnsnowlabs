@@ -20,7 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline designed to correct skew in input printed documents, enhancing OCR readability for more accurate text extraction.
+This is a pretrained pipeline designed to correct skew in printed documents, improving the readability of the text and enhancing the accuracy of Optical Character Recognition (OCR) processes. By automatically detecting and adjusting any misalignment or tilt in scanned or photographed documents, the pipeline ensures that the document is properly oriented for optimal text extraction.
+
+The model uses advanced image processing techniques to analyze the orientation of the document, apply the necessary corrections, and produce a more uniform and readable output. This preprocessing step is crucial for OCR tasks, as skewed or tilted documents can lead to inaccurate text recognition. By enhancing the document's alignment, the pipeline significantly boosts the reliability and efficiency of subsequent OCR processes, making it an invaluable tool for digitizing and extracting text from printed materials.
+
 
 ## Predicted Entities
 

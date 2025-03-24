@@ -17,6 +17,35 @@ Parameters:
 
 - `cleanAnnotations`: Whether to remove annotation columns, by default False.
 - `returnRelationEntities`: Whether to return the entities in the relations or not, by default False.
+- `parentSource`: Parent source of the output.
+
+
+```
+
+Available options: `chunk` and ``.
+When set to `chunk`, the output will be designed as a chunk-based struct with the following schema::
+|-- json_output: array (nullable = true)
+|    |-- element: struct (containsNull = true)
+|    |    |-- chunk_id: string (nullable = true)
+|    |    |-- chunk: string (nullable = true)
+|    |    |-- begin: integer (nullable = true)
+|    |    |-- end: integer (nullable = true)
+|    |    |-- sentence_id: integer (nullable = true)
+|    |    |-- sentence: string (nullable = true)
+|    |    |-- ner_label: string (nullable = true)
+|    |    |-- ner_source: string (nullable = true)
+|    |    |-- ner_confidence: string (nullable = true)
+|    |    |-- assertion: string (nullable = true)
+|    |    |-- assertion_confidence: string (nullable = true)
+|    |    |-- relations: array (nullable = true)
+|    |    |    |-- element: map (containsNull = true)
+|    |    |    |    |-- key: string
+|    |    |    |    |-- value: string (valueContainsNull = true)
+  
+```  
+
+
+- `sentenceColumn`: Sentence column name. The sentence column is used to extract sentence of the chunk.
 - `outputAsStr`:  Whether to output the result as a string or as a structured json, by default True.
 
 

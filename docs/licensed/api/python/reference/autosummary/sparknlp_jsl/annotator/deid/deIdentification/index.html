@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -562,29 +563,33 @@ The default algorithm is ‘SHA1PRNG’.</p>
 </tr>
 </tbody>
 </table>
-<p>The configuration params for that module are in class DeidentificationParams.</p>
+<p>The configuration params for that module are in DeidentificationParams class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>regexPatternsDictionary</strong> – Dictionary with regular expression patterns that match some protected entity</p></li>
-<li><p><strong>obfuscateRefFile</strong> – File with the terms to be used for Obfuscation</p></li>
+<li><p><strong>obfuscateRefFile</strong> – File with the terms to be used for obfuscation process</p></li>
 <li><p><strong>refFileFormat</strong> – Format of the reference file</p></li>
 <li><p><strong>refSep</strong> – Sep character in refFile</p></li>
 <li><p><strong>selectiveObfuscationModesPath</strong> – <dl class="simple">
-<dt>Dictionary path where is the json that contains the selective obfuscation modes</dt><dd><p>’obfuscate’: Replace the values with random values.
-‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
-‘mask_entity_labels’: Replace the values with the entity value.
-‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”
-‘skip’: Skip the values (intact)</p>
+<dt>Dictionary path where is the json that contains the selective obfuscation modes</dt><dd><ul>
+<li><p>’obfuscate’: Replace the values with random values.</p></li>
+<li><p>’mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.</p></li>
+<li><p>’mask_entity_labels’: Replace the values with the entity value.</p></li>
+<li><p>’mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”</p></li>
+<li><p>’skip’: Skip the values (intact)</p></li>
+</ul>
 </dd>
 </dl>
-<p>The entities which have not been given in dictionary will deidentify according to <a href="#id1"><span class="problematic" id="id2">:param:`mode`</span></a></p>
+<p>The entities which have not been given in dictionary will deidentify according to the <cite>mode</cite> parameter.</p>
 </p></li>
 <li><p><strong>entityCasingModesPath</strong> – <dl class="simple">
-<dt>Dictionary path where is the json that contains the entity casing modes.</dt><dd><p>’lowercase’: Converts all characters to lower case using the rules of the default locale.
-‘uppercase’: Converts all characters to upper case using the rules of the default locale.
-‘capitalize’: Converts the first character to upper case and converts others to lower case.
-‘titlecase’: Converts the first character in every token to upper case and converts others to lower case.</p>
+<dt>Dictionary path where is the json that contains the entity casing modes.</dt><dd><ul>
+<li><p>’lowercase’: Converts all characters to lower case using the rules of the default locale.</p></li>
+<li><p>’uppercase’: Converts all characters to upper case using the rules of the default locale.</p></li>
+<li><p>’capitalize’: Converts the first character to upper case and converts others to lower case.</p></li>
+<li><p>’titlecase’: Converts the first character in every token to upper case and converts others to lower case.</p></li>
+</ul>
 </dd>
 </dl>
 </p></li>
@@ -594,11 +599,8 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
@@ -624,7 +626,7 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_deid_enriched&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_con&quot;</span><span class="p">)</span>
 <span class="go"> Deidentification</span>
@@ -638,9 +640,8 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setRefFileFormat</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setRefSep</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s2">&quot;obfuscate&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">setDateFormats</span><span class="p">(</span><span class="n">Array</span><span class="p">(</span><span class="s2">&quot;MM/dd/yy&quot;</span><span class="p">,</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="p">))</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setDateFormats</span><span class="p">([</span><span class="s2">&quot;MM/dd/yy&quot;</span><span class="p">,</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">setDateTag</span><span class="p">(</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setDays</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">)</span>
 <span class="go">Pipeline</span>
@@ -726,6 +727,11 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.fakerLengthOffset">
+<span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.fixedMaskLength">
 <span class="sig-name descname"><span class="pre">fixedMaskLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.fixedMaskLength" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -763,6 +769,11 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepMonth">
 <span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">keepTextSizeForObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1226,19 +1237,12 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setBlackList" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.
-:param s: List of entities that will be ignored in the regex file. The rest will be processed.
-:type s: list
-:param The default values are “IBAN”:
-:param “ZIP”:
-:param “NPI”:
-:param “DLN”:
-:param “PASSPORT”:
-:param “C_CARD”:
-:param “DEA”:
-:param “SSN”:
-:param “IP”:
-:param “DEA”.:</p>
+The default values are: “IBAN”, “ZIP”, “NPI”, “DLN”, “PASSPORT”, “C_CARD”, “DEA”, “SSN”, “IP”, “DEA”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>list</em>) – List of entities that will be ignored in the regex file. The rest will be processed.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1353,6 +1357,18 @@ Processing continues with the next one. This comes with a performance penalty.</
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setFakerLengthOffset">
+<span class="sig-name descname"><span class="pre">setFakerLengthOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setFakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Must be greater than 0.
+Default: 3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Integer value to specify length deviation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setFixedMaskLength">
 <span class="sig-name descname"><span class="pre">setFixedMaskLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setFixedMaskLength" title="Permalink to this definition">#</a></dt>
 <dd><p>Fixed mask length: this is the length of the masking sequence that will be used when the ‘fixed_length_chars’
@@ -1436,6 +1452,20 @@ Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">setKeepTextSizeForObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies whether the output should maintain the same character length as the input text.
+If True, the output text will remain the same if same length is available, else length might vary.
+If False, the output will be completely random.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the text length same obfuscating entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepYear">
 <span class="sig-name descname"><span class="pre">setKeepYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepYear" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to keep the year intact when obfuscating date entities.
@@ -1492,7 +1522,7 @@ RecursivePipeline</p>
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the masking policy</p>
 <ul class="simple">
-<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id3"><span class="problematic" id="id4">**</span></a><a href="#id5"><span class="problematic" id="id6">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
+<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
 <li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
 <li><p>fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
 </ul>
@@ -1860,7 +1890,7 @@ The default algorithm is ‘SHA1PRNG’.</p>
 </tr>
 </tbody>
 </table>
-<p>The configuration params for that module are in class DeidentificationParams.</p>
+<p>The configuration params for that module are in DeidentificationParams class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>regexEntities</strong> – Keep the regex entities used in the regexPatternDictionary</p>
@@ -1869,11 +1899,8 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
@@ -1889,17 +1916,17 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="go">&gt;&gt; embeddings = WordEmbeddingsModel \</span>
-<span class="go">...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \</span>
-<span class="go">...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \</span>
-<span class="go">...     .setOutputCol(&quot;embeddings&quot;)</span>
-<span class="go">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
 <span class="go"> Ner entities</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clinical_sensitive_entities</span> <span class="o">=</span> <span class="n">MedicalNerModel</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_deid_enriched&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_con&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
@@ -1908,9 +1935,8 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;dei&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s2">&quot;obfuscate&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">setDateFormats</span><span class="p">(</span><span class="n">Array</span><span class="p">(</span><span class="s2">&quot;MM/dd/yy&quot;</span><span class="p">,</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="p">))</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setDateFormats</span><span class="p">([</span><span class="s2">&quot;MM/dd/yy&quot;</span><span class="p">,</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">setDateTag</span><span class="p">(</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setDays</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([</span>
@@ -1985,6 +2011,11 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.fakerLengthOffset">
+<span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.fixedMaskLength">
 <span class="sig-name descname"><span class="pre">fixedMaskLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.fixedMaskLength" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2022,6 +2053,11 @@ The default algorithm is ‘SHA1PRNG’.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepMonth">
 <span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">keepTextSizeForObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2386,8 +2422,8 @@ If the given <code class="docutils literal notranslate"><span class="pre">ageGro
 The dictionary should contain the age group name as the key and an list of two integers as the value.
 The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.
 Default age groups are as follows in the English language:</p>
-<section id="id8">
-<h4>Default and example dictionary<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<section id="id6">
+<h4>Default and example dictionary<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span> <span class="s2">&quot;baby&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>  <span class="s2">&quot;toddler&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
 <span class="gp">... </span>  <span class="s2">&quot;child&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
@@ -2436,19 +2472,12 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setBlackList" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
-The default values are “IBAN”,”ZIP”,”NPI”,”DLN”,”PASSPORT”,”C_CARD”,”DEA”,”SSN”, “IP”, “DEA”.
-:param s: List of entities that will be ignored in the regex file. The rest will be processed.
-:type s: list
-:param The default values are “IBAN”:
-:param “ZIP”:
-:param “NPI”:
-:param “DLN”:
-:param “PASSPORT”:
-:param “C_CARD”:
-:param “DEA”:
-:param “SSN”:
-:param “IP”:
-:param “DEA”.:</p>
+The default values are: “IBAN”, “ZIP”, “NPI”, “DLN”, “PASSPORT”, “C_CARD”, “DEA”, “SSN”, “IP”, “DEA”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>list</em>) – List of entities that will be ignored in the regex file. The rest will be processed.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2529,6 +2558,18 @@ Processing continues with the next one. This comes with a performance penalty.</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, exceptions are handled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset">
+<span class="sig-name descname"><span class="pre">setFakerLengthOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Must be greater than 0.
+Default: 3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Integer value to specify length deviation.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2617,6 +2658,20 @@ Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">setKeepTextSizeForObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies whether the output should maintain the same character length as the input text.
+If True, the output text will remain the same if same length is available, else length might vary.
+If False, the output will be completely random.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the text length same obfuscating entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepYear">
 <span class="sig-name descname"><span class="pre">setKeepYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepYear" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to keep the year intact when obfuscating date entities.
@@ -2673,7 +2728,7 @@ RecursivePipeline</p>
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the masking policy</p>
 <ul class="simple">
-<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id9"><span class="problematic" id="id10">**</span></a><a href="#id11"><span class="problematic" id="id12">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
+<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id7"><span class="problematic" id="id8">**</span></a><a href="#id9"><span class="problematic" id="id10">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
 <li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
 <li><p>fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
 </ul>
@@ -3013,6 +3068,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.days"><code class="docutils literal notranslate"><span class="pre">DeIdentification.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentification.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.entityCasingModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.entityCasingModesPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getter_attrs</span></code></a></li>
@@ -3021,6 +3077,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.inputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentification.isRandomDateDisplacement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentification.keepMonth</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.keepTextSizeForObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.keepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.language"><code class="docutils literal notranslate"><span class="pre">DeIdentification.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.lazyAnnotator</span></code></a></li>
@@ -3093,6 +3150,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setEntityCasingModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setEntityCasingModes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGenderAwareness()</span></code></a></li>
@@ -3100,6 +3158,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setIsRandomDateDisplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setKeepMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setKeepTextSizeForObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setKeepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setLazyAnnotator()</span></code></a></li>
@@ -3145,6 +3204,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getter_attrs</span></code></a></li>
@@ -3153,6 +3213,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.inputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.isRandomDateDisplacement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.keepMonth</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.keepTextSizeForObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.keepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.lazyAnnotator</span></code></a></li>
@@ -3218,6 +3279,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateToYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGenderAwareness()</span></code></a></li>
@@ -3225,6 +3287,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setIsRandomDateDisplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setKeepMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setKeepTextSizeForObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setKeepYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setLazyAnnotator()</span></code></a></li>

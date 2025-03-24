@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -540,7 +541,7 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssertionDLApproach</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorApproachInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasEngine</span></code>, <a class="reference internal" href="../../handle_exception_params/index.html#sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams" title="sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorApproachInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasEngine</span></code>, <a class="reference internal" href="../../handle_exception_params/index.html#sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams" title="sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams</span></code></a>, <a class="reference internal" href="../../white_black_list_params/index.html#sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams" title="sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams</span></code></a></p>
 <p>Train a Assertion Model algorithm using deep learning.</p>
 <p>Example of possible values: “present”, “absent”, “hypothetical”, “conditional”,
 “associated_with_other_person”, etc.</p>
@@ -649,6 +650,16 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.batchSize">
 <span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.blackList">
+<span class="sig-name descname"><span class="pre">blackList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.blackList" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.caseSensitive" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -794,6 +805,11 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.verbose">
 <span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.verbose" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.whiteList">
+<span class="sig-name descname"><span class="pre">whiteList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.whiteList" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1035,6 +1051,28 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setBlackList">
+<span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setBlackList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether white listed and black listed entities are case sensitive or not. Default: True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setConfigProtoBytes">
 <span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the ConfigProto from tensorflow, serialized into byte array.</p>
@@ -1053,6 +1091,17 @@ a default value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>info</strong> (<em>str</em>) – Descriptive information about the dataset being used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setDenyList">
+<span class="sig-name descname"><span class="pre">setDenyList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setDenyList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1307,6 +1356,17 @@ it during training.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setWhiteList">
+<span class="sig-name descname"><span class="pre">setWhiteList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setWhiteList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.write">
 <span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JavaMLWriter</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.write" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an MLWriter instance for this ML instance.</p>
@@ -1317,10 +1377,12 @@ it during training.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssertionDLModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasStorageRef</span></code>, <a class="reference internal" href="../../handle_exception_params/index.html#sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams" title="sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasStorageRef</span></code>, <a class="reference internal" href="../../handle_exception_params/index.html#sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams" title="sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params.HandleExceptionParams</span></code></a>, <a class="reference internal" href="../../white_black_list_params/index.html#sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams" title="sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams</span></code></a></p>
 <p>AssertionDL is a deep Learning based approach used to extract Assertion Status.</p>
 <p>AssertionDLModel requires DOCUMENT, CHUNK and WORD_EMBEDDINGS type
 annotator inputs. To train a custom model, use AssertionDLApproach.</p>
+<p class="rubric">Notes</p>
+<p>Filtering parameters are processed before replaceLabels parameter.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -1828,7 +1890,7 @@ RecursivePipeline</p>
 <span class="sig-name descname"><span class="pre">setReplaceLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">replaceLabels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setReplaceLabels" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the assertion labels to be replaced for the specified new labels.</p>
 <p class="rubric">Notes</p>
-<p><code class="docutils literal notranslate"><span class="pre">replaceLabels</span></code> functionality is processed later than <code class="docutils literal notranslate"><span class="pre">entityAssertion</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">replaceLabels</span></code> functionality is processed later than <code class="docutils literal notranslate"><span class="pre">entityAssertion</span></code> and filtering parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>replaceLabels</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – The assertion labels to be replaced for the specified new labels.</p>
@@ -1923,6 +1985,8 @@ RecursivePipeline</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.blackList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.caseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.configProtoBytes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.datasetInfo"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.datasetInfo</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.doExceptionHandling</span></code></a></li>
@@ -1952,6 +2016,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.uid"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.validationSplit"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.validationSplit</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.verbose"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.verbose</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.whiteList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.whiteList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.clear"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.copy"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.explainParam()</span></code></a></li>
@@ -1976,8 +2041,11 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.save"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.set"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setBlackList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setDatasetInfo"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDatasetInfo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setDenyList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDenyList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setDropout()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setEnableOutputLogs"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setEnableOutputLogs()</span></code></a></li>
@@ -2000,6 +2068,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setTestDataset"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setTestDataset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setValidationSplit"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setValidationSplit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setVerbose"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setVerbose()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.setWhiteList"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.setWhiteList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.write"><code class="docutils literal notranslate"><span class="pre">AssertionDLApproach.write()</span></code></a></li>
 </ul>
 </li>

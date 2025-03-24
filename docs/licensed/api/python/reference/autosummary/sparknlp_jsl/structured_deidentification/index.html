@@ -362,63 +362,92 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.structured_deidentification.StructuredDeidentification">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StructuredDeidentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnsSeed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefSource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useRandomDateDisplacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dateFormats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idColumn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.structured_deidentification.StructuredDeidentification" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StructuredDeidentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnsSeed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefSource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useRandomDateDisplacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dateFormats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idColumn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepYear</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepMonth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unnormalizedDateMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'obfuscate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepTextSizeForObfuscation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fakerLengthOffset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genderAwareness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ageRangesByHipaa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.structured_deidentification.StructuredDeidentification" title="Permalink to this definition">#</a></dt>
 <dd><p>A helper class that allow to obfuscate a structured deidentification.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>columns</strong> (<em>dict</em>) – <dl>
-<dt>Is a map that allows to select the name of the column with the entity.</dt><dd><p>The key of the map is the column in the dataframe and the value of the map is the entity for that column.</p>
-<p>The default entities are:
-“location” A general location.
-“location-other” A location that is not country, street,hospital,city or state
-“street” A street
-“hospital” The name of a hospital.
-“city” A city
-“state” A state
-“zip” The zip code
-“country” A country
-“contact” The contact of one person
-“username” A username
-“phone” A number phone.
-“fax” The number fax
-“url” A url for internet
-“email” The email of one person
-“profession” A profession of one person
-“name” The name opf one person
-“doctor” The name of a doctor
-“patient” The name of the patient
-“id” A general ID number
-“bioid” Is a system to screen for protein interactions as they occur in living cells
-“age” The age of something or someone
-“organization” Name of one organization o company
-“healthplan” The id that identify the healthplan
-“medicalrecord” The identification of a medical record
-“device” The id that identified a device
-“date” A general date
-“ssn” A Social Security Number
-“ip” A Internet Protocol
-“passport” A random passport
-“dln” A Driver’s License Number
-“npi” A National Provider Identifier
-“c_card” A credit card number
-“iban” A International Bank Account Number
-“dea” A Drug Enforcement Administration</p>
-</dd>
-</dl>
+<li><p><strong>columns</strong> (<em>dict</em>) – <p>It is a dictionary that allows to select the name of the column with the entity.
+The key of the dictionary is the column in the dataframe and the value of the dictionary is the entity for that column.
+The default entities are:</p>
+<blockquote>
+<div><ul>
+<li><p>”location” A general location.</p></li>
+<li><p>”location-other” A location that is not country, street,hospital,city or state</p></li>
+<li><p>”street” A street</p></li>
+<li><p>”hospital” The name of a hospital.</p></li>
+<li><p>”city” A city</p></li>
+<li><p>”state” A state</p></li>
+<li><p>”zip” The zip code</p></li>
+<li><p>”country” A country</p></li>
+<li><p>”contact” The contact of one person</p></li>
+<li><p>”username” A username</p></li>
+<li><p>”phone” A number phone.</p></li>
+<li><p>”fax” The number fax</p></li>
+<li><p>”url” A url for internet</p></li>
+<li><p>”email” The email of one person</p></li>
+<li><p>”profession” A profession of one person</p></li>
+<li><p>”name” The name opf one person</p></li>
+<li><p>”doctor” The name of a doctor</p></li>
+<li><p>”patient” The name of the patient</p></li>
+<li><p>”id” A general ID number</p></li>
+<li><p>”bioid” It is a system to screen for protein interactions as they occur in living cells</p></li>
+<li><p>”age” The age of something or someone</p></li>
+<li><p>”organization” Name of one organization or company</p></li>
+<li><p>”healthplan” The id that identify the health plan</p></li>
+<li><p>”medicalrecord” The identification of a medical record</p></li>
+<li><p>”device” The id that identified a device</p></li>
+<li><p>”date” A general date</p></li>
+<li><p>”ssn” A Social Security Number</p></li>
+<li><p>”ip” A Internet Protocol</p></li>
+<li><p>”passport” A random passport</p></li>
+<li><p>”dln” A Driver’s License Number</p></li>
+<li><p>”npi” A National Provider Identifier</p></li>
+<li><p>”c_card” A credit card number</p></li>
+<li><p>”iban” A International Bank Account Number</p></li>
+<li><p>”dea” A Drug Enforcement Administration</p></li>
+</ul>
+</div></blockquote>
 </p></li>
-<li><p><strong>columnsSeed</strong> (<em>int</em>) – Allow to add a seed to the column that you want to obfuscate.The seed used to randomly select the entities used
+<li><p><strong>columnsSeed</strong> (<em>dict</em>) – Allow to add a seed to the column that you want to obfuscate.The seed used to randomly select the entities used
 during obfuscation mode.</p></li>
-<li><p><strong>obfuscateRefFile</strong> (<em>bool</em>) – This is an optional parameter that allows to add your own terms to be used for obfuscation.
+<li><p><strong>obfuscateRefFile</strong> (<em>str</em>) – This is an optional parameter that allows to add your own terms to be used for obfuscation.
 The file contains as a key the entity and as the value the terms that will be used in the obfuscation.</p></li>
 <li><p><strong>days</strong> (<em>int</em>) – Number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will
 be used</p></li>
-<li><p><strong>useRandomDateDisplacement</strong> (<em>bool</em>) – Use a random displacement days in dates entities.If true use random displacement days in dates entities,if false use the days.</p></li>
-<li><p><strong>dateFormats</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of date formats.example [“dd-MM-yyyy”, “dd/MM/yyyy”, “d/M/yyyy”, “dd-MM-yyyy”, “d-M-yyyy”]</p></li>
-<li><p><strong>language</strong> – The language used to select faker entities.
-The values are the following:
-‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p></li>
+<li><p><strong>useRandomDateDisplacement</strong> (<em>bool</em>) – Use a random displacement days in dates entities. If true, use a random displacement days in dates entities, otherwise use the days parameter.</p></li>
+<li><p><strong>dateFormats</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of date formats. Example: [“dd-MM-yyyy”, “dd/MM/yyyy”, “d/M/yyyy”, “dd-MM-yyyy”, “d-M-yyyy”]</p></li>
+<li><p><strong>language</strong> (<em>str</em>) – <p>The language used to select faker entities.
+The values are the following:</p>
+<blockquote>
+<div><ul>
+<li><p>’en’ (English)</p></li>
+<li><p>’de’ (German)</p></li>
+<li><p>’es’ (Spanish)</p></li>
+<li><p>’fr’ (French)</p></li>
+<li><p>’ar’ (Arabic)</p></li>
+<li><p>’ro’ (Romanian)</p></li>
+</ul>
+</div></blockquote>
+<p>Default:’en’.</p>
+</p></li>
 <li><p><strong>idColumn</strong> (<em>str</em>) – The column that contains the id of the row. If provided, data will obfuscate consistently by idColumn, especially date entities.</p></li>
+<li><p><strong>region</strong> (<em>str</em>) – With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.
+The values are the following: ‘eu’ for European Union, ‘us’ for USA.
+Default is ‘’. It means given dateFormats will be used.</p></li>
+<li><p><strong>keepYear</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.
+If true, the year will remain unchanged during the obfuscation process. Default is False.</p></li>
+<li><p><strong>keepMonth</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.
+If true, the month will remain unchanged during the obfuscation process. Default is False.</p></li>
+<li><p><strong>unnormalizedDateMode</strong> (<em>str</em>) – The mode to use if the date is not formatted. The values are the following: ‘mask’, ‘obfuscate’, ‘skip’.
+Default: obfuscate.</p></li>
+<li><p><strong>keepTextSizeForObfuscation</strong> (<em>bool</em>) – Whether the output should maintain the same character length as the input text. Default is False.</p></li>
+<li><p><strong>fakerLengthOffset</strong> (<em>int</em>) – It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled.
+Value must be greater than 0. Default is 3.</p></li>
+<li><p><strong>genderAwareness</strong> (<em>bool</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is True, it might decrease performance. Default is False.</p></li>
+<li><p><strong>ageRangesByHipaa</strong> (<em>bool</em>) – Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.
+Default is False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -444,11 +473,17 @@ The values are the following:
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.structured_deidentification.StructuredDeidentification.obfuscateColumns">
-<span class="sig-name descname"><span class="pre">obfuscateColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.structured_deidentification.StructuredDeidentification.obfuscateColumns" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">obfuscateColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputAsArray</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_obfuscated'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.structured_deidentification.StructuredDeidentification.obfuscateColumns" title="Permalink to this definition">#</a></dt>
 <dd><p>Obfuscate the columns of a dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – The dataframe to obfuscate</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – The dataframe to obfuscate</p></li>
+<li><p><strong>outputAsArray</strong> (<em>bool</em>) – If True, the output will be an array of strings, otherwise will be a string. Default: True.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em>) – If True, the columns will be overwritten, otherwise will be added to the dataframe. Default: True.</p></li>
+<li><p><strong>suffix</strong> (<em>str</em>) – The suffix to add to the obfuscated columns if <cite>overwrite</cite> is False. Default: “_obfuscated”.
+It must not be an empty string.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dataframe with the columns obfuscated</p>
