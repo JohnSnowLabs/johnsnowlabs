@@ -22,6 +22,7 @@ sidebar:
 
 Drug Insights, a newly introduced feature within the Medical Chatbot, provides detailed, FDA-sourced information on medications to support safe and informed usage
 
+<iframe width="800" height="450" src="https://www.youtube.com/embed/dzXOlaXtKts?si=FZQpMjSD6UopVNGv&hd=1" title="Drug Insights Agent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <div class="h3-box" markdown="1">
 
@@ -29,15 +30,15 @@ Drug Insights, a newly introduced feature within the Medical Chatbot, provides d
 
 **1.Comprehensive Drug Information** 
 
-The Drug Insights tool provides users with a wealth of information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
+The Drug Insights agent provides users with information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
 
 **2. Context-Aware Responses**
 
-One of the standout features of the Drug Insights tool is its ability to process complex, situational queries. Users can ask questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the tool empowers users to make well-informed decisions about their healthcare.
+One of the standout features of the Drug Insights agent is its ability to process complex, situational queries. Users can ask questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the agent empowers users to make well-informed decisions about their healthcare.
 
 **3.Direct Citations**
 
-To ensure accuracy and credibility, the tool references FDA-approved drug leaflets and related documentation in its responses. These citations are not only included in the generated answers but are also made accessible to users via an intuitive user interface. This allows users to explore the source material in greater depth, gaining a more comprehensive understanding of the medications. The documentation is organized into easily navigable sections, making it simple to find detailed information relevant to the user's query.
+To ensure accuracy and credibility, the agent references FDA-approved drug leaflets and related documentation in its responses. These citations are not only included in the generated answers but are also made accessible to users via an intuitive user interface. This allows users to explore the source material in greater depth, gaining a more comprehensive understanding of the medications. The documentation is organized into easily navigable sections, making it simple to find detailed information relevant to the user's query.
 
 <div class="h3-box" markdown="1">
 
@@ -45,21 +46,24 @@ To ensure accuracy and credibility, the tool references FDA-approved drug leafle
 
 **1. Reliable Medication Guidance**
 
-The Drug Insights tool provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.
+The Drug Insights agent provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.
 
 **2. Tailored Information**
 
-By leveraging advanced natural language processing, the tool can respond to complex queries tailored to individual circumstances. Whether addressing medication use for specific age groups, interactions with other drugs, or compatibility with certain foods, the Drug Insights tool delivers contextually relevant answers. This personalized approach helps users navigate complex medical scenarios with clarity and confidence.
+By leveraging advanced natural language processing, the agent can respond to complex queries tailored to individual circumstances. Whether addressing medication use for specific age groups, interactions with other drugs, or compatibility with certain foods, the Drug Insights agent delivers contextually relevant answers. This personalized approach helps users navigate complex medical scenarios with clarity and confidence.
 
 **3. Transparency & Trust**
 
-Each response provided by the tool includes direct citations from FDA-approved drug leaflets, ensuring that users have access to credible and up-to-date information. The ability to explore these resources further empowers users to deepen their understanding of medications, fostering a sense of trust and transparency. The intuitive organization of documentation ensures that even detailed information is easily accessible and comprehensible.
+Each response provided by the agent includes direct citations from FDA-approved drug leaflets, ensuring that users have access to credible and up-to-date information. The ability to explore these resources further empowers users to deepen their understanding of medications, fostering a sense of trust and transparency. The intuitive organization of documentation ensures that even detailed information is easily accessible and comprehensible.
 
 </div><div class="h3-box" markdown="1">
 
-## "Search for US Healthcare Providers"
+## Search for US Healthcare Providers
 
-Search for US Healthcare Providers, a newly introduced feature within the Medical Chatbot, allows users to efficiently locate detailed information on healthcare professionals across the United States. It leverages the National Plan and Provider Enumeration System (NPPES) database, maintained by the Centers for Medicare & Medicaid Services (CMS).
+The Medical Chatbot now allows users to search for US Healthcare Providers, by leveraging the National Plan and Provider Enumeration System (NPPES) database, maintained by the Centers for Medicare & Medicaid Services (CMS).
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/9q3bAgAkPQ0?si=llPGvA8zy3mlQXZP&hd=1" title="Drug Insights Agent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <div class="h3-box" markdown="1">
 
