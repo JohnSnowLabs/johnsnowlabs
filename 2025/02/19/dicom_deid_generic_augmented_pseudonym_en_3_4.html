@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pseudonym Dicom de-identification | dicom_deid_generic_augmented_pseudonym | Visual NLP 5.5.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis is a pretrained pipeline designed for DICOM De-identification, focused on replacing sensitive metadata values with pseudonyms while ensuring the privacy of Protected Health Information (PHI). The model carefully anonymizes the metadata by replacing personal identifiers, such as patient names, IDs, an...">
+<meta name="description" content="DescriptionThis pipeline anonymizes DICOM metadata by replacing personal identifiers with pseudonyms instead of removing them. It ensures that PHI is no longer traceable while maintaining data integrity for longitudinal studies and collaborations.Obfuscation mode: Removes PII from images and replaces sensitive metad...">
 <!-- <link rel="canonical" href="/2025/02/19/dicom_deid_generic_augmented_pseudonym_en_3_4.html"> -->
 <link rel="canonical" href="/2025/02/19/dicom_deid_generic_augmented_pseudonym_en_3_4.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,7 +514,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This is a pretrained pipeline designed for DICOM De-identification, focused on replacing sensitive metadata values with pseudonyms while ensuring the privacy of Protected Health Information (PHI). The model carefully anonymizes the metadata by replacing personal identifiers, such as patient names, IDs, and other sensitive details, with pseudonyms.</p>
+<p>This pipeline anonymizes DICOM metadata by replacing personal identifiers with pseudonyms instead of removing them. It ensures that PHI is no longer traceable while maintaining data integrity for longitudinal studies and collaborations.</p>
+
+<p>Obfuscation mode: Removes PII from images and replaces sensitive metadata values (e.g., patient names, IDs) with randomized or pseudonymized data, preserving the overall structure and usability of the metadata.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 

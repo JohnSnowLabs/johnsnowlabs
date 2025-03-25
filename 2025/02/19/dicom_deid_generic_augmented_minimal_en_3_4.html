@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Minimal Dicom de-identification | dicom_deid_generic_augmented_minimal | Visual NLP 5.5.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionPretrained pipeline for doing Dicom De-identification, attempting to remove the least possible amount of tags and image texts.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  dicom_df = spark.read.format("binaryFile").load(dicom_path)pipeline = Pretrained...">
+<meta name="description" content="DescriptionThis pipeline performs the least intrusive form of DICOM de-identification, removing only the most critical personal identifiers while preserving as much metadata as possible. It ensures that Protected Health Information (PHI) is stripped from both the image and metadata, but all non-sensitive details rem...">
 <!-- <link rel="canonical" href="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html"> -->
 <link rel="canonical" href="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,7 +514,9 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>Pretrained pipeline for doing Dicom De-identification, attempting to remove the least possible amount of tags and image texts.</p>
+<p>This pipeline performs the least intrusive form of DICOM de-identification, removing only the most critical personal identifiers while preserving as much metadata as possible. It ensures that Protected Health Information (PHI) is stripped from both the image and metadata, but all non-sensitive details remain intact for research and analysis.</p>
+
+<p>Minimal removal: Eliminates only Personally Identifiable Information (PII) from images and the most essential metadata fields while keeping the majority of the DICOM tags untouched.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
