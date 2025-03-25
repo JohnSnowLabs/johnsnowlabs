@@ -20,7 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a pretrained pipeline designed for DICOM De-identification, focused on replacing sensitive metadata values with pseudonyms while ensuring the privacy of Protected Health Information (PHI). The model carefully anonymizes the metadata by replacing personal identifiers, such as patient names, IDs, and other sensitive details, with pseudonyms.
+This pipeline anonymizes DICOM metadata by replacing personal identifiers with pseudonyms instead of removing them. It ensures that PHI is no longer traceable while maintaining data integrity for longitudinal studies and collaborations.
+
+Obfuscation mode: Removes PII from images and replaces sensitive metadata values (e.g., patient names, IDs) with randomized or pseudonymized data, preserving the overall structure and usability of the metadata.
 
 ## Predicted Entities
 
