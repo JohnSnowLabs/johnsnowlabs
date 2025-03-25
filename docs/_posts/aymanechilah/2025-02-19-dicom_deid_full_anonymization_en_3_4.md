@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline provides the highest level of anonymization by completely removing all identifying text from both the image and metadata. It is ideal for preparing DICOM files for public sharing, research, or regulatory compliance, ensuring that no traceable information remains.
+This pipeline provides the highest level of anonymization by completely removing all text from both the image and metadata. It is ideal for preparing DICOM files for public sharing, research, or regulatory compliance, ensuring that no traceable information remains.
 
 Comprehensive removal: Eliminates all visible text within images and removes or anonymizes most metadata fields, including patient identifiers, physician details, and hospital information.
 
