@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 24-04-2025 New Features and Enhancements
+## 24-03-2025 New Features and Enhancements
 <!-- </div><div class="h3-box" markdown="1"> -->
 ### Get Precise Drug Insights 
 
@@ -86,9 +86,9 @@ Results are presented in tabular format, allowing users to specify the details t
 
 </div><div class="h3-box" markdown="1">
 
-### Expanded Knowledge Base: Integration of MDPI
+### New Knowledge Base: MDPI
 
-The Knowledge Base now includes articles from MDPI, adding to the existing collection sourced from PubMed, MedRxiv, and BioRxiv. This expansion provides access to a broader range of peer-reviewed research, covering various disciplines, including medicine, life sciences, and technology. MDPI (Multidisciplinary Digital Publishing Institute) is an open-access academic publisher that publishes peer-reviewed journals covering various scientific disciplines, including science, technology, engineering, medicine, and the humanities.
+A new knowledge base is now available in the Medical Chatbot - MDPI, adding to the existing collection sourced from PubMed, MedRxiv, and BioRxiv. This expansion provides access to a broader range of peer-reviewed research, covering various disciplines, including medicine, life sciences, and technology. MDPI (Multidisciplinary Digital Publishing Institute) is an open-access academic publisher that publishes peer-reviewed journals covering various scientific disciplines, including science, technology, engineering, medicine, and the humanities.
 
 <div class="h3-box" markdown="1">
 
