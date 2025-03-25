@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 24-04-2025 New Features and Enhancements
+## 24-03-2025 New Features and Enhancements
 <!-- </div><div class="h3-box" markdown="1"> -->
 ### Get Precise Drug Insights 
 
@@ -83,6 +83,48 @@ Results are presented in tabular format, allowing users to specify the details t
 **Custom Data Exports**: Tailor data presentation and integrate seamlessly into research or reporting workflows.
 
 **Trusted Source**: Uses regularly updated, federally maintained data for accuracy and compliance.
+
+</div><div class="h3-box" markdown="1">
+
+### New Knowledge Base: MDPI
+
+A new knowledge base is now available in the Medical Chatbot - MDPI, adding to the existing collection sourced from PubMed, MedRxiv, and BioRxiv. This expansion provides access to a broader range of peer-reviewed research, covering various disciplines, including medicine, life sciences, and technology. MDPI (Multidisciplinary Digital Publishing Institute) is an open-access academic publisher that publishes peer-reviewed journals covering various scientific disciplines, including science, technology, engineering, medicine, and the humanities.
+
+<div class="h3-box" markdown="1">
+
+#### Key Capabilities
+
+**1.Broader Access to Peer-Reviewed Research**
+
+Users can now explore MDPI’s open-access publications alongside other trusted sources, ensuring comprehensive coverage of recent studies, systematic reviews, and experimental research.
+
+**2.Enhanced Contextual Search & Discovery**
+
+The Medical Chatbot is designed to process complex queries, delivering highly relevant results from MDPI alongside existing sources. Users can refine searches based on specific topics, methodologies, or study outcomes, enabling them to retrieve precise and contextually meaningful information tailored to their needs.
+The MDPI knowledge base contributes to generating intelligent, comprehensive responses to medical science-related questions and can also be leveraged inside our Literature Review feature, ensuring access to high-quality, peer-reviewed research across various disciplines.
+
+
+**3.Trusted, Open-Access Content**
+
+MDPI’s commitment to open-access publishing aligns with our goal of providing unrestricted access to credible scientific literature. Each retrieved article includes direct links to the original MDPI publication, allowing users to explore full-text content, review methodologies, and assess findings with full transparency.
+
+<div class="h3-box" markdown="1">
+
+#### User Benefits
+
+**1.Comprehensive Research Support**
+
+By integrating MDPI, users gain access to a broader collection of academic insights, including emerging trends, clinical studies, and experimental research. With the combined coverage of multiple scientific sources by all our available knowledge bases, this ensures access to diverse, high-quality literature, supporting well-informed decision-making in science and medicine.
+
+**2.Precision & Relevance in Search Results**
+
+Leveraging advanced algorithms, our system intelligently surfaces the most pertinent MDPI articles, improving the efficiency of literature review and research workflows. Whether users seek systematic reviews, case studies, or experimental data, they can now access a more refined selection of relevant content.
+
+**3.Broader Interdisciplinary Coverage**
+
+With MDPI’s broad range of subject areas, users can access research that spans multiple disciplines, fostering cross-domain insights and supporting a more holistic understanding of scientific developments. Each response citing any of our knowledge base content includes direct references to the original articles, ensuring credibility and enabling users to explore research findings in greater depth.
+
+With this update, our Knowledge Base continues to evolve as a comprehensive resource for scientific discovery. The addition of MDPI articles enhances accessibility to high-quality, peer-reviewed research, further supporting informed decision-making in healthcare, academia, and beyond.
 
 </div><div class="h3-box" markdown="1">
 
