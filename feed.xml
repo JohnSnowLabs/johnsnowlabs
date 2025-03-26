@@ -1,59 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-03-25T18:34:59+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Full Dicom de-identification</title><link href="/2025/02/19/dicom_deid_full_anonymization_en_3_4.html" rel="alternate" type="text/html" title="Full Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_full_anonymization_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_full_anonymization_en_3_4.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-03-26T04:21:48+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Full Dicom de-identification</title><link href="/2025/02/19/dicom_deid_full_anonymization_en_3_4.html" rel="alternate" type="text/html" title="Full Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_full_anonymization_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_full_anonymization_en_3_4.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline provides the highest level of anonymization by completely removing all identifying text from both the image and metadata. It is ideal for preparing DICOM files for public sharing, research, or regulatory compliance, ensuring that no traceable information remains.
+&lt;p&gt;This pipeline provides the highest level of anonymization by completely removing all text from both the image and metadata. It is ideal for preparing DICOM files for public sharing, research, or regulatory compliance, ensuring that no traceable information remains.&lt;/p&gt;
 
-Comprehensive removal: Eliminates all visible text within images and removes or anonymizes most metadata fields, including patient identifiers, physician details, and hospital information.
+&lt;p&gt;Comprehensive removal: Eliminates all visible text within images and removes or anonymizes most metadata fields, including patient identifiers, physician details, and hospital information.&lt;/p&gt;
 
-## Predicted Entities
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-{:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_DICOM_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
-[Open in Colab](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-&lt;!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dicom_deid_full_anonymization_en_5.5.0_3.0_1737198071000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} --&gt;
+&lt;p class=&quot;btn-box&quot;&gt;&lt;a href=&quot;https://demo.johnsnowlabs.com/ocr/PP_DICOM_DEID/&quot; class=&quot;button button-orange button-orange-trans co button-icon&quot;&gt;Live Demo&lt;/a&gt;
+&lt;a href=&quot;https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb&quot; class=&quot;button button-orange button-orange-trans co button-icon&quot;&gt;Open in Colab&lt;/a&gt;
+&lt;!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dicom_deid_full_anonymization_en_5.5.0_3.0_1737198071000.zip){:.button.button-orange.button-orange-trans.arr.button-icon} --&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-## How to use
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dicom_df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;binaryFile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dicom_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-```python
-dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dicom_deid_full_anonymization&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/ocr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-pipeline = PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dicom_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dicom_df&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;binaryFile&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dicom_path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-result = pipeline.transform(dicom_df).cache()
-```
-```scala
-val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dicom_deid_full_anonymization&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/ocr&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val pipeline = new PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
-
-val result = pipeline.transform(dicom_df).cache()
-```
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dicom_df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Example
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
-### Input:
-![Screenshot](/assets/images/examples_ocr/pp_deid_metadata.png)
-![Screenshot](/assets/images/examples_ocr/pp_deid_image.png)
+&lt;h3 id=&quot;input&quot;&gt;Input:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/examples_ocr/pp_deid_metadata.png&quot; alt=&quot;Screenshot&quot; /&gt;
+&lt;img src=&quot;/assets/images/examples_ocr/pp_deid_image.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-### Output:
-![Screenshot](/assets/images/examples_ocr/pp2_metadata.png)
-![Screenshot](/assets/images/examples_ocr/pp2_deid.png)
+&lt;h3 id=&quot;output&quot;&gt;Output:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/examples_ocr/pp2_metadata.png&quot; alt=&quot;Screenshot&quot; /&gt;
+&lt;img src=&quot;/assets/images/examples_ocr/pp2_deid.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-## Model Information
+&lt;h2 id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|dicom_deid_full_anonymization|
-|Type:|pipeline|
-|Compatibility:|Visual NLP 5.5.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description This pipeline provides the highest level of anonymization by completely removing all identifying text from both the image and metadata. It is ideal for preparing DICOM files for public sharing, research, or regulatory compliance, ensuring that no traceable information remains. Comprehensive removal: Eliminates all visible text within images and removes or anonymizes most metadata fields, including patient identifiers, physician details, and hospital information. Predicted Entities Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) pipeline = PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) result = pipeline.transform(dicom_df).cache() val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) val pipeline = new PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) val result = pipeline.transform(dicom_df).cache() Example Input: Output: Model Information Model Name: dicom_deid_full_anonymization Type: pipeline Compatibility: Visual NLP 5.5.0+ License: Licensed Edition: Official Language: en</summary></entry><entry><title type="html">Minimal Dicom de-identification</title><link href="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html" rel="alternate" type="text/html" title="Minimal Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html">## Description
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;dicom_deid_full_anonymization&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Visual NLP 5.5.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description This pipeline provides the highest level of anonymization by completely removing all text from both the image and metadata. It is ideal for preparing DICOM files for public sharing, research, or regulatory compliance, ensuring that no traceable information remains. Comprehensive removal: Eliminates all visible text within images and removes or anonymizes most metadata fields, including patient identifiers, physician details, and hospital information. Predicted Entities Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) pipeline = PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) result = pipeline.transform(dicom_df).cache() val dicom_df = spark.read.format(&quot;binaryFile&quot;).load(dicom_path) val pipeline = new PretrainedPipeline(&quot;dicom_deid_full_anonymization&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) val result = pipeline.transform(dicom_df).cache() Example Input: Output: Model Information Model Name: dicom_deid_full_anonymization Type: pipeline Compatibility: Visual NLP 5.5.0+ License: Licensed Edition: Official Language: en</summary></entry><entry><title type="html">Minimal Dicom de-identification</title><link href="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html" rel="alternate" type="text/html" title="Minimal Dicom de-identification" /><published>2025-02-19T00:00:00+00:00</published><updated>2025-02-19T00:00:00+00:00</updated><id>/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4</id><content type="html" xml:base="/2025/02/19/dicom_deid_generic_augmented_minimal_en_3_4.html">## Description
 
 This pipeline performs the least intrusive form of DICOM de-identification, removing only the most critical personal identifiers while preserving as much metadata as possible. It ensures that Protected Health Information (PHI) is stripped from both the image and metadata, but all non-sensitive details remain intact for research and analysis.
 
