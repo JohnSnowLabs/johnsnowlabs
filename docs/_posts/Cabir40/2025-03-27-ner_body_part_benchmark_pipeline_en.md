@@ -18,7 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to o extract all types of anatomical references in medical text. It is a single entity model and generalizes all anatomical references to a single entity.
+This pipeline can be used to extract all types of anatomical references in medical text. It is a single-entity pipeline and generalizes all anatomical references to a single entity.
+
+## Predicted Entities
+
+`BODY_PART`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -32,6 +36,7 @@ This pipeline can be used to o extract all types of anatomical references in med
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -65,7 +70,6 @@ Mr. He is an anxious man , but very pleasant .
 He and his family understand his prognosis ."""
 
 result = ner_pipeline.fullAnnotate(text)
-
 ```
 
 {:.jsl-block}
@@ -102,7 +106,6 @@ Mr. He is an anxious man , but very pleasant .
 He and his family understand his prognosis ."""
 
 result = ner_pipeline.fullAnnotate(text)
-
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
@@ -137,7 +140,6 @@ Mr. He is an anxious man , but very pleasant .
 He and his family understand his prognosis ."""
 
 val result = ner_pipeline.fullAnnotate(text)
-
 ```
 </div>
 
@@ -194,12 +196,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
    BODY_PART      0.777     0.895     0.832      2049
            O      0.997     0.993     0.995     80522
     accuracy                          0.991     82571
    macro avg      0.887     0.944     0.914     82571
 weighted avg      0.992     0.991     0.991     82571
-
 ```
