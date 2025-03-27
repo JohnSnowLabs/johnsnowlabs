@@ -20,6 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline can be used to detect clinical `Admission Discharge` in medical text, with a focus on admission entities.
 
+## Predicted Entities
+`ADMISSION_DISCHARGE`,
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +35,7 @@ This pipeline can be used to detect clinical `Admission Discharge` in medical te
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -65,7 +69,6 @@ result = ner_pipeline.fullAnnotate(text)
 
 {:.jsl-block}
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = nlp.PretrainedPipeline("ner_admission_discharge_benchmark_pipeline", "en", "clinical/models")
@@ -95,7 +98,6 @@ result = ner_pipeline.fullAnnotate(text)
 
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("ner_admission_discharge_benchmark_pipeline", "en", "clinical/models")
@@ -129,13 +131,11 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-
 |    | chunk     |   begin |   end | ner_label           |
 |---:|:----------|--------:|------:|:--------------------|
 |  0 | ADMISSION |       1 |     9 | ADMISSION_DISCHARGE |
 |  1 | DISCHARGE |      26 |    34 | ADMISSION_DISCHARGE |
 |  2 | admitted  |     393 |   400 | ADMISSION_DISCHARGE |
-
 ```
 
 {:.model-param}
@@ -150,6 +150,18 @@ val result = ner_pipeline.fullAnnotate(text)
 |Edition:|Official|
 |Language:|en|
 |Size:|1.7 GB|
+
+
+## Benchmarking
+```bash
+              label  precision    recall  f1-score   support
+ADMISSION_DISCHARGE      0.983     0.986     0.984       799
+                  O      1.000     1.000     1.000     81772
+           accuracy                          1.000     82571
+          macro avg      0.991     0.993     0.992     82571
+       weighted avg      1.000     1.000     1.000     82571
+```
+
 
 ## Included Models
 
