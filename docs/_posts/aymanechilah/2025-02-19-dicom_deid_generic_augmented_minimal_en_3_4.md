@@ -20,8 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline for doing Dicom De-identification, attempting to remove the least possible amount of tags and image texts.
+This pipeline performs the least intrusive form of DICOM de-identification, removing only the most critical personal identifiers while preserving as much metadata as possible. It ensures that Protected Health Information (PHI) is stripped from both the image and metadata, but all non-sensitive details remain intact for research and analysis.
 
+Minimal removal: Eliminates only Personally Identifiable Information (PII) from images and the most essential metadata fields while keeping the majority of the DICOM tags untouched.
 
 ## Predicted Entities
 

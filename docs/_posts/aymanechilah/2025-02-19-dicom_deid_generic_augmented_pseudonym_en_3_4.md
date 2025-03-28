@@ -20,8 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline for doing Dicom De-identification, attempting to replaces values in metadata with pseudonyms. Images will be de-identified for PHI.
+This pipeline anonymizes DICOM metadata by replacing personal identifiers with pseudonyms instead of removing them. It ensures that PHI is no longer traceable while maintaining data integrity for longitudinal studies and collaborations.
 
+Obfuscation mode: Removes PII from images and replaces sensitive metadata values (e.g., patient names, IDs) with randomized or pseudonymized data, preserving the overall structure and usability of the metadata.
 
 ## Predicted Entities
 

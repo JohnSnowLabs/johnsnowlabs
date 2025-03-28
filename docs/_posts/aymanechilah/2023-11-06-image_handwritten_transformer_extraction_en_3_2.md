@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline designed to extract handwritten text from document images. It empowers accurate and efficient conversion of handwritten content into digital text, making it an invaluable tool for text recognition tasks.
+This is a pretrained pipeline designed to extract handwritten text from document images. It utilizes advanced machine learning techniques to accurately recognize and convert handwritten content into digital text. By processing images of handwritten documents, the model ensures efficient and precise transcription of the text, enabling seamless integration into various workflows.
 
 
 ## Predicted Entities

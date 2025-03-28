@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline designed to extract printed text from document PDFs. It empowers accurate and efficient conversion of printed content into digital text, making it an invaluable tool for text recognition tasks.
+This is a pretrained pipeline designed to extract printed text from document PDFs. The model utilizes advanced Optical Character Recognition (OCR) techniques to accurately convert printed content into machine-readable digital text. It is optimized to handle various document layouts and font types, ensuring high-quality text extraction from PDFs, whether they are scanned images or digitally generated documents.
 
 
 ## Predicted Entities
