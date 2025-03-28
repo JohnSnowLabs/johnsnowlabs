@@ -113,7 +113,7 @@ annotation-lab:
             url: /docs/en/alab/llm_prompts   
           - title: Playground
             url: /docs/en/alab/playground                        
-      - subtitle: Project
+      - subtitle: Project and Tasks
         children:
           - title: Dashboard
             url: /docs/en/alab/project_dashboard
@@ -129,7 +129,7 @@ annotation-lab:
             url: /docs/en/alab/tasks
           - title: Workflows
             url: /docs/en/alab/workflow
-      - subtitle: Project Configuration 
+      - subtitle: Project Types 
         children:
           - title: Overview
             url: /docs/en/alab/tags_overview
@@ -143,7 +143,7 @@ annotation-lab:
             url: /docs/en/alab/tags_image
           - title: PDF
             url: /docs/en/alab/tags_pdf
-      - subtitle: Annotation
+      - subtitle: Data Annotation
         children:
           - title: Manual Annotation
             url: /docs/en/alab/annotation

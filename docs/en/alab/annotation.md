@@ -69,6 +69,15 @@ On the Labeling page, when selecting the <es>Prediction</es> widget, users can s
 
 </div><div class="h3-box" markdown="1">
 
+### Enable Bulk Hiding of Labels
+Users can hide multiple labels at once, significantly improving efficiency when working with large datasets.
+
+Previously, labels had to be hidden individually, making the process tedious and time-consuming. With this update, an eye icon has been added to the Annotations widget, enabling users to hide all labels within selected groups with a single click. To use this feature, users must switch from Region View to Labels View in the annotation widget.
+
+With this improvement, users can now manage labels more effectively, reducing manual effort and enhancing focus during the annotation process.
+
+![700image](/assets/images/annotation_lab/7.0.0/10.gif)
+
 ### Annotations
 
 The Annotations widget has two sections.
