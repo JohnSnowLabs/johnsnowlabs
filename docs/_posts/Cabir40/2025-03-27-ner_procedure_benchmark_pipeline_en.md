@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Text Entities (PROCEDURE)
+title: Detect Procedure Entities (PROCEDURE)
 author: John Snow Labs
 name: ner_procedure_benchmark_pipeline
 date: 2025-03-27
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extract procedure mentions in medical text.
+This pipeline can be used to extract `procedure` mentions in medical text.
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This pipeline can be used to extract procedure mentions in medical text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -92,6 +93,7 @@ A post mortem examination will be performed .
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -168,12 +170,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
-        label  precision    recall  f1-score   support
+       label  precision    recall  f1-score   support
            O      0.999     0.997     0.998     81024
    PROCEDURE      0.869     0.936     0.901      1547
-    accuracy                          0.996     82571
-   macro avg      0.934     0.967     0.950     82571
-weighted avg      0.996     0.996     0.996     82571
-
+    accuracy      -         -         0.996     82571
+   macro-avg      0.934     0.967     0.950     82571
+weighted-avg      0.996     0.996     0.996     82571
 ```

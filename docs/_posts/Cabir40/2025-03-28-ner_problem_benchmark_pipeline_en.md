@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extracts problem (diseases, disorders, injuries, symptoms, signs) information in medical text.
+This pipeline can be used to extracts `problem` (diseases, disorders, injuries, symptoms, signs .etc) information in medical text.
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This pipeline can be used to extracts problem (diseases, disorders, injuries, sy
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -90,6 +91,7 @@ His major complaint was of persistent severe coughing and secretions .
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -172,12 +174,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
            O      0.989     0.996     0.993     76426
      PROBLEM      0.948     0.866     0.905      6145
-    accuracy                          0.986     82571
-   macro avg      0.969     0.931     0.949     82571
-weighted avg      0.986     0.986     0.986     82571
-
+    accuracy      -         -         0.986     82571
+   macro-avg      0.969     0.931     0.949     82571
+weighted-avg      0.986     0.986     0.986     82571
 ```

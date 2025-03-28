@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extracts substance usage information in medical text.
+This pipeline can be used to extracts `substance usage` information in medical text.
 `SUBSTANCE_USE`: Mentions of illegal recreational drugs use. Include also substances that can create dependency including here caffeine and tea. “overdose, cocaine, illicit substance intoxication, coffee, etc.”.
 
 ## Predicted Entities
@@ -37,6 +37,7 @@ This pipeline can be used to extracts substance usage information in medical tex
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -67,6 +68,7 @@ SOCIAL HISTORY : The patient is a smoker . Admits to heroin use , alcohol abuse 
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -124,12 +126,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
-       label   precision    recall  f1-score   support
+        label  precision    recall  f1-score   support
             O      1.000     1.000     1.000     82313
 SUBSTANCE_USE      1.000     0.981     0.990       258
-     accuracy                          1.000     82571
-    macro avg      1.000     0.990     0.995     82571
- weighted avg      1.000     1.000     1.000     82571
-
+     accuracy      -         -         1.000     82571
+    macro-avg      1.000     0.990     0.995     82571
+ weighted-avg      1.000     1.000     1.000     82571
 ```

@@ -4,7 +4,7 @@ title: Detect Clinical Events (ADMISSION_DISCHARGE)
 author: John Snow Labs
 name: ner_admission_discharge_benchmark_pipeline
 date: 2025-03-27
-tags: [deidentification, deid, en, licensed, clinical, pipeline, sent_wise]
+tags: [en, licensed, clinical, pipeline, ner, admission_discharge, benchmark]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.5.3
@@ -21,7 +21,8 @@ use_language_switcher: "Python-Scala-Java"
 This pipeline can be used to detect clinical `Admission Discharge` in medical text, with a focus on admission entities.
 
 ## Predicted Entities
-`ADMISSION_DISCHARGE`,
+
+`ADMISSION_DISCHARGE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -37,7 +38,6 @@ This pipeline can be used to detect clinical `Admission Discharge` in medical te
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("ner_admission_discharge_benchmark_pipeline", "en", "clinical/models")
@@ -64,7 +64,6 @@ However , the low circumflex marginal vessel could not be crossed with the ballo
 """
 
 result = ner_pipeline.fullAnnotate(text)
-
 ```
 
 {:.jsl-block}
@@ -95,8 +94,8 @@ However , the low circumflex marginal vessel could not be crossed with the ballo
 """
 
 result = ner_pipeline.fullAnnotate(text)
-
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -124,7 +123,6 @@ However , the low circumflex marginal vessel could not be crossed with the ballo
 """
 
 val result = ner_pipeline.fullAnnotate(text)
-
 ```
 </div>
 
@@ -152,17 +150,6 @@ val result = ner_pipeline.fullAnnotate(text)
 |Size:|1.7 GB|
 
 
-## Benchmarking
-```bash
-              label  precision    recall  f1-score   support
-ADMISSION_DISCHARGE      0.983     0.986     0.984       799
-                  O      1.000     1.000     1.000     81772
-           accuracy                          1.000     82571
-          macro avg      0.991     0.993     0.992     82571
-       weighted avg      1.000     1.000     1.000     82571
-```
-
-
 ## Included Models
 
 - DocumentAssembler
@@ -174,3 +161,14 @@ ADMISSION_DISCHARGE      0.983     0.986     0.984       799
 - TextMatcherInternalModel
 - ChunkMergeModel
 - ChunkMergeModel
+
+
+## Benchmarking
+```bash
+              label  precision    recall  f1-score   support
+ADMISSION_DISCHARGE      0.983     0.986     0.984       799
+                  O      1.000     1.000     1.000     81772
+           accuracy      -         -         1.000     82571
+          macro-avg      0.991     0.993     0.992     82571
+       weighted-avg      1.000     1.000     1.000     82571
+```

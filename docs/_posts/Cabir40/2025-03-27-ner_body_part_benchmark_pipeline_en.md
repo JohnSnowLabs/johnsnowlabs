@@ -4,7 +4,7 @@ title: Detect Anatomical Structures (BODY_PART)
 author: John Snow Labs
 name: ner_body_part_benchmark_pipeline
 date: 2025-03-27
-tags: [licensed, clinical, en, pipeline, ner, bodypart, benchmark]
+tags: [licensed, clinical, en, pipeline, ner, body_part, benchmark]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.5.3
@@ -107,6 +107,7 @@ He and his family understand his prognosis ."""
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -199,7 +200,7 @@ val result = ner_pipeline.fullAnnotate(text)
        label  precision    recall  f1-score   support
    BODY_PART      0.777     0.895     0.832      2049
            O      0.997     0.993     0.995     80522
-    accuracy                          0.991     82571
-   macro avg      0.887     0.944     0.914     82571
-weighted avg      0.992     0.991     0.991     82571
+    accuracy      -         -         0.991     82571
+   macro-avg      0.887     0.944     0.914     82571
+weighted-avg      0.992     0.991     0.991     82571
 ```

@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Treatment Entities (ALCOHOL_USE)
+title: Detect Alcohol Usage Entities (ALCOHOL_USE)
 author: John Snow Labs
 name: ner_alcohol_use_benchmark_pipeline
 date: 2025-03-27
@@ -37,6 +37,7 @@ Alcohol refers to beverages containing ethanol, a psychoactive substance that is
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -67,6 +68,7 @@ SOCIAL HISTORY : She is married .Employed with the US Post Office .She is a moth
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -130,12 +132,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
  ALCOHOL_USE      0.991     0.970     0.980       230
            O      1.000     1.000     1.000     82341
-    accuracy                          1.000     82571
-   macro avg      0.996     0.985     0.990     82571
-weighted avg      1.000     1.000     1.000     82571
-
+    accuracy      -         -         1.000     82571
+   macro-avg      0.996     0.985     0.990     82571
+weighted-avg      1.000     1.000     1.000     82571
 ```

@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extracts Consumption (Alcohol, Smoking/Tobaco, and Subtance Usage) related information in medical text.
+This pipeline can be used to extracts `Consumption` (Alcohol, Smoking/Tobaco, and Substance Usage) related information in medical text.
 Alcohol refers to beverages containing ethanol, a psychoactive substance that is widely consumed for its pleasurable effects. 
 Smoking typically involves inhaling smoke from burning tobacco, a highly addictive substance. 
 Substance mentions of illegal recreational drugs use. Include also substances that can create dependency including here caffeine and tea. “overdose, cocaine, illicit substance intoxication, coffee, etc
@@ -39,6 +39,7 @@ Substance mentions of illegal recreational drugs use. Include also substances th
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -69,6 +70,7 @@ SOCIAL HISTORY : The patient is a smoker . Admits to heroin use , alcohol abuse 
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -143,12 +145,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
  CONSUMPTION      0.988     0.977     0.983       662
            O      1.000     1.000     1.000     81909
-    accuracy                          1.000     82571
-   macro avg      0.994     0.989     0.991     82571
-weighted avg      1.000     1.000     1.000     82571
-
+    accuracy      -         -         1.000     82571
+   macro-avg      0.994     0.989     0.991     82571
+weighted-avg      1.000     1.000     1.000     82571
 ```

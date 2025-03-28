@@ -36,6 +36,7 @@ This pipeline can be used to extract posology information in medical text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -78,6 +79,7 @@ In addition , the patient was given magnesium to bring his level above 2 ."""
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -148,12 +150,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
         DRUG      0.989     0.957     0.973      1373
            O      0.999     1.000     1.000     81198
-    accuracy                          0.999     82571
-   macro avg      0.994     0.978     0.986     82571
-weighted avg      0.999     0.999     0.999     82571
-
+    accuracy      -         -         0.999     82571
+   macro-avg      0.994     0.978     0.986     82571
+weighted-avg      0.999     0.999     0.999     82571
 ```

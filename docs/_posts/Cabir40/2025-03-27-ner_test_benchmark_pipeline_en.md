@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Text Entities (TEST)
+title: Detect Test Entities (TEST)
 author: John Snow Labs
 name: ner_test_benchmark_pipeline
 date: 2025-03-27
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extract test mentions in medical text.
+This pipeline can be used to extract `test` mentions in medical text.
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This pipeline can be used to extract test mentions in medical text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -56,7 +57,6 @@ The electrocardiogram showed left ventricular hypertrophy and non-specific ST-T 
 The chest film showed massive cardiomegaly with pulmonary venous engorgement ."""
 
 result = ner_pipeline.fullAnnotate(text)
-
 ```
 
 {:.jsl-block}
@@ -80,8 +80,8 @@ The electrocardiogram showed left ventricular hypertrophy and non-specific ST-T 
 The chest film showed massive cardiomegaly with pulmonary venous engorgement ."""
 
 result = ner_pipeline.fullAnnotate(text)
-
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -102,7 +102,6 @@ The electrocardiogram showed left ventricular hypertrophy and non-specific ST-T 
 The chest film showed massive cardiomegaly with pulmonary venous engorgement ."""
 
 val result = ner_pipeline.fullAnnotate(text)
-
 ```
 </div>
 
@@ -169,12 +168,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
            O      0.995     0.996     0.996     79006
         TEST      0.914     0.897     0.906      3565
-    accuracy                          0.992     82571
-   macro avg      0.955     0.946     0.951     82571
-weighted avg      0.992     0.992     0.992     82571
-
+    accuracy      -         -         0.992     82571
+   macro-avg      0.955     0.946     0.951     82571
+weighted-avg      0.992     0.992     0.992     82571
 ```

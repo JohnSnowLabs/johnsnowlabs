@@ -36,6 +36,7 @@ This pipeline can be used to extract treatments mentioned in medical text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -84,6 +85,7 @@ No computerized tomography scan or magnetic resonance imaging study of the head 
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -159,12 +161,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
            O      0.999     0.999     0.999     82021
    TREATMENT      0.900     0.918     0.909       550
-    accuracy                          0.999     82571
-   macro avg      0.950     0.959     0.954     82571
-weighted avg      0.999     0.999     0.999     82571
-
+    accuracy      -         -         0.999     82571
+   macro-avg      0.950     0.959     0.954     82571
+weighted-avg      0.999     0.999     0.999     82571
 ```

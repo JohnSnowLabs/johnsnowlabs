@@ -37,6 +37,7 @@ Smoking/Tobacco typically involves inhaling smoke from burning tobacco, a highly
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -67,6 +68,7 @@ SOCIAL HISTORY : She is married .Employed with the US Post Office .She is a moth
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -124,12 +126,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
        label  precision    recall  f1-score   support
            O      1.000     1.000     1.000     82397
   TOBACO_USE      1.000     0.994     0.997       174
-    accuracy                          1.000     82571
-   macro avg      1.000     0.997     0.999     82571
-weighted avg      1.000     1.000     1.000     82571
-
+    accuracy      -         -         1.000     82571
+   macro-avg      1.000     0.997     0.999     82571
+weighted-avg      1.000     1.000     1.000     82571
 ```

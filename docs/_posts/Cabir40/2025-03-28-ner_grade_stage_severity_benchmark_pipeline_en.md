@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extracts biomarker, grade stage and severity information in medical text.
+This pipeline can be used to extracts biomarker, grade stage and severity related information in medical text.
 `GRADE_STAGE_SEVERITY`:  Mentions of pathological grading, staging, severity and modifier of the diseases/cancers.
 
 ## Predicted Entities
@@ -37,6 +37,7 @@ This pipeline can be used to extracts biomarker, grade stage and severity inform
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -81,6 +82,7 @@ Extremities : showed no evidence of acute deep venous thrombosis . However , lef
 
 result = ner_pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -156,12 +158,10 @@ val result = ner_pipeline.fullAnnotate(text)
 ## Benchmarking
 
 ```bash
-
                label  precision    recall  f1-score   support
 GRADE_STAGE_SEVERITY      0.722     0.904     0.803       689
                    O      0.999     0.997     0.998     81882
-            accuracy                          0.996     82571
-           macro avg      0.861     0.951     0.900     82571
-        weighted avg      0.997     0.996     0.996     82571
-
+            accuracy      -         -         0.996     82571
+           macro-avg      0.861     0.951     0.900     82571
+        weighted-avg      0.997     0.996     0.996     82571
 ```
