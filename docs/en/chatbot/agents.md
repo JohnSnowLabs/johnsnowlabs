@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Medical Chatbot | John Snow Labs
-title: Tools
-permalink: /docs/en/chatbot/tools
+title: Agents
+permalink: /docs/en/chatbot/agents
 key: docs-healthcare-gpt
-modify_date: "2024-05-17"
+modify_date: "2025-03-28"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The Medical Chatbot is equipped with dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `Medical Agents`, `Drug Insights`, `US Healthcare Provider` and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
+The Medical Chatbot is equipped with several agents and tools, each tailored to meet different information needs and research requirements. These agents are `MedResearch`, `Web Search`, `Medical Agents`, `Drug Insights`, `US Healthcare Provider` and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
 
 ## MedResearch: Your Gateway to Academic Medical Research
 
@@ -22,9 +22,6 @@ The Medical Chatbot is equipped with dynamic tools, each tailored to meet differ
 - BioRxiv
 - MedRxiv
 - MDPI
-
-along with specialized custom knowledge bases such as:
-- Cigna Insurance Plans - a Knowledge base that indexes insurance plans (large PDF documents) offered by Cigna  
 
 Whether you're looking for the latest findings in a specific medical field, detailed drug information, or comprehensive research outcomes, MedResearch provides direct access to a vast repository of academic resources. This feature is especially valuable for medical professionals, researchers, and students seeking to base their work on the most current and authoritative sources.
 
