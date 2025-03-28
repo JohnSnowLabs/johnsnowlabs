@@ -80,6 +80,15 @@ Model versioning is also supported for previously created projects. If versionin
 
 Note: The **Enable Versioning** toggle is disabled during training. 
 
+## Dataset Sampling for Efficient Model Training
+To enhance the training process for **NER (Named Entity Recognition)** projects this version introduces data sampling. In the past, training models on extensive datasets could lead to lengthy training periods or even failures due to the limitations of the existing infrastructure.
+This update introduces a new feature that allows users to specify a sampling fraction in the training configuration page, enabling controlled dataset selection. A new parameter has been added to the Training page called Sampling Fraction, where users can specify the portion of the dataset they wish to use for training. The system automatically applies this setting, using only the specified fraction of the dataset for training, thereby optimizing the training process and improving overall efficiency.
+
+For example, if there are 500 tasks in total and the user sets the sampling fraction to 0.5, the system will randomly select 250 tasks (50% of the dataset) for training instead of using the entire dataset.
+
+This enhancement eliminates the need for manual dataset selection, as training can now be initiated based on a randomized subset, optimizing efficiency and resource utilization.
+
+![700image](/assets/images/annotation_lab/7.0.0/9.png)
 
 ### Custom Training Script
 
