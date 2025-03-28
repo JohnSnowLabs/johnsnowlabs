@@ -34,19 +34,21 @@ These project types enable the association of HCC codes with annotated clinical 
 To enable **HCC Coding Support**, follow these steps:  
 
 To enable HCC Coding Support, follow these steps:
-1. **Project Setup**
+
+
+**1.Project Setup**
 - Select either of the new project templates during project creation. 
 - Choose the HCC Coding for PDF and Text (side by side) option if you need a visual representation of the original document while performing HCC coding.
 
 ![700image](/assets/images/annotation_lab/7.0.0/2.png)
 
-2. **Label Customization** - On the Customize Labels page, users can either:
+**2.Label Customization** - On the Customize Labels page, users can either:
 - Apply a lookup dataset globally, to all labels in your taxonomy at once.
 - Assign Lookup options to specific labels.
 
 ![700image](/assets/images/annotation_lab/7.0.0/3.png)
 
-3. **Annotation Process**
+**3.Annotation Process**
 - Annotate entities and assign codes using the annotation widget.
 - Edit codes inline or through the Annotation Widget from the right panel.
 - Annotated chunks are listed under their respective labels. Users can expand labels by clicking the down arrow to view all chunks associated with them.
@@ -55,7 +57,7 @@ To enable HCC Coding Support, follow these steps:
 
 ![700image](/assets/images/annotation_lab/7.0.0/4.gif)
 
-4. **Review and Confirmation**
+**4.Review and Confirmation**
 Once a task is labeled and lookup codes are assigned along with HCC Codes, reviewers have the following options:
 - Accept and confirm the labeled text.
 - Decline and remove the labels.
@@ -97,7 +99,7 @@ This enhancement eliminates the need for manual dataset selection, as training c
 
 ![700image](/assets/images/annotation_lab/7.0.0/9.png)
 
-### Improvements
+## Improvements
 
 ### Bulk Hide Labels Post-Annotation
 
@@ -115,7 +117,7 @@ Zooming in Visual NER projects is now more intuitive and controlled:
 
 ![700image](/assets/images/annotation_lab/7.0.0/11.gif)
 
-### Bug Fixes
+## Bug Fixes
 
 - **Tooltip for Section Names Now Supports Multi-Row Display**
 
