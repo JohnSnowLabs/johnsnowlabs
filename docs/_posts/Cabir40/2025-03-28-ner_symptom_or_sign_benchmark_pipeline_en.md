@@ -36,6 +36,7 @@ This pipeline can be used to extracts `symptom or sign` information in medical t
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
