@@ -90,6 +90,19 @@ healthcare-gpt:
       - title: Release Notes
         url: /docs/en/chatbot/releases/release_notes
 
+medical-llm:
+  - title: Medical LLMs
+    children:
+      - title: Home
+        url: /docs/en/LLMs/medical_llm
+      - title: Getting Started
+        url: /docs/en/LLMs/getting_started
+      - title: Support
+        url: /docs/en/LLMs/support
+      - title: Release Notes
+        url: /docs/en/LLMs/releases/release_notes
+
+
 annotation-lab:
   - title: Generative AI Lab
     children:
