@@ -11,9 +11,13 @@ sidebar:
     nav: medical-llm
 ---
 
-The evidence from academic research and industry benchmarks that healthcare-specific and task-specific large language models outperform general-purpose LLMs is overwhelming. 
+There is overwhelming evidence from both academic research and industry benchmarks that domain-specific, task-optimized large language models consistently outperform general-purpose LLMs in healthcare. At John Snow Labs, we’ve developed a suite of Medical LLMs purpose-built for clinical, biomedical, and life sciences applications.
 
-JohnSnowLab’s Medical LLMs demonstrate strong performance across specialized medical domains, showing particular strength in clinical reasoning, research comprehension, and medical education. The following table provides a detailed breakdown of performance across key medical. 
+Our models are designed to deliver best-in-class performance across a wide range of medical tasks—from clinical reasoning and diagnostics to medical research comprehension and genetic analysis.
+
+## Performance Highlights
+
+John Snow Labs’ Medical LLMs have been rigorously evaluated against leading general-purpose and medical-specific models, including GPT-4 and Med-PaLM-2. Here's a detailed breakdown of their performance across key medical domains:
 
 1. **Clinical Knowledge**
 
@@ -70,15 +74,45 @@ JohnSnowLab’s Medical LLMs demonstrate strong performance across specialized m
     - Superior ability in evaluating clinical scenarios and treatment options
 
 
+## Small Yet Powerful: Efficiency Meets Performance
 
-### Small Yet Powerful: Efficiency Meets Performance
+One of the standout features of John Snow Labs' Medical LLMs is their efficiency at scale. These models deliver exceptional performance without requiring massive infrastructure:
 
-A key strength of this model suite is its ability to deliver exceptional performance with smaller, more efficient models – demonstrating that state-of-the-art medical AI can be both powerful and resource-efficient.
+- Designed to run efficiently on a range of GPU configurations
 
-If you are interested in on-premise deployment of our Medical LLMs, please follow the steps provided in the documentation. 
+- Available in multiple sizes (7B, 10B, 14B, 24B, 70B) to suit different deployment needs
 
-Get detailed performance information about JohnSnowLab Medical LLMs here: [https://www.johnsnowlabs.com/john-snow-labs-new-suite-of-medical-language-models-advance-industry-benchmarks/](https://www.johnsnowlabs.com/john-snow-labs-new-suite-of-medical-language-models-advance-industry-benchmarks/)
+- Optimized for both on-premise and private cloud deployments
+
+💡 You can achieve cutting-edge performance in clinical NLP without the costs and risks of using massive general-purpose models.
 
 ![Medical LLM by John Snow Labs](/assets/images/graph_med_llm.png)
 
-You have our ongoing commitment to keeping you at the state of the art so that you can deliver solutions that put the best Healthcare AI ever to good use faster. [Book a call with us](https://www.johnsnowlabs.com/schedule-a-demo/) to discuss your specific use case and see the Medical LLMs in action.
+## Medical LLMs Offering
+
+| **Model Name** | **Parameters** | **Recommended GPU Memory** |  **Max Sequence Length** | **Model Size** | **Max KV-Cache** |**Tensor Parallel Sizes**|
+| Medical-LLM-7B | 7B | ~25GB | 32K | 14GB |10.50 GB | 1,2,4 |
+| Medical-LLM-10B | 10B | ~35GB | 32K | 19GB |15.00 GB| 1,2,4 |
+| Medical-LLM-14B | 14B | ~40FB | 16K | 28GB | 12.50GB | 1,2 |
+| Medical-LLM-24B | 24B | ~70GB | 32K | 44GB | 25GB | 1,2,4,8  |
+| Medical-LLM-Small | 14B | ~58GB | 32K | 28GB | 30GB | 1,2,4,8 |
+| Medical-LLM-Medium | 70B | 452GB | 128K | 132GB | 320GB | 4, 8 |
+
+
+*Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
+
+### Memory Optimization Tips
+
+- Use smaller sequence lengths to reduce KV-cache memory
+- Leverage tensor parallelism for large models
+- Select an appropriate model based on your GPU resources
+
+
+## Partner With Us
+
+We’re committed to helping you stay at the cutting edge of medical AI. Whether you’re building decision support tools, clinical chatbots, or research platforms — our team is here to help.
+
+ [Book a call with our experts to:](https://www.johnsnowlabs.com/schedule-a-demo/) 
+- Discuss your specific use case
+- Get a live demo of the Medical LLMs
+- Explore tailored deployment options.

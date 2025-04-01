@@ -14,17 +14,28 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 
-## On Premise Deployment
+## On Premise Deployment of John Snow Labs Medical LLMs
 
-Prerequisites: A JSL License and Docker installed on your machine.
+Deploying Medical LLMs within your infrastructure ensures complete control over your data and compliance with local security policies. This guide walks you through the steps to deploy a Medical LLM using Docker on your server.
 
-You can use our docker image to deploy the Medical LLM on your own infrastructure. The image is available on [Docker Hub](https://hub.docker.com/r/johnsnowlabs/jsl-llms) and can be pulled using the following command:
+**Prerequisites**: 
+Before you begin, make sure the following are in place:
+- John Snow Labs License: You need a valid John Snow Labs license file (license.json). Contact your account manager if you don’t have one.
+- Docker Installed: Ensure Docker is installed and running on your machine. You can verify by running:
+
+```bash
+docker --version
+
+```
+*Note: For GPU acceleration, your system must have compatible NVIDIA GPUs with the NVIDIA Container Toolkit installed.*
+
+John Snow Labs provides a ready-to-use Docker image for deploying the Medical LLMs on your own infrastructure. The image is available on [Docker Hub](https://hub.docker.com/r/johnsnowlabs/jsl-llms) and can be pulled using the following command:
 
 ```bash
 docker pull johnsnowlabs/jsl-llms:latest
 ```
 
-Once you have the image, you can run it using the following command:
+Use the command below to start the container. Replace <path_to_jsl_license> with the absolute path to your license file on the host machine:
 
 ```bash
 docker run -d \
@@ -36,15 +47,20 @@ johnsnowlabs/jsl-llms \
 --model Medical-LLM-7B \
 --port 8080
 ```
+
 </div>
 
 
-### Model Interactions
+## Model Interactions
+Once deployed, the container exposes a RESTful API for model interactions.
 
-#### Chat Completions
+### Chat Completions
+Use this endpoint for multi-turn conversational interactions (e.g., clinical assistants).
+
 - **Endpoint**: `/v1/chat/completions`
 - **Method**: POST
 - **Example Request**:
+
 ```python
 payload = {
     "model": "Medical-LLM-7B",
@@ -57,7 +73,9 @@ payload = {
 }
 ```
 
-#### Text Completions
+### Text Completions
+Use this endpoint for single-turn prompts or generating long-form medical text.
+
 - **Endpoint**: `/v1/completions`
 - **Method**: POST
 - **Example Request**:
@@ -73,7 +91,7 @@ payload = {
 
 
 
-### Supported Medical LLM Models
+## Medical LLMs Offering
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** |  **Max Sequence Length** | **Model Size** | **Max KV-Cache** |**Tensor Parallel Sizes**|
 | Medical-LLM-7B | 7B | ~25GB | 32K | 14GB |10.50 GB | 1,2,4 |
@@ -84,9 +102,9 @@ payload = {
 | Medical-LLM-Medium | 70B | 452GB | 128K | 132GB | 320GB | 4, 8 |
 
 
-*Memory Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
+*Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
 
-#### Memory Optimization Tips
+### Memory Optimization Tips
 
 - Use smaller sequence lengths to reduce KV-cache memory
 - Leverage tensor parallelism for large models
