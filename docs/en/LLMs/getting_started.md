@@ -50,6 +50,12 @@ johnsnowlabs/jsl-llms \
 
 </div>
 
+### 🪄 Memory Optimization Tips
+
+- Use smaller sequence lengths to reduce KV-cache memory
+- Leverage tensor parallelism for large models
+- Select an appropriate model based on your GPU resources
+
 
 ## Model Interactions
 Once deployed, the container exposes a RESTful API for model interactions.
@@ -104,9 +110,4 @@ payload = {
 
 *Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
 
-### Memory Optimization Tips
-
-- Use smaller sequence lengths to reduce KV-cache memory
-- Leverage tensor parallelism for large models
-- Select an appropriate model based on your GPU resources
 
