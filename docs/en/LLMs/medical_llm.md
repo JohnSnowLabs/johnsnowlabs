@@ -40,12 +40,15 @@ The OpenMed evaluation framework represents one of the most rigorous testing env
 
 ## Model Performance Matrix
 **Large (70B+) Models Comparison**
+
 ![Medical LLM by John Snow Labs](/assets/images/large_llm_comparison.png)
 
 **Smaller Models Comparison**
+
 ![Medical LLM by John Snow Labs](/assets/images/small_llm_comparison.png)
 
 All scores are presented as percentages (%)
+
 ![Medical LLM by John Snow Labs](/assets/images/all_llm_model_comparison.png)
 
 ## Open Medical Leaderboard Performance Analysis
