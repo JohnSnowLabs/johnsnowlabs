@@ -17,13 +17,7 @@ Our priority is to ensure that your experience with John Snow Labs Medical LLMs 
 
 </div><div class="h3-box" markdown="1">
 
-## How to Report a Problem
-
-If you notice inaccuracies in responses please report it to us and help us improve `John`. Use the `Like` or `Dislike` features available for each response within the chat interface and fill in the form. Alternatively you can also contact us via email at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com). Include a detailed description of the issue and any relevant screenshots to help us resolve it efficiently.
-
-</div><div class="h3-box" markdown="1">
-
-## 🤝 Contact Support
+## 🛠️ Contact Support
 
 For direct assistance, our support team is available via:
 - **Email:** [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com)
