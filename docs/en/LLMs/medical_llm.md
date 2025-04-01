@@ -157,12 +157,6 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 ## Performance-to-Size Comparison
 ![Medical LLM by John Snow Labs](/assets/images/perftosize_llm_model_comparison.png)
 
-🪄 Memory Optimization Tips
-
-- Use smaller sequence lengths to reduce KV-cache memory
-- Leverage tensor parallelism for large models
-- Select an appropriate model based on your GPU resources
-
 ### Available Now
 These models are available for on-premise deplyment as weel as through leading cloud marketplaces, making deployment and integration straightforward for healthcare organizations. The marketplace availability ensures scalable access to these state-of-the-art medical AI capabilities, with enterprise-grade security and compliance features built-in. Organizations can leverage these models through flexible consumption-based pricing models, enabling both small-scale implementations and large enterprise deployments.
 
