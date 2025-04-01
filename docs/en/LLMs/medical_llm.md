@@ -130,11 +130,6 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 
 ![Medical LLM by John Snow Labs](/assets/images/web2_llm_model_comparison.png)
 
-### Memory Optimization Tips
-
-- Use smaller sequence lengths to reduce KV-cache memory
-- Leverage tensor parallelism for large models
-- Select an appropriate model based on your GPU resources
 
 **Medical-LLM – 14B**
  - Achieves 81.42% average score vs GPT-4’s 82.85% and Med-PaLM-2’s 84.08%
@@ -162,23 +157,39 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 ## Performance-to-Size Comparison
 ![Medical LLM by John Snow Labs](/assets/images/perftosize_llm_model_comparison.png)
 
+🪄 Memory Optimization Tips
+
+- Use smaller sequence lengths to reduce KV-cache memory
+- Leverage tensor parallelism for large models
+- Select an appropriate model based on your GPU resources
+
 ### Available Now
 These models are available for on-premise deplyment as weel as through leading cloud marketplaces, making deployment and integration straightforward for healthcare organizations. The marketplace availability ensures scalable access to these state-of-the-art medical AI capabilities, with enterprise-grade security and compliance features built-in. Organizations can leverage these models through flexible consumption-based pricing models, enabling both small-scale implementations and large enterprise deployments.
 
 ## AWS Sagemaker Marketplace:
 [Medical LLM Medium](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)
+
 [Medical LLM Small](https://aws.amazon.com/marketplace/pp/prodview-yrajldynampw4)
+
 [Medical LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-sagwxj5hcox4o)
+
 [Medical LLM - 14B](https://aws.amazon.com/marketplace/pp/prodview-u5vx4onx5kucy)
+
 [Medical LLM - 10B](https://aws.amazon.com/marketplace/pp/prodview-x3uprn5edkwdq)
+
 [Medical LLM- 7B](https://aws.amazon.com/marketplace/pp/prodview-dn7ktdl2sg7bi)
 
 ## Snowflake Marketplace:
 [Medical LLM Medium](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCU/john-snow-labs-medical-llm-medium)
+
 [Medical LLM Small](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ68/john-snow-labs-medical-llm-small)
+
 [Medical LLM - 24B](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJFL/john-snow-labs-medical-llm-24b)
+
 [Medical LLM - 14B](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJF5/john-snow-labs-medical-llm-14b)
+
 [Medical LLM - 10B](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJF1/john-snow-labs-medical-llm-10b)
+
 [Medical LLM- 7B](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJEW/john-snow-labs-medical-llm-7b)
 
 
