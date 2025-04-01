@@ -102,6 +102,11 @@ medical-llm:
       - title: Release Notes
         url: /docs/en/LLMs/releases/release_notes
 
+term-server:
+  - title: Terminology Server
+    children:
+      - title: Home
+        url: /docs/en/terminology_server/term_server
 
 annotation-lab:
   - title: Generative AI Lab
