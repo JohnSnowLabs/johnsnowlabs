@@ -15,7 +15,40 @@ There is overwhelming evidence from both academic research and industry benchmar
 
 Our models are designed to deliver best-in-class performance across a wide range of medical tasks—from clinical reasoning and diagnostics to medical research comprehension and genetic analysis.
 
-## Performance Highlights
+## Medical LLMs Offering
+
+| **Model Name** | **Parameters** | **Recommended GPU Memory** |  **Max Sequence Length** | **Model Size** | **Max KV-Cache** |**Tensor Parallel Sizes**|
+| Medical-LLM-7B | 7B | ~25GB | 32K | 14GB |10.50 GB | 1,2,4 |
+| Medical-LLM-10B | 10B | ~35GB | 32K | 19GB |15.00 GB| 1,2,4 |
+| Medical-LLM-14B | 14B | ~40FB | 16K | 28GB | 12.50GB | 1,2 |
+| Medical-LLM-24B | 24B | ~70GB | 32K | 44GB | 25GB | 1,2,4,8  |
+| Medical-LLM-Small | 14B | ~58GB | 32K | 28GB | 30GB | 1,2,4,8 |
+| Medical-LLM-Medium | 70B | 452GB | 128K | 132GB | 320GB | 4, 8 |
+
+
+*Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
+
+## Introduction
+John Snow Labs’ latest 2025 release of its Medical Large Language Models advance Healthcare AI by setting new state-of-the-art accuracy on medical LLM benchmarks. This advances what’s achievable in a variety of real-world use cases including clinical assessment, medical question answering, biomedical research synthesis, and diagnostic decision support.
+
+Leading the pack is their largest 70B model, which can read and understand up to 32,000 words at once – that’s roughly 64 pages of medical text. The model is specially trained to work with medical information, from patient records to research papers, making it highly accurate for healthcare tasks. What makes this release special is how well the model performs while still being practical enough for everyday use in hospitals and clinics – thanks to a suite of models in different sizes, that balance accuracy with speed, cost, and privacy.
+
+## OpenMed Benchmark Performance
+The comprehensive evaluation of John Snow Labs’ Medical LLM suite encompasses multiple standardized benchmarks, providing a thorough assessment of their capabilities across various medical domains. These evaluations demonstrate not only the models’ proficiency in medical knowledge but also their practical applicability in real-world healthcare scenarios.
+
+The OpenMed evaluation framework represents one of the most rigorous testing environments for medical AI models, covering a broad spectrum of medical knowledge and clinical reasoning capabilities. Our models have undergone extensive testing across multiple categories, achieving remarkable results that validate their exceptional performance:
+
+## Model Performance Matrix
+**Large (70B+) Models Comparison**
+![Medical LLM by John Snow Labs](/assets/images/graph_med_llm.png)
+
+**Smaller Models Comparison**
+![Medical LLM by John Snow Labs](/assets/images/graph_med_llm.png)
+
+All scores are presented as percentages (%)
+![Medical LLM by John Snow Labs](/assets/images/graph_med_llm.png)
+
+## Open Medical Leaderboard Performance Analysis
 
 John Snow Labs’ Medical LLMs have been rigorously evaluated against leading general-purpose and medical-specific models, including GPT-4 and Med-PaLM-2. Here's a detailed breakdown of their performance across key medical domains:
 
@@ -88,18 +121,6 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 
 ![Medical LLM by John Snow Labs](/assets/images/graph_med_llm.png)
 
-## Medical LLMs Offering
-
-| **Model Name** | **Parameters** | **Recommended GPU Memory** |  **Max Sequence Length** | **Model Size** | **Max KV-Cache** |**Tensor Parallel Sizes**|
-| Medical-LLM-7B | 7B | ~25GB | 32K | 14GB |10.50 GB | 1,2,4 |
-| Medical-LLM-10B | 10B | ~35GB | 32K | 19GB |15.00 GB| 1,2,4 |
-| Medical-LLM-14B | 14B | ~40FB | 16K | 28GB | 12.50GB | 1,2 |
-| Medical-LLM-24B | 24B | ~70GB | 32K | 44GB | 25GB | 1,2,4,8  |
-| Medical-LLM-Small | 14B | ~58GB | 32K | 28GB | 30GB | 1,2,4,8 |
-| Medical-LLM-Medium | 70B | 452GB | 128K | 132GB | 320GB | 4, 8 |
-
-
-*Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
 
 ### Memory Optimization Tips
 
