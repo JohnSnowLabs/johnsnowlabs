@@ -124,12 +124,47 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 
 ![Medical LLM by John Snow Labs](/assets/images/graph_med_llm.png)
 
+💡The figures demonstrate the comparative performance metrics of our models across key medical benchmarks and clinical reasoning tasks.
+
+![Medical LLM by John Snow Labs](/assets/images/web1_llm_model_comparison.png)
+
+![Medical LLM by John Snow Labs](/assets/images/web2_llm_model_comparison.png)
 
 ### Memory Optimization Tips
 
 - Use smaller sequence lengths to reduce KV-cache memory
 - Leverage tensor parallelism for large models
 - Select an appropriate model based on your GPU resources
+
+**Medical-LLM – 14B**
+ - Achieves 81.42% average score vs GPT-4’s 82.85% and Med-PaLM-2’s 84.08%
+ - Clinical knowledge score of 92.36% vs Med-PaLM-2’s 88.3%
+ - Medical reasoning at 90% matches Med-PaLM-2’s performance
+ - Higher accuracy than Meditron-70B while using 5x less parameters
+ - Suitable for deployment scenarios with compute constraints
+
+**Medical-LLM – 10B**
+
+ - Average score of 75.19% across medical benchmarks
+ - Clinical analysis score of 88.19% vs Med-PaLM-1’s 83.8%
+ - Medical Genetics score of 82% vs Med-PaLM-1’s 75%
+ - Comparable performance to models requiring 7x more parameters
+ - Balanced option for resource-conscious implementations
+
+**Medical-LLM – 7B**
+
+- Clinical reasoning score of 86.81% vs Med-PaLM-1’s 83.8%
+- Average score of 71.70% on OpenMed benchmark suite
+- PubMedQA score of 75.6%, higher than other 7B models
+- Matches GPT-4’s accuracy on medical QA with 100x fewer parameters
+- Efficient choice for high-throughput clinical applications
+
+## Performance-to-Size Comparison
+![Medical LLM by John Snow Labs](/assets/images/perftosize_llm_model_comparison.png)
+
+### Available Now
+These models are available through leading cloud marketplaces, making deployment and integration straightforward for healthcare organizations. The marketplace availability ensures scalable access to these state-of-the-art medical AI capabilities, with enterprise-grade security and compliance features built-in. Organizations can leverage these models through flexible consumption-based pricing models, enabling both small-scale implementations and large enterprise deployments
+## AWS Sagemaker Marketplace:
 
 
 ## Partner With Us
