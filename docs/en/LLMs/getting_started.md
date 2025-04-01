@@ -35,7 +35,7 @@ John Snow Labs provides a ready-to-use Docker image for deploying the Medical LL
 docker pull johnsnowlabs/jsl-llms:latest
 ```
 
-Use the command below to start the container. Replace <path_to_jsl_license> with the absolute path to your license file on the host machine:
+Use the command below to start the container. Replace <path_to_jsl_license> with the absolute path to your license file on the host machine; replace the <model> with the name of the LLM model you want to deploy (Medical-LLM-7B, Medical-LLM-10B, Medical-LLM-14B, Medical-LLM-24B, Medical-LLM-Small, Medical-LLM-Medium): 
 
 ```bash
 docker run -d \
