@@ -28,6 +28,6 @@ For direct assistance, our support team is available via:
 
 ## 📝 Licensing
 
-A valid Spark NLP license is required to use this inference server. Licenses can be obtained through JohnSnowLabs.
+A valid John Snow Labs license is required to deploy the models on premise for inference. Licenses can be obtained by contacting [sales@johnsnowlabs.com](mailto:sales@johnsnowlabs.com).
 
 </div>

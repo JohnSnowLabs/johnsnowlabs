@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Medical LLMs | John Snow Labs
-title: On-premise deployment
+title: On-premise Deployment
 permalink: /docs/en/LLMs/on_prem_deploy
 key: docs-medical-llm
 modify_date: "2024-03-31"
@@ -35,7 +35,7 @@ John Snow Labs provides a ready-to-use Docker image for deploying the Medical LL
 docker pull johnsnowlabs/jsl-llms:latest
 ```
 
-Use the command below to start the container. Replace <path_to_jsl_license> with the absolute path to your license file on the host machine; replace the <model> with the name of the LLM model you want to deploy (Medical-LLM-7B, Medical-LLM-10B, Medical-LLM-14B, Medical-LLM-24B, Medical-LLM-Small, Medical-LLM-Medium): 
+Use the command below to start the container. Replace <path_to_jsl_license> with the absolute path to your license file on the host machine; replace the <model> with the name of the LLM model you want to deploy (Medical-LLM-Small, Medical-LLM-Medium, etc. see the complete list in the table below): 
 
 ```bash
 docker run -d \
@@ -47,6 +47,22 @@ johnsnowlabs/jsl-llms \
 --model Medical-LLM-7B \
 --port 8080
 ```
+
+The following models are currently available for on-premise deployments:
+
+| **Model Name** | **Parameters** | **Recommended GPU Memory** |  **Max Sequence Length** | **Model Size** | **Max KV-Cache** |**Tensor Parallel Sizes**|
+| Medical-LLM-7B | 7B | ~25GB | 32K | 14GB |10.50 GB | 1,2,4 |
+| Medical-LLM-10B | 10B | ~35GB | 32K | 19GB |15.00 GB| 1,2,4 |
+| Medical-LLM-14B | 14B | ~40FB | 16K | 28GB | 12.50GB | 1,2 |
+| Medical-LLM-24B | 24B | ~70GB | 32K | 44GB | 25GB | 1,2,4,8  |
+| Medical-LLM-Small | 14B | ~58GB | 32K | 28GB | 30GB | 1,2,4,8 |
+| Medical-LLM-Medium | 70B | 452GB | 128K | 132GB | 320GB | 4, 8 |
+
+
+*Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
+
+
+
 
 </div>
 
@@ -97,17 +113,5 @@ payload = {
 
 
 
-## Medical LLMs Offering
-
-| **Model Name** | **Parameters** | **Recommended GPU Memory** |  **Max Sequence Length** | **Model Size** | **Max KV-Cache** |**Tensor Parallel Sizes**|
-| Medical-LLM-7B | 7B | ~25GB | 32K | 14GB |10.50 GB | 1,2,4 |
-| Medical-LLM-10B | 10B | ~35GB | 32K | 19GB |15.00 GB| 1,2,4 |
-| Medical-LLM-14B | 14B | ~40FB | 16K | 28GB | 12.50GB | 1,2 |
-| Medical-LLM-24B | 24B | ~70GB | 32K | 44GB | 25GB | 1,2,4,8  |
-| Medical-LLM-Small | 14B | ~58GB | 32K | 28GB | 30GB | 1,2,4,8 |
-| Medical-LLM-Medium | 70B | 452GB | 128K | 132GB | 320GB | 4, 8 |
-
-
-*Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)*
 
 

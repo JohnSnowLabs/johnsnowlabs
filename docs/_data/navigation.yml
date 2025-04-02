@@ -95,10 +95,12 @@ medical-llm:
     children:
       - title: Home
         url: /docs/en/LLMs/medical_llm
-      - title: On-premise deployment
+      - title: Deploy on Premise
         url: /docs/en/LLMs/on_prem_deploy
-      - title: Cloud deployment
-        url: /docs/en/LLMs/cloud_deploy
+      - title: Deploy on AWS
+        url: /docs/en/LLMs/on_aws
+      - title: Deploy on Snowflake
+        url: /docs/en/LLMs/on_snowflake
       - title: Support
         url: /docs/en/LLMs/support
       - title: Release Notes
