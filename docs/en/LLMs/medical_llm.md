@@ -158,7 +158,7 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 ![Medical LLM by John Snow Labs](/assets/images/perftosize_llm_model_comparison.png)
 
 ### Available Now
-These models are available for on-premise deplyment as weel as through leading cloud marketplaces, making deployment and integration straightforward for healthcare organizations. The marketplace availability ensures scalable access to these state-of-the-art medical AI capabilities, with enterprise-grade security and compliance features built-in. Organizations can leverage these models through flexible consumption-based pricing models, enabling both small-scale implementations and large enterprise deployments.
+These models are available for [on-premise deployment](/docs/en/LLMs/on_prem_deploy) as well as through leading [cloud marketplaces](/docs/en/LLMs/cloud_deploy), making deployment and integration straightforward for healthcare organizations. The marketplace availability ensures scalable access to these state-of-the-art medical AI capabilities, with enterprise-grade security and compliance features built-in. Organizations can leverage these models through flexible consumption-based pricing models, enabling both small-scale implementations and large enterprise deployments.
 
 ## AWS Sagemaker Marketplace:
 [Medical LLM Medium](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)
