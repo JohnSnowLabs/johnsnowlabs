@@ -7245,7 +7245,7 @@ a.btn1 {
     padding: 0 15px; }
 
 .nlp_content_inner {
-  width: 980px;
+  width: 1200px;
   margin: 0 auto;
   display: flex;
   padding: 0 15px;
@@ -7253,9 +7253,9 @@ a.btn1 {
   justify-content: space-between; }
 
 .nlp_content_col {
-  width: 304px;
+  width: 280px;
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 0 280px;
   background: rgba(255, 255, 255, 0.15);
   flex-wrap: wrap;
   border-radius: 10px; }
@@ -8184,7 +8184,14 @@ code {
     z-index: 9;
     background: #ffffff; }
     .layout--page--sidebar.layout--page--aside .has-aside .col-aside.open {
-      right: 0; } }
+      right: 0; }
+
+  .nlp_content_inner {
+    width: 1000px; }
+
+  .nlp_content_col {
+    width: 234px;
+    flex: 0 0 234px; } }
 @media (max-width: 1199px) {
   .has-aside .col-aside {
     display: block; }
@@ -8366,6 +8373,14 @@ code {
   .input_output_modal {
     width: 90%; }
 
+  .nlp_content_inner {
+    width: 764px; }
+
+  .nlp_content_col {
+    width: 49%;
+    flex: 0 0 49%;
+    margin-bottom: 20px; }
+
   .learn-hub-inner {
     background: #FFFFFF;
     box-shadow: 0px 5px 15px rgba(158, 222, 250, 0.25);
@@ -8446,7 +8461,8 @@ code {
       height: auto; }
 
   .nlp_content_col {
-    width: 32%; }
+    width: 44%;
+    flex: 0 0 44%; }
 
   .ecosystem-section .tab-python-scala-li {
     min-width: 175px;
@@ -8536,9 +8552,6 @@ code {
 
   .nlp_content_item {
     height: 250px; }
-
-  .nlp_content_inner {
-    width: 100%; }
 
   .docs-wrapper {
     width: 100%; }
@@ -8635,13 +8648,15 @@ code {
     width: 100%; }
 
   .nlp_content_col {
-    width: 28%;
     margin: 0 15px; }
 
   .disp_platform_wrapper {
     margin: 0 -10px; }
     .disp_platform_wrapper .disp_platform_wrapper .disp_platform_item {
       margin: 0 10px; }
+
+  .nlp_content_inner {
+    width: 100%; }
 
   .nlp_content_item {
     font-size: 18px;
@@ -9070,7 +9085,11 @@ code {
     font-size: 38px; }
 
   .edit-on-github {
-    right: 15px; } }
+    right: 15px; }
+
+  .nlp_content_col {
+    width: 100%;
+    flex: 0 0 100%; } }
 @media (max-width: 660px) {
   .nlp_content_item {
     margin: 0 0 20px; }
