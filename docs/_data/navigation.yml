@@ -90,6 +90,28 @@ healthcare-gpt:
       - title: Release Notes
         url: /docs/en/chatbot/releases/release_notes
 
+medical-llm:
+  - title: Medical LLMs
+    children:
+      - title: Home
+        url: /docs/en/LLMs/medical_llm
+      - title: Deploy on Premise
+        url: /docs/en/LLMs/on_prem_deploy
+      - title: Deploy on AWS
+        url: /docs/en/LLMs/on_aws
+      - title: Deploy on Snowflake
+        url: /docs/en/LLMs/on_snowflake
+      - title: Support
+        url: /docs/en/LLMs/support
+      - title: Release Notes
+        url: /docs/en/LLMs/releases/release_notes
+
+term-server:
+  - title: Terminology Server
+    children:
+      - title: Home
+        url: /docs/en/terminology_server/term_server
+
 annotation-lab:
   - title: Generative AI Lab
     children:
