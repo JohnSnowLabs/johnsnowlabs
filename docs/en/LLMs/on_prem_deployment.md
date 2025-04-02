@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Medical LLMs | John Snow Labs
-title: Getting Started
-permalink: /docs/en/LLMs/getting_started
+title: On-premise deployment
+permalink: /docs/en/LLMs/on_prem_deploy
 key: docs-medical-llm
 modify_date: "2024-03-31"
 show_nav: true
