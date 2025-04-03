@@ -664,69 +664,89 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
   <p>The following models are currently available for on-premise deployments:</p>
 
   <table>
-    <tbody>
+    <thead>
       <tr>
-        <td><strong>Model Name</strong></td>
-        <td><strong>Parameters</strong></td>
-        <td><strong>Recommended GPU Memory</strong></td>
-        <td><strong>Max Sequence Length</strong></td>
-        <td><strong>Model Size</strong></td>
-        <td><strong>Max KV-Cache</strong></td>
-        <td><strong>Tensor Parallel Sizes</strong></td>
+        <th><strong>Model Name</strong></th>
+        <th><strong>Parameters</strong></th>
+        <th><strong>Recommended GPU Memory</strong></th>
+        <th><strong>Max Sequence Length</strong></th>
+        <th><strong>Model Size</strong></th>
+        <th><strong>Max KV-Cache</strong></th>
+        <th><strong>Tensor Parallel Sizes</strong></th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>Medical-LLM-7B</td>
         <td>7B</td>
-        <td>~25GB</td>
-        <td>32K</td>
-        <td>14GB</td>
-        <td>10.50 GB</td>
-        <td>1,2,4</td>
+        <td>~25 GB</td>
+        <td>16K</td>
+        <td>14 GB</td>
+        <td>11 GB</td>
+        <td>1, 2, 4</td>
       </tr>
       <tr>
         <td>Medical-LLM-10B</td>
         <td>10B</td>
-        <td>~35GB</td>
+        <td>~35 GB</td>
         <td>32K</td>
-        <td>19GB</td>
-        <td>15.00 GB</td>
-        <td>1,2,4</td>
+        <td>19 GB</td>
+        <td>15 GB</td>
+        <td>1, 2, 4</td>
       </tr>
       <tr>
         <td>Medical-LLM-14B</td>
         <td>14B</td>
-        <td>~40FB</td>
+        <td>~40 GB</td>
         <td>16K</td>
-        <td>28GB</td>
-        <td>12.50GB</td>
-        <td>1,2</td>
+        <td>27 GB</td>
+        <td>13 GB</td>
+        <td>1, 2</td>
       </tr>
       <tr>
         <td>Medical-LLM-24B</td>
         <td>24B</td>
-        <td>~70GB</td>
+        <td>~69 GB</td>
         <td>32K</td>
-        <td>44GB</td>
-        <td>25GB</td>
-        <td>1,2,4,8</td>
+        <td>44 GB</td>
+        <td>25 GB</td>
+        <td>1, 2, 4, 8</td>
       </tr>
       <tr>
         <td>Medical-LLM-Small</td>
         <td>14B</td>
-        <td>~58GB</td>
+        <td>~58 GB</td>
         <td>32K</td>
-        <td>28GB</td>
-        <td>30GB</td>
-        <td>1,2,4,8</td>
+        <td>28 GB</td>
+        <td>30 GB</td>
+        <td>1, 2, 4, 8</td>
       </tr>
       <tr>
         <td>Medical-LLM-Medium</td>
         <td>70B</td>
-        <td>452GB</td>
+        <td>~452 GB</td>
         <td>128K</td>
-        <td>132GB</td>
-        <td>320GB</td>
+        <td>131 GB</td>
+        <td>320 GB</td>
         <td>4, 8</td>
+      </tr>
+      <tr>
+        <td>Medical-Reasoning-LLM-14B</td>
+        <td>14B</td>
+        <td>~58 GB</td>
+        <td>32K</td>
+        <td>28 GB</td>
+        <td>30 GB</td>
+        <td>1, 2, 4, 8</td>
+      </tr>
+      <tr>
+        <td>Medical-Reasoning-LLM-32B</td>
+        <td>32B</td>
+        <td>~222 GB</td>
+        <td>128K</td>
+        <td>61 GB</td>
+        <td>160 GB</td>
+        <td>2, 4, 8</td>
       </tr>
     </tbody>
   </table>
