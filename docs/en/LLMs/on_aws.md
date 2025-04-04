@@ -25,6 +25,11 @@ The following LLMs are available as AWS Sagemaker Endpoints:
 
 [Medical LLM- 7B](https://aws.amazon.com/marketplace/pp/prodview-dn7ktdl2sg7bi)
 
+[Medical Reasoning LLM - 14B](https://aws.amazon.com/marketplace/pp/prodview-6uqc7fr4rrpti)
+
+[Medical Reasoning LLM - 32B](https://aws.amazon.com/marketplace/pp/prodview-x5bfvnroddgfe)
+
+
 ## Deployment Instructions
 
 <iframe width="853" height="480" src="https://www.youtube.com/embed/i04iYe4U9C0" title="Medical Language Models as AWS SageMaker private API endpoints" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
