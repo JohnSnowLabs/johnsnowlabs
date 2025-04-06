@@ -214,15 +214,15 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-|    | ner_chunk       |   begin |   end | ner_chunk   | assertion                    |
-|---:|:----------------|--------:|------:|:------------|:-----------------------------|
-|  0 | severe fever    |      13 |    13 | PROBLEM     | present                      |
-|  1 | sore throat     |      30 |    30 | PROBLEM     | present                      |
-|  2 | stomach pain    |      55 |    55 | PROBLEM     | absent                       |
-|  3 | pain control    |     113 |   113 | PROBLEM     | hypothetical                 |
-|  4 | short of breath |     142 |   142 | PROBLEM     | conditional                  |
-|  5 | lung tumor      |     202 |   202 | PROBLEM     | present                      |
-|  6 | Alzheimer       |     258 |   258 | PROBLEM     | associated_with_someone_else |
+| ner_chunk       |   begin |   end | ner_chunk   | assertion                    |
+|:----------------|--------:|------:|:------------|:-----------------------------|
+| severe fever    |      13 |    13 | PROBLEM     | present                      |
+| sore throat     |      30 |    30 | PROBLEM     | present                      |
+| stomach pain    |      55 |    55 | PROBLEM     | absent                       |
+| pain control    |     113 |   113 | PROBLEM     | hypothetical                 |
+| short of breath |     142 |   142 | PROBLEM     | conditional                  |
+| lung tumor      |     202 |   202 | PROBLEM     | present                      |
+| Alzheimer       |     258 |   258 | PROBLEM     | associated_with_someone_else |
 ```
 
 {:.model-param}
@@ -239,3 +239,19 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|406.2 MB|
 |Case sensitive:|true|
+
+
+## Benchmarking
+
+```bash
+                       label  precision    recall  f1-score   support
+                      absent      0.964     0.976     0.970      2594
+associated_with_someone_else      0.932     0.840     0.884       131
+                 conditional      0.691     0.514     0.589       148
+                hypothetical      0.931     0.912     0.922       445
+                    possible      0.814     0.699     0.752       652
+                     present      0.963     0.976     0.969      8622
+                    accuracy      -         -         0.953     12592
+                   macro-avg      0.883     0.820     0.848     12592
+                weighted-avg      0.951     0.953     0.951     12592
+```
