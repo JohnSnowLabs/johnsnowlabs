@@ -2297,194 +2297,484 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
       </ul>
     </li>
     <li>
-      <p>Deidentification Pipelines Speed Comparison</p>
+      <p><strong>Deidentification Pipelines Speed Comparison</strong></p>
 
-      <p>This benchmark presents a detailed comparison of various deidentification pipelines applied to a dataset of 10,000 custom clinical texts, aiming to anonymize sensitive information for research and analysis. The comparison evaluates the elapsed time and processing stages of different deidentification pipelines. Each pipeline is characterized by its unique combination of Named Entity Recognition (NER), deidentification methods, rule-based NER, clinical embeddings, and chunk merging processes.</p>
+      <p>This benchmark presents a detailed comparison of various deidentification pipelines applied to a dataset of 1,000 custom clinical texts, aiming to anonymize sensitive information for research and analysis. The comparison evaluates the elapsed time and processing stages of different deidentification pipelines. Each pipeline is characterized by its unique combination of Named Entity Recognition (NER), deidentification methods, rule-based NER, clinical embeddings, and chunk merging processes.</p>
 
       <ul>
-        <li><strong>Dataset:</strong> 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text.</li>
+        <li><strong>Dataset:</strong> 1K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text.</li>
         <li><strong>Versions:</strong>
           <ul>
-            <li><strong>spark-nlp Version:</strong> v5.3.1</li>
-            <li><strong>spark-nlp-jsl Version:</strong> v5.3.1</li>
-            <li><strong>Spark Version:</strong> v3.4.0</li>
+            <li><strong>spark-nlp Version:</strong> v5.5.3</li>
+            <li><strong>spark-nlp-jsl Version:</strong> v5.5.3</li>
+            <li><strong>Spark Version:</strong> v3.5.0</li>
           </ul>
         </li>
         <li><strong>Instance Type:</strong>
           <ul>
-            <li>8 CPU Cores 52GiB RAM (Colab Pro - High RAM)</li>
+            <li>96 CPU Cores 334GiB RAM (Colab Pro - v2-8 TPU High RAM)</li>
           </ul>
         </li>
       </ul>
     </li>
   </ul>
 
-  <table class="table-model-big db">
+  <h2 id="processing-time-by-partition-size">Processing Time by Partition Size</h2>
+
+  <table>
     <thead>
       <tr>
-        <th style="text-align: left">Deidentification Pipeline Name</th>
-        <th style="text-align: right">Elapsed Time</th>
-        <th style="text-align: left">Stages</th>
+        <th>Pipeline Name</th>
+        <th style="text-align: right">4 <br /> partition</th>
+        <th style="text-align: right">8 <br /> partition</th>
+        <th style="text-align: right">16 <br /> partition</th>
+        <th style="text-align: right">32 <br /> partition</th>
+        <th style="text-align: right">64 <br /> partition</th>
+        <th style="text-align: right">100 <br /> partition</th>
+        <th style="text-align: right">1000 <br /> partition</th>
+        <th>Components</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html">clinical_deidentification_subentity_optimized</a></td>
-        <td style="text-align: right">67 min 44 seconds</td>
-        <td style="text-align: left">1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html">ner_deid_subentity_context_augmented</a></td>
+        <td style="text-align: right">183.57 sec</td>
+        <td style="text-align: right">129.89 sec</td>
+        <td style="text-align: right">96.08 sec</td>
+        <td style="text-align: right">84.43 sec</td>
+        <td style="text-align: right">75.41 sec</td>
+        <td style="text-align: right">67.59 sec</td>
+        <td style="text-align: right">50.10 sec</td>
+        <td>1 NER, 1 Deidentification, 14 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html">clinical_deidentification_generic_optimized</a></td>
-        <td style="text-align: right">68 min 31 seconds</td>
-        <td style="text-align: left">1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/10/02/clinical_deidentification_nameAugmented_v2_en.html">clinical_deidentification_nameAugmented_v2</a></td>
+        <td style="text-align: right">537.69 sec</td>
+        <td style="text-align: right">326.60 sec</td>
+        <td style="text-align: right">231.81 sec</td>
+        <td style="text-align: right">199.64 sec</td>
+        <td style="text-align: right">161.86 sec</td>
+        <td style="text-align: right">140.11 sec</td>
+        <td style="text-align: right">108.91 sec</td>
+        <td>4 NER, 1 Deidentification, 17 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html">clinical_deidentification_generic</a></td>
-        <td style="text-align: right">86 min 24 seconds</td>
-        <td style="text-align: left">1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html">clinical_deidentification_obfuscation_medium</a></td>
+        <td style="text-align: right">381.87 sec</td>
+        <td style="text-align: right">241.36 sec</td>
+        <td style="text-align: right">159.87 sec</td>
+        <td style="text-align: right">131.02 sec</td>
+        <td style="text-align: right">106.19 sec</td>
+        <td style="text-align: right">90.95 sec</td>
+        <td style="text-align: right">62.40 sec</td>
+        <td>2 NER, 1 Deidentification, 2 Rule-based NER, 1 clinical embedding, 1 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html">clinical_deidentification_subentity</a></td>
-        <td style="text-align: right">99 min 41 seconds</td>
-        <td style="text-align: left">1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html">clinical_deidentification_obfuscation_small</a></td>
+        <td style="text-align: right">229.04 sec</td>
+        <td style="text-align: right">128.93 sec</td>
+        <td style="text-align: right">79.24 sec</td>
+        <td style="text-align: right">63.82 sec</td>
+        <td style="text-align: right">59.84 sec</td>
+        <td style="text-align: right">54.49 sec</td>
+        <td style="text-align: right">45.04 sec</td>
+        <td>1 NER, 1 Deidentification, 2 Rule-based NER, 1 clinical embedding, 1 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html">clinical_deidentification</a></td>
-        <td style="text-align: right">117 min 44 seconds</td>
-        <td style="text-align: left">2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html">clinical_deidentification_subentity</a></td>
+        <td style="text-align: right">186.33 sec</td>
+        <td style="text-align: right">116.87 sec</td>
+        <td style="text-align: right">71.83 sec</td>
+        <td style="text-align: right">60.90 sec</td>
+        <td style="text-align: right">57.53 sec</td>
+        <td style="text-align: right">51.36 sec</td>
+        <td style="text-align: right">44.44 sec</td>
+        <td>1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html">clinical_deidentification_nameAugmented</a></td>
-        <td style="text-align: right">134 min 27 seconds</td>
-        <td style="text-align: left">2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html">clinical_deidentification_subentity_nameAugmented</a></td>
+        <td style="text-align: right">318.09 sec</td>
+        <td style="text-align: right">189.29 sec</td>
+        <td style="text-align: right">129.62 sec</td>
+        <td style="text-align: right">114.62 sec</td>
+        <td style="text-align: right">103.90 sec</td>
+        <td style="text-align: right">93.71 sec</td>
+        <td style="text-align: right">63.39 sec</td>
+        <td>3 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html">clinical_deidentification_glove</a></td>
-        <td style="text-align: right">146 min 51 seconds</td>
-        <td style="text-align: left">2 NER, 4 Deidentification,  8 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_context_augmented_pipeline_en.html">ner_deid_context_augmented_pipeline</a></td>
+        <td style="text-align: right">358.23 sec</td>
+        <td style="text-align: right">243.75 sec</td>
+        <td style="text-align: right">171.35 sec</td>
+        <td style="text-align: right">144.40 sec</td>
+        <td style="text-align: right">118.03 sec</td>
+        <td style="text-align: right">101.41 sec</td>
+        <td style="text-align: right">68.09 sec</td>
+        <td>2 NER, 1 Deidentification, 14 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html">clinical_deidentification_obfuscation_small</a></td>
-        <td style="text-align: right">147 min 06 seconds</td>
-        <td style="text-align: left">1 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_medium_en.html">clinical_deidentification_zeroshot_medium</a></td>
+        <td style="text-align: right">534.69 sec</td>
+        <td style="text-align: right">350.89 sec</td>
+        <td style="text-align: right">231.92 sec</td>
+        <td style="text-align: right">166.73 sec</td>
+        <td style="text-align: right">174.11 sec</td>
+        <td style="text-align: right">186.03 sec</td>
+        <td style="text-align: right">200.13 sec</td>
+        <td>1 ZeroShotNER, 1 Deidentification, 14 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html">clinical_deidentification_slim</a></td>
-        <td style="text-align: right">154 min 37 seconds</td>
-        <td style="text-align: left">2 NER, 4 Deidentification, 15 Rule-based NER, 1 glove embedding,    3 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/09/30/clinical_deidentification_v2_wip_en.html">clinical_deidentification_v2_wip</a></td>
+        <td style="text-align: right">585.27 sec</td>
+        <td style="text-align: right">374.09 sec</td>
+        <td style="text-align: right">252.28 sec</td>
+        <td style="text-align: right">206.36 sec</td>
+        <td style="text-align: right">173.21 sec</td>
+        <td style="text-align: right">145.51 sec</td>
+        <td style="text-align: right">101.34 sec</td>
+        <td>3 NER, 1 Deidentification, 14 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html">clinical_deidentification_multi_mode_output</a></td>
-        <td style="text-align: right">154 min 50 seconds</td>
-        <td style="text-align: left">2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/01/10/clinical_deidentification_langtest_en.html">clinical_deidentification_langtest</a></td>
+        <td style="text-align: right">303.23 sec</td>
+        <td style="text-align: right">181.40 sec</td>
+        <td style="text-align: right">126.10 sec</td>
+        <td style="text-align: right">106.97 sec</td>
+        <td style="text-align: right">103.74 sec</td>
+        <td style="text-align: right">99.35 sec</td>
+        <td style="text-align: right">65.21 sec</td>
+        <td>2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html">clinical_deidentification_obfuscation_medium</a></td>
-        <td style="text-align: right">205 min 40 seconds</td>
-        <td style="text-align: left">2 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html">clinical_deidentification_subentity_optimized</a></td>
+        <td style="text-align: right">154.68 sec</td>
+        <td style="text-align: right">90.15 sec</td>
+        <td style="text-align: right">59.62 sec</td>
+        <td style="text-align: right">52.89 sec</td>
+        <td style="text-align: right">50.31 sec</td>
+        <td style="text-align: right">46.60 sec</td>
+        <td style="text-align: right">40.33 sec</td>
+        <td>1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/05/21/ner_deid_context_nameAugmented_pipeline_en.html">ner_deid_context_nameAugmented_pipeline</a></td>
+        <td style="text-align: right">434.87 sec</td>
+        <td style="text-align: right">299.94 sec</td>
+        <td style="text-align: right">207.80 sec</td>
+        <td style="text-align: right">177.01 sec</td>
+        <td style="text-align: right">143.96 sec</td>
+        <td style="text-align: right">121.82 sec</td>
+        <td style="text-align: right">83.31 sec</td>
+        <td>1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_generic_context_augmented_pipeline_en.html">ner_deid_generic_context_augmented_pipeline</a></td>
+        <td style="text-align: right">180.98 sec</td>
+        <td style="text-align: right">130.60 sec</td>
+        <td style="text-align: right">97.42 sec</td>
+        <td style="text-align: right">83.89 sec</td>
+        <td style="text-align: right">74.64 sec</td>
+        <td style="text-align: right">65.70 sec</td>
+        <td style="text-align: right">51.68 sec</td>
+        <td>1 NER, 14 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/01/03/clinical_deidentification_multi_mode_output_en.html">clinical_deidentification_multi_mode_output</a></td>
+        <td style="text-align: right">371.94 sec</td>
+        <td style="text-align: right">231.87 sec</td>
+        <td style="text-align: right">154.81 sec</td>
+        <td style="text-align: right">127.31 sec</td>
+        <td style="text-align: right">108.67 sec</td>
+        <td style="text-align: right">93.13 sec</td>
+        <td style="text-align: right">66.28 sec</td>
+        <td>2 NER, 4 Deidentification, 15 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/01/06/clinical_deidentification_light_en.html">clinical_deidentification_light</a></td>
+        <td style="text-align: right">169.58 sec</td>
+        <td style="text-align: right">98.28 sec</td>
+        <td style="text-align: right">65.51 sec</td>
+        <td style="text-align: right">55.45 sec</td>
+        <td style="text-align: right">50.92 sec</td>
+        <td style="text-align: right">48.79 sec</td>
+        <td style="text-align: right">42.54 sec</td>
+        <td>1 NER, 1 Deidentification, 15 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/11/29/clinical_deidentification_docwise_wip_en.html">clinical_deidentification_docwise_wip</a></td>
+        <td style="text-align: right">464.01 sec</td>
+        <td style="text-align: right">276.01 sec</td>
+        <td style="text-align: right">219.02 sec</td>
+        <td style="text-align: right">197.57 sec</td>
+        <td style="text-align: right">165.39 sec</td>
+        <td style="text-align: right">159.26 sec</td>
+        <td style="text-align: right">108.14 sec</td>
+        <td>3 NER, 2 Deidentification, 18 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/11/29/clinical_deidentification_docwise_wip_v2_en.html">clinical_deidentification_docwise_wip_v2</a></td>
+        <td style="text-align: right">921.75 sec</td>
+        <td style="text-align: right">591.35 sec</td>
+        <td style="text-align: right">412.83 sec</td>
+        <td style="text-align: right">331.97 sec</td>
+        <td style="text-align: right">295.62 sec</td>
+        <td style="text-align: right">285.13 sec</td>
+        <td style="text-align: right">260.49 sec</td>
+        <td>4 NER, 2 Deidentification, 19 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_medium_wip_en.html">clinical_deidentification_docwise_medium_wip</a></td>
+        <td style="text-align: right">908.95 sec</td>
+        <td style="text-align: right">574.25 sec</td>
+        <td style="text-align: right">397.55 sec</td>
+        <td style="text-align: right">304.22 sec</td>
+        <td style="text-align: right">287.28 sec</td>
+        <td style="text-align: right">271.28 sec</td>
+        <td style="text-align: right">259.40 sec</td>
+        <td>1 ZeroShotNER, 4 NER, 2 Deidentification, 19 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_large_wip_en.html">clinical_deidentification_docwise_large_wip</a></td>
+        <td style="text-align: right">1878.04 sec</td>
+        <td style="text-align: right">1244.60 sec</td>
+        <td style="text-align: right">862.57 sec</td>
+        <td style="text-align: right">630.46 sec</td>
+        <td style="text-align: right">601.97 sec</td>
+        <td style="text-align: right">602.24 sec</td>
+        <td style="text-align: right">571.39 sec</td>
+        <td>1 ZeroShotNER, 4 NER, 2 Deidentification, 19 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_large_en.html">clinical_deidentification_zeroshot_large</a></td>
+        <td style="text-align: right">1523.22 sec</td>
+        <td style="text-align: right">1020.68 sec</td>
+        <td style="text-align: right">683.21 sec</td>
+        <td style="text-align: right">474.84 sec</td>
+        <td style="text-align: right">486.09 sec</td>
+        <td style="text-align: right">510.76 sec</td>
+        <td style="text-align: right">516.65 sec</td>
+        <td>1 ZeroShotNER, 2 Deidentification, 19 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html">clinical_deidentification_generic_optimized</a></td>
+        <td style="text-align: right">197.43 sec</td>
+        <td style="text-align: right">105.47 sec</td>
+        <td style="text-align: right">72.05 sec</td>
+        <td style="text-align: right">65.07 sec</td>
+        <td style="text-align: right">61.40 sec</td>
+        <td style="text-align: right">53.83 sec</td>
+        <td style="text-align: right">44.08 sec</td>
+        <td>1 NER, 1 Deidentification, 15 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html">clinical_deidentification_generic_optimized</a></td>
+        <td style="text-align: right">147.62 sec</td>
+        <td style="text-align: right">86.96 sec</td>
+        <td style="text-align: right">58.66 sec</td>
+        <td style="text-align: right">52.09 sec</td>
+        <td style="text-align: right">51.30 sec</td>
+        <td style="text-align: right">47.71 sec</td>
+        <td style="text-align: right">40.49 sec</td>
+        <td>1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/16/ner_deid_large_pipeline_en.html">ner_deid_large_pipeline</a></td>
+        <td style="text-align: right">151.98 sec</td>
+        <td style="text-align: right">100.17 sec</td>
+        <td style="text-align: right">73.49 sec</td>
+        <td style="text-align: right">68.41 sec</td>
+        <td style="text-align: right">65.61 sec</td>
+        <td style="text-align: right">63.50 sec</td>
+        <td style="text-align: right">48.61 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_sd_large_pipeline_en.html">ner_deid_sd_large_pipeline</a></td>
+        <td style="text-align: right">148.82 sec</td>
+        <td style="text-align: right">102.05 sec</td>
+        <td style="text-align: right">79.24 sec</td>
+        <td style="text-align: right">71.99 sec</td>
+        <td style="text-align: right">73.23 sec</td>
+        <td style="text-align: right">64.26 sec</td>
+        <td style="text-align: right">46.80 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/16/ner_deid_subentity_augmented_i2b2_pipeline_en.html">ner_deid_subentity_augmented_i2b2_pipeline</a></td>
+        <td style="text-align: right">183.40 sec</td>
+        <td style="text-align: right">125.49 sec</td>
+        <td style="text-align: right">92.35 sec</td>
+        <td style="text-align: right">82.53 sec</td>
+        <td style="text-align: right">79.48 sec</td>
+        <td style="text-align: right">66.10 sec</td>
+        <td style="text-align: right">48.59 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_subentity_augmented_pipeline_en.html">ner_deid_subentity_augmented_pipeline</a></td>
+        <td style="text-align: right">186.18 sec</td>
+        <td style="text-align: right">129.26 sec</td>
+        <td style="text-align: right">92.83 sec</td>
+        <td style="text-align: right">82.54 sec</td>
+        <td style="text-align: right">74.55 sec</td>
+        <td style="text-align: right">66.50 sec</td>
+        <td style="text-align: right">49.58 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_subentity_glove_pipeline_en.html">ner_deid_subentity_glove_pipeline</a></td>
+        <td style="text-align: right">157.54 sec</td>
+        <td style="text-align: right">100.53 sec</td>
+        <td style="text-align: right">71.70 sec</td>
+        <td style="text-align: right">63.02 sec</td>
+        <td style="text-align: right">58.03 sec</td>
+        <td style="text-align: right">52.46 sec</td>
+        <td style="text-align: right">40.34 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_synthetic_pipeline_en.html">ner_deid_synthetic_pipeline</a></td>
+        <td style="text-align: right">143.22 sec</td>
+        <td style="text-align: right">90.35 sec</td>
+        <td style="text-align: right">74.88 sec</td>
+        <td style="text-align: right">64.39 sec</td>
+        <td style="text-align: right">64.46 sec</td>
+        <td style="text-align: right">61.11 sec</td>
+        <td style="text-align: right">47.11 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_augmented_en.html">clinical_deidentification_glove_augmented</a></td>
+        <td style="text-align: right">305.01 sec</td>
+        <td style="text-align: right">186.45 sec</td>
+        <td style="text-align: right">126.12 sec</td>
+        <td style="text-align: right">103.87 sec</td>
+        <td style="text-align: right">87.27 sec</td>
+        <td style="text-align: right">76.95 sec</td>
+        <td style="text-align: right">54.57 sec</td>
+        <td>2 NER, 4 Deidentification, 8 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_augmented_pipeline_en.html">ner_deid_augmented_pipeline</a></td>
+        <td style="text-align: right">154.71 sec</td>
+        <td style="text-align: right">96.91 sec</td>
+        <td style="text-align: right">76.86 sec</td>
+        <td style="text-align: right">74.52 sec</td>
+        <td style="text-align: right">75.15 sec</td>
+        <td style="text-align: right">66.00 sec</td>
+        <td style="text-align: right">48.02 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_biobert_pipeline_en.html">ner_deid_biobert_pipeline</a></td>
+        <td style="text-align: right">885.60 sec</td>
+        <td style="text-align: right">691.24 sec</td>
+        <td style="text-align: right">558.45 sec</td>
+        <td style="text-align: right">529.14 sec</td>
+        <td style="text-align: right">525.24 sec</td>
+        <td style="text-align: right">524.33 sec</td>
+        <td style="text-align: right">481.32 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_enriched_biobert_pipeline_en.html">ner_deid_enriched_biobert_pipeline</a></td>
+        <td style="text-align: right">849.20 sec</td>
+        <td style="text-align: right">628.01 sec</td>
+        <td style="text-align: right">532.61 sec</td>
+        <td style="text-align: right">521.90 sec</td>
+        <td style="text-align: right">524.46 sec</td>
+        <td style="text-align: right">523.50 sec</td>
+        <td style="text-align: right">476.15 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_enriched_pipeline_en.html">ner_deid_enriched_pipeline</a></td>
+        <td style="text-align: right">146.35 sec</td>
+        <td style="text-align: right">94.64 sec</td>
+        <td style="text-align: right">71.49 sec</td>
+        <td style="text-align: right">65.04 sec</td>
+        <td style="text-align: right">63.18 sec</td>
+        <td style="text-align: right">61.98 sec</td>
+        <td style="text-align: right">47.05 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_generic_augmented_pipeline_en.html">ner_deid_generic_augmented_pipeline</a></td>
+        <td style="text-align: right">184.94 sec</td>
+        <td style="text-align: right">126.04 sec</td>
+        <td style="text-align: right">92.51 sec</td>
+        <td style="text-align: right">81.16 sec</td>
+        <td style="text-align: right">80.97 sec</td>
+        <td style="text-align: right">65.13 sec</td>
+        <td style="text-align: right">48.55 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deid_generic_glove_pipeline_en.html">ner_deid_generic_glove_pipeline</a></td>
+        <td style="text-align: right">146.63 sec</td>
+        <td style="text-align: right">98.07 sec</td>
+        <td style="text-align: right">68.31 sec</td>
+        <td style="text-align: right">62.75 sec</td>
+        <td style="text-align: right">55.80 sec</td>
+        <td style="text-align: right">50.64 sec</td>
+        <td style="text-align: right">39.41 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html">clinical_deidentification_glove</a></td>
+        <td style="text-align: right">305.87 sec</td>
+        <td style="text-align: right">189.45 sec</td>
+        <td style="text-align: right">128.52 sec</td>
+        <td style="text-align: right">112.33 sec</td>
+        <td style="text-align: right">89.17 sec</td>
+        <td style="text-align: right">76.05 sec</td>
+        <td style="text-align: right">53.67 sec</td>
+        <td>1 NER, 4 Deidentification, 8 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html">clinical_deidentification_slim</a></td>
+        <td style="text-align: right">321.94 sec</td>
+        <td style="text-align: right">196.79 sec</td>
+        <td style="text-align: right">133.13 sec</td>
+        <td style="text-align: right">110.53 sec</td>
+        <td style="text-align: right">92.02 sec</td>
+        <td style="text-align: right">81.39 sec</td>
+        <td style="text-align: right">56.74 sec</td>
+        <td>2 NER, 4 Deidentification, 15 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_wip_en.html">clinical_deidentification_wip</a></td>
+        <td style="text-align: right">356.45 sec</td>
+        <td style="text-align: right">223.80 sec</td>
+        <td style="text-align: right">152.55 sec</td>
+        <td style="text-align: right">125.94 sec</td>
+        <td style="text-align: right">109.61 sec</td>
+        <td style="text-align: right">92.37 sec</td>
+        <td style="text-align: right">63.89 sec</td>
+        <td>2 NER, 4 Deidentification, 15 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/06/17/ner_deidentify_dl_pipeline_en.html">ner_deidentify_dl_pipeline</a></td>
+        <td style="text-align: right">153.56 sec</td>
+        <td style="text-align: right">99.92 sec</td>
+        <td style="text-align: right">78.81 sec</td>
+        <td style="text-align: right">68.51 sec</td>
+        <td style="text-align: right">60.68 sec</td>
+        <td style="text-align: right">54.47 sec</td>
+        <td style="text-align: right">42.47 sec</td>
+        <td>1 NER, 1 clinical embedding</td>
       </tr>
     </tbody>
   </table>
 
-  <p>PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.</p>
+  <h2 id="notes">Notes</h2>
 
   <ul>
-    <li>
-      <p>ZeroShot Deidentification Pipelines Speed Comparison</p>
-
-      <ul>
-        <li>
-          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html">clinical_deidentification</a></strong> 2 NER, 1 clinical embedding, 13 Rule-based NER, 3 chunk merger, 1 Deidentification</p>
-        </li>
-        <li>
-          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_medium_en.html">clinical_deidentification_zeroshot_medium</a></strong> 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger</p>
-        </li>
-        <li>
-          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_medium_wip_en.html">clinical_deidentification_docwise_medium_wip</a></strong> 1 ZeroShotNER, 4 NER, 1 clinical embedding, 18 Rule-based NER,  3 chunk merger, 1 Deidentification</p>
-        </li>
-        <li>
-          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/04/clinical_deidentification_zeroshot_large_en.html">clinical_deidentification_zeroshot_large</a></strong> 1 ZeroShotNER, 18 Rule-based NER, 2 chunk merger</p>
-        </li>
-        <li>
-          <p><strong><a href="https://nlp.johnsnowlabs.com/2024/12/03/clinical_deidentification_docwise_large_wip_en.html">clinical_deidentification_docwise_large_wip</a></strong> 1 ZeroShotNER, 4 NER, 1 clinical embedding, 18 Rule-based NER, 3 chunk merger, 1 Deidentification</p>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <p>CPU Testing:</p>
-    </li>
+    <li>Lower values indicate better performance</li>
+    <li>Partition sizes represent the number of concurrent texts being processed</li>
+    <li>Component counts include all NER models, rule-based components, embeddings, and other pipeline stages</li>
   </ul>
-
-  <table class="table-model-big db">
-    <thead>
-      <tr>
-        <th>partition</th>
-        <th>clinical deidendification</th>
-        <th>clinical deidendification <br /> zeroshot_medium</th>
-        <th>clinical deidendification  <br /> docwise_medium_wip</th>
-        <th>clinical deidendification  <br />  zeroshot_large</th>
-        <th>clinical deidendification  <br /> docwise_large_wip</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>295.8</td>
-        <td>520.8</td>
-        <td>862.7</td>
-        <td>1537.9</td>
-        <td>1832.4</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>195.0</td>
-        <td>345.6</td>
-        <td>577.0</td>
-        <td>1013.9</td>
-        <td>1228.3</td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>133.3</td>
-        <td>227.2</td>
-        <td>401.8</td>
-        <td>666.2</td>
-        <td>835.2</td>
-      </tr>
-      <tr>
-        <td>32</td>
-        <td>109.5</td>
-        <td>160.9</td>
-        <td>305.3</td>
-        <td>456.9</td>
-        <td>614.7</td>
-      </tr>
-      <tr>
-        <td>64</td>
-        <td>92.0</td>
-        <td>166.8</td>
-        <td>291.5</td>
-        <td>465.0</td>
-        <td>584.9</td>
-      </tr>
-      <tr>
-        <td>100</td>
-        <td>79.3</td>
-        <td>174.1</td>
-        <td>274.8</td>
-        <td>495.3</td>
-        <td>587.8</td>
-      </tr>
-      <tr>
-        <td>1000</td>
-        <td>56.3</td>
-        <td>181.4</td>
-        <td>270.7</td>
-        <td>502.4</td>
-        <td>556.4</td>
-      </tr>
-    </tbody>
-  </table>
 
 </div>
 <div class="h3-box">
