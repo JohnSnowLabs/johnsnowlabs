@@ -44,6 +44,9 @@ Optimie the search results by usinf additional filters like:
 * Include Only Valid Concepts - a concept can become invalid if deleted or superceded
 * Filter by Confidence Score
 
+ 🚀 **API service**:
+The API service allows seamless integration with your applications, enabling you to leverage our platform's capabilities. By obtaining an API key, developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.
+
 
 **Main Page**
 
