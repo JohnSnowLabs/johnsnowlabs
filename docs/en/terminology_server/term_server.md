@@ -24,25 +24,26 @@ The Medical Terminology Server combines up-to-date editions of a wide range of t
 
 ## Features
 
-🚀 The super power of John Snow Lab's Terminology Server is **search**: its use of associated synonyms, misspellings, the use of both string matching as well as embedding matches (similarity search). 
+🚀 The standout feature of John Snow Lab's Terminology Server is its **search** capability: it excels by leveraging associated synonyms, accounting for misspellings, and employing both string matching and embedding matches for similarity searches.
 
-🚀 Choose between **exact text match** and **semantic search** or combine this two options together - **default** behaviour.
+🚀 Opt for either exact text match or semantic search, or utilize both in tandem — the default setting.
 
-🚀 **Custom Value Sets Management**: 
-* Create custom Value Sets and use them to filter the search results using the data for the specific version of the selected Value Set.
-* Create new versions of existing Value Set using Upload mechanism.
-* View data of selected Value Set whitin the application.  
+🚀 **Custom Value Sets Management**:
+
+* Craft custom Value Sets and apply them as filters to refine search outcomes based on data from a specific version of the chosen Value Set.
+* Generate new versions of an existing Value Set through the upload feature.
+* Access and review the data of any selected Value Set within the application.  
 
 🚀 **Concept Maps**: 
-For any Code System selected as the data source when searching for a term, the Terminology Server application allows the selection of one or more "connected" Code System for the selected one.
-This method will display results of equivalent concept codes in differnet systems, when data exists.   
+When searching for a term in the Terminology Server application from a chosen Code System, users have the option to select one or more "connected" Code Systems. This feature allows for the display of corresponding concept codes across various systems, assuming such data is accessible.  
 
 🚀 **Additional Filters**:
-Optimie the search results by usinf additional filters like: 
-* Domain - describes the basic topic area of a concept (Condition/Device, Condition/Meas, Drug, Gender, etc.). The actual values of this filter are pre-populated in the drop down list for this filter
-* OMOP Standards Concpets only - constrains concepts returned to those with the "Standard" flag in the OMOP CDM
-* Include Only Valid Concepts - a concept can become invalid if deleted or superceded
-* Filter by Confidence Score
+Improve your search outcomes by utilizing a variety of additional filters:
+
+* **Domain**: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender). The available options for this filter are pre-populated in the dropdown list.
+* **OMOP Standards Concepts Only**: Limits the search results to concepts that are flagged as "Standard" in the OMOP CDM.
+* **Include Only Valid Concepts**: Filters out concepts that have been invalidated due to deletion or being superseded.
+* **Filter by Confidence Score**: Allows refining results based on their confidence score.
 
  🚀 **API service**:
 The API service allows seamless integration with your applications, enabling you to leverage our platform's capabilities. By obtaining an API key, developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.
