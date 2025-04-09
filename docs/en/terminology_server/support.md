@@ -11,6 +11,11 @@ sidebar:
     nav: term-server
 ---
 
+<div class="h3-box" markdown="1">
+
+Our priority is to ensure that your experience with John Snow Labs Terminology Service is seamless, efficient, and valuable to your medical practice or research. Here, you'll find various resources to assist you with any questions or challenges you may encounter while using our models. Whether you need troubleshooting advice, want to report a problem, or have questions about features, we're here to help.
+
+</div><div class="h3-box" markdown="1">
 
 ## 🛠️ Contact Support
 
