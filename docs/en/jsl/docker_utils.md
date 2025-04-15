@@ -35,7 +35,7 @@ nlp.build_image(preloaded_model='bert',image_name='bert_img')
 Create an image with GPU optimized builds
 ```python
 from johnsnowlabs import nlp
-nlp.build_image(preloaded_model='bert',image_name='bert_gpu_img',hardware_targert='gpu')
+nlp.build_image(preloaded_model='bert',image_name='bert_gpu_img',hardware_target='gpu')
 ```
 
 </div><div class="h3-box" markdown="1">
