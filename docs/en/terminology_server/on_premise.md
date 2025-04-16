@@ -31,9 +31,7 @@ If license file is provided, place your license file in a local path. If license
 curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash -s "YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"
 ```
 
-> **_NOTE:_** The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience!
-
-For more information regarding installation of Terminology Server on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
+> **_NOTE:_** The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
 
 ## Recommended Configurations
 
