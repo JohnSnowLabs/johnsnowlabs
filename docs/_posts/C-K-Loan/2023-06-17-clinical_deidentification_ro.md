@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-7wad364vb24u6
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ytlqgqtgkou7s
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ60/john-snow-labs-clinical-de-identification-for-romanian
   databricks_link: https://marketplace.databricks.com/details/68c7064e-c1dc-459f-971b-e759bb80810d/John-Snow-Labs_Clinical-Deidentification-for-Romanian
 
