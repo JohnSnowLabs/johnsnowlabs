@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-hii4kdoyh4kzk
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJA4/john-snow-labs-extract-social-determinants-of-health
+  databricks_link: 
+
 ---
 
 ## Description
@@ -51,6 +57,13 @@ Relation Extraction Labels:
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_sdoh_small_en_5.4.1_3.0_1727459538758.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_sdoh_small_en_5.4.1_3.0_1727459538758.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
