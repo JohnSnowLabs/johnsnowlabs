@@ -7,19 +7,28 @@ model
 {%- endcapture -%}
 
 {%- capture model_description -%}
-Annotator which normalizes raw text from clinical documents, e.g. scraped web pages or xml documents, from document type columns into Sentence.
-Removes all dirty characters from text following one or more input regex patterns.
-Can apply non wanted character removal which a specific policy.
-Can apply lower case normalization.
+Normalizes drug mentions in clinical text.
+
+Adds spaces between punctuation and words, as well as normalize the
+drug mentions. The `policy` parameter controls what drug information
+should be normalized, check the parameter documentation for details.
+
+For usage examples and discussion, check out
+[Blogpost](https://medium.com/spark-nlp/normalize-drug-names-and-dosage-units-with-spark-nlp-8b7ef606facf)
 
 Parametres:
 
 - `lowercase`: (boolean) whether to convert strings to lowercase. Default is False.
 
 - `policy`: (str) rule to remove patterns from text.  Valid policy values are:
-  + **"all"**,
-  + **"abbreviations"**,
-  + **"dosages"**
+  - **`"all"`** – replaces both abbreviations and dosages
+  - **`"abbreviations"`** – replaces all abbreviations with their full forms
+      > e.g., `"oral sol"` → `"oral solution"`
+  - **`"dosages"`** – converts dosages to a standardized format
+      > e.g., `"10 million units"` → `"10000000 unt"`
+
+  **Default:** `"all"`
+
 
 
 See [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/23.Drug_Normalizer.ipynb) for more examples of usage.
