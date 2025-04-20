@@ -15227,10 +15227,14 @@ text and their label. The result is a trained DocumentLogRegClassifierModel.</p>
   <!--Model-->
   <div class="h3-box tabs-python-scala-box">
 
-    <p>Annotator which normalizes raw text from clinical documents, e.g. scraped web pages or xml documents, from document type columns into Sentence.
-Removes all dirty characters from text following one or more input regex patterns.
-Can apply non wanted character removal which a specific policy.
-Can apply lower case normalization.</p>
+    <p>Normalizes drug mentions in clinical text.</p>
+
+    <p>Adds spaces between punctuation and words, as well as normalize the
+drug mentions. The <code class="language-plaintext highlighter-rouge">policy</code> parameter controls what drug information
+should be normalized, check the parameter documentation for details.</p>
+
+    <p>For usage examples and discussion, check out
+<a href="https://medium.com/spark-nlp/normalize-drug-names-and-dosage-units-with-spark-nlp-8b7ef606facf">Blogpost</a></p>
 
     <p>Parametres:</p>
 
@@ -15241,10 +15245,20 @@ Can apply lower case normalization.</p>
       <li>
         <p><code class="language-plaintext highlighter-rouge">policy</code>: (str) rule to remove patterns from text.  Valid policy values are:</p>
         <ul>
-          <li><strong>“all”</strong>,</li>
-          <li><strong>“abbreviations”</strong>,</li>
-          <li><strong>“dosages”</strong></li>
+          <li><strong><code class="language-plaintext highlighter-rouge">"all"</code></strong> – replaces both abbreviations and dosages</li>
+          <li><strong><code class="language-plaintext highlighter-rouge">"abbreviations"</code></strong> – replaces all abbreviations with their full forms
+            <blockquote>
+              <p>e.g., <code class="language-plaintext highlighter-rouge">"oral sol"</code> → <code class="language-plaintext highlighter-rouge">"oral solution"</code></p>
+            </blockquote>
+          </li>
+          <li><strong><code class="language-plaintext highlighter-rouge">"dosages"</code></strong> – converts dosages to a standardized format
+            <blockquote>
+              <p>e.g., <code class="language-plaintext highlighter-rouge">"10 million units"</code> → <code class="language-plaintext highlighter-rouge">"10000000 unt"</code></p>
+            </blockquote>
+          </li>
         </ul>
+
+        <p><strong>Default:</strong> <code class="language-plaintext highlighter-rouge">"all"</code></p>
       </li>
     </ul>
 
