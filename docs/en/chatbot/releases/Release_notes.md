@@ -15,7 +15,13 @@ sidebar:
 
 ## 22-04-2025 New Features and Enhancements
 
-In our latest release, we’re bringing greater transparency, improved usability, and enhanced academic rigor to your research workflow. The latest update introduces Quality Indicators for Research Articles, providing key metrics like citation count and journal rank to help assess the credibility and impact of sources. Along with this, a unified user Profile Menu and Numbered Reference Style offer a more intuitive interface, making it easier to manage citations and access settings. These improvements are designed to streamline workflows and empower users with smarter, data-driven insights.
+This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count and journal rank to help you quickly assess the credibility and impact of your sources.
+
+To further enhance research clarity, we’ve introduced a **Numbered Reference Style**, making citation management more straightforward and improving the readability of your outputs.
+
+In addition, a unified Profile Menu provides a more intuitive way to manage your account and access settings—all in one convenient place.
+
+Together, these enhancements streamline your workflow and empower you with smarter, data-driven insights at every step of the research process.
 
 
 
@@ -25,7 +31,7 @@ As part of our ongoing effort to ensure transparency, credibility, and academic 
 
 These quality indicators are designed to help users assess the influence, reliability, and academic value of a publication, both at the journal and individual article levels, supporting more informed and evidence-based decision-making.
 
-We now provide the following quality metrics for applicable articles:
+We now provide the following quality metrics for articles:
 
 - Impact Factor (for the article): The average number of citations the article receives per year, reflecting its ongoing influence.
 
@@ -66,7 +72,7 @@ This ensures users can evaluate the reliability and relevance of a reference at 
 
 </div><div class="h3-box" markdown="1">
 
-**2. Literature Review Articles Search List**
+**2. Literature Review - Quality Indicators Available for the List of Relevant Articles**
 
 Quality indicators are now also integrated into the real-time article search results displayed during the Literature Review.
 These metrics empower researchers, institutions, and reviewers to quickly assess the influence and credibility of each article, aiding in the selection of the most impactful studies to include in literature reviews.
@@ -95,7 +101,7 @@ Finally, by incorporating standard academic metrics, this update aligns with the
 
 ### New Citations Format: Numbered Reference Style
 
-We’ve introduced a new citation format in our responses: the numbered reference style.
+The Medical Cahtbot offers a new citation format in its responses: the numbered reference style.
 
 This format offers a clean, concise way to cite sources without disrupting the natural flow of reading, making it particularly effective for research-heavy or technical content. It enhances overall readability, allows for quick and efficient cross-referencing, and aligns with the standards followed by top-tier scientific and medical journals.
 
@@ -109,10 +115,8 @@ This format offers a clean, concise way to cite sources without disrupting the n
 
 **4. Professional and publication-ready format:** Consistent with industry standards in STEM and academic writing.
 
-**5. Supports deeper research:** Enables users to efficiently explore cited works and assess source credibility.
 
-Our Enterprise users also have the flexibility to choose their preferred reference style.
-Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
+Used on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
 
 
 </div><div class="h3-box" markdown="1">
