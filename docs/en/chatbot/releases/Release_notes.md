@@ -13,6 +13,132 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
+## 22-04-2025 New Features and Enhancements
+
+In our latest release, we’re bringing greater transparency, improved usability, and enhanced academic rigor to your research workflow. The latest update introduces Quality Indicators for Research Articles, providing key metrics like citation count and journal rank to help assess the credibility and impact of sources. Along with this, a unified user Profile Menu and Numbered Reference Style offer a more intuitive interface, making it easier to manage citations and access settings. These improvements are designed to streamline workflows and empower users with smarter, data-driven insights.
+
+
+
+### Quality Indicators for Research Articles
+
+As part of our ongoing effort to ensure transparency, credibility, and academic rigor, we now display quality indicators for all available articles and research papers. Our sources include well-established and reputable journals such as PubMed, MDPI, bioRxiv, and medRxiv.
+
+These quality indicators are designed to help users assess the influence, reliability, and academic value of a publication, both at the journal and individual article levels, supporting more informed and evidence-based decision-making.
+
+We now provide the following quality metrics for applicable articles:
+
+- Impact Factor (for the article): The average number of citations the article receives per year, reflecting its ongoing influence.
+
+- Number of Citations: The total number of times the article has been cited by other scholarly works.
+
+- Number of High-Impact Citations: The number of citations the article has received from top-tier, high-impact journals.
+
+- Quartile of the Journal: The journal's rank within its field, categorized into four quartiles (Q1–Q4), with Q1 representing the highest impact.
+
+These indicators are now visible in both:
+
+- The References provided in Medical Responses, and
+
+- The Articles retrieved via Literature Review.
+
+These metrics strengthen our commitment to delivering high-quality, research-backed content and help users better evaluate the relevance and trustworthiness of scientific literature.
+
+</div><div class="h3-box" markdown="1">
+
+### Enhanced UI: Quality Indicators
+
+Building on our commitment to delivering research-backed, high-impact content, we’ve introduced a refined user experience to showcase Quality Indicators for journals and articles more clearly and intuitively.
+
+**1. New Reference Preview Pop-up**
+
+We’ve redesigned the citation/reference pop-up shown in responses to include a cleaner, more informative layout.
+This updated view preserves all existing information — such as article title, authors, publication date, content preview, and external links — and now also includes the newly introduced Quality Indicators:
+
+- Impact Factor (for the journal)
+
+- Number of Citations
+
+- Number of High-Impact Citations
+
+- Journal Quartile
+
+This ensures users can evaluate the reliability and relevance of a reference at a glance.
+
+</div><div class="h3-box" markdown="1">
+
+**2. Literature Review Articles Search List**
+
+Quality indicators are now also integrated into the real-time article search results displayed during the Literature Review.
+These metrics empower researchers, institutions, and reviewers to quickly assess the influence and credibility of each article, aiding in the selection of the most impactful studies to include in literature reviews.
+
+The indicators will be shown for all available articles that match the search criteria, seamlessly integrated into our intuitive, real-time article search interface.
+
+#### User Benefits:
+
+**1. Informed Decision-Making:**
+
+With the inclusion of quality metrics like Impact Factor, Citation Count, and Journal Quartile, users can now assess the credibility and influence of both individual articles and the journals they appear in. These indicators provide a reliable, objective basis for evaluating the strength and relevance of scientific literature, allowing users to make more confident, evidence-based decisions—whether selecting articles to reference, use in clinical contexts, or include in academic writing.
+
+**2. Improved Trust and Transparency:**
+
+These indicators foster greater transparency by giving users a clearer view of the academic merit of a publication. Rather than relying solely on article titles or journal names, users can now evaluate research based on standardized, widely recognized metrics. This increased visibility into the quality and reach of an article builds confidence in the content being presented, especially in contexts where the reliability of sources is critical—such as medical research or policy formulation.
+
+**3. Seamless and Intuitive Experience:**
+
+The updated interface is designed to present quality indicators in a user-friendly, accessible way. In the redesigned reference preview pop-up, users can view key article details—including authors, title, publication date, and links—alongside quality indicators without navigating away from the response. Similarly, during Literature Review, these metrics are integrated directly into real-time article search results, enabling users to evaluate multiple papers at a glance, making the experience faster and more informative.
+
+**4. Professional and Academic Alignment:**
+
+Finally, by incorporating standard academic metrics, this update aligns with the expectations of researchers, reviewers, and institutions. These indicators mirror the evaluation criteria used by top-tier journals, funding bodies, and academic institutions, supporting professional research workflows and helping users meet institutional standards for quality and rigor. Whether you're publishing, reviewing, or curating research, these metrics offer a more academically robust foundation for your work.
+
+
+
+### New Citations Format: Numbered Reference Style
+
+We’ve introduced a new citation format in our responses: the numbered reference style.
+
+This format offers a clean, concise way to cite sources without disrupting the natural flow of reading, making it particularly effective for research-heavy or technical content. It enhances overall readability, allows for quick and efficient cross-referencing, and aligns with the standards followed by top-tier scientific and medical journals.
+
+#### User Benefits:
+
+**1. Improved readability:** Less cluttered text makes content easier to scan and understand.
+
+**2. Streamlined navigation:** Numbered references make it simple to match in-text citations with the source list.
+
+**3. Faster access to sources:** Ideal for multi-citation responses where references are easier to manage and interpret.
+
+**4. Professional and publication-ready format:** Consistent with industry standards in STEM and academic writing.
+
+**5. Supports deeper research:** Enables users to efficiently explore cited works and assess source credibility.
+
+Our Enterprise users also have the flexibility to choose their preferred reference style.
+Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
+
+
+</div><div class="h3-box" markdown="1">
+
+### Unified User Profile
+
+To enhance usability and reduce navigation friction, we’ve introduced a unified user profile experience.
+
+Previously, user options and chatbot settings were separated into different sections in the left sidebar. With this update, we’ve made the interface more intuitive by consolidating all user-related controls into a single, expandable sidebar menu.
+
+Now, by clicking on the user info section, users can access all available options in one place. The chatbot settings are also neatly organized under the cascading "Settings" menu, making it easier to manage preferences, personalize experiences, and access features without switching views.
+
+#### User Benefits:
+
+**1. Simplified navigation:** All user options and settings are now in one location.
+
+**2. Cleaner interface:** Reduces clutter and improves the overall user experience.
+
+**3. Easier access:** Quick access to chatbot preferences, account info, and settings from a unified panel.
+
+**4. More intuitive layout:** Better alignment with user expectations and modern UX practices.
+
+</div>
+
+<div class="h3-box" markdown="1">
+
 ## 24-03-2025 New Features and Enhancements
 <!-- </div><div class="h3-box" markdown="1"> -->
 ### Get Precise Drug Insights 
