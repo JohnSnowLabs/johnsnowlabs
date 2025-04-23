@@ -120,8 +120,12 @@ For hybrid use cases, John Snow Labs offers modular and extensible solutions to 
 
 **Overview of Terminology Server's main page and features:**
 
-Main Page
+**Landing Page**
+* Default setting, with code Search & Map to code in another Code System 
 
+![Terminology Service by John Snow Labs](/assets/images/TS-MainPage.png)
+
+* Term Search, Multiple chunk Search, Filters 
 
 ![Terminology Service by John Snow Labs](/assets/images/TS1.png)
 
