@@ -118,9 +118,9 @@ Before choosing between TS and OpenAI LLMs for terminology mapping, clearly defi
 For hybrid use cases, John Snow Labs offers modular and extensible solutions to support both deterministic terminology mapping and generative document understanding, as needed
 
 
-**Main Page**
+**Overview of Terminology Server's main page and features:**
 
-Overview of Terminology Server's main page and features:
+Main Page
 
 
 ![Terminology Service by John Snow Labs](/assets/images/TS1.png)
