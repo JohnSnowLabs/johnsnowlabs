@@ -48,6 +48,75 @@ Improve your search outcomes by utilizing a variety of additional filters:
  🚀 **API service**:
 The API service allows seamless integration with your applications, enabling you to leverage our platform's capabilities. By obtaining an API key, developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.
 
+🔍 **Core capabilities, strengths, and limitations**
+
+The following section compares the core capabilities, strengths, and limitations of John Snow Labs’ Medical Terminology Server (TS) with OpenAI’s large language models (LLMs) with , focusing on terminology mapping use cases in healthcare and life sciences.
+
+1. **Deterministic Output vs. Generative Variability:**
+    * **TS** offers stable and deterministic results. The same term will always return the same code, thanks to its reliance on official terminology datasets and carefully curated in-house augmentations.
+    * **OpenAI LLMs**, such as GPT-4, are non-deterministic by design. The same prompt may yield different outputs across calls. Since LLMs do not have direct access to up-to-date, structured medical terminologies like SNOMED, ICD-10, RxNorm, etc., their accuracy is typically lower in structured terminology mapping.
+For a comparative benchmark, see our blog post: State-of-the-Art RxNorm Code Mapping with NLP, where we evaluated JSL's resolver models against GPT-4 and Amazon for RxNorm mapping.
+
+2. **Pricing and Licensing**
+   * **TS** operates on a fixed licensing model. There are no usage-based charges or unexpected costs regardless of query volume.
+   * **OpenAI LLMs** are priced per token, which can become expensive with large-scale usage or high-frequency requests.
+  
+3. **Deployment and Security**
+   * **TS** can be deployed on-premises or in air-gapped environments with no internet connection, making it fully compliant with strict data privacy regulations (e.g., HIPAA, GDPR).
+   * **OpenAI LLMs** can only be accessed via cloud APIs, which introduces compliance and security concerns in regulated environments.
+     
+4. **Interface and Integration**
+   * **TS** comes with a user-friendly UI and a remote-accessible API, making it easy to use both as a standalone tool or as an embedded service in other systems.
+   * **OpenAI models** are accessible only via API, with no native UI for terminology mapping use cases.
+5. **Terminology Coverage and Customization**
+    * **TS** supports:
+        * **Value set mapping** (predefined or user-defined collections of concepts),
+        * **Concept mapping across vocabularies** (e.g., mapping SNOMED terms to ICD-10),
+        * **Hierarchy navigation** within and across terminologies.
+        * **OpenAI LLMs** offer no native support for value sets, concept hierarchies, or controlled vocabularies.
+6. **Up-to-Date Terminologies**
+    * **TS** ensures that its terminology databases are continuously updated in sync with changes made by official regulatory bodies (e.g., WHO, UMLS).
+    * **OpenAI LLMs** are trained on static datasets and may take months or years to reflect terminology updates.
+7. **Rate Limiting and Performance**
+    * **TS** has no rate limitations. Users can process as many terms as needed under an active license.
+    * **OpenAI LLMs** may impose rate limits depending on the subscription plan and system load
+8. **Document-Level Understanding vs. Term-Level Mapping**
+
+    This is a **critical distinction** and often the source of confusion when comparing TS and LLMs.
+
+    * **TS** performs **term-level mapping**: You input a term, and it returns the best matching concept from the terminology database.
+        * It **does not** infer additional context or concepts beyond the input
+        * It **does not** perform document-level analysis.
+        * If a user inputs an entire document, the embeddings become diluted, and results may be nonsensical.
+    * **OpenAI LLMs** excel at **document-level analysis**:
+        * They can extract key clinical findings, inferred diagnoses, and primary/secondary conditions by analyzing the full context of a clinical note or discharge summary.
+        * LLMs can assign ICD-10 or SNOMED codes based on this inferred context—mimicking human coders.
+        * This behavior makes LLMs appealing for use cases where document-level abstraction and coding are required.
+        
+        **Example**:
+
+      Uploading a discharge summary to GPT-4 and prompting it to extract ICD-10 codes may result in:
+      * Primary diagnosis
+      * Secondary diagnoses
+      * Procedures
+      * Medications
+      * … all inferred from context.
+
+    In contrast, submitting the same text to TS:
+    * Will treat the whole input as a single term.
+    * Return a single code based on embedding similarity, which may be inaccurate if the document is lengthy or complex.
+9. **Flexibility and Future Integration**
+    * While TS is not designed for document-level LLM-style coding, it is possible to embed JSL’s proprietary small LLMs within TS to enable such capabilities—if there is demand.
+    * This hybrid approach could provide the best of both worlds: deterministic, terminology-backed mapping with optional contextual inference.
+   
+🚦**Recommendation**
+
+Before choosing between TS and OpenAI LLMs for terminology mapping, clearly define your goal:
+* If you need accurate, up-to-date, and secure mapping for individual terms or structured applications—TS is the better choice.
+* If you want AI-driven abstraction from unstructured clinical text (e.g., coding a discharge summary)—LLMs might be more appropriate, though at the cost of accuracy and explainability.
+
+For hybrid use cases, John Snow Labs offers modular and extensible solutions to support both deterministic terminology mapping and generative document understanding, as needed
+
 
 **Main Page**
 
