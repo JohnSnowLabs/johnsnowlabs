@@ -29,6 +29,8 @@ The following LLMs are available as AWS Sagemaker Endpoints:
 
 [Medical Reasoning LLM - 32B](https://aws.amazon.com/marketplace/pp/prodview-x5bfvnroddgfe)
 
+All LLMs on AWS Sagemaker are Open AI compatible.
+
 
 ## Deployment Instructions
 
