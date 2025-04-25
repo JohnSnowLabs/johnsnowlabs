@@ -70,8 +70,7 @@ This updated view preserves all existing information — such as article title, 
 
 This ensures users can evaluate the reliability and relevance of a reference at a glance.
 
-![image](https://github.com/user-attachments/assets/700e41b2-2e63-42ca-adff-92ac86f5c036)
-
+![image](https://github.com/user-attachments/assets/40c0b3aa-4785-41d1-a16c-af872c0d1eeb)
 
 </div><div class="h3-box" markdown="1">
 
@@ -82,7 +81,7 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
 The indicators will be shown for all available articles that match the search criteria, seamlessly integrated into our intuitive, real-time article search interface.
 
-![image](https://github.com/user-attachments/assets/e5fc05af-68d1-46e7-ad2b-5aa11ab035ee)
+![image](https://github.com/user-attachments/assets/3fbf138f-9494-400b-83b5-f17732c56908)
 
 
 #### User Benefits:
