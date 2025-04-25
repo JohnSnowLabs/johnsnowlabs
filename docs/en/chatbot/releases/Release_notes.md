@@ -15,7 +15,7 @@ sidebar:
 
 ## 24-04-2025 New Features and Enhancements
 
-This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count and journal rank to help you quickly assess the credibility and impact of your sources.
+This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count, journal impact, journal rank to help you quickly assess the credibility and impact of your sources.
 
 To further enhance research clarity, we’ve introduced a **Numbered Reference Style**, making citation management more straightforward and improving the readability of your outputs.
 
@@ -27,13 +27,13 @@ Together, these enhancements streamline your workflow and empower you with smart
 
 ### Quality Indicators for Research Articles
 
-As part of our ongoing effort to ensure transparency, credibility, and academic rigor, we now display quality indicators for all available articles and research papers. Our sources include well-established and reputable journals such as PubMed, MDPI, bioRxiv, and medRxiv.
+As part of an ongoing effort to ensure transparency, credibility, and academic rigor, the Medical Chatbot now displays quality indicators for all available articles and research papers. The Medical Knowledge graph includes well-established and reputable sources such as PubMed, MDPI, bioRxiv, and medRxiv.
 
-These quality indicators are designed to help users assess the influence, reliability, and academic value of a publication, both at the journal and individual article levels, supporting more informed and evidence-based decision-making.
+The quality indicators are designed to help users assess the influence, reliability, and academic value of a publication, both at the journal and individual article levels, supporting more informed and evidence-based decision-making.
 
-We now provide the following quality metrics for articles:
+The following quality metrics are available for the indexed articles:
 
-- Impact Factor (for the article): The average number of citations the article receives per year, reflecting its ongoing influence.
+- Impact Factor: The average number of citations the journal receives per year, reflecting its ongoing influence.
 
 - Number of Citations: The total number of times the article has been cited by other scholarly works.
 
@@ -51,9 +51,9 @@ These metrics strengthen our commitment to delivering high-quality, research-bac
 
 </div><div class="h3-box" markdown="1">
 
-### Enhanced UI: Quality Indicators
+#### Enhanced UI: Quality Indicators
 
-Building on our commitment to delivering research-backed, high-impact content, we’ve introduced a refined user experience to showcase Quality Indicators for journals and articles more clearly and intuitively.
+Building on our commitment to delivering research-backed, high-impact content, we’ve introduced a refined user experience to showcase quality indicators for journals and articles more clearly and intuitively.
 
 **1. New Reference Preview Pop-up**
 
@@ -70,7 +70,7 @@ This updated view preserves all existing information — such as article title, 
 
 This ensures users can evaluate the reliability and relevance of a reference at a glance.
 
-![image](https://github.com/user-attachments/assets/40c0b3aa-4785-41d1-a16c-af872c0d1eeb)
+<img src= "/assets/images/chatbot/QualitiIndicatorsForArticlesReferencePopup.png" alt="Quality Indicators for Cited Articles in Chat" style="border: 2px solid grey; width=60%">
 
 </div><div class="h3-box" markdown="1">
 
@@ -81,14 +81,13 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
 The indicators will be shown for all available articles that match the search criteria, seamlessly integrated into our intuitive, real-time article search interface.
 
-![image](https://github.com/user-attachments/assets/3fbf138f-9494-400b-83b5-f17732c56908)
+<img src= "/assets/images/chatbot/QualityIndicatorsForArticlesLiteratureReview.png" alt="Quality Indicators for Relevant Articles in Literature Review Results View" style="border: 2px solid grey; width=60%">
 
-
-#### User Benefits:
+#### User Benefits
 
 **1. Informed Decision-Making:**
 
-With the inclusion of quality metrics like Impact Factor, Citation Count, and Journal Quartile, users can now assess the credibility and influence of both individual articles and the journals they appear in. These indicators provide a reliable, objective basis for evaluating the strength and relevance of scientific literature, allowing users to make more confident, evidence-based decisions—whether selecting articles to reference, use in clinical contexts, or include in academic writing.
+With the inclusion of quality metrics, users can now assess the credibility and influence of both individual articles and the journals they appear in. These indicators provide a reliable, objective basis for evaluating the strength and relevance of scientific literature, allowing users to make more confident, evidence-based decisions—whether selecting articles to reference, use in clinical contexts, or include in academic writing.
 
 **2. Improved Trust and Transparency:**
 
@@ -96,11 +95,11 @@ These indicators foster greater transparency by giving users a clearer view of t
 
 **3. Seamless and Intuitive Experience:**
 
-The updated interface is designed to present quality indicators in a user-friendly, accessible way. In the redesigned reference preview pop-up, users can view key article details—including authors, title, publication date, and links—alongside quality indicators without navigating away from the response. Similarly, during Literature Review, these metrics are integrated directly into real-time article search results, enabling users to evaluate multiple papers at a glance, making the experience faster and more informative.
+The updated interface is designed to present quality indicators in a user-friendly, accessible way. In the redesigned reference preview pop-up, users can view key article details—including authors, title, publication date, and links to publication source —alongside quality indicators without navigating away from the response. Similarly, during Literature Review, these metrics are integrated directly into real-time article search results, enabling users to evaluate multiple papers at a glance, making the experience faster and more informative.
 
 **4. Professional and Academic Alignment:**
 
-Finally, by incorporating standard academic metrics, this update aligns with the expectations of researchers, reviewers, and institutions. These indicators mirror the evaluation criteria used by top-tier journals, funding bodies, and academic institutions, supporting professional research workflows and helping users meet institutional standards for quality and rigor. Whether you're publishing, reviewing, or curating research, these metrics offer a more academically robust foundation for your work.
+Finally, by incorporating standard academic metrics, the Medical Chatbot aligns with the expectations of researchers, reviewers, and institutions. These indicators mirror the evaluation criteria used by top-tier journals, funding bodies, and academic institutions, supporting professional research workflows and helping users meet institutional standards for quality and rigor. Whether you're publishing, reviewing, or curating research, these metrics offer a more academically robust foundation for your work.
 
 
 
@@ -110,7 +109,7 @@ The Medical Chatbot offers a new citation format in its responses: the numbered 
 
 This format offers a clean, concise way to cite sources without disrupting the natural flow of reading, making it particularly effective for research-heavy or technical content. It enhances overall readability, allows for quick and efficient cross-referencing, and aligns with the standards followed by top-tier scientific and medical journals.
 
-#### User Benefits:
+#### User Benefits
 
 **1. Improved readability:** Less cluttered text makes content easier to scan and understand.
 
@@ -121,9 +120,9 @@ This format offers a clean, concise way to cite sources without disrupting the n
 **4. Professional and publication-ready format:** Consistent with industry standards in STEM and academic writing.
 
 
-Users on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
+Users on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020) — depending on user or institutional preference.
 
-![image](https://github.com/user-attachments/assets/e9aa9013-d372-471a-89b4-02093d77c6df)
+<img src= "/assets/images/chatbot/NumberedReferences.png" alt="Numbered Format For Citations" style="border: 2px solid grey; width=60%">
 
 </div><div class="h3-box" markdown="1">
 
@@ -135,10 +134,9 @@ Previously, user options and chatbot settings were separated into different sect
 
 Now, by clicking on the user info section, users can access all available options in one place. The chatbot settings are also neatly organized under the cascading "Settings" menu, making it easier to manage preferences, personalize experiences, and access features without switching views.
 
-![image](https://github.com/user-attachments/assets/75e1ee1e-f6aa-4ec8-9a21-6d168102569e)
+<img src= "/assets/images/chatbot/UserProfile.png" alt="User Profile" style="border: 2px solid grey; width=60%">
 
-
-#### User Benefits:
+#### User Benefits
 
 **1. Simplified navigation:** All user options and settings are now in one location.
 
