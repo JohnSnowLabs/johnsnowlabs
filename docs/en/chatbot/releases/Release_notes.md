@@ -106,7 +106,7 @@ Finally, by incorporating standard academic metrics, this update aligns with the
 
 ### New Citations Format: Numbered Reference Style
 
-The Medical Cahtbot offers a new citation format in its responses: the numbered reference style.
+The Medical Chatbot offers a new citation format in its responses: the numbered reference style.
 
 This format offers a clean, concise way to cite sources without disrupting the natural flow of reading, making it particularly effective for research-heavy or technical content. It enhances overall readability, allows for quick and efficient cross-referencing, and aligns with the standards followed by top-tier scientific and medical journals.
 
