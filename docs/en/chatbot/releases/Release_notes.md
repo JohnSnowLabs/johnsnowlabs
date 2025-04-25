@@ -121,7 +121,7 @@ This format offers a clean, concise way to cite sources without disrupting the n
 **4. Professional and publication-ready format:** Consistent with industry standards in STEM and academic writing.
 
 
-Used on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
+Users on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
 
 ![image](https://github.com/user-attachments/assets/e9aa9013-d372-471a-89b4-02093d77c6df)
 
