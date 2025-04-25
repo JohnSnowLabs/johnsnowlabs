@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 22-04-2025 New Features and Enhancements
+## 24-04-2025 New Features and Enhancements
 
 This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count and journal rank to help you quickly assess the credibility and impact of your sources.
 
@@ -70,6 +70,9 @@ This updated view preserves all existing information — such as article title, 
 
 This ensures users can evaluate the reliability and relevance of a reference at a glance.
 
+![image](https://github.com/user-attachments/assets/700e41b2-2e63-42ca-adff-92ac86f5c036)
+
+
 </div><div class="h3-box" markdown="1">
 
 **2. Literature Review - Quality Indicators Available for the List of Relevant Articles**
@@ -78,6 +81,9 @@ Quality indicators are now also integrated into the real-time article search res
 These metrics empower researchers, institutions, and reviewers to quickly assess the influence and credibility of each article, aiding in the selection of the most impactful studies to include in literature reviews.
 
 The indicators will be shown for all available articles that match the search criteria, seamlessly integrated into our intuitive, real-time article search interface.
+
+![image](https://github.com/user-attachments/assets/e5fc05af-68d1-46e7-ad2b-5aa11ab035ee)
+
 
 #### User Benefits:
 
@@ -118,6 +124,7 @@ This format offers a clean, concise way to cite sources without disrupting the n
 
 Used on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020)—depending on user or institutional preference.
 
+![image](https://github.com/user-attachments/assets/e9aa9013-d372-471a-89b4-02093d77c6df)
 
 </div><div class="h3-box" markdown="1">
 
@@ -128,6 +135,9 @@ To enhance usability and reduce navigation friction, we’ve introduced a unifie
 Previously, user options and chatbot settings were separated into different sections in the left sidebar. With this update, we’ve made the interface more intuitive by consolidating all user-related controls into a single, expandable sidebar menu.
 
 Now, by clicking on the user info section, users can access all available options in one place. The chatbot settings are also neatly organized under the cascading "Settings" menu, making it easier to manage preferences, personalize experiences, and access features without switching views.
+
+![image](https://github.com/user-attachments/assets/75e1ee1e-f6aa-4ec8-9a21-6d168102569e)
+
 
 #### User Benefits:
 
