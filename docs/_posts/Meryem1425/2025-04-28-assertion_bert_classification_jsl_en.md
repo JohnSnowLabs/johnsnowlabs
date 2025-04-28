@@ -181,7 +181,7 @@ val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = NerConverterInternal()
+val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
     .setWhiteList(Array("PROBLEM"))
@@ -240,3 +240,22 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|406.3 MB|
 |Case sensitive:|true|
+
+
+## Benchmarking
+
+```bash
+       label  precision    recall  f1-score   support
+      Absent      0.953     0.975     0.964      1436
+      Family      0.930     0.925     0.927       615
+Hypothetical      0.898     0.900     0.899       841
+        Past      0.936     0.920     0.928      1490
+     Planned      0.870     0.840     0.855       326
+    Possible      0.887     0.887     0.887       593
+     Present      0.949     0.960     0.955      2171
+ SomeoneElse      0.891     0.837     0.863       313
+    accuracy       -          -       0.930      7785
+   macro-avg      0.914     0.906     0.910      7785
+weighted-avg      0.930     0.930     0.930      7785
+```
+
