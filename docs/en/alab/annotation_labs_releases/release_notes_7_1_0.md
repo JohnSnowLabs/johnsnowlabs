@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab 7.1.0
+title: Generative AI Lab 7.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_1_0
 key: docs-licensed-release-notes
-modify_date: 2025-03-27
+modify_date: 2025-04-29
 show_nav: true
 sidebar:
     nav: annotation-lab
@@ -13,11 +13,10 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 7.1.0
-
-Release date: 04-29-2024
 
 ## Generative AI Lab 7.1: Enhanced Auditability and Workflow Efficiency
+Release date: 04-29-2024
+
 Generative AI Lab 7.1 introduces several new features and improvements focused on enhancing observability, task management, data governance, and annotation workflows. It includes support for real-time log indexing for audit and compliance needs, automatic bulk task assignment for annotators, as well as improved project setup and annotation flows. These updates aim to improve system usability, transparency, and operational efficiency.
 
 ## Advanced Audit Logging and Monitoring 
@@ -71,45 +70,41 @@ Once the features are enabled, the system starts real-time indexing of user an
 
 ![710image](/assets/images/annotation_lab/7.1.0/1.png)
 
-#### What Gets Indexed:
+### What Gets Indexed
 - **Project Lifecycle**: Creation and deletion of projects.
 - **Configuration Changes**: Updates to teams, model assignments, external integrations, and label settings.
 - **Import/Export Activities**: Logs for task imports/exports.
 - **Models Hub Events**: Events such as model import/export and model downloads.
 - **Administrative Actions**: Logs related to user creation, updates, deletions, license upload and deletion, enabling/disabling local export toggles, analytics approval, and system backups.
 
-#### Log Management Features:
+### Log Management Features
 - **Backup & Restore**: Schedule automatic dumps of indexed logs directly to S3 buckets for backup and recovery.
 - **Retention Policies**: Configure automated deletion of old logs to optimize storage and comply with data governance policies.
 - **External Elastic Support**: Connect to your company's existing ES logging infrastructure to unify and enhance your organization's knowledge base with integrated log data.
 
 This new feature enhances Generative AI Lab with secure, tamper-proof logging and flexible log data management, offering robust observability without disrupting workflows. It’s an essential addition for teams focused on security, compliance, and operational transparency.
 
-### Smarter Task Distribution: Bulk Assignment at Scale
+## Smarter Task Distribution: Bulk Assignment at Scale
 Generative AI Lab now offers bulk task assignment capabilities, allowing up to 200 unassigned tasks to be allocated simultaneously to selected annotators. 
 
-**Highlights:**
+### Key Capabilities
 - Sequential or Random Assignment: Tasks can be distributed in order or randomly from the unassigned pool. 
 - Efficient Scaling: Reduces manual effort in large-scale projects, optimizing resource utilization. 
 
 **User Benefit:** Accelerates task distribution, improving operational efficiency and annotation throughput. 
-​
-#### Bulk Assignment Process:
+
+### Bulk Assignment Process:
 - Click on the "Assign Task" button.
 - Select the annotators to whom you wish to assign tasks.
 - Specify the number of tasks to assign to each annotator.
 - Define any required criteria for task selection.
 - Click on "Assign" to complete the process.​
 
-**Sequential Distribution:** Tasks are assigned in the order they appear in the task list.
-
-**Random Distribution:** Tasks are randomly selected from the pool of unassigned tasks.​
-
 ![710image](/assets/images/annotation_lab/7.1.0/2.gif)
 
 **Notes**
-- The maximum number of tasks that can be assigned at once is 200.
-- If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator.​
+_- The maximum number of tasks that can be assigned at once is 200._
+_- If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator._
 
 ![710image](/assets/images/annotation_lab/7.1.0/3.gif)
 
@@ -123,25 +118,29 @@ Generative AI Lab enhances the Reuse Resource interface by displaying only compa
 Example – Visual NER projects, for example, will only show supported text NER models and skip unsupported resource types. Resources such as assertion models, Classification models, and OpenAI prompts, which are not supported, will not be shown. 
 
 For Visual NER project:
+
 ![710image](/assets/images/annotation_lab/7.1.0/4.gif)
 
+
 For Checkbox Detection project:
+
+
 ![710image](/assets/images/annotation_lab/7.1.0/5.gif)
 
-User Benefit: Simplifies resource selection, eliminates validation errors, and accelerates project setup. 
+**User Benefit**: Simplifies resource selection, eliminates validation errors, and accelerates project setup. 
 
 ### Effortless Project Resets: Bulk Task Deletion
 Generative AI Lab now introduces a one-click bulk deletion option for project tasks. This enhancement eliminates the need to remove tasks individually, facilitating more efficient project management, especially during large-scale cleanups.​ 
 
 **Feature Details:** 
-User Interface Integration: Accessible directly from the project task page. 
+- User Interface Integration: Accessible directly from the project task page. 
+- Cautionary Control:** Deletion is irreversible, ensuring that users proceed with clarity and intent. 
 
-**Cautionary Control:** Deletion is irreversible, ensuring that users proceed with clarity and intent. 
 **User Benefit:** Facilitates efficient large-scale project resets and cleanups. 
 
 ![710image](/assets/images/annotation_lab/7.1.0/6.gif)
 
-Note: Irreversible Action: Please note that deleting tasks in bulk is irreversible. Ensure that all necessary data is backed up or no longer needed before proceeding with this action.
+Note: _Irreversible Action: Please note that deleting tasks in bulk is irreversible. Ensure that all necessary data is backed up or no longer needed before proceeding with this action._
 
 ### More Control, More Confidence: Split Actions for PHI De-Identification 
 The de-identification process has been redesigned into two discrete steps: identification and removal of sensitive data, giving users better control over the workflow.
@@ -161,8 +160,8 @@ By splitting identification and de-identification into separate steps, the new p
 Pre-annotation now defaults to tasks on the current page instead of the entire project. Previously, users had to manually select this option; now, it is the default behavior. 
 
 **Change Impact:** 
-**Error Prevention:** Reduces the risk of accidentally pre-annotating full projects. 
-**Faster Processing:** Localizes the workload for quicker completions. 
+- **Error Prevention:** Reduces the risk of accidentally pre-annotating full projects. 
+- **Faster Processing:** Localizes the workload for quicker completions. 
 
 **User Benefit:** Speeds up workflow and minimizes unintentional system load. 
 
@@ -195,7 +194,7 @@ For HCC Coding projects, annotations are now organized page-by-page, with clicke
 ![710image](/assets/images/annotation_lab/7.1.0/11.gif)
 
 
-### Bug Fixes
+## Bug Fixes
 
 - **License server is not deployed in AMI**
 
