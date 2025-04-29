@@ -628,193 +628,266 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="generative-ai-lab-7-accelerating-clinical-annotation-with-hcc-coding">Generative AI Lab 7: Accelerating Clinical Annotation with HCC Coding</h2>
+  <h2 id="generative-ai-lab-71-enhanced-auditability-and-workflow-efficiency">Generative AI Lab 7.1: Enhanced Auditability and Workflow Efficiency</h2>
+  <p>Generative AI Lab 7.1 introduces several new features and improvements focused on enhancing observability, task management, data governance, and annotation workflows. It includes support for real-time log indexing for audit and compliance needs, automatic bulk task assignment for annotators, as well as improved project setup and annotation flows. These updates aim to improve system usability, transparency, and operational efficiency.</p>
 
-  <p>Generative AI Lab 7 brings many improvements that directly support real-world healthcare annotation and coding use cases. Most notably, it introduces support for Hierarchical Condition Category (HCC) coding—enabling users to streamline clinical risk adjustment workflows by automatically linking ICD codes to HCC categories, prioritizing high-value tasks, and validating codes more efficiently. The release also enables HTML-based projects to leverage Inter-Annotator Agreement (IAA) analytics for quality assurance, simplifies licensing across the suite of John Snow Labs products, and improves training scalability with dataset sampling. Enhancements to the annotation interface—including bulk label management and more precise zoom controls—further increase speed and usability. Combined with a robust set of stability and performance fixes, these capabilities give medical coders, clinicians, and data scientists the tools they need to annotate faster, train better models, and ensure higher data accuracy across large-scale projects.</p>
+  <h2 id="advanced-audit-logging-and-monitoring">Advanced Audit Logging and Monitoring</h2>
+  <p>Generative AI Lab now supports real-time, high-performance audit logging. This feature enhances traceability and compliance readiness without compromising security or performance.</p>
 
-  <h2 id="support-for-hcc-coding">Support for HCC Coding</h2>
-  <p>This release introduces support for HCC Coding for text and PDF content. The system now maps detected ICD-10 codes to their corresponding HCC codes, streamlining clinical risk adjustment workflows and insurance claim verification.</p>
-
-  <p><strong>New project types:</strong></p>
-  <ol>
-    <li><strong>HCC Coding for Text</strong></li>
-    <li><strong>HCC Coding for PDF and Text (side by side)</strong></li>
-  </ol>
-
-  <p>These project types enable the association of HCC codes with annotated clinical entities using preconfigured lookup datasets, reducing manual input and improving consistency in medical coding.</p>
-
-  <p><img src="/assets/images/annotation_lab/7.0.0/1.png" alt="700image" /></p>
-
-  <h3 id="usage-instructions">Usage Instructions</h3>
-  <p>To enable <strong>HCC Coding Support</strong>, follow these steps:</p>
-
-  <p>To enable HCC Coding Support, follow these steps:</p>
-
-  <p><strong>1.Project Setup</strong></p>
-  <ul>
-    <li>Select either of the new project templates during project creation.</li>
-    <li>Choose the HCC Coding for PDF and Text (side by side) option if you need a visual representation of the original document while performing HCC coding.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.0.0/2.png" alt="700image" /></p>
-
-  <p><strong>2.Label Customization</strong> - On the Customize Labels page, users can either:</p>
-  <ul>
-    <li>Apply a lookup dataset globally, to all labels in your taxonomy at once.</li>
-    <li>Assign Lookup options to specific labels.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.0.0/3.png" alt="700image" /></p>
-
-  <p><strong>3.Annotation Process</strong></p>
-  <ul>
-    <li>Annotate entities and assign codes using the annotation widget.</li>
-    <li>Edit codes inline or through the Annotation Widget from the right panel.</li>
-    <li>Annotated chunks are listed under their respective labels. Users can expand labels by clicking the down arrow to view all chunks associated with them.</li>
-    <li>Lookup code can be edited or updated directly from labeled tokens or via the labeling section by clicking the edit button.</li>
-    <li>Predictions can be copied to generate a completion, allowing the HCC code to be reviewed using the annotation widget on the right.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.0.0/4.gif" alt="700image" /></p>
-
-  <p><strong>4.Review and Confirmation</strong>
-Once a task is labeled and lookup codes are assigned along with HCC Codes, reviewers have the following options:</p>
-  <ul>
-    <li>Accept and confirm the labeled text.</li>
-    <li>Decline and remove the labels.</li>
-    <li>Tag the label as non-billable, if necessary.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.0.0/5.png" alt="700image" /></p>
-
-  <h3 id="raking-score-integration">Raking Score Integration</h3>
-
-  <p>Tasks can now include <strong>ranking scores</strong> to support triaging and prioritization, allowing users to manage large annotation datasets more effectively. When importing tasks, users can associate each task with a ranking score that reflects its clinical significance or urgency. These scores are then displayed in the task list and can be used to sort and filter tasks dynamically. This functionality is particularly beneficial in risk adjustment workflows where prioritizing complex or high-impact cases is critical. Ranking scores also integrate with the HCC coding workflow, enabling annotators and reviewers to systematically focus on the most relevant cases for validation.</p>
-
-  <p><img src="/assets/images/annotation_lab/7.0.0/6.png" alt="700image" /></p>
-
-  <h2 id="iaa-for-html-projects-with-ner-labels">IAA for HTML Projects with NER Labels</h2>
-  <p>Inter-Annotator Agreement (IAA) analytics are now supported inside HTML projects with NER labels. This feature ensures more robust validation of annotation accuracy and promotes better alignment among annotators, enhancing overall project quality.</p>
-
-  <p>The existing workflow remains unchanged. Once an analytics request is granted, a new “Inter-Annotator Agreement” tab becomes available under the Analytics page in HTML projects, allowing users to access and interpret IAA metrics seamlessly.</p>
+  <h3 id="key-capabilities">Key Capabilities</h3>
 
   <ul>
-    <li>Access the new “Inter-Annotator Agreement” tab from the Analytics page.</li>
-    <li>Visualize agreement charts and compare annotations across multiple users.</li>
+    <li>
+      <p><strong>Real-Time Indexing:</strong> Captures user activities and system events, including project lifecycle actions, configuration changes, model hub events, and administrative operations.</p>
+    </li>
+    <li>
+      <p><strong>Configurable Deployment:</strong> Elastic Search can be deployed internally or connected to an external cluster for complete data ownership.</p>
+    </li>
+    <li>
+      <p><strong>Privacy First:</strong> Metadata such as user ID, API method, timestamp, and context are logged without exposing sensitive payloads.</p>
+    </li>
+    <li>
+      <p><strong>Log Management:</strong> Supports backup to S3, configurable retention policies, and restores for robust governance.</p>
+    </li>
+    <li>
+      <p><strong>User Benefit:</strong> Enables organizations to achieve secure, tamper-proof auditability critical for compliance and operational transparency.</p>
+    </li>
   </ul>
 
-  <p><img src="/assets/images/annotation_lab/7.0.0/7.png" alt="700image" /></p>
+  <p><strong>Steps to enable Audit Logs on your Generative AI Lab instance:</strong></p>
 
-  <h2 id="support-for-universal-licenses">Support for Universal Licenses</h2>
+  <p>This feature can be enabled if needed for environments that require advanced auditing or compliance tracking. For maximum control and security, administrators can configure Generative AI Lab to use an externally hosted Elastic Search cluster.</p>
 
-  <p>Licensing complexity is now significantly reduced through the addition of a universal license key that governs all John Snow Labs libraries and products. Before this update, customers faced the challenge of managing multiple licenses—a separate one for the application and others for using specific functionalities like the Visual or Healthcare features (e.g. in training or preannotation). This complexity often led to additional administrative burdens.</p>
+  <p>To install Elastic Search locally in Gen AI Lab, add the following parameter to the installer or updater script and then run the installation or update:</p>
 
-  <p>This enhancement simplifies deployments, and license tracking across enterprise environments. It also increases flexibility, boosts efficiency, and provides a seamless experience across all John Snow Labs products. The same license key can be moved to other products – Medical LLMs, Terminology Server, or can be used to experiment with the Healthcare or Visual libraries in Python, as long as it contains a sufficient number of credits.</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--set</span> <span class="nv">installElasticsearch</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>  </div>
 
-  <p><img src="/assets/images/annotation_lab/7.0.0/8.png" alt="700image" /></p>
+  <p>Once installed, enable Elastic Search by adding the following parameter to the installer or updater script and then run the installation or update:</p>
 
-  <h2 id="dataset-sampling-for-efficient-model-training">Dataset Sampling for Efficient Model Training</h2>
-  <p>To enhance the training process for <strong>NER (Named Entity Recognition)</strong> projects this version introduces data sampling. In the past, training models on extensive datasets could lead to lengthy training periods or even failures due to the limitations of the existing infrastructure.
-This update introduces a new feature that allows users to specify a sampling fraction in the training configuration page, enabling controlled dataset selection. A new parameter has been added to the Training page called Sampling Fraction, where users can specify the portion of the dataset they wish to use for training. The system automatically applies this setting, using only the specified fraction of the dataset for training, thereby optimizing the training process and improving overall efficiency.</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--set</span> global.elasticsearch.enable<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>  </div>
 
-  <p>For example, if there are 500 tasks in total and the user sets the sampling fraction to 0.5, the system will randomly select 250 tasks (50% of the dataset) for training instead of using the entire dataset.</p>
+  <p>One can disable Elastic Search as well. To disable it, add the following parameter to the installer or updater script and then run the installation or update:</p>
 
-  <p>This enhancement eliminates the need for manual dataset selection, as training can now be initiated based on a randomized subset, optimizing efficiency and resource utilization.</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--set</span> global.elasticsearch.enable<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>  </div>
 
-  <p><img src="/assets/images/annotation_lab/7.0.0/9.png" alt="700image" /></p>
+  <p>To include user logs in Elastic Search, add the following parameters to the installer or updater script and then run the installation or update:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">--set</span> global.elasticsearch.includeKeycloak<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+<span class="nt">--set</span> global.azure.images.keycloak.tag<span class="o">=</span>keycloak-&lt;GenAI Lab Version&gt; <span class="se">\</span>
+<span class="nt">--set</span> global.azure.images.keycloak.image<span class="o">=</span>annotationlab <span class="se">\</span>
+<span class="nt">--set</span> global.azure.images.keycloak.registry<span class="o">=</span>docker.io/johnsnowlabs
+</code></pre></div>  </div>
+  <p><strong>Note:</strong> Replace GenAI Lab Version with the appropriate Generative AI Lab version that you want to install or upgrade to.</p>
+
+  <p>Once the features are enabled, the system starts real-time indexing of user and system activity while ensuring privacy and performance. All logs include metadata like user ID, API method and path, timestamp, and event context, without exposing sensitive payloads such as passwords, PHI, and PII.</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/1.png" alt="710image" /></p>
+
+  <h4 id="what-gets-indexed">What Gets Indexed:</h4>
+  <ul>
+    <li><strong>Project Lifecycle</strong>: Creation and deletion of projects.</li>
+    <li><strong>Configuration Changes</strong>: Updates to teams, model assignments, external integrations, and label settings.</li>
+    <li><strong>Import/Export Activities</strong>: Logs for task imports/exports.</li>
+    <li><strong>Models Hub Events</strong>: Events such as model import/export and model downloads.</li>
+    <li><strong>Administrative Actions</strong>: Logs related to user creation, updates, deletions, license upload and deletion, enabling/disabling local export toggles, analytics approval, and system backups.</li>
+  </ul>
+
+  <h4 id="log-management-features">Log Management Features:</h4>
+  <ul>
+    <li><strong>Backup &amp; Restore</strong>: Schedule automatic dumps of indexed logs directly to S3 buckets for backup and recovery.</li>
+    <li><strong>Retention Policies</strong>: Configure automated deletion of old logs to optimize storage and comply with data governance policies.</li>
+    <li><strong>External Elastic Support</strong>: Connect to your company’s existing ES logging infrastructure to unify and enhance your organization’s knowledge base with integrated log data.</li>
+  </ul>
+
+  <p>This new feature enhances Generative AI Lab with secure, tamper-proof logging and flexible log data management, offering robust observability without disrupting workflows. It’s an essential addition for teams focused on security, compliance, and operational transparency.</p>
+
+  <h3 id="smarter-task-distribution-bulk-assignment-at-scale">Smarter Task Distribution: Bulk Assignment at Scale</h3>
+  <p>Generative AI Lab now offers bulk task assignment capabilities, allowing up to 200 unassigned tasks to be allocated simultaneously to selected annotators.</p>
+
+  <p><strong>Highlights:</strong></p>
+  <ul>
+    <li>Sequential or Random Assignment: Tasks can be distributed in order or randomly from the unassigned pool.</li>
+    <li>Efficient Scaling: Reduces manual effort in large-scale projects, optimizing resource utilization.</li>
+  </ul>
+
+  <p><strong>User Benefit:</strong> Accelerates task distribution, improving operational efficiency and annotation throughput. 
+​</p>
+  <h4 id="bulk-assignment-process">Bulk Assignment Process:</h4>
+  <ul>
+    <li>Click on the “Assign Task” button.</li>
+    <li>Select the annotators to whom you wish to assign tasks.</li>
+    <li>Specify the number of tasks to assign to each annotator.</li>
+    <li>Define any required criteria for task selection.</li>
+    <li>Click on “Assign” to complete the process.​</li>
+  </ul>
+
+  <p><strong>Sequential Distribution:</strong> Tasks are assigned in the order they appear in the task list.</p>
+
+  <p><strong>Random Distribution:</strong> Tasks are randomly selected from the pool of unassigned tasks.​</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/2.gif" alt="710image" /></p>
+
+  <p><strong>Notes</strong></p>
+  <ul>
+    <li>The maximum number of tasks that can be assigned at once is 200.</li>
+    <li>If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator.​</li>
+  </ul>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/3.gif" alt="710image" /></p>
 
   <h2 id="improvements">Improvements</h2>
 
-  <h3 id="bulk-hide-labels-post-annotation">Bulk Hide Labels Post-Annotation</h3>
+  <h3 id="only-what-you-need-resource-filtering-by-project-type">Only What You Need: Resource Filtering by Project Type</h3>
+  <p>Generative AI Lab enhances the Reuse Resource interface by displaying only compatible models, prompts, and rules based on the selected project type.</p>
 
-  <p>Users can now hide multiple labels at once, significantly improving efficiency when working with large documents. Previously, labels had to be hidden individually, making the process tedious and time-consuming. With this update, an eye icon has been added to the Annotations widget, enabling users to hide all annotations for a given Label with a single click. To use this feature, users must switch from Region View to Labels View in the annotation widget.</p>
+  <p><strong>Context-Aware Resource Display:</strong> When a project type is selected, the Reuse Resource page now filters and displays only those models, prompts, and rules that are compatible with that specific project type.​</p>
 
-  <p>With this improvement, users can manage labels more effectively, reducing manual effort and enhancing focus during the annotation process.</p>
+  <p>Example – Visual NER projects, for example, will only show supported text NER models and skip unsupported resource types. Resources such as assertion models, Classification models, and OpenAI prompts, which are not supported, will not be shown.</p>
 
-  <p><img src="/assets/images/annotation_lab/7.0.0/10.gif" alt="700image" /></p>
+  <p>For Visual NER project:
+<img src="/assets/images/annotation_lab/7.1.0/4.gif" alt="710image" /></p>
 
-  <h3 id="improved-zoom-controls">Improved Zoom Controls</h3>
-  <p>Zooming in Visual NER projects is now more intuitive and controlled:</p>
+  <p>For Checkbox Detection project:
+<img src="/assets/images/annotation_lab/7.1.0/5.gif" alt="710image" /></p>
+
+  <p>User Benefit: Simplifies resource selection, eliminates validation errors, and accelerates project setup.</p>
+
+  <h3 id="effortless-project-resets-bulk-task-deletion">Effortless Project Resets: Bulk Task Deletion</h3>
+  <p>Generative AI Lab now introduces a one-click bulk deletion option for project tasks. This enhancement eliminates the need to remove tasks individually, facilitating more efficient project management, especially during large-scale cleanups.​</p>
+
+  <p><strong>Feature Details:</strong> 
+User Interface Integration: Accessible directly from the project task page.</p>
+
+  <p><strong>Cautionary Control:</strong> Deletion is irreversible, ensuring that users proceed with clarity and intent. 
+<strong>User Benefit:</strong> Facilitates efficient large-scale project resets and cleanups.</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/6.gif" alt="710image" /></p>
+
+  <p>Note: Irreversible Action: Please note that deleting tasks in bulk is irreversible. Ensure that all necessary data is backed up or no longer needed before proceeding with this action.</p>
+
+  <h3 id="more-control-more-confidence-split-actions-for-phi-de-identification">More Control, More Confidence: Split Actions for PHI De-Identification</h3>
+  <p>The de-identification process has been redesigned into two discrete steps: identification and removal of sensitive data, giving users better control over the workflow.</p>
+
+  <p><strong>New Workflow:</strong></p>
+
   <ul>
-    <li>Prevents excessive zoom-out, which previously caused annotation regions to overlap or disappear from view. This restriction ensures annotations remain visible and usable during review and editing.</li>
-    <li>Restricts zoom-in to avoid unnecessary magnification into white space or low-content areas, which often led to loss of context or inefficient navigation.</li>
-    <li>Improved positional control allows annotators to adjust the viewport while zoomed in or out, enabling smoother transitions and more precise annotation without losing sight of the surrounding content.</li>
+    <li>Step 1: Identify PHI/PII within documents.</li>
+    <li>Step 2: Review, adjust if necessary, then finalize de-identification.</li>
   </ul>
 
-  <p><img src="/assets/images/annotation_lab/7.0.0/11.gif" alt="700image" /></p>
+  <p><strong>User Benefit:</strong> Provides greater transparency, enabling careful review before sensitive information is permanently removed.</p>
 
-  <h2 id="bug-fixes">Bug Fixes</h2>
+  <p><img src="/assets/images/annotation_lab/7.1.0/7.png" alt="710image" /></p>
+
+  <p>By splitting identification and de-identification into separate steps, the new process provides greater transparency and allows annotators to review and confirm all changes before finalizing the output.</p>
+
+  <h3 id="stay-focused-pre-annotation-defaults-to-current-page">Stay Focused: Pre-Annotation Defaults to Current Page</h3>
+  <p>Pre-annotation now defaults to tasks on the current page instead of the entire project. Previously, users had to manually select this option; now, it is the default behavior.</p>
+
+  <p><strong>Change Impact:</strong> 
+<strong>Error Prevention:</strong> Reduces the risk of accidentally pre-annotating full projects. 
+<strong>Faster Processing:</strong> Localizes the workload for quicker completions.</p>
+
+  <p><strong>User Benefit:</strong> Speeds up workflow and minimizes unintentional system load.</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/8.png" alt="710image" /></p>
+
+  <h3 id="seamless-zoom-persistent-pdf-zoom-levels">Seamless Zoom: Persistent PDF Zoom Levels</h3>
+
+  <p>Zoom levels in PDF tasks are now preserved across navigation actions within the same task session. The zoom setting remains consistent during annotation, saving, and page navigation, and only resets if the page is manually refreshed.</p>
+
+  <p>Previously, the zoom level would reset after each action, which could disrupt the annotation workflow. This update ensures a more consistent and uninterrupted experience when working with PDF documents.</p>
+
+  <p><strong>User Benefit:</strong> Enhances user comfort and consistency when working through multi-page PDF annotations.</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/9.gif" alt="710image" /></p>
+
+  <h3 id="color-coded-clarity-random-colors-for-visual-builder-labels">Color-Coded Clarity: Random Colors for Visual Builder Labels</h3>
+  <p>When adding multiple labels in the Visual Builder, each label is now assigned a random color by default. While users could previously add multiple labels at once using the Visual Builder, all labels were assigned the same default color, making it harder to visually distinguish them during annotation, and users had to manually update the colors for each label.</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/10.gif" alt="710image" /></p>
+
+  <p><strong>User Benefit:</strong> Saves setup time and improves usability during annotation tasks.</p>
+
+  <h3 id="find-it-fast-auto-expanded-labels-in-page-wise-annotation-view">Find It Fast: Auto-Expanded Labels in Page-Wise Annotation View</h3>
+  <p>For HCC Coding projects, annotations are now organized page-by-page, with clicked labels auto-expanded in the sidebar.</p>
+
+  <p><strong>Enhanced Navigation with Label Spotlighting:</strong> Clicking a labeled text highlights and expands the corresponding annotation entry.</p>
+
+  <p><strong>User Benefit:</strong> Streamlines navigation, improves editing accuracy and simplifies the review of complex multi-page documents.</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/11.gif" alt="710image" /></p>
+
+  <h3 id="bug-fixes">Bug Fixes</h3>
 
   <ul>
     <li>
-      <p><strong>Tooltip for Section Names Now Supports Multi-Row Display</strong></p>
+      <p><strong>License server is not deployed in AMI</strong></p>
 
-      <p>Previously, tooltips for Section Names displayed text in a single row, making long sentences difficult to read and causing words to disappear. This fix enables multi-row tooltips, ensuring better readability and text visibility.</p>
+      <p>Previously, the license server failed to deploy in the AMI environment. This issue has now been fixed, and the license server deploys successfully without errors for AMI.</p>
     </li>
     <li>
-      <p><strong>‘Show Labels Inside Region’ Now Works Correctly in NER Projects</strong></p>
+      <p><strong>User can add licensed healthcare models to project and save configurations without any error</strong></p>
 
-      <p>The ‘Show Labels Inside Region’ setting on the labeling page was not functioning in NER Projects. With this fix, labels now properly show or hide based on the setting, improving task visibility and usability.</p>
+      <p>Users were previously able to add licensed healthcare models to a project without a valid license if the models were already downloaded. The issue has been fixed, and now, licensed models cannot be used in a project without a valid license, even if they are already present in the instance.</p>
     </li>
     <li>
-      <p><strong>Removed Unnecessary “check_pre_annotation_status” Logs</strong></p>
+      <p><strong>Model Finner_header cannot be used along with other models due to missing embedding</strong></p>
 
-      <p>Unnecessary <code class="language-plaintext highlighter-rouge">check_pre_annotation_status</code> logs were generated in the AnnotationLab pod each time users navigated to the task page, cluttering the logs. This fix eliminates redundant log entries, ensuring cleaner and more efficient logging.</p>
+      <p>Previously, the Finner_Header model could not be used alongside other models due to missing embeddings. This issue has been fixed, and the required embeddings are now downloaded automatically, allowing users to use the model without any problems.</p>
     </li>
     <li>
-      <p><strong>Assertion Training Now Works for Side-by-Side Projects</strong></p>
+      <p><strong>“Last Training Succeeded” status is shown even when training was aborted</strong></p>
 
-      <p>Assertion training previously failed in Side-by-Side project types, disrupting the training process. This issue has been resolved, ensuring a seamless training experience.</p>
+      <p>The “Last Training Succeeded” status was shown even after the training was aborted (i.e., when the server was deleted from the cluster page). This has been fixed, and the correct “Aborted” message is now displayed, even after refreshing the page.</p>
     </li>
     <li>
-      <p><strong>Tasks Now Load Correctly in SBA-Enabled Projects</strong></p>
+      <p><strong>Users cannot import external Prompts</strong></p>
 
-      <p>Users encountered a “Something Went Wrong” error when trying to view tasks in SBA-enabled projects. This issue has been fixed, allowing users to open, view, and annotate tasks without any errors.</p>
+      <p>When attempting to import an external prompt, users would encounter an error dialog even with a valid prompt file. This issue has been fixed, and users can now import external prompts successfully without any errors.</p>
     </li>
     <li>
-      <p><strong>Fixed Annotation Mismatches in Visual NER and Side-by-Side Projects</strong></p>
+      <p><strong>Validation error is observed when user tries to update the project configuration (remove labels) even when there are no tasks</strong></p>
 
-      <p>Switching between completions in Visual NER Projects caused annotation inconsistencies. This issue, also present in Side-by-Side Projects, has been resolved to maintain annotation consistency across completions.</p>
+      <p>A validation error occurred when users tried to update the project configuration by removing an existing model and adding a new one, even when no tasks were present. This issue has been resolved, and users can now update the project configuration seamlessly when no tasks are present.</p>
     </li>
     <li>
-      <p><strong>Templatic Augmentation Task Generation Now Works Without Errors</strong></p>
+      <p><strong>Sometimes the UI crashes while clicking/dragging in PDF file in VisualNER project</strong></p>
 
-      <p>Users faced errors when generating tasks via Templatic Augmentation, preventing the creation of augmented tasks. This issue has been fixed, and augmented task generation now works as expected.</p>
+      <p>The UI would occasionally crash when interacting with the image section of PDF files, particularly during clicking or dragging actions in VisualNER projects. It has now been fixed, ensuring that the UI remains stable and responsive during all interactions.</p>
     </li>
     <li>
-      <p><strong>Corrected Side-by-Side Annotation Alignment for Image and Text</strong></p>
+      <p><strong>Deployed De-identification server abruptly stopped in AMI instance</strong></p>
 
-      <p>Annotations were misaligned when comparing images and text in Side-by-Side comparisons, leading to discrepancies. This fix ensures correct annotation alignment across both modalities, improving annotation accuracy.</p>
+      <p>Previously, the deployed De-identification server would stop suddenly on the cluster page after a few minutes in the AMI instance. This issue has been fixed, and the server now remains idle unless manually stopped by the user.</p>
     </li>
     <li>
-      <p><strong>Invalid Hotkeys No Longer Trigger “Something Went Wrong” Page</strong></p>
+      <p><strong>Hotkey Tooltip Overflow in Region Section Buttons</strong></p>
 
-      <p>Pressing an incorrect hotkey in Image and Text Side-by-Side Projects previously redirected users to a “Something Went Wrong” page. Now, invalid hotkeys simply have no effect, preventing unnecessary disruptions.</p>
+      <p>Hotkey tooltips for the Region section buttons were not displayed properly, with some overlapping onto button text and others being partially hidden. This issue has been fixed, and the tooltips are now clearly visible and correctly positioned.</p>
     </li>
     <li>
-      <p><strong>Fixed “Completion Not Found” Error When Navigating Pages</strong></p>
+      <p><strong>Training fails with ‘Out Of Memory’ when training large dataset with sampling</strong></p>
 
-      <p>Users encountered a “Completion Not Found” error when switching pages in Image and Text Side-by-Side Projects. This issue has been fixed, allowing seamless navigation without errors.</p>
+      <p>Previously, training would fail when using a dataset with large sampling. This issue has been fixed, and training now completes successfully even with larger datasets.</p>
     </li>
     <li>
-      <p><strong>Playground Now Opens Properly from Cluster Page</strong></p>
+      <p><strong>Unable to Manually Enter Color Code in Edit Label</strong></p>
 
-      <p>Users were unable to access the Playground from the Cluster Page due to a launch issue. This has been fixed, and the Playground now opens in a new window as intended.</p>
+      <p>While editing a label in the Customize Labels section, entering a valid hex color code did not reflect the correct color in the color picker. This issue has been fixed, and the color picker now accurately displays the corresponding color when a valid hex code is entered.</p>
     </li>
     <li>
-      <p><strong>Prevented Duplicate Model Names in Local Models Page</strong></p>
+      <p><strong>UI Freeze and 404 Error During LangTest Execution</strong></p>
 
-      <p>Users could rename trained models with existing names on the Local Models Page, causing duplicate entries. This fix enforces unique names for each model, preventing naming conflicts.</p>
+      <p>Previously, running a LangTest would freeze the UI and result in a 404 error, despite the test completing successfully. This issue has now been resolved, and the LangTest runs smoothly without causing any UI freezes.</p>
     </li>
     <li>
-      <p><strong>Deleted Chunks No Longer Reappear When Selecting a Label</strong></p>
+      <p><strong>User navigates to something went wrong page while selecting external prompt or rules for side-by-side project</strong></p>
 
-      <p>Previously deleted chunks were unintentionally reannotated when selecting a label, causing unwanted label restoration. This issue has been resolved, ensuring deleted chunks remain removed unless explicitly re-added.</p>
-    </li>
-    <li>
-      <p><strong>‘Keep Label Selected’ Setting Now Works as Expected</strong></p>
-
-      <p>The ‘Keep Label Selected After Creating a Region’ setting remained active even when disabled. This has been corrected, ensuring label selection behavior follows user preferences accurately.</p>
+      <p>Users were redirected to a “Something went wrong” page when attempting to select external prompts or rules in side-by-side projects. This issue has been fixed, and users can now select prompts and rules without errors.</p>
     </li>
   </ul>
 
@@ -823,8 +896,9 @@ This update introduces a new feature that allows users to specify a sampling fra
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_1">7.0.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_0_0">7.0.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_0_0">7.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_11_3">6.11.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_11_2">6.11.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_11_1">6.11.1</a></li>
