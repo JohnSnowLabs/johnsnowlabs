@@ -629,6 +629,8 @@ function wrapWordInSpan(data, wordToWrap) {
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
   <h2 id="generative-ai-lab-71-enhanced-auditability-and-workflow-efficiency">Generative AI Lab 7.1: Enhanced Auditability and Workflow Efficiency</h2>
+  <p style="text-align:center;">Release date: 04-29-2024</p>
+
   <p>Generative AI Lab 7.1 introduces several new features and improvements focused on enhancing observability, task management, data governance, and annotation workflows. It includes support for real-time log indexing for audit and compliance needs, automatic bulk task assignment for annotators, as well as improved project setup and annotation flows. These updates aim to improve system usability, transparency, and operational efficiency.</p>
 
   <h2 id="advanced-audit-logging-and-monitoring">Advanced Audit Logging and Monitoring</h2>
@@ -686,7 +688,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p><img src="/assets/images/annotation_lab/7.1.0/1.png" alt="710image" /></p>
 
-  <h4 id="what-gets-indexed">What Gets Indexed:</h4>
+  <h3 id="what-gets-indexed">What Gets Indexed</h3>
   <ul>
     <li><strong>Project Lifecycle</strong>: Creation and deletion of projects.</li>
     <li><strong>Configuration Changes</strong>: Updates to teams, model assignments, external integrations, and label settings.</li>
@@ -695,7 +697,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Administrative Actions</strong>: Logs related to user creation, updates, deletions, license upload and deletion, enabling/disabling local export toggles, analytics approval, and system backups.</li>
   </ul>
 
-  <h4 id="log-management-features">Log Management Features:</h4>
+  <h3 id="log-management-features">Log Management Features</h3>
   <ul>
     <li><strong>Backup &amp; Restore</strong>: Schedule automatic dumps of indexed logs directly to S3 buckets for backup and recovery.</li>
     <li><strong>Retention Policies</strong>: Configure automated deletion of old logs to optimize storage and comply with data governance policies.</li>
@@ -704,18 +706,18 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>This new feature enhances Generative AI Lab with secure, tamper-proof logging and flexible log data management, offering robust observability without disrupting workflows. It’s an essential addition for teams focused on security, compliance, and operational transparency.</p>
 
-  <h3 id="smarter-task-distribution-bulk-assignment-at-scale">Smarter Task Distribution: Bulk Assignment at Scale</h3>
+  <h2 id="smarter-task-distribution-bulk-assignment-at-scale">Smarter Task Distribution: Bulk Assignment at Scale</h2>
   <p>Generative AI Lab now offers bulk task assignment capabilities, allowing up to 200 unassigned tasks to be allocated simultaneously to selected annotators.</p>
 
-  <p><strong>Highlights:</strong></p>
+  <h3 id="key-capabilities-1">Key Capabilities</h3>
   <ul>
     <li>Sequential or Random Assignment: Tasks can be distributed in order or randomly from the unassigned pool.</li>
     <li>Efficient Scaling: Reduces manual effort in large-scale projects, optimizing resource utilization.</li>
   </ul>
 
-  <p><strong>User Benefit:</strong> Accelerates task distribution, improving operational efficiency and annotation throughput. 
-​</p>
-  <h4 id="bulk-assignment-process">Bulk Assignment Process:</h4>
+  <p><strong>User Benefit:</strong> Accelerates task distribution, improving operational efficiency and annotation throughput.</p>
+
+  <h3 id="bulk-assignment-process">Bulk Assignment Process:</h3>
   <ul>
     <li>Click on the “Assign Task” button.</li>
     <li>Select the annotators to whom you wish to assign tasks.</li>
@@ -724,17 +726,11 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Click on “Assign” to complete the process.​</li>
   </ul>
 
-  <p><strong>Sequential Distribution:</strong> Tasks are assigned in the order they appear in the task list.</p>
-
-  <p><strong>Random Distribution:</strong> Tasks are randomly selected from the pool of unassigned tasks.​</p>
-
   <p><img src="/assets/images/annotation_lab/7.1.0/2.gif" alt="710image" /></p>
 
-  <p><strong>Notes</strong></p>
-  <ul>
-    <li>The maximum number of tasks that can be assigned at once is 200.</li>
-    <li>If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator.​</li>
-  </ul>
+  <p><strong>Notes</strong>
+<em>- The maximum number of tasks that can be assigned at once is 200.</em>
+<em>- If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator.</em></p>
 
   <p><img src="/assets/images/annotation_lab/7.1.0/3.gif" alt="710image" /></p>
 
@@ -747,26 +743,30 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Example – Visual NER projects, for example, will only show supported text NER models and skip unsupported resource types. Resources such as assertion models, Classification models, and OpenAI prompts, which are not supported, will not be shown.</p>
 
-  <p>For Visual NER project:
-<img src="/assets/images/annotation_lab/7.1.0/4.gif" alt="710image" /></p>
+  <p>For Visual NER project:</p>
 
-  <p>For Checkbox Detection project:
-<img src="/assets/images/annotation_lab/7.1.0/5.gif" alt="710image" /></p>
+  <p><img src="/assets/images/annotation_lab/7.1.0/4.gif" alt="710image" /></p>
 
-  <p>User Benefit: Simplifies resource selection, eliminates validation errors, and accelerates project setup.</p>
+  <p>For Checkbox Detection project:</p>
+
+  <p><img src="/assets/images/annotation_lab/7.1.0/5.gif" alt="710image" /></p>
+
+  <p><strong>User Benefit</strong>: Simplifies resource selection, eliminates validation errors, and accelerates project setup.</p>
 
   <h3 id="effortless-project-resets-bulk-task-deletion">Effortless Project Resets: Bulk Task Deletion</h3>
   <p>Generative AI Lab now introduces a one-click bulk deletion option for project tasks. This enhancement eliminates the need to remove tasks individually, facilitating more efficient project management, especially during large-scale cleanups.​</p>
 
-  <p><strong>Feature Details:</strong> 
-User Interface Integration: Accessible directly from the project task page.</p>
+  <p><strong>Feature Details:</strong></p>
+  <ul>
+    <li>User Interface Integration: Accessible directly from the project task page.</li>
+    <li>Cautionary Control:** Deletion is irreversible, ensuring that users proceed with clarity and intent.</li>
+  </ul>
 
-  <p><strong>Cautionary Control:</strong> Deletion is irreversible, ensuring that users proceed with clarity and intent. 
-<strong>User Benefit:</strong> Facilitates efficient large-scale project resets and cleanups.</p>
+  <p><strong>User Benefit:</strong> Facilitates efficient large-scale project resets and cleanups.</p>
 
   <p><img src="/assets/images/annotation_lab/7.1.0/6.gif" alt="710image" /></p>
 
-  <p>Note: Irreversible Action: Please note that deleting tasks in bulk is irreversible. Ensure that all necessary data is backed up or no longer needed before proceeding with this action.</p>
+  <p>Note: <em>Irreversible Action: Please note that deleting tasks in bulk is irreversible. Ensure that all necessary data is backed up or no longer needed before proceeding with this action.</em></p>
 
   <h3 id="more-control-more-confidence-split-actions-for-phi-de-identification">More Control, More Confidence: Split Actions for PHI De-Identification</h3>
   <p>The de-identification process has been redesigned into two discrete steps: identification and removal of sensitive data, giving users better control over the workflow.</p>
@@ -787,9 +787,11 @@ User Interface Integration: Accessible directly from the project task page.</p>
   <h3 id="stay-focused-pre-annotation-defaults-to-current-page">Stay Focused: Pre-Annotation Defaults to Current Page</h3>
   <p>Pre-annotation now defaults to tasks on the current page instead of the entire project. Previously, users had to manually select this option; now, it is the default behavior.</p>
 
-  <p><strong>Change Impact:</strong> 
-<strong>Error Prevention:</strong> Reduces the risk of accidentally pre-annotating full projects. 
-<strong>Faster Processing:</strong> Localizes the workload for quicker completions.</p>
+  <p><strong>Change Impact:</strong></p>
+  <ul>
+    <li><strong>Error Prevention:</strong> Reduces the risk of accidentally pre-annotating full projects.</li>
+    <li><strong>Faster Processing:</strong> Localizes the workload for quicker completions.</li>
+  </ul>
 
   <p><strong>User Benefit:</strong> Speeds up workflow and minimizes unintentional system load.</p>
 
@@ -821,7 +823,7 @@ User Interface Integration: Accessible directly from the project task page.</p>
 
   <p><img src="/assets/images/annotation_lab/7.1.0/11.gif" alt="710image" /></p>
 
-  <h3 id="bug-fixes">Bug Fixes</h3>
+  <h2 id="bug-fixes">Bug Fixes</h2>
 
   <ul>
     <li>
