@@ -171,7 +171,7 @@ val sentenceDetector = SentenceDetectorDLModel
   .setInputCols(Array("cleanTokens_newDoc"))
   .setOutputCol("sentence")
 
-val tokenizer2 = new Tokenizer()
+val tokenAssembler2 = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("clean_tokens")
 
@@ -183,7 +183,7 @@ val entityExtractor = TextMatcherInternalModel
   .setMergeOverlapping(false)
 
 val mapper = medical.ChunkMapperModel
-    .pretrained("hpo_mapper", "en", "clinical/models")\
+    .pretrained("hpo_mapper", "en", "clinical/models")
     .setInputCols("hpo_term")
     .setOutputCol("hpo_code")
     .setLowerCase(True)
@@ -194,7 +194,7 @@ val pipeline = new Pipeline().setStages(Array(
   stopwordsCleaner,
   tokenAssembler,
   sentenceDetector,
-  tokenizer2,
+  tokenAssembler2,
   entityExtractor,
   mapper
 ))
