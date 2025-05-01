@@ -20,8 +20,6 @@ use_language_switcher: "Python-Scala-Java"
 
 This model is a text matcher designed to automatically extract mentions of phenotypic abnormalities associated with human diseases from clinical or biomedical text. 
 
-The extracted results will be mapped to corresponding Human Phenotype Ontology (HPO) codes.
-
 ## Predicted Entities
 
 
