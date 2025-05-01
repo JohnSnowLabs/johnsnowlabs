@@ -171,7 +171,7 @@ val sentenceDetector = SentenceDetectorDLModel
   .setInputCols(Array("cleanTokens_newDoc"))
   .setOutputCol("sentence")
 
-val tokenAssembler2 = new Tokenizer()
+val tokenizer_2 = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("clean_tokens")
 
@@ -194,7 +194,7 @@ val pipeline = new Pipeline().setStages(Array(
   stopwordsCleaner,
   tokenAssembler,
   sentenceDetector,
-  tokenAssembler2,
+  tokenizer_2,
   entityExtractor,
   mapper
 ))
