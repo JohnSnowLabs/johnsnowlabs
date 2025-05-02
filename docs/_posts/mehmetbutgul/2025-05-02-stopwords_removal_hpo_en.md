@@ -117,17 +117,19 @@ val resultDF = model.transform(textData)
 ## Results
 
 ```bash
-|   | token    | cleanTokens  |
-|---|----------|--------------|
-| 0 | The      | --           |
-| 1 | patient  | patient      |
-| 2 | shows    | shows        |
-| 3 | no       | no           |
-| 4 | signs    | signs        |
-| 5 | of       | --           |
-| 6 | muscle   | muscle       |
-| 7 | weakness | weakness     |
-| 8 | or       | --           |
+|   | token         | cleanTokens    |
+|---|---------------|----------------|
+| 0 | The           | --             |
+| 1 | patient       | patient        |
+| 2 | shows         | shows          |
+| 3 | no            | no             |
+| 4 | signs         | signs          |
+| 5 | of            | --             |
+| 6 | muscle        | muscle         |
+| 7 | weakness      | weakness       |
+| 8 | or            | --             |
+| 9 | developmental | developmental  |
+|10 | delay         | delay          |
 ```
 
 {:.model-param}
