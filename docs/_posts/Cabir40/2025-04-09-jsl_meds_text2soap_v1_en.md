@@ -1,6 +1,6 @@
 ---
 layout: model
-title: 'Medical SOAP Note Generator for Clinical Notes (LLM - jsl_meds_text2soap_v1)
+title: 'Medical SOAP Note Generator for Clinical Notes (LLM - jsl_meds_text2soap_v1)'
 author: John Snow Labs
 name: jsl_meds_text2soap_v1
 date: 2025-04-09
