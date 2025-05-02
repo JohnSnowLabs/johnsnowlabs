@@ -19,7 +19,7 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical LLM Small](https://aws.amazon.com/marketplace/pp/prodview-yrajldynampw4)
 
-[Medical LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-sagwxj5hcox4o)
+[Medical VLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-sagwxj5hcox4o)
 
 [Medical LLM - 14B](https://aws.amazon.com/marketplace/pp/prodview-u5vx4onx5kucy)
 
