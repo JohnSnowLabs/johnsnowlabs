@@ -111,6 +111,14 @@ term-server:
     children:
       - title: Home
         url: /docs/en/terminology_server/term_server
+      - title: Deploy on Premise
+        url: /docs/en/terminology_server/on_prem_deploy
+      - title: Deploy on AWS
+        url: /docs/en/terminology_server/on_aws
+      - title: Support
+        url: /docs/en/terminology_server/support
+      - title: Release Notes
+        url: /docs/en/terminology_server/release_notes
 
 annotation-lab:
   - title: Generative AI Lab
