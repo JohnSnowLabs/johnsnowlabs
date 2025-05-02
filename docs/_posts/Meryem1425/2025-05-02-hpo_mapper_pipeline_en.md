@@ -32,6 +32,7 @@ This pipeline is designed to map extracted phenotype entities from clinical or b
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
