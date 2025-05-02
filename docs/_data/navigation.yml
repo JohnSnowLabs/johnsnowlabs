@@ -77,8 +77,8 @@ healthcare-gpt:
         url: /docs/en/chatbot/getting_started
       - title: Features
         url: /docs/en/chatbot/features
-      - title: Tools
-        url: /docs/en/chatbot/tools       
+      - title: Agents
+        url: /docs/en/chatbot/agents       
       - title: Literature Review
         url: /docs/en/chatbot/literature_review
       - title: DocQA
@@ -89,6 +89,36 @@ healthcare-gpt:
         url: /docs/en/chatbot/support
       - title: Release Notes
         url: /docs/en/chatbot/releases/release_notes
+
+medical-llm:
+  - title: Medical LLMs
+    children:
+      - title: Home
+        url: /docs/en/LLMs/medical_llm
+      - title: Deploy on Premise
+        url: /docs/en/LLMs/on_prem_deploy
+      - title: Deploy on AWS
+        url: /docs/en/LLMs/on_aws
+      - title: Deploy on Snowflake
+        url: /docs/en/LLMs/on_snowflake
+      - title: Support
+        url: /docs/en/LLMs/support
+      - title: Release Notes
+        url: /docs/en/LLMs/releases/release_notes
+
+term-server:
+  - title: Terminology Server
+    children:
+      - title: Home
+        url: /docs/en/terminology_server/term_server
+      - title: Deploy on Premise
+        url: /docs/en/terminology_server/on_prem_deploy
+      - title: Deploy on AWS
+        url: /docs/en/terminology_server/on_aws
+      - title: Support
+        url: /docs/en/terminology_server/support
+      - title: Release Notes
+        url: /docs/en/terminology_server/release_notes
 
 annotation-lab:
   - title: Generative AI Lab
@@ -113,7 +143,7 @@ annotation-lab:
             url: /docs/en/alab/llm_prompts   
           - title: Playground
             url: /docs/en/alab/playground                        
-      - subtitle: Project
+      - subtitle: Project and Tasks
         children:
           - title: Dashboard
             url: /docs/en/alab/project_dashboard
@@ -129,7 +159,7 @@ annotation-lab:
             url: /docs/en/alab/tasks
           - title: Workflows
             url: /docs/en/alab/workflow
-      - subtitle: Project Configuration 
+      - subtitle: Project Types 
         children:
           - title: Overview
             url: /docs/en/alab/tags_overview
@@ -143,7 +173,7 @@ annotation-lab:
             url: /docs/en/alab/tags_image
           - title: PDF
             url: /docs/en/alab/tags_pdf
-      - subtitle: Annotation
+      - subtitle: Data Annotation
         children:
           - title: Manual Annotation
             url: /docs/en/alab/annotation

@@ -26,6 +26,14 @@ Once a valid license is uploaded, all the licensed (Healthcare, Finance, Legal, 
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/add_license.png" style="width:100%;"/>
 
+## Support for Universal Licenses
+
+Licensing complexity is now significantly reduced through the addition of a universal license key that governs all John Snow Labs libraries and products. Before this update, customers faced the challenge of managing multiple licenses—a separate one for the application and others for using specific functionalities like the Visual or Healthcare features (e.g. in training or preannotation). This complexity often led to additional administrative burdens.
+
+This enhancement simplifies deployments, and license tracking across enterprise environments. It also increases flexibility, boosts efficiency, and provides a seamless experience across all John Snow Labs products. The same license key can be moved to other products – Medical LLMs, Terminology Server, or can be used to experiment with the Healthcare or Visual libraries in Python, as long as it contains a sufficient number of credits.
+
+![700image](/assets/images/annotation_lab/7.0.0/8.png)
+
 ## Support for Floating Licenses
 
 Generative AI Lab supports floating licenses with different scopes (_ocr: training_, _ocr: inference_, _healthcare: inference_, _healthcare: training_, _finance: inference_, _finance: training_, _legal: inference_, _legal: training_). Depending on the scope of the available license, users can perform model training and/or deploy pre-annotation servers.
@@ -86,3 +94,14 @@ By presenting this message, users are reminded to monitor their server usage and
 It's important to note that there is no change in the existing functionality of Generative AI Lab. Users can continue to access and use all features and functionalities as before.
 
 This introduction of the PAYG (Pay-As-You-Go) license option reflects our commitment to providing users with flexible licensing options that best suit their needs and usage patterns.
+
+### Application License Requirement for On-Prem Deployments
+With the latest version, Generative AI Lab now requires an application license for on-premises installations. This change brings on-prem licensing in line with our cloud deployments via AWS Marketplace AMI and Azure Marketplace, where usage has been metered.
+
+On-prem users will now need to import an application license on the same License page where other library licenses are managed. This ensures a smooth experience while maintaining flexibility across different deployment environments.
+
+Our commitment remains to provide a powerful and efficient annotation tool while supporting ongoing innovation and improvements. We appreciate your continued support and look forward to introducing more enhancements to Generative AI Lab.
+
+![6110image](/assets/images/annotation_lab/6.11.0/5.png)
+
+

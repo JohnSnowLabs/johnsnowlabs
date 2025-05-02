@@ -20,12 +20,12 @@ Release date: **11-26-2024**
 This hotfix addresses critical bugs and improves functionality for a smoother user experience.
 
 ### Bug Fixes
-- [ALAB-5891] Resolved an issue where users were unable to import zipped tasks exceeding 200 MB after implementing bulk file import functionality.
-- [ALAB-5912] Corrected label misalignment caused by incorrect indexing during pre-annotation.
-- [ALAB-5917] Fixed the "Access Denied" error encountered when navigating to the About Page.
+- Resolved an issue where users were unable to import zipped tasks exceeding 200 MB after implementing bulk file import functionality.
+- Corrected label misalignment caused by incorrect indexing during pre-annotation.
+- Fixed the "Access Denied" error encountered when navigating to the About Page.
 
 ### Task
-- [ALAB-5894] Updated the compatibility check logic to use editions instead of compatible_editions for verifying model compatibility with current Spark versions.
+- Updated the compatibility check logic to use editions instead of compatible_editions for verifying model compatibility with current Spark versions.
 
 </div><div class="prev_ver h3-box" markdown="1">
 

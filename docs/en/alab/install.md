@@ -47,15 +47,15 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 - Deploy it on a new machine.
 - In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
 
-	![IAM](/assets/images/annotation_lab/iam.png)
-		
+  ![IAM](/assets/images/annotation_lab/iam.png)
+    
 - In advance details, enable `Metadata accessible` and select `V1 and V2` in `Metadata version`
 
-	![metadata](/assets/images/annotation_lab/metadata.png)
+  ![metadata](/assets/images/annotation_lab/metadata.png)
 
 - Access the login page for a guided experience on `http://INSTANCE_IP`. For the first login use the following credentials:
-	Username: admin
-	Password: INSTANCE_ID
+  Username: admin
+  Password: INSTANCE_ID
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
@@ -198,24 +198,24 @@ Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft
 
 1. Click on the "Get It Now" link.
 
-	![azure](/assets/images/annotation_lab/aws/getitnow.png)
+  ![azure](/assets/images/annotation_lab/aws/getitnow.png)
 
 2. Select your subscription and the region where you want to deploy the cluster, then click "Next."
 
-	![azure](/assets/images/annotation_lab/aws/resourceGroup.png)
+  ![azure](/assets/images/annotation_lab/aws/resourceGroup.png)
 
 3. Choose the appropriate VM size and enable auto-scaling if you want nodes to be added automatically when needed. Then click "Next."
 
-	![azure](/assets/images/annotation_lab/aws/clustersize.png)
+  ![azure](/assets/images/annotation_lab/aws/clustersize.png)
 
 4. Provide the password (this will be used to access the Generative AI Lab UI with the admin user), then click "Next."
 
-	![azure](/assets/images/annotation_lab/aws/pass.png)
+  ![azure](/assets/images/annotation_lab/aws/pass.png)
 
 5. Review the configuration and then click "Create."
 
-	![azure](/assets/images/annotation_lab/aws/create.png)
-	
+  ![azure](/assets/images/annotation_lab/aws/create.png)
+  
 6. Visit the login page at http://External_IP for a guided experience. For your initial login, use the following credentials: Username: admin, Password: the password set in step 4.
 
 **Note:** You can find the External_IP under Kubernetes resources by navigating to Services and ingresses and locating the addon-http-application-routing-nginx-ingress service name.
@@ -268,10 +268,59 @@ kubectl get pods
 </div><div class="h3-box" markdown="1">
 
 
-
 ## Dedicated Server
 
-For installing Generative AI Lab on a dedicated server please contact us at support@johnsnowlabs.com.
+**On-Prem Installation Guide**
+
+**Prerequisites:** `curl` and `jq` tools must be installed.
+
+**Step 1: Create the License File**
+Create a file named `License` and add your application key inside the file. You can use the following command:  
+
+```sh
+echo "YOUR_APPLICATION_KEY" > LICENSE
+```
+
+**Step 2: Run the Installation/Upgrade Command**
+
+- Install `latest` version:
+
+```sh
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash
+```
+
+- Install `latest` version with GPU support
+
+```sh
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s GPU
+```
+
+- Install custom version
+
+```sh
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s 7.0.0
+```
+
+- Install custom version with GPU support
+
+```sh
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s 7.0.0 GPU
+```
+
+- Upgrade to `latest` version
+
+```sh
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash
+```
+
+- Upgrade to custom version
+
+```sh
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s 7.0.0
+```
+
+For more information regarding installation of Generative AI Lab on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
+
 
 ### Recommended Configurations
 
@@ -288,7 +337,7 @@ For installing Generative AI Lab on a dedicated server please contact us at supp
     <th>Server requirements</th>
     <td>The minimal required configuration is <bl>32GB RAM, 8 Core CPU, 512 Storage (Root directory requires 80 gb free space for k3s installation)</bl>.<br /><br />
 
-    The ideal configuration in case model training and preannotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 512 SSD</bl>.
+    The ideal configuration in case model training and pre-annotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 512 SSD</bl>.
     </td>
 
   </tr>

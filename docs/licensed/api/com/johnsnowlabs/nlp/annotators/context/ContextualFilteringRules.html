@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules</title>
-          <meta name="description" content="Spark NLP 5.5.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules" />
-          <meta name="keywords" content="Spark NLP 5.5.1 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules" />
+          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules</title>
+          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules" />
+          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -234,12 +234,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">ContextualFilteringRules</span><span class="params">(<span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="scopeWindowLevel">scopeWindowLevel: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="whiteListEntities">whiteListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="blackListEntities">blackListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="scopeWindow">scopeWindow: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>, <span name="blackListWords">blackListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="whiteListWords">whiteListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="confidenceThreshold">confidenceThreshold: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.Product">Product</span></span>
+        <span class="name">ContextualFilteringRules</span><span class="params">(<span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="scopeWindowLevel">scopeWindowLevel: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="whiteListEntities">whiteListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="blackListEntities">blackListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="scopeWindow">scopeWindow: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>, <span name="blackListWords">blackListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="whiteListWords">whiteListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="confidenceThreshold">confidenceThreshold: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="possibleRegexContext">possibleRegexContext: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="impossibleRegexContext">impossibleRegexContext: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.Product">Product</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>ContextualFilteringRules is a case class that represents the rules to filter the Chunks.</p></div><dl class="paramcmts block"><dt class="param">entity</dt><dd class="cmt"><p>The field of the entity to filter.</p></dd><dt class="param">scopeWindowLevel</dt><dd class="cmt"><p>The level of the scope window. It can be either 'token' or 'chunk'.</p></dd><dt class="param">whiteListEntities</dt><dd class="cmt"><p>The white list entities to filter.One element of the white list is enough to keep the chunk.</p></dd><dt class="param">blackListEntities</dt><dd class="cmt"><p>The black list entities to filter.All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">scopeWindow</dt><dd class="cmt"><p>The scope window considering chunks to filter. Scope can be calculated looking at tokens or chunks.Decision of chunk or token can be defined by scopeWindowLevel.</p></dd><dt class="param">blackListWords</dt><dd class="cmt"><p>The black list words to filter. All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">whiteListWords</dt><dd class="cmt"><p>The white list words to filter. One element of the white list is enough to keep the chunk.</p></dd><dt class="param">confidenceThreshold</dt><dd class="cmt"><p>The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>ContextualFilteringRules is a case class that represents the rules to filter the Chunks.</p></div><dl class="paramcmts block"><dt class="param">entity</dt><dd class="cmt"><p>The field of the entity to filter.</p></dd><dt class="param">scopeWindowLevel</dt><dd class="cmt"><p>The level of the scope window. It can be either 'token' or 'chunk'.</p></dd><dt class="param">whiteListEntities</dt><dd class="cmt"><p>The white list entities to filter.One element of the white list is enough to keep the chunk.</p></dd><dt class="param">blackListEntities</dt><dd class="cmt"><p>The black list entities to filter.All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">scopeWindow</dt><dd class="cmt"><p>The scope window considering chunks to filter. Scope can be calculated looking at tokens or chunks.Decision of chunk or token can be defined by scopeWindowLevel.</p></dd><dt class="param">blackListWords</dt><dd class="cmt"><p>The black list words to filter. All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">whiteListWords</dt><dd class="cmt"><p>The white list words to filter. One element of the white list is enough to keep the chunk.</p></dd><dt class="param">confidenceThreshold</dt><dd class="cmt"><p>The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></dd><dt class="param">possibleRegexContext</dt><dd class="cmt"><p>The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.</p></dd><dt class="param">impossibleRegexContext</dt><dd class="cmt"><p>The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -290,9 +290,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(entity:String,scopeWindowLevel:String,whiteListEntities:Option[Array[String]],blackListEntities:Option[Array[String]],scopeWindow:(Int,Int),blackListWords:Option[Array[String]],whiteListWords:Option[Array[String]],confidenceThreshold:Option[Double]):com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules"></a><a id="&lt;init&gt;:ContextualFilteringRules"></a>
+      <a id="&lt;init&gt;(entity:String,scopeWindowLevel:String,whiteListEntities:Option[Array[String]],blackListEntities:Option[Array[String]],scopeWindow:(Int,Int),blackListWords:Option[Array[String]],whiteListWords:Option[Array[String]],confidenceThreshold:Option[Double],possibleRegexContext:Option[String],impossibleRegexContext:Option[String]):com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules"></a><a id="&lt;init&gt;:ContextualFilteringRules"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualFilteringRules.html#&lt;init&gt;(entity:String,scopeWindowLevel:String,whiteListEntities:Option[Array[String]],blackListEntities:Option[Array[String]],scopeWindow:(Int,Int),blackListWords:Option[Array[String]],whiteListWords:Option[Array[String]],confidenceThreshold:Option[Double]):com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualFilteringRules.html#&lt;init&gt;(entity:String,scopeWindowLevel:String,whiteListEntities:Option[Array[String]],blackListEntities:Option[Array[String]],scopeWindow:(Int,Int),blackListWords:Option[Array[String]],whiteListWords:Option[Array[String]],confidenceThreshold:Option[Double],possibleRegexContext:Option[String],impossibleRegexContext:Option[String]):com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -301,10 +301,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ContextualFilteringRules</span><span class="params">(<span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="scopeWindowLevel">scopeWindowLevel: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="whiteListEntities">whiteListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="blackListEntities">blackListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="scopeWindow">scopeWindow: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>, <span name="blackListWords">blackListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="whiteListWords">whiteListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="confidenceThreshold">confidenceThreshold: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>]</span>)</span>
+        <span class="name">ContextualFilteringRules</span><span class="params">(<span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="scopeWindowLevel">scopeWindowLevel: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="whiteListEntities">whiteListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="blackListEntities">blackListEntities: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="scopeWindow">scopeWindow: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>, <span name="blackListWords">blackListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="whiteListWords">whiteListWords: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="confidenceThreshold">confidenceThreshold: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="possibleRegexContext">possibleRegexContext: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="impossibleRegexContext">impossibleRegexContext: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">entity</dt><dd class="cmt"><p>The field of the entity to filter.</p></dd><dt class="param">scopeWindowLevel</dt><dd class="cmt"><p>The level of the scope window. It can be either 'token' or 'chunk'.</p></dd><dt class="param">whiteListEntities</dt><dd class="cmt"><p>The white list entities to filter.One element of the white list is enough to keep the chunk.</p></dd><dt class="param">blackListEntities</dt><dd class="cmt"><p>The black list entities to filter.All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">scopeWindow</dt><dd class="cmt"><p>The scope window considering chunks to filter. Scope can be calculated looking at tokens or chunks.Decision of chunk or token can be defined by scopeWindowLevel.</p></dd><dt class="param">blackListWords</dt><dd class="cmt"><p>The black list words to filter. All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">whiteListWords</dt><dd class="cmt"><p>The white list words to filter. One element of the white list is enough to keep the chunk.</p></dd><dt class="param">confidenceThreshold</dt><dd class="cmt"><p>The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">entity</dt><dd class="cmt"><p>The field of the entity to filter.</p></dd><dt class="param">scopeWindowLevel</dt><dd class="cmt"><p>The level of the scope window. It can be either 'token' or 'chunk'.</p></dd><dt class="param">whiteListEntities</dt><dd class="cmt"><p>The white list entities to filter.One element of the white list is enough to keep the chunk.</p></dd><dt class="param">blackListEntities</dt><dd class="cmt"><p>The black list entities to filter.All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">scopeWindow</dt><dd class="cmt"><p>The scope window considering chunks to filter. Scope can be calculated looking at tokens or chunks.Decision of chunk or token can be defined by scopeWindowLevel.</p></dd><dt class="param">blackListWords</dt><dd class="cmt"><p>The black list words to filter. All elements of the black list must be absent to keep the chunk.</p></dd><dt class="param">whiteListWords</dt><dd class="cmt"><p>The white list words to filter. One element of the white list is enough to keep the chunk.</p></dd><dt class="param">confidenceThreshold</dt><dd class="cmt"><p>The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></dd><dt class="param">possibleRegexContext</dt><dd class="cmt"><p>The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.</p></dd><dt class="param">impossibleRegexContext</dt><dd class="cmt"><p>The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -524,6 +524,22 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules#impossibleRegexContext" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="impossibleRegexContext:Option[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualFilteringRules.html#impossibleRegexContext:Option[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">impossibleRegexContext</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -594,6 +610,22 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules#possibleRegexContext" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="possibleRegexContext:Option[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/context/ContextualFilteringRules.html#possibleRegexContext:Option[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">possibleRegexContext</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.context.ContextualFilteringRules#scopeWindow" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="scopeWindow:(Int,Int)"></a>
       <span class="permalink">

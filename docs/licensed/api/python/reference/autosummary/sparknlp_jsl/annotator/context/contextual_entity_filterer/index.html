@@ -308,6 +308,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_assertion_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
 </ul>
@@ -565,12 +566,18 @@ The filter can be applied to the scope of the sentence or the document.</p>
 - <cite>scopeWindowLevel</cite>: Determines whether the <cite>scopeWindow</cite> is applied at the token or chunk level. Options: <cite>token</cite>, <cite>chunk</cite>.
 - <cite>blackListWords</cite>: The black list of words. If a word from this list appears within the scope window, the chunk will be filtered out.
 - <cite>whiteListWords</cite>: The white list of words. If a word from this list appears within the scope window, the chunk will be kept.
-- <cite>confidenceThreshold</cite>: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></li>
+- <cite>confidenceThreshold</cite>: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.
+- <cite>possibleRegexContext</cite> : The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.
+- <cite>impossibleRegexContext</cite> : The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
 </pre></div>
@@ -991,6 +998,8 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>blackListWords</cite>: The black list of words. If a word from this list appears within the scope window, the chunk will be filtered out.</p></li>
 <li><p><cite>whiteListWords</cite>: The white list of words. If a word from this list appears within the scope window, the chunk will be kept.</p></li>
 <li><p><cite>confidenceThreshold</cite>: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></li>
+<li><p><cite>possibleRegexContext</cite> : The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.</p></li>
+<li><p><cite>impossibleRegexContext</cite> : The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.</p></li>
 </ul>
 <section id="notes">
 <h4>Notes:<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h4>
@@ -1001,6 +1010,8 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>whiteListEntities</cite> and <cite>blackListEntities</cite> are optional; if neither is set, no filtering occurs.</p></li>
 <li><p>One element of <cite>whiteListEntities</cite> is enough to keep the chunk.</p></li>
 <li><p>All elements of the <cite>blackList</cite> must be absent to keep the chunk.</p></li>
+<li><p>For <cite>possibleRegexContext</cite> and <cite>impossibleRegexContext</cite>, when writing regular expressions in code, ensure you use double
+escape characters () to properly escape special characters.</p></li>
 </ul>
 </section>
 <section id="example">
@@ -1015,6 +1026,7 @@ A dictionary should contain the following keys:</p>
 <span class="gp">... </span>            <span class="s2">&quot;blackListEntities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">],</span> \
 <span class="gp">... </span>            <span class="s2">&quot;scopeWindowLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> \
 <span class="gp">... </span>            <span class="s2">&quot;blackListWords&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;known&quot;</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">],</span> \
+<span class="gp">... </span>            <span class="s2">&quot;impossibleRegexContext&quot;</span> <span class="p">:</span> <span class="s2">&quot;</span><span class="se">\b</span><span class="s2">(1[2-9]\d|[2-9]\d{2,}|\d{4,})</span><span class="se">\b</span><span class="s2">&quot;</span> \
 <span class="gp">... </span>        <span class="p">},</span> \
 <span class="gp">... </span>        <span class="p">{</span> \
 <span class="gp">... </span>            <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span><span class="p">,</span> \
@@ -1055,6 +1067,8 @@ A dictionary should contain the following keys:</p>
 <li><p><cite>blackListWords</cite>: The black list of words. If a word from this list appears within the scope window, the chunk will be filtered out.</p></li>
 <li><p><cite>whiteListWords</cite>: The white list of words. If a word from this list appears within the scope window, the chunk will be kept.</p></li>
 <li><p><cite>confidenceThreshold</cite>: The confidence threshold to filter the chunks. Filtering is only applied if the confidence of the chunk is below the threshold.</p></li>
+<li><p><cite>possibleRegexContext</cite> : The possible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is kept.</p></li>
+<li><p><cite>impossibleRegexContext</cite> : The impossible regex context to filter the chunks. If the regex is found in the context(chunk), the chunk is removed.</p></li>
 </ul>
 <section id="id29">
 <h4>Notes:<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h4>
@@ -1068,6 +1082,8 @@ A dictionary should contain the following keys:</p>
 <li><p>One element of <cite>whiteListWords</cite> is enough to keep the chunk.</p></li>
 <li><p>All elements of the <cite>blackListWords</cite> must be absent to keep the chunk.</p></li>
 <li><p>Filtering is only applied if the confidence of the chunk is below the threshold.</p></li>
+<li><p>For <cite>possibleRegexContext</cite> and <cite>impossibleRegexContext</cite>, when writing regular expressions in code, ensure you use double
+escape characters () to properly escape special characters.</p></li>
 </ul>
 <blockquote>
 <div><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">contextual_entity_filterer</span> <span class="o">=</span> <span class="n">ContextualEntityFilterer</span><span class="p">()</span> \
@@ -1079,6 +1095,7 @@ A dictionary should contain the following keys:</p>
 <span class="gp">... </span>            <span class="s2">&quot;blackListEntities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">],</span> \
 <span class="gp">... </span>            <span class="s2">&quot;scopeWindowLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> \
 <span class="gp">... </span>            <span class="s2">&quot;blackListWords&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;known&quot;</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">],</span> \
+<span class="gp">... </span>            <span class="s2">&quot;impossibleRegexContext&quot;</span> <span class="p">:</span> <span class="s2">&quot;</span><span class="se">\b</span><span class="s2">(1[2-9]\d|[2-9]\d{2,}|\d{4,})</span><span class="se">\b</span><span class="s2">&quot;</span> \
 <span class="gp">... </span>        <span class="p">},</span> \
 <span class="gp">... </span>        <span class="p">{</span> \
 <span class="gp">... </span>            <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span><span class="p">,</span> \

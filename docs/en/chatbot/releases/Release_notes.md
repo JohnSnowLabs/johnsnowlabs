@@ -5,13 +5,425 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-07-30"
+modify_date: "2025-03-24"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
 
 <div class="h3-box" markdown="1">
+
+## 24-04-2025 New Features and Enhancements
+
+This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count, journal impact, journal rank to help you quickly assess the credibility and impact of your sources.
+
+To further enhance research clarity, we’ve introduced a **Numbered Reference Style**, making citation management more straightforward and improving the readability of your outputs.
+
+In addition, a unified Profile Menu provides a more intuitive way to manage your account and access settings—all in one convenient place.
+
+Together, these enhancements streamline your workflow and empower you with smarter, data-driven insights at every step of the research process.
+
+
+
+### Quality Indicators for Research Articles
+
+As part of an ongoing effort to ensure transparency, credibility, and academic rigor, the Medical Chatbot now displays quality indicators for all available articles and research papers. The Medical Knowledge graph includes well-established and reputable sources such as PubMed, MDPI, bioRxiv, and medRxiv.
+
+The quality indicators are designed to help users assess the influence, reliability, and academic value of a publication, both at the journal and individual article levels, supporting more informed and evidence-based decision-making.
+
+The following quality metrics are available for the indexed articles:
+
+- Impact Factor: The average number of citations the journal receives per year, reflecting its ongoing influence.
+
+- Number of Citations: The total number of times the article has been cited by other scholarly works.
+
+- Number of High-Impact Citations: The number of citations the article has received from top-tier, high-impact journals.
+
+- Quartile of the Journal: The journal's rank within its field, categorized into four quartiles (Q1–Q4), with Q1 representing the highest impact.
+
+These indicators are now visible in both:
+
+- The References provided in Medical Responses, and
+
+- The Articles retrieved via Literature Review.
+
+These metrics strengthen our commitment to delivering high-quality, research-backed content and help users better evaluate the relevance and trustworthiness of scientific literature.
+
+</div><div class="h3-box" markdown="1">
+
+#### Enhanced UI: Quality Indicators
+
+Building on our commitment to delivering research-backed, high-impact content, we’ve introduced a refined user experience to showcase quality indicators for journals and articles more clearly and intuitively.
+
+**1. New Reference Preview Pop-up**
+
+We’ve redesigned the citation/reference pop-up shown in responses to include a cleaner, more informative layout.
+This updated view preserves all existing information — such as article title, authors, publication date, content preview, and external links — and now also includes the newly introduced Quality Indicators:
+
+- Impact Factor (for the journal)
+
+- Number of Citations
+
+- Number of High-Impact Citations
+
+- Journal Quartile
+
+This ensures users can evaluate the reliability and relevance of a reference at a glance.
+
+<img src= "/assets/images/chatbot/QualitiIndicatorsForArticlesReferencePopup.png" alt="Quality Indicators for Cited Articles in Chat" style="border: 2px solid grey; width=60%">
+
+</div><div class="h3-box" markdown="1">
+
+**2. Literature Review - Quality Indicators Available for the List of Relevant Articles**
+
+Quality indicators are now also integrated into the real-time article search results displayed during the Literature Review.
+These metrics empower researchers, institutions, and reviewers to quickly assess the influence and credibility of each article, aiding in the selection of the most impactful studies to include in literature reviews.
+
+The indicators will be shown for all available articles that match the search criteria, seamlessly integrated into our intuitive, real-time article search interface.
+
+<img src= "/assets/images/chatbot/QualityIndicatorsForArticlesLiteratureReview.png" alt="Quality Indicators for Relevant Articles in Literature Review Results View" style="border: 2px solid grey; width=60%">
+
+#### User Benefits
+
+**1. Informed Decision-Making:**
+
+With the inclusion of quality metrics, users can now assess the credibility and influence of both individual articles and the journals they appear in. These indicators provide a reliable, objective basis for evaluating the strength and relevance of scientific literature, allowing users to make more confident, evidence-based decisions—whether selecting articles to reference, use in clinical contexts, or include in academic writing.
+
+**2. Improved Trust and Transparency:**
+
+These indicators foster greater transparency by giving users a clearer view of the academic merit of a publication. Rather than relying solely on article titles or journal names, users can now evaluate research based on standardized, widely recognized metrics. This increased visibility into the quality and reach of an article builds confidence in the content being presented, especially in contexts where the reliability of sources is critical—such as medical research or policy formulation.
+
+**3. Seamless and Intuitive Experience:**
+
+The updated interface is designed to present quality indicators in a user-friendly, accessible way. In the redesigned reference preview pop-up, users can view key article details—including authors, title, publication date, and links to publication source —alongside quality indicators without navigating away from the response. Similarly, during Literature Review, these metrics are integrated directly into real-time article search results, enabling users to evaluate multiple papers at a glance, making the experience faster and more informative.
+
+**4. Professional and Academic Alignment:**
+
+Finally, by incorporating standard academic metrics, the Medical Chatbot aligns with the expectations of researchers, reviewers, and institutions. These indicators mirror the evaluation criteria used by top-tier journals, funding bodies, and academic institutions, supporting professional research workflows and helping users meet institutional standards for quality and rigor. Whether you're publishing, reviewing, or curating research, these metrics offer a more academically robust foundation for your work.
+
+
+
+### New Citations Format: Numbered Reference Style
+
+The Medical Chatbot offers a new citation format in its responses: the numbered reference style.
+
+This format offers a clean, concise way to cite sources without disrupting the natural flow of reading, making it particularly effective for research-heavy or technical content. It enhances overall readability, allows for quick and efficient cross-referencing, and aligns with the standards followed by top-tier scientific and medical journals.
+
+#### User Benefits
+
+**1. Improved readability:** Less cluttered text makes content easier to scan and understand.
+
+**2. Streamlined navigation:** Numbered references make it simple to match in-text citations with the source list.
+
+**3. Faster access to sources:** Ideal for multi-citation responses where references are easier to manage and interpret.
+
+**4. Professional and publication-ready format:** Consistent with industry standards in STEM and academic writing.
+
+
+Users on the Enterprise plan have the flexibility to choose their preferred reference style. Responses can be displayed using the new numbered format or reverted back to the classic author–year format (e.g., Smith et al., 2020) — depending on user or institutional preference.
+
+<img src= "/assets/images/chatbot/NumberedReferences.png" alt="Numbered Format For Citations" style="border: 2px solid grey; width=60%">
+
+</div><div class="h3-box" markdown="1">
+
+### Unified User Profile
+
+To enhance usability and reduce navigation friction, we’ve introduced a unified user profile experience.
+
+Previously, user options and chatbot settings were separated into different sections in the left sidebar. With this update, we’ve made the interface more intuitive by consolidating all user-related controls into a single, expandable sidebar menu.
+
+Now, by clicking on the user info section, users can access all available options in one place. The chatbot settings are also neatly organized under the cascading "Settings" menu, making it easier to manage preferences, personalize experiences, and access features without switching views.
+
+<img src= "/assets/images/chatbot/UserProfile.png" alt="User Profile" style="border: 2px solid grey; width=60%">
+
+#### User Benefits
+
+**1. Simplified navigation:** All user options and settings are now in one location.
+
+**2. Cleaner interface:** Reduces clutter and improves the overall user experience.
+
+**3. Easier access:** Quick access to chatbot preferences, account info, and settings from a unified panel.
+
+**4. More intuitive layout:** Better alignment with user expectations and modern UX practices.
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+## 24-03-2025 New Features and Enhancements
+<!-- </div><div class="h3-box" markdown="1"> -->
+### Get Precise Drug Insights 
+
+Drug Insights, a newly introduced feature within the Medical Chatbot, provides detailed, FDA-sourced information on medications to support safe and informed usage
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/dzXOlaXtKts?si=FZQpMjSD6UopVNGv&hd=1" title="Drug Insights Agent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<div class="h3-box" markdown="1">
+
+#### Key Capabilities
+**1.Comprehensive Drug Information** 
+
+The Drug Insights agent provides users with information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
+
+**2. Context-Aware Responses**
+
+One of the standout features of the Drug Insights agent is its ability to process complex, situational queries. Users can ask questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the agent empowers users to make well-informed decisions about their healthcare.
+
+**3.Direct Citations**
+
+To ensure accuracy and credibility, the agent references FDA-approved drug leaflets and related documentation in its responses. These citations are not only included in the generated answers but are also made accessible to users via an intuitive user interface. This allows users to explore the source material in greater depth, gaining a more comprehensive understanding of the medications. The documentation is organized into easily navigable sections, making it simple to find detailed information relevant to the user's query.
+
+<div class="h3-box" markdown="1">
+
+#### User Benefits
+**1. Reliable Medication Guidance**
+
+The Drug Insights agent provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.
+
+**2. Tailored Information**
+
+By leveraging advanced natural language processing, the agent can respond to complex queries tailored to individual circumstances. Whether addressing medication use for specific age groups, interactions with other drugs, or compatibility with certain foods, the Drug Insights agent delivers contextually relevant answers. This personalized approach helps users navigate complex medical scenarios with clarity and confidence.
+
+**3. Transparency & Trust**
+
+Each response provided by the agent includes direct citations from FDA-approved drug leaflets, ensuring that users have access to credible and up-to-date information. The ability to explore these resources further empowers users to deepen their understanding of medications, fostering a sense of trust and transparency. The intuitive organization of documentation ensures that even detailed information is easily accessible and comprehensible.
+
+</div><div class="h3-box" markdown="1">
+
+### Search for US Healthcare Providers
+
+The Medical Chatbot now allows users to search for US Healthcare Providers, by leveraging the National Plan and Provider Enumeration System (NPPES) database, maintained by the Centers for Medicare & Medicaid Services (CMS).
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/9q3bAgAkPQ0?si=llPGvA8zy3mlQXZP&hd=1" title="Drug Insights Agent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<div class="h3-box" markdown="1">
+
+#### Key Capabilities
+**1. NPPES Database Integration** 
+
+This tool leverages the National Plan and Provider Enumeration System (NPPES), managed by the U.S. Centers for Medicare & Medicaid Services (CMS). The database contains details about healthcare providers and organizations, including their National Provider Identifier (NPI).
+
+**2. DB Query via Natural Language Prompts**
+
+The Medical Chatbot transforms user queries into structured searches, enabling precise retrieval of data from the NPPES database. Users can search by criteria such as name, location, taxonomy (specialty), and other relevant parameters to identify healthcare providers that align with their requirements. 
+
+**3.Data Output**
+
+Results are presented in tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing  insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively. 
+
+#### User Benefits
+**Fast Provider Discovery**: Quickly identify and assess healthcare providers by specialty or geography.
+
+**Research Utility**: Ideal for analyzing provider distribution trends and gaps in healthcare services.
+
+**Custom Data Exports**: Tailor data presentation and integrate seamlessly into research or reporting workflows.
+
+**Trusted Source**: Uses regularly updated, federally maintained data for accuracy and compliance.
+
+</div><div class="h3-box" markdown="1">
+
+### New Knowledge Base: MDPI
+
+A new knowledge base is now available in the Medical Chatbot - MDPI, adding to the existing collection sourced from PubMed, MedRxiv, and BioRxiv. This expansion provides access to a broader range of peer-reviewed research, covering various disciplines, including medicine, life sciences, and technology. MDPI (Multidisciplinary Digital Publishing Institute) is an open-access academic publisher that publishes peer-reviewed journals covering various scientific disciplines, including science, technology, engineering, medicine, and the humanities.
+
+<div class="h3-box" markdown="1">
+
+#### Key Capabilities
+
+**1.Broader Access to Peer-Reviewed Research**
+
+Users can now explore MDPI’s open-access publications alongside other trusted sources, ensuring comprehensive coverage of recent studies, systematic reviews, and experimental research.
+
+**2.Enhanced Contextual Search & Discovery**
+
+The Medical Chatbot is designed to process complex queries, delivering highly relevant results from MDPI alongside existing sources. Users can refine searches based on specific topics, methodologies, or study outcomes, enabling them to retrieve precise and contextually meaningful information tailored to their needs.
+The MDPI knowledge base contributes to generating intelligent, comprehensive responses to medical science-related questions and can also be leveraged inside our Literature Review feature, ensuring access to high-quality, peer-reviewed research across various disciplines.
+
+
+**3.Trusted, Open-Access Content**
+
+MDPI’s commitment to open-access publishing aligns with our goal of providing unrestricted access to credible scientific literature. Each retrieved article includes direct links to the original MDPI publication, allowing users to explore full-text content, review methodologies, and assess findings with full transparency.
+
+<div class="h3-box" markdown="1">
+
+#### User Benefits
+
+**1.Comprehensive Research Support**
+
+By integrating MDPI, users gain access to a broader collection of academic insights, including emerging trends, clinical studies, and experimental research. With the combined coverage of multiple scientific sources by all our available knowledge bases, this ensures access to diverse, high-quality literature, supporting well-informed decision-making in science and medicine.
+
+**2.Precision & Relevance in Search Results**
+
+Leveraging advanced algorithms, our system intelligently surfaces the most pertinent MDPI articles, improving the efficiency of literature review and research workflows. Whether users seek systematic reviews, case studies, or experimental data, they can now access a more refined selection of relevant content.
+
+**3.Broader Interdisciplinary Coverage**
+
+With MDPI’s broad range of subject areas, users can access research that spans multiple disciplines, fostering cross-domain insights and supporting a more holistic understanding of scientific developments. Each response citing any of our knowledge base content includes direct references to the original articles, ensuring credibility and enabling users to explore research findings in greater depth.
+
+With this update, our Knowledge Base continues to evolve as a comprehensive resource for scientific discovery. The addition of MDPI articles enhances accessibility to high-quality, peer-reviewed research, further supporting informed decision-making in healthcare, academia, and beyond.
+
+</div><div class="h3-box" markdown="1">
+
+### Enhancements to Existing Capabilities
+#### Literature Review Improvements
+**1. Query Definition**
+
+Literature Review mode now offers an Editable Query Box to enhance flexibility in crafting search queries for Literature Review.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/gz9gZ5m1JDE?si=iGVOaKD8QcFHE5Xv&hd=1" title="Literature Review - Query Editing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+- **Direct Query Editing:** Users can manually modify search queries in the query box without relying solely on the visual query editor.
+- **Real-Time Synchronization:** Any changes made in the query box are reflected in the Visual Query Editor, ensuring seamless bidirectional synchronization.
+- **Enhanced Usability:** Copying and pasting old or new queries is more convenient, enabling faster creation of Literature Review searches.
+- **Better Search Control:** Users can fine-tune search conditions directly, improving precision and efficiency in research.
+
+This update makes query customization more intuitive and efficient, allowing users to tailor their searches with ease while maintaining real-time consistency between textual and visual query representations.
+
+**2. Sorting Criteria for Results**
+
+To improve organization and relevance, literature review results can now be sorted by publication date. Users have the flexibility to arrange results in both ascending and descending order. This sorting feature is available for real-time search results on the results screen and can also be applied after the literature review process is completed. Additionally, the applied sorting order will be reflected in the downloadable CSV file, ensuring consistency and convenience in data analysis.
+
+<img src= "/assets/images/chatbot/LiteratureReview - ResultsSorting.png" alt="Literature Review - Sorting Criteria for Results" style="border: 2px solid grey; width=60%">
+
+**3. Search** 
+
+Enhancements have been made to the literature review search functionality to ensure more precise and accurate article retrieval. The system now optimizes real-time results, offering faster and more relevant findings. Our intelligent query expansion capabilities refine search keywords, yielding high-quality articles and research papers that best align with the user’s research needs. These improvements significantly enhance the accuracy and depth of literature review searches.
+
+**4. Data Point Extraction**
+
+Enhancements to data point extraction ensure that critical information is identified with greater accuracy. The system now better understands user-defined data point prompts, allowing it to extract key insights with supporting evidence from articles. This refinement enables the extraction of complex data, aligning with user expectations and improving the overall quality of literature review analysis.
+
+
+**5. Inclusion/Exclusion Criteria Rules**
+
+Previously, an article was accepted or excluded from the literature review if it met at least one of the specified inclusion or exclusion criteria. Now, users have greater control over how articles are selected or filtered. They can configure the criteria to require that either all or just one of the specified conditions be met for an article to be included or excluded. This rule-based approach ensures more precise literature review selection, with the system automatically marking articles as included or excluded based on the defined criteria.
+
+<img src= "/assets/images/chatbot/LiteratureReview - Screening.png" alt="Literature Review - Applying the Screening Rules" style="border: 2px solid grey; width=60%">
+
+#### Enhanced Response Quality and Reliability in the Medical Chatbot
+
+The Medical Chatbot now delivers sharper, more accurate responses, supported by improved citation quality. A newly implemented unified schema for all Medical Knowledge Bases ensures more stable and precise reference retrieval.
+
+All Medical Knowledge Bases have been fine-tuned to enhance accuracy, speed, and scalability—enabling faster access to high-quality information. Caching mechanisms for Knowledge Base metadata have been optimized, significantly reducing retrieval times and improving overall system efficiency.
+
+To minimize redundancy, an improved post-processing deduplication system has been introduced, ensuring that duplicate articles no longer appear in search results.
+
+Chatbot agents have been upgraded with enhanced planning capabilities, leading to more tailored and context-aware responses while reducing overly generic outputs. The Medical Research agent, in particular, has been refined to provide deeper insights and more relevant contextual information.
+
+Research paper selection now prioritizes the most recent and reliable studies. By default, the system references research published within the last five years—unless directed otherwise—ensuring answers are grounded in the most current scientific evidence available.
+
+
+#### Document Q&A Enhancements
+
+Document Q&A now utilizes a more powerful model designed to handle complex queries with greater precision. This upgrade significantly improves comprehension of uploaded content, enabling more accurate extraction of relevant information from lengthy or highly technical documents.
+
+The enhanced model supports advanced document processing, delivering well-structured and organized responses. It offers improved clarity and contextual depth, making responses more informative and tailored to user queries.
+
+New functionality includes automatic grouping of answers by relevance and support for structured outputs based on user-defined prompts. Additionally, responses can now be displayed in tabular format, simplifying interpretation and comparison of extracted data.
+
+These enhancements provide greater efficiency, flexibility, and analytical depth in document-based interactions, delivering a more intelligent and responsive experience for users working with complex documents.
+
+
+#### Follow-up Questions available for Document Q&A 
+
+Document Q&A now includes support for follow-up questions, expanding interactive capabilities previously available only in Medical Chat. This enhancement allows users to refine their queries and explore deeper insights within their uploaded documents.
+
+The chatbot intelligently generates context-aware follow-up questions based on the ongoing conversation and user inputs. These suggestions help guide users toward more specific and targeted responses, enhancing the relevance and depth of the analysis.
+
+This update makes document-based interactions more intuitive, efficient, and conversational—streamlining the overall user experience and enabling a more dynamic exploration of complex content.
+
+#### Improved Visibility into Agents Processing Steps
+
+The Medical Chatbot interface now offers enhanced transparency into how responses are generated. Previously, real-time indicators displayed the processing steps of the agents — such as the tools the agents activated and target Knowledge Bases consulted — but these updates often disappeared too quickly due to the chatbot’s rapid response speed.
+
+To improve clarity and user awareness, a persistent processing summary has been introduced. A new "More Insights" option allows users to expand and view the full sequence of steps taken to generate a response, including detailed information about the tools used and sources referenced.
+
+This UI enhancement offers a clearer view into the chatbot’s reasoning process, enabling users to better understand, trust, and verify the methodology behind each response at their own pace.
+
+#### UI Enhancements for Task Selection
+
+When users select a task using the @ operator, the name of the task is now displayed above the chatbox for added clarity. Users can remove the selection at any time and choose a different task as needed, improving flexibility and control over the chatbot interaction.
+
+<img src= "/assets/images/chatbot/TaskSelection.png" alt="Task Selection" style="border: 2px solid grey; width=60%">
+
+This release introduces powerful new features and targeted enhancements that significantly improve the Medical Chatbot experience. From streamlined access to healthcare provider information and comprehensive drug insights, to advanced literature review capabilities and smarter document processing, users benefit from greater accuracy, transparency, and control. These updates are designed to enhance usability across all touchpoints, empowering users to engage with healthcare data and resources more efficiently and effectively than ever before.
+
+</div><div class="h3-box" markdown="1">
+
+
+## 10-24-2024 Literature Review Enhancements
+
+We are happy to release an enhanced version of the Literature Review feature, aimed at improving user experience, search accuracy, and data extraction. This update includes a redesign of the Literature Review wizard with new, intuitive functionalities. Our goal is to provide users with a more comprehensive and flexible tool for better control over the search, analysis, and extraction steps. The broader search capabilities and refined data extraction options are intended to make research more effective.
+
+</div><div class="h3-box" markdown="1">
+
+### Key Improvements
+
+**1. Advanced Search with Logical Operators**
+
+This release adds the NOT operator to the existing AND and OR search functions, allowing for more nuanced searches by excluding specific combinations of keywords. This improvement empowers users to refine their queries and achieve more precise results, giving them total control over how their searches are structured. Switching between the AND and NOT operators is effortless, giving users total control over how their search queries are structured. For example, if a user wants to avoid certain topics, they can easily toggle the NOT operator to exclude irrelevant results.
+
+
+**2. Visualization of Query String**
+
+A redesigned user interface visually displays search keywords and their logical relationships, helping users understand how each keyword and operator (OR/AND/NOT) affects search outcomes. This real-time visual representation makes it easier for users to adjust search terms and immediately see their impact, enhancing the clarity and efficiency of the search process.
+
+<img src= "/assets/images/chatbot/LiteratureReviewQuery.png" alt="Literature Review - Visualization of Query String" style="border: 2px solid grey; width=60%">
+
+**3. Targeted Search by Metadata Fields**
+
+Users can now search within specific metadata fields, including Study Title, Text Content, and Journal Name. This targeted approach makes it easier to focus on particular aspects of studies, ensuring search results align more closely with user research objectives, and reducing the time needed to filter irrelevant content.
+
+**4. Unified Search Filters for Efficiency**
+
+All search filters, such as Publication Date, Impact Factor, and Article Type, are now consolidated into Step 1 of the review process. This unified approach enables users to configure all search parameters upfront, providing a clear overview of their search results early in the process and enhancing workflow efficiency.
+
+<img src= "/assets/images/chatbot/LiteratureReviewFilters.png" alt="Literature Review - Filter the Target Studies" style="border: 2px solid grey; width=60%">
+
+**5. Enhanced Data Point Extraction**
+
+The Data Points definition UI (step 2) was enhanced to allow users to define more precisely the target information. Users can provide a clear **Name** (maximum 30 characters) and a **Prompt** definition  (maximum 1500 characters) for each data point, ensuring that the extracted data aligns perfectly with the research objectives. Users can also include examples in the prompt description. The new format is fully compatible with existing literature reviews, which will automatically be updated to reflect these enhancements.
+
+<img src= "/assets/images/chatbot/LiteratureReviewDataPoints.png" alt="Literature Review - Definition of Data Points" style="border: 2px solid grey; width=60%">
+  
+**6. Enhanced Definition of Inclusion and Exclusion Criteria** 
+
+The Inclusion and Exclusion Criteria section (step 3) has also been refined to allow users to provide a concise **Name** (maximum 30 characters) and detailed **Prompt** definition (maximum 1500 characters) for each criterion, offering greater precision in study selection. The updated format is applicable to both new and existing reviews, automatically updating previous reviews to align with the new system.
+
+<img src= "/assets/images/chatbot/LiteratureReviewDataPoints.png" alt="Literature Review - Definition of Inclusion and Exclusion Criteria" style="border: 2px solid grey; width=60%">
+
+
+**7. Time-Based Metrics for Literature Review**
+
+To provide greater transparency, we have introduced time-based metrics throughout the Literature Review process, including Queue Time, Progress Time, and Completion Stats. These metrics offer insights into each stage of the review process, enabling users to better manage their workflow and set realistic expectations.
+
+These metrics provide users with key insights, including:
+- Queue Time: The time the review spends in queue (e.g., "In queue for less than a minute").
+- Progress Time: The duration the review has been running (e.g., "Running for 3 minutes").
+- Completion Stats: Once the review is complete, users can view the Completion Date, Start Time, End Time, and Total Time Taken for the entire process.
+
+<img src= "/assets/images/chatbot/LiteratureReviewTimeMetrics.png" alt="Literature Review - Time-Based Metrics" style="border: 2px solid grey; width=100%">
+
+</div><div class="h3-box" markdown="1">
+
+### User Benefits
+
+These enhancements work together to offer the following benefits to our users:
+
+**1. Greater Control and Precision in Search Results:** 
+With the introduction of the NOT operator and the enhanced ability to search by specific metadata fields (e.g., title, content, journal name), users can now create more targeted search queries. This enables them to exclude irrelevant results and focus on the most pertinent studies, ensuring a higher level of precision and relevance in their literature reviews. The ability to switch between AND and NOT operators provides flexible control over search behavior, allowing users to tailor their queries to meet specific research needs.
+
+**2. Streamlined and Efficient Workflow:**
+By unifying all search filters, including Publication Date, Impact Factor, and Article Type, into the initial step of the review process, users can now set up their entire search framework from the outset. This centralized approach eliminates the need for users to navigate back and forth between different steps, significantly enhancing workflow efficiency. Real-time updates to search parameters make it easier for users to adjust their queries quickly and effectively, resulting in a smoother, faster review process.
+
+**2. Improved Data Extraction, Study Selection, and Transparency**
+The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer definitions and a more structured approach to data extraction. Users can now be specific about what data points they want to extract and how they define their inclusion/exclusion criteria. This precision ensures that the extracted data aligns perfectly with the user’s research objectives, leading to more accurate and insightful results. Additionally, the inclusion of time-based performance metrics provides users with complete transparency, allowing them to monitor the progress and time efficiency of their literature reviews.
+
+
+These upgrades reflect our ongoing commitment to enhancing research tools for a more efficient, precise, and user-friendly experience. We encourage users to explore these new features and see the improvements firsthand.
+
+</div><div class="h3-box" markdown="1">
 
 ## 10-24-2024 Literature Review Enhancements
 

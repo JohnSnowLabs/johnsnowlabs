@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The Medical Chatbot is equipped with dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `Medical Agents`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
+The Medical Chatbot is equipped with dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Web Search`, `Medical Agents`, `Drug Insights`, `US Healthcare Provider` and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
 
 ## MedResearch: Your Gateway to Academic Medical Research
 
@@ -21,9 +21,9 @@ The Medical Chatbot is equipped with dynamic tools, each tailored to meet differ
 - PubMed
 - BioRxiv
 - MedRxiv
+- MDPI
 
 along with specialized custom knowledge bases such as:
-- Drug Leaflets - a Knowledge Base that indexes Drug data published by [FDA](https://www.fda.gov/)
 - Cigna Insurance Plans - a Knowledge base that indexes insurance plans (large PDF documents) offered by Cigna  
 
 Whether you're looking for the latest findings in a specific medical field, detailed drug information, or comprehensive research outcomes, MedResearch provides direct access to a vast repository of academic resources. This feature is especially valuable for medical professionals, researchers, and students seeking to base their work on the most current and authoritative sources.
@@ -33,7 +33,7 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 ![Select the KB you want to target with your question](\assets\images\chatbot\KBSelection.png)
 
 
-> **_NOTE:_**  To enforce the use of this tool add the following sentence at the end of your query: **Ask MedResearch.**
+> **_NOTE:_**  To enforce the use of this tool, use the @ operator.
 
 </div><div class="h3-box" markdown="1">
 
@@ -111,13 +111,65 @@ Designed for users needing quick answers to short or generic questions, the Sear
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/X6s33xuxJAw?si=2dwXuyOQIWNP7OBO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+
 **Key Features**
 1. **Expanded Search Capabilities:** Unlike the Wikipedia search tool, which was limited to Wikipedia's database, the Web Search tool queries the entire web. This ensures access to a broader range of information and resources.
 2. **Intelligent Query Handling:** The Web Search tool leverages advanced AI algorithms to understand your queries better and retrieve the most accurate and relevant information.
 3. **Smart Tool Selection:** The Medical Chatbot is designed to recognize when to utilize the Web Search tool based on the nature of your queries. This means you get the most appropriate and timely responses without needing to specify the tool explicitly.
-4. **Up-to-Date Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded accurate perspective.
+4. **Up-to-Date Answers:** By searching the entire web, the tool can provide more detailed and diverse answers, drawing from various sources, filtered and structured by the Chatbot's intelligence to give you a well-rounded, accurate perspective.
 
-> **_NOTE:_**  To enforce the use of this tool, add the following phrase at the beginning/end of your query: **Search Web** or use the @ operator. 
+> **_NOTE:_**  To enforce the use of this tool, use the @ operator. 
+
+</div><div class="h3-box" markdown="1">
+
+## Drug Insights: Get Precise Medication Information
+
+The Drug Insights tool is an advanced feature within the Medical Chatbot, designed to provide comprehensive, FDA-sourced medication information. Whether you need details on dosages, potential side effects, or drug interactions, this tool ensures you receive safe, reliable, and up-to-date insights for informed decision-making.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/dzXOlaXtKts?si=FZQpMjSD6UopVNGv&hd=1" title="Drug Insights Agent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+**Key Features**
+
+**1. Comprehensive Drug Information** 
+
+The Drug Insights agent provides users with information about medications, covering aspects such as active and inactive ingredients, potential side effects, and recommended dosages. Users can inquire about indications and usage guidelines, warnings, contraindications, and specific conditions under which a drug should not be used. Additionally, the tool delivers insights into drug interactions, offering clear guidance on which medications or substances to avoid combining, ensuring safe and informed use.
+
+**2. Context-Aware Responses**
+
+One of the standout features of the Drug Insights agent is its ability to process complex, situational queries. Users can ask questions about medication use based on specific symptoms, age groups, or pre-existing conditions, and the tool provides personalized, context-aware responses. This capability extends to offering advice on storage and handling, ingestion methods, and even how medications interact with certain foods or beverages. By tailoring answers to individual needs, the agent empowers users to make well-informed decisions about their healthcare.
+
+**3. Direct Citations**
+
+To ensure accuracy and credibility, the agent references FDA-approved drug leaflets and related documentation in its responses. These citations are not only included in the generated answers but are also made accessible to users via an intuitive user interface. This allows users to explore the source material in greater depth, gaining a more comprehensive understanding of the medications. The documentation is organized into easily navigable sections, making it simple to find detailed information relevant to the user's query.
+
+> **_NOTE:_**  To enforce the use of this tool, use the @ operator. 
+
+</div><div class="h3-box" markdown="1">
+
+## US Healthcare Provider Search: Find Verified Medical Professionals
+
+The US Healthcare Provider Search tool allows users to locate verified healthcare professionals and organizations across the United States. By leveraging the National Plan and Provider Enumeration System (NPPES) database, maintained by the Centers for Medicare & Medicaid Services (CMS), this tool ensures accurate and up-to-date provider information for patients, researchers, and healthcare professionals.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/9q3bAgAkPQ0?si=llPGvA8zy3mlQXZP&hd=1" title="Drug Insights Agent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+**Key Features**
+
+**1. NPPES Database Integration** 
+
+This tool leverages the National Plan and Provider Enumeration System (NPPES), managed by the U.S. Centers for Medicare & Medicaid Services (CMS). The database contains details about healthcare providers and organizations, including their National Provider Identifier (NPI).
+
+**2. DB Query via Natural Language Prompts**
+
+The Medical Chatbot transforms user queries into structured searches, enabling precise retrieval of data from the NPPES database. Users can search by criteria such as name, location, taxonomy (specialty), and other relevant parameters to identify healthcare providers that align with their requirements. 
+
+**3.Data Output**
+
+Results are presented in tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing  insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively. 
+
+
+> **_NOTE:_**  To enforce the use of this tool, use the @ operator. 
 
 </div><div class="h3-box" markdown="1">
 
@@ -129,15 +181,17 @@ John's Memory is a versatile feature within the Medical Chatbot, dedicated to su
 
 ## @ Operator for Accessibility
 
-Typing '@' in the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
+Typing '@' in the query box triggers a contextual menu displaying all available tools, similar to the tagging functionality in Microsoft Teams.
 
 ![DocQA Enhancements](https://github.com/user-attachments/assets/e74e33d2-1262-4fc3-9bf2-32f46f3dca97)
 
 
-For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledge bases (see [MedResearch](/docs/en/chatbot/tools)). When using `@medical_research` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
 
 Similarly, for Web Search and Medical Agents, each tool can be easily selected and utilized with the @ operator as follows:
  - `@web_search`: Query the Web
+ - `@drug_insights`: Learn About Drugs, Their Interactions, and Side Effects
+ -  `@text_to_sql_nppes`: Ask About US Medical Providers
  - `@deidentification`: De-identification of Medical Text
  - `@obfuscation`: Obfuscation of Medical Text
  - `@medical`: General Medical Entity Extraction
@@ -148,7 +202,9 @@ Similarly, for Web Search and Medical Agents, each tool can be easily selected a
  - `@radiology`: Radiological Entity Extraction
  - `@voice_of_the_patient `: Voice of the Patient Entity Extraction
 
-When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.
+When users select a tool using the @ operator, the name of the tool is displayed above the chatbox for added clarity. The Tool will be used for all consecutive questions after selection to prevent the need of selecting the same tool for every question in the conversation. The users can remove the selection at any time and choose a different task as needed, improving flexibility and control over the chatbot interaction.
+
+The generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures that users know which tool was utilized.
 
 Similarly, when selecting a specific tool using the '@' Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.
 Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.    

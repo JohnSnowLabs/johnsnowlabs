@@ -160,7 +160,7 @@ data:
             url: https://www.nuance.com/index.html
         - title:
           image:
-            src: https://www.thetradedesk.com/assets/global/ttd-logo.svg
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/The_Trade_Desk.svg/220px-The_Trade_Desk.svg.png
             url: https://www.thetradedesk.com/us
         - title:
           image:
@@ -251,7 +251,7 @@ data:
             url: https://www.uipath.com/
         - title:
           image:
-            src: https://connection.asco.org/sites/asco_connection/files/styles/article_image/public/pictures/ASCO_March_CancerLinQ.jpg
+            src: https://www.cancerlinq.org/hs-fs/hubfs/CLQ%20Logo%20with%20Tag.png
             url: https://www.cancerlinq.org/
 
         - title:

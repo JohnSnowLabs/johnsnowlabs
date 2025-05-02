@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained pipeline designed to extract handwritten text from document PDFs. It empowers accurate and efficient conversion of handwritten content into digital text, making it an invaluable tool for text recognition tasks.
+This is a pretrained pipeline designed to extract handwritten text from document PDFs. It leverages advanced text recognition techniques to accurately convert handwritten content into digital text, enabling efficient transcription of handwritten notes, forms, or documents. The model is specifically optimized to handle the unique challenges posed by handwritten text, ensuring high accuracy and minimal errors in the conversion process.
 
 
 ## Predicted Entities
