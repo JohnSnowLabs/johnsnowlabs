@@ -613,6 +613,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.consistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">consistentAcrossNameParts</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.consistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation">
 <span class="sig-name descname"><span class="pre">consistentObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -665,6 +670,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.groupByCol">
+<span class="sig-name descname"><span class="pre">groupByCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.groupByCol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -988,6 +998,12 @@ using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequen
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching">
+<span class="sig-name descname"><span class="pre">getChunkMatching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of chunkMatching or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getInputCols">
 <span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets current column names of input annotations.</p>
@@ -1179,6 +1195,25 @@ The rest entities will be processed. Default: []</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setChunkMatching">
+<span class="sig-name descname"><span class="pre">setChunkMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunkMatching</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setChunkMatching" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets entity chunk matching configuration for de-identification pipelines.</p>
+<p>This method enables matching of entity chunks (e.g., “NAME”, “DATE”) across
+multiple rows or within grouped data. Useful when certain entity labels are
+missing in some rows and need to be inferred from others in the same group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>chunkMatching</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – A dictionary specifying entity labels and associated confidence
+thresholds for chunk matching logic.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>When applying the method across multiple rows, the groupByCol parameter is required.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setCombineRegexPatterns">
 <span class="sig-name descname"><span class="pre">setCombineRegexPatterns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setCombineRegexPatterns" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether you want to use regex both loaded regex file and default regex file.</p>
@@ -1188,6 +1223,28 @@ Default: False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to combine regex files or not. If the value is ‘True’, both file will be used. Default: False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setConsistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">setConsistentAcrossNameParts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setConsistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across name parts, even when they appear separately.
+When set to <cite>True</cite>, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.</p>
+<dl class="simple">
+<dt>For example, if “John Smith” is obfuscated as “Liam Brown”, then:</dt><dd><ul class="simple">
+<li><p>When the full name “John Smith” appears, it will be replaced with “Liam Brown”</p></li>
+<li><p>When “John” or “Smith” appear individually, they will still be obfuscated as “Liam” and “Brown” respectively,
+ensuring consistency in name transformation.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default: True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enforce consistent obfuscation across name parts.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1317,6 +1374,27 @@ Default: False</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>l</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setGroupByCol">
+<span class="sig-name descname"><span class="pre">setGroupByCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setGroupByCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the column name used to group the dataset. This parameter is used in conjunction with
+<cite>consistentObfuscation</cite> to ensure consistent obfuscation within each group.
+When <cite>groupByCol</cite> is set, the dataset is partitioned into groups based on the values of the specified column.</p>
+<p>Default: <cite>“”</cite> (empty string, meaning no grouping)</p>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The column name must be a valid string in the input dataset.</p></li>
+<li><p>The column must be of <cite>StringType</cite>.</p></li>
+<li><p>This functionality can change order of the dataset, so it is recommended to use it with caution.</p></li>
+<li><p>This functionality cannot be supported by LightPipeline.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The column name used to group the dataset.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1946,6 +2024,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">consistentAcrossNameParts</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation">
 <span class="sig-name descname"><span class="pre">consistentObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1993,6 +2076,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.groupByCol">
+<span class="sig-name descname"><span class="pre">groupByCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.groupByCol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2239,6 +2327,12 @@ user-supplied values &lt; extra.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching">
+<span class="sig-name descname"><span class="pre">getChunkMatching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of chunkMatching or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols">
 <span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets current column names of input annotations.</p>
@@ -2458,6 +2552,47 @@ The rest entities will be processed. Default: []</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setChunkMatching">
+<span class="sig-name descname"><span class="pre">setChunkMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunkMatching</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setChunkMatching" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets entity chunk matching configuration for de-identification pipelines.</p>
+<p>This method enables matching of entity chunks (e.g., “NAME”, “DATE”) across
+multiple rows or within grouped data. Useful when certain entity labels are
+missing in some rows and need to be inferred from others in the same group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>chunkMatching</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – A dictionary specifying entity labels and associated confidence
+thresholds for chunk matching logic.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>When applying the method across multiple rows, the groupByCol parameter is required.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">setConsistentAcrossNameParts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across name parts, even when they appear separately.
+When set to <cite>True</cite>, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.</p>
+<dl class="simple">
+<dt>For example, if “John Smith” is obfuscated as “Liam Brown”, then:</dt><dd><ul class="simple">
+<li><p>When the full name “John Smith” appears, it will be replaced with “Liam Brown”</p></li>
+<li><p>When “John” or “Smith” appear individually, they will still be obfuscated as “Liam” and “Brown” respectively,
+ensuring consistency in name transformation.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default: True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enforce consistent obfuscation across name parts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation">
 <span class="sig-name descname"><span class="pre">setConsistentObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to replace very similar entities in a document with the same randomized term (default: true).
@@ -2567,6 +2702,27 @@ Default: False</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>l</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setGroupByCol">
+<span class="sig-name descname"><span class="pre">setGroupByCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setGroupByCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the column name used to group the dataset. This parameter is used in conjunction with
+<cite>consistentObfuscation</cite> to ensure consistent obfuscation within each group.
+When <cite>groupByCol</cite> is set, the dataset is partitioned into groups based on the values of the specified column.</p>
+<p>Default: <cite>“”</cite> (empty string, meaning no grouping)</p>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The column name must be a valid string in the input dataset.</p></li>
+<li><p>The column must be of <cite>StringType</cite>.</p></li>
+<li><p>This functionality can change order of the dataset, so it is recommended to use it with caution.</p></li>
+<li><p>This functionality cannot be supported by LightPipeline.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The column name used to group the dataset.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3026,6 +3182,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.blackList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.blackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.combineRegexPatterns"><code class="docutils literal notranslate"><span class="pre">DeIdentification.combineRegexPatterns</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentification.consistentAcrossNameParts</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateTag</span></code></a></li>
@@ -3037,6 +3194,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.groupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentification.groupByCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.ignoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ignoreRegex</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.inputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.inputCols</span></code></a></li>
@@ -3085,6 +3243,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fit"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fitMultiple"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fitMultiple()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getOrDefault()</span></code></a></li>
@@ -3107,7 +3266,9 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setBlackListEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setCombineRegexPatterns"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setCombineRegexPatterns()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setConsistentAcrossNameParts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setConsistentObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateTag()</span></code></a></li>
@@ -3119,6 +3280,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setGroupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGroupByCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setIsRandomDateDisplacement()</span></code></a></li>
@@ -3163,6 +3325,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.blackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackListEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentAcrossNameParts</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateTag</span></code></a></li>
@@ -3173,6 +3336,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.groupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.groupByCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.ignoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ignoreRegex</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.inputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.inputCols</span></code></a></li>
@@ -3214,6 +3378,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.explainParams"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.extractParamMap()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getOrDefault()</span></code></a></li>
@@ -3238,6 +3403,8 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setBlackListEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setChunkMatching()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setConsistentAcrossNameParts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setConsistentObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateTag()</span></code></a></li>
@@ -3248,6 +3415,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setGroupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGroupByCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setIsRandomDateDisplacement()</span></code></a></li>

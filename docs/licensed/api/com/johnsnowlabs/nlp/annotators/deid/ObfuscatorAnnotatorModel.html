@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel</title>
-          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
-          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
+          <title>Spark NLP 6.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel</title>
+          <meta name="description" content="Spark NLP 6.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
+          <meta name="keywords" content="Spark NLP 6.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -162,6 +162,22 @@
       </span>
       <span class="symbol">
         <a title="" href="faker/index.html"><span class="name">faker</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid">deid</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fhir"></a><a id="fhir:fhir"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="fhir/index.html"><span class="name">fhir</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid">deid</a></dd></dl></div>
@@ -745,6 +761,28 @@ When <code>false</code>, <a href="ObfuscatorParams.html#ageRanges:org.apache.spa
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam"></a><a id="consistentAcrossNameParts:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">consistentAcrossNameParts</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Param that indicates whether consistency should be enforced across different parts of a name
+(e.g., first name, middle name, last name).</p><div class="fullcomment"><div class="comment cmt"><p>Param that indicates whether consistency should be enforced across different parts of a name
+(e.g., first name, middle name, last name).
+When set to <code>true</code>, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.</p><p>For example, if &quot;John Smith&quot; is obfuscated as &quot;Liam Brown&quot;, then:</p><ul><li>When the full name &quot;John Smith&quot; appears, it will be replaced with &quot;Liam Brown&quot;</li><li>When &quot;John&quot; or &quot;Smith&quot; appear individually, they will still be obfuscated as &quot;Liam&quot; and &quot;Brown&quot; respectively,
+   ensuring consistency in name transformation.</li></ul><p>Default: true
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.RawAnnotator#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copy(extra:org.apache.spark.ml.param.ParamMap):M"></a><a id="copy(ParamMap):ObfuscatorAnnotatorModel"></a>
       <span class="permalink">
@@ -988,7 +1026,7 @@ When <code>false</code>, <a href="ObfuscatorParams.html#ageRanges:org.apache.spa
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#fakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#fakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fakerLengthOffset:org.apache.spark.ml.param.IntParam"></a><a id="fakerLengthOffset:IntParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" title="Permalink">
@@ -1005,7 +1043,7 @@ When <code>false</code>, <a href="ObfuscatorParams.html#ageRanges:org.apache.spa
       
       <p class="shortcomment cmt">It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled.</p><div class="fullcomment"><div class="comment cmt"><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled.
 Value must be greater than 0. Default is 3.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasFeatures#features" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="features:scala.collection.mutable.ArrayBuffer[com.johnsnowlabs.nlp.serialization.Feature[_,_,_]]"></a><a id="features:ArrayBuffer[Feature[_,_,_]]"></a>
       <span class="permalink">
@@ -1211,6 +1249,23 @@ Default: False
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getConsistentAcrossNameParts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getConsistentAcrossNameParts:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getConsistentAcrossNameParts:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getConsistentAcrossNameParts</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the value of <a href="BaseDeidParams.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts">consistentAcrossNameParts</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="BaseDeidParams.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts">consistentAcrossNameParts</a>.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Boolean value indicating if consistency is enforced across name parts</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDateFormats" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getDateFormats:Array[String]"></a>
       <span class="permalink">
@@ -1275,6 +1330,22 @@ Default: False
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getEntityField" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getEntityField(annotation:com.johnsnowlabs.nlp.Annotation):String"></a><a id="getEntityField(Annotation):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getEntityField(annotation:com.johnsnowlabs.nlp.Annotation):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntityField</span><span class="params">(<span name="annotation">annotation: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getFakeByHashcode" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getFakeByHashcode(fakes:Seq[String],wordToReplace:String,entity:String,seed:Int):String"></a><a id="getFakeByHashcode(Seq[String],String,String,Int):String"></a>
       <span class="permalink">
@@ -1307,7 +1378,7 @@ Default: False
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#getFakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getFakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getFakerLengthOffset:Int"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getFakerLengthOffset:Int" title="Permalink">
@@ -1322,9 +1393,9 @@ Default: False
         <span class="name">getFakerLengthOffset</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <p class="shortcomment cmt">Gets <a href="ObfuscatorParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#fakerLengthOffset">fakerLengthOffset</a> param
-</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="ObfuscatorParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#fakerLengthOffset">fakerLengthOffset</a> param
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#fakerLengthOffset">fakerLengthOffset</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#fakerLengthOffset">fakerLengthOffset</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getFakersEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getFakersEntity(entity:String,result:String):Seq[String]"></a><a id="getFakersEntity(String,String):Seq[String]"></a>
       <span class="permalink">
@@ -1375,7 +1446,7 @@ Default: False
       <p class="shortcomment cmt">Gets <a href="ObfuscatorParams.html#keepMonth:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepMonth">keepMonth</a> param
 </p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="ObfuscatorParams.html#keepMonth:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepMonth">keepMonth</a> param
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#getKeepTextSizeForObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getKeepTextSizeForObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getKeepTextSizeForObfuscation:Boolean"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getKeepTextSizeForObfuscation:Boolean" title="Permalink">
@@ -1390,9 +1461,9 @@ Default: False
         <span class="name">getKeepTextSizeForObfuscation</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt">Gets <a href="ObfuscatorParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
-</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="ObfuscatorParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#getKeepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getKeepYear:Boolean"></a>
       <span class="permalink">
@@ -1443,6 +1514,54 @@ Default: False
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getMaskEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMaskEntity(entityClazz:String):String"></a><a id="getMaskEntity(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getMaskEntity(entityClazz:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMaskEntity</span><span class="params">(<span name="entityClazz">entityClazz: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getMaskStatus" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMaskStatus(entityClass:String):String"></a><a id="getMaskStatus(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getMaskStatus(entityClass:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMaskStatus</span><span class="params">(<span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getMaxSentence" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMaxSentence(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Int"></a><a id="getMaxSentence(Seq[Annotation]):Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getMaxSentence(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMaxSentence</span><span class="params">(<span name="annotations">annotations: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getObfuscateRefSource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getObfuscateRefSource:String"></a>
       <span class="permalink">
@@ -1804,7 +1923,7 @@ If true, the month will remain unchanged during the obfuscation process.
 If false, the month will be modified along with the year and day.
 Default: false.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepTextSizeForObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#keepTextSizeForObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam"></a><a id="keepTextSizeForObfuscation:BooleanParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" title="Permalink">
@@ -1821,7 +1940,7 @@ Default: false.
       
       <p class="shortcomment cmt">It specifies whether the output should maintain the same character length as the input text.</p><div class="fullcomment"><div class="comment cmt"><p>It specifies whether the output should maintain the same character length as the input text.
 the output text will remain the same if same length is available, else length might vary.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="keepYear:org.apache.spark.ml.param.BooleanParam"></a><a id="keepYear:BooleanParam"></a>
       <span class="permalink">
@@ -2069,6 +2188,22 @@ Default:'en'
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#maskEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="maskEntity(annotation:com.johnsnowlabs.nlp.Annotation,maskingPolicy:String,maskedEntity:String,fixedMaskLength:Int):String"></a><a id="maskEntity(Annotation,String,String,Int):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#maskEntity(annotation:com.johnsnowlabs.nlp.Annotation,maskingPolicy:String,maskedEntity:String,fixedMaskLength:Int):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maskEntity</span><span class="params">(<span name="annotation">annotation: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>, <span name="maskingPolicy">maskingPolicy: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maskedEntity">maskedEntity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fixedMaskLength">fixedMaskLength: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#msgHelper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="msgHelper(schema:org.apache.spark.sql.types.StructType):String"></a><a id="msgHelper(StructType):String"></a>
       <span class="permalink">
@@ -2085,6 +2220,22 @@ Default:'en'
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#nameEntities" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="nameEntities:Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#nameEntities:Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nameEntities</span><span class="result">: <span class="extype" name="scala.collection.Seq">Seq</span>[<span class="extype" name="java.lang.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -2139,6 +2290,22 @@ Default:'en'
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#obfuscateNameEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String]):String"></a><a id="obfuscateNameEntity(String,Boolean,Int,Map[String,String]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateNameEntity</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keepTextSize">keepTextSize: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="lengthDeviation">lengthDeviation: <span class="extype" name="scala.Int">Int</span></span>, <span name="namePartsMemory">namePartsMemory: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateRefSource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="obfuscateRefSource:org.apache.spark.ml.param.Param[String]"></a><a id="obfuscateRefSource:Param[String]"></a>
       <span class="permalink">
@@ -2358,6 +2525,22 @@ The supported and default formatted entities are:
       <p class="shortcomment cmt">It is the seed to select the entities on obfuscate mode.</p><div class="fullcomment"><div class="comment cmt"><p>It is the seed to select the entities on obfuscate mode. With the seed, you can reply to an execution several times
 with the same output.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#selectFakeFromAllFakes" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="selectFakeFromAllFakes(wordToReplace:String,entityClass:String,maskedEntity:String,allFakes:Seq[String]):String"></a><a id="selectFakeFromAllFakes(String,String,String,Seq[String]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#selectFakeFromAllFakes(wordToReplace:String,entityClass:String,maskedEntity:String,allFakes:Seq[String]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">selectFakeFromAllFakes</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maskedEntity">maskedEntity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="allFakes">allFakes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasFeatures#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="set[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T],value:T):HasFeatures.this.type"></a><a id="set[T](StructFeature[T],T):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -2524,6 +2707,23 @@ while age for patients 90 years or younger can remain unchanged.
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setConsistentAcrossNameParts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setConsistentAcrossNameParts(value:Boolean):BaseDeidParams.this.type"></a><a id="setConsistentAcrossNameParts(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setConsistentAcrossNameParts(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setConsistentAcrossNameParts</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the value of <a href="BaseDeidParams.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts">consistentAcrossNameParts</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="BaseDeidParams.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts">consistentAcrossNameParts</a>.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>Boolean flag to enforce consistency across name parts</p></dd><dt>returns</dt><dd class="cmt"><p>this instance</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setDateFormats" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setDateFormats(s:Array[String]):BaseDeidParams.this.type"></a><a id="setDateFormats(Array[String]):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -2671,10 +2871,10 @@ while age for patients 90 years or younger can remain unchanged.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#setFakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setFakerLengthOffset(value:Int):ObfuscatorParams.this.type"></a><a id="setFakerLengthOffset(Int):ObfuscatorAnnotatorModel.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setFakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setFakerLengthOffset(value:Int):BaseDeidParams.this.type"></a><a id="setFakerLengthOffset(Int):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setFakerLengthOffset(value:Int):ObfuscatorParams.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setFakerLengthOffset(value:Int):BaseDeidParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2686,9 +2886,9 @@ while age for patients 90 years or younger can remain unchanged.
         <span class="name">setFakerLengthOffset</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">Sets <a href="ObfuscatorParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#fakerLengthOffset">fakerLengthOffset</a> param
-</p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="ObfuscatorParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#fakerLengthOffset">fakerLengthOffset</a> param
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Sets <a href="BaseDeidParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#fakerLengthOffset">fakerLengthOffset</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="BaseDeidParams.html#fakerLengthOffset:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#fakerLengthOffset">fakerLengthOffset</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setGenderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setGenderAwareness(value:Boolean):BaseDeidParams.this.type"></a><a id="setGenderAwareness(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -2761,10 +2961,10 @@ If true, the month will remain unchanged during the obfuscation process.
 If false, the month will be modified along with the year and day.
 Default: false.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#setKeepTextSizeForObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setKeepTextSizeForObfuscation(value:Boolean):ObfuscatorParams.this.type"></a><a id="setKeepTextSizeForObfuscation(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setKeepTextSizeForObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setKeepTextSizeForObfuscation(value:Boolean):BaseDeidParams.this.type"></a><a id="setKeepTextSizeForObfuscation(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setKeepTextSizeForObfuscation(value:Boolean):ObfuscatorParams.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setKeepTextSizeForObfuscation(value:Boolean):BaseDeidParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2776,9 +2976,9 @@ Default: false.
         <span class="name">setKeepTextSizeForObfuscation</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">Sets <a href="ObfuscatorParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
-</p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="ObfuscatorParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Sets <a href="BaseDeidParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="BaseDeidParams.html#keepTextSizeForObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#keepTextSizeForObfuscation">keepTextSizeForObfuscation</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#setKeepYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setKeepYear(value:Boolean):ObfuscatorParams.this.type"></a><a id="setKeepYear(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -2986,6 +3186,22 @@ The default value is false.</p><div class="fullcomment"><div class="comment cmt"
 If true use random displacement days in dates entities, if false use the <a href="BaseDeidParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#days">BaseDeidParams.days</a>
 The default value is false.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams">ObfuscatorParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#shouldUseConsistentNameParts" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="shouldUseConsistentNameParts(entityClass:String):Boolean"></a><a id="shouldUseConsistentNameParts(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#shouldUseConsistentNameParts(entityClass:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shouldUseConsistentNameParts</span><span class="params">(<span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
