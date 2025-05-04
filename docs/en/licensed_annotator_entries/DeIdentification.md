@@ -127,6 +127,29 @@ Default: False.
 
 - `fakerLengthOffset` : It specifies how much length deviation is accepted in obfuscation, with `keepTextSizeForObfuscation` enabled. It must be greater than 0.
 
+- `consistentAcrossNameParts` : Param that indicates whether consistency should be enforced across different parts of a name
+  (e.g., first name, middle name, last name).
+
+When set to `True`, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.
+
+For example, if "John Smith" is obfuscated as "Liam Brown", then:
+  - When the full name "John Smith" appears, it will be replaced with "Liam Brown"
+  - When "John" or "Smith" appear individually, they will still be obfuscated as "Liam" and "Brown" respectively,
+    ensuring consistency in name transformation.
+
+Default: True
+
+- `groupByCol` : The column name used to group the dataset. This parameter is used in conjunction with
+`consistentObfuscation` to ensure consistent obfuscation within each group.
+When `groupByCol` is set, the dataset is partitioned into groups based on the values of the specified column.
+Default: `""` (empty string, meaning no grouping)
+
+- `chunkMatching` :Performs entity chunk matching across rows or within groups in a DataFrame.
+This function is useful in de-identification pipelines where certain entity labels
+like "NAME" or "DATE" may be missing in some rows and need to be filled from other
+rows within the same group.
+
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
 {%- endcapture -%}

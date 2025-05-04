@@ -93,6 +93,19 @@ Parameters:
   If False, the month will be modified along with the year and day.
   Default: False.
 
+- `consistentAcrossNameParts` : Param that indicates whether consistency should be enforced across different parts of a name
+  (e.g., first name, middle name, last name).
+
+When set to `True`, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.
+
+For example, if "John Smith" is obfuscated as "Liam Brown", then:
+- When the full name "John Smith" appears, it will be replaced with "Liam Brown"
+- When "John" or "Smith" appear individually, they will still be obfuscated as "Liam" and "Brown" respectively,
+  ensuring consistency in name transformation.
+
+Default: True
+
 
 {%- endcapture -%}
 
