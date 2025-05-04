@@ -41,7 +41,14 @@ if try_import_lib("sparknlp"):
 
 
 if try_import_lib("pyspark"):
-    import pyspark.ml.param.shared as _shared_pyspark_ml_param
+    try:
+        import pyspark.ml.param.shared as _shared_pyspark_ml_param
+    except Exception as e:
+        try:
+            from pyspark.ml.param import shared as _shared_pyspark_ml_param
+        except Exception as e:
+            _shared_pyspark_ml_param = None
+
     import pyspark.sql as SQL
     import pyspark.sql.functions as F
     import pyspark.sql.types as T
