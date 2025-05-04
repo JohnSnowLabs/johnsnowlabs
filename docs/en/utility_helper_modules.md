@@ -556,6 +556,15 @@ Parameters:
 - `fakerLengthOffset`: Defines acceptable length deviation in obfuscation when `keepTextSizeForObfuscation` is enabled. Must be greater than 0. Default is 3.
 - `genderAwareness`: If True, applies gender-aware name obfuscation. May reduce performance. Default is False.
 - `ageRangesByHipaa`: If True, obfuscates ages based on HIPAA Privacy Rule. Default is False.
+- `consistentAcrossNameParts` : Param that indicates whether consistency should be enforced across different parts of a name
+(e.g., first name, middle name, last name).
+When set to `True`, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.
+For example, if "John Smith" is obfuscated as "Liam Brown", then:
+- When the full name "John Smith" appears, it will be replaced with "Liam Brown"
+- When "John" or "Smith" appear individually, they will still be obfuscated as "Liam" and "Brown" respectively,
+ensuring consistency in name transformation. Default: True
+
 
 Functions :
 
