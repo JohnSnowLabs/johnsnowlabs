@@ -17,13 +17,13 @@ from johnsnowlabs.py_models.jsl_secrets import JslSecrets
 import json
 import sys
 from urllib import request
-from pkg_resources import parse_version
+from packaging.version import parse
 
 
 def get_all_lib_version_on_pypi(pkg_name):
     url = f"https://pypi.python.org/pypi/{pkg_name}/json"
     releases = json.loads(request.urlopen(url).read())["releases"]
-    return sorted(releases, key=parse_version, reverse=True)
+    return sorted(releases, key=parse, reverse=True)
 
 
 def get_latest_lib_version_on_pypi(pkg_name):
