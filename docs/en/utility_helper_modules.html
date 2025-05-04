@@ -1174,6 +1174,14 @@ The module also includes functionality for applying Structured Deidentification 
     <li><code class="language-plaintext highlighter-rouge">fakerLengthOffset</code>: Defines acceptable length deviation in obfuscation when <code class="language-plaintext highlighter-rouge">keepTextSizeForObfuscation</code> is enabled. Must be greater than 0. Default is 3.</li>
     <li><code class="language-plaintext highlighter-rouge">genderAwareness</code>: If True, applies gender-aware name obfuscation. May reduce performance. Default is False.</li>
     <li><code class="language-plaintext highlighter-rouge">ageRangesByHipaa</code>: If True, obfuscates ages based on HIPAA Privacy Rule. Default is False.</li>
+    <li><code class="language-plaintext highlighter-rouge">consistentAcrossNameParts</code> : Param that indicates whether consistency should be enforced across different parts of a name
+(e.g., first name, middle name, last name).
+When set to <code class="language-plaintext highlighter-rouge">True</code>, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.
+For example, if “John Smith” is obfuscated as “Liam Brown”, then:</li>
+    <li>When the full name “John Smith” appears, it will be replaced with “Liam Brown”</li>
+    <li>When “John” or “Smith” appear individually, they will still be obfuscated as “Liam” and “Brown” respectively,
+ensuring consistency in name transformation. Default: True</li>
   </ul>
 
   <p>Functions :</p>
