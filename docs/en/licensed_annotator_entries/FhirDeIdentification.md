@@ -13,7 +13,7 @@ Performs field-level obfuscation on FHIR JSON documents using FHIR Path expressi
 Supports R4, R5, and DSTU3 FHIR versions with type-aware de-identification strategies.
 Additionally, supports different parser types (JSON, XML) for FHIR resources.
 
-**Note: FhirDeIdentification Module Availability**
+**Note: FhirDeIdentification Module Availability**  
 The `FhirDeIdentification` module is not enabled by default in your current package.  
 To use this module, please set `fhir_deid=True` in the `start()` function.  
 If you need help or access, feel free to contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
@@ -133,7 +133,7 @@ john_doe = """{
 
 
 # result
-```
+
 {
     'resourceType': 'Patient',
     'id': 'example',
@@ -160,7 +160,7 @@ john_doe = """{
     'birthDate': '1970-01-21',
     'gender': 'other'
 }
-```
+
 
 {%- endcapture -%}
 

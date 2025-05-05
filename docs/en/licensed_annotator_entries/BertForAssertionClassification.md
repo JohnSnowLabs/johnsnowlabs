@@ -27,8 +27,8 @@ This annotator preprocesses the input text to emphasize the target entities as f
 
 Models from the HuggingFace 🤗 Transformers library are also compatible with
 Spark NLP 🚀. To see which models are compatible and how to import them see
-Import Transformers into Spark NLP 🚀
-https://github.com/JohnSnowLabs/spark-nlp/discussions/5669
+[Import Transformers into Spark NLP 🚀](https://github.com/JohnSnowLabs/spark-nlp/discussions/5669)
+
 
 Parameters:
 
