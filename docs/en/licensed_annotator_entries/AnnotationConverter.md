@@ -2,9 +2,6 @@
 AnnotationConverter
 {%- endcapture -%}
 
-{%- capture title -%}
-{%- endcapture -%}
-
 {%- capture model -%}
 model
 {%- endcapture -%}
@@ -89,26 +86,28 @@ df.selectExpr("explode(camel_case_token) as tokens").show(truncate=False)
 
 # result
 
-| tokens                                                |
-|-------------------------------------------------------|
-| {token, 0, 0, I, {sentence -> 0}, []}                 |
-| {token, 2, 5, like, {sentence -> 0}, []}              |
-| {token, 7, 11, Spark, {sentence -> 0}, []}            |
-| {token, 12, 14, NLP, {sentence -> 0}, []}             |
-| {token, 16, 25, annotators, {sentence -> 0}, []}      |
-| {token, 27, 30, such, {sentence -> 0}, []}            |
-| {token, 32, 33, as, {sentence -> 0}, []}              |
-| {token, 35, 41, Medical, {sentence -> 0}, []}         |
-| {token, 42, 45, Bert, {sentence -> 0}, []}            |
-| {token, 46, 48, For, {sentence -> 0}, []}             |
-| {token, 49, 56, Sequence, {sentence -> 0}, []}        |
-| {token, 57, 70, Classification, {sentence -> 0}, []}  |
-| {token, 72, 74, and, {sentence -> 0}, []}             |
-| {token, 76, 79, Bert, {sentence -> 0}, []}            |
-| {token, 80, 82, For, {sentence -> 0}, []}             |
-| {token, 83, 91, Assertion, {sentence -> 0}, []}       |
-| {token, 92, 105, Classification, {sentence -> 0}, []} |
-| {token, 106, 106, ., {sentence -> 0}, []}             |
++--------------+-----+---+
+|        result|begin|end|
++--------------+-----+---+
+|             I|    0|  0|
+|          like|    2|  5|
+|         Spark|    7| 11|
+|           NLP|   12| 14|
+|    annotators|   16| 25|
+|          such|   27| 30|
+|            as|   32| 33|
+|       Medical|   35| 41|
+|          Bert|   42| 45|
+|           For|   46| 48|
+|      Sequence|   49| 56|
+|Classification|   57| 70|
+|           and|   72| 74|
+|          Bert|   76| 79|
+|           For|   80| 82|
+|     Assertion|   83| 91|
+|Classification|   92|105|
+|             .|  106|106|
++--------------+-----+---+
 
 
 {%- endcapture -%}
