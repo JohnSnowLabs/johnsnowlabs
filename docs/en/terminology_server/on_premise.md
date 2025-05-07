@@ -65,4 +65,8 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
 
 ## API Usage
 
-Once you have deployed Terminology Server to your premise, you have access to API as well. For its usage, see this notebook: [terminology_api.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb)
+The API service allows seamless integration with your applications, enabling you to leverage our platform’s capabilities.
+
+After deploying the Terminology Server in your environment, you can access the API right away. 
+For a concrete example of how to use the API, see this notebook: [terminology_api.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb).
+
