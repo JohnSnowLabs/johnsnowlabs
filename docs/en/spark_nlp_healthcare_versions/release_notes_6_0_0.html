@@ -640,14 +640,15 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Small size Medical LLM for generating clinical SOAP (Subjective, Objective, Assessment, Plan) note</li>
     <li>Human Phenotype term extraction and mapping using official terminology vocabularies</li>
     <li>Inferring missing PHI entities via previously detected NER outputs within Deidentification</li>
+    <li>Improved Name Consistency Handling in Deidentification</li>
+    <li>Clinical document analysis with one-liner pretrained-pipelines for specific clinical tasks and concepts</li>
     <li>Cloud Provider &amp; LLM Benchmarks for Information Extraction tasks</li>
     <li>Enabling flexible annotation transformations with <code class="language-plaintext highlighter-rouge">AnnotationConverter</code></li>
-    <li>Clinical document analysis with one-liner pretrained-pipelines for specific clinical tasks and concepts</li>
     <li>Introducing 2 new contextual assertion models to detect assertion status given a larger context and scenarious.</li>
-    <li>New German medical named entity recognition model and medical entity resolver model</li>
+    <li>New German Oncology named entity recognition model and ICD10 entity resolver model</li>
     <li>Enabling exception handling within the pipelines for specified or all eligible stages</li>
+    <li>Interactive chat support for Healthcare NLP documentation</li>
     <li>New peer-reviewed papers and blog posts on various topics</li>
-    <li>Improved Name Consistency Handling in Deidentification</li>
     <li>Various core improvements, bug fixes, enhanced overall robustness, and reliability of Spark NLP for Healthcare
       <ul>
         <li>Resolved log file creation on Databricks for training</li>
@@ -990,7 +991,7 @@ P: The management plan includes close monitoring of her glucose levels and elect
     <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
 
-<span class="n">text</span> <span class="o">=</span>  <span class="s">''' APNEA: Presumed apnea of prematurity since &lt; 34 wks gestation at birth.
+<span class="n">text</span> <span class="o">=</span>  <span class="s">'''Presumed apnea of prematurity since &lt; 34 wks gestation at birth.
 HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity. 
 1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation. '''</span>
 
@@ -1011,120 +1012,32 @@ HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
     </thead>
     <tbody>
       <tr>
-        <td>APNEA</td>
-        <td>0</td>
-        <td>4</td>
-        <td>HPO</td>
-        <td>HP:0002104</td>
-      </tr>
-      <tr>
         <td>apnea</td>
-        <td>16</td>
-        <td>20</td>
+        <td>9</td>
+        <td>13</td>
         <td>HPO</td>
         <td>HP:0002104</td>
       </tr>
       <tr>
         <td>HYPERBILIRUBINEMIA</td>
-        <td>66</td>
-        <td>83</td>
+        <td>59</td>
+        <td>76</td>
         <td>HPO</td>
         <td>HP:0002904</td>
       </tr>
       <tr>
         <td>hyperbilirubinemia</td>
-        <td>91</td>
-        <td>108</td>
+        <td>84</td>
+        <td>101</td>
         <td>HPO</td>
         <td>HP:0002904</td>
       </tr>
       <tr>
         <td>sepsis</td>
-        <td>167</td>
-        <td>172</td>
+        <td>160</td>
+        <td>165</td>
         <td>HPO</td>
         <td>HP:0100806</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <ul>
-    <li><strong>Example of StopWords</strong>:</li>
-  </ul>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stopwords_cleaner</span> <span class="o">=</span> <span class="n">StopWordsCleaner</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"stopwords_removal_hpo"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"cleanTokens"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-
-<span class="n">text_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"The patient shows no signs of muscle weakness or developmental delay"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th> </th>
-        <th>token</th>
-        <th>cleanTokens</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>0</td>
-        <td>The</td>
-        <td>–</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>patient</td>
-        <td>patient</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>shows</td>
-        <td>shows</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>no</td>
-        <td>no</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>signs</td>
-        <td>signs</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>of</td>
-        <td>–</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>muscle</td>
-        <td>muscle</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>weakness</td>
-        <td>weakness</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>or</td>
-        <td>–</td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>developmental</td>
-        <td>developmental</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>delay</td>
-        <td>delay</td>
       </tr>
     </tbody>
   </table>
@@ -1135,7 +1048,7 @@ HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"hpo_mapper_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""APNEA: Presumed apnea of prematurity since &lt; 34 wks gestation at birth.
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""Presumed apnea of prematurity since &lt; 34 wks gestation at birth.
 HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
 1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation."""</span><span class="p">)</span>
 </code></pre></div>  </div>
@@ -1154,37 +1067,30 @@ HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
     </thead>
     <tbody>
       <tr>
-        <td>APNEA</td>
-        <td>0</td>
-        <td>4</td>
-        <td>HPO</td>
-        <td>HP:0002104</td>
-      </tr>
-      <tr>
         <td>apnea</td>
-        <td>16</td>
-        <td>20</td>
+        <td>9</td>
+        <td>13</td>
         <td>HPO</td>
         <td>HP:0002104</td>
       </tr>
       <tr>
         <td>HYPERBILIRUBINEMIA</td>
-        <td>66</td>
-        <td>83</td>
+        <td>59</td>
+        <td>76</td>
         <td>HPO</td>
         <td>HP:0002904</td>
       </tr>
       <tr>
         <td>hyperbilirubinemia</td>
-        <td>91</td>
-        <td>108</td>
+        <td>84</td>
+        <td>101</td>
         <td>HPO</td>
         <td>HP:0002904</td>
       </tr>
       <tr>
         <td>sepsis</td>
-        <td>167</td>
-        <td>172</td>
+        <td>160</td>
+        <td>165</td>
         <td>HPO</td>
         <td>HP:0100806</td>
       </tr>
@@ -1380,359 +1286,12 @@ Created On : 10/22/2024 1:21PM Electronically Reviewed by: Kelly Goetz, M.A. on 
 </div>
 <div class="h3-box">
 
-  <h4 id="cloud-provider--llm-benchmarks-for-information-extraction-tasks">Cloud Provider &amp; LLM Benchmarks for Information Extraction Tasks</h4>
+  <h4 id="improved-name-consistency-handling-in-de-identification">Improved Name Consistency Handling in De-Identification</h4>
 
-  <p>We conducted an extensive benchmark comparing <strong>Spark NLP for Healthcare</strong> against leading cloud-based NLP services and popular Large Language Models (LLMs). The evaluation covered a range of NLP tasks, including <strong>Entity Recognition (NER), Assertion Detection, Medical Terminology Mapping</strong>, and more.</p>
+  <p>In this release, we have improved the way fake names are generated and assigned during the de-identification (De-ID) process. Previously, name tokens (e.g., first name and last name) were treated as a single chunk when generating a fake name. Now, each component of a name (first name, middle name, last name, etc.) is processed individually and then recombined into a full fake name.
+This enhancement allows for more consistent obfuscation within documents, even when only partial name mentions appear (e.g., “John Smith” vs. “Mr. Smith”). As a result, the same fake name components will be used throughout a document for the same real-world identity, improving coherence and readability while preserving privacy.</p>
 
-  <p>The benchmark focused on assessing performance across several key clinical entity types. For each task, we measured critical metrics like <strong>accuracy, coverage, precision, recall,</strong> and <strong>F1-score,</strong> ensuring a comprehensive understanding of each system’s strengths and weaknesses.</p>
-
-  <p><strong>Key Achievements:</strong></p>
-
-  <ul>
-    <li>Superior Accuracy &amp; Coverage: Spark NLP consistently outperformed cloud providers such as <strong>AWS Comprehend Medical, Google Cloud Healthcare API, Azure Text Analytics for Health,</strong> and large language models like <strong>Anthropic Claude - Sonnet 3.7 and OpenAI GPT-4.5.</strong></li>
-    <li>Assertion Detection Excellence: Spark NLP demonstrated a clear edge in detecting contextual assertions (e.g., negation, uncertainty) in medical texts.</li>
-    <li>Medical Terminology Mapping: Our solution excelled in mapping complex medical terminology, ensuring that nuanced healthcare concepts were accurately identified.</li>
-    <li>NER Performance: Spark NLP achieved the highest accuracy in recognizing clinical entities like <strong>diseases, procedures, and medications</strong>, surpassing other services in precision and recall.</li>
-    <li>Clinical Relevance: The benchmark highlighted Spark NLP’s ability to extract medically relevant entities with better context understanding, making it a reliable choice for healthcare NLP needs.</li>
-  </ul>
-
-  <p>These findings were presented at the <strong>NLP Summit</strong>, reinforcing Spark NLP’s position as a highly reliable and effective solution for extracting complex medical entities from clinical documents, and making it the preferred choice for healthcare organizations looking for top-tier NLP performance.</p>
-
-  <p><img src="https://github.com/user-attachments/assets/images/JSLvsCloudProviders.webp" alt="JSL vs Cloud Providers on NER" /></p>
-
-  <p>You can reproduce the results using the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/academic/NER_Benchmarks/NER_Performance_Comparison_Of_Healthcare_NLP_VS_Cloud_Solutions.ipynb">NER Performance Comparison Of Healthcare NLP VS Cloud Solutions</a> notebook.</p>
-
-  <p>For a detailed presentation of the benchmark results, you can watch the NLP Summit session here: <a href="https://www.youtube.com/watch?v=uAoOaA_G2W4">Benchmarks That Matter: Evaluating Medical Language Models for Real-World Applications</a></p>
-
-  <p>We prepared <strong>9 distinct pretrained pipelines</strong> using Spark NLP for Healthcare’s customization capabilities, all of which were utilized in this benchmark to ensure optimized performance across a range of clinical entity types.</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Model Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_admission_discharge_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_admission_discharge_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to detect clinical <code class="language-plaintext highlighter-rouge">Admission Discharge</code> in medical text, with a focus on admission entities.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_body_part_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_body_part_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract all types of anatomical references in medical text. It is a single-entity pipeline and generalizes all anatomical references to a single entity.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_drug_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_drug_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract posology information in medical text.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_procedure_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_procedure_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">procedure</code> mentions in medical text.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_test_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_test_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">test</code> mentions in medical text.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_treatment_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_treatment_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract treatments mentioned in medical text.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_consumption_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_consumption_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">Consumption</code> (Alcohol, Smoking/Tobacco, and Substance Usage) related information in medical text.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_grade_stage_severity_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_grade_stage_severity_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract biomarker, grade stage, and severity-related information in medical text. <code class="language-plaintext highlighter-rouge">GRADE_STAGE_SEVERITY</code>:  Mentions of pathological grading, staging, severity, and modifier of the diseases/cancers.</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_problem_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_problem_benchmark_pipeline</code></a></td>
-        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">problem</code> (diseases, disorders, injuries, symptoms, signs .etc) information in medical text.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-
-<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_problem_benchmark_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""HISTORY OF PRESENT ILLNESS :
-Mr. He is a 77 year old male with squamous cell carcinoma of the lung .
-Over the pat three to four weeks , he started having increased dyspnea and noted wheezing .
-A bronchoscopy showed protrusion of the tumor into the right main stem bronchus with a positive needle biopsy , washings and brushings for squamous cell carcinoma .
-A computerized tomography scan showed a large subcarinal mass .
-PAST MEDICAL HISTORY :
-His past medical history was significant for malignant bladder tumor in 1991 .
-PHYSICAL EXAMINATION :
-On physical examination , Mr. He had very marked inspiratory and expiratory stridor .
-There were no nodes present .
-The breath sounds were somewhat decreased through both lung fields .
-His cardiac examination did not show any murmur , gallop , or cardiomegaly .
-There was no hepatosplenomegaly , and no peripheral edema .
-HOSPITAL COURSE :
-A bronchoscopy with the intention of coring out tumor was carried out by Dr. Reg He , but all the tumor was extrinsic to the airway and he was unable to relieve the obstruction .
-The tumor now involves the trachea as well as the right main bronchus .
-His major complaint was of persistent severe coughing and secretions .
-"""</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th style="text-align: right"> </th>
-        <th style="text-align: left">chunk</th>
-        <th style="text-align: right">begin</th>
-        <th style="text-align: right">end</th>
-        <th style="text-align: left">ner_label</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">squamous cell carcinoma</td>
-        <td style="text-align: right">63</td>
-        <td style="text-align: right">85</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">dyspnea</td>
-        <td style="text-align: right">164</td>
-        <td style="text-align: right">170</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">wheezing</td>
-        <td style="text-align: right">182</td>
-        <td style="text-align: right">189</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">3</td>
-        <td style="text-align: left">tumor</td>
-        <td style="text-align: right">233</td>
-        <td style="text-align: right">237</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">squamous cell carcinoma</td>
-        <td style="text-align: right">332</td>
-        <td style="text-align: right">354</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">5</td>
-        <td style="text-align: left">mass</td>
-        <td style="text-align: right">415</td>
-        <td style="text-align: right">418</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">6</td>
-        <td style="text-align: left">malignant bladder tumor</td>
-        <td style="text-align: right">490</td>
-        <td style="text-align: right">512</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">7</td>
-        <td style="text-align: left">murmur</td>
-        <td style="text-align: right">773</td>
-        <td style="text-align: right">778</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">8</td>
-        <td style="text-align: left">cardiomegaly</td>
-        <td style="text-align: right">794</td>
-        <td style="text-align: right">805</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">9</td>
-        <td style="text-align: left">hepatosplenomegaly</td>
-        <td style="text-align: right">822</td>
-        <td style="text-align: right">839</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">10</td>
-        <td style="text-align: left">peripheral edema</td>
-        <td style="text-align: right">850</td>
-        <td style="text-align: right">865</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">11</td>
-        <td style="text-align: left">tumor</td>
-        <td style="text-align: right">935</td>
-        <td style="text-align: right">939</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">12</td>
-        <td style="text-align: left">tumor</td>
-        <td style="text-align: right">985</td>
-        <td style="text-align: right">989</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">13</td>
-        <td style="text-align: left">obstruction</td>
-        <td style="text-align: right">1052</td>
-        <td style="text-align: right">1062</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">14</td>
-        <td style="text-align: left">tumor</td>
-        <td style="text-align: right">1070</td>
-        <td style="text-align: right">1074</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">15</td>
-        <td style="text-align: left">coughing</td>
-        <td style="text-align: right">1183</td>
-        <td style="text-align: right">1190</td>
-        <td style="text-align: left">PROBLEM</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="enabling-flexible-annotation-transformations-with-annotationconverter">Enabling flexible annotation transformations with <code class="language-plaintext highlighter-rouge">AnnotationConverter</code></h4>
-
-  <p>A versatile converter that transforms DataFrame annotations through custom logic. By defining conversion functions (<code class="language-plaintext highlighter-rouge">f</code>), users can modify annotations to perform transformations such as:</p>
-
-  <ul>
-    <li>Assertion outputs → Chunk outputs</li>
-    <li>LLM outputs → Document outputs</li>
-    <li>rule-based outputs → Updated outputs</li>
-  </ul>
-
-  <p>The converter integrates with PySpark NLP-style pipelines (e.g., DocumentAssembler, Tokenizer) but operates purely in Python.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"""I like SparkNLP annotators such as MedicalBertForSequenceClassification and BertForAssertionClassification."""</span><span class="p">),</span>
-<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">)</span>
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">'document'</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'token'</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">myFunction</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
-    <span class="n">new_annotations</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"(?&lt;=[a-z])(?=[A-Z])"</span>
-
-    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">.</span><span class="n">result</span>
-        <span class="kn">import</span> <span class="nn">re</span>
-        <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-        <span class="n">begin</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">.</span><span class="n">begin</span>
-        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
-            <span class="n">end</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="n">new_annotations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">Annotation</span><span class="p">(</span>
-                    <span class="n">annotatorType</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
-                    <span class="n">begin</span><span class="o">=</span><span class="n">begin</span><span class="p">,</span>
-                    <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
-                    <span class="n">result</span><span class="o">=</span><span class="n">part</span><span class="p">,</span>
-                    <span class="n">metadata</span><span class="o">=</span><span class="n">annotation</span><span class="p">.</span><span class="n">metadata</span><span class="p">,</span>
-                    <span class="n">embeddings</span><span class="o">=</span><span class="n">annotation</span><span class="p">.</span><span class="n">embeddings</span><span class="p">,</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-            <span class="n">begin</span> <span class="o">=</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">new_annotations</span>
-
-<span class="n">camel_case_tokenizer</span> <span class="o">=</span> <span class="n">AnnotationConverter</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">myFunction</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"camel_case_token"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputAnnotatorType</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">camel_case_tokenizer</span><span class="p">])</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
-<span class="n">df</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(camel_case_token) as tokens"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <p>df.selectExpr(“explode(camel_case_token) as tokens”).show(truncate=False)</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>tokens</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{token, 0, 0, I, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 2, 5, like, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 7, 11, Spark, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 12, 14, NLP, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 16, 25, annotators, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 27, 30, such, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 32, 33, as, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 35, 41, Medical, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 42, 45, Bert, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 46, 48, For, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 49, 56, Sequence, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 57, 70, Classification, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 72, 74, and, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 76, 79, Bert, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 80, 82, For, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 83, 91, Assertion, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 92, 105, Classification, {sentence -&gt; 0}, []}</td>
-      </tr>
-      <tr>
-        <td>{token, 106, 106, ., {sentence -&gt; 0}, []}</td>
-      </tr>
-    </tbody>
-  </table>
+  <p><strong>Note:</strong> This change may lead to different fake name outputs compared to previous versions, especially for historical data. If users would like to retain the previous behavior (treating the full name as a single chunk and relying on previously generated fake names from earlier versions), they can set the corresponding configuration parameter to False.</p>
 
 </div>
 <div class="h3-box">
@@ -1871,6 +1430,209 @@ Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale."""</span>
   </table>
 
   <p>Please check the <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb">Pretrained Clinical Pipelines</a> model for more information</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="cloud-provider--llm-benchmarks-for-information-extraction-tasks">Cloud Provider &amp; LLM Benchmarks for Information Extraction Tasks</h4>
+
+  <p>We conducted an extensive benchmark comparing <strong>Spark NLP for Healthcare</strong> against leading cloud-based NLP services and popular Large Language Models (LLMs). The evaluation covered a range of NLP tasks, including <strong>Entity Recognition (NER), Assertion Detection, Medical Terminology Mapping</strong>, and more.</p>
+
+  <p>The benchmark focused on assessing performance across several key clinical entity types. For each task, we measured critical metrics like <strong>accuracy, coverage, precision, recall,</strong> and <strong>F1-score,</strong> ensuring a comprehensive understanding of each system’s strengths and weaknesses.</p>
+
+  <p><strong>Key Achievements:</strong></p>
+
+  <ul>
+    <li>Superior Accuracy &amp; Coverage: Spark NLP consistently outperformed cloud providers such as <strong>AWS Comprehend Medical, Google Cloud Healthcare API, Azure Text Analytics for Health,</strong> and large language models like <strong>Anthropic Claude - Sonnet 3.7 and OpenAI GPT-4.5.</strong></li>
+    <li>Assertion Detection Excellence: Spark NLP demonstrated a clear edge in detecting contextual assertions (e.g., negation, uncertainty) in medical texts.</li>
+    <li>Medical Terminology Mapping: Our solution excelled in mapping complex medical terminology, ensuring that nuanced healthcare concepts were accurately identified.</li>
+    <li>NER Performance: Spark NLP achieved the highest accuracy in recognizing clinical entities like <strong>diseases, procedures, and medications</strong>, surpassing other services in precision and recall.</li>
+    <li>Clinical Relevance: The benchmark highlighted Spark NLP’s ability to extract medically relevant entities with better context understanding, making it a reliable choice for healthcare NLP needs.</li>
+  </ul>
+
+  <p>These findings were presented at the <strong>NLP Summit</strong>, reinforcing Spark NLP’s position as a highly reliable and effective solution for extracting complex medical entities from clinical documents, and making it the preferred choice for healthcare organizations looking for top-tier NLP performance.</p>
+
+  <p><img src="/assets/images/JSLvsCloudProviders.webp" alt="JSL vs Cloud Providers on NER" /></p>
+
+  <p>You can reproduce the results using the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/academic/NER_Benchmarks/NER_Performance_Comparison_Of_Healthcare_NLP_VS_Cloud_Solutions.ipynb">NER Performance Comparison Of Healthcare NLP VS Cloud Solutions</a> notebook.</p>
+
+  <p>For a detailed presentation of the benchmark results, you can watch the NLP Summit session here: <a href="https://www.youtube.com/watch?v=uAoOaA_G2W4">Benchmarks That Matter: Evaluating Medical Language Models for Real-World Applications</a></p>
+
+  <p>We prepared <strong>9 distinct pretrained pipelines</strong> using Spark NLP for Healthcare’s customization capabilities, all of which were utilized in this benchmark to ensure optimized performance across a range of clinical entity types.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_admission_discharge_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_admission_discharge_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to detect clinical <code class="language-plaintext highlighter-rouge">Admission Discharge</code> in medical text, with a focus on admission entities.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_body_part_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_body_part_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract all types of anatomical references in medical text. It is a single-entity pipeline and generalizes all anatomical references to a single entity.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_drug_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_drug_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract posology information in medical text.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_procedure_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_procedure_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">procedure</code> mentions in medical text.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_test_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_test_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">test</code> mentions in medical text.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/27/ner_treatment_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_treatment_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract treatments mentioned in medical text.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/28/ner_consumption_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_consumption_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">Consumption</code> (Alcohol, Smoking/Tobacco, and Substance Usage) related information in medical text.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/28/ner_grade_stage_severity_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_grade_stage_severity_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract biomarker, grade stage, and severity-related information in medical text. <code class="language-plaintext highlighter-rouge">GRADE_STAGE_SEVERITY</code>:  Mentions of pathological grading, staging, severity, and modifier of the diseases/cancers.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/03/28/ner_problem_benchmark_pipeline_en.html"><code class="language-plaintext highlighter-rouge">ner_problem_benchmark_pipeline</code></a></td>
+        <td>This pipeline can be used to extract <code class="language-plaintext highlighter-rouge">problem</code> (diseases, disorders, injuries, symptoms, signs .etc) information in medical text.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="enabling-flexible-annotation-transformations-with-annotationconverter">Enabling flexible annotation transformations with <code class="language-plaintext highlighter-rouge">AnnotationConverter</code></h4>
+
+  <p>A versatile converter that transforms DataFrame annotations through custom logic. By defining conversion functions (<code class="language-plaintext highlighter-rouge">f</code>), users can modify annotations to perform transformations such as:</p>
+
+  <ul>
+    <li>Assertion outputs → Chunk outputs</li>
+    <li>LLM outputs → Document outputs</li>
+    <li>rule-based outputs → Updated outputs</li>
+  </ul>
+
+  <p>The converter integrates with PySpark NLP-style pipelines (e.g., DocumentAssembler, Tokenizer) but operates purely in Python.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"""I like SparkNLP annotators such as MedicalBertForSequenceClassification and BertForAssertionClassification."""</span><span class="p">),</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">)</span>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">'document'</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'token'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">myFunction</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
+    <span class="n">new_annotations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"(?&lt;=[a-z])(?=[A-Z])"</span>
+
+    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">.</span><span class="n">result</span>
+        <span class="kn">import</span> <span class="nn">re</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">begin</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">.</span><span class="n">begin</span>
+        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">new_annotations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Annotation</span><span class="p">(</span>
+                    <span class="n">annotatorType</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
+                    <span class="n">begin</span><span class="o">=</span><span class="n">begin</span><span class="p">,</span>
+                    <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+                    <span class="n">result</span><span class="o">=</span><span class="n">part</span><span class="p">,</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="n">annotation</span><span class="p">.</span><span class="n">metadata</span><span class="p">,</span>
+                    <span class="n">embeddings</span><span class="o">=</span><span class="n">annotation</span><span class="p">.</span><span class="n">embeddings</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">begin</span> <span class="o">=</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">new_annotations</span>
+
+<span class="n">camel_case_tokenizer</span> <span class="o">=</span> <span class="n">AnnotationConverter</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">myFunction</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"camel_case_token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputAnnotatorType</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">camel_case_tokenizer</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"explode(camel_case_token) as tokens"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <p>df.selectExpr(“explode(camel_case_token) as tokens”).show(truncate=False)</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>tokens</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{token, 0, 0, I, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 2, 5, like, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 7, 11, Spark, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 12, 14, NLP, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 16, 25, annotators, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 27, 30, such, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 32, 33, as, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 35, 41, Medical, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 42, 45, Bert, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 46, 48, For, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 49, 56, Sequence, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 57, 70, Classification, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 72, 74, and, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 76, 79, Bert, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 80, 82, For, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 83, 91, Assertion, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 92, 105, Classification, {sentence -&gt; 0}, []}</td>
+      </tr>
+      <tr>
+        <td>{token, 106, 106, ., {sentence -&gt; 0}, []}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 <div class="h3-box">
@@ -2359,56 +2121,7 @@ Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatu
 
   <p><em>Result</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ PretrainedPipeline detected.
-🔄 Processing Stage 0: DocumentAssembler
-  ❌ Stage 0 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 1: SentenceDetectorDLModel
-  ❌ Stage 1 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 2: TokenizerModel
-  ❌ Stage 2 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 3: WordEmbeddingsModel
-  ❌ Stage 3 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 4: MedicalNerModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 4
-🔄 Processing Stage 5: NerConverterInternalModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 5
-🔄 Processing Stage 6: MedicalNerModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 6
-🔄 Processing Stage 7: NerConverterInternalModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 7
-🔄 Processing Stage 8: MedicalNerModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 8
-🔄 Processing Stage 9: NerConverterInternalModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 9
-🔄 Processing Stage 10: MedicalNerModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 10
-🔄 Processing Stage 11: NerConverterInternalModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 11
-🔄 Processing Stage 12: TextMatcherInternalModel
-  ❌ Stage 12 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 13: ChunkMergeModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 13
-🔄 Processing Stage 14: ChunkMergeModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 14
-🔄 Processing Stage 15: AssertionDLModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 15
-🔄 Processing Stage 16: ChunkFilterer
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 16
-🔄 Processing Stage 17: AssertionDLModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 17
-🔄 Processing Stage 18: AssertionMerger
-  ❌ Stage 18 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 19: PerceptronModel
-  ❌ Stage 19 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 20: DependencyParserModel
-  ❌ Stage 20 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 21: RelationExtractionModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 21
-🔄 Processing Stage 22: RelationExtractionModel
-  ✅ setDoExceptionHandling<span class="o">(</span>True<span class="o">)</span> applied to Stage 22
-🔄 Processing Stage 23: AnnotationMerger
-  ❌ Stage 23 does not support setDoExceptionHandling, skipping.
-
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 📢 Summary Report:
 ✅ Total modified stages: 15
   - Stage 4: MedicalNerModel
@@ -2441,6 +2154,17 @@ Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatu
 </div>
 <div class="h3-box">
 
+  <h4 id="interactive-chat-support-for-healthcare-nlp-documentation">Interactive Chat Support for Healthcare NLP Documentation</h4>
+
+  <p>We’re introducing a conversational assistant powered by Healthcare NLP documentation and repositories. This new tool enables users to easily explore which components to use when solving specific problems, understand the functionalities of different modules, and get explanations for code found across our repositories — all through a simple chat interface.</p>
+
+  <p>Just type your question into the chatbox and get instant guidance on how to leverage Healthcare NLP more effectively. Whether you’re debugging, exploring features, or looking for best practices, this assistant helps you find the right answers faster.</p>
+
+  <p>You can check the <a href="https://deepwiki.com/JohnSnowLabs/spark-nlp-workshop/1-overview">chat support page</a> for spark-nlp-workshop repository.</p>
+
+</div>
+<div class="h3-box">
+
   <h4 id="new-peer-reviewed-papers-and-blog-posts-on-various-topics">New Peer-Reviewed Papers and Blog Posts On Various Topics</h4>
 
   <ul>
@@ -2460,16 +2184,6 @@ Fortgeschrittenes lokal begrenztes Mammakarzinom, günstiger Hormonrezeptorstatu
       </ul>
     </li>
   </ul>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="improved-name-consistency-handling-in-de-identification">Improved Name Consistency Handling in De-Identification</h4>
-
-  <p>In this release, we have improved the way fake names are generated and assigned during the de-identification (De-ID) process. Previously, name tokens (e.g., first name and last name) were treated as a single chunk when generating a fake name. Now, each component of a name (first name, middle name, last name, etc.) is processed individually and then recombined into a full fake name.
-This enhancement allows for more consistent obfuscation within documents, even when only partial name mentions appear (e.g., “John Smith” vs. “Mr. Smith”). As a result, the same fake name components will be used throughout a document for the same real-world identity, improving coherence and readability while preserving privacy.</p>
-
-  <p><strong>Note:</strong> This change may lead to different fake name outputs compared to previous versions, especially for historical data. If users would like to retain the previous behavior (treating the full name as a single chunk and relying on previously generated fake names from earlier versions), they can set the corresponding configuration parameter to False.</p>
 
 </div>
 <div class="h3-box">
