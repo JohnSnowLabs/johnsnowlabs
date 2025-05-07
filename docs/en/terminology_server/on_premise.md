@@ -62,3 +62,7 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
     </td>
   </tr>
 </table>
+
+## API Usage
+
+Notebook Reference: [terminology_api.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb)
