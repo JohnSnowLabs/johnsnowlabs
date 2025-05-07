@@ -24,14 +24,15 @@ We’re excited to introduce significant advancements in the latest release of S
 + Small size Medical LLM for generating clinical SOAP (Subjective, Objective, Assessment, Plan) note
 + Human Phenotype term extraction and mapping using official terminology vocabularies
 + Inferring missing PHI entities via previously detected NER outputs within Deidentification
++ Improved Name Consistency Handling in Deidentification
++ Clinical document analysis with one-liner pretrained-pipelines for specific clinical tasks and concepts
 + Cloud Provider & LLM Benchmarks for Information Extraction tasks
 + Enabling flexible annotation transformations with `AnnotationConverter`
-+ Clinical document analysis with one-liner pretrained-pipelines for specific clinical tasks and concepts
 + Introducing 2 new contextual assertion models to detect assertion status given a larger context and scenarious. 
-+ New German medical named entity recognition model and medical entity resolver model
++ New German Oncology named entity recognition model and ICD10 entity resolver model
 + Enabling exception handling within the pipelines for specified or all eligible stages
++ Interactive chat support for Healthcare NLP documentation
 + New peer-reviewed papers and blog posts on various topics
-+ Improved Name Consistency Handling in Deidentification
 + Various core improvements, bug fixes, enhanced overall robustness, and reliability of Spark NLP for Healthcare
     - Resolved log file creation on Databricks for training
     - Added `consistentAcrossNameParts` param to `LightDeIdentification` and `StructuredDeIdentification`
@@ -288,7 +289,7 @@ mapper = ChunkMapperModel().pretrained("hpo_mapper","en", "clinical/models")\
     .setLowerCase(True)
 
 
-text =  ''' APNEA: Presumed apnea of prematurity since < 34 wks gestation at birth.
+text =  '''Presumed apnea of prematurity since < 34 wks gestation at birth.
 HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity. 
 1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation. '''
 
@@ -298,42 +299,13 @@ data = spark.createDataFrame([[text]]).toDF("text")
 *Result*:
 
 {:.table-model-big}
-|             chunk|begin|end|label|  hpo_code|
+|chunk             |begin|end|label|hpo_code  |
 |------------------|-----|---|-----|----------|
-|             APNEA|    0|  4|  HPO|HP:0002104|
-|             apnea|   16| 20|  HPO|HP:0002104|
-|HYPERBILIRUBINEMIA|   66| 83|  HPO|HP:0002904|
-|hyperbilirubinemia|   91|108|  HPO|HP:0002904|
-|            sepsis|  167|172|  HPO|HP:0100806|
+|apnea             |9    |13 |HPO  |HP:0002104|
+|HYPERBILIRUBINEMIA|59   |76 |HPO  |HP:0002904|
+|hyperbilirubinemia|84   |101|HPO  |HP:0002904|
+|sepsis            |160  |165|HPO  |HP:0100806|
 
-
-- **Example of StopWords**:
-
-```python
-stopwords_cleaner = StopWordsCleaner.pretrained("stopwords_removal_hpo", "en", "clinical/models") \
-    .setInputCols("token")\
-    .setOutputCol("cleanTokens")\
-    .setCaseSensitive(False)
-
-text_df = spark.createDataFrame([["The patient shows no signs of muscle weakness or developmental delay"]]).toDF("text")
-```
-
-*Result*:
-
-{:.table-model-big}
-|   | token         | cleanTokens    |
-|---|---------------|----------------|
-| 0 | The           | --             |
-| 1 | patient       | patient        |
-| 2 | shows         | shows          |
-| 3 | no            | no             |
-| 4 | signs         | signs          |
-| 5 | of            | --             |
-| 6 | muscle        | muscle         |
-| 7 | weakness      | weakness       |
-| 8 | or            | --             |
-| 9 | developmental | developmental  |
-|10 | delay         | delay          |
 
 
 - **Example of Pipeline**:
@@ -341,7 +313,7 @@ text_df = spark.createDataFrame([["The patient shows no signs of muscle weakness
 ```python
 pipeline = PretrainedPipeline("hpo_mapper_pipeline", "en", "clinical/models")
 
-result = pipeline.fullAnnotate("""APNEA: Presumed apnea of prematurity since < 34 wks gestation at birth.
+result = pipeline.fullAnnotate("""Presumed apnea of prematurity since < 34 wks gestation at birth.
 HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
 1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation.""")
 ```
@@ -349,13 +321,12 @@ HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
 *Result*:
 
 {:.table-model-big}
-|             chunk|begin|end|label|  hpo_code|
+|chunk             |begin|end|label|hpo_code  |
 |------------------|-----|---|-----|----------|
-|             APNEA|    0|  4|  HPO|HP:0002104|
-|             apnea|   16| 20|  HPO|HP:0002104|
-|HYPERBILIRUBINEMIA|   66| 83|  HPO|HP:0002904|
-|hyperbilirubinemia|   91|108|  HPO|HP:0002904|
-|            sepsis|  167|172|  HPO|HP:0100806|
+|apnea             |9    |13 |HPO  |HP:0002104|
+|HYPERBILIRUBINEMIA|59   |76 |HPO  |HP:0002904|
+|hyperbilirubinemia|84   |101|HPO  |HP:0002904|
+|sepsis            |160  |165|HPO  |HP:0100806|
 
 Please check the [Human Phenotype Extraction And HPO Code Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/49.Human_Phenotype_Extraction_And_HPO_Code_Mapping.ipynb) Notebook for more information
 
@@ -475,6 +446,68 @@ Behavior
     - "Smith" → "Brown"
 
 
+</div><div class="h3-box" markdown="1">
+
+#### Improved Name Consistency Handling in De-Identification
+
+In this release, we have improved the way fake names are generated and assigned during the de-identification (De-ID) process. Previously, name tokens (e.g., first name and last name) were treated as a single chunk when generating a fake name. Now, each component of a name (first name, middle name, last name, etc.) is processed individually and then recombined into a full fake name.
+This enhancement allows for more consistent obfuscation within documents, even when only partial name mentions appear (e.g., "John Smith" vs. "Mr. Smith"). As a result, the same fake name components will be used throughout a document for the same real-world identity, improving coherence and readability while preserving privacy.
+
+**Note:** This change may lead to different fake name outputs compared to previous versions, especially for historical data. If users would like to retain the previous behavior (treating the full name as a single chunk and relying on previously generated fake names from earlier versions), they can set the corresponding configuration parameter to False.
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Clinical Document Analysis with One-Liner Pretrained Pipelines for Specific Clinical Tasks and Concepts
+
+We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.
+
+What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
+
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`ner_deid_nameAugmented_docwise_pipeline`](https://nlp.johnsnowlabs.com/2025/03/25/ner_deid_nameAugmented_docwise_pipeline_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `VIN`, `ZIP` entities. |
+| [`ner_deid_nameAugmented_pipeline_v3`](https://nlp.johnsnowlabs.com/2025/03/25/ner_deid_nameAugmented_pipeline_v3_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `VIN`, `ZIP` entities. |
+| [`ner_deid_subentity_docwise_augmented_pipeline_v2`](https://nlp.johnsnowlabs.com/2025/03/24/ner_deid_subentity_docwise_augmented_pipeline_v2_en.html) | This pipeline can be used to extract PHI information such as `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `AGE`, `MEDICALRECORD`, `ORGANIZATION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `LOCATION_OTHER`, `DLN`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
+| [`clinical_deidentification_nameAugmented_v3`](https://nlp.johnsnowlabs.com/2025/03/13/clinical_deidentification_nameAugmented_v3_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `VIN`, `ZIP` entities. |
+| [`clinical_deidentification_subentity_enriched_ar`](https://nlp.johnsnowlabs.com/2025/03/13/clinical_deidentification_subentity_enriched_ar.html) | This pipeline can be used to extract PHI information such as `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `DEVICE`, `CITY`, `DATE`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`, `LOCATION`, `DLN`, `SSN`, `PLATE`, `VIN`, `LICENSE`, `IP`, `ACCOUNT`, `DOB` entities. |
+| [`clinical_deidentification_nameAugmented_docwise`](https://nlp.johnsnowlabs.com/2025/03/14/clinical_deidentification_nameAugmented_docwise_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `VIN`, `ZIP` entities. |
+
+*Example*:
+
+```python
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline("ner_deid_nameAugmented_docwise_pipeline", "en", "clinical/models")
+
+text = """Record date : 2093-01-13, Name : Hendrickson ORA. 25 years-old, MRN #719435.
+IP: 203.120.223.13, the driver's license no:A334455B. The SSN: 324598674 and e-mail: hale@gmail.com.
+Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale."""
+```
+
+*Result*:
+
+{:.table-model-big}
+|result           |begin|end|entity       |
+|-----------------|-----|---|-------------|
+|2093-01-13       |14   |23 |DATE         |
+|Hendrickson ORA  |33   |47 |NAME         |
+|25               |50   |51 |AGE          |
+|#719435          |68   |74 |MEDICALRECORD|
+|203.120.223.13   |81   |94 |IP           |
+|no:A334455B      |118  |128|DLN          |
+|324598674        |140  |148|SSN          |
+|hale@gmail.com   |162  |175|EMAIL        |
+|1HGBH41JXMN109286|194  |210|VIN          |
+|01/13/93         |220  |227|DATE         |
+|David Hale       |236  |245|NAME         |
+
+
+
+Please check the [Pretrained Clinical Pipelines](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb) model for more information
+
+
 
 </div><div class="h3-box" markdown="1">
 
@@ -494,7 +527,7 @@ The benchmark focused on assessing performance across several key clinical entit
 
 These findings were presented at the **NLP Summit**, reinforcing Spark NLP’s position as a highly reliable and effective solution for extracting complex medical entities from clinical documents, and making it the preferred choice for healthcare organizations looking for top-tier NLP performance.
 
-![JSL vs Cloud Providers on NER](https://github.com/user-attachments/assets/images/JSLvsCloudProviders.webp)
+![JSL vs Cloud Providers on NER](/assets/images/JSLvsCloudProviders.webp)
 
 You can reproduce the results using the [NER Performance Comparison Of Healthcare NLP VS Cloud Solutions](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/academic/NER_Benchmarks/NER_Performance_Comparison_Of_Healthcare_NLP_VS_Cloud_Solutions.ipynb) notebook. 
 
@@ -511,59 +544,10 @@ We prepared **9 distinct pretrained pipelines** using Spark NLP for Healthcare�
 | [`ner_procedure_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/27/ner_procedure_benchmark_pipeline_en.html) | This pipeline can be used to extract `procedure` mentions in medical text. |
 | [`ner_test_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/27/ner_test_benchmark_pipeline_en.html) | This pipeline can be used to extract `test` mentions in medical text. |
 | [`ner_treatment_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/27/ner_treatment_benchmark_pipeline_en.html) | This pipeline can be used to extract treatments mentioned in medical text. |
-| [`ner_consumption_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/27/ner_consumption_benchmark_pipeline_en.html) | This pipeline can be used to extract `Consumption` (Alcohol, Smoking/Tobacco, and Substance Usage) related information in medical text. |
-| [`ner_grade_stage_severity_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/27/ner_grade_stage_severity_benchmark_pipeline_en.html) | This pipeline can be used to extract biomarker, grade stage, and severity-related information in medical text. `GRADE_STAGE_SEVERITY`:  Mentions of pathological grading, staging, severity, and modifier of the diseases/cancers. |
-| [`ner_problem_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/27/ner_problem_benchmark_pipeline_en.html) | This pipeline can be used to extract `problem` (diseases, disorders, injuries, symptoms, signs .etc) information in medical text. |
+| [`ner_consumption_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/28/ner_consumption_benchmark_pipeline_en.html) | This pipeline can be used to extract `Consumption` (Alcohol, Smoking/Tobacco, and Substance Usage) related information in medical text. |
+| [`ner_grade_stage_severity_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/28/ner_grade_stage_severity_benchmark_pipeline_en.html) | This pipeline can be used to extract biomarker, grade stage, and severity-related information in medical text. `GRADE_STAGE_SEVERITY`:  Mentions of pathological grading, staging, severity, and modifier of the diseases/cancers. |
+| [`ner_problem_benchmark_pipeline`](https://nlp.johnsnowlabs.com/2025/03/28/ner_problem_benchmark_pipeline_en.html) | This pipeline can be used to extract `problem` (diseases, disorders, injuries, symptoms, signs .etc) information in medical text. |
 
-
-*Example*:
-
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_pipeline = PretrainedPipeline("ner_problem_benchmark_pipeline", "en", "clinical/models")
-
-text = """HISTORY OF PRESENT ILLNESS :
-Mr. He is a 77 year old male with squamous cell carcinoma of the lung .
-Over the pat three to four weeks , he started having increased dyspnea and noted wheezing .
-A bronchoscopy showed protrusion of the tumor into the right main stem bronchus with a positive needle biopsy , washings and brushings for squamous cell carcinoma .
-A computerized tomography scan showed a large subcarinal mass .
-PAST MEDICAL HISTORY :
-His past medical history was significant for malignant bladder tumor in 1991 .
-PHYSICAL EXAMINATION :
-On physical examination , Mr. He had very marked inspiratory and expiratory stridor .
-There were no nodes present .
-The breath sounds were somewhat decreased through both lung fields .
-His cardiac examination did not show any murmur , gallop , or cardiomegaly .
-There was no hepatosplenomegaly , and no peripheral edema .
-HOSPITAL COURSE :
-A bronchoscopy with the intention of coring out tumor was carried out by Dr. Reg He , but all the tumor was extrinsic to the airway and he was unable to relieve the obstruction .
-The tumor now involves the trachea as well as the right main bronchus .
-His major complaint was of persistent severe coughing and secretions .
-"""
-```
-
-*Result*:
-
-{:.table-model-big}
-|    | chunk                   |   begin |   end | ner_label   |
-|---:|:------------------------|--------:|------:|:------------|
-|  0 | squamous cell carcinoma |      63 |    85 | PROBLEM     |
-|  1 | dyspnea                 |     164 |   170 | PROBLEM     |
-|  2 | wheezing                |     182 |   189 | PROBLEM     |
-|  3 | tumor                   |     233 |   237 | PROBLEM     |
-|  4 | squamous cell carcinoma |     332 |   354 | PROBLEM     |
-|  5 | mass                    |     415 |   418 | PROBLEM     |
-|  6 | malignant bladder tumor |     490 |   512 | PROBLEM     |
-|  7 | murmur                  |     773 |   778 | PROBLEM     |
-|  8 | cardiomegaly            |     794 |   805 | PROBLEM     |
-|  9 | hepatosplenomegaly      |     822 |   839 | PROBLEM     |
-| 10 | peripheral edema        |     850 |   865 | PROBLEM     |
-| 11 | tumor                   |     935 |   939 | PROBLEM     |
-| 12 | tumor                   |     985 |   989 | PROBLEM     |
-| 13 | obstruction             |    1052 |  1062 | PROBLEM     |
-| 14 | tumor                   |    1070 |  1074 | PROBLEM     |
-| 15 | coughing                |    1183 |  1190 | PROBLEM     |
 
 
 </div><div class="h3-box" markdown="1">
@@ -652,58 +636,6 @@ df.selectExpr("explode(camel_case_token) as tokens").show(truncate=False)
 
 
 
-
-
-</div><div class="h3-box" markdown="1">
-
-####  Clinical Document Analysis with One-Liner Pretrained Pipelines for Specific Clinical Tasks and Concepts
-
-We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.
-
-What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.
-
-{:.table-model-big}
-| Model Name                                                            |      Description            |
-|-----------------------------------------------------------------------|-----------------------------|
-| [`ner_deid_nameAugmented_docwise_pipeline`](https://nlp.johnsnowlabs.com/2025/03/25/ner_deid_nameAugmented_docwise_pipeline_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `VIN`, `ZIP` entities. |
-| [`ner_deid_nameAugmented_pipeline_v3`](https://nlp.johnsnowlabs.com/2025/03/25/ner_deid_nameAugmented_pipeline_v3_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `VIN`, `ZIP` entities. |
-| [`ner_deid_subentity_docwise_augmented_pipeline_v2`](https://nlp.johnsnowlabs.com/2025/03/24/ner_deid_subentity_docwise_augmented_pipeline_v2_en.html) | This pipeline can be used to extract PHI information such as `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `AGE`, `MEDICALRECORD`, `ORGANIZATION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `LOCATION_OTHER`, `DLN`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`clinical_deidentification_nameAugmented_v3`](https://nlp.johnsnowlabs.com/2025/03/13/clinical_deidentification_nameAugmented_v3_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `VIN`, `ZIP` entities. |
-| [`clinical_deidentification_subentity_enriched_ar`](https://nlp.johnsnowlabs.com/2025/03/13/clinical_deidentification_subentity_enriched_ar.html) | This pipeline can be used to extract PHI information such as `MEDICALRECORD`, `ORGANIZATION`, `PROFESSION`, `DOCTOR`, `USERNAME`, `URL`, `DEVICE`, `CITY`, `DATE`, `ZIP`, `STATE`, `PATIENT`, `COUNTRY`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `AGE`, `LOCATION`, `DLN`, `SSN`, `PLATE`, `VIN`, `LICENSE`, `IP`, `ACCOUNT`, `DOB` entities. |
-| [`clinical_deidentification_nameAugmented_docwise`](https://nlp.johnsnowlabs.com/2025/03/14/clinical_deidentification_nameAugmented_docwise_en.html) | This pipeline can be used to extract PHI information such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `EMAIL`, `FAX`, `HEALTHPLAN`, `IDNUM`, `IP`, `LICENSE`, `LOCATION`, `MEDICALRECORD`, `NAME`, `PHONE`, `PLATE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `VIN`, `ZIP` entities. |
-
-*Example*:
-
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline("ner_deid_nameAugmented_docwise_pipeline", "en", "clinical/models")
-
-text = """Record date : 2093-01-13, Name : Hendrickson ORA. 25 years-old, MRN #719435.
-IP: 203.120.223.13, the driver's license no:A334455B. The SSN: 324598674 and e-mail: hale@gmail.com.
-Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale."""
-```
-
-*Result*:
-
-{:.table-model-big}
-|result           |begin|end|entity       |
-|-----------------|-----|---|-------------|
-|2093-01-13       |14   |23 |DATE         |
-|Hendrickson ORA  |33   |47 |NAME         |
-|25               |50   |51 |AGE          |
-|#719435          |68   |74 |MEDICALRECORD|
-|203.120.223.13   |81   |94 |IP           |
-|no:A334455B      |118  |128|DLN          |
-|324598674        |140  |148|SSN          |
-|hale@gmail.com   |162  |175|EMAIL        |
-|1HGBH41JXMN109286|194  |210|VIN          |
-|01/13/93         |220  |227|DATE         |
-|David Hale       |236  |245|NAME         |
-
-
-
-Please check the [Pretrained Clinical Pipelines](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb) model for more information
 
 
 </div><div class="h3-box" markdown="1">
@@ -918,55 +850,6 @@ handled_pipeline =  apply_exception_handling(oncology_pipeline)
 *Result*:
 
 ```bash
-✅ PretrainedPipeline detected.
-🔄 Processing Stage 0: DocumentAssembler
-  ❌ Stage 0 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 1: SentenceDetectorDLModel
-  ❌ Stage 1 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 2: TokenizerModel
-  ❌ Stage 2 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 3: WordEmbeddingsModel
-  ❌ Stage 3 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 4: MedicalNerModel
-  ✅ setDoExceptionHandling(True) applied to Stage 4
-🔄 Processing Stage 5: NerConverterInternalModel
-  ✅ setDoExceptionHandling(True) applied to Stage 5
-🔄 Processing Stage 6: MedicalNerModel
-  ✅ setDoExceptionHandling(True) applied to Stage 6
-🔄 Processing Stage 7: NerConverterInternalModel
-  ✅ setDoExceptionHandling(True) applied to Stage 7
-🔄 Processing Stage 8: MedicalNerModel
-  ✅ setDoExceptionHandling(True) applied to Stage 8
-🔄 Processing Stage 9: NerConverterInternalModel
-  ✅ setDoExceptionHandling(True) applied to Stage 9
-🔄 Processing Stage 10: MedicalNerModel
-  ✅ setDoExceptionHandling(True) applied to Stage 10
-🔄 Processing Stage 11: NerConverterInternalModel
-  ✅ setDoExceptionHandling(True) applied to Stage 11
-🔄 Processing Stage 12: TextMatcherInternalModel
-  ❌ Stage 12 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 13: ChunkMergeModel
-  ✅ setDoExceptionHandling(True) applied to Stage 13
-🔄 Processing Stage 14: ChunkMergeModel
-  ✅ setDoExceptionHandling(True) applied to Stage 14
-🔄 Processing Stage 15: AssertionDLModel
-  ✅ setDoExceptionHandling(True) applied to Stage 15
-🔄 Processing Stage 16: ChunkFilterer
-  ✅ setDoExceptionHandling(True) applied to Stage 16
-🔄 Processing Stage 17: AssertionDLModel
-  ✅ setDoExceptionHandling(True) applied to Stage 17
-🔄 Processing Stage 18: AssertionMerger
-  ❌ Stage 18 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 19: PerceptronModel
-  ❌ Stage 19 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 20: DependencyParserModel
-  ❌ Stage 20 does not support setDoExceptionHandling, skipping.
-🔄 Processing Stage 21: RelationExtractionModel
-  ✅ setDoExceptionHandling(True) applied to Stage 21
-🔄 Processing Stage 22: RelationExtractionModel
-  ✅ setDoExceptionHandling(True) applied to Stage 22
-🔄 Processing Stage 23: AnnotationMerger
-  ❌ Stage 23 does not support setDoExceptionHandling, skipping.
 
 📢 Summary Report:
 ✅ Total modified stages: 15
@@ -997,6 +880,16 @@ handled_pipeline =  apply_exception_handling(oncology_pipeline)
   - Stage 23: AnnotationMerger (No exception handling support)
 ```
 
+</div><div class="h3-box" markdown="1">
+
+#### Interactive Chat Support for Healthcare NLP Documentation
+ 
+We’re introducing a conversational assistant powered by Healthcare NLP documentation and repositories. This new tool enables users to easily explore which components to use when solving specific problems, understand the functionalities of different modules, and get explanations for code found across our repositories — all through a simple chat interface.
+ 
+Just type your question into the chatbox and get instant guidance on how to leverage Healthcare NLP more effectively. Whether you're debugging, exploring features, or looking for best practices, this assistant helps you find the right answers faster.
+ 
+You can check the [chat support page](https://deepwiki.com/JohnSnowLabs/spark-nlp-workshop/1-overview) for spark-nlp-workshop repository.
+
 
 </div><div class="h3-box" markdown="1">
 
@@ -1014,15 +907,6 @@ handled_pipeline =  apply_exception_handling(oncology_pipeline)
     - [How Good Are Open-Source LLM-Based De-identification Tools in a Medical Context?](https://medium.com/john-snow-labs/how-good-are-open-source-llm-based-de-identification-tools-in-a-medical-context-6600ddac6a0f) It’s often assumed that all PII and PHI entities are the same, meaning de-identification tools should work equally well across all unstructured text. While this seems logical in theory, each domain-specific dataset has distinct characteristics, requiring customized approaches for effective PII detection. In this blog post, we highlight how LLM-based de-identification models, such as GLiNER PII and OpenPipe’s PII-Redact, excel in general text — achieving macro-average F1 scores of 0.62 for GLiNER and 0.98 for OpenPipe — but face significant performance drops on clinical datasets, where their scores fall to 0.41 and 0.42 respectively.
     - [Beyond Negation Detection: Comprehensive Assertion Detection Models for Clinical NLP](https://medium.com/john-snow-labs/beyond-negation-detection-comprehensive-assertion-detection-models-for-clinical-nlp-d90659a14408) Assertion status detection is critical in clinical NLP but often overlooked, leading to underperformance in commercial solutions like AWS Medical Comprehend, Azure AI Text Analytics, and GPT-4o. We developed advanced assertion detection models, including fine-tuned LLMs, transformers, few-shot classifiers, deep learning (DL) and rule -based approaches. Our fine-tuned LLM achieves 0.962 accuracy, outperforming GPT-4o (0.901) and commercial APIs, with notable improvements in Present (+4.2%), Absent (+8.4%), and Hypothetical (+23.4%) assertions. Our DL models also excel in Conditional (+5.3%) and Associated with Someone Else (+10.1%) categories. The few-shot classifier (0.929 accuracy) provides a lightweight alternative for resource-limited environments. Integrated with Spark NLP, our models offer scalable, transparent, and domain-adapted solutions that surpass black-box commercial APIs in medical NLP tasks.
 
-
-</div><div class="h3-box" markdown="1">
-
-#### Improved Name Consistency Handling in De-Identification
-
-In this release, we have improved the way fake names are generated and assigned during the de-identification (De-ID) process. Previously, name tokens (e.g., first name and last name) were treated as a single chunk when generating a fake name. Now, each component of a name (first name, middle name, last name, etc.) is processed individually and then recombined into a full fake name.
-This enhancement allows for more consistent obfuscation within documents, even when only partial name mentions appear (e.g., "John Smith" vs. "Mr. Smith"). As a result, the same fake name components will be used throughout a document for the same real-world identity, improving coherence and readability while preserving privacy.
-
-**Note:** This change may lead to different fake name outputs compared to previous versions, especially for historical data. If users would like to retain the previous behavior (treating the full name as a single chunk and relying on previously generated fake names from earlier versions), they can set the corresponding configuration parameter to False.
 
 
 
