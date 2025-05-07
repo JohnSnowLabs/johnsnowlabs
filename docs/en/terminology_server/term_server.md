@@ -46,7 +46,7 @@ Improve your search outcomes by utilizing a variety of additional filters:
 * **Filter by Confidence Score**: Allows refining results based on their confidence score.
 
  🚀 **API service**:
-The API service allows seamless integration with your applications, enabling you to leverage our platform's capabilities. By obtaining an API key, developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.
+The API service allows seamless integration with your applications, enabling you to leverage our platform’s capabilities. Developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.
 
 🔍 **Core capabilities, strengths, and limitations**
 
