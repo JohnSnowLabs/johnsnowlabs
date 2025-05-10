@@ -1,5 +1,191 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-07T18:25:39+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Mapping Phenotype Entities with Corresponding HPO Codes (Pretrained Pipeline)</title><link href="/2025/05/02/hpo_mapper_pipeline_en.html" rel="alternate" type="text/html" title="Mapping Phenotype Entities with Corresponding HPO Codes (Pretrained Pipeline)" /><published>2025-05-02T00:00:00+00:00</published><updated>2025-05-02T00:00:00+00:00</updated><id>/2025/05/02/hpo_mapper_pipeline_en</id><content type="html" xml:base="/2025/05/02/hpo_mapper_pipeline_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-10T18:52:51+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">PDF Deidentification Multi Model</title><link href="/2025/05/09/pdf_deid_multi_model_context_pipeline.html" rel="alternate" type="text/html" title="PDF Deidentification Multi Model" /><published>2025-05-09T00:00:00+00:00</published><updated>2025-05-09T00:00:00+00:00</updated><id>/2025/05/09/pdf_deid_multi_model_context_pipeline</id><content type="html" xml:base="/2025/05/09/pdf_deid_multi_model_context_pipeline.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’.
+The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_pipeline_en_6.0.0_3.0_1746569926000.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_pipeline_en_6.0.0_3.0_1746569926000.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pdf_deid_multi_model_context_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/ocr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;pdf_deid_multi_model_context_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;4.4 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PdfToImage&lt;/li&gt;
+  &lt;li&gt;ImageToText&lt;/li&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;Regex&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;EntityExtractor&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcher&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcher&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;XLMRobertaEmbeddings&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;PretrainedZeroShotNER&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;PretrainedZeroShotNER&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;PositionFinder&lt;/li&gt;
+  &lt;li&gt;ImageDrawRegions&lt;/li&gt;
+  &lt;li&gt;ImageToPdf&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’. The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;pdf_deid_multi_model_context_pipeline&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) Model Information Model Name: pdf_deid_multi_model_context_pipeline Type: pipeline Compatibility: Healthcare NLP 6.0.0+ License: Licensed Edition: Official Language: en Size: 4.4 GB Included Models PdfToImage ImageToText DocumentAssembler SentenceDetectorDLModel Regex WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel EntityExtractor ContextualParserModel RegexMatcher ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcher ChunkMergeModel ChunkMergeModel XLMRobertaEmbeddings MedicalNerModel NerConverter PretrainedZeroShotNER NerConverter PretrainedZeroShotNER NerConverter ChunkMergeModel PositionFinder ImageDrawRegions ImageToPdf</summary></entry><entry><title type="html">PDF Obfuscation Multi Model</title><link href="/2025/05/09/pdf_obfuscation_multi_model_context_pipeline.html" rel="alternate" type="text/html" title="PDF Obfuscation Multi Model" /><published>2025-05-09T00:00:00+00:00</published><updated>2025-05-09T00:00:00+00:00</updated><id>/2025/05/09/pdf_obfuscation_multi_model_context_pipeline</id><content type="html" xml:base="/2025/05/09/pdf_obfuscation_multi_model_context_pipeline.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’.
+The output is a PDF document, similar to the one at the input, but with fake obfuscated text on top of the targeted entities.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pdf_obfuscation_multi_model_context_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/ocr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;pdf_obfuscation_multi_model_context_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;4.4 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PdfToImage&lt;/li&gt;
+  &lt;li&gt;ImageToText&lt;/li&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;Regex&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;EntityExtractor&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcher&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcher&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;XLMRobertaEmbeddings&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;PretrainedZeroShotNER&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;PretrainedZeroShotNER&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;PositionFinder&lt;/li&gt;
+  &lt;li&gt;ImageDrawRegions&lt;/li&gt;
+  &lt;li&gt;ImageToPdf&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’. The output is a PDF document, similar to the one at the input, but with fake obfuscated text on top of the targeted entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;pdf_obfuscation_multi_model_context_pipeline&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) Model Information Model Name: pdf_obfuscation_multi_model_context_pipeline Type: pipeline Compatibility: Healthcare NLP 6.0.0+ License: Licensed Edition: Official Language: en Size: 4.4 GB Included Models PdfToImage ImageToText DocumentAssembler SentenceDetectorDLModel Regex WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel EntityExtractor ContextualParserModel RegexMatcher ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcher ChunkMergeModel ChunkMergeModel XLMRobertaEmbeddings MedicalNerModel NerConverter PretrainedZeroShotNER NerConverter PretrainedZeroShotNER NerConverter ChunkMergeModel PositionFinder ImageDrawRegions ImageToPdf</summary></entry><entry><title type="html">Mapping Phenotype Entities with Corresponding HPO Codes (Pretrained Pipeline)</title><link href="/2025/05/02/hpo_mapper_pipeline_en.html" rel="alternate" type="text/html" title="Mapping Phenotype Entities with Corresponding HPO Codes (Pretrained Pipeline)" /><published>2025-05-02T00:00:00+00:00</published><updated>2025-05-02T00:00:00+00:00</updated><id>/2025/05/02/hpo_mapper_pipeline_en</id><content type="html" xml:base="/2025/05/02/hpo_mapper_pipeline_en.html">## Description
 
 This pipeline is designed to map extracted phenotype entities from clinical or biomedical text to their corresponding Human Phenotype Ontology (HPO) codes. It ensures that observed symptoms, signs, and clinical abnormalities are standardized using HPO terminology.
 
@@ -1297,302 +1483,4 @@ val result = pipeline.fit(data).transform(data)
     accuracy        -         -       0.944      5213
    macro-avg      0.933     0.941     0.937      5213
 weighted-avg      0.945     0.944     0.945      5213
-```</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="radiology" /><category term="en" /><category term="assertion" /><category term="classification" /><category term="tensorflow" /><summary type="html">Description Assign assertion status to clinical entities. Predicted Entities Confirmed, Suspected, Negative Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols(&quot;document&quot;)\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(False) ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setWhiteList([&quot;PROBLEM&quot;]) assertion_classifier = BertForAssertionClassification.pretrained(&quot;assertion_bert_classification_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;])\ .setOutputCol(&quot;assertion_class&quot;) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner, ner_converter, assertion_classifier ]) text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) # show results result.selectExpr(&quot;explode(assertion_class) as result&quot;)\ .selectExpr(&quot;result.metadata['ner_chunk'] as ner_chunk&quot;, &quot;result.begin as begin&quot;, &quot;result.begin as end&quot;, &quot;result.metadata['ner_label'] as ner_chunk&quot;, &quot;result.result as assertion&quot;).show(truncate=False) # Test classifier in Spark NLP pipeline document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols(&quot;document&quot;)\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(False) ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setWhiteList([&quot;PROBLEM&quot;]) assertion_classifier = medical.BertForAssertionClassification.pretrained(&quot;assertion_bert_classification_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;])\ .setOutputCol(&quot;assertion_class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner, ner_converter, assertion_classifier ]) text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) # show results result.selectExpr(&quot;explode(assertion_class) as result&quot;)\ .selectExpr(&quot;result.metadata['ner_chunk'] as ner_chunk&quot;, &quot;result.begin as begin&quot;, &quot;result.begin as end&quot;, &quot;result.metadata['ner_label'] as ner_chunk&quot;, &quot;result.result as assertion&quot;).show(truncate=False) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = new SentenceDetector() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentences&quot;) .setOutputCol(&quot;token&quot;) val embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) .setCaseSensitive(False) val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) .setWhiteList(Array(&quot;PROBLEM&quot;)) val assertion_classifier = BertForAssertionClassification.pretrained(&quot;assertion_bert_classification_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;ner_chunk&quot;)) .setOutputCol(&quot;assertion_class&quot;) val pipeline = new Pipeline().setStages( Array( document_assembler, sentence_detector, tokenizer, embeddings, ner, ner_converter, assertion_classifier )) val text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer. &quot;&quot;&quot; val data = Seq(Array(text)).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results | | ner_chunk | begin | end | ner_chunk | assertion | |---:|:----------------|--------:|------:|:------------|:------------| | 0 | severe fever | 13 | 13 | PROBLEM | Confirmed | | 1 | sore throat | 30 | 30 | PROBLEM | Confirmed | | 2 | stomach pain | 55 | 55 | PROBLEM | Negative | | 3 | pain control | 113 | 113 | PROBLEM | Confirmed | | 4 | short of breath | 142 | 142 | PROBLEM | Confirmed | | 5 | lung tumor | 202 | 202 | PROBLEM | Confirmed | | 6 | Alzheimer | 258 | 258 | PROBLEM | Confirmed | Model Information Model Name: assertion_bert_classification_radiology Compatibility: Healthcare NLP 5.5.3+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [assertion_class] Language: en Size: 406.2 MB Case sensitive: true Benchmarking label precision recall f1-score support Confirmed 0.966 0.955 0.960 3519 Negative 0.967 0.977 0.972 605 Suspected 0.866 0.893 0.879 1089 accuracy - - 0.944 5213 macro-avg 0.933 0.941 0.937 5213 weighted-avg 0.945 0.944 0.945 5213</summary></entry><entry><title type="html">Clinical Deidentification Pipeline (Document Wise - Benchmark)</title><link href="/2025/04/10/clinical_deidentification_docwise_benchmark_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline (Document Wise - Benchmark)" /><published>2025-04-10T00:00:00+00:00</published><updated>2025-04-10T00:00:00+00:00</updated><id>/2025/04/10/clinical_deidentification_docwise_benchmark_en</id><content type="html" xml:base="/2025/04/10/clinical_deidentification_docwise_benchmark_en.html">## Description
-
-This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `NAME`, `IDNUM`, `CONTACT`, `LOCATION`, `AGE`, `DATE` entities.
-**This pipeline is prepared for benchmarking with cloud providers.**
-
-## Predicted Entities
-
-`NAME`, `IDNUM`, `CONTACT`, `LOCATION`, `AGE`, `DATE`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.3_3.0_1744313407180.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.3_3.0_1744313407180.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;)               
-
-deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;)
-
-print(''.join([i.result for i in deid_result['mask_entity']]))
-print(''.join([i.result for i in deid_result['obfuscated']]))
-
-```
-
-{:.jsl-block}
-```python
-
-deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;)               
-
-deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;)
-
-print(''.join([i.result for i in deid_result['mask_entity']]))
-print(''.join([i.result for i in deid_result['obfuscated']]))
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;)               
-
-val deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;)
-
-println(deid_result(&quot;mask_entity&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;))
-println(deid_result(&quot;obfuscated&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;))
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-Masked with entity labels
-------------------------------
-Name : &lt;NAME&gt;, Record date: &lt;DATE&gt;, # &lt;IDNUM&gt;.
-Dr. &lt;NAME&gt;, ID: &lt;IDNUM&gt;, IP &lt;IDNUM&gt;.
-He is a &lt;AGE&gt; male was admitted to the &lt;LOCATION&gt; for cystectomy on &lt;DATE&gt;.
-Patient's VIN : &lt;IDNUM&gt;, SSN &lt;IDNUM&gt;, Driver's license &lt;IDNUM&gt;.
-Phone &lt;CONTACT&gt;, &lt;LOCATION&gt;, &lt;LOCATION&gt;, E-MAIL: &lt;CONTACT&gt;.
-
-
-Obfuscated
-------------------------------
-Name : Lawson Prey, Record date: 2093-02-13, # 931857.
-Dr. May Sparks, ID: 6986066538, IP 089.708.009.79.
-He is a 70-year-old male was admitted to the 2190 Hwy 85 N for cystectomy on 02/13/93.
-Patient's VIN : 9LWRL49JVQN907286, SSN #222-55-7777, Driver's license YZ:Z447766W.
-Phone (091) 475-2114, 506 Lenox Avenue, 13111 N Port Washington Rd, E-MAIL: KYUPT@EYCUX.AWY.
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|clinical_deidentification_docwise_benchmark|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.5.3+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.5 GB|
-
-## Included Models
-
-- DocumentAssembler
-- InternalDocumentSplitter
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- MedicalNerModel
-- MedicalNerModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- PretrainedZeroShotNER
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ContextualEntityRuler
-- ChunkMergeModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel
-- ContextualEntityRuler
-- ChunkMergeModel
-- LightDeIdentification
-- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="deidentification" /><category term="deid" /><category term="pipeline" /><category term="clinical" /><category term="docwise" /><category term="benchmark" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate NAME, IDNUM, CONTACT, LOCATION, AGE, DATE entities. This pipeline is prepared for benchmarking with cloud providers. Predicted Entities NAME, IDNUM, CONTACT, LOCATION, AGE, DATE Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;) deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;) print(''.join([i.result for i in deid_result['mask_entity']])) print(''.join([i.result for i in deid_result['obfuscated']])) deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;) deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;) print(''.join([i.result for i in deid_result['mask_entity']])) print(''.join([i.result for i in deid_result['obfuscated']])) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;) println(deid_result(&quot;mask_entity&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;)) println(deid_result(&quot;obfuscated&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;)) Results Masked with entity labels ------------------------------ Name : &amp;lt;NAME&amp;gt;, Record date: &amp;lt;DATE&amp;gt;, # &amp;lt;IDNUM&amp;gt;. Dr. &amp;lt;NAME&amp;gt;, ID: &amp;lt;IDNUM&amp;gt;, IP &amp;lt;IDNUM&amp;gt;. He is a &amp;lt;AGE&amp;gt; male was admitted to the &amp;lt;LOCATION&amp;gt; for cystectomy on &amp;lt;DATE&amp;gt;. Patient's VIN : &amp;lt;IDNUM&amp;gt;, SSN &amp;lt;IDNUM&amp;gt;, Driver's license &amp;lt;IDNUM&amp;gt;. Phone &amp;lt;CONTACT&amp;gt;, &amp;lt;LOCATION&amp;gt;, &amp;lt;LOCATION&amp;gt;, E-MAIL: &amp;lt;CONTACT&amp;gt;. Obfuscated ------------------------------ Name : Lawson Prey, Record date: 2093-02-13, # 931857. Dr. May Sparks, ID: 6986066538, IP 089.708.009.79. He is a 70-year-old male was admitted to the 2190 Hwy 85 N for cystectomy on 02/13/93. Patient's VIN : 9LWRL49JVQN907286, SSN #222-55-7777, Driver's license YZ:Z447766W. Phone (091) 475-2114, 506 Lenox Avenue, 13111 N Port Washington Rd, E-MAIL: KYUPT@EYCUX.AWY. Model Information Model Name: clinical_deidentification_docwise_benchmark Type: pipeline Compatibility: Healthcare NLP 5.5.3+ License: Licensed Edition: Official Language: en Size: 2.5 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel MedicalNerModel MedicalNerModel NerConverterInternalModel NerConverterInternalModel NerConverterInternalModel PretrainedZeroShotNER NerConverterInternalModel MedicalNerModel NerConverterInternalModel ContextualEntityRuler ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel ContextualEntityRuler ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline (Document Wise - Benchmark)</title><link href="/2025/04/09/clinical_deidentification_docwise_benchmark_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline (Document Wise - Benchmark)" /><published>2025-04-09T00:00:00+00:00</published><updated>2025-04-09T00:00:00+00:00</updated><id>/2025/04/09/clinical_deidentification_docwise_benchmark_en</id><content type="html" xml:base="/2025/04/09/clinical_deidentification_docwise_benchmark_en.html">## Description
-
-This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `NAME`, `IDNUM`, `CONTACT`, `LOCATION`, `AGE`, `DATE` entities.
-**This pipeline is prepared for benchmarking with cloud providers.**
-
-## Predicted Entities
-
-`NAME`, `IDNUM`, `CONTACT`, `LOCATION`, `AGE`, `DATE`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.3_3.2_1744216540757.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_en_5.5.3_3.2_1744216540757.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;)               
-
-deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;)
-
-print(''.join([i.result for i in deid_result['mask_entity']]))
-print(''.join([i.result for i in deid_result['obfuscated']]))
-
-```
-
-{:.jsl-block}
-```python
-
-deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;)               
-
-deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;)
-
-print(''.join([i.result for i in deid_result['mask_entity']]))
-print(''.join([i.result for i in deid_result['obfuscated']]))
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;)               
-
-val deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;)
-
-println(deid_result(&quot;mask_entity&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;))
-println(deid_result(&quot;obfuscated&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;))
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-Masked with entity labels
-------------------------------
-Name : &lt;NAME&gt;, Record date: &lt;DATE&gt;, # &lt;IDNUM&gt;.
-Dr. &lt;NAME&gt;, ID: &lt;IDNUM&gt;, IP &lt;IDNUM&gt;.
-He is a &lt;AGE&gt; male was admitted to the &lt;LOCATION&gt; for cystectomy on &lt;DATE&gt;.
-Patient's VIN : &lt;IDNUM&gt;, SSN &lt;IDNUM&gt;, Driver's license &lt;IDNUM&gt;.
-Phone &lt;CONTACT&gt;, &lt;LOCATION&gt;, &lt;LOCATION&gt;, E-MAIL: &lt;CONTACT&gt;.
-
-
-Obfuscated
-------------------------------
-Name : Lawson Prey, Record date: 2093-02-13, # 931857.
-Dr. May Sparks, ID: 6986066538, IP 089.708.009.79.
-He is a 70-year-old male was admitted to the 2190 Hwy 85 N for cystectomy on 02/13/93.
-Patient's VIN : 9LWRL49JVQN907286, SSN #222-55-7777, Driver's license YZ:Z447766W.
-Phone (091) 475-2114, 506 Lenox Avenue, 13111 N Port Washington Rd, E-MAIL: KYUPT@EYCUX.AWY.
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|clinical_deidentification_docwise_benchmark|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.5.3+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.5 GB|
-
-## Included Models
-
-- DocumentAssembler
-- InternalDocumentSplitter
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- MedicalNerModel
-- MedicalNerModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- PretrainedZeroShotNER
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ContextualEntityRuler
-- ChunkMergeModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- TextMatcherInternalModel
-- TextMatcherInternalModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcherInternalModel
-- RegexMatcherInternalModel
-- ChunkMergeModel
-- ChunkMergeModel
-- ContextualEntityRuler
-- ChunkMergeModel
-- LightDeIdentification
-- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="deidentification" /><category term="deid" /><category term="pipeline" /><category term="clinical" /><category term="docwise" /><category term="benchmark" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate NAME, IDNUM, CONTACT, LOCATION, AGE, DATE entities. This pipeline is prepared for benchmarking with cloud providers. Predicted Entities NAME, IDNUM, CONTACT, LOCATION, AGE, DATE Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;) deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;) print(''.join([i.result for i in deid_result['mask_entity']])) print(''.join([i.result for i in deid_result['obfuscated']])) deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;) deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;) print(''.join([i.result for i in deid_result['mask_entity']])) print(''.join([i.result for i in deid_result['obfuscated']])) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val deid_result = deid_pipeline.fullAnnotate(&quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, Keats Street, San Francisco, E-MAIL: smith@gmail.com.&quot;&quot;&quot;) println(deid_result(&quot;mask_entity&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;)) println(deid_result(&quot;obfuscated&quot;).map(_(&quot;result&quot;).toString).mkString(&quot;&quot;)) Results Masked with entity labels ------------------------------ Name : &amp;lt;NAME&amp;gt;, Record date: &amp;lt;DATE&amp;gt;, # &amp;lt;IDNUM&amp;gt;. Dr. &amp;lt;NAME&amp;gt;, ID: &amp;lt;IDNUM&amp;gt;, IP &amp;lt;IDNUM&amp;gt;. He is a &amp;lt;AGE&amp;gt; male was admitted to the &amp;lt;LOCATION&amp;gt; for cystectomy on &amp;lt;DATE&amp;gt;. Patient's VIN : &amp;lt;IDNUM&amp;gt;, SSN &amp;lt;IDNUM&amp;gt;, Driver's license &amp;lt;IDNUM&amp;gt;. Phone &amp;lt;CONTACT&amp;gt;, &amp;lt;LOCATION&amp;gt;, &amp;lt;LOCATION&amp;gt;, E-MAIL: &amp;lt;CONTACT&amp;gt;. Obfuscated ------------------------------ Name : Lawson Prey, Record date: 2093-02-13, # 931857. Dr. May Sparks, ID: 6986066538, IP 089.708.009.79. He is a 70-year-old male was admitted to the 2190 Hwy 85 N for cystectomy on 02/13/93. Patient's VIN : 9LWRL49JVQN907286, SSN #222-55-7777, Driver's license YZ:Z447766W. Phone (091) 475-2114, 506 Lenox Avenue, 13111 N Port Washington Rd, E-MAIL: KYUPT@EYCUX.AWY. Model Information Model Name: clinical_deidentification_docwise_benchmark Type: pipeline Compatibility: Healthcare NLP 5.5.3+ License: Licensed Edition: Official Language: en Size: 2.5 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel MedicalNerModel MedicalNerModel NerConverterInternalModel NerConverterInternalModel NerConverterInternalModel PretrainedZeroShotNER NerConverterInternalModel MedicalNerModel NerConverterInternalModel ContextualEntityRuler ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ChunkMergeModel ChunkMergeModel ContextualEntityRuler ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry></feed>
+```</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="radiology" /><category term="en" /><category term="assertion" /><category term="classification" /><category term="tensorflow" /><summary type="html">Description Assign assertion status to clinical entities. Predicted Entities Confirmed, Suspected, Negative Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols(&quot;document&quot;)\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(False) ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setWhiteList([&quot;PROBLEM&quot;]) assertion_classifier = BertForAssertionClassification.pretrained(&quot;assertion_bert_classification_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;])\ .setOutputCol(&quot;assertion_class&quot;) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner, ner_converter, assertion_classifier ]) text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) # show results result.selectExpr(&quot;explode(assertion_class) as result&quot;)\ .selectExpr(&quot;result.metadata['ner_chunk'] as ner_chunk&quot;, &quot;result.begin as begin&quot;, &quot;result.begin as end&quot;, &quot;result.metadata['ner_label'] as ner_chunk&quot;, &quot;result.result as assertion&quot;).show(truncate=False) # Test classifier in Spark NLP pipeline document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols(&quot;document&quot;)\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;sentence&quot;]) \ .setOutputCol(&quot;token&quot;) embeddings = nlp.WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;)\ .setCaseSensitive(False) ner = medical.NerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setWhiteList([&quot;PROBLEM&quot;]) assertion_classifier = medical.BertForAssertionClassification.pretrained(&quot;assertion_bert_classification_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;ner_chunk&quot;])\ .setOutputCol(&quot;assertion_class&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, embeddings, ner, ner_converter, assertion_classifier ]) text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) # show results result.selectExpr(&quot;explode(assertion_class) as result&quot;)\ .selectExpr(&quot;result.metadata['ner_chunk'] as ner_chunk&quot;, &quot;result.begin as begin&quot;, &quot;result.begin as end&quot;, &quot;result.metadata['ner_label'] as ner_chunk&quot;, &quot;result.result as assertion&quot;).show(truncate=False) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = new SentenceDetector() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentences&quot;) .setOutputCol(&quot;token&quot;) val embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) .setCaseSensitive(False) val ner = MedicalNerModel.pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner&quot;) val ner_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) .setWhiteList(Array(&quot;PROBLEM&quot;)) val assertion_classifier = BertForAssertionClassification.pretrained(&quot;assertion_bert_classification_radiology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;ner_chunk&quot;)) .setOutputCol(&quot;assertion_class&quot;) val pipeline = new Pipeline().setStages( Array( document_assembler, sentence_detector, tokenizer, embeddings, ner, ner_converter, assertion_classifier )) val text = &quot;&quot;&quot;Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer. &quot;&quot;&quot; val data = Seq(Array(text)).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) Results | | ner_chunk | begin | end | ner_chunk | assertion | |---:|:----------------|--------:|------:|:------------|:------------| | 0 | severe fever | 13 | 13 | PROBLEM | Confirmed | | 1 | sore throat | 30 | 30 | PROBLEM | Confirmed | | 2 | stomach pain | 55 | 55 | PROBLEM | Negative | | 3 | pain control | 113 | 113 | PROBLEM | Confirmed | | 4 | short of breath | 142 | 142 | PROBLEM | Confirmed | | 5 | lung tumor | 202 | 202 | PROBLEM | Confirmed | | 6 | Alzheimer | 258 | 258 | PROBLEM | Confirmed | Model Information Model Name: assertion_bert_classification_radiology Compatibility: Healthcare NLP 5.5.3+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [assertion_class] Language: en Size: 406.2 MB Case sensitive: true Benchmarking label precision recall f1-score support Confirmed 0.966 0.955 0.960 3519 Negative 0.967 0.977 0.972 605 Suspected 0.866 0.893 0.879 1089 accuracy - - 0.944 5213 macro-avg 0.933 0.941 0.937 5213 weighted-avg 0.945 0.944 0.945 5213</summary></entry></feed>
