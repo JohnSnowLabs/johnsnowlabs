@@ -138,6 +138,7 @@ When ImageDrawRegions is used to render fake entities into the output PDFs, many
 This new version is capable of rendering the replacement fake entities across multiple lines to mimic the layout present in the original document.
 For example `Susan Frances Martin` at the top of the document is replaced by `Riccardo Chamberlain` that will spawn two separate lines.
 
+
 ![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
  
 
