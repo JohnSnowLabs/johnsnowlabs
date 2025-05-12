@@ -448,6 +448,9 @@ Behavior
 
 </div><div class="h3-box" markdown="1">
 
+**Note:** This change may lead to different fake name outputs compared to previous versions, especially for historical data. If users would like to retain the previous behavior (treating the full name as a single chunk and relying on previously generated fake names from earlier versions), they can set the corresponding configuration parameter to False.
+
+
 #### Improved Name Consistency Handling in De-Identification
 
 In this release, we have improved the way fake names are generated and assigned during the de-identification (De-ID) process. Previously, name tokens (e.g., first name and last name) were treated as a single chunk when generating a fake name. Now, each component of a name (first name, middle name, last name, etc.) is processed individually and then recombined into a full fake name.
