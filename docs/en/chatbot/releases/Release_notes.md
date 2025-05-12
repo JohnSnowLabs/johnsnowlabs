@@ -17,7 +17,7 @@ sidebar:
 
 We’re excited to announce the launch of Semantic Scholar+, that brings access to over 225+ million research articles spanning all scientific disciplines—now seamlessly integrated into the Medical Chatbot platform.
 
-The Semantic Scholar+ Knowledge Base consolidates biomedical research from trusted sources including Semantic Scholar, PubMed, MDPI, and preprint servers like medRxiv and bioRxiv. This unified, searchable repository enables the chatbot to deliver broader, richer, and more current insights in response to your queries.
+The Semantic Scholar+ Knowledge Base consolidates biomedical research from trusted sources, including Semantic Scholar, PubMed, MDPI, and preprint servers like medRxiv and bioRxiv. This unified, searchable repository enables the chatbot to deliver broader, richer, and more current insights in response to your queries.
 
 <img src= "/assets/images/chatbot/SemanticScholar+.png" alt="Composition of the Semantic Scholar + KB" style="border: 2px solid grey; width=60%">
 
@@ -38,7 +38,7 @@ This unified KB significantly broadens the chatbot’s scope, enabling its Medic
 
 Updated daily, the Semantic Scholar+ KB ensures that even the most recent publications—whether a newly released PubMed article or the latest medRxiv preprint—are included. This continuous refresh keeps the chatbot aligned with the fast pace of medical research, eliminating the need for users to manually track multiple sources.
 
-When you ask a question or perform a literature search, the chatbot automatically leverages the KB, using intelligent ranking to surface the most relevant results. Each cited paper includes source attribution (e.g., PubMed, MDPI), and integrates seamlessly with features like Quality Indicators, displaying metrics such as citation counts and journal impact where available. This provides both transparency and a richer research experience.
+When you ask a question or perform a literature search, the chatbot automatically leverages the KB, using intelligent ranking to surface the most relevant results. Each cited paper includes source attribution (e.g., PubMed, MDPI) and integrates seamlessly with features like Quality Indicators, displaying metrics such as citation counts and journal impact where available. This provides both transparency and a richer research experience.
 
 
 
@@ -54,10 +54,13 @@ Through this combination of broad coverage and flexible filtering, the Medical C
 
 ### User Benefits
 
-1.**Comprehensive, Current Knowledge**: By aggregating multiple reputable databases and updating them daily, the chatbot ensures you are accessing a wide breadth of the latest medical research. This comprehensive coverage means important studies are less likely to be overlooked, and you can trust that your answers and literature reviews include the most up-to-date evidence available.
-2.**Precision and Control**: The ability to filter search results by source gives you fine-grained control to tailor the information to your needs. Whether you want to focus on established peer-reviewed articles for clinical decision support or include preliminary findings from preprints for research brainstorming, you can easily adjust the scope. This precision leads to more relevant results and allows different users (e.g. clinicians vs. academic researchers) to customize their experience for maximum relevance.
-3.**Increased Efficiency**: Combining multiple research sources into one platform streamlines your workflow. Rather than manually searching across PubMed, then checking preprint servers or publisher websites separately, you can obtain integrated results in a single query. Both the interactive chat and the literature review tool leverage the same comprehensive knowledge base, so you save time and effort. This efficiency enables faster literature reviews, quicker answers to pressing medical questions, and more time for analysis and decision-making instead of search logistics.
-4.**Enhanced Confidence in Results**: With sources clearly indicated and drawn from well-recognized academic and clinical repositories, you can have greater trust in the information provided by the Medical Chatbot. Knowing exactly where data is coming from (for example, a top-tier journal versus a preprint server) helps you gauge the reliability and context of the findings. This transparency and the inclusion of credible sources bolster the academic rigor of your research process and support evidence-based decisions, whether in patient care or scholarly work.
+**1. Comprehensive, Current Knowledge:** By aggregating multiple reputable databases and updating them daily, the chatbot ensures you are accessing a wide breadth of the latest medical research. This comprehensive coverage means important studies are less likely to be overlooked, and you can trust that your answers and literature reviews include the most up-to-date evidence available.
+
+**2. Precision and Control:** The ability to filter search results by source gives you fine-grained control to tailor the information to your needs. Whether you want to focus on established peer-reviewed articles for clinical decision support or include preliminary findings from preprints for research brainstorming, you can easily adjust the scope. This precision leads to more relevant results and allows different users (e.g., clinicians vs. academic researchers) to customize their experience for maximum relevance.
+
+**3. Increased Efficiency:** Combining multiple research sources into one platform streamlines your workflow. Rather than manually searching across PubMed, then checking preprint servers or publisher websites separately, you can obtain integrated results in a single query. Both the interactive chat and the literature review tool leverage the same comprehensive knowledge base, so you save time and effort. This efficiency enables faster literature reviews, quicker answers to pressing medical questions, and more time for analysis and decision-making instead of search logistics.
+
+**4. Enhanced Confidence in Results:** With sources clearly indicated and drawn from well-recognized academic and clinical repositories, you can have greater trust in the information provided by the Medical Chatbot. Knowing exactly where data is coming from (for example, a top-tier journal versus a preprint server) helps you gauge the reliability and context of the findings. This transparency and the inclusion of credible sources bolster the academic rigor of your research process and support evidence-based decisions, whether in patient care or scholarly work.
 
 Each of these benefits contributes to a more powerful and user-aligned experience. The Semantic Scholar+ integration and source filters were developed in response to the needs of research professionals, clinicians, and scholars who require both breadth and depth in information gathering. We believe these updates will significantly enhance your ability to discover relevant literature, stay current with new developments, and ultimately drive more informed outcomes in your work. Enjoy exploring the new features, and as always, we welcome feedback on how these improvements support your medical research and practice.
 
@@ -65,7 +68,7 @@ Each of these benefits contributes to a more powerful and user-aligned experienc
 
 ## 24-04-2025 New Features and Enhancements
 
-This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count, journal impact, journal rank to help you quickly assess the credibility and impact of your sources.
+This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count, journal impact, and journal rank to help you quickly assess the credibility and impact of your sources.
 
 To further enhance research clarity, we’ve introduced a **Numbered Reference Style**, making citation management more straightforward and improving the readability of your outputs.
 
