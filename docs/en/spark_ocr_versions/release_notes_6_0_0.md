@@ -138,10 +138,8 @@ When ImageDrawRegions is used to render fake entities into the output PDFs, many
 This new version is capable of rendering the replacement fake entities across multiple lines to mimic the layout present in the original document.
 For example `Susan Frances Martin` at the top of the document is replaced by `Riccardo Chamberlain` that will spawn two separate lines.
 
-<img width="1104" alt="image" src="https://github.com/user-attachments/assets/e0fc7d90-0427-43c6-910a-e22cd8fdd828" />
 
-![Improved logic in multi-line.](/assets/images/ocr/multi-line_impainting.png)
-
+![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
  
 
 This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.
