@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_6_0_0
 key: docs-ocr-release-notes
 modify_date: "2025-05-09"
 show_nav: true
@@ -138,8 +138,9 @@ When ImageDrawRegions is used to render fake entities into the output PDFs, many
 This new version is capable of rendering the replacement fake entities across multiple lines to mimic the layout present in the original document.
 For example `Susan Frances Martin` at the top of the document is replaced by `Riccardo Chamberlain` that will spawn two separate lines.
 
-![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
 
+![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
+ 
 
 This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.
 
