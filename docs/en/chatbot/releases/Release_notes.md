@@ -5,7 +5,7 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2025-05-12"
+modify_date: "2025-05-13"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
@@ -18,9 +18,9 @@ sidebar:
 We’re excited to announce the launch of Semantic Scholar+, that brings access to over 225+ million research articles spanning all scientific disciplines—now seamlessly integrated into the Medical Chatbot platform.
 
 The Semantic Scholar+ Knowledge Base consolidates biomedical research from trusted sources, including Semantic Scholar, PubMed, MDPI, and preprint servers like medRxiv and bioRxiv. This unified, searchable repository enables the chatbot to deliver broader, richer, and more current insights in response to your queries.
-
-<img src= "/assets/images/chatbot/SemanticScholar+.png" alt="Composition of the Semantic Scholar + KB" style="border: 2px solid grey; width=60%">
-
+<div style="text-align: center;">
+<img src= "/assets/images/chatbot/SemanticScholar+.png" alt="Composition of the Semantic Scholar + KB" style="border: 1px solid grey; width:80%">
+</div>
 To complement this expanded knowledge base, we’ve kept and improved the source-based filtering — a feature that lets you narrow your searches by specific publication sources. Whether you’re looking for peer-reviewed articles from PubMed or early findings from medRxiv, you can now customize your search scope with just a few clicks.
 
 These enhancements are fully integrated into both the Medical Research Agent (optimized for conversational medical queries) and the Literature Review Agent (designed for in-depth literature discovery), providing a consistent and efficient research experience across use cases.
@@ -40,8 +40,11 @@ Updated daily, the Semantic Scholar+ KB ensures that even the most recent public
 
 When you ask a question or perform a literature search, the chatbot automatically leverages the KB, using intelligent ranking to surface the most relevant results. Each cited paper includes source attribution (e.g., PubMed, MDPI) and integrates seamlessly with features like Quality Indicators, displaying metrics such as citation counts and journal impact where available. This provides both transparency and a richer research experience.
 
-
-
+#### Source Indication on the Reference Popup
+Each article citation displayed by the chatbot includes a reference popup that visually indicates its source using distinct icons. These source-specific icons—representing platforms such as PubMed, Semantic Scholar, MDPI, medRxiv, and bioRxiv—are shown directly within the popup, making it easy to quickly identify where a cited study originated. This visual cue supports at-a-glance recognition of trusted sources and reinforces transparency in citation provenance.
+<div style="text-align: center;">
+<img src= "/assets/images/chatbot/Source Icon on the Reference Popup.png" alt="Composition of the Semantic Scholar + KB" style="border: 1px solid grey; width:60%;">
+</div>
 #### Source-Based Filtering for Article Searches
 
 The platform supports precise source-based filtering, allowing users to customize literature searches by selecting specific publication channels. Within the Literature Review Agent interface, you can include or exclude sources like Semantic Scholar, PubMed, MDPI, medRxiv, and bioRxiv to align results with the needs of your research.
