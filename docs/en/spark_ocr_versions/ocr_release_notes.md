@@ -31,6 +31,7 @@ Release date: 09-05-2025
 * New Reference dataset for De-identification.
 * New NerOutputCleaner transformer.
 * ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.
+* BinaryToImage: added support for multipage tif files.
 
 </div><div class="h3-box" markdown="1">
 ## New SVS Image Deidentification capabilities.
@@ -140,6 +141,8 @@ For example `Susan Frances Martin` at the top of the document is replaced by `Ri
 
 ![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
 
+## BinaryToImage support of multi-page tiff files
+Now BinaryToImage transformer supports multi-page tiff files. For multi-page tiff files, multiple pages are splitted into separate images. No specific configurations are required.
 
 This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.
 
