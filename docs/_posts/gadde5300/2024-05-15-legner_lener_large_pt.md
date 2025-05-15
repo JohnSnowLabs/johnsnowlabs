@@ -226,4 +226,4 @@ result = pipeline.fit(example).transform(example)
 
 ## References
 
-Original texts available in https://paperswithcode.com/sota?task=Token+Classification&dataset=lener_br and in-house data augmentation with weak labelling
+Original texts available in https://paperswithcode.com/sota?task=Token+Classification&dataset=lener_br and in-house data augmentation with weak labelling.
