@@ -648,6 +648,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>New Reference dataset for De-identification.</li>
     <li>New NerOutputCleaner transformer.</li>
     <li>ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.</li>
+    <li>BinaryToImage: added support for multipage tif files.</li>
   </ul>
 
 </div>
@@ -765,6 +766,9 @@ This new version is capable of rendering the replacement fake entities across mu
 For example <code class="language-plaintext highlighter-rouge">Susan Frances Martin</code> at the top of the document is replaced by <code class="language-plaintext highlighter-rouge">Riccardo Chamberlain</code> that will spawn two separate lines.</p>
 
   <p><img src="/assets/images/multi-line_impainting.png" alt="Improved logic in multi-line." /></p>
+
+  <h2 id="binarytoimage-support-of-multi-page-tiff-files">BinaryToImage support of multi-page tiff files</h2>
+  <p>Now BinaryToImage transformer supports multi-page tiff files. For multi-page tiff files, multiple pages are splitted into separate images. No specific configurations are required.</p>
 
   <p>This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.</p>
 
