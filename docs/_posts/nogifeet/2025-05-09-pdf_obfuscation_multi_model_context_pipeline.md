@@ -1,6 +1,6 @@
 ---
 layout: model
-title: PDF Obfuscation Multi Model
+title: PDF Obfuscation Multi Model Context
 author: John Snow Labs
 name: pdf_obfuscation_multi_model_context_pipeline
 date: 2025-05-09
