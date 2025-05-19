@@ -20,7 +20,7 @@ Our models are designed to deliver best-in-class performance across a wide range
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
-| Medical-LLM-7B             | 7B         | ~25 GB       | 16K                 | 14 GB      | 11 GB        | 1, 2, 4              |
+| Medical-LLM-7B             | 7B         | ~25 GB       | 32K                 | 14 GB      | 11 GB        | 1, 2, 4              |
 | Medical-LLM-10B            | 10B        | ~35 GB       | 32K                 | 19 GB      | 15 GB        | 1, 2, 4              |
 | Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
 | Medical-LLM-24B            | 24B        | ~69 GB       | 32K                 | 44 GB      | 25 GB        | 1, 2, 4, 8           |
