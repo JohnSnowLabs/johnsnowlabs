@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-# 🧠 Interactive Healthcare NLP Wiki
+### 🧠 Interactive Healthcare NLP Wiki
 
 Explore comprehensive, AI-generated documentation for the **John Snow Labs Healthcare NLP** library and **Healthcare NLP Workshop** repositories. This interactive resource offers:
 
@@ -27,7 +27,7 @@ Whether you're a **developer**, **researcher**, or **learner**, this Wiki tool m
 
 ---
 
-## 🔗 Quick Access
+### 🔗 Quick Access
 
 - 📚 **[John Snow Labs NLP Documentation](https://jsl-wiki.johnsnowlabs.app/)**  
   Explore product-specific guides, API references, architecture, solutions, and more.
@@ -37,7 +37,7 @@ Whether you're a **developer**, **researcher**, or **learner**, this Wiki tool m
 
 ---
 
-## 💡 Example Questions You Can Ask
+### 💡 Example Questions You Can Ask
 
 Use the interactive assistant to explore topics deeply:
 
@@ -52,7 +52,7 @@ Use the interactive assistant to explore topics deeply:
 
 ---
 
-## 🚀 Start Exploring
+### 🚀 Start Exploring
 
 Make the most of the Healthcare NLP ecosystem — from learning and experimenting to scaling real-world applications with the power of AI.
 
