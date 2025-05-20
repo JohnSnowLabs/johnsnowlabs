@@ -19,7 +19,7 @@ We are excited to announce the addition of two new powerful models to our Medica
 
 - **Medical-VLM-24B**: A 24B parameter vision-language model that combines medical expertise with visual comprehension capabilities. This model excels at processing both medical images (X-rays, MRIs, pathology slides) and text, enabling comprehensive analysis of visual and textual medical data.
 
-Get mode information about the **Medical-VLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
+Get more information about the **Medical-VLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
 
 - **Spanish-Medical-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
 
