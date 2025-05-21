@@ -269,6 +269,8 @@ sparknlp-healthcare:
         url: /docs/en/best_practices_pretrained_models
       - title: Release Notes 
         url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+      - title: Interactive Healthcare NLP Wiki
+        url: /docs/en/interactive-healthcare-nlp-wiki
       - title: Healthcare Models
         url: /models?edition=Spark+NLP+for+Healthcare
       - title: Version Compatibility
