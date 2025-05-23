@@ -1,9 +1,9 @@
 ---
 layout: model
-title: PDF Obfuscation Multi Model Context
+title: PDF Deidentification Multi Model Context Signature Aware
 author: John Snow Labs
-name: pdf_obfuscation_multi_model_context_pipeline
-date: 2025-05-09
+name: pdf_deid_multi_model_context_signature_aware_pipeline
+date: 2025-05-23
 tags: [en, licensed]
 task: De-identification
 language: en
@@ -19,13 +19,13 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This pipeline can be used to mask PHI information in PDFs. Masked entities include 'AGE', 'CITY', 'COUNTRY', 'DATE', 'DOCTOR', 'EMAIL', 'HOSPITAL', 'IDNUM', 'ORGANIZATION', 'PATIENT', 'PHONE', 'PROFESSION', 'STATE', 'STREET', 'USERNAME', 'ZIP'.
-The output is a PDF document, similar to the one at the input, but with fake obfuscated text on top of the targeted entities. 
+The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities, also includes removing signatures.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_signature_aware_pipeline_en_6.0.0_3.0_1747909126000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_signature_aware_pipeline_en_6.0.0_3.0_1747909126000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -33,7 +33,7 @@ The output is a PDF document, similar to the one at the input, but with fake obf
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
-deid_pipeline = PretrainedPipeline("pdf_obfuscation_multi_model_context_pipeline", "en", "clinical/ocr")
+deid_pipeline = PretrainedPipeline("pdf_deid_multi_model_context_signature_aware_pipeline", "en", "clinical/ocr")
 ```
 
 </div>
@@ -43,13 +43,13 @@ deid_pipeline = PretrainedPipeline("pdf_obfuscation_multi_model_context_pipeline
 
 {:.table-model}
 |---|---|
-|Model Name:|pdf_obfuscation_multi_model_context_pipeline|
+|Model Name:|pdf_deid_multi_model_context_signature_aware_pipeline|
 |Type:|pipeline|
 |Compatibility:|Healthcare NLP 6.0.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|4.4 GB|
+|Size:|4.7 GB|
 
 ## Included Models
 
@@ -86,5 +86,7 @@ deid_pipeline = PretrainedPipeline("pdf_obfuscation_multi_model_context_pipeline
 - NerConverter
 - ChunkMergeModel
 - PositionFinder
+- ImageDrawRegions
+- HW_Signature_Detector
 - ImageDrawRegions
 - ImageToPdf 
