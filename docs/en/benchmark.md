@@ -107,7 +107,7 @@ nlpPipeline = Pipeline(stages=[
     - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 1
     - Input Data Count: 1000
 
-{:.table-model-big.db}
+{:.table-model-big}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
 |-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
 | write_parquet   |     4     |    4 min 47 sec |    8 min 37 sec |    19 min 34 sec |     7 min 20 sec |
@@ -132,7 +132,7 @@ nlpPipeline = Pipeline(stages=[
   - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 2
   - Input Data Count: 1000
 
-{:.table-model-big.db}
+{:.table-model-big}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
 |-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
 | write_parquet   |     4     |    3 min 28 sec |     6 min 9 sec |    13 min 46 sec |     5 min 32 sec |
@@ -156,7 +156,7 @@ nlpPipeline = Pipeline(stages=[
   - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 4
   - Input Data Count: 1000
 
-{:.table-model-big.db}
+{:.table-model-big}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
 |-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
 | write_parquet   |     4     |    3 min 13 sec |    5 min 35 sec |     12 min 8 sec |     4 min 57 sec |
@@ -179,7 +179,7 @@ nlpPipeline = Pipeline(stages=[
   - Worker: Standard_D4s_v3, 4 core, 16 GB memory, total worker number: 8
   - Input Data Count: 1000
 
-{:.table-model-big.db}
+{:.table-model-big}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing |  4_NER<br>timing | NER+RE<br>timing |
 |-----------------|----------:|----------------:|----------------:|-----------------:|-----------------:|
 | write_parquet   |     4     |    3 min 24 sec |    5 min 24 sec |    16 min 50 sec |     8 min 17 sec |
@@ -203,7 +203,7 @@ nlpPipeline = Pipeline(stages=[
   - Worker: Standard_D4s_v2, 8 core, 28 GB memory, total worker number: 8
   - Input Data Count: 1000
 
-{:.table-model-big.db}
+{:.table-model-big}
 | action          | partition |  NER<br>timing  | 2_NER<br>timing | 4_NER<br>timing | NER+RE<br>timing |
 |-----------------| ---------:|----------------:|----------------:|----------------:|-----------------:|
 | write_parquet   |     4     | 1 min 36 sec    | 3 min 1 sec     | 6 min 32 sec    |  3 min 12 sec    |
@@ -334,7 +334,7 @@ nlpPipeline = Pipeline(
   - report_5: ~35.23kb
 
 
-{:.table-model-big.db}
+{:.table-model-big}
 |          |Spark NLP 4.0.0 (PySpark 3.1.2) |Spark NLP 4.2.1 (PySpark 3.3.1) |Spark NLP 4.2.1 (PySpark 3.1.2) |Spark NLP 4.2.2 (PySpark 3.1.2) |Spark NLP 4.2.2 (PySpark 3.3.1) |Spark NLP 4.2.3 (PySpark 3.3.1) |Spark NLP 4.2.3 (PySpark 3.1.2) |
 |:---------|-------------------------------:|-------------------------------:|-------------------------------:|-------------------------------:|-------------------------------:|-------------------------------:|-------------------------------:|
 | report_1 |                        2.36066 |                        3.33056 |                        2.23723 |                        2.27243 |                        2.11513 |                        2.19655 |                        2.23915 |
@@ -436,7 +436,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 8 CPU Core, 32GiB RAM (2 worker, Standard_DS3_v2)
 - AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 23 sec        | 11 sec        | 4.36 mins       | 3.02 mins       |  2.40 mins                 | 1.58 mins                  |
@@ -453,7 +453,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 16 CPU Core,64GiB RAM (4 worker, Standard_DS3_v2)
 - AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 32.5 sec      | 11 sec        | 4.19 mins       | 2.53 mins       |  2.58 mins                 | 1.48 mins                  |
@@ -468,7 +468,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
 - AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
@@ -516,7 +516,7 @@ resolver_pipeline = PipelineModel(
 
 ***Results Table***
 
-{:.table-model-big.db}
+{:.table-model-big}
 |Partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
 |--------:|------------:|---------:|------------:|--------------:|------------:|
 | 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
@@ -646,7 +646,7 @@ deid_pipeline = Pipeline().setStages([
 
 ## Processing Time by Partition Size 
 
-
+{:.table-model-big.db}
 | Pipeline Name | 4 <br> partition  | 8 <br> partition | 16 <br> partition | 32 <br> partition | 64 <br> partition | 100 <br> partition | 1000 <br> partition | Components |
 |--------------|---:|---:|----:|----:|----:|-----:|------:|------------|
 | [ner_deid_subentity_context_augmented](https://nlp.johnsnowlabs.com/2024/05/20/ner_deid_subentity_context_augmented_pipeline_en.html) | 183.57 sec | 129.89 sec | 96.08 sec | 84.43 sec | 75.41 sec | 67.59 sec | 50.10 sec | 1 NER, 1 Deidentification, 14 Rule-based NER, 1 clinical embedding, 2 chunk merger |
@@ -797,7 +797,7 @@ pipeline_base = Pipeline().setStages([
 ```
 </div><div class="h3-box" markdown="1">
 
-{:.table-model-big.db}
+{:.table-model-big}
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
 | 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec** |
