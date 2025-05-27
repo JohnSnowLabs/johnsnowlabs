@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>PDF Obfuscation Multi Model Context | pdf_obfuscation_multi_model_context_pipeline | Healthcare NLP 6.0.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>PDF Obfuscate Multilingual Name Plus | pdf_obfuscate_multilingual_name_plus | Healthcare NLP 6.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’.The output is a PDF document, similar to the one at the input,...">
-<!-- <link rel="canonical" href="/2025/05/09/pdf_obfuscation_multi_model_context_pipeline.html"> -->
-<link rel="canonical" href="/2025/05/09/pdf_obfuscation_multi_model_context_pipeline.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include ‘HOSPITAL’, ‘NAME’, ‘PATIENT’, ‘ID’,’MEDICALRECORD’, ‘IDNUM’, ‘COUNTRY’, ‘LOCATION’, ‘STREET’, ‘STATE’, ‘ZIP’, ‘CONTACT’, ‘PHONE’, ‘DATE’.The output is a PDF document, similar to the one at the input, but with fake obfuscat...">
+<!-- <link rel="canonical" href="/2025/05/17/pdf_obfuscate_multilingual_name_plus.html"> -->
+<link rel="canonical" href="/2025/05/17/pdf_obfuscate_multilingual_name_plus.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,31 +503,31 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/nogifeet/2025-05-09-pdf_obfuscation_multi_model_context_pipeline.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/nogifeet/2025-05-17-pdf_obfuscate_multilingual_name_plus.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 09, 2025</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2025-05-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>PDF Obfuscation Multi Model Context</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="PDF Obfuscation Multi Model Context"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2025-05-09T00:00:00+00:00">
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 17, 2025</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2025-05-17T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>PDF Obfuscate Multilingual Name Plus</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="PDF Obfuscate Multilingual Name Plus"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2025-05-17T00:00:00+00:00">
     <meta itemprop="keywords" content="en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’.
+<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘HOSPITAL’, ‘NAME’, ‘PATIENT’, ‘ID’,’MEDICALRECORD’, ‘IDNUM’, ‘COUNTRY’, ‘LOCATION’, ‘STREET’, ‘STATE’, ‘ZIP’, ‘CONTACT’, ‘PHONE’, ‘DATE’.
 The output is a PDF document, similar to the one at the input, but with fake obfuscated text on top of the targeted entities.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_obfuscation_multi_model_context_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_obfuscate_multilingual_name_plus"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
 </code></pre></div>  </div>
 
 </div>
@@ -538,7 +538,7 @@ The output is a PDF document, similar to the one at the input, but with fake obf
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>pdf_obfuscation_multi_model_context_pipeline</td>
+      <td>pdf_obfuscate_multilingual_name_plus</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -562,7 +562,7 @@ The output is a PDF document, similar to the one at the input, but with fake obf
     </tr>
     <tr>
       <td>Size:</td>
-      <td>4.4 GB</td>
+      <td>3.8 GB</td>
     </tr>
   </tbody>
 </table>
@@ -574,39 +574,25 @@ The output is a PDF document, similar to the one at the input, but with fake obf
   <li>ImageToText</li>
   <li>DocumentAssembler</li>
   <li>SentenceDetectorDLModel</li>
-  <li>Regex</li>
+  <li>RegexTokenizer</li>
+  <li>PretrainedZeroShotNER</li>
+  <li>NerConverter</li>
   <li>WordEmbeddingsModel</li>
   <li>MedicalNerModel</li>
   <li>NerConverter</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>EntityExtractor</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcher</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>ContextualParserModel</li>
-  <li>RegexMatcher</li>
-  <li>ChunkMergeModel</li>
-  <li>ChunkMergeModel</li>
   <li>XLMRobertaEmbeddings</li>
   <li>MedicalNerModel</li>
   <li>NerConverter</li>
-  <li>PretrainedZeroShotNER</li>
-  <li>NerConverter</li>
-  <li>PretrainedZeroShotNER</li>
-  <li>NerConverter</li>
-  <li>ChunkMergeModel</li>
+  <li>ContextualParser</li>
+  <li>ChunkConverter</li>
+  <li>Merge</li>
+  <li>DeIdentification</li>
+  <li>NerOutputCleaner</li>
   <li>PositionFinder</li>
   <li>ImageDrawRegions</li>
   <li>ImageToPdf</li>
 </ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-05-09T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-05-17T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -791,7 +777,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2025/05/09/pdf_deid_multi_model_context_pipeline.html">PDF Deidentification Multi Model Context</a></div><div class="next nav_link"><span>NEXT</span><a href="/2025/05/17/pdf_deid_multilingual_name_plus.html">PDF Deidentification Multilingual Name Plus</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2025/05/17/pdf_deid_multilingual_name_plus.html">PDF Deidentification Multilingual Name Plus</a></div><div class="next nav_link"><span>NEXT</span><a href="/2025/05/17/pdf_deid_multilingual_name_plus_signature_aware.html">PDF Deidentification Multilingual Name Plus Signature Aware</a></div></div></div>
 
 </div>
 </div>
