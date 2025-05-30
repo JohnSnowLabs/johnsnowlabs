@@ -16,8 +16,9 @@ sidebar:
 
 * Hierarchy Display - View the hierarchy of a concept, including its ancestors and descendants, to understand its context within the broader terminology structure.
 
-The following image explains how the hierarchy information is displayed when a code is clicked inside the results table:
-![Screenshot of hierarchy]()
+  The following image explains how the hierarchy information is displayed when a code is clicked inside the results table:
+
+  ![Screenshot of hierarchy](/assets/images/term_server/CodeHierarchy.png)
   
 * Context Based Search - Perform searches that consider the context of the query, allowing for more relevant results based on the specific domain or use case.
 
