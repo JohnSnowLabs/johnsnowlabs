@@ -129,7 +129,8 @@ try:
             PretrainedZeroShotNER,
             StructuredJsonConverter,
             BertForAssertionClassification,
-            FhirDeIdentification
+            FhirDeIdentification,
+            AnnotationConverter
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer
