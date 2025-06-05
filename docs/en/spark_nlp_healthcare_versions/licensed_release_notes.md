@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Healthcare NLP Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2025-06-02
+modify_date: 2025-06-05
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,7 +13,9 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.0.1
+## 6.0.2
+
+#### Highlights
 
 #### Highlights
 
@@ -248,7 +250,7 @@ de_identification_obf = DeIdentification() \
 | Original Text | Date Shift | Masked Result | Obfuscated Result |
 |---------------| ---------- |---------------|-------------------|
 | Chris Brown was discharged on 10/02/2022 | -5         | \<PATIENT> was discharged on \<DATE> | Larwance Engels was discharged on 09/27/2022 |
-| John was discharged on 03 Apr2022        | 10         | \<PATIENT> was discharged on \<DATE> | Vonda was discharged on 13/Apr/2022          |
+| John was discharged on 03 Apr2022        | 10         | \<PATIENT> was discharged on \<DATE> | Vonda was discharged on 13 Apr2022          |
 | John Moore was discharged on 11/May-2025 | 20         | \<PATIENT> was discharged on \<DATE> | Vonda Seals was discharged on 31/May-2025    |
 
 
@@ -318,13 +320,15 @@ This feature is especially useful in **VIP or high-profile patient** scenarios, 
 *Example:*
 
 ```python
-text = """John Smith visited Los Angeles. He was admitted to the emergency department at St. Mary's Hospital after experiencing chest pain. """ 
+text = """John Smith visited Los Angeles. He was admitted to the emergency department at St. Mary's Hospital after experiencing chest pain. His mother worked as a Nurse  """
+
 
 # Define pairs in code
 pairs = [
-    ["John Doe", "PATIENT", "Jane Smith"],
+    ["John Smith", "PATIENT", "Andrew Snow"],
     ["Los Angeles", "CITY", "New York City"],
-    ["St. Mary's Hospital","HOSPITAL","Johns Hopkins Hospital"]
+    ["St. Mary's Hospital", "HOSPITAL", "Johns Hopkins Hospital"],
+    ["Nurse", "PROFESSION", "Cardiologist"]
 ]
 
 deid = DeIdentification() \
@@ -338,10 +342,12 @@ deid = DeIdentification() \
 *Result*:
 
 {:.table-model-big}
-| index | Original Sentence | De-identified Sentence |
-|-------|-------------------|------------------------|
-| 0     | John Doe visited Los Angeles. | Jane Smith visited New York City. |
+| index | sentence                                                                 | deidentified                                                                 |
+|-------|--------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| 0     | John Smith visited Los Angeles.                                          | <DOCTOR> visited New York City.                                              |
 | 1     | He was admitted to the emergency department at St. Mary's Hospital after experiencing chest pain. | He was admitted to the emergency department at Johns Hopkins Hospital after experiencing chest pain. |
+| 2     | His mother worked as a Nurse                                             | His mother worked as a Cardiologist                                          |
+
 
 
 
@@ -556,13 +562,13 @@ The ChunkMapperFilterer annotator now supports fine-grained entity filtering thr
 ```python
 chunk_mapper_filterer = ChunkMapperFilterer() \
       .setInputCols(["chunk", "RxNorm_Mapper"]) \
-      .setOutputCol("chunks_fail") \
-      .setReturnCriteria("fail")\
-      .setBlackList(["zitiga", "coumadn 5 mg"])\
+      .setOutputCol("chunks_success") \
+      .setReturnCriteria("success")\
+      .setBlackList(["Tegretol", "ZYVOX"])\
       .setCaseSensitive(False)
 
-samples = [["The patient was given Adapin 10 MG, coumadn 5 mg"],
-           ["The patient was given Avandia 4 mg, Tegretol, zitiga"] ]
+samples = [["The patient was given Avandia 4 mg, Tegretol"],
+           ["The patient was previously prescribed Zyrtec for allergies, Zyvox for a bacterial infection, and Zytopic to manage a skin condition."]]
 
 data = spark.createDataFrame(samples).toDF("text")
 ```
@@ -572,19 +578,19 @@ data = spark.createDataFrame(samples).toDF("text")
 
 Before:
 {:.table-model-big}
-|chunk                           |RxNorm_Mapper         |chunks_fail                 |
-|--------------------------------|----------------------|----------------------------|
-|[Adapin 10 MG, coumadn 5 mg]    |[NONE, NONE]          |[Adapin 10 MG, coumadn 5 mg]|
-|[Avandia 4 mg, Tegretol, zitiga]|[261242, 203029, NONE]|[zitiga]                    |
+|chunk                   |RxNorm_Mapper          |chunks_success          |
+|------------------------|-----------------------|------------------------|
+|[Avandia 4 mg, Tegretol]|[261242, 203029]       |[Avandia 4 mg, Tegretol]|
+|[Zyrtec, Zyvox, Zytopic]|[58930, 261710, 763297]|[Zyrtec, Zyvox, Zytopic]|
 
 
 *Result with blacklist*:
 
 {:.table-model-big}
-|chunk                           |RxNorm_Mapper         |chunks_fail   |
-|--------------------------------|----------------------|--------------|
-|[Adapin 10 MG, coumadn 5 mg]    |[NONE, NONE]          |[Adapin 10 MG]|
-|[Avandia 4 mg, Tegretol, zitiga]|[261242, 203029, NONE]|[]            |
+|chunk                   |RxNorm_Mapper          |chunks_success   |
+|------------------------|-----------------------|-----------------|
+|[Avandia 4 mg, Tegretol]|[261242, 203029]       |[Avandia 4 mg]   |
+|[Zyrtec, Zyvox, Zytopic]|[58930, 261710, 763297]|[Zyrtec, Zytopic]|
 
 
 
