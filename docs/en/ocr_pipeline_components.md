@@ -4551,7 +4551,7 @@ Next section describes the extra transformers
 
 ### PositionFinder
 
-`PositionFinder` find the position of input text entities in the original document.
+`PositionFinder` find the position of input text entities in the original document. This annotator will return coordinates for entities that were extracted from a text column in the same row. It will receive entities in the form of chunks, and positions for characters or words.
 
 </div><div class="h3-box" markdown="1">
 
@@ -4699,6 +4699,24 @@ val results = pipeline.fit(df).transform(df)
 
 results.show()
 ```
+
+#### Algorithm
+The algorithm for PositionFinder is pretty simple; while processing the list of entities to be matched, the sequence of positions is consumed by the algorithm as a stream, to try to determine the coordinates for each entity.<br>
+A few details:
+* The chunks and the char/word positions must be in the same order, as the algorithm alternatively "consumes" elements from both positions and chunks.
+* The algorithm does backtracking, meaning that if some chunk entity was not matched when the end of the positions stream was reached, the process continues with the next entity exactly where the last entity was matched in the positions stream.
+* As stated befire, positions can be char-level or word-level, according to the stages that were used to create the input to PositionFinder.
+* Normalization of the source text(over which entities are extracted) can make the PositionFinder fail, as the entities will be normalized as well, but the 'positions', i.e., the individual coordinates for each character don't reflect this normalization.
+* Matching is not strictly textual, you can think of the matching piece of the algorithm like an automaton that will receive inputs(pieces of words, words, or characters) and will "accept" at some point and return a coordinate(or more if, for example, the entity is multi-line). Some soft matching is applied like relaxing the match for punctuation, spaces, or newlines.
+* Multi-line entities, spawning two lines will return more than one coordinate in general, you can use output coordinate metadata, and chunk_id, to match coordinates to entities in this situation.
+* When for some reason there are entities that couldn't be matched you will see an error log like this,
+
+```
+ERROR PositionFinder: PositionFinder unmatched:::Annotation(type: chunk, begin: 47, end: 70, result: Cristiano Ronaldo)
+```
+In that example, a name entity couldn't be matched.
+
+
 
 </div></div><div class="h3-box" markdown="1">
 
