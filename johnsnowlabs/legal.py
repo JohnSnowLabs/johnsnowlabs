@@ -128,7 +128,8 @@ try:
             StructuredJsonConverter,
             BertForAssertionClassification,
             FhirDeIdentification,
-            AnnotationConverter
+            AnnotationConverter,
+            MetadataAnnotationConverter
         )
         from sparknlp_jsl.modelTracer import ModelTracer
         from sparknlp_jsl.pipeline_tracer import PipelineTracer
