@@ -628,6 +628,44 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
+  <h2 id="improvements-to-medical-conversations-and-document-qa">06-06-2025 Improvements to Medical Conversations and Document QA</h2>
+
+  <p>This version brings a complete upgrade to the Document Q&amp;A experience as well as significant enhancements to the Medical Research. It focuses on making conversations more context-aware, citations more relevant, and answers more reliable—all to better support clinical decision-making and evidence-based research.</p>
+
+  <h3 id="enhanced-agentic-document-qa">Enhanced Agentic Document Q&amp;A</h3>
+  <p><strong>More Accurate Medical Answers from Files</strong>: Instead of just retrieving chunks of text, our new agentic flow actively reasons through the content. For example, when asked “What degenerative changes are noted across the three patients, and how do they differ in terms of location and severity?”, the agent now selects, summarizes, and explains the relevant sections from the different documents.</p>
+
+  <iframe width="850" height="450" src="https://www.youtube.com/embed/ptTTjDDj9bA?si=8PxakWEEAD7a-Qt2&amp;hd=1" title="Agentic Doc QA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+  <p><strong>Faster, Smarter Document Processing</strong>: Ingestion is faster and more precise, with better recognition of tables, OCR in scanned medical PDFs, and smarter document chunking. This ensures that questions such as “What are the EU-TIRADS categories with corresponding malignancy?” for which responses are available in tables, yield precise, section-specific answers.</p>
+
+  <iframe width="850" height="450" src="https://www.youtube.com/embed/qg7pRwx3NaY?si=o_-dyVB4YQ_u9sw8&amp;hd=1" title="Smarter Document Processing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+  <p><strong>Better Visual Highlighting</strong>: Citations in image-based PDFs accurately match the referenced content, allowing users to quickly verify sources.</p>
+
+  <h4 id="user-benefits">User Benefits:</h4>
+  <p>Users can ask complex questions about clinical trials, guidelines, or reports and receive clear, well-organized responses tied to the most relevant sections. This dramatically reduces time spent reviewing documents and improves the accuracy of data extraction for research, audits, and clinical workflows.</p>
+
+  <p>These improvements make Medical Chatbot more dependable in both research and clinical workflows—whether you’re reviewing trial data, comparing treatment guidelines, or preparing patient handouts.</p>
+
+  <h3 id="smarter-medical-research--clinical-advice">Smarter Medical Research &amp; Clinical Advice</h3>
+
+  <p><strong>More Relevant Research Citations</strong>: The Medical Research agent now filters out low-value documents and highlights high-quality, relevant research. This helps researchers get to meaningful sources faster.</p>
+
+  <p><strong>Improved Multi-turn Conversations</strong>: The Medical Research agent now better understands and tracks context across messages. For example, if a patient asks about the common symptoms of hypothyroidism and then follows up with a question about the weight gain and fatigue which could be mistaken for depression in this case, the agent seamlessly connects both topics.
+https://youtu.be/IP6P0rRq92Y</p>
+
+  <iframe width="850" height="450" src="https://www.youtube.com/embed/rmP5PV-m1Js?si=FlXLdt38J3VU4L_M&amp;hd=1" title="Multi-turn conversations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+  <p><strong>Clearer Boundaries for Agent Use</strong>: If a user asks a non-research question (e.g. “What’s the weather in Boston?”), the Medical Research agent will now politely stop and redirect, ensuring it stays focused on medical literature and evidence synthesis.</p>
+
+  <div style="text-align: center;">
+<img src="/assets/images/chatbot/MedicalResearch - refuses to answer unrelated questions.png" alt="Clearer Boundaries for Agent Use" style="border: 1px solid grey; width:100%" />
+</div>
+
+  <h4 id="user-benefit">User Benefit:</h4>
+  <p>These enhancements help clinicians and researchers interact more naturally with the system, trust the quality of citations, and save time by receiving tailored, relevant answers. Whether summarizing evidence or supporting a clinical decision, users now experience greater clarity, control, and reliability.</p>
+
   <h2 id="introducing-semantic-scholar">13-05-2025 Introducing Semantic Scholar+</h2>
 
   <p>We’re excited to announce the launch of Semantic Scholar+, that brings access to over 225+ million research articles spanning all scientific disciplines—now seamlessly integrated into the Medical Chatbot platform.</p>
@@ -669,7 +707,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Through this combination of broad coverage and flexible filtering, the Medical Chatbot delivers a powerful, efficient research experience—whether you’re conducting a wide-ranging literature review or exploring a focused topic in depth.</p>
 
-  <h3 id="user-benefits">User Benefits</h3>
+  <h3 id="user-benefits-1">User Benefits</h3>
 
   <p><strong>1. Comprehensive, Current Knowledge:</strong> By aggregating multiple reputable databases and updating them daily, the chatbot ensures you are accessing a wide breadth of the latest medical research. This comprehensive coverage means important studies are less likely to be overlooked, and you can trust that your answers and literature reviews include the most up-to-date evidence available.</p>
 
@@ -770,7 +808,7 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
   <p><img src="/assets/images/chatbot/QualityIndicatorsForArticlesLiteratureReview.png" alt="Quality Indicators for Relevant Articles in Literature Review Results View" style="border: 2px solid grey; width=60%" /></p>
 
-  <h4 id="user-benefits-1">User Benefits</h4>
+  <h4 id="user-benefits-2">User Benefits</h4>
 
   <p><strong>1. Informed Decision-Making:</strong></p>
 
@@ -794,7 +832,7 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
   <p>This format offers a clean, concise way to cite sources without disrupting the natural flow of reading, making it particularly effective for research-heavy or technical content. It enhances overall readability, allows for quick and efficient cross-referencing, and aligns with the standards followed by top-tier scientific and medical journals.</p>
 
-  <h4 id="user-benefits-2">User Benefits</h4>
+  <h4 id="user-benefits-3">User Benefits</h4>
 
   <p><strong>1. Improved readability:</strong> Less cluttered text makes content easier to scan and understand.</p>
 
@@ -821,7 +859,7 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
   <p><img src="/assets/images/chatbot/UserProfile.png" alt="User Profile" style="border: 2px solid grey; width=60%" /></p>
 
-  <h4 id="user-benefits-3">User Benefits</h4>
+  <h4 id="user-benefits-4">User Benefits</h4>
 
   <p><strong>1. Simplified navigation:</strong> All user options and settings are now in one location.</p>
 
@@ -860,7 +898,7 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
     <div class="h3-box">
 
-      <h4 id="user-benefits-4">User Benefits</h4>
+      <h4 id="user-benefits-5">User Benefits</h4>
       <p><strong>1. Reliable Medication Guidance</strong></p>
 
       <p>The Drug Insights agent provides users with precise and actionable information about medications, helping them understand potential side effects, appropriate dosages, and warnings. This ensures that users can make informed decisions regarding their treatment plans, minimizing risks associated with improper usage or contraindications. With guidance on safe storage and handling, users gain confidence in managing their medications effectively.</p>
@@ -897,7 +935,7 @@ These metrics empower researchers, institutions, and reviewers to quickly assess
 
         <p>Results are presented in tabular format, allowing users to specify the details they wish to include. Additionally, the data can be exported as CSV files for future reference or analysis. The chatbot also enhances the user experience by providing  insights and contextual responses that go beyond the data itself, addressing more nuanced queries effectively.</p>
 
-        <h4 id="user-benefits-5">User Benefits</h4>
+        <h4 id="user-benefits-6">User Benefits</h4>
         <p><strong>Fast Provider Discovery</strong>: Quickly identify and assess healthcare providers by specialty or geography.</p>
 
         <p><strong>Research Utility</strong>: Ideal for analyzing provider distribution trends and gaps in healthcare services.</p>
@@ -932,7 +970,7 @@ The MDPI knowledge base contributes to generating intelligent, comprehensive res
 
           <div class="h3-box">
 
-            <h4 id="user-benefits-6">User Benefits</h4>
+            <h4 id="user-benefits-7">User Benefits</h4>
 
             <p><strong>1.Comprehensive Research Support</strong></p>
 
@@ -1094,7 +1132,7 @@ The MDPI knowledge base contributes to generating intelligent, comprehensive res
           </div>
           <div class="h3-box">
 
-            <h3 id="user-benefits-7">User Benefits</h3>
+            <h3 id="user-benefits-8">User Benefits</h3>
 
             <p>These enhancements work together to offer the following benefits to our users:</p>
 
@@ -1169,7 +1207,7 @@ The revamped Data Points and Inclusion/Exclusion Criteria features offer clearer
           </div>
           <div class="h3-box">
 
-            <h3 id="user-benefits-8">User Benefits</h3>
+            <h3 id="user-benefits-9">User Benefits</h3>
 
             <p>These enhancements work together to offer the following benefits to our users:</p>
 
@@ -1252,7 +1290,7 @@ Once a literature review is completed, users can easily clone the existing revie
           </div>
           <div class="h3-box">
 
-            <h3 id="user-benefits-9">User Benefits</h3>
+            <h3 id="user-benefits-10">User Benefits</h3>
 
             <p>In the medical domain, this tool has been designed to make the following impacts:</p>
 
@@ -1452,7 +1490,7 @@ The Web Search Tool is now available in the Tool Selection menu and can be enabl
           </div>
           <div class="h3-box">
 
-            <h3 id="user-benefits-10">User Benefits</h3>
+            <h3 id="user-benefits-11">User Benefits</h3>
             <p>In the medical domain, this tool can be useful when looking at:</p>
             <ul>
               <li>patient feedback on the effectiveness of new medications, side effects, and personal experiences with healthcare providers;</li>
@@ -1574,7 +1612,7 @@ The generated responses visually highlight the detected entities and assertion s
           </div>
           <div class="h3-box">
 
-            <h3 id="user-benefits-11">User Benefits</h3>
+            <h3 id="user-benefits-12">User Benefits</h3>
 
             <ul>
               <li><strong>Focused Answers:</strong> Provides precise information derived directly from uploaded documents.</li>
@@ -1661,7 +1699,7 @@ The generated responses visually highlight the detected entities and assertion s
           </div>
           <div class="h3-box">
 
-            <h3 id="user-benefits-12">User Benefits</h3>
+            <h3 id="user-benefits-13">User Benefits</h3>
             <ul>
               <li><strong>Enhanced Privacy and Compliance</strong>: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.</li>
               <li><strong>Focused Content Extraction</strong>: Enables precise extraction of medical entities tailored to general, oncological, and posology contexts, enhancing the utility and accuracy of information retrieval.</li>
@@ -1830,7 +1868,7 @@ When all tools are turned off, John will respond from its memory. See next secti
   </div>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-05-13T00:00:00+00:00">May 13, 2025</time>
+      <time itemprop="dateModified" datetime="2025-06-09T00:00:00+00:00">Jun 09, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
