@@ -5,13 +5,55 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2025-05-13"
+modify_date: "2025-06-09"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
 
 <div class="h3-box" markdown="1">
+
+## 06-06-2025 Improvements to Medical Conversations and Document QA
+
+This version brings a complete upgrade to the Document Q&A experience as well as significant enhancements to the Medical Research. It focuses on making conversations more context-aware, citations more relevant, and answers more reliable—all to better support clinical decision-making and evidence-based research.
+
+### Enhanced Agentic Document Q&A
+**More Accurate Medical Answers from Files**: Instead of just retrieving chunks of text, our new agentic flow actively reasons through the content. For example, when asked “What degenerative changes are noted across the three patients, and how do they differ in terms of location and severity?”, the agent now selects, summarizes, and explains the relevant sections from the different documents.
+
+<iframe width="850" height="450" src="https://www.youtube.com/embed/ptTTjDDj9bA?si=8PxakWEEAD7a-Qt2&hd=1" title="Agentic Doc QA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Faster, Smarter Document Processing**: Ingestion is faster and more precise, with better recognition of tables, OCR in scanned medical PDFs, and smarter document chunking. This ensures that questions such as “What are the EU-TIRADS categories with corresponding malignancy?” for which responses are available in tables, yield precise, section-specific answers.
+
+<iframe width="850" height="450" src="https://www.youtube.com/embed/qg7pRwx3NaY?si=o_-dyVB4YQ_u9sw8&hd=1" title="Smarter Document Processing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+**Better Visual Highlighting**: Citations in image-based PDFs accurately match the referenced content, allowing users to quickly verify sources.
+
+#### User Benefits:
+Users can ask complex questions about clinical trials, guidelines, or reports and receive clear, well-organized responses tied to the most relevant sections. This dramatically reduces time spent reviewing documents and improves the accuracy of data extraction for research, audits, and clinical workflows.
+
+These improvements make Medical Chatbot more dependable in both research and clinical workflows—whether you’re reviewing trial data, comparing treatment guidelines, or preparing patient handouts.
+
+
+### Smarter Medical Research & Clinical Advice
+
+**More Relevant Research Citations**: The Medical Research agent now filters out low-value documents and highlights high-quality, relevant research. This helps researchers get to meaningful sources faster.
+
+**Improved Multi-turn Conversations**: The Medical Research agent now better understands and tracks context across messages. For example, if a patient asks about the common symptoms of hypothyroidism and then follows up with a question about the weight gain and fatigue which could be mistaken for depression in this case, the agent seamlessly connects both topics.
+https://youtu.be/IP6P0rRq92Y
+
+<iframe width="850" height="450" src="https://www.youtube.com/embed/rmP5PV-m1Js?si=FlXLdt38J3VU4L_M&hd=1" title="Multi-turn conversations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Clearer Boundaries for Agent Use**: If a user asks a non-research question (e.g. "What’s the weather in Boston?"), the Medical Research agent will now politely stop and redirect, ensuring it stays focused on medical literature and evidence synthesis.
+
+<div style="text-align: center;">
+<img src= "/assets/images/chatbot/MedicalResearch - refuses to answer unrelated questions.png" alt="Clearer Boundaries for Agent Use" style="border: 1px solid grey; width:100%">
+</div>
+
+
+#### User Benefit:
+These enhancements help clinicians and researchers interact more naturally with the system, trust the quality of citations, and save time by receiving tailored, relevant answers. Whether summarizing evidence or supporting a clinical decision, users now experience greater clarity, control, and reliability.
+
 
 ## 13-05-2025 Introducing Semantic Scholar+
 
