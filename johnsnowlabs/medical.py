@@ -104,7 +104,9 @@ try:
             PretrainedZeroShotNER,
             StructuredJsonConverter,
             BertForAssertionClassification,
-            FhirDeIdentification
+            FhirDeIdentification,
+            AnnotationConverter,
+            MetadataAnnotationConverter
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.text_to_documents_columns import TextToDocumentsColumns

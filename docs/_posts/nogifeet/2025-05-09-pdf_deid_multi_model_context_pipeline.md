@@ -1,6 +1,6 @@
 ---
 layout: model
-title: PDF Deidentification Multi Model
+title: PDF Deidentification Multi Model Context
 author: John Snow Labs
 name: pdf_deid_multi_model_context_pipeline
 date: 2025-05-09
