@@ -22,7 +22,7 @@ This version brings a complete upgrade to the Document Q&A experience as well as
 
 <iframe width="850" height="450" src="https://www.youtube.com/embed/ptTTjDDj9bA?si=8PxakWEEAD7a-Qt2&hd=1" title="Agentic Doc QA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-**Faster, Smarter Document Processing**: Ingestion is faster and more precise, with better recognition of tables, OCR in scanned medical PDFs, and smarter document chunking. This ensures that questions such as “What are the EU-TIRADS categories with corresponding malignancy?” for which responses are available in tables, yield precise, section-specific answers.
+**Smarter Document Processing**: Ingestion of uploaded documents is more precise, with better recognition of tables in PDF, docx or scanned medical reports, and with smarter document chunking. This ensures that questions such as “What are the EU-TIRADS categories with corresponding malignancy?” for which responses are available in tables, yield precise, section-specific answers.
 
 <iframe width="850" height="450" src="https://www.youtube.com/embed/qg7pRwx3NaY?si=o_-dyVB4YQ_u9sw8&hd=1" title="Smarter Document Processing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -40,7 +40,6 @@ These improvements make Medical Chatbot more dependable in both research and cli
 **More Relevant Research Citations**: The Medical Research agent now filters out low-value documents and highlights high-quality, relevant research. This helps researchers get to meaningful sources faster.
 
 **Improved Multi-turn Conversations**: The Medical Research agent now better understands and tracks context across messages. For example, if a patient asks about the common symptoms of hypothyroidism and then follows up with a question about the weight gain and fatigue which could be mistaken for depression in this case, the agent seamlessly connects both topics.
-https://youtu.be/IP6P0rRq92Y
 
 <iframe width="850" height="450" src="https://www.youtube.com/embed/rmP5PV-m1Js?si=FlXLdt38J3VU4L_M&hd=1" title="Multi-turn conversations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
