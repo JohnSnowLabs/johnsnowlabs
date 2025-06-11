@@ -56,11 +56,11 @@ Parameters:
   you can reply to an execution several times with the same output.
 
 - `maskingPolicy` *(str)*:  Select the masking policy:
-  same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-  Example, Smith -> [***].
-  If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
-  entity_labels: Replace the values with the corresponding entity labels.
-  fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisk.
+entity_labels: Mask with the entity type of that chunk. (default)
+same_length_chars: Mask the deid entities with same length of asterix ( * ) with brackets ( [ , ] ) on both end.
+fixed_length_chars: Mask the deid entities with a fixed length of asterix ( * ). The length is setting up using the setFixedMaskLength() method.
+same_length_chars_without_brackets: masks entities with asterisks of the same length without square brackets.
+entity_labels_without_brackets: replaces entities with their label without square brackets.
 
 - `fixedMaskLength` *(Int)*:  The length of the masking sequence in case of fixed_length_chars masking policy.
 
@@ -105,6 +105,29 @@ For example, if "John Smith" is obfuscated as "Liam Brown", then:
   ensuring consistency in name transformation.
 
 Default: True
+
+-`geoConsistency`: (BooleanParam) Sets whether to enforce consistent obfuscation across geographical entities:
+state, city, street, zip and phone.
+This parameter enables intelligent geographical entity obfuscation that maintains
+realistic relationships between different geographic components.
+When enabled, the system ensures that obfuscated addresses form coherent, valid combinations
+rather than random replacements. Default: False
+
+-`countryObfuscation`: (BooleanParam) Whether to obfuscate country entities or not. If True, the country entities will be obfuscated. Default: False.
+
+- `additionalDateFormats`: (Param[String]) Additional date formats to be considered during date obfuscation.
+  This allows users to specify custom date formats in addition to the default date formats. Default: [].
+
+- `selectiveObfuscateRefSource`: Dict[str, str]
+  A dictionary of entity names to their obfuscation modes.
+  This is used to selectively apply different obfuscation methods to specific entities.
+  The keys are entity names and the values are the obfuscation sources.
+  If an entity is not specified in this map, the `obfuscateRefSource` param is used to determine the obfuscation source.
+  Possible values in dict for the obfuscation source are: 'custom', 'faker', 'both', 'file'.
+
+- `staticObfuscationPairs`: static obfuscation pairs is used to set static obfuscation pairs that will be used for de-identification.
+  Each pair should contain three elements: original, entity type, and fake.
+  The pairs must have exactly 3 elements: [original, entityType, fake].
 
 
 {%- endcapture -%}
