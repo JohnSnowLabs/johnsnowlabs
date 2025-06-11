@@ -158,8 +158,8 @@ val document_assembler = new DocumentAssembler()
       .setOutputCol("document")
 
 val sentence_detector = SentenceDetectorDLModel
-      .pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-      .setInputCols(Array("document"))\
+      .pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+      .setInputCols(Array("document"))
       .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
