@@ -90,6 +90,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="LLMLoader" summary="LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs' licensed LLMs at various sizes that are finetuned on medical context for certain tasks."%}
 {% include templates/licensed_table_entry.md  name="Mapper2Chunk" summary="This annotator converts 'LABELED_DEPENDENCY' type annotations coming from ChunkMapper into 'CHUNK' type to create new chunk-type column"%}
 {% include templates/licensed_table_entry.md  name="MedicalLLM" summary="MedicalLLM was designed to load and run large language models (LLMs) in GGUF format with scalable performance."%}
+{% include templates/licensed_table_entry.md  name="MetadataAnnotationConverter" summary="Converts metadata fields in annotations into actual begin, end, or result values."%}
 {% include templates/licensed_table_entry.md  name="MultiChunk2Doc" summary="Merges a given chunks to create a document."%}
 {% include templates/licensed_table_entry.md  name="NameChunkObfuscator" summary="This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="NerChunker" summary="Extracts phrases that fits into a known pattern using the NER tags."%}

@@ -564,6 +564,12 @@ For example, if "John Smith" is obfuscated as "Liam Brown", then:
 - When the full name "John Smith" appears, it will be replaced with "Liam Brown"
 - When "John" or "Smith" appear individually, they will still be obfuscated as "Liam" and "Brown" respectively,
 ensuring consistency in name transformation. Default: True
+- `selectiveObfuscateRefSource`: Dict[str, str]
+  A dictionary of entity names to their obfuscation modes.
+  This is used to selectively apply different obfuscation methods to specific entities.
+  The keys are entity names and the values are the obfuscation sources.
+  If an entity is not specified in this map, the `obfuscateRefSource` param is used to determine the obfuscation source.
+  Possible values in dict for the obfuscation source are: 'custom', 'faker', 'both', 'file'.
 
 
 Functions :
