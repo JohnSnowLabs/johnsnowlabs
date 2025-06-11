@@ -11,22 +11,46 @@ This annotator match exact phrases provided in a file against a Document.
 
 Parametres:
 
-- `setEntities` *(str)*: Sets the external resource for the entities.
+- `entities` *(str)*: external resource for the entities.
         path : str
             Path to the external resource
         read_as : str, optional
             How to read the resource, by default ReadAs.TEXT
         options : dict, optional
             Options for reading the resource, by default {"format": "text"}
-- `setCaseSensitive` *(Boolean)*: Sets whether to match regardless of case. (Default: True)
+- `caseSensitive` *(Boolean)*: whether to match regardless of case. (Default: True)
 
-- `setMergeOverlapping` *(Boolean)*: Sets whether to merge overlapping matched chunks. (Default: False)
+- `mergeOverlapping` *(Boolean)*: whether to merge overlapping matched chunks. (Default: False)
 
-- `setEntityValue` *(str)*: Sets the value for the entity metadata field. If any entity value isn't set in the file, we need to set it for the entity value.
+- `entityValue` *(str)*: value for the entity metadata field. If any entity value isn't set in the file, we need to set it for the entity value.
 
-- `setBuildFromTokens` *(Boolean)*: Sets whether the TextMatcherInternal should take the CHUNK from TOKEN.
+- `buildFromTokens` *(Boolean)*: whether the TextMatcherInternal should take the CHUNK from TOKEN.
 
-- `setDelimiter` *(str)*: Sets value for the delimiter between Phrase, Entity.
+- `delimiter` *(str)*: value for the delimiter between Phrase, Entity.
+
+- `enableLemmatizer` *(Boolean)*: whether to enable lemmatization. (Default: False)
+
+- `enableStemmer` *(Boolean)*: whether to enable stemming. (Default: False)
+
+- `cleanStopWords` *(Boolean)*: whether to clean stop words. (Default: False)
+
+- `shuffleEntitySubTokens` *(Boolean)*: whether to use permutations of entity phrase tokens to improve matching. (Default: False)
+
+- `safeKeywords` *(List[str])*: list of critical terms that should never be removed, even if they are stop words or noise words.
+
+- `excludePunctuation` *(Boolean)*: whether to remove all punctuation characters during matching. (Default: False)
+
+- `cleanKeywords` *(List[str])*: list of domain-specific noise words to be removed from entities.
+
+- `excludeRegexPatterns` *(List[str])*: list of regex patterns; if a matched chunk fits one of these patterns, it will be discarded.
+
+- `returnChunks` *(str)*: whether to return the matched phrase in its original form or normalized version. Accepted values: `"original"`, `"matched"`.
+
+- `skipMatcherAugmentation` *(Boolean)*: whether to disable augmentation on the matcher side (e.g., token permutations). (Default: False)
+
+- `skipSourceTextAugmentation` *(Boolean)*: whether to disable augmentation on the source text side. (Default: False)
+
+
 
 See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more examples of usage.
 {%- endcapture -%}
@@ -159,6 +183,10 @@ val result = matcherModel.transform(data)
 [TextMatcherInternal](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/matcher/text_matcher_internal/index.html)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[TextMatcherInternalNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -169,4 +197,6 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
+
 %}
